@@ -1,7 +1,21 @@
-import { configure } from '@storybook/react';
+import React from 'react';
+import { configure, addDecorator } from '@storybook/react';
 import 'storybook-chromatic';
+import { createGlobalStyle } from 'styled-components';
 
 // add styled-components global styles here
+const GlobalStyles = createGlobalStyle`
+  body {
+    background: red;
+  }
+`;
+
+addDecorator(story => (
+  <div>
+    <GlobalStyles />
+    {story()}
+  </div>
+));
 
 // Needed to add these to get Gatsby's links working.
 // We may need to do more: https://www.gatsbyjs.org/docs/unit-testing/
