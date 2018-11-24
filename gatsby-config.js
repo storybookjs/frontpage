@@ -1,6 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Default Starter',
+    title: 'Storybook',
+    siteUrl: `https://storybook.js.org/`,
+    description: `Storybook is an open source tool for developing UI components in isolation for React, Vue, and Angular`,
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -25,8 +27,16 @@ module.exports = {
         icon: 'src/images/gatsby-icon.png', // This path is relative to the root of the site.
       },
     },
+    {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        google: {
+          families: ['Nunito Sans'],
+        },
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
     // 'gatsby-plugin-offline',
   ],
-}
+};
