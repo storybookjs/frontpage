@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { Link, withPrefix } from 'gatsby';
 
 import styled from 'styled-components';
 
@@ -28,6 +28,7 @@ const Header = ({ siteTitle }) => (
     <Centerer>
       <Title>
         <TitleLink to="/">{siteTitle}</TitleLink>
+        <img src={withPrefix('images/gatsby-icon.png')} />
       </Title>
     </Centerer>
   </Background>
