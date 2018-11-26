@@ -1,20 +1,14 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { configure, addDecorator } from '@storybook/react';
 import 'storybook-chromatic';
-import { createGlobalStyle } from 'styled-components';
 
-// add styled-components global styles here
-const GlobalStyles = createGlobalStyle`
-  body {
-    background: red;
-  }
-`;
+import { GlobalStyle } from '../src/shared/global';
 
 addDecorator(story => (
-  <div>
-    <GlobalStyles />
+  <Fragment>
+    <GlobalStyle />
     {story()}
-  </div>
+  </Fragment>
 ));
 
 // Needed to add these to get Gatsby's links working.
