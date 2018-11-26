@@ -8,8 +8,8 @@ export const background = {
 export const color = {
   // Palette
   primary: 'blue',
-  secondary: 'blue',
-  tertiary: 'blue',
+  secondary: 'red',
+  tertiary: 'green',
 
   // Monochrome
   lightest: '#FFFFFF',
