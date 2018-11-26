@@ -4,8 +4,19 @@ import { Link } from 'gatsby';
 import Layout from '../components/layout';
 import Image from '../components/image';
 
+import Hero from '../components/Hero';
+import SocialProof from '../components/SocialProof';
+import SectionHero from '../components/SectionHero';
+import SectionBenefits from '../components/SectionBenefits';
+import Testimonial from '../components/Testimonial';
+
 const IndexPage = () => (
   <Layout>
+    <Hero />
+    <SocialProof />
+    <SectionHero />
+    <SectionBenefits />
+    <Testimonial />
     <h1>Hi people</h1>
     <p>Welcome to your new Gatsby site.</p>
     <p>Now go build something great.</p>
