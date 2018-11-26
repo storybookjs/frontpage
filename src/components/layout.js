@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
@@ -6,12 +6,8 @@ import { StaticQuery, graphql } from 'gatsby';
 // add global styles here
 
 import Header from './Header';
-// import Hero from './Hero';
-// import SocialProof from './SocialProof';
-// import SectionHero from './SectionHero';
-// import SectionBenefits from './SectionBenefits';
-// import Testimonial from './Testimonial';
-// import Footer from './Footer';
+
+import Footer from './Footer';
 
 const Layout = ({ children }) => (
   <StaticQuery
