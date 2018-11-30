@@ -40,10 +40,10 @@ const Wrapper = styled.div`
   line-height: 1.5;
 `;
 
-export default function AddonItem({ image, title, desc, ...props }) {
+export default function AddonItem({ image, title, desc, appearance, ...props }) {
   return (
-    <Wrapper {...props}>
-      {image && <Image>{image}</Image>}
+    <Wrapper appearance={appearance} {...props}>
+      {appearance === 'official' && image && <Image>{image}</Image>}
       <Meta>
         {title && <Title>{title}</Title>}
         {desc && <Desc>{desc}</Desc>}
@@ -53,7 +53,12 @@ export default function AddonItem({ image, title, desc, ...props }) {
 }
 
 AddonItem.propTypes = {
+  appearance: PropTypes.oneOf(['official', 'community']),
   image: PropTypes.node.isRequired,
   title: PropTypes.node.isRequired,
   desc: PropTypes.node.isRequired,
+};
+
+AddonItem.defaultProps = {
+  appearance: 'community',
 };
