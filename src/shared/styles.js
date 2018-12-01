@@ -7,9 +7,15 @@ export const background = {
 
 export const color = {
   // Palette
-  primary: 'blue',
-  secondary: 'red',
-  tertiary: 'green',
+  primary: '#FF4785', //coral
+  secondary: '#1EA7FD', //ocean
+
+  orange: '#FC521F',
+  gold: '#FFAE00',
+  green: '#66BF3C',
+  seafoam: '#37D5D3',
+  purple: '#6F2CAC',
+  ultraviolet: '#2A0481',
 
   // Monochrome
   lightest: '#FFFFFF',
