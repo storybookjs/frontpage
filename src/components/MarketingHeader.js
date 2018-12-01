@@ -9,6 +9,7 @@ import TooltipLinkList from './tooltip/TooltipLinkList';
 import WithTooltip from './tooltip/WithTooltip';
 
 import { color, typography, spacing, pageMargins, breakpoint } from './../shared/styles';
+import { url } from './../shared/urls';
 
 const LogotypeWrapper = styled.a`
   img {
@@ -157,21 +158,15 @@ const NavWrapper = styled.nav`
 `;
 
 export default function MarketingHeader({ ...props }) {
-  const docsUrl = 'https://storybook.js.org/basics/introduction/';
-  const addonsUrl = '/addons';
-  const communityUrl = '/community';
-  const useCasesUrl = '/use-cases';
-  const supportUrl = '/support';
-
   const mobileMenu = (
     <MobileMenu>
       <TooltipLinkList
         links={[
-          { title: 'Docs', href: docsUrl },
-          { title: 'Addons', href: addonsUrl },
-          { title: 'Community', href: communityUrl },
-          { title: 'Use cases', href: useCasesUrl },
-          { title: 'Support', href: supportUrl },
+          { title: 'Docs', href: url.docs },
+          { title: 'Addons', href: url.addons },
+          { title: 'Community', href: url.community },
+          { title: 'Use cases', href: url.useCases },
+          { title: 'Support', href: url.support },
         ]}
         // TODO: Pass GatsbyLink here
         LinkWrapper={null}
@@ -192,27 +187,27 @@ export default function MarketingHeader({ ...props }) {
 
         <NavGroup right>
           <NavItem showDesktop>
-            <NavLink tertiary href={docsUrl}>
+            <NavLink tertiary href={url.docs}>
               Docs
             </NavLink>
           </NavItem>
           <NavItem showDesktop>
-            <NavLink tertiary href={addonsUrl}>
+            <NavLink tertiary href={url.addons}>
               Addons
             </NavLink>
           </NavItem>
           <NavItem showDesktop>
-            <NavLink tertiary href={communityUrl}>
+            <NavLink tertiary href={url.community}>
               Community
             </NavLink>
           </NavItem>
           <NavItem showDesktop>
-            <NavLink tertiary href={useCasesUrl}>
+            <NavLink tertiary href={url.useCases}>
               Use cases
             </NavLink>
           </NavItem>
           <NavItem showDesktop>
-            <NavLink tertiary href={supportUrl}>
+            <NavLink tertiary href={url.support}>
               Support
             </NavLink>
           </NavItem>
