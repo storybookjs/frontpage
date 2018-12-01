@@ -71,7 +71,14 @@ const Column = styled.div`
   }
 `;
 
-const Inner = styled.div`
+const Upper = styled.div`
+  ${pageMargins};
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+`;
+
+const Lower = styled.div`
   ${pageMargins};
   display: flex;
   flex-wrap: wrap;
@@ -86,10 +93,96 @@ const Footer = styled.div`
   padding: 3rem 0;
 `;
 
+const ResourceTitle = styled.div``;
+const ResourceTitleLink = styled.div``;
+const ResourceDesc = styled.div``;
+const ResourceAction = styled(Link)``;
+const ResourceActions = styled.div``;
+
+const Meta = styled.div`
+  overflow: hidden;
+`;
+const Resource = styled.div``;
+const Resources = styled.div``;
+
 export default function MarketingFooter({ ...props }) {
   return (
     <Footer {...props}>
-      <Inner>
+      <Upper>
+        <Column>
+          <Title>Learn</Title>
+          <Resources>
+            <Resource>
+              <img src="" alt="Docs image" />
+              <Meta>
+                <ResourceTitle>Get started with Storybook</ResourceTitle>
+                <ResourceDesc>
+                  Add Storybook to your project in less than a minute to build components faster and
+                  easier.
+                </ResourceDesc>
+                <ResourceActions>
+                  <ResourceAction>
+                    React <Icon icon="arrowright" />
+                  </ResourceAction>
+                  <ResourceAction>
+                    Vue <Icon icon="arrowright" />
+                  </ResourceAction>
+                  <ResourceAction>
+                    Angular <Icon icon="arrowright" />
+                  </ResourceAction>
+                  <ResourceAction>
+                    View more <Icon icon="arrowright" />
+                  </ResourceAction>
+                </ResourceActions>
+              </Meta>
+            </Resource>
+            <Resource>
+              <img src="" alt="Tutorial image" />
+              <Meta>
+                <ResourceTitle>Storybook tutorial</ResourceTitle>
+                <ResourceDesc>
+                  Learn Storybook with a 9-chapter tutorial that teaches Storybook best practices as
+                  you build a UI from scratch.
+                </ResourceDesc>
+                <ResourceActions>
+                  <ResourceAction href="https://www.learnstorybook.com/">
+                    Learn Storybook now <Icon icon="arrowright" />
+                  </ResourceAction>
+                </ResourceActions>
+              </Meta>
+            </Resource>
+          </Resources>
+        </Column>
+        <Column>
+          <Title>News</Title>{' '}
+          <Link>
+            Read more <Icon icon="arrowright" />
+          </Link>
+          // TODO: Pull latest articles from Medium API by tag "news"
+          <Resources>
+            <Resource>
+              <Meta>
+                <ResourceTitleLink>Storybook 4.0 is here</ResourceTitleLink>
+                <ResourceDesc>Big updates to support more build tools and frameworks</ResourceDesc>
+              </Meta>
+            </Resource>
+            <Resource>
+              <Meta>
+                <ResourceTitleLink>Storybook 4.0 is here</ResourceTitleLink>
+                <ResourceDesc>Big updates to support more build tools and frameworks</ResourceDesc>
+              </Meta>
+            </Resource>
+            <Resource>
+              <Meta>
+                <ResourceTitleLink>Storybook 4.0 is here</ResourceTitleLink>
+                <ResourceDesc>Big updates to support more build tools and frameworks</ResourceDesc>
+              </Meta>
+            </Resource>
+          </Resources>
+        </Column>
+      </Upper>
+      <hr />
+      <Lower>
         <Colophon>
           <LogotypeWrapper href="/">
             <img src="logos/logo-storybook.svg" alt="Storybook" />
@@ -172,7 +265,7 @@ export default function MarketingFooter({ ...props }) {
           <br />
           // Insert mailing list form
         </Column>
-      </Inner>
+      </Lower>
     </Footer>
   );
 }
