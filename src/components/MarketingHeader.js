@@ -11,7 +11,7 @@ import WithTooltip from './tooltip/WithTooltip';
 import { color, typography, spacing, pageMargins, breakpoint } from './../shared/styles';
 
 const LogotypeWrapper = styled.a`
-  svg {
+  img {
     height: 22px;
     width: auto;
     margin-top: 14px;
@@ -185,7 +185,7 @@ export default function MarketingHeader({ ...props }) {
         <NavGroup>
           <NavItem>
             <LogotypeWrapper href="/">
-              <img alt="Storybook" />
+              <img src="logos/logo-storybook.svg" alt="Storybook" />
             </LogotypeWrapper>
           </NavItem>
         </NavGroup>
@@ -224,7 +224,7 @@ export default function MarketingHeader({ ...props }) {
               <Menu secondary icon={1} isButton>
                 <Icon icon="menu" />
               </Menu>
-            </WithTooltip> 
+            </WithTooltip>
             */}
           </NavItem>
         </NavGroup>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, withPrefix } from 'gatsby';
+import { Link } from 'gatsby';
 
 import styled from 'styled-components';
 
@@ -21,7 +21,7 @@ const Header = ({ siteTitle }) => (
   <Background>
     <Title>
       <TitleLink to="/">{siteTitle}</TitleLink>
-      <img src={withPrefix('images/gatsby-icon.png')} />
+      <img src="images/gatsby-icon.png" />
     </Title>
   </Background>
 );
