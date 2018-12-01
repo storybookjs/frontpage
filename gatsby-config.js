@@ -3,6 +3,20 @@ module.exports = {
     title: 'Storybook',
     siteUrl: `https://storybook.js.org/`,
     description: `Storybook is an open source tool for developing UI components in isolation for React, Vue, and Angular`,
+
+    // Navigation
+    docsUrl: 'https://storybook.js.org/basics/introduction/',
+    addonsUrl: '/addons',
+    communityUrl: '/community',
+    useCasesUrl: '/use-cases',
+    supportUrl: '/support',
+
+    // Social
+    gitHubUrl: 'https://github.com/storybooks/storybook/',
+    blogUrl: 'https://medium.com/storybookjs',
+    twitterUrl: 'https://twitter.com/storybookjs',
+    chatUrl: 'https://discord.gg/UUt2PJb',
+    youtubeUrl: 'https://www.youtube.com/channel/UCr7Quur3eIyA_oe8FNYexfg',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
