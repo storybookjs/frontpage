@@ -5,8 +5,9 @@ import { storiesOf } from '@storybook/react';
 import SocialProof from './SocialProof';
 
 storiesOf('Layout/SocialProof', module)
-  .add('default', () => (
+  .add('heading', () => (
     <SocialProof
+      heading="Trusted by"
       path="/logos/user"
       brands={['github', 'dropbox', 'airbnb', 'lyft', 'mozilla', 'salesforce']}
     />

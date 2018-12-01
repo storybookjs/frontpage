@@ -10,14 +10,14 @@ const Heading = styled(Subheading)`
 `;
 
 const Logo = styled.img`
-  opacity: 0.7;
   display: block;
-  width: auto;
-  max-height: 40px;
+  width: 100%;
+  height: 100%;
 
   ${props =>
     props.monochrome &&
     css`
+      opacity: 0.7;
       filter: grayscale(100%);
     `};
 `;
@@ -75,11 +75,11 @@ const Wrapper = styled.div`
   padding-bottom: 3rem;
 `;
 
-export default function SocialProof({ path, brands, grid, monochrome, ...props }) {
+export default function SocialProof({ path, brands, heading, grid, monochrome, ...props }) {
   return (
     <Wrapper {...props}>
       <Logos grid={grid}>
-        {!grid && <Heading>Trusted by</Heading>}
+        {!grid && heading && <Heading>{heading}</Heading>}
         {brands.map((brand, index) => (
           <LogoWrapper key={brand} title={brand}>
             <Logo src={`${path}/logo-${brand}.svg`} alt={brand} monochrome={monochrome} />
@@ -94,11 +94,13 @@ export default function SocialProof({ path, brands, grid, monochrome, ...props }
 SocialProof.propTypes = {
   path: PropTypes.string.isRequired,
   brands: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  heading: PropTypes.string,
   grid: PropTypes.bool,
   monochrome: PropTypes.bool,
 };
 
 SocialProof.defaultProps = {
+  heading: null,
   grid: false,
   monochrome: false,
 };
