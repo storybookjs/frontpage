@@ -5,10 +5,11 @@ import { color, spacing, typography, pageMargin, breakpoint } from './../shared/
 
 import Link from './Link';
 
+// TODO: This CSS needs a refactor.
+
 const Image = styled.div`
   float: left;
   margin-right: 20px;
-  margin-top: 4px;
 
   img {
     display: block;
@@ -78,9 +79,11 @@ const WrapperLink = styled.a`
   @media (min-width: ${breakpoint * 1.5}px) {
     max-width: 320px;
   }
+
   display: block;
   font-size: ${typography.size.s3}px;
   line-height: 1.5;
+  overflow: hidden;
 
   text-decoration: none;
 
