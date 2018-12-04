@@ -22,7 +22,7 @@ const Quote = styled.div`
 
 const Name = styled.div`
   font-size: ${typography.size.s2}px;
-  font-weight: ${typography.weight.extrabold};
+  font-weight: ${typography.weight.bold};
 `;
 
 const JobTitle = styled.div`
@@ -45,12 +45,13 @@ const Logo = styled.div`
   img {
     display: inline-block;
     width: auto;
-    max-height: 40px;
+    max-height: 28px;
   }
 `;
 const Attribution = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
 `;
 
 const HrWrapper = styled.div`
