@@ -3,6 +3,8 @@ import { css } from 'styled-components';
 // Global style variables
 export const background = {
   app: '#F6F9FC',
+  positive: '#E1FFD4',
+  negative: '#FEDED2',
 };
 
 export const color = {
@@ -27,6 +29,12 @@ export const color = {
   dark: '#666666',
   darker: '#444444',
   darkest: '#333333',
+
+  border: 'rgba(0,0,0,.05)',
+
+  // Status
+  positive: '#66BF3C',
+  negative: '#FF4400',
 };
 
 export const spacing = {
