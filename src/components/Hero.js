@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { color } from './../shared/styles';
@@ -15,13 +16,18 @@ const PitchActions = styled.div``;
 
 const Pitch = styled.div``;
 
-const Video = styled.video``;
+const Video = styled.video`
+  width: 100%;
+  height: auto;
+`;
 
 const Primary = styled.div`
   background: green;
 `;
 
-const FrameworkLink = styled(Link)``;
+const FrameworkLink = styled(Link)`
+  text-transform: capitalize;
+`;
 
 const FrameworkItem = styled.div``;
 
@@ -50,6 +56,28 @@ const Content = styled.section`
   }
 `;
 
+function Framework({ framework, logo, ...props }) {
+  return (
+    <FrameworkItem>
+      <FrameworkLink className="primary" {...props}>
+        <img
+          src={
+            logo
+              ? `/logos/framework/icon-${logo}.svg`
+              : `/logos/framework/icon-${framework.toLowerCase()}.svg`
+          }
+          alt={framework}
+        />
+        {framework}
+      </FrameworkLink>
+    </FrameworkItem>
+  );
+}
+
+Framework.propTypes = {
+  framework: PropTypes.string.isRequired,
+};
+
 const Hero = ({ siteTitle }) => (
   <div>
     <Pitch>
@@ -77,66 +105,15 @@ const Hero = ({ siteTitle }) => (
       <Secondary>
         <SecondarySubheading>Made for</SecondarySubheading>
         <FrameworkList>
-          <FrameworkItem>
-            <FrameworkLink className="primary">
-              <img src="/logos/framework/icon-react.svg" alt="React" />
-              React
-            </FrameworkLink>
-          </FrameworkItem>
-          <FrameworkItem>
-            <FrameworkLink className="primary">
-              <img src="/logos/framework/icon-react.svg" alt="React" />
-              React Native
-            </FrameworkLink>
-          </FrameworkItem>
-          <FrameworkItem>
-            <FrameworkLink className="primary">
-              <img src="/logos/framework/icon-vue.svg" alt="Vue" />
-              Vue
-            </FrameworkLink>
-          </FrameworkItem>
-          <FrameworkItem>
-            <FrameworkLink className="primary">
-              <img src="/logos/framework/icon-angular.svg" alt="Angular" />
-              Angular
-            </FrameworkLink>
-          </FrameworkItem>
-          <FrameworkItem>
-            <FrameworkLink className="primary">
-              <img src="/logos/framework/icon-ember.svg" alt="Ember" />
-              Ember
-            </FrameworkLink>
-          </FrameworkItem>
-          <FrameworkItem>
-            <FrameworkLink className="primary">
-              <img src="/logos/framework/icon-html5.svg" alt="HTML" />
-              HTML
-            </FrameworkLink>
-          </FrameworkItem>
-          <FrameworkItem>
-            <FrameworkLink className="primary">
-              <img src="/logos/framework/icon-react.svg" alt="Marko" />
-              Marko
-            </FrameworkLink>
-          </FrameworkItem>
-          <FrameworkItem>
-            <FrameworkLink className="primary">
-              <img src="/logos/framework/icon-react.svg" alt="Svelte" />
-              Svelte
-            </FrameworkLink>
-          </FrameworkItem>
-          <FrameworkItem>
-            <FrameworkLink className="primary">
-              <img src="/logos/framework/icon-react.svg" alt="Mithril" />
-              Mithril
-            </FrameworkLink>
-          </FrameworkItem>
-          <FrameworkItem>
-            <FrameworkLink className="primary">
-              <img src="/logos/framework/icon-react.svg" alt="Riot" />
-              Riot
-            </FrameworkLink>
-          </FrameworkItem>
+          <Framework framework="React" href="https://google.com" />
+          <Framework framework="React Native" logo="react" href="https://google.com" />
+          <Framework framework="Vue" href="https://google.com" />
+          <Framework framework="Angular" href="https://google.com" />
+          <Framework framework="Ember" href="https://google.com" />
+          <Framework framework="HTML" href="https://google.com" />
+          <Framework framework="Svelte" href="https://google.com" />
+          <Framework framework="Mithril" href="https://google.com" />
+          <Framework framework="Riot" href="https://google.com" />
         </FrameworkList>
         <SecondarySubheading>GitHub</SecondarySubheading>
         <Stats>
