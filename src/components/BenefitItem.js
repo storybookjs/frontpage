@@ -53,10 +53,10 @@ const Wrapper = styled.div`
 export default function BenefitItem({ image, title, desc, children, ...props }) {
   return (
     <Wrapper {...props}>
-      {image && <Image>{image}</Image>}
+      <Image>{image}</Image>
       <Meta>
-        {title && <Title>{title}</Title>}
-        {desc && <Desc>{desc}</Desc>}
+        <Title>{title}</Title>
+        <Desc>{desc}</Desc>
         {children && <Children>{children}</Children>}
       </Meta>
     </Wrapper>
