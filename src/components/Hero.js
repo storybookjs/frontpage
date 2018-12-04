@@ -31,6 +31,7 @@ const FrameworkLink = styled(Link)`
   display: flex;
   align-items: center;
   font-size: ${typography.size.s2}px;
+  font-weight: ${typography.weight.bold};
 
   img {
     height: 1rem;
