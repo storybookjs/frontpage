@@ -3,4 +3,4 @@ import { storiesOf } from '@storybook/react';
 
 import Hero from './Hero';
 
-storiesOf('IndexScreen/Hero', module).add('default', () => <Hero />);
+storiesOf('Screens/IndexScreen/Hero', module).add('default', () => <Hero />);

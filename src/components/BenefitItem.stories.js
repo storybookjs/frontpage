@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 import BenefitItem from './BenefitItem';
 import Badge from './Badge';
 
-storiesOf('IndexScreen/BenefitItem', module)
+storiesOf('Screens/IndexScreen/BenefitItem', module)
   .add('default', () => (
     <BenefitItem
       image={<img src="home/build-canvas.png" />}
