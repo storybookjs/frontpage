@@ -9,7 +9,7 @@ const Layout = styled.div`
   flex-direction: row;
 
   > * {
-    padding: 5rem 70px 4rem;
+    padding: 4rem 70px 4rem;
     flex: 1;
     border-bottom: 1px solid ${color.border};
 
@@ -22,8 +22,13 @@ const Layout = styled.div`
       padding-left: 45px;
     }
 
+    &:nth-child(even) {
+      padding-right: 45px;
+    }
+
     &:nth-last-child(-n + 2) {
       border-bottom: none;
+      padding-bottom: 1rem;
     }
   }
 
