@@ -1,5 +1,5 @@
 import { createGlobalStyle, css } from 'styled-components';
-import { background, color, typography } from './styles';
+import { color, typography } from './styles';
 
 export const bodyStyles = css`
   font-family: ${typography.type.primary};
@@ -115,7 +115,6 @@ export const GlobalStyle = createGlobalStyle`
     body {
       ${bodyStyles}
 
-      background-color: ${background.app};
       margin: 0;
       overflow-y: auto;
       overflow-x: hidden;
