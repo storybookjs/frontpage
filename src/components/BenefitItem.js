@@ -7,7 +7,7 @@ const Image = styled.div`
   float: left;
   margin-right: 20px;
   margin-top: 4px;
-  svg {
+  img {
     display: block;
   }
 
@@ -16,15 +16,25 @@ const Image = styled.div`
     margin-right: 0;
     margin-top: 0;
     float: none;
+
+    img {
+      height: 260px;
+      width: 240px;
+      margin-left: -15px;
+    }
   }
 `;
 
 const Title = styled.div`
-  font-weight: ${typography.weight.extrabold};
-  margin-bottom: 0.25rem;
+  font-weight: ${typography.weight.black};
+  font-size: ${typography.size.m1}px;
+  line-height: ${typography.size.m2}px;
+  margin-bottom: 0.5rem;
 `;
 const Desc = styled.div`
   color: ${color.dark};
+  font-size: ${typography.size.m1}px;
+  line-height: ${typography.size.m3}px;
 `;
 
 const Meta = styled.div`

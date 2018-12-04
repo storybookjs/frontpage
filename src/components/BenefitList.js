@@ -9,7 +9,22 @@ const Layout = styled.div`
   flex-direction: row;
 
   > * {
-    padding: 0 ${spacing.padding.medium}px 3rem;
+    padding: 5rem 70px 4rem;
+    flex: 1;
+    border-bottom: 1px solid ${color.border};
+
+    &:nth-child(-n + 2) {
+      padding-top: 2rem;
+    }
+
+    &:nth-child(odd) {
+      border-right: 1px solid ${color.border};
+      padding-left: 45px;
+    }
+
+    &:nth-last-child(-n + 2) {
+      border-bottom: none;
+    }
   }
 
   @media (min-width: ${breakpoint * 1}px) {

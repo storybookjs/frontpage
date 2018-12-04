@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import BenefitItem from './BenefitItem';
+import Badge from './Badge';
 
 storiesOf('IndexScreen/BenefitItem', module)
   .add('default', () => (
@@ -17,6 +18,6 @@ storiesOf('IndexScreen/BenefitItem', module)
       title="Build components in isolation"
       desc="Create components without needing to stand up screens, fuss with data, or build business logic."
     >
-      <div>Children</div>
+      <Badge status="positive">Coming soon</Badge>
     </BenefitItem>
   ));
