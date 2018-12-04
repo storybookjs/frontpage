@@ -27,8 +27,12 @@ const Desc = styled.div`
 
 const Children = styled.div`
   margin-top: 2rem;
-  border-top: 1px solid ${color.border};
-  padding-top: 2rem;
+  ${props =>
+    !props.loneChild &&
+    css`
+      border-top: 1px solid ${color.border};
+      padding-top: 2rem;
+    `};
 `;
 
 const Wrapper = styled.div`
@@ -36,23 +40,23 @@ const Wrapper = styled.div`
   line-height: 1.5;
 `;
 
-export default function CommunityItem({ title, desc, children, ...props }) {
+export default function CommunitySidebar({ title, desc, children, loneChild, ...props }) {
   return (
     <Wrapper {...props}>
       <Title>{title}</Title>
       <Desc>{desc}</Desc>
 
-      {children && <Children>{children}</Children>}
+      {children && <Children loneChild={loneChild}>{children}</Children>}
     </Wrapper>
   );
 }
 
-CommunityItem.propTypes = {
+CommunitySidebar.propTypes = {
   title: PropTypes.node.isRequired,
   desc: PropTypes.node.isRequired,
   children: PropTypes.node,
 };
 
-CommunityItem.defaultProps = {
+CommunitySidebar.defaultProps = {
   children: null,
 };
