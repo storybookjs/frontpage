@@ -3,6 +3,7 @@ export const url = {
     repo: 'https://github.com/storybooks/storybook',
     releases: 'https://github.com/storybooks/storybook/releases',
     contributors: 'https://github.com/storybooks/storybook/graphs/contributors',
+    brand: 'https://github.com/storybooks/press',
   },
 
   npm: 'https://www.npmjs.com/package/@storybook/react',
