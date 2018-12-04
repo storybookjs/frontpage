@@ -38,22 +38,17 @@ const Title = styled.div`
 
 const Desc = styled.div`
   color: ${color.dark};
-
+  font-size: ${typography.size.s3}px;
+  line-height: 1.5rem;
   margin-bottom: 0.25rem;
-
-  @media (min-width: ${breakpoint * 1}px) {
-    font-size: ${typography.size.m1}px;
-    line-height: ${typography.size.m3}px;
-    margin-bottom: 0.5rem;
-  }
 `;
 
 const StyledLink = styled(Link)`
   margin-right: 20px;
+  font-size: ${typography.size.s3}px;
+  line-height: 1.5rem;
 
   @media (min-width: ${breakpoint * 1}px) {
-    font-size: ${typography.size.m1}px;
-    line-height: ${typography.size.m3}px;
     margin-right: 40px;
   }
 
@@ -88,16 +83,17 @@ export default function CommunityItem({ image, title, desc, links, ...props }) {
         <Title>{title}</Title>
         <Desc>{desc}</Desc>
 
-        {links.map(({ title, href }, index) => (
-          <StyledLink
-            /* eslint-disable react/no-array-index-key */
-            key={index}
-            href={href}
-          >
-            <span>{title}</span>
-            <Icon icon="arrowright" />
-          </StyledLink>
-        ))}
+        {links &&
+          links.map(({ title, href }, index) => (
+            <StyledLink
+              /* eslint-disable react/no-array-index-key */
+              key={index}
+              href={href}
+            >
+              <span>{title}</span>
+              <Icon icon="arrowright" />
+            </StyledLink>
+          ))}
       </Meta>
     </Wrapper>
   );
@@ -107,7 +103,12 @@ CommunityItem.propTypes = {
   image: PropTypes.node.isRequired,
   title: PropTypes.node.isRequired,
   desc: PropTypes.node.isRequired,
-  children: PropTypes.node,
+  links: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.node.isRequired,
+      href: PropTypes.string,
+    })
+  ).isRequired,
 };
 
 CommunityItem.defaultProps = {
