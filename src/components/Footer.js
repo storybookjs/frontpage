@@ -243,7 +243,7 @@ export default function MarketingFooter({ ...props }) {
         </Column>
         <Column>
           <Title>Community</Title>
-          <FooterLink tertiary href={url.gitHub}>
+          <FooterLink tertiary href={url.gitHub.repo}>
             <Icon icon="github" /> GitHub
           </FooterLink>
           <FooterLink tertiary href={url.blog}>
