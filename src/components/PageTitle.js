@@ -5,11 +5,37 @@ import { color, typography, pageMargins, breakpoint } from './../shared/styles';
 
 import Subheading from './Subheading';
 
-const Suptitle = styled(Subheading)``;
+const Heading = styled(Subheading)`
+  display: block;
+  margin-bottom: 0.75rem;
+  color: ${color.mediumdark};
+  opacity: 0.8;
+
+  ${props =>
+    props.color === 'green' &&
+    css`
+      color: ${color.green};
+    `};
+  ${props =>
+    props.color === 'seafoam' &&
+    css`
+      color: ${color.seafoam};
+    `};
+  ${props =>
+    props.color === 'purple' &&
+    css`
+      color: ${color.purple};
+    `};
+  ${props =>
+    props.color === 'gold' &&
+    css`
+      color: ${color.gold};
+    `};
+`;
 
 const Title = styled.div`
   font-size: ${typography.size.m2}px;
-  font-weight: ${typography.weight.extrabold};
+  font-weight: ${typography.weight.black};
   line-height: 24px;
   margin-bottom: 0.5rem;
 
@@ -28,6 +54,8 @@ const Desc = styled.div`
   @media (min-width: ${breakpoint}px) {
     font-size: ${typography.size.m1}px;
     line-height: 32px;
+    max-width: 600px;
+    margin: 0 auto;
   }
 `;
 
@@ -54,11 +82,11 @@ const Wrapper = styled.div`
   }
 `;
 
-export default function PageTitle({ suptitle, title, desc, ...props }) {
+export default function PageTitle({ heading, title, desc, color, ...props }) {
   return (
     <Wrapper {...props}>
       <Meta>
-        <Suptitle>{suptitle}</Suptitle>
+        <Heading color={color}>{heading}</Heading>
         <Title>{title}</Title>
         <Desc>{desc}</Desc>
       </Meta>
@@ -67,7 +95,12 @@ export default function PageTitle({ suptitle, title, desc, ...props }) {
 }
 
 PageTitle.propTypes = {
-  suptitle: PropTypes.string.isRequired,
+  heading: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   desc: PropTypes.string.isRequired,
+  color: PropTypes.oneOf(['green', 'seafoam', 'gold', 'purple', 'default']),
+};
+
+PageTitle.defaultProps = {
+  color: 'default',
 };
