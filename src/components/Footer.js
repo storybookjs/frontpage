@@ -6,7 +6,15 @@ import Subheading from './Subheading';
 
 import Link from './Link';
 
-import { background, color, typography, pageMargins, breakpoint } from './../shared/styles';
+import {
+  background,
+  color,
+  typography,
+  pageMargins,
+  pageMargin,
+  spacing,
+  breakpoint,
+} from './../shared/styles';
 import { url } from './../shared/urls';
 
 const Title = styled(Subheading)`
@@ -16,13 +24,84 @@ const Title = styled(Subheading)`
   color: ${color.mediumdark};
 `;
 
+const SubLink = styled(Link)`
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: ${typography.weight.regular};
+  margin-left: 20px;
+`;
+
+const UpperColumn = styled.div`
+  flex: 1;
+
+  padding-left: ${spacing.padding.medium}px;
+  padding-right: ${spacing.padding.medium}px;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+
+  &:last-child {
+    border-top: 1px solid ${color.border};
+  }
+
+  @media (min-width: ${breakpoint * 1}px) {
+    &:first-child {
+      margin-left: ${pageMargin * 1}%;
+      padding-right: 60px;
+    }
+    &:last-child {
+      margin-right: ${pageMargin * 1}%;
+      padding-left: 60px;
+      border-top: none;
+      border-left: 1px solid ${color.border};
+    }
+  }
+
+  @media (min-width: ${breakpoint * 2}px) {
+    &:first-child {
+      margin-left: ${pageMargin * 2}%;
+    }
+    &:last-child {
+      margin-right: ${pageMargin * 2}%;
+    }
+  }
+
+  @media (min-width: ${breakpoint * 3}px) {
+    &:first-child {
+      margin-left: ${pageMargin * 3}%;
+    }
+    &:last-child {
+      margin-right: ${pageMargin * 3}%;
+    }
+  }
+
+  @media (min-width: ${breakpoint * 4}px) {
+    &:first-child {
+      margin-left: ${pageMargin * 4}%;
+    }
+    &:last-child {
+      margin-right: ${pageMargin * 4}%;
+    }
+  }
+`;
+
+const Upper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  border-bottom: 1px solid ${color.border};
+
+  @media (min-width: ${breakpoint}px) {
+    flex-direction: row;
+  }
+`;
+
 const LogotypeWrapper = styled.a`
   margin-bottom: 1rem;
   display: block;
 
-  svg {
+  img {
     height: 26px;
-    width: 132.8px;
+    width: auto;
     display: block;
 
     transition: all 150ms ease-out;
@@ -39,20 +118,55 @@ const LogotypeWrapper = styled.a`
 const FooterLink = styled(Link)``;
 
 const Text = styled.div`
-  color: ${color.mediumdark};
+  color: ${color.darker};
+  margin-bottom: 1.5rem;
 `;
 
-const Service = styled.div``;
+const Service = styled.div`
+  margin-bottom: 1rem;
+
+  ${Text} {
+    margin-bottom: 0.5rem;
+    color: ${color.mediumdark};
+  }
+`;
 const Services = styled.div``;
+
+const Netlify = styled.img``;
+const Chromatic = styled.img``;
+const Teamcity = styled.img``;
+const CircleCI = styled.img``;
 
 const Colophon = styled.div`
   width: 100%;
   margin-bottom: 3rem;
   display: block;
 
-  @media (min-width: ${breakpoint * 1.5}px) {
+  @media (min-width: ${breakpoint * 1}px) {
     margin-bottom: 0;
+    width: 20%;
+  }
+
+  a {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  ${Netlify}, ${Chromatic}, ${Teamcity}, ${CircleCI} {
+    height: 22px;
     width: auto;
+    display: inline-block;
+  }
+
+  ${Teamcity} {
+    /* Makes visual impact the same as other logos */
+    padding: 1px 0;
+    margin-right: 15px;
+  }
+
+  ${Teamcity}, ${CircleCI} {
+    /* Turn down the pure black of these logos */
+    opacity: .7;
   }
 `;
 
@@ -63,6 +177,10 @@ const Column = styled.div`
   @media (min-width: ${breakpoint}px) {
     width: auto;
     margin-bottom: 0;
+
+    &:last-child {
+      width: 35%;
+    }
   }
 
   > ${FooterLink} {
@@ -71,49 +189,87 @@ const Column = styled.div`
   }
 `;
 
-const Upper = styled.div`
-  ${pageMargins};
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-`;
-
 const Lower = styled.div`
   ${pageMargins};
+  padding-top: 3rem;
+  padding-bottom: 3rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+
+  ${Colophon} {
+  }
+  ${Column} {
+  }
 `;
 
 const Footer = styled.div`
   background-color: ${background.app};
-  border-top: 1px solid ${color.mediumlight};
+  border-top: 1px solid ${color.border};
   font-size: ${typography.size.s2}px;
   line-height: 20px;
-  padding: 3rem 0;
 `;
 
-const ResourceTitle = styled.div``;
-const ResourceTitleLink = styled.div``;
-const ResourceDesc = styled.div``;
-const ResourceAction = styled(Link)``;
+const ResourceTitle = styled.div`
+  font-weight: ${typography.weight.black};
+  margin-bottom: 0.25rem;
+`;
+
+const ResourceTitleLink = styled(Link)`
+  font-weight: ${typography.weight.black};
+  margin-bottom: 0.25rem;
+
+  svg {
+    height: 0.7rem;
+    width: 0.7rem;
+    vertical-align: initial;
+  }
+`;
+
+const ResourceDesc = styled.div`
+  margin-bottom: 0.25rem;
+`;
+
+const ResourceAction = styled(Link)`
+  margin-right: 15px;
+
+  svg {
+    height: 0.7rem;
+    width: 0.7rem;
+    bottom: -0.25em;
+  }
+`;
+
 const ResourceActions = styled.div``;
 
 const Meta = styled.div`
   overflow: hidden;
 `;
-const Resource = styled.div``;
+
+const Resource = styled.div`
+  display: flex;
+  align-items: start;
+
+  &:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+
+  img {
+    margin-right: 20px;
+  }
+`;
+
 const Resources = styled.div``;
 
 export default function MarketingFooter({ ...props }) {
   return (
     <Footer {...props}>
       <Upper>
-        <Column>
+        <UpperColumn>
           <Title>Learn</Title>
           <Resources>
             <Resource>
-              <img src="" alt="Docs image" />
+              <img src="images/colored-icons/repo.svg" alt="Docs" />
               <Meta>
                 <ResourceTitle>Get started with Storybook</ResourceTitle>
                 <ResourceDesc>
@@ -137,7 +293,7 @@ export default function MarketingFooter({ ...props }) {
               </Meta>
             </Resource>
             <Resource>
-              <img src="" alt="Tutorial image" />
+              <img src="images/colored-icons/direction.svg" alt="Tutorial" />
               <Meta>
                 <ResourceTitle>Storybook tutorial</ResourceTitle>
                 <ResourceDesc>
@@ -152,47 +308,54 @@ export default function MarketingFooter({ ...props }) {
               </Meta>
             </Resource>
           </Resources>
-        </Column>
-        <Column>
-          <Title>News</Title>{' '}
-          <Link>
-            Read more <Icon icon="arrowright" />
-          </Link>
-          // TODO: Pull latest articles from Medium API by tag "news"
+        </UpperColumn>
+        <UpperColumn>
+          <Title>
+            News
+            <SubLink>
+              Read more <Icon icon="arrowright" />
+            </SubLink>
+          </Title>{' '}
           <Resources>
             <Resource>
               <Meta>
-                <ResourceTitleLink>Storybook 4.0 is here</ResourceTitleLink>
+                <ResourceTitleLink>
+                  Storybook 4.0 is here <Icon icon="arrowrightalt" />
+                </ResourceTitleLink>
+                <ResourceDesc>
+                  Big updates to support more build tools and frameworksBig updates to support more
+                  build tools and frameworks
+                </ResourceDesc>
+              </Meta>
+            </Resource>
+            <Resource>
+              <Meta>
+                <ResourceTitleLink>
+                  Storybook 4.0 is here <Icon icon="arrowrightalt" />
+                </ResourceTitleLink>
                 <ResourceDesc>Big updates to support more build tools and frameworks</ResourceDesc>
               </Meta>
             </Resource>
             <Resource>
               <Meta>
-                <ResourceTitleLink>Storybook 4.0 is here</ResourceTitleLink>
-                <ResourceDesc>Big updates to support more build tools and frameworks</ResourceDesc>
-              </Meta>
-            </Resource>
-            <Resource>
-              <Meta>
-                <ResourceTitleLink>Storybook 4.0 is here</ResourceTitleLink>
+                <ResourceTitleLink>
+                  Storybook 4.0 is here <Icon icon="arrowrightalt" />
+                </ResourceTitleLink>
                 <ResourceDesc>Big updates to support more build tools and frameworks</ResourceDesc>
               </Meta>
             </Resource>
           </Resources>
-        </Column>
+        </UpperColumn>
       </Upper>
-      <hr />
       <Lower>
         <Colophon>
           <LogotypeWrapper href="/">
             <img src="logos/logo-storybook.svg" alt="Storybook" />
           </LogotypeWrapper>
           <Text>
-            The MIT License (MIT)
-            <br />
-            Website design by{' '}
+            The MIT License (MIT). Website design by{' '}
             <Link tertiary href="https://www.chromaui.com">
-              Chroma
+              @domyen
             </Link>{' '}
             and the awesome Storybook community.
           </Text>
@@ -200,22 +363,22 @@ export default function MarketingFooter({ ...props }) {
             <Service>
               <Text>Hosting by</Text>
               <a href="https://netlify.com">
-                <img src="logos/user/logo-netlify.svg" alt="Netlify" />
+                <Netlify src="logos/user/logo-netlify.svg" alt="Netlify" />
               </a>
             </Service>
             <Service>
               <Text>Visual testing by</Text>
               <a href="https://www.chromaticqa.com/">
-                <img src="logos/user/logo-chromatic.svg" alt="Chromatic" />
+                <Chromatic src="logos/user/logo-chromatic.svg" alt="Chromatic" />
               </a>
             </Service>
             <Service>
               <Text>Continuous integration by</Text>
               <a href="https://www.jetbrains.com/teamcity/">
-                <img src="logos/user/logo-teamcity.svg" alt="Teamcity" />
+                <Teamcity src="logos/user/logo-teamcity.svg" alt="Teamcity" />
               </a>
               <a href="https://circleci.com/">
-                <img src="logos/user/logo-circleci.svg" alt="CircleCI" />
+                <CircleCI src="logos/user/logo-circleci.svg" alt="CircleCI" />
               </a>
             </Service>
           </Services>
