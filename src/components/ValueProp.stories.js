@@ -18,7 +18,7 @@ storiesOf('Screens/IndexScreen/ValueProp', module).add('default', () => (
         /* eslint-disable jsx-a11y/media-has-caption */
         <PlaceholderAspectRatio>
           <video autoPlay muted loop playsInline>
-            <source src="/static/videos/storybook-workflow-build-optimized.mp4" type="video/mp4" />
+            <source src="videos/storybook-workflow-build-optimized-sm.mp4" type="video/mp4" />
           </video>
         </PlaceholderAspectRatio>
       }
