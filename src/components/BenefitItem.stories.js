@@ -7,14 +7,14 @@ import Badge from './Badge';
 storiesOf('Screens/IndexScreen/BenefitItem', module)
   .add('default', () => (
     <BenefitItem
-      image={<img src="home/build-canvas.png" />}
+      image={<img src="images/home/build-canvas.png" />}
       title="Build components in isolation"
       desc="Create components without needing to stand up screens, fuss with data, or build business logic."
     />
   ))
   .add('w/children', () => (
     <BenefitItem
-      image={<img src="home/build-cases.png" />}
+      image={<img src="images/home/build-cases.png" />}
       title="Build components in isolation"
       desc="Create components without needing to stand up screens, fuss with data, or build business logic."
     >

@@ -118,8 +118,8 @@ function Framework({ framework, logo, ...props }) {
         <img
           src={
             logo
-              ? `/logos/framework/icon-${logo}.svg`
-              : `/logos/framework/icon-${framework.toLowerCase()}.svg`
+              ? `images/logos/framework/icon-${logo}.svg`
+              : `images/logos/framework/icon-${framework.toLowerCase()}.svg`
           }
           alt={framework}
         />
