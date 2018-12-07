@@ -53,9 +53,14 @@ const NavLink = styled(Link)`
 
 const Menu = styled(Link)`
   width: 3rem;
+  height: 3rem;
   border: none !important;
   text-decoration: none !important;
   text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   svg {
     vertical-align: top;
     height: 1rem;
@@ -64,38 +69,8 @@ const Menu = styled(Link)`
   }
 `;
 
-const MobileMenuLink = styled(Link)`
-  font-weight: ${typography.weight.extrabold};
-`;
-
-const MenuAuth = styled.div`
-  border-top: 1px solid #eeeeee;
-  padding: 20px 15px;
-  text-align: center;
-
-  > * {
-    width: 100%;
-  }
-`;
-
-const MobileMenuColumn = styled.div`
-  &:first-child {
-    background: ${color.lightest};
-  }
-  &:last-child {
-    background: #f8f8fa;
-  }
-`;
 const MobileMenu = styled.div`
   font-size: ${typography.size.s1}px;
-
-  display: flex;
-  flex-direction: row;
-  width: 360px;
-
-  ${MobileMenuColumn} {
-    flex: 1;
-  }
 
   ${TooltipLinkListWrapper} {
     padding: 5px 0;
@@ -167,6 +142,7 @@ export default function MarketingHeader({ ...props }) {
           { title: 'Community', href: url.community },
           { title: 'Use cases', href: url.useCases },
           { title: 'Support', href: url.support },
+          { title: 'Team', href: url.team },
         ]}
         // TODO: Pass GatsbyLink here
         LinkWrapper={null}
@@ -180,7 +156,7 @@ export default function MarketingHeader({ ...props }) {
         <NavGroup>
           <NavItem>
             <LogotypeWrapper href="/">
-              <img src="logos/logo-storybook.svg" alt="Storybook" />
+              <img src="images/logos/logo-storybook.svg" alt="Storybook" />
             </LogotypeWrapper>
           </NavItem>
         </NavGroup>
@@ -218,14 +194,11 @@ export default function MarketingHeader({ ...props }) {
           </NavItem>
 
           <NavItem showMobile>
-            {/*
-              // TODO Fixme, start with Popper.js
-              <WithTooltip placement="top" mode="click" tooltip={mobileMenu}>
+            <WithTooltip placement="top" trigger="click" tooltip={mobileMenu}>
               <Menu secondary icon={1} isButton>
                 <Icon icon="menu" />
               </Menu>
             </WithTooltip>
-            */}
           </NavItem>
         </NavGroup>
       </Nav>

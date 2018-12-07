@@ -14,6 +14,7 @@ export const url = {
   community: '/community',
   useCases: '/use-cases',
   support: '/support',
+  support: '/team',
 
   // Social
   blog: 'https://medium.com/storybookjs',
