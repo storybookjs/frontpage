@@ -1,10 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Icon from './Icon';
 import Subheading from './Subheading';
 
 import Link from './Link';
+import MailingListSubscribeForm from './MailingListSubscribeForm';
 
 import {
   background,
@@ -123,7 +125,9 @@ const Text = styled.div`
 `;
 
 const Service = styled.div`
-  margin-bottom: 1rem;
+  &:not(:last-child) {
+    margin-bottom: 1rem;
+  }
 
   ${Text} {
     margin-bottom: 0.5rem;
@@ -177,15 +181,18 @@ const Column = styled.div`
   @media (min-width: ${breakpoint}px) {
     width: auto;
     margin-bottom: 0;
-
-    &:last-child {
-      width: 35%;
-    }
   }
 
   > ${FooterLink} {
     display: block;
     margin-bottom: 0.75rem;
+  }
+`;
+
+const Subscribe = styled.div`
+  width: 100%;
+  @media (min-width: ${breakpoint}px) {
+    width: 35%;
   }
 `;
 
@@ -203,7 +210,7 @@ const Lower = styled.div`
   }
 `;
 
-const Footer = styled.div`
+const FooterWrapper = styled.div`
   background-color: ${background.app};
   border-top: 1px solid ${color.border};
   font-size: ${typography.size.s2}px;
@@ -261,9 +268,27 @@ const Resource = styled.div`
 
 const Resources = styled.div``;
 
-export default function MarketingFooter({ ...props }) {
+const MailingListConfirm = styled.div`
+  font-size: ${typography.size.s2}px;
+  line-height: 20px;
+  background: ${color.lightest};
+  padding: 10px;
+  text-align: center;
+  border-radius: 4px;
+`;
+
+const MailingListForm = styled(MailingListSubscribeForm)`
+  margin-bottom: 1rem;
+  min-width: 280px;
+  width: 100%;
+  @media (min-width: ${breakpoint}px) {
+    margin: 0 0 1.25rem;
+  }
+`;
+
+export default function Footer({ hasSubscribed, onSubscribe, ...props }) {
   return (
-    <Footer {...props}>
+    <FooterWrapper {...props}>
       <Upper>
         <UpperColumn>
           <Title>Learn</Title>
@@ -422,13 +447,23 @@ export default function MarketingFooter({ ...props }) {
             <Icon icon="youtube" /> Youtube
           </FooterLink>
         </Column>
-        <Column>
-          <Title>Mailing list</Title>
-          Get news, free tutorials, and Storybook tips emailed to you.
-          <br />
-          // Insert mailing list form
-        </Column>
+        <Subscribe>
+          <Title>Subscribe</Title>
+          <Text>Get news, free tutorials, and Storybook tips emailed to you.</Text>
+          {hasSubscribed ? (
+            <MailingListConfirm>
+              <b>👍 Thanks, you're all signed up!</b>
+            </MailingListConfirm>
+          ) : (
+            <MailingListForm onSubscribe={onSubscribe} cta="Sign up" />
+          )}
+        </Subscribe>
       </Lower>
-    </Footer>
+    </FooterWrapper>
   );
 }
+
+Footer.propTypes = {
+  hasSubscribed: PropTypes.bool.isRequired,
+  onSubscribe: PropTypes.func.isRequired,
+};

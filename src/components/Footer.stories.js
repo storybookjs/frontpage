@@ -1,6 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 
 import Footer from './Footer';
 
-storiesOf('Layout/Footer', module).add('default', () => <Footer />);
+const onSubscribe = action('onSubscribe');
+storiesOf('Layout/Footer', module)
+  .add('not subscribed', () => <Footer hasSubscribed={false} onSubscribe={onSubscribe} />)
+  .add('subscribed', () => <Footer hasSubscribed onSubscribe={onSubscribe} />);
