@@ -10,9 +10,13 @@ const Heading = styled(Subheading)`
 `;
 
 const Logo = styled.img`
-  display: block;
+  display: inline-block;
   width: 100%;
-  height: 100%;
+  height: auto;
+
+  max-width: 92px;
+  max-height: 32px;
+  object-fit: contain;
 
   ${props =>
     props.monochrome &&
