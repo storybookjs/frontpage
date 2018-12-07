@@ -1127,6 +1127,13 @@
     "@types/prop-types" "*"
     csstype "^2.2.0"
 
+"@types/react@^16.1.0":
+  version "16.7.11"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.7.11.tgz#1743b82ea6a0c659467f0c7317c233edb1f10be9"
+  dependencies:
+    "@types/prop-types" "*"
+    csstype "^2.2.0"
+
 "@types/tmp@^0.0.32":
   version "0.0.32"
   resolved "http://registry.npmjs.org/@types/tmp/-/tmp-0.0.32.tgz#0d3cb31022f8427ea58c008af32b80da126ca4e3"
@@ -3005,6 +3012,10 @@ chalk@2.4.1, chalk@^2.0.0, chalk@^2.0.1, chalk@^2.1.0, chalk@^2.3.2, chalk@^2.4.
     ansi-styles "^3.2.1"
     escape-string-regexp "^1.0.5"
     supports-color "^5.3.0"
+
+change-emitter@^0.1.2:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/change-emitter/-/change-emitter-0.1.6.tgz#e8b2fe3d7f1ab7d69a32199aff91ea6931409515"
 
 chardet@^0.4.0:
   version "0.4.2"
@@ -5057,7 +5068,7 @@ fb-watchman@^2.0.0:
   dependencies:
     bser "^2.0.0"
 
-fbjs@^0.8.0, fbjs@^0.8.14, fbjs@^0.8.5, fbjs@^0.8.9:
+fbjs@^0.8.0, fbjs@^0.8.1, fbjs@^0.8.14, fbjs@^0.8.5, fbjs@^0.8.9:
   version "0.8.17"
   resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.17.tgz#c4d598ead6949112653d6588b01a5cdcd9f90fdd"
   dependencies:
@@ -6296,7 +6307,7 @@ hoist-non-react-statics@1.x.x, hoist-non-react-statics@^1.2.0:
   version "1.2.0"
   resolved "http://registry.npmjs.org/hoist-non-react-statics/-/hoist-non-react-statics-1.2.0.tgz#aa448cf0986d55cc40773b17174b7dd066cb7cfb"
 
-hoist-non-react-statics@^2.5.0:
+hoist-non-react-statics@^2.3.1, hoist-non-react-statics@^2.5.0:
   version "2.5.5"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.5.5.tgz#c5903cf409c0dfd908f388e619d86b9c1174cb47"
 
@@ -9028,6 +9039,16 @@ pngquant-bin@^5.0.0:
     execa "^0.10.0"
     logalot "^2.0.0"
 
+polished@^2.3.0:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/polished/-/polished-2.3.1.tgz#557ea07e5bcb1b9c7d71935a01d0315831234d48"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+
+popper.js@^1.14.4:
+  version "1.14.6"
+  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.14.6.tgz#ab20dd4edf9288b8b3b6531c47c361107b60b4b0"
+
 portfinder@^1.0.9:
   version "1.0.19"
   resolved "https://registry.yarnpkg.com/portfinder/-/portfinder-1.0.19.tgz#07e87914a55242dcda5b833d42f018d6875b595f"
@@ -9731,6 +9752,12 @@ react-fuzzy@^0.5.2:
     fuse.js "^3.0.1"
     prop-types "^15.5.9"
 
+react-github-button@^0.1.11:
+  version "0.1.11"
+  resolved "https://registry.yarnpkg.com/react-github-button/-/react-github-button-0.1.11.tgz#fc61e1f1e1371169d3618c1ba37306ba04081e56"
+  dependencies:
+    prop-types "^15.5.10"
+
 react-helmet@^5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/react-helmet/-/react-helmet-5.2.0.tgz#a81811df21313a6d55c5f058c4aeba5d6f3d97a7"
@@ -9762,7 +9789,11 @@ react-is@^16.6.0:
   version "16.6.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.6.1.tgz#f77b1c3d901be300abe8d58645b7a59e794e5982"
 
-react-lifecycles-compat@^3.0.0, react-lifecycles-compat@^3.0.4:
+react-lazyload@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/react-lazyload/-/react-lazyload-2.3.0.tgz#ccb134223012447074a96543954f44b055dc6185"
+
+react-lifecycles-compat@^3.0.0, react-lifecycles-compat@^3.0.2, react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
 
@@ -9773,6 +9804,25 @@ react-modal@^3.6.1:
     exenv "^1.2.0"
     prop-types "^15.5.10"
     react-lifecycles-compat "^3.0.0"
+    warning "^3.0.0"
+
+react-popper-tooltip@^2.7.0:
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/react-popper-tooltip/-/react-popper-tooltip-2.7.0.tgz#28c3b2853edafd69bf3601fadd6d8776d07ae226"
+  dependencies:
+    "@babel/runtime" "^7.1.2"
+    react-popper "^1.0.2"
+
+react-popper@^1.0.2, react-popper@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/react-popper/-/react-popper-1.3.0.tgz#e769199bbe1273611957892f9950ef1d42c3f7ce"
+  dependencies:
+    "@types/react" "^16.1.0"
+    babel-runtime "6.x.x"
+    create-react-context "^0.2.1"
+    popper.js "^1.14.4"
+    prop-types "^15.6.1"
+    typed-styles "^0.0.5"
     warning "^3.0.0"
 
 react-side-effect@^1.1.0:
@@ -9958,6 +10008,17 @@ rechoir@^0.6.2:
   resolved "https://registry.yarnpkg.com/rechoir/-/rechoir-0.6.2.tgz#85204b54dba82d5742e28c96756ef43af50e3384"
   dependencies:
     resolve "^1.1.6"
+
+recompose@^0.30.0:
+  version "0.30.0"
+  resolved "https://registry.yarnpkg.com/recompose/-/recompose-0.30.0.tgz#82773641b3927e8c7d24a0d87d65aeeba18aabd0"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    change-emitter "^0.1.2"
+    fbjs "^0.8.1"
+    hoist-non-react-statics "^2.3.1"
+    react-lifecycles-compat "^3.0.2"
+    symbol-observable "^1.0.4"
 
 recursive-readdir@2.2.1:
   version "2.2.1"
@@ -11259,7 +11320,7 @@ svgo@^1.0.0:
     unquote "~1.1.1"
     util.promisify "~1.0.0"
 
-symbol-observable@^1.0.3, symbol-observable@^1.2.0:
+symbol-observable@^1.0.3, symbol-observable@^1.0.4, symbol-observable@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/symbol-observable/-/symbol-observable-1.2.0.tgz#c22688aed4eab3cdc2dfeacbb561660560a00804"
 
@@ -11578,6 +11639,10 @@ type-is@~1.6.16:
 type-of@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/type-of/-/type-of-2.0.1.tgz#e72a1741896568e9f628378d816d6912f7f23972"
+
+typed-styles@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/typed-styles/-/typed-styles-0.0.5.tgz#a60df245d482a9b1adf9c06c078d0f06085ed1cf"
 
 typedarray@^0.0.6:
   version "0.0.6"
