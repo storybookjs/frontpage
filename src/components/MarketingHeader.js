@@ -48,7 +48,7 @@ const TooltipLinkListWrapper = styled.div`
 
 const NavLink = styled(Link)`
   font-size: ${typography.size.s2}px;
-  font-weight: ${typography.weight.extrabold};
+  font-weight: ${typography.weight.bold};
 `;
 
 const Menu = styled(Link)`
@@ -209,6 +209,11 @@ export default function MarketingHeader({ ...props }) {
           <NavItem showDesktop>
             <NavLink tertiary href={url.support}>
               Support
+            </NavLink>
+          </NavItem>
+          <NavItem showDesktop>
+            <NavLink tertiary href="/team">
+              Team
             </NavLink>
           </NavItem>
 
