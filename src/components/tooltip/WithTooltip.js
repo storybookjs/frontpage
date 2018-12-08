@@ -28,6 +28,7 @@ function WithTooltip({
   children,
   tooltipShown,
   onVisibilityChange,
+  ...props
 }) {
   const Container = svg ? TargetSvgContainer : TargetContainer;
   return (
@@ -53,7 +54,7 @@ function WithTooltip({
       )}
     >
       {({ getTriggerProps, triggerRef }) => (
-        <Container ref={triggerRef} {...getTriggerProps()}>
+        <Container ref={triggerRef} {...getTriggerProps()} {...props}>
           {children}
         </Container>
       )}
