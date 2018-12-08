@@ -335,7 +335,7 @@ export default function Hero({ ...props }) {
         <Title>Build bulletproof UI components faster</Title>
         <Subtitle>
           Storybook is an open source tool for developing UI components in isolation for React, Vue,
-          Angular. It makes building stunning UIs organized and efficient.
+          and Angular. It makes building stunning UIs organized and efficient.
         </Subtitle>
         <PitchActions>
           <Button primary isLink href="www.google.com">
