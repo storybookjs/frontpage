@@ -271,7 +271,7 @@ const Resources = styled.div``;
 const MailingListConfirm = styled.div`
   font-size: ${typography.size.s2}px;
   line-height: 20px;
-  background: ${color.lightest};
+  background: ${background.positive};
   padding: 10px;
   text-align: center;
   border-radius: 4px;
