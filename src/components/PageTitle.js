@@ -5,7 +5,7 @@ import { color, typography, pageMargins, breakpoint } from './../shared/styles';
 
 import Subheading from './Subheading';
 
-const Heading = styled(Subheading)`
+export const Heading = styled(Subheading)`
   display: block;
   margin-bottom: 0.75rem;
   color: ${color.mediumdark};
@@ -33,7 +33,7 @@ const Heading = styled(Subheading)`
     `};
 `;
 
-const Title = styled.div`
+export const Title = styled.div`
   font-size: ${typography.size.m2}px;
   font-weight: ${typography.weight.black};
   line-height: 24px;
@@ -46,7 +46,7 @@ const Title = styled.div`
   }
 `;
 
-const Desc = styled.div`
+export const Desc = styled.div`
   font-size: ${typography.size.s3}px;
   line-height: 1.5;
   color: ${color.dark};
@@ -54,8 +54,6 @@ const Desc = styled.div`
   @media (min-width: ${breakpoint}px) {
     font-size: ${typography.size.m1}px;
     line-height: 32px;
-    max-width: 600px;
-    margin: 0 auto;
   }
 `;
 
@@ -65,7 +63,12 @@ const Meta = styled.div`
   margin-bottom: 1rem;
 
   @media (min-width: ${breakpoint}px) {
+    max-width: 600px;
     margin-bottom: 0;
+
+    ${Desc} {
+      margin: 0 auto;
+    }
   }
 `;
 
