@@ -12,6 +12,7 @@ import { color, typography, spacing, pageMargins, breakpoint } from './../shared
 import { url } from './../shared/urls';
 
 const LogotypeWrapper = styled.a`
+  display: inline-block;
   img {
     height: 22px;
     width: auto;
@@ -32,6 +33,16 @@ const LogotypeWrapper = styled.a`
       transform: translate3d(0, 0, 0);
     }
   }
+`;
+
+const Version = styled(Link)`
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 10px;
+  position: relative;
+  top: 2px;
+  font-size: ${typography.size.s1}px;
+  color: ${color.mediumdark};
 `;
 
 const TooltipLinkListSubtitle = styled.span`
@@ -158,6 +169,7 @@ export default function MarketingHeader({ ...props }) {
             <LogotypeWrapper href="/">
               <img src="images/logos/logo-storybook.svg" alt="Storybook" />
             </LogotypeWrapper>
+            <Version href={url.gitHub.releases}>v5.0</Version>
           </NavItem>
         </NavGroup>
 
