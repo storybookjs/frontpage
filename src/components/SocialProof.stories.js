@@ -8,20 +8,20 @@ storiesOf('Layout/SocialProof', module)
   .add('heading', () => (
     <SocialProof
       heading="Trusted by"
-      path="/logos/user"
+      path="images/logos/user"
       brands={['github', 'dropbox', 'airbnb', 'lyft', 'mozilla', 'salesforce']}
     />
   ))
   .add('monochrome', () => (
     <SocialProof
-      path="/logos/user"
+      path="images/logos/user"
       brands={['github', 'dropbox', 'airbnb', 'lyft', 'mozilla', 'salesforce']}
       monochrome
     />
   ))
   .add('grid', () => (
     <SocialProof
-      path="/logos/user"
+      path="images/logos/user"
       brands={[
         'github',
         'dropbox',
