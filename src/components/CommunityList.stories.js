@@ -6,7 +6,7 @@ import CommunityList from './CommunityList';
 
 const Community = (
   <CommunityItem
-    image={<img src="community/brand.svg" />}
+    image={<img src="images/community/brand.svg" />}
     title="Use the brand"
     desc="Create your own visuals using Storybook logo, typography, colors, and images."
     links={[

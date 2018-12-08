@@ -92,28 +92,28 @@ export default function CommunitySocial({ ...props }) {
   return (
     <Wrapper {...props}>
       <Item href={url.gitHub.repo}>
-        <Image src="logos/social/github.svg" />
+        <Image src="images/logos/social/github.svg" />
         <Meta>
           <Title>Star on GitHub</Title>
           <Desc>Check out the official Storybook repo on GitHub</Desc>
         </Meta>
       </Item>
       <Item href={url.twitter}>
-        <Image src="logos/social/twitter.svg" />
+        <Image src="images/logos/social/twitter.svg" />
         <Meta>
           <Title>Follow on Twitter</Title>
           <Desc>Get the latest updates from the Storybook team</Desc>
         </Meta>
       </Item>
       <Item href={url.blog}>
-        <Image src="logos/social/medium.svg" />
+        <Image src="images/logos/social/medium.svg" />
         <Meta>
           <Title>Read the blog</Title>
           <Desc>Get news, articles, and guides from the Storybook community</Desc>
         </Meta>
       </Item>
       <Item href={url.chat}>
-        <Image src="logos/social/discord.svg" />
+        <Image src="images/logos/social/discord.svg" />
         <Meta>
           <Title>Chat on Discord</Title>
           <Desc>Talk UI development and get help from the community</Desc>
