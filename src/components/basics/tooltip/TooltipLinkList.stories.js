@@ -5,7 +5,7 @@ import { action } from '@storybook/addon-actions';
 import WithTooltip from './WithTooltip';
 
 import TooltipLinkList from './TooltipLinkList';
-import StoryLinkWrapper from './../lib/StoryLinkWrapper';
+import StoryLinkWrapper from './../../lib/StoryLinkWrapper';
 
 // eslint-disable-next-line import/prefer-default-export
 export const links = [
@@ -14,7 +14,7 @@ export const links = [
   { title: 'callback', onClick: action('onClick') },
 ];
 
-storiesOf('tooltip/TooltipLinkList', module)
+storiesOf('basics/tooltip/TooltipLinkList', module)
   .addDecorator(storyFn => (
     <div style={{ height: '300px' }}>
       <WithTooltip placement="top" trigger="click" startOpen tooltip={storyFn()}>

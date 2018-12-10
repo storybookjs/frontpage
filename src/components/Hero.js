@@ -11,10 +11,10 @@ import { url } from './../shared/urls';
 import Link from './basics/Link';
 import Button from './basics/Button';
 import Icon from './basics/Icon';
-import Subheading from './Subheading';
+import Subheading from './basics/Subheading';
 import Cardinal from './basics/Cardinal';
-import WithTooltip from './tooltip/WithTooltip';
-import TooltipMessage from './tooltip/TooltipMessage';
+import WithTooltip from './basics/tooltip/WithTooltip';
+import TooltipMessage from './basics/tooltip/TooltipMessage';
 
 const Title = styled.div`
   font-weight: ${typography.weight.black};

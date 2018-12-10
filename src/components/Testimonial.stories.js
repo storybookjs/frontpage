@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 
 import Testimonial from './Testimonial';
 
-storiesOf('Layout/Testimonial', module)
+storiesOf('layout/Testimonial', module)
   .addDecorator(storyFn => <div style={{ padding: '60px 0' }}>{storyFn()}</div>)
   .add('default', () => (
     <Testimonial

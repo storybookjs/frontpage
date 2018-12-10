@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { color, spacing, typography, pageMargins, breakpoint } from './../shared/styles';
 
-import Subheading from './Subheading';
+import Subheading from './basics/Subheading';
 
 const Heading = styled(Subheading)`
   color: ${color.mediumdark};

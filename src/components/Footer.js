@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Icon from './basics/Icon';
-import Subheading from './Subheading';
+import Subheading from './basics/Subheading';
 
 import Link from './basics/Link';
 import MailingListSubscribeForm from './MailingListSubscribeForm';

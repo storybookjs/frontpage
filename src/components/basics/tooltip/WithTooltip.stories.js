@@ -46,7 +46,7 @@ Tooltip.defaultProps = {
   onHide: null,
 };
 
-storiesOf('tooltip/WithTooltip', module)
+storiesOf('basics/tooltip/WithTooltip', module)
   .addDecorator(storyFn => (
     <ViewPort>
       <BackgroundBox>

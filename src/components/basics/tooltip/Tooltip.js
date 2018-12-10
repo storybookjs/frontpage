@@ -2,25 +2,15 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Manager, Target, Popper, Arrow } from 'react-popper';
 import styled, { css } from 'styled-components';
-import { typography } from './../../shared/styles';
-
-// We need to ensure these are inline block so they get the sizing from their
-// children. An alternate approach if this is annoying is to make the children
-// themselves the target/popper but this means we'd need a ref to them, which
-// makes this a bit clunkier to use.
-const StyledTarget = styled(props => <Target {...props} />)`
-  display: inline-block;
-  cursor: ${props => (props.mode === 'hover' ? 'default' : 'pointer')};
-`;
+import { typography } from './../../../shared/styles';
 
 const ifPlacementEquals = (placement, value, fallback = 0) => props =>
   props['data-placement'].split('-')[0] === placement ? value : fallback;
 
 const ArrowSpacing = 8;
 
-const StyledArrow = styled.div`
+const Arrow = styled.div`
   position: absolute;
   border-style: solid;
 
@@ -45,9 +35,7 @@ const StyledArrow = styled.div`
   border-right-color: ${ifPlacementEquals('right', 'white', 'transparent')};
 `;
 
-const WrapperArrow = props => <Arrow {...props} component={StyledArrow} />;
-
-const StyledPopper = styled.div`
+const TooltipWrapper = styled.div`
   display: ${props => (props.hidden ? 'none' : 'inline-block')};
   z-index: 2147483647;
 
@@ -81,24 +69,30 @@ const StyledPopper = styled.div`
     `};
 `;
 
-const RawPopperWithArrow = ({ children, hasChrome, ...props }) => (
-  <StyledPopper hasChrome={hasChrome} {...props}>
-    {children}
-    {hasChrome && <WrapperArrow data-placement={props['data-placement']} />}
-  </StyledPopper>
-);
+export default function Tooltip({
+  placement,
+  hasChrome,
+  children,
+  arrowProps,
+  tooltipRef,
+  arrowRef,
+  ...props
+}) {
+  return (
+    <TooltipWrapper hasChrome={hasChrome} data-placement={placement} ref={tooltipRef} {...props}>
+      {hasChrome && <Arrow data-placement={placement} ref={arrowRef} {...arrowProps} />}
+      {children}
+    </TooltipWrapper>
+  );
+}
 
-RawPopperWithArrow.propTypes = {
+Tooltip.propTypes = {
   children: PropTypes.node.isRequired,
   hasChrome: PropTypes.bool,
-  'data-placement': PropTypes.string,
+  arrowProps: PropTypes.any,
+  placement: PropTypes.string,
 };
-
-RawPopperWithArrow.defaultProps = {
-  hasChrome: false,
-  'data-placement': 'top',
+Tooltip.defaultProps = {
+  hasChrome: true,
+  placement: 'top',
 };
-
-const PopperWithArrow = props => <Popper {...props} component={RawPopperWithArrow} />;
-
-export { Manager, StyledTarget as Target, PopperWithArrow };

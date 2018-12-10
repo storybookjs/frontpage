@@ -5,8 +5,8 @@ import styled, { css } from 'styled-components';
 import Link from './basics/Link';
 import Button from './basics/Button';
 import Icon from './basics/Icon';
-import TooltipLinkList from './tooltip/TooltipLinkList';
-import WithTooltip from './tooltip/WithTooltip';
+import TooltipLinkList from './basics/tooltip/TooltipLinkList';
+import WithTooltip from './basics/tooltip/WithTooltip';
 
 import { color, typography, spacing, pageMargins, breakpoint } from './../shared/styles';
 import { url } from './../shared/urls';

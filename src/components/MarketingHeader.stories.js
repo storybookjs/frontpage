@@ -5,6 +5,6 @@ import { action } from '@storybook/addon-actions';
 
 import MarketingHeader from './MarketingHeader';
 
-storiesOf('Layout/MarketingHeader', module)
+storiesOf('layout/MarketingHeader', module)
   .addDecorator(storyFn => <div style={{ height: '300px' }}>{storyFn()}</div>)
   .add('default', () => <MarketingHeader />);

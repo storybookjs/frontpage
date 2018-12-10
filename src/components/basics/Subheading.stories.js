@@ -3,6 +3,4 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Subheading from './Subheading';
 
-storiesOf('composition/Subheading', module).add('subheading', () => (
-  <Subheading>Subheading</Subheading>
-));
+storiesOf('basics/Subheading', module).add('subheading', () => <Subheading>Subheading</Subheading>);
