@@ -17,25 +17,21 @@ const Image = styled.img``;
 const Media = styled.div`
   width: 100%;
   position: relative;
-  background: purple;
 
-  img {
-    width: 440px;
+  ${Image} {
+    max-width: 320px;
     height: auto;
     display: block;
+    width: 100%;
+    object-fit: contain;
+
+    @media (min-width: ${breakpoint}px) {
+      max-width: 440px;
+    }
   }
 `;
 
-const Meta = styled.div`
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 1rem;
-  background: green;
-
-  @media (min-width: ${breakpoint}px) {
-    margin: 0;
-  }
-`;
+const Meta = styled.div``;
 
 const Wrapper = styled.div`
   ${pageMargins};
@@ -43,24 +39,43 @@ const Wrapper = styled.div`
   padding-bottom: 3rem !important;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  text-align: center;
+  flex-direction: column;
   justify-content: space-between;
 
+  text-align: center;
+
+  ${Media} {
+    display: flex;
+    justify-content: center;
+
+    ${Image} {
+      align-self: start;
+    }
+  }
+
   @media (min-width: ${breakpoint}px) {
-    text-align: left;
     padding-top: 5rem !important;
     padding-bottom: 5rem !important;
+    text-align: left;
+
+    align-items: center;
+    flex-direction: row;
+
+    ${Meta}, ${Media} {
+      flex: 1;
+    }
 
     ${Meta} {
-      flex: 1;
+      max-width: 480px;
       padding-right: 5%;
-      max-width: 460px;
     }
 
     ${Media} {
-      flex: 0;
-      display: block;
+      justify-content: flex-end;
+
+      ${Image} {
+        align-self: flex-end;
+      }
     }
   }
 `;
@@ -101,10 +116,14 @@ const Stats = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+  justify-content: space-around;
 
-  > * {
-    flex: 1;
-    margin-bottom: 1.25rem;
+  @media (min-width: ${breakpoint}px) {
+    justify-content: stretch;
+    > ${Stat} {
+      flex: 1;
+    }
   }
 `;
 
@@ -126,22 +145,24 @@ const MailingListConfirm = styled.div`
 `;
 
 const MailingListForm = styled(MailingListSubscribeForm)`
-  margin: 0 auto;
   min-width: 280px;
   width: 100%;
-
-  @media (min-width: ${breakpoint}px) {
-    margin: 0;
-  }
 `;
 
 const MailingListWrapper = styled.div`
   margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 
   @media (min-width: ${breakpoint}px) {
     margin-top: 1.5rem;
     margin-bottom: 2rem;
+  }
+
+  ${MailingListConfirm}, ${MailingListForm} {
+    margin: 0 auto;
+    @media (min-width: ${breakpoint}px) {
+      margin: 0;
+    }
   }
 `;
 
