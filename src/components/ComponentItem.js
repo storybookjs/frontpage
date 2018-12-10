@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
 import LazyLoad from './LazyLoad';
-import ProgressDots from './basics/ProgressDots';
 
-import { color, typography, paper } from './../shared/styles';
-import { glow, inlineGlow } from './../shared/animation';
+import { ProgressDots, styles, animation } from './basics';
+
+const { color, typography, paper } = styles;
+const { glow, inlineGlow } = animation;
 
 const Figure = styled.img`
   max-width: 100%;

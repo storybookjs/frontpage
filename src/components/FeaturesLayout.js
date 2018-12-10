@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-import { spacing, pageMargin, breakpoint } from './../shared/styles';
+import { styles } from './basics';
+const { spacing, pageMargin, breakpoint } = styles;
 
 const Layout = styled.div`
   display: flex;

@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { color, spacing, typography, pageMargin, breakpoint } from './../shared/styles';
 
-import Link from './basics/Link';
-import Icon from './basics/Icon';
+import { Icon, Link, styles } from './basics';
+const { color, spacing, typography, pageMargin, breakpoint } = styles;
 
 const Image = styled.div`
   float: left;

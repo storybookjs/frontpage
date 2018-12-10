@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { color, typography } from '../../shared/styles';
+import { color, typography } from './shared/styles';
 
 // prettier-ignore
 const Label = styled.label`

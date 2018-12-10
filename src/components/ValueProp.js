@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { color, typography, pageMargins, breakpoint } from './../shared/styles';
+
+import { styles } from './basics';
+const { color, typography, pageMargins, breakpoint } = styles;
 
 import LazyLoad from './LazyLoad';
 

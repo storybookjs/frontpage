@@ -6,16 +6,14 @@ import Image from '../components/image';
 
 import Hero from '../components/Hero';
 import SocialProof from '../components/layout/SocialProof';
-import SectionHero from '../components/SectionHero';
-import SectionBenefits from '../components/SectionBenefits';
+
 import Testimonial from '../components/layout/Testimonial';
 
 const IndexPage = () => (
   <Layout>
     <Hero />
     <SocialProof />
-    <SectionHero />
-    <SectionBenefits />
+
     <Testimonial />
     <h1>Hi people</h1>
     <p>Welcome to your new Gatsby site.</p>

@@ -5,16 +5,22 @@ import GitHubButton from 'react-github-button';
 
 import 'react-github-button/assets/style.css';
 
-import { color, typography, breakpoint, pageMargins } from './../shared/styles';
-import { glow } from './../shared/animation';
-import { url } from './../shared/urls';
-import Link from './basics/Link';
-import Button from './basics/Button';
-import Icon from './basics/Icon';
-import Subheading from './basics/Subheading';
-import Cardinal from './basics/Cardinal';
-import WithTooltip from './basics/tooltip/WithTooltip';
-import TooltipMessage from './basics/tooltip/TooltipMessage';
+import {
+  Button,
+  Cardinal,
+  Icon,
+  Link,
+  Subheading,
+  TooltipMessage,
+  WithTooltip,
+  styles,
+  animation,
+  urls,
+} from './basics';
+
+const { color, typography, breakpoint, pageMargins } = styles;
+const { glow } = animation;
+const { url } = urls;
 
 const Title = styled.div`
   font-weight: ${typography.weight.black};

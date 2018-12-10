@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { darken } from 'polished';
 import { Link as GatsbyLink } from 'gatsby';
-import { color } from './../../shared/styles';
+import { color } from './shared/styles';
 
 // prettier-ignore
 const LinkWrapper = styled.a`

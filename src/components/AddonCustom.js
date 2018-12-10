@@ -1,17 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import {
-  background,
-  color,
-  spacing,
-  typography,
-  pageMargin,
-  pageMargins,
-  breakpoint,
-} from './../shared/styles';
 
-import Link from './basics/Link';
-import Icon from './basics/Icon';
+import { Icon, Link, styles } from './basics';
+
+const { background, color, spacing, typography, pageMargin, pageMargins, breakpoint } = styles;
 
 const Title = styled.div`
   font-weight: ${typography.weight.black};

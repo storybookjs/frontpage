@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { color, spacing, typography, pageMargin, breakpoint } from './../shared/styles';
-import { url } from './../shared/urls';
+
+import { styles, urls } from './basics';
+
+const { color, spacing, typography, pageMargin, breakpoint } = styles;
+const { url } = urls;
 
 const Image = styled.img`
   width: 2.5rem;

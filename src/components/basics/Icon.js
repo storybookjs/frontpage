@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { color } from '../../shared/styles';
-import icons from '../../shared/icons';
+import { color } from './shared/styles';
+import icons from './shared/icons';
 
 const Svg = styled.svg`
   display: inline-block;

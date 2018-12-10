@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { color, spacing, typography, pageMargin, breakpoint } from './../shared/styles';
+
+import { styles } from './basics';
+const { color, spacing, typography, pageMargin, breakpoint } = styles;
 
 const Title = styled.div`
   font-weight: ${typography.weight.black};

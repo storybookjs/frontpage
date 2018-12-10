@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { configure, addDecorator } from '@storybook/react';
 import 'storybook-chromatic';
 
-import { GlobalStyle } from '../src/shared/global';
+import { GlobalStyle } from '../src/components/basics/shared/global';
 
 addDecorator(story => (
   <Fragment>

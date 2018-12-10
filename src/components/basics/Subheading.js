@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { typography } from './../../shared/styles';
+import { typography } from './shared/styles';
 
 const Heading = styled.span`
   letter-spacing: 0.35em;

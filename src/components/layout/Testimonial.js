@@ -1,16 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import {
-  color,
-  spacing,
-  typography,
-  pageMargin,
-  pageMargins,
-  breakpoint,
-} from './../../shared/styles';
 
-import Avatar from './../basics/Avatar';
+import { Avatar, styles } from './../basics';
+const { color, spacing, typography, pageMargin, pageMargins, breakpoint } = styles;
 
 const Quote = styled.div`
   font-size: ${typography.size.m1}px;

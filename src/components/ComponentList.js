@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { color, breakpoint } from './../shared/styles';
+import { styles } from './basics';
+const { color, breakpoint } = styles;
 
 import ComponentItem from './ComponentItem';
 

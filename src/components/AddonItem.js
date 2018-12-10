@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { color, spacing, typography, pageMargin, breakpoint } from './../shared/styles';
 
-import Link from './basics/Link';
+import { Link, styles } from './basics';
+
+const { color, spacing, typography, pageMargin, breakpoint } = styles;
 
 // TODO: This CSS needs a refactor.
 

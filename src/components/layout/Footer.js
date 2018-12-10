@@ -2,22 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import Icon from './../basics/Icon';
-import Subheading from './../basics/Subheading';
+import { Icon, Link, Subheading, styles, urls } from './../basics';
 
-import Link from './../basics/Link';
 import MailingListSubscribeForm from './MailingListSubscribeForm';
 
-import {
-  background,
-  color,
-  typography,
-  pageMargins,
-  pageMargin,
-  spacing,
-  breakpoint,
-} from './../../shared/styles';
-import { url } from './../../shared/urls';
+const { background, color, typography, pageMargins, pageMargin, spacing, breakpoint } = styles;
+const { url } = urls;
 
 const Title = styled(Subheading)`
   display: block;
