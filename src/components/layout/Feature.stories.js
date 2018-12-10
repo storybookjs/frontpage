@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 
 import Feature from './Feature';
 
-storiesOf('screens/UseCasesScreen/Feature', module)
+storiesOf('layout/Feature', module)
   .add('default', () => (
     <Feature
       image={<img src="images/colored-icons/direction.svg" />}

@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react';
 import Feature from './Feature';
 import FeaturesLayout from './FeaturesLayout';
 
-storiesOf('screens/UseCasesScreen/FeaturesLayout', module)
+storiesOf('layout/FeaturesLayout', module)
   .add('2 column', () => (
     <FeaturesLayout columns={2}>
       <Feature
