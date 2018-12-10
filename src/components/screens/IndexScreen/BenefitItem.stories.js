@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import BenefitItem from './BenefitItem';
-import Badge from './basics/Badge';
+import { Badge } from './../../basics';
 
 storiesOf('screens/IndexScreen/BenefitItem', module)
   .add('default', () => (

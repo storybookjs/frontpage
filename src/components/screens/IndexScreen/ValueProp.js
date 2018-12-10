@@ -2,10 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-import { styles } from './basics';
+import { Lazyload, styles } from './../../basics';
 const { color, typography, pageMargins, breakpoint } = styles;
-
-import LazyLoad from './LazyLoad';
 
 const Media = styled.div`
   width: 100%;

@@ -4,14 +4,12 @@ import { Link } from 'gatsby';
 import Layout from '../components/layout';
 import Image from '../components/image';
 
-import Hero from '../components/Hero';
 import SocialProof from '../components/layout/SocialProof';
 
 import Testimonial from '../components/layout/Testimonial';
 
 const IndexPage = () => (
   <Layout>
-    <Hero />
     <SocialProof />
 
     <Testimonial />

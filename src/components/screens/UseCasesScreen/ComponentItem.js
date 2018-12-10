@@ -2,9 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-import LazyLoad from './LazyLoad';
-
-import { ProgressDots, styles, animation } from './basics';
+import { Lazyload, ProgressDots, styles, animation } from './../../basics';
 
 const { color, typography, paper } = styles;
 const { glow, inlineGlow } = animation;

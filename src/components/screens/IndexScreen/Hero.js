@@ -16,7 +16,7 @@ import {
   styles,
   animation,
   urls,
-} from './basics';
+} from './../../basics';
 
 const { color, typography, breakpoint, pageMargins } = styles;
 const { glow } = animation;

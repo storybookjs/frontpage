@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Icon, Link, styles } from './basics';
+import { Icon, Link, styles } from './../../basics';
 
 const { background, color, spacing, typography, pageMargin, pageMargins, breakpoint } = styles;
 
