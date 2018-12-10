@@ -8,7 +8,7 @@ import { background, color, typography, pageMargins, breakpoint } from './../sha
 import { url } from './../shared/urls';
 
 import MailingListSubscribeForm from './MailingListSubscribeForm';
-import Cardinal from './Cardinal';
+import Cardinal from './basics/Cardinal';
 
 import { Heading, Title, Desc } from './PageTitle';
 

@@ -4,4 +4,4 @@ import { storiesOf } from '@storybook/react';
 
 import AddonCustom from './AddonCustom';
 
-storiesOf('Screens/AddonScreen/AddonCustom', module).add('default', () => <AddonCustom />);
+storiesOf('screens/AddonScreen/AddonCustom', module).add('default', () => <AddonCustom />);

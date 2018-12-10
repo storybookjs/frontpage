@@ -4,8 +4,8 @@ import styled, { css } from 'styled-components';
 import { darken } from 'polished';
 import pluralize from 'pluralize';
 
-import { background, color, typography } from './../shared/styles';
-import { inlineGlow } from './../shared/animation';
+import { background, color, typography } from './../../shared/styles';
+import { inlineGlow } from './../../shared/animation';
 import Link from './Link';
 
 const Count = styled.div`

@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import Icon from './Icon';
+import Icon from './basics/Icon';
 import Subheading from './Subheading';
 
-import Link from './Link';
+import Link from './basics/Link';
 import MailingListSubscribeForm from './MailingListSubscribeForm';
 
 import {

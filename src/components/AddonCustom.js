@@ -10,8 +10,8 @@ import {
   breakpoint,
 } from './../shared/styles';
 
-import Link from './Link';
-import Icon from './Icon';
+import Link from './basics/Link';
+import Icon from './basics/Icon';
 
 const Title = styled.div`
   font-weight: ${typography.weight.black};

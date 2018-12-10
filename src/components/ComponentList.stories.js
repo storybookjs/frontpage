@@ -4,4 +4,4 @@ import { storiesOf } from '@storybook/react';
 
 import ComponentList from './ComponentList';
 
-storiesOf('Screens/UseCasesScreen/ComponentList', module).add('full', () => <ComponentList />);
+storiesOf('screens/UseCasesScreen/ComponentList', module).add('full', () => <ComponentList />);

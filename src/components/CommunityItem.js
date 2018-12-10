@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { color, spacing, typography, pageMargin, breakpoint } from './../shared/styles';
 
-import Link from './Link';
-import Icon from './Icon';
+import Link from './basics/Link';
+import Icon from './basics/Icon';
 
 const Image = styled.div`
   float: left;

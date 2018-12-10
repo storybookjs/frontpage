@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 
 import CommunityItem from './CommunityItem';
 
-storiesOf('Screens/CommunityScreen/CommunityItem', module)
+storiesOf('screens/CommunityScreen/CommunityItem', module)
   .add('link', () => (
     <CommunityItem
       image={<img src="images/community/brand.svg" />}

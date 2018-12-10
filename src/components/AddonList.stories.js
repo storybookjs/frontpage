@@ -23,7 +23,7 @@ const AddonOfficial = (
   />
 );
 
-storiesOf('Screens/AddonScreen/AddonList', module)
+storiesOf('screens/AddonScreen/AddonList', module)
   .add('official', () => (
     <AddonList appearance="official">
       {AddonOfficial}

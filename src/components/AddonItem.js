@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { color, spacing, typography, pageMargin, breakpoint } from './../shared/styles';
 
-import Link from './Link';
+import Link from './basics/Link';
 
 // TODO: This CSS needs a refactor.
 

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
 import LazyLoad from './LazyLoad';
-import ProgressDots from './ProgressDots';
+import ProgressDots from './basics/ProgressDots';
 
 import { color, typography, paper } from './../shared/styles';
 import { glow, inlineGlow } from './../shared/animation';

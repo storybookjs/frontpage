@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 
 import AddonItem from './AddonItem';
 
-storiesOf('Screens/AddonScreen/AddonItem', module)
+storiesOf('screens/AddonScreen/AddonItem', module)
   .add('official', () => (
     <AddonItem
       appearance="official"

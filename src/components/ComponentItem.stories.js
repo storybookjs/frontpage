@@ -12,6 +12,6 @@ const Item = styled(ComponentItem)`
   min-width: 150px;
 `;
 
-storiesOf('Screens/UseCasesScreen/ComponentItem', module)
+storiesOf('screens/UseCasesScreen/ComponentItem', module)
   .add('loading', () => <Item loading />)
   .add('default', () => <Item imageUrl="images/use-cases/formidable/1.png" />);

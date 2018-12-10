@@ -8,11 +8,11 @@ import 'react-github-button/assets/style.css';
 import { color, typography, breakpoint, pageMargins } from './../shared/styles';
 import { glow } from './../shared/animation';
 import { url } from './../shared/urls';
-import Link from './Link';
-import Button from './Button';
-import Icon from './Icon';
+import Link from './basics/Link';
+import Button from './basics/Button';
+import Icon from './basics/Icon';
 import Subheading from './Subheading';
-import Cardinal from './Cardinal';
+import Cardinal from './basics/Cardinal';
 import WithTooltip from './tooltip/WithTooltip';
 import TooltipMessage from './tooltip/TooltipMessage';
 

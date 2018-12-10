@@ -16,7 +16,7 @@ const Community = (
   />
 );
 
-storiesOf('Screens/CommunityScreen/CommunityList', module).add('default', () => (
+storiesOf('screens/CommunityScreen/CommunityList', module).add('default', () => (
   <div style={{ maxWidth: '600px' }}>
     <CommunityList>
       {Community}

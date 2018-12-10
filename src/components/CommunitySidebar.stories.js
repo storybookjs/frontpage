@@ -2,9 +2,9 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import CommunitySidebar from './CommunitySidebar';
-import Button from './Button';
+import Button from './basics/Button';
 
-storiesOf('Screens/CommunityScreen/CommunitySidebar', module)
+storiesOf('screens/CommunityScreen/CommunitySidebar', module)
   .addDecorator(storyFn => <div style={{ width: '400px' }}>{storyFn()}</div>)
   .add('children', () => (
     <CommunitySidebar

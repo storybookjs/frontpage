@@ -10,7 +10,7 @@ import {
   breakpoint,
 } from './../shared/styles';
 
-import Avatar from './Avatar';
+import Avatar from './basics/Avatar';
 
 const Quote = styled.div`
   font-size: ${typography.size.m1}px;

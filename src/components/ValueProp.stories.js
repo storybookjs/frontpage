@@ -10,7 +10,7 @@ const PlaceholderAspectRatio = styled.div`
   padding-bottom: 75%;
 `;
 
-storiesOf('Screens/IndexScreen/ValueProp', module).add('default', () => (
+storiesOf('screens/IndexScreen/ValueProp', module).add('default', () => (
   <div>
     <ValueProp
       orientation="left"

@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-import Link from './Link';
-import Button from './Button';
-import Icon from './Icon';
+import Link from './basics/Link';
+import Button from './basics/Button';
+import Icon from './basics/Icon';
 import TooltipLinkList from './tooltip/TooltipLinkList';
 import WithTooltip from './tooltip/WithTooltip';
 
