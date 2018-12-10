@@ -29,12 +29,12 @@ storiesOf('layout/SocialProof', module)
         'lyft',
         'mozilla',
         'salesforce',
-        'github',
-        'dropbox',
-        'airbnb',
-        'lyft',
-        'mozilla',
-        'salesforce',
+        'govuk',
+        'auth0',
+        'atlassian',
+        'priceline',
+        'artsy',
+        'apollo',
       ]}
       grid
     />
