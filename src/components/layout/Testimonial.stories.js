@@ -17,6 +17,6 @@ storiesOf('layout/Testimonial', module)
       avatarUrl="https://avatars1.githubusercontent.com/u/263385?s=88&v=4"
       name="Dominic Nguyen"
       jobTitle="Product designer"
-      logo="logos/user/logo-chromatic.svg"
+      logo="images/logos/user/logo-chromatic.svg"
     />
   ));
