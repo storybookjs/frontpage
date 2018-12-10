@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { spacing, typography, pageMargin, pageMargins, breakpoint } from './../shared/styles';
+import { spacing, typography, pageMargin, pageMargins, breakpoint } from './../../shared/styles';
 
 const Text = styled.div`
   font-weight: ${typography.weight.black};

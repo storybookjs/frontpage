@@ -5,10 +5,10 @@ import Layout from '../components/layout';
 import Image from '../components/image';
 
 import Hero from '../components/Hero';
-import SocialProof from '../components/SocialProof';
+import SocialProof from '../components/layout/SocialProof';
 import SectionHero from '../components/SectionHero';
 import SectionBenefits from '../components/SectionBenefits';
-import Testimonial from '../components/Testimonial';
+import Testimonial from '../components/layout/Testimonial';
 
 const IndexPage = () => (
   <Layout>

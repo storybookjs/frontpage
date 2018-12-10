@@ -7,10 +7,10 @@ import 'react-github-button/assets/style.css';
 import { background, color, typography, pageMargins, breakpoint } from './../shared/styles';
 import { url } from './../shared/urls';
 
-import MailingListSubscribeForm from './MailingListSubscribeForm';
+import MailingListSubscribeForm from './layout/MailingListSubscribeForm';
 import Cardinal from './basics/Cardinal';
 
-import { Heading, Title, Desc } from './PageTitle';
+import { Heading, Title, Desc } from './layout/PageTitle';
 
 const Image = styled.img``;
 

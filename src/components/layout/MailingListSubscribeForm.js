@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { observer } from 'mobx-react';
 
-import Checkbox from './basics/Checkbox';
-import Button from './basics/Button';
-import Input from './basics/Input';
-import FormState from './FormState';
+import Checkbox from './../basics/Checkbox';
+import Button from './../basics/Button';
+import Input from './../basics/Input';
+import FormState from './../FormState';
 
-import { color, typography } from '../shared/styles';
+import { color, typography } from '../../shared/styles';
 
 const Email = styled(Input)`
   flex: 1;

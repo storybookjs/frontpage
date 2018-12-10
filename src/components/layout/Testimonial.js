@@ -8,9 +8,9 @@ import {
   pageMargin,
   pageMargins,
   breakpoint,
-} from './../shared/styles';
+} from './../../shared/styles';
 
-import Avatar from './basics/Avatar';
+import Avatar from './../basics/Avatar';
 
 const Quote = styled.div`
   font-size: ${typography.size.m1}px;

@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import Icon from './basics/Icon';
-import Subheading from './basics/Subheading';
+import Icon from './../basics/Icon';
+import Subheading from './../basics/Subheading';
 
-import Link from './basics/Link';
+import Link from './../basics/Link';
 import MailingListSubscribeForm from './MailingListSubscribeForm';
 
 import {
@@ -16,8 +16,8 @@ import {
   pageMargin,
   spacing,
   breakpoint,
-} from './../shared/styles';
-import { url } from './../shared/urls';
+} from './../../shared/styles';
+import { url } from './../../shared/urls';
 
 const Title = styled(Subheading)`
   display: block;

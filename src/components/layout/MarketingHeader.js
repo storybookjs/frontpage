@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-import Link from './basics/Link';
-import Button from './basics/Button';
-import Icon from './basics/Icon';
-import TooltipLinkList from './basics/tooltip/TooltipLinkList';
-import WithTooltip from './basics/tooltip/WithTooltip';
+import Link from './../basics/Link';
+import Button from './../basics/Button';
+import Icon from './../basics/Icon';
+import TooltipLinkList from './../basics/tooltip/TooltipLinkList';
+import WithTooltip from './../basics/tooltip/WithTooltip';
 
-import { color, typography, spacing, pageMargins, breakpoint } from './../shared/styles';
-import { url } from './../shared/urls';
+import { color, typography, spacing, pageMargins, breakpoint } from './../../shared/styles';
+import { url } from './../../shared/urls';
 
 const LogotypeWrapper = styled.a`
   display: inline-block;
