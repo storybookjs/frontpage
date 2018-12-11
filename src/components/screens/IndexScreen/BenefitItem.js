@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-import { styles } from './../../basics';
+import { LazyLoad, styles } from './../../basics';
 const { color, spacing, typography, pageMargin, breakpoint } = styles;
 
 const Image = styled.div`
@@ -55,7 +55,9 @@ const Wrapper = styled.div`
 export default function BenefitItem({ image, title, desc, children, ...props }) {
   return (
     <Wrapper {...props}>
-      <Image>{image}</Image>
+      <Image>
+        <LazyLoad once>{image}</LazyLoad>
+      </Image>
       <Meta>
         <Title>{title}</Title>
         <Desc>{desc}</Desc>
