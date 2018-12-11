@@ -10,11 +10,11 @@ const Text = styled.div`
 
   font-size: ${typography.size.m1}px;
   line-height: ${typography.size.m2}px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 
   @media (min-width: ${breakpoint * 1}px) {
     font-size: ${typography.size.m2}px;
-    line-height: ${typography.size.m3}px;
+    line-height: ${typography.size.l1}px;
     margin-bottom: 0;
   }
 `;

@@ -312,8 +312,8 @@ export default function Footer({ hasSubscribed, onSubscribe, ...props }) {
               <Meta>
                 <ResourceTitle>Storybook tutorial</ResourceTitle>
                 <ResourceDesc>
-                  Learn Storybook with a 9-chapter tutorial that teaches Storybook best practices as
-                  you build a UI from scratch.
+                  Learn Storybook with a 10-chapter tutorial that teaches Storybook best practices
+                  as you build a UI from scratch.
                 </ResourceDesc>
                 <ResourceActions>
                   <ResourceAction href="https://www.learnstorybook.com/">
