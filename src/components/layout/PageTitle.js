@@ -7,7 +7,7 @@ const { color, typography, pageMargins, breakpoint } = styles;
 
 export const Heading = styled(Subheading)`
   display: block;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
   color: ${color.mediumdark};
   opacity: 0.8;
 
@@ -40,9 +40,9 @@ export const Title = styled.div`
   margin-bottom: 0.5rem;
 
   @media (min-width: ${breakpoint}px) {
-    font-size: ${typography.size.l1}px;
-    line-height: 36px;
-    margin-bottom: 0.75rem;
+    font-size: ${typography.size.l2}px;
+    line-height: 1;
+    margin-bottom: 1rem;
   }
 `;
 
