@@ -7,7 +7,8 @@ const { color, spacing, typography, pageMargin, breakpoint } = styles;
 
 const Title = styled.div`
   font-weight: ${typography.weight.black};
-  font-size: ${typography.size.s3}px;
+  font-size: ${typography.size.m2}px;
+  margin-bottom: 0.75rem;
   line-height: 1.5rem;
 
   @media (min-width: ${breakpoint * 1}px) {

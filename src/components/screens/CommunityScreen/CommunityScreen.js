@@ -57,8 +57,12 @@ const OpenCollectiveLogos = styled.div`
 
 const CommunityLayout = styled.div`
   ${pageMargins};
-  padding-top: 7rem;
-  padding-bottom: 7rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  @media (min-width: ${breakpoint * 1}px) {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
