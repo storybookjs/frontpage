@@ -37,6 +37,7 @@ export default function IndexScreen({ ...props }) {
         heading="Trusted by"
         path="images/logos/user"
         brands={['github', 'dropbox', 'airbnb', 'lyft', 'mozilla', 'salesforce']}
+        monochrome
       />
 
       <Separator />
@@ -47,7 +48,7 @@ export default function IndexScreen({ ...props }) {
           /* eslint-disable jsx-a11y/media-has-caption */
           <PlaceholderAspectRatio ratio={0.75}>
             <video autoPlay muted loop playsInline>
-              <source src="videos/storybook-workflow-build-optimized-sm.mp4" type="video/mp4" />
+              <source src="videos/storybook-workflow-build-optimized-lg.mp4" type="video/mp4" />
             </video>
           </PlaceholderAspectRatio>
         }
@@ -83,7 +84,11 @@ export default function IndexScreen({ ...props }) {
         />
       </BenefitList>
       <Testimonial
-        text={<span>“Lorem ispum dolor sit amet”</span>}
+        text={
+          <span>
+            “Lorem ispum dolor sit amet. Lorem ispum dolor sit amet. Lorem ispum dolor sit amet.”
+          </span>
+        }
         avatarUrl="https://avatars1.githubusercontent.com/u/263385?s=88&v=4"
         name="Dominic Nguyen"
         jobTitle="Product designer"
@@ -98,7 +103,7 @@ export default function IndexScreen({ ...props }) {
             /* eslint-disable jsx-a11y/media-has-caption */
             <PlaceholderAspectRatio ratio={0.75}>
               <video autoPlay muted loop playsInline>
-                <source src="videos/storybook-workflow-test-optimized-sm.mp4" type="video/mp4" />
+                <source src="videos/storybook-workflow-test-optimized-lg.mp4" type="video/mp4" />
               </video>
             </PlaceholderAspectRatio>
           }
@@ -131,8 +136,7 @@ export default function IndexScreen({ ...props }) {
         <Testimonial
           text={
             <span>
-              “Storybook is an absolutely fantastic app that helps to keep us organized and our
-              customers happy.”
+              “Lorem ispum dolor sit amet. Lorem ispum dolor sit amet. Lorem ispum dolor sit amet.”
             </span>
           }
           avatarUrl="https://avatars1.githubusercontent.com/u/263385?s=88&v=4"
@@ -149,15 +153,15 @@ export default function IndexScreen({ ...props }) {
           /* eslint-disable jsx-a11y/media-has-caption */
           <PlaceholderAspectRatio ratio={0.75}>
             <video autoPlay muted loop playsInline>
-              <source src="videos/storybook-workflow-share-optimized-sm.mp4" type="video/mp4" />
+              <source src="videos/storybook-workflow-share-optimized-lg.mp4" type="video/mp4" />
             </video>
           </PlaceholderAspectRatio>
         }
-        title="Deliver robust UIs"
+        title="Share and reuse everything"
         desc={
           <div>
-            Storybook provides a sandbox to build UI components in isolation so you can develop
-            hard-to-reach states and edge cases.
+            Stop reinventing the wheel. Get a birds-eye view of your UI library to find components
+            to reuse in your project.
           </div>
         }
         lazyloadPlaceholder={<PlaceholderAspectRatio ratio={0.75} />}
@@ -188,7 +192,11 @@ export default function IndexScreen({ ...props }) {
       </BenefitList>
       <CTA
         text={<span>Storybook is quick to install and it’s easy to get started.</span>}
-        action={<Button primary>Get started</Button>}
+        action={
+          <Button primary isLink>
+            Get started
+          </Button>
+        }
       />
     </PageLayout>
   );

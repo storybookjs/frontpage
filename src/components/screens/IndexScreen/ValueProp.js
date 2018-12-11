@@ -85,13 +85,13 @@ const Wrapper = styled.div`
       order: 2;
       flex: 0 0 auto;
       display: block;
-      width: 60%;
+      width: 50%;
     }
 
     ${props => props.orientation === "left" && css`
       /* Text on left */
       ${Meta} {
-        padding-right: 5%;
+        padding-right: 10%;
       }
     `}
 
@@ -100,7 +100,7 @@ const Wrapper = styled.div`
       flex-direction: row-reverse;
       ${Meta} {
         padding-right: 0;
-        padding-left: 5%;
+        padding-left: 10%;
       }
     `}
 
