@@ -15,6 +15,7 @@ const Figure = styled.img`
 `;
 
 const ImageOuter = styled.span`
+  background: ${color.lightest};
   position: absolute;
   top: 0;
   left: 0;
@@ -54,18 +55,6 @@ const Item = styled.div`
       ${FigureWrapper} {
         transform: translate3d(0, 0, 0);
         transition: all 150ms ease-out;
-      }
-
-      &:hover {
-        ${FigureWrapper} {
-          transform: translate3d(0, -3px, 0);
-          box-shadow: rgba(0, 0, 0, 0.08) 0 3px 10px 0;
-        }
-      }
-      &:active {
-        ${FigureWrapper} {
-          transform: translate3d(0, 0, 0);
-        }
       }
     `} ${props =>
     props.loading &&
