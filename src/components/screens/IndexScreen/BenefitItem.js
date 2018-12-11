@@ -6,15 +6,17 @@ import { LazyLoad, styles } from './../../basics';
 const { color, spacing, typography, pageMargin, breakpoint } = styles;
 
 const Image = styled.div`
-  float: left;
   margin-right: 20px;
   margin-top: 4px;
   img {
     display: block;
+    width: 120px;
+    height: auto;
+    margin: -7.5px;
   }
 
-  @media (min-width: ${breakpoint * 1}px) {
-    margin-bottom: 1.25rem;
+  @media (min-width: ${breakpoint * 1.5}px) {
+    margin-bottom: 2rem;
     margin-right: 0;
     margin-top: 0;
     float: none;
@@ -22,26 +24,30 @@ const Image = styled.div`
     img {
       height: 260px;
       width: 240px;
-      margin-left: -15px;
+      margin: -15px;
     }
   }
 `;
 
 const Title = styled.div`
   font-weight: ${typography.weight.black};
-  font-size: ${typography.size.m1}px;
-  line-height: ${typography.size.m2}px;
-  margin-bottom: 0.5rem;
+  font-size: ${typography.size.s3}px;
+  line-height: 1.5;
+  margin-bottom: 0rem;
+
+  @media (min-width: ${breakpoint * 1.5}px) {
+    margin-bottom: 0.5rem;
+    font-size: ${typography.size.m1}px;
+    line-height: ${typography.size.m2}px;
+  }
 `;
 const Desc = styled.div`
   color: ${color.dark};
-  font-size: ${typography.size.m1}px;
-  line-height: ${typography.size.m3}px;
+  font-size: ${typography.size.s3}px;
+  line-height: 1.5;
 `;
 
-const Meta = styled.div`
-  overflow: hidden;
-`;
+const Meta = styled.div``;
 
 const Children = styled.div`
   margin-top: 1rem;
@@ -50,6 +56,14 @@ const Children = styled.div`
 const Wrapper = styled.div`
   font-size: ${typography.size.s3}px;
   line-height: 1.5;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  @media (min-width: ${breakpoint * 1.5}px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 
 export default function BenefitItem({ image, title, desc, children, ...props }) {
