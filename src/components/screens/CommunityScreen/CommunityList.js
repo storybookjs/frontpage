@@ -18,14 +18,10 @@ const Layout = styled.div`
       margin-bottom: 0;
     }
   }
-
-  @media (min-width: ${breakpoint * 1}px) {
-    padding-bottom: 3rem;
-  }
 `;
 
-export default function CommunityList({ children }) {
-  return <Layout>{children}</Layout>;
+export default function CommunityList({ children, ...props }) {
+  return <Layout {...props}>{children}</Layout>;
 }
 
 CommunityList.propTypes = {

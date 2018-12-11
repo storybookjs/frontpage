@@ -55,6 +55,7 @@ const Wrapper = styled.div`
   @media (min-width: ${breakpoint}px) {
     padding-top: 5rem !important;
     padding-bottom: 5rem !important;
+    min-height: 70vh;
     text-align: left;
 
     align-items: center;
@@ -183,7 +184,7 @@ export default function CommunityHero({ hasSubscribed, onSubscribe, ...props }) 
               <b>👍 Thanks, you're all signed up!</b>
             </MailingListConfirm>
           ) : (
-            <MailingListForm onSubscribe={onSubscribe} cta="Sign up" />
+            <MailingListSubscribeForm onSubscribe={onSubscribe} cta="Sign up" />
           )}
         </MailingListWrapper>
         <Stats>

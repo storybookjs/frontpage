@@ -42,8 +42,8 @@ const Meta = styled.div`
 
 const Item = styled.a`
   text-decoration: none;
-
   padding: 1.5rem 1.25rem;
+  background: ${color.lightest};
 
   &:not(:last-child) {
     border-bottom: 1px solid ${color.border};
