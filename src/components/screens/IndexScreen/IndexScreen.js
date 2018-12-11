@@ -7,7 +7,7 @@ import PageLayout from './../../layout/PageLayout';
 import Hero from './Hero';
 import SocialProof from './../../layout/SocialProof';
 import PlaceholderAspectRatio from './../../layout/PlaceholderAspectRatio';
-import ValueProp from './ValueProp';
+import ValueProp from './../../layout/ValueProp';
 import BenefitItem from './BenefitItem';
 import BenefitList from './BenefitList';
 import Testimonial from './../../layout/Testimonial';
@@ -36,7 +36,7 @@ export default function IndexScreen({ ...props }) {
       <SocialProof
         heading="Trusted by"
         path="images/logos/user"
-        brands={['github', 'dropbox', 'airbnb', 'lyft', 'mozilla', 'salesforce']}
+        brands={['github', 'dropbox', 'airbnb', 'lyft', 'mozilla']}
         monochrome
       />
 
