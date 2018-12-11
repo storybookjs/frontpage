@@ -55,7 +55,7 @@ export const bodyStyles = css`
 
   hr {
     border: none;
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    border-top: 1px solid ${color.border};
     clear: both;
     margin-bottom: 1.25rem;
   }
