@@ -3,15 +3,16 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
 import { styles } from './../basics';
-const { spacing, pageMargin, breakpoint } = styles;
+const { spacing, pageMargin, pageMargins, breakpoint } = styles;
 
 const Layout = styled.div`
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  justify-content: space-between;
 
   > * {
-    padding: 0 ${spacing.padding.medium}px 3rem;
+    padding-bottom: 3rem;
   }
 
   @media (min-width: ${breakpoint * 1}px) {
@@ -35,17 +36,11 @@ const Layout = styled.div`
   ${props =>
     props.columns === 3 &&
     css`
+      ${pageMargins};
       @media (min-width: ${breakpoint * 1}px) {
-        margin: 0 ${pageMargin * 1}%;
         > * {
-          flex: 0 1 33.33%;
+          flex: 0 1 25%;
         }
-      }
-      @media (min-width: ${breakpoint * 2}px) {
-        margin: 0 ${pageMargin * 3}%;
-      }
-      @media (min-width: ${breakpoint * 4}px) {
-        margin: 0 ${pageMargin * 4}%;
       }
     `};
 `;
