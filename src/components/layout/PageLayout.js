@@ -10,16 +10,18 @@ const { color, typography, pageMargins, breakpoint } = styles;
 
 const Layout = styled.div``;
 
-export default function PageLayout({ children, ...props }) {
+export default function PageLayout({ hasSubscribed, onSubscribe, children, ...props }) {
   return (
     <Layout {...props}>
       <Header />
       {children}
-      <Footer />
+      <Footer hasSubscribed={hasSubscribed} onSubscribe={onSubscribe} />
     </Layout>
   );
 }
 
 PageLayout.propTypes = {
   children: PropTypes.node.isRequired,
+  hasSubscribed: Footer.propTypes.hasSubscribed,
+  onSubscribe: Footer.propTypes.onSubscribe,
 };
