@@ -12,7 +12,7 @@ const { url } = urls;
 const Title = styled(Subheading)`
   display: block;
   font-size: ${typography.size.s1}px;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
   color: ${color.mediumdark};
 `;
 
@@ -183,6 +183,9 @@ const Subscribe = styled.div`
   width: 100%;
   @media (min-width: ${breakpoint}px) {
     width: 35%;
+  }
+  ${Text} {
+    margin-bottom: 1rem;
   }
 `;
 

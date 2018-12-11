@@ -38,7 +38,7 @@ const Logo = styled.div`
   img {
     display: inline-block;
     width: auto;
-    max-height: 28px;
+    max-height: 24px;
   }
 `;
 const Attribution = styled.div`

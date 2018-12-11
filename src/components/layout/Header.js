@@ -66,7 +66,7 @@ const Menu = styled(Link)`
   text-align: right;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 
   svg {
     vertical-align: top;

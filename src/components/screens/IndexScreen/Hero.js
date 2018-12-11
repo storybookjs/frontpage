@@ -25,8 +25,8 @@ const { url } = urls;
 const Title = styled.div`
   font-weight: ${typography.weight.black};
 
-  font-size: ${typography.size.m2}px;
-  line-height: 28px;
+  font-size: ${typography.size.m3}px;
+  line-height: 32px;
   margin-bottom: 0.5rem;
 
   @media (min-width: ${breakpoint * 1}px) {
@@ -286,9 +286,6 @@ const Content = styled.section`
 
   @media (min-width: ${breakpoint * 2}px) {
     flex-direction: row;
-  }
-
-  @media (min-width: ${breakpoint * 2}px) {
     align-items: flex-start;
   }
 
@@ -308,6 +305,14 @@ const Content = styled.section`
 
 const Wrapper = styled.div`
   ${pageMargins};
+  position: relative;
+  top: 5vh;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  @media (min-width: ${breakpoint * 2}px) {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
 `;
 
 function Framework({ framework, logo, ...props }) {

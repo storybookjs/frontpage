@@ -6,7 +6,7 @@ import { Subheading, styles } from './../basics';
 const { color, spacing, typography, pageMargins, breakpoint } = styles;
 
 const Heading = styled(Subheading)`
-  color: ${color.mediumdark};
+  color: ${color.medium};
 `;
 
 const Logo = styled.img`
@@ -21,7 +21,7 @@ const Logo = styled.img`
   ${props =>
     props.monochrome &&
     css`
-      opacity: 0.7;
+      opacity: 0.4;
       filter: grayscale(100%);
     `};
 `;
