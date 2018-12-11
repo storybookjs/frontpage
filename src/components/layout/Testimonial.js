@@ -6,8 +6,17 @@ import { Avatar, styles } from './../basics';
 const { color, spacing, typography, pageMargin, pageMargins, breakpoint } = styles;
 
 const Quote = styled.div`
-  font-size: ${typography.size.m1}px;
-  line-height: ${typography.size.m3}px;
+  font-weight: ${typography.weight.bold};
+  font-size: ${typography.size.s3}px;
+  line-height: ${typography.size.m1}px;
+  color: ${color.dark};
+
+  @media (min-width: ${breakpoint * 1}px) {
+    color: ${color.darkest};
+    font-weight: ${typography.weight.regular};
+    font-size: ${typography.size.m1}px;
+    line-height: ${typography.size.m3}px;
+  }
   margin-bottom: 1.5rem;
   max-width: 480px;
   text-align: center;

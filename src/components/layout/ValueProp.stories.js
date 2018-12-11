@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import styled from 'styled-components';
 import ValueProp from './ValueProp';
-import PlaceholderAspectRatio from './../../layout/PlaceholderAspectRatio';
+import PlaceholderAspectRatio from './PlaceholderAspectRatio';
 
 storiesOf('screens/IndexScreen/ValueProp', module).add('default', () => (
   <div>

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-import { LazyLoad, styles } from './../../basics';
+import { LazyLoad, styles } from './../basics';
 const { color, typography, pageMargins, breakpoint } = styles;
 
 const Media = styled.div`
@@ -61,7 +61,6 @@ const Meta = styled.div`
   }
 `;
 
-// prettier-ignore
 const Wrapper = styled.div`
   ${pageMargins};
   padding-top: 3rem !important;
@@ -88,41 +87,47 @@ const Wrapper = styled.div`
       width: 50%;
     }
 
-    ${props => props.orientation === "left" && css`
-      /* Text on left */
-      ${Meta} {
-        padding-right: 10%;
-      }
-    `}
+    ${props =>
+      props.orientation === 'left' &&
+      css`
+        /* Text on left */
+        ${Meta} {
+          padding-right: 10%;
+        }
+      `};
 
-    ${props => props.orientation === "right" && css`
-      /* Text on right */
-      flex-direction: row-reverse;
-      ${Meta} {
-        padding-right: 0;
-        padding-left: 10%;
-      }
-    `}
+    ${props =>
+      props.orientation === 'right' &&
+      css`
+        /* Text on right */
+        flex-direction: row-reverse;
+        ${Meta} {
+          padding-right: 0;
+          padding-left: 10%;
+        }
+      `};
 
-    ${props => props.orientation === "center" && css`
-      /* Image in center */
-      padding-top: 5rem !important;
-      padding-bottom: 5rem !important;
+    ${props =>
+      props.orientation === 'center' &&
+      css`
+        /* Image in center */
+        padding-top: 5rem !important;
+        padding-bottom: 5rem !important;
 
-      text-align: center;
-      flex-direction: column;
+        text-align: center;
+        flex-direction: column;
 
-      ${Meta} {
-        order: 1;
-        max-width: 800px;
-        margin-bottom: 2rem;
-      }
+        ${Meta} {
+          order: 1;
+          max-width: 800px;
+          margin-bottom: 2rem;
+        }
 
-      ${Media} {
-        order: 2;
-        width: 100%;
-      }
-    `}
+        ${Media} {
+          order: 2;
+          width: 100%;
+        }
+      `};
   }
 `;
 
