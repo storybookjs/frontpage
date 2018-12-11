@@ -11,6 +11,7 @@ export const color = {
   // Palette
   primary: '#FF4785', //coral
   secondary: '#1EA7FD', //ocean
+  tertiary: '#DDDDDD',
 
   orange: '#FC521F',
   gold: '#FFAE00',

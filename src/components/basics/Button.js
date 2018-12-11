@@ -207,12 +207,11 @@ const ButtonWrapper = styled.button`
     svg path { fill: ${color.darkest}; }
 
     ${!props.loading && css`
-      &:hover { background: ${darken(0.05, color.tertiary)}; }
+      &:hover { background: ${darken(0.05, color.secondary)}; }
       &:active { box-shadow: rgba(0,0,0,.1) 0 0 0 3em inset; }
-      &:focus { box-shadow: ${rgba(color.tertiary, 0.4)} 0 1px 9px 2px; }
-      &:focus:hover { box-shadow: ${rgba(color.tertiary, 0.2)} 0 8px 18px 0px;}
+      &:focus { box-shadow: ${rgba(color.secondary, 0.4)} 0 1px 9px 2px; }
+      &:focus:hover { box-shadow: ${rgba(color.secondary, 0.2)} 0 8px 18px 0px;}
     `}
-
 	`}
 
   ${props => props.tertiary && props.active && css`
@@ -249,6 +248,27 @@ const ButtonWrapper = styled.button`
       }
       &:focus { box-shadow: ${color.medium} 0 0 0 1px inset, ${rgba(color.primary, 0.4)} 0 1px 9px 2px; }
       &:focus:hover { box-shadow: ${color.medium} 0 0 0 1px inset, ${rgba(color.primary, 0.2)} 0 8px 18px 0px;}
+    `}
+
+    ${props.primary && css`
+      box-shadow: ${color.primary} 0 0 0 1px inset;
+  		color: ${color.primary};
+
+      svg path { fill: ${color.primary}; }
+
+      &:hover {
+        box-shadow: ${color.primary} 0 0 0 1px inset;
+        background: transparent;
+      }
+
+      &:active {
+        background: ${color.primary};
+        box-shadow: ${color.primary} 0 0 0 1px inset;
+        color: ${color.lightest};
+        svg path { fill: ${color.lightest}; }
+      }
+      &:focus { box-shadow: ${color.primary} 0 0 0 1px inset, ${rgba(color.primary, 0.4)} 0 1px 9px 2px; }
+      &:focus:hover { box-shadow: ${color.primary} 0 0 0 1px inset, ${rgba(color.primary, 0.2)} 0 8px 18px 0px;}
     `}
 	`}
 

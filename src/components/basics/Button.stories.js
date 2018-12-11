@@ -11,6 +11,9 @@ storiesOf('basics/Button', module)
       <Button secondary>Secondary</Button>
       <Button tertiary>Tertiary</Button>
       <Button outline>Outline</Button>
+      <Button outline primary>
+        Outline primary
+      </Button>
       <Button primary disabled>
         Disabled
       </Button>
@@ -53,7 +56,6 @@ storiesOf('basics/Button', module)
         <Icon icon="link" />
         Link
       </Button>
-      
     </div>
   ))
   .add('primary', () => <Button primary>Primary</Button>)
