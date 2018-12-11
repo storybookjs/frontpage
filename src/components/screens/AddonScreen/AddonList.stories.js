@@ -6,7 +6,6 @@ import AddonList from './AddonList';
 
 const AddonCommunity = (
   <AddonItem
-    image={<img src="images/addons/knobs.svg" />}
     title="Chapters"
     desc="With this addon, you can showcase multiple components (or varying component states) within 1 story. Break your stories down into smaller categories (chapters) and subcategories (sections) for more organizational goodness."
     addonUrl="https://google.com"

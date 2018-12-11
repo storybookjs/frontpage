@@ -11,7 +11,7 @@ const List = styled.div`
   display: flex;
   flex-wrap: wrap;
 
-  > * {
+  > *:not(button) {
     margin-bottom: 1.25rem;
 
     @media (min-width: ${breakpoint * 1}px) {
@@ -44,10 +44,6 @@ const Grid = styled.div`
     margin: 0 -15px;
   }
 
-  @media (min-width: ${breakpoint * 2}px) {
-    margin: 0 -20px;
-  }
-
   .flex-wrapper {
     width: 100%;
 
@@ -65,18 +61,30 @@ const Grid = styled.div`
 
     @media (min-width: ${breakpoint * 2}px) {
       width: 25%;
-      padding: 0px 20px 40px;
     }
   }
 `;
 
 const Layout = styled.div`
   ${pageMargins};
+
+  ${props =>
+    props.appearance === 'official' &&
+    css`
+      padding-bottom: calc(5rem - 40px);
+    `};
+  ${props =>
+    props.appearance === 'community' &&
+    css`
+      padding-bottom: 5rem;
+    `};
 `;
 
 export default function AddonList({ appearance, children }) {
   return (
-    <Layout>{appearance === 'official' ? <Grid>{children}</Grid> : <List>{children}</List>}</Layout>
+    <Layout appearance={appearance}>
+      {appearance === 'official' ? <Grid>{children}</Grid> : <List>{children}</List>}
+    </Layout>
   );
 }
 

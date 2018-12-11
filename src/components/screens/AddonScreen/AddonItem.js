@@ -25,7 +25,7 @@ const Image = styled.div`
   }
 
   @media (min-width: ${breakpoint * 1}px) {
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
     margin-right: 0;
     margin-top: 0;
     float: none;
@@ -77,6 +77,9 @@ const Wrapper = styled.div`
 `;
 
 const WrapperLink = styled.a`
+  @media (min-width: ${breakpoint * 1}px) {
+    height: 100%;
+  }
   @media (min-width: ${breakpoint * 1.5}px) {
     max-width: 320px;
   }
@@ -135,7 +138,9 @@ export default function AddonItem({ image, title, desc, addonUrl, appearance, ..
   return (
     <Wrapper {...props}>
       <Meta>
-        <TitleLink href={addonUrl}>{title}</TitleLink>
+        <TitleLink href={addonUrl} rel="nofollow">
+          {title}
+        </TitleLink>
         <Desc>{desc}</Desc>
       </Meta>
     </Wrapper>
