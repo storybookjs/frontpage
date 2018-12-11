@@ -2,13 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import styled from 'styled-components';
 import ValueProp from './ValueProp';
-
-const PlaceholderAspectRatio = styled.div`
-  position: relative;
-  width: 100%;
-  height: 0;
-  padding-bottom: 75%;
-`;
+import PlaceholderAspectRatio from './../../layout/PlaceholderAspectRatio';
 
 storiesOf('screens/IndexScreen/ValueProp', module).add('default', () => (
   <div>
@@ -16,7 +10,7 @@ storiesOf('screens/IndexScreen/ValueProp', module).add('default', () => (
       orientation="left"
       media={
         /* eslint-disable jsx-a11y/media-has-caption */
-        <PlaceholderAspectRatio>
+        <PlaceholderAspectRatio ratio={0.75}>
           <video autoPlay muted loop playsInline>
             <source src="videos/storybook-workflow-build-optimized-sm.mp4" type="video/mp4" />
           </video>

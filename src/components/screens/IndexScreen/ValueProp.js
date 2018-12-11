@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-import { Lazyload, styles } from './../../basics';
+import { LazyLoad, styles } from './../../basics';
 const { color, typography, pageMargins, breakpoint } = styles;
 
 const Media = styled.div`
