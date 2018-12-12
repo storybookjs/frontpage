@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { darken } from 'polished';
 import { Link as GatsbyLink } from 'gatsby';
 import { color } from './shared/styles';
@@ -35,6 +35,17 @@ const LinkWrapper = styled.a`
     bottom: -.125em;
     margin-right: .4em;
   }
+
+  ${props => props.withArrow && css`
+    > svg:last-of-type {
+      height: .7em;
+      width: .7em;
+      margin-right: 0;
+      margin-left: .25em;
+      bottom: auto;
+      vertical-align: inherit;
+    }
+  `}
 
 
 
@@ -95,21 +106,23 @@ const LinkWrapper = styled.a`
 
 const LinkGatsby = LinkWrapper.withComponent(GatsbyLink);
 
-function Link({ isGatsby, ...props }) {
+function Link({ isGatsby, withArrow, ...props }) {
   if (isGatsby) {
-    return <LinkGatsby {...props} />;
+    return <LinkGatsby {...props} withArrow={withArrow} />;
   }
-  return <LinkWrapper {...props} />;
+  return <LinkWrapper {...props} withArrow={withArrow} />;
 }
 
 Link.propTypes = {
   isGatsby: PropTypes.bool,
   children: PropTypes.node,
+  withArrow: PropTypes.bool,
 };
 
 Link.defaultProps = {
   isGatsby: false,
   children: null,
+  withArrow: false,
 };
 
 export default Link;

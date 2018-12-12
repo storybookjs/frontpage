@@ -318,7 +318,7 @@ const Wrapper = styled.div`
 function Framework({ framework, logo, ...props }) {
   return (
     <FrameworkItem>
-      <FrameworkLink className="primary" {...props}>
+      <FrameworkLink className="primary" {...props} withArrow>
         <img
           src={
             logo

@@ -232,12 +232,6 @@ const ResourceDesc = styled.div`
 
 const ResourceAction = styled(Link)`
   margin-right: 15px;
-
-  svg {
-    height: 0.7rem;
-    width: 0.7rem;
-    bottom: -0.25em;
-  }
 `;
 
 const ResourceActions = styled.div``;
@@ -295,17 +289,21 @@ export default function Footer({ hasSubscribed, onSubscribe, ...props }) {
                   easier.
                 </ResourceDesc>
                 <ResourceActions>
-                  <ResourceAction>
-                    React <Icon icon="arrowright" />
+                  <ResourceAction withArrow>
+                    React
+                    <Icon icon="arrowright" />
                   </ResourceAction>
-                  <ResourceAction>
-                    Vue <Icon icon="arrowright" />
+                  <ResourceAction withArrow>
+                    Vue
+                    <Icon icon="arrowright" />
                   </ResourceAction>
-                  <ResourceAction>
-                    Angular <Icon icon="arrowright" />
+                  <ResourceAction withArrow>
+                    Angular
+                    <Icon icon="arrowright" />
                   </ResourceAction>
-                  <ResourceAction>
-                    View more <Icon icon="arrowright" />
+                  <ResourceAction withArrow>
+                    View more
+                    <Icon icon="arrowright" />
                   </ResourceAction>
                 </ResourceActions>
               </Meta>
@@ -319,8 +317,9 @@ export default function Footer({ hasSubscribed, onSubscribe, ...props }) {
                   as you build a UI from scratch.
                 </ResourceDesc>
                 <ResourceActions>
-                  <ResourceAction href="https://www.learnstorybook.com/">
-                    Learn Storybook now <Icon icon="arrowright" />
+                  <ResourceAction href="https://www.learnstorybook.com/" withArrow>
+                    Learn Storybook now
+                    <Icon icon="arrowright" />
                   </ResourceAction>
                 </ResourceActions>
               </Meta>
@@ -330,8 +329,9 @@ export default function Footer({ hasSubscribed, onSubscribe, ...props }) {
         <UpperColumn>
           <Title>
             News
-            <SubLink>
-              Read more <Icon icon="arrowright" />
+            <SubLink withArrow>
+              Read more
+              <Icon icon="arrowright" />
             </SubLink>
           </Title>{' '}
           <Resources>

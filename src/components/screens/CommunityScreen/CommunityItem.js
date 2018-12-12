@@ -88,6 +88,7 @@ export default function CommunityItem({ image, title, desc, links, ...props }) {
               /* eslint-disable react/no-array-index-key */
               key={index}
               href={href}
+              withArrow
             >
               <span>{title}</span>
               <Icon icon="arrowright" />

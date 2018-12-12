@@ -75,8 +75,9 @@ export default function AddonCustom({ ...props }) {
           <Desc>
             Customize Storybook's UI, API, and create custom workflows by building your own addon
           </Desc>
-          <Link>
-            Learn how to build an addon <Icon icon="arrowright" />
+          <Link withArrow>
+            Learn how to build an addon
+            <Icon icon="arrowright" />
           </Link>
         </Meta>
       </Inner>
