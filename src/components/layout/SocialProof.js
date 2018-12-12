@@ -14,9 +14,14 @@ const Logo = styled.img`
   width: 100%;
   height: auto;
 
-  max-width: 92px;
-  max-height: 32px;
+  max-width: 80px;
+  max-height: 24px;
   object-fit: contain;
+
+  @media (min-width: ${breakpoint * 1.333}px) {
+    max-width: 92px;
+    max-height: 32px;
+  }
 
   ${props =>
     props.monochrome &&
@@ -38,10 +43,16 @@ const Logos = styled.div`
   justify-content: center;
   align-items: center;
 
-  padding-bottom: 0.75rem;
+  &:not(:only-child) {
+    padding-bottom: 0.75rem;
+  }
+
   @media (min-width: ${breakpoint * 1.333}px) {
+    flex-wrap: nowrap;
     justify-content: space-between;
-    padding-bottom: 1.5rem;
+    &:not(:only-child) {
+      padding-bottom: 1.5rem;
+    }
   }
 
   ${LogoWrapper} {
