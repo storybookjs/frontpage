@@ -28,6 +28,26 @@ const Wrapper = styled.div`
   line-height: 1.5;
 `;
 
+const Placeholder = styled(PlaceholderAspectRatio)`
+  /* To adjust the aspect ratio,
+   add a placeholder for aspect ratio
+   checkout LandingScreen.js for an example
+*/
+  video {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+`;
+
 export default function IndexScreen({ ...props }) {
   return (
     <PageLayout {...props}>
@@ -46,15 +66,15 @@ export default function IndexScreen({ ...props }) {
         orientation="left"
         media={
           /* eslint-disable jsx-a11y/media-has-caption */
-          <PlaceholderAspectRatio ratio={0.75}>
+          <Placeholder ratio={0.75}>
             <video autoPlay muted loop playsInline>
               <source src="videos/storybook-workflow-build-optimized-lg.mp4" type="video/mp4" />
             </video>
-          </PlaceholderAspectRatio>
+          </Placeholder>
         }
         title="Deliver robust UIs"
         desc="Storybook provides a sandbox to build UI components in isolation so you can develop hard-to-reach states and edge cases."
-        lazyloadPlaceholder={<PlaceholderAspectRatio ratio={0.75} />}
+        lazyloadPlaceholder={<Placeholder ratio={0.75} />}
       />
       <BenefitList>
         <BenefitItem
@@ -101,15 +121,15 @@ export default function IndexScreen({ ...props }) {
           orientation="right"
           media={
             /* eslint-disable jsx-a11y/media-has-caption */
-            <PlaceholderAspectRatio ratio={0.75}>
+            <Placeholder ratio={0.75}>
               <video autoPlay muted loop playsInline>
                 <source src="videos/storybook-workflow-test-optimized-lg.mp4" type="video/mp4" />
               </video>
-            </PlaceholderAspectRatio>
+            </Placeholder>
           }
           title="Ship components with confidence"
           desc="Storybook makes it easy to keep track of edge cases and as a result you get tests for free."
-          lazyloadPlaceholder={<PlaceholderAspectRatio ratio={0.75} />}
+          lazyloadPlaceholder={<Placeholder ratio={0.75} />}
         />
         <BenefitList>
           <BenefitItem
@@ -151,11 +171,11 @@ export default function IndexScreen({ ...props }) {
         orientation="left"
         media={
           /* eslint-disable jsx-a11y/media-has-caption */
-          <PlaceholderAspectRatio ratio={0.75}>
+          <Placeholder ratio={0.75}>
             <video autoPlay muted loop playsInline>
               <source src="videos/storybook-workflow-share-optimized-lg.mp4" type="video/mp4" />
             </video>
-          </PlaceholderAspectRatio>
+          </Placeholder>
         }
         title="Share and reuse everything"
         desc={
@@ -164,7 +184,7 @@ export default function IndexScreen({ ...props }) {
             to reuse in your project.
           </div>
         }
-        lazyloadPlaceholder={<PlaceholderAspectRatio ratio={0.75} />}
+        lazyloadPlaceholder={<Placeholder ratio={0.75} />}
       />
       <BenefitList>
         <BenefitItem
