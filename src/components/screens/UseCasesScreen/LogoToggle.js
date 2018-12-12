@@ -15,7 +15,6 @@ const Logo = styled.img`
   max-height: 22px;
   width: auto !important;
   height: auto !important;
-  margin-right: 30px;
 
   opacity: 0.4;
   filter: grayscale(100%);
@@ -52,10 +51,19 @@ const Logos = styled.div`
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
+  ${Logo} {
+    margin-right: 15px;
+    margin-left: 15px;
+  }
 
   @media (min-width: ${breakpoint * 1}px) {
     justify-content: flex-start;
     display: flex;
+
+    ${Logo} {
+      margin-right: 30px;
+      margin-left: 0;
+    }
   }
 `;
 

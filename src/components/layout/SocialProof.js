@@ -38,14 +38,15 @@ const Logos = styled.div`
   justify-content: center;
   align-items: center;
 
-  ${LogoWrapper} {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-  }
-
+  padding-bottom: 0.75rem;
   @media (min-width: ${breakpoint * 1.333}px) {
     justify-content: space-between;
     padding-bottom: 1.5rem;
+  }
+
+  ${LogoWrapper} {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
   }
 
   ${props =>

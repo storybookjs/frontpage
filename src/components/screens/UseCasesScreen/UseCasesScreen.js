@@ -35,19 +35,7 @@ const DesignSystemLogos = styled(LogoToggle)`
   justify-content: center;
 `;
 
-const Placeholder = styled(PlaceholderAspectRatio)`
-  /* To adjust the aspect ratio,
-   add a placeholder for aspect ratio
-   checkout LandingScreen.js for an example
-*/
-  video {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-  }
-
+const DesignSystemWrapper = styled.div`
   img {
     width: 100%;
     height: auto;
@@ -151,18 +139,18 @@ export default function UseCasesScreen({ ...props }) {
       <ValueProp
         orientation="right"
         media={
-          <Placeholder ratio={0.75}>
+          <DesignSystemWrapper>
             <DesignSystem src="images/use-cases/design-system.jpg" />
             <DesignSystemLogos
               path="images/logos/user"
               brands={['github', 'salesforce', 'govuk']}
               readOnly
             />
-          </Placeholder>
+          </DesignSystemWrapper>
         }
         title="Design systems"
         desc="Engineering teams at GitHub, Salesforce, and UK Home Office rely on Storybook to build and distribute UI components that impact millions of people."
-        lazyloadPlaceholder={<Placeholder ratio={0.74} />}
+        lazyloadPlaceholder={<PlaceholderAspectRatio ratio={0.74} />}
       />
       <FeaturesLayout columns={3}>
         <Feature

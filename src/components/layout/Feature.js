@@ -9,8 +9,12 @@ const Image = styled.div`
   float: left;
   margin-right: 20px;
   margin-top: 4px;
-  svg {
+
+  svg,
+  img {
     display: block;
+    width: 32px;
+    height: auto;
   }
 
   @media (min-width: ${breakpoint * 1}px) {
@@ -18,11 +22,19 @@ const Image = styled.div`
     margin-right: 0;
     margin-top: 0;
     float: none;
+
+    svg,
+    img {
+      width: 48px;
+    }
   }
 `;
 const Title = styled.div`
   font-weight: ${typography.weight.black};
-  margin-bottom: 0.25rem;
+
+  @media (min-width: ${breakpoint * 1}px) {
+    margin-bottom: 0.25rem;
+  }
 `;
 const Desc = styled.div`
   color: ${color.dark};

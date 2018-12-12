@@ -12,11 +12,15 @@ const Layout = styled.div`
   justify-content: space-between;
 
   > * {
-    padding-bottom: 3rem;
+    padding-bottom: 2rem;
   }
 
   @media (min-width: ${breakpoint * 1}px) {
     padding-bottom: 1.5rem;
+
+    > * {
+      padding-bottom: 1.5rem;
+    }
   }
 
   ${props =>

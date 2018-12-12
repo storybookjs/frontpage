@@ -60,11 +60,9 @@ export const Desc = styled.div`
 const Meta = styled.div`
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 1rem;
 
   @media (min-width: ${breakpoint}px) {
     max-width: 600px;
-    margin-bottom: 0;
 
     ${Desc} {
       margin: 0 auto;

@@ -37,7 +37,7 @@ const Desc = styled.div`
 const Meta = styled.div`
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   @media (min-width: ${breakpoint}px) {
     margin-bottom: 0;
   }
