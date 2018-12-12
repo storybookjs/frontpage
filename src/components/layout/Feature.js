@@ -45,7 +45,9 @@ const Meta = styled.div`
 `;
 
 const Children = styled.div`
-  margin-top: 1rem;
+  @media (min-width: ${breakpoint * 1}px) {
+    margin-top: 0.5rem;
+  }
 `;
 
 const Wrapper = styled.div`

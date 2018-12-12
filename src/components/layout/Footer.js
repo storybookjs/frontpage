@@ -250,6 +250,15 @@ const Resource = styled.div`
 
   img {
     margin-right: 20px;
+    display: block;
+    width: 32px;
+    height: auto;
+  }
+
+  @media (min-width: ${breakpoint * 1}px) {
+    img {
+      width: 48px;
+    }
   }
 `;
 

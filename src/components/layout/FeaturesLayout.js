@@ -49,8 +49,12 @@ const Layout = styled.div`
     `};
 `;
 
-export default function FeaturesLayout({ columns, children }) {
-  return <Layout columns={columns}>{children}</Layout>;
+export default function FeaturesLayout({ columns, children, ...props }) {
+  return (
+    <Layout columns={columns} {...props}>
+      {children}
+    </Layout>
+  );
 }
 
 FeaturesLayout.propTypes = {
