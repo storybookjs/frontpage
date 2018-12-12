@@ -6,6 +6,12 @@ import { styles } from './../../basics';
 const { color, breakpoint } = styles;
 
 import ComponentItem from './ComponentItem';
+import LogoToggle from './LogoToggle';
+
+const Logos = styled(LogoToggle)`
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+`;
 
 const Item = styled(ComponentItem)`
   display: inline-block;
@@ -23,17 +29,23 @@ const Item = styled(ComponentItem)`
     flex: 0 1 16.66%;
     width: 16.66%;
   }
-  padding: 0px 10px 20px;
+  padding: 0px 10px 0px;
   min-width: 150px;
 `;
 
 const List = styled.div`
   display: flex;
-  margin: 0 -10px;
+  margin-left: -10px;
+  margin-right: -10px;
+
+  &:not(:last-child) {
+    margin-bottom: 20px;
+  }
+
   position: relative;
 
   @media (min-width: ${breakpoint * 1}px) {
-    width: 110%;
+    width: calc(100% + 20px);
   }
 `;
 
@@ -43,9 +55,15 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-export default function ComponentList({ ...props }) {
+export default function ComponentList({ onSelectIndex, selectedIndex, ...props }) {
   return (
     <Wrapper {...props}>
+      <Logos
+        path="images/logos/user"
+        brands={['formidable', 'auth0', 'artsy']}
+        selectedIndex={0}
+        onSelectIndex={onSelectIndex}
+      />
       {/* TODO refactor to be able to pass `brand` and generate a list of 12 components */}
       <List>
         <Item imageUrl="images/use-cases/formidable/1.png" />
@@ -66,3 +84,8 @@ export default function ComponentList({ ...props }) {
     </Wrapper>
   );
 }
+
+ComponentList.propTypes = {
+  onSelectIndex: LogoToggle.propTypes.onSelectIndex,
+  selectedIndex: LogoToggle.propTypes.selectedIndex,
+};

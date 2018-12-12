@@ -10,7 +10,9 @@ import Feature from './../../layout/Feature';
 import FeaturesLayout from './../../layout/FeaturesLayout';
 import Testimonial from './../../layout/Testimonial';
 
+import ComponentCanvas from './ComponentCanvas';
 import ComponentList from './ComponentList';
+import LogoToggle from './LogoToggle';
 
 import { Icon, Link, styles } from './../../basics';
 
@@ -26,6 +28,31 @@ const Separator = styled.hr`
 
 const PageTitleSocialProof = styled(SocialProof)`
   padding-top: 0;
+`;
+
+const DesignSystem = styled.img``;
+const DesignSystemLogos = styled(LogoToggle)`
+  justify-content: center;
+`;
+
+const Placeholder = styled(PlaceholderAspectRatio)`
+  /* To adjust the aspect ratio,
+   add a placeholder for aspect ratio
+   checkout LandingScreen.js for an example
+*/
+  video {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
 `;
 
 export default function UseCasesScreen({ ...props }) {
@@ -44,7 +71,7 @@ export default function UseCasesScreen({ ...props }) {
       <Separator />
       <ValueProp
         orientation="left"
-        media={<div>image</div>}
+        media={<ComponentCanvas selectedIndex={0} onSelectIndex={() => 0} />}
         title="Create components"
         desc="UI engineers at Airbnb, Algolia, and Atlassian create the web’s most dependable UI components with Storybook."
         lazyloadPlaceholder={<PlaceholderAspectRatio ratio={0.75} />}
@@ -123,9 +150,19 @@ export default function UseCasesScreen({ ...props }) {
 
       <ValueProp
         orientation="right"
-        media={<div>image</div>}
+        media={
+          <Placeholder ratio={0.75}>
+            <DesignSystem src="images/use-cases/design-system.jpg" />
+            <DesignSystemLogos
+              path="images/logos/user"
+              brands={['github', 'salesforce', 'govuk']}
+              readOnly
+            />
+          </Placeholder>
+        }
         title="Design systems"
         desc="Engineering teams at GitHub, Salesforce, and UK Home Office rely on Storybook to build and distribute UI components that impact millions of people."
+        lazyloadPlaceholder={<Placeholder ratio={0.74} />}
       />
       <FeaturesLayout columns={3}>
         <Feature
