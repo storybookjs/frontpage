@@ -106,7 +106,7 @@ export default function CommunityScreen({ hasSubscribed, onSubscribe, ...props }
             image={<img src="images/community/presentation.svg" />}
             title="Talk about Storybook"
             desc="Present at work, meetups, and conferences. Get your point across with ready-to-use slides (Keynote, PDF) and illustrations."
-            links={[{ title: 'Check out the presentation materials', href: 'https://google.com' }]}
+            links={[{ title: 'View presentation materials', href: 'https://google.com' }]}
           />
           <Item
             image={<img src="images/community/brand.svg" />}

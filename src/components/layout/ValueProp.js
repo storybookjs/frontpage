@@ -8,24 +8,6 @@ const { color, typography, pageMargins, breakpoint } = styles;
 const Media = styled.div`
   width: 100%;
   position: relative;
-
-  /* To adjust the aspect ratio,
-     add a placeholder for aspect ratio
-     checkout LandingScreen.js for an example
-  */
-  video {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
 `;
 
 const Title = styled.div`
@@ -72,8 +54,8 @@ const Wrapper = styled.div`
 
   @media (min-width: ${breakpoint}px) {
     text-align: left;
-    padding-top: 5rem !important;
-    padding-bottom: 5rem !important;
+    padding-top: 7rem !important;
+    padding-bottom: 7rem !important;
 
     ${Meta} {
       order: 1;
@@ -112,7 +94,7 @@ const Wrapper = styled.div`
       css`
         /* Image in center */
         padding-top: 5rem !important;
-        padding-bottom: 5rem !important;
+        padding-bottom: 3rem !important;
 
         text-align: center;
         flex-direction: column;

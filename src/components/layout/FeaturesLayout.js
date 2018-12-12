@@ -16,7 +16,7 @@ const Layout = styled.div`
   }
 
   @media (min-width: ${breakpoint * 1}px) {
-    padding-bottom: 3rem;
+    padding-bottom: 1.5rem;
   }
 
   ${props =>
