@@ -56,12 +56,15 @@ const Item = styled.div`
         transform: translate3d(0, 0, 0);
         transition: all 150ms ease-out;
       }
-    `} ${props =>
+    `};
+  ${props =>
     props.loading &&
     css`
-      ${FigureWrapper} {
+      ${ImageOuter} {
         animation: ${glow} 1.5s ease-in-out infinite;
         background: ${color.mediumlight};
+      }
+      ${FigureWrapper} {
         box-shadow: none;
       }
     `};
