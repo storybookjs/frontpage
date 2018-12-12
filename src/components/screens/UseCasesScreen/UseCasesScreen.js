@@ -61,7 +61,7 @@ export default function UseCasesScreen({ ...props }) {
       <PageTitle
         heading="Use cases"
         title="Production stories"
-        desc="From global company to lean startup, thousands of teams rely on Storybook to build production UIs fast."
+        desc="From global company to lean startup, thousands of teams rely on Storybook to build production UIs faster."
         color="gold"
       />
       <PageTitleSocialProof

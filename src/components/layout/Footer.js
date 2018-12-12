@@ -154,13 +154,13 @@ const Colophon = styled.div`
 
   ${Teamcity} {
     /* Makes visual impact the same as other logos */
-    padding: 1px 0;
+    padding: 2px 0;
     margin-right: 15px;
   }
 
   ${Teamcity}, ${CircleCI} {
     /* Turn down the pure black of these logos */
-    opacity: .7;
+    opacity: .75;
   }
 `;
 
