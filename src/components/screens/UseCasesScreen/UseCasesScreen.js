@@ -104,6 +104,7 @@ export default function UseCasesScreen({ ...props }) {
           }
           title="Assemble component libraries"
           desc="Frontend infrastructure developers at Artsy, Formidable, and Auth0 create comprehensive component libraries using Storybook."
+          lazyload={false}
         />
         <FeaturesLayout columns={3}>
           <Feature
