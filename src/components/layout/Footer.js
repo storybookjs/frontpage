@@ -24,6 +24,60 @@ const SubLink = styled(Link)`
   margin-left: 20px;
 `;
 
+const ResourceTitle = styled.div`
+  font-weight: ${typography.weight.black};
+  margin-bottom: 0.25rem;
+`;
+
+const ResourceTitleLink = styled(Link)`
+  font-weight: ${typography.weight.black};
+  margin-bottom: 0.25rem;
+
+  svg {
+    height: 0.7rem;
+    width: 0.7rem;
+    vertical-align: initial;
+  }
+`;
+
+const ResourceDesc = styled.div`
+  margin-bottom: 0.25rem;
+`;
+
+const ResourceAction = styled(Link)`
+  margin-right: 15px;
+`;
+
+const ResourceActions = styled.div``;
+
+const Meta = styled.div`
+  overflow: hidden;
+`;
+
+const Resource = styled.div`
+  display: flex;
+  align-items: start;
+
+  &:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+
+  img {
+    margin-right: 20px;
+    display: block;
+    width: 40px;
+    height: auto;
+  }
+
+  @media (min-width: ${breakpoint * 1}px) {
+    img {
+      width: 48px;
+    }
+  }
+`;
+
+const Resources = styled.div``;
+
 const UpperColumn = styled.div`
   flex: 1;
 
@@ -93,7 +147,7 @@ const LogotypeWrapper = styled.a`
   display: block;
 
   img {
-    height: 26px;
+    height: 28px;
     width: auto;
     display: block;
 
@@ -133,14 +187,7 @@ const Teamcity = styled.img``;
 const CircleCI = styled.img``;
 
 const Colophon = styled.div`
-  width: 100%;
-  margin-bottom: 3rem;
-  display: block;
 
-  @media (min-width: ${breakpoint * 1}px) {
-    margin-bottom: 0;
-    width: 20%;
-  }
 
   a {
     display: inline-block;
@@ -151,6 +198,7 @@ const Colophon = styled.div`
     height: 22px;
     width: auto;
     display: inline-block;
+    filter: grayscale(100%);
   }
 
   ${Teamcity} {
@@ -166,14 +214,6 @@ const Colophon = styled.div`
 `;
 
 const Column = styled.div`
-  width: 50%;
-  margin-bottom: 2rem;
-
-  @media (min-width: ${breakpoint}px) {
-    width: auto;
-    margin-bottom: 0;
-  }
-
   > ${FooterLink} {
     display: block;
     margin-bottom: 0.75rem;
@@ -181,89 +221,10 @@ const Column = styled.div`
 `;
 
 const Subscribe = styled.div`
-  width: 100%;
-  @media (min-width: ${breakpoint}px) {
-    width: 35%;
-  }
   ${Text} {
     margin-bottom: 1rem;
   }
 `;
-
-const Lower = styled.div`
-  ${pageMargins};
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-
-  ${Colophon} {
-  }
-  ${Column} {
-  }
-`;
-
-const FooterWrapper = styled.div`
-  background-color: ${background.app};
-  border-top: 1px solid ${color.border};
-  font-size: ${typography.size.s2}px;
-  line-height: 20px;
-`;
-
-const ResourceTitle = styled.div`
-  font-weight: ${typography.weight.black};
-  margin-bottom: 0.25rem;
-`;
-
-const ResourceTitleLink = styled(Link)`
-  font-weight: ${typography.weight.black};
-  margin-bottom: 0.25rem;
-
-  svg {
-    height: 0.7rem;
-    width: 0.7rem;
-    vertical-align: initial;
-  }
-`;
-
-const ResourceDesc = styled.div`
-  margin-bottom: 0.25rem;
-`;
-
-const ResourceAction = styled(Link)`
-  margin-right: 15px;
-`;
-
-const ResourceActions = styled.div``;
-
-const Meta = styled.div`
-  overflow: hidden;
-`;
-
-const Resource = styled.div`
-  display: flex;
-  align-items: start;
-
-  &:not(:last-child) {
-    margin-bottom: 2rem;
-  }
-
-  img {
-    margin-right: 20px;
-    display: block;
-    width: 40px;
-    height: auto;
-  }
-
-  @media (min-width: ${breakpoint * 1}px) {
-    img {
-      width: 48px;
-    }
-  }
-`;
-
-const Resources = styled.div``;
 
 const MailingListConfirm = styled.div`
   font-size: ${typography.size.s2}px;
@@ -281,6 +242,52 @@ const MailingListForm = styled(MailingListSubscribeForm)`
   @media (min-width: ${breakpoint}px) {
     margin: 0 0 1.25rem;
   }
+`;
+
+const Lower = styled.div`
+  ${pageMargins};
+  padding-top: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  ${Colophon} {
+    width: 100%;
+    margin-bottom: 3rem;
+    display: block;
+
+    @media (min-width: ${breakpoint * 1}px) {
+      margin-bottom: 3rem;
+      width: auto;
+      max-width: 200px;
+    }
+  }
+
+  ${Column} {
+    width: 50%;
+    margin-bottom: 2rem;
+
+    @media (min-width: ${breakpoint}px) {
+      padding-right: 20px;
+      width: auto;
+      margin-bottom: 3rem;
+    }
+  }
+
+  ${Subscribe} {
+    width: 100%;
+    @media (min-width: ${breakpoint}px) {
+      width: auto;
+      margin-bottom: 3rem;
+    }
+  }
+`;
+
+const FooterWrapper = styled.div`
+  background-color: ${background.app};
+  border-top: 1px solid ${color.border};
+  font-size: ${typography.size.s2}px;
+  line-height: 20px;
 `;
 
 export default function Footer({ hasSubscribed, onSubscribe, ...props }) {
@@ -377,7 +384,7 @@ export default function Footer({ hasSubscribed, onSubscribe, ...props }) {
           <Text>
             The MIT License (MIT). Website design by{' '}
             <Link tertiary href="https://www.chromaui.com">
-              @domyen
+              <b>@domyen</b>
             </Link>{' '}
             and the awesome Storybook community.
           </Text>
