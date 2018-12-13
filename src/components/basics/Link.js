@@ -47,6 +47,19 @@ const LinkWrapper = styled.a`
     }
   `}
 
+  ${props =>
+    props.containsIcon &&
+    css`
+      svg {
+        height: 1em;
+        width: 1em;
+        vertical-align: middle;
+        position: relative;
+        bottom: 0;
+        margin-right: 0;
+      }
+    `};
+
 
 
   &.secondary {
