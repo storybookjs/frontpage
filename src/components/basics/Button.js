@@ -248,7 +248,7 @@ const ButtonWrapper = styled.button`
       }
       &:focus { box-shadow: ${color.medium} 0 0 0 1px inset, ${rgba(color.primary, 0.4)} 0 1px 9px 2px; }
       &:focus:hover { box-shadow: ${color.medium} 0 0 0 1px inset, ${rgba(color.primary, 0.2)} 0 8px 18px 0px;}
-    `}
+    `};
 
     ${props.primary && css`
       box-shadow: ${color.primary} 0 0 0 1px inset;
@@ -269,7 +269,28 @@ const ButtonWrapper = styled.button`
       }
       &:focus { box-shadow: ${color.primary} 0 0 0 1px inset, ${rgba(color.primary, 0.4)} 0 1px 9px 2px; }
       &:focus:hover { box-shadow: ${color.primary} 0 0 0 1px inset, ${rgba(color.primary, 0.2)} 0 8px 18px 0px;}
-    `}
+    `};
+
+    ${props.secondary && css`
+      box-shadow: ${color.secondary} 0 0 0 1px inset;
+  		color: ${color.secondary};
+
+      svg path { fill: ${color.secondary}; }
+
+      &:hover {
+        box-shadow: ${color.secondary} 0 0 0 1px inset;
+        background: transparent;
+      }
+
+      &:active {
+        background: ${color.secondary};
+        box-shadow: ${color.secondary} 0 0 0 1px inset;
+        color: ${color.lightest};
+        svg path { fill: ${color.lightest}; }
+      }
+      &:focus { box-shadow: ${color.secondary} 0 0 0 1px inset, ${rgba(color.secondary, 0.4)} 0 1px 9px 2px; }
+      &:focus:hover { box-shadow: ${color.secondary} 0 0 0 1px inset, ${rgba(color.secondary, 0.2)} 0 8px 18px 0px;}
+    `};
 	`}
 
   ${props => props.outline && props.active && css`
