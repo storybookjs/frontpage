@@ -80,9 +80,9 @@ const Layout = styled.div`
     `};
 `;
 
-export default function AddonList({ appearance, children }) {
+export default function AddonList({ appearance, children, ...props }) {
   return (
-    <Layout appearance={appearance}>
+    <Layout appearance={appearance} {...props}>
       {appearance === 'official' ? <Grid>{children}</Grid> : <List>{children}</List>}
     </Layout>
   );
