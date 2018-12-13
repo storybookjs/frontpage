@@ -50,7 +50,10 @@ const Desc = styled.div`
 const Meta = styled.div``;
 
 const Children = styled.div`
-  margin-top: 1rem;
+  margin-top: 0.25rem;
+  @media (min-width: ${breakpoint * 1.5}px) {
+    margin-top: 1rem;
+  }
 `;
 
 const Wrapper = styled.div`

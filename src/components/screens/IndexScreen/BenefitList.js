@@ -57,6 +57,9 @@ const Layout = styled.div`
   @media (min-width: ${breakpoint * 2}px) {
     margin: 0 ${pageMargin * 3}%;
   }
+  @media (min-width: ${breakpoint * 3}px) {
+    margin: 0 ${pageMargin * 4}%;
+  }
 `;
 
 export default function BenefitList({ children }) {
