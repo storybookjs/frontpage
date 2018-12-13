@@ -56,7 +56,6 @@ export default function ContributorItem({ contributors, contributorCount, gitHub
       </ContributorsWrapper>
       <Link withArrow href={gitHubUrl}>
         View all on GitHub
-        <Icon icon="arrowright" />
       </Link>
     </Wrapper>
   );

@@ -91,7 +91,6 @@ export default function CommunityItem({ image, title, desc, links, ...props }) {
               withArrow
             >
               <span>{title}</span>
-              <Icon icon="arrowright" />
             </StyledLink>
           ))}
       </Meta>

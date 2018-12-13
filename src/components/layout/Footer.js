@@ -298,22 +298,10 @@ export default function Footer({ hasSubscribed, onSubscribe, ...props }) {
                   easier.
                 </ResourceDesc>
                 <ResourceActions>
-                  <ResourceAction withArrow>
-                    React
-                    <Icon icon="arrowright" />
-                  </ResourceAction>
-                  <ResourceAction withArrow>
-                    Vue
-                    <Icon icon="arrowright" />
-                  </ResourceAction>
-                  <ResourceAction withArrow>
-                    Angular
-                    <Icon icon="arrowright" />
-                  </ResourceAction>
-                  <ResourceAction withArrow>
-                    View more
-                    <Icon icon="arrowright" />
-                  </ResourceAction>
+                  <ResourceAction withArrow>React</ResourceAction>
+                  <ResourceAction withArrow>Vue</ResourceAction>
+                  <ResourceAction withArrow>Angular</ResourceAction>
+                  <ResourceAction withArrow>View more</ResourceAction>
                 </ResourceActions>
               </Meta>
             </Resource>
@@ -328,7 +316,6 @@ export default function Footer({ hasSubscribed, onSubscribe, ...props }) {
                 <ResourceActions>
                   <ResourceAction href="https://www.learnstorybook.com/" withArrow>
                     Learn Storybook now
-                    <Icon icon="arrowright" />
                   </ResourceAction>
                 </ResourceActions>
               </Meta>
@@ -338,16 +325,15 @@ export default function Footer({ hasSubscribed, onSubscribe, ...props }) {
         <UpperColumn>
           <Title>
             News
-            <SubLink withArrow>
+            <SubLink tertiary withArrow>
               Read more
-              <Icon icon="arrowright" />
             </SubLink>
           </Title>{' '}
           <Resources>
             <Resource>
               <Meta>
-                <ResourceTitleLink>
-                  Storybook 4.0 is here <Icon icon="arrowrightalt" />
+                <ResourceTitleLink tertiary withArrow>
+                  Storybook 4.0 is here
                 </ResourceTitleLink>
                 <ResourceDesc>
                   Big updates to support more build tools and frameworksBig updates to support more
@@ -357,16 +343,16 @@ export default function Footer({ hasSubscribed, onSubscribe, ...props }) {
             </Resource>
             <Resource>
               <Meta>
-                <ResourceTitleLink>
-                  Storybook 4.0 is here <Icon icon="arrowrightalt" />
+                <ResourceTitleLink tertiary withArrow>
+                  Storybook 4.0 is here
                 </ResourceTitleLink>
                 <ResourceDesc>Big updates to support more build tools and frameworks</ResourceDesc>
               </Meta>
             </Resource>
             <Resource>
               <Meta>
-                <ResourceTitleLink>
-                  Storybook 4.0 is here <Icon icon="arrowrightalt" />
+                <ResourceTitleLink tertiary withArrow>
+                  Storybook 4.0 is here
                 </ResourceTitleLink>
                 <ResourceDesc>Big updates to support more build tools and frameworks</ResourceDesc>
               </Meta>
@@ -412,7 +398,7 @@ export default function Footer({ hasSubscribed, onSubscribe, ...props }) {
         </Colophon>
         <Column>
           <Title>Storybook</Title>
-          <FooterLink tertiary href={url.docs}>
+          <FooterLink tertiary href={url.docs.home}>
             Docs
           </FooterLink>
           <FooterLink tertiary href={url.addons}>

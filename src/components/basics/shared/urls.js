@@ -1,6 +1,7 @@
 export const url = {
   gitHub: {
     repo: 'https://github.com/storybooks/storybook',
+    issues: 'https://github.com/storybooks/storybook/issues',
     releases: 'https://github.com/storybooks/storybook/releases',
     contributors: 'https://github.com/storybooks/storybook/graphs/contributors',
     brand: 'https://github.com/storybooks/press',
@@ -9,12 +10,15 @@ export const url = {
   npm: 'https://www.npmjs.com/package/@storybook/react',
 
   // Navigation
-  docs: 'https://storybook.js.org/basics/introduction/',
+  docs: {
+    home: 'https://storybook.js.org/basics/introduction/',
+    addonInstruction: 'https://storybook.js.org/basics/introduction/',
+  },
   addons: '/addons',
   community: '/community',
   useCases: '/use-cases',
   support: '/support',
-  support: '/team',
+  team: '/team',
 
   // Social
   blog: 'https://medium.com/storybookjs',

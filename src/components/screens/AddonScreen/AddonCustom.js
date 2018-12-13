@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Icon, Link, styles } from './../../basics';
+import { Icon, Link, styles, urls } from './../../basics';
 
 const { background, color, spacing, typography, pageMargin, pageMargins, breakpoint } = styles;
+const { url } = urls;
 
 const Title = styled.div`
   font-weight: ${typography.weight.black};
@@ -75,9 +76,8 @@ export default function AddonCustom({ ...props }) {
           <Desc>
             Customize Storybook's UI, API, and create custom workflows by building your own addon
           </Desc>
-          <Link withArrow>
+          <Link withArrow href={url.docs.addonInstruction}>
             Learn how to build an addon
-            <Icon icon="arrowright" />
           </Link>
         </Meta>
       </Inner>

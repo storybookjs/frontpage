@@ -328,7 +328,6 @@ function Framework({ framework, logo, ...props }) {
           alt={framework}
         />
         <span>{framework}</span>
-        <Icon icon="arrowright" />
       </FrameworkLink>
     </FrameworkItem>
   );
@@ -349,7 +348,7 @@ export default function Hero({ ...props }) {
           and Angular. It makes building stunning UIs organized and efficient.
         </Subtitle>
         <PitchActions>
-          <Button primary isLink href="www.google.com">
+          <Button primary isLink href={url.docs.home}>
             Get Started
           </Button>
           <Button outline primary>

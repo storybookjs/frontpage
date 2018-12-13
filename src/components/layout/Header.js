@@ -139,18 +139,20 @@ const NavWrapper = styled.nav`
   }
 `;
 
+const links = [
+  { title: 'Docs', href: url.docs.home, isGatsby: false },
+  { title: 'Addons', href: url.addons, isGatsby: true },
+  { title: 'Community', href: url.community, isGatsby: true },
+  { title: 'Use cases', href: url.useCases, isGatsby: true },
+  { title: 'Support', href: url.support, isGatsby: true },
+  { title: 'Team', href: url.team, isGatsby: true },
+];
+
 export default function Header({ ...props }) {
   const mobileMenu = (
     <MobileMenu>
       <TooltipLinkList
-        links={[
-          { title: 'Docs', href: url.docs },
-          { title: 'Addons', href: url.addons },
-          { title: 'Community', href: url.community },
-          { title: 'Use cases', href: url.useCases },
-          { title: 'Support', href: url.support },
-          { title: 'Team', href: url.team },
-        ]}
+        links={links}
         // TODO: Pass GatsbyLink here
         LinkWrapper={null}
       />
@@ -170,36 +172,13 @@ export default function Header({ ...props }) {
         </NavGroup>
 
         <NavGroup right>
-          <NavItem showDesktop>
-            <NavLink tertiary href={url.docs}>
-              Docs
-            </NavLink>
-          </NavItem>
-          <NavItem showDesktop>
-            <NavLink tertiary href={url.addons}>
-              Addons
-            </NavLink>
-          </NavItem>
-          <NavItem showDesktop>
-            <NavLink tertiary href={url.community}>
-              Community
-            </NavLink>
-          </NavItem>
-          <NavItem showDesktop>
-            <NavLink tertiary href={url.useCases}>
-              Use cases
-            </NavLink>
-          </NavItem>
-          <NavItem showDesktop>
-            <NavLink tertiary href={url.support}>
-              Support
-            </NavLink>
-          </NavItem>
-          <NavItem showDesktop>
-            <NavLink tertiary href="/team">
-              Team
-            </NavLink>
-          </NavItem>
+          {links.map(({ title, href, isGatsby }, index) => (
+            <NavItem showDesktop>
+              <NavLink tertiary href={!isGatsby && href} to={isGatsby && href} isGatsby={isGatsby}>
+                {title}
+              </NavLink>
+            </NavItem>
+          ))}
 
           <NavItem showMobile>
             <WithTooltip placement="top" trigger="click" tooltip={mobileMenu}>
