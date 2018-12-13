@@ -1,3 +1,11 @@
+## Storybook instructions
+1. npm install
+2. npm run storybook
+
+## Gatsby instructions
+1. npm start
+
+
 <p align="center">
   <a href="https://www.gatsbyjs.org">
     <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
