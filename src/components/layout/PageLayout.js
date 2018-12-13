@@ -24,13 +24,12 @@ export default function PageLayout({ children, ...props }) {
     <Layout {...props}>
       <Header />
       {children}
-      <Footer hasSubscribed={hasSubscribed} onSubscribe={onSubscribe} />
+      {'' /*TODO: make footer subscribed state self-contained*/}
+      <Footer hasSubscribed={false} onSubscribe={() => 0} />
     </Layout>
   );
 }
 
 PageLayout.propTypes = {
   children: PropTypes.node.isRequired,
-  hasSubscribed: Footer.propTypes.hasSubscribed,
-  onSubscribe: Footer.propTypes.onSubscribe,
 };

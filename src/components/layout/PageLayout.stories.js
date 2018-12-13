@@ -6,13 +6,5 @@ import PageLayout from './PageLayout';
 import { onSubscribe } from './Footer.stories';
 
 storiesOf('layout/PageLayout', module)
-  .add('not subscribed', () => (
-    <PageLayout hasSubscribed={false} onSubscribe={onSubscribe}>
-      children
-    </PageLayout>
-  ))
-  .add('subscribed', () => (
-    <PageLayout hasSubscribed onSubscribe={onSubscribe}>
-      children
-    </PageLayout>
-  ));
+  .add('not subscribed', () => <PageLayout>children</PageLayout>)
+  .add('subscribed', () => <PageLayout>children</PageLayout>);
