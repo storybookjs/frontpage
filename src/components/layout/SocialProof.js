@@ -48,7 +48,7 @@ const Logos = styled.div`
   }
 
   @media (min-width: ${breakpoint * 1.333}px) {
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: space-between;
     &:not(:only-child) {
       padding-bottom: 1.5rem;

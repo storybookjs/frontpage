@@ -94,7 +94,7 @@ const Wrapper = styled.div`
       css`
         /* Image in center */
         padding-top: 5rem !important;
-        padding-bottom: 3rem !important;
+        padding-bottom: 5rem !important;
 
         text-align: center;
         flex-direction: column;
