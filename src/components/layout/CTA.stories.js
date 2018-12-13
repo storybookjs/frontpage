@@ -14,6 +14,6 @@ storiesOf('layout/CTA', module)
           Lorem ipsum dolor sit amet. <br /> Consectatur vestibulum.
         </span>
       }
-      action={<Button primary>Get started</Button>}
+      action={<Button secondary>Get started</Button>}
     />
   ));

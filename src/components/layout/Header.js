@@ -98,7 +98,9 @@ const NavItem = styled.div`
       @media (min-width: ${breakpoint}px) {
         display: inline-block;
       }
-    `} ${props =>
+    `};
+
+  ${props =>
     props.showMobile &&
     css`
       @media (min-width: ${breakpoint}px) {
