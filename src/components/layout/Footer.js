@@ -252,7 +252,7 @@ const Resource = styled.div`
   img {
     margin-right: 20px;
     display: block;
-    width: 32px;
+    width: 40px;
     height: auto;
   }
 
