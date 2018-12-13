@@ -11,7 +11,10 @@ const Layout = styled.div`
   flex-direction: column;
 
   > * {
-    margin-bottom: 5rem;
+    margin-bottom: 2rem;
+    @media (min-width: ${breakpoint * 1.333}px) {
+      margin-bottom: 5rem;
+    }
     flex: 1;
 
     &:last-child {

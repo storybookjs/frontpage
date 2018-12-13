@@ -30,6 +30,8 @@ const StorybookBadgeOuter = styled.div`
   padding: 15px;
   border-radius: 4px;
   margin-right: 15px;
+
+  display: inline-block;
 `;
 const StorybookBadgeWrapper = styled.div`
   display: flex;
@@ -57,22 +59,28 @@ const OpenCollectiveLogos = styled.div`
 
 const CommunityLayout = styled.div`
   ${pageMargins};
+  display: flex;
+  flex-direction: column;
   padding-top: 3rem;
   padding-bottom: 3rem;
-  @media (min-width: ${breakpoint * 1}px) {
+
+  @media (min-width: ${breakpoint * 1.333}px) {
+    flex-direction: row;
     padding-top: 7rem;
     padding-bottom: 7rem;
   }
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
 
   ${Sidebar}, ${List} {
     flex: 1;
   }
 
-  ${Sidebar} > * {
-    max-width: 360px;
+  ${Sidebar} {
+    margin-bottom: 3rem;
+    & > * {
+      @media (min-width: ${breakpoint * 1.333}px) {
+        max-width: 360px;
+      }
+    }
   }
 `;
 

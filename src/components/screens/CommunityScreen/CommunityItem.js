@@ -6,16 +6,15 @@ import { Icon, Link, styles } from './../../basics';
 const { color, spacing, typography, pageMargin, breakpoint } = styles;
 
 const Image = styled.div`
-  float: left;
-  margin-right: 10px;
+  margin-right: 20px;
 
   img {
     display: block;
-    width: 60px;
+    width: 40px;
     height: auto;
   }
 
-  @media (min-width: ${breakpoint * 1}px) {
+  @media (min-width: ${breakpoint * 1.333}px) {
     margin-right: 40px;
     img {
       width: 140px;
@@ -28,7 +27,7 @@ const Title = styled.div`
   font-size: ${typography.size.s3}px;
   line-height: 1.5rem;
 
-  @media (min-width: ${breakpoint * 1}px) {
+  @media (min-width: ${breakpoint * 1.333}px) {
     font-size: ${typography.size.m1}px;
     line-height: ${typography.size.m2}px;
     margin-bottom: 0.5rem;
@@ -47,7 +46,7 @@ const StyledLink = styled(Link)`
   font-size: ${typography.size.s3}px;
   line-height: 1.5rem;
 
-  @media (min-width: ${breakpoint * 1}px) {
+  @media (min-width: ${breakpoint * 1.333}px) {
     margin-right: 40px;
   }
 
@@ -71,7 +70,10 @@ const Wrapper = styled.div`
   font-size: ${typography.size.s3}px;
   line-height: 1.5;
   display: flex;
-  align-items: center;
+
+  @media (min-width: ${breakpoint * 1.333}px) {
+    align-items: center;
+  }
 `;
 
 export default function CommunityItem({ image, title, desc, links, ...props }) {

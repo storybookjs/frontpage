@@ -11,7 +11,7 @@ const Title = styled.div`
   margin-bottom: 0.75rem;
   line-height: 1.5rem;
 
-  @media (min-width: ${breakpoint * 1}px) {
+  @media (min-width: ${breakpoint * 1.333}px) {
     font-size: ${typography.size.l1}px;
     line-height: ${typography.size.l1}px;
     margin-bottom: 0.75rem;
@@ -22,19 +22,25 @@ const Desc = styled.div`
   color: ${color.dark};
   margin-bottom: 0.25rem;
 
-  @media (min-width: ${breakpoint * 1}px) {
+  @media (min-width: ${breakpoint * 1.333}px) {
     font-size: ${typography.size.m1}px;
     line-height: 32px;
   }
 `;
 
 const Children = styled.div`
-  margin-top: 2rem;
+  margin-top: 1rem;
+  @media (min-width: ${breakpoint * 1.333}px) {
+    margin-top: 2rem;
+  }
   ${props =>
     !props.loneChild &&
     css`
       border-top: 1px solid ${color.border};
-      padding-top: 2rem;
+      padding-top: 1rem;
+      @media (min-width: ${breakpoint * 1.333}px) {
+        padding-top: 2rem;
+      }
     `};
 `;
 

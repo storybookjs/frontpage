@@ -8,15 +8,15 @@ const { color, spacing, typography, pageMargin, breakpoint } = styles;
 const { url } = urls;
 
 const Image = styled.img`
-  width: 2.5rem;
-  height: 2.5rem;
-  float: left;
-  margin-right: 30px;
+  display: block;
+  width: 40px;
+  height: 40px;
+
+  margin-right: 20px;
 
   @media (min-width: ${breakpoint * 1}px) {
-    float: none;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 48px;
+    height: 48px;
     margin-bottom: 0.5rem;
     margin-right: 0;
   }
@@ -41,6 +41,19 @@ const Meta = styled.div`
 `;
 
 const Item = styled.a`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  @media (min-width: ${breakpoint * 1}px) {
+    flex-direction: column;
+  }
+  ${Image} {
+    flex: none;
+  }
+  ${Meta} {
+    flex: 1;
+  }
+
   text-decoration: none;
   padding: 1.5rem 1.25rem;
   background: ${color.lightest};
