@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-import { Badge, Button, Link, styles } from './../../basics';
+import { Badge, Button, Link, styles, urls } from './../../basics';
 import PageLayout from './../../layout/PageLayout';
 import Hero from './Hero';
 import SocialProof from './../../layout/SocialProof';
@@ -14,6 +14,7 @@ import Testimonial from './../../layout/Testimonial';
 import CTA from './../../layout/CTA';
 
 const { background, color, spacing, typography, pageMargin, breakpoint } = styles;
+const { url } = urls;
 
 const Contrast = styled.div`
   background-color: ${background.app};
@@ -213,7 +214,7 @@ export default function IndexScreen({ ...props }) {
       <CTA
         text={<span>Storybook is quick to install and it’s easy to get started.</span>}
         action={
-          <Button primary isLink>
+          <Button secondary isLink href={url.docs.home}>
             Get started
           </Button>
         }

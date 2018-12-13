@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Button, Icon, Link, styles } from './../../basics';
+import { Button, Icon, Link, styles, urls } from './../../basics';
 import PageLayout from './../../layout/PageLayout';
 import PageTitle from './../../layout/PageTitle';
 import AddonItem from './AddonItem';
@@ -10,6 +10,7 @@ import AddonCustom from './AddonCustom';
 import CTA from './../../layout/CTA';
 
 const { background, color, spacing, typography, pageMargins, breakpoint } = styles;
+const { url } = urls;
 
 const Heading = styled.h2`
   font-weight: ${typography.weight.black};
@@ -49,56 +50,56 @@ export default function AddonScreen({ ...props }) {
           image={<img src="images/addons/knobs.svg" />}
           title="Knobs"
           desc="Interact with component inputs dynamically in the Storybook UI"
-          addonUrl="https://google.com"
+          addonUrl={url.officialAddons.knobs}
         />
         <AddonItem
           appearance="official"
           image={<img src="images/addons/actions.svg" />}
           title="Actions"
           desc="Get UI feedback when an action is performed on an interactive element."
-          addonUrl="https://google.com"
+          addonUrl={url.officialAddons.actions}
         />
         <AddonItem
           appearance="official"
           image={<img src="images/addons/source.svg" />}
           title="Source"
           desc="View a story’s source code to see how it works and paste into your app."
-          addonUrl="https://google.com"
+          addonUrl={url.officialAddons.source}
         />
         <AddonItem
           appearance="official"
           image={<img src="images/addons/docs.svg" />}
-          title="Docs"
+          title="Info"
           desc="Document component usage and properties in Markdown"
-          addonUrl="https://google.com"
+          addonUrl={url.officialAddons.info}
         />
         <AddonItem
           appearance="official"
-          image={<img src="images/addons/viewports.svg" />}
-          title="Viewports"
+          image={<img src="images/addons/viewport.svg" />}
+          title="Viewport"
           desc="Build responsive components by adjusting Storybook’s viewport size and orientation"
-          addonUrl="https://google.com"
+          addonUrl={url.officialAddons.viewport}
         />
         <AddonItem
           appearance="official"
           image={<img src="images/addons/storyshots.svg" />}
           title="Storyshots"
           desc="Take a code snapshot of every story automatically with Jest"
-          addonUrl="https://google.com"
+          addonUrl={url.officialAddons.storyshots}
         />
         <AddonItem
           appearance="official"
           image={<img src="images/addons/backgrounds.svg" />}
           title="Backgrounds"
           desc="Switch backgrounds to view components in different settings"
-          addonUrl="https://google.com"
+          addonUrl={url.officialAddons.backgrounds}
         />
         <AddonItem
           appearance="official"
           image={<img src="images/addons/accessibility.svg" />}
           title="Accessibility"
           desc="Test component compliance with web accessibility standards"
-          addonUrl="https://google.com"
+          addonUrl={url.officialAddons.accessibility}
         />
       </AddonList>
 
@@ -148,7 +149,7 @@ export default function AddonScreen({ ...props }) {
           desc="With this addon, you can showcase multiple components (or varying component states) within 1 story. Break your stories down into smaller categories (chapters) and subcategories (sections) for more organizational goodness."
           addonUrl="https://google.com"
         />
-        <Button outline primary>
+        <Button outline secondary isLink href={url.gitHub.frontpage}>
           <Icon icon="plus" /> Add your addon here
         </Button>
       </AddonList>
@@ -157,7 +158,7 @@ export default function AddonScreen({ ...props }) {
       <CTA
         text={<span>Build UIs faster. Add Storybook to your project now.</span>}
         action={
-          <Button primary isLink>
+          <Button secondary isLink href={url.docs.home}>
             Get started
           </Button>
         }

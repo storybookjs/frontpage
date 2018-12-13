@@ -1,41 +1,57 @@
+const gitHubOrg = `https://github.com/storybooks`;
+const homepageUrl = `https://storybook.js.org`;
+
 export const url = {
   gitHub: {
-    repo: 'https://github.com/storybooks/storybook',
-    issues: 'https://github.com/storybooks/storybook/issues',
-    releases: 'https://github.com/storybooks/storybook/releases',
-    contributors: 'https://github.com/storybooks/storybook/graphs/contributors',
-    brand: 'https://github.com/storybooks/press',
+    repo: `${gitHubOrg}/storybook`,
+    frontpage: `${gitHubOrg}/frontpage`,
+    issues: `${gitHubOrg}/storybook/issues`,
+    releases: `${gitHubOrg}/storybook/releases`,
+    contributors: `${gitHubOrg}/storybook/graphs/contributors`,
+    brand: `${gitHubOrg}/press`,
   },
 
-  npm: 'https://www.npmjs.com/package/@storybook/react',
+  npm: `https://www.npmjs.com/package/@storybook/react`,
 
   // Navigation
   docs: {
-    home: 'https://storybook.js.org/basics/introduction/',
-    addonInstruction: 'https://storybook.js.org/basics/introduction/',
+    home: `${homepageUrl}/basics/introduction/`,
+    addonInstruction: `${homepageUrl}/addons/writing-addons/`,
   },
-  addons: '/addons',
-  community: '/community',
-  useCases: '/use-cases',
-  support: '/support',
-  team: '/team',
+  addons: `/addons`,
+  community: `/community`,
+  useCases: `/use-cases`,
+  support: `/support`,
+  team: `/team`,
 
   // Social
-  blog: 'https://medium.com/storybookjs',
-  twitter: 'https://twitter.com/storybookjs',
-  chat: 'https://discord.gg/UUt2PJb',
-  youtube: 'https://www.youtube.com/channel/UCr7Quur3eIyA_oe8FNYexfg',
+  blog: `https://medium.com/storybookjs`,
+  twitter: `https://twitter.com/storybookjs`,
+  chat: `https://discord.gg/UUt2PJb`,
+  youtube: `https://www.youtube.com/channel/UCr7Quur3eIyA_oe8FNYexfg`,
 
   // Framework docs
   framework: {
-    react: 'https://storybook.js.org/basics/guide-react/',
-    reactNative: 'https://storybook.js.org/basics/guide-react-native/',
-    vue: 'https://storybook.js.org/basics/guide-vue/',
-    angular: 'https://storybook.js.org/basics/guide-angular/',
-    ember: 'https://storybook.js.org/basics/guide-ember/',
-    html: 'https://storybook.js.org/basics/guide-html/',
-    svelte: 'https://storybook.js.org/basics/guide-svelte/',
-    mithril: 'https://storybook.js.org/basics/guide-mithril/',
-    riot: 'https://storybook.js.org/basics/guide-riot/',
+    react: `${homepageUrl}/basics/guide-react/`,
+    reactNative: `${homepageUrl}/basics/guide-react-native/`,
+    vue: `${homepageUrl}/basics/guide-vue/`,
+    angular: `${homepageUrl}/basics/guide-angular/`,
+    ember: `${homepageUrl}/basics/guide-ember/`,
+    html: `${homepageUrl}/basics/guide-html/`,
+    svelte: `${homepageUrl}/basics/guide-svelte/`,
+    mithril: `${homepageUrl}/basics/guide-mithril/`,
+    riot: `${homepageUrl}/basics/guide-riot/`,
+  },
+
+  // Official addons
+  officialAddons: {
+    knobs: `${gitHubOrg}/storybook/tree/next/addons/knobs`,
+    actions: `${gitHubOrg}/storybook/tree/next/addons/actions`,
+    source: `${gitHubOrg}/storybook/tree/next/addons/storysource`,
+    info: `${gitHubOrg}/storybook/tree/next/addons/info`,
+    viewport: `${gitHubOrg}/storybook/tree/next/addons/viewport`,
+    storyshots: `${gitHubOrg}/storybook/tree/next/addons/storyshots`,
+    backgrounds: `${gitHubOrg}/storybook/tree/next/addons/backgrounds`,
+    accessibility: `${gitHubOrg}/storybook/tree/next/addons/a11y`,
   },
 };

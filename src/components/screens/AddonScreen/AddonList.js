@@ -11,7 +11,7 @@ const List = styled.div`
   display: flex;
   flex-wrap: wrap;
 
-  > *:not(button) {
+  > *:not(button):not(a) {
     margin-bottom: 1.25rem;
 
     @media (min-width: ${breakpoint * 1}px) {
