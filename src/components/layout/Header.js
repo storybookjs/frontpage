@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
 import { Link, Button, Icon, TooltipLinkList, WithTooltip, styles, urls } from './../basics';
+import { navLinks } from './PageLayout';
 
 const { color, typography, spacing, pageMargins, breakpoint } = styles;
 const { url } = urls;
@@ -139,20 +140,11 @@ const NavWrapper = styled.nav`
   }
 `;
 
-const links = [
-  { title: 'Docs', href: url.docs.home, isGatsby: false },
-  { title: 'Addons', href: url.addons, isGatsby: true },
-  { title: 'Community', href: url.community, isGatsby: true },
-  { title: 'Use cases', href: url.useCases, isGatsby: true },
-  { title: 'Support', href: url.support, isGatsby: true },
-  { title: 'Team', href: url.team, isGatsby: true },
-];
-
 export default function Header({ ...props }) {
   const mobileMenu = (
     <MobileMenu>
       <TooltipLinkList
-        links={links}
+        links={navLinks}
         // TODO: Pass GatsbyLink here
         LinkWrapper={null}
       />
@@ -172,7 +164,7 @@ export default function Header({ ...props }) {
         </NavGroup>
 
         <NavGroup right>
-          {links.map(({ title, href, isGatsby }, index) => (
+          {navLinks.map(({ title, href, isGatsby }, index) => (
             <NavItem showDesktop>
               <NavLink tertiary href={!isGatsby && href} to={isGatsby && href} isGatsby={isGatsby}>
                 {title}

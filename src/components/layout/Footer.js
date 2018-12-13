@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { Icon, Link, Subheading, styles, urls } from './../basics';
 
 import MailingListSubscribeForm from './MailingListSubscribeForm';
+import { navLinks } from './PageLayout';
 
 const { background, color, typography, pageMargins, pageMargin, spacing, breakpoint } = styles;
 const { url } = urls;
@@ -298,10 +299,18 @@ export default function Footer({ hasSubscribed, onSubscribe, ...props }) {
                   easier.
                 </ResourceDesc>
                 <ResourceActions>
-                  <ResourceAction withArrow>React</ResourceAction>
-                  <ResourceAction withArrow>Vue</ResourceAction>
-                  <ResourceAction withArrow>Angular</ResourceAction>
-                  <ResourceAction withArrow>View more</ResourceAction>
+                  <ResourceAction withArrow href={url.framework.react}>
+                    React
+                  </ResourceAction>
+                  <ResourceAction withArrow href={url.framework.vue}>
+                    Vue
+                  </ResourceAction>
+                  <ResourceAction withArrow href={url.framework.angular}>
+                    Angular
+                  </ResourceAction>
+                  <ResourceAction withArrow href={url.docs.home}>
+                    View more
+                  </ResourceAction>
                 </ResourceActions>
               </Meta>
             </Resource>
@@ -325,7 +334,7 @@ export default function Footer({ hasSubscribed, onSubscribe, ...props }) {
         <UpperColumn>
           <Title>
             News
-            <SubLink tertiary withArrow>
+            <SubLink tertiary withArrow href={url.blog}>
               Read more
             </SubLink>
           </Title>{' '}
@@ -398,22 +407,12 @@ export default function Footer({ hasSubscribed, onSubscribe, ...props }) {
         </Colophon>
         <Column>
           <Title>Storybook</Title>
-          <FooterLink tertiary href={url.docs.home}>
-            Docs
-          </FooterLink>
-          <FooterLink tertiary href={url.addons}>
-            Addons
-          </FooterLink>
-          <FooterLink tertiary href={url.community}>
-            Community
-          </FooterLink>
-          <FooterLink tertiary href={url.useCases}>
-            Use cases
-          </FooterLink>
-          <FooterLink tertiary href={url.Support}>
-            Support
-          </FooterLink>
-          <FooterLink tertiary href={url.releases}>
+          {navLinks.map(({ title, href, isGatsby }, index) => (
+            <FooterLink tertiary href={!isGatsby && href} to={isGatsby && href} isGatsby={isGatsby}>
+              {title}
+            </FooterLink>
+          ))}
+          <FooterLink tertiary href={url.gitHub.releases}>
             Releases
           </FooterLink>
         </Column>
