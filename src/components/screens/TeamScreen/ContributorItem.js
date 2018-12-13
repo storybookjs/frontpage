@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-import { Avatar, LazyLoad, Link, Icon, styles, animation } from './../../basics';
+import { Avatar, LazyLoad, Link, Icon, styles } from './../../basics';
 
 const { color, typography, breakpoint } = styles;
 
