@@ -5,7 +5,7 @@ import { action } from '@storybook/addon-actions';
 import WithTooltip from './WithTooltip';
 
 import TooltipLinkList from './TooltipLinkList';
-import StoryLinkWrapper from './../../lib/StoryLinkWrapper';
+import StoryLinkWrapper from '../../lib/StoryLinkWrapper';
 
 // eslint-disable-next-line import/prefer-default-export
 export const links = [

@@ -4,12 +4,13 @@ import styled, { css } from 'styled-components';
 import GitHubButton from 'react-github-button';
 import 'react-github-button/assets/style.css';
 
-import { Cardinal, styles, urls } from './../../basics';
+import { Cardinal, styles, urls } from '../../basics';
+
+import MailingListSubscribeForm from '../../layout/MailingListSubscribeForm';
+import { Heading, Title, Desc } from '../../layout/PageTitle';
+
 const { background, color, typography, pageMargins, breakpoint } = styles;
 const { url } = urls;
-
-import MailingListSubscribeForm from './../../layout/MailingListSubscribeForm';
-import { Heading, Title, Desc } from './../../layout/PageTitle';
 
 const Image = styled.img``;
 
@@ -190,7 +191,7 @@ export default function CommunityHero({ hasSubscribed, onSubscribe, ...props }) 
         <Stats>
           <Stat
             size="small"
-            count={`800k`}
+            count="800k"
             text="Installs per month"
             noPlural
             status="secondary"
@@ -198,7 +199,7 @@ export default function CommunityHero({ hasSubscribed, onSubscribe, ...props }) 
           />
           <Stat
             size="small"
-            count={`+550`}
+            count="+550"
             text="Contributors"
             noPlural
             status="tertiary"

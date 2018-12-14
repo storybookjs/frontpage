@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-import { Link, Button, Icon, TooltipLinkList, WithTooltip, styles, urls } from './../basics';
+import { Link, Button, Icon, TooltipLinkList, WithTooltip, styles, urls } from '../basics';
 import { navLinks } from './PageLayout';
 
 const { color, typography, spacing, pageMargins, breakpoint } = styles;

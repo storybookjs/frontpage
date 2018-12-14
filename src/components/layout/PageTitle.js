@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-import { Subheading, styles } from './../basics';
+import { Subheading, styles } from '../basics';
+
 const { color, typography, pageMargins, breakpoint } = styles;
 
 export const Heading = styled(Subheading)`

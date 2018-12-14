@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import PageLayout from './../../layout/PageLayout';
-import PageTitle from './../../layout/PageTitle';
-import Feature from './../../layout/Feature';
-import FeaturesLayout from './../../layout/FeaturesLayout';
+import PageLayout from '../../layout/PageLayout';
+import PageTitle from '../../layout/PageTitle';
+import Feature from '../../layout/Feature';
+import FeaturesLayout from '../../layout/FeaturesLayout';
 
-import { Icon, Link, styles, urls } from './../../basics';
+import { Icon, Link, styles, urls } from '../../basics';
 
 const { breakpoint } = styles;
 const { url } = urls;

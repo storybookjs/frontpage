@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { rgba } from 'polished';
 
-import { Button, Icon, Link, styles } from './../../basics';
-import PageLayout from './../../layout/PageLayout';
+import { Button, Icon, Link, styles } from '../../basics';
+import PageLayout from '../../layout/PageLayout';
 import CommunityHero from './CommunityHero';
 import CommunitySocial from './CommunitySocial';
 import CommunitySidebar from './CommunitySidebar';

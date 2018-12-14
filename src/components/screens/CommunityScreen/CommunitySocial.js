@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-import { styles, urls } from './../../basics';
+import { styles, urls } from '../../basics';
 
 const { color, spacing, typography, pageMargin, breakpoint } = styles;
 const { url } = urls;

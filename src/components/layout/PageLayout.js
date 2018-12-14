@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-import { urls } from './../basics';
+import { urls } from '../basics';
 import Header from './Header';
 import Footer from './Footer';
 
@@ -24,7 +24,7 @@ export default function PageLayout({ children, ...props }) {
     <Layout {...props}>
       <Header />
       {children}
-      {'' /*TODO: make footer subscribed state self-contained*/}
+      {'' /* TODO: make footer subscribed state self-contained */}
       <Footer hasSubscribed={false} onSubscribe={() => 0} />
     </Layout>
   );

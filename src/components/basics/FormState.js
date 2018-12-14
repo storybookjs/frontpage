@@ -31,6 +31,7 @@ export default class FormData extends MobxReactForm {
   constructor(fields, { plugins = { dvr: validatorjs }, hooks, options }) {
     super(fields, { plugins, hooks, options });
   }
+
   // eslint-disable-next-line class-methods-use-this
   bindings() {
     return {

@@ -1,20 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import PageLayout from './../../layout/PageLayout';
-import PageTitle from './../../layout/PageTitle';
-import SocialProof from './../../layout/SocialProof';
-import ValueProp from './../../layout/ValueProp';
-import PlaceholderAspectRatio from './../../layout/PlaceholderAspectRatio';
-import Feature from './../../layout/Feature';
-import FeaturesLayout from './../../layout/FeaturesLayout';
-import Testimonial from './../../layout/Testimonial';
+import PageLayout from '../../layout/PageLayout';
+import PageTitle from '../../layout/PageTitle';
+import SocialProof from '../../layout/SocialProof';
+import ValueProp from '../../layout/ValueProp';
+import PlaceholderAspectRatio from '../../layout/PlaceholderAspectRatio';
+import Feature from '../../layout/Feature';
+import FeaturesLayout from '../../layout/FeaturesLayout';
+import Testimonial from '../../layout/Testimonial';
 
 import ComponentCanvas from './ComponentCanvas';
 import ComponentList from './ComponentList';
 import LogoToggle from './LogoToggle';
 
-import { Icon, Link, styles } from './../../basics';
+import { Icon, Link, styles } from '../../basics';
 
 const { background, color, spacing, typography, pageMargin, pageMargins, breakpoint } = styles;
 

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { observer } from 'mobx-react';
 
-import { Checkbox, Button, Input, FormState, styles } from './../basics';
+import { Checkbox, Button, Input, FormState, styles } from '../basics';
 
 const { color, typography } = styles;
 

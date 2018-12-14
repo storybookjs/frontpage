@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import CommunitySidebar from './CommunitySidebar';
-import { Button } from './../../basics';
+import { Button } from '../../basics';
 
 storiesOf('screens/CommunityScreen/CommunitySidebar', module)
   .addDecorator(storyFn => <div style={{ width: '400px' }}>{storyFn()}</div>)

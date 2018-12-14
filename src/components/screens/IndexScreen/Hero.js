@@ -16,7 +16,7 @@ import {
   styles,
   animation,
   urls,
-} from './../../basics';
+} from '../../basics';
 
 const { color, typography, breakpoint, pageMargins } = styles;
 const { glow } = animation;
@@ -430,7 +430,7 @@ export default function Hero({ ...props }) {
             </GitHubWrapper>
             <Stat
               size="small"
-              count={`v5.0`}
+              count="v5.0"
               text="Latest version"
               noPlural
               status="primary"
@@ -438,7 +438,7 @@ export default function Hero({ ...props }) {
             />
             <Stat
               size="small"
-              count={`800k`}
+              count="800k"
               text="Installs per month"
               noPlural
               status="secondary"
@@ -446,7 +446,7 @@ export default function Hero({ ...props }) {
             />
             <Stat
               size="small"
-              count={`+550`}
+              count="+550"
               text="Contributors"
               noPlural
               status="tertiary"

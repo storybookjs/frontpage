@@ -2,16 +2,16 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-import { Badge, Button, Link, styles, urls } from './../../basics';
-import PageLayout from './../../layout/PageLayout';
+import { Badge, Button, Link, styles, urls } from '../../basics';
+import PageLayout from '../../layout/PageLayout';
 import Hero from './Hero';
-import SocialProof from './../../layout/SocialProof';
-import PlaceholderAspectRatio from './../../layout/PlaceholderAspectRatio';
-import ValueProp from './../../layout/ValueProp';
+import SocialProof from '../../layout/SocialProof';
+import PlaceholderAspectRatio from '../../layout/PlaceholderAspectRatio';
+import ValueProp from '../../layout/ValueProp';
 import BenefitItem from './BenefitItem';
 import BenefitList from './BenefitList';
-import Testimonial from './../../layout/Testimonial';
-import CTA from './../../layout/CTA';
+import Testimonial from '../../layout/Testimonial';
+import CTA from '../../layout/CTA';
 
 const { background, color, spacing, typography, pageMargin, breakpoint } = styles;
 const { url } = urls;

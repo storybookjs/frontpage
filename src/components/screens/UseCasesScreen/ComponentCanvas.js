@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-import { LazyLoad, ProgressDots, styles, animation } from './../../basics';
+import { LazyLoad, ProgressDots, styles, animation } from '../../basics';
 import LogoToggle from './LogoToggle';
 
 const { color, typography, paper } = styles;
