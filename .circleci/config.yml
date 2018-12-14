@@ -21,6 +21,8 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
+      - run: yarn lint
+
       - run: yarn build # we need to do this to prebuild some babel stuff
       - run: yarn build-storybook
-      - run: yarn chromatic --storybook-build-dir storybook-static
+      - run: yarn chromatic --storybook-build-dir storybook-static --exit-zero-on-changes
