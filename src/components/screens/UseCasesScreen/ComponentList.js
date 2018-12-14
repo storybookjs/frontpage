@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { styles } from '../../basics';
@@ -7,7 +6,7 @@ import { styles } from '../../basics';
 import ComponentItem from './ComponentItem';
 import LogoToggle from './LogoToggle';
 
-const { color, breakpoint } = styles;
+const { breakpoint } = styles;
 
 const Logos = styled(LogoToggle)`
   margin-top: 0.5rem;
@@ -87,6 +86,6 @@ export default function ComponentList({ onSelectIndex, selectedIndex, ...props }
 }
 
 ComponentList.propTypes = {
-  onSelectIndex: LogoToggle.propTypes.onSelectIndex,
-  selectedIndex: LogoToggle.propTypes.selectedIndex,
+  // onSelectIndex: LogoToggle.propTypes.onSelectIndex,
+  // selectedIndex: LogoToggle.propTypes.selectedIndex,
 };

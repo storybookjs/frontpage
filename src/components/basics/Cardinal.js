@@ -101,7 +101,6 @@ Cardinal.defaultProps = {
   count: '000',
   countLink: null,
   noPlural: false,
-  text: 'loading',
 };
 
 export default Cardinal;

@@ -84,11 +84,11 @@ const Wrapper = styled.div`
   }
 `;
 
-export default function PageTitle({ heading, title, desc, color, ...props }) {
+export default function PageTitle({ heading, title, desc, color: headingColor, ...props }) {
   return (
     <Wrapper {...props}>
       <Meta>
-        <Heading color={color}>{heading}</Heading>
+        <Heading color={headingColor}>{heading}</Heading>
         <Title>{title}</Title>
         <Desc>{desc}</Desc>
       </Meta>

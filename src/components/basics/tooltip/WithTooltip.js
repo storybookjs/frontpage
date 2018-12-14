@@ -38,10 +38,16 @@ function WithTooltip({
       tooltipShown={tooltipShown}
       onVisibilityChange={onVisibilityChange}
       modifiers={modifiers}
-      tooltip={({ getTooltipProps, getArrowProps, tooltipRef, arrowRef, placement }) => (
+      tooltip={({
+        getTooltipProps,
+        getArrowProps,
+        tooltipRef,
+        arrowRef,
+        placement: tooltipPlacement,
+      }) => (
         <Tooltip
           hasChrome={hasChrome}
-          placement={placement}
+          placement={tooltipPlacement}
           tooltipRef={tooltipRef}
           arrowRef={arrowRef}
           arrowProps={getArrowProps()}

@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 
 import { styles } from '../../basics';
 
-const { color, spacing, typography, pageMargin, breakpoint } = styles;
+const { color, typography, breakpoint } = styles;
 
 const Title = styled.div`
   font-weight: ${typography.weight.black};

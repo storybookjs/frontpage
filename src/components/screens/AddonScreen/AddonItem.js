@@ -66,10 +66,6 @@ const Meta = styled.div`
   overflow: hidden;
 `;
 
-const Children = styled.div`
-  margin-top: 1rem;
-`;
-
 const Wrapper = styled.div`
   font-size: ${typography.size.s3}px;
   line-height: 1.5;

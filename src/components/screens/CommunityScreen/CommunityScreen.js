@@ -105,19 +105,19 @@ export default function CommunityScreen({ hasSubscribed, onSubscribe, ...props }
         </Sidebar>
         <List>
           <Item
-            image={<img src="images/community/blog.svg" />}
+            image={<img src="images/community/blog.svg" alt="write" />}
             title="Write about Storybook"
             desc="Publish it to your blog or submit it to Storybook’s Medium publication. Mention @storybookjs on Twitter for a reshare."
             links={[{ title: 'Submit an article to the blog', href: 'https://google.com' }]}
           />
           <Item
-            image={<img src="images/community/presentation.svg" />}
+            image={<img src="images/community/presentation.svg" alt="present" />}
             title="Talk about Storybook"
             desc="Present at work, meetups, and conferences. Get your point across with ready-to-use slides (Keynote, PDF) and illustrations."
             links={[{ title: 'View presentation materials', href: 'https://google.com' }]}
           />
           <Item
-            image={<img src="images/community/brand.svg" />}
+            image={<img src="images/community/brand.svg" alt="brand kit" />}
             title="Use the brand"
             desc="Create your own visuals using Storybook logo, typography, colors, and images."
             links={[
@@ -142,19 +142,19 @@ export default function CommunityScreen({ hasSubscribed, onSubscribe, ...props }
           </Sidebar>
           <List>
             <Item
-              image={<img src="images/community/bug.svg" />}
+              image={<img src="images/community/bug.svg" alt="report bugs" />}
               title="Find and report issues"
               desc="Help find bugs and QA releases. Maintainers are human, we miss things sometimes. Issue reports are much appreciated."
               links={[{ title: 'Report an issue', href: 'https://google.com' }]}
             />
             <Item
-              image={<img src="images/community/docs.svg" />}
+              image={<img src="images/community/docs.svg" alt="docs" />}
               title="Write and update docs"
               desc="Teach fellow developers how to take advantage of Storybook. Help write, edit, and improve docs."
               links={[{ title: 'Get started with docs', href: 'https://google.com' }]}
             />
             <Item
-              image={<img src="images/community/pullrequest.svg" />}
+              image={<img src="images/community/pullrequest.svg" alt="pull request" />}
               title="Send a pull request"
               desc="Want to create a new feature or improve existing functionality? PRs welcomed and encouraged."
               links={[{ title: 'Learn how to contribute', href: 'https://google.com' }]}

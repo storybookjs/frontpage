@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components';
 import { LazyLoad, ProgressDots, styles, animation } from '../../basics';
 
 const { color, typography, paper } = styles;
-const { glow, inlineGlow } = animation;
+const { glow } = animation;
 
 const Figure = styled.img`
   max-width: 100%;

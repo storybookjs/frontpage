@@ -42,6 +42,7 @@ storiesOf('basics/Link', module).add('all', () => (
       </Link>
     </span>
     <br />
+    {/* eslint-disable-next-line */}
     <Link primary isButton onClick={onLinkClick}>
       is actually a button
     </Link>

@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-import { LazyLoad, ProgressDots, styles, animation } from '../../basics';
+import { styles } from '../../basics';
 import LogoToggle from './LogoToggle';
 
-const { color, typography, paper } = styles;
-const { glow, inlineGlow } = animation;
+const { color } = styles;
 
 const Figure = styled.img`
   object-fit: contain;
@@ -68,8 +67,8 @@ export default function ComponentCanvas({ imageUrl, onSelectIndex, selectedIndex
 
 ComponentCanvas.propTypes = {
   imageUrl: PropTypes.string,
-  onSelectIndex: LogoToggle.propTypes.onSelectIndex,
-  selectedIndex: LogoToggle.propTypes.selectedIndex,
+  // onSelectIndex: LogoToggle.propTypes.onSelectIndex,
+  // selectedIndex: LogoToggle.propTypes.selectedIndex,
 };
 
 ComponentCanvas.defaultProps = {

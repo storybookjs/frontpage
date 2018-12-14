@@ -89,10 +89,12 @@ export default function Tooltip({
 Tooltip.propTypes = {
   children: PropTypes.node.isRequired,
   hasChrome: PropTypes.bool,
+  /* eslint-disable-next-line */
   arrowProps: PropTypes.any,
   placement: PropTypes.string,
 };
 Tooltip.defaultProps = {
   hasChrome: true,
   placement: 'top',
+  arrowProps: null,
 };

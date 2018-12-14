@@ -15,7 +15,7 @@ const AddonCommunity = (
 const AddonOfficial = (
   <AddonItem
     appearance="official"
-    image={<img src="images/addons/knobs.svg" />}
+    image={<img src="images/addons/knobs.svg" alt="knobs" />}
     title="Knobs"
     desc="Interact with component inputs dynamically in the Storybook UI"
     addonUrl="https://google.com"

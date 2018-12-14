@@ -86,14 +86,14 @@ export default function CommunityItem({ image, title, desc, links, ...props }) {
         <Desc>{desc}</Desc>
 
         {links &&
-          links.map(({ title, href }, index) => (
+          links.map(({ title: linkTitle, href }, index) => (
             <StyledLink
               /* eslint-disable react/no-array-index-key */
               key={index}
               href={href}
               withArrow
             >
-              <span>{title}</span>
+              <span>{linkTitle}</span>
             </StyledLink>
           ))}
       </Meta>
@@ -113,6 +113,4 @@ CommunityItem.propTypes = {
   ).isRequired,
 };
 
-CommunityItem.defaultProps = {
-  children: null,
-};
+CommunityItem.defaultProps = {};

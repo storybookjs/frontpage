@@ -182,7 +182,12 @@ export default function CommunityHero({ hasSubscribed, onSubscribe, ...props }) 
           <MailingListText>Subscribe to the official mailing list</MailingListText>
           {hasSubscribed ? (
             <MailingListConfirm>
-              <b>👍 Thanks, you're all signed up!</b>
+              <b>
+                <span role="img" aria-label="thumbs up">
+                  👍
+                </span>{' '}
+                Thanks, you&rsquo;re all signed up!
+              </b>
             </MailingListConfirm>
           ) : (
             <MailingListSubscribeForm onSubscribe={onSubscribe} cta="Sign up" />

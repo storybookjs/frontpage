@@ -446,7 +446,12 @@ export default function Footer({ hasSubscribed, onSubscribe, ...props }) {
           <Text>Get news, free tutorials, and Storybook tips emailed to you.</Text>
           {hasSubscribed ? (
             <MailingListConfirm>
-              <b>👍 Thanks, you're all signed up!</b>
+              <b>
+                <span role="img" aria-label="thumbs up">
+                  👍
+                </span>{' '}
+                Thanks, you&rsquo;re all signed up!
+              </b>
             </MailingListConfirm>
           ) : (
             <MailingListForm onSubscribe={onSubscribe} cta="Sign up" />
