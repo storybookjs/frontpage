@@ -13,7 +13,7 @@ import BenefitList from './BenefitList';
 import Testimonial from '../../layout/Testimonial';
 import CTA from '../../layout/CTA';
 
-const { background, color, spacing, typography, pageMargin, breakpoint } = styles;
+const { background, typography } = styles;
 const { url } = urls;
 
 const Contrast = styled.div`
@@ -22,11 +22,6 @@ const Contrast = styled.div`
 
 const Separator = styled.hr`
   margin: 0;
-`;
-
-const Wrapper = styled.div`
-  font-size: ${typography.size.s3}px;
-  line-height: 1.5;
 `;
 
 const Placeholder = styled(PlaceholderAspectRatio)`
