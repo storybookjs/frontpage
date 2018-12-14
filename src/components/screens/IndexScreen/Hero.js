@@ -364,7 +364,7 @@ export default function Hero({ ...props }) {
             </Video>
             <TooltipCanvas
               placement="bottom"
-              trigger="click"
+              trigger="hover"
               tooltip={
                 <TooltipMessage
                   desc=<Fragment>
@@ -378,7 +378,7 @@ export default function Hero({ ...props }) {
             </TooltipCanvas>
             <TooltipSidebar
               placement="bottom"
-              trigger="click"
+              trigger="hover"
               tooltip={
                 <TooltipMessage
                   desc={
@@ -394,7 +394,7 @@ export default function Hero({ ...props }) {
             </TooltipSidebar>
             <TooltipAddons
               placement="bottom"
-              trigger="click"
+              trigger="hover"
               tooltip={
                 <TooltipMessage
                   desc=<Fragment>
