@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-import { Icon, Link, styles } from '../../basics';
+import { Link, styles } from '../../basics';
 
-const { color, spacing, typography, pageMargin, breakpoint } = styles;
+const { color, typography, breakpoint } = styles;
 
 const Image = styled.div`
   margin-right: 20px;

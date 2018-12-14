@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { rgba } from 'polished';
 
-import { Button, Icon, Link, styles } from '../../basics';
+import { Button, Icon, styles } from '../../basics';
 import PageLayout from '../../layout/PageLayout';
 import CommunityHero from './CommunityHero';
 import CommunitySocial from './CommunitySocial';
@@ -11,7 +11,7 @@ import CommunitySidebar from './CommunitySidebar';
 import CommunityItem from './CommunityItem';
 import CommunityList from './CommunityList';
 
-const { background, color, spacing, typography, pageMargin, pageMargins, breakpoint } = styles;
+const { background, color, pageMargins, breakpoint } = styles;
 
 const Contrast = styled.div`
   background-color: ${background.app};

@@ -73,7 +73,8 @@ class MailingListSubscribeForm extends Component {
 
   onFormSave(form) {
     const { email, optIn } = form.values();
-    this.props.onSubscribe({ email, optIn });
+    const { onSubscribe } = this.props;
+    onSubscribe({ email, optIn });
   }
 
   render() {

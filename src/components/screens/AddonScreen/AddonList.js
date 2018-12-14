@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components';
 import { styles } from '../../basics';
 import AddonItem from './AddonItem';
 
-const { color, spacing, pageMargins, breakpoint } = styles;
+const { pageMargins, breakpoint } = styles;
 
 const List = styled.div`
   display: flex;

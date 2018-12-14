@@ -1,6 +1,7 @@
 const gitHubOrg = `https://github.com/storybooks`;
 const homepageUrl = `https://storybook.js.org`;
 
+// eslint-disable-next-line import/prefer-default-export
 export const url = {
   gitHub: {
     repo: `${gitHubOrg}/storybook`,

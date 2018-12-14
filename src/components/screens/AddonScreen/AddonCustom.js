@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Icon, Link, styles, urls } from '../../basics';
+import { Link, styles, urls } from '../../basics';
 
-const { background, color, spacing, typography, pageMargin, pageMargins, breakpoint } = styles;
+const { background, color, spacing, typography, pageMargin, breakpoint } = styles;
 const { url } = urls;
 
 const Title = styled.div`

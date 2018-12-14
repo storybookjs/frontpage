@@ -1,6 +1,5 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import styled from 'styled-components';
 import ValueProp from './ValueProp';
 import PlaceholderAspectRatio from './PlaceholderAspectRatio';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Button, Icon, Link, styles, urls } from '../../basics';
+import { Button, Icon, styles, urls } from '../../basics';
 import PageLayout from '../../layout/PageLayout';
 import PageTitle from '../../layout/PageTitle';
 import AddonItem from './AddonItem';
@@ -9,7 +9,7 @@ import AddonList from './AddonList';
 import AddonCustom from './AddonCustom';
 import CTA from '../../layout/CTA';
 
-const { background, color, spacing, typography, pageMargins, breakpoint } = styles;
+const { typography, pageMargins, breakpoint } = styles;
 const { url } = urls;
 
 const Heading = styled.h2`

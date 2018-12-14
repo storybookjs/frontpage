@@ -54,7 +54,8 @@ storiesOf('basics/Icon', module)
     <List>
       {Object.keys(icons).map(key => (
         <Item key={key}>
-          <Icon icon={key} /> <Meta>{key}</Meta>
+          <Icon icon={key} />
+          <Meta>{key}</Meta>
         </Item>
       ))}
     </List>

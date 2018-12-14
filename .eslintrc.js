@@ -1,6 +1,6 @@
 module.exports = {
   parser: 'babel-eslint',
-  extends: ['airbnb', 'prettier'],
+  extends: ['airbnb', 'prettier', 'prettier/react'],
   plugins: ['prettier'],
   rules: {
     'prettier/prettier': [
@@ -26,5 +26,6 @@ module.exports = {
         arrow: false,
       },
     ],
+    'import/no-extraneous-dependencies': ['error', { devDependencies: ['**/*.stories.js'] }],
   },
 };

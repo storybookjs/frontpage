@@ -17,6 +17,7 @@
     "mobx": "^5.7.0",
     "mobx-react": "^5.4.2",
     "mobx-react-form": "^1.35.1",
+    "pluralize": "^7.0.0",
     "polished": "^2.3.0",
     "prop-types": "^15.6.2",
     "react": "^16.5.1",

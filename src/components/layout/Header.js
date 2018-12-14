@@ -1,8 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-import { Link, Button, Icon, TooltipLinkList, WithTooltip, styles, urls } from '../basics';
+import { Link, Icon, TooltipLinkList, WithTooltip, styles, urls } from '../basics';
 import { navLinks } from './PageLayout';
 
 const { color, typography, spacing, pageMargins, breakpoint } = styles;
@@ -40,13 +39,6 @@ const Version = styled(Link)`
   top: 2px;
   font-size: ${typography.size.s1}px;
   color: ${color.mediumdark};
-`;
-
-const TooltipLinkListSubtitle = styled.span`
-  font-weight: ${typography.weight.regular};
-  line-height: 1rem;
-  color: ${color.dark};
-  display: block;
 `;
 
 const TooltipLinkListWrapper = styled.div`
@@ -166,7 +158,7 @@ export default function Header({ ...props }) {
         </NavGroup>
 
         <NavGroup right>
-          {navLinks.map(({ title, href, isGatsby }, index) => (
+          {navLinks.map(({ title, href, isGatsby }) => (
             <NavItem showDesktop>
               <NavLink tertiary href={!isGatsby && href} to={isGatsby && href} isGatsby={isGatsby}>
                 {title}

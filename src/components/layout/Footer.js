@@ -414,7 +414,7 @@ export default function Footer({ hasSubscribed, onSubscribe, ...props }) {
         </Colophon>
         <Column>
           <Title>Storybook</Title>
-          {navLinks.map(({ title, href, isGatsby }, index) => (
+          {navLinks.map(({ title, href, isGatsby }) => (
             <FooterLink tertiary href={!isGatsby && href} to={isGatsby && href} isGatsby={isGatsby}>
               {title}
             </FooterLink>

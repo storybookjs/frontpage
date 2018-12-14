@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 
 import { styles } from '../basics';
 
-const { spacing, pageMargin, pageMargins, breakpoint } = styles;
+const { pageMargin, pageMargins, breakpoint } = styles;
 
 const Layout = styled.div`
   display: flex;

@@ -2,7 +2,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Badge from './Badge';
-import Icon from './Icon';
 
 storiesOf('basics/Badge', module)
   .add('all badges', () => (

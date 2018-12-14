@@ -1,10 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import React, { Fragment } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 
-import { background, color, typography } from './shared/styles';
+import { color, typography } from './shared/styles';
 
 const Heading = styled.div`
   font-size: ${typography.size.m1}px;
