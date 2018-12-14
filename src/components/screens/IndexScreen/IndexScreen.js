@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { Badge, Button, Link, styles, urls } from '../../basics';
 import PageLayout from '../../layout/PageLayout';
@@ -13,7 +13,7 @@ import BenefitList from './BenefitList';
 import Testimonial from '../../layout/Testimonial';
 import CTA from '../../layout/CTA';
 
-const { background, typography } = styles;
+const { background } = styles;
 const { url } = urls;
 
 const Contrast = styled.div`
