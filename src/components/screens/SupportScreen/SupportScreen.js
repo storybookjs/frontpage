@@ -6,7 +6,7 @@ import PageTitle from '../../layout/PageTitle';
 import Feature from '../../layout/Feature';
 import FeaturesLayout from '../../layout/FeaturesLayout';
 
-import { Icon, Link, styles, urls } from '../../basics';
+import { Link, styles, urls } from '../../basics';
 
 const { breakpoint } = styles;
 const { url } = urls;
@@ -28,7 +28,7 @@ export default function SupportScreen({ ...props }) {
       />
       <Features columns={3}>
         <Feature
-          image={<img src="images/colored-icons/repo.svg" />}
+          image={<img src="images/colored-icons/repo.svg" alt="Storybook docs" />}
           title="Check the docs"
           desc="First check the Storybook docs. There’s likely an article for your issue already."
         >
@@ -37,7 +37,7 @@ export default function SupportScreen({ ...props }) {
           </Link>
         </Feature>
         <Feature
-          image={<img src="images/logos/social/github.svg" />}
+          image={<img src="images/logos/social/github.svg" alt="GitHub" />}
           title="File an issue on GitHub"
           desc="If you encounter an issue, do us a favor and report it. Someone else may have the same issue."
         >
@@ -46,7 +46,7 @@ export default function SupportScreen({ ...props }) {
           </Link>
         </Feature>
         <Feature
-          image={<img src="images/logos/social/discord.svg" />}
+          image={<img src="images/logos/social/discord.svg" alt="Discord" />}
           title="Ask a question in chat"
           desc="Get help over chat from community members. A maintainer is usually online."
         >

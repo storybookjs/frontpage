@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { Avatar, LazyLoad, Link, Icon, styles } from '../../basics';
 
-const { color, typography, paper, breakpoint } = styles;
+const { color, typography, breakpoint } = styles;
 
 const Profile = styled(Avatar)`
   height: 80px;

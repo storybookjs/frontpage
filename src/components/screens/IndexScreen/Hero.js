@@ -14,12 +14,11 @@ import {
   TooltipMessage,
   WithTooltip,
   styles,
-  animation,
   urls,
 } from '../../basics';
 
 const { color, typography, breakpoint, pageMargins } = styles;
-const { glow } = animation;
+
 const { url } = urls;
 
 const Title = styled.div`
@@ -384,8 +383,8 @@ export default function Hero({ ...props }) {
                 <TooltipMessage
                   desc={
                     <Fragment>
-                      <b>Save use cases as "stories"</b> to simplify finding, browsing, and testing
-                      UI components.
+                      <b>Save use cases as &ldquo;stories&rdquo;</b> to simplify finding, browsing,
+                      and testing UI components.
                     </Fragment>
                   }
                 />

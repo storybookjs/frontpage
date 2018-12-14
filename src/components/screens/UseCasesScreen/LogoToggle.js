@@ -2,10 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-import { LazyLoad, ProgressDots, styles, animation } from '../../basics';
+import { styles } from '../../basics';
 
-const { color, typography, breakpoint } = styles;
-const { glow, inlineGlow } = animation;
+const { breakpoint } = styles;
 
 const Logo = styled.img`
   display: inline-block;

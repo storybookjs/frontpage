@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-import { Avatar, LazyLoad, Link, Icon, styles } from '../../basics';
+import { Avatar, Link, styles } from '../../basics';
 
 const { color, typography, breakpoint } = styles;
 
@@ -49,7 +49,7 @@ export default function ContributorItem({ contributors, contributorCount, gitHub
       <Heading>+{count} contributors</Heading>
       <ContributorsWrapper>
         <Contributors>
-          {contributors.map(({ name, avatarUrl }, index) => (
+          {contributors.map(({ name, avatarUrl }) => (
             <Contributor key={name} size="large" username={name} src={avatarUrl} />
           ))}
         </Contributors>

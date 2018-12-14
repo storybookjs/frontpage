@@ -1,10 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import styled from 'styled-components';
 
 import ContributorItem from './ContributorItem';
 
+/* eslint-disable import/prefer-default-export */
 export const contributors = [
   {
     name: 'Dominic Nguyen',

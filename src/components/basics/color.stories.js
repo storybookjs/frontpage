@@ -71,22 +71,22 @@ storiesOf('basics/color', module).add('all', () => (
     <ColorWrapper>
       <Swatches>
         <Heading>Color</Heading>
-        {colorfulColors.map((color, index) => (
-          <SwatchGroup key={index}>
-            <SwatchHex>{`${color}`}</SwatchHex>
-            <Swatch style={{ background: color }} />
-            <Swatch style={{ background: color, opacity: 0.8 }} />
-            <Swatch style={{ background: color, opacity: 0.6 }} />
-            <Swatch style={{ background: color, opacity: 0.3 }} />
+        {colorfulColors.map(swatch => (
+          <SwatchGroup key={swatch}>
+            <SwatchHex>{`${swatch}`}</SwatchHex>
+            <Swatch style={{ background: swatch }} />
+            <Swatch style={{ background: swatch, opacity: 0.8 }} />
+            <Swatch style={{ background: swatch, opacity: 0.6 }} />
+            <Swatch style={{ background: swatch, opacity: 0.3 }} />
           </SwatchGroup>
         ))}
       </Swatches>
       <Swatches>
         <Heading>Monochrome</Heading>
-        {monochromeColors.map((color, index) => (
-          <SwatchGroup>
-            <SwatchHex>{`${color}`}</SwatchHex>
-            <Swatch style={{ background: color }} />
+        {monochromeColors.map(swatch => (
+          <SwatchGroup key={swatch}>
+            <SwatchHex>{`${swatch}`}</SwatchHex>
+            <Swatch style={{ background: swatch }} />
           </SwatchGroup>
         ))}
       </Swatches>

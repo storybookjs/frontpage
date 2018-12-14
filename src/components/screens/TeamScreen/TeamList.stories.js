@@ -1,7 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 
 import TeamItem from './TeamItem';
 import ContributorItem from './ContributorItem';
@@ -21,7 +20,6 @@ const Item = (
   />
 );
 
-const onSelectIndex = action('onSelectIndex');
 storiesOf('screens/TeamScreen/TeamList', module).add('full', () => (
   <TeamList>
     {Item}
