@@ -15,6 +15,7 @@ export const url = {
   npm: `https://www.npmjs.com/package/@storybook/react`,
 
   // Navigation
+  home: `${homepageUrl}`,
   docs: {
     home: `${homepageUrl}/basics/introduction/`,
     addonInstruction: `${homepageUrl}/addons/writing-addons/`,
