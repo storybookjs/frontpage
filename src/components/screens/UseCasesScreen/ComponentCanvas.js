@@ -1,11 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { hoistStatics, compose, withState } from 'recompose';
 
-import { styles } from '../../basics';
+import { styles, animation } from '../../basics';
 import LogoToggle from './LogoToggle';
 
 const { color } = styles;
+const { shake } = animation;
+
+const Toggle = styled(LogoToggle)`
+  > *:not(:first-child) {
+    animation: ${shake} 10s ease-in-out infinite 5s;
+  }
+
+  ${props =>
+    props.clicked &&
+    css`
+      > * {
+        animation: none !important;
+      }
+    `};
+`;
 
 const Figure = styled.img`
   object-fit: contain;
@@ -44,22 +60,25 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 
-export default function ComponentCanvas({ imageUrl, onSelectIndex, selectedIndex, ...props }) {
+function ComponentCanvas({ imageUrl, selectedIndex, onSelectIndex, ...props }) {
   return (
     <Wrapper {...props}>
       <CanvasWrapper>
         <CanvasBackground>
           <FigureWrapper>
-            <Figure src="images/use-cases/airbnb/react-dates.gif" />
+            {selectedIndex === 0 && <Figure src="images/use-cases/airbnb/react-dates.gif" />}
+            {selectedIndex === 1 && <Figure src="images/use-cases/atlassian/react-dnd.gif" />}
+            {selectedIndex === 2 && <Figure src="images/use-cases/algolia/instantsearch.gif" />}
           </FigureWrapper>
           <Canvas src="images/use-cases/canvas.svg" />
         </CanvasBackground>
       </CanvasWrapper>
-      <LogoToggle
+      <Toggle
         path="images/logos/user"
         brands={['airbnb', 'atlassian', 'algolia']}
-        selectedIndex={0}
+        selectedIndex={selectedIndex}
         onSelectIndex={onSelectIndex}
+        clicked={selectedIndex !== 0}
       />
     </Wrapper>
   );
@@ -67,10 +86,12 @@ export default function ComponentCanvas({ imageUrl, onSelectIndex, selectedIndex
 
 ComponentCanvas.propTypes = {
   imageUrl: PropTypes.string,
-  // onSelectIndex: LogoToggle.propTypes.onSelectIndex,
-  // selectedIndex: LogoToggle.propTypes.selectedIndex,
 };
 
 ComponentCanvas.defaultProps = {
   imageUrl: null,
 };
+
+export default hoistStatics(compose(withState('selectedIndex', 'onSelectIndex', 0)))(
+  ComponentCanvas
+);

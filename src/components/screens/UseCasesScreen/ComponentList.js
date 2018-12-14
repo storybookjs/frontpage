@@ -1,16 +1,30 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { Fragment } from 'react';
+import styled, { css } from 'styled-components';
+import { hoistStatics, compose, withState } from 'recompose';
 
-import { styles } from '../../basics';
+import { styles, animation } from '../../basics';
 
 import ComponentItem from './ComponentItem';
 import LogoToggle from './LogoToggle';
 
 const { breakpoint } = styles;
+const { shake } = animation;
 
-const Logos = styled(LogoToggle)`
+const Toggle = styled(LogoToggle)`
   margin-top: 0.5rem;
   margin-bottom: 2rem;
+
+  > *:not(:first-child) {
+    animation: ${shake} 10s ease-in-out infinite 5s;
+  }
+
+  ${props =>
+    props.clicked &&
+    css`
+      > * {
+        animation: none !important;
+      }
+    `};
 `;
 
 const Item = styled(ComponentItem)`
@@ -29,7 +43,7 @@ const Item = styled(ComponentItem)`
     flex: 0 1 16.66%;
     width: 16.66%;
   }
-  padding: 0px 10px 0px;
+  padding: 0 10px;
   min-width: 150px;
 `;
 
@@ -55,37 +69,66 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-export default function ComponentList({ onSelectIndex, selectedIndex, ...props }) {
+function ComponentList({ selectedIndex, onSelectIndex, ...props }) {
+  const componentItems = 12;
+
   return (
     <Wrapper {...props}>
-      <Logos
+      <Toggle
         path="images/logos/user"
         brands={['formidable', 'auth0', 'artsy']}
-        selectedIndex={0}
+        selectedIndex={selectedIndex}
         onSelectIndex={onSelectIndex}
+        clicked={selectedIndex !== 0}
       />
-      {/* TODO refactor to be able to pass `brand` and generate a list of 12 components */}
-      <List>
-        <Item imageUrl="images/use-cases/formidable/1.png" />
-        <Item imageUrl="images/use-cases/formidable/2.png" />
-        <Item imageUrl="images/use-cases/formidable/3.png" />
-        <Item imageUrl="images/use-cases/formidable/4.png" />
-        <Item imageUrl="images/use-cases/formidable/5.png" />
-        <Item imageUrl="images/use-cases/formidable/6.png" />
-      </List>
-      <List>
-        <Item imageUrl="images/use-cases/formidable/7.png" />
-        <Item imageUrl="images/use-cases/formidable/8.png" />
-        <Item imageUrl="images/use-cases/formidable/9.png" />
-        <Item imageUrl="images/use-cases/formidable/10.png" />
-        <Item imageUrl="images/use-cases/formidable/11.png" />
-        <Item imageUrl="images/use-cases/formidable/12.png" />
-      </List>
+      {/* eslint-disable react/no-array-index-key */}
+
+      {selectedIndex === 0 && (
+        <Fragment>
+          <List>
+            {[...Array(componentItems / 2)].map((e, index) => (
+              <Item key={index} imageUrl={`images/use-cases/formidable/${index + 1}.png`} />
+            ))}
+          </List>
+          <List>
+            {[...Array(componentItems / 2)].map((e, index) => (
+              <Item key={index} imageUrl={`images/use-cases/formidable/${index + 7}.png`} />
+            ))}
+          </List>
+        </Fragment>
+      )}
+      {selectedIndex === 1 && (
+        <Fragment>
+          <List>
+            {[...Array(componentItems / 2)].map((e, index) => (
+              <Item key={index} imageUrl={`images/use-cases/auth0/${index + 1}.png`} />
+            ))}
+          </List>
+          <List>
+            {[...Array(componentItems / 2)].map((e, index) => (
+              <Item key={index} imageUrl={`images/use-cases/auth0/${index + 7}.png`} />
+            ))}
+          </List>
+        </Fragment>
+      )}
+      {selectedIndex === 2 && (
+        <Fragment>
+          <List>
+            {[...Array(componentItems / 2)].map((e, index) => (
+              <Item key={index} imageUrl={`images/use-cases/artsy/${index + 1}.png`} />
+            ))}
+          </List>
+          <List>
+            {[...Array(componentItems / 2)].map((e, index) => (
+              <Item key={index} imageUrl={`images/use-cases/artsy/${index + 7}.png`} />
+            ))}
+          </List>
+        </Fragment>
+      )}
     </Wrapper>
   );
 }
 
-ComponentList.propTypes = {
-  // onSelectIndex: LogoToggle.propTypes.onSelectIndex,
-  // selectedIndex: LogoToggle.propTypes.selectedIndex,
-};
+ComponentList.propTypes = {};
+
+export default hoistStatics(compose(withState('selectedIndex', 'onSelectIndex', 0)))(ComponentList);

@@ -33,6 +33,25 @@ export const jiggle = keyframes`
   37.5%, 87.5% {  transform: translate3d(4px,0,0);  }
 `;
 
+export const shake = keyframes`
+  0% { transform:rotate(-3deg) }
+  1.68421% { transform:rotate(3deg) }
+  2.10526% { transform:rotate(6deg) }
+  3.78947% { transform:rotate(-6deg) }
+  4.21053% { transform:rotate(-6deg) }
+  5.89474% { transform:rotate(6deg) }
+  6.31579% { transform:rotate(6deg) }
+  8% { transform:rotate(-6deg) }
+  8.42105% { transform:rotate(-6deg) }
+  10.10526% { transform:rotate(6deg) }
+  10.52632% { transform:rotate(6deg) }
+  12.21053% { transform:rotate(-6deg) }
+  12.63158% { transform:rotate(-6deg) }
+  14.31579% { transform:rotate(6deg) }
+  15.78947% { transform:rotate(0deg) }
+  100% { transform:rotate(0deg) }
+`;
+
 export const inlineGlow = css`
   animation: ${glow} 1.5s ease-in-out infinite;
   background: ${color.mediumlight};
