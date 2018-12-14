@@ -111,14 +111,13 @@ function Avatar({ loading, username, src, size, ...props }) {
 
 Avatar.propTypes = {
   loading: PropTypes.bool,
-  username: PropTypes.string,
+  username: PropTypes.string.isRequired,
   src: PropTypes.string,
   size: PropTypes.oneOf(Object.keys(sizes)),
 };
 
 Avatar.defaultProps = {
   loading: false,
-  username: null,
   src: null,
   size: 'medium',
 };

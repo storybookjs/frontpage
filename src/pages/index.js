@@ -10,9 +10,9 @@ import Testimonial from '../components/layout/Testimonial';
 
 const IndexPage = () => (
   <Layout>
-    <SocialProof />
+    <SocialProof brands={[]} path="/" />
 
-    <Testimonial />
+    <Testimonial name="Tom" />
     <h1>Hi people</h1>
     <p>Welcome to your new Gatsby site.</p>
     <p>Now go build something great.</p>

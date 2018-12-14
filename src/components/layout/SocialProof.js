@@ -96,7 +96,7 @@ export default function SocialProof({ path, brands, heading, grid, monochrome, .
     <Wrapper {...props}>
       <Logos grid={grid}>
         {!grid && heading && <Heading>{heading}</Heading>}
-        {brands.map((brand, index) => (
+        {brands.map(brand => (
           <LogoWrapper key={brand} title={brand}>
             <Logo src={`${path}/logo-${brand}.svg`} alt={brand} monochrome={monochrome} />
           </LogoWrapper>
