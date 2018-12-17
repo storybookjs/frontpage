@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Helmet from 'react-helmet';
 
 import { Button, Icon, styles, urls } from '../../basics';
 import PageLayout from '../../layout/PageLayout';
@@ -35,6 +36,15 @@ const MakeYourOwn = styled(AddonCustom)`
 export default function AddonScreen({ ...props }) {
   return (
     <PageLayout {...props}>
+      <Helmet
+        title="cats"
+        meta={[
+          { name: 'description', content: 'Sample' },
+          { name: 'keywords', content: 'sample, something' },
+        ]}
+      >
+        <html lang="en" />
+      </Helmet>
       <PageTitle
         heading="Addons"
         title="Supercharge Storybook"

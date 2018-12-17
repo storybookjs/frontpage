@@ -1,8 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: 'Storybook',
     siteUrl: `https://storybook.js.org/`,
+    title: 'Storybook',
     description: `Storybook is an open source tool for developing UI components in isolation for React, Vue, and Angular`,
+    ogImage: '',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -21,10 +22,6 @@ module.exports = {
         name: 'gatsby-starter-default',
         short_name: 'starter',
         start_url: '/',
-        background_color: '#663399',
-        theme_color: '#663399',
-        display: 'minimal-ui',
-        icon: 'src/images/gatsby-icon.png', // This path is relative to the root of the site.
       },
     },
     {
