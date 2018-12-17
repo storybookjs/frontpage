@@ -51,8 +51,7 @@ const Logos = styled.div`
   align-items: center;
   justify-content: center;
   ${Logo} {
-    margin-right: 15px;
-    margin-left: 15px;
+    margin: 0 15px;
   }
 
   @media (min-width: ${breakpoint * 1}px) {
@@ -60,8 +59,7 @@ const Logos = styled.div`
     display: flex;
 
     ${Logo} {
-      margin-right: 30px;
-      margin-left: 0;
+      margin: 0 20px;
     }
   }
 `;
