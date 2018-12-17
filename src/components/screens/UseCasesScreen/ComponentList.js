@@ -70,8 +70,6 @@ const Wrapper = styled.div`
 `;
 
 function ComponentList({ selectedIndex, onSelectIndex, ...props }) {
-  const componentItems = 12;
-
   return (
     <Wrapper {...props}>
       <Toggle
