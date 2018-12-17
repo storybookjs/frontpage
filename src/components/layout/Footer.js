@@ -166,50 +166,11 @@ const FooterLink = styled(Link)``;
 
 const Text = styled.div`
   color: ${color.darker};
-  margin-bottom: 1.5rem;
 `;
-
-const Service = styled.div`
-  &:not(:last-child) {
-    margin-bottom: 1rem;
-  }
-
-  ${Text} {
-    margin-bottom: 0.5rem;
-    color: ${color.mediumdark};
-  }
-`;
-const Services = styled.div``;
-
-const Netlify = styled.img``;
-const Chromatic = styled.img``;
-const Teamcity = styled.img``;
-const CircleCI = styled.img``;
-
 const Colophon = styled.div`
-
-
   a {
     display: inline-block;
     vertical-align: top;
-  }
-
-  ${Netlify}, ${Chromatic}, ${Teamcity}, ${CircleCI} {
-    height: 22px;
-    width: auto;
-    display: inline-block;
-    filter: grayscale(100%);
-  }
-
-  ${Teamcity} {
-    /* Makes visual impact the same as other logos */
-    padding: 2px 0;
-    margin-right: 15px;
-  }
-
-  ${Teamcity}, ${CircleCI} {
-    /* Turn down the pure black of these logos */
-    opacity: .75;
   }
 `;
 
@@ -236,11 +197,91 @@ const MailingListConfirm = styled.div`
 `;
 
 const MailingListForm = styled(MailingListSubscribeForm)`
-  margin-bottom: 1rem;
   min-width: 280px;
   width: 100%;
   @media (min-width: ${breakpoint}px) {
-    margin: 0 0 1.25rem;
+    margin: 0 0 0;
+  }
+`;
+
+const HrWrapper = styled.div`
+  ${pageMargins};
+  hr {
+    margin: 0;
+  }
+`;
+
+const Netlify = styled.img``;
+const Chromatic = styled.img``;
+const Teamcity = styled.img``;
+const CircleCI = styled.img``;
+
+const Service = styled.div`
+  &:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+
+  ${Text} {
+    margin-bottom: 0.5rem;
+    color: ${color.mediumdark};
+  }
+`;
+
+const Services = styled.div`
+  ${pageMargins};
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  @media (min-width: ${breakpoint}px) {
+    justify-content: space-around;
+    text-align: center;
+  }
+
+  ${Service} {
+    flex: 0 0 50%;
+    @media (min-width: ${breakpoint}px) {
+      flex: 1;
+    }
+  }
+
+  a {
+    display: inline-block;
+    transition: all 150ms ease-out;
+    transform: translate3d(0,0,0);
+
+    &:hover {
+      transform: translate3d(0,-2px,0);
+    }
+
+    &:active {
+      transform: translate3d(0,0,0);
+    }
+  }
+
+  ${Netlify}, ${Chromatic}, ${Teamcity}, ${CircleCI} {
+    height: 22px;
+    width: auto;
+    display: inline-block;
+    filter: grayscale(100%);
+    transition: all 150ms ease-out;
+
+    &:hover {
+      filter: grayscale(0%);
+    }
+  }
+
+  ${Teamcity} {
+    /* Makes visual impact the same as other logos */
+    padding: 2px 0;
+    margin-right: 10px;
+  }
+
+  ${Teamcity}, ${CircleCI} {
+    /* Turn down the pure black of these logos */
+    opacity: .75;
   }
 `;
 
@@ -265,17 +306,18 @@ const Lower = styled.div`
 
   ${Column} {
     width: 50%;
-    margin-bottom: 2rem;
+    margin-bottom: 2.25rem;
 
     @media (min-width: ${breakpoint}px) {
       padding-right: 20px;
       width: auto;
-      margin-bottom: 3rem;
+      margin-bottom: 2.25rem;
     }
   }
 
   ${Subscribe} {
     width: 100%;
+    margin-bottom: 3rem;
     @media (min-width: ${breakpoint}px) {
       width: auto;
       margin-bottom: 3rem;
@@ -383,34 +425,11 @@ export default function Footer({ hasSubscribed, onSubscribe, ...props }) {
           </LogotypeWrapper>
           <Text>
             The MIT License (MIT). Website design by{' '}
-            <Link tertiary href="https://www.chromaui.com">
+            <Link tertiary href="https://twitter.com/domyen">
               <b>@domyen</b>
             </Link>{' '}
             and the awesome Storybook community.
           </Text>
-          <Services>
-            <Service>
-              <Text>Hosting by</Text>
-              <a href="https://netlify.com">
-                <Netlify src="/images/logos/user/logo-netlify.svg" alt="Netlify" />
-              </a>
-            </Service>
-            <Service>
-              <Text>Visual testing by</Text>
-              <a href="https://www.chromaticqa.com/">
-                <Chromatic src="/images/logos/user/logo-chromatic.svg" alt="Chromatic" />
-              </a>
-            </Service>
-            <Service>
-              <Text>Continuous integration by</Text>
-              <a href="https://www.jetbrains.com/teamcity/">
-                <Teamcity src="/images/logos/user/logo-teamcity.svg" alt="Teamcity" />
-              </a>
-              <a href="https://circleci.com/">
-                <CircleCI src="/images/logos/user/logo-circleci.svg" alt="CircleCI" />
-              </a>
-            </Service>
-          </Services>
         </Colophon>
         <Column>
           <Title>Storybook</Title>
@@ -464,6 +483,32 @@ export default function Footer({ hasSubscribed, onSubscribe, ...props }) {
           )}
         </Subscribe>
       </Lower>
+      <HrWrapper>
+        <hr />
+      </HrWrapper>
+      <Services>
+        <Service>
+          <Text>Hosting by</Text>
+          <a href="https://netlify.com">
+            <Netlify src="/images/logos/user/logo-netlify.svg" alt="Netlify" />
+          </a>
+        </Service>
+        <Service>
+          <Text>Visual testing by</Text>
+          <a href="https://www.chromaticqa.com/">
+            <Chromatic src="/images/logos/user/logo-chromatic.svg" alt="Chromatic" />
+          </a>
+        </Service>
+        <Service>
+          <Text>Continuous integration by</Text>
+          <a href="https://www.jetbrains.com/teamcity/">
+            <Teamcity src="/images/logos/user/logo-teamcity.svg" alt="Teamcity" />
+          </a>
+          <a href="https://circleci.com/">
+            <CircleCI src="/images/logos/user/logo-circleci.svg" alt="CircleCI" />
+          </a>
+        </Service>
+      </Services>
     </FooterWrapper>
   );
 }
