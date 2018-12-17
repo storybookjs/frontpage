@@ -31,7 +31,7 @@ module.exports = {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
-          families: ['Nunito Sans'],
+          families: ['Nunito Sans:400,700,900'],
         },
       },
     },
