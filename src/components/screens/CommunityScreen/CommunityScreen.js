@@ -136,7 +136,7 @@ export default function CommunityScreen({ hasSubscribed, onSubscribe, ...props }
             desc="Storybook is maintained by contributors from around the globe. Join us in building the most popular component explorer."
           >
             <DiscordText>Have questions about contributing? Ask the community on chat.</DiscordText>
-            <Button outline primary>
+            <Button outline secondary>
               <Icon icon="discord" /> Chat on Discord
             </Button>
           </Sidebar>
@@ -170,7 +170,7 @@ export default function CommunityScreen({ hasSubscribed, onSubscribe, ...props }
           desc="Donations go to hosting, swag for contributors, documentation and learning materials."
           loneChild
         >
-          <Button primary>Donate to Storybook Open Collective</Button>
+          <Button secondary>Donate to Storybook Open Collective</Button>
         </Sidebar>
         <OpenCollectiveLogos />
       </CommunityLayout>

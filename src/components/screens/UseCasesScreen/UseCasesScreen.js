@@ -97,11 +97,7 @@ export default function UseCasesScreen({ ...props }) {
         <Separator />
         <ValueProp
           orientation="center"
-          media={
-            <div>
-              <ComponentList />
-            </div>
-          }
+          media={<ComponentList />}
           title="Assemble component libraries"
           desc="Frontend infrastructure developers at Artsy, Formidable, and Auth0 create comprehensive component libraries using Storybook."
           lazyload={false}
