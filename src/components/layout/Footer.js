@@ -425,7 +425,7 @@ export default function Footer({ hasSubscribed, onSubscribe, ...props }) {
           </LogotypeWrapper>
           <Text>
             The MIT License (MIT). Website design by{' '}
-            <Link tertiary href="https://twitter.com/domyen">
+            <Link tertiary href="https://twitter.com/domyen" target="_blank">
               <b>@domyen</b>
             </Link>{' '}
             and the awesome Storybook community.
