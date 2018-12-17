@@ -1,4 +1,5 @@
 import React from 'react';
+import Helmet from 'react-helmet';
 import styled from 'styled-components';
 
 import PageLayout from '../../layout/PageLayout';
@@ -20,6 +21,15 @@ const Features = styled(FeaturesLayout)`
 export default function SupportScreen({ ...props }) {
   return (
     <PageLayout {...props}>
+      <Helmet
+        title="Support | Storybook"
+        meta={[
+          {
+            name: 'description',
+            content: `Get answers to your Storybook questions from the thriving community and maintainers. Developers of all skill levels welcome.`,
+          },
+        ]}
+      />
       <PageTitle
         heading="Support"
         title="We’re happy to help"

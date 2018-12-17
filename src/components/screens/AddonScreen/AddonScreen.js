@@ -1,6 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
 import Helmet from 'react-helmet';
+import styled from 'styled-components';
 
 import { Button, Icon, styles, urls } from '../../basics';
 import PageLayout from '../../layout/PageLayout';
@@ -37,14 +37,15 @@ export default function AddonScreen({ ...props }) {
   return (
     <PageLayout {...props}>
       <Helmet
-        title="cats"
+        title="Addons | Storybook"
         meta={[
-          { name: 'description', content: 'Sample' },
-          { name: 'keywords', content: 'sample, something' },
+          {
+            name: 'description',
+            content:
+              'Addons enable advanced functionality and unlock new workflows. Contributed by core maintainers and the amazing developer community.',
+          },
         ]}
-      >
-        <html lang="en" />
-      </Helmet>
+      />
       <PageTitle
         heading="Addons"
         title="Supercharge Storybook"

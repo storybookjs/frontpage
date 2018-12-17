@@ -38,7 +38,11 @@ const PageLayout = ({ children, ...props }) => (
           title={data.site.siteMetadata.title}
           meta={[
             { name: 'description', content: data.site.siteMetadata.description },
-            { name: 'keywords', content: 'sample, something' },
+            {
+              name: 'keywords',
+              content:
+                'UI, components, design systems, library, styleguide, catalog, React, Vue, Angular',
+            },
           ]}
         >
           <html lang="en" />
@@ -57,10 +61,7 @@ const PageLayout = ({ children, ...props }) => (
             sizes="16x16 32x32 64x64"
           />
 
-          <meta
-            name="google-site-verification"
-            content="YjriYM9U-aWxhu_dv3PWfCFQ3JNkb7ndk7r_mUlCKAY"
-          />
+          <meta name="google-site-verification" content="" />
         </Helmet>
         <Header />
         {children}

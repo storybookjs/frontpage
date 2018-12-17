@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Helmet from 'react-helmet';
 import styled from 'styled-components';
 import { rgba } from 'polished';
 
@@ -87,6 +88,16 @@ const CommunityLayout = styled.div`
 export default function CommunityScreen({ hasSubscribed, onSubscribe, ...props }) {
   return (
     <PageLayout {...props} hasSubscribed={hasSubscribed} onSubscribe={onSubscribe}>
+      <Helmet
+        title="Community | Storybook"
+        meta={[
+          {
+            name: 'description',
+            content: `Join thousands of frontend developers to learn new Storybook techniques,
+            get help, and develop UIs faster.`,
+          },
+        ]}
+      />
       <CommunityHero hasSubscribed={hasSubscribed} onSubscribe={onSubscribe} />
 
       <CommunitySocial />

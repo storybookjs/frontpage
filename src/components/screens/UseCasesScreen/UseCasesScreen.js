@@ -1,4 +1,5 @@
 import React from 'react';
+import Helmet from 'react-helmet';
 import styled from 'styled-components';
 
 import PageLayout from '../../layout/PageLayout';
@@ -46,6 +47,15 @@ const DesignSystemWrapper = styled.div`
 export default function UseCasesScreen({ ...props }) {
   return (
     <PageLayout {...props}>
+      <Helmet
+        title="Use cases | Storybook"
+        meta={[
+          {
+            name: 'description',
+            content: `See how thousands of teams around the world use Storybook to build production UIs faster.`,
+          },
+        ]}
+      />
       <PageTitle
         heading="Use cases"
         title="Production stories"
