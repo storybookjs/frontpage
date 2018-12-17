@@ -1,9 +1,12 @@
 import React, { Fragment } from 'react';
 import { configure, addDecorator } from '@storybook/react';
-import 'storybook-chromatic';
+// import 'storybook-chromatic';
+import WebFont from 'webfontloader';
 
 import { GlobalStyle } from '../src/components/basics/shared/global';
+import config from '../gatsby-config';
 
+WebFont.load(config.plugins.find(p => p.resolve === 'gatsby-plugin-web-font-loader').options);
 addDecorator(story => (
   <Fragment>
     <GlobalStyle />
