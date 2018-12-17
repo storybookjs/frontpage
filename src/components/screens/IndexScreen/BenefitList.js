@@ -59,7 +59,7 @@ const Layout = styled.div`
     margin: 0 ${pageMargin * 3}%;
   }
   @media (min-width: ${breakpoint * 3}px) {
-    margin: 0 ${pageMargin * 4}%;
+    margin: 0 ${pageMargin * 5}%;
   }
 `;
 
