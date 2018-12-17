@@ -70,7 +70,7 @@ export default function AddonCustom({ ...props }) {
   return (
     <Wrapper {...props}>
       <Inner>
-        <Image src="images/addons/custom.svg" />
+        <Image src="/images/addons/custom.svg" />
         <Meta>
           <Title>Create your own addon</Title>
           <Desc>

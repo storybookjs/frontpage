@@ -298,7 +298,7 @@ export default function Footer({ hasSubscribed, onSubscribe, ...props }) {
           <Title>Learn</Title>
           <Resources>
             <Resource>
-              <img src="images/colored-icons/repo.svg" alt="Docs" />
+              <img src="/images/colored-icons/repo.svg" alt="Docs" />
               <Meta>
                 <ResourceTitle>Get started with Storybook</ResourceTitle>
                 <ResourceDesc>
@@ -322,7 +322,7 @@ export default function Footer({ hasSubscribed, onSubscribe, ...props }) {
               </Meta>
             </Resource>
             <Resource>
-              <img src="images/colored-icons/direction.svg" alt="Tutorial" />
+              <img src="/images/colored-icons/direction.svg" alt="Tutorial" />
               <Meta>
                 <ResourceTitle>Storybook tutorial</ResourceTitle>
                 <ResourceDesc>
@@ -379,7 +379,7 @@ export default function Footer({ hasSubscribed, onSubscribe, ...props }) {
       <Lower>
         <Colophon>
           <LogotypeWrapper href="/">
-            <img src="images/logos/logo-storybook.svg" alt="Storybook" />
+            <img src="/images/logos/logo-storybook.svg" alt="Storybook" />
           </LogotypeWrapper>
           <Text>
             The MIT License (MIT). Website design by{' '}
@@ -392,22 +392,22 @@ export default function Footer({ hasSubscribed, onSubscribe, ...props }) {
             <Service>
               <Text>Hosting by</Text>
               <a href="https://netlify.com">
-                <Netlify src="images/logos/user/logo-netlify.svg" alt="Netlify" />
+                <Netlify src="/images/logos/user/logo-netlify.svg" alt="Netlify" />
               </a>
             </Service>
             <Service>
               <Text>Visual testing by</Text>
               <a href="https://www.chromaticqa.com/">
-                <Chromatic src="images/logos/user/logo-chromatic.svg" alt="Chromatic" />
+                <Chromatic src="/images/logos/user/logo-chromatic.svg" alt="Chromatic" />
               </a>
             </Service>
             <Service>
               <Text>Continuous integration by</Text>
               <a href="https://www.jetbrains.com/teamcity/">
-                <Teamcity src="images/logos/user/logo-teamcity.svg" alt="Teamcity" />
+                <Teamcity src="/images/logos/user/logo-teamcity.svg" alt="Teamcity" />
               </a>
               <a href="https://circleci.com/">
-                <CircleCI src="images/logos/user/logo-circleci.svg" alt="CircleCI" />
+                <CircleCI src="/images/logos/user/logo-circleci.svg" alt="CircleCI" />
               </a>
             </Service>
           </Services>

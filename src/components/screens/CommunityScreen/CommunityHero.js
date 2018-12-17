@@ -217,7 +217,7 @@ export default function CommunityHero({ hasSubscribed, onSubscribe, ...props }) 
       </Meta>
 
       <Media>
-        <Image src="images/community/hero.jpg" />
+        <Image src="/images/community/hero.jpg" />
       </Media>
     </Wrapper>
   );

@@ -66,17 +66,17 @@ export default function UseCasesScreen({ ...props }) {
       />
       <FeaturesLayout columns={3}>
         <Feature
-          image={<img src="images/colored-icons/components.svg" alt="component" />}
+          image={<img src="/images/colored-icons/components.svg" alt="component" />}
           title="Develop for every use case"
           desc="Storybook makes it dead simple to mock hard-to-reach states and edge cases."
         />
         <Feature
-          image={<img src="images/colored-icons/plus.svg" alt="adopt" />}
+          image={<img src="/images/colored-icons/plus.svg" alt="adopt" />}
           title="Adopt incrementally"
           desc="Adopt Storybook in your workflow at your own pace. Start with just one component."
         />
         <Feature
-          image={<img src="images/colored-icons/plugin.svg" alt="addon" />}
+          image={<img src="/images/colored-icons/plugin.svg" alt="addon" />}
           title="Boost productivity with addons"
           desc="Get shortcuts for common tasks like mocking data, responsive design, and QAing callbacks."
         />
@@ -108,17 +108,17 @@ export default function UseCasesScreen({ ...props }) {
         />
         <FeaturesLayout columns={3}>
           <Feature
-            image={<img src="images/colored-icons/catalog.svg" alt="catalog" />}
+            image={<img src="/images/colored-icons/catalog.svg" alt="catalog" />}
             title="Catalog components"
             desc="Discover and browse reusable components in one place. Build UIs faster with less work."
           />
           <Feature
-            image={<img src="images/colored-icons/code.svg" alt="setup" />}
+            image={<img src="/images/colored-icons/code.svg" alt="setup" />}
             title="Setup in seconds"
             desc="Integration with popular popular frameworks and frontend stacks makes setup easy."
           />
           <Feature
-            image={<img src="images/colored-icons/runtest.svg" alt="test" />}
+            image={<img src="/images/colored-icons/runtest.svg" alt="test" />}
             title="Automate maintenance"
             desc="Addons for testing keep your component library consistent, even on large teams."
           />
@@ -141,7 +141,7 @@ export default function UseCasesScreen({ ...props }) {
         orientation="right"
         media={
           <DesignSystemWrapper>
-            <DesignSystem src="images/use-cases/design-system.jpg" />
+            <DesignSystem src="/images/use-cases/design-system.jpg" />
             <DesignSystemLogos
               path="images/logos/user"
               brands={['github', 'salesforce', 'govuk']}
@@ -155,17 +155,17 @@ export default function UseCasesScreen({ ...props }) {
       />
       <FeaturesLayout columns={3}>
         <Feature
-          image={<img src="images/colored-icons/overlap.svg" alt="consistency" />}
+          image={<img src="/images/colored-icons/overlap.svg" alt="consistency" />}
           title="Scale UI consistency"
           desc="Ensure universal consistency by simplifying how developers find and consume components."
         />
         <Feature
-          image={<img src="images/colored-icons/code-brackets.svg" alt="Markdown" />}
+          image={<img src="/images/colored-icons/code-brackets.svg" alt="Markdown" />}
           title="Document in Markdown"
           desc="Spread your component library far and wide with powerful docs tools and automatic styleguide generation (coming soon)."
         />
         <Feature
-          image={<img src="images/colored-icons/stack.svg" alt="deploy" />}
+          image={<img src="/images/colored-icons/stack.svg" alt="deploy" />}
           title="Share in the cloud"
           desc="Deploy your UI library as a static site to share it with your team."
         />

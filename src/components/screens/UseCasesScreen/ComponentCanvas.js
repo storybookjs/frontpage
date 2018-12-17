@@ -66,11 +66,11 @@ function ComponentCanvas({ imageUrl, selectedIndex, onSelectIndex, ...props }) {
       <CanvasWrapper>
         <CanvasBackground>
           <FigureWrapper>
-            {selectedIndex === 0 && <Figure src="images/use-cases/airbnb/react-dates.gif" />}
-            {selectedIndex === 1 && <Figure src="images/use-cases/atlassian/react-dnd.gif" />}
-            {selectedIndex === 2 && <Figure src="images/use-cases/algolia/instantsearch.gif" />}
+            {selectedIndex === 0 && <Figure src="/images/use-cases/airbnb/react-dates.gif" />}
+            {selectedIndex === 1 && <Figure src="/images/use-cases/atlassian/react-dnd.gif" />}
+            {selectedIndex === 2 && <Figure src="/images/use-cases/algolia/instantsearch.gif" />}
           </FigureWrapper>
-          <Canvas src="images/use-cases/canvas.svg" />
+          <Canvas src="/images/use-cases/canvas.svg" />
         </CanvasBackground>
       </CanvasWrapper>
       <Toggle

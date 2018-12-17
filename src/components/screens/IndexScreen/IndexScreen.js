@@ -74,17 +74,17 @@ export default function IndexScreen({ ...props }) {
       />
       <BenefitList>
         <BenefitItem
-          image={<img src="images/home/build-canvas.png" alt="isolate" />}
+          image={<img src="/images/home/build-canvas.png" alt="isolate" />}
           title="Build components in isolation"
           desc="Create components without needing to stand up screens, fuss with data, or build business logic."
         />
         <BenefitItem
-          image={<img src="images/home/build-cases.png" alt="mock states" />}
+          image={<img src="/images/home/build-cases.png" alt="mock states" />}
           title="Mock hard to reach use cases"
           desc="Render components in key states that are tricky to reproduce in an app."
         />
         <BenefitItem
-          image={<img src="images/home/build-sidebar.png" alt="save use cases" />}
+          image={<img src="/images/home/build-sidebar.png" alt="save use cases" />}
           title="Document use cases as stories"
           desc={
             <Fragment>
@@ -100,7 +100,7 @@ export default function IndexScreen({ ...props }) {
           }
         />
         <BenefitItem
-          image={<img src="images/home/build-addons.png" alt="extend with addons" />}
+          image={<img src="/images/home/build-addons.png" alt="extend with addons" />}
           title="Supercharge your workflow with addons"
           desc="Use addons to build UI faster, document a component library, and streamline your workflow."
         />
@@ -135,23 +135,23 @@ export default function IndexScreen({ ...props }) {
         />
         <BenefitList>
           <BenefitItem
-            image={<img src="images/home/test-visual.png" alt="visual test" />}
+            image={<img src="/images/home/test-visual.png" alt="visual test" />}
             title="Ensure consistent user experiences"
             desc="Whenever you write a story you get a handy visual spec. Quickly browse stories to make sure UI looks right."
           />
           <BenefitItem
-            image={<img src="images/home/test-snapshot.png" alt="snapshot test" />}
+            image={<img src="/images/home/test-snapshot.png" alt="snapshot test" />}
             title="Auto-detect code regressions"
             desc="Get code snapshot tests out of the box with Storyshots, an official addon."
           />
           <BenefitItem
-            image={<img src="images/home/test-unit.png" alt="unit test" />}
+            image={<img src="/images/home/test-unit.png" alt="unit test" />}
             title="Unit test components"
             desc="Reuse stories in your unit tests to confirm nuanced functionality."
           />
           <BenefitItem
             image={
-              <img src="images/home/test-visual-regression.png" alt="visual regression test" />
+              <img src="/images/home/test-visual-regression.png" alt="visual regression test" />
             }
             title="Catch UI changes down to the pixel every commit"
             desc="Pinpoint UI changes with visual testing tools."
@@ -192,22 +192,22 @@ export default function IndexScreen({ ...props }) {
       />
       <BenefitList>
         <BenefitItem
-          image={<img src="images/home/share-search.png" alt="search stories" />}
+          image={<img src="/images/home/share-search.png" alt="search stories" />}
           title="Find any component in your app"
           desc="Storybook is a searchable, single source of truth for your UI components."
         />
         <BenefitItem
-          image={<img src="images/home/share-collaborate.png" alt="collaborate" />}
+          image={<img src="/images/home/share-collaborate.png" alt="collaborate" />}
           title="Get timely feedback during development"
           desc="Collaborate on UI implementation with your team by deploying Storybook to the cloud."
         />
         <BenefitItem
-          image={<img src="images/home/share-reuse.png" alt="share stories" />}
+          image={<img src="/images/home/share-reuse.png" alt="share stories" />}
           title="Share components across screens and apps"
           desc="Every story is a use case that your team can find and reuse. "
         />
         <BenefitItem
-          image={<img src="images/home/share-document.png" alt="create a styleguide" />}
+          image={<img src="/images/home/share-document.png" alt="create a styleguide" />}
           title="Generate a styleguide automatically"
           desc="Write Markdown to generate a customizable styleguide site. Share it with your team."
         >

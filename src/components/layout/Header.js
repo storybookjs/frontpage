@@ -151,7 +151,7 @@ export default function Header({ ...props }) {
         <NavGroup>
           <NavItem>
             <LogotypeWrapper href="/">
-              <img src="images/logos/logo-storybook.svg" alt="Storybook" />
+              <img src="/images/logos/logo-storybook.svg" alt="Storybook" />
             </LogotypeWrapper>
             <Version href={url.gitHub.releases}>v5.0</Version>
           </NavItem>
