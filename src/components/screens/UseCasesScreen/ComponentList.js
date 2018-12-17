@@ -86,42 +86,60 @@ function ComponentList({ selectedIndex, onSelectIndex, ...props }) {
       {selectedIndex === 0 && (
         <Fragment>
           <List>
-            {[...Array(componentItems / 2)].map((e, index) => (
-              <Item key={index} imageUrl={`images/use-cases/formidable/${index + 1}.png`} />
-            ))}
+            <Item imageUrl="images/use-cases/formidable/1.png" />
+            <Item imageUrl="images/use-cases/formidable/2.png" />
+            <Item imageUrl="images/use-cases/formidable/3.png" />
+            <Item imageUrl="images/use-cases/formidable/4.png" />
+            <Item imageUrl="images/use-cases/formidable/5.png" />
+            <Item imageUrl="images/use-cases/formidable/6.png" />
           </List>
           <List>
-            {[...Array(componentItems / 2)].map((e, index) => (
-              <Item key={index} imageUrl={`images/use-cases/formidable/${index + 7}.png`} />
-            ))}
+            <Item imageUrl="images/use-cases/formidable/7.png" />
+            <Item imageUrl="images/use-cases/formidable/8.png" />
+            <Item imageUrl="images/use-cases/formidable/9.png" />
+            <Item imageUrl="images/use-cases/formidable/10.png" />
+            <Item imageUrl="images/use-cases/formidable/11.png" />
+            <Item imageUrl="images/use-cases/formidable/12.png" />
           </List>
         </Fragment>
       )}
       {selectedIndex === 1 && (
         <Fragment>
           <List>
-            {[...Array(componentItems / 2)].map((e, index) => (
-              <Item key={index} imageUrl={`images/use-cases/auth0/${index + 1}.png`} />
-            ))}
+            <Item imageUrl="images/use-cases/auth0/1.png" />
+            <Item imageUrl="images/use-cases/auth0/2.png" />
+            <Item imageUrl="images/use-cases/auth0/3.png" />
+            <Item imageUrl="images/use-cases/auth0/4.png" />
+            <Item imageUrl="images/use-cases/auth0/5.png" />
+            <Item imageUrl="images/use-cases/auth0/6.png" />
           </List>
           <List>
-            {[...Array(componentItems / 2)].map((e, index) => (
-              <Item key={index} imageUrl={`images/use-cases/auth0/${index + 7}.png`} />
-            ))}
+            <Item imageUrl="images/use-cases/auth0/7.png" />
+            <Item imageUrl="images/use-cases/auth0/8.png" />
+            <Item imageUrl="images/use-cases/auth0/9.png" />
+            <Item imageUrl="images/use-cases/auth0/10.png" />
+            <Item imageUrl="images/use-cases/auth0/11.png" />
+            <Item imageUrl="images/use-cases/auth0/12.png" />
           </List>
         </Fragment>
       )}
       {selectedIndex === 2 && (
         <Fragment>
           <List>
-            {[...Array(componentItems / 2)].map((e, index) => (
-              <Item key={index} imageUrl={`images/use-cases/artsy/${index + 1}.png`} />
-            ))}
+            <Item imageUrl="images/use-cases/artsy/1.png" />
+            <Item imageUrl="images/use-cases/artsy/2.png" />
+            <Item imageUrl="images/use-cases/artsy/3.png" />
+            <Item imageUrl="images/use-cases/artsy/4.png" />
+            <Item imageUrl="images/use-cases/artsy/5.png" />
+            <Item imageUrl="images/use-cases/artsy/6.png" />
           </List>
           <List>
-            {[...Array(componentItems / 2)].map((e, index) => (
-              <Item key={index} imageUrl={`images/use-cases/artsy/${index + 7}.png`} />
-            ))}
+            <Item imageUrl="images/use-cases/artsy/7.png" />
+            <Item imageUrl="images/use-cases/artsy/8.png" />
+            <Item imageUrl="images/use-cases/artsy/9.png" />
+            <Item imageUrl="images/use-cases/artsy/10.png" />
+            <Item imageUrl="images/use-cases/artsy/11.png" />
+            <Item imageUrl="images/use-cases/artsy/12.png" />
           </List>
         </Fragment>
       )}
