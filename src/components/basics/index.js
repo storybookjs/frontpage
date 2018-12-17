@@ -22,6 +22,8 @@ export { default as TooltipMessage } from './tooltip/TooltipMessage';
 export { default as TooltipNote } from './tooltip/TooltipNote';
 export { default as TooltipLinkList } from './tooltip/TooltipLinkList';
 
+export { default as WithModal } from './modal/WithModal';
+
 export { default as Checkbox } from './Checkbox';
 export { default as Input } from './Input';
 export { default as FormState } from './FormState';

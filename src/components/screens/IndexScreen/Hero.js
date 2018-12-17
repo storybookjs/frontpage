@@ -13,13 +13,39 @@ import {
   Subheading,
   TooltipMessage,
   WithTooltip,
+  WithModal,
   styles,
   urls,
 } from '../../basics';
 
+import PlaceholderAspectRatio from '../../layout/PlaceholderAspectRatio';
+
 const { color, typography, breakpoint, pageMargins } = styles;
 
 const { url } = urls;
+
+const ModalVideo = styled.iframe`
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+`;
+
+const ModalVideoWrapper = styled.div`
+  box-shadow: rgba(0, 0, 0, 0.05) 0 10px 35px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: ${color.lightest};
+`;
+
+const AspectRatio = styled(PlaceholderAspectRatio)`
+  ${ModalVideoWrapper}, ${ModalVideo} {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+  }
+`;
 
 const Title = styled.div`
   font-weight: ${typography.weight.black};
@@ -336,8 +362,26 @@ Framework.propTypes = {
   framework: PropTypes.string.isRequired,
 };
 
-export default function Hero({ ...props }) {
+export default function Hero({ startOpen, ...props }) {
   const [namespace, repo] = url.gitHub.repo.match(/github.com\/(.*)\/(.*)$/).slice(1);
+
+  const Modal = () => (
+    <AspectRatio ratio={0.5625}>
+      <ModalVideoWrapper>
+        <ModalVideo
+          title="Chromatic intro video"
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0&amp;showinfo=0"
+          frameBorder="0"
+          allow="autoplay; encrypted-media"
+          allowFullScreen
+          className="chromatic-ignore"
+        />
+      </ModalVideoWrapper>
+    </AspectRatio>
+  );
+
   return (
     <Wrapper {...props}>
       <Pitch>
@@ -350,10 +394,14 @@ export default function Hero({ ...props }) {
           <Button primary isLink href={url.docs.home}>
             Get Started
           </Button>
-          <Button outline primary>
-            <Icon icon="play" />
-            Watch video
-          </Button>
+          <WithModal startOpen={startOpen} modal={Modal}>
+            {({ onOpen }) => (
+              <Button outline primary onClick={onOpen}>
+                <Icon icon="play" />
+                Watch video
+              </Button>
+            )}
+          </WithModal>
         </PitchActions>
       </Pitch>
       <Content>
@@ -457,3 +505,11 @@ export default function Hero({ ...props }) {
     </Wrapper>
   );
 }
+
+Hero.propTypes = {
+  startOpen: PropTypes.bool,
+};
+
+Hero.defaultProps = {
+  startOpen: false,
+};
