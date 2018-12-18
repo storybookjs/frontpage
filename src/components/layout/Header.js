@@ -5,7 +5,7 @@ import { Link, Icon, TooltipLinkList, WithTooltip, styles, site } from '../basic
 import { navLinks } from './PageLayout';
 
 const { color, typography, spacing, pageMargins, breakpoint } = styles;
-const { url } = site;
+const { metadata, url } = site;
 
 const LogotypeWrapper = styled(Link)`
   display: inline-block;
@@ -153,7 +153,7 @@ export default function Header({ ...props }) {
             <LogotypeWrapper isGatsby to="/">
               <img src="/images/logos/logo-storybook.svg" alt="Storybook" />
             </LogotypeWrapper>
-            <Version href={url.gitHub.releases}>v5.0</Version>
+            <Version href={url.gitHub.releases}>{metadata.latestVersion}</Version>
           </NavItem>
         </NavGroup>
 

@@ -22,7 +22,7 @@ import PlaceholderAspectRatio from '../../layout/PlaceholderAspectRatio';
 
 const { color, typography, breakpoint, pageMargins } = styles;
 
-const { url } = site;
+const { metadata, url } = site;
 
 const ModalVideo = styled.iframe`
   width: 100%;
@@ -477,7 +477,7 @@ export default function Hero({ startOpen, ...props }) {
             </GitHubWrapper>
             <Stat
               size="small"
-              count="v5.0"
+              count={metadata.latestVersion}
               text="Latest version"
               noPlural
               status="primary"
