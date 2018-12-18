@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { configure, addDecorator } from '@storybook/react';
-// import 'storybook-chromatic';
+import 'storybook-chromatic';
 import WebFont from 'webfontloader';
 
 import { GlobalStyle } from '../src/components/basics/shared/global';
