@@ -10,7 +10,7 @@ const List = styled.div`
 function TooltipLinkList({ links, LinkWrapper }) {
   return (
     <List>
-      {links.map(({ title, href, onClick, active, ...props }, index) => (
+      {links.map(({ title, href, onClick, active, isGatsby, ...props }, index) => (
         <ListItem
           /* eslint-disable react/no-array-index-key */
           key={index}
@@ -18,7 +18,7 @@ function TooltipLinkList({ links, LinkWrapper }) {
           onClick={onClick}
           active={active}
           href={href}
-          LinkWrapper={LinkWrapper}
+          LinkWrapper={isGatsby ? LinkWrapper : null}
           {...props}
         />
       ))}

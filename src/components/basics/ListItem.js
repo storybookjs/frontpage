@@ -125,26 +125,28 @@ export default function ListItem({
   LinkWrapper,
   ...props
 }) {
-  const link = (
-    <Item active={active} loading={loading} disabled={disabled} {...props}>
-      {/* FU Next.js: https://github.com/zeit/next.js/issues/1490 */}
-      <ItemInner onClick={onClick} role="presentation">
-        {left && <Left>{left}</Left>}
-        {title && <Title>{title}</Title>}
-        {center && <Center>{center}</Center>}
-        {right && <Right>{right}</Right>}
-      </ItemInner>
-    </Item>
+  const linkInner = (
+    <ItemInner onClick={onClick} role="presentation">
+      {left && <Left>{left}</Left>}
+      {title && <Title>{title}</Title>}
+      {center && <Center>{center}</Center>}
+      {right && <Right>{right}</Right>}
+    </ItemInner>
   );
 
-  if (LinkWrapper && href) {
-    return (
-      <LinkWrapper href={href} passHref>
-        {link}
-      </LinkWrapper>
-    );
-  }
-  return link;
+  return (
+    <Item
+      as={LinkWrapper && href ? LinkWrapper : null}
+      href={!LinkWrapper ? href : undefined}
+      to={LinkWrapper ? href : undefined}
+      active={active}
+      loading={loading}
+      disabled={disabled}
+      {...props}
+    >
+      {linkInner}
+    </Item>
+  );
 }
 
 ListItem.propTypes = {

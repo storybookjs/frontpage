@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import { Link as GatsbyLink } from 'gatsby';
 
 import { Link, Icon, TooltipLinkList, WithTooltip, styles, site } from '../basics';
 import { navLinks } from './PageLayout';
@@ -140,7 +141,7 @@ export default function Header({ ...props }) {
       <TooltipLinkList
         links={navLinks}
         // TODO: Pass GatsbyLink here
-        LinkWrapper={null}
+        LinkWrapper={GatsbyLink}
       />
     </MobileMenu>
   );
