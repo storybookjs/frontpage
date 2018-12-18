@@ -1,7 +1,15 @@
+// eslint-disable import/prefer-default-export
+
 const gitHubOrg = `https://github.com/storybooks`;
 const homepageUrl = `https://storybook.js.org`;
 
-// eslint-disable-next-line import/prefer-default-export
+export const metadata = {
+  title: 'Storybook',
+  description: `Storybook is an open source tool for developing UI components in isolation for React, Vue, and Angular`,
+  ogImage: '/images/social/open-graph.png',
+  googleSiteVerification: '',
+};
+
 export const url = {
   gitHub: {
     repo: `${gitHubOrg}/storybook`,

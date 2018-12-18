@@ -1,10 +1,4 @@
 module.exports = {
-  siteMetadata: {
-    siteUrl: `https://storybook.js.org/`,
-    title: 'Storybook',
-    description: `Storybook is an open source tool for developing UI components in isolation for React, Vue, and Angular`,
-    ogImage: '/images/social/open-graph.png',
-  },
   plugins: [
     'gatsby-plugin-react-helmet',
     {

@@ -2,9 +2,9 @@ import * as styles from './shared/styles';
 import * as global from './shared/global';
 import * as animation from './shared/animation';
 import * as icons from './shared/icons';
-import * as urls from './shared/urls';
+import * as site from './shared/site';
 
-export { styles, global, animation, icons, urls };
+export { styles, global, animation, icons, site };
 
 export { default as Avatar } from './Avatar';
 export { default as Badge } from './Badge';
