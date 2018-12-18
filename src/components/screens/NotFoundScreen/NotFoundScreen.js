@@ -10,7 +10,7 @@ import FeaturesLayout from '../../layout/FeaturesLayout';
 import { Link, styles, site } from '../../basics';
 
 const { breakpoint } = styles;
-const { metadata, url } = site;
+const { url } = site;
 
 const Features = styled(FeaturesLayout)`
   @media (min-width: ${breakpoint * 1}px) {
