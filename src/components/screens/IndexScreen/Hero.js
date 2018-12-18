@@ -110,7 +110,6 @@ const VideoWrapper = styled.div`
   height: 0;
   padding-bottom: 66.66%;
   border-radius: 4px;
-  overflow: hidden;
   box-shadow: rgba(0, 0, 0, 0.05) 0 10px 35px;
 `;
 
