@@ -128,16 +128,16 @@ const CommunityLayout = styled.div`
   }
 `;
 
-export default function CommunityScreen({ hasSubscribed, onSubscribe, ...props }) {
+export default function CommunityScreen({ ...props }) {
   return (
-    <PageLayout {...props} hasSubscribed={hasSubscribed} onSubscribe={onSubscribe}>
+    <PageLayout {...props}>
       <SocialGraph
         title={`Community | ${metadata.title}`}
         desc="Join thousands of frontend developers to learn new Storybook techniques, get help, and develop UIs faster."
         url={`${url.home}/community`}
         image={metadata.ogImage}
       />
-      <CommunityHero hasSubscribed={hasSubscribed} onSubscribe={onSubscribe} />
+      <CommunityHero hasSubscribed={false} onSubscribe={() => 0} />
 
       <CommunitySocial />
 
@@ -230,7 +230,7 @@ export default function CommunityScreen({ hasSubscribed, onSubscribe, ...props }
             target="_blank"
             rel="noopener nofollow noreferrer"
           >
-            <LazyLoad>
+            <LazyLoad once height="100%">
               <img src="https://opencollective.com/storybook/sponsor/0/avatar.svg" alt="donator" />
             </LazyLoad>
           </LogoLink>
@@ -239,7 +239,7 @@ export default function CommunityScreen({ hasSubscribed, onSubscribe, ...props }
             target="_blank"
             rel="noopener nofollow noreferrer"
           >
-            <LazyLoad>
+            <LazyLoad once height="100%">
               <img src="https://opencollective.com/storybook/sponsor/1/avatar.svg" alt="donator" />
             </LazyLoad>
           </LogoLink>
@@ -248,7 +248,7 @@ export default function CommunityScreen({ hasSubscribed, onSubscribe, ...props }
             target="_blank"
             rel="noopener nofollow noreferrer"
           >
-            <LazyLoad>
+            <LazyLoad once height="100%">
               <img src="https://opencollective.com/storybook/sponsor/2/avatar.svg" alt="donator" />
             </LazyLoad>
           </LogoLink>
@@ -257,7 +257,7 @@ export default function CommunityScreen({ hasSubscribed, onSubscribe, ...props }
             target="_blank"
             rel="noopener nofollow noreferrer"
           >
-            <LazyLoad>
+            <LazyLoad once height="100%">
               <img src="https://opencollective.com/storybook/sponsor/3/avatar.svg" alt="donator" />
             </LazyLoad>
           </LogoLink>
@@ -266,7 +266,7 @@ export default function CommunityScreen({ hasSubscribed, onSubscribe, ...props }
             target="_blank"
             rel="noopener nofollow noreferrer"
           >
-            <LazyLoad>
+            <LazyLoad once height="100%">
               <img src="https://opencollective.com/storybook/sponsor/4/avatar.svg" alt="donator" />
             </LazyLoad>
           </LogoLink>
@@ -275,7 +275,7 @@ export default function CommunityScreen({ hasSubscribed, onSubscribe, ...props }
             target="_blank"
             rel="noopener nofollow noreferrer"
           >
-            <LazyLoad>
+            <LazyLoad once height="100%">
               <img src="https://opencollective.com/storybook/sponsor/5/avatar.svg" alt="donator" />
             </LazyLoad>
           </LogoLink>
@@ -284,7 +284,7 @@ export default function CommunityScreen({ hasSubscribed, onSubscribe, ...props }
             target="_blank"
             rel="noopener nofollow noreferrer"
           >
-            <LazyLoad>
+            <LazyLoad once height="100%">
               <img src="https://opencollective.com/storybook/sponsor/6/avatar.svg" alt="donator" />
             </LazyLoad>
           </LogoLink>
@@ -293,7 +293,7 @@ export default function CommunityScreen({ hasSubscribed, onSubscribe, ...props }
             target="_blank"
             rel="noopener nofollow noreferrer"
           >
-            <LazyLoad>
+            <LazyLoad once height="100%">
               <img src="https://opencollective.com/storybook/sponsor/7/avatar.svg" alt="donator" />
             </LazyLoad>
           </LogoLink>
@@ -302,7 +302,7 @@ export default function CommunityScreen({ hasSubscribed, onSubscribe, ...props }
             target="_blank"
             rel="noopener nofollow noreferrer"
           >
-            <LazyLoad>
+            <LazyLoad once height="100%">
               <img src="https://opencollective.com/storybook/sponsor/8/avatar.svg" alt="donator" />
             </LazyLoad>
           </LogoLink>
@@ -311,8 +311,3 @@ export default function CommunityScreen({ hasSubscribed, onSubscribe, ...props }
     </PageLayout>
   );
 }
-
-CommunityScreen.propTypes = {
-  hasSubscribed: PropTypes.bool.isRequired,
-  onSubscribe: PropTypes.func.isRequired,
-};

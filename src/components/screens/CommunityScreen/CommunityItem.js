@@ -80,7 +80,7 @@ const Wrapper = styled.div`
 export default function CommunityItem({ image, title, desc, links, ...props }) {
   return (
     <Wrapper {...props}>
-      <LazyLoad once>
+      <LazyLoad once height="100%">
         <Image>{image}</Image>
       </LazyLoad>
       <Meta>

@@ -74,7 +74,9 @@ export default function BenefitItem({ image, title, desc, children, ...props }) 
   return (
     <Wrapper {...props}>
       <Image>
-        <LazyLoad once>{image}</LazyLoad>
+        <LazyLoad once height="100%">
+          {image}
+        </LazyLoad>
       </Image>
       <Meta>
         <Title>{title}</Title>

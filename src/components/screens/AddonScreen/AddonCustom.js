@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Link, styles, site } from '../../basics';
+import { Link, LazyLoad, styles, site } from '../../basics';
 
 const { background, color, spacing, typography, pageMargin, breakpoint } = styles;
 const { url } = site;
@@ -70,7 +70,9 @@ export default function AddonCustom({ ...props }) {
   return (
     <Wrapper {...props}>
       <Inner>
-        <Image src="/images/addons/custom.svg" />
+        <LazyLoad once height="100%">
+          <Image src="/images/addons/custom.svg" />
+        </LazyLoad>
         <Meta>
           <Title>Create your own addon</Title>
           <Desc>

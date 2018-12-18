@@ -88,7 +88,7 @@ export default function TeamItem({
   return (
     <Item {...props}>
       <ImageOuter>
-        <LazyLoad once placeholder={<Profile loading />}>
+        <LazyLoad once placeholder={<Profile loading />} height="100%">
           <Profile size="large" username={name} src={avatarUrl} />
         </LazyLoad>
       </ImageOuter>
