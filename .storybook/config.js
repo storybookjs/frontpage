@@ -6,6 +6,11 @@ import WebFont from 'webfontloader';
 import { GlobalStyle } from '../src/components/basics/shared/global';
 import config from '../gatsby-config';
 
+// Don't use lazyload for chromatic screenshots
+if (typeof window !== 'undefined' && window.navigator.userAgent.match('HeadlessChrome')) {
+  LazyLoad.disabled = true;
+}
+
 WebFont.load(config.plugins.find(p => p.resolve === 'gatsby-plugin-web-font-loader').options);
 addDecorator(story => (
   <Fragment>
