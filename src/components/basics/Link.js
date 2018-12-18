@@ -7,13 +7,13 @@ import { color } from './shared/styles';
 
 import Icon from './Icon';
 
-const LinkWrapper = styled.a`
+const linkStyles = css`
   display: inline-block;
   transition: all 150ms ease-out;
   text-decoration: none;
 
   color: ${color.secondary};
-  > svg path {
+  svg path {
     fill: ${color.secondary};
   }
 
@@ -22,19 +22,19 @@ const LinkWrapper = styled.a`
     cursor: pointer;
     transform: translate3d(0, -1px, 0);
     color: ${darken(0.07, color.secondary)};
-    > svg path {
+    svg path {
       fill: ${darken(0.07, color.secondary)};
     }
   }
   &:active {
     transform: translate3d(0, 0, 0);
     color: ${darken(0.1, color.secondary)};
-    > svg path {
+    svg path {
       fill: ${darken(0.1, color.secondary)};
     }
   }
 
-  > svg {
+  svg {
     display: inline-block;
     height: 1em;
     width: 1em;
@@ -44,6 +44,99 @@ const LinkWrapper = styled.a`
     margin-right: 0.4em;
   }
 
+  ${props =>
+    props.secondary &&
+    css`
+      color: ${color.mediumdark};
+      svg path {
+        fill: ${color.mediumdark};
+      }
+
+      &:hover {
+        color: ${color.dark};
+        svg path {
+          fill: ${color.dark};
+        }
+      }
+
+      &:active {
+        color: ${color.darker};
+        svg path {
+          fill: ${color.darker};
+        }
+      }
+    `};
+
+  ${props =>
+    props.tertiary &&
+    css`
+      color: ${color.dark};
+      svg path {
+        fill: ${color.dark};
+      }
+
+      &:hover {
+        color: ${color.darkest};
+        svg path {
+          fill: ${color.darkest};
+        }
+      }
+
+      &:active {
+        color: ${color.mediumdark};
+        svg path {
+          fill: ${color.mediumdark};
+        }
+      }
+    `};
+
+  ${props =>
+    props.nochrome &&
+    css`
+      color: inherit;
+
+      &:hover,
+      &:active {
+        color: inherit;
+        text-decoration: underline;
+      }
+    `};
+
+  ${props =>
+    props.inverse &&
+    css`
+      color: ${color.lightest};
+      svg path {
+        fill: ${color.lightest};
+      }
+
+      &:hover {
+        color: ${color.lighter};
+        svg path {
+          fill: ${color.lighter};
+        }
+      }
+
+      &:active {
+        color: ${color.light};
+        svg path {
+          fill: ${color.light};
+        }
+      }
+    `};
+
+  ${props =>
+    props.isButton &&
+    css`
+      border: 0;
+      border-radius: 0;
+      background: none;
+      padding: 0;
+      font-size: inherit;
+    `};
+`;
+
+const LinkInner = styled.span`
   ${props =>
     props.withArrow &&
     css`
@@ -69,131 +162,36 @@ const LinkWrapper = styled.a`
         margin-right: 0;
       }
     `};
-
-  ${props =>
-    props.secondary &&
-    css`
-      color: ${color.mediumdark};
-      > svg path {
-        fill: ${color.mediumdark};
-      }
-
-      &:hover {
-        color: ${color.dark};
-        > svg path {
-          fill: ${color.dark};
-        }
-      }
-
-      &:active {
-        color: ${color.darker};
-        > svg path {
-          fill: ${color.darker};
-        }
-      }
-    `};
-
-  ${props =>
-    props.tertiary &&
-    css`
-      color: ${color.dark};
-      > svg path {
-        fill: ${color.dark};
-      }
-
-      &:hover {
-        color: ${color.darkest};
-        > svg path {
-          fill: ${color.darkest};
-        }
-      }
-
-      &:active {
-        color: ${color.mediumdark};
-        > svg path {
-          fill: ${color.mediumdark};
-        }
-      }
-    `};
-
-  ${props =>
-    props.nochrome &&
-    css`
-      color: inherit;
-
-      &:hover,
-      &:active {
-        color: inherit;
-        text-decoration: underline;
-      }
-    `};
-
-  ${props =>
-    props.inverse &&
-    css`
-      color: ${color.lightest};
-      > svg path {
-        fill: ${color.lightest};
-      }
-
-      &:hover {
-        color: ${color.lighter};
-        > svg path {
-          fill: ${color.lighter};
-        }
-      }
-
-      &:active {
-        color: ${color.light};
-        > svg path {
-          fill: ${color.light};
-        }
-      }
-    `};
-
-  ${props =>
-    props.isButton &&
-    css`
-      border: 0;
-      border-radius: 0;
-      background: none;
-      padding: 0;
-      font-size: inherit;
-    `};
 `;
 
-const LinkGatsby = LinkWrapper.withComponent(GatsbyLink);
-const LinkButton = LinkWrapper.withComponent('button');
+const LinkWrapper = styled.a`
+  ${linkStyles};
+`;
 
-export default function Link({ isGatsby, isButton, withArrow, children, ...props }) {
-  let content = children;
-  if (withArrow) {
-    content = (
-      <Fragment>
-        {content}
-        <Icon icon="arrowright" />
-      </Fragment>
-    );
-  }
+const LinkGatsby = styled(GatsbyLink)`
+  ${linkStyles};
+`;
+const LinkButton = styled.button`
+  ${linkStyles};
+`;
+
+export default function Link({ isGatsby, isButton, withArrow, containsIcon, children, ...props }) {
+  const content = (
+    <Fragment>
+      <LinkInner withArrow={withArrow} containsIcon={containsIcon}>
+        {children}
+        {withArrow && <Icon icon="arrowright" />}
+      </LinkInner>
+    </Fragment>
+  );
+
   if (isGatsby) {
-    return (
-      <LinkGatsby {...props} withArrow={withArrow}>
-        {content}
-      </LinkGatsby>
-    );
+    return <LinkGatsby {...props}>{content}</LinkGatsby>;
   }
   if (isButton) {
-    return (
-      <LinkButton {...props} withArrow={withArrow}>
-        {content}
-      </LinkButton>
-    );
+    return <LinkButton {...props}>{content}</LinkButton>;
   }
-  return (
-    <LinkWrapper {...props} withArrow={withArrow}>
-      {content}
-    </LinkWrapper>
-  );
+  return <LinkWrapper {...props}>{content}</LinkWrapper>;
 }
 
 Link.propTypes = {

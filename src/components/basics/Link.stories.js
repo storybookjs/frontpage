@@ -28,7 +28,7 @@ storiesOf('basics/Link', module).add('all', () => (
       With icon in front
     </Link>
     <br />
-    <Link containsIcon href="http://google.com">
+    <Link containsIcon isGatsby to="http://google.com">
       <Icon icon="sidebar" />
     </Link>
     <br />
@@ -42,12 +42,13 @@ storiesOf('basics/Link', module).add('all', () => (
       </Link>
     </span>
     <br />
+    {/* gatsby and styled-components don't work nicely together  */}
     {/* eslint-disable-next-line */}
-    <Link primary isButton onClick={onLinkClick}>
+    <Link isButton onClick={onLinkClick}>
       is actually a button
     </Link>
     <br />
-    <Link primary isGatsby to="/gatsby">
+    <Link primary={1} isGatsby to="/gatsby">
       is a GatsbyLink
     </Link>
   </div>
