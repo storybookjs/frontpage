@@ -471,7 +471,7 @@ export default function Hero({ startOpen, ...props }) {
           <SecondarySubheading>GitHub</SecondarySubheading>
 
           <Stats>
-            <GitHubWrapper>
+            <GitHubWrapper className="chromatic-ignore">
               <GitHubButton type="stargazers" namespace={namespace} repo={repo} />
             </GitHubWrapper>
             <Stat

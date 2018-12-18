@@ -210,7 +210,7 @@ export default function CommunityHero({ hasSubscribed, onSubscribe, ...props }) 
             status="tertiary"
             countLink={url.gitHub.contributors}
           />
-          <GitHubWrapper>
+          <GitHubWrapper className="chromatic-ignore">
             <GitHubButton type="stargazers" namespace={namespace} repo={repo} />
           </GitHubWrapper>
         </Stats>
