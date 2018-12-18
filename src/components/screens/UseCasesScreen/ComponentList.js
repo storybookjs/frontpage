@@ -73,7 +73,7 @@ function ComponentList({ selectedIndex, onSelectIndex, ...props }) {
   return (
     <Wrapper {...props}>
       <Toggle
-        path="images/logos/user"
+        path="/images/logos/user"
         brands={['formidable', 'auth0', 'artsy']}
         selectedIndex={selectedIndex}
         onSelectIndex={onSelectIndex}

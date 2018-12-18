@@ -74,7 +74,7 @@ function ComponentCanvas({ imageUrl, selectedIndex, onSelectIndex, ...props }) {
         </CanvasBackground>
       </CanvasWrapper>
       <Toggle
-        path="images/logos/user"
+        path="/images/logos/user"
         brands={['airbnb', 'atlassian', 'algolia']}
         selectedIndex={selectedIndex}
         onSelectIndex={onSelectIndex}
