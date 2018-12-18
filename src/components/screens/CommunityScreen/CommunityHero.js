@@ -190,7 +190,7 @@ export default function CommunityHero({ hasSubscribed, onSubscribe, ...props }) 
               </b>
             </MailingListConfirm>
           ) : (
-            <MailingListSubscribeForm onSubscribe={onSubscribe} cta="Sign up" />
+            <MailingListForm onSubscribe={onSubscribe} cta="Sign up" />
           )}
         </MailingListWrapper>
         <Stats>

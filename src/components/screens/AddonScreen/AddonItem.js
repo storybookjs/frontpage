@@ -14,11 +14,11 @@ const Image = styled.div`
 
   img {
     display: block;
-    max-width: 100px;
-    width: 100%;
+    width: 100px;
     height: auto;
 
     @media (min-width: ${breakpoint * 1}px) {
+      width: auto;
       max-width: 192px;
       margin: 0 auto;
     }
