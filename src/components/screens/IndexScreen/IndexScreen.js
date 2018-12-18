@@ -1,9 +1,8 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
 import styled from 'styled-components';
 
-import { Badge, Button, Link, styles, urls } from '../../basics';
+import { Badge, Button, Link, SocialGraph, styles, site } from '../../basics';
 import PageLayout from '../../layout/PageLayout';
 import Hero from './Hero';
 import SocialProof from '../../layout/SocialProof';
@@ -15,7 +14,7 @@ import Testimonial from '../../layout/Testimonial';
 import CTA from '../../layout/CTA';
 
 const { background } = styles;
-const { url } = urls;
+const { metadata, url } = site;
 
 const Contrast = styled.div`
   background-color: ${background.app};
@@ -48,16 +47,13 @@ const Placeholder = styled(PlaceholderAspectRatio)`
 export default function IndexScreen({ ...props }) {
   return (
     <PageLayout {...props}>
-      <Helmet
+      <SocialGraph
         title="Storybook: UI component workshop for frontend developers"
-        meta={[
-          {
-            name: 'description',
-            content:
-              'Storybook is an open source tool for developing UI components in isolation for React, Vue, and Angular. It makes building stunning UIs organized and efficient.',
-          },
-        ]}
+        desc="Storybook is an open source tool for developing UI components in isolation for React, Vue, and Angular. It makes building stunning UIs organized and efficient."
+        url={url.home}
+        image={metadata.ogImage}
       />
+
       <Hero />
 
       <SocialProof

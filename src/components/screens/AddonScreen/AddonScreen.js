@@ -1,8 +1,7 @@
 import React from 'react';
-import Helmet from 'react-helmet';
 import styled from 'styled-components';
 
-import { Button, Icon, styles, urls } from '../../basics';
+import { Button, Icon, SocialGraph, styles, site } from '../../basics';
 import PageLayout from '../../layout/PageLayout';
 import PageTitle from '../../layout/PageTitle';
 import AddonItem from './AddonItem';
@@ -11,7 +10,7 @@ import AddonCustom from './AddonCustom';
 import CTA from '../../layout/CTA';
 
 const { typography, pageMargins, breakpoint } = styles;
-const { url } = urls;
+const { metadata, url } = site;
 
 const Heading = styled.h2`
   font-weight: ${typography.weight.black};
@@ -36,15 +35,11 @@ const MakeYourOwn = styled(AddonCustom)`
 export default function AddonScreen({ ...props }) {
   return (
     <PageLayout {...props}>
-      <Helmet
-        title="Addons | Storybook"
-        meta={[
-          {
-            name: 'description',
-            content:
-              'Addons enable advanced functionality and unlock new workflows. Contributed by core maintainers and the amazing developer community.',
-          },
-        ]}
+      <SocialGraph
+        title={`Addons | ${metadata.title}`}
+        desc="Addons enable advanced functionality and unlock new workflows. Contributed by core maintainers and the amazing developer community."
+        url={`${url.home}/addons`}
+        image={metadata.ogImage}
       />
       <PageTitle
         heading="Addons"

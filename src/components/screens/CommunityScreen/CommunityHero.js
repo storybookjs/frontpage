@@ -4,13 +4,13 @@ import styled from 'styled-components';
 import GitHubButton from 'react-github-button';
 import 'react-github-button/assets/style.css';
 
-import { Cardinal, styles, urls } from '../../basics';
+import { Cardinal, styles, site } from '../../basics';
 
 import MailingListSubscribeForm from '../../layout/MailingListSubscribeForm';
 import { Heading, Title, Desc } from '../../layout/PageTitle';
 
 const { background, color, typography, pageMargins, breakpoint } = styles;
-const { url } = urls;
+const { url } = site;
 
 const Image = styled.img``;
 

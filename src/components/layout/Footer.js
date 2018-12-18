@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Icon, Link, Subheading, styles, urls } from '../basics';
+import { Icon, Link, Subheading, styles, site } from '../basics';
 
 import MailingListSubscribeForm from './MailingListSubscribeForm';
 import { navLinks } from './PageLayout';
 
 const { background, color, typography, pageMargins, pageMargin, spacing, breakpoint } = styles;
-const { url } = urls;
+const { url } = site;
 
 const Title = styled(Subheading)`
   display: block;

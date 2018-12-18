@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
 import styled from 'styled-components';
 import { rgba } from 'polished';
 
-import { Button, Icon, styles } from '../../basics';
+import { Button, Icon, SocialGraph, styles, site } from '../../basics';
 import PageLayout from '../../layout/PageLayout';
 import CommunityHero from './CommunityHero';
 import CommunitySocial from './CommunitySocial';
@@ -13,6 +12,7 @@ import CommunityItem from './CommunityItem';
 import CommunityList from './CommunityList';
 
 const { background, color, pageMargins, breakpoint } = styles;
+const { metadata, url } = site;
 
 const Contrast = styled.div`
   background-color: ${background.app};
@@ -88,15 +88,11 @@ const CommunityLayout = styled.div`
 export default function CommunityScreen({ hasSubscribed, onSubscribe, ...props }) {
   return (
     <PageLayout {...props} hasSubscribed={hasSubscribed} onSubscribe={onSubscribe}>
-      <Helmet
-        title="Community | Storybook"
-        meta={[
-          {
-            name: 'description',
-            content: `Join thousands of frontend developers to learn new Storybook techniques,
-            get help, and develop UIs faster.`,
-          },
-        ]}
+      <SocialGraph
+        title={`Community | ${metadata.title}`}
+        desc="Join thousands of frontend developers to learn new Storybook techniques, get help, and develop UIs faster."
+        url={`${url.home}/community`}
+        image={metadata.ogImage}
       />
       <CommunityHero hasSubscribed={hasSubscribed} onSubscribe={onSubscribe} />
 

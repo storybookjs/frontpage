@@ -2,10 +2,10 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-import { styles, urls } from '../../basics';
+import { styles, site } from '../../basics';
 
 const { color, typography, breakpoint } = styles;
-const { url } = urls;
+const { url } = site;
 
 const Image = styled.img`
   display: block;

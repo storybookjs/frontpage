@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Link, styles, urls } from '../../basics';
+import { Link, styles, site } from '../../basics';
 
 const { background, color, spacing, typography, pageMargin, breakpoint } = styles;
-const { url } = urls;
+const { url } = site;
 
 const Title = styled.div`
   font-weight: ${typography.weight.black};

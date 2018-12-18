@@ -1,11 +1,11 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import { Link, Icon, TooltipLinkList, WithTooltip, styles, urls } from '../basics';
+import { Link, Icon, TooltipLinkList, WithTooltip, styles, site } from '../basics';
 import { navLinks } from './PageLayout';
 
 const { color, typography, spacing, pageMargins, breakpoint } = styles;
-const { url } = urls;
+const { url } = site;
 
 const LogotypeWrapper = styled.a`
   display: inline-block;

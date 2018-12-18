@@ -15,14 +15,14 @@ import {
   WithTooltip,
   WithModal,
   styles,
-  urls,
+  site,
 } from '../../basics';
 
 import PlaceholderAspectRatio from '../../layout/PlaceholderAspectRatio';
 
 const { color, typography, breakpoint, pageMargins } = styles;
 
-const { url } = urls;
+const { url } = site;
 
 const ModalVideo = styled.iframe`
   width: 100%;

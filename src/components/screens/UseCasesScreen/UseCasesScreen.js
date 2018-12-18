@@ -1,5 +1,4 @@
 import React from 'react';
-import Helmet from 'react-helmet';
 import styled from 'styled-components';
 
 import PageLayout from '../../layout/PageLayout';
@@ -15,9 +14,10 @@ import ComponentCanvas from './ComponentCanvas';
 import ComponentList from './ComponentList';
 import LogoToggle from './LogoToggle';
 
-import { styles } from '../../basics';
+import { SocialGraph, styles, site } from '../../basics';
 
 const { background } = styles;
+const { metadata, url } = site;
 
 const Contrast = styled.div`
   background-color: ${background.app};
@@ -47,14 +47,11 @@ const DesignSystemWrapper = styled.div`
 export default function UseCasesScreen({ ...props }) {
   return (
     <PageLayout {...props}>
-      <Helmet
-        title="Use cases | Storybook"
-        meta={[
-          {
-            name: 'description',
-            content: `See how thousands of teams around the world use Storybook to build production UIs faster.`,
-          },
-        ]}
+      <SocialGraph
+        title={`Use cases | ${metadata.title}`}
+        desc="See how thousands of teams around the world use Storybook to build production UIs faster."
+        url={`${url.home}/use-cases`}
+        image={metadata.ogImage}
       />
       <PageTitle
         heading="Use cases"

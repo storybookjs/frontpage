@@ -1,5 +1,5 @@
 import React from 'react';
-import Helmet from 'react-helmet';
+
 import styled from 'styled-components';
 
 import PageLayout from '../../layout/PageLayout';
@@ -7,10 +7,10 @@ import PageTitle from '../../layout/PageTitle';
 import Feature from '../../layout/Feature';
 import FeaturesLayout from '../../layout/FeaturesLayout';
 
-import { Link, styles, urls } from '../../basics';
+import { Link, SocialGraph, styles, site } from '../../basics';
 
 const { breakpoint } = styles;
-const { url } = urls;
+const { metadata, url } = site;
 
 const Features = styled(FeaturesLayout)`
   @media (min-width: ${breakpoint * 1}px) {
@@ -21,15 +21,13 @@ const Features = styled(FeaturesLayout)`
 export default function SupportScreen({ ...props }) {
   return (
     <PageLayout {...props}>
-      <Helmet
-        title="Support | Storybook"
-        meta={[
-          {
-            name: 'description',
-            content: `Get answers to your Storybook questions from the thriving community and maintainers. Developers of all skill levels welcome.`,
-          },
-        ]}
+      <SocialGraph
+        title={`Support | ${metadata.title}`}
+        desc="Get answers to your Storybook questions from the thriving community and maintainers. Developers of all skill levels welcome."
+        url={`${url.home}/support`}
+        image={metadata.ogImage}
       />
+
       <PageTitle
         heading="Support"
         title="We’re happy to help"
