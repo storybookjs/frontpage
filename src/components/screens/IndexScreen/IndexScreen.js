@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { Badge, Button, Link, SocialGraph, styles, site } from '../../basics';
@@ -232,14 +231,3 @@ export default function IndexScreen({ ...props }) {
     </PageLayout>
   );
 }
-
-IndexScreen.propTypes = {
-  image: PropTypes.node.isRequired,
-  title: PropTypes.node.isRequired,
-  desc: PropTypes.node.isRequired,
-  children: PropTypes.node,
-};
-
-IndexScreen.defaultProps = {
-  children: null,
-};

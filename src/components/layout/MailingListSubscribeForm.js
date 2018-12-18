@@ -87,8 +87,8 @@ class MailingListSubscribeForm extends Component {
             {...this.formData.select('email').bind()}
             id="email"
             icon="email"
-            autocapitalize="off"
-            autocorrect="off"
+            autoCapitalize="off"
+            autoCorrect="off"
             label={null}
             appearance="secondary"
           />

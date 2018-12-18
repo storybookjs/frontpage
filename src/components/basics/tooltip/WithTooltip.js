@@ -77,7 +77,6 @@ WithTooltip.propTypes = {
   hasChrome: PropTypes.bool,
   tooltip: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired,
   children: PropTypes.node.isRequired,
-  tooltipShown: PropTypes.bool.isRequired,
   onVisibilityChange: PropTypes.func.isRequired,
 };
 
