@@ -21,6 +21,7 @@ export const url = {
   },
 
   npm: `https://www.npmjs.com/package/@storybook/react`,
+  openCollective: `https://opencollective.com/storybook`,
 
   // Navigation
   home: `${homepageUrl}`,
@@ -39,6 +40,13 @@ export const url = {
   twitter: `https://twitter.com/storybookjs`,
   chat: `https://discord.gg/UUt2PJb`,
   youtube: `https://www.youtube.com/channel/UCr7Quur3eIyA_oe8FNYexfg`,
+
+  // Brand
+  brand: `${gitHubOrg}/brand/`,
+  designSystem: `https://google.com`,
+  badge: `${gitHubOrg}/brand/#our-badges`,
+  presentation: `${gitHubOrg}/brand/tree/master/presentation`,
+  video: `${gitHubOrg}/brand/tree/master/video`,
 
   // Framework docs
   framework: {

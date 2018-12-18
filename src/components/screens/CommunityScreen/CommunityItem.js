@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Link, styles } from '../../basics';
+import { LazyLoad, Link, styles } from '../../basics';
 
 const { color, typography, breakpoint } = styles;
 
@@ -80,7 +80,9 @@ const Wrapper = styled.div`
 export default function CommunityItem({ image, title, desc, links, ...props }) {
   return (
     <Wrapper {...props}>
-      <Image>{image}</Image>
+      <LazyLoad once>
+        <Image>{image}</Image>
+      </LazyLoad>
       <Meta>
         <Title>{title}</Title>
         <Desc>{desc}</Desc>
