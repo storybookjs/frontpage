@@ -27,10 +27,11 @@ const Layout = styled.div`
   ${props =>
     props.columns === 2 &&
     css`
+      ${pageMargins};
       @media (min-width: ${breakpoint * 1}px) {
         margin: 0 ${pageMargin * 3}%;
         > * {
-          flex: 0 1 50%;
+          flex: 0 1 33.33%;
         }
       }
       @media (min-width: ${breakpoint * 2}px) {
