@@ -182,16 +182,15 @@ const FrameworkLink = styled(Link)`
   font-weight: ${typography.weight.bold};
 
   img {
+    display: inline-block;
+    vertical-align: top;
     height: 1rem;
     width: 1rem;
     margin-right: 10px;
+
     @media (min-width: ${breakpoint * 2}px) {
       margin-right: 15px;
     }
-  }
-
-  span {
-    height: 1rem;
   }
 
   svg {
