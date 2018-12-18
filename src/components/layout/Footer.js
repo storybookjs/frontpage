@@ -142,7 +142,7 @@ const Upper = styled.div`
   }
 `;
 
-const LogotypeWrapper = styled.a`
+const LogotypeWrapper = styled(Link)`
   margin-bottom: 1rem;
   display: block;
 
@@ -420,7 +420,7 @@ export default function Footer({ hasSubscribed, onSubscribe, ...props }) {
       </Upper>
       <Lower>
         <Colophon>
-          <LogotypeWrapper href="/">
+          <LogotypeWrapper isGatsby to="/">
             <img src="/images/logos/logo-storybook.svg" alt="Storybook" />
           </LogotypeWrapper>
           <Text>

@@ -7,7 +7,7 @@ import { navLinks } from './PageLayout';
 const { color, typography, spacing, pageMargins, breakpoint } = styles;
 const { url } = site;
 
-const LogotypeWrapper = styled.a`
+const LogotypeWrapper = styled(Link)`
   display: inline-block;
   img {
     height: 22px;
@@ -150,7 +150,7 @@ export default function Header({ ...props }) {
       <Nav>
         <NavGroup>
           <NavItem>
-            <LogotypeWrapper href="/">
+            <LogotypeWrapper isGatsby to="/">
               <img src="/images/logos/logo-storybook.svg" alt="Storybook" />
             </LogotypeWrapper>
             <Version href={url.gitHub.releases}>v5.0</Version>
