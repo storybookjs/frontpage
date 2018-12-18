@@ -102,9 +102,6 @@ const Pitch = styled.div`
 const Video = styled.video`
   width: 100%;
   height: auto;
-  border-radius: 4px;
-  box-shadow: rgba(0, 0, 0, 0.05) 0 10px 35px;
-  overflow: hidden;
 `;
 
 const VideoWrapper = styled.div`
@@ -112,6 +109,9 @@ const VideoWrapper = styled.div`
   width: 100%;
   height: 0;
   padding-bottom: 66.66%;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.05) 0 10px 35px;
 `;
 
 const TooltipTargetStyle = css`
