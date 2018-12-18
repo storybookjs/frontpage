@@ -6,7 +6,7 @@ import { styles } from '../../basics';
 
 const { color, typography, breakpoint } = styles;
 
-const Title = styled.div`
+const Title = styled.h2`
   font-weight: ${typography.weight.black};
   font-size: ${typography.size.m2}px;
   margin-bottom: 0.75rem;

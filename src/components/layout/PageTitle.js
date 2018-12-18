@@ -34,7 +34,7 @@ export const Heading = styled(Subheading)`
     `};
 `;
 
-export const Title = styled.div`
+export const Title = styled.h1`
   font-size: ${typography.size.m3}px;
   font-weight: ${typography.weight.black};
   line-height: 24px;

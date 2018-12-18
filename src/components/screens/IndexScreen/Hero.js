@@ -47,7 +47,7 @@ const AspectRatio = styled(PlaceholderAspectRatio)`
   }
 `;
 
-const Title = styled.div`
+const Title = styled.h1`
   font-weight: ${typography.weight.black};
 
   font-size: ${typography.size.m3}px;

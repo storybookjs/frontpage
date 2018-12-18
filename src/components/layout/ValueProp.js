@@ -11,7 +11,7 @@ const Media = styled.div`
   position: relative;
 `;
 
-const Title = styled.div`
+const Title = styled.h2`
   font-size: ${typography.size.m2}px;
   font-weight: ${typography.weight.black};
   line-height: 24px;
