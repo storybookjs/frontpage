@@ -161,7 +161,7 @@ export default function Header({ ...props }) {
           {navLinks.map(({ title, href, isGatsby }) => (
             <NavItem showDesktop key="title">
               <NavLink
-                tertiary
+                tertiary={1}
                 href={!isGatsby ? href : undefined}
                 to={isGatsby ? href : undefined}
                 isGatsby={isGatsby}

@@ -435,7 +435,7 @@ export default function Footer({ hasSubscribed, onSubscribe, ...props }) {
           <Title>Storybook</Title>
           {navLinks.map(({ title, href, isGatsby }) => (
             <FooterLink
-              tertiary
+              tertiary={1}
               key={title}
               href={!isGatsby ? href : undefined}
               to={isGatsby ? href : undefined}
