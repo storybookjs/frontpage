@@ -3,8 +3,10 @@ import { css } from 'styled-components';
 // Global style variables
 export const background = {
   app: '#F6F9FC',
+  appInverse: '#7A8997',
   positive: '#E1FFD4',
   negative: '#FEDED2',
+  warning: '#FFF5CF',
 };
 
 export const color = {
