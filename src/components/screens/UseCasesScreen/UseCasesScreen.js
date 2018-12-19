@@ -21,6 +21,9 @@ const { metadata, url } = site;
 
 const Contrast = styled.div`
   background-color: ${background.app};
+
+  /* prevents ComponentList from triggering overflow on mobile */
+  overflow: hidden;
 `;
 
 const Separator = styled.hr`

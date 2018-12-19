@@ -9,7 +9,7 @@ const { color, spacing, typography, pageMargin, pageMargins, breakpoint } = styl
 const Quote = styled.div`
   font-weight: ${typography.weight.bold};
   font-size: ${typography.size.s3}px;
-  line-height: ${typography.size.m1}px;
+  line-height: 1.5;
   color: ${color.dark};
 
   @media (min-width: ${breakpoint * 1}px) {

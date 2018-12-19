@@ -14,7 +14,7 @@ const { url } = site;
 
 const Features = styled(FeaturesLayout)`
   @media (min-width: ${breakpoint * 1}px) {
-    margin-bottom: 7rem;
+    margin-bottom: 5rem;
   }
 `;
 
