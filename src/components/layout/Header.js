@@ -88,7 +88,7 @@ const NavItem = styled.div`
     props.showDesktop &&
     css`
       display: none;
-      @media (min-width: ${breakpoint}px) {
+      @media (min-width: ${breakpoint * 1.333}px) {
         display: inline-block;
       }
     `};
@@ -96,7 +96,7 @@ const NavItem = styled.div`
   ${props =>
     props.showMobile &&
     css`
-      @media (min-width: ${breakpoint}px) {
+      @media (min-width: ${breakpoint * 1.333}px) {
         display: none;
       }
     `};
