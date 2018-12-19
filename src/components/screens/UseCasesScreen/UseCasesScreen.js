@@ -96,13 +96,14 @@ export default function UseCasesScreen({ ...props }) {
       <Testimonial
         text={
           <span>
-            “Lorem ispum dolor sit amet. Lorem ispum dolor sit amet. Lorem ispum dolor sit amet.”
+            “The tool we use for editing UI is Storybook. It is the perfect place to make sure your
+            work aligns with designs to the pixel across breakpoints.”
           </span>
         }
-        avatarUrl="https://avatars1.githubusercontent.com/u/263385?s=88&v=4"
-        name="Dominic Nguyen"
-        jobTitle="Product designer"
-        logo="/images/logos/user/logo-chromatic.svg"
+        avatarUrl="https://pbs.twimg.com/profile_images/532852309194063872/rwKxRciR_400x400.png"
+        name="Adam Neary"
+        jobTitle="Tech lead"
+        logo="/images/logos/user/logo-airbnb.svg"
       />
 
       <Contrast>
