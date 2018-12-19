@@ -7,14 +7,23 @@ import { styles } from '../../basics';
 const { breakpoint } = styles;
 
 const Logo = styled.img`
-  display: inline-block;
+  display: block;
+  width: 100%;
   height: auto;
 
   max-width: 92px;
   max-height: 22px;
-  width: auto !important;
-  height: auto !important;
+  object-fit: contain;
+`;
 
+const LogoWrapper = styled.button`
+  border: none;
+  background: none;
+  padding: 0;
+
+  height: 22px;
+
+  display: inline-block;
   opacity: 0.4;
   filter: grayscale(100%);
 
@@ -50,7 +59,7 @@ const Logos = styled.div`
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  ${Logo} {
+  ${LogoWrapper} {
     margin: 0 15px;
   }
 
@@ -58,7 +67,7 @@ const Logos = styled.div`
     justify-content: flex-start;
     display: flex;
 
-    ${Logo} {
+    ${LogoWrapper} {
       margin: 0 20px;
     }
   }
@@ -75,14 +84,14 @@ export default function LogoToggle({
   return (
     <Logos {...props}>
       {brands.map((brand, index) => (
-        <Logo
+        <LogoWrapper
           key={brand}
-          src={`${path}/logo-${brand}.svg`}
-          alt={brand}
           active={index === selectedIndex}
           onClick={() => onSelectIndex(index)}
           readOnly={readOnly}
-        />
+        >
+          <Logo src={`${path}/logo-${brand}.svg`} alt={brand} />
+        </LogoWrapper>
       ))}
     </Logos>
   );
