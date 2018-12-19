@@ -95,10 +95,7 @@ export default function IndexScreen({ ...props }) {
           desc={
             <Fragment>
               Save use cases as stories in{' '}
-              <Link
-                href="https://storybook.js.org/basics/guide-html/#write-your-stories"
-                target="_blank"
-              >
+              <Link href="https://storybook.js.org/basics/writing-stories/" target="_blank">
                 plain JavaScript
               </Link>{' '}
               to revisit during development, testing, and QA.

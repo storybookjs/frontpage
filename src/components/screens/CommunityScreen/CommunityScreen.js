@@ -78,25 +78,40 @@ const List = styled(CommunityList)``;
 
 const LogoLink = styled.a`
   display: inline-block;
+  padding: 5px;
+
   img {
     display: block;
-    max-width: 120px;
+    max-width: 100px;
     max-height: 45px;
     object-fit: contain;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
   }
 `;
 
 const OpenCollectiveLogos = styled.div`
+  flex: 1;
   height: 240px;
-  width: 400px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
 
   ${LogoLink} {
-    flex: 0 1 33.33%;
+    flex: 0;
+  }
+
+  @media (min-width: ${breakpoint * 1}px) {
+    ${LogoLink} {
+      flex: 1;
+    }
+  }
+
+  @media (min-width: ${breakpoint * 1.5}px) {
+    ${LogoLink} {
+      flex: 0 1 33.33%;
+    }
   }
 `;
 
@@ -215,7 +230,7 @@ export default function CommunityScreen({ ...props }) {
 
       <CommunityLayout>
         <Sidebar
-          title="Sponsor open source"
+          title="Donate to open source"
           desc="Donations go to hosting, swag for contributors, documentation and learning materials."
           loneChild
         >
@@ -223,7 +238,7 @@ export default function CommunityScreen({ ...props }) {
             Donate to Storybook
           </Button>
         </Sidebar>
-        <OpenCollectiveLogos>
+        <OpenCollectiveLogos className="chromatic-ignore">
           <LogoLink
             href="https://opencollective.com/storybook/sponsor/0/website"
             target="_blank"
@@ -303,6 +318,33 @@ export default function CommunityScreen({ ...props }) {
           >
             <LazyLoad once height="100%">
               <img src="https://opencollective.com/storybook/sponsor/8/avatar.svg" alt="donator" />
+            </LazyLoad>
+          </LogoLink>
+          <LogoLink
+            href="https://opencollective.com/storybook/sponsor/9/website"
+            target="_blank"
+            rel="noopener nofollow noreferrer"
+          >
+            <LazyLoad once height="100%">
+              <img src="https://opencollective.com/storybook/sponsor/9/avatar.svg" alt="donator" />
+            </LazyLoad>
+          </LogoLink>
+          <LogoLink
+            href="https://opencollective.com/storybook/sponsor/10/website"
+            target="_blank"
+            rel="noopener nofollow noreferrer"
+          >
+            <LazyLoad once height="100%">
+              <img src="https://opencollective.com/storybook/sponsor/10/avatar.svg" alt="donator" />
+            </LazyLoad>
+          </LogoLink>
+          <LogoLink
+            href="https://opencollective.com/storybook/sponsor/11/website"
+            target="_blank"
+            rel="noopener nofollow noreferrer"
+          >
+            <LazyLoad once height="100%">
+              <img src="https://opencollective.com/storybook/sponsor/11/avatar.svg" alt="donator" />
             </LazyLoad>
           </LogoLink>
         </OpenCollectiveLogos>

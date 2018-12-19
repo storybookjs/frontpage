@@ -26,13 +26,14 @@ const Desc = styled.div`
   @media (min-width: ${breakpoint * 1.333}px) {
     font-size: ${typography.size.m1}px;
     line-height: 32px;
+    margin-bottom: 0;
   }
 `;
 
 const Children = styled.div`
   margin-top: 1rem;
   @media (min-width: ${breakpoint * 1.333}px) {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
   }
   ${props =>
     !props.loneChild &&
