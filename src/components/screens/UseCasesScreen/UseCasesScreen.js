@@ -66,7 +66,9 @@ export default function UseCasesScreen({ ...props }) {
       <Separator />
       <ValueProp
         orientation="left"
-        media={<ComponentCanvas selectedIndex={0} onSelectIndex={() => 0} />}
+        media={
+          <ComponentCanvas className="chromatic-ignore" selectedIndex={0} onSelectIndex={() => 0} />
+        }
         title="Create components"
         desc="UI engineers at Airbnb, Algolia, and Atlassian create the web’s most dependable UI components with Storybook."
         lazyloadPlaceholder={<PlaceholderAspectRatio ratio={0.75} />}
@@ -106,7 +108,7 @@ export default function UseCasesScreen({ ...props }) {
           orientation="center"
           media={<ComponentList />}
           title="Assemble component libraries"
-          desc="Frontend infrastructure developers at Artsy, Formidable, and Auth0 create comprehensive component libraries using Storybook."
+          desc="Frontend infrastructure developers at Formidable, Auth0, and Artsy create comprehensive component libraries using Storybook."
           lazyload={false}
         />
         <FeaturesLayout columns={3}>
@@ -129,13 +131,14 @@ export default function UseCasesScreen({ ...props }) {
         <Testimonial
           text={
             <span>
-              “Lorem ispum dolor sit amet. Lorem ispum dolor sit amet. Lorem ispum dolor sit amet.”
+              “Storybook was one of our best decisions for writing React components across web and
+              native. It blows our old practices out of the water.”
             </span>
           }
-          avatarUrl="https://avatars1.githubusercontent.com/u/263385?s=88&v=4"
-          name="Dominic Nguyen"
-          jobTitle="Product designer"
-          logo="/images/logos/user/logo-chromatic.svg"
+          avatarUrl="https://pbs.twimg.com/profile_images/879777800311451648/5HSjNITG_400x400.jpg"
+          name="Orta Therox"
+          jobTitle="Frontend infrastructure"
+          logo="/images/logos/user/logo-artsy.svg"
         />
         <Separator />
       </Contrast>
