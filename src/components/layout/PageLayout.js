@@ -51,8 +51,7 @@ export default function PageLayout({ children, ...props }) {
       </Helmet>
       <Header />
       {children}
-      {'' /* TODO: make footer subscribed state self-contained */}
-      <Footer hasSubscribed={false} onSubscribe={() => 0} />
+      <Footer />
     </Layout>
   );
 }

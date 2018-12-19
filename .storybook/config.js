@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { configure, addDecorator } from '@storybook/react';
 import 'storybook-chromatic';
 import WebFont from 'webfontloader';
+import LazyLoad from '../src/components/basics/LazyLoad';
 
 import { GlobalStyle } from '../src/components/basics/shared/global';
 import config from '../gatsby-config';
@@ -28,6 +29,11 @@ global.__PATH_PREFIX__ = '';
 window.___navigate = pathname => {
   action('NavigateTo:')(pathname);
 };
+
+// Don't use lazyload for chromatic screenshots
+if (window.navigator.userAgent.match('Chromatic')) {
+  LazyLoad.disabled = true;
+}
 
 // automatically import all files ending in *.stories.js
 const req = require.context('../src', true, /.stories.js$/);

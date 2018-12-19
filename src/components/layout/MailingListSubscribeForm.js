@@ -78,7 +78,7 @@ class MailingListSubscribeForm extends Component {
   }
 
   render() {
-    const { cta, optIn, ...props } = this.props;
+    const { cta, optIn, onSubscribe, ...props } = this.props;
     return (
       <Form onSubmit={this.formData.onSubmit} {...props}>
         <EmailWrapper>
