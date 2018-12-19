@@ -60,7 +60,7 @@ export default function UseCasesScreen({ ...props }) {
         color="gold"
       />
       <PageTitleSocialProof
-        path="images/logos/user"
+        path="/images/logos/user"
         brands={['airbnb', 'govuk', 'atlassian', 'lyft', 'auth0', 'salesforce']}
       />
       <Separator />
@@ -97,7 +97,7 @@ export default function UseCasesScreen({ ...props }) {
         avatarUrl="https://avatars1.githubusercontent.com/u/263385?s=88&v=4"
         name="Dominic Nguyen"
         jobTitle="Product designer"
-        logo="images/logos/user/logo-chromatic.svg"
+        logo="/images/logos/user/logo-chromatic.svg"
       />
 
       <Contrast>
@@ -135,7 +135,7 @@ export default function UseCasesScreen({ ...props }) {
           avatarUrl="https://avatars1.githubusercontent.com/u/263385?s=88&v=4"
           name="Dominic Nguyen"
           jobTitle="Product designer"
-          logo="images/logos/user/logo-chromatic.svg"
+          logo="/images/logos/user/logo-chromatic.svg"
         />
         <Separator />
       </Contrast>
@@ -146,7 +146,7 @@ export default function UseCasesScreen({ ...props }) {
           <DesignSystemWrapper>
             <DesignSystem src="/images/use-cases/design-system.jpg" />
             <DesignSystemLogos
-              path="images/logos/user"
+              path="/images/logos/user"
               brands={['github', 'salesforce', 'govuk']}
               readOnly
             />
@@ -182,11 +182,11 @@ export default function UseCasesScreen({ ...props }) {
         avatarUrl="https://avatars1.githubusercontent.com/u/263385?s=88&v=4"
         name="Dominic Nguyen"
         jobTitle="Product designer"
-        logo="images/logos/user/logo-chromatic.svg"
+        logo="/images/logos/user/logo-chromatic.svg"
       />
       <Separator />
       <SocialProof
-        path="images/logos/user"
+        path="/images/logos/user"
         brands={[
           'microsoft',
           'coursera',
