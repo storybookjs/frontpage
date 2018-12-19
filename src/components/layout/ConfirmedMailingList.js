@@ -30,9 +30,9 @@ const MailingListForm = styled(MailingListSubscribeForm)`
 // XXX: what is this
 const listUrl = 'https://<something>.us15.list-manage.com/subscribe/post';
 
-export const PureConfirmedMailingList = ({ hasSubscribed, onSubscribe }) =>
+export const PureConfirmedMailingList = ({ hasSubscribed, onSubscribe, ...props }) =>
   hasSubscribed ? (
-    <MailingListConfirm>
+    <MailingListConfirm {...props}>
       <b>
         <span role="img" aria-label="thumbs up">
           👍
@@ -41,7 +41,7 @@ export const PureConfirmedMailingList = ({ hasSubscribed, onSubscribe }) =>
       </b>
     </MailingListConfirm>
   ) : (
-    <MailingListForm onSubscribe={onSubscribe} cta="Sign up" />
+    <MailingListForm onSubscribe={onSubscribe} cta="Sign up" {...props} />
   );
 
 PureConfirmedMailingList.propTypes = {

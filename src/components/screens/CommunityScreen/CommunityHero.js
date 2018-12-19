@@ -8,7 +8,7 @@ import { Cardinal, styles, site } from '../../basics';
 import ConfirmedMailingList from '../../layout/ConfirmedMailingList';
 import { Heading, Title, Desc } from '../../layout/PageTitle';
 
-const { background, typography, pageMargins, breakpoint } = styles;
+const { pageMargins, breakpoint } = styles;
 const { url } = site;
 
 const Image = styled.img``;
@@ -127,16 +127,6 @@ const Stats = styled.div`
   }
 `;
 
-const MailingListConfirm = styled.div`
-  font-size: ${typography.size.s2}px;
-  line-height: 20px;
-  background: ${background.positive};
-  padding: 10px;
-  text-align: center;
-  border-radius: 4px;
-  max-width: 340px;
-`;
-
 const MailingListForm = styled(ConfirmedMailingList)`
   min-width: 280px;
   width: 100%;
@@ -151,7 +141,7 @@ const MailingListWrapper = styled.div`
     margin-bottom: 2rem;
   }
 
-  ${MailingListConfirm}, ${MailingListForm} {
+  ${MailingListForm} {
     margin: 0 auto;
     @media (min-width: ${breakpoint}px) {
       margin: 0;
@@ -171,7 +161,7 @@ export default function CommunityHero(props) {
           get help, and develop UIs faster.
         </Desc>
         <MailingListWrapper>
-          <ConfirmedMailingList />
+          <MailingListForm />
         </MailingListWrapper>
         <Stats>
           <Stat
