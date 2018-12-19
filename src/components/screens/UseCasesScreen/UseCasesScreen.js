@@ -118,12 +118,12 @@ export default function UseCasesScreen({ ...props }) {
           <Feature
             image={<img src="/images/colored-icons/code.svg" alt="setup" />}
             title="Setup in seconds"
-            desc="Integration with popular popular frameworks and frontend stacks makes setup easy."
+            desc="Integration with popular frameworks and frontend stacks makes setup easy."
           />
           <Feature
             image={<img src="/images/colored-icons/runtest.svg" alt="test" />}
             title="Automate maintenance"
-            desc="Addons for testing keep your component library consistent, even on large teams."
+            desc="Addons for testing keep your component library consistent no matter how big it is."
           />
         </FeaturesLayout>
         <Testimonial
