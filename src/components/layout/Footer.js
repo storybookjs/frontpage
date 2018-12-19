@@ -1,10 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { Icon, Link, Subheading, styles, site } from '../basics';
 
-import MailingListSubscribeForm from './MailingListSubscribeForm';
+import ConfirmedMailingList from './ConfirmedMailingList';
 import { navLinks } from './PageLayout';
 
 const { background, color, typography, pageMargins, pageMargin, spacing, breakpoint } = styles;
@@ -184,23 +183,6 @@ const Column = styled.div`
 const Subscribe = styled.div`
   ${Text} {
     margin-bottom: 1rem;
-  }
-`;
-
-const MailingListConfirm = styled.div`
-  font-size: ${typography.size.s2}px;
-  line-height: 20px;
-  background: ${background.positive};
-  padding: 10px;
-  text-align: center;
-  border-radius: 4px;
-`;
-
-const MailingListForm = styled(MailingListSubscribeForm)`
-  min-width: 280px;
-  width: 100%;
-  @media (min-width: ${breakpoint}px) {
-    margin: 0 0 0;
   }
 `;
 
@@ -469,18 +451,7 @@ export default function Footer({ hasSubscribed, onSubscribe, ...props }) {
         <Subscribe>
           <Title>Subscribe</Title>
           <Text>Get news, free tutorials, and Storybook tips emailed to you.</Text>
-          {hasSubscribed ? (
-            <MailingListConfirm>
-              <b>
-                <span role="img" aria-label="thumbs up">
-                  👍
-                </span>{' '}
-                Thanks, you&rsquo;re all signed up!
-              </b>
-            </MailingListConfirm>
-          ) : (
-            <MailingListForm onSubscribe={onSubscribe} cta="Sign up" />
-          )}
+          <ConfirmedMailingList />
         </Subscribe>
       </Lower>
       <HrWrapper>
@@ -512,8 +483,3 @@ export default function Footer({ hasSubscribed, onSubscribe, ...props }) {
     </FooterWrapper>
   );
 }
-
-Footer.propTypes = {
-  hasSubscribed: PropTypes.bool.isRequired,
-  onSubscribe: PropTypes.func.isRequired,
-};

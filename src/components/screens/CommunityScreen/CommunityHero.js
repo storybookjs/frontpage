@@ -1,15 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import GitHubButton from 'react-github-button';
 import 'react-github-button/assets/style.css';
 
 import { Cardinal, styles, site } from '../../basics';
 
-import MailingListSubscribeForm from '../../layout/MailingListSubscribeForm';
+import ConfirmedMailingList from '../../layout/ConfirmedMailingList';
 import { Heading, Title, Desc } from '../../layout/PageTitle';
 
-const { background, color, typography, pageMargins, breakpoint } = styles;
+const { background, typography, pageMargins, breakpoint } = styles;
 const { url } = site;
 
 const Image = styled.img``;
@@ -128,13 +127,6 @@ const Stats = styled.div`
   }
 `;
 
-const MailingListText = styled.div`
-  font-size: ${typography.size.s2}px;
-  font-weight: ${typography.weight.bold};
-  margin-bottom: 0.5rem;
-  color: ${color.mediumdark};
-`;
-
 const MailingListConfirm = styled.div`
   font-size: ${typography.size.s2}px;
   line-height: 20px;
@@ -145,7 +137,7 @@ const MailingListConfirm = styled.div`
   max-width: 340px;
 `;
 
-const MailingListForm = styled(MailingListSubscribeForm)`
+const MailingListForm = styled(ConfirmedMailingList)`
   min-width: 280px;
   width: 100%;
 `;
@@ -167,7 +159,7 @@ const MailingListWrapper = styled.div`
   }
 `;
 
-export default function CommunityHero({ hasSubscribed, onSubscribe, ...props }) {
+export default function CommunityHero(props) {
   const [namespace, repo] = url.gitHub.repo.match(/github.com\/(.*)\/(.*)$/).slice(1);
   return (
     <Wrapper {...props}>
@@ -179,19 +171,7 @@ export default function CommunityHero({ hasSubscribed, onSubscribe, ...props }) 
           get help, and develop UIs faster.
         </Desc>
         <MailingListWrapper>
-          <MailingListText>Subscribe to the official mailing list</MailingListText>
-          {hasSubscribed ? (
-            <MailingListConfirm>
-              <b>
-                <span role="img" aria-label="thumbs up">
-                  👍
-                </span>{' '}
-                Thanks, you&rsquo;re all signed up!
-              </b>
-            </MailingListConfirm>
-          ) : (
-            <MailingListForm onSubscribe={onSubscribe} cta="Sign up" />
-          )}
+          <ConfirmedMailingList />
         </MailingListWrapper>
         <Stats>
           <Stat
@@ -222,8 +202,3 @@ export default function CommunityHero({ hasSubscribed, onSubscribe, ...props }) 
     </Wrapper>
   );
 }
-
-CommunityHero.propTypes = {
-  hasSubscribed: PropTypes.bool.isRequired,
-  onSubscribe: PropTypes.func.isRequired,
-};
