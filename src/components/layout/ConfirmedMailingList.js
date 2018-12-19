@@ -27,8 +27,7 @@ const MailingListForm = styled(MailingListSubscribeForm)`
   }
 `;
 
-// XXX: what is this
-const listUrl = 'https://<something>.us15.list-manage.com/subscribe/post';
+const listUrl = 'https://storybook.us18.list-manage.com/subscribe/post';
 
 export const PureConfirmedMailingList = ({ hasSubscribed, onSubscribe, ...props }) =>
   hasSubscribed ? (
@@ -52,12 +51,16 @@ PureConfirmedMailingList.propTypes = {
 export default compose(
   withState('hasSubscribed', 'onSetHasSubscribed', false),
   withHandlers({
+    // XXX: where does this go?
+    // u=06a6fce3ab1327784d4342396
+    // id=18b5cea6e6
     onSubscribe: ({ onSetHasSubscribed }) => async ({ email, optIn }) => {
       const data = new FormData();
       const fullFields = {
         MERGE0: email,
-        // XXX: what is this
-        ...(optIn && { 'group[4969][1]': 1 }),
+        // XXX: this is for the opt in checkbox on things like free resources
+        // We don't have this right now, but may have it in the future
+        ...(optIn && { '': null }),
       };
       // e.g. u, id, SOURCE
       Object.keys(fullFields).forEach(key => data.append(key, fullFields[key]));
