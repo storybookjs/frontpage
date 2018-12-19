@@ -102,7 +102,7 @@ const Wrapper = styled.div`
 
         ${Meta} {
           order: 1;
-          max-width: 800px;
+          max-width: 600px;
           margin-bottom: 2rem;
         }
 

@@ -14,6 +14,10 @@ const Toggle = styled(LogoToggle)`
   margin-top: 0.5rem;
   margin-bottom: 2rem;
 
+  @media (min-width: ${breakpoint}px) {
+    margin-top: 1rem;
+  }
+
   > *:not(:first-child) {
     animation: ${shake} 10s ease-in-out infinite 5s;
   }
