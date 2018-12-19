@@ -57,6 +57,7 @@ const Menu = styled(Link)`
   height: 3rem;
   border: none !important;
   text-decoration: none !important;
+  background: none !important;
   text-align: right;
   display: flex;
   align-items: center;
