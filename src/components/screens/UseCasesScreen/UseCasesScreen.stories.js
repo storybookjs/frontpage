@@ -4,4 +4,10 @@ import { storiesOf } from '@storybook/react';
 
 import UseCasesScreen from './UseCasesScreen';
 
-storiesOf('screens/UseCasesScreen/UseCasesScreen', module).add('default', () => <UseCasesScreen />);
+storiesOf('screens/UseCasesScreen/UseCasesScreen', module).add(
+  'default',
+  () => <UseCasesScreen />,
+  {
+    chromatic: { viewports: [320, 1200] },
+  }
+);

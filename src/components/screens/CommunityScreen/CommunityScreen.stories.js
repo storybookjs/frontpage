@@ -4,6 +4,10 @@ import { storiesOf } from '@storybook/react';
 
 import CommunityScreen from './CommunityScreen';
 
-storiesOf('screens/CommunityScreen/CommunityScreen', module).add('default', () => (
-  <CommunityScreen />
-));
+storiesOf('screens/CommunityScreen/CommunityScreen', module).add(
+  'default',
+  () => <CommunityScreen />,
+  {
+    chromatic: { viewports: [320, 1200] },
+  }
+);
