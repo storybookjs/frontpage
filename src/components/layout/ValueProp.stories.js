@@ -1,7 +1,16 @@
 import React from 'react';
+import styled from 'styled-components';
 import { storiesOf } from '@storybook/react';
 import ValueProp from './ValueProp';
 import PlaceholderAspectRatio from './PlaceholderAspectRatio';
+
+const ImageWrapper = styled.div`
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+`;
 
 storiesOf('screens/IndexScreen/ValueProp', module).add('default', () => (
   <div>
@@ -20,7 +29,11 @@ storiesOf('screens/IndexScreen/ValueProp', module).add('default', () => (
     />
     <ValueProp
       orientation="right"
-      media={<img alt="media" src="http://via.placeholder.com/800x540" />}
+      media={
+        <ImageWrapper>
+          <img alt="media" src="http://via.placeholder.com/800x540" />
+        </ImageWrapper>
+      }
       title="Lorem ipsum dolor sit amet"
       desc="Consecatur vestibulum coret save Storybook makes it easy to keep track of edge cases and as a result you get tests for free"
     />
