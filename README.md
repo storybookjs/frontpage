@@ -13,9 +13,9 @@ Contributions welcome! If it’s something small like grammar or punctuation, op
 1. Feature idea or bugfix?
 2. Build new UI or tweak existing UI in Storybook first
 3. Integrate with Gatsby
-4. Ensure tests pass in CI
+4. Ensure tests pass in [Circle CI storybooks/frontpage](https://circleci.com/gh/storybooks/frontpage)
 5. Ensure site works and is QAed via Netlify previews
-6. Ensure no visual bugs with Chromatic
+6. Ensure no visual bugs in [Chromatic storybooks/frontpage](https://www.chromaticqa.com/builds?appId=5be26744d2f6250024a9117d)
 7. Pull request
 
 ## Running the project locally
