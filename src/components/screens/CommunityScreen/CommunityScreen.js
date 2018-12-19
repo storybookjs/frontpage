@@ -136,7 +136,7 @@ export default function CommunityScreen({ ...props }) {
         url={`${url.home}/community`}
         image={metadata.ogImage}
       />
-      <CommunityHero hasSubscribed={false} onSubscribe={() => 0} />
+      <CommunityHero />
 
       <CommunitySocial />
 
