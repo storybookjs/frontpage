@@ -43,9 +43,9 @@ export const url = {
   youtube: `https://www.youtube.com/channel/UCr7Quur3eIyA_oe8FNYexfg`,
 
   // Brand
-  brand: `${gitHubOrg}/brand/`,
+  brand: `${gitHubOrg}/brand`,
   designSystem: `https://google.com`,
-  badge: `${gitHubOrg}/brand/#our-badges`,
+  badge: `${gitHubOrg}/brand/tree/master/badge`,
   presentation: `${gitHubOrg}/brand/tree/master/presentation`,
   video: `${gitHubOrg}/brand/tree/master/video`,
 
