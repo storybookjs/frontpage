@@ -1,4 +1,6 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
+import { compose, withHandlers, withState } from 'recompose';
 import styled from 'styled-components';
 import GitHubButton from 'react-github-button';
 import 'react-github-button/assets/style.css';
@@ -149,8 +151,21 @@ const MailingListWrapper = styled.div`
   }
 `;
 
-export default function CommunityHero(props) {
+const fetchNpmDownloads = async () => {
+  const response = await fetch(url.npmDownloads);
+  const json = await response.json();
+  return json.downloads
+};
+
+export const CommunityHero = ({ npmDownloads, updateNpmDownloads, ...props }) => {
   const [namespace, repo] = url.gitHub.repo.match(/github.com\/(.*)\/(.*)$/).slice(1);
+
+  fetchNpmDownloads().then((response) => {
+    updateNpmDownloads(response);
+  });
+
+  const npmDownloadsDisplay = `${(npmDownloads / 1000).toFixed(0)}k`
+
   return (
     <Wrapper {...props}>
       <Meta>
@@ -166,7 +181,7 @@ export default function CommunityHero(props) {
         <Stats>
           <Stat
             size="small"
-            count="800k"
+            count={npmDownloadsDisplay}
             text="Installs per month"
             noPlural
             status="secondary"
@@ -191,4 +206,16 @@ export default function CommunityHero(props) {
       </Media>
     </Wrapper>
   );
-}
+};
+
+CommunityHero.propTypes = {
+  npmDownloads: PropTypes.number.isRequired,
+  updateNpmDownloads: PropTypes.func.isRequired,
+};
+
+export default compose(
+  withState('npmDownloads', 'setNpmDownloads', 0),
+  withHandlers({
+    updateNpmDownloads: ({ setNpmDownloads }) => (count) => setNpmDownloads(count)
+  })
+)(CommunityHero);

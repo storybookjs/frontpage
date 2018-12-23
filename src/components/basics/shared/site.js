@@ -22,6 +22,7 @@ export const url = {
   },
 
   npm: `https://www.npmjs.com/package/@storybook/react`,
+  npmDownloads: `https://api.npmjs.org/downloads/point/last-month/@storybook/react`,
   openCollective: `https://opencollective.com/storybook`,
 
   // Navigation
