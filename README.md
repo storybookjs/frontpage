@@ -25,7 +25,8 @@ Contributions welcome! If it’s something small like grammar or punctuation, op
 The Storybook for Storybook contains every UI component. The UI is built following [Component-Driven Development](https://blog.hichroma.com/component-driven-development-ce1109d56c8e), a process that builds UIs from the “bottom up” starting with components and ending with screens. That means contributors should compose UIs in Storybook _before_ integration with the Gatsby app.
 
 1. yarn install
-2. yarn run storybook
+2. yarn build
+3. yarn run storybook
 
 ### Gatsby instructions
 
