@@ -167,15 +167,17 @@ const fetchNpmDownloads = async () => {
 export const CommunityHero = ({ npmDownloads, updateNpmDownloads, ...props }) => {
   const [namespace, repo] = url.gitHub.repo.match(/github.com\/(.*)\/(.*)$/).slice(1);
 
-  if (!window.sessionStorage.getItem('monthlyNpmDownloads')) {
-    fetchNpmDownloads().then((response) => {
-      updateNpmDownloads(response);
-      window.sessionStorage.setItem('monthlyNpmDownloads', parseInt(response));
-    });
-  } else {
-    setTimeout(() => {
-      updateNpmDownloads(window.sessionStorage.getItem('monthlyNpmDownloads'));
-    }, 0);
+  if (typeof window !== `undefined`) {
+    if (!window.sessionStorage.getItem('monthlyNpmDownloads')) {
+      fetchNpmDownloads().then((response) => {
+        updateNpmDownloads(response);
+        window.sessionStorage.setItem('monthlyNpmDownloads', parseInt(response));
+      });
+    } else {
+      setTimeout(() => {
+        updateNpmDownloads(window.sessionStorage.getItem('monthlyNpmDownloads'));
+      }, 0);
+    }
   }
 
   let npmDownloadsFixed = parseInt((npmDownloads / 1000).toFixed(0));
