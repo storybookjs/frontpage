@@ -152,9 +152,16 @@ const MailingListWrapper = styled.div`
 `;
 
 const fetchNpmDownloads = async () => {
-  const response = await fetch(url.npmDownloads);
-  const json = await response.json();
-  return json.downloads
+  const promises = Object.values(url.npmApi).map(async (uri) => {
+    const response = await fetch(uri);
+    const json = await response.json();
+
+    return json.downloads;
+  });
+
+  const results = await Promise.all(promises);
+
+  return results.reduce((a, b) => a + b, 0);
 };
 
 export const CommunityHero = ({ npmDownloads, updateNpmDownloads, ...props }) => {
@@ -164,7 +171,12 @@ export const CommunityHero = ({ npmDownloads, updateNpmDownloads, ...props }) =>
     updateNpmDownloads(response);
   });
 
-  const npmDownloadsDisplay = `${(npmDownloads / 1000).toFixed(0)}k`
+  let npmDownloadsFixed = parseInt((npmDownloads / 1000).toFixed(0));
+  let npmDownloadsDisplay = `${npmDownloadsFixed}k`;
+  if (npmDownloadsFixed >= 1000) {
+    npmDownloadsFixed = (npmDownloadsFixed / 1000).toFixed(2);
+    npmDownloadsDisplay = `${npmDownloadsFixed}m`;
+  }
 
   return (
     <Wrapper {...props}>

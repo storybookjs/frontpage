@@ -2,6 +2,7 @@
 
 const gitHubOrg = `https://github.com/storybooks`;
 const homepageUrl = `https://storybook.js.org`;
+const npmApiBase = `https://api.npmjs.org/downloads/point/last-month`;
 
 export const metadata = {
   title: 'Storybook',
@@ -22,8 +23,19 @@ export const url = {
   },
 
   npm: `https://www.npmjs.com/package/@storybook/react`,
-  npmDownloads: `https://api.npmjs.org/downloads/point/last-month/@storybook/react`,
   openCollective: `https://opencollective.com/storybook`,
+
+  npmApi: {
+    react: `${npmApiBase}/@storybook/react`,
+    reactNative: `${npmApiBase}/@storybook/react-native`,
+    vue: `${npmApiBase}/@storybook/vue`,
+    angular: `${npmApiBase}/@storybook/angular`,
+    ember: `${npmApiBase}/@storybook/ember`,
+    html: `${npmApiBase}/@storybook/html`,
+    svelte: `${npmApiBase}/@storybook/svelte`,
+    mithril: `${npmApiBase}/@storybook/mithril`,
+    riot: `${npmApiBase}/@storybook/riot`,
+  },
 
   // Navigation
   home: `${homepageUrl}`,
