@@ -167,14 +167,14 @@ const fetchNpmDownloads = async () => {
 export const CommunityHero = ({ npmDownloads, updateNpmDownloads, ...props }) => {
   const [namespace, repo] = url.gitHub.repo.match(/github.com\/(.*)\/(.*)$/).slice(1);
 
-  if (!sessionStorage.getItem('monthlyNpmDownloads')) {
+  if (!window.sessionStorage.getItem('monthlyNpmDownloads')) {
     fetchNpmDownloads().then((response) => {
       updateNpmDownloads(response);
-      sessionStorage.setItem('monthlyNpmDownloads', parseInt(response));
+      window.sessionStorage.setItem('monthlyNpmDownloads', parseInt(response));
     });
   } else {
     setTimeout(() => {
-      updateNpmDownloads(sessionStorage.getItem('monthlyNpmDownloads'));
+      updateNpmDownloads(window.sessionStorage.getItem('monthlyNpmDownloads'));
     }, 0);
   }
 
