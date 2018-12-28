@@ -8,6 +8,7 @@ import 'react-github-button/assets/style.css';
 import { Cardinal, styles, site } from '../../basics';
 
 import ConfirmedMailingList from '../../layout/ConfirmedMailingList';
+import NpmDownloadCount from '../../layout/NpmDownloadCount';
 import { Heading, Title, Desc } from '../../layout/PageTitle';
 
 const { pageMargins, breakpoint } = styles;
@@ -114,6 +115,11 @@ const Stat = styled(Cardinal)`
   display: block;
 `;
 
+const NpmDownloadStat = styled(NpmDownloadCount)`
+  padding: 0;
+  display: block;
+`;
+
 const Stats = styled.div`
   display: flex;
   flex-direction: row;
@@ -151,41 +157,8 @@ const MailingListWrapper = styled.div`
   }
 `;
 
-const fetchNpmDownloads = async () => {
-  const promises = Object.values(url.npmApi).map(async (uri) => {
-    const response = await fetch(uri);
-    const json = await response.json();
-
-    return json.downloads;
-  });
-
-  const results = await Promise.all(promises);
-
-  return results.reduce((a, b) => a + b, 0);
-};
-
-export const CommunityHero = ({ npmDownloads, updateNpmDownloads, ...props }) => {
+export default function CommunityHero({ ...props }) {
   const [namespace, repo] = url.gitHub.repo.match(/github.com\/(.*)\/(.*)$/).slice(1);
-
-  if (typeof window !== `undefined`) {
-    if (!window.sessionStorage.getItem('monthlyNpmDownloads')) {
-      fetchNpmDownloads().then((response) => {
-        updateNpmDownloads(response);
-        window.sessionStorage.setItem('monthlyNpmDownloads', parseInt(response));
-      });
-    } else {
-      setTimeout(() => {
-        updateNpmDownloads(window.sessionStorage.getItem('monthlyNpmDownloads'));
-      }, 0);
-    }
-  }
-
-  let npmDownloadsFixed = parseInt((npmDownloads / 1000).toFixed(0));
-  let npmDownloadsDisplay = `${npmDownloadsFixed}k`;
-  if (npmDownloadsFixed >= 1000) {
-    npmDownloadsFixed = (npmDownloadsFixed / 1000).toFixed(2);
-    npmDownloadsDisplay = `${npmDownloadsFixed}m`;
-  }
 
   return (
     <Wrapper {...props}>
@@ -200,14 +173,7 @@ export const CommunityHero = ({ npmDownloads, updateNpmDownloads, ...props }) =>
           <MailingListForm />
         </MailingListWrapper>
         <Stats>
-          <Stat
-            size="small"
-            count={npmDownloadsDisplay}
-            text="Installs per month"
-            noPlural
-            status="secondary"
-            countLink={url.npm}
-          />
+          <NpmDownloadStat />
           <Stat
             size="small"
             count="+550"
@@ -228,15 +194,3 @@ export const CommunityHero = ({ npmDownloads, updateNpmDownloads, ...props }) =>
     </Wrapper>
   );
 };
-
-CommunityHero.propTypes = {
-  npmDownloads: PropTypes.number.isRequired,
-  updateNpmDownloads: PropTypes.func.isRequired,
-};
-
-export default compose(
-  withState('npmDownloads', 'setNpmDownloads', 0),
-  withHandlers({
-    updateNpmDownloads: ({ setNpmDownloads }) => (count) => setNpmDownloads(count)
-  })
-)(CommunityHero);
