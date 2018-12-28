@@ -50,7 +50,7 @@ export default function ContributorItem({ contributors, contributorCount, gitHub
       <ContributorsWrapper>
         <Contributors>
           {contributors.map(({ name, avatarUrl }) => (
-            <Contributor key={name} size="large" username={name} src={avatarUrl} />
+            <Contributor key={name} size="large" username={name} src={avatarUrl} title={name} />
           ))}
         </Contributors>
       </ContributorsWrapper>
