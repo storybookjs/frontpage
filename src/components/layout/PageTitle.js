@@ -79,7 +79,7 @@ const Wrapper = styled.div`
   text-align: center;
 
   @media (min-width: ${breakpoint}px) {
-    padding-top: 5rem !important;
+    padding-top: 7rem !important;
     padding-bottom: 5rem !important;
   }
 `;
