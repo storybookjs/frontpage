@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import { styles } from '../../basics';
 
-const { color, pageMargins, breakpoint } = styles;
+const { color, pageMargins, pageMargin, breakpoint } = styles;
 
 const Grid = styled.div`
   display: flex;
@@ -31,6 +31,11 @@ const Grid = styled.div`
 
       &:nth-child(-n + 3) {
         border-bottom: 1px solid ${color.border};
+        padding-top: 1.5rem;
+      }
+
+      &:nth-child(n + 3) {
+        padding-bottom: 1.5rem;
       }
     }
   }
@@ -39,6 +44,13 @@ const Grid = styled.div`
 const Layout = styled.div`
   ${pageMargins};
   padding-bottom: calc(5rem - 40px);
+
+  @media (min-width: ${breakpoint * 1}px) {
+    margin: 0 ${pageMargin * 2}%;
+  }
+  @media (min-width: ${breakpoint * 2}px) {
+    margin: 0 ${pageMargin * 3}%;
+  }
 `;
 
 export default function TeamList({ children, ...props }) {

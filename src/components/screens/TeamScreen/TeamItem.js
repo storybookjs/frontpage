@@ -99,8 +99,8 @@ export default function TeamItem({
           {company && companyUrl && (
             <Company>
               {' at '}
-              <Link href={companyUrl} target="_blank">
-                {company}
+              <Link secondary href={companyUrl} target="_blank">
+                <b>{company}</b>
               </Link>
             </Company>
           )}
@@ -110,12 +110,12 @@ export default function TeamItem({
         {(gitHubUrl || twitterUrl) && (
           <Social>
             {gitHubUrl && (
-              <Link href={gitHubUrl} target="_blank" containsIcon>
+              <Link tertiary href={gitHubUrl} target="_blank" containsIcon>
                 <Icon icon="github" />
               </Link>
             )}
             {twitterUrl && (
-              <Link href={twitterUrl} target="_blank" containsIcon>
+              <Link tertiary href={twitterUrl} target="_blank" containsIcon>
                 <Icon icon="twitter" />
               </Link>
             )}
