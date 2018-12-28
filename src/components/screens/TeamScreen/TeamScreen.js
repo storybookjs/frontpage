@@ -25,7 +25,7 @@ const contributors = [
     avatarUrl: 'https://avatars1.githubusercontent.com/u/1474548',
   },
   {
-    name: 'Kai Roeder',
+    name: 'Kai Röder',
     avatarUrl: 'https://avatars3.githubusercontent.com/u/5478899',
   },
   {
