@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components';
 import pluralize from 'pluralize';
 
 import { color, typography } from './shared/styles';
+import { inlineGlow } from './shared/animation';
 import Link from './Link';
 
 const Count = styled.div`
@@ -46,6 +47,19 @@ const CardinalInner = styled.div`
   padding: 8px 12px;
   border-radius: 4px;
 
+  ${props =>
+    props.loading &&
+    css`
+      ${Count}, ${Text} {
+        overflow: hidden;
+
+        > span,
+        a {
+          ${inlineGlow};
+        }
+      }
+    `};
+
   ${Count} {
     font-weight: ${props =>
       props.size === 'small' ? typography.weight.bold : typography.weight.regular};
@@ -62,9 +76,9 @@ const CardinalInner = styled.div`
   }
 `;
 
-function Cardinal({ size, count, countLink, text, noPlural, status, ...props }) {
+function Cardinal({ loading, size, count, countLink, text, noPlural, status, ...props }) {
   const cardinalInner = (
-    <CardinalInner size={size} {...props}>
+    <CardinalInner loading={loading} size={size} {...props}>
       <Count status={status}>
         <span>{count}</span>
       </Count>
@@ -87,20 +101,23 @@ function Cardinal({ size, count, countLink, text, noPlural, status, ...props }) 
 }
 
 Cardinal.propTypes = {
+  loading: PropTypes.bool,
   size: PropTypes.oneOf(['small', 'large']),
   count: PropTypes.node,
   countLink: PropTypes.string,
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string,
   noPlural: PropTypes.bool,
   status: PropTypes.oneOf(['primary', 'secondary', 'tertiary', 'default']),
 };
 
 Cardinal.defaultProps = {
+  loading: false,
   size: 'large',
   status: 'default',
   count: '000',
   countLink: null,
   noPlural: false,
+  text: 'loading',
 };
 
 export default Cardinal;
