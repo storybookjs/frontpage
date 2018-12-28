@@ -72,7 +72,7 @@ export default function TeamScreen({ ...props }) {
         heading="Team"
         title="Meet the team"
         desc="Storybook is maintained by hundreds of contributors worldwide and guided by a steering committee."
-        color="purple"
+        color="green"
       />
       <Team>
         <TeamItem
