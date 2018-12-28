@@ -35,6 +35,8 @@ export const url = {
     svelte: `${npmApiBase}/@storybook/svelte`,
     mithril: `${npmApiBase}/@storybook/mithril`,
     riot: `${npmApiBase}/@storybook/riot`,
+    polymer: `${npmApiBase}/@storybook/polymer`,
+    preact: `${npmApiBase}/@storybook/preact`,
   },
 
   // Navigation
