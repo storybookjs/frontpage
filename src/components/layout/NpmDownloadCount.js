@@ -19,22 +19,22 @@ const fetchNpmDownloads = async () => {
 };
 
 const withNpmDownloads = lifecycle({
-  state: { npmDownloads: 0 },
+  state: { loading: true, npmDownloads: 0 },
   componentDidMount() {
     if (!window.sessionStorage.getItem('monthlyNpmDownloads')) {
       fetchNpmDownloads().then((npmDownloads) => {
-        this.setState({ npmDownloads });
+        this.setState({ loading: false, npmDownloads });
         window.sessionStorage.setItem('monthlyNpmDownloads', parseInt(npmDownloads));
       });
     } else {
       setTimeout(() => {
-        this.setState({ npmDownloads: window.sessionStorage.getItem('monthlyNpmDownloads') });
+        this.setState({ loading: false, npmDownloads: window.sessionStorage.getItem('monthlyNpmDownloads') });
       }, 0);
     }
   }
 });
 
-export const NpmDownloadCount = ({ npmDownloads, ...props }) => {
+export const NpmDownloadCount = ({ loading, npmDownloads, ...props }) => {
   const [namespace, repo] = url.gitHub.repo.match(/github.com\/(.*)\/(.*)$/).slice(1);
 
   let npmDownloadsFixed = parseInt((npmDownloads / 1000).toFixed(0));
@@ -52,11 +52,13 @@ export const NpmDownloadCount = ({ npmDownloads, ...props }) => {
       noPlural
       status="secondary"
       countLink={url.npm}
+      loading={loading}
     />
   );
 };
 
 NpmDownloadCount.propTypes = {
+  loading: PropTypes.bool.isRequired,
   npmDownloads: PropTypes.number.isRequired
 };
 
