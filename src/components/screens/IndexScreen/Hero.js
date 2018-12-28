@@ -93,9 +93,9 @@ const Pitch = styled.div`
   text-align: center;
   max-width: 600px;
   margin: 0 auto;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
   @media (min-width: ${breakpoint * 2}px) {
-    margin-bottom: 4rem;
+    margin-bottom: 5rem;
   }
 `;
 
