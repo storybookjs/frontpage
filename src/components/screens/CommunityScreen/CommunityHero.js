@@ -1,4 +1,6 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
+import { compose, withHandlers, withState } from 'recompose';
 import styled from 'styled-components';
 import GitHubButton from 'react-github-button';
 import 'react-github-button/assets/style.css';
@@ -6,6 +8,7 @@ import 'react-github-button/assets/style.css';
 import { Cardinal, styles, site } from '../../basics';
 
 import ConfirmedMailingList from '../../layout/ConfirmedMailingList';
+import NpmDownloadCount from '../../layout/NpmDownloadCount';
 import { Heading, Title, Desc } from '../../layout/PageTitle';
 
 const { pageMargins, breakpoint } = styles;
@@ -112,6 +115,11 @@ const Stat = styled(Cardinal)`
   display: block;
 `;
 
+const NpmDownloadStat = styled(NpmDownloadCount)`
+  padding: 0;
+  display: block;
+`;
+
 const Stats = styled.div`
   display: flex;
   flex-direction: row;
@@ -149,8 +157,9 @@ const MailingListWrapper = styled.div`
   }
 `;
 
-export default function CommunityHero(props) {
+export default function CommunityHero({ ...props }) {
   const [namespace, repo] = url.gitHub.repo.match(/github.com\/(.*)\/(.*)$/).slice(1);
+
   return (
     <Wrapper {...props}>
       <Meta>
@@ -164,14 +173,7 @@ export default function CommunityHero(props) {
           <MailingListForm />
         </MailingListWrapper>
         <Stats>
-          <Stat
-            size="small"
-            count="800k"
-            text="Installs per month"
-            noPlural
-            status="secondary"
-            countLink={url.npm}
-          />
+          <NpmDownloadStat />
           <Stat
             size="small"
             count="+550"
@@ -191,4 +193,4 @@ export default function CommunityHero(props) {
       </Media>
     </Wrapper>
   );
-}
+};

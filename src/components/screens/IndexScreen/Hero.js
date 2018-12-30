@@ -19,6 +19,7 @@ import {
 } from '../../basics';
 
 import PlaceholderAspectRatio from '../../layout/PlaceholderAspectRatio';
+import NpmDownloadCount from '../../layout/NpmDownloadCount';
 
 const { color, typography, breakpoint, pageMargins } = styles;
 
@@ -236,6 +237,11 @@ const FrameworkList = styled.div`
 `;
 
 const Stat = styled(Cardinal)`
+  padding: 0;
+  display: block;
+`;
+
+const NpmDownloadStat = styled(NpmDownloadCount)`
   padding: 0;
   display: block;
 `;
@@ -481,14 +487,7 @@ export default function Hero({ startOpen, ...props }) {
               status="primary"
               countLink={url.gitHub.releases}
             />
-            <Stat
-              size="small"
-              count="800k"
-              text="Installs per month"
-              noPlural
-              status="secondary"
-              countLink={url.npm}
-            />
+            <NpmDownloadStat />
             <Stat
               size="small"
               count="+550"
