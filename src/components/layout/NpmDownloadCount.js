@@ -27,9 +27,7 @@ const withNpmDownloads = lifecycle({
         window.sessionStorage.setItem('monthlyNpmDownloads', parseInt(npmDownloads));
       });
     } else {
-      setTimeout(() => {
-        this.setState({ loading: false, npmDownloads: window.sessionStorage.getItem('monthlyNpmDownloads') });
-      }, 0);
+      this.setState({ loading: false, npmDownloads: window.sessionStorage.getItem('monthlyNpmDownloads') });
     }
   }
 });
