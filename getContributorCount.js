@@ -12,7 +12,7 @@ const getContributorCount = async () => {
     .then(body => {
       const $ = cheerio.load(body);
       const count = $('a[href="/storybooks/storybook/graphs/contributors"] > span').html().trim();
-      fs.writeFile('package.json', JSON.stringify({...PACKAGE, config: { contributorCount: count }}, null, 2), (err) => {
+      fs.writeFile('package.json', JSON.stringify({...PACKAGE, config: { contributors: count }}, null, 2), (err) => {
         if(err) {
             return console.log(err);
         }
