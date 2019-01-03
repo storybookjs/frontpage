@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import GitHubButton from 'react-github-button';
 import 'react-github-button/assets/style.css';
 
+import PACKAGE from '../../../../package';
+
 import { Cardinal, styles, site } from '../../basics';
 
 import ConfirmedMailingList from '../../layout/ConfirmedMailingList';
@@ -176,7 +178,7 @@ export default function CommunityHero({ ...props }) {
           <NpmDownloadStat />
           <Stat
             size="small"
-            count="+550"
+            count={PACKAGE.config.contributorCount}
             text="Contributors"
             noPlural
             status="tertiary"
