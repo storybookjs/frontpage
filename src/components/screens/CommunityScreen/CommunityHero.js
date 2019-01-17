@@ -1,6 +1,4 @@
 import React from 'react';
-import { PropTypes } from 'prop-types';
-import { compose, withHandlers, withState } from 'recompose';
 import styled from 'styled-components';
 import GitHubButton from 'react-github-button';
 import 'react-github-button/assets/style.css';
@@ -195,4 +193,4 @@ export default function CommunityHero({ ...props }) {
       </Media>
     </Wrapper>
   );
-};
+}

@@ -1,12 +1,13 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { compose, lifecycle, withHandlers, withState } from 'recompose';
+import { compose, lifecycle } from 'recompose';
 
 import { Cardinal, site } from '../basics';
+
 const { url } = site;
 
 const fetchNpmDownloads = async () => {
-  const promises = Object.values(url.npmApi).map(async (uri) => {
+  const promises = Object.values(url.npmApi).map(async uri => {
     const response = await fetch(uri);
     const json = await response.json();
 
@@ -22,20 +23,21 @@ const withNpmDownloads = lifecycle({
   state: { loading: true, npmDownloads: 0 },
   componentDidMount() {
     if (!window.sessionStorage.getItem('monthlyNpmDownloads')) {
-      fetchNpmDownloads().then((npmDownloads) => {
+      fetchNpmDownloads().then(npmDownloads => {
         this.setState({ loading: false, npmDownloads });
-        window.sessionStorage.setItem('monthlyNpmDownloads', parseInt(npmDownloads));
+        window.sessionStorage.setItem('monthlyNpmDownloads', parseInt(npmDownloads, 10));
       });
     } else {
-      this.setState({ loading: false, npmDownloads: window.sessionStorage.getItem('monthlyNpmDownloads') });
+      this.setState({
+        loading: false,
+        npmDownloads: window.sessionStorage.getItem('monthlyNpmDownloads'),
+      });
     }
-  }
+  },
 });
 
-export const NpmDownloadCount = ({ loading, npmDownloads, ...props }) => {
-  const [namespace, repo] = url.gitHub.repo.match(/github.com\/(.*)\/(.*)$/).slice(1);
-
-  let npmDownloadsFixed = parseInt((npmDownloads / 1000).toFixed(0));
+const NpmDownloadCount = ({ loading, npmDownloads, ...props }) => {
+  let npmDownloadsFixed = parseInt((npmDownloads / 1000).toFixed(0), 10);
   let npmDownloadsDisplay = `${npmDownloadsFixed}k`;
   if (npmDownloadsFixed >= 1000) {
     npmDownloadsFixed = (npmDownloadsFixed / 1000).toFixed(2);
@@ -51,14 +53,14 @@ export const NpmDownloadCount = ({ loading, npmDownloads, ...props }) => {
       status="secondary"
       countLink={url.npm}
       loading={loading}
-       {...props}
+      {...props}
     />
   );
 };
 
 NpmDownloadCount.propTypes = {
   loading: PropTypes.bool.isRequired,
-  npmDownloads: PropTypes.number.isRequired
+  npmDownloads: PropTypes.number.isRequired,
 };
 
 export default compose(withNpmDownloads)(NpmDownloadCount);

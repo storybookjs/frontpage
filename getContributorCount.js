@@ -11,13 +11,19 @@ const getContributorCount = async () => {
     .then(res => res.text())
     .then(body => {
       const $ = cheerio.load(body);
-      const count = $('a[href="/storybooks/storybook/graphs/contributors"] > span').html().trim();
-      fs.writeFile('package.json', JSON.stringify({...PACKAGE, config: { contributors: count }}, null, 2), (err) => {
-        if(err) {
+      const count = $('a[href="/storybooks/storybook/graphs/contributors"] > span')
+        .html()
+        .trim();
+      fs.writeFile(
+        'package.json',
+        JSON.stringify({ ...PACKAGE, config: { contributors: count } }, null, 2),
+        err => {
+          if (err) {
             return console.log(err);
+          }
+          console.log(`New contributor count added to package.json: ${count} contributors!`);
         }
-        console.log(`New contributor count added to package.json: ${count} contributors!`);
-     }); 
+      );
     });
 };
 
