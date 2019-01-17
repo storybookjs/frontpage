@@ -182,14 +182,12 @@ export default function UseCasesScreen({ ...props }) {
       </FeaturesLayout>
       <Testimonial
         text={
-          <span>
-            “Lorem ispum dolor sit amet. Lorem ispum dolor sit amet. Lorem ispum dolor sit amet.”
-          </span>
+          <span>“Storybook is crucial to our UX process. The “old way” seems ludicrous now!”</span>
         }
-        avatarUrl="https://avatars1.githubusercontent.com/u/263385?s=88&v=4"
-        name="Dominic Nguyen"
-        jobTitle="Product designer"
-        logo="/images/logos/user/logo-chromatic.svg"
+        avatarUrl="https://avatars3.githubusercontent.com/u/31106469?s=200&v=4"
+        name="Andrew Frankel"
+        jobTitle="Engineering lead"
+        logo="/images/logos/user/logo-salesforce.svg"
       />
       <Separator />
       <SocialProof
