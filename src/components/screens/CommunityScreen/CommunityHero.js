@@ -129,7 +129,7 @@ const Stats = styled.div`
 
   @media (min-width: ${breakpoint}px) {
     justify-content: stretch;
-    > ${Stat} {
+    > * {
       flex: 1;
     }
   }
