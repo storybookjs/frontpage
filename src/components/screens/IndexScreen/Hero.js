@@ -5,6 +5,8 @@ import GitHubButton from 'react-github-button';
 
 import 'react-github-button/assets/style.css';
 
+import PACKAGE from '../../../../package';
+
 import {
   Button,
   Cardinal,
@@ -490,7 +492,7 @@ export default function Hero({ startOpen, ...props }) {
             <NpmDownloadStat />
             <Stat
               size="small"
-              count="+550"
+              count={PACKAGE.config.contributorCount}
               text="Contributors"
               noPlural
               status="tertiary"

@@ -1,5 +1,4 @@
 import React from 'react';
-
 import styled from 'styled-components';
 
 import PageLayout from '../../layout/PageLayout';
@@ -7,6 +6,7 @@ import PageTitle from '../../layout/PageTitle';
 import TeamItem from './TeamItem';
 import ContributorItem from './ContributorItem';
 import TeamList from './TeamList';
+import PACKAGE from '../../../../package';
 
 import { SocialGraph, styles, site } from '../../basics';
 
@@ -127,7 +127,7 @@ export default function TeamScreen({ ...props }) {
         />
         <ContributorItem
           contributors={contributors}
-          contributorCount={571}
+          contributorCount={PACKAGE.config.contributorCount}
           gitHubUrl={url.gitHub.contributors}
         />
       </Team>
