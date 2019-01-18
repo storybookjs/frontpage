@@ -1,6 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { compose, lifecycle } from 'recompose';
+import { fetch, window } from 'global';
 
 import { Cardinal, site } from '../basics';
 

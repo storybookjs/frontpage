@@ -19,7 +19,8 @@ const getContributorCount = async () => {
         JSON.stringify({ ...PACKAGE, config: { contributors: count } }, null, 2),
         err => {
           if (err) {
-            return console.log(err);
+            console.log(err);
+            return;
           }
           console.log(`New contributor count added to package.json: ${count} contributors!`);
         }
