@@ -46,8 +46,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "npm run getContributorCount && gatsby build",
-    "getContributorCount": "node getContributorCount.js",
+    "build": "gatsby build",
     "develop": "gatsby develop",
     "start": "npm run develop",
     "format": "prettier --write \"src/**/*.js\"",

@@ -1,9 +1,9 @@
 import React from 'react';
+import { StaticQuery, graphql } from "gatsby"
+
 import styled from 'styled-components';
 import GitHubButton from 'react-github-button';
 import 'react-github-button/assets/style.css';
-
-import PACKAGE from '../../../../package';
 
 import { Cardinal, styles, site } from '../../basics';
 
@@ -159,38 +159,47 @@ const MailingListWrapper = styled.div`
 
 export default function CommunityHero({ ...props }) {
   const [namespace, repo] = url.gitHub.repo.match(/github.com\/(.*)\/(.*)$/).slice(1);
-
   return (
-    <Wrapper {...props}>
-      <Meta>
-        <Heading color="seafoam">Community</Heading>
-        <Title>Get involved</Title>
-        <Desc>
-          Thousands of frontend developers use Storybook every day. Join us to learn new techniques,
-          get help, and develop UIs faster.
-        </Desc>
-        <MailingListWrapper>
-          <MailingListForm />
-        </MailingListWrapper>
-        <Stats>
-          <NpmDownloadStat />
-          <Stat
-            size="small"
-            count={PACKAGE.config.contributorCount}
-            text="Contributors"
-            noPlural
-            status="tertiary"
-            countLink={url.gitHub.contributors}
-          />
-          <GitHubWrapper className="chromatic-ignore">
-            <GitHubButton type="stargazers" namespace={namespace} repo={repo} />
-          </GitHubWrapper>
-        </Stats>
-      </Meta>
+    <StaticQuery query={graphql`
+        query ContributorQuery {
+          gitHubRepoData {
+            contributorCount
+          }
+        }
+      `}
+      render={data => (
+        <Wrapper {...props}>
+          <Meta>
+            <Heading color="seafoam">Community</Heading>
+            <Title>Get involved</Title>
+            <Desc>
+              Thousands of frontend developers use Storybook every day. Join us to learn new techniques,
+              get help, and develop UIs faster.
+            </Desc>
+            <MailingListWrapper>
+              <MailingListForm />
+            </MailingListWrapper>
+            <Stats>
+              <NpmDownloadStat />
+              <Stat
+                size="small"
+                count={data.gitHubRepoData.contributorCount}
+                text="Contributors"
+                noPlural
+                status="tertiary"
+                countLink={url.gitHub.contributors}
+              />
+              <GitHubWrapper className="chromatic-ignore">
+                <GitHubButton type="stargazers" namespace={namespace} repo={repo} />
+              </GitHubWrapper>
+            </Stats>
+          </Meta>
 
-      <Media>
-        <Image src="/images/community/hero.jpg" />
-      </Media>
-    </Wrapper>
+          <Media>
+            <Image src="/images/community/hero.jpg" />
+          </Media>
+        </Wrapper>  
+      )}
+    />
   );
 }
