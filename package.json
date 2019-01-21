@@ -18,7 +18,7 @@
     "gatsby-plugin-styled-components": "^3.0.4",
     "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-source-filesystem": "^2.0.4",
-    "gatsby-source-github-repo": "^1.0.0",
+    "gatsby-source-github-repo": "^1.0.4",
     "gatsby-transformer-sharp": "^2.1.4",
     "global": "^4.3.2",
     "lodash": "^4.17.11",

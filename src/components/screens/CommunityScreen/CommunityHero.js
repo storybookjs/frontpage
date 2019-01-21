@@ -5,14 +5,13 @@ import styled from 'styled-components';
 import GitHubButton from 'react-github-button';
 import 'react-github-button/assets/style.css';
 
-import { Cardinal, styles, site } from '../../basics';
+import { Cardinal, styles } from '../../basics';
 
 import ConfirmedMailingList from '../../layout/ConfirmedMailingList';
 import NpmDownloadCount from '../../layout/NpmDownloadCount';
 import { Heading, Title, Desc } from '../../layout/PageTitle';
 
 const { pageMargins, breakpoint } = styles;
-const { url } = site;
 
 const Image = styled.img``;
 
@@ -158,12 +157,14 @@ const MailingListWrapper = styled.div`
 `;
 
 export default function CommunityHero({ ...props }) {
-  const [namespace, repo] = url.gitHub.repo.match(/github.com\/(.*)\/(.*)$/).slice(1);
   return (
     <StaticQuery query={graphql`
         query ContributorQuery {
           gitHubRepoData {
             contributorCount
+            author
+            name
+            url
           }
         }
       `}
@@ -187,10 +188,10 @@ export default function CommunityHero({ ...props }) {
                 text="Contributors"
                 noPlural
                 status="tertiary"
-                countLink={url.gitHub.contributors}
+                countLink={`${data.gitHubRepoData.url}/graphs/contributors`}  
               />
               <GitHubWrapper className="chromatic-ignore">
-                <GitHubButton type="stargazers" namespace={namespace} repo={repo} />
+                <GitHubButton type="stargazers" namespace={data.gitHubRepoData.author} repo={data.gitHubRepoData.name} />
               </GitHubWrapper>
             </Stats>
           </Meta>
