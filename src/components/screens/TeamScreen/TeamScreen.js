@@ -26,7 +26,7 @@ const contributors = [
   },
   {
     name: 'Kai Röder',
-    avatarUrl: 'https://avatars3.githubusercontent.com/u/5478899',
+    avatarUrl: 'https://pbs.twimg.com/profile_images/1060789281667670016/Zrfw467n_bigger.jpg',
   },
   {
     name: 'Chak Shun Yu',
