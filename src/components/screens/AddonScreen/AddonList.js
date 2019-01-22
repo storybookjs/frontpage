@@ -8,22 +8,11 @@ import AddonItem from './AddonItem';
 const { pageMargins, breakpoint } = styles;
 
 const List = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-
-  > *:not(button):not(a) {
+  > * {
     margin-bottom: 1.25rem;
 
     @media (min-width: ${breakpoint * 1}px) {
-      width: 50%;
-      margin-bottom: 3rem;
-
-      &:nth-child(odd) {
-        padding-right: 20px;
-      }
-      &:nth-child(even) {
-        padding-left: 20px;
-      }
+      margin-bottom: 1.5rem;
     }
   }
 `;
@@ -76,7 +65,7 @@ const Layout = styled.div`
   ${props =>
     props.appearance === 'community' &&
     css`
-      padding-bottom: 5rem;
+      padding-bottom: 3rem;
     `};
 `;
 

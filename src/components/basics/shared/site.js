@@ -79,13 +79,15 @@ export const url = {
 
   // Official addons
   officialAddons: {
-    knobs: `${gitHubOrg}/storybook/tree/next/addons/knobs`,
-    actions: `${gitHubOrg}/storybook/tree/next/addons/actions`,
-    source: `${gitHubOrg}/storybook/tree/next/addons/storysource`,
-    info: `${gitHubOrg}/storybook/tree/next/addons/info`,
-    viewport: `${gitHubOrg}/storybook/tree/next/addons/viewport`,
-    storyshots: `${gitHubOrg}/storybook/tree/next/addons/storyshots`,
-    backgrounds: `${gitHubOrg}/storybook/tree/next/addons/backgrounds`,
-    accessibility: `${gitHubOrg}/storybook/tree/next/addons/a11y`,
+    knobs: `${gitHubOrg}/storybook/tree/master/addons/knobs`,
+    actions: `${gitHubOrg}/storybook/tree/master/addons/actions`,
+    source: `${gitHubOrg}/storybook/tree/master/addons/storysource`,
+    info: `${gitHubOrg}/storybook/tree/master/addons/info`,
+    viewport: `${gitHubOrg}/storybook/tree/master/addons/viewport`,
+    storyshots: `${gitHubOrg}/storybook/tree/master/addons/storyshots`,
+    backgrounds: `${gitHubOrg}/storybook/tree/master/addons/backgrounds`,
+    accessibility: `${gitHubOrg}/storybook/tree/master/addons/a11y`,
+    console: `${gitHubOrg}/storybook-addon-console`,
+    links: `${gitHubOrg}/storybook/tree/master/addons/links`,
   },
 };

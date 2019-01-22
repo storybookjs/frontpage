@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="192px" height="140px" viewBox="0 0 192 140" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>addons/links</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="107" y="22.5" width="85" height="95" rx="3.71428571"></rect>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="85" height="95" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="addons/links" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <use id="bg" stroke="#37D5D3" mask="url(#mask-2)" stroke-width="2" fill-opacity="0.1" fill="#37D5D3" stroke-dasharray="4,2" xlink:href="#path-1"></use>
+        <rect id="bg-copy-2" stroke="#37D5D3" fill-opacity="0.5" fill="#37D5D3" x="0.5" y="23" width="84" height="94" rx="3.71428571"></rect>
+        <path d="M84.375,75 C81.6135763,75 79.375,72.7614237 79.375,70 C79.375,67.2385763 81.6135763,65 84.375,65 C87.1364237,65 89.375,67.2385763 89.375,70 C89.375,72.7614237 87.1364237,75 84.375,75 Z" id="Path" fill="#37D5D3" fill-rule="nonzero"></path>
+        <path d="M84.375,74 C86.584139,74 88.375,72.209139 88.375,70 C88.375,67.790861 86.584139,66 84.375,66 C82.165861,66 80.375,67.790861 80.375,70 C80.375,72.209139 82.165861,74 84.375,74 Z" id="Path" fill="#FFFFFF" fill-rule="nonzero"></path>
+        <path d="M102.738357,69.5 L100.058367,66.8200104 C99.863105,66.6247482 99.863105,66.3081657 100.058367,66.1129036 C100.253629,65.9176414 100.570212,65.9176414 100.765474,66.1129036 L104.261274,69.6087037 C104.274991,69.6197885 104.288258,69.6317059 104.301008,69.6444557 C104.399145,69.7425931 104.447959,69.871376 104.447451,70 C104.447959,70.128624 104.399145,70.2574069 104.301008,70.3555443 C104.288258,70.3682941 104.274991,70.3802115 104.261274,70.3912963 L100.765474,73.8870964 C100.570212,74.0823586 100.253629,74.0823586 100.058367,73.8870964 C99.863105,73.6918343 99.863105,73.3752518 100.058367,73.1799896 L102.738357,70.5 L88.625,70.5 L88.625,69.5 L102.738357,69.5 Z" id="Combined-Shape" fill="#37D5D3"></path>
+    </g>
+</svg>
