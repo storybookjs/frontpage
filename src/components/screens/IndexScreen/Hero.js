@@ -1,11 +1,10 @@
 import React, { Fragment } from 'react';
+import { StaticQuery, graphql } from "gatsby"
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import GitHubButton from 'react-github-button';
 
 import 'react-github-button/assets/style.css';
-
-import PACKAGE from '../../../../package';
 
 import {
   Button,
@@ -389,119 +388,126 @@ export default function Hero({ startOpen, ...props }) {
   );
 
   return (
-    <Wrapper {...props}>
-      <Pitch>
-        <Title>Build bulletproof UI components faster</Title>
-        <Subtitle>
-          Storybook is an open source tool for developing UI components in isolation for React, Vue,
-          and Angular. It makes building stunning UIs organized and efficient.
-        </Subtitle>
-        <PitchActions>
-          <Button primary isLink href={url.docs.home}>
-            Get Started
-          </Button>
-          <WithModal startOpen={startOpen} modal={Modal}>
-            {({ onOpen }) => (
-              <Button outline primary onClick={onOpen}>
-                <Icon icon="play" />
-                Watch video
+      <StaticQuery query={graphql`
+        query HeroContributorQuery {
+          gitHubRepoData {
+            contributorCount
+          }
+        }
+      `}
+      render={data => (
+        <Wrapper {...props}>
+          <Pitch>
+            <Title>Build bulletproof UI components faster</Title>
+            <Subtitle>
+              Storybook is an open source tool for developing UI components in isolation for React, Vue,
+              and Angular. It makes building stunning UIs organized and efficient.
+            </Subtitle>
+            <PitchActions>
+              <Button primary isLink href={url.docs.home}>
+                Get Started
               </Button>
-            )}
-          </WithModal>
-        </PitchActions>
-      </Pitch>
-      <Content>
-        <Primary>
-          <VideoWrapper>
-            <Video autoPlay muted loop playsInline alt="Demo video">
-              <source src="/videos/storybook-hero-video-optimized.mp4" type="video/mp4" />
-            </Video>
-            <TooltipCanvas
-              placement="bottom"
-              trigger="hover"
-              tooltip={
-                <TooltipMessage
-                  desc=<Fragment>
-                    <b>Build components in isolation</b> so that you can fine tune inputs, states,
-                    and APIs before adding to your app.
-                  </Fragment>
-                />
-              }
-            >
-              <div />
-            </TooltipCanvas>
-            <TooltipSidebar
-              placement="bottom"
-              trigger="hover"
-              tooltip={
-                <TooltipMessage
-                  desc={
-                    <Fragment>
-                      <b>Save use cases as &ldquo;stories&rdquo;</b> to simplify finding, browsing,
-                      and testing UI components.
-                    </Fragment>
+              <WithModal startOpen={startOpen} modal={Modal}>
+                {({ onOpen }) => (
+                  <Button outline primary onClick={onOpen}>
+                    <Icon icon="play" />
+                    Watch video
+                  </Button>
+                )}
+              </WithModal>
+            </PitchActions>
+          </Pitch>
+          <Content>
+            <Primary>
+              <VideoWrapper>
+                <Video autoPlay muted loop playsInline alt="Demo video">
+                  <source src="/videos/storybook-hero-video-optimized.mp4" type="video/mp4" />
+                </Video>
+                <TooltipCanvas
+                  placement="bottom"
+                  trigger="hover"
+                  tooltip={
+                    <TooltipMessage
+                      desc=<Fragment>
+                        <b>Build components in isolation</b> so that you can fine tune inputs, states,
+                        and APIs before adding to your app.
+                      </Fragment>
+                    />
                   }
-                />
-              }
-            >
-              <div />
-            </TooltipSidebar>
-            <TooltipAddons
-              placement="bottom"
-              trigger="hover"
-              tooltip={
-                <TooltipMessage
-                  desc=<Fragment>
-                    <b>Supercharge your workflow with addons</b> to help you find edge cases, verify
-                    functionality, and much much more!
-                  </Fragment>
-                />
-              }
-            >
-              <div />
-            </TooltipAddons>
-          </VideoWrapper>
-        </Primary>
-        <Secondary>
-          <SecondarySubheading>Made for</SecondarySubheading>
-          <FrameworkList>
-            <Framework framework="React" href={url.framework.react} />
-            <Framework framework="React Native" logo="react" href={url.framework.reactNative} />
-            <Framework framework="Vue" href={url.framework.vue} />
-            <Framework framework="Angular" href={url.framework.angular} />
-            <Framework framework="Ember" href={url.framework.ember} />
-            <Framework framework="HTML" href={url.framework.html} />
-            <Framework framework="Svelte" href={url.framework.svelte} />
-            <Framework framework="Mithril" href={url.framework.mithril} />
-            <Framework framework="Riot" href={url.framework.riot} />
-          </FrameworkList>
-          <SecondarySubheading>GitHub</SecondarySubheading>
+                >
+                  <div />
+                </TooltipCanvas>
+                <TooltipSidebar
+                  placement="bottom"
+                  trigger="hover"
+                  tooltip={
+                    <TooltipMessage
+                      desc={
+                        <Fragment>
+                          <b>Save use cases as &ldquo;stories&rdquo;</b> to simplify finding, browsing, and testing UI components.
+                        </Fragment>
+                      }
+                    />
+                  }
+                >
+                  <div />
+                </TooltipSidebar>
+                <TooltipAddons
+                  placement="bottom"
+                  trigger="hover"
+                  tooltip={
+                    <TooltipMessage
+                      desc=<Fragment>
+                        <b>Supercharge your workflow with addons</b> to help you find edge cases, verify functionality, and much much more!
+                      </Fragment>
+                    />
+                  }
+                >
+                  <div />
+                </TooltipAddons>
+              </VideoWrapper>
+            </Primary>
+            <Secondary>
+              <SecondarySubheading>Made for</SecondarySubheading>
+              <FrameworkList>
+                <Framework framework="React" href={url.framework.react} />
+                <Framework framework="React Native" logo="react" href={url.framework.reactNative} />
+                <Framework framework="Vue" href={url.framework.vue} />
+                <Framework framework="Angular" href={url.framework.angular} />
+                <Framework framework="Ember" href={url.framework.ember} />
+                <Framework framework="HTML" href={url.framework.html} />
+                <Framework framework="Svelte" href={url.framework.svelte} />
+                <Framework framework="Mithril" href={url.framework.mithril} />
+                <Framework framework="Riot" href={url.framework.riot} />
+              </FrameworkList>
+              <SecondarySubheading>GitHub</SecondarySubheading>
 
-          <Stats>
-            <GitHubWrapper className="chromatic-ignore">
-              <GitHubButton type="stargazers" namespace={namespace} repo={repo} />
-            </GitHubWrapper>
-            <Stat
-              size="small"
-              count={metadata.latestVersion}
-              text="Latest version"
-              noPlural
-              status="primary"
-              countLink={url.gitHub.releases}
-            />
-            <NpmDownloadStat />
-            <Stat
-              size="small"
-              count={PACKAGE.config.contributorCount}
-              text="Contributors"
-              noPlural
-              status="tertiary"
-              countLink={url.gitHub.contributors}
-            />
-          </Stats>
-        </Secondary>
-      </Content>
-    </Wrapper>
+              <Stats>
+                <GitHubWrapper className="chromatic-ignore">
+                  <GitHubButton type="stargazers" namespace={namespace} repo={repo} />
+                </GitHubWrapper>
+                <Stat
+                  size="small"
+                  count={metadata.latestVersion}
+                  text="Latest version"
+                  noPlural
+                  status="primary"
+                  countLink={url.gitHub.releases}
+                />
+                <NpmDownloadStat />
+                <Stat
+                  size="small"
+                  count={data.gitHubRepoData.contributorCount}
+                  text="Contributors"
+                  noPlural
+                  status="tertiary"
+                  countLink={`${data.gitHubRepoData.url}/graphs/contributors`}
+                />
+              </Stats>
+            </Secondary>
+          </Content>
+        </Wrapper> 
+    )} />
   );
 }
 

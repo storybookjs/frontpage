@@ -159,7 +159,7 @@ const MailingListWrapper = styled.div`
 export default function CommunityHero({ ...props }) {
   return (
     <StaticQuery query={graphql`
-        query ContributorQuery {
+        query CommunityHeroContributorQuery {
           gitHubRepoData {
             contributorCount
             author
@@ -188,7 +188,7 @@ export default function CommunityHero({ ...props }) {
                 text="Contributors"
                 noPlural
                 status="tertiary"
-                countLink={`${data.gitHubRepoData.url}/graphs/contributors`}  
+                countLink={`${data.gitHubRepoData.url}/graphs/contributors`}
               />
               <GitHubWrapper className="chromatic-ignore">
                 <GitHubButton type="stargazers" namespace={data.gitHubRepoData.author} repo={data.gitHubRepoData.name} />
