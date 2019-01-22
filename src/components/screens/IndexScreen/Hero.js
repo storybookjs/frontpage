@@ -368,7 +368,6 @@ Framework.propTypes = {
 };
 
 export default function Hero({ startOpen, ...props }) {
-  const [namespace, repo] = url.gitHub.repo.match(/github.com\/(.*)\/(.*)$/).slice(1);
 
   const Modal = () => (
     <AspectRatio ratio={0.5625}>
@@ -392,6 +391,9 @@ export default function Hero({ startOpen, ...props }) {
         query HeroContributorQuery {
           gitHubRepoData {
             contributorCount
+            url
+            author
+            name
           }
         }
       `}
@@ -484,7 +486,7 @@ export default function Hero({ startOpen, ...props }) {
 
               <Stats>
                 <GitHubWrapper className="chromatic-ignore">
-                  <GitHubButton type="stargazers" namespace={namespace} repo={repo} />
+                  <GitHubButton type="stargazers" namespace={data.gitHubRepoData.author} repo={data.gitHubRepoData.name} />
                 </GitHubWrapper>
                 <Stat
                   size="small"
@@ -492,7 +494,7 @@ export default function Hero({ startOpen, ...props }) {
                   text="Latest version"
                   noPlural
                   status="primary"
-                  countLink={url.gitHub.releases}
+                  countLink={`${data.gitHubRepoData.url}/releases`}
                 />
                 <NpmDownloadStat />
                 <Stat
