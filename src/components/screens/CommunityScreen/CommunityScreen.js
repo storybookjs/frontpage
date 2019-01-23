@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { rgba } from 'polished';
+import { StaticQuery, graphql } from 'gatsby';
 
 import { Button, Icon, LazyLoad, SocialGraph, styles, site } from '../../basics';
 import PageLayout from '../../layout/PageLayout';
@@ -142,7 +143,7 @@ const CommunityLayout = styled.div`
   }
 `;
 
-export default function CommunityScreen({ ...props }) {
+export function PureCommunityScreen({ data: { gitHubRepoData }, ...props }) {
   return (
     <PageLayout {...props}>
       <SocialGraph
@@ -151,7 +152,7 @@ export default function CommunityScreen({ ...props }) {
         url={`${url.home}/community`}
         image={metadata.ogImage}
       />
-      <CommunityHero />
+      <CommunityHero gitHubRepoData={gitHubRepoData} />
 
       <CommunitySocial />
 
@@ -350,5 +351,23 @@ export default function CommunityScreen({ ...props }) {
         </OpenCollectiveLogos>
       </CommunityLayout>
     </PageLayout>
+  );
+}
+
+export default function CommunityScreen(props) {
+  return (
+    <StaticQuery
+      query={graphql`
+        query CommunityHeroContributorQuery {
+          gitHubRepoData {
+            contributorCount
+            author
+            name
+            url
+          }
+        }
+      `}
+      render={data => <PureCommunityScreen data={data} {...props} />}
+    />
   );
 }

@@ -2,11 +2,12 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import CommunityScreen from './CommunityScreen';
+import { PureCommunityScreen } from './CommunityScreen';
+import { gitHubRepoData } from './CommunityHero.stories';
 
 storiesOf('screens/CommunityScreen/CommunityScreen', module).add(
   'default',
-  () => <CommunityScreen />,
+  () => <PureCommunityScreen data={{ gitHubRepoData }} />,
   {
     chromatic: { viewports: [320, 1200] },
   }
