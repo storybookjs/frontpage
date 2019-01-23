@@ -54,7 +54,6 @@ const NpmDownloadCount = ({ loading, npmDownloads, ...props }) => {
       status="secondary"
       countLink={url.npm}
       loading={loading}
-      className="chromatic-ignore"
       {...props}
     />
   );

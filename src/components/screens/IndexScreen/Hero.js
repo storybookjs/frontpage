@@ -489,7 +489,7 @@ export default function Hero({
               status="primary"
               countLink={`${githubUrl}/releases`}
             />
-            <NpmDownloadStat />
+            <NpmDownloadStat className="chromatic-ignore" />
             <Stat
               size="small"
               count={contributorCount}

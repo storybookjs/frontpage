@@ -173,7 +173,7 @@ export default function CommunityHero({
           <MailingListForm />
         </MailingListWrapper>
         <Stats>
-          <NpmDownloadStat />
+          <NpmDownloadStat className="chromatic-ignore" />
           <Stat
             size="small"
             count={contributorCount}
