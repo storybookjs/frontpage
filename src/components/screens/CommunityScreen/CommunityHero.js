@@ -1,5 +1,5 @@
 import React from 'react';
-import { StaticQuery, graphql } from "gatsby"
+import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
 import GitHubButton from 'react-github-button';
@@ -156,51 +156,50 @@ const MailingListWrapper = styled.div`
   }
 `;
 
-export default function CommunityHero({ ...props }) {
+export default function CommunityHero({
+  gitHubRepoData: { contributorCount, url: githubUrl, author, name },
+  ...props
+}) {
   return (
-    <StaticQuery query={graphql`
-        query CommunityHeroContributorQuery {
-          gitHubRepoData {
-            contributorCount
-            author
-            name
-            url
-          }
-        }
-      `}
-      render={data => (
-        <Wrapper {...props}>
-          <Meta>
-            <Heading color="seafoam">Community</Heading>
-            <Title>Get involved</Title>
-            <Desc>
-              Thousands of frontend developers use Storybook every day. Join us to learn new techniques,
-              get help, and develop UIs faster.
-            </Desc>
-            <MailingListWrapper>
-              <MailingListForm />
-            </MailingListWrapper>
-            <Stats>
-              <NpmDownloadStat />
-              <Stat
-                size="small"
-                count={data.gitHubRepoData.contributorCount}
-                text="Contributors"
-                noPlural
-                status="tertiary"
-                countLink={`${data.gitHubRepoData.url}/graphs/contributors`}
-              />
-              <GitHubWrapper className="chromatic-ignore">
-                <GitHubButton type="stargazers" namespace={data.gitHubRepoData.author} repo={data.gitHubRepoData.name} />
-              </GitHubWrapper>
-            </Stats>
-          </Meta>
+    <Wrapper {...props}>
+      <Meta>
+        <Heading color="seafoam">Community</Heading>
+        <Title>Get involved</Title>
+        <Desc>
+          Thousands of frontend developers use Storybook every day. Join us to learn new techniques,
+          get help, and develop UIs faster.
+        </Desc>
+        <MailingListWrapper>
+          <MailingListForm />
+        </MailingListWrapper>
+        <Stats>
+          <NpmDownloadStat className="chromatic-ignore" />
+          <Stat
+            size="small"
+            count={`+${contributorCount}`}
+            text="Contributors"
+            noPlural
+            status="tertiary"
+            countLink={`${githubUrl}/graphs/contributors`}
+          />
+          <GitHubWrapper className="chromatic-ignore">
+            <GitHubButton type="stargazers" namespace={author} repo={name} />
+          </GitHubWrapper>
+        </Stats>
+      </Meta>
 
-          <Media>
-            <Image src="/images/community/hero.jpg" />
-          </Media>
-        </Wrapper>  
-      )}
-    />
+      <Media>
+        <Image src="/images/community/hero.jpg" />
+      </Media>
+    </Wrapper>
   );
 }
+
+CommunityHero.propTypes = {
+  gitHubRepoData: PropTypes.shape({
+    contributorCount: PropTypes.number.isRequired,
+    url: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  }).isRequired,
+};

@@ -1,8 +1,13 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import IndexScreen from './IndexScreen';
+import { PureIndexScreen } from './IndexScreen';
+import { gitHubRepoData } from './Hero.stories';
 
-storiesOf('screens/IndexScreen/IndexScreen', module).add('default', () => <IndexScreen />, {
-  chromatic: { viewports: [320, 1200] },
-});
+storiesOf('screens/IndexScreen/IndexScreen', module).add(
+  'default',
+  () => <PureIndexScreen data={{ gitHubRepoData }} />,
+  {
+    chromatic: { viewports: [320, 1200] },
+  }
+);

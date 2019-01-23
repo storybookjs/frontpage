@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 
 import { Badge, Button, Link, SocialGraph, styles, site } from '../../basics';
@@ -43,7 +44,7 @@ const Placeholder = styled(PlaceholderAspectRatio)`
   }
 `;
 
-export default function IndexScreen({ ...props }) {
+export function PureIndexScreen({ data: { gitHubRepoData }, ...props }) {
   return (
     <PageLayout {...props}>
       <SocialGraph
@@ -53,7 +54,7 @@ export default function IndexScreen({ ...props }) {
         image={metadata.ogImage}
       />
 
-      <Hero />
+      <Hero gitHubRepoData={gitHubRepoData} />
 
       <SocialProof
         heading="Trusted by"
@@ -226,5 +227,23 @@ export default function IndexScreen({ ...props }) {
         }
       />
     </PageLayout>
+  );
+}
+
+export default function IndexScreen(props) {
+  return (
+    <StaticQuery
+      query={graphql`
+        query HeroContributorQuery {
+          gitHubRepoData {
+            contributorCount
+            url
+            author
+            name
+          }
+        }
+      `}
+      render={data => <PureIndexScreen data={data} {...props} />}
+    />
   );
 }

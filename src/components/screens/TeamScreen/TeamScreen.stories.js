@@ -2,8 +2,14 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import TeamScreen from './TeamScreen';
+import { PureTeamScreen } from './TeamScreen';
 
-storiesOf('screens/TeamScreen/TeamScreen', module).add('default', () => <TeamScreen />, {
-  chromatic: { viewports: [320, 1200] },
-});
+storiesOf('screens/TeamScreen/TeamScreen', module).add(
+  'default',
+  () => (
+    <PureTeamScreen data={{ gitHubRepoData: { contributorCount: 100, url: 'https://foo.com' } }} />
+  ),
+  {
+    chromatic: { viewports: [320, 1200] },
+  }
+);
