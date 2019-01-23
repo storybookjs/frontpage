@@ -492,7 +492,7 @@ export default function Hero({
             <NpmDownloadStat />
             <Stat
               size="small"
-              count={contributorCount}
+              count={`+${contributorCount}`}
               text="Contributors"
               noPlural
               status="tertiary"

@@ -127,7 +127,7 @@ export function PureTeamScreen({ data, ...props }) {
         />
         <ContributorItem
           contributors={contributors}
-          contributorCount={data.gitHubRepoData.contributorCount}
+          contributorCount={`+${data.gitHubRepoData.contributorCount}`}
           gitHubUrl={`${data.gitHubRepoData.url}/graphs/contributors`}
         />
       </Team>

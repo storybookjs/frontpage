@@ -176,7 +176,7 @@ export default function CommunityHero({
           <NpmDownloadStat />
           <Stat
             size="small"
-            count={contributorCount}
+            count={`+${contributorCount}`}
             text="Contributors"
             noPlural
             status="tertiary"
