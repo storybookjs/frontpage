@@ -8,12 +8,12 @@ const StyledVideo = styled.video`
   height: auto;
 `;
 
-const Video = ({ src, shouldChangeSize, alt }) => {
+const Video = ({ src, shouldChangeSize, alt, ...props }) => {
   const videoSize = shouldChangeSize && window.innerWidth < 600 ? 'sm' : 'lg';
   const videoSrc = videoSize === 'sm' ? src.replace('lg', 'sm') : src;
 
   return (
-    <StyledVideo autoPlay muted loop playsInline alt={alt}>
+    <StyledVideo autoPlay muted loop playsInline alt={alt} {...props}>
       <source src={videoSrc} type="video/mp4" />
     </StyledVideo>
   );
