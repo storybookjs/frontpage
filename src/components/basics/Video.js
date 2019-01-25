@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { window } from 'global';
 
 const StyledVideo = styled.video`
   width: 100%;
@@ -25,7 +26,7 @@ Video.propTypes = {
 };
 
 Video.defaultProps = {
-  shouldChangeSize: false
+  shouldChangeSize: false,
 };
 
 export default Video;
