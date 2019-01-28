@@ -31,5 +31,7 @@ export { default as FormState } from './FormState';
 export { default as SocialGraph } from './SocialGraph';
 export { default as Video } from './Video';
 
+export { default as WithMediumData } from './WithMediumData';
+
 // export { default as Modal } from './modal/Modal';
 // export { default as WithModal } from './modal/WithModal';

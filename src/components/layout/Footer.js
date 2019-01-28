@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Icon, Link, Subheading, styles, site } from '../basics';
+import { Icon, Link, Subheading, styles, site, WithMediumData } from '../basics';
 
 import ConfirmedMailingList from './ConfirmedMailingList';
 import { navLinks } from './PageLayout';
@@ -370,33 +370,20 @@ export default function Footer({ hasSubscribed, onSubscribe, ...props }) {
             </SubLink>
           </Title>{' '}
           <Resources>
-            <Resource>
-              <Meta>
-                <ResourceTitleLink tertiary withArrow>
-                  Storybook 4.0 is here
-                </ResourceTitleLink>
-                <ResourceDesc>
-                  Big updates to support more build tools and frameworksBig updates to support more
-                  build tools and frameworks
-                </ResourceDesc>
-              </Meta>
-            </Resource>
-            <Resource>
-              <Meta>
-                <ResourceTitleLink tertiary withArrow>
-                  Storybook 4.0 is here
-                </ResourceTitleLink>
-                <ResourceDesc>Big updates to support more build tools and frameworks</ResourceDesc>
-              </Meta>
-            </Resource>
-            <Resource>
-              <Meta>
-                <ResourceTitleLink tertiary withArrow>
-                  Storybook 4.0 is here
-                </ResourceTitleLink>
-                <ResourceDesc>Big updates to support more build tools and frameworks</ResourceDesc>
-              </Meta>
-            </Resource>
+            <WithMediumData
+              render={posts =>
+                posts.map(({ id, title, subtitle, link }) => (
+                  <Resource key={id}>
+                    <Meta>
+                      <ResourceTitleLink tertiary withArrow href={link}>
+                        {title}
+                      </ResourceTitleLink>
+                      <ResourceDesc>{subtitle}</ResourceDesc>
+                    </Meta>
+                  </Resource>
+                ))
+              }
+            />
           </Resources>
         </UpperColumn>
       </Upper>

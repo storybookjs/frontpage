@@ -90,4 +90,6 @@ export const url = {
     console: `${gitHubOrg}/storybook-addon-console`,
     links: `${gitHubOrg}/storybook/tree/master/addons/links`,
   },
+
+  medium: `https://medium.com/storybookjs`,
 };
