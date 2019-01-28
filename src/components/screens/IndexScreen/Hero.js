@@ -16,6 +16,7 @@ import {
   WithModal,
   styles,
   site,
+  Video,
 } from '../../basics';
 
 import PlaceholderAspectRatio from '../../layout/PlaceholderAspectRatio';
@@ -98,11 +99,6 @@ const Pitch = styled.div`
   @media (min-width: ${breakpoint * 2}px) {
     margin-bottom: 5rem;
   }
-`;
-
-const Video = styled.video`
-  width: 100%;
-  height: auto;
 `;
 
 const VideoWrapper = styled.div`
@@ -413,9 +409,7 @@ export default function Hero({
       <Content>
         <Primary>
           <VideoWrapper>
-            <Video autoPlay muted loop playsInline alt="Demo video">
-              <source src="/videos/storybook-hero-video-optimized.mp4" type="video/mp4" />
-            </Video>
+            <Video src="/videos/storybook-hero-video-optimized.mp4" alt="Demo video"/>
             <TooltipCanvas
               placement="bottom"
               trigger="hover"

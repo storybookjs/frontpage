@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 
-import { Badge, Button, Link, SocialGraph, styles, site } from '../../basics';
+import { Badge, Button, Link, SocialGraph, styles, site, Video } from '../../basics';
 import PageLayout from '../../layout/PageLayout';
 import Hero from './Hero';
 import SocialProof from '../../layout/SocialProof';
@@ -25,18 +25,6 @@ const Separator = styled.hr`
 `;
 
 const Placeholder = styled(PlaceholderAspectRatio)`
-  /* To adjust the aspect ratio,
-   add a placeholder for aspect ratio
-   checkout LandingScreen.js for an example
-*/
-  video {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-  }
-
   img {
     width: 100%;
     height: auto;
@@ -70,9 +58,11 @@ export function PureIndexScreen({ data: { gitHubRepoData }, ...props }) {
         media={
           /* eslint-disable jsx-a11y/media-has-caption */
           <Placeholder ratio={0.75}>
-            <video autoPlay muted loop playsInline>
-              <source src="videos/storybook-workflow-build-optimized-lg.mp4" type="video/mp4" />
-            </video>
+            <Video
+              src="videos/storybook-workflow-build-optimized-lg.mp4"
+              alt="Storybook build workflow video"
+              shouldChangeSize
+            />
           </Placeholder>
         }
         title="Deliver robust UIs"
@@ -128,9 +118,11 @@ export function PureIndexScreen({ data: { gitHubRepoData }, ...props }) {
           media={
             /* eslint-disable jsx-a11y/media-has-caption */
             <Placeholder ratio={0.75}>
-              <video autoPlay muted loop playsInline>
-                <source src="videos/storybook-workflow-test-optimized-lg.mp4" type="video/mp4" />
-              </video>
+              <Video
+                src="videos/storybook-workflow-test-optimized-lg.mp4"
+                alt="Storybook testing workflow video"
+                shouldChangeSize
+              />
             </Placeholder>
           }
           title="Ship components with confidence"
@@ -180,9 +172,11 @@ export function PureIndexScreen({ data: { gitHubRepoData }, ...props }) {
         media={
           /* eslint-disable jsx-a11y/media-has-caption */
           <Placeholder ratio={0.75}>
-            <video autoPlay muted loop playsInline>
-              <source src="videos/storybook-workflow-share-optimized-lg.mp4" type="video/mp4" />
-            </video>
+            <Video
+              src="videos/storybook-workflow-share-optimized-lg.mp4"
+              alt="Storybook component reuse workflow video"
+              shouldChangeSize
+            />
           </Placeholder>
         }
         title="Share and reuse everything"

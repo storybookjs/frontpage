@@ -4,6 +4,8 @@ import { storiesOf } from '@storybook/react';
 import ValueProp from './ValueProp';
 import PlaceholderAspectRatio from './PlaceholderAspectRatio';
 
+import { Video } from '../basics';
+
 const ImageWrapper = styled.div`
   img {
     width: 100%;
@@ -19,9 +21,11 @@ storiesOf('screens/IndexScreen/ValueProp', module).add('default', () => (
       media={
         /* eslint-disable jsx-a11y/media-has-caption */
         <PlaceholderAspectRatio ratio={0.75}>
-          <video autoPlay muted loop playsInline>
-            <source src="videos/storybook-workflow-build-optimized-sm.mp4" type="video/mp4" />
-          </video>
+          <Video
+            src="videos/storybook-workflow-build-optimized-lg.mp4"
+            alt="Storybook build workflow video"
+            shouldChangeSize
+          />
         </PlaceholderAspectRatio>
       }
       title="Lorem ipsum dolor sit amet"
