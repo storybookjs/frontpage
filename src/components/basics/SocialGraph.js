@@ -4,7 +4,8 @@ import Helmet from 'react-helmet';
 
 export default function SocialGraph({ title, desc, url, image }) {
   return (
-    <Helmet title={title} meta={[{ name: 'description', content: desc }]}>
+    <Helmet title={title}>
+      <meta name="description" content={desc} />
       {url && <meta property="og:url" content={url} />}
       {image && <meta property="og:image" content={image} />}
       {image && <meta name="twitter:image" content={image} />}
