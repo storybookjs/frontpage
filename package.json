@@ -3,9 +3,6 @@
   "description": "Storybook frontpage",
   "version": "1.0.0",
   "author": "Dominic Nguyen <dom@hichroma.com>",
-  "config": {
-    "contributorCount": "572"
-  },
   "dependencies": {
     "babel-plugin-styled-components": "^1.9.4",
     "cheerio": "^1.0.0-rc.2",
@@ -43,7 +40,7 @@
     "validatorjs": "^3.15.1"
   },
   "keywords": [
-    "gatsby"
+    "storybook"
   ],
   "license": "MIT",
   "scripts": {
