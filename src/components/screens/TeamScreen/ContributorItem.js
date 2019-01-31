@@ -68,7 +68,7 @@ ContributorItem.propTypes = {
       avatarUrl: PropTypes.string.isRequired,
     })
   ).isRequired,
-  contributorCount: PropTypes.number.isRequired,
+  contributorCount: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   gitHubUrl: PropTypes.string.isRequired,
 };
 

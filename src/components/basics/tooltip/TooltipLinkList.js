@@ -35,7 +35,7 @@ TooltipLinkList.propTypes = {
       active: PropTypes.bool,
     }).isRequired
   ).isRequired,
-  LinkWrapper: ListItem.propTypes.LinkWrapper,
+  LinkWrapper: PropTypes.shape(),
 };
 
 TooltipLinkList.defaultProps = {
