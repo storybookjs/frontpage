@@ -10,12 +10,18 @@ const VideoWrapper = styled('div')`
   margin: 0px auto;
 `;
 
-storiesOf('basics/Video', module).add('video', () => (
-  <VideoWrapper>
-    <Video
-      src="/videos/storybook-workflow-build-optimized-lg.mp4"
-      alt="storybook example video"
-      shouldChangeSize
-    />
-  </VideoWrapper>
-));
+storiesOf('basics/Video', module).add(
+  'video',
+  () => (
+    <VideoWrapper>
+      <Video
+        src="/videos/storybook-workflow-build-optimized-lg.mp4"
+        alt="storybook example video"
+        shouldChangeSize
+      />
+    </VideoWrapper>
+  ),
+  {
+    chromatic: { disable: true },
+  }
+);
