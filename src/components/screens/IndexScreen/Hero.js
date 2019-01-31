@@ -409,16 +409,18 @@ export default function Hero({
       <Content>
         <Primary>
           <VideoWrapper>
-            <Video src="/videos/storybook-hero-video-optimized.mp4" alt="Demo video"/>
+            <Video src="/videos/storybook-hero-video-optimized.mp4" alt="Demo video" />
             <TooltipCanvas
               placement="bottom"
               trigger="hover"
               tooltip={
                 <TooltipMessage
-                  desc=<Fragment>
-                    <b>Build components in isolation</b> so that you can fine tune inputs, states,
-                    and APIs before adding to your app.
-                  </Fragment>
+                  desc={
+                    <Fragment>
+                      <b>Build components in isolation</b> so that you can fine tune inputs, states,
+                      and APIs before adding to your app.
+                    </Fragment>
+                  }
                 />
               }
             >
@@ -445,10 +447,12 @@ export default function Hero({
               trigger="hover"
               tooltip={
                 <TooltipMessage
-                  desc=<Fragment>
-                    <b>Supercharge your workflow with addons</b> to help you find edge cases, verify
-                    functionality, and much much more!
-                  </Fragment>
+                  desc={
+                    <Fragment>
+                      <b>Supercharge your workflow with addons</b> to help you find edge cases,
+                      verify functionality, and much much more!
+                    </Fragment>
+                  }
                 />
               }
             >
@@ -501,7 +505,7 @@ export default function Hero({
 
 Hero.propTypes = {
   gitHubRepoData: PropTypes.shape({
-    contributorCount: PropTypes.number.isRequired,
+    contributorCount: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     url: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
