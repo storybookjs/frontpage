@@ -20,7 +20,7 @@ export const navLinks = [
   { title: 'Team', href: url.team, isGatsby: true },
 ];
 
-export default function PageLayout({ children, ...props }) {
+export default function PageLayout({ allMediumPost, children, ...props }) {
   return (
     <Layout {...props}>
       <SocialGraph
@@ -51,7 +51,7 @@ export default function PageLayout({ children, ...props }) {
       </Helmet>
       <Header />
       {children}
-      <Footer />
+      <Footer mediumPosts={allMediumPost} />
     </Layout>
   );
 }

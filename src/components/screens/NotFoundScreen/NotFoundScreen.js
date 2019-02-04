@@ -1,6 +1,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
+import { StaticQuery, graphql } from 'gatsby';
 
 import PageLayout from '../../layout/PageLayout';
 import PageTitle from '../../layout/PageTitle';
@@ -18,9 +19,9 @@ const Features = styled(FeaturesLayout)`
   }
 `;
 
-export default function NotFoundScreen({ ...props }) {
+export function PureNotFoundScreen({ data: { allMediumPost }, ...props }) {
   return (
-    <PageLayout {...props}>
+    <PageLayout allMediumPost={allMediumPost} {...props}>
       <Helmet>
         <meta name="robots" content="noindex" />
       </Helmet>
@@ -52,5 +53,30 @@ export default function NotFoundScreen({ ...props }) {
         </Feature>
       </Features>
     </PageLayout>
+  );
+}
+
+export default function NotFoundScreen(props) {
+  return (
+    <StaticQuery
+      query={graphql`
+        query NotFoundScreenQuery {
+          allMediumPost(sort: { fields: [createdAt], order: DESC }, limit: 3) {
+            edges {
+              node {
+                id
+                title
+                virtuals {
+                  subtitle
+                }
+                medium_id
+                uniqueSlug
+              }
+            }
+          }
+        }
+      `}
+      render={data => <PureNotFoundScreen data={data} {...props} />}
+    />
   );
 }

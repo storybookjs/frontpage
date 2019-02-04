@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
-import { Icon, Link, Subheading, styles, site, WithMediumData } from '../basics';
+import { Icon, Link, Subheading, styles, site } from '../basics';
 
 import ConfirmedMailingList from './ConfirmedMailingList';
 import { navLinks } from './PageLayout';
@@ -314,7 +315,7 @@ const FooterWrapper = styled.div`
   line-height: 20px;
 `;
 
-export default function Footer({ hasSubscribed, onSubscribe, ...props }) {
+export default function Footer({ mediumPosts, hasSubscribed, onSubscribe, ...props }) {
   return (
     <FooterWrapper {...props}>
       <Upper>
@@ -368,22 +369,18 @@ export default function Footer({ hasSubscribed, onSubscribe, ...props }) {
             <SubLink tertiary withArrow href={url.blog}>
               Read more
             </SubLink>
-          </Title>{' '}
+          </Title>
           <Resources>
-            <WithMediumData
-              render={posts =>
-                posts.map(({ id, title, subtitle, link }) => (
-                  <Resource key={id}>
-                    <Meta>
-                      <ResourceTitleLink tertiary withArrow href={link}>
-                        {title}
-                      </ResourceTitleLink>
-                      <ResourceDesc>{subtitle}</ResourceDesc>
-                    </Meta>
-                  </Resource>
-                ))
-              }
-            />
+            {mediumPosts.edges.map(({ node: { id, title, virtuals, uniqueSlug } }) => (
+              <Resource key={id}>
+                <Meta>
+                  <ResourceTitleLink tertiary withArrow href={`${url.medium}/${uniqueSlug}`}>
+                    {title}
+                  </ResourceTitleLink>
+                  <ResourceDesc>{virtuals.subtitle}</ResourceDesc>
+                </Meta>
+              </Resource>
+            ))}
           </Resources>
         </UpperColumn>
       </Upper>
@@ -470,3 +467,20 @@ export default function Footer({ hasSubscribed, onSubscribe, ...props }) {
     </FooterWrapper>
   );
 }
+
+Footer.propTypes = {
+  mediumPosts: PropTypes.shape({
+    edges: PropTypes.arrayOf(
+      PropTypes.shape({
+        node: PropTypes.shape({
+          id: PropTypes.string,
+          title: PropTypes.string,
+          virtuals: PropTypes.shape({
+            subtitle: PropTypes.string,
+          }),
+          uniqueSlug: PropTypes.string,
+        }),
+      })
+    ),
+  }).isRequired,
+};

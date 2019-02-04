@@ -32,9 +32,9 @@ const Placeholder = styled(PlaceholderAspectRatio)`
   }
 `;
 
-export function PureIndexScreen({ data: { gitHubRepoData }, ...props }) {
+export function PureIndexScreen({ data: { gitHubRepoData, allMediumPost }, ...props }) {
   return (
-    <PageLayout {...props}>
+    <PageLayout allMediumPost={allMediumPost} {...props}>
       <SocialGraph
         title="Storybook: UI component workshop for frontend developers"
         desc="Storybook is an open source tool for developing UI components in isolation for React, Vue, and Angular. It makes building stunning UIs organized and efficient."
@@ -228,12 +228,24 @@ export default function IndexScreen(props) {
   return (
     <StaticQuery
       query={graphql`
-        query HeroContributorQuery {
+        query IndexScreenQuery {
           gitHubRepoData {
             contributorCount
             url
             author
             name
+          }
+          allMediumPost(sort: { fields: [createdAt], order: DESC }, limit: 3) {
+            edges {
+              node {
+                id
+                title
+                virtuals {
+                  subtitle
+                }
+                uniqueSlug
+              }
+            }
           }
         }
       `}
