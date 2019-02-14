@@ -13,7 +13,6 @@ export { default as Cardinal } from './Cardinal';
 export { default as Icon } from './Icon';
 export { default as LazyLoad } from './LazyLoad';
 export { default as Link } from './Link';
-export { default as ListItem } from './ListItem';
 export { default as Subheading } from './Subheading';
 export { default as ProgressDots } from './ProgressDots';
 
@@ -32,4 +31,3 @@ export { default as SocialGraph } from './SocialGraph';
 export { default as Video } from './Video';
 
 // export { default as Modal } from './modal/Modal';
-// export { default as WithModal } from './modal/WithModal';
