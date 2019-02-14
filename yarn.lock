@@ -5393,6 +5393,12 @@ gatsby-link@^2.0.8:
     "@types/reach__router" "^1.0.0"
     prop-types "^15.6.1"
 
+gatsby-plugin-google-analytics@^2.0.13:
+  version "2.0.13"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-analytics/-/gatsby-plugin-google-analytics-2.0.13.tgz#31ecf6be05815ba2047ec8cd5129f0bea9d7fd75"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+
 gatsby-plugin-manifest@^2.0.5:
   version "2.0.7"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-manifest/-/gatsby-plugin-manifest-2.0.7.tgz#3b74503d368c5b830c2dbf745c7073fe0f4aa737"
@@ -10623,9 +10629,9 @@ stealthy-require@^1.1.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/stealthy-require/-/stealthy-require-1.1.1.tgz#35b09875b4ff49f26a777e509b3090a3226bf24b"
 
-storybook-chromatic@^1.2.3:
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/storybook-chromatic/-/storybook-chromatic-1.2.3.tgz#3f29ec368c8fcccc8bbe06956baf7b7851726eef"
+storybook-chromatic@^1.2.4:
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/storybook-chromatic/-/storybook-chromatic-1.2.6.tgz#bada3ea3b15469378cd85b5048309af954e43ad0"
   dependencies:
     "@chromaui/localtunnel" "1.9.1-chromatic.3"
     apollo-fetch "^0.6.0"
