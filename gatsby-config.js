@@ -30,7 +30,31 @@ module.exports = {
     {
       resolve: 'gatsby-source-github-repo',
       options: {
-        repoUrl: 'https://github.com/storybooks/storybook'
+        repoUrl: 'https://github.com/storybooks/storybook',
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: 'UA-134532782-1',
+        // Puts tracking script in the head instead of the body
+        head: false,
+        // Setting this parameter is optional
+        anonymize: true,
+        // Setting this parameter is also optional
+        respectDNT: true,
+        // Avoids sending pageview hits from custom paths
+        exclude: ['/preview/**', '/do-not-track/me/too/'],
+        // Enables Google Optimize using your container Id
+        optimizeId: null,
+        // Enables Google Optimize Experiment ID
+        experimentId: null,
+        // Set Variation ID. 0 for original 1,2,3....
+        variationId: null,
+        // Any additional create only fields (optional)
+        sampleRate: 5,
+        siteSpeedSampleRate: 10,
+        cookieDomain: 'example.com',
       },
     },
     {

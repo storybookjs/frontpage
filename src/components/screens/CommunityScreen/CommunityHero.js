@@ -197,7 +197,7 @@ export default function CommunityHero({
 
 CommunityHero.propTypes = {
   gitHubRepoData: PropTypes.shape({
-    contributorCount: PropTypes.number.isRequired,
+    contributorCount: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     url: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,

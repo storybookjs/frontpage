@@ -61,7 +61,7 @@ const NpmDownloadCount = ({ loading, npmDownloads, ...props }) => {
 
 NpmDownloadCount.propTypes = {
   loading: PropTypes.bool.isRequired,
-  npmDownloads: PropTypes.number.isRequired,
+  npmDownloads: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 };
 
 export default compose(withNpmDownloads)(NpmDownloadCount);
