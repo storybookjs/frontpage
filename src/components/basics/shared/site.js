@@ -59,7 +59,7 @@ export const url = {
 
   // Brand
   brand: `${gitHubOrg}/brand`,
-  designSystem: `https://google.com`,
+  designSystem: `https://storybooks-official.netlify.com`,
   badge: `${gitHubOrg}/brand/tree/master/badge`,
   presentation: `${gitHubOrg}/brand/tree/master/presentation`,
   video: `${gitHubOrg}/brand/tree/master/video`,
