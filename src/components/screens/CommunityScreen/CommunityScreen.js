@@ -159,7 +159,7 @@ export function PureCommunityScreen({ data: { gitHubRepoData }, ...props }) {
       <CommunityLayout>
         <Sidebar
           title="Spread the word"
-          desc="The easiest way to get involved is to share Storybook with fellow developers, colleages, and friends."
+          desc="The easiest way to get involved is to share Storybook with fellow developers, colleagues, and friends."
         >
           <StorybookBadgeWrapper>
             <StorybookBadgeOuter href={url.badge}>
