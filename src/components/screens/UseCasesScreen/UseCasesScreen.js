@@ -233,7 +233,7 @@ export default function UseCasesScreen(props) {
           }
         }
       `}
-      render={data => <UseCasesScreen data={data} {...props} />}
+      render={data => <PureUseCasesScreen data={data} {...props} />}
     />
   );
 }
