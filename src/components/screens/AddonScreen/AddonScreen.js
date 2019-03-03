@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { StaticQuery, graphql } from 'gatsby';
 
 import { Button, Icon, SocialGraph, Subheading, styles, site } from '../../basics';
 import PageLayout from '../../layout/PageLayout';
@@ -65,9 +66,9 @@ const MakeYourOwn = styled(AddonCustom)`
   margin-bottom: 5rem;
 `;
 
-export default function AddonScreen({ ...props }) {
+export function PureAddonScreen({ data: { allMediumPost }, ...props }) {
   return (
-    <PageLayout {...props}>
+    <PageLayout allMediumPost={allMediumPost} {...props}>
       <SocialGraph
         title={`Addons | ${metadata.title}`}
         desc="Addons enable advanced functionality and unlock new workflows. Contributed by core maintainers and the amazing developer community."
@@ -319,5 +320,30 @@ export default function AddonScreen({ ...props }) {
         }
       />
     </PageLayout>
+  );
+}
+
+export default function AddonScreen(props) {
+  return (
+    <StaticQuery
+      query={graphql`
+        query AddonsScreenQuery {
+          allMediumPost(sort: { fields: [createdAt], order: DESC }, limit: 3) {
+            edges {
+              node {
+                id
+                title
+                virtuals {
+                  subtitle
+                }
+                medium_id
+                uniqueSlug
+              }
+            }
+          }
+        }
+      `}
+      render={data => <PureAddonScreen data={data} {...props} />}
+    />
   );
 }

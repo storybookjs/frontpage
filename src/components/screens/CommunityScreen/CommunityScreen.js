@@ -143,9 +143,9 @@ const CommunityLayout = styled.div`
   }
 `;
 
-export function PureCommunityScreen({ data: { gitHubRepoData }, ...props }) {
+export function PureCommunityScreen({ data: { gitHubRepoData, allMediumPost }, ...props }) {
   return (
-    <PageLayout {...props}>
+    <PageLayout allMediumPost={allMediumPost} {...props}>
       <SocialGraph
         title={`Community | ${metadata.title}`}
         desc="Join thousands of frontend developers to learn new Storybook techniques, get help, and develop UIs faster."
@@ -358,12 +358,25 @@ export default function CommunityScreen(props) {
   return (
     <StaticQuery
       query={graphql`
-        query CommunityHeroContributorQuery {
+        query CommunityScreenQuery {
           gitHubRepoData {
             contributorCount
             author
             name
             url
+          }
+          allMediumPost(sort: { fields: [createdAt], order: DESC }, limit: 3) {
+            edges {
+              node {
+                id
+                title
+                virtuals {
+                  subtitle
+                }
+                medium_id
+                uniqueSlug
+              }
+            }
           }
         }
       `}

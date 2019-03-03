@@ -2,8 +2,13 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import SupportScreen from './SupportScreen';
+import { PureSupportScreen } from './SupportScreen';
+import { allMediumPost } from '../../layout/Footer.stories';
 
-storiesOf('screens/SupportScreen/SupportScreen', module).add('default', () => <SupportScreen />, {
-  chromatic: { viewports: [320, 1200] },
-});
+storiesOf('screens/SupportScreen/SupportScreen', module).add(
+  'default',
+  () => <PureSupportScreen data={{ allMediumPost }} />,
+  {
+    chromatic: { viewports: [320, 1200] },
+  }
+);

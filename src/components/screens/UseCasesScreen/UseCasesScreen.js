@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { StaticQuery, graphql } from 'gatsby';
 
 import PageLayout from '../../layout/PageLayout';
 import PageTitle from '../../layout/PageTitle';
@@ -47,9 +48,9 @@ const DesignSystemWrapper = styled.div`
   }
 `;
 
-export default function UseCasesScreen({ ...props }) {
+export function PureUseCasesScreen({ data: { allMediumPost }, ...props }) {
   return (
-    <PageLayout {...props}>
+    <PageLayout allMediumPost={allMediumPost} {...props}>
       <SocialGraph
         title={`Use cases | ${metadata.title}`}
         desc="See how thousands of teams around the world use Storybook to build production UIs faster."
@@ -209,5 +210,30 @@ export default function UseCasesScreen({ ...props }) {
         grid
       />
     </PageLayout>
+  );
+}
+
+export default function UseCasesScreen(props) {
+  return (
+    <StaticQuery
+      query={graphql`
+        query UseCasesScreenQuery {
+          allMediumPost(sort: { fields: [createdAt], order: DESC }, limit: 3) {
+            edges {
+              node {
+                id
+                title
+                virtuals {
+                  subtitle
+                }
+                medium_id
+                uniqueSlug
+              }
+            }
+          }
+        }
+      `}
+      render={data => <UseCasesScreen data={data} {...props} />}
+    />
   );
 }
