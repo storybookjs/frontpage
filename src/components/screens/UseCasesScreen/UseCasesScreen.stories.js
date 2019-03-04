@@ -2,11 +2,12 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import UseCasesScreen from './UseCasesScreen';
+import { PureUseCasesScreen } from './UseCasesScreen';
+import { allMediumPost } from '../../layout/Footer.stories';
 
 storiesOf('screens/UseCasesScreen/UseCasesScreen', module).add(
   'default',
-  () => <UseCasesScreen />,
+  () => <PureUseCasesScreen data={{ allMediumPost }} />,
   {
     chromatic: { viewports: [320, 1200] },
   }
