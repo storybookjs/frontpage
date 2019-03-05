@@ -99,17 +99,6 @@ export function PureIndexScreen({ data: { gitHubRepoData, allMediumPost }, ...pr
           desc="Use addons to build UI faster, document a component library, and streamline your workflow."
         />
       </BenefitList>
-      <Testimonial
-        text={
-          <span>
-            “Lorem ispum dolor sit amet. Lorem ispum dolor sit amet. Lorem ispum dolor sit amet.”
-          </span>
-        }
-        avatarUrl="https://avatars1.githubusercontent.com/u/263385?s=88&v=4"
-        name="Dominic Nguyen"
-        jobTitle="Product designer"
-        logo="images/logos/user/logo-chromatic.svg"
-      />
 
       <Contrast>
         <Separator />
@@ -153,17 +142,7 @@ export function PureIndexScreen({ data: { gitHubRepoData, allMediumPost }, ...pr
             desc="Pinpoint UI changes with visual testing tools."
           />
         </BenefitList>
-        <Testimonial
-          text={
-            <span>
-              “Lorem ispum dolor sit amet. Lorem ispum dolor sit amet. Lorem ispum dolor sit amet.”
-            </span>
-          }
-          avatarUrl="https://avatars1.githubusercontent.com/u/263385?s=88&v=4"
-          name="Dominic Nguyen"
-          jobTitle="Product designer"
-          logo="images/logos/user/logo-chromatic.svg"
-        />
+
         <Separator />
       </Contrast>
 
