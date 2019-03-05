@@ -18,3 +18,4 @@ yarn build
 popd
 popd
 cp -rf $REPO_DIRNAME/$REPO_SUBDIR/public public/docs
+mv -f public/docs/versions.json public/
