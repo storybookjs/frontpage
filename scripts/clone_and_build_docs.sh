@@ -2,7 +2,7 @@
 
 REPO='https://github.com/storybooks/storybook'
 REPO_SUBDIR='docs'
-BRANCH='release/5.0'
+BRANCH='master'
 REPO_DIRNAME='monorepo'
 
 set -e
