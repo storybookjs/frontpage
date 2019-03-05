@@ -1,11 +1,10 @@
 # See https://www.netlify.com/docs/redirects/
-# 302 redirects for now, upgrade to 301 once we've tested
 
-/docs/ / 302
-/addons/* /docs/addons/:splat 302
-/basics/* /docs/basics/:splat 302
-/configurations/* /docs/configurations/:splat 302
-/examples/* /use-cases/ 302
-/logos/* /docs/logos/:splat 302
-/testing/* /docs/testing/:splat 302
-/addons/addon-gallery/ /addons/ 302
+/docs/ / 301
+/addons/* /docs/addons/:splat 301
+/basics/* /docs/basics/:splat 301
+/configurations/* /docs/configurations/:splat 301
+/examples/* /use-cases/ 301
+/logos/* /docs/logos/:splat 301
+/testing/* /docs/testing/:splat 301
+/addons/addon-gallery/ /addons/ 301
