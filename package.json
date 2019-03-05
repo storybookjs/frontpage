@@ -46,7 +46,9 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
+    "build:self": "gatsby build",
+    "build:docs": "./scripts/clone_and_build_docs.sh",
+    "build": "yarn build:self && yarn build:docs",
     "develop": "gatsby develop",
     "start": "npm run develop",
     "format": "prettier --write \"src/**/*.js\"",
