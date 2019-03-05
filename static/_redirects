@@ -8,3 +8,4 @@
 /examples/* /use-cases/ 302
 /logos/* /docs/logos/:splat 302
 /testing/* /docs/testing/:splat 302
+/addons/addon-gallery/ /addons/ 302
