@@ -10,7 +10,6 @@ import PlaceholderAspectRatio from '../../layout/PlaceholderAspectRatio';
 import ValueProp from '../../layout/ValueProp';
 import BenefitItem from './BenefitItem';
 import BenefitList from './BenefitList';
-import Testimonial from '../../layout/Testimonial';
 import CTA from '../../layout/CTA';
 
 const { background } = styles;
