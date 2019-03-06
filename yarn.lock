@@ -747,6 +747,25 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
+"@ndhoule/each@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@ndhoule/each/-/each-2.0.1.tgz#bbed372a603e0713a3193c706a73ddebc5b426a9"
+  integrity sha1-u+03KmA+BxOjGTxwanPd68W0Jqk=
+  dependencies:
+    "@ndhoule/keys" "^2.0.0"
+
+"@ndhoule/keys@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@ndhoule/keys/-/keys-2.0.0.tgz#3d64ae677c65a261747bf3a457c62eb292a4e0ce"
+  integrity sha1-PWSuZ3xlomF0e/OkV8YuspKk4M4=
+
+"@ndhoule/map@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@ndhoule/map/-/map-2.0.1.tgz#f5ca0a47424ea67f46e2a6d499b9e9bc886aefa8"
+  integrity sha1-9coKR0JOpn9G4qbUmbnpvIhq76g=
+  dependencies:
+    "@ndhoule/each" "^2.0.1"
+
 "@nodelib/fs.stat@^1.0.1":
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
@@ -760,6 +779,13 @@
     prop-types "^15.6.1"
     react-lifecycles-compat "^3.0.4"
     warning "^3.0.0"
+
+"@segment/snippet@^4.0.1":
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/@segment/snippet/-/snippet-4.4.0.tgz#153f17b8048a2764bbb1343a61f3c3c24da038e2"
+  integrity sha1-FT8XuASKJ2S7sTQ6YfPDwk2gOOI=
+  dependencies:
+    "@ndhoule/map" "^2.0.1"
 
 "@sindresorhus/is@^0.7.0":
   version "0.7.0"
@@ -5408,12 +5434,6 @@ gatsby-link@^2.0.8:
     "@types/reach__router" "^1.0.0"
     prop-types "^15.6.1"
 
-gatsby-plugin-google-analytics@^2.0.13:
-  version "2.0.13"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-analytics/-/gatsby-plugin-google-analytics-2.0.13.tgz#31ecf6be05815ba2047ec8cd5129f0bea9d7fd75"
-  dependencies:
-    "@babel/runtime" "^7.0.0"
-
 gatsby-plugin-manifest@^2.0.5:
   version "2.0.7"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-manifest/-/gatsby-plugin-manifest-2.0.7.tgz#3b74503d368c5b830c2dbf745c7073fe0f4aa737"
@@ -5450,6 +5470,13 @@ gatsby-plugin-react-helmet@^3.0.2:
   resolved "https://registry.yarnpkg.com/gatsby-plugin-react-helmet/-/gatsby-plugin-react-helmet-3.0.2.tgz#dc88d6f3c5598ae3234e2d110b0f4592f336c220"
   dependencies:
     "@babel/runtime" "^7.0.0"
+
+gatsby-plugin-segment@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-segment/-/gatsby-plugin-segment-1.0.2.tgz#6b014ed477b675486a445155384afe168f3e4bbe"
+  integrity sha512-MHlQJoRVKHGtQjByS4z23BL9wm0HA5rt5gYSP4ETsWNvs1udw+Aqrm5oVtsS+b4zDT0RTMGAjGCVoJbP+PHK2g==
+  dependencies:
+    "@segment/snippet" "^4.0.1"
 
 gatsby-plugin-sharp@^2.0.17:
   version "2.0.17"
