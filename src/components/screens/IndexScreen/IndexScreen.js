@@ -121,7 +121,7 @@ export function PureIndexScreen({ data: { gitHubRepoData, allMediumPost }, ...pr
           <BenefitItem
             image={<img src="/images/home/test-visual.png" alt="visual test" />}
             title="Ensure consistent user experiences"
-            desc="Whenever you write a story you get a handy visual spec. Quickly browse stories to make sure UI looks right."
+            desc="Whenever you write a story you get a handy visual spec. Quickly browse stories to make sure your UI looks right."
           />
           <BenefitItem
             image={<img src="/images/home/test-snapshot.png" alt="snapshot test" />}
