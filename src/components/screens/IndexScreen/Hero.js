@@ -374,7 +374,7 @@ export default function Hero({
           title="Chromatic intro video"
           width="560"
           height="315"
-          src="https://www.youtube.com/embed/wj9tcB5CGxI?autoplay=1&rel=0&amp;showinfo=0"
+          src="https://www.youtube.com/embed/p-LFh5Y89eM?autoplay=1&rel=0&amp;showinfo=0"
           frameBorder="0"
           allow="autoplay; encrypted-media"
           allowFullScreen
