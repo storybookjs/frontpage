@@ -1,13 +1,15 @@
 # See https://www.netlify.com/docs/redirects/
 
 /docs/ / 301
-/addons/* /docs/addons/:splat 301
 
 # Move guides into its own URL
-/basics/*guide* /docs/guides/:splat 302
-/docs/basics/*guide* /docs/guides/:splat 302
-/basics/* /docs/basics/:splat 301
+/basics/*guide /docs/guides/:splat 302
+/basics/guide* /docs/guides/:splat 302
+/docs/basics/*guide /docs/guides/:splat 302
+/docs/basics/guide* /docs/guides/:splat 302
 
+/addons/* /docs/addons/:splat 301
+/basics/* /docs/basics/:splat 301
 /configurations/* /docs/configurations/:splat 301
 /examples/* /use-cases/ 301
 /logos/* /docs/logos/:splat 301
