@@ -3,24 +3,24 @@
 /docs/ / 301
 
 # Move guides into their own paths
-/basics/quick-start-guide /docs/guides/quick-start-guide 302
-/basics/slow-start-guide /docs/guides/slow-start-guide 302
-/basics/guide-react /docs/guides/guide-react 302
-/basics/guide-react-native /docs/guides/guide-react-native 302
-/basics/guide-vue /docs/guides/guide-vue 302
-/basics/guide-angular /docs/guides/guide-angular 302
-/basics/guide-mithril /docs/guides/guide-mithril 302
-/basics/guide-ember /docs/guides/guide-ember 302
-/basics/guide-riot /docs/guides/guide-riot 302
-/docs/basics/quick-start-guide /docs/guides/quick-start-guide 302
-/docs/basics/slow-start-guide /docs/guides/slow-start-guide 302
-/docs/basics/guide-react /docs/guides/guide-react 302
-/docs/basics/guide-react-native /docs/guides/guide-react-native 302
-/docs/basics/guide-vue /docs/guides/guide-vue 302
-/docs/basics/guide-angular /docs/guides/guide-angular 302
-/docs/basics/guide-mithril /docs/guides/guide-mithril 302
-/docs/basics/guide-ember /docs/guides/guide-ember 302
-/docs/basics/guide-riot /docs/guides/guide-riot 302
+/basics/quick-start-guide /docs/guides/quick-start-guide 301
+/basics/slow-start-guide /docs/guides/slow-start-guide 301
+/basics/guide-react /docs/guides/guide-react 301
+/basics/guide-react-native /docs/guides/guide-react-native 301
+/basics/guide-vue /docs/guides/guide-vue 301
+/basics/guide-angular /docs/guides/guide-angular 301
+/basics/guide-mithril /docs/guides/guide-mithril 301
+/basics/guide-ember /docs/guides/guide-ember 301
+/basics/guide-riot /docs/guides/guide-riot 301
+/docs/basics/quick-start-guide /docs/guides/quick-start-guide 301
+/docs/basics/slow-start-guide /docs/guides/slow-start-guide 301
+/docs/basics/guide-react /docs/guides/guide-react 301
+/docs/basics/guide-react-native /docs/guides/guide-react-native 301
+/docs/basics/guide-vue /docs/guides/guide-vue 301
+/docs/basics/guide-angular /docs/guides/guide-angular 301
+/docs/basics/guide-mithril /docs/guides/guide-mithril 301
+/docs/basics/guide-ember /docs/guides/guide-ember 301
+/docs/basics/guide-riot /docs/guides/guide-riot 301
 
 /addons/* /docs/addons/:splat 301
 /basics/* /docs/basics/:splat 301
