@@ -2,6 +2,7 @@
 
 const gitHubOrg = `https://github.com/storybooks`;
 const homepageUrl = `https://storybook.js.org`;
+const docsUrl = `${homepageUrl}/docs`;
 const npmApiBase = `https://api.npmjs.org/downloads/point/last-month`;
 
 export const metadata = {
@@ -42,8 +43,8 @@ export const url = {
   // Navigation
   home: `${homepageUrl}`,
   docs: {
-    home: `${homepageUrl}/basics/introduction/`,
-    addonInstruction: `${homepageUrl}/addons/writing-addons/`,
+    home: `${docsUrl}/basics/introduction/`,
+    addonInstruction: `${docsUrl}/addons/writing-addons/`,
   },
   addons: `/addons`,
   community: `/community`,
