@@ -101,7 +101,7 @@ export function PureUseCasesScreen({ data: { allMediumPost }, ...props }) {
             work aligns with designs to the pixel across breakpoints.”
           </span>
         }
-        avatarUrl="https://pbs.twimg.com/profile_images/532852309194063872/rwKxRciR_400x400.png"
+        avatarUrl="https://avatars2.githubusercontent.com/u/1247751?s=100&v=4"
         name="Adam Neary"
         jobTitle="Tech lead"
         logo="/images/logos/user/logo-airbnb.svg"
@@ -140,7 +140,7 @@ export function PureUseCasesScreen({ data: { allMediumPost }, ...props }) {
               native. It blows our old practices out of the water.”
             </span>
           }
-          avatarUrl="https://pbs.twimg.com/profile_images/879777800311451648/5HSjNITG_400x400.jpg"
+          avatarUrl="https://avatars1.githubusercontent.com/u/49038?s=100&v=4"
           name="Orta Therox"
           jobTitle="Frontend infrastructure"
           logo="/images/logos/user/logo-artsy.svg"
@@ -185,7 +185,7 @@ export function PureUseCasesScreen({ data: { allMediumPost }, ...props }) {
         text={
           <span>“Storybook is crucial to our UX process. The “old way” seems ludicrous now!”</span>
         }
-        avatarUrl="https://avatars3.githubusercontent.com/u/31106469?s=200&v=4"
+        avatarUrl="https://avatars3.githubusercontent.com/u/31106469?s=100&v=4"
         name="Andrew Frankel"
         jobTitle="Engineering lead"
         logo="/images/logos/user/logo-salesforce.svg"
