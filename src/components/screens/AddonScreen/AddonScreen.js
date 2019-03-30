@@ -201,6 +201,11 @@ export function PureAddonScreen({ data: { allMediumPost }, ...props }) {
           desc="Navigate different versions of static Storybook builds to see how a component has changed over time."
           addonUrl="https://github.com/buildit/storybook-addon-versions"
         />
+        <AddonItem
+          title="Contexts"
+          desc="An elegant way to wrap your component stories and change their contextual environment directly and dynamically in Storybook UI!"
+          addonUrl="https://github.com/leoyli/addon-contexts"
+        />
 
         <Subheader>Test</Subheader>
         <AddonItem
