@@ -366,6 +366,7 @@ export default function Hero({
   ...props
 }) {
   const { latestVersion, urls } = useSiteMetadata();
+  const { docs = {}, framework = {} } = urls;
 
   const Modal = () => (
     <AspectRatio ratio={0.5625}>
@@ -393,7 +394,7 @@ export default function Hero({
           and Angular. It makes building stunning UIs organized and efficient.
         </Subtitle>
         <PitchActions>
-          <Button primary isLink href={urls.docs.home}>
+          <Button primary isLink href={docs.home}>
             Get Started
           </Button>
           <WithModal startOpen={startOpen} modal={Modal}>
@@ -463,15 +464,15 @@ export default function Hero({
         <Secondary>
           <SecondarySubheading>Made for</SecondarySubheading>
           <FrameworkList>
-            <Framework framework="React" href={urls.framework.react} />
-            <Framework framework="React Native" logo="react" href={urls.framework.reactNative} />
-            <Framework framework="Vue" href={urls.framework.vue} />
-            <Framework framework="Angular" href={urls.framework.angular} />
-            <Framework framework="Ember" href={urls.framework.ember} />
-            <Framework framework="HTML" href={urls.framework.html} />
-            <Framework framework="Svelte" href={urls.framework.svelte} />
-            <Framework framework="Mithril" href={urls.framework.mithril} />
-            <Framework framework="Riot" href={urls.framework.riot} />
+            <Framework framework="React" href={framework.react} />
+            <Framework framework="React Native" logo="react" href={framework.reactNative} />
+            <Framework framework="Vue" href={framework.vue} />
+            <Framework framework="Angular" href={framework.angular} />
+            <Framework framework="Ember" href={framework.ember} />
+            <Framework framework="HTML" href={framework.html} />
+            <Framework framework="Svelte" href={framework.svelte} />
+            <Framework framework="Mithril" href={framework.mithril} />
+            <Framework framework="Riot" href={framework.riot} />
           </FrameworkList>
           <SecondarySubheading>GitHub</SecondarySubheading>
 

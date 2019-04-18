@@ -23,6 +23,7 @@ const Features = styled(FeaturesLayout)`
 
 export function PureNotFoundScreen({ data: { allMediumPost }, ...props }) {
   const { urls } = useSiteMetadata();
+  const { gitHub = {}, chat } = urls;
   return (
     <PageLayout allMediumPost={allMediumPost} {...props}>
       <Helmet>
@@ -41,7 +42,7 @@ export function PureNotFoundScreen({ data: { allMediumPost }, ...props }) {
           title="Report an issue on GitHub"
           desc="If you encounter an issue with this site, do us a favor and report it."
         >
-          <Link withArrow href={urls.gitHub.frontpage}>
+          <Link withArrow href={gitHub.frontpage}>
             Report an issue
           </Link>
         </Feature>
@@ -50,7 +51,7 @@ export function PureNotFoundScreen({ data: { allMediumPost }, ...props }) {
           title="Not finding something?"
           desc="Ask community members in chat. A maintainer is usually online."
         >
-          <Link withArrow href={urls.chat}>
+          <Link withArrow href={chat}>
             Chat now
           </Link>
         </Feature>

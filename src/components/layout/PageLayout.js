@@ -12,7 +12,7 @@ import Footer from './Footer';
 const Layout = styled.div``;
 
 export default function PageLayout({ allMediumPost, children, ...props }) {
-  const { urls, title, description, ogImage, googleSiteVerification } = useSiteMetadata();
+  const { urls = {}, title, description, ogImage, googleSiteVerification } = useSiteMetadata();
   return (
     <Layout {...props}>
       <SocialGraph

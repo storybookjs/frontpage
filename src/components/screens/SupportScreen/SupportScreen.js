@@ -24,12 +24,13 @@ const Features = styled(FeaturesLayout)`
 
 export function PureSupportScreen({ data: { allMediumPost }, ...props }) {
   const { title, ogImage, urls } = useSiteMetadata();
+  const { home, docs = {}, gitHub = {} } = urls;
   return (
     <PageLayout allMediumPost={allMediumPost} {...props}>
       <SocialGraph
         title={`Support | ${title}`}
         desc="Get answers to your Storybook questions from the thriving community and maintainers. Developers of all skill levels welcome."
-        url={`${urls.home}/support`}
+        url={`${home}/support`}
         image={ogImage}
       />
 
@@ -45,7 +46,7 @@ export function PureSupportScreen({ data: { allMediumPost }, ...props }) {
           title="Check the docs"
           desc="First check the Storybook docs. There’s likely an article for your issue already."
         >
-          <Link withArrow href={urls.docs.home}>
+          <Link withArrow href={docs.home}>
             Read docs
           </Link>
         </Feature>
@@ -54,7 +55,7 @@ export function PureSupportScreen({ data: { allMediumPost }, ...props }) {
           title="File an issue on GitHub"
           desc="If you encounter an issue, do us a favor and report it. Someone else may have the same issue."
         >
-          <Link withArrow href={urls.gitHub.issues}>
+          <Link withArrow href={gitHub.issues}>
             View GitHub issues
           </Link>
         </Feature>
@@ -63,7 +64,7 @@ export function PureSupportScreen({ data: { allMediumPost }, ...props }) {
           title="Ask a question in chat"
           desc="Get help over chat from community members. A maintainer is usually online."
         >
-          <Link withArrow href={urls.chat}>
+          <Link withArrow href={chat}>
             Chat now
           </Link>
         </Feature>

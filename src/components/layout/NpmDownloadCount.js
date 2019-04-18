@@ -21,7 +21,8 @@ const fetchNpmDownloads = async (npmApiUrls) => {
 const NpmDownloadCount = (props) => {
   const { state, setState } = useSetState({ loading: true, npmDownloads: 0 });
   const { urls } = useSiteMetadata();
-
+  const { npm, npmApi } = urls;
+  
   let npmDownloadsFixed = parseInt((state.npmDownloads / 1000).toFixed(0), 10);
   let npmDownloadsDisplay = `${npmDownloadsFixed}k`;
   if (npmDownloadsFixed >= 1000) {
@@ -31,7 +32,7 @@ const NpmDownloadCount = (props) => {
 
   useOnMount(() => {
     if (!window.sessionStorage.getItem('monthlyNpmDownloads')) {
-      fetchNpmDownloads(urls.npmApi).then(npmDownloadCount => {
+      fetchNpmDownloads(npmApi).then(npmDownloadCount => {
         setState({ loading: false, npmDownloads: npmDownloadCount });
         window.sessionStorage.setItem('monthlyNpmDownloads', parseInt(npmDownloadCount, 10));
       });
@@ -50,7 +51,7 @@ const NpmDownloadCount = (props) => {
       text="Installs per month"
       noPlural
       status="secondary"
-      countLink={urls.npm}
+      countLink={npm}
       loading={state.loading}
       {...props}
     />

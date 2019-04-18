@@ -109,32 +109,33 @@ const Wrapper = styled.div`
 `;
 
 export default function CommunitySocial({ ...props }) {
-
   const { urls } = useSiteMetadata();
+  const { gitHub = {}, twitter, blog, chat  } = urls;
+
   return (
     <Wrapper {...props}>
-      <Item href={urls.gitHub.repo}>
+      <Item href={gitHub.repo}>
         <Image src={GitHubSVG} />
         <Meta>
           <Title>Star on GitHub</Title>
           <Desc>Check out the official Storybook repo on GitHub</Desc>
         </Meta>
       </Item>
-      <Item href={urls.twitter}>
+      <Item href={twitter}>
         <Image src={TwitterSVG} />
         <Meta>
           <Title>Follow on Twitter</Title>
           <Desc>Get the latest updates from the Storybook team</Desc>
         </Meta>
       </Item>
-      <Item href={urls.blog}>
+      <Item href={blog}>
         <Image src={MediumSVG} />
         <Meta>
           <Title>Read the blog</Title>
           <Desc>Get news, articles, and guides from the Storybook community</Desc>
         </Meta>
       </Item>
-      <Item href={urls.chat}>
+      <Item href={chat}>
         <Image src={DiscordSVG} />
         <Meta>
           <Title>Chat on Discord</Title>

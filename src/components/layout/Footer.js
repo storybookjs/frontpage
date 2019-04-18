@@ -323,8 +323,8 @@ const FooterWrapper = styled.div`
 `;
 
 export default function Footer({ mediumPosts, hasSubscribed, onSubscribe, ...props }) {
-  const { urls } = useSiteMetadata();
-  const { navLinks } = urls;
+  const { urls = {} } = useSiteMetadata();
+  const { navLinks = {}, framework = {}, docs = {}, gitHub = {}, blog, twitter, medium, chat, youtube } = urls;
   return (
     <FooterWrapper {...props}>
       <Upper>
@@ -340,16 +340,16 @@ export default function Footer({ mediumPosts, hasSubscribed, onSubscribe, ...pro
                   easier.
                 </ResourceDesc>
                 <ResourceActions>
-                  <ResourceAction withArrow href={urls.framework.react}>
+                  <ResourceAction withArrow href={framework.react}>
                     React
                   </ResourceAction>
-                  <ResourceAction withArrow href={urls.framework.vue}>
+                  <ResourceAction withArrow href={framework.vue}>
                     Vue
                   </ResourceAction>
-                  <ResourceAction withArrow href={urls.framework.angular}>
+                  <ResourceAction withArrow href={framework.angular}>
                     Angular
                   </ResourceAction>
-                  <ResourceAction withArrow href={urls.docs.home}>
+                  <ResourceAction withArrow href={docs.home}>
                     View more
                   </ResourceAction>
                 </ResourceActions>
@@ -375,7 +375,7 @@ export default function Footer({ mediumPosts, hasSubscribed, onSubscribe, ...pro
         <UpperColumn>
           <Title>
             News
-            <SubLink tertiary withArrow href={urls.blog}>
+            <SubLink tertiary withArrow href={blog}>
               Read more
             </SubLink>
           </Title>
@@ -383,7 +383,7 @@ export default function Footer({ mediumPosts, hasSubscribed, onSubscribe, ...pro
             {mediumPosts.edges.map(({ node: { id, title, virtuals, uniqueSlug } }) => (
               <Resource key={id}>
                 <Meta>
-                  <ResourceTitleLink tertiary withArrow href={`${urls.medium}/${uniqueSlug}`}>
+                  <ResourceTitleLink tertiary withArrow href={`${medium}/${uniqueSlug}`}>
                     {title}
                   </ResourceTitleLink>
                   <ResourceDesc>{virtuals.subtitle}</ResourceDesc>
@@ -419,25 +419,25 @@ export default function Footer({ mediumPosts, hasSubscribed, onSubscribe, ...pro
               {title}
             </FooterLink>
           ))}
-          <FooterLink tertiary href={urls.gitHub.releases}>
+          <FooterLink tertiary href={gitHub.releases}>
             Releases
           </FooterLink>
         </Column>
         <Column>
           <Title>Community</Title>
-          <FooterLink tertiary href={urls.gitHub.repo}>
+          <FooterLink tertiary href={gitHub.repo}>
             <Icon icon="github" /> GitHub
           </FooterLink>
-          <FooterLink tertiary href={urls.blog}>
+          <FooterLink tertiary href={blog}>
             <Icon icon="medium" /> Blog
           </FooterLink>
-          <FooterLink tertiary href={urls.twitter}>
+          <FooterLink tertiary href={twitter}>
             <Icon icon="twitter" /> Twitter
           </FooterLink>
-          <FooterLink tertiary href={urls.chat}>
+          <FooterLink tertiary href={chat}>
             <Icon icon="discord" /> Discord chat
           </FooterLink>
-          <FooterLink tertiary href={urls.youtube}>
+          <FooterLink tertiary href={youtube}>
             <Icon icon="youtube" /> Youtube
           </FooterLink>
         </Column>

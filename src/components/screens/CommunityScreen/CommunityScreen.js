@@ -154,13 +154,13 @@ const CommunityLayout = styled.div`
 
 export function PureCommunityScreen({ data: { gitHubRepoData, allMediumPost }, ...props }) {
   const { title, ogImage, urls } = useSiteMetadata();
-
+  const { home, badge, brand, chat, blog, presentation, designSystem, gitHub = {}, docs = {}, openCollective } = urls;
   return (
     <PageLayout allMediumPost={allMediumPost} {...props}>
       <SocialGraph
         title={`Community | ${title}`}
         desc="Join thousands of frontend developers to learn new Storybook techniques, get help, and develop UIs faster."
-        url={`${urls.home}/community`}
+        url={`${home}/community`}
         image={ogImage}
       />
       <CommunityHero gitHubRepoData={gitHubRepoData} />
@@ -173,7 +173,7 @@ export function PureCommunityScreen({ data: { gitHubRepoData, allMediumPost }, .
           desc="The easiest way to get involved is to share Storybook with fellow developers, colleagues, and friends."
         >
           <StorybookBadgeWrapper>
-            <StorybookBadgeOuter href={urls.badge}>
+            <StorybookBadgeOuter href={badge}>
               <StorybookBadge src={StorybookBadgeSVG} alt="Storybook badge" />
             </StorybookBadgeOuter>
             <div>Get the Storybook badge for your project</div>
@@ -184,21 +184,21 @@ export function PureCommunityScreen({ data: { gitHubRepoData, allMediumPost }, .
             image={<img src={BlogSVG} alt="write" />}
             title="Write about Storybook"
             desc="Publish it to your blog or submit it to Storybook’s Medium publication. Mention @storybookjs on Twitter for a reshare."
-            links={[{ title: 'Submit an article to the blog', href: urls.blog }]}
+            links={[{ title: 'Submit an article to the blog', href: blog }]}
           />
           <Item
             image={<img src={PresentationSVG} alt="present" />}
             title="Talk about Storybook"
             desc="Present at work, meetups, and conferences. Get your point across with ready-to-use slides (Keynote, PDF) and illustrations."
-            links={[{ title: 'View presentation materials', href: urls.presentation }]}
+            links={[{ title: 'View presentation materials', href: presentation }]}
           />
           <Item
             image={<img src={BrandSVG} alt="brand kit" />}
             title="Use the brand"
             desc="Create your own visuals using Storybook logo, typography, colors, and images."
             links={[
-              { title: 'View brand', href: urls.brand },
-              { title: 'View design system', href: urls.designSystem },
+              { title: 'View brand', href: brand },
+              { title: 'View design system', href: designSystem },
             ]}
           />
         </List>
@@ -212,7 +212,7 @@ export function PureCommunityScreen({ data: { gitHubRepoData, allMediumPost }, .
             desc="Storybook is maintained by contributors from around the globe. Join us in building the most popular component explorer."
           >
             <DiscordText>Have questions about contributing? Ask the community on chat.</DiscordText>
-            <Button outline secondary isLink href={urls.chat}>
+            <Button outline secondary isLink href={chat}>
               <Icon icon="discord" /> Chat on Discord
             </Button>
           </Sidebar>
@@ -221,19 +221,19 @@ export function PureCommunityScreen({ data: { gitHubRepoData, allMediumPost }, .
               image={<img src={BugSVG} alt="report bugs" />}
               title="Find and report issues"
               desc="Help find bugs and QA releases. Maintainers are human, we miss things sometimes. Issue reports are much appreciated."
-              links={[{ title: 'Report an issue', href: urls.gitHub.issues }]}
+              links={[{ title: 'Report an issue', href: gitHub.issues }]}
             />
             <Item
               image={<img src={DocsSVG} alt="docs" />}
               title="Write and update docs"
               desc="Teach fellow developers how to take advantage of Storybook. Help write, edit, and improve docs."
-              links={[{ title: 'Get started with docs', href: urls.docs.home }]}
+              links={[{ title: 'Get started with docs', href: docs.home }]}
             />
             <Item
               image={<img src={PullRequestSVG} alt="pull request" />}
               title="Send a pull request"
               desc="Want to create a new feature or improve existing functionality? PRs welcomed and encouraged."
-              links={[{ title: 'Learn how to contribute', href: urls.gitHub.repo }]}
+              links={[{ title: 'Learn how to contribute', href: gitHub.repo }]}
             />
           </List>
         </CommunityLayout>
@@ -246,7 +246,7 @@ export function PureCommunityScreen({ data: { gitHubRepoData, allMediumPost }, .
           desc="Donations go to hosting, swag for contributors, documentation and learning materials."
           loneChild
         >
-          <Button secondary isLink href={urls.openCollective} target="_blank">
+          <Button secondary isLink href={openCollective} target="_blank">
             Donate to Storybook
           </Button>
         </Sidebar>

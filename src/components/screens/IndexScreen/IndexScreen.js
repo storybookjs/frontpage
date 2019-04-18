@@ -33,12 +33,13 @@ const Placeholder = styled(PlaceholderAspectRatio)`
 
 export function PureIndexScreen({ data: { gitHubRepoData, allMediumPost }, ...props }) {
   const { ogImage, urls } = useSiteMetadata();
+  const { home, docs = {} } = urls;
   return (
     <PageLayout allMediumPost={allMediumPost} {...props}>
       <SocialGraph
         title="Storybook: UI component workshop for frontend developers"
         desc="Storybook is an open source tool for developing UI components in isolation for React, Vue, and Angular. It makes building stunning UIs organized and efficient."
-        url={urls.home}
+        url={home}
         image={ogImage}
       />
 
@@ -194,7 +195,7 @@ export function PureIndexScreen({ data: { gitHubRepoData, allMediumPost }, ...pr
       <CTA
         text={<span>Storybook is quick to install and it’s easy to get started.</span>}
         action={
-          <Button secondary isLink href={urls.docs.home}>
+          <Button secondary isLink href={docs.home}>
             Get started
           </Button>
         }

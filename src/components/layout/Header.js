@@ -140,8 +140,8 @@ const NavWrapper = styled.nav`
 `;
 
 export default function Header({ ...props }) {
-  const { latestVersion, urls } = useSiteMetadata();
-  const { navLinks } = urls;
+  const { latestVersion, urls = {} } = useSiteMetadata();
+  const { navLinks = {}, gitHub = {} } = urls;
 
   const mobileMenu = (
     <MobileMenu>
@@ -161,7 +161,7 @@ export default function Header({ ...props }) {
             <LogotypeWrapper isGatsby to="/">
               <img src={StorybookLogoSVG} alt="Storybook" />
             </LogotypeWrapper>
-            <Version href={urls.gitHub.releases}>{latestVersion}</Version>
+            <Version href={gitHub.releases}>{latestVersion}</Version>
           </NavItem>
         </NavGroup>
 
