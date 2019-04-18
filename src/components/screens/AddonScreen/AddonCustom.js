@@ -67,7 +67,7 @@ const Wrapper = styled.div`
 `;
 
 export default function AddonCustom({ ...props }) {
-  const { urls } = useSiteMetadata;
+  const { urls = {} } = useSiteMetadata;
   const { docs = {} } = urls;
   return (
     <Wrapper {...props}>
