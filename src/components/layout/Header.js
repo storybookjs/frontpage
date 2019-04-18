@@ -2,11 +2,11 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { Link as GatsbyLink } from 'gatsby';
 
-import { Link, Icon, TooltipLinkList, WithTooltip, styles, site } from '../basics';
-import { navLinks } from './PageLayout';
+import useSiteMetadata from '../lib/useSiteMetadata';
+
+import { Link, Icon, TooltipLinkList, WithTooltip, styles } from '../basics';
 
 const { color, typography, spacing, pageMargins, breakpoint } = styles;
-const { metadata, url } = site;
 
 const LogotypeWrapper = styled(Link)`
   display: inline-block;
@@ -137,6 +137,9 @@ const NavWrapper = styled.nav`
 `;
 
 export default function Header({ ...props }) {
+  const { latestVersion, urls } = useSiteMetadata();
+  const { navLinks } = urls;
+
   const mobileMenu = (
     <MobileMenu>
       <TooltipLinkList
@@ -155,7 +158,7 @@ export default function Header({ ...props }) {
             <LogotypeWrapper isGatsby to="/">
               <img src="/images/logos/logo-storybook.svg" alt="Storybook" />
             </LogotypeWrapper>
-            <Version href={url.gitHub.releases}>{metadata.latestVersion}</Version>
+            <Version href={urls.gitHub.releases}>{latestVersion}</Version>
           </NavItem>
         </NavGroup>
 

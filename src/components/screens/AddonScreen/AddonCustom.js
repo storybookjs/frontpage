@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Link, LazyLoad, styles, site } from '../../basics';
+import useSiteMetadata from '../../lib/useSiteMetadata';
+
+import { Link, LazyLoad, styles } from '../../basics';
 
 const { background, color, spacing, typography, pageMargin, breakpoint } = styles;
-const { url } = site;
-
 const Title = styled.div`
   font-weight: ${typography.weight.black};
   font-size: ${typography.size.s3}px;
@@ -67,6 +67,7 @@ const Wrapper = styled.div`
 `;
 
 export default function AddonCustom({ ...props }) {
+  const { urls } = useSiteMetadata;
   return (
     <Wrapper {...props}>
       <Inner>
@@ -79,7 +80,7 @@ export default function AddonCustom({ ...props }) {
             Customize Storybook&rsquo;s UI, API, and create custom workflows by building your own
             addon
           </Desc>
-          <Link withArrow href={url.docs.addonInstruction}>
+          <Link withArrow href={urls.docs.addonInstruction}>
             Learn how to build an addon
           </Link>
         </Meta>

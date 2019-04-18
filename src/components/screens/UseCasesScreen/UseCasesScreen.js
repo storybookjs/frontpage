@@ -15,10 +15,10 @@ import ComponentCanvas from './ComponentCanvas';
 import ComponentList from './ComponentList';
 import LogoToggle from './LogoToggle';
 
-import { SocialGraph, styles, site } from '../../basics';
+import useSiteMetadata from '../../lib/useSiteMetadata';
+import { SocialGraph, styles } from '../../basics';
 
 const { background } = styles;
-const { metadata, url } = site;
 
 const Contrast = styled.div`
   background-color: ${background.app};
@@ -49,13 +49,14 @@ const DesignSystemWrapper = styled.div`
 `;
 
 export function PureUseCasesScreen({ data: { allMediumPost }, ...props }) {
+  const { title, ogImage, urls } = useSiteMetadata;
   return (
     <PageLayout allMediumPost={allMediumPost} {...props}>
       <SocialGraph
-        title={`Use cases | ${metadata.title}`}
+        title={`Use cases | ${title}`}
         desc="See how thousands of teams around the world use Storybook to build production UIs faster."
-        url={`${url.home}/use-cases`}
-        image={metadata.ogImage}
+        url={`${urls.home}/use-cases`}
+        image={ogImage}
       />
       <PageTitle
         heading="Use cases"

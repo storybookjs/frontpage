@@ -2,7 +2,8 @@ import React, { Fragment } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 
-import { Badge, Button, Link, SocialGraph, styles, site, Video } from '../../basics';
+import useSiteMetadata from '../../lib/useSiteMetadata';
+import { Badge, Button, Link, SocialGraph, styles, Video } from '../../basics';
 import PageLayout from '../../layout/PageLayout';
 import Hero from './Hero';
 import SocialProof from '../../layout/SocialProof';
@@ -13,7 +14,6 @@ import BenefitList from './BenefitList';
 import CTA from '../../layout/CTA';
 
 const { background } = styles;
-const { metadata, url } = site;
 
 const Contrast = styled.div`
   background-color: ${background.app};
@@ -32,13 +32,14 @@ const Placeholder = styled(PlaceholderAspectRatio)`
 `;
 
 export function PureIndexScreen({ data: { gitHubRepoData, allMediumPost }, ...props }) {
+  const { ogImage, urls } = useSiteMetadata();
   return (
     <PageLayout allMediumPost={allMediumPost} {...props}>
       <SocialGraph
         title="Storybook: UI component workshop for frontend developers"
         desc="Storybook is an open source tool for developing UI components in isolation for React, Vue, and Angular. It makes building stunning UIs organized and efficient."
-        url={url.home}
-        image={metadata.ogImage}
+        url={urls.home}
+        image={ogImage}
       />
 
       <Hero gitHubRepoData={gitHubRepoData} />
@@ -193,7 +194,7 @@ export function PureIndexScreen({ data: { gitHubRepoData, allMediumPost }, ...pr
       <CTA
         text={<span>Storybook is quick to install and it’s easy to get started.</span>}
         action={
-          <Button secondary isLink href={url.docs.home}>
+          <Button secondary isLink href={urls.docs.home}>
             Get started
           </Button>
         }

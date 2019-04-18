@@ -2,13 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import { Icon, Link, Subheading, styles, site } from '../basics';
+import useSiteMetadata from '../lib/useSiteMetadata';
+import { Icon, Link, Subheading, styles } from '../basics';
 
 import ConfirmedMailingList from './ConfirmedMailingList';
-import { navLinks } from './PageLayout';
 
 const { background, color, typography, pageMargins, pageMargin, spacing, breakpoint } = styles;
-const { url } = site;
 
 const Title = styled(Subheading)`
   display: block;
@@ -316,6 +315,8 @@ const FooterWrapper = styled.div`
 `;
 
 export default function Footer({ mediumPosts, hasSubscribed, onSubscribe, ...props }) {
+  const { urls } = useSiteMetadata();
+  const { navLinks } = urls;
   return (
     <FooterWrapper {...props}>
       <Upper>
@@ -331,16 +332,16 @@ export default function Footer({ mediumPosts, hasSubscribed, onSubscribe, ...pro
                   easier.
                 </ResourceDesc>
                 <ResourceActions>
-                  <ResourceAction withArrow href={url.framework.react}>
+                  <ResourceAction withArrow href={urls.framework.react}>
                     React
                   </ResourceAction>
-                  <ResourceAction withArrow href={url.framework.vue}>
+                  <ResourceAction withArrow href={urls.framework.vue}>
                     Vue
                   </ResourceAction>
-                  <ResourceAction withArrow href={url.framework.angular}>
+                  <ResourceAction withArrow href={urls.framework.angular}>
                     Angular
                   </ResourceAction>
-                  <ResourceAction withArrow href={url.docs.home}>
+                  <ResourceAction withArrow href={urls.docs.home}>
                     View more
                   </ResourceAction>
                 </ResourceActions>
@@ -366,7 +367,7 @@ export default function Footer({ mediumPosts, hasSubscribed, onSubscribe, ...pro
         <UpperColumn>
           <Title>
             News
-            <SubLink tertiary withArrow href={url.blog}>
+            <SubLink tertiary withArrow href={urls.blog}>
               Read more
             </SubLink>
           </Title>
@@ -374,7 +375,7 @@ export default function Footer({ mediumPosts, hasSubscribed, onSubscribe, ...pro
             {mediumPosts.edges.map(({ node: { id, title, virtuals, uniqueSlug } }) => (
               <Resource key={id}>
                 <Meta>
-                  <ResourceTitleLink tertiary withArrow href={`${url.medium}/${uniqueSlug}`}>
+                  <ResourceTitleLink tertiary withArrow href={`${urls.medium}/${uniqueSlug}`}>
                     {title}
                   </ResourceTitleLink>
                   <ResourceDesc>{virtuals.subtitle}</ResourceDesc>
@@ -410,25 +411,25 @@ export default function Footer({ mediumPosts, hasSubscribed, onSubscribe, ...pro
               {title}
             </FooterLink>
           ))}
-          <FooterLink tertiary href={url.gitHub.releases}>
+          <FooterLink tertiary href={urls.gitHub.releases}>
             Releases
           </FooterLink>
         </Column>
         <Column>
           <Title>Community</Title>
-          <FooterLink tertiary href={url.gitHub.repo}>
+          <FooterLink tertiary href={urls.gitHub.repo}>
             <Icon icon="github" /> GitHub
           </FooterLink>
-          <FooterLink tertiary href={url.blog}>
+          <FooterLink tertiary href={urls.blog}>
             <Icon icon="medium" /> Blog
           </FooterLink>
-          <FooterLink tertiary href={url.twitter}>
+          <FooterLink tertiary href={urls.twitter}>
             <Icon icon="twitter" /> Twitter
           </FooterLink>
-          <FooterLink tertiary href={url.chat}>
+          <FooterLink tertiary href={urls.chat}>
             <Icon icon="discord" /> Discord chat
           </FooterLink>
-          <FooterLink tertiary href={url.youtube}>
+          <FooterLink tertiary href={urls.youtube}>
             <Icon icon="youtube" /> Youtube
           </FooterLink>
         </Column>

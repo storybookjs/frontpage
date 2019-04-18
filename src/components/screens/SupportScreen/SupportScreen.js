@@ -8,10 +8,10 @@ import PageTitle from '../../layout/PageTitle';
 import Feature from '../../layout/Feature';
 import FeaturesLayout from '../../layout/FeaturesLayout';
 
-import { Link, SocialGraph, styles, site } from '../../basics';
+import useSiteMetadata from '../../lib/useSiteMetadata';
+import { Link, SocialGraph, styles } from '../../basics';
 
 const { breakpoint } = styles;
-const { metadata, url } = site;
 
 const Features = styled(FeaturesLayout)`
   @media (min-width: ${breakpoint * 1}px) {
@@ -20,13 +20,14 @@ const Features = styled(FeaturesLayout)`
 `;
 
 export function PureSupportScreen({ data: { allMediumPost }, ...props }) {
+  const { title, ogImage, urls } = useSiteMetadata();
   return (
     <PageLayout allMediumPost={allMediumPost} {...props}>
       <SocialGraph
-        title={`Support | ${metadata.title}`}
+        title={`Support | ${title}`}
         desc="Get answers to your Storybook questions from the thriving community and maintainers. Developers of all skill levels welcome."
-        url={`${url.home}/support`}
-        image={metadata.ogImage}
+        url={`${urls.home}/support`}
+        image={ogImage}
       />
 
       <PageTitle
@@ -41,7 +42,7 @@ export function PureSupportScreen({ data: { allMediumPost }, ...props }) {
           title="Check the docs"
           desc="First check the Storybook docs. There’s likely an article for your issue already."
         >
-          <Link withArrow href={url.docs.home}>
+          <Link withArrow href={urls.docs.home}>
             Read docs
           </Link>
         </Feature>
@@ -50,7 +51,7 @@ export function PureSupportScreen({ data: { allMediumPost }, ...props }) {
           title="File an issue on GitHub"
           desc="If you encounter an issue, do us a favor and report it. Someone else may have the same issue."
         >
-          <Link withArrow href={url.gitHub.issues}>
+          <Link withArrow href={urls.gitHub.issues}>
             View GitHub issues
           </Link>
         </Feature>
@@ -59,7 +60,7 @@ export function PureSupportScreen({ data: { allMediumPost }, ...props }) {
           title="Ask a question in chat"
           desc="Get help over chat from community members. A maintainer is usually online."
         >
-          <Link withArrow href={url.chat}>
+          <Link withArrow href={urls.chat}>
             Chat now
           </Link>
         </Feature>

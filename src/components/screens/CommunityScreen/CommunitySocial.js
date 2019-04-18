@@ -1,11 +1,11 @@
 import React from 'react';
 
 import styled from 'styled-components';
+import useSiteMetadata from '../../lib/useSiteMetadata';
 
-import { styles, site } from '../../basics';
+import { styles } from '../../basics';
 
 const { color, typography, breakpoint } = styles;
-const { url } = site;
 
 const Image = styled.img`
   display: block;
@@ -105,30 +105,32 @@ const Wrapper = styled.div`
 `;
 
 export default function CommunitySocial({ ...props }) {
+
+  const { urls } = useSiteMetadata();
   return (
     <Wrapper {...props}>
-      <Item href={url.gitHub.repo}>
+      <Item href={urls.gitHub.repo}>
         <Image src="/images/logos/social/github.svg" />
         <Meta>
           <Title>Star on GitHub</Title>
           <Desc>Check out the official Storybook repo on GitHub</Desc>
         </Meta>
       </Item>
-      <Item href={url.twitter}>
+      <Item href={urls.twitter}>
         <Image src="/images/logos/social/twitter.svg" />
         <Meta>
           <Title>Follow on Twitter</Title>
           <Desc>Get the latest updates from the Storybook team</Desc>
         </Meta>
       </Item>
-      <Item href={url.blog}>
+      <Item href={urls.blog}>
         <Image src="/images/logos/social/medium.svg" />
         <Meta>
           <Title>Read the blog</Title>
           <Desc>Get news, articles, and guides from the Storybook community</Desc>
         </Meta>
       </Item>
-      <Item href={url.chat}>
+      <Item href={urls.chat}>
         <Image src="/images/logos/social/discord.svg" />
         <Meta>
           <Title>Chat on Discord</Title>

@@ -8,10 +8,10 @@ import PageTitle from '../../layout/PageTitle';
 import Feature from '../../layout/Feature';
 import FeaturesLayout from '../../layout/FeaturesLayout';
 
-import { Link, styles, site } from '../../basics';
+import useSiteMetadata from '../../lib/useSiteMetadata';
+import { Link, styles } from '../../basics';
 
 const { breakpoint } = styles;
-const { url } = site;
 
 const Features = styled(FeaturesLayout)`
   @media (min-width: ${breakpoint * 1}px) {
@@ -20,6 +20,7 @@ const Features = styled(FeaturesLayout)`
 `;
 
 export function PureNotFoundScreen({ data: { allMediumPost }, ...props }) {
+  const { urls } = useSiteMetadata();
   return (
     <PageLayout allMediumPost={allMediumPost} {...props}>
       <Helmet>
@@ -38,7 +39,7 @@ export function PureNotFoundScreen({ data: { allMediumPost }, ...props }) {
           title="Report an issue on GitHub"
           desc="If you encounter an issue with this site, do us a favor and report it."
         >
-          <Link withArrow href={url.gitHub.frontpage}>
+          <Link withArrow href={urls.gitHub.frontpage}>
             Report an issue
           </Link>
         </Feature>
@@ -47,7 +48,7 @@ export function PureNotFoundScreen({ data: { allMediumPost }, ...props }) {
           title="Not finding something?"
           desc="Ask community members in chat. A maintainer is usually online."
         >
-          <Link withArrow href={url.chat}>
+          <Link withArrow href={urls.chat}>
             Chat now
           </Link>
         </Feature>

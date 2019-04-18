@@ -15,16 +15,14 @@ import {
   WithTooltip,
   WithModal,
   styles,
-  site,
   Video,
 } from '../../basics';
 
+import useSiteMetadata from '../../lib/useSiteMetadata';
 import PlaceholderAspectRatio from '../../layout/PlaceholderAspectRatio';
 import NpmDownloadCount from '../../layout/NpmDownloadCount';
 
 const { color, typography, breakpoint, pageMargins } = styles;
-
-const { metadata, url } = site;
 
 const ModalVideo = styled.iframe`
   width: 100%;
@@ -367,6 +365,8 @@ export default function Hero({
   startOpen,
   ...props
 }) {
+  const { latestVersion, urls } = useSiteMetadata();
+
   const Modal = () => (
     <AspectRatio ratio={0.5625}>
       <ModalVideoWrapper>
@@ -393,7 +393,7 @@ export default function Hero({
           and Angular. It makes building stunning UIs organized and efficient.
         </Subtitle>
         <PitchActions>
-          <Button primary isLink href={url.docs.home}>
+          <Button primary isLink href={urls.docs.home}>
             Get Started
           </Button>
           <WithModal startOpen={startOpen} modal={Modal}>
@@ -463,15 +463,15 @@ export default function Hero({
         <Secondary>
           <SecondarySubheading>Made for</SecondarySubheading>
           <FrameworkList>
-            <Framework framework="React" href={url.framework.react} />
-            <Framework framework="React Native" logo="react" href={url.framework.reactNative} />
-            <Framework framework="Vue" href={url.framework.vue} />
-            <Framework framework="Angular" href={url.framework.angular} />
-            <Framework framework="Ember" href={url.framework.ember} />
-            <Framework framework="HTML" href={url.framework.html} />
-            <Framework framework="Svelte" href={url.framework.svelte} />
-            <Framework framework="Mithril" href={url.framework.mithril} />
-            <Framework framework="Riot" href={url.framework.riot} />
+            <Framework framework="React" href={urls.framework.react} />
+            <Framework framework="React Native" logo="react" href={urls.framework.reactNative} />
+            <Framework framework="Vue" href={urls.framework.vue} />
+            <Framework framework="Angular" href={urls.framework.angular} />
+            <Framework framework="Ember" href={urls.framework.ember} />
+            <Framework framework="HTML" href={urls.framework.html} />
+            <Framework framework="Svelte" href={urls.framework.svelte} />
+            <Framework framework="Mithril" href={urls.framework.mithril} />
+            <Framework framework="Riot" href={urls.framework.riot} />
           </FrameworkList>
           <SecondarySubheading>GitHub</SecondarySubheading>
 
@@ -481,7 +481,7 @@ export default function Hero({
             </GitHubWrapper>
             <Stat
               size="small"
-              count={metadata.latestVersion}
+              count={latestVersion}
               text="Latest version"
               noPlural
               status="primary"

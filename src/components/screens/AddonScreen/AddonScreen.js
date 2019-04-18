@@ -2,7 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { StaticQuery, graphql } from 'gatsby';
 
-import { Button, Icon, SocialGraph, Subheading, styles, site } from '../../basics';
+import useSiteMetadata from '../../lib/useSiteMetadata';
+
+import { Button, Icon, SocialGraph, Subheading, styles } from '../../basics';
 import PageLayout from '../../layout/PageLayout';
 import PageTitle from '../../layout/PageTitle';
 import AddonItem from './AddonItem';
@@ -11,7 +13,6 @@ import AddonCustom from './AddonCustom';
 import CTA from '../../layout/CTA';
 
 const { color, typography, spacing, pageMargins, breakpoint } = styles;
-const { metadata, url } = site;
 
 const Heading = styled.h2`
   font-weight: ${typography.weight.black};
@@ -67,13 +68,14 @@ const MakeYourOwn = styled(AddonCustom)`
 `;
 
 export function PureAddonScreen({ data: { allMediumPost }, ...props }) {
+  const { title, ogImage, urls } = useSiteMetadata();
   return (
     <PageLayout allMediumPost={allMediumPost} {...props}>
       <SocialGraph
-        title={`Addons | ${metadata.title}`}
+        title={`Addons | ${title}`}
         desc="Addons enable advanced functionality and unlock new workflows. Contributed by core maintainers and the amazing developer community."
-        url={`${url.home}/addons`}
-        image={metadata.ogImage}
+        url={`${urls.home}/addons`}
+        image={ogImage}
       />
       <PageTitle
         heading="Addons"
@@ -90,70 +92,70 @@ export function PureAddonScreen({ data: { allMediumPost }, ...props }) {
           image={<img src="/images/addons/knobs.svg" alt="knobs" />}
           title="Knobs"
           desc="Interact with component inputs dynamically in the Storybook UI"
-          addonUrl={url.officialAddons.knobs}
+          addonUrl={urls.officialAddons.knobs}
         />
         <AddonItem
           appearance="official"
           image={<img src="/images/addons/actions.svg" alt="actions" />}
           title="Actions"
           desc="Get UI feedback when an action is performed on an interactive element."
-          addonUrl={url.officialAddons.actions}
+          addonUrl={urls.officialAddons.actions}
         />
         <AddonItem
           appearance="official"
           image={<img src="/images/addons/source.svg" alt="source" />}
           title="Source"
           desc="View a story’s source code to see how it works and paste into your app."
-          addonUrl={url.officialAddons.source}
+          addonUrl={urls.officialAddons.source}
         />
         <AddonItem
           appearance="official"
           image={<img src="/images/addons/docs.svg" alt="docs" />}
           title="Docs"
           desc="Document component usage and properties in Markdown"
-          addonUrl={url.officialAddons.info}
+          addonUrl={urls.officialAddons.info}
         />
         <AddonItem
           appearance="official"
           image={<img src="/images/addons/viewport.svg" alt="viewport" />}
           title="Viewport"
           desc="Build responsive components by adjusting Storybook’s viewport size and orientation"
-          addonUrl={url.officialAddons.viewport}
+          addonUrl={urls.officialAddons.viewport}
         />
         <AddonItem
           appearance="official"
           image={<img src="/images/addons/storyshots.svg" alt="storyshots" />}
           title="Storyshots"
           desc="Take a code snapshot of every story automatically with Jest"
-          addonUrl={url.officialAddons.storyshots}
+          addonUrl={urls.officialAddons.storyshots}
         />
         <AddonItem
           appearance="official"
           image={<img src="/images/addons/backgrounds.svg" alt="backgrounds" />}
           title="Backgrounds"
           desc="Switch backgrounds to view components in different settings"
-          addonUrl={url.officialAddons.backgrounds}
+          addonUrl={urls.officialAddons.backgrounds}
         />
         <AddonItem
           appearance="official"
           image={<img src="/images/addons/accessibility.svg" alt="accessibility" />}
           title="Accessibility"
           desc="Test component compliance with web accessibility standards"
-          addonUrl={url.officialAddons.accessibility}
+          addonUrl={urls.officialAddons.accessibility}
         />
         <AddonItem
           appearance="official"
           image={<img src="/images/addons/console.svg" alt="accessibility" />}
           title="Console"
           desc="Show console output like logs, errors, and warnings in the Storybook"
-          addonUrl={url.officialAddons.console}
+          addonUrl={urls.officialAddons.console}
         />
         <AddonItem
           appearance="official"
           image={<img src="/images/addons/links.svg" alt="accessibility" />}
           title="Links"
           desc="Link stories together to build demos and prototypes with your UI components"
-          addonUrl={url.officialAddons.links}
+          addonUrl={urls.officialAddons.links}
         />
       </AddonList>
 
@@ -308,7 +310,7 @@ export function PureAddonScreen({ data: { allMediumPost }, ...props }) {
             secondary
             isLink
             href={`${
-              url.gitHub.frontpage
+              urls.gitHub.frontpage
             }/blob/master/src/components/screens/AddonScreen/AddonScreen.js#L158`}
           >
             <Icon icon="plus" /> Add your addon here
@@ -319,7 +321,7 @@ export function PureAddonScreen({ data: { allMediumPost }, ...props }) {
       <CTA
         text={<span>Build UIs faster. Add Storybook to your project now.</span>}
         action={
-          <Button secondary isLink href={url.docs.home}>
+          <Button secondary isLink href={urls.docs.home}>
             Get started
           </Button>
         }
