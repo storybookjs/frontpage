@@ -292,7 +292,7 @@ export function PureAddonScreen({ data: { allMediumPost }, ...props }) {
         />
         <AddonItem
           title="Root Attribute"
-          desc="Storybook addon, which provide ability to change html or body attribute."
+          desc="Provides the ability to change the html or body attribute."
           addonUrl="https://github.com/le0pard/storybook-addon-root-attribute"
         />
 
