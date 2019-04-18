@@ -19,9 +19,8 @@ const fetchNpmDownloads = async (npmApiUrls) => {
   return results.reduce((a, b) => a + b, 0);
 };
 
-
 const NpmDownloadCount = ({ loading, npmDownloads, ...props }) => {
-  const { state, setState } = useSetState({ loading: true, npmDownloads: 0 });
+  const { setState } = useSetState({ loading: true, npmDownloads: 0 });
   const { urls } = useSiteMetadata();
 
   let npmDownloadsFixed = parseInt((npmDownloads / 1000).toFixed(0), 10);
@@ -33,9 +32,9 @@ const NpmDownloadCount = ({ loading, npmDownloads, ...props }) => {
 
   useOnMount(() => {
     if (!window.sessionStorage.getItem('monthlyNpmDownloads')) {
-      fetchNpmDownloads(urls.npmApi).then(npmDownloads => {
-        setState({ loading: false, npmDownloads });
-        window.sessionStorage.setItem('monthlyNpmDownloads', parseInt(npmDownloads, 10));
+      fetchNpmDownloads(urls.npmApi).then(npmDownloadCount => {
+        setState({ loading: false, npmDownloads: npmDownloadCount });
+        window.sessionStorage.setItem('monthlyNpmDownloads', parseInt(npmDownloadCount, 10));
       });
     } else {
       setState({
@@ -43,7 +42,7 @@ const NpmDownloadCount = ({ loading, npmDownloads, ...props }) => {
         npmDownloads: window.sessionStorage.getItem('monthlyNpmDownloads'),
       });
     }
-  })
+  });
 
   return (
     <Cardinal
