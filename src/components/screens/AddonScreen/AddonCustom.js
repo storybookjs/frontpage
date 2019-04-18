@@ -68,6 +68,7 @@ const Wrapper = styled.div`
 
 export default function AddonCustom({ ...props }) {
   const { urls } = useSiteMetadata;
+  const { docs = {} } = urls;
   return (
     <Wrapper {...props}>
       <Inner>
@@ -80,7 +81,7 @@ export default function AddonCustom({ ...props }) {
             Customize Storybook&rsquo;s UI, API, and create custom workflows by building your own
             addon
           </Desc>
-          <Link withArrow href={urls.docs.addonInstruction}>
+          <Link withArrow href={docs.addonInstruction}>
             Learn how to build an addon
           </Link>
         </Meta>
