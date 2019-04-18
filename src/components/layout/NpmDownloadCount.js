@@ -1,5 +1,4 @@
 import React from 'react';
-import { PropTypes } from 'prop-types';
 import { fetch, window } from 'global';
 import { useOnMount, useSetState } from 'react-hanger';
 
@@ -19,11 +18,11 @@ const fetchNpmDownloads = async (npmApiUrls) => {
   return results.reduce((a, b) => a + b, 0);
 };
 
-const NpmDownloadCount = ({ loading, npmDownloads, ...props }) => {
-  const { setState } = useSetState({ loading: true, npmDownloads: 0 });
+const NpmDownloadCount = (props) => {
+  const { state, setState } = useSetState({ loading: true, npmDownloads: 0 });
   const { urls } = useSiteMetadata();
 
-  let npmDownloadsFixed = parseInt((npmDownloads / 1000).toFixed(0), 10);
+  let npmDownloadsFixed = parseInt((state.npmDownloads / 1000).toFixed(0), 10);
   let npmDownloadsDisplay = `${npmDownloadsFixed}k`;
   if (npmDownloadsFixed >= 1000) {
     npmDownloadsFixed = (npmDownloadsFixed / 1000).toFixed(2);
@@ -52,15 +51,10 @@ const NpmDownloadCount = ({ loading, npmDownloads, ...props }) => {
       noPlural
       status="secondary"
       countLink={urls.npm}
-      loading={loading}
+      loading={state.loading}
       {...props}
     />
   );
-};
-
-NpmDownloadCount.propTypes = {
-  loading: PropTypes.bool.isRequired,
-  npmDownloads: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 };
 
 export default NpmDownloadCount;
