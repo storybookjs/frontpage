@@ -18,6 +18,19 @@ import LogoToggle from './LogoToggle';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import { SocialGraph, styles } from '../../basics';
 
+import ComponentsSVG from '../../../images/colored-icons/components.svg'
+import PlusSVG from '../../../images/colored-icons/plus.svg'
+import PluginSVG from '../../../images/colored-icons/plugin.svg'
+import CatalogSVG from '../../../images/colored-icons/catalog.svg'
+import RunTestSVG from '../../../images/colored-icons/runtest.svg'
+import OverlapSVG from '../../../images/colored-icons/overlap.svg'
+import CodeBracketsSVG from '../../../images/colored-icons/code-brackets.svg'
+import StackSVG from '../../../images/colored-icons/stack.svg'
+import CodeSVG from '../../../images/colored-icons/code.svg'
+import AirBnBLogoSVG from '../../../images/logos/user/logo-airbnb.svg'
+import ArtsyLogoSVG from '../../../images/logos/user/logo-artsy.svg'
+import SalesForceLogoSVG from '../../../images/logos/user/logo-salesforce.svg'
+
 const { background } = styles;
 
 const Contrast = styled.div`
@@ -80,17 +93,17 @@ export function PureUseCasesScreen({ data: { allMediumPost }, ...props }) {
       />
       <FeaturesLayout columns={3}>
         <Feature
-          image={<img src="/images/colored-icons/components.svg" alt="component" />}
+          image={<img src={ComponentsSVG} alt="component" />}
           title="Develop for every use case"
           desc="Storybook makes it dead simple to mock hard-to-reach states and edge cases."
         />
         <Feature
-          image={<img src="/images/colored-icons/plus.svg" alt="adopt" />}
+          image={<img src={PlusSVG} alt="adopt" />}
           title="Adopt incrementally"
           desc="Adopt Storybook in your workflow at your own pace. Start with just one component."
         />
         <Feature
-          image={<img src="/images/colored-icons/plugin.svg" alt="addon" />}
+          image={<img src={PluginSVG} alt="addon" />}
           title="Boost productivity with addons"
           desc="Get shortcuts for common tasks like mocking data, responsive design, and QAing callbacks."
         />
@@ -105,7 +118,7 @@ export function PureUseCasesScreen({ data: { allMediumPost }, ...props }) {
         avatarUrl="https://avatars2.githubusercontent.com/u/1247751?s=100&v=4"
         name="Adam Neary"
         jobTitle="Tech lead"
-        logo="/images/logos/user/logo-airbnb.svg"
+        logo={AirBnBLogoSVG}
       />
 
       <Contrast>
@@ -119,17 +132,17 @@ export function PureUseCasesScreen({ data: { allMediumPost }, ...props }) {
         />
         <FeaturesLayout columns={3}>
           <Feature
-            image={<img src="/images/colored-icons/catalog.svg" alt="catalog" />}
+            image={<img src={CatalogSVG} alt="catalog" />}
             title="Catalog components"
             desc="Discover and browse reusable components in one place. Build UIs faster with less work."
           />
           <Feature
-            image={<img src="/images/colored-icons/code.svg" alt="setup" />}
+            image={<img src={CodeSVG} alt="setup" />}
             title="Setup in seconds"
             desc="Integration with popular frameworks and frontend stacks makes setup easy."
           />
           <Feature
-            image={<img src="/images/colored-icons/runtest.svg" alt="test" />}
+            image={<img src={RunTestSVG} alt="test" />}
             title="Automate maintenance"
             desc="Addons for testing keep your component library consistent no matter how big it is."
           />
@@ -144,7 +157,7 @@ export function PureUseCasesScreen({ data: { allMediumPost }, ...props }) {
           avatarUrl="https://avatars1.githubusercontent.com/u/49038?s=100&v=4"
           name="Orta Therox"
           jobTitle="Frontend infrastructure"
-          logo="/images/logos/user/logo-artsy.svg"
+          logo={ArtsyLogoSVG}
         />
         <Separator />
       </Contrast>
@@ -167,17 +180,17 @@ export function PureUseCasesScreen({ data: { allMediumPost }, ...props }) {
       />
       <FeaturesLayout columns={3}>
         <Feature
-          image={<img src="/images/colored-icons/overlap.svg" alt="consistency" />}
+          image={<img src={OverlapSVG} alt="consistency" />}
           title="Scale UI consistency"
           desc="Ensure universal consistency by simplifying how developers find and consume components."
         />
         <Feature
-          image={<img src="/images/colored-icons/code-brackets.svg" alt="Markdown" />}
+          image={<img src={CodeBracketsSVG} alt="Markdown" />}
           title="Document in Markdown"
           desc="Spread your component library far and wide with powerful docs tools and automatic styleguide generation (coming soon)."
         />
         <Feature
-          image={<img src="/images/colored-icons/stack.svg" alt="deploy" />}
+          image={<img src={StackSVG} alt="deploy" />}
           title="Share in the cloud"
           desc="Deploy your UI library as a static site to share it with your team."
         />
@@ -189,7 +202,7 @@ export function PureUseCasesScreen({ data: { allMediumPost }, ...props }) {
         avatarUrl="https://avatars3.githubusercontent.com/u/31106469?s=100&v=4"
         name="Andrew Frankel"
         jobTitle="Engineering lead"
-        logo="/images/logos/user/logo-salesforce.svg"
+        logo={SalesForceLogoSVG}
       />
       <Separator />
       <SocialProof

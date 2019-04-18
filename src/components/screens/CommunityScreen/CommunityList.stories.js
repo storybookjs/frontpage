@@ -3,10 +3,11 @@ import { storiesOf } from '@storybook/react';
 
 import CommunityItem from './CommunityItem';
 import CommunityList from './CommunityList';
+import BrandSVG from '../../../images/community/brand.svg';
 
 const Community = (
   <CommunityItem
-    image={<img src="/images/community/brand.svg" alt="brand" />}
+    image={<img src={BrandSVG} alt="brand" />}
     title="Use the brand"
     desc="Create your own visuals using Storybook logo, typography, colors, and images."
     links={[

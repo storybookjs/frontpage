@@ -7,6 +7,14 @@ import { Icon, Link, Subheading, styles } from '../basics';
 
 import ConfirmedMailingList from './ConfirmedMailingList';
 
+import DirectionSVG from '../../images/colored-icons/direction.svg';
+import RepoSVG from '../../images/colored-icons/repo.svg';
+import StorybookLogoSVG from '../../images/logo-storybook.svg';
+import NetlifyLogoSVG from '../../images/logos/user/logo-netlify.svg';
+import ChromaticLogoSVG from '../../images/logos/user/logo-chromatic.svg';
+import TeamCityLogoSVG from '../../images/logos/user/logo-teamcity.svg';
+import CircleCILogoSVG from '../../images/logos/user/logo-circleci.svg';
+
 const { background, color, typography, pageMargins, pageMargin, spacing, breakpoint } = styles;
 
 const Title = styled(Subheading)`
@@ -324,7 +332,7 @@ export default function Footer({ mediumPosts, hasSubscribed, onSubscribe, ...pro
           <Title>Learn</Title>
           <Resources>
             <Resource>
-              <img src="/images/colored-icons/repo.svg" alt="Docs" />
+              <img src={RepoSVG} alt="Docs" />
               <Meta>
                 <ResourceTitle>Get started with Storybook</ResourceTitle>
                 <ResourceDesc>
@@ -348,7 +356,7 @@ export default function Footer({ mediumPosts, hasSubscribed, onSubscribe, ...pro
               </Meta>
             </Resource>
             <Resource>
-              <img src="/images/colored-icons/direction.svg" alt="Tutorial" />
+              <img src={DirectionSVG} alt="Tutorial" />
               <Meta>
                 <ResourceTitle>Storybook tutorial</ResourceTitle>
                 <ResourceDesc>
@@ -388,7 +396,7 @@ export default function Footer({ mediumPosts, hasSubscribed, onSubscribe, ...pro
       <Lower>
         <Colophon>
           <LogotypeWrapper isGatsby to="/">
-            <img src="/images/logos/logo-storybook.svg" alt="Storybook" />
+            <img src={StorybookLogoSVG} alt="Storybook" />
           </LogotypeWrapper>
           <Text>
             The MIT License (MIT). Website design by{' '}
@@ -446,22 +454,22 @@ export default function Footer({ mediumPosts, hasSubscribed, onSubscribe, ...pro
         <Service>
           <Text>Hosting by</Text>
           <a href="https://netlify.com">
-            <Netlify src="/images/logos/user/logo-netlify.svg" alt="Netlify" />
+            <Netlify src={NetlifyLogoSVG} alt="Netlify" />
           </a>
         </Service>
         <Service>
           <Text>Visual testing by</Text>
           <a href="https://www.chromaticqa.com/">
-            <Chromatic src="/images/logos/user/logo-chromatic.svg" alt="Chromatic" />
+            <Chromatic src={ChromaticLogoSVG} alt="Chromatic" />
           </a>
         </Service>
         <Service>
           <Text>Continuous integration by</Text>
           <a href="https://www.jetbrains.com/teamcity/">
-            <Teamcity src="/images/logos/user/logo-teamcity.svg" alt="Teamcity" />
+            <Teamcity src={TeamCityLogoSVG} alt="Teamcity" />
           </a>
           <a href="https://circleci.com/">
-            <CircleCI src="/images/logos/user/logo-circleci.svg" alt="CircleCI" />
+            <CircleCI src={CircleCILogoSVG} alt="CircleCI" />
           </a>
         </Service>
       </Services>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>illustration/components</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="illustration/components">
+            <path d="M37.6219949,2.72351718 L46.4607398,17.3266608 C46.8897015,18.0353803 46.6629131,18.9576531 45.9541937,19.3866149 C45.7199301,19.528406 45.451322,19.6033648 45.1774896,19.6033648 L27.5,19.6033648 C26.6715729,19.6033648 26,18.9317919 26,18.1033648 C26,17.8295325 26.0749588,17.5609244 26.2167499,17.3266608 L35.0554947,2.72351718 C35.4844565,2.01479771 36.4067294,1.78800929 37.1154488,2.21697108 C37.3227302,2.34243088 37.4965351,2.51623577 37.6219949,2.72351718 Z" id="Triangle-3-Copy" fill="#61C1FD"></path>
+            <rect id="Rectangle-19-Copy" fill="#FFC445" x="28" y="28" width="18" height="18" rx="4"></rect>
+            <path d="M12,47 C6.4771525,47 2,42.5228475 2,37 C2,31.4771525 6.4771525,27 12,27 C17.5228475,27 22,31.4771525 22,37 C22,42.5228475 17.5228475,47 12,47 Z M12,41 C14.209139,41 16,39.209139 16,37 C16,34.790861 14.209139,33 12,33 C9.790861,33 8,34.790861 8,37 C8,39.209139 9.790861,41 12,41 Z" id="Combined-Shape" fill="#37D5D3"></path>
+            <path d="M3,19 C3,9.61115925 10.163444,2 19,2 L19,19 L3,19 Z" id="Combined-Shape" fill="#FC8562"></path>
+        </g>
+    </g>
+</svg>

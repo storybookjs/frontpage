@@ -12,6 +12,18 @@ import AddonList from './AddonList';
 import AddonCustom from './AddonCustom';
 import CTA from '../../layout/CTA';
 
+
+import KnobsSVG from '../../../images/addons/knobs.svg';
+import ActionsSVG from '../../../images/addons/actions.svg';
+import SourceSVG from '../../../images/addons/source.svg';
+import DocsSVG from '../../../images/addons/docs.svg';
+import ViewPortSVG from '../../../images/addons/viewport.svg';
+import AccessibilitySVG from '../../../images/addons/accessibility.svg';
+import StoryshotsSVG from '../../../images/addons/storyshots.svg';
+import ConsoleSVG from '../../../images/addons/console.svg';
+import LinksSVG from '../../../images/addons/links.svg';
+import BackgroundsSVG from '../../../images/addons/backgrounds.svg';
+
 const { color, typography, spacing, pageMargins, breakpoint } = styles;
 
 const Heading = styled.h2`
@@ -89,70 +101,70 @@ export function PureAddonScreen({ data: { allMediumPost }, ...props }) {
       <AddonList appearance="official">
         <AddonItem
           appearance="official"
-          image={<img src="/images/addons/knobs.svg" alt="knobs" />}
+          image={<img src={KnobsSVG} alt="knobs" />}
           title="Knobs"
           desc="Interact with component inputs dynamically in the Storybook UI"
           addonUrl={urls.officialAddons.knobs}
         />
         <AddonItem
           appearance="official"
-          image={<img src="/images/addons/actions.svg" alt="actions" />}
+          image={<img src={ActionsSVG} alt="actions" />}
           title="Actions"
           desc="Get UI feedback when an action is performed on an interactive element."
           addonUrl={urls.officialAddons.actions}
         />
         <AddonItem
           appearance="official"
-          image={<img src="/images/addons/source.svg" alt="source" />}
+          image={<img src={SourceSVG} alt="source" />}
           title="Source"
           desc="View a story’s source code to see how it works and paste into your app."
           addonUrl={urls.officialAddons.source}
         />
         <AddonItem
           appearance="official"
-          image={<img src="/images/addons/docs.svg" alt="docs" />}
+          image={<img src={DocsSVG} alt="docs" />}
           title="Docs"
           desc="Document component usage and properties in Markdown"
           addonUrl={urls.officialAddons.info}
         />
         <AddonItem
           appearance="official"
-          image={<img src="/images/addons/viewport.svg" alt="viewport" />}
+          image={<img src={ViewPortSVG} alt="viewport" />}
           title="Viewport"
           desc="Build responsive components by adjusting Storybook’s viewport size and orientation"
           addonUrl={urls.officialAddons.viewport}
         />
         <AddonItem
           appearance="official"
-          image={<img src="/images/addons/storyshots.svg" alt="storyshots" />}
+          image={<img src={StoryshotsSVG} alt="storyshots" />}
           title="Storyshots"
           desc="Take a code snapshot of every story automatically with Jest"
           addonUrl={urls.officialAddons.storyshots}
         />
         <AddonItem
           appearance="official"
-          image={<img src="/images/addons/backgrounds.svg" alt="backgrounds" />}
+          image={<img src={BackgroundsSVG} alt="backgrounds" />}
           title="Backgrounds"
           desc="Switch backgrounds to view components in different settings"
           addonUrl={urls.officialAddons.backgrounds}
         />
         <AddonItem
           appearance="official"
-          image={<img src="/images/addons/accessibility.svg" alt="accessibility" />}
+          image={<img src={AccessibilitySVG} alt="accessibility" />}
           title="Accessibility"
           desc="Test component compliance with web accessibility standards"
           addonUrl={urls.officialAddons.accessibility}
         />
         <AddonItem
           appearance="official"
-          image={<img src="/images/addons/console.svg" alt="accessibility" />}
+          image={<img src={ConsoleSVG} alt="accessibility" />}
           title="Console"
           desc="Show console output like logs, errors, and warnings in the Storybook"
           addonUrl={urls.officialAddons.console}
         />
         <AddonItem
           appearance="official"
-          image={<img src="/images/addons/links.svg" alt="accessibility" />}
+          image={<img src={LinksSVG} alt="accessibility" />}
           title="Links"
           desc="Link stories together to build demos and prototypes with your UI components"
           addonUrl={urls.officialAddons.links}

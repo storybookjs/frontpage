@@ -13,6 +13,14 @@ import CommunitySidebar from './CommunitySidebar';
 import CommunityItem from './CommunityItem';
 import CommunityList from './CommunityList';
 
+import StorybookBadgeSVG from '../../../images/community/storybook-badge.svg';
+import BlogSVG from '../../../images/community/blog.svg';
+import PresentationSVG from '../../../images/community/presentation.svg';
+import BrandSVG from '../../../images/community/brand.svg';
+import PullRequestSVG from '../../../images/community/pullrequest.svg';
+import DocsSVG from '../../../images/community/docs.svg';
+import BugSVG from '../../../images/community/bug.svg';
+
 const { background, color, pageMargins, breakpoint } = styles;
 
 const Contrast = styled.div`
@@ -166,26 +174,26 @@ export function PureCommunityScreen({ data: { gitHubRepoData, allMediumPost }, .
         >
           <StorybookBadgeWrapper>
             <StorybookBadgeOuter href={urls.badge}>
-              <StorybookBadge src="/images/community/storybook-badge.svg" alt="Storybook badge" />
+              <StorybookBadge src={StorybookBadgeSVG} alt="Storybook badge" />
             </StorybookBadgeOuter>
             <div>Get the Storybook badge for your project</div>
           </StorybookBadgeWrapper>
         </Sidebar>
         <List>
           <Item
-            image={<img src="/images/community/blog.svg" alt="write" />}
+            image={<img src={BlogSVG} alt="write" />}
             title="Write about Storybook"
             desc="Publish it to your blog or submit it to Storybook’s Medium publication. Mention @storybookjs on Twitter for a reshare."
             links={[{ title: 'Submit an article to the blog', href: urls.blog }]}
           />
           <Item
-            image={<img src="/images/community/presentation.svg" alt="present" />}
+            image={<img src={PresentationSVG} alt="present" />}
             title="Talk about Storybook"
             desc="Present at work, meetups, and conferences. Get your point across with ready-to-use slides (Keynote, PDF) and illustrations."
             links={[{ title: 'View presentation materials', href: urls.presentation }]}
           />
           <Item
-            image={<img src="/images/community/brand.svg" alt="brand kit" />}
+            image={<img src={BrandSVG} alt="brand kit" />}
             title="Use the brand"
             desc="Create your own visuals using Storybook logo, typography, colors, and images."
             links={[
@@ -210,19 +218,19 @@ export function PureCommunityScreen({ data: { gitHubRepoData, allMediumPost }, .
           </Sidebar>
           <List>
             <Item
-              image={<img src="/images/community/bug.svg" alt="report bugs" />}
+              image={<img src={BugSVG} alt="report bugs" />}
               title="Find and report issues"
               desc="Help find bugs and QA releases. Maintainers are human, we miss things sometimes. Issue reports are much appreciated."
               links={[{ title: 'Report an issue', href: urls.gitHub.issues }]}
             />
             <Item
-              image={<img src="/images/community/docs.svg" alt="docs" />}
+              image={<img src={DocsSVG} alt="docs" />}
               title="Write and update docs"
               desc="Teach fellow developers how to take advantage of Storybook. Help write, edit, and improve docs."
               links={[{ title: 'Get started with docs', href: urls.docs.home }]}
             />
             <Item
-              image={<img src="/images/community/pullrequest.svg" alt="pull request" />}
+              image={<img src={PullRequestSVG} alt="pull request" />}
               title="Send a pull request"
               desc="Want to create a new feature or improve existing functionality? PRs welcomed and encouraged."
               links={[{ title: 'Learn how to contribute', href: urls.gitHub.repo }]}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>illustration/pixel</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" fill-opacity="0.9">
+        <g id="illustration/pixel" fill="#37D5D3">
+            <path d="M8,4 L24,4 L24,24 L4,24 L4,8 C4,5.790861 5.790861,4 8,4 Z" id="Combined-Shape" opacity="0.200000003"></path>
+            <path d="M28,4 L44,4 L44,24 L24,24 L24,8 C24,5.790861 25.790861,4 28,4 Z" id="Combined-Shape-Copy-15" opacity="0.400000006" transform="translate(34.000000, 14.000000) scale(-1, 1) translate(-34.000000, -14.000000) "></path>
+            <path d="M8,24 L24,24 L24,44 L4,44 L4,28 C4,25.790861 5.790861,24 8,24 Z" id="Combined-Shape-Copy-13" opacity="0.600000024" transform="translate(14.000000, 34.000000) rotate(-90.000000) translate(-14.000000, -34.000000) "></path>
+            <path d="M28,24 L44,24 L44,44 L24,44 L24,28 C24,25.790861 25.790861,24 28,24 Z" id="Combined-Shape-Copy-16" opacity="0.300000012" transform="translate(34.000000, 34.000000) scale(-1, 1) rotate(-90.000000) translate(-34.000000, -34.000000) "></path>
+        </g>
+    </g>
+</svg>

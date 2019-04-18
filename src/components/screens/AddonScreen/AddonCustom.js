@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 
 import { Link, LazyLoad, styles } from '../../basics';
+import CustomSVG from '../../../images/addons/custom.svg';
 
 const { background, color, spacing, typography, pageMargin, breakpoint } = styles;
 const Title = styled.div`
@@ -73,7 +74,7 @@ export default function AddonCustom({ ...props }) {
     <Wrapper {...props}>
       <Inner>
         <LazyLoad once height="100%">
-          <Image src="/images/addons/custom.svg" />
+          <Image src={CustomSVG} />
         </LazyLoad>
         <Meta>
           <Title>Create your own addon</Title>

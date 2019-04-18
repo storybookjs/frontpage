@@ -10,6 +10,8 @@ import FeaturesLayout from '../../layout/FeaturesLayout';
 
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import { Link, styles } from '../../basics';
+import GitHubSVG from '../../../images/logos/social/github.svg';
+import DiscordSVG from '../../../images/logos/social/discord.svg';
 
 const { breakpoint } = styles;
 
@@ -35,7 +37,7 @@ export function PureNotFoundScreen({ data: { allMediumPost }, ...props }) {
       />
       <Features columns={2}>
         <Feature
-          image={<img src="/images/logos/social/github.svg" alt="GitHub" />}
+          image={<img src={GitHubSVG} alt="GitHub" />}
           title="Report an issue on GitHub"
           desc="If you encounter an issue with this site, do us a favor and report it."
         >
@@ -44,7 +46,7 @@ export function PureNotFoundScreen({ data: { allMediumPost }, ...props }) {
           </Link>
         </Feature>
         <Feature
-          image={<img src="/images/logos/social/discord.svg" alt="Discord" />}
+          image={<img src={DiscordSVG} alt="Discord" />}
           title="Not finding something?"
           desc="Ask community members in chat. A maintainer is usually online."
         >

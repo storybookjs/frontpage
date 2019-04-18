@@ -6,7 +6,10 @@ import useSiteMetadata from '../lib/useSiteMetadata';
 
 import { Link, Icon, TooltipLinkList, WithTooltip, styles } from '../basics';
 
+import StorybookLogoSVG from '../../images/logo-storybook.svg';
+
 const { color, typography, spacing, pageMargins, breakpoint } = styles;
+
 
 const LogotypeWrapper = styled(Link)`
   display: inline-block;
@@ -156,7 +159,7 @@ export default function Header({ ...props }) {
         <NavGroup>
           <NavItem>
             <LogotypeWrapper isGatsby to="/">
-              <img src="/images/logos/logo-storybook.svg" alt="Storybook" />
+              <img src={StorybookLogoSVG} alt="Storybook" />
             </LogotypeWrapper>
             <Version href={urls.gitHub.releases}>{latestVersion}</Version>
           </NavItem>

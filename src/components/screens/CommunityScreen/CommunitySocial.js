@@ -4,6 +4,10 @@ import styled from 'styled-components';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 
 import { styles } from '../../basics';
+import GitHubSVG from '../../../images/logos/social/github.svg';
+import TwitterSVG from '../../../images/logos/social/twitter.svg';
+import MediumSVG from '../../../images/logos/social/medium.svg';
+import DiscordSVG from '../../../images/logos/social/discord.svg';
 
 const { color, typography, breakpoint } = styles;
 
@@ -110,28 +114,28 @@ export default function CommunitySocial({ ...props }) {
   return (
     <Wrapper {...props}>
       <Item href={urls.gitHub.repo}>
-        <Image src="/images/logos/social/github.svg" />
+        <Image src={GitHubSVG} />
         <Meta>
           <Title>Star on GitHub</Title>
           <Desc>Check out the official Storybook repo on GitHub</Desc>
         </Meta>
       </Item>
       <Item href={urls.twitter}>
-        <Image src="/images/logos/social/twitter.svg" />
+        <Image src={TwitterSVG} />
         <Meta>
           <Title>Follow on Twitter</Title>
           <Desc>Get the latest updates from the Storybook team</Desc>
         </Meta>
       </Item>
       <Item href={urls.blog}>
-        <Image src="/images/logos/social/medium.svg" />
+        <Image src={MediumSVG} />
         <Meta>
           <Title>Read the blog</Title>
           <Desc>Get news, articles, and guides from the Storybook community</Desc>
         </Meta>
       </Item>
       <Item href={urls.chat}>
-        <Image src="/images/logos/social/discord.svg" />
+        <Image src={DiscordSVG} />
         <Meta>
           <Title>Chat on Discord</Title>
           <Desc>Talk UI development and get help from the community</Desc>

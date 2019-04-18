@@ -4,6 +4,8 @@ import { storiesOf } from '@storybook/react';
 
 import Testimonial from './Testimonial';
 
+import ChromaticLogoSVG from '../../images/logos/user/logo-chromatic.svg';
+
 storiesOf('layout/Testimonial', module)
   .addDecorator(storyFn => <div style={{ padding: '60px 0' }}>{storyFn()}</div>)
   .add('default', () => (
@@ -17,6 +19,6 @@ storiesOf('layout/Testimonial', module)
       avatarUrl="https://avatars1.githubusercontent.com/u/263385?s=88&v=4"
       name="Dominic Nguyen"
       jobTitle="Product designer"
-      logo="images/logos/user/logo-chromatic.svg"
+      logo={ChromaticLogoSVG}
     />
   ));

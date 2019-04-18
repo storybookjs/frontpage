@@ -1,20 +1,20 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-
+import DirectionSVG from '../../images/colored-icons/direction.svg';
 import Feature from './Feature';
 
 storiesOf('layout/Feature', module)
   .add('default', () => (
     <Feature
-      image={<img src="/images/colored-icons/direction.svg" alt="direction" />}
+      image={<img src={DirectionSVG} alt="direction" />}
       title="Develop for every use case"
       desc="Storybook makes it dead simple to mock hard-to-reach states and edge cases"
     />
   ))
   .add('w/children', () => (
     <Feature
-      image={<img src="/images/colored-icons/direction.svg" alt="direction" />}
+      image={<img src={DirectionSVG} alt="direction" />}
       title="Develop for every use case"
       desc="Storybook makes it dead simple to mock hard-to-reach states and edge cases"
     >
