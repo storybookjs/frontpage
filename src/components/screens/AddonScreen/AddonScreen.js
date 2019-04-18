@@ -290,6 +290,11 @@ export function PureAddonScreen({ data: { allMediumPost }, ...props }) {
           desc="Select between JSS themes."
           addonUrl="https://github.com/vertexbz/storybook-addon-jss-theme"
         />
+        <AddonItem
+          title="Root Attribute"
+          desc="Provides the ability to change the html or body attribute."
+          addonUrl="https://github.com/le0pard/storybook-addon-root-attribute"
+        />
 
         <Subheader>Design</Subheader>
         <AddonItem
