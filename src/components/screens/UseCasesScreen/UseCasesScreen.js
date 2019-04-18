@@ -62,7 +62,7 @@ const DesignSystemWrapper = styled.div`
 `;
 
 export function PureUseCasesScreen({ data: { allMediumPost }, ...props }) {
-  const { title, ogImage, urls } = useSiteMetadata;
+  const { title, ogImage, urls = {} } = useSiteMetadata;
   return (
     <PageLayout allMediumPost={allMediumPost} {...props}>
       <SocialGraph

@@ -23,7 +23,7 @@ const Features = styled(FeaturesLayout)`
 `;
 
 export function PureSupportScreen({ data: { allMediumPost }, ...props }) {
-  const { title, ogImage, urls } = useSiteMetadata();
+  const { title, ogImage, urls = {} } = useSiteMetadata();
   const { home, docs = {}, gitHub = {} } = urls;
   return (
     <PageLayout allMediumPost={allMediumPost} {...props}>

@@ -153,7 +153,7 @@ const CommunityLayout = styled.div`
 `;
 
 export function PureCommunityScreen({ data: { gitHubRepoData, allMediumPost }, ...props }) {
-  const { title, ogImage, urls } = useSiteMetadata();
+  const { title, ogImage, urls = {} } = useSiteMetadata();
   const { home, badge, brand, chat, blog, presentation, designSystem, gitHub = {}, docs = {}, openCollective } = urls;
   return (
     <PageLayout allMediumPost={allMediumPost} {...props}>

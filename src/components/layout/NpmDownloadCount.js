@@ -20,9 +20,9 @@ const fetchNpmDownloads = async (npmApiUrls) => {
 
 const NpmDownloadCount = (props) => {
   const { state, setState } = useSetState({ loading: true, npmDownloads: 0 });
-  const { urls } = useSiteMetadata();
+  const { urls = {} } = useSiteMetadata();
   const { npm, npmApi } = urls;
-  
+
   let npmDownloadsFixed = parseInt((state.npmDownloads / 1000).toFixed(0), 10);
   let npmDownloadsDisplay = `${npmDownloadsFixed}k`;
   if (npmDownloadsFixed >= 1000) {

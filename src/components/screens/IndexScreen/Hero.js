@@ -365,7 +365,7 @@ export default function Hero({
   startOpen,
   ...props
 }) {
-  const { latestVersion, urls } = useSiteMetadata();
+  const { latestVersion, urls = {} } = useSiteMetadata();
   const { docs = {}, framework = {} } = urls;
 
   const Modal = () => (

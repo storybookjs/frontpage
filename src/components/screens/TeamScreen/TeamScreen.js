@@ -59,7 +59,7 @@ const contributors = [
 ];
 
 export function PureTeamScreen({ data: { gitHubRepoData, allMediumPost }, ...props }) {
-  const { title, ogImage, urls } = useSiteMetadata();
+  const { title, ogImage, urls = {} } = useSiteMetadata();
   return (
     <PageLayout allMediumPost={allMediumPost} {...props}>
       <SocialGraph

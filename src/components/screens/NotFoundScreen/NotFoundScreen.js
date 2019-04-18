@@ -22,7 +22,7 @@ const Features = styled(FeaturesLayout)`
 `;
 
 export function PureNotFoundScreen({ data: { allMediumPost }, ...props }) {
-  const { urls } = useSiteMetadata();
+  const { urls = {} } = useSiteMetadata();
   const { gitHub = {}, chat } = urls;
   return (
     <PageLayout allMediumPost={allMediumPost} {...props}>

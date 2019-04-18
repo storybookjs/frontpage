@@ -80,7 +80,7 @@ const MakeYourOwn = styled(AddonCustom)`
 `;
 
 export function PureAddonScreen({ data: { allMediumPost }, ...props }) {
-  const { title, ogImage, urls } = useSiteMetadata();
+  const { title, ogImage, urls = {} } = useSiteMetadata();
   const { home, officialAddons = {}, gitHub = {}, docs = {} } = urls;
   return (
     <PageLayout allMediumPost={allMediumPost} {...props}>

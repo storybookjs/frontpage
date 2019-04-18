@@ -32,7 +32,7 @@ const Placeholder = styled(PlaceholderAspectRatio)`
 `;
 
 export function PureIndexScreen({ data: { gitHubRepoData, allMediumPost }, ...props }) {
-  const { ogImage, urls } = useSiteMetadata();
+  const { ogImage, urls = {} } = useSiteMetadata();
   const { home, docs = {} } = urls;
   return (
     <PageLayout allMediumPost={allMediumPost} {...props}>
