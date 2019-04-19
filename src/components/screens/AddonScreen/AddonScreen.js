@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { StaticQuery, graphql } from 'gatsby';
 
@@ -332,6 +333,10 @@ export function PureAddonScreen({ data: { allMediumPost }, ...props }) {
     </PageLayout>
   );
 }
+
+PureAddonScreen.propTypes = {
+  data: PropTypes.any.isRequired, // eslint-disable-line react/forbid-prop-types
+};
 
 export default function AddonScreen(props) {
   return (

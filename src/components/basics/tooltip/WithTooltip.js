@@ -77,6 +77,7 @@ WithTooltip.propTypes = {
   hasChrome: PropTypes.bool,
   tooltip: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired,
   children: PropTypes.node.isRequired,
+  tooltipShown: PropTypes.bool,
   onVisibilityChange: PropTypes.func.isRequired,
 };
 
@@ -87,6 +88,7 @@ WithTooltip.defaultProps = {
   placement: 'top',
   modifiers: {},
   hasChrome: true,
+  tooltipShown: false,
 };
 
 export default withState('tooltipShown', 'onVisibilityChange', ({ startOpen }) => startOpen)(
