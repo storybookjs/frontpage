@@ -10,7 +10,6 @@ import StorybookLogoSVG from '../../images/logo-storybook.svg';
 
 const { color, typography, spacing, pageMargins, breakpoint } = styles;
 
-
 const LogotypeWrapper = styled(Link)`
   display: inline-block;
   img {

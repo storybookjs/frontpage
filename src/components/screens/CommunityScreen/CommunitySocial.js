@@ -110,7 +110,7 @@ const Wrapper = styled.div`
 
 export default function CommunitySocial({ ...props }) {
   const { urls = {} } = useSiteMetadata();
-  const { gitHub = {}, twitter, blog, chat  } = urls;
+  const { gitHub = {}, twitter, blog, chat } = urls;
 
   return (
     <Wrapper {...props}>

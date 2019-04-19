@@ -5,7 +5,7 @@ import { hoistStatics, compose, withState } from 'recompose';
 
 import { styles, animation } from '../../basics';
 import LogoToggle from './LogoToggle';
-import CanvasSVG from '../../../images/use-cases/canvas.svg'
+import CanvasSVG from '../../../images/use-cases/canvas.svg';
 
 const { color } = styles;
 const { shake } = animation;

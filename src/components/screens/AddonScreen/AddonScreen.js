@@ -12,7 +12,6 @@ import AddonList from './AddonList';
 import AddonCustom from './AddonCustom';
 import CTA from '../../layout/CTA';
 
-
 import KnobsSVG from '../../../images/addons/knobs.svg';
 import ActionsSVG from '../../../images/addons/actions.svg';
 import SourceSVG from '../../../images/addons/source.svg';

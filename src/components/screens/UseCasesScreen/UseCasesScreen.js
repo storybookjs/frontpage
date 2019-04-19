@@ -18,18 +18,18 @@ import LogoToggle from './LogoToggle';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import { SocialGraph, styles } from '../../basics';
 
-import ComponentsSVG from '../../../images/colored-icons/components.svg'
-import PlusSVG from '../../../images/colored-icons/plus.svg'
-import PluginSVG from '../../../images/colored-icons/plugin.svg'
-import CatalogSVG from '../../../images/colored-icons/catalog.svg'
-import RunTestSVG from '../../../images/colored-icons/runtest.svg'
-import OverlapSVG from '../../../images/colored-icons/overlap.svg'
-import CodeBracketsSVG from '../../../images/colored-icons/code-brackets.svg'
-import StackSVG from '../../../images/colored-icons/stack.svg'
-import CodeSVG from '../../../images/colored-icons/code.svg'
-import AirBnBLogoSVG from '../../../images/logos/user/logo-airbnb.svg'
-import ArtsyLogoSVG from '../../../images/logos/user/logo-artsy.svg'
-import SalesForceLogoSVG from '../../../images/logos/user/logo-salesforce.svg'
+import ComponentsSVG from '../../../images/colored-icons/components.svg';
+import PlusSVG from '../../../images/colored-icons/plus.svg';
+import PluginSVG from '../../../images/colored-icons/plugin.svg';
+import CatalogSVG from '../../../images/colored-icons/catalog.svg';
+import RunTestSVG from '../../../images/colored-icons/runtest.svg';
+import OverlapSVG from '../../../images/colored-icons/overlap.svg';
+import CodeBracketsSVG from '../../../images/colored-icons/code-brackets.svg';
+import StackSVG from '../../../images/colored-icons/stack.svg';
+import CodeSVG from '../../../images/colored-icons/code.svg';
+import AirBnBLogoSVG from '../../../images/logos/user/logo-airbnb.svg';
+import ArtsyLogoSVG from '../../../images/logos/user/logo-artsy.svg';
+import SalesForceLogoSVG from '../../../images/logos/user/logo-salesforce.svg';
 
 const { background } = styles;
 

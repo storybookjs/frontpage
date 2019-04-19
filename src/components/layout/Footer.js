@@ -324,7 +324,17 @@ const FooterWrapper = styled.div`
 
 export default function Footer({ mediumPosts, hasSubscribed, onSubscribe, ...props }) {
   const { urls = {} } = useSiteMetadata();
-  const { navLinks = {}, framework = {}, docs = {}, gitHub = {}, blog, twitter, medium, chat, youtube } = urls;
+  const {
+    blog,
+    twitter,
+    medium,
+    chat,
+    youtube,
+    navLinks = {},
+    framework = {},
+    docs = {},
+    gitHub = {},
+  } = urls;
   return (
     <FooterWrapper {...props}>
       <Upper>
