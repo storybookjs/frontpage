@@ -92,9 +92,13 @@ Tooltip.propTypes = {
   /* eslint-disable-next-line */
   arrowProps: PropTypes.any,
   placement: PropTypes.string,
+  arrowRef: PropTypes.any, // eslint-disable-line react/forbid-prop-types
+  tooltipRef: PropTypes.any, // eslint-disable-line react/forbid-prop-types
 };
 Tooltip.defaultProps = {
   hasChrome: true,
   placement: 'top',
   arrowProps: null,
+  arrowRef: undefined,
+  tooltipRef: undefined,
 };

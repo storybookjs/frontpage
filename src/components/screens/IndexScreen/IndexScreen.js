@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 
@@ -201,6 +202,10 @@ export function PureIndexScreen({ data: { gitHubRepoData, allMediumPost }, ...pr
     </PageLayout>
   );
 }
+
+PureIndexScreen.propTypes = {
+  data: PropTypes.any.isRequired, // eslint-disable-line react/forbid-prop-types
+};
 
 export default function IndexScreen(props) {
   return (
