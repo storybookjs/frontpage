@@ -5,7 +5,7 @@ import { useOnMount, useSetState } from 'react-hanger';
 import useSiteMetadata from '../lib/useSiteMetadata';
 import { Cardinal } from '../basics';
 
-const fetchNpmDownloads = async (npmApiUrls) => {
+const fetchNpmDownloads = async npmApiUrls => {
   const promises = Object.values(npmApiUrls).map(async uri => {
     const response = await fetch(uri);
     const json = await response.json();
@@ -18,7 +18,7 @@ const fetchNpmDownloads = async (npmApiUrls) => {
   return results.reduce((a, b) => a + b, 0);
 };
 
-const NpmDownloadCount = (props) => {
+const NpmDownloadCount = props => {
   const { state, setState } = useSetState({ loading: true, npmDownloads: 0 });
   const { urls = {} } = useSiteMetadata();
   const { npm, npmApi } = urls;

@@ -322,7 +322,7 @@ const FooterWrapper = styled.div`
   line-height: 20px;
 `;
 
-export default function Footer({ mediumPosts, hasSubscribed, onSubscribe, ...props }) {
+export default function Footer({ mediumPosts, ...props }) {
   const { urls = {} } = useSiteMetadata();
   const {
     blog,
