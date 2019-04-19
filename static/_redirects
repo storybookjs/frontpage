@@ -1,0 +1,31 @@
+# See https://www.netlify.com/docs/redirects/
+
+/docs/ / 301
+
+# Move guides into their own paths
+/basics/quick-start-guide /docs/guides/quick-start-guide 301
+/basics/slow-start-guide /docs/guides/slow-start-guide 301
+/basics/guide-react /docs/guides/guide-react 301
+/basics/guide-react-native /docs/guides/guide-react-native 301
+/basics/guide-vue /docs/guides/guide-vue 301
+/basics/guide-angular /docs/guides/guide-angular 301
+/basics/guide-mithril /docs/guides/guide-mithril 301
+/basics/guide-ember /docs/guides/guide-ember 301
+/basics/guide-riot /docs/guides/guide-riot 301
+/docs/basics/quick-start-guide /docs/guides/quick-start-guide 301
+/docs/basics/slow-start-guide /docs/guides/slow-start-guide 301
+/docs/basics/guide-react /docs/guides/guide-react 301
+/docs/basics/guide-react-native /docs/guides/guide-react-native 301
+/docs/basics/guide-vue /docs/guides/guide-vue 301
+/docs/basics/guide-angular /docs/guides/guide-angular 301
+/docs/basics/guide-mithril /docs/guides/guide-mithril 301
+/docs/basics/guide-ember /docs/guides/guide-ember 301
+/docs/basics/guide-riot /docs/guides/guide-riot 301
+
+/addons/* /docs/addons/:splat 301
+/basics/* /docs/basics/:splat 301
+/configurations/* /docs/configurations/:splat 301
+/examples/* /use-cases/ 301
+/logos/* /docs/logos/:splat 301
+/testing/* /docs/testing/:splat 301
+/addons/addon-gallery/ /addons/ 301

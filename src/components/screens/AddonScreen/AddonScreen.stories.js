@@ -2,8 +2,13 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import AddonScreen from './AddonScreen';
+import { PureAddonScreen } from './AddonScreen';
+import { allMediumPost } from '../../layout/Footer.stories';
 
-storiesOf('screens/AddonScreen/AddonScreen', module).add('default', () => <AddonScreen />, {
-  chromatic: { viewports: [320, 1200] },
-});
+storiesOf('screens/AddonScreen/AddonScreen', module).add(
+  'default',
+  () => <PureAddonScreen data={{ allMediumPost }} />,
+  {
+    chromatic: { viewports: [320, 1200] },
+  }
+);

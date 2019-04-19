@@ -2,6 +2,9 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import NotFoundScreen from './NotFoundScreen';
+import { PureNotFoundScreen } from './NotFoundScreen';
+import { allMediumPost } from '../../layout/Footer.stories';
 
-storiesOf('screens/NotFoundScreen/NotFoundScreen', module).add('default', () => <NotFoundScreen />);
+storiesOf('screens/NotFoundScreen/NotFoundScreen', module).add('default', () => (
+  <PureNotFoundScreen data={{ allMediumPost }} />
+));

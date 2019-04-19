@@ -10,7 +10,6 @@ import PlaceholderAspectRatio from '../../layout/PlaceholderAspectRatio';
 import ValueProp from '../../layout/ValueProp';
 import BenefitItem from './BenefitItem';
 import BenefitList from './BenefitList';
-import Testimonial from '../../layout/Testimonial';
 import CTA from '../../layout/CTA';
 
 const { background } = styles;
@@ -32,9 +31,9 @@ const Placeholder = styled(PlaceholderAspectRatio)`
   }
 `;
 
-export function PureIndexScreen({ data: { gitHubRepoData }, ...props }) {
+export function PureIndexScreen({ data: { gitHubRepoData, allMediumPost }, ...props }) {
   return (
-    <PageLayout {...props}>
+    <PageLayout allMediumPost={allMediumPost} {...props}>
       <SocialGraph
         title="Storybook: UI component workshop for frontend developers"
         desc="Storybook is an open source tool for developing UI components in isolation for React, Vue, and Angular. It makes building stunning UIs organized and efficient."
@@ -99,17 +98,6 @@ export function PureIndexScreen({ data: { gitHubRepoData }, ...props }) {
           desc="Use addons to build UI faster, document a component library, and streamline your workflow."
         />
       </BenefitList>
-      <Testimonial
-        text={
-          <span>
-            “Lorem ispum dolor sit amet. Lorem ispum dolor sit amet. Lorem ispum dolor sit amet.”
-          </span>
-        }
-        avatarUrl="https://avatars1.githubusercontent.com/u/263385?s=88&v=4"
-        name="Dominic Nguyen"
-        jobTitle="Product designer"
-        logo="images/logos/user/logo-chromatic.svg"
-      />
 
       <Contrast>
         <Separator />
@@ -133,7 +121,7 @@ export function PureIndexScreen({ data: { gitHubRepoData }, ...props }) {
           <BenefitItem
             image={<img src="/images/home/test-visual.png" alt="visual test" />}
             title="Ensure consistent user experiences"
-            desc="Whenever you write a story you get a handy visual spec. Quickly browse stories to make sure UI looks right."
+            desc="Whenever you write a story you get a handy visual spec. Quickly browse stories to make sure your UI looks right."
           />
           <BenefitItem
             image={<img src="/images/home/test-snapshot.png" alt="snapshot test" />}
@@ -153,17 +141,7 @@ export function PureIndexScreen({ data: { gitHubRepoData }, ...props }) {
             desc="Pinpoint UI changes with visual testing tools."
           />
         </BenefitList>
-        <Testimonial
-          text={
-            <span>
-              “Lorem ispum dolor sit amet. Lorem ispum dolor sit amet. Lorem ispum dolor sit amet.”
-            </span>
-          }
-          avatarUrl="https://avatars1.githubusercontent.com/u/263385?s=88&v=4"
-          name="Dominic Nguyen"
-          jobTitle="Product designer"
-          logo="images/logos/user/logo-chromatic.svg"
-        />
+
         <Separator />
       </Contrast>
 
@@ -228,12 +206,24 @@ export default function IndexScreen(props) {
   return (
     <StaticQuery
       query={graphql`
-        query HeroContributorQuery {
+        query IndexScreenQuery {
           gitHubRepoData {
             contributorCount
             url
             author
             name
+          }
+          allMediumPost(sort: { fields: [createdAt], order: DESC }, limit: 3) {
+            edges {
+              node {
+                id
+                title
+                virtuals {
+                  subtitle
+                }
+                uniqueSlug
+              }
+            }
           }
         }
       `}

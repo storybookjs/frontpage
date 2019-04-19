@@ -58,9 +58,9 @@ const contributors = [
   },
 ];
 
-export function PureTeamScreen({ data, ...props }) {
+export function PureTeamScreen({ data: { gitHubRepoData, allMediumPost }, ...props }) {
   return (
-    <PageLayout {...props}>
+    <PageLayout allMediumPost={allMediumPost} {...props}>
       <SocialGraph
         title={`Team | ${metadata.title}`}
         desc="Storybook is maintained by hundreds of contributors worldwide and guided by a steering committee."
@@ -79,7 +79,7 @@ export function PureTeamScreen({ data, ...props }) {
           name="Norbert de Langen"
           title="Open source"
           company="Chroma"
-          companyUrl="https://chromaui.com"
+          companyUrl="https://hichroma.com"
           location="Zwolle, Netherlands"
           avatarUrl="https://avatars2.githubusercontent.com/u/3070389?s=200&v=4"
           gitHubUrl="https://github.com/ndelangen"
@@ -99,7 +99,7 @@ export function PureTeamScreen({ data, ...props }) {
           name="Michael Shilman"
           title="Engineering"
           company="Chroma"
-          companyUrl="https://chromaui.com"
+          companyUrl="https://hichroma.com"
           location="San Francisco, USA"
           avatarUrl="https://avatars0.githubusercontent.com/u/488689?s=200&v=4"
           gitHubUrl="https://github.com/shilman"
@@ -119,7 +119,7 @@ export function PureTeamScreen({ data, ...props }) {
           name="Tom Coleman"
           title="Engineering"
           company="Chroma"
-          companyUrl="https://chromaui.com"
+          companyUrl="https://hichroma.com"
           location="Melbourne, Australia"
           avatarUrl="https://avatars0.githubusercontent.com/u/132554?s=200&v=4"
           gitHubUrl="https://github.com/tmeasday"
@@ -127,8 +127,8 @@ export function PureTeamScreen({ data, ...props }) {
         />
         <ContributorItem
           contributors={contributors}
-          contributorCount={`+${data.gitHubRepoData.contributorCount}`}
-          gitHubUrl={`${data.gitHubRepoData.url}/graphs/contributors`}
+          contributorCount={`+${gitHubRepoData.contributorCount}`}
+          gitHubUrl={`${gitHubRepoData.url}/graphs/contributors`}
         />
       </Team>
     </PageLayout>
@@ -139,10 +139,23 @@ export default function TeamScreen({ ...props }) {
   return (
     <StaticQuery
       query={graphql`
-        query TeamScreenContributorQuery {
+        query TeamScreenQuery {
           gitHubRepoData {
             contributorCount
             url
+          }
+          allMediumPost(sort: { fields: [createdAt], order: DESC }, limit: 3) {
+            edges {
+              node {
+                id
+                title
+                virtuals {
+                  subtitle
+                }
+                medium_id
+                uniqueSlug
+              }
+            }
           }
         }
       `}

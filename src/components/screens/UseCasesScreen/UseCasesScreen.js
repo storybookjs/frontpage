@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { StaticQuery, graphql } from 'gatsby';
 
 import PageLayout from '../../layout/PageLayout';
 import PageTitle from '../../layout/PageTitle';
@@ -47,9 +48,9 @@ const DesignSystemWrapper = styled.div`
   }
 `;
 
-export default function UseCasesScreen({ ...props }) {
+export function PureUseCasesScreen({ data: { allMediumPost }, ...props }) {
   return (
-    <PageLayout {...props}>
+    <PageLayout allMediumPost={allMediumPost} {...props}>
       <SocialGraph
         title={`Use cases | ${metadata.title}`}
         desc="See how thousands of teams around the world use Storybook to build production UIs faster."
@@ -100,7 +101,7 @@ export default function UseCasesScreen({ ...props }) {
             work aligns with designs to the pixel across breakpoints.”
           </span>
         }
-        avatarUrl="https://pbs.twimg.com/profile_images/532852309194063872/rwKxRciR_400x400.png"
+        avatarUrl="https://avatars2.githubusercontent.com/u/1247751?s=100&v=4"
         name="Adam Neary"
         jobTitle="Tech lead"
         logo="/images/logos/user/logo-airbnb.svg"
@@ -139,7 +140,7 @@ export default function UseCasesScreen({ ...props }) {
               native. It blows our old practices out of the water.”
             </span>
           }
-          avatarUrl="https://pbs.twimg.com/profile_images/879777800311451648/5HSjNITG_400x400.jpg"
+          avatarUrl="https://avatars1.githubusercontent.com/u/49038?s=100&v=4"
           name="Orta Therox"
           jobTitle="Frontend infrastructure"
           logo="/images/logos/user/logo-artsy.svg"
@@ -184,7 +185,7 @@ export default function UseCasesScreen({ ...props }) {
         text={
           <span>“Storybook is crucial to our UX process. The “old way” seems ludicrous now!”</span>
         }
-        avatarUrl="https://avatars3.githubusercontent.com/u/31106469?s=200&v=4"
+        avatarUrl="https://avatars3.githubusercontent.com/u/31106469?s=100&v=4"
         name="Andrew Frankel"
         jobTitle="Engineering lead"
         logo="/images/logos/user/logo-salesforce.svg"
@@ -209,5 +210,30 @@ export default function UseCasesScreen({ ...props }) {
         grid
       />
     </PageLayout>
+  );
+}
+
+export default function UseCasesScreen(props) {
+  return (
+    <StaticQuery
+      query={graphql`
+        query UseCasesScreenQuery {
+          allMediumPost(sort: { fields: [createdAt], order: DESC }, limit: 3) {
+            edges {
+              node {
+                id
+                title
+                virtuals {
+                  subtitle
+                }
+                medium_id
+                uniqueSlug
+              }
+            }
+          }
+        }
+      `}
+      render={data => <PureUseCasesScreen data={data} {...props} />}
+    />
   );
 }

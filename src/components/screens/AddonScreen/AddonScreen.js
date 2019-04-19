@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { StaticQuery, graphql } from 'gatsby';
 
 import { Button, Icon, SocialGraph, Subheading, styles, site } from '../../basics';
 import PageLayout from '../../layout/PageLayout';
@@ -65,9 +66,9 @@ const MakeYourOwn = styled(AddonCustom)`
   margin-bottom: 5rem;
 `;
 
-export default function AddonScreen({ ...props }) {
+export function PureAddonScreen({ data: { allMediumPost }, ...props }) {
   return (
-    <PageLayout {...props}>
+    <PageLayout allMediumPost={allMediumPost} {...props}>
       <SocialGraph
         title={`Addons | ${metadata.title}`}
         desc="Addons enable advanced functionality and unlock new workflows. Contributed by core maintainers and the amazing developer community."
@@ -200,6 +201,11 @@ export default function AddonScreen({ ...props }) {
           desc="Navigate different versions of static Storybook builds to see how a component has changed over time."
           addonUrl="https://github.com/buildit/storybook-addon-versions"
         />
+        <AddonItem
+          title="Contexts"
+          desc="An elegant way to wrap your component stories and change their contextual environment directly and dynamically in Storybook UI!"
+          addonUrl="https://github.com/leoyli/addon-contexts"
+        />
 
         <Subheader>Test</Subheader>
         <AddonItem
@@ -284,6 +290,11 @@ export default function AddonScreen({ ...props }) {
           desc="Select between JSS themes."
           addonUrl="https://github.com/vertexbz/storybook-addon-jss-theme"
         />
+        <AddonItem
+          title="Root Attribute"
+          desc="Provides the ability to change the html or body attribute."
+          addonUrl="https://github.com/le0pard/storybook-addon-root-attribute"
+        />
 
         <Subheader>Design</Subheader>
         <AddonItem
@@ -319,5 +330,30 @@ export default function AddonScreen({ ...props }) {
         }
       />
     </PageLayout>
+  );
+}
+
+export default function AddonScreen(props) {
+  return (
+    <StaticQuery
+      query={graphql`
+        query AddonsScreenQuery {
+          allMediumPost(sort: { fields: [createdAt], order: DESC }, limit: 3) {
+            edges {
+              node {
+                id
+                title
+                virtuals {
+                  subtitle
+                }
+                medium_id
+                uniqueSlug
+              }
+            }
+          }
+        }
+      `}
+      render={data => <PureAddonScreen data={data} {...props} />}
+    />
   );
 }
