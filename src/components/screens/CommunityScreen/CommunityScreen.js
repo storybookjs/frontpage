@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { rgba } from 'polished';
 import { StaticQuery, graphql } from 'gatsby';
@@ -364,6 +365,10 @@ export function PureCommunityScreen({ data: { gitHubRepoData, allMediumPost }, .
     </PageLayout>
   );
 }
+
+PureCommunityScreen.propTypes = {
+  data: PropTypes.any.isRequired, // eslint-disable-line react/forbid-prop-types
+};
 
 export default function CommunityScreen(props) {
   return (

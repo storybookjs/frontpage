@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { StaticQuery, graphql } from 'gatsby';
 
@@ -304,6 +305,11 @@ export function PureAddonScreen({ data: { allMediumPost }, ...props }) {
           desc="Select between JSS themes."
           addonUrl="https://github.com/vertexbz/storybook-addon-jss-theme"
         />
+        <AddonItem
+          title="Root Attribute"
+          desc="Provides the ability to change the html or body attribute."
+          addonUrl="https://github.com/le0pard/storybook-addon-root-attribute"
+        />
 
         <Subheader>Design</Subheader>
         <AddonItem
@@ -341,6 +347,10 @@ export function PureAddonScreen({ data: { allMediumPost }, ...props }) {
     </PageLayout>
   );
 }
+
+PureAddonScreen.propTypes = {
+  data: PropTypes.any.isRequired, // eslint-disable-line react/forbid-prop-types
+};
 
 export default function AddonScreen(props) {
   return (

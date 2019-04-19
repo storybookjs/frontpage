@@ -66,8 +66,10 @@ CommunitySidebar.propTypes = {
   title: PropTypes.node.isRequired,
   desc: PropTypes.node.isRequired,
   children: PropTypes.node,
+  loneChild: PropTypes.bool,
 };
 
 CommunitySidebar.defaultProps = {
   children: null,
+  loneChild: false,
 };

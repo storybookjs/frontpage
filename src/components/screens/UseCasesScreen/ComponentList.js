@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { hoistStatics, compose, withState } from 'recompose';
 
@@ -150,6 +151,14 @@ function ComponentList({ selectedIndex, onSelectIndex, ...props }) {
   );
 }
 
-ComponentList.propTypes = {};
+ComponentList.propTypes = {
+  onSelectIndex: PropTypes.func,
+  selectedIndex: PropTypes.number,
+};
+
+ComponentList.defaultProps = {
+  onSelectIndex: () => 0,
+  selectedIndex: undefined,
+};
 
 export default hoistStatics(compose(withState('selectedIndex', 'onSelectIndex', 0)))(ComponentList);

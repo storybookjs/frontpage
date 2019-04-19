@@ -199,6 +199,7 @@ Link.propTypes = {
   isGatsby: PropTypes.bool,
   children: PropTypes.node,
   withArrow: PropTypes.bool,
+  containsIcon: PropTypes.bool,
 };
 
 Link.defaultProps = {
@@ -206,4 +207,5 @@ Link.defaultProps = {
   isGatsby: false,
   children: null,
   withArrow: false,
+  containsIcon: false,
 };

@@ -335,6 +335,7 @@ export default function Footer({ mediumPosts, hasSubscribed, onSubscribe, ...pro
     docs = {},
     gitHub = {},
   } = urls;
+
   return (
     <FooterWrapper {...props}>
       <Upper>

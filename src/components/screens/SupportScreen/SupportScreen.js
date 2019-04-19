@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { StaticQuery, graphql } from 'gatsby';
 
@@ -72,6 +72,10 @@ export function PureSupportScreen({ data: { allMediumPost }, ...props }) {
     </PageLayout>
   );
 }
+
+PureSupportScreen.propTypes = {
+  data: PropTypes.any.isRequired, // eslint-disable-line react/forbid-prop-types
+};
 
 export default function SupportScreen(props) {
   return (

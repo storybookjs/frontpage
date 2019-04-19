@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 
@@ -135,6 +136,10 @@ export function PureTeamScreen({ data: { gitHubRepoData, allMediumPost }, ...pro
     </PageLayout>
   );
 }
+
+PureTeamScreen.propTypes = {
+  data: PropTypes.any.isRequired, // eslint-disable-line react/forbid-prop-types
+};
 
 export default function TeamScreen({ ...props }) {
   return (

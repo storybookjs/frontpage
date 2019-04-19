@@ -87,10 +87,14 @@ function ComponentCanvas({ imageUrl, selectedIndex, onSelectIndex, ...props }) {
 
 ComponentCanvas.propTypes = {
   imageUrl: PropTypes.string,
+  onSelectIndex: PropTypes.func,
+  selectedIndex: PropTypes.number,
 };
 
 ComponentCanvas.defaultProps = {
   imageUrl: null,
+  onSelectIndex: () => 0,
+  selectedIndex: undefined,
 };
 
 export default hoistStatics(compose(withState('selectedIndex', 'onSelectIndex', 0)))(

@@ -50,4 +50,9 @@ export default function PageLayout({ allMediumPost, children, ...props }) {
 
 PageLayout.propTypes = {
   children: PropTypes.node.isRequired,
+  allMediumPost: PropTypes.any, // eslint-disable-line react/forbid-prop-types
+};
+
+PageLayout.defaultProps = {
+  allMediumPost: undefined,
 };

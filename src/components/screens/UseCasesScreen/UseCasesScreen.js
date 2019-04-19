@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { StaticQuery, graphql } from 'gatsby';
 
@@ -226,6 +227,10 @@ export function PureUseCasesScreen({ data: { allMediumPost }, ...props }) {
     </PageLayout>
   );
 }
+
+PureUseCasesScreen.propTypes = {
+  data: PropTypes.any.isRequired, // eslint-disable-line react/forbid-prop-types
+};
 
 export default function UseCasesScreen(props) {
   return (

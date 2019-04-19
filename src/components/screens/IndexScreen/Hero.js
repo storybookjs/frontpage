@@ -358,6 +358,12 @@ function Framework({ framework, logo, ...props }) {
 
 Framework.propTypes = {
   framework: PropTypes.string.isRequired,
+  // escape hatch if two differently named items have the same logo
+  logo: PropTypes.string,
+};
+
+Framework.defaultProps = {
+  logo: undefined,
 };
 
 export default function Hero({
