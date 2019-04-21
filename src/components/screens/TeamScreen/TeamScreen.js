@@ -9,10 +9,10 @@ import TeamItem from './TeamItem';
 import ContributorItem from './ContributorItem';
 import TeamList from './TeamList';
 
-import { SocialGraph, styles, site } from '../../basics';
+import useSiteMetadata from '../../lib/useSiteMetadata';
+import { SocialGraph, styles } from '../../basics';
 
 const { breakpoint } = styles;
-const { metadata, url } = site;
 
 const Team = styled(TeamList)`
   @media (min-width: ${breakpoint * 1}px) {
@@ -60,13 +60,14 @@ const contributors = [
 ];
 
 export function PureTeamScreen({ data: { gitHubRepoData, allMediumPost }, ...props }) {
+  const { title, ogImage, urls = {} } = useSiteMetadata();
   return (
     <PageLayout allMediumPost={allMediumPost} {...props}>
       <SocialGraph
-        title={`Team | ${metadata.title}`}
+        title={`Team | ${title}`}
         desc="Storybook is maintained by hundreds of contributors worldwide and guided by a steering committee."
-        url={`${url.home}/team`}
-        image={metadata.ogImage}
+        url={`${urls.home}/team`}
+        image={ogImage}
       />
 
       <PageTitle

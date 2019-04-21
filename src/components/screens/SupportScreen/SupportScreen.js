@@ -8,10 +8,13 @@ import PageTitle from '../../layout/PageTitle';
 import Feature from '../../layout/Feature';
 import FeaturesLayout from '../../layout/FeaturesLayout';
 
-import { Link, SocialGraph, styles, site } from '../../basics';
+import useSiteMetadata from '../../lib/useSiteMetadata';
+import { Link, SocialGraph, styles } from '../../basics';
+import GitHubSVG from '../../../images/logos/social/github.svg';
+import DiscordSVG from '../../../images/logos/social/discord.svg';
+import RepoSVG from '../../../images/colored-icons/repo.svg';
 
 const { breakpoint } = styles;
-const { metadata, url } = site;
 
 const Features = styled(FeaturesLayout)`
   @media (min-width: ${breakpoint * 1}px) {
@@ -20,13 +23,15 @@ const Features = styled(FeaturesLayout)`
 `;
 
 export function PureSupportScreen({ data: { allMediumPost }, ...props }) {
+  const { title, ogImage, urls = {} } = useSiteMetadata();
+  const { home, chat, docs = {}, gitHub = {} } = urls;
   return (
     <PageLayout allMediumPost={allMediumPost} {...props}>
       <SocialGraph
-        title={`Support | ${metadata.title}`}
+        title={`Support | ${title}`}
         desc="Get answers to your Storybook questions from the thriving community and maintainers. Developers of all skill levels welcome."
-        url={`${url.home}/support`}
-        image={metadata.ogImage}
+        url={`${home}/support`}
+        image={ogImage}
       />
 
       <PageTitle
@@ -37,29 +42,29 @@ export function PureSupportScreen({ data: { allMediumPost }, ...props }) {
       />
       <Features columns={3}>
         <Feature
-          image={<img src="/images/colored-icons/repo.svg" alt="Storybook docs" />}
+          image={<img src={RepoSVG} alt="Storybook docs" />}
           title="Check the docs"
           desc="First check the Storybook docs. There’s likely an article for your issue already."
         >
-          <Link withArrow href={url.docs.home}>
+          <Link withArrow href={docs.home}>
             Read docs
           </Link>
         </Feature>
         <Feature
-          image={<img src="/images/logos/social/github.svg" alt="GitHub" />}
+          image={<img src={GitHubSVG} alt="GitHub" />}
           title="File an issue on GitHub"
           desc="If you encounter an issue, do us a favor and report it. Someone else may have the same issue."
         >
-          <Link withArrow href={url.gitHub.issues}>
+          <Link withArrow href={gitHub.issues}>
             View GitHub issues
           </Link>
         </Feature>
         <Feature
-          image={<img src="/images/logos/social/discord.svg" alt="Discord" />}
+          image={<img src={DiscordSVG} alt="Discord" />}
           title="Ask a question in chat"
           desc="Get help over chat from community members. A maintainer is usually online."
         >
-          <Link withArrow href={url.chat}>
+          <Link withArrow href={chat}>
             Chat now
           </Link>
         </Feature>

@@ -5,6 +5,7 @@ import { hoistStatics, compose, withState } from 'recompose';
 
 import { styles, animation } from '../../basics';
 import LogoToggle from './LogoToggle';
+import CanvasSVG from '../../../images/use-cases/canvas.svg';
 
 const { color } = styles;
 const { shake } = animation;
@@ -70,7 +71,7 @@ function ComponentCanvas({ imageUrl, selectedIndex, onSelectIndex, ...props }) {
             {selectedIndex === 1 && <Figure src="/images/use-cases/atlassian/react-dnd.gif" />}
             {selectedIndex === 2 && <Figure src="/images/use-cases/algolia/instantsearch.gif" />}
           </FigureWrapper>
-          <Canvas src="/images/use-cases/canvas.svg" />
+          <Canvas src={CanvasSVG} />
         </CanvasBackground>
       </CanvasWrapper>
       <Toggle

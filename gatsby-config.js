@@ -1,4 +1,7 @@
+const siteMetadata = require('./site-metadata');
+
 module.exports = {
+  siteMetadata,
   plugins: [
     'gatsby-plugin-react-helmet',
     {

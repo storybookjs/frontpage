@@ -2,13 +2,20 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import { Icon, Link, Subheading, styles, site } from '../basics';
+import useSiteMetadata from '../lib/useSiteMetadata';
+import { Icon, Link, Subheading, styles } from '../basics';
 
 import ConfirmedMailingList from './ConfirmedMailingList';
-import { navLinks } from './PageLayout';
+
+import DirectionSVG from '../../images/colored-icons/direction.svg';
+import RepoSVG from '../../images/colored-icons/repo.svg';
+import StorybookLogoSVG from '../../images/logo-storybook.svg';
+import NetlifyLogoSVG from '../../images/logos/user/logo-netlify.svg';
+import ChromaticLogoSVG from '../../images/logos/user/logo-chromatic.svg';
+import TeamCityLogoSVG from '../../images/logos/user/logo-teamcity.svg';
+import CircleCILogoSVG from '../../images/logos/user/logo-circleci.svg';
 
 const { background, color, typography, pageMargins, pageMargin, spacing, breakpoint } = styles;
-const { url } = site;
 
 const Title = styled(Subheading)`
   display: block;
@@ -316,6 +323,19 @@ const FooterWrapper = styled.div`
 `;
 
 export default function Footer({ mediumPosts, ...props }) {
+  const { urls = {} } = useSiteMetadata();
+  const {
+    blog,
+    twitter,
+    medium,
+    chat,
+    youtube,
+    navLinks = {},
+    framework = {},
+    docs = {},
+    gitHub = {},
+  } = urls;
+
   return (
     <FooterWrapper {...props}>
       <Upper>
@@ -323,7 +343,7 @@ export default function Footer({ mediumPosts, ...props }) {
           <Title>Learn</Title>
           <Resources>
             <Resource>
-              <img src="/images/colored-icons/repo.svg" alt="Docs" />
+              <img src={RepoSVG} alt="Docs" />
               <Meta>
                 <ResourceTitle>Get started with Storybook</ResourceTitle>
                 <ResourceDesc>
@@ -331,23 +351,23 @@ export default function Footer({ mediumPosts, ...props }) {
                   easier.
                 </ResourceDesc>
                 <ResourceActions>
-                  <ResourceAction withArrow href={url.framework.react}>
+                  <ResourceAction withArrow href={framework.react}>
                     React
                   </ResourceAction>
-                  <ResourceAction withArrow href={url.framework.vue}>
+                  <ResourceAction withArrow href={framework.vue}>
                     Vue
                   </ResourceAction>
-                  <ResourceAction withArrow href={url.framework.angular}>
+                  <ResourceAction withArrow href={framework.angular}>
                     Angular
                   </ResourceAction>
-                  <ResourceAction withArrow href={url.docs.home}>
+                  <ResourceAction withArrow href={docs.home}>
                     View more
                   </ResourceAction>
                 </ResourceActions>
               </Meta>
             </Resource>
             <Resource>
-              <img src="/images/colored-icons/direction.svg" alt="Tutorial" />
+              <img src={DirectionSVG} alt="Tutorial" />
               <Meta>
                 <ResourceTitle>Storybook tutorial</ResourceTitle>
                 <ResourceDesc>
@@ -366,7 +386,7 @@ export default function Footer({ mediumPosts, ...props }) {
         <UpperColumn>
           <Title>
             News
-            <SubLink tertiary withArrow href={url.blog}>
+            <SubLink tertiary withArrow href={blog}>
               Read more
             </SubLink>
           </Title>
@@ -374,7 +394,7 @@ export default function Footer({ mediumPosts, ...props }) {
             {mediumPosts.edges.map(({ node: { id, title, virtuals, uniqueSlug } }) => (
               <Resource key={id}>
                 <Meta>
-                  <ResourceTitleLink tertiary withArrow href={`${url.medium}/${uniqueSlug}`}>
+                  <ResourceTitleLink tertiary withArrow href={`${medium}/${uniqueSlug}`}>
                     {title}
                   </ResourceTitleLink>
                   <ResourceDesc>{virtuals.subtitle}</ResourceDesc>
@@ -387,7 +407,7 @@ export default function Footer({ mediumPosts, ...props }) {
       <Lower>
         <Colophon>
           <LogotypeWrapper isGatsby to="/">
-            <img src="/images/logos/logo-storybook.svg" alt="Storybook" />
+            <img src={StorybookLogoSVG} alt="Storybook" />
           </LogotypeWrapper>
           <Text>
             The MIT License (MIT). Website design by{' '}
@@ -410,25 +430,25 @@ export default function Footer({ mediumPosts, ...props }) {
               {title}
             </FooterLink>
           ))}
-          <FooterLink tertiary href={url.gitHub.releases}>
+          <FooterLink tertiary href={gitHub.releases}>
             Releases
           </FooterLink>
         </Column>
         <Column>
           <Title>Community</Title>
-          <FooterLink tertiary href={url.gitHub.repo}>
+          <FooterLink tertiary href={gitHub.repo}>
             <Icon icon="github" /> GitHub
           </FooterLink>
-          <FooterLink tertiary href={url.blog}>
+          <FooterLink tertiary href={blog}>
             <Icon icon="medium" /> Blog
           </FooterLink>
-          <FooterLink tertiary href={url.twitter}>
+          <FooterLink tertiary href={twitter}>
             <Icon icon="twitter" /> Twitter
           </FooterLink>
-          <FooterLink tertiary href={url.chat}>
+          <FooterLink tertiary href={chat}>
             <Icon icon="discord" /> Discord chat
           </FooterLink>
-          <FooterLink tertiary href={url.youtube}>
+          <FooterLink tertiary href={youtube}>
             <Icon icon="youtube" /> Youtube
           </FooterLink>
         </Column>
@@ -445,22 +465,22 @@ export default function Footer({ mediumPosts, ...props }) {
         <Service>
           <Text>Hosting by</Text>
           <a href="https://netlify.com">
-            <Netlify src="/images/logos/user/logo-netlify.svg" alt="Netlify" />
+            <Netlify src={NetlifyLogoSVG} alt="Netlify" />
           </a>
         </Service>
         <Service>
           <Text>Visual testing by</Text>
           <a href="https://www.chromaticqa.com/">
-            <Chromatic src="/images/logos/user/logo-chromatic.svg" alt="Chromatic" />
+            <Chromatic src={ChromaticLogoSVG} alt="Chromatic" />
           </a>
         </Service>
         <Service>
           <Text>Continuous integration by</Text>
           <a href="https://www.jetbrains.com/teamcity/">
-            <Teamcity src="/images/logos/user/logo-teamcity.svg" alt="Teamcity" />
+            <Teamcity src={TeamCityLogoSVG} alt="Teamcity" />
           </a>
           <a href="https://circleci.com/">
-            <CircleCI src="/images/logos/user/logo-circleci.svg" alt="CircleCI" />
+            <CircleCI src={CircleCILogoSVG} alt="CircleCI" />
           </a>
         </Service>
       </Services>
