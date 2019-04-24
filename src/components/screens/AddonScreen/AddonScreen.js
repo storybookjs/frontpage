@@ -124,9 +124,9 @@ export function PureAddonScreen({ data: { allMediumPost }, ...props }) {
         <AddonItem
           appearance="official"
           image={<img src={DocsSVG} alt="docs" />}
-          title="Docs"
+          title="Notes"
           desc="Document component usage and properties in Markdown"
-          addonUrl={officialAddons.info}
+          addonUrl={officialAddons.notes}
         />
         <AddonItem
           appearance="official"
