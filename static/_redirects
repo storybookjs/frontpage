@@ -12,6 +12,7 @@
 /basics/guide-mithril /docs/guides/guide-mithril 301
 /basics/guide-ember /docs/guides/guide-ember 301
 /basics/guide-riot /docs/guides/guide-riot 301
+/basics/guide-html /docs/guides/guide-html 301
 /docs/basics/quick-start-guide /docs/guides/quick-start-guide 301
 /docs/basics/slow-start-guide /docs/guides/slow-start-guide 301
 /docs/basics/guide-react /docs/guides/guide-react 301
@@ -21,6 +22,7 @@
 /docs/basics/guide-mithril /docs/guides/guide-mithril 301
 /docs/basics/guide-ember /docs/guides/guide-ember 301
 /docs/basics/guide-riot /docs/guides/guide-riot 301
+/docs/basics/guide-html /docs/guides/guide-html 301
 
 /addons/* /docs/addons/:splat 301
 /basics/* /docs/basics/:splat 301
