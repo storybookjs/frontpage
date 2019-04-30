@@ -110,8 +110,8 @@ export function PureTeamScreen({ data: { gitHubRepoData, allMediumPost }, ...pro
         <TeamItem
           name="Igor Davydkin"
           title="Engineering"
-          company="Sears Israel"
-          companyUrl="https://sears.co.il/"
+          company="ClimaCell"
+          companyUrl="https://www.climacell.co/"
           location="Tel Aviv, Israel"
           avatarUrl="https://avatars1.githubusercontent.com/u/7867954?s=200&v=4"
           gitHubUrl="https://github.com/igor-dv"
