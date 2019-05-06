@@ -248,11 +248,6 @@ export function PureAddonScreen({ data: { allMediumPost }, ...props }) {
           desc="Toggle the locale and directly see the result in the preview."
           addonUrl="https://github.com/truffls/storybook-addon-intl"
         />
-        <AddonItem
-          title="i18n tools"
-          desc="Test your Storybook with a different text-direction. It is very useful if you are working on components that have to work both in LTR as well as in RTL languages."
-          addonUrl="https://github.com/joscha/storybook-addon-i18n-tools"
-        />
 
         <Subheader>Code</Subheader>
         <AddonItem
