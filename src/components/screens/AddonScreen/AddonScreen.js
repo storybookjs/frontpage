@@ -239,6 +239,11 @@ export function PureAddonScreen({ data: { allMediumPost }, ...props }) {
           addonUrl="https://github.com/tsuyoshiwada/storybook-chrome-screenshot"
         />
         <AddonItem
+          title="i18n"
+          desc="Toggle the locale and directly see the result in the preview. Intl library agnostic - can be used with any intl library. Supports automatic lrt/rtl change."
+          addonUrl="https://github.com/goooseman/storybook-addon-i18n"
+        />
+        <AddonItem
           title="Intl"
           desc="Toggle the locale and directly see the result in the preview."
           addonUrl="https://github.com/truffls/storybook-addon-intl"
