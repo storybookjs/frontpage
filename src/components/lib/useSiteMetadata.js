@@ -80,6 +80,7 @@ const useSiteMetadata = () => {
               source
               info
               viewport
+              notes
               storyshots
               backgrounds
               accessibility
