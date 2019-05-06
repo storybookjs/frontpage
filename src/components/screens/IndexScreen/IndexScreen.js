@@ -38,7 +38,7 @@ export function PureIndexScreen({ data: { gitHubRepoData, allMediumPost }, ...pr
   return (
     <PageLayout allMediumPost={allMediumPost} {...props}>
       <SocialGraph
-        title="Storybook: UI component workshop for frontend developers"
+        title="Storybook: UI component explorer for frontend developers"
         desc="Storybook is an open source tool for developing UI components in isolation for React, Vue, and Angular. It makes building stunning UIs organized and efficient."
         url={home}
         image={ogImage}
