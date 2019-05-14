@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Avatar, Link, styles } from '../../basics';
+import { Avatar, styles } from '@storybook/design-system';
+import { Link } from '../../basics';
 
 const { color, typography, breakpoint } = styles;
 

@@ -2,9 +2,10 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { Link as GatsbyLink } from 'gatsby';
 
+import { Icon, styles } from '@storybook/design-system';
 import useSiteMetadata from '../lib/useSiteMetadata';
 
-import { Link, Icon, TooltipLinkList, WithTooltip, styles } from '../basics';
+import { Link, TooltipLinkList, WithTooltip } from '../basics';
 
 import StorybookLogoSVG from '../../images/logo-storybook.svg';
 

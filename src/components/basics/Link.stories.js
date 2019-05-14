@@ -3,8 +3,8 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
+import { Icon } from '@storybook/design-system';
 import Link from './Link';
-import Icon from './Icon';
 
 const onLinkClick = action('onLinkClick');
 storiesOf('Frontpage|basics/Link', module).add('all', () => (

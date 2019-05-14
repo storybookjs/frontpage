@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { color, typography } from './shared/styles';
-import { inlineGlow } from './shared/animation';
+
+import { styles, animation } from '@storybook/design-system';
+
+const { color, typography } = styles;
+const { inlineGlow } = animation;
 
 const Left = styled.span``;
 const Title = styled.span`

@@ -3,9 +3,9 @@ import { PropTypes } from 'prop-types';
 import styled from 'styled-components';
 import ReactModal from 'react-modal';
 
-import Icon from '../Icon';
-import Button from '../Button';
-import { pageMargins, breakpoint } from '../shared/styles';
+import { Button, Icon, styles } from '@storybook/design-system';
+
+const { pageMargins, breakpoint } = styles;
 
 const Action = styled.div`
   position: absolute;

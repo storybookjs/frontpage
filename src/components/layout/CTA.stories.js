@@ -2,7 +2,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import Button from '../basics/Button';
+import { Button } from '@storybook/design-system';
 import CTA from './CTA';
 
 storiesOf('Frontpage|layout/CTA', module)

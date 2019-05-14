@@ -3,7 +3,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { storiesOf } from '@storybook/react';
 
-import { typography } from './shared/styles';
+import { styles } from '@storybook/design-system';
+
+const { typography } = styles;
 
 const Info = styled.div`
   margin-bottom: 3rem;

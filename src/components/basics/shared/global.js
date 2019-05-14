@@ -1,5 +1,7 @@
 import { createGlobalStyle, css } from 'styled-components';
-import { color, typography } from './styles';
+import { styles } from '@storybook/design-system';
+
+const { color, typography } = styles;
 
 export const bodyStyles = css`
   font-family: ${typography.type.primary};

@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { color, typography } from '../shared/styles';
+
+import { styles } from '@storybook/design-system';
 import Link from '../Link';
+
+const { color, typography } = styles;
 
 const Title = styled.div`
   font-weight: ${typography.weight.black};

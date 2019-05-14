@@ -3,7 +3,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { storiesOf } from '@storybook/react';
 
-import { color, typography } from './shared/styles';
+import { styles } from '@storybook/design-system';
+
+const { color, typography } = styles;
 
 const Heading = styled.div`
   font-size: ${typography.size.m1}px;

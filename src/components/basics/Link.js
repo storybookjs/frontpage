@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { darken } from 'polished';
 import { Link as GatsbyLink } from 'gatsby';
-import { color } from './shared/styles';
 
-import Icon from './Icon';
+import { Icon, styles } from '@storybook/design-system';
+
+const { color } = styles;
 
 const linkStyles = css`
   display: inline-block;

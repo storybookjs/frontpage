@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { styles } from '@storybook/design-system';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 
-import { Link, LazyLoad, styles } from '../../basics';
+import { Link, LazyLoad } from '../../basics';
 import CustomSVG from '../../../images/addons/custom.svg';
 
 const { background, color, spacing, typography, pageMargin, breakpoint } = styles;

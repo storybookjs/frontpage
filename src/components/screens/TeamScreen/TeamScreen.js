@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 
+import { styles } from '@storybook/design-system';
 import PageLayout from '../../layout/PageLayout';
 import PageTitle from '../../layout/PageTitle';
 import TeamItem from './TeamItem';
@@ -10,7 +11,7 @@ import ContributorItem from './ContributorItem';
 import TeamList from './TeamList';
 
 import useSiteMetadata from '../../lib/useSiteMetadata';
-import { SocialGraph, styles } from '../../basics';
+import { SocialGraph } from '../../basics';
 
 const { breakpoint } = styles;
 

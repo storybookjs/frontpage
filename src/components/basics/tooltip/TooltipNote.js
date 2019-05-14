@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { color, typography } from '../shared/styles';
+
+import { styles } from '@storybook/design-system';
+
+const { color, typography } = styles;
 
 const Note = styled.div`
   padding: 2px 6px;

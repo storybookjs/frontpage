@@ -3,7 +3,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { typography } from '../shared/styles';
+import { styles } from '@storybook/design-system';
+
+const { typography } = styles;
 
 const ifPlacementEquals = (placement, value, fallback = 0) => props =>
   props['data-placement'].split('-')[0] === placement ? value : fallback;

@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { color } from './shared/styles';
-import { glow } from './shared/animation';
+
+import { styles, animation } from '@storybook/design-system';
+
+const { color } = styles;
+const { glow } = animation;
 
 const ProgressWrapper = styled.div`
   display: inline-block;

@@ -1,9 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { Icon } from '@storybook/design-system';
 import ListItem from './ListItem';
-
-import Icon from './Icon';
 
 storiesOf('Frontpage|basics/ListItem', module)
   .add('all', () => (

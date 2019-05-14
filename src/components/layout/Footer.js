@@ -2,8 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+import { Icon, Subheading, styles } from '@storybook/design-system';
 import useSiteMetadata from '../lib/useSiteMetadata';
-import { Icon, Link, Subheading, styles } from '../basics';
+
+import { Link } from '../basics';
 
 import ConfirmedMailingList from './ConfirmedMailingList';
 

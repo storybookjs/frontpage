@@ -4,9 +4,10 @@ import styled from 'styled-components';
 import { rgba } from 'polished';
 import { StaticQuery, graphql } from 'gatsby';
 
+import { Button, Icon, styles } from '@storybook/design-system';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 
-import { Button, Icon, LazyLoad, SocialGraph, styles } from '../../basics';
+import { LazyLoad, SocialGraph } from '../../basics';
 import PageLayout from '../../layout/PageLayout';
 import CommunityHero from './CommunityHero';
 import CommunitySocial from './CommunitySocial';

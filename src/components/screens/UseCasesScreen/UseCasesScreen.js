@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { StaticQuery, graphql } from 'gatsby';
 
+import { styles } from '@storybook/design-system';
 import PageLayout from '../../layout/PageLayout';
 import PageTitle from '../../layout/PageTitle';
 import SocialProof from '../../layout/SocialProof';
@@ -17,7 +18,7 @@ import ComponentList from './ComponentList';
 import LogoToggle from './LogoToggle';
 
 import useSiteMetadata from '../../lib/useSiteMetadata';
-import { SocialGraph, styles } from '../../basics';
+import { SocialGraph } from '../../basics';
 
 import ComponentsSVG from '../../../images/colored-icons/components.svg';
 import PlusSVG from '../../../images/colored-icons/plus.svg';
