@@ -27,7 +27,7 @@ const ModalContents = ({ onClose }) => (
   </div>
 );
 
-storiesOf('basics/modal/WithModal', module)
+storiesOf('Frontpage|basics/modal/WithModal', module)
   .addDecorator(storyFn => (
     <div style={{ width: '1200px', height: '800px', background: 'purple', color: 'white' }}>
       This is an example background {storyFn()}

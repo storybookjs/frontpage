@@ -6,7 +6,7 @@ import { action } from '@storybook/addon-actions';
 import Input from './Input';
 
 const onChange = action('change');
-storiesOf('basics/Input', module)
+storiesOf('Frontpage|basics/Input', module)
   .add('all inputs', () => (
     <form style={{ background: '#EEEEEE', padding: '3em' }}>
       <Input value="Default" icon="email" onChange={onChange} />

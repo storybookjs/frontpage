@@ -35,10 +35,12 @@ if (window.navigator.userAgent.match('Chromatic')) {
   LazyLoad.disabled = true;
 }
 
-// automatically import all files ending in *.stories.js
-const req = require.context('../src', true, /.stories.js$/);
-
 function loadStories() {
+  // automatically import all files ending in *.stories.js
+  let req = require.context('../src', true, /.stories.js$/);
+  req.keys().forEach(filename => req(filename));
+
+  req = require.context('../node_modules/@storybook/design-system', true, /.stories.js$/);
   req.keys().forEach(filename => req(filename));
 }
 

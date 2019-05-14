@@ -6,7 +6,7 @@ import { PureTeamScreen } from './TeamScreen';
 import { gitHubRepoData } from '../IndexScreen/Hero.stories';
 import { allMediumPost } from '../../layout/Footer.stories';
 
-storiesOf('screens/TeamScreen/TeamScreen', module).add(
+storiesOf('Frontpage|screens/TeamScreen/TeamScreen', module).add(
   'default',
   () => <PureTeamScreen data={{ gitHubRepoData, allMediumPost }} />,
   {

@@ -49,7 +49,7 @@ const List = styled.div`
   flex-flow: row wrap;
 `;
 
-storiesOf('basics/Icon', module)
+storiesOf('Frontpage|basics/Icon', module)
   .add('labels', () => (
     <List>
       {Object.keys(icons).map(key => (

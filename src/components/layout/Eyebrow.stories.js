@@ -5,7 +5,7 @@ import { Link } from '../basics';
 
 import Eyebrow from './Eyebrow';
 
-storiesOf('layout/Eyebrow', module).add('default', () => (
+storiesOf('Frontpage|layout/Eyebrow', module).add('default', () => (
   <div>
     <Eyebrow>
       Default eyebrow lorem ipsum dolor{' '}

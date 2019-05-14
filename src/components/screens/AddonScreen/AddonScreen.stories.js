@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react';
 import { PureAddonScreen } from './AddonScreen';
 import { allMediumPost } from '../../layout/Footer.stories';
 
-storiesOf('screens/AddonScreen/AddonScreen', module).add(
+storiesOf('Frontpage|screens/AddonScreen/AddonScreen', module).add(
   'default',
   () => <PureAddonScreen data={{ allMediumPost }} />,
   {

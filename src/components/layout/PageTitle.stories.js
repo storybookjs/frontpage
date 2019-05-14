@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import PageTitle from './PageTitle';
 
-storiesOf('layout/PageTitle', module).add('all', () => (
+storiesOf('Frontpage|layout/PageTitle', module).add('all', () => (
   <div>
     <PageTitle
       heading="Addons"

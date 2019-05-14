@@ -3,6 +3,6 @@ import { storiesOf } from '@storybook/react';
 
 import NpmDownloadCount from './NpmDownloadCount';
 
-storiesOf('layout/NpmDownloadCount', module).add('default', () => (
+storiesOf('Frontpage|layout/NpmDownloadCount', module).add('default', () => (
   <NpmDownloadCount className="chromatic-ignore" />
 ));

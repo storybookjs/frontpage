@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 
 import Avatar from './Avatar';
 
-storiesOf('basics/Avatar', module)
+storiesOf('Frontpage|basics/Avatar', module)
   .add('large', () => (
     <div>
       <Avatar loading size="large" />

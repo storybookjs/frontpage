@@ -7,7 +7,7 @@ import Link from './Link';
 import Icon from './Icon';
 
 const onLinkClick = action('onLinkClick');
-storiesOf('basics/Link', module).add('all', () => (
+storiesOf('Frontpage|basics/Link', module).add('all', () => (
   <div>
     <Link href="http://google.com">Default</Link>
     <br />

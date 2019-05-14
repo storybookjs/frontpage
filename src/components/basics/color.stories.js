@@ -66,7 +66,7 @@ const monochromeColors = [
   color.lightest,
 ];
 
-storiesOf('basics/color', module).add('all', () => (
+storiesOf('Frontpage|basics/color', module).add('all', () => (
   <Page>
     <ColorWrapper>
       <Swatches>

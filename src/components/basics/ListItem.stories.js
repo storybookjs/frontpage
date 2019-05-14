@@ -5,7 +5,7 @@ import ListItem from './ListItem';
 
 import Icon from './Icon';
 
-storiesOf('basics/ListItem', module)
+storiesOf('Frontpage|basics/ListItem', module)
   .add('all', () => (
     <div>
       <ListItem loading />

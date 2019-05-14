@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 
 import ProgressDots from './ProgressDots';
 
-storiesOf('basics/ProgressDots', module)
+storiesOf('Frontpage|basics/ProgressDots', module)
   .add('loading', () => <ProgressDots loading />)
   .add('starting', () => <ProgressDots steps={4} progress={1} />)
   .add('halfway', () => <ProgressDots steps={4} progress={2} />)

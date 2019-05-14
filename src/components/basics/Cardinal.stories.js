@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 
 import Cardinal from './Cardinal';
 
-storiesOf('basics/Cardinal', module)
+storiesOf('Frontpage|basics/Cardinal', module)
   .add('all cardinals', () => (
     <div style={{ background: 'white' }}>
       <Cardinal loading size="small" />

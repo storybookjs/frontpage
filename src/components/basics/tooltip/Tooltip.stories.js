@@ -16,7 +16,7 @@ const Content = styled.div`
   background: #eee;
 `;
 
-storiesOf('basics/tooltip/Tooltip', module)
+storiesOf('Frontpage|basics/tooltip/Tooltip', module)
   .add('basic, default', () => (
     <Tooltip hasChrome {...mockPopperProps}>
       <Content>Text</Content>

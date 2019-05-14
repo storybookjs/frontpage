@@ -14,7 +14,7 @@ const ImageWrapper = styled.div`
   }
 `;
 
-storiesOf('screens/IndexScreen/ValueProp', module).add('default', () => (
+storiesOf('Frontpage|screens/IndexScreen/ValueProp', module).add('default', () => (
   <div>
     <ValueProp
       orientation="left"

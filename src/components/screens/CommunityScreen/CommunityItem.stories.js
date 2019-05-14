@@ -5,7 +5,7 @@ import CommunityItem from './CommunityItem';
 
 import BrandSVG from '../../../images/community/brand.svg';
 
-storiesOf('screens/CommunityScreen/CommunityItem', module)
+storiesOf('Frontpage|screens/CommunityScreen/CommunityItem', module)
   .add('link', () => (
     <CommunityItem
       image={<img src={BrandSVG} alt="brand" />}

@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 import DirectionSVG from '../../images/colored-icons/direction.svg';
 import Feature from './Feature';
 
-storiesOf('layout/Feature', module)
+storiesOf('Frontpage|layout/Feature', module)
   .add('default', () => (
     <Feature
       image={<img src={DirectionSVG} alt="direction" />}
