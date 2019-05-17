@@ -2,10 +2,10 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { Link as GatsbyLink } from 'gatsby';
 
-import { Icon, styles } from '@storybook/design-system';
+import { Icon, TooltipLinkList, WithTooltip, styles } from '@storybook/design-system';
 import useSiteMetadata from '../lib/useSiteMetadata';
 
-import { Link, TooltipLinkList, WithTooltip } from '../basics';
+import { Link } from '../basics';
 
 import StorybookLogoSVG from '../../images/logo-storybook.svg';
 
@@ -145,11 +145,7 @@ export default function Header({ ...props }) {
 
   const mobileMenu = (
     <MobileMenu>
-      <TooltipLinkList
-        links={navLinks}
-        // TODO: Pass GatsbyLink here
-        LinkWrapper={GatsbyLink}
-      />
+      <TooltipLinkList links={navLinks} LinkWrapper={GatsbyLink} />
     </MobileMenu>
   );
 
@@ -172,7 +168,7 @@ export default function Header({ ...props }) {
                 tertiary={1}
                 href={!isGatsby ? href : undefined}
                 to={isGatsby ? href : undefined}
-                isGatsby={isGatsby}
+                LinkWrapper={GatsbyLink}
               >
                 {title}
               </NavLink>

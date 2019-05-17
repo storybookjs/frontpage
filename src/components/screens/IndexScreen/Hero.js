@@ -5,9 +5,17 @@ import GitHubButton from 'react-github-button';
 
 import 'react-github-button/assets/style.css';
 
-import { Button, Icon, Subheading, styles } from '@storybook/design-system';
+import {
+  Button,
+  Icon,
+  Subheading,
+  WithModal,
+  TooltipMessage,
+  WithTooltip,
+  styles,
+} from '@storybook/design-system';
 
-import { Cardinal, Link, TooltipMessage, WithTooltip, WithModal, Video } from '../../basics';
+import { Cardinal, Link, Video } from '../../basics';
 
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import PlaceholderAspectRatio from '../../layout/PlaceholderAspectRatio';
