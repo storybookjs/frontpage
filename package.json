@@ -55,8 +55,8 @@
     "format": "prettier --write \"src/**/*.js\"",
     "lint": "eslint .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "storybook": "start-storybook -p 6006 -s static",
-    "build-storybook": "build-storybook -s static",
+    "storybook": "NODE_ENV=production start-storybook -p 6006 -s static",
+    "build-storybook": "NODE_ENV=production build-storybook -s static",
     "chromatic": "CHROMATIC_APP_CODE=dd2oqshntir chromatic test"
   },
   "devDependencies": {
