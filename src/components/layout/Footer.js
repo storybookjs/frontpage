@@ -12,7 +12,6 @@ import RepoSVG from '../../images/colored-icons/repo.svg';
 import StorybookLogoSVG from '../../images/logo-storybook.svg';
 import NetlifyLogoSVG from '../../images/logos/user/logo-netlify.svg';
 import ChromaticLogoSVG from '../../images/logos/user/logo-chromatic.svg';
-import TeamCityLogoSVG from '../../images/logos/user/logo-teamcity.svg';
 import CircleCILogoSVG from '../../images/logos/user/logo-circleci.svg';
 
 const { background, color, typography, pageMargins, pageMargin, spacing, breakpoint } = styles;
@@ -203,7 +202,6 @@ const HrWrapper = styled.div`
 
 const Netlify = styled.img``;
 const Chromatic = styled.img``;
-const Teamcity = styled.img``;
 const CircleCI = styled.img``;
 
 const Service = styled.div`
@@ -251,7 +249,7 @@ const Services = styled.div`
     }
   }
 
-  ${Netlify}, ${Chromatic}, ${Teamcity}, ${CircleCI} {
+  ${Netlify}, ${Chromatic}, ${CircleCI} {
     height: 22px;
     width: auto;
     display: inline-block;
@@ -263,13 +261,7 @@ const Services = styled.div`
     }
   }
 
-  ${Teamcity} {
-    /* Makes visual impact the same as other logos */
-    padding: 2px 0;
-    margin-right: 10px;
-  }
-
-  ${Teamcity}, ${CircleCI} {
+  ${CircleCI} {
     /* Turn down the pure black of these logos */
     opacity: .75;
   }
@@ -476,9 +468,6 @@ export default function Footer({ mediumPosts, ...props }) {
         </Service>
         <Service>
           <Text>Continuous integration by</Text>
-          <a href="https://www.jetbrains.com/teamcity/">
-            <Teamcity src={TeamCityLogoSVG} alt="Teamcity" />
-          </a>
           <a href="https://circleci.com/">
             <CircleCI src={CircleCILogoSVG} alt="CircleCI" />
           </a>
