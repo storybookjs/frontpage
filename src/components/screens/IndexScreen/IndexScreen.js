@@ -49,7 +49,7 @@ export function PureIndexScreen({ data: { gitHubRepoData, allMediumPost }, ...pr
       <SocialProof
         heading="Trusted by"
         path="images/logos/user"
-        brands={['github', 'dropbox', 'airbnb', 'lyft', 'mozilla']}
+        brands={['github', 'dropbox', 'airbnb', 'lyft', 'mozilla', 'jetbrains']}
         monochrome
       />
 

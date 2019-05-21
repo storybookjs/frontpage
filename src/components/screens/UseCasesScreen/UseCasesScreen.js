@@ -80,7 +80,7 @@ export function PureUseCasesScreen({ data: { allMediumPost }, ...props }) {
       />
       <PageTitleSocialProof
         path="/images/logos/user"
-        brands={['airbnb', 'govuk', 'atlassian', 'lyft', 'auth0', 'salesforce']}
+        brands={['airbnb', 'govuk', 'atlassian', 'lyft', 'auth0', 'salesforce', 'jetbrains']}
       />
       <Separator />
       <ValueProp
@@ -128,7 +128,7 @@ export function PureUseCasesScreen({ data: { allMediumPost }, ...props }) {
           orientation="center"
           media={<ComponentList />}
           title="Assemble component libraries"
-          desc="Frontend infrastructure developers at Formidable, Auth0, and Artsy create comprehensive component libraries using Storybook."
+          desc="Frontend infrastructure developers at Formidable, Auth0, Artsy, and JetBrains create comprehensive component libraries using Storybook."
           lazyload={false}
         />
         <FeaturesLayout columns={3}>
@@ -221,6 +221,7 @@ export function PureUseCasesScreen({ data: { allMediumPost }, ...props }) {
           'priceline',
           'artsy',
           'apollo',
+          'jetbrains',
         ]}
         grid
       />
