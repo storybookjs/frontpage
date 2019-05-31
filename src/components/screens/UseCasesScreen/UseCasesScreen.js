@@ -30,7 +30,7 @@ import StackSVG from '../../../images/colored-icons/stack.svg';
 import CodeSVG from '../../../images/colored-icons/code.svg';
 import AirBnBLogoSVG from '../../../images/logos/user/logo-airbnb.svg';
 import ArtsyLogoSVG from '../../../images/logos/user/logo-artsy.svg';
-import SalesForceLogoSVG from '../../../images/logos/user/logo-salesforce.svg';
+import CloudbeesLogoSVG from '../../../images/logos/user/logo-cloudbees.svg';
 
 const { background } = styles;
 
@@ -198,13 +198,17 @@ export function PureUseCasesScreen({ data: { allMediumPost }, ...props }) {
       </FeaturesLayout>
       <Testimonial
         text={
-          <span>“Storybook is crucial to our UX process. The “old way” seems ludicrous now!”</span>
+          <span>
+            “Storybook is my go-to when starting a new design system. It makes getting something in
+            place quick and easy for both design and engineering.”
+          </span>
         }
-        avatarUrl="https://avatars3.githubusercontent.com/u/31106469?s=100&v=4"
-        name="Andrew Frankel"
-        jobTitle="Engineering lead"
-        logo={SalesForceLogoSVG}
+        avatarUrl="https://avatars2.githubusercontent.com/u/8724083?s=460&v=4"
+        name="Sarrah Vesselov"
+        jobTitle="Senior UX designer"
+        logo={CloudbeesLogoSVG}
       />
+
       <Separator />
       <SocialProof
         path="/images/logos/user"

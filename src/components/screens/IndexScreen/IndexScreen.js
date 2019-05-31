@@ -17,7 +17,7 @@ import CTA from '../../layout/CTA';
 
 import AtomicDesignLogoSVG from '../../../images/logos/user/logo-atomicdesign.svg';
 import GitlabLogoSVG from '../../../images/logos/user/logo-gitlab.svg';
-import CloudbeesLogoSVG from '../../../images/logos/user/logo-cloudbees.svg';
+import SalesForceLogoSVG from '../../../images/logos/user/logo-salesforce.svg';
 
 const { background } = styles;
 
@@ -225,15 +225,12 @@ export function PureIndexScreen({ data: { gitHubRepoData, allMediumPost }, ...pr
       </BenefitList>
       <Testimonial
         text={
-          <span>
-            “Storybook is my go-to when starting a new design system. It makes getting something in
-            place quick and easy for both design and engineering.”
-          </span>
+          <span>“Storybook is crucial to our UX process. The “old way” seems ludicrous now!”</span>
         }
-        avatarUrl="https://avatars2.githubusercontent.com/u/8724083?s=460&v=4"
-        name="Sarrah Vesselov"
-        jobTitle="Senior UX designer"
-        logo={CloudbeesLogoSVG}
+        avatarUrl="https://avatars3.githubusercontent.com/u/31106469?s=100&v=4"
+        name="Andrew Frankel"
+        jobTitle="Engineering lead"
+        logo={SalesForceLogoSVG}
       />
       <CTA
         text={<span>Storybook is quick to install and it’s easy to get started.</span>}
