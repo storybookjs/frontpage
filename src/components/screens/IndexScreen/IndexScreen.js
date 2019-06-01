@@ -171,7 +171,7 @@ export function PureIndexScreen({ data: { gitHubRepoData, allMediumPost }, ...pr
           }
           avatarUrl="https://avatars0.githubusercontent.com/u/3028593?s=460&v=4"
           name="Taurie Davis"
-          jobTitle="Staff UX"
+          jobTitle="Author of Building Design Systems"
           logo={GitlabLogoSVG}
         />
 

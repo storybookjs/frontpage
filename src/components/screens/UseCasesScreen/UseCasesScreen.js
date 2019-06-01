@@ -205,7 +205,7 @@ export function PureUseCasesScreen({ data: { allMediumPost }, ...props }) {
         }
         avatarUrl="https://avatars2.githubusercontent.com/u/8724083?s=460&v=4"
         name="Sarrah Vesselov"
-        jobTitle="Senior UX designer"
+        jobTitle="Author of Building Design Systems"
         logo={CloudbeesLogoSVG}
       />
 
