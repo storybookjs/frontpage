@@ -325,6 +325,7 @@ export default function Footer({ mediumPosts, ...props }) {
     navLinks = {},
     framework = {},
     docs = {},
+    tutorials,
     gitHub = {},
   } = urls;
 
@@ -367,7 +368,7 @@ export default function Footer({ mediumPosts, ...props }) {
                   as you build a UI from scratch.
                 </ResourceDesc>
                 <ResourceActions>
-                  <ResourceAction href="https://www.learnstorybook.com/" withArrow>
+                  <ResourceAction withArrow href={tutorials}>
                     Learn Storybook now
                   </ResourceAction>
                 </ResourceActions>
