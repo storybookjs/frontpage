@@ -221,6 +221,11 @@ export function PureAddonScreen({ data: { allMediumPost }, ...props }) {
           desc="An elegant way to wrap your component stories and change their contextual environment directly and dynamically in Storybook UI!"
           addonUrl="https://github.com/leoyli/addon-contexts"
         />
+        <AddonItem
+          title="Design Token"
+          desc="Automatically generate design token documentation from your stylesheets and icon files."
+          addonUrl="https://github.com/UX-and-I/storybook-design-token"
+        />
 
         <Subheader>Test</Subheader>
         <AddonItem
