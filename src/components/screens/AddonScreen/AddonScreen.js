@@ -221,11 +221,6 @@ export function PureAddonScreen({ data: { allMediumPost }, ...props }) {
           desc="An elegant way to wrap your component stories and change their contextual environment directly and dynamically in Storybook UI!"
           addonUrl="https://github.com/leoyli/addon-contexts"
         />
-        <AddonItem
-          title="Design Token"
-          desc="Automatically generate design token documentation from your stylesheets and icon files."
-          addonUrl="https://github.com/UX-and-I/storybook-design-token"
-        />
 
         <Subheader>Test</Subheader>
         <AddonItem
@@ -314,6 +309,11 @@ export function PureAddonScreen({ data: { allMediumPost }, ...props }) {
           title="Root Attribute"
           desc="Provides the ability to change the html or body attribute."
           addonUrl="https://github.com/le0pard/storybook-addon-root-attribute"
+        />
+        <AddonItem
+          title="Design Token"
+          desc="Automatically generate design token documentation from your stylesheets and icon files."
+          addonUrl="https://github.com/UX-and-I/storybook-design-token"
         />
 
         <Subheader>Design</Subheader>
