@@ -198,7 +198,7 @@ export function PureIndexScreen({ data: { gitHubRepoData, allMediumPost }, ...pr
       <CTA
         text={<span>Storybook is quick to install and it’s easy to get started.</span>}
         action={
-          <Button secondary isLink href={docs.home}>
+          <Button appearance="secondary" isLink href={docs.home}>
             Get started
           </Button>
         }

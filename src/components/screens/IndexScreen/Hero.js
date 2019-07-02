@@ -8,6 +8,7 @@ import 'react-github-button/assets/style.css';
 import {
   Button,
   Icon,
+  Link,
   Subheading,
   WithModal,
   TooltipMessage,
@@ -15,7 +16,7 @@ import {
   styles,
 } from '@storybook/design-system';
 
-import { Cardinal, Link, Video } from '../../basics';
+import { Cardinal, Video } from '../../basics';
 
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import PlaceholderAspectRatio from '../../layout/PlaceholderAspectRatio';
