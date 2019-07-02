@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { Link } from '../basics';
+import { Link } from '@storybook/design-system';
 
 import Eyebrow from './Eyebrow';
 

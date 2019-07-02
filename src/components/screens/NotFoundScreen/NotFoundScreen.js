@@ -4,14 +4,13 @@ import Helmet from 'react-helmet';
 import styled from 'styled-components';
 import { StaticQuery, graphql } from 'gatsby';
 
-import { styles } from '@storybook/design-system';
+import { Link, styles } from '@storybook/design-system';
 import PageLayout from '../../layout/PageLayout';
 import PageTitle from '../../layout/PageTitle';
 import Feature from '../../layout/Feature';
 import FeaturesLayout from '../../layout/FeaturesLayout';
 
 import useSiteMetadata from '../../lib/useSiteMetadata';
-import { Link } from '../../basics';
 import GitHubSVG from '../../../images/logos/social/github.svg';
 import DiscordSVG from '../../../images/logos/social/discord.svg';
 

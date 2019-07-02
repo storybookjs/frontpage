@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { styles } from '@storybook/design-system';
-import { LazyLoad, Link } from '../../basics';
+import { Link, styles } from '@storybook/design-system';
+import { LazyLoad } from '../../basics';
 
 const { color, typography, breakpoint } = styles;
 

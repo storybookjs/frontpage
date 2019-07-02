@@ -225,8 +225,8 @@ export function PureCommunityScreen({ data: { gitHubRepoData, allMediumPost }, .
             desc="Storybook is maintained by contributors from around the globe. Join us in building the most popular component explorer."
           >
             <DiscordText>Have questions about contributing? Ask the community on chat.</DiscordText>
-            <Button outline secondary isLink href={chat}>
-              <Icon icon="discord" /> Chat on Discord
+            <Button appearance="secondaryOutline" isLink href={chat}>
+              <Icon icon="discord" aria-hidden /> Chat on Discord
             </Button>
           </Sidebar>
           <List>
@@ -259,7 +259,7 @@ export function PureCommunityScreen({ data: { gitHubRepoData, allMediumPost }, .
           desc="Donations go to hosting, swag for contributors, documentation and learning materials."
           loneChild
         >
-          <Button secondary isLink href={openCollective} target="_blank">
+          <Button appearance="secondary" isLink href={openCollective} target="_blank">
             Donate to Storybook
           </Button>
         </Sidebar>

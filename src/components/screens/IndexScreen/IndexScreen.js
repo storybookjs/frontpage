@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 
-import { Badge, Button, styles } from '@storybook/design-system';
+import { Badge, Button, Link, styles } from '@storybook/design-system';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 
-import { Link, SocialGraph, Video } from '../../basics';
+import { SocialGraph, Video } from '../../basics';
 import PageLayout from '../../layout/PageLayout';
 import Hero from './Hero';
 import SocialProof from '../../layout/SocialProof';

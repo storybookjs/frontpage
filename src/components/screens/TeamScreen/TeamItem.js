@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Avatar, Icon, styles } from '@storybook/design-system';
-import { LazyLoad, Link } from '../../basics';
+import { Avatar, Icon, Link, styles } from '@storybook/design-system';
+import { LazyLoad } from '../../basics';
 
 const { color, typography, breakpoint } = styles;
 

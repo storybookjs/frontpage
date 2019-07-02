@@ -137,7 +137,7 @@ const NavWrapper = styled.nav`
   }
 `;
 
-const MobileMenuLinkWrapper = ({ href, isGatsby, ...props }) => {
+const LinkWrapper = ({ href, isGatsby, ...props }) => {
   if (isGatsby) {
     return <GatsbyLink to={href} {...props} />;
   }
@@ -146,7 +146,7 @@ const MobileMenuLinkWrapper = ({ href, isGatsby, ...props }) => {
   return <a href={href} {...props} />;
 };
 
-MobileMenuLinkWrapper.propTypes = {
+LinkWrapper.propTypes = {
   href: PropTypes.string.isRequired,
   isGatsby: PropTypes.bool.isRequired,
 };
@@ -157,7 +157,7 @@ export default function Header({ ...props }) {
 
   const mobileMenu = (
     <MobileMenu>
-      <TooltipLinkList links={navLinks} LinkWrapper={MobileMenuLinkWrapper} />
+      <TooltipLinkList links={navLinks} LinkWrapper={LinkWrapper} />
     </MobileMenu>
   );
 
@@ -176,7 +176,7 @@ export default function Header({ ...props }) {
         <NavGroup right>
           {navLinks.map(({ title, href, isGatsby }) => (
             <NavItem showDesktop key={title}>
-              <NavLink tertiary href={href} isGatsby={isGatsby} LinkWrapper={MobileMenuLinkWrapper}>
+              <NavLink tertiary href={href} isGatsby={isGatsby} LinkWrapper={LinkWrapper}>
                 {title}
               </NavLink>
             </NavItem>
