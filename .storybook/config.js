@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { configure, addDecorator } from '@storybook/react';
 import 'storybook-chromatic';
+import { isChromatic } from 'storybook-chromatic';
 import WebFont from 'webfontloader';
 import LazyLoad from '../src/components/basics/LazyLoad';
 
@@ -40,8 +41,10 @@ function loadStories() {
   let req = require.context('../src', true, /.stories.js$/);
   req.keys().forEach(filename => req(filename));
 
-  req = require.context('../node_modules/@storybook/design-system', true, /.stories.js$/);
-  req.keys().forEach(filename => req(filename));
+  if (!isChromatic()) {
+    req = require.context('../node_modules/@storybook/design-system', true, /.stories.js$/);
+    req.keys().forEach(filename => req(filename));
+  }
 }
 
 configure(loadStories, module);
