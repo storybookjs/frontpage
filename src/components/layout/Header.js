@@ -1,11 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { Link as GatsbyLink } from 'gatsby';
 
-import { Icon, TooltipLinkList, WithTooltip, styles } from '@storybook/design-system';
+import { Icon, Link, TooltipLinkList, WithTooltip, styles } from '@storybook/design-system';
 import useSiteMetadata from '../lib/useSiteMetadata';
-
-import { Link } from '../basics';
 
 import StorybookLogoSVG from '../../images/logo-storybook.svg';
 
@@ -67,7 +66,6 @@ const Menu = styled(Link)`
   justify-content: flex-end;
 
   svg {
-    vertical-align: top;
     height: 1rem;
     width: 1rem;
     margin: 0;
@@ -139,13 +137,27 @@ const NavWrapper = styled.nav`
   }
 `;
 
+const MobileMenuLinkWrapper = ({ href, isGatsby, ...props }) => {
+  if (isGatsby) {
+    return <GatsbyLink to={href} {...props} />;
+  }
+
+  // eslint-disable-next-line jsx-a11y/anchor-has-content
+  return <a href={href} {...props} />;
+};
+
+MobileMenuLinkWrapper.propTypes = {
+  href: PropTypes.string.isRequired,
+  isGatsby: PropTypes.bool.isRequired,
+};
+
 export default function Header({ ...props }) {
   const { latestVersion, urls = {} } = useSiteMetadata();
   const { navLinks = {}, gitHub = {} } = urls;
 
   const mobileMenu = (
     <MobileMenu>
-      <TooltipLinkList links={navLinks} LinkWrapper={GatsbyLink} />
+      <TooltipLinkList links={navLinks} LinkWrapper={MobileMenuLinkWrapper} />
     </MobileMenu>
   );
 
@@ -154,7 +166,7 @@ export default function Header({ ...props }) {
       <Nav>
         <NavGroup>
           <NavItem>
-            <LogotypeWrapper isGatsby to="/">
+            <LogotypeWrapper LinkWrapper={GatsbyLink} to="/">
               <img src={StorybookLogoSVG} alt="Storybook" />
             </LogotypeWrapper>
             <Version href={gitHub.releases}>{latestVersion}</Version>
@@ -164,12 +176,7 @@ export default function Header({ ...props }) {
         <NavGroup right>
           {navLinks.map(({ title, href, isGatsby }) => (
             <NavItem showDesktop key={title}>
-              <NavLink
-                tertiary={1}
-                href={!isGatsby ? href : undefined}
-                to={isGatsby ? href : undefined}
-                LinkWrapper={GatsbyLink}
-              >
+              <NavLink tertiary href={href} isGatsby={isGatsby} LinkWrapper={MobileMenuLinkWrapper}>
                 {title}
               </NavLink>
             </NavItem>
