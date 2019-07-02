@@ -183,7 +183,7 @@ export default function Header({ ...props }) {
           ))}
 
           <NavItem showMobile>
-            <WithTooltip placement="top" trigger="click" tooltip={mobileMenu}>
+            <WithTooltip tagName="span" placement="top" trigger="click" tooltip={mobileMenu}>
               <Menu secondary icon={1} isButton>
                 <Icon icon="menu" />
               </Menu>
