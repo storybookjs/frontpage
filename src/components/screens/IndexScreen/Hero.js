@@ -399,13 +399,13 @@ export default function Hero({
           and Angular. It makes building stunning UIs organized and efficient.
         </Subtitle>
         <PitchActions>
-          <Button primary isLink href={docs.home}>
+          <Button appearance="primary" isLink href={docs.home}>
             Get Started
           </Button>
           <WithModal startOpen={startOpen} modal={Modal}>
             {({ onOpen }) => (
-              <Button outline primary onClick={onOpen}>
-                <Icon icon="play" />
+              <Button appearance="primaryOutline" onClick={onOpen}>
+                <Icon icon="play" aria-hidden />
                 Watch video
               </Button>
             )}
