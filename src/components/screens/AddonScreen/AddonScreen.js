@@ -330,8 +330,7 @@ export function PureAddonScreen({ data: { allMediumPost }, ...props }) {
         />
         <div>
           <Button
-            outline
-            secondary
+            appearance="secondaryOutline"
             isLink
             href={`${
               gitHub.frontpage
@@ -345,7 +344,7 @@ export function PureAddonScreen({ data: { allMediumPost }, ...props }) {
       <CTA
         text={<span>Build UIs faster. Add Storybook to your project now.</span>}
         action={
-          <Button secondary isLink href={docs.home}>
+          <Button appearance="secondary" isLink href={docs.home}>
             Get started
           </Button>
         }
