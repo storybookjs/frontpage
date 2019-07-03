@@ -28,7 +28,7 @@ import BackgroundsSVG from '../../../images/addons/backgrounds.svg';
 const { color, typography, spacing, pageMargins, breakpoint } = styles;
 
 const Heading = styled.h2`
-  font-weight: ${typography.weight.black};
+  font-weight: ${typography.weight.extrabold};
   line-height: 1;
 
   font-size: ${typography.size.m1}px;

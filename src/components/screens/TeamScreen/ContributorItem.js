@@ -8,7 +8,7 @@ const { color, typography, breakpoint } = styles;
 
 const Heading = styled.div`
   font-size: ${typography.size.s3}px;
-  font-weight: ${typography.weight.black};
+  font-weight: ${typography.weight.extrabold};
   color: ${color.darkest};
   margin-bottom: 1rem;
 `;

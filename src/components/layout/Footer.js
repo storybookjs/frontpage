@@ -32,12 +32,12 @@ const SubLink = styled(Link)`
 `;
 
 const ResourceTitle = styled.div`
-  font-weight: ${typography.weight.black};
+  font-weight: ${typography.weight.extrabold};
   margin-bottom: 0.25rem;
 `;
 
 const ResourceTitleLink = styled(Link)`
-  font-weight: ${typography.weight.black};
+  font-weight: ${typography.weight.extrabold};
   margin-bottom: 0.25rem;
 
   svg {

@@ -7,7 +7,7 @@ import { styles } from '@storybook/design-system';
 const { spacing, typography, pageMargin, pageMargins, breakpoint } = styles;
 
 const Text = styled.div`
-  font-weight: ${typography.weight.black};
+  font-weight: ${typography.weight.extrabold};
 
   font-size: ${typography.size.m1}px;
   line-height: ${typography.size.m2}px;

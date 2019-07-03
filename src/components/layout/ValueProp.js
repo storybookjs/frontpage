@@ -14,7 +14,7 @@ const Media = styled.div`
 
 const Title = styled.h2`
   font-size: ${typography.size.m2}px;
-  font-weight: ${typography.weight.black};
+  font-weight: ${typography.weight.extrabold};
   line-height: 24px;
   margin-bottom: 0.5rem;
 

@@ -9,7 +9,7 @@ import CustomSVG from '../../../images/addons/custom.svg';
 
 const { background, color, spacing, typography, pageMargin, breakpoint } = styles;
 const Title = styled.div`
-  font-weight: ${typography.weight.black};
+  font-weight: ${typography.weight.extrabold};
   font-size: ${typography.size.s3}px;
   line-height: 1.5rem;
 

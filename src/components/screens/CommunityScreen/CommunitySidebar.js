@@ -7,7 +7,7 @@ import { styles } from '@storybook/design-system';
 const { color, typography, breakpoint } = styles;
 
 const Title = styled.h2`
-  font-weight: ${typography.weight.black};
+  font-weight: ${typography.weight.extrabold};
   font-size: ${typography.size.m2}px;
   margin-bottom: 0.75rem;
   line-height: 1.5rem;

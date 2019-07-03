@@ -27,7 +27,7 @@ const ImageOuter = styled.div`
 
 const Name = styled.div`
   font-size: ${typography.size.s3}px;
-  font-weight: ${typography.weight.black};
+  font-weight: ${typography.weight.extrabold};
   color: ${color.darkest};
   margin-bottom: 0.25rem;
 `;

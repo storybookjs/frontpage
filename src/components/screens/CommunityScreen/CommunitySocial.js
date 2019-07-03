@@ -27,7 +27,7 @@ const Image = styled.img`
 `;
 
 const Title = styled.div`
-  font-weight: ${typography.weight.black};
+  font-weight: ${typography.weight.extrabold};
   font-size: ${typography.size.s3}px;
   color: ${color.darkest};
   line-height: 20px;
