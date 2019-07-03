@@ -71,6 +71,7 @@ export function PureIndexScreen({ data: { gitHubRepoData, allMediumPost }, ...pr
               src="videos/storybook-workflow-build-optimized-lg.mp4"
               alt="Storybook build workflow video"
               shouldChangeSize
+              disableremoteplayback="true"
             />
           </Placeholder>
         }
@@ -132,6 +133,7 @@ export function PureIndexScreen({ data: { gitHubRepoData, allMediumPost }, ...pr
                 src="videos/storybook-workflow-test-optimized-lg.mp4"
                 alt="Storybook testing workflow video"
                 shouldChangeSize
+                disableremoteplayback="true"
               />
             </Placeholder>
           }
@@ -189,6 +191,7 @@ export function PureIndexScreen({ data: { gitHubRepoData, allMediumPost }, ...pr
               src="videos/storybook-workflow-share-optimized-lg.mp4"
               alt="Storybook component reuse workflow video"
               shouldChangeSize
+              disableremoteplayback="true"
             />
           </Placeholder>
         }
