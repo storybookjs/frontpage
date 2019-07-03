@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { StaticQuery, graphql } from 'gatsby';
 
+import { Button, Icon, Subheading, styles } from '@storybook/design-system';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 
-import { Button, Icon, SocialGraph, Subheading, styles } from '../../basics';
+import { SocialGraph } from '../../basics';
 import PageLayout from '../../layout/PageLayout';
 import PageTitle from '../../layout/PageTitle';
 import AddonItem from './AddonItem';
@@ -27,7 +28,7 @@ import BackgroundsSVG from '../../../images/addons/backgrounds.svg';
 const { color, typography, spacing, pageMargins, breakpoint } = styles;
 
 const Heading = styled.h2`
-  font-weight: ${typography.weight.black};
+  font-weight: ${typography.weight.extrabold};
   line-height: 1;
 
   font-size: ${typography.size.m1}px;
@@ -329,8 +330,7 @@ export function PureAddonScreen({ data: { allMediumPost }, ...props }) {
         />
         <div>
           <Button
-            outline
-            secondary
+            appearance="secondaryOutline"
             isLink
             href={`${
               gitHub.frontpage
@@ -344,7 +344,7 @@ export function PureAddonScreen({ data: { allMediumPost }, ...props }) {
       <CTA
         text={<span>Build UIs faster. Add Storybook to your project now.</span>}
         action={
-          <Button secondary isLink href={docs.home}>
+          <Button appearance="secondary" isLink href={docs.home}>
             Get started
           </Button>
         }

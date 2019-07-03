@@ -6,6 +6,6 @@ import { action } from '@storybook/addon-actions';
 import ComponentList from './ComponentList';
 
 const onSelectIndex = action('onSelectIndex');
-storiesOf('screens/UseCasesScreen/ComponentList', module).add('full', () => (
+storiesOf('Frontpage|screens/UseCasesScreen/ComponentList', module).add('full', () => (
   <ComponentList selectedIndex={0} onSelectIndex={onSelectIndex} />
 ));

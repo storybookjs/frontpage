@@ -12,7 +12,7 @@ const Benefit = (
   />
 );
 
-storiesOf('screens/IndexScreen/BenefitList', module).add('default', () => (
+storiesOf('Frontpage|screens/IndexScreen/BenefitList', module).add('default', () => (
   <BenefitList>
     {Benefit}
     {Benefit}

@@ -11,7 +11,7 @@ export const gitHubRepoData = {
   name: 'storybook',
 };
 
-storiesOf('screens/IndexScreen/Hero', module).add('default', () => (
+storiesOf('Frontpage|screens/IndexScreen/Hero', module).add('default', () => (
   <div style={{ padding: '3rem 0' }}>
     <Hero gitHubRepoData={gitHubRepoData} />
   </div>

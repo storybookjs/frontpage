@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react';
 import { PureSupportScreen } from './SupportScreen';
 import { allMediumPost } from '../../layout/Footer.stories';
 
-storiesOf('screens/SupportScreen/SupportScreen', module).add(
+storiesOf('Frontpage|screens/SupportScreen/SupportScreen', module).add(
   'default',
   () => <PureSupportScreen data={{ allMediumPost }} />,
   {

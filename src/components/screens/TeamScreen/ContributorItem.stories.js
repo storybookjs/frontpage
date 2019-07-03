@@ -44,7 +44,7 @@ export const contributors = [
   },
 ];
 
-storiesOf('screens/TeamScreen/ContributorItem', module).add('default', () => (
+storiesOf('Frontpage|screens/TeamScreen/ContributorItem', module).add('default', () => (
   <ContributorItem
     contributors={contributors}
     contributorCount={550}

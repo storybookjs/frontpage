@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { hoistStatics, compose, withState } from 'recompose';
 
-import { styles, animation } from '../../basics';
+import { styles, animation } from '@storybook/design-system';
+
 import LogoToggle from './LogoToggle';
 import CanvasSVG from '../../../images/use-cases/canvas.svg';
 

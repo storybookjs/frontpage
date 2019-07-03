@@ -1,9 +1,9 @@
 import React from 'react';
 
 import styled from 'styled-components';
+import { styles } from '@storybook/design-system';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 
-import { styles } from '../../basics';
 import GitHubSVG from '../../../images/logos/social/github.svg';
 import TwitterSVG from '../../../images/logos/social/twitter.svg';
 import MediumSVG from '../../../images/logos/social/medium.svg';
@@ -27,7 +27,7 @@ const Image = styled.img`
 `;
 
 const Title = styled.div`
-  font-weight: ${typography.weight.black};
+  font-weight: ${typography.weight.extrabold};
   font-size: ${typography.size.s3}px;
   color: ${color.darkest};
   line-height: 20px;

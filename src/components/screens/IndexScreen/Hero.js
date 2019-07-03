@@ -7,16 +7,16 @@ import 'react-github-button/assets/style.css';
 
 import {
   Button,
-  Cardinal,
   Icon,
   Link,
   Subheading,
+  WithModal,
   TooltipMessage,
   WithTooltip,
-  WithModal,
   styles,
-  Video,
-} from '../../basics';
+} from '@storybook/design-system';
+
+import { Cardinal, Video } from '../../basics';
 
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import PlaceholderAspectRatio from '../../layout/PlaceholderAspectRatio';
@@ -422,13 +422,13 @@ export default function Hero({
           and Angular. It makes building stunning UIs organized and efficient.
         </Subtitle>
         <PitchActions>
-          <Button primary isLink href={docs.home}>
+          <Button appearance="primary" isLink href={docs.home}>
             Get Started
           </Button>
           <WithModal startOpen={startOpen} modal={Modal}>
             {({ onOpen }) => (
-              <Button outline primary onClick={onOpen}>
-                <Icon icon="play" />
+              <Button appearance="primaryOutline" onClick={onOpen}>
+                <Icon icon="play" aria-hidden />
                 Watch video
               </Button>
             )}
@@ -440,6 +440,7 @@ export default function Hero({
           <VideoWrapper>
             <Video src="/videos/storybook-hero-video-optimized.mp4" alt="Demo video" />
             <TooltipCanvas
+              tagName="span"
               placement="bottom"
               trigger="hover"
               tooltip={
@@ -456,6 +457,7 @@ export default function Hero({
               <div />
             </TooltipCanvas>
             <TooltipSidebar
+              tagName="span"
               placement="bottom"
               trigger="hover"
               tooltip={
@@ -472,6 +474,7 @@ export default function Hero({
               <div />
             </TooltipSidebar>
             <TooltipAddons
+              tagName="span"
               placement="bottom"
               trigger="hover"
               tooltip={

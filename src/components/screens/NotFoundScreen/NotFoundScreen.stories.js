@@ -5,6 +5,6 @@ import { storiesOf } from '@storybook/react';
 import { PureNotFoundScreen } from './NotFoundScreen';
 import { allMediumPost } from '../../layout/Footer.stories';
 
-storiesOf('screens/NotFoundScreen/NotFoundScreen', module).add('default', () => (
+storiesOf('Frontpage|screens/NotFoundScreen/NotFoundScreen', module).add('default', () => (
   <PureNotFoundScreen data={{ allMediumPost }} />
 ));

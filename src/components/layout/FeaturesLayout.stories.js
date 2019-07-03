@@ -6,7 +6,7 @@ import Feature from './Feature';
 import FeaturesLayout from './FeaturesLayout';
 import DirectionSVG from '../../images/colored-icons/direction.svg';
 
-storiesOf('layout/FeaturesLayout', module)
+storiesOf('Frontpage|layout/FeaturesLayout', module)
   .add('2 column', () => (
     <FeaturesLayout columns={2}>
       <Feature

@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Avatar, Link, styles } from '../../basics';
+import { Avatar, Link, styles } from '@storybook/design-system';
 
 const { color, typography, breakpoint } = styles;
 
 const Heading = styled.div`
   font-size: ${typography.size.s3}px;
-  font-weight: ${typography.weight.black};
+  font-weight: ${typography.weight.extrabold};
   color: ${color.darkest};
   margin-bottom: 1rem;
 `;

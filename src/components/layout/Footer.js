@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { Link as GatsbyLink } from 'gatsby';
 
+import { Icon, Link, Subheading, styles } from '@storybook/design-system';
 import useSiteMetadata from '../lib/useSiteMetadata';
-import { Icon, Link, Subheading, styles } from '../basics';
 
 import ConfirmedMailingList from './ConfirmedMailingList';
 
@@ -31,12 +32,12 @@ const SubLink = styled(Link)`
 `;
 
 const ResourceTitle = styled.div`
-  font-weight: ${typography.weight.black};
+  font-weight: ${typography.weight.extrabold};
   margin-bottom: 0.25rem;
 `;
 
 const ResourceTitleLink = styled(Link)`
-  font-weight: ${typography.weight.black};
+  font-weight: ${typography.weight.extrabold};
   margin-bottom: 0.25rem;
 
   svg {
@@ -314,6 +315,20 @@ const FooterWrapper = styled.div`
   line-height: 20px;
 `;
 
+const LinkWrapper = ({ href, isGatsby, ...props }) => {
+  if (isGatsby) {
+    return <GatsbyLink to={href} {...props} />;
+  }
+
+  // eslint-disable-next-line jsx-a11y/anchor-has-content
+  return <a href={href} {...props} />;
+};
+
+LinkWrapper.propTypes = {
+  href: PropTypes.string.isRequired,
+  isGatsby: PropTypes.bool.isRequired,
+};
+
 export default function Footer({ mediumPosts, ...props }) {
   const { urls = {} } = useSiteMetadata();
   const {
@@ -414,11 +429,11 @@ export default function Footer({ mediumPosts, ...props }) {
           <Title>Storybook</Title>
           {navLinks.map(({ title, href, isGatsby }) => (
             <FooterLink
-              tertiary={1}
+              tertiary
               key={title}
-              href={!isGatsby ? href : undefined}
-              to={isGatsby ? href : undefined}
+              href={href}
               isGatsby={isGatsby}
+              LinkWrapper={LinkWrapper}
             >
               {title}
             </FooterLink>

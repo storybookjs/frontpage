@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-import { LazyLoad, ProgressDots, styles, animation } from '../../basics';
+import { ProgressDots, styles, animation } from '@storybook/design-system';
+import { LazyLoad } from '../../basics';
 
 const { color, typography, paper } = styles;
 const { glow } = animation;

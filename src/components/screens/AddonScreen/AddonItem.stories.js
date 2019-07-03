@@ -5,7 +5,7 @@ import AddonItem from './AddonItem';
 
 import KnobsSVG from '../../../images/addons/knobs.svg';
 
-storiesOf('screens/AddonScreen/AddonItem', module)
+storiesOf('Frontpage|screens/AddonScreen/AddonItem', module)
   .add('official', () => (
     <AddonItem
       appearance="official"

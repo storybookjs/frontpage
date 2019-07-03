@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 
+import { Badge, Button, Link, styles } from '@storybook/design-system';
 import useSiteMetadata from '../../lib/useSiteMetadata';
-import { Badge, Button, Link, SocialGraph, styles, Video } from '../../basics';
+
+import { SocialGraph, Video } from '../../basics';
 import PageLayout from '../../layout/PageLayout';
 import Hero from './Hero';
 import SocialProof from '../../layout/SocialProof';
@@ -235,7 +237,7 @@ export function PureIndexScreen({ data: { gitHubRepoData, allMediumPost }, ...pr
       <CTA
         text={<span>Storybook is quick to install and it’s easy to get started.</span>}
         action={
-          <Button secondary isLink href={docs.home}>
+          <Button appearance="secondary" isLink href={docs.home}>
             Get started
           </Button>
         }

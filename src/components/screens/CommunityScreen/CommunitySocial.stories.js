@@ -3,6 +3,6 @@ import { storiesOf } from '@storybook/react';
 
 import CommunitySocial from './CommunitySocial';
 
-storiesOf('screens/CommunityScreen/CommunitySocial', module).add('default', () => (
+storiesOf('Frontpage|screens/CommunityScreen/CommunitySocial', module).add('default', () => (
   <CommunitySocial />
 ));

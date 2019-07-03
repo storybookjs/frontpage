@@ -39,4 +39,4 @@ export const allMediumPost = {
   ],
 };
 
-storiesOf('layout/Footer', module).add('default', () => <Footer mediumPosts={allMediumPost} />);
+storiesOf('Frontpage|layout/Footer', module).add('default', () => <Footer mediumPosts={allMediumPost} />);
