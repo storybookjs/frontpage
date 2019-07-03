@@ -1,4 +1,4 @@
-const gitHubOrg = `https://github.com/storybooks`;
+const gitHubOrg = `https://github.com/storybookjs`;
 const homepageUrl = `https://storybook.js.org`;
 const npmApiBase = `https://api.npmjs.org/downloads/point/last-month`;
 const docsUrl = `${homepageUrl}/docs`;
@@ -61,7 +61,7 @@ const siteMetadata = {
 
     // Brand
     brand: `${gitHubOrg}/brand`,
-    designSystem: `https://storybooks-official.netlify.com`,
+    designSystem: `${gitHubOrg}/design-system`,
     badge: `${gitHubOrg}/brand/tree/master/badge`,
     presentation: `${gitHubOrg}/brand/tree/master/presentation`,
     video: `${gitHubOrg}/brand/tree/master/video`,
