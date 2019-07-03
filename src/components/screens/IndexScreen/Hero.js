@@ -418,6 +418,7 @@ export default function Hero({
           <VideoWrapper>
             <Video src="/videos/storybook-hero-video-optimized.mp4" alt="Demo video" />
             <TooltipCanvas
+              tagName="span"
               placement="bottom"
               trigger="hover"
               tooltip={
@@ -434,6 +435,7 @@ export default function Hero({
               <div />
             </TooltipCanvas>
             <TooltipSidebar
+              tagName="span"
               placement="bottom"
               trigger="hover"
               tooltip={
@@ -450,6 +452,7 @@ export default function Hero({
               <div />
             </TooltipSidebar>
             <TooltipAddons
+              tagName="span"
               placement="bottom"
               trigger="hover"
               tooltip={
