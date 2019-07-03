@@ -12,9 +12,14 @@ import Hero from './Hero';
 import SocialProof from '../../layout/SocialProof';
 import PlaceholderAspectRatio from '../../layout/PlaceholderAspectRatio';
 import ValueProp from '../../layout/ValueProp';
+import Testimonial from '../../layout/Testimonial';
 import BenefitItem from './BenefitItem';
 import BenefitList from './BenefitList';
 import CTA from '../../layout/CTA';
+
+import AtomicDesignLogoSVG from '../../../images/logos/user/logo-atomicdesign.svg';
+import GitlabLogoSVG from '../../../images/logos/user/logo-gitlab.svg';
+import SalesForceLogoSVG from '../../../images/logos/user/logo-salesforce.svg';
 
 const { background } = styles;
 
@@ -51,7 +56,7 @@ export function PureIndexScreen({ data: { gitHubRepoData, allMediumPost }, ...pr
       <SocialProof
         heading="Trusted by"
         path="images/logos/user"
-        brands={['github', 'dropbox', 'airbnb', 'lyft', 'mozilla']}
+        brands={['github', 'dropbox', 'airbnb', 'lyft', 'mozilla', 'jetbrains']}
         monochrome
       />
 
@@ -103,7 +108,19 @@ export function PureIndexScreen({ data: { gitHubRepoData, allMediumPost }, ...pr
           desc="Use addons to build UI faster, document a component library, and streamline your workflow."
         />
       </BenefitList>
-
+      <Testimonial
+        text={
+          <span>
+            “Storybook is a powerful frontend workshop environment tool that allows teams to design,
+            build, and organize UI components (and even full screens!) without getting tripped up
+            over business logic and plumbing.”
+          </span>
+        }
+        avatarUrl="https://avatars3.githubusercontent.com/u/383701?s=460&v=4"
+        name="Brad Frost"
+        jobTitle="Author of Atomic Design"
+        logo={AtomicDesignLogoSVG}
+      />
       <Contrast>
         <Separator />
         <ValueProp
@@ -146,6 +163,19 @@ export function PureIndexScreen({ data: { gitHubRepoData, allMediumPost }, ...pr
             desc="Pinpoint UI changes with visual testing tools."
           />
         </BenefitList>
+
+        <Testimonial
+          text={
+            <span>
+              “Storybook has made developing components more streamlined by allowing us to easily
+              include technical documentation within our design system!”
+            </span>
+          }
+          avatarUrl="https://avatars0.githubusercontent.com/u/3028593?s=460&v=4"
+          name="Taurie Davis"
+          jobTitle="Author of Building Design Systems"
+          logo={GitlabLogoSVG}
+        />
 
         <Separator />
       </Contrast>
@@ -195,6 +225,15 @@ export function PureIndexScreen({ data: { gitHubRepoData, allMediumPost }, ...pr
           <Badge status="positive">Coming soon</Badge>
         </BenefitItem>
       </BenefitList>
+      <Testimonial
+        text={
+          <span>“Storybook is crucial to our UX process. The “old way” seems ludicrous now!”</span>
+        }
+        avatarUrl="https://avatars3.githubusercontent.com/u/31106469?s=100&v=4"
+        name="Andrew Frankel"
+        jobTitle="Engineering lead"
+        logo={SalesForceLogoSVG}
+      />
       <CTA
         text={<span>Storybook is quick to install and it’s easy to get started.</span>}
         action={

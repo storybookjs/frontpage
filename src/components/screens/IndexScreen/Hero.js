@@ -22,6 +22,15 @@ import useSiteMetadata from '../../lib/useSiteMetadata';
 import PlaceholderAspectRatio from '../../layout/PlaceholderAspectRatio';
 import NpmDownloadCount from '../../layout/NpmDownloadCount';
 
+import ReactSVG from '../../../images/logos/framework/icon-react.svg';
+import VueSVG from '../../../images/logos/framework/icon-vue.svg';
+import AngularSVG from '../../../images/logos/framework/icon-angular.svg';
+import EmberSVG from '../../../images/logos/framework/icon-ember.svg';
+import HtmlSVG from '../../../images/logos/framework/icon-html.svg';
+import SvelteSVG from '../../../images/logos/framework/icon-svelte.svg';
+import MithrilSVG from '../../../images/logos/framework/icon-mithril.svg';
+import RiotSVG from '../../../images/logos/framework/icon-riot.svg';
+
 const { color, typography, breakpoint, pageMargins } = styles;
 
 const ModalVideo = styled.iframe`
@@ -338,18 +347,31 @@ const Wrapper = styled.div`
   }
 `;
 
-function Framework({ framework, logo, ...props }) {
+function Framework({ framework, ...props }) {
+  let logoSVG;
+
+  if (framework === 'React' || framework === 'React Native') {
+    logoSVG = ReactSVG;
+  } else if (framework === 'Vue') {
+    logoSVG = VueSVG;
+  } else if (framework === 'Angular') {
+    logoSVG = AngularSVG;
+  } else if (framework === 'Ember') {
+    logoSVG = EmberSVG;
+  } else if (framework === 'HTML') {
+    logoSVG = HtmlSVG;
+  } else if (framework === 'Svelte') {
+    logoSVG = SvelteSVG;
+  } else if (framework === 'Mithril') {
+    logoSVG = MithrilSVG;
+  } else if (framework === 'Riot') {
+    logoSVG = RiotSVG;
+  }
+
   return (
     <FrameworkItem>
       <FrameworkLink className="primary" {...props} withArrow>
-        <img
-          src={
-            logo
-              ? `images/logos/framework/icon-${logo}.svg`
-              : `images/logos/framework/icon-${framework.toLowerCase()}.svg`
-          }
-          alt={framework}
-        />
+        <img src={logoSVG} alt={framework} />
         <span>{framework}</span>
       </FrameworkLink>
     </FrameworkItem>
@@ -474,7 +496,7 @@ export default function Hero({
           <SecondarySubheading>Made for</SecondarySubheading>
           <FrameworkList>
             <Framework framework="React" href={framework.react} />
-            <Framework framework="React Native" logo="react" href={framework.reactNative} />
+            <Framework framework="React Native" href={framework.reactNative} />
             <Framework framework="Vue" href={framework.vue} />
             <Framework framework="Angular" href={framework.angular} />
             <Framework framework="Ember" href={framework.ember} />

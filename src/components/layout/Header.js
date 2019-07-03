@@ -8,7 +8,7 @@ import useSiteMetadata from '../lib/useSiteMetadata';
 
 import StorybookLogoSVG from '../../images/logo-storybook.svg';
 
-const { color, typography, spacing, pageMargins, breakpoint } = styles;
+const { color, typography, pageMargins, breakpoint } = styles;
 
 const LogotypeWrapper = styled(Link)`
   display: inline-block;
@@ -118,7 +118,7 @@ const NavGroup = styled.div`
     `}
 
   ${NavItem} + ${NavItem} {
-    margin-left: ${spacing.padding.large}px;
+    margin-left: 25px;
   }
 `;
 

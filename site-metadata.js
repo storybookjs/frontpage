@@ -8,7 +8,7 @@ const siteMetadata = {
   description: `Storybook is an open source tool for developing UI components in isolation for React, Vue, and Angular`,
   ogImage: '/images/social/open-graph.png',
   googleSiteVerification: '',
-  latestVersion: 'v5.0',
+  latestVersion: 'v5.1',
   urls: {
     gitHubOrg,
     homepageUrl,
@@ -46,6 +46,7 @@ const siteMetadata = {
       home: `${docsUrl}/basics/introduction/`,
       addonInstruction: `${docsUrl}/addons/writing-addons/`,
     },
+    tutorials: `https://www.learnstorybook.com/`,
     addons: `/addons/`,
     community: `/community/`,
     useCases: `/use-cases/`,
@@ -98,6 +99,7 @@ const siteMetadata = {
 
 siteMetadata.urls.navLinks = [
   { title: 'Docs', href: siteMetadata.urls.docs.home, isGatsby: false },
+  { title: 'Tutorials', href: siteMetadata.urls.tutorials, isGatsby: false },
   { title: 'Addons', href: siteMetadata.urls.addons, isGatsby: true },
   { title: 'Community', href: siteMetadata.urls.community, isGatsby: true },
   { title: 'Use cases', href: siteMetadata.urls.useCases, isGatsby: true },

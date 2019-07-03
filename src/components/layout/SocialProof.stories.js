@@ -9,13 +9,13 @@ storiesOf('Frontpage|layout/SocialProof', module)
     <SocialProof
       heading="Trusted by"
       path="images/logos/user"
-      brands={['github', 'dropbox', 'airbnb', 'lyft', 'mozilla', 'salesforce']}
+      brands={['github', 'dropbox', 'airbnb', 'lyft', 'mozilla', 'salesforce', 'jetbrains']}
     />
   ))
   .add('monochrome', () => (
     <SocialProof
       path="images/logos/user"
-      brands={['github', 'dropbox', 'airbnb', 'lyft', 'mozilla', 'salesforce']}
+      brands={['github', 'dropbox', 'airbnb', 'lyft', 'mozilla', 'salesforce', 'jetbrains']}
       monochrome
     />
   ))
@@ -35,6 +35,7 @@ storiesOf('Frontpage|layout/SocialProof', module)
         'priceline',
         'artsy',
         'apollo',
+        'jetbrains',
       ]}
       grid
     />

@@ -80,7 +80,7 @@ function ComponentList({ selectedIndex, onSelectIndex, ...props }) {
     <Wrapper {...props}>
       <Toggle
         path="/images/logos/user"
-        brands={['formidable', 'auth0', 'artsy']}
+        brands={['formidable', 'auth0', 'artsy', 'jetbrains']}
         selectedIndex={selectedIndex}
         onSelectIndex={onSelectIndex}
         clicked={selectedIndex !== 0}
@@ -144,6 +144,26 @@ function ComponentList({ selectedIndex, onSelectIndex, ...props }) {
             <Item imageUrl="/images/use-cases/artsy/10.png" />
             <Item imageUrl="/images/use-cases/artsy/11.png" />
             <Item imageUrl="/images/use-cases/artsy/12.png" />
+          </List>
+        </Fragment>
+      )}
+      {selectedIndex === 3 && (
+        <Fragment>
+          <List>
+            <Item imageUrl="/images/use-cases/jetbrains/1.png" />
+            <Item imageUrl="/images/use-cases/jetbrains/2.png" />
+            <Item imageUrl="/images/use-cases/jetbrains/3.png" />
+            <Item imageUrl="/images/use-cases/jetbrains/4.png" />
+            <Item imageUrl="/images/use-cases/jetbrains/5.png" />
+            <Item imageUrl="/images/use-cases/jetbrains/6.png" />
+          </List>
+          <List>
+            <Item imageUrl="/images/use-cases/jetbrains/7.png" />
+            <Item imageUrl="/images/use-cases/jetbrains/8.png" />
+            <Item imageUrl="/images/use-cases/jetbrains/9.png" />
+            <Item imageUrl="/images/use-cases/jetbrains/10.png" />
+            <Item imageUrl="/images/use-cases/jetbrains/11.png" />
+            <Item imageUrl="/images/use-cases/jetbrains/12.png" />
           </List>
         </Fragment>
       )}

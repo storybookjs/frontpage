@@ -48,6 +48,7 @@ const useSiteMetadata = () => {
               home
               addonInstruction
             }
+            tutorials
             addons
             community
             useCases
