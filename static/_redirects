@@ -27,7 +27,7 @@
 /addons/* /docs/addons/:splat 301
 /basics/* /docs/basics/:splat 301
 /configurations/* /docs/configurations/:splat 301
-/examples/* /use-cases/ 301
+/examples/* /docs/examples/:splat 301
 /logos/* /docs/logos/:splat 301
 /testing/* /docs/testing/:splat 301
 /addons/addon-gallery/ /addons/ 301
