@@ -249,6 +249,11 @@ export function PureAddonScreen({ data: { allMediumPost }, ...props }) {
           desc="Toggle the locale and directly see the result in the preview."
           addonUrl="https://github.com/truffls/storybook-addon-intl"
         />
+        <AddonItem
+          title="Responsive Views"
+          desc="View your stories in a range of responsive viewports"
+          addonUrl="https://github.com/vizeat/storybook-addon-responsive-views"
+        />
 
         <Subheader>Code</Subheader>
         <AddonItem
