@@ -159,14 +159,14 @@ export function PureAddonScreen({ data: { allMediumPost }, ...props }) {
         />
         <AddonItem
           appearance="official"
-          image={<img src={ConsoleSVG} alt="accessibility" />}
+          image={<img src={ConsoleSVG} alt="console" />}
           title="Console"
           desc="Show console output like logs, errors, and warnings in the Storybook"
           addonUrl={officialAddons.console}
         />
         <AddonItem
           appearance="official"
-          image={<img src={LinksSVG} alt="accessibility" />}
+          image={<img src={LinksSVG} alt="links" />}
           title="Links"
           desc="Link stories together to build demos and prototypes with your UI components"
           addonUrl={officialAddons.links}
