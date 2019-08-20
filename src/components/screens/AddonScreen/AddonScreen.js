@@ -277,6 +277,11 @@ export function PureAddonScreen({ data: { allMediumPost }, ...props }) {
           desc="Create stories with AngularJS(1.x) components."
           addonUrl="https://github.com/titonobre/storybook-addon-angularjs"
         />
+        <AddonItem
+          title="AMP"
+          desc="Allow to render stories in AMP-HTML. It also has options to view and validate the generated code."
+          addonUrl="https://github.com/prototypearea/storybook-amp"
+        />
 
         <Subheader>Data & State</Subheader>
         <AddonItem
