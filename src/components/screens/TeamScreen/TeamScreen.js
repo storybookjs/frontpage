@@ -28,7 +28,7 @@ const contributors = [
   },
   {
     name: 'Kai Röder',
-    avatarUrl: 'https://pbs.twimg.com/profile_images/1060789281667670016/Zrfw467n_bigger.jpg',
+    avatarUrl: 'https://pbs.twimg.com/profile_images/1167896480373362689/CRgdWRVh.jpg',
   },
   {
     name: 'Chak Shun Yu',
