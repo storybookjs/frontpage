@@ -154,7 +154,7 @@ const CommunityLayout = styled.div`
   }
 `;
 
-export function PureCommunityScreen({ data: { gitHubRepoData, allMediumPost }, ...props }) {
+export function PureCommunityScreen({ data: { gitHubRepoData }, ...props }) {
   const { title, ogImage, urls = {} } = useSiteMetadata();
   const {
     home,
@@ -169,7 +169,7 @@ export function PureCommunityScreen({ data: { gitHubRepoData, allMediumPost }, .
     openCollective,
   } = urls;
   return (
-    <PageLayout allMediumPost={allMediumPost} {...props}>
+    <PageLayout {...props}>
       <SocialGraph
         title={`Community | ${title}`}
         desc="Join thousands of frontend developers to learn new Storybook techniques, get help, and develop UIs faster."
@@ -392,19 +392,6 @@ export default function CommunityScreen(props) {
             author
             name
             url
-          }
-          allMediumPost(sort: { fields: [createdAt], order: DESC }, limit: 3) {
-            edges {
-              node {
-                id
-                title
-                virtuals {
-                  subtitle
-                }
-                medium_id
-                uniqueSlug
-              }
-            }
           }
         }
       `}
