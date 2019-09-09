@@ -24,27 +24,9 @@ const Title = styled(Subheading)`
   color: ${color.mediumdark};
 `;
 
-const SubLink = styled(Link)`
-  text-transform: none;
-  letter-spacing: 0;
-  font-weight: ${typography.weight.regular};
-  margin-left: 20px;
-`;
-
 const ResourceTitle = styled.div`
   font-weight: ${typography.weight.extrabold};
   margin-bottom: 0.25rem;
-`;
-
-const ResourceTitleLink = styled(Link)`
-  font-weight: ${typography.weight.extrabold};
-  margin-bottom: 0.25rem;
-
-  svg {
-    height: 0.7rem;
-    width: 0.7rem;
-    vertical-align: initial;
-  }
 `;
 
 const ResourceDesc = styled.div`
@@ -329,12 +311,11 @@ LinkWrapper.propTypes = {
   isGatsby: PropTypes.bool.isRequired,
 };
 
-export default function Footer({ mediumPosts, ...props }) {
+export default function Footer({ ...props }) {
   const { urls = {} } = useSiteMetadata();
   const {
     blog,
     twitter,
-    medium,
     chat,
     youtube,
     navLinks = {},
@@ -348,12 +329,11 @@ export default function Footer({ mediumPosts, ...props }) {
     <FooterWrapper {...props}>
       <Upper>
         <UpperColumn>
-          <Title>Learn</Title>
           <Resources>
             <Resource>
               <img src={RepoSVG} alt="Docs" />
               <Meta>
-                <ResourceTitle>Get started with Storybook</ResourceTitle>
+                <ResourceTitle>Storybook documentation</ResourceTitle>
                 <ResourceDesc>
                   Add Storybook to your project in less than a minute to build components faster and
                   easier.
@@ -374,6 +354,10 @@ export default function Footer({ mediumPosts, ...props }) {
                 </ResourceActions>
               </Meta>
             </Resource>
+          </Resources>
+        </UpperColumn>
+        <UpperColumn>
+          <Resources>
             <Resource>
               <img src={DirectionSVG} alt="Tutorial" />
               <Meta>
@@ -389,26 +373,6 @@ export default function Footer({ mediumPosts, ...props }) {
                 </ResourceActions>
               </Meta>
             </Resource>
-          </Resources>
-        </UpperColumn>
-        <UpperColumn>
-          <Title>
-            News
-            <SubLink tertiary withArrow href={blog}>
-              Read more
-            </SubLink>
-          </Title>
-          <Resources>
-            {mediumPosts.edges.map(({ node: { id, title, virtuals, uniqueSlug } }) => (
-              <Resource key={id}>
-                <Meta>
-                  <ResourceTitleLink tertiary withArrow href={`${medium}/${uniqueSlug}`}>
-                    {title}
-                  </ResourceTitleLink>
-                  <ResourceDesc>{virtuals.subtitle}</ResourceDesc>
-                </Meta>
-              </Resource>
-            ))}
           </Resources>
         </UpperColumn>
       </Upper>
@@ -493,19 +457,4 @@ export default function Footer({ mediumPosts, ...props }) {
   );
 }
 
-Footer.propTypes = {
-  mediumPosts: PropTypes.shape({
-    edges: PropTypes.arrayOf(
-      PropTypes.shape({
-        node: PropTypes.shape({
-          id: PropTypes.string,
-          title: PropTypes.string,
-          virtuals: PropTypes.shape({
-            subtitle: PropTypes.string,
-          }),
-          uniqueSlug: PropTypes.string,
-        }),
-      })
-    ),
-  }).isRequired,
-};
+Footer.propTypes = {};

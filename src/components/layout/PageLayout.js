@@ -11,7 +11,7 @@ import Footer from './Footer';
 
 const Layout = styled.div``;
 
-export default function PageLayout({ allMediumPost, children, ...props }) {
+export default function PageLayout({ children, ...props }) {
   const { urls = {}, title, description, ogImage, googleSiteVerification } = useSiteMetadata();
   return (
     <Layout {...props}>
@@ -43,16 +43,13 @@ export default function PageLayout({ allMediumPost, children, ...props }) {
       </Helmet>
       <Header />
       {children}
-      <Footer mediumPosts={allMediumPost} />
+      <Footer />
     </Layout>
   );
 }
 
 PageLayout.propTypes = {
   children: PropTypes.node.isRequired,
-  allMediumPost: PropTypes.any, // eslint-disable-line react/forbid-prop-types
 };
 
-PageLayout.defaultProps = {
-  allMediumPost: undefined,
-};
+PageLayout.defaultProps = {};

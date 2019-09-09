@@ -3,11 +3,10 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import { PureSupportScreen } from './SupportScreen';
-import { allMediumPost } from '../../layout/Footer.stories';
 
 storiesOf('Frontpage|screens/SupportScreen/SupportScreen', module).add(
   'default',
-  () => <PureSupportScreen data={{ allMediumPost }} />,
+  () => <PureSupportScreen />,
   {
     chromatic: { viewports: [320, 1200] },
   }

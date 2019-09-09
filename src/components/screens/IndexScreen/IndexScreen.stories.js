@@ -3,11 +3,10 @@ import { storiesOf } from '@storybook/react';
 
 import { PureIndexScreen } from './IndexScreen';
 import { gitHubRepoData } from './Hero.stories';
-import { allMediumPost } from '../../layout/Footer.stories';
 
 storiesOf('Frontpage|screens/IndexScreen/IndexScreen', module).add(
   'default',
-  () => <PureIndexScreen data={{ gitHubRepoData, allMediumPost }} />,
+  () => <PureIndexScreen data={{ gitHubRepoData }} />,
   {
     chromatic: { viewports: [320, 1200] },
   }

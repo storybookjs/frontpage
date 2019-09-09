@@ -28,7 +28,7 @@ const contributors = [
   },
   {
     name: 'Kai Röder',
-    avatarUrl: 'https://pbs.twimg.com/profile_images/1060789281667670016/Zrfw467n_bigger.jpg',
+    avatarUrl: 'https://pbs.twimg.com/profile_images/1167896480373362689/CRgdWRVh.jpg',
   },
   {
     name: 'Chak Shun Yu',
@@ -60,10 +60,10 @@ const contributors = [
   },
 ];
 
-export function PureTeamScreen({ data: { gitHubRepoData, allMediumPost }, ...props }) {
+export function PureTeamScreen({ data: { gitHubRepoData }, ...props }) {
   const { title, ogImage, urls = {} } = useSiteMetadata();
   return (
-    <PageLayout allMediumPost={allMediumPost} {...props}>
+    <PageLayout {...props}>
       <SocialGraph
         title={`Team | ${title}`}
         desc="Storybook is maintained by hundreds of contributors worldwide and guided by a steering committee."
@@ -150,19 +150,6 @@ export default function TeamScreen({ ...props }) {
           gitHubRepoData {
             contributorCount
             url
-          }
-          allMediumPost(sort: { fields: [createdAt], order: DESC }, limit: 3) {
-            edges {
-              node {
-                id
-                title
-                virtuals {
-                  subtitle
-                }
-                medium_id
-                uniqueSlug
-              }
-            }
           }
         }
       `}

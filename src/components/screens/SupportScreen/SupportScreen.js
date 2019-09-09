@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { StaticQuery, graphql } from 'gatsby';
 
 import { Link, styles } from '@storybook/design-system';
 import PageLayout from '../../layout/PageLayout';
@@ -23,11 +22,11 @@ const Features = styled(FeaturesLayout)`
   }
 `;
 
-export function PureSupportScreen({ data: { allMediumPost }, ...props }) {
+export function PureSupportScreen({ ...props }) {
   const { title, ogImage, urls = {} } = useSiteMetadata();
   const { home, chat, docs = {}, gitHub = {} } = urls;
   return (
-    <PageLayout allMediumPost={allMediumPost} {...props}>
+    <PageLayout {...props}>
       <SocialGraph
         title={`Support | ${title}`}
         desc="Get answers to your Storybook questions from the thriving community and maintainers. Developers of all skill levels welcome."
@@ -79,26 +78,5 @@ PureSupportScreen.propTypes = {
 };
 
 export default function SupportScreen(props) {
-  return (
-    <StaticQuery
-      query={graphql`
-        query SupportScreenQuery {
-          allMediumPost(sort: { fields: [createdAt], order: DESC }, limit: 3) {
-            edges {
-              node {
-                id
-                title
-                virtuals {
-                  subtitle
-                }
-                medium_id
-                uniqueSlug
-              }
-            }
-          }
-        }
-      `}
-      render={data => <PureSupportScreen data={data} {...props} />}
-    />
-  );
+  return <PureSupportScreen {...props} />;
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
-import { StaticQuery, graphql } from 'gatsby';
+import { StaticQuery } from 'gatsby';
 
 import { Link, styles } from '@storybook/design-system';
 import PageLayout from '../../layout/PageLayout';
@@ -22,11 +22,11 @@ const Features = styled(FeaturesLayout)`
   }
 `;
 
-export function PureNotFoundScreen({ data: { allMediumPost }, ...props }) {
+export function PureNotFoundScreen({ ...props }) {
   const { urls = {} } = useSiteMetadata();
   const { gitHub = {}, chat } = urls;
   return (
-    <PageLayout allMediumPost={allMediumPost} {...props}>
+    <PageLayout {...props}>
       <Helmet>
         <meta name="robots" content="noindex" />
       </Helmet>
@@ -66,26 +66,5 @@ PureNotFoundScreen.propTypes = {
 };
 
 export default function NotFoundScreen(props) {
-  return (
-    <StaticQuery
-      query={graphql`
-        query NotFoundScreenQuery {
-          allMediumPost(sort: { fields: [createdAt], order: DESC }, limit: 3) {
-            edges {
-              node {
-                id
-                title
-                virtuals {
-                  subtitle
-                }
-                medium_id
-                uniqueSlug
-              }
-            }
-          }
-        }
-      `}
-      render={data => <PureNotFoundScreen data={data} {...props} />}
-    />
-  );
+  return <StaticQuery render={data => <PureNotFoundScreen data={data} {...props} />} />;
 }
