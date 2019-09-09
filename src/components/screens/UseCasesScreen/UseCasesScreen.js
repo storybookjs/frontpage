@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { styles } from '@storybook/design-system';
@@ -233,9 +232,7 @@ export function PureUseCasesScreen({ ...props }) {
   );
 }
 
-PureUseCasesScreen.propTypes = {
-  data: PropTypes.any.isRequired, // eslint-disable-line react/forbid-prop-types
-};
+PureUseCasesScreen.propTypes = {};
 
 export default function UseCasesScreen(props) {
   return <PureUseCasesScreen {...props} />;

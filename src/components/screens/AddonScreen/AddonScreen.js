@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { Button, Icon, Subheading, styles } from '@storybook/design-system';
@@ -357,9 +356,7 @@ export function PureAddonScreen({ ...props }) {
   );
 }
 
-PureAddonScreen.propTypes = {
-  data: PropTypes.any.isRequired, // eslint-disable-line react/forbid-prop-types
-};
+PureAddonScreen.propTypes = {};
 
 export default function AddonScreen(props) {
   return <PureAddonScreen {...props} />;

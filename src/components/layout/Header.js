@@ -153,11 +153,19 @@ LinkWrapper.propTypes = {
 
 export default function Header({ ...props }) {
   const { latestVersion, urls = {} } = useSiteMetadata();
-  const { navLinks = {}, gitHub = {} } = urls;
+  const { navCommunityLinks = {}, navLinks = {}, docs, tutorials, addons, gitHub = {} } = urls;
+
+  const navLinksWithGithub = [...navLinks, { title: 'GitHub', href: gitHub.repo, isGatsby: false }];
 
   const mobileMenu = (
     <MobileMenu>
-      <TooltipLinkList links={navLinks} LinkWrapper={LinkWrapper} />
+      <TooltipLinkList links={navLinksWithGithub} LinkWrapper={LinkWrapper} />
+    </MobileMenu>
+  );
+
+  const communityMenu = (
+    <MobileMenu>
+      <TooltipLinkList links={navCommunityLinks} LinkWrapper={LinkWrapper} />
     </MobileMenu>
   );
 
@@ -174,13 +182,33 @@ export default function Header({ ...props }) {
         </NavGroup>
 
         <NavGroup right>
-          {navLinks.map(({ title, href, isGatsby }) => (
-            <NavItem showDesktop key={title}>
-              <NavLink tertiary href={href} isGatsby={isGatsby} LinkWrapper={LinkWrapper}>
-                {title}
+          <NavItem showDesktop>
+            <NavLink tertiary href={docs.home}>
+              Docs
+            </NavLink>
+          </NavItem>
+          <NavItem showDesktop>
+            <NavLink tertiary href={tutorials}>
+              Tutorials
+            </NavLink>
+          </NavItem>
+          <NavItem showDesktop>
+            <NavLink tertiary href={addons} isGatsby LinkWrapper={LinkWrapper}>
+              Addons
+            </NavLink>
+          </NavItem>
+          <NavItem showDesktop>
+            <WithTooltip tagName="span" placement="top" trigger="hover" tooltip={communityMenu}>
+              <NavLink tertiary>
+                Community <Icon icon="arrowdown" />
               </NavLink>
-            </NavItem>
-          ))}
+            </WithTooltip>
+          </NavItem>
+          <NavItem showDesktop>
+            <NavLink tertiary href={gitHub.repo}>
+              GitHub
+            </NavLink>
+          </NavItem>
 
           <NavItem showMobile>
             <WithTooltip tagName="span" placement="top" trigger="click" tooltip={mobileMenu}>
