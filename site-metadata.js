@@ -108,7 +108,7 @@ siteMetadata.urls.navLinks = [
   { title: 'Docs', href: siteMetadata.urls.docs.home, isGatsby: false },
   { title: 'Tutorials', href: siteMetadata.urls.tutorials, isGatsby: false },
   { title: 'Addons', href: siteMetadata.urls.addons, isGatsby: true },
-  { title: 'GitHub', href: siteMetadata.urls.gitHub.repo, isGatsby: false },
+  ...siteMetadata.urls.navCommunityLinks,
 ];
 
 module.exports = siteMetadata;

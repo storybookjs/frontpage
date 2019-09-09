@@ -155,9 +155,11 @@ export default function Header({ ...props }) {
   const { latestVersion, urls = {} } = useSiteMetadata();
   const { navCommunityLinks = {}, navLinks = {}, docs, tutorials, addons, gitHub = {} } = urls;
 
+  const navLinksWithGithub = [...navLinks, { title: 'GitHub', href: gitHub.repo, isGatsby: false }];
+
   const mobileMenu = (
     <MobileMenu>
-      <TooltipLinkList links={navLinks} LinkWrapper={LinkWrapper} />
+      <TooltipLinkList links={navLinksWithGithub} LinkWrapper={LinkWrapper} />
     </MobileMenu>
   );
 
