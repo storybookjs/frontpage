@@ -231,7 +231,7 @@ export function PureIndexScreen({ data: { gitHubRepoData, allMediumPost }, ...pr
         }
         avatarUrl="https://avatars3.githubusercontent.com/u/31106469?s=100&v=4"
         name="Andrew Frankel"
-        jobTitle="Engineering lead"
+        jobTitle="Principal engineer"
         logo={SalesForceLogoSVG}
       />
       <CTA
