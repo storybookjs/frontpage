@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { StaticQuery, graphql } from 'gatsby';
 
 import { Button, Icon, Subheading, styles } from '@storybook/design-system';
 import useSiteMetadata from '../../lib/useSiteMetadata';
@@ -80,11 +79,11 @@ const MakeYourOwn = styled(AddonCustom)`
   margin-bottom: 5rem;
 `;
 
-export function PureAddonScreen({ data: { allMediumPost }, ...props }) {
+export function PureAddonScreen({ ...props }) {
   const { title, ogImage, urls = {} } = useSiteMetadata();
   const { home, officialAddons = {}, gitHub = {}, docs = {} } = urls;
   return (
-    <PageLayout allMediumPost={allMediumPost} {...props}>
+    <PageLayout {...props}>
       <SocialGraph
         title={`Addons | ${title}`}
         desc="Addons enable advanced functionality and unlock new workflows. Contributed by core maintainers and the amazing developer community."
@@ -363,26 +362,5 @@ PureAddonScreen.propTypes = {
 };
 
 export default function AddonScreen(props) {
-  return (
-    <StaticQuery
-      query={graphql`
-        query AddonsScreenQuery {
-          allMediumPost(sort: { fields: [createdAt], order: DESC }, limit: 3) {
-            edges {
-              node {
-                id
-                title
-                virtuals {
-                  subtitle
-                }
-                medium_id
-                uniqueSlug
-              }
-            }
-          }
-        }
-      `}
-      render={data => <PureAddonScreen data={data} {...props} />}
-    />
-  );
+  return <PureAddonScreen {...props} />;
 }

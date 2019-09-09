@@ -39,11 +39,11 @@ const Placeholder = styled(PlaceholderAspectRatio)`
   }
 `;
 
-export function PureIndexScreen({ data: { gitHubRepoData, allMediumPost }, ...props }) {
+export function PureIndexScreen({ data: { gitHubRepoData }, ...props }) {
   const { ogImage, urls = {} } = useSiteMetadata();
   const { home, docs = {} } = urls;
   return (
-    <PageLayout allMediumPost={allMediumPost} {...props}>
+    <PageLayout {...props}>
       <SocialGraph
         title="Storybook: UI component explorer for frontend developers"
         desc="Storybook is an open source tool for developing UI components in isolation for React, Vue, and Angular. It makes building stunning UIs organized and efficient."
@@ -260,18 +260,6 @@ export default function IndexScreen(props) {
             url
             author
             name
-          }
-          allMediumPost(sort: { fields: [createdAt], order: DESC }, limit: 3) {
-            edges {
-              node {
-                id
-                title
-                virtuals {
-                  subtitle
-                }
-                uniqueSlug
-              }
-            }
           }
         }
       `}
