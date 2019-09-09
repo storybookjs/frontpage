@@ -73,9 +73,7 @@ export function PureSupportScreen({ ...props }) {
   );
 }
 
-PureSupportScreen.propTypes = {
-  data: PropTypes.any.isRequired, // eslint-disable-line react/forbid-prop-types
-};
+PureSupportScreen.propTypes = {};
 
 export default function SupportScreen(props) {
   return <PureSupportScreen {...props} />;

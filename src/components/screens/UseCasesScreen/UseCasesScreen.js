@@ -233,9 +233,7 @@ export function PureUseCasesScreen({ ...props }) {
   );
 }
 
-PureUseCasesScreen.propTypes = {
-  data: PropTypes.any.isRequired, // eslint-disable-line react/forbid-prop-types
-};
+PureUseCasesScreen.propTypes = {};
 
 export default function UseCasesScreen(props) {
   return <PureUseCasesScreen {...props} />;

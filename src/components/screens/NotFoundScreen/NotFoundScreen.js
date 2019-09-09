@@ -61,9 +61,7 @@ export function PureNotFoundScreen({ ...props }) {
   );
 }
 
-PureNotFoundScreen.propTypes = {
-  data: PropTypes.any.isRequired, // eslint-disable-line react/forbid-prop-types
-};
+PureNotFoundScreen.propTypes = {};
 
 export default function NotFoundScreen(props) {
   return <StaticQuery render={data => <PureNotFoundScreen data={data} {...props} />} />;

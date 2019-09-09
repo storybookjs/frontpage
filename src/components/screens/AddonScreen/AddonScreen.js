@@ -357,9 +357,7 @@ export function PureAddonScreen({ ...props }) {
   );
 }
 
-PureAddonScreen.propTypes = {
-  data: PropTypes.any.isRequired, // eslint-disable-line react/forbid-prop-types
-};
+PureAddonScreen.propTypes = {};
 
 export default function AddonScreen(props) {
   return <PureAddonScreen {...props} />;
