@@ -153,18 +153,7 @@ LinkWrapper.propTypes = {
 
 export default function Header({ ...props }) {
   const { latestVersion, urls = {} } = useSiteMetadata();
-  const {
-    navCommunityLinks = {},
-    navLinks = {},
-    docs,
-    tutorials,
-    addons,
-    community,
-    useCases,
-    support,
-    team,
-    gitHub = {},
-  } = urls;
+  const { navCommunityLinks = {}, navLinks = {}, docs, tutorials, addons, gitHub = {} } = urls;
 
   const mobileMenu = (
     <MobileMenu>

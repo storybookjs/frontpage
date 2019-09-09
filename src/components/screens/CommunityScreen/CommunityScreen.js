@@ -378,7 +378,9 @@ export function PureCommunityScreen({ data: { gitHubRepoData }, ...props }) {
   );
 }
 
-PureCommunityScreen.propTypes = {};
+PureCommunityScreen.propTypes = {
+  data: PropTypes.any.isRequired, // eslint-disable-line react/forbid-prop-types
+};
 
 export default function CommunityScreen(props) {
   return (

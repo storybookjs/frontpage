@@ -1,8 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
-import { StaticQuery } from 'gatsby';
 
 import { Link, styles } from '@storybook/design-system';
 import PageLayout from '../../layout/PageLayout';
@@ -64,5 +62,5 @@ export function PureNotFoundScreen({ ...props }) {
 PureNotFoundScreen.propTypes = {};
 
 export default function NotFoundScreen(props) {
-  return <StaticQuery render={data => <PureNotFoundScreen data={data} {...props} />} />;
+  return <PureNotFoundScreen {...props} />;
 }
