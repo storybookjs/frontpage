@@ -20,6 +20,11 @@ const useSiteMetadata = () => {
               href
               isGatsby
             }
+            navCommunityLinks {
+              title
+              href
+              isGatsby
+            }
             gitHub {
               repo
               frontpage

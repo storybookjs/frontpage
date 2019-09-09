@@ -97,14 +97,18 @@ const siteMetadata = {
   },
 };
 
+siteMetadata.urls.navCommunityLinks = [
+  { title: 'Get involved', href: siteMetadata.urls.community, isGatsby: true },
+  { title: 'Use cases', href: siteMetadata.urls.useCases, isGatsby: true },
+  { title: 'Support', href: siteMetadata.urls.support, isGatsby: true },
+  { title: 'Team', href: siteMetadata.urls.team, isGatsby: true },
+];
+
 siteMetadata.urls.navLinks = [
   { title: 'Docs', href: siteMetadata.urls.docs.home, isGatsby: false },
   { title: 'Tutorials', href: siteMetadata.urls.tutorials, isGatsby: false },
   { title: 'Addons', href: siteMetadata.urls.addons, isGatsby: true },
-  { title: 'Community', href: siteMetadata.urls.community, isGatsby: true },
-  { title: 'Use cases', href: siteMetadata.urls.useCases, isGatsby: true },
-  { title: 'Support', href: siteMetadata.urls.support, isGatsby: true },
-  { title: 'Team', href: siteMetadata.urls.team, isGatsby: true },
+  { title: 'GitHub', href: siteMetadata.urls.gitHub.repo, isGatsby: false },
 ];
 
 module.exports = siteMetadata;
