@@ -41,6 +41,7 @@ module.exports = {
       resolve: 'gatsby-plugin-segment-js',
       options: {
         prodKey: 'AvvBObOmHaEMqfub8JJUXq5umjsuaqS8',
+        trackPage: true,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
