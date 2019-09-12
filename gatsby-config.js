@@ -1,3 +1,4 @@
+const { global } = require('@storybook/design-system');
 const siteMetadata = require('./site-metadata');
 
 module.exports = {
@@ -24,8 +25,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
-        google: {
-          families: ['Nunito Sans:400,700,800,900&display=swap'],
+        custom: {
+          urls: [global.fontUrl],
         },
       },
     },
@@ -37,9 +38,9 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-segment',
+      resolve: 'gatsby-plugin-segment-js',
       options: {
-        writeKey: 'AvvBObOmHaEMqfub8JJUXq5umjsuaqS8',
+        prodKey: 'AvvBObOmHaEMqfub8JJUXq5umjsuaqS8',
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

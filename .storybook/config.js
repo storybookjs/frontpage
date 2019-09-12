@@ -36,15 +36,13 @@ if (window.navigator.userAgent.match('Chromatic')) {
   LazyLoad.disabled = true;
 }
 
-function loadStories() {
+const stories = [
   // automatically import all files ending in *.stories.js
-  let req = require.context('../src', true, /.stories.js$/);
-  req.keys().forEach(filename => req(filename));
+  require.context('../src', true, /.stories.js$/),
+]
 
-  if (!isChromatic()) {
-    req = require.context('../node_modules/@storybook/design-system', true, /.stories.js$/);
-    req.keys().forEach(filename => req(filename));
-  }
+if (!isChromatic()) {
+  stories.push(require.context('../node_modules/@storybook/design-system', true, /.stories.js$/))
 }
 
-configure(loadStories, module);
+configure(stories, module);
