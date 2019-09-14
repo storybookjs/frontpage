@@ -221,9 +221,7 @@ export function PureIndexScreen({ data: { gitHubRepoData }, ...props }) {
           image={<img src="/images/home/share-document.png" alt="create a styleguide" />}
           title="Generate a styleguide automatically"
           desc="Write Markdown to generate a customizable styleguide site. Share it with your team."
-        >
-          <Badge status="positive">Coming soon</Badge>
-        </BenefitItem>
+        />
       </BenefitList>
       <Testimonial
         text={
