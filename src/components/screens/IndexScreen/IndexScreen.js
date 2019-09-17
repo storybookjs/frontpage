@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 
-import { Badge, Button, Link, styles } from '@storybook/design-system';
+import { Button, Link, styles } from '@storybook/design-system';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 
 import { SocialGraph, Video } from '../../basics';
@@ -221,9 +221,7 @@ export function PureIndexScreen({ data: { gitHubRepoData }, ...props }) {
           image={<img src="/images/home/share-document.png" alt="create a styleguide" />}
           title="Generate a styleguide automatically"
           desc="Write Markdown to generate a customizable styleguide site. Share it with your team."
-        >
-          <Badge status="positive">Coming soon</Badge>
-        </BenefitItem>
+        />
       </BenefitList>
       <Testimonial
         text={

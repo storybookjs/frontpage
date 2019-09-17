@@ -8,7 +8,7 @@ const siteMetadata = {
   description: `Storybook is an open source tool for developing UI components in isolation for React, Vue, and Angular`,
   ogImage: '/images/social/open-graph.png',
   googleSiteVerification: '',
-  latestVersion: 'v5.1',
+  latestVersion: 'v5.2',
   urls: {
     gitHubOrg,
     homepageUrl,
