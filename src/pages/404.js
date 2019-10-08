@@ -1,7 +1,9 @@
 import React, { Fragment } from 'react';
+import { global } from '@storybook/design-system';
 
 import NotFoundScreen from '../components/screens/NotFoundScreen/NotFoundScreen';
-import { GlobalStyle } from '../components/basics/shared/global';
+
+const { GlobalStyle } = global;
 
 export default () => (
   <Fragment>
