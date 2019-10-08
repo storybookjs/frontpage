@@ -2,11 +2,13 @@ import React, { Fragment } from 'react';
 import { configure, addDecorator } from '@storybook/react';
 import 'storybook-chromatic';
 import { isChromatic } from 'storybook-chromatic';
+import { global as designSystemGlobal } from '@storybook/design-system';
 import WebFont from 'webfontloader';
 import LazyLoad from '../src/components/basics/LazyLoad';
 
-import { GlobalStyle } from '../src/components/basics/shared/global';
 import config from '../gatsby-config';
+
+const { GlobalStyle } = designSystemGlobal;
 
 WebFont.load(config.plugins.find(p => p.resolve === 'gatsby-plugin-web-font-loader').options);
 addDecorator(story => (
@@ -39,10 +41,10 @@ if (window.navigator.userAgent.match('Chromatic')) {
 const stories = [
   // automatically import all files ending in *.stories.js
   require.context('../src', true, /.stories.js$/),
-]
+];
 
 if (!isChromatic()) {
-  stories.push(require.context('../node_modules/@storybook/design-system', true, /.stories.js$/))
+  stories.push(require.context('../node_modules/@storybook/design-system', true, /.stories.js$/));
 }
 
 configure(stories, module);

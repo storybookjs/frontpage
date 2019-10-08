@@ -1,7 +1,3 @@
-import * as global from './shared/global';
-
-export { global };
-
 export { default as Cardinal } from './Cardinal';
 export { default as LazyLoad } from './LazyLoad';
 

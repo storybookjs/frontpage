@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "7.0.0",
-    "@storybook/design-system": "^1.0.0",
+    "@storybook/design-system": "^1.1.6",
     "babel-plugin-styled-components": "^1.9.4",
     "gatsby": "^2.15.14",
     "gatsby-image": "^2.2.18",
