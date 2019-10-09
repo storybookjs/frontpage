@@ -220,7 +220,19 @@ export function PureIndexScreen({ data: { gitHubRepoData }, ...props }) {
         <BenefitItem
           image={<img src="/images/home/share-document.png" alt="create a styleguide" />}
           title="Generate a styleguide automatically"
-          desc="Write Markdown to generate a customizable styleguide site. Share it with your team."
+          desc={
+            <>
+              Write Markdown/MDX to generate a customizable site that is perfect for component
+              libraries and design systems.{' '}
+              <Link
+                href="https://github.com/storybookjs/storybook/tree/next/addons/docs"
+                target="_blank"
+                withArrow
+              >
+                Learn more
+              </Link>
+            </>
+          }
         />
       </BenefitList>
       <Testimonial
