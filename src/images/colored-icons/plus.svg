@@ -1,13 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
-    <title>illustration/plus</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="illustration/plus">
-            <rect id="Rectangle-7-Copy-5" fill="#87E6E5" transform="translate(24.000000, 24.000000) rotate(-90.000000) translate(-24.000000, -24.000000) " x="0" y="21" width="48" height="6" rx="3"></rect>
-            <rect id="Rectangle-7-Copy-4" fill="#61C1FD" x="0" y="21" width="48" height="6" rx="3"></rect>
-        </g>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48" height="48" version="1.1" viewBox="0 0 48 48"><title>illustration/plus</title><desc>Created with Sketch.</desc><g id="Symbols" fill="none" fill-rule="evenodd" stroke="none" stroke-width="1"><g id="illustration/plus"><rect id="Rectangle-7-Copy-5" width="48" height="6" x="0" y="21" fill="#87E6E5" rx="3" transform="translate(24.000000, 24.000000) rotate(-90.000000) translate(-24.000000, -24.000000)"/><rect id="Rectangle-7-Copy-4" width="48" height="6" x="0" y="21" fill="#61C1FD" rx="3"/></g></g></svg>
