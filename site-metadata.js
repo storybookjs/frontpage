@@ -86,6 +86,7 @@ const siteMetadata = {
       actions: `${gitHubOrg}/storybook/tree/master/addons/actions`,
       source: `${gitHubOrg}/storybook/tree/master/addons/storysource`,
       info: `${gitHubOrg}/storybook/tree/master/addons/info`,
+      docs: `${gitHubOrg}/storybook/tree/master/addons/docs`,
       notes: `${gitHubOrg}/storybook/tree/master/addons/notes`,
       viewport: `${gitHubOrg}/storybook/tree/master/addons/viewport`,
       storyshots: `${gitHubOrg}/storybook/tree/master/addons/storyshots`,
