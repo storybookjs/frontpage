@@ -336,6 +336,11 @@ export function PureAddonScreen({ ...props }) {
           desc="Embed Figma designs in a storybook panel."
           addonUrl="https://github.com/hharnisc/storybook-addon-figma"
         />
+        <AddonItem
+          title="XD"
+          desc="Embed XD designs in a storybook panel."
+          addonUrl="https://github.com/morgs32/storybook-addon-xd-designs"
+        />
         <div>
           <Button
             appearance="secondaryOutline"
