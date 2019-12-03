@@ -280,6 +280,11 @@ export function PureAddonScreen({ ...props }) {
           desc="Allow to render stories in AMP-HTML. It also has options to view and validate the generated code."
           addonUrl="https://github.com/prototypearea/storybook-amp"
         />
+        <AddonItem
+          title="HTML"
+          desc="Display the compiled HTML for each story."
+          addonUrl="https://github.com/whitespace-se/storybook-addon-html"
+        />
 
         <Subheader>Data & State</Subheader>
         <AddonItem
@@ -291,6 +296,11 @@ export function PureAddonScreen({ ...props }) {
           title="State"
           desc="Manage state inside a story. Update components when this state changes. Wrap the story in a function call to setup state management. The story can modify state properties with the provided store. The addon provides a panel to view and reset state."
           addonUrl="https://github.com/dump247/storybook-state/"
+        />
+        <AddonItem
+          title="GraphCMS"
+          desc="Put GraphQL queries to your stories and either see the default formatted output or pass received data to your Components. Can be connected to any GraphQL endpoint but have additional features for GraphCMS projects."
+          addonUrl="https://github.com/focusreactive/storybook-addon-graphcms"
         />
 
         <Subheader>Style</Subheader>
@@ -340,6 +350,11 @@ export function PureAddonScreen({ ...props }) {
           title="XD"
           desc="Embed XD designs in a storybook panel."
           addonUrl="https://github.com/morgs32/storybook-addon-xd-designs"
+        />
+        <AddonItem
+          title="Vertical Rhythm decorator"
+          desc="Take an eye over the vertical rhythm of your stories with this decorator."
+          addonUrl="https://github.com/jmlweb/storybook-vrhythm"
         />
         <div>
           <Button
