@@ -347,6 +347,11 @@ export function PureAddonScreen({ ...props }) {
           addonUrl="https://github.com/hharnisc/storybook-addon-figma"
         />
         <AddonItem
+          title="XD"
+          desc="Embed XD designs in a storybook panel."
+          addonUrl="https://github.com/morgs32/storybook-addon-xd-designs"
+        />
+        <AddonItem
           title="Vertical Rhythm decorator"
           desc="Take an eye over the vertical rhythm of your stories with this decorator."
           addonUrl="https://github.com/jmlweb/storybook-vrhythm"
