@@ -285,6 +285,11 @@ export function PureAddonScreen({ ...props }) {
           desc="Display the compiled HTML for each story."
           addonUrl="https://github.com/whitespace-se/storybook-addon-html"
         />
+        <AddonItem
+          title="Formik"
+          desc="Display form state for formik-aware components."
+          addonUrl="https://github.com/bhishp/storybook-formik"
+        />
 
         <Subheader>Data & State</Subheader>
         <AddonItem
