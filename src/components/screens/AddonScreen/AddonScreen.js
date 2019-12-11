@@ -285,11 +285,6 @@ export function PureAddonScreen({ ...props }) {
           desc="Display the compiled HTML for each story."
           addonUrl="https://github.com/whitespace-se/storybook-addon-html"
         />
-        <AddonItem
-          title="Formik"
-          desc="Display form state for formik-aware components."
-          addonUrl="https://github.com/bhishp/storybook-formik"
-        />
 
         <Subheader>Data & State</Subheader>
         <AddonItem
@@ -306,6 +301,11 @@ export function PureAddonScreen({ ...props }) {
           title="GraphCMS"
           desc="Put GraphQL queries to your stories and either see the default formatted output or pass received data to your Components. Can be connected to any GraphQL endpoint but have additional features for GraphCMS projects."
           addonUrl="https://github.com/focusreactive/storybook-addon-graphcms"
+        />
+        <AddonItem
+          title="Formik"
+          desc="Display form state for formik-aware components."
+          addonUrl="https://github.com/bhishp/storybook-formik"
         />
 
         <Subheader>Style</Subheader>
