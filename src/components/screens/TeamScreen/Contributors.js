@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Avatar, styles, Link } from '@storybook/design-system';
 
-const { typography, color } = styles;
+const { typography } = styles;
 
 const Heading = styled.div`
   font-size: ${typography.size.m2}px;
