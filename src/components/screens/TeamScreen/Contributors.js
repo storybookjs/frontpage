@@ -2,9 +2,9 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Avatar, styles } from '@storybook/design-system';
+import { Avatar, styles, Link } from '@storybook/design-system';
 
-const { typography } = styles;
+const { typography, color } = styles;
 
 const Heading = styled.div`
   font-size: ${typography.size.m2}px;
@@ -35,18 +35,25 @@ const AvatarWrapper = styled(Avatar).attrs({ size: 'large' })`
   margin: 10px;
 `;
 
+const StyledLink = styled(Link)`
+  margin-top: 12px;
+`;
+
 const PureContributors = ({ contributors }) => (
   <Wrapper>
     <section>
-      <Heading>{contributors.length} Contributors</Heading>
+      <Heading>+{parseInt(contributors.length / 3, 10)} Contributors</Heading>
       <Text>
         Storybook the product of hundreds of community contributors from around the globe.
       </Text>
       <CommunityAvatars>
-        {contributors.map(contributor => (
+        {contributors.slice(0, contributors.length / 3).map(contributor => (
           <AvatarWrapper key={contributor.id} src={contributor.avatar_url} />
         ))}
       </CommunityAvatars>
+      <StyledLink withArrow href="https://github.com/storybookjs/frontpage/graphs/contributors">
+        View all on GitHub
+      </StyledLink>
     </section>
   </Wrapper>
 );
@@ -64,7 +71,7 @@ PureContributors.defaultProps = {
   contributors: [],
 };
 
-const contributorsUrl = 'https://api.github.com/repos/chromaui/learnstorybook.com/contributors';
+const contributorsUrl = 'https://api.github.com/repos/storybookjs/frontpage/contributors';
 const sessionStorageKey = 'lsbGithubContributors';
 
 const Contributors = () => {
