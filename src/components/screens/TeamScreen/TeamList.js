@@ -61,6 +61,8 @@ export default function TeamList({ children, ...props }) {
   );
 }
 
+export { Layout };
+
 TeamList.propTypes = {
   children: PropTypes.node.isRequired,
 };

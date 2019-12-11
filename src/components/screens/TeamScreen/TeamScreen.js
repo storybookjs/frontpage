@@ -8,7 +8,9 @@ import PageLayout from '../../layout/PageLayout';
 import PageTitle from '../../layout/PageTitle';
 import TeamItem from './TeamItem';
 import ContributorItem from './ContributorItem';
-import TeamList from './TeamList';
+import TeamList, { Layout } from './TeamList';
+
+import Contributors from './Contributors';
 
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import { SocialGraph } from '../../basics';
@@ -20,6 +22,8 @@ const Team = styled(TeamList)`
     margin-bottom: 5rem;
   }
 `;
+
+const ContributorsWrapper = styled(Layout)``;
 
 const contributors = [
   {
@@ -134,6 +138,9 @@ export function PureTeamScreen({ data: { gitHubRepoData }, ...props }) {
           gitHubUrl={`${gitHubRepoData.url}/graphs/contributors`}
         />
       </Team>
+      <ContributorsWrapper>
+        <Contributors />
+      </ContributorsWrapper>
     </PageLayout>
   );
 }

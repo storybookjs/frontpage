@@ -12,6 +12,16 @@ const Heading = styled.div`
   line-height: 28px;
 `;
 
+const Text = styled.h1`
+  font-size: ${typography.size.s3}px;
+  line-height: 28px;
+  margin-top: 12px;
+`;
+
+const Wrapper = styled.div`
+  padding: 1rem;
+`;
+
 const CommunityAvatars = styled.div`
   margin-top: 24px;
   margin-left: -10px;
@@ -26,16 +36,19 @@ const AvatarWrapper = styled(Avatar).attrs({ size: 'large' })`
 `;
 
 const PureContributors = ({ contributors }) => (
-  <div>
+  <Wrapper>
     <section>
-      <Heading>Contributors !!</Heading>
+      <Heading>{contributors.length} Contributors</Heading>
+      <Text>
+        Storybook the product of hundreds of community contributors from around the globe.
+      </Text>
       <CommunityAvatars>
         {contributors.map(contributor => (
           <AvatarWrapper key={contributor.id} src={contributor.avatar_url} />
         ))}
       </CommunityAvatars>
     </section>
-  </div>
+  </Wrapper>
 );
 
 PureContributors.propTypes = {
