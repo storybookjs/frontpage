@@ -42,12 +42,12 @@ const StyledLink = styled(Link)`
 const PureContributors = ({ contributors }) => (
   <Wrapper>
     <section>
-      <Heading>+{parseInt(contributors.length / 3, 10)} Contributors</Heading>
+      <Heading>+{contributors.length} Contributors</Heading>
       <Text>
         Storybook the product of hundreds of community contributors from around the globe.
       </Text>
       <CommunityAvatars>
-        {contributors.slice(0, contributors.length / 3).map(contributor => (
+        {contributors.map(contributor => (
           <AvatarWrapper key={contributor.id} src={contributor.avatar_url} />
         ))}
       </CommunityAvatars>
@@ -71,7 +71,7 @@ PureContributors.defaultProps = {
   contributors: [],
 };
 
-const contributorsUrl = 'https://api.github.com/repos/storybookjs/frontpage/contributors';
+const contributorsUrl = 'https://api.github.com/repos/storybookjs/frontpage/contributors?per_page=10';
 const sessionStorageKey = 'lsbGithubContributors';
 
 const Contributors = () => {
