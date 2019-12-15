@@ -7,7 +7,6 @@ import { styles } from '@storybook/design-system';
 import PageLayout from '../../layout/PageLayout';
 import PageTitle from '../../layout/PageTitle';
 import TeamItem from './TeamItem';
-import ContributorItem from './ContributorItem';
 import TeamList, { Layout } from './TeamList';
 
 import Contributors from './Contributors';
@@ -19,52 +18,13 @@ const { breakpoint } = styles;
 
 const Team = styled(TeamList)`
   @media (min-width: ${breakpoint * 1}px) {
-    margin-bottom: 5rem;
+    margin-bottom: 1rem;
   }
 `;
 
 const ContributorsWrapper = styled(Layout)``;
 
-const contributors = [
-  {
-    name: 'Daniel Duan',
-    avatarUrl: 'https://avatars1.githubusercontent.com/u/1474548',
-  },
-  {
-    name: 'Kai Röder',
-    avatarUrl: 'https://pbs.twimg.com/profile_images/1167896480373362689/CRgdWRVh.jpg',
-  },
-  {
-    name: 'Chak Shun Yu',
-    avatarUrl: 'https://avatars0.githubusercontent.com/u/5955441',
-  },
-  {
-    name: 'Gavin King',
-    avatarUrl: 'https://avatars2.githubusercontent.com/u/651122',
-  },
-  {
-    name: 'Carlos Vega',
-    avatarUrl: 'https://avatars1.githubusercontent.com/u/1593752',
-  },
-  {
-    name: 'Gytis Vinclovas',
-    avatarUrl: 'https://avatars3.githubusercontent.com/u/3867635',
-  },
-  {
-    name: 'Rob Halff',
-    avatarUrl: 'https://avatars1.githubusercontent.com/u/274358',
-  },
-  {
-    name: 'Thomas Bertet',
-    avatarUrl: 'https://avatars3.githubusercontent.com/u/2551574',
-  },
-  {
-    name: 'Oleg Proskurin',
-    avatarUrl: 'https://avatars3.githubusercontent.com/u/14885189',
-  },
-];
-
-export function PureTeamScreen({ data: { gitHubRepoData }, ...props }) {
+export function PureTeamScreen({ ...props }) {
   const { title, ogImage, urls = {} } = useSiteMetadata();
   return (
     <PageLayout {...props}>
@@ -79,7 +39,7 @@ export function PureTeamScreen({ data: { gitHubRepoData }, ...props }) {
         heading="Team"
         title="Meet the team"
         desc="Storybook is maintained by hundreds of contributors worldwide and guided by a steering committee."
-        color="green"
+        color="purple"
       />
       <Team>
         <TeamItem
@@ -131,11 +91,6 @@ export function PureTeamScreen({ data: { gitHubRepoData }, ...props }) {
           avatarUrl="https://avatars0.githubusercontent.com/u/132554?s=200&v=4"
           gitHubUrl="https://github.com/tmeasday"
           twitterUrl="https://twitter.com/tmeasday"
-        />
-        <ContributorItem
-          contributors={contributors}
-          contributorCount={`+${gitHubRepoData.contributorCount}`}
-          gitHubUrl={`${gitHubRepoData.url}/graphs/contributors`}
         />
       </Team>
       <ContributorsWrapper>
