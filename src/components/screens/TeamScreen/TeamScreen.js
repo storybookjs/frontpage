@@ -22,7 +22,9 @@ const Team = styled(TeamList)`
   }
 `;
 
-const ContributorsWrapper = styled(Layout)``;
+const ContributorsWrapper = styled(Layout)`
+  padding: 0;
+`;
 
 export function PureTeamScreen({ ...props }) {
   const { title, ogImage, urls = {} } = useSiteMetadata();

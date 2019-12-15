@@ -36,11 +36,7 @@ const Grid = styled.div`
 
     @media (min-width: ${breakpoint * 1}px) {
       width: 50%;
-      padding: 1rem 0;
-
-      &:nth-child(n + 3) {
-        padding-bottom: 1rem;
-      }
+      padding: 2rem 0 0 0;
     }
   }
 `;
@@ -62,8 +58,8 @@ export default function TeamList({ children, ...props }) {
     <Layout {...props}>
       <Heading>Steering committee</Heading>
       <Text>
-        Storybook relies on the regular contribution from dedicated maintainers to evolve and keep
-        up to date. Maintainers are experts in different areas of the project.
+        Storybook is guided by a steering committee of top maintainers whose contributions to the
+        project continue to be instrumental in the growth and success of the projects.
       </Text>
       <Grid>{children}</Grid>
     </Layout>

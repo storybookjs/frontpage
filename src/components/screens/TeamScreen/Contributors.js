@@ -19,7 +19,7 @@ const Text = styled.h1`
 `;
 
 const Wrapper = styled.div`
-  /* padding: 1rem; */
+  padding: 1rem;
 `;
 
 const CommunityAvatars = styled.div`
