@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Avatar, styles } from '../basics';
+import { Avatar, styles } from '@storybook/design-system';
 
 const { color, spacing, typography, pageMargin, pageMargins, breakpoint } = styles;
 

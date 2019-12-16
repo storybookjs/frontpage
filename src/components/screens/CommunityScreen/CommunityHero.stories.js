@@ -11,6 +11,6 @@ export const gitHubRepoData = {
   name: 'storybook',
 };
 
-storiesOf('screens/CommunityScreen/CommunityHero', module).add('default', () => (
+storiesOf('Frontpage|screens/CommunityScreen/CommunityHero', module).add('default', () => (
   <CommunityHero gitHubRepoData={gitHubRepoData} />
 ));

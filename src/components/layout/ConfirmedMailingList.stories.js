@@ -5,7 +5,7 @@ import { action } from '@storybook/addon-actions';
 import ConfirmedMailingList, { PureConfirmedMailingList } from './ConfirmedMailingList';
 
 const onSubscribe = action('onSubscribe');
-storiesOf('layout/ConfirmedMailingList', module)
+storiesOf('Frontpage|layout/ConfirmedMailingList', module)
   .add('pure, not subscribed', () => (
     <PureConfirmedMailingList hasSubscribed={false} onSubscribe={onSubscribe} />
   ))

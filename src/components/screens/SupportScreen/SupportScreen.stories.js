@@ -2,8 +2,12 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import SupportScreen from './SupportScreen';
+import { PureSupportScreen } from './SupportScreen';
 
-storiesOf('screens/SupportScreen/SupportScreen', module).add('default', () => <SupportScreen />, {
-  chromatic: { viewports: [320, 1200] },
-});
+storiesOf('Frontpage|screens/SupportScreen/SupportScreen', module).add(
+  'default',
+  () => <PureSupportScreen />,
+  {
+    chromatic: { viewports: [320, 1200] },
+  }
+);

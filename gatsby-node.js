@@ -81,7 +81,7 @@ exports.createPages = async ({ graphql, actions }) => {
       return acc;
     };
 
-    const files = entries.reduce(addToFiles(), {});
+    const files = entries.reduce(addToFiles('/docs/'), {});
     // console.log(JSON.stringify(files, null, 4));
 
     Object.entries(files).forEach(([k, v]) => {

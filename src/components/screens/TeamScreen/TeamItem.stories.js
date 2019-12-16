@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 
 import TeamItem from './TeamItem';
 
-storiesOf('screens/TeamScreen/TeamItem', module).add('default', () => (
+storiesOf('Frontpage|screens/TeamScreen/TeamItem', module).add('default', () => (
   <TeamItem
     name="Tom Coleman"
     title="Cat herder"

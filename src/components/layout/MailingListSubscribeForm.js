@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { observer } from 'mobx-react';
 
-import { Checkbox, Button, Input, FormState, styles } from '../basics';
+import { Button, Checkbox, Input, styles } from '@storybook/design-system';
+import { FormState } from '../basics';
 
 const { color, typography } = styles;
 
@@ -87,12 +88,13 @@ class MailingListSubscribeForm extends Component {
             {...this.formData.select('email').bind()}
             id="email"
             icon="email"
+            label="Email"
+            hideLabel
             autoCapitalize="off"
             autoCorrect="off"
-            label={null}
             appearance="secondary"
           />
-          <Send type="submit" secondary onClick={this.formData.onSubmit}>
+          <Send type="submit" appearance="secondary" onClick={this.formData.onSubmit}>
             {cta || 'Send'}
           </Send>
         </EmailWrapper>

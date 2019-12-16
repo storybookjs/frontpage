@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Link, styles } from '../../basics';
+import { Link, styles } from '@storybook/design-system';
 
 const { color, typography, breakpoint } = styles;
 
@@ -33,7 +33,7 @@ const Image = styled.div`
 `;
 
 const Title = styled.div`
-  font-weight: ${typography.weight.black};
+  font-weight: ${typography.weight.extrabold};
   font-size: ${typography.size.s3}px;
   line-height: 1.5rem;
 
@@ -52,7 +52,7 @@ const Title = styled.div`
 `;
 
 const TitleLink = styled(Link)`
-  font-weight: ${typography.weight.black};
+  font-weight: ${typography.weight.extrabold};
   font-size: ${typography.size.s3}px;
   line-height: 1.5rem;
   margin-bottom: 0.25rem;

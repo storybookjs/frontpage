@@ -1,9 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { rgba } from 'polished';
 import { StaticQuery, graphql } from 'gatsby';
 
-import { Button, Icon, LazyLoad, SocialGraph, styles, site } from '../../basics';
+import { Button, Icon, styles } from '@storybook/design-system';
+import useSiteMetadata from '../../lib/useSiteMetadata';
+
+import { LazyLoad, SocialGraph } from '../../basics';
 import PageLayout from '../../layout/PageLayout';
 import CommunityHero from './CommunityHero';
 import CommunitySocial from './CommunitySocial';
@@ -11,8 +15,15 @@ import CommunitySidebar from './CommunitySidebar';
 import CommunityItem from './CommunityItem';
 import CommunityList from './CommunityList';
 
+import StorybookBadgeSVG from '../../../images/community/storybook-badge.svg';
+import BlogSVG from '../../../images/community/blog.svg';
+import PresentationSVG from '../../../images/community/presentation.svg';
+import BrandSVG from '../../../images/community/brand.svg';
+import PullRequestSVG from '../../../images/community/pullrequest.svg';
+import DocsSVG from '../../../images/community/docs.svg';
+import BugSVG from '../../../images/community/bug.svg';
+
 const { background, color, pageMargins, breakpoint } = styles;
-const { metadata, url } = site;
 
 const Contrast = styled.div`
   background-color: ${background.app};
@@ -144,13 +155,26 @@ const CommunityLayout = styled.div`
 `;
 
 export function PureCommunityScreen({ data: { gitHubRepoData }, ...props }) {
+  const { title, ogImage, urls = {} } = useSiteMetadata();
+  const {
+    home,
+    badge,
+    brand,
+    chat,
+    blog,
+    presentation,
+    designSystem,
+    gitHub = {},
+    docs = {},
+    openCollective,
+  } = urls;
   return (
     <PageLayout {...props}>
       <SocialGraph
-        title={`Community | ${metadata.title}`}
+        title={`Community | ${title}`}
         desc="Join thousands of frontend developers to learn new Storybook techniques, get help, and develop UIs faster."
-        url={`${url.home}/community`}
-        image={metadata.ogImage}
+        url={`${home}/community`}
+        image={ogImage}
       />
       <CommunityHero gitHubRepoData={gitHubRepoData} />
 
@@ -159,35 +183,35 @@ export function PureCommunityScreen({ data: { gitHubRepoData }, ...props }) {
       <CommunityLayout>
         <Sidebar
           title="Spread the word"
-          desc="The easiest way to get involved is to share Storybook with fellow developers, colleages, and friends."
+          desc="The easiest way to get involved is to share Storybook with fellow developers, colleagues, and friends."
         >
           <StorybookBadgeWrapper>
-            <StorybookBadgeOuter href={url.badge}>
-              <StorybookBadge src="/images/community/storybook-badge.svg" alt="Storybook badge" />
+            <StorybookBadgeOuter href={badge}>
+              <StorybookBadge src={StorybookBadgeSVG} alt="Storybook badge" />
             </StorybookBadgeOuter>
             <div>Get the Storybook badge for your project</div>
           </StorybookBadgeWrapper>
         </Sidebar>
         <List>
           <Item
-            image={<img src="/images/community/blog.svg" alt="write" />}
+            image={<img src={BlogSVG} alt="write" />}
             title="Write about Storybook"
             desc="Publish it to your blog or submit it to Storybook’s Medium publication. Mention @storybookjs on Twitter for a reshare."
-            links={[{ title: 'Submit an article to the blog', href: url.blog }]}
+            links={[{ title: 'Submit an article to the blog', href: blog }]}
           />
           <Item
-            image={<img src="/images/community/presentation.svg" alt="present" />}
+            image={<img src={PresentationSVG} alt="present" />}
             title="Talk about Storybook"
             desc="Present at work, meetups, and conferences. Get your point across with ready-to-use slides (Keynote, PDF) and illustrations."
-            links={[{ title: 'View presentation materials', href: url.presentation }]}
+            links={[{ title: 'View presentation materials', href: presentation }]}
           />
           <Item
-            image={<img src="/images/community/brand.svg" alt="brand kit" />}
+            image={<img src={BrandSVG} alt="brand kit" />}
             title="Use the brand"
             desc="Create your own visuals using Storybook logo, typography, colors, and images."
             links={[
-              { title: 'View brand', href: url.brand },
-              { title: 'View design system', href: url.designSystem },
+              { title: 'View brand', href: brand },
+              { title: 'View design system', href: designSystem },
             ]}
           />
         </List>
@@ -201,28 +225,28 @@ export function PureCommunityScreen({ data: { gitHubRepoData }, ...props }) {
             desc="Storybook is maintained by contributors from around the globe. Join us in building the most popular component explorer."
           >
             <DiscordText>Have questions about contributing? Ask the community on chat.</DiscordText>
-            <Button outline secondary isLink href={url.chat}>
-              <Icon icon="discord" /> Chat on Discord
+            <Button appearance="secondaryOutline" isLink href={chat}>
+              <Icon icon="discord" aria-hidden /> Chat on Discord
             </Button>
           </Sidebar>
           <List>
             <Item
-              image={<img src="/images/community/bug.svg" alt="report bugs" />}
+              image={<img src={BugSVG} alt="report bugs" />}
               title="Find and report issues"
               desc="Help find bugs and QA releases. Maintainers are human, we miss things sometimes. Issue reports are much appreciated."
-              links={[{ title: 'Report an issue', href: url.gitHub.issues }]}
+              links={[{ title: 'Report an issue', href: gitHub.issues }]}
             />
             <Item
-              image={<img src="/images/community/docs.svg" alt="docs" />}
+              image={<img src={DocsSVG} alt="docs" />}
               title="Write and update docs"
               desc="Teach fellow developers how to take advantage of Storybook. Help write, edit, and improve docs."
-              links={[{ title: 'Get started with docs', href: url.docs.home }]}
+              links={[{ title: 'Get started with docs', href: docs.home }]}
             />
             <Item
-              image={<img src="/images/community/pullrequest.svg" alt="pull request" />}
+              image={<img src={PullRequestSVG} alt="pull request" />}
               title="Send a pull request"
               desc="Want to create a new feature or improve existing functionality? PRs welcomed and encouraged."
-              links={[{ title: 'Learn how to contribute', href: url.gitHub.repo }]}
+              links={[{ title: 'Learn how to contribute', href: gitHub.repo }]}
             />
           </List>
         </CommunityLayout>
@@ -235,7 +259,7 @@ export function PureCommunityScreen({ data: { gitHubRepoData }, ...props }) {
           desc="Donations go to hosting, swag for contributors, documentation and learning materials."
           loneChild
         >
-          <Button secondary isLink href={url.openCollective} target="_blank">
+          <Button appearance="secondary" isLink href={openCollective} target="_blank">
             Donate to Storybook
           </Button>
         </Sidebar>
@@ -354,11 +378,15 @@ export function PureCommunityScreen({ data: { gitHubRepoData }, ...props }) {
   );
 }
 
+PureCommunityScreen.propTypes = {
+  data: PropTypes.any.isRequired, // eslint-disable-line react/forbid-prop-types
+};
+
 export default function CommunityScreen(props) {
   return (
     <StaticQuery
       query={graphql`
-        query CommunityHeroContributorQuery {
+        query CommunityScreenQuery {
           gitHubRepoData {
             contributorCount
             author

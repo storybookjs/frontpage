@@ -38,14 +38,14 @@ Gatsby is used for basic routing and static site generation.
 
 This project uses these tools to make our job easier.
 
-### 💫 Deploys by Netlify
+### 💫 Deploys by [Netlify](https://netlify.com)
 
 Master and branches are automatically deployed by Netlify every commit.
 
-### 🖼 Visual testing by Chromatic
+### 🖼 Visual testing by [Chromatic](https://www.chromaticqa.com/library?appId=5be26744d2f6250024a9117d)
 
 All stories in the Storybook are automatically visual tested on desktop and mobile each commit. Ensure all baselines are ✅ accepted before merging.
 
-### 🚦 Continuous integration by Circle CI
+### 🚦 Continuous integration by [Circle CI](https://circleci.com/gh/storybookjs/frontpage)
 
 Every build a test suite runs. Ensure there are no errors before merging.

@@ -5,7 +5,8 @@ import styled from 'styled-components';
 import GitHubButton from 'react-github-button';
 import 'react-github-button/assets/style.css';
 
-import { Cardinal, styles } from '../../basics';
+import { styles } from '@storybook/design-system';
+import { Cardinal } from '../../basics';
 
 import ConfirmedMailingList from '../../layout/ConfirmedMailingList';
 import NpmDownloadCount from '../../layout/NpmDownloadCount';

@@ -2,6 +2,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import NotFoundScreen from './NotFoundScreen';
+import { PureNotFoundScreen } from './NotFoundScreen';
 
-storiesOf('screens/NotFoundScreen/NotFoundScreen', module).add('default', () => <NotFoundScreen />);
+storiesOf('Frontpage|screens/NotFoundScreen/NotFoundScreen', module).add('default', () => (
+  <PureNotFoundScreen />
+));

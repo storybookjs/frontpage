@@ -1,17 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 
+import { styles } from '@storybook/design-system';
 import PageLayout from '../../layout/PageLayout';
 import PageTitle from '../../layout/PageTitle';
 import TeamItem from './TeamItem';
 import ContributorItem from './ContributorItem';
 import TeamList from './TeamList';
 
-import { SocialGraph, styles, site } from '../../basics';
+import useSiteMetadata from '../../lib/useSiteMetadata';
+import { SocialGraph } from '../../basics';
 
 const { breakpoint } = styles;
-const { metadata, url } = site;
 
 const Team = styled(TeamList)`
   @media (min-width: ${breakpoint * 1}px) {
@@ -26,7 +28,7 @@ const contributors = [
   },
   {
     name: 'Kai Röder',
-    avatarUrl: 'https://pbs.twimg.com/profile_images/1060789281667670016/Zrfw467n_bigger.jpg',
+    avatarUrl: 'https://pbs.twimg.com/profile_images/1167896480373362689/CRgdWRVh.jpg',
   },
   {
     name: 'Chak Shun Yu',
@@ -58,14 +60,15 @@ const contributors = [
   },
 ];
 
-export function PureTeamScreen({ data, ...props }) {
+export function PureTeamScreen({ data: { gitHubRepoData }, ...props }) {
+  const { title, ogImage, urls = {} } = useSiteMetadata();
   return (
     <PageLayout {...props}>
       <SocialGraph
-        title={`Team | ${metadata.title}`}
+        title={`Team | ${title}`}
         desc="Storybook is maintained by hundreds of contributors worldwide and guided by a steering committee."
-        url={`${url.home}/team`}
-        image={metadata.ogImage}
+        url={`${urls.home}/team`}
+        image={ogImage}
       />
 
       <PageTitle
@@ -79,7 +82,7 @@ export function PureTeamScreen({ data, ...props }) {
           name="Norbert de Langen"
           title="Open source"
           company="Chroma"
-          companyUrl="https://chromaui.com"
+          companyUrl="https://hichroma.com"
           location="Zwolle, Netherlands"
           avatarUrl="https://avatars2.githubusercontent.com/u/3070389?s=200&v=4"
           gitHubUrl="https://github.com/ndelangen"
@@ -99,7 +102,7 @@ export function PureTeamScreen({ data, ...props }) {
           name="Michael Shilman"
           title="Engineering"
           company="Chroma"
-          companyUrl="https://chromaui.com"
+          companyUrl="https://hichroma.com"
           location="San Francisco, USA"
           avatarUrl="https://avatars0.githubusercontent.com/u/488689?s=200&v=4"
           gitHubUrl="https://github.com/shilman"
@@ -108,8 +111,8 @@ export function PureTeamScreen({ data, ...props }) {
         <TeamItem
           name="Igor Davydkin"
           title="Engineering"
-          company="Sears Israel"
-          companyUrl="https://sears.co.il/"
+          company="ClimaCell"
+          companyUrl="https://www.climacell.co/"
           location="Tel Aviv, Israel"
           avatarUrl="https://avatars1.githubusercontent.com/u/7867954?s=200&v=4"
           gitHubUrl="https://github.com/igor-dv"
@@ -119,7 +122,7 @@ export function PureTeamScreen({ data, ...props }) {
           name="Tom Coleman"
           title="Engineering"
           company="Chroma"
-          companyUrl="https://chromaui.com"
+          companyUrl="https://hichroma.com"
           location="Melbourne, Australia"
           avatarUrl="https://avatars0.githubusercontent.com/u/132554?s=200&v=4"
           gitHubUrl="https://github.com/tmeasday"
@@ -127,19 +130,23 @@ export function PureTeamScreen({ data, ...props }) {
         />
         <ContributorItem
           contributors={contributors}
-          contributorCount={`+${data.gitHubRepoData.contributorCount}`}
-          gitHubUrl={`${data.gitHubRepoData.url}/graphs/contributors`}
+          contributorCount={`+${gitHubRepoData.contributorCount}`}
+          gitHubUrl={`${gitHubRepoData.url}/graphs/contributors`}
         />
       </Team>
     </PageLayout>
   );
 }
 
+PureTeamScreen.propTypes = {
+  data: PropTypes.any.isRequired, // eslint-disable-line react/forbid-prop-types
+};
+
 export default function TeamScreen({ ...props }) {
   return (
     <StaticQuery
       query={graphql`
-        query TeamScreenContributorQuery {
+        query TeamScreenQuery {
           gitHubRepoData {
             contributorCount
             url

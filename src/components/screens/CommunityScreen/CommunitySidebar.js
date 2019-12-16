@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-import { styles } from '../../basics';
+import { styles } from '@storybook/design-system';
 
 const { color, typography, breakpoint } = styles;
 
 const Title = styled.h2`
-  font-weight: ${typography.weight.black};
+  font-weight: ${typography.weight.extrabold};
   font-size: ${typography.size.m2}px;
   margin-bottom: 0.75rem;
   line-height: 1.5rem;
@@ -66,8 +66,10 @@ CommunitySidebar.propTypes = {
   title: PropTypes.node.isRequired,
   desc: PropTypes.node.isRequired,
   children: PropTypes.node,
+  loneChild: PropTypes.bool,
 };
 
 CommunitySidebar.defaultProps = {
   children: null,
+  loneChild: false,
 };

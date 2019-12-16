@@ -1,8 +1,9 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { hoistStatics, compose, withState } from 'recompose';
 
-import { styles, animation } from '../../basics';
+import { styles, animation } from '@storybook/design-system';
 
 import ComponentItem from './ComponentItem';
 import LogoToggle from './LogoToggle';
@@ -79,7 +80,7 @@ function ComponentList({ selectedIndex, onSelectIndex, ...props }) {
     <Wrapper {...props}>
       <Toggle
         path="/images/logos/user"
-        brands={['formidable', 'auth0', 'artsy']}
+        brands={['formidable', 'auth0', 'artsy', 'jetbrains']}
         selectedIndex={selectedIndex}
         onSelectIndex={onSelectIndex}
         clicked={selectedIndex !== 0}
@@ -146,10 +147,38 @@ function ComponentList({ selectedIndex, onSelectIndex, ...props }) {
           </List>
         </Fragment>
       )}
+      {selectedIndex === 3 && (
+        <Fragment>
+          <List>
+            <Item imageUrl="/images/use-cases/jetbrains/1.png" />
+            <Item imageUrl="/images/use-cases/jetbrains/2.png" />
+            <Item imageUrl="/images/use-cases/jetbrains/3.png" />
+            <Item imageUrl="/images/use-cases/jetbrains/4.png" />
+            <Item imageUrl="/images/use-cases/jetbrains/5.png" />
+            <Item imageUrl="/images/use-cases/jetbrains/6.png" />
+          </List>
+          <List>
+            <Item imageUrl="/images/use-cases/jetbrains/7.png" />
+            <Item imageUrl="/images/use-cases/jetbrains/8.png" />
+            <Item imageUrl="/images/use-cases/jetbrains/9.png" />
+            <Item imageUrl="/images/use-cases/jetbrains/10.png" />
+            <Item imageUrl="/images/use-cases/jetbrains/11.png" />
+            <Item imageUrl="/images/use-cases/jetbrains/12.png" />
+          </List>
+        </Fragment>
+      )}
     </Wrapper>
   );
 }
 
-ComponentList.propTypes = {};
+ComponentList.propTypes = {
+  onSelectIndex: PropTypes.func,
+  selectedIndex: PropTypes.number,
+};
+
+ComponentList.defaultProps = {
+  onSelectIndex: () => 0,
+  selectedIndex: undefined,
+};
 
 export default hoistStatics(compose(withState('selectedIndex', 'onSelectIndex', 0)))(ComponentList);

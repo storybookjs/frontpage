@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react';
 import { PureCommunityScreen } from './CommunityScreen';
 import { gitHubRepoData } from './CommunityHero.stories';
 
-storiesOf('screens/CommunityScreen/CommunityScreen', module).add(
+storiesOf('Frontpage|screens/CommunityScreen/CommunityScreen', module).add(
   'default',
   () => <PureCommunityScreen data={{ gitHubRepoData }} />,
   {

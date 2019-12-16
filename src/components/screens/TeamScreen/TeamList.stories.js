@@ -20,7 +20,7 @@ const Item = (
   />
 );
 
-storiesOf('screens/TeamScreen/TeamList', module).add('full', () => (
+storiesOf('Frontpage|screens/TeamScreen/TeamList', module).add('full', () => (
   <TeamList>
     {Item}
     {Item}

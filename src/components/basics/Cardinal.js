@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import pluralize from 'pluralize';
 
-import { color, typography } from './shared/styles';
-import { inlineGlow } from './shared/animation';
-import Link from './Link';
+import { Link, styles, animation } from '@storybook/design-system';
+
+const { color, typography } = styles;
+const { inlineGlow } = animation;
 
 const Count = styled.div`
   color: ${color.dark};

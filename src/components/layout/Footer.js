@@ -1,13 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import { Link as GatsbyLink } from 'gatsby';
 
-import { Icon, Link, Subheading, styles, site } from '../basics';
+import { Icon, Link, Subheading, styles } from '@storybook/design-system';
+import useSiteMetadata from '../lib/useSiteMetadata';
 
 import ConfirmedMailingList from './ConfirmedMailingList';
-import { navLinks } from './PageLayout';
+
+import DirectionSVG from '../../images/colored-icons/direction.svg';
+import RepoSVG from '../../images/colored-icons/repo.svg';
+import StorybookLogoSVG from '../../images/logo-storybook.svg';
+import NetlifyLogoSVG from '../../images/logos/user/logo-netlify.svg';
+import ChromaticLogoSVG from '../../images/logos/user/logo-chromatic.svg';
+import CircleCILogoSVG from '../../images/logos/user/logo-circleci.svg';
 
 const { background, color, typography, pageMargins, pageMargin, spacing, breakpoint } = styles;
-const { url } = site;
 
 const Title = styled(Subheading)`
   display: block;
@@ -16,27 +24,9 @@ const Title = styled(Subheading)`
   color: ${color.mediumdark};
 `;
 
-const SubLink = styled(Link)`
-  text-transform: none;
-  letter-spacing: 0;
-  font-weight: ${typography.weight.regular};
-  margin-left: 20px;
-`;
-
 const ResourceTitle = styled.div`
-  font-weight: ${typography.weight.black};
+  font-weight: ${typography.weight.extrabold};
   margin-bottom: 0.25rem;
-`;
-
-const ResourceTitleLink = styled(Link)`
-  font-weight: ${typography.weight.black};
-  margin-bottom: 0.25rem;
-
-  svg {
-    height: 0.7rem;
-    width: 0.7rem;
-    vertical-align: initial;
-  }
 `;
 
 const ResourceDesc = styled.div`
@@ -195,7 +185,6 @@ const HrWrapper = styled.div`
 
 const Netlify = styled.img``;
 const Chromatic = styled.img``;
-const Teamcity = styled.img``;
 const CircleCI = styled.img``;
 
 const Service = styled.div`
@@ -243,7 +232,7 @@ const Services = styled.div`
     }
   }
 
-  ${Netlify}, ${Chromatic}, ${Teamcity}, ${CircleCI} {
+  ${Netlify}, ${Chromatic}, ${CircleCI} {
     height: 22px;
     width: auto;
     display: inline-block;
@@ -255,13 +244,7 @@ const Services = styled.div`
     }
   }
 
-  ${Teamcity} {
-    /* Makes visual impact the same as other logos */
-    padding: 2px 0;
-    margin-right: 10px;
-  }
-
-  ${Teamcity}, ${CircleCI} {
+  ${CircleCI} {
     /* Turn down the pure black of these logos */
     opacity: .75;
   }
@@ -314,48 +297,59 @@ const FooterWrapper = styled.div`
   line-height: 20px;
 `;
 
-export default function Footer({ hasSubscribed, onSubscribe, ...props }) {
+const LinkWrapper = ({ href, isGatsby, ...props }) => {
+  if (isGatsby) {
+    return <GatsbyLink to={href} {...props} />;
+  }
+
+  // eslint-disable-next-line jsx-a11y/anchor-has-content
+  return <a href={href} {...props} />;
+};
+
+LinkWrapper.propTypes = {
+  href: PropTypes.string.isRequired,
+  isGatsby: PropTypes.bool.isRequired,
+};
+
+export default function Footer({ ...props }) {
+  const { urls = {} } = useSiteMetadata();
+  const {
+    blog,
+    twitter,
+    chat,
+    youtube,
+    navLinks = {},
+    framework = {},
+    docs = {},
+    tutorials,
+    gitHub = {},
+  } = urls;
+
   return (
     <FooterWrapper {...props}>
       <Upper>
         <UpperColumn>
-          <Title>Learn</Title>
           <Resources>
             <Resource>
-              <img src="/images/colored-icons/repo.svg" alt="Docs" />
+              <img src={RepoSVG} alt="Docs" />
               <Meta>
-                <ResourceTitle>Get started with Storybook</ResourceTitle>
+                <ResourceTitle>Storybook documentation</ResourceTitle>
                 <ResourceDesc>
                   Add Storybook to your project in less than a minute to build components faster and
                   easier.
                 </ResourceDesc>
                 <ResourceActions>
-                  <ResourceAction withArrow href={url.framework.react}>
+                  <ResourceAction withArrow href={framework.react}>
                     React
                   </ResourceAction>
-                  <ResourceAction withArrow href={url.framework.vue}>
+                  <ResourceAction withArrow href={framework.vue}>
                     Vue
                   </ResourceAction>
-                  <ResourceAction withArrow href={url.framework.angular}>
+                  <ResourceAction withArrow href={framework.angular}>
                     Angular
                   </ResourceAction>
-                  <ResourceAction withArrow href={url.docs.home}>
+                  <ResourceAction withArrow href={docs.home}>
                     View more
-                  </ResourceAction>
-                </ResourceActions>
-              </Meta>
-            </Resource>
-            <Resource>
-              <img src="/images/colored-icons/direction.svg" alt="Tutorial" />
-              <Meta>
-                <ResourceTitle>Storybook tutorial</ResourceTitle>
-                <ResourceDesc>
-                  Learn Storybook with a 10-chapter tutorial that teaches Storybook best practices
-                  as you build a UI from scratch.
-                </ResourceDesc>
-                <ResourceActions>
-                  <ResourceAction href="https://www.learnstorybook.com/" withArrow>
-                    Learn Storybook now
                   </ResourceAction>
                 </ResourceActions>
               </Meta>
@@ -363,38 +357,20 @@ export default function Footer({ hasSubscribed, onSubscribe, ...props }) {
           </Resources>
         </UpperColumn>
         <UpperColumn>
-          <Title>
-            News
-            <SubLink tertiary withArrow href={url.blog}>
-              Read more
-            </SubLink>
-          </Title>{' '}
           <Resources>
             <Resource>
+              <img src={DirectionSVG} alt="Tutorial" />
               <Meta>
-                <ResourceTitleLink tertiary withArrow>
-                  Storybook 4.0 is here
-                </ResourceTitleLink>
+                <ResourceTitle>Storybook tutorial</ResourceTitle>
                 <ResourceDesc>
-                  Big updates to support more build tools and frameworksBig updates to support more
-                  build tools and frameworks
+                  Learn Storybook with a 10-chapter tutorial that teaches Storybook best practices
+                  as you build a UI from scratch.
                 </ResourceDesc>
-              </Meta>
-            </Resource>
-            <Resource>
-              <Meta>
-                <ResourceTitleLink tertiary withArrow>
-                  Storybook 4.0 is here
-                </ResourceTitleLink>
-                <ResourceDesc>Big updates to support more build tools and frameworks</ResourceDesc>
-              </Meta>
-            </Resource>
-            <Resource>
-              <Meta>
-                <ResourceTitleLink tertiary withArrow>
-                  Storybook 4.0 is here
-                </ResourceTitleLink>
-                <ResourceDesc>Big updates to support more build tools and frameworks</ResourceDesc>
+                <ResourceActions>
+                  <ResourceAction withArrow href={tutorials}>
+                    Learn Storybook now
+                  </ResourceAction>
+                </ResourceActions>
               </Meta>
             </Resource>
           </Resources>
@@ -403,7 +379,7 @@ export default function Footer({ hasSubscribed, onSubscribe, ...props }) {
       <Lower>
         <Colophon>
           <LogotypeWrapper isGatsby to="/">
-            <img src="/images/logos/logo-storybook.svg" alt="Storybook" />
+            <img src={StorybookLogoSVG} alt="Storybook" />
           </LogotypeWrapper>
           <Text>
             The MIT License (MIT). Website design by{' '}
@@ -417,34 +393,34 @@ export default function Footer({ hasSubscribed, onSubscribe, ...props }) {
           <Title>Storybook</Title>
           {navLinks.map(({ title, href, isGatsby }) => (
             <FooterLink
-              tertiary={1}
+              tertiary
               key={title}
-              href={!isGatsby ? href : undefined}
-              to={isGatsby ? href : undefined}
+              href={href}
               isGatsby={isGatsby}
+              LinkWrapper={LinkWrapper}
             >
               {title}
             </FooterLink>
           ))}
-          <FooterLink tertiary href={url.gitHub.releases}>
+          <FooterLink tertiary href={gitHub.releases}>
             Releases
           </FooterLink>
         </Column>
         <Column>
           <Title>Community</Title>
-          <FooterLink tertiary href={url.gitHub.repo}>
+          <FooterLink tertiary href={gitHub.repo}>
             <Icon icon="github" /> GitHub
           </FooterLink>
-          <FooterLink tertiary href={url.blog}>
+          <FooterLink tertiary href={blog}>
             <Icon icon="medium" /> Blog
           </FooterLink>
-          <FooterLink tertiary href={url.twitter}>
+          <FooterLink tertiary href={twitter}>
             <Icon icon="twitter" /> Twitter
           </FooterLink>
-          <FooterLink tertiary href={url.chat}>
+          <FooterLink tertiary href={chat}>
             <Icon icon="discord" /> Discord chat
           </FooterLink>
-          <FooterLink tertiary href={url.youtube}>
+          <FooterLink tertiary href={youtube}>
             <Icon icon="youtube" /> Youtube
           </FooterLink>
         </Column>
@@ -461,25 +437,24 @@ export default function Footer({ hasSubscribed, onSubscribe, ...props }) {
         <Service>
           <Text>Hosting by</Text>
           <a href="https://netlify.com">
-            <Netlify src="/images/logos/user/logo-netlify.svg" alt="Netlify" />
+            <Netlify src={NetlifyLogoSVG} alt="Netlify" />
           </a>
         </Service>
         <Service>
           <Text>Visual testing by</Text>
           <a href="https://www.chromaticqa.com/">
-            <Chromatic src="/images/logos/user/logo-chromatic.svg" alt="Chromatic" />
+            <Chromatic src={ChromaticLogoSVG} alt="Chromatic" />
           </a>
         </Service>
         <Service>
           <Text>Continuous integration by</Text>
-          <a href="https://www.jetbrains.com/teamcity/">
-            <Teamcity src="/images/logos/user/logo-teamcity.svg" alt="Teamcity" />
-          </a>
           <a href="https://circleci.com/">
-            <CircleCI src="/images/logos/user/logo-circleci.svg" alt="CircleCI" />
+            <CircleCI src={CircleCILogoSVG} alt="CircleCI" />
           </a>
         </Service>
       </Services>
     </FooterWrapper>
   );
 }
+
+Footer.propTypes = {};

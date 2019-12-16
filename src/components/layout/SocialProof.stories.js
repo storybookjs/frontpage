@@ -4,18 +4,18 @@ import { storiesOf } from '@storybook/react';
 
 import SocialProof from './SocialProof';
 
-storiesOf('layout/SocialProof', module)
+storiesOf('Frontpage|layout/SocialProof', module)
   .add('heading', () => (
     <SocialProof
       heading="Trusted by"
       path="images/logos/user"
-      brands={['github', 'dropbox', 'airbnb', 'lyft', 'mozilla', 'salesforce']}
+      brands={['github', 'dropbox', 'airbnb', 'lyft', 'mozilla', 'salesforce', 'jetbrains']}
     />
   ))
   .add('monochrome', () => (
     <SocialProof
       path="images/logos/user"
-      brands={['github', 'dropbox', 'airbnb', 'lyft', 'mozilla', 'salesforce']}
+      brands={['github', 'dropbox', 'airbnb', 'lyft', 'mozilla', 'salesforce', 'jetbrains']}
       monochrome
     />
   ))
@@ -35,6 +35,7 @@ storiesOf('layout/SocialProof', module)
         'priceline',
         'artsy',
         'apollo',
+        'jetbrains',
       ]}
       grid
     />

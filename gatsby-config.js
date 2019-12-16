@@ -1,4 +1,8 @@
+const { global } = require('@storybook/design-system');
+const siteMetadata = require('./site-metadata');
+
 module.exports = {
+  siteMetadata,
   plugins: [
     'gatsby-plugin-react-helmet',
     {
@@ -21,8 +25,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
-        google: {
-          families: ['Nunito Sans:400,700,900'],
+        custom: {
+          urls: [global.fontUrl],
         },
       },
     },
@@ -49,27 +53,10 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: 'gatsby-plugin-segment-js',
       options: {
-        trackingId: 'UA-134532782-1',
-        // Puts tracking script in the head instead of the body
-        head: false,
-        // Setting this parameter is optional
-        anonymize: true,
-        // Setting this parameter is also optional
-        respectDNT: true,
-        // Avoids sending pageview hits from custom paths
-        exclude: ['/preview/**', '/do-not-track/me/too/'],
-        // Enables Google Optimize using your container Id
-        optimizeId: null,
-        // Enables Google Optimize Experiment ID
-        experimentId: null,
-        // Set Variation ID. 0 for original 1,2,3....
-        variationId: null,
-        // Any additional create only fields (optional)
-        sampleRate: 5,
-        siteSpeedSampleRate: 10,
-        cookieDomain: 'example.com',
+        prodKey: 'AvvBObOmHaEMqfub8JJUXq5umjsuaqS8',
+        trackPage: true,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

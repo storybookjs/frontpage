@@ -1,20 +1,27 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 
-import { Badge, Button, Link, SocialGraph, styles, site, Video } from '../../basics';
+import { Button, Link, styles } from '@storybook/design-system';
+import useSiteMetadata from '../../lib/useSiteMetadata';
+
+import { SocialGraph, Video } from '../../basics';
 import PageLayout from '../../layout/PageLayout';
 import Hero from './Hero';
 import SocialProof from '../../layout/SocialProof';
 import PlaceholderAspectRatio from '../../layout/PlaceholderAspectRatio';
 import ValueProp from '../../layout/ValueProp';
+import Testimonial from '../../layout/Testimonial';
 import BenefitItem from './BenefitItem';
 import BenefitList from './BenefitList';
-import Testimonial from '../../layout/Testimonial';
 import CTA from '../../layout/CTA';
 
+import AtomicDesignLogoSVG from '../../../images/logos/user/logo-atomicdesign.svg';
+import GitlabLogoSVG from '../../../images/logos/user/logo-gitlab.svg';
+import SalesForceLogoSVG from '../../../images/logos/user/logo-salesforce.svg';
+
 const { background } = styles;
-const { metadata, url } = site;
 
 const Contrast = styled.div`
   background-color: ${background.app};
@@ -33,13 +40,15 @@ const Placeholder = styled(PlaceholderAspectRatio)`
 `;
 
 export function PureIndexScreen({ data: { gitHubRepoData }, ...props }) {
+  const { ogImage, urls = {} } = useSiteMetadata();
+  const { home, docs = {} } = urls;
   return (
     <PageLayout {...props}>
       <SocialGraph
-        title="Storybook: UI component workshop for frontend developers"
+        title="Storybook: UI component explorer for frontend developers"
         desc="Storybook is an open source tool for developing UI components in isolation for React, Vue, and Angular. It makes building stunning UIs organized and efficient."
-        url={url.home}
-        image={metadata.ogImage}
+        url={home}
+        image={ogImage}
       />
 
       <Hero gitHubRepoData={gitHubRepoData} />
@@ -47,7 +56,7 @@ export function PureIndexScreen({ data: { gitHubRepoData }, ...props }) {
       <SocialProof
         heading="Trusted by"
         path="images/logos/user"
-        brands={['github', 'dropbox', 'airbnb', 'lyft', 'mozilla']}
+        brands={['github', 'dropbox', 'airbnb', 'lyft', 'mozilla', 'jetbrains']}
         monochrome
       />
 
@@ -102,15 +111,16 @@ export function PureIndexScreen({ data: { gitHubRepoData }, ...props }) {
       <Testimonial
         text={
           <span>
-            “Lorem ispum dolor sit amet. Lorem ispum dolor sit amet. Lorem ispum dolor sit amet.”
+            “Storybook is a powerful frontend workshop environment tool that allows teams to design,
+            build, and organize UI components (and even full screens!) without getting tripped up
+            over business logic and plumbing.”
           </span>
         }
-        avatarUrl="https://avatars1.githubusercontent.com/u/263385?s=88&v=4"
-        name="Dominic Nguyen"
-        jobTitle="Product designer"
-        logo="images/logos/user/logo-chromatic.svg"
+        avatarUrl="https://avatars3.githubusercontent.com/u/383701?s=460&v=4"
+        name="Brad Frost"
+        jobTitle="Author of Atomic Design"
+        logo={AtomicDesignLogoSVG}
       />
-
       <Contrast>
         <Separator />
         <ValueProp
@@ -133,7 +143,7 @@ export function PureIndexScreen({ data: { gitHubRepoData }, ...props }) {
           <BenefitItem
             image={<img src="/images/home/test-visual.png" alt="visual test" />}
             title="Ensure consistent user experiences"
-            desc="Whenever you write a story you get a handy visual spec. Quickly browse stories to make sure UI looks right."
+            desc="Whenever you write a story you get a handy visual spec. Quickly browse stories to make sure your UI looks right."
           />
           <BenefitItem
             image={<img src="/images/home/test-snapshot.png" alt="snapshot test" />}
@@ -153,17 +163,20 @@ export function PureIndexScreen({ data: { gitHubRepoData }, ...props }) {
             desc="Pinpoint UI changes with visual testing tools."
           />
         </BenefitList>
+
         <Testimonial
           text={
             <span>
-              “Lorem ispum dolor sit amet. Lorem ispum dolor sit amet. Lorem ispum dolor sit amet.”
+              “Storybook has made developing components more streamlined by allowing us to easily
+              include technical documentation within our design system!”
             </span>
           }
-          avatarUrl="https://avatars1.githubusercontent.com/u/263385?s=88&v=4"
-          name="Dominic Nguyen"
-          jobTitle="Product designer"
-          logo="images/logos/user/logo-chromatic.svg"
+          avatarUrl="https://avatars0.githubusercontent.com/u/3028593?s=460&v=4"
+          name="Taurie Davis"
+          jobTitle="Author of Building Design Systems"
+          logo={GitlabLogoSVG}
         />
+
         <Separator />
       </Contrast>
 
@@ -207,15 +220,34 @@ export function PureIndexScreen({ data: { gitHubRepoData }, ...props }) {
         <BenefitItem
           image={<img src="/images/home/share-document.png" alt="create a styleguide" />}
           title="Generate a styleguide automatically"
-          desc="Write Markdown to generate a customizable styleguide site. Share it with your team."
-        >
-          <Badge status="positive">Coming soon</Badge>
-        </BenefitItem>
+          desc={
+            <>
+              Write Markdown/MDX to generate a customizable site that is perfect for component
+              libraries and design systems.{' '}
+              <Link
+                href="https://github.com/storybookjs/storybook/tree/next/addons/docs"
+                target="_blank"
+                withArrow
+              >
+                Learn more
+              </Link>
+            </>
+          }
+        />
       </BenefitList>
+      <Testimonial
+        text={
+          <span>“Storybook is crucial to our UX process. The “old way” seems ludicrous now!”</span>
+        }
+        avatarUrl="https://avatars3.githubusercontent.com/u/31106469?s=100&v=4"
+        name="Andrew Frankel"
+        jobTitle="Principal engineer"
+        logo={SalesForceLogoSVG}
+      />
       <CTA
         text={<span>Storybook is quick to install and it’s easy to get started.</span>}
         action={
-          <Button secondary isLink href={url.docs.home}>
+          <Button appearance="secondary" isLink href={docs.home}>
             Get started
           </Button>
         }
@@ -224,11 +256,15 @@ export function PureIndexScreen({ data: { gitHubRepoData }, ...props }) {
   );
 }
 
+PureIndexScreen.propTypes = {
+  data: PropTypes.any.isRequired, // eslint-disable-line react/forbid-prop-types
+};
+
 export default function IndexScreen(props) {
   return (
     <StaticQuery
       query={graphql`
-        query HeroContributorQuery {
+        query IndexScreenQuery {
           gitHubRepoData {
             contributorCount
             url

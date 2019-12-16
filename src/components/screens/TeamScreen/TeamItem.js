@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Avatar, LazyLoad, Link, Icon, styles } from '../../basics';
+import { Avatar, Icon, Link, styles } from '@storybook/design-system';
+import { LazyLoad } from '../../basics';
 
 const { color, typography, breakpoint } = styles;
 
@@ -26,7 +27,7 @@ const ImageOuter = styled.div`
 
 const Name = styled.div`
   font-size: ${typography.size.s3}px;
-  font-weight: ${typography.weight.black};
+  font-weight: ${typography.weight.extrabold};
   color: ${color.darkest};
   margin-bottom: 0.25rem;
 `;

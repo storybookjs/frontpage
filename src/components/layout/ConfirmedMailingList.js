@@ -4,9 +4,8 @@ import { PropTypes } from 'prop-types';
 import { compose, withHandlers, withState } from 'recompose';
 import styled from 'styled-components';
 
+import { styles } from '@storybook/design-system';
 import MailingListSubscribeForm from './MailingListSubscribeForm';
-
-import { styles } from '../basics';
 
 const { background, typography, breakpoint } = styles;
 

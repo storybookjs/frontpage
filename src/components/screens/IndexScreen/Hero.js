@@ -7,24 +7,31 @@ import 'react-github-button/assets/style.css';
 
 import {
   Button,
-  Cardinal,
   Icon,
   Link,
   Subheading,
+  WithModal,
   TooltipMessage,
   WithTooltip,
-  WithModal,
   styles,
-  site,
-  Video,
-} from '../../basics';
+} from '@storybook/design-system';
 
+import { Cardinal, Video } from '../../basics';
+
+import useSiteMetadata from '../../lib/useSiteMetadata';
 import PlaceholderAspectRatio from '../../layout/PlaceholderAspectRatio';
 import NpmDownloadCount from '../../layout/NpmDownloadCount';
 
-const { color, typography, breakpoint, pageMargins } = styles;
+import ReactSVG from '../../../images/logos/framework/icon-react.svg';
+import VueSVG from '../../../images/logos/framework/icon-vue.svg';
+import AngularSVG from '../../../images/logos/framework/icon-angular.svg';
+import EmberSVG from '../../../images/logos/framework/icon-ember.svg';
+import HtmlSVG from '../../../images/logos/framework/icon-html.svg';
+import SvelteSVG from '../../../images/logos/framework/icon-svelte.svg';
+import MithrilSVG from '../../../images/logos/framework/icon-mithril.svg';
+import RiotSVG from '../../../images/logos/framework/icon-riot.svg';
 
-const { metadata, url } = site;
+const { color, typography, breakpoint, pageMargins } = styles;
 
 const ModalVideo = styled.iframe`
   width: 100%;
@@ -340,18 +347,31 @@ const Wrapper = styled.div`
   }
 `;
 
-function Framework({ framework, logo, ...props }) {
+function Framework({ framework, ...props }) {
+  let logoSVG;
+
+  if (framework === 'React' || framework === 'React Native') {
+    logoSVG = ReactSVG;
+  } else if (framework === 'Vue') {
+    logoSVG = VueSVG;
+  } else if (framework === 'Angular') {
+    logoSVG = AngularSVG;
+  } else if (framework === 'Ember') {
+    logoSVG = EmberSVG;
+  } else if (framework === 'HTML') {
+    logoSVG = HtmlSVG;
+  } else if (framework === 'Svelte') {
+    logoSVG = SvelteSVG;
+  } else if (framework === 'Mithril') {
+    logoSVG = MithrilSVG;
+  } else if (framework === 'Riot') {
+    logoSVG = RiotSVG;
+  }
+
   return (
     <FrameworkItem>
       <FrameworkLink className="primary" {...props} withArrow>
-        <img
-          src={
-            logo
-              ? `images/logos/framework/icon-${logo}.svg`
-              : `images/logos/framework/icon-${framework.toLowerCase()}.svg`
-          }
-          alt={framework}
-        />
+        <img src={logoSVG} alt={framework} />
         <span>{framework}</span>
       </FrameworkLink>
     </FrameworkItem>
@@ -360,6 +380,12 @@ function Framework({ framework, logo, ...props }) {
 
 Framework.propTypes = {
   framework: PropTypes.string.isRequired,
+  // escape hatch if two differently named items have the same logo
+  logo: PropTypes.string,
+};
+
+Framework.defaultProps = {
+  logo: undefined,
 };
 
 export default function Hero({
@@ -367,6 +393,9 @@ export default function Hero({
   startOpen,
   ...props
 }) {
+  const { latestVersion, urls = {} } = useSiteMetadata();
+  const { docs = {}, framework = {} } = urls;
+
   const Modal = () => (
     <AspectRatio ratio={0.5625}>
       <ModalVideoWrapper>
@@ -374,7 +403,7 @@ export default function Hero({
           title="Chromatic intro video"
           width="560"
           height="315"
-          src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0&amp;showinfo=0"
+          src="https://www.youtube.com/embed/p-LFh5Y89eM?autoplay=1&rel=0&amp;showinfo=0"
           frameBorder="0"
           allow="autoplay; encrypted-media"
           allowFullScreen
@@ -393,13 +422,13 @@ export default function Hero({
           and Angular. It makes building stunning UIs organized and efficient.
         </Subtitle>
         <PitchActions>
-          <Button primary isLink href={url.docs.home}>
+          <Button appearance="primary" isLink href={docs.home}>
             Get Started
           </Button>
           <WithModal startOpen={startOpen} modal={Modal}>
             {({ onOpen }) => (
-              <Button outline primary onClick={onOpen}>
-                <Icon icon="play" />
+              <Button appearance="primaryOutline" onClick={onOpen}>
+                <Icon icon="play" aria-hidden />
                 Watch video
               </Button>
             )}
@@ -411,6 +440,7 @@ export default function Hero({
           <VideoWrapper>
             <Video src="/videos/storybook-hero-video-optimized.mp4" alt="Demo video" />
             <TooltipCanvas
+              tagName="span"
               placement="bottom"
               trigger="hover"
               tooltip={
@@ -427,6 +457,7 @@ export default function Hero({
               <div />
             </TooltipCanvas>
             <TooltipSidebar
+              tagName="span"
               placement="bottom"
               trigger="hover"
               tooltip={
@@ -443,6 +474,7 @@ export default function Hero({
               <div />
             </TooltipSidebar>
             <TooltipAddons
+              tagName="span"
               placement="bottom"
               trigger="hover"
               tooltip={
@@ -463,15 +495,15 @@ export default function Hero({
         <Secondary>
           <SecondarySubheading>Made for</SecondarySubheading>
           <FrameworkList>
-            <Framework framework="React" href={url.framework.react} />
-            <Framework framework="React Native" logo="react" href={url.framework.reactNative} />
-            <Framework framework="Vue" href={url.framework.vue} />
-            <Framework framework="Angular" href={url.framework.angular} />
-            <Framework framework="Ember" href={url.framework.ember} />
-            <Framework framework="HTML" href={url.framework.html} />
-            <Framework framework="Svelte" href={url.framework.svelte} />
-            <Framework framework="Mithril" href={url.framework.mithril} />
-            <Framework framework="Riot" href={url.framework.riot} />
+            <Framework framework="React" href={framework.react} />
+            <Framework framework="React Native" href={framework.reactNative} />
+            <Framework framework="Vue" href={framework.vue} />
+            <Framework framework="Angular" href={framework.angular} />
+            <Framework framework="Ember" href={framework.ember} />
+            <Framework framework="HTML" href={framework.html} />
+            <Framework framework="Svelte" href={framework.svelte} />
+            <Framework framework="Mithril" href={framework.mithril} />
+            <Framework framework="Riot" href={framework.riot} />
           </FrameworkList>
           <SecondarySubheading>GitHub</SecondarySubheading>
 
@@ -481,7 +513,7 @@ export default function Hero({
             </GitHubWrapper>
             <Stat
               size="small"
-              count={metadata.latestVersion}
+              count={latestVersion}
               text="Latest version"
               noPlural
               status="primary"

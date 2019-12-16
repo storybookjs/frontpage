@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react';
 
 import AddonItem from './AddonItem';
 import AddonList from './AddonList';
+import KnobsSVG from '../../../images/addons/knobs.svg';
 
 const AddonCommunity = (
   <AddonItem
@@ -15,14 +16,14 @@ const AddonCommunity = (
 const AddonOfficial = (
   <AddonItem
     appearance="official"
-    image={<img src="/images/addons/knobs.svg" alt="knobs" />}
+    image={<img src={KnobsSVG} alt="knobs" />}
     title="Knobs"
     desc="Interact with component inputs dynamically in the Storybook UI"
     addonUrl="https://google.com"
   />
 );
 
-storiesOf('screens/AddonScreen/AddonList', module)
+storiesOf('Frontpage|screens/AddonScreen/AddonList', module)
   .add('official', () => (
     <AddonList appearance="official">
       {AddonOfficial}

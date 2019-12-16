@@ -1,12 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { Link as GatsbyLink } from 'gatsby';
 
-import { Link, Icon, TooltipLinkList, WithTooltip, styles, site } from '../basics';
-import { navLinks } from './PageLayout';
+import { Icon, Link, TooltipLinkList, WithTooltip, styles } from '@storybook/design-system';
+import useSiteMetadata from '../lib/useSiteMetadata';
 
-const { color, typography, spacing, pageMargins, breakpoint } = styles;
-const { metadata, url } = site;
+import StorybookLogoSVG from '../../images/logo-storybook.svg';
+
+const { color, typography, pageMargins, breakpoint } = styles;
 
 const LogotypeWrapper = styled(Link)`
   display: inline-block;
@@ -64,7 +66,6 @@ const Menu = styled(Link)`
   justify-content: flex-end;
 
   svg {
-    vertical-align: top;
     height: 1rem;
     width: 1rem;
     margin: 0;
@@ -117,7 +118,7 @@ const NavGroup = styled.div`
     `}
 
   ${NavItem} + ${NavItem} {
-    margin-left: ${spacing.padding.large}px;
+    margin-left: 25px;
   }
 `;
 
@@ -136,14 +137,35 @@ const NavWrapper = styled.nav`
   }
 `;
 
+const LinkWrapper = ({ href, isGatsby, ...props }) => {
+  if (isGatsby) {
+    return <GatsbyLink to={href} {...props} />;
+  }
+
+  // eslint-disable-next-line jsx-a11y/anchor-has-content
+  return <a href={href} {...props} />;
+};
+
+LinkWrapper.propTypes = {
+  href: PropTypes.string.isRequired,
+  isGatsby: PropTypes.bool.isRequired,
+};
+
 export default function Header({ ...props }) {
+  const { latestVersion, urls = {} } = useSiteMetadata();
+  const { navCommunityLinks = {}, navLinks = {}, docs, tutorials, addons, gitHub = {} } = urls;
+
+  const navLinksWithGithub = [...navLinks, { title: 'GitHub', href: gitHub.repo, isGatsby: false }];
+
   const mobileMenu = (
     <MobileMenu>
-      <TooltipLinkList
-        links={navLinks}
-        // TODO: Pass GatsbyLink here
-        LinkWrapper={GatsbyLink}
-      />
+      <TooltipLinkList links={navLinksWithGithub} LinkWrapper={LinkWrapper} />
+    </MobileMenu>
+  );
+
+  const communityMenu = (
+    <MobileMenu>
+      <TooltipLinkList links={navCommunityLinks} LinkWrapper={LinkWrapper} />
     </MobileMenu>
   );
 
@@ -152,29 +174,44 @@ export default function Header({ ...props }) {
       <Nav>
         <NavGroup>
           <NavItem>
-            <LogotypeWrapper isGatsby to="/">
-              <img src="/images/logos/logo-storybook.svg" alt="Storybook" />
+            <LogotypeWrapper LinkWrapper={GatsbyLink} to="/">
+              <img src={StorybookLogoSVG} alt="Storybook" />
             </LogotypeWrapper>
-            <Version href={url.gitHub.releases}>{metadata.latestVersion}</Version>
+            <Version href={gitHub.releases}>{latestVersion}</Version>
           </NavItem>
         </NavGroup>
 
         <NavGroup right>
-          {navLinks.map(({ title, href, isGatsby }) => (
-            <NavItem showDesktop key={title}>
-              <NavLink
-                tertiary={1}
-                href={!isGatsby ? href : undefined}
-                to={isGatsby ? href : undefined}
-                isGatsby={isGatsby}
-              >
-                {title}
+          <NavItem showDesktop>
+            <NavLink tertiary href={docs.home}>
+              Docs
+            </NavLink>
+          </NavItem>
+          <NavItem showDesktop>
+            <NavLink tertiary href={tutorials}>
+              Tutorials
+            </NavLink>
+          </NavItem>
+          <NavItem showDesktop>
+            <NavLink tertiary href={addons} isGatsby LinkWrapper={LinkWrapper}>
+              Addons
+            </NavLink>
+          </NavItem>
+          <NavItem showDesktop>
+            <WithTooltip tagName="span" placement="top" trigger="hover" tooltip={communityMenu}>
+              <NavLink tertiary>
+                Community <Icon icon="arrowdown" />
               </NavLink>
-            </NavItem>
-          ))}
+            </WithTooltip>
+          </NavItem>
+          <NavItem showDesktop>
+            <NavLink tertiary href={gitHub.repo}>
+              GitHub
+            </NavLink>
+          </NavItem>
 
           <NavItem showMobile>
-            <WithTooltip placement="top" trigger="click" tooltip={mobileMenu}>
+            <WithTooltip tagName="span" placement="top" trigger="click" tooltip={mobileMenu}>
               <Menu secondary icon={1} isButton>
                 <Icon icon="menu" />
               </Menu>
