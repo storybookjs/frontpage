@@ -18,7 +18,9 @@ const hastToJsx = node => {
     case node.type === 'text': {
       return node.value;
     }
-    case node.type === 'element' && node.tagName === 'img': {
+    case node.type === 'element' && node.tagName === 'img':
+    case node.type === 'element' && node.tagName === 'link':
+    case node.type === 'element' && node.tagName === 'br': {
       return createElement(node.tagName, node.properties);
     }
     case node.type === 'element' && typeof node.tagName === 'string': {
