@@ -6,7 +6,7 @@ const getPagePath = (sourceInstanceName, relativeDirectory, name) => {
       return `docs/${relativeDirectory}`;
     }
     case 'docs-maintenance': {
-      return `docs/${name.toLowerCase()}`;
+      return name.toLowerCase();
     }
     default: {
       const prefix = sourceInstanceName.replace('docs-', '');
