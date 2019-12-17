@@ -1,9 +1,11 @@
 import React, { createElement } from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link as GatsbyLink } from 'gatsby';
 import { DocumentWrapper } from '@storybook/components';
+import { StickyContainer, Sticky } from 'react-sticky';
+import { Icon, Link, TooltipLinkList, WithTooltip, styles } from '@storybook/design-system';
 import Layout from '../components/layout/PageLayout';
 import { Global } from '../components/lib/global';
-import { PageMargin } from '../components/basics/Page';
+import { PageMargin, PageSplit } from '../components/basics/Page';
 import PageTitle from '../components/layout/PageTitle';
 
 const hastToJsx = node => {
@@ -32,7 +34,16 @@ const hastToJsx = node => {
   }
 };
 
-export default ({ data: { pageMarkdown } }) => {
+const LinkWrapper = ({ href, isGatsby, ...props }) => {
+  if (isGatsby) {
+    return <GatsbyLink to={href} {...props} />;
+  }
+
+  // eslint-disable-next-line jsx-a11y/anchor-has-content
+  return <a href={href} {...props} />;
+};
+
+export default ({ data: { pageMarkdown, navigation } }) => {
   return (
     <Global>
       <Layout>
@@ -43,7 +54,28 @@ export default ({ data: { pageMarkdown } }) => {
           color="blue"
         />
         <PageMargin>
-          <DocumentWrapper>{hastToJsx(pageMarkdown.htmlAst)}</DocumentWrapper>
+          <StickyContainer>
+            <PageSplit
+              aside={
+                <Sticky>
+                  {({ style }) => (
+                    <div style={style}>
+                      <TooltipLinkList
+                        links={navigation.nodes.map(n => ({
+                          title: n.childMarkdownRemark.frontmatter.title,
+                          href: `/docs/${n.relativeDirectory}`,
+                          isGatsby: true,
+                        }))}
+                        LinkWrapper={LinkWrapper}
+                      />
+                    </div>
+                  )}
+                </Sticky>
+              }
+            >
+              <DocumentWrapper>{hastToJsx(pageMarkdown.htmlAst)}</DocumentWrapper>
+            </PageSplit>
+          </StickyContainer>
         </PageMargin>
       </Layout>
     </Global>
@@ -51,7 +83,7 @@ export default ({ data: { pageMarkdown } }) => {
 };
 
 export const query = graphql`
-  query One($id: String!) {
+  query One($id: String!, $scope: String!, $group: String!) {
     pageMarkdown: markdownRemark(parent: { id: { eq: $id } }) {
       parent {
         ... on File {
@@ -68,6 +100,25 @@ export const query = graphql`
       headings(depth: h6) {
         value
         depth
+      }
+    }
+    navigation: allFile(
+      filter: {
+        childMarkdownRemark: { id: { regex: "/./" } }
+        relativeDirectory: { regex: $scope }
+        sourceInstanceName: { eq: $group }
+      }
+    ) {
+      nodes {
+        relativeDirectory
+        id
+        childMarkdownRemark {
+          frontmatter {
+            title
+            id
+          }
+          excerpt
+        }
       }
     }
   }

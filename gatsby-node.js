@@ -14,6 +14,11 @@ const getPagePath = (sourceInstanceName, relativeDirectory, name) => {
     }
   }
 };
+const getPageScope = path => {
+  const l = path.split('/');
+
+  return `/^${l.length > 1 ? l[l.length - 2] : '/'}/`;
+};
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
@@ -43,10 +48,17 @@ exports.createPages = async ({ graphql, actions }) => {
       return;
     }
 
+    const path = getPagePath(sourceInstanceName, relativeDirectory, name);
+    const scope = getPageScope(path);
+
     createPage({
-      path: getPagePath(sourceInstanceName, relativeDirectory, name),
+      path,
       component: p.resolve(`./src/templates/documentation.js`),
-      context: { id },
+      context: {
+        id,
+        group: sourceInstanceName,
+        scope,
+      },
     });
   });
 };
