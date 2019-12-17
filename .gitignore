@@ -9,3 +9,5 @@ storybook-static
 .DS_Store
 .idea
 monorepo
+docs
+.env

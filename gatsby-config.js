@@ -1,5 +1,6 @@
 const { global } = require('@storybook/design-system');
 const siteMetadata = require('./site-metadata');
+require('dotenv').config();
 
 module.exports = {
   siteMetadata,
@@ -12,7 +13,23 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `docs-next`,
+        path: `${__dirname}/docs/next/`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `docs-master`,
+        path: `${__dirname}/docs/master/`,
+      },
+    },
     'gatsby-transformer-sharp',
+    'gatsby-transformer-json',
+    'gatsby-transformer-remark',
     'gatsby-plugin-sharp',
     {
       resolve: `gatsby-plugin-manifest`,
@@ -31,25 +48,11 @@ module.exports = {
       },
     },
     `gatsby-plugin-styled-components`,
+    `gatsby-plugin-emotion`,
     {
       resolve: 'gatsby-source-github-repo',
       options: {
         repoUrl: 'https://github.com/storybooks/storybook',
-      },
-    },
-    {
-      resolve: 'gatsby-source-graphql',
-      options: {
-        typeName: 'GitHub',
-        fieldName: 'github',
-        url: 'https://api.github.com/graphql',
-        // HTTP headers
-        headers: {
-          // Learn about environment variables: https://gatsby.dev/env-vars
-          Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-        },
-        // Additional options to pass to node-fetch
-        fetchOptions: {},
       },
     },
     {

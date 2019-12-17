@@ -1,14 +1,10 @@
-import React, { Fragment } from 'react';
-import { global } from '@storybook/design-system';
+import React from 'react';
+import { Global } from '../components/lib/global';
 
 import SupportScreen from '../components/screens/SupportScreen/SupportScreen';
 
-const { GlobalStyle } = global;
-
-// In theory we could pass in props that we'd fetched via Gatsby's GraphQL
 export default () => (
-  <Fragment>
-    <GlobalStyle />
+  <Global>
     <SupportScreen />
-  </Fragment>
+  </Global>
 );

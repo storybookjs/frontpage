@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { fetch, window } from 'global';
-import { useOnMount, useSetState } from 'react-hanger';
+import { useSetState } from 'react-hanger';
 
 import useSiteMetadata from '../lib/useSiteMetadata';
 import { Cardinal } from '../basics';
@@ -30,7 +30,7 @@ const NpmDownloadCount = props => {
     npmDownloadsDisplay = `${npmDownloadsFixed}m`;
   }
 
-  useOnMount(() => {
+  useEffect(() => {
     if (!window.sessionStorage.getItem('monthlyNpmDownloads')) {
       fetchNpmDownloads(npmApi).then(npmDownloadCount => {
         setState({ loading: false, npmDownloads: npmDownloadCount });
@@ -42,7 +42,7 @@ const NpmDownloadCount = props => {
         npmDownloads: window.sessionStorage.getItem('monthlyNpmDownloads'),
       });
     }
-  });
+  }, []);
 
   return (
     <Cardinal

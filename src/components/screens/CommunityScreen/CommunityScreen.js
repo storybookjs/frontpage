@@ -165,7 +165,7 @@ export function PureCommunityScreen({ data: { gitHubRepoData }, ...props }) {
     presentation,
     designSystem,
     gitHub = {},
-    docs = {},
+    docsIntro,
     openCollective,
   } = urls;
   return (
@@ -240,7 +240,7 @@ export function PureCommunityScreen({ data: { gitHubRepoData }, ...props }) {
               image={<img src={DocsSVG} alt="docs" />}
               title="Write and update docs"
               desc="Teach fellow developers how to take advantage of Storybook. Help write, edit, and improve docs."
-              links={[{ title: 'Get started with docs', href: docs.home }]}
+              links={[{ title: 'Get started with docs', href: docsIntro }]}
             />
             <Item
               image={<img src={PullRequestSVG} alt="pull request" />}

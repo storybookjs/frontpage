@@ -25,6 +25,11 @@ const useSiteMetadata = () => {
               href
               isGatsby
             }
+            navDocsLinks {
+              title
+              href
+              isGatsby
+            }
             gitHub {
               repo
               frontpage
@@ -49,10 +54,8 @@ const useSiteMetadata = () => {
               preact
             }
             home
-            docs {
-              home
-              addonInstruction
-            }
+            docsIntro
+            addonInstruction
             tutorials
             addons
             community

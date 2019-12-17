@@ -1,7 +1,7 @@
 const gitHubOrg = `https://github.com/storybookjs`;
 const homepageUrl = `https://storybook.js.org`;
 const npmApiBase = `https://api.npmjs.org/downloads/point/last-month`;
-const docsUrl = `${homepageUrl}/docs`;
+const docsUrl = `/docs`;
 
 const siteMetadata = {
   title: 'Storybook',
@@ -42,10 +42,8 @@ const siteMetadata = {
 
     // Navigation
     home: homepageUrl,
-    docs: {
-      home: `${docsUrl}/basics/introduction/`,
-      addonInstruction: `${docsUrl}/addons/writing-addons/`,
-    },
+    docsIntro: `/docs/basics/introduction/`,
+    addonInstruction: `/docs/addons/writing-addons/`,
     tutorials: `https://www.learnstorybook.com/`,
     addons: `/addons/`,
     community: `/community/`,
@@ -69,15 +67,15 @@ const siteMetadata = {
 
     // Framework docs
     framework: {
-      react: `${docsUrl}/guides/guide-react/`,
-      reactNative: `${docsUrl}/guides/guide-react-native/`,
-      vue: `${docsUrl}/guides/guide-vue/`,
-      angular: `${docsUrl}/guides/guide-angular/`,
-      ember: `${docsUrl}/guides/guide-ember/`,
-      html: `${docsUrl}/guides/guide-html/`,
-      svelte: `${docsUrl}/guides/guide-svelte/`,
-      mithril: `${docsUrl}/guides/guide-mithril/`,
-      riot: `${docsUrl}/guides/guide-riot/`,
+      react: `/docs/guides/guide-react/`,
+      reactNative: `/docs/guides/guide-react-native/`,
+      vue: `/docs/guides/guide-vue/`,
+      angular: `/docs/guides/guide-angular/`,
+      ember: `/docs/guides/guide-ember/`,
+      html: `/docs/guides/guide-html/`,
+      svelte: `/docs/guides/guide-svelte/`,
+      mithril: `/docs/guides/guide-mithril/`,
+      riot: `/docs/guides/guide-riot/`,
     },
 
     // Official addons
@@ -105,8 +103,18 @@ siteMetadata.urls.navCommunityLinks = [
   { title: 'Team', href: siteMetadata.urls.team, isGatsby: true },
 ];
 
+siteMetadata.urls.navDocsLinks = [
+  { title: 'Basics', href: '/docs/', isGatsby: true },
+  { title: 'Guides', href: siteMetadata.urls.useCases, isGatsby: true },
+  { title: 'Configuration', href: siteMetadata.urls.useCases, isGatsby: true },
+  { title: 'Formats', href: siteMetadata.urls.support, isGatsby: true },
+  { title: 'Testing', href: siteMetadata.urls.team, isGatsby: true },
+  { title: 'Addons', href: siteMetadata.urls.team, isGatsby: true },
+  { title: 'Presets', href: siteMetadata.urls.team, isGatsby: true },
+];
+
 siteMetadata.urls.navLinks = [
-  { title: 'Docs', href: siteMetadata.urls.docs.home, isGatsby: false },
+  { title: 'Docs', href: siteMetadata.urls.docsIntro, isGatsby: false },
   { title: 'Tutorials', href: siteMetadata.urls.tutorials, isGatsby: false },
   { title: 'Addons', href: siteMetadata.urls.addons, isGatsby: true },
   ...siteMetadata.urls.navCommunityLinks,

@@ -23,7 +23,7 @@ const Features = styled(FeaturesLayout)`
 
 export function PureSupportScreen({ ...props }) {
   const { title, ogImage, urls = {} } = useSiteMetadata();
-  const { home, chat, docs = {}, gitHub = {} } = urls;
+  const { home, chat, docsIntro = '', gitHub = {} } = urls;
   return (
     <PageLayout {...props}>
       <SocialGraph
@@ -45,7 +45,7 @@ export function PureSupportScreen({ ...props }) {
           title="Check the docs"
           desc="First check the Storybook docs. There’s likely an article for your issue already."
         >
-          <Link withArrow href={docs.home}>
+          <Link withArrow href={docsIntro}>
             Read docs
           </Link>
         </Feature>

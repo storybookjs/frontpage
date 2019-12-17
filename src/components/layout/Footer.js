@@ -320,7 +320,7 @@ export default function Footer({ ...props }) {
     youtube,
     navLinks = {},
     framework = {},
-    docs = {},
+    docsIntro,
     tutorials,
     gitHub = {},
   } = urls;
@@ -348,7 +348,7 @@ export default function Footer({ ...props }) {
                   <ResourceAction withArrow href={framework.angular}>
                     Angular
                   </ResourceAction>
-                  <ResourceAction withArrow href={docs.home}>
+                  <ResourceAction withArrow href={docsIntro}>
                     View more
                   </ResourceAction>
                 </ResourceActions>

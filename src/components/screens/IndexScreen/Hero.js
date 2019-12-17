@@ -394,7 +394,7 @@ export default function Hero({
   ...props
 }) {
   const { latestVersion, urls = {} } = useSiteMetadata();
-  const { docs = {}, framework = {} } = urls;
+  const { docsIntro = '', framework = {} } = urls;
 
   const Modal = () => (
     <AspectRatio ratio={0.5625}>
@@ -422,7 +422,7 @@ export default function Hero({
           and Angular. It makes building stunning UIs organized and efficient.
         </Subtitle>
         <PitchActions>
-          <Button appearance="primary" isLink href={docs.home}>
+          <Button appearance="primary" isLink href={docsIntro}>
             Get Started
           </Button>
           <WithModal startOpen={startOpen} modal={Modal}>
@@ -446,10 +446,10 @@ export default function Hero({
               tooltip={
                 <TooltipMessage
                   desc={
-                    <Fragment>
+                    <>
                       <b>Build components in isolation</b> so that you can fine tune inputs, states,
                       and APIs before adding to your app.
-                    </Fragment>
+                    </>
                   }
                 />
               }
@@ -463,10 +463,10 @@ export default function Hero({
               tooltip={
                 <TooltipMessage
                   desc={
-                    <Fragment>
+                    <>
                       <b>Save use cases as &ldquo;stories&rdquo;</b> to simplify finding, browsing,
                       and testing UI components.
-                    </Fragment>
+                    </>
                   }
                 />
               }
@@ -480,10 +480,10 @@ export default function Hero({
               tooltip={
                 <TooltipMessage
                   desc={
-                    <Fragment>
+                    <>
                       <b>Supercharge your workflow with addons</b> to help you find edge cases,
                       verify functionality, and much much more!
-                    </Fragment>
+                    </>
                   }
                 />
               }

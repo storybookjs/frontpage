@@ -80,7 +80,7 @@ const MakeYourOwn = styled(AddonCustom)`
 
 export function PureAddonScreen({ ...props }) {
   const { title, ogImage, urls = {} } = useSiteMetadata();
-  const { home, officialAddons = {}, gitHub = {}, docs = {} } = urls;
+  const { home, officialAddons = {}, gitHub = {}, docsIntro = '' } = urls;
   return (
     <PageLayout {...props}>
       <SocialGraph
@@ -365,9 +365,7 @@ export function PureAddonScreen({ ...props }) {
           <Button
             appearance="secondaryOutline"
             isLink
-            href={`${
-              gitHub.frontpage
-            }/blob/master/src/components/screens/AddonScreen/AddonScreen.js#L158`}
+            href={`${gitHub.frontpage}/blob/master/src/components/screens/AddonScreen/AddonScreen.js#L158`}
           >
             <Icon icon="plus" /> Add your addon here
           </Button>
@@ -377,7 +375,7 @@ export function PureAddonScreen({ ...props }) {
       <CTA
         text={<span>Build UIs faster. Add Storybook to your project now.</span>}
         action={
-          <Button appearance="secondary" isLink href={docs.home}>
+          <Button appearance="secondary" isLink href={docsIntro}>
             Get started
           </Button>
         }

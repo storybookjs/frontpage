@@ -1,101 +1,72 @@
-const path = require('path');
+const p = require('path');
+
+const getPagePath = (sourceInstanceName, relativeDirectory) => {
+  switch (sourceInstanceName) {
+    case 'docs-master': {
+      return `docs/${relativeDirectory}`;
+    }
+    default: {
+      const prefix = sourceInstanceName.replace('docs-', '');
+      return `docs/${prefix}/${relativeDirectory}`;
+    }
+  }
+};
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
-  const result = await graphql(`
-    query {
-      github {
-        search(first: 1, type: REPOSITORY, query: "storybook") {
-          edges {
-            node {
-              ... on GitHub_Repository {
-                object(expression: "next:docs/src/pages") {
-                  ... on GitHub_Tree {
-                    entries {
-                      name
-                      type
-                      object {
-                        ... on GitHub_Tree {
-                          entries {
-                            name
-                            type
-                            object {
-                              ... on GitHub_Tree {
-                                entries {
-                                  name
-                                  type
-                                  object {
-                                    ... on GitHub_Blob {
-                                      text
-                                    }
-                                  }
-                                }
-                              }
-                              ... on GitHub_Blob {
-                                text
-                              }
-                            }
-                          }
-                        }
-                        ... on GitHub_Blob {
-                          text
-                        }
-                      }
-                    }
-                  }
-                }
-              }
+  const {
+    data: { allMarkdownRemark },
+  } = await graphql(`
+    query List {
+      allMarkdownRemark {
+        nodes {
+          parent {
+            ... on File {
+              sourceInstanceName
+              name
+              relativeDirectory
             }
+            id
           }
         }
       }
     }
   `);
 
-  if (result && result.data && result.data.github) {
-    const {
-      search: {
-        edges: [
-          {
-            node: {
-              object: { entries },
-            },
-          },
-        ],
-      },
-    } = result.data.github;
+  allMarkdownRemark.nodes.forEach(node => {
+    const { relativeDirectory, sourceInstanceName, id } = node.parent;
+    if (!relativeDirectory || !sourceInstanceName) {
+      return;
+    }
 
-    const addToFiles = (prefix = '/') => (acc, ref) => {
-      const { name, type, object } = ref;
-      const p = prefix + name;
-
-      if (type === 'blob' && name.match(/.md$/) && !name.match(/404.md$/)) {
-        // MUTATION
-        acc[p.replace(/.md$/, '').replace(/\/index$/, '')] = object.text;
-      } else if (type === 'tree') {
-        // MUTATION
-        object.entries.reduce(addToFiles(`${p}/`), acc);
-      }
-
-      return acc;
-    };
-
-    const files = entries.reduce(addToFiles('/docs/'), {});
-    // console.log(JSON.stringify(files, null, 4));
-
-    Object.entries(files).forEach(([k, v]) => {
-      createPage({
-        path: k,
-        component: path.resolve(`./src/templates/documentation.js`),
-        context: {
-          // Data passed to context is available
-          // in page queries as GraphQL variables.
-          markdown: v,
-        },
-      });
+    createPage({
+      path: getPagePath(sourceInstanceName, relativeDirectory),
+      component: p.resolve(`./src/templates/documentation.js`),
+      context: { id },
     });
-  } else {
-    console.log('NO ENTRIES from graphql');
-  }
+  });
+};
+
+// FIX the core-js mess
+const coreJsLocationOfRoot = p.join(__dirname, 'node_modules');
+const coreJsLocationOfGatsby = p.join(
+  __dirname,
+  'node_modules',
+  'gatsby',
+  'node_modules',
+  'core-js'
+);
+exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
+  // eslint-disable-next-line import/no-extraneous-dependencies, global-require
+  const CoreJSUpgradeWebpackPlugin = require('corejs-upgrade-webpack-plugin');
+  const webpackConfig = getConfig();
+  delete webpackConfig.resolve.alias['core-js'];
+  webpackConfig.plugins.push(
+    // eslint-disable-next-line new-cap
+    new CoreJSUpgradeWebpackPlugin.default({
+      resolveFrom: [coreJsLocationOfRoot, coreJsLocationOfGatsby],
+    })
+  );
+  actions.replaceWebpackConfig(webpackConfig);
 };

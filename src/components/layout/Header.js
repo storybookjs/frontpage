@@ -153,7 +153,14 @@ LinkWrapper.propTypes = {
 
 export default function Header({ ...props }) {
   const { latestVersion, urls = {} } = useSiteMetadata();
-  const { navCommunityLinks = {}, navLinks = {}, docs, tutorials, addons, gitHub = {} } = urls;
+  const {
+    navCommunityLinks = {},
+    navDocsLinks = {},
+    navLinks = {},
+    tutorials,
+    addons,
+    gitHub = {},
+  } = urls;
 
   const navLinksWithGithub = [...navLinks, { title: 'GitHub', href: gitHub.repo, isGatsby: false }];
 
@@ -166,6 +173,12 @@ export default function Header({ ...props }) {
   const communityMenu = (
     <MobileMenu>
       <TooltipLinkList links={navCommunityLinks} LinkWrapper={LinkWrapper} />
+    </MobileMenu>
+  );
+
+  const docsMenu = (
+    <MobileMenu>
+      <TooltipLinkList links={navDocsLinks} LinkWrapper={LinkWrapper} />
     </MobileMenu>
   );
 
@@ -183,9 +196,11 @@ export default function Header({ ...props }) {
 
         <NavGroup right>
           <NavItem showDesktop>
-            <NavLink tertiary href={docs.home}>
-              Docs
-            </NavLink>
+            <WithTooltip tagName="span" placement="top" trigger="hover" tooltip={docsMenu}>
+              <NavLink tertiary href="/docs/basics/introduction">
+                Docs <Icon icon="arrowdown" />
+              </NavLink>
+            </WithTooltip>
           </NavItem>
           <NavItem showDesktop>
             <NavLink tertiary href={tutorials}>

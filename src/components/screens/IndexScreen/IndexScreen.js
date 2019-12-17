@@ -41,7 +41,7 @@ const Placeholder = styled(PlaceholderAspectRatio)`
 
 export function PureIndexScreen({ data: { gitHubRepoData }, ...props }) {
   const { ogImage, urls = {} } = useSiteMetadata();
-  const { home, docs = {} } = urls;
+  const { home, docsIntro = '' } = urls;
   return (
     <PageLayout {...props}>
       <SocialGraph
@@ -93,13 +93,13 @@ export function PureIndexScreen({ data: { gitHubRepoData }, ...props }) {
           image={<img src="/images/home/build-sidebar.png" alt="save use cases" />}
           title="Document use cases as stories"
           desc={
-            <Fragment>
+            <>
               Save use cases as stories in{' '}
               <Link href="https://storybook.js.org/basics/writing-stories/" target="_blank">
                 plain JavaScript
               </Link>{' '}
               to revisit during development, testing, and QA.
-            </Fragment>
+            </>
           }
         />
         <BenefitItem
@@ -247,7 +247,7 @@ export function PureIndexScreen({ data: { gitHubRepoData }, ...props }) {
       <CTA
         text={<span>Storybook is quick to install and it’s easy to get started.</span>}
         action={
-          <Button appearance="secondary" isLink href={docs.home}>
+          <Button appearance="secondary" isLink href={docsIntro}>
             Get started
           </Button>
         }
