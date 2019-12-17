@@ -1,9 +1,12 @@
 const p = require('path');
 
-const getPagePath = (sourceInstanceName, relativeDirectory) => {
+const getPagePath = (sourceInstanceName, relativeDirectory, name) => {
   switch (sourceInstanceName) {
     case 'docs-master': {
       return `docs/${relativeDirectory}`;
+    }
+    case 'docs-maintenance': {
+      return `docs/${name.toLowerCase()}`;
     }
     default: {
       const prefix = sourceInstanceName.replace('docs-', '');
@@ -35,13 +38,13 @@ exports.createPages = async ({ graphql, actions }) => {
   `);
 
   allMarkdownRemark.nodes.forEach(node => {
-    const { relativeDirectory, sourceInstanceName, id } = node.parent;
-    if (!relativeDirectory || !sourceInstanceName) {
+    const { relativeDirectory, sourceInstanceName, id, name } = node.parent;
+    if (!sourceInstanceName || name === '404') {
       return;
     }
 
     createPage({
-      path: getPagePath(sourceInstanceName, relativeDirectory),
+      path: getPagePath(sourceInstanceName, relativeDirectory, name),
       component: p.resolve(`./src/templates/documentation.js`),
       context: { id },
     });

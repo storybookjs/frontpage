@@ -27,6 +27,13 @@ module.exports = {
         path: `${__dirname}/docs/master/`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `docs-maintenance`,
+        path: `${__dirname}/docs/maintenance/`,
+      },
+    },
     'gatsby-transformer-sharp',
     'gatsby-transformer-json',
     'gatsby-transformer-remark',
