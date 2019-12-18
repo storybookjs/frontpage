@@ -1,8 +1,8 @@
-import React, { createElement } from 'react';
+import React, { createElement, Fragment } from 'react';
 import { graphql, Link as GatsbyLink } from 'gatsby';
 import { DocumentWrapper } from '@storybook/components';
 import { StickyContainer, Sticky } from 'react-sticky';
-import { Icon, Link, TooltipLinkList, WithTooltip, styles } from '@storybook/design-system';
+import { TooltipLinkList } from '@storybook/design-system';
 import Layout from '../components/layout/PageLayout';
 import { Global } from '../components/lib/global';
 import { PageMargin, PageSplit } from '../components/basics/Page';
@@ -15,7 +15,7 @@ const hastToJsx = node => {
 
   switch (true) {
     case node.type === 'root': {
-      return <>{node.children.map(hastToJsx)}</>;
+      return <Fragment>{node.children.map(hastToJsx)}</Fragment>;
     }
     case node.type === 'text': {
       return node.value;
@@ -34,13 +34,20 @@ const hastToJsx = node => {
   }
 };
 
-const LinkWrapper = ({ href, isGatsby, ...props }) => {
+const LinkWrapper = ({ href, isGatsby, children, ...props }) => {
   if (isGatsby) {
-    return <GatsbyLink to={href} {...props} />;
+    return (
+      <GatsbyLink to={href} {...props}>
+        {children}
+      </GatsbyLink>
+    );
   }
 
-  // eslint-disable-next-line jsx-a11y/anchor-has-content
-  return <a href={href} {...props} />;
+  return (
+    <a href={href} {...props}>
+      {children}
+    </a>
+  );
 };
 
 export default ({ data: { pageMarkdown, navigation } }) => {

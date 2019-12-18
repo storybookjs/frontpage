@@ -53,7 +53,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
     createPage({
       path,
-      component: p.resolve(`./src/templates/documentation.js`),
+      component: p.resolve(`./src/templates/documentation.tsx`),
       context: {
         id,
         group: sourceInstanceName,
