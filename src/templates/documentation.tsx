@@ -1,104 +1,171 @@
-import React, { createElement, Fragment } from 'react';
+/* eslint-disable react/prop-types */
+import React, { Fragment } from 'react';
 import { graphql, Link as GatsbyLink } from 'gatsby';
-import { DocumentWrapper, SyntaxHighlighter } from '@storybook/components';
+import styled from '@emotion/styled';
+// @ts-ignore
+import { document } from 'global';
+import { DocumentWrapper, Spaced } from '@storybook/components';
 import { StickyContainer, Sticky } from 'react-sticky';
 // @ts-ignore
-import { TooltipLinkList } from '@storybook/design-system';
+import { TooltipLinkList, Icon, Link as StyledLink } from '@storybook/design-system';
 import Layout from '../components/layout/PageLayout';
 import { Global } from '../components/lib/global';
 import { PageMargin, PageSplit } from '../components/basics/Page';
 import PageTitle from '../components/layout/PageTitle';
+import { hastToJsx } from '../components/basics/Hast';
+import { Pill, PillSection } from '../components/basics/Pill';
 
-import { Query } from '../generated/graphql';
-
-type HastNode = HastElementNode & HastRootNode & HastTextNode;
-interface HastElementNode {
-  type: 'element';
-  tagName: string;
-  properties: Record<string, string>;
-  children?: HastNode[];
-}
-interface HastTextNode {
-  type: 'text';
-  value: string;
-}
-interface HastRootNode {
-  type: 'root';
-  children: HastNode[];
-}
-
-const hastToJsx = (node: HastNode): JSX.Element | string | null => {
-  if (!node) {
-    return null;
-  }
-
-  switch (true) {
-    case node.type === 'root': {
-      return <Fragment key="root">{node.children.map(hastToJsx)}</Fragment>;
-    }
-    case node.type === 'text': {
-      return node.value;
-    }
-    case node.type === 'element' && node.tagName === 'img':
-    case node.type === 'element' && node.tagName === 'link':
-    case node.type === 'element' && node.tagName === 'br': {
-      return createElement(node.tagName, node.properties);
-    }
-    case node.type === 'element' && node.tagName === 'code': {
-      if (node.properties && node.properties.className) {
-        const {
-          className: [language],
-          ...props
-        } = node.properties;
-        return (
-          <SyntaxHighlighter language={language.replace('language-', '')} {...props}>
-            {node.children.map(hastToJsx).join('')}
-          </SyntaxHighlighter>
-        );
-      }
-      return createElement(node.tagName, node.properties, node.children.map(hastToJsx));
-    }
-    case node.type === 'element' && typeof node.tagName === 'string': {
-      return createElement(node.tagName, node.properties, node.children.map(hastToJsx));
-    }
-    default: {
-      return null;
-    }
-  }
-};
+import { Query, File } from '../generated/graphql';
 
 // @ts-ignore
-const LinkWrapper = ({ href, isGatsby, children, ...props }: {}) => {
+const Link = ({ href, to = href, isGatsby = true, children, ...props }: {}) => {
   if (isGatsby) {
     return (
-      <GatsbyLink to={href} {...props}>
+      <GatsbyLink to={to} {...props}>
         {children}
       </GatsbyLink>
     );
   }
 
   return (
-    <a href={href} {...props}>
+    <a href={to} {...props}>
       {children}
     </a>
   );
 };
 
+// @ts-ignore
+const DocsLink = ({ href, isGatsby = true, children, ...props }: {}) => {
+  const to =
+    !href.match(/^\/docs\/next/) && document.location.pathname.match(/^\/docs\/next\/./)
+      ? href.replace('/docs/', '/docs/next/')
+      : href;
+
+  return (
+    <GatsbyLink to={to} {...props}>
+      {children}
+    </GatsbyLink>
+  );
+};
+
 interface Props {
   data: {
-    pageMarkdown: Query['markdownRemark'];
-    navigation: Query['allFile'];
+    content: Query['markdownRemark'];
+    nav: Query['allFile'];
   };
 }
 
-export default ({ data: { pageMarkdown, navigation } }: Props) => {
+const UnStyledLink = styled(Link)({
+  color: 'inherit',
+  textDecoration: 'none',
+});
+
+const getBranch = (sourceInstanceName: string) => {
+  return sourceInstanceName === 'docs-master' ? 'master' : 'next';
+};
+
+const GitHubLink = ({ sourceInstanceName, name, relativeDirectory }: File) => {
+  const path =
+    sourceInstanceName === 'docs-maintenance'
+      ? `${name}.md`
+      : `/docs/src/pages/${`${relativeDirectory}/${name}`}.md`;
+  const branch = getBranch(sourceInstanceName);
+  return (
+    <StyledLink href={`https://github.com/storybookjs/storybook/tree/${branch}/${path}`}>
+      <Icon icon="github" aria-label="github icon" />
+      edit this page on github
+    </StyledLink>
+  );
+};
+
+const Branches = ({ sourceInstanceName, relativeDirectory }: File) => {
+  const branch = getBranch(sourceInstanceName);
+  const branches = ['master', 'next'];
+  return (
+    <Pill fullWidth>
+      {branches.map(o => (
+        <PillSection
+          key={o}
+          as={UnStyledLink}
+          data-active={o === branch}
+          href={o === 'master' ? `/docs/${relativeDirectory}` : `/docs/${o}/${relativeDirectory}`}
+        >
+          {o}
+        </PillSection>
+      ))}
+    </Pill>
+  );
+};
+
+const setPath = (obj: object, path: string | string[], value: any, delimiter = '.') => {
+  let arr;
+  let key;
+  let p = path;
+
+  if (typeof path === 'string') {
+    p = path.split(delimiter || '.');
+  }
+
+  if (p.length > 0) {
+    arr = p;
+    [key] = arr;
+    if (arr.length > 1) {
+      arr.shift();
+      // eslint-disable-next-line no-param-reassign
+      obj[key] = setPath(obj[key] || {}, arr, value, delimiter);
+    } else {
+      // eslint-disable-next-line no-param-reassign
+      obj[key] = value;
+    }
+  }
+  return obj;
+};
+
+const SideNav = ({ data }: { data: File[] }) => {
+  const groups = data.reduce((acc, { relativeDirectory, childMarkdownRemark }) => {
+    setPath(
+      acc,
+      relativeDirectory,
+      {
+        href: relativeDirectory,
+        title: childMarkdownRemark.frontmatter.title,
+      },
+      '/'
+    );
+    return acc;
+  }, {});
+
+  return (
+    <Fragment>
+      {Object.entries(groups).map(([sectionTitle, sectionValues]) => {
+        return (
+          <nav key={sectionTitle}>
+            <h1>{sectionTitle}</h1>
+            <TooltipLinkList
+              links={Object.entries(sectionValues).map(([key, v]) => {
+                return {
+                  key,
+                  ...v,
+                };
+              })}
+              LinkWrapper={DocsLink}
+            />
+          </nav>
+        );
+      })}
+    </Fragment>
+  );
+};
+
+export default ({ data: { content, nav } }: Props) => {
+  const file: File = content.parent as File;
   return (
     <Global>
       <Layout>
         <PageTitle
           heading="documentation"
-          title={pageMarkdown.frontmatter.title}
-          desc={pageMarkdown.excerpt}
+          title={content.frontmatter.title}
+          desc={<GitHubLink {...file} />}
           color="blue"
         />
         <PageMargin>
@@ -108,20 +175,18 @@ export default ({ data: { pageMarkdown, navigation } }: Props) => {
                 <Sticky>
                   {({ style }) => (
                     <div style={style}>
-                      <TooltipLinkList
-                        links={navigation.nodes.map(n => ({
-                          title: n.childMarkdownRemark.frontmatter.title,
-                          href: `/docs/${n.relativeDirectory}`,
-                          isGatsby: true,
-                        }))}
-                        LinkWrapper={LinkWrapper}
-                      />
+                      <Spaced row={2}>
+                        <nav>
+                          <Branches {...file} />
+                        </nav>
+                        <SideNav data={nav.nodes} />
+                      </Spaced>
                     </div>
                   )}
                 </Sticky>
               }
             >
-              <DocumentWrapper>{hastToJsx(pageMarkdown.htmlAst)}</DocumentWrapper>
+              <DocumentWrapper>{hastToJsx(content.htmlAst)}</DocumentWrapper>
             </PageSplit>
           </StickyContainer>
         </PageMargin>
@@ -131,8 +196,8 @@ export default ({ data: { pageMarkdown, navigation } }: Props) => {
 };
 
 export const query = graphql`
-  query One($id: String!, $scope: String!, $group: String!) {
-    pageMarkdown: markdownRemark(parent: { id: { eq: $id } }) {
+  query One($id: String!, $group: String!) {
+    content: markdownRemark(parent: { id: { eq: $id } }) {
       parent {
         ... on File {
           sourceInstanceName
@@ -150,22 +215,21 @@ export const query = graphql`
         depth
       }
     }
-    navigation: allFile(
+
+    nav: allFile(
       filter: {
-        childMarkdownRemark: { id: { regex: "/./" } }
-        relativeDirectory: { regex: $scope }
         sourceInstanceName: { eq: $group }
+        childMarkdownRemark: { id: { regex: "/./" }, frontmatter: { title: { regex: "/./" } } }
       }
+      sort: { fields: absolutePath, order: ASC }
     ) {
       nodes {
         relativeDirectory
-        id
         childMarkdownRemark {
           frontmatter {
-            title
             id
+            title
           }
-          excerpt
         }
       }
     }
