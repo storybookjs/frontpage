@@ -1,6 +1,6 @@
 import React, { createElement, Fragment } from 'react';
 import { graphql, Link as GatsbyLink } from 'gatsby';
-import { DocumentWrapper } from '@storybook/components';
+import { DocumentWrapper, SyntaxHighlighter } from '@storybook/components';
 import { StickyContainer, Sticky } from 'react-sticky';
 // @ts-ignore
 import { TooltipLinkList } from '@storybook/design-system';
@@ -11,14 +11,23 @@ import PageTitle from '../components/layout/PageTitle';
 
 import { Query } from '../generated/graphql';
 
-interface HastNode {
-  type: 'element' | 'text' | 'root';
+type HastNode = HastElementNode & HastRootNode & HastTextNode;
+interface HastElementNode {
+  type: 'element';
   tagName: string;
-  value?: string;
   properties: Record<string, string>;
   children?: HastNode[];
 }
-const hastToJsx = (node: HastNode) => {
+interface HastTextNode {
+  type: 'text';
+  value: string;
+}
+interface HastRootNode {
+  type: 'root';
+  children: HastNode[];
+}
+
+const hastToJsx = (node: HastNode): JSX.Element | string | null => {
   if (!node) {
     return null;
   }
@@ -34,6 +43,20 @@ const hastToJsx = (node: HastNode) => {
     case node.type === 'element' && node.tagName === 'link':
     case node.type === 'element' && node.tagName === 'br': {
       return createElement(node.tagName, node.properties);
+    }
+    case node.type === 'element' && node.tagName === 'code': {
+      if (node.properties && node.properties.className) {
+        const {
+          className: [language],
+          ...props
+        } = node.properties;
+        return (
+          <SyntaxHighlighter language={language.replace('language-', '')} {...props}>
+            {node.children.map(hastToJsx).join('')}
+          </SyntaxHighlighter>
+        );
+      }
+      return createElement(node.tagName, node.properties, node.children.map(hastToJsx));
     }
     case node.type === 'element' && typeof node.tagName === 'string': {
       return createElement(node.tagName, node.properties, node.children.map(hastToJsx));
