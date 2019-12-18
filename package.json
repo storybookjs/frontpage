@@ -29,7 +29,8 @@
     "lint": "eslint .",
     "start": "npm run develop",
     "storybook": "start-storybook -p 6006 -s static",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "generate-types": "graphql-codegen --config graphql-types-codegen.yml"
   },
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "7.7.4",
@@ -87,6 +88,9 @@
   },
   "devDependencies": {
     "@babel/core": "^7.7.5",
+    "@graphql-codegen/cli": "^1.9.1",
+    "@graphql-codegen/introspection": "1.0.0",
+    "@graphql-codegen/typescript": "^1.9.1",
     "@storybook/addon-actions": "^5.3.0-beta.31",
     "@storybook/addon-links": "^5.3.0-beta.31",
     "@storybook/addons": "^5.3.0-beta.31",

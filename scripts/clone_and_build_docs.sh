@@ -1,4 +1,3 @@
-
 #!/bin/bash -
 
 REPO='https://github.com/storybooks/storybook'
