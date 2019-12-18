@@ -2,20 +2,30 @@ import React, { createElement, Fragment } from 'react';
 import { graphql, Link as GatsbyLink } from 'gatsby';
 import { DocumentWrapper } from '@storybook/components';
 import { StickyContainer, Sticky } from 'react-sticky';
+// @ts-ignore
 import { TooltipLinkList } from '@storybook/design-system';
 import Layout from '../components/layout/PageLayout';
 import { Global } from '../components/lib/global';
 import { PageMargin, PageSplit } from '../components/basics/Page';
 import PageTitle from '../components/layout/PageTitle';
 
-const hastToJsx = node => {
+import { Query } from '../generated/graphql';
+
+interface HastNode {
+  type: 'element' | 'text' | 'root';
+  tagName: string;
+  value?: string;
+  properties: Record<string, string>;
+  children?: HastNode[];
+}
+const hastToJsx = (node: HastNode) => {
   if (!node) {
     return null;
   }
 
   switch (true) {
     case node.type === 'root': {
-      return <Fragment>{node.children.map(hastToJsx)}</Fragment>;
+      return <Fragment key="root">{node.children.map(hastToJsx)}</Fragment>;
     }
     case node.type === 'text': {
       return node.value;
@@ -34,7 +44,8 @@ const hastToJsx = node => {
   }
 };
 
-const LinkWrapper = ({ href, isGatsby, children, ...props }) => {
+// @ts-ignore
+const LinkWrapper = ({ href, isGatsby, children, ...props }: {}) => {
   if (isGatsby) {
     return (
       <GatsbyLink to={href} {...props}>
@@ -50,7 +61,14 @@ const LinkWrapper = ({ href, isGatsby, children, ...props }) => {
   );
 };
 
-export default ({ data: { pageMarkdown, navigation } }) => {
+interface Props {
+  data: {
+    pageMarkdown: Query['markdownRemark'];
+    navigation: Query['allFile'];
+  };
+}
+
+export default ({ data: { pageMarkdown, navigation } }: Props) => {
   return (
     <Global>
       <Layout>
