@@ -17,7 +17,7 @@
     "gatsby-plugin-segment-js": "^3.1.0",
     "gatsby-plugin-sharp": "^2.6.18",
     "gatsby-plugin-styled-components": "^3.1.16",
-    "gatsby-plugin-typescript": "^2.1.23",
+    "gatsby-plugin-typescript": "^2.4.13",
     "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-source-filesystem": "^2.1.22",
     "gatsby-source-github-repo": "^1.2.1",
@@ -58,8 +58,8 @@
     "chromatic": "CHROMATIC_APP_CODE=dd2oqshntir chromatic test"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-class-properties": "7.7.4",
     "@babel/core": "^7.6.0",
+    "@babel/plugin-proposal-class-properties": "7.7.4",
     "@storybook/addon-actions": "^v5.2.0-rc.11",
     "@storybook/addon-links": "^v5.2.0-rc.11",
     "@storybook/addons": "^v5.2.0-rc.11",
@@ -67,8 +67,8 @@
     "@storybook/react": "^v5.2.0-rc.11",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
-    "babel-preset-gatsby": "^0.2.26",
     "babel-plugin-styled-components": "^1.9.4",
+    "babel-preset-gatsby": "^0.2.26",
     "chromatic": "^5.0.0",
     "eslint": "^6.7.2",
     "prettier": "^1.19.1",
