@@ -55,11 +55,15 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006 -s static",
     "build-storybook": "build-storybook -s static",
-    "chromatic": "CHROMATIC_APP_CODE=dd2oqshntir chromatic test"
+    "chromatic": "CHROMATIC_PROJECT_TOKEN=dd2oqshntir chromatic test",
+    "generate-types": "graphql-codegen --config graphql-types-codegen.yml"
   },
   "devDependencies": {
     "@babel/core": "^7.6.0",
     "@babel/plugin-proposal-class-properties": "7.7.4",
+    "@graphql-codegen/cli": "^1.9.1",
+    "@graphql-codegen/introspection": "1.0.0",
+    "@graphql-codegen/typescript": "^1.9.1",
     "@storybook/addon-actions": "^v5.2.0-rc.11",
     "@storybook/addon-links": "^v5.2.0-rc.11",
     "@storybook/addons": "^v5.2.0-rc.11",
