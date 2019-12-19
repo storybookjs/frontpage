@@ -1,6 +1,7 @@
 const p = require('path');
 
 module.exports = {
+  stories: ['../src/**/*.stories.(js|ts|tsx)'],
   addons: ['@storybook/addon-actions', '@storybook/addon-links'],
   webpack: async config => {
     const coreJsLocationOfRoot = p.join(__dirname, '..', 'node_modules');

@@ -1,23 +1,25 @@
 import React, { Fragment } from 'react';
-import { configure, addDecorator } from '@storybook/react';
 import isChromatic from 'chromatic/isChromatic';
 import { global as designSystemGlobal } from '@storybook/design-system';
 import WebFont from 'webfontloader';
 import LazyLoad from '../src/components/basics/LazyLoad';
 
-
 const { GlobalStyle } = designSystemGlobal;
 
-WebFont.load({        custom: {
-  urls: [designSystemGlobal.fontUrl],
-},
+WebFont.load({
+  custom: {
+    urls: [designSystemGlobal.fontUrl],
+  },
 });
-addDecorator(story => (
-  <Fragment>
-    <GlobalStyle />
-    {story()}
-  </Fragment>
-));
+
+export const decorators = [
+  story => (
+    <Fragment>
+      <GlobalStyle />
+      {story()}
+    </Fragment>
+  ),
+];
 
 // Gatsby's Link overrides:
 // Gatsby defines a global called ___loader to prevent its method calls from creating console errors you override it here
@@ -38,14 +40,3 @@ window.___navigate = pathname => {
 if (window.navigator.userAgent.match('Chromatic')) {
   LazyLoad.disabled = true;
 }
-
-const stories = [
-  // automatically import all files ending in *.stories.js
-  require.context('../src', true, /.stories.js$/),
-];
-
-if (!isChromatic()) {
-  stories.push(require.context('../node_modules/@storybook/design-system', true, /.stories.js$/));
-}
-
-configure(stories, module);
