@@ -38,6 +38,7 @@ export const hastToJsx = (node: HastNode): JSX.Element | string | null => {
     case node.type === 'text': {
       return node.value;
     }
+    case node.type === 'element' && node.tagName === 'hr':
     case node.type === 'element' && node.tagName === 'img':
     case node.type === 'element' && node.tagName === 'link':
     case node.type === 'element' && node.tagName === 'br': {
