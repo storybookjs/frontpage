@@ -76,6 +76,9 @@ export const hastToJsx = (node: HastNode): JSX.Element | string | null => {
     case node.type === 'element' && node.tagName === 'br': {
       return createElement(node.tagName, props);
     }
+    case node.type === 'element' && node.tagName === 'input': {
+      return null;
+    }
     case node.type === 'element' && node.tagName === 'img': {
       if (props.src && props.src.match(/^\..*\.gif$/)) {
         // gatsby doesn't support gifs yet, so this is a hack to map local gifs to the static dir

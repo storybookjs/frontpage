@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { fetch, window } from 'global';
 import { useSetState } from 'react-hanger';
 
-import useSiteMetadata from '../lib/useSiteMetadata';
+import useSiteMetadata from '../../lib/useSiteMetadata';
 import { Cardinal } from '../basics';
 
 const fetchNpmDownloads = async npmApiUrls => {

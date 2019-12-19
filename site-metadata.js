@@ -103,16 +103,6 @@ siteMetadata.urls.navCommunityLinks = [
   { title: 'Team', href: siteMetadata.urls.team, isGatsby: true },
 ];
 
-siteMetadata.urls.navDocsLinks = [
-  { title: 'Basics', href: '/docs/', isGatsby: true },
-  { title: 'Guides', href: siteMetadata.urls.useCases, isGatsby: true },
-  { title: 'Configuration', href: siteMetadata.urls.useCases, isGatsby: true },
-  { title: 'Formats', href: siteMetadata.urls.support, isGatsby: true },
-  { title: 'Testing', href: siteMetadata.urls.team, isGatsby: true },
-  { title: 'Addons', href: siteMetadata.urls.team, isGatsby: true },
-  { title: 'Presets', href: siteMetadata.urls.team, isGatsby: true },
-];
-
 siteMetadata.urls.navLinks = [
   { title: 'Docs', href: siteMetadata.urls.docsIntro, isGatsby: false },
   { title: 'Tutorials', href: siteMetadata.urls.tutorials, isGatsby: false },

@@ -8,7 +8,7 @@ import PageTitle from '../../layout/PageTitle';
 import Feature from '../../layout/Feature';
 import FeaturesLayout from '../../layout/FeaturesLayout';
 
-import useSiteMetadata from '../../lib/useSiteMetadata';
+import useSiteMetadata from '../../../lib/useSiteMetadata';
 import GitHubSVG from '../../../images/logos/social/github.svg';
 import DiscordSVG from '../../../images/logos/social/discord.svg';
 

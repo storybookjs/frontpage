@@ -1,4 +1,5 @@
 const p = require('path');
+const fs = require('fs');
 
 const getPagePath = (sourceInstanceName, relativeDirectory, name) => {
   switch (sourceInstanceName) {
@@ -7,6 +8,9 @@ const getPagePath = (sourceInstanceName, relativeDirectory, name) => {
     }
     case 'docs-maintenance': {
       return name.toLowerCase();
+    }
+    case 'docs-addons': {
+      return `addons/${name.toLowerCase()}`;
     }
     default: {
       const prefix = sourceInstanceName.replace('docs-', '');
@@ -44,22 +48,25 @@ exports.createPages = async ({ graphql, actions }) => {
 
   allMarkdownRemark.nodes.forEach(node => {
     const { relativeDirectory, sourceInstanceName, id, name } = node.parent;
-    if (!sourceInstanceName || name === '404') {
-      return;
+
+    if (sourceInstanceName.includes('docs-') || name !== '404') {
+      const path = getPagePath(sourceInstanceName, relativeDirectory, name);
+      const scope = getPageScope(path);
+
+      const component = fs.existsSync(`./src/templates/${sourceInstanceName}.tsx`)
+        ? p.resolve(`./src/templates/${sourceInstanceName}.tsx`)
+        : p.resolve(`./src/templates/documentation.tsx`);
+
+      createPage({
+        path,
+        component,
+        context: {
+          id,
+          group: sourceInstanceName,
+          scope,
+        },
+      });
     }
-
-    const path = getPagePath(sourceInstanceName, relativeDirectory, name);
-    const scope = getPageScope(path);
-
-    createPage({
-      path,
-      component: p.resolve(`./src/templates/documentation.tsx`),
-      context: {
-        id,
-        group: sourceInstanceName,
-        scope,
-      },
-    });
   });
 };
 

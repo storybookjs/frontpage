@@ -10,7 +10,7 @@ import TeamItem from './TeamItem';
 import ContributorItem from './ContributorItem';
 import TeamList from './TeamList';
 
-import useSiteMetadata from '../../lib/useSiteMetadata';
+import useSiteMetadata from '../../../lib/useSiteMetadata';
 import { SocialGraph } from '../../basics';
 
 const { breakpoint } = styles;

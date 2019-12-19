@@ -1,8 +1,9 @@
 import { useStaticQuery, graphql } from 'gatsby';
+import { File } from '../generated/graphql';
 
 const useSiteMetadata = () => {
   const result = useStaticQuery(graphql`
-    {
+    query SiteMetaData {
       site {
         siteMetadata {
           title
@@ -21,11 +22,6 @@ const useSiteMetadata = () => {
               isGatsby
             }
             navCommunityLinks {
-              title
-              href
-              isGatsby
-            }
-            navDocsLinks {
               title
               href
               isGatsby
@@ -99,10 +95,73 @@ const useSiteMetadata = () => {
           }
         }
       }
+      allFile(
+        sort: { fields: absolutePath, order: ASC }
+        filter: {
+          childMarkdownRemark: { id: { regex: "/./" } }
+          sourceInstanceName: { regex: "/docs-(?!next).*/" }
+        }
+      ) {
+        group(field: sourceInstanceName) {
+          fieldValue
+          nodes {
+            relativeDirectory
+            sourceInstanceName
+            name
+            childMarkdownRemark {
+              frontmatter {
+                id
+                title
+              }
+            }
+          }
+        }
+      }
     }
   `);
 
-  return result.site.siteMetadata;
+  return {
+    ...result.site.siteMetadata,
+    nav: result.allFile.group.reduce((acc, { fieldValue, nodes }) => {
+      acc[fieldValue] = {};
+      nodes.forEach(n => {
+        transformNavigationNodes(acc[fieldValue], n);
+      });
+      return acc;
+    }, {}),
+  };
+};
+
+const transformNavigationNodes = (
+  acc: Record<string, any>,
+  { sourceInstanceName, name, relativeDirectory, childMarkdownRemark }: File
+) => {
+  switch (sourceInstanceName) {
+    case 'docs-maintenance': {
+      acc[name] = {
+        key: name,
+        to: `/${name.toLowerCase()}`,
+        title: name.toLowerCase().replace(/_/g, ' '),
+      };
+      break;
+    }
+    case 'docs-addons': {
+      acc[name] = { key: name, to: `/addons/${name}`, title: name };
+      break;
+    }
+    case 'docs-master':
+    default: {
+      const [key] = relativeDirectory.split('/');
+      if (!acc[key] && key) {
+        acc[key] = {
+          key,
+          title: key,
+          to: `/docs/${relativeDirectory}`,
+        };
+      }
+      break;
+    }
+  }
 };
 
 export default useSiteMetadata;

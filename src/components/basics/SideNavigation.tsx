@@ -28,11 +28,11 @@ const SideNavigationLink = styled(
   }
 );
 
-interface NavItem {
+interface SideNavigationItem {
   title: string;
   to: string;
 }
-type NavGroup = Record<string, Record<string, NavItem>>;
+export type SideNavigationGroup = Record<string, Record<string, SideNavigationItem>>;
 
 const SideNavigationTitle = styled.header({
   display: 'block',
@@ -45,7 +45,7 @@ const SideNavigationTitle = styled.header({
   marginBottom: '1rem',
 });
 
-export const SideNavigation = ({ groups }: { groups: NavGroup }) => {
+export const SideNavigation = ({ groups }: { groups: SideNavigationGroup }) => {
   return (
     <Fragment>
       {Object.entries(groups).map(([groupTitle, groupChildren], index, l) => (

@@ -48,6 +48,7 @@ git clone --depth 1 --branch 'next' --no-checkout $REPO $TEMP_DIRNAME
 pushd $TEMP_DIRNAME
 git checkout 'next'
 popd
+
 echo ""
 echo "2.1) pages"
 echo ""

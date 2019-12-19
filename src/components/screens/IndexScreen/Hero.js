@@ -18,7 +18,7 @@ import {
 
 import { Cardinal, Video } from '../../basics';
 
-import useSiteMetadata from '../../lib/useSiteMetadata';
+import useSiteMetadata from '../../../lib/useSiteMetadata';
 import PlaceholderAspectRatio from '../../layout/PlaceholderAspectRatio';
 import NpmDownloadCount from '../../layout/NpmDownloadCount';
 

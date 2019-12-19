@@ -15,7 +15,7 @@ import ComponentCanvas from './ComponentCanvas';
 import ComponentList from './ComponentList';
 import LogoToggle from './LogoToggle';
 
-import useSiteMetadata from '../../lib/useSiteMetadata';
+import useSiteMetadata from '../../../lib/useSiteMetadata';
 import { SocialGraph } from '../../basics';
 
 import ComponentsSVG from '../../../images/colored-icons/components.svg';

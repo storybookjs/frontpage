@@ -4,7 +4,7 @@ import { StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 
 import { Button, Link, styles } from '@storybook/design-system';
-import useSiteMetadata from '../../lib/useSiteMetadata';
+import useSiteMetadata from '../../../lib/useSiteMetadata';
 
 import { SocialGraph, Video } from '../../basics';
 import PageLayout from '../../layout/PageLayout';

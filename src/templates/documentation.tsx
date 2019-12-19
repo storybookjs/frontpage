@@ -11,7 +11,7 @@ import { PageMargin, PageSplit } from '../components/basics/Page';
 import PageTitle from '../components/layout/PageTitle';
 import { hastToJsx } from '../components/basics/Hast';
 import { Pill, PillSection } from '../components/basics/Pill';
-import { SideNavigation } from '../components/basics/SideNavigation';
+import { SideNavigation, SideNavigationGroup } from '../components/basics/SideNavigation';
 
 import { Query, File } from '../generated/graphql';
 import { setPath } from '../lib/setPath';
@@ -66,9 +66,17 @@ const getLocalHref = (branch: string, relativeDirectory: string) => {
 };
 
 const getGitHubHref = (sourceInstanceName: string, name: string, relativeDirectory: string) => {
-  return sourceInstanceName === 'docs-maintenance'
-    ? `${name}.md`
-    : `/docs/src/pages/${`${relativeDirectory}/${name}`}.md`;
+  switch (sourceInstanceName) {
+    case 'docs-maintenance': {
+      return `${name}.md`;
+    }
+    case 'docs-addons': {
+      return 'i-do-not-know-yet';
+    }
+    default: {
+      return `/docs/src/pages/${`${relativeDirectory}/${name}`}.md`;
+    }
+  }
 };
 
 const GitHubLink = ({ sourceInstanceName, name, relativeDirectory }: File) => {
@@ -102,7 +110,7 @@ const Branches = ({ sourceInstanceName, relativeDirectory }: File) => {
   );
 };
 
-const transformNavNodes = (nodes: File[], branch: string): NavGroup => {
+const transformNavNodes = (nodes: File[], branch: string): SideNavigationGroup => {
   return nodes.reduce((acc, { relativeDirectory, childMarkdownRemark }) => {
     setPath(
       acc,
@@ -151,7 +159,7 @@ export default ({ data: { content, nav } }: Props) => {
 };
 
 export const query = graphql`
-  query One($id: String!, $group: String!) {
+  query DocumentationPage($id: String!, $group: String!) {
     content: markdownRemark(parent: { id: { eq: $id } }) {
       parent {
         ... on File {

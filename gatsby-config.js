@@ -31,6 +31,13 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        name: `docs-addons`,
+        path: `${__dirname}/docs/addons/`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         name: `docs-maintenance`,
         path: `${__dirname}/docs/maintenance/`,
       },
