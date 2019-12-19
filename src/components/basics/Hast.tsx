@@ -35,7 +35,7 @@ const getLanguage = (code, languageClass) => {
 
 const getProps = (
   properties: Record<string, any>
-): { style?: CSSProperties; className?: string | string[] } & { [key: string]: string } => {
+): { style?: CSSProperties; className?: string[] } & { [key: string]: string } => {
   if (!properties) {
     return {};
   }

@@ -22,6 +22,7 @@
     "**/node_modules",
     "**/*.spec.ts",
     "**/__tests__",
-    "**/*.test.ts"
+    "**/*.test.ts",
+    "generated/graphql.ts"
   ]
 }

@@ -1,9 +1,9 @@
 // Wrapper around react-lazyload that can be short-circuited for testing
 
-import React, { FunctionComponent } from 'react';
+import React from 'react';
 import ReactLazyLoad from 'react-lazyload';
 
-const LazyLoad: FunctionComponent<{}> = ({ children, ...props }) => {
+const LazyLoad = ({ children, ...props }) => {
   if (LazyLoad.disabled) {
     return children;
   }

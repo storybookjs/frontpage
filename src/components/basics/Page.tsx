@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import styled from '@emotion/styled';
+// @ts-ignore
 import { styles } from '@storybook/design-system';
 
 const { spacing, breakpoint, pageMargin } = styles;
@@ -38,20 +39,22 @@ export const PageMargin = ({ size = 'default', children }) => {
   }
 };
 
-const SplitWrapper = styled.div(({ direction, ratio }) => ({
+const SplitWrapper = styled.div<{
+  direction: 'row' | 'column';
+  ratio: [number | string, number | string];
+}>(({ direction, ratio }) => ({
   display: 'grid',
   [direction === 'row' ? 'grid-template-columns' : 'grid-template-rows']: ratio.join(' '),
   [direction === 'row' ? 'grid-column-gap' : 'grid-row-gap']: spacing.padding.medium,
 }));
 const SplitSection = styled.div({});
 
-export const PageSplit = ({
-  children,
-  aside,
-  main = children,
-  direction = 'row',
-  ratio = ['300px', '1fr'],
-}) => (
+export const PageSplit: FunctionComponent<{
+  direction?: 'row' | 'column';
+  ratio?: [number | string, number | string];
+  aside: JSX.Element;
+  main?: JSX.Element;
+}> = ({ children, aside, main = children, direction = 'row', ratio = ['300px', '1fr'] }) => (
   <SplitWrapper direction={direction} ratio={ratio}>
     <SplitSection>{aside}</SplitSection>
     <SplitSection>{main}</SplitSection>

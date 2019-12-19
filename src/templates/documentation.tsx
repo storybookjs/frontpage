@@ -99,6 +99,7 @@ const Branches = ({ sourceInstanceName, relativeDirectory }: File) => {
       {branches.map(b => (
         <PillSection
           key={b}
+          // @ts-ignore
           as={UnStyledLink}
           data-active={b === branch}
           href={getLocalHref(b, relativeDirectory)}
