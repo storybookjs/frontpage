@@ -1,3 +1,4 @@
+import React from 'react';
 import { ThemeProvider } from 'emotion-theming';
 import { ensure, themes } from '@storybook/theming';
 
