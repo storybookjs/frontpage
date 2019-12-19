@@ -1,16 +1,17 @@
 import React, { Fragment } from 'react';
 import { configure, addDecorator } from '@storybook/react';
-import 'storybook-chromatic';
-import { isChromatic } from 'storybook-chromatic';
+import isChromatic from 'chromatic/isChromatic';
 import { global as designSystemGlobal } from '@storybook/design-system';
 import WebFont from 'webfontloader';
 import LazyLoad from '../src/components/basics/LazyLoad';
 
-import config from '../gatsby-config';
 
 const { GlobalStyle } = designSystemGlobal;
 
-WebFont.load(config.plugins.find(p => p.resolve === 'gatsby-plugin-web-font-loader').options);
+WebFont.load({        custom: {
+  urls: [designSystemGlobal.fontUrl],
+},
+});
 addDecorator(story => (
   <Fragment>
     <GlobalStyle />

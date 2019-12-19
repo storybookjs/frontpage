@@ -9,16 +9,15 @@ const StyledVideo = styled.video({
 
 interface Prop {
   src: string;
-  shouldChangeSize: boolean;
-  alt: PropTypes.string;
+  shouldChangeSize?: boolean;
 }
 
-const Video: FunctionComponent<Prop> = ({ src, shouldChangeSize = false, alt, ...props }) => {
+const Video: FunctionComponent<Prop> = ({ src, shouldChangeSize = false, ...props }) => {
   const videoSize = shouldChangeSize && window.innerWidth < 600 ? 'sm' : 'lg';
   const videoSrc = videoSize === 'sm' ? src.replace('lg', 'sm') : src;
 
   return (
-    <StyledVideo autoPlay muted loop playsInline alt={alt} {...props}>
+    <StyledVideo autoPlay muted loop playsInline {...props}>
       <source src={videoSrc} type="video/mp4" />
     </StyledVideo>
   );
