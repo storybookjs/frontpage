@@ -20,23 +20,6 @@ interface Props {
   };
 }
 
-const getBranch = (sourceInstanceName: string) => {
-  return sourceInstanceName === 'docs-master' ? 'master' : 'next';
-};
-
-const GitHubLink = ({ sourceInstanceName, name }: File) => {
-  const branch = getBranch(sourceInstanceName);
-
-  return (
-    <StyledLink
-      href={`https://github.com/storybookjs/storybook/tree/${branch}/${name.toUpperCase()}.md`}
-    >
-      <Icon icon="github" aria-label="github icon" />
-      edit this page on github
-    </StyledLink>
-  );
-};
-
 const transformNavNodes = (nodes: File[]): SideNavigationGroup => {
   return {
     maintenance: nodes.reduce((acc, { name }) => {
@@ -52,18 +35,12 @@ const transformNavNodes = (nodes: File[]): SideNavigationGroup => {
 };
 
 export default ({ data: { content, nav } }: Props) => {
-  const file: File = content.parent as File;
   const navGroups = transformNavNodes(nav.nodes);
 
   return (
     <Global>
       <Layout>
-        <PageTitle
-          heading="maintenance"
-          title="Storybook's maintenance"
-          desc={<GitHubLink {...file} />}
-          color="blue"
-        />
+        <PageTitle heading="maintenance" title="Storybook's maintenance" desc="" color="blue" />
         <PageMargin>
           <PageSplit
             aside={
