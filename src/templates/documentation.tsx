@@ -1,9 +1,8 @@
 /* eslint-disable react/prop-types */
-import React, { Fragment, FunctionComponent, HTMLAttributes } from 'react';
+import React, { FunctionComponent, HTMLAttributes } from 'react';
 import { graphql, Link as GatsbyLink } from 'gatsby';
 import styled from '@emotion/styled';
 import { DocumentWrapper, Spaced } from '@storybook/components';
-import { StickyContainer, Sticky } from 'react-sticky';
 // @ts-ignore
 import { Icon, Link as StyledLink } from '@storybook/design-system';
 import Layout from '../components/layout/PageLayout';
@@ -12,8 +11,10 @@ import { PageMargin, PageSplit } from '../components/basics/Page';
 import PageTitle from '../components/layout/PageTitle';
 import { hastToJsx } from '../components/basics/Hast';
 import { Pill, PillSection } from '../components/basics/Pill';
+import { SideNavigation } from '../components/basics/SideNavigation';
 
 import { Query, File } from '../generated/graphql';
+import { setPath } from '../lib/setPath';
 
 interface LinkProps {
   href: string;
@@ -41,32 +42,6 @@ const Link: FunctionComponent<Partial<LinkProps> & HTMLAttributes<HTMLAnchorElem
     </a>
   );
 };
-
-const NavLink = styled(
-  ({ children, to, ...props }: { to: string } & HTMLAttributes<HTMLAnchorElement>) => {
-    return (
-      <GatsbyLink to={to} {...props} activeStyle={{ textDecoration: 'underline' }}>
-        {children}
-      </GatsbyLink>
-    );
-  }
-)(
-  {
-    color: '#666666',
-    display: 'block',
-    marginBottom: '0.75rem',
-    fontSize: '14px',
-    lineHeight: '20px',
-    textDecoration: 'none',
-  },
-  {
-    '&:hover': {
-      cursor: 'pointer',
-      transform: 'translateY(-1px)',
-      color: '#333333',
-    },
-  }
-);
 
 interface Props {
   data: {
@@ -127,69 +102,6 @@ const Branches = ({ sourceInstanceName, relativeDirectory }: File) => {
   );
 };
 
-const setPath = (obj: object, path: string | string[], value: any, delimiter = '.') => {
-  let arr;
-  let key;
-  let p = path;
-
-  if (typeof path === 'string') {
-    p = path.split(delimiter || '.');
-  }
-
-  if (p.length > 0) {
-    arr = p;
-    [key] = arr;
-    if (arr.length > 1) {
-      arr.shift();
-      // eslint-disable-next-line no-param-reassign
-      obj[key] = setPath(obj[key] || {}, arr, value, delimiter);
-    } else {
-      // eslint-disable-next-line no-param-reassign
-      obj[key] = value;
-    }
-  }
-  return obj;
-};
-
-interface NavItem {
-  title: string;
-  to: string;
-}
-type NavGroup = Record<string, Record<string, NavItem>>;
-
-const SideNavTitle = styled.header({
-  display: 'block',
-  fontSize: '12px',
-  color: '#999999',
-  letterSpacing: '0.35em',
-  textTransform: 'uppercase',
-  fontWeight: 900,
-  lineHeight: '20px',
-  marginBottom: '1rem',
-});
-
-const SideNav = ({ groups }: { groups: NavGroup }) => {
-  return (
-    <Fragment>
-      {Object.entries(groups).map(([groupTitle, groupChildren], index, l) => {
-        return (
-          <Fragment>
-            <nav key={groupTitle}>
-              <SideNavTitle>{groupTitle}</SideNavTitle>
-              {Object.entries(groupChildren).map(([key, link]) => (
-                <NavLink key={key} to={link.to}>
-                  {link.title}
-                </NavLink>
-              ))}
-            </nav>
-            {index !== l.length - 1 ? <hr /> : null}
-          </Fragment>
-        );
-      })}
-    </Fragment>
-  );
-};
-
 const transformNavNodes = (nodes: File[], branch: string): NavGroup => {
   return nodes.reduce((acc, { relativeDirectory, childMarkdownRemark }) => {
     setPath(
@@ -220,26 +132,18 @@ export default ({ data: { content, nav } }: Props) => {
           color="blue"
         />
         <PageMargin>
-          <StickyContainer>
-            <PageSplit
-              aside={
-                <Sticky>
-                  {({ style }) => (
-                    <div style={style}>
-                      <Spaced row={2}>
-                        <nav>
-                          <Branches {...file} />
-                        </nav>
-                        <SideNav groups={navGroups} />
-                      </Spaced>
-                    </div>
-                  )}
-                </Sticky>
-              }
-            >
-              <DocumentWrapper>{hastToJsx(content.htmlAst)}</DocumentWrapper>
-            </PageSplit>
-          </StickyContainer>
+          <PageSplit
+            aside={
+              <Spaced row={2}>
+                <nav>
+                  <Branches {...file} />
+                </nav>
+                <SideNavigation groups={navGroups} />
+              </Spaced>
+            }
+          >
+            <DocumentWrapper>{hastToJsx(content.htmlAst)}</DocumentWrapper>
+          </PageSplit>
         </PageMargin>
       </Layout>
     </Global>

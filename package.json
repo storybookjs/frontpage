@@ -82,7 +82,6 @@
     "react-modal": "^3.11.1",
     "react-popper": "^1.3.7",
     "react-popper-tooltip": "^2.10.1",
-    "react-sticky": "^6.0.3",
     "recompose": "^0.30.0",
     "styled-components": "^4.4.1",
     "validatorjs": "^3.18.1"
