@@ -26,7 +26,7 @@
     "chromatic": "CHROMATIC_APP_CODE=dd2oqshntir chromatic test",
     "develop": "gatsby develop",
     "format": "prettier --write \"src/**/*.js\"",
-    "lint": "eslint .",
+    "lint": "eslint src .storybook --ext .js,.jsx,.json,.html,.ts,.tsx,.mjs --report-unused-disable-directives",
     "start": "npm run develop",
     "storybook": "start-storybook -p 6006 -s static",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -84,7 +84,8 @@
     "react-popper-tooltip": "^2.10.1",
     "recompose": "^0.30.0",
     "styled-components": "^4.4.1",
-    "validatorjs": "^3.18.1"
+    "validatorjs": "^3.18.1",
+    "webfontloader": "^1.6.28"
   },
   "devDependencies": {
     "@babel/core": "^7.7.5",

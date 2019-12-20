@@ -1,20 +1,18 @@
+/* eslint-disable no-param-reassign, global-require */
 const p = require('path');
 
 module.exports = {
-  stories: [
-    '../src/**/*.stories.(js|ts|tsx)'
-  ],
-  addons: [
-    '@storybook/addon-actions/register',
-    '@storybook/addon-links/register',
-  ],
-  presets: [{
-    name: '@storybook/preset-typescript',
-    options: {
-      transpileOnly: true,
+  stories: ['../src/**/*.stories.(js|ts|tsx)'],
+  addons: ['@storybook/addon-actions/register', '@storybook/addon-links/register'],
+  presets: [
+    {
+      name: '@storybook/preset-typescript',
+      options: {
+        transpileOnly: true,
+      },
     },
-  },],
-  webpack: async (config) => {
+  ],
+  webpack: async config => {
     const coreJsLocationOfRoot = p.join(__dirname, '..', 'node_modules');
     const coreJsLocationOfGatsby = p.join(
       __dirname,
@@ -27,8 +25,8 @@ module.exports = {
 
     const CoreJSUpgradeWebpackPlugin = require('corejs-upgrade-webpack-plugin');
     // set the NODE_ENV to 'production' by default, to allow babel-plugin-remove-graphql-queries to remove static queries
-    process.env.NODE_ENV = 'production'
-    
+    process.env.NODE_ENV = 'production';
+
     // Prefer Gatsby ES6 entrypoint (module) over commonjs (main) entrypoint
     config.resolve.mainFields = ['browser', 'module', 'main'];
 
@@ -53,18 +51,12 @@ module.exports = {
     ];
 
     config.plugins.unshift(
-      (
-        // eslint-disable-next-line new-cap
-        new CoreJSUpgradeWebpackPlugin.default({
-          resolveFrom: [coreJsLocationOfRoot, coreJsLocationOfGatsby],
-        })
-      )
-    
-    )
+      // eslint-disable-next-line new-cap
+      new CoreJSUpgradeWebpackPlugin.default({
+        resolveFrom: [coreJsLocationOfRoot, coreJsLocationOfGatsby],
+      })
+    );
 
-
-    
     return config;
-
-  }
-}
+  },
+};

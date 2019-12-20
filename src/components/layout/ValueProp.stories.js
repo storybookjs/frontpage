@@ -19,7 +19,6 @@ storiesOf('Frontpage|screens/IndexScreen/ValueProp', module).add('default', () =
     <ValueProp
       orientation="left"
       media={
-        /* eslint-disable jsx-a11y/media-has-caption */
         <PlaceholderAspectRatio ratio={0.75}>
           <Video
             src="videos/storybook-workflow-build-optimized-lg.mp4"

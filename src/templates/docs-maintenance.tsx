@@ -1,9 +1,7 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { graphql } from 'gatsby';
 import { DocumentWrapper, Spaced } from '@storybook/components';
 // @ts-ignore
-import { Icon, Link as StyledLink } from '@storybook/design-system';
 import Layout from '../components/layout/PageLayout';
 import { Global } from '../components/lib/global';
 import { PageMargin, PageSplit } from '../components/basics/Page';

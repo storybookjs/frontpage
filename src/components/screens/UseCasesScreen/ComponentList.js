@@ -85,7 +85,6 @@ function ComponentList({ selectedIndex, onSelectIndex, ...props }) {
         onSelectIndex={onSelectIndex}
         clicked={selectedIndex !== 0}
       />
-      {/* eslint-disable react/no-array-index-key */}
 
       {selectedIndex === 0 && (
         <Fragment>

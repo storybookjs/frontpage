@@ -50,7 +50,6 @@ PureConfirmedMailingList.propTypes = {
 export default compose(
   withState('hasSubscribed', 'onSetHasSubscribed', false),
   withHandlers({
-    // eslint-disable-next-line no-unused-vars
     onSubscribe: ({ onSetHasSubscribed }) => async ({ email, optIn }) => {
       const data = new FormData();
       const fullFields = {

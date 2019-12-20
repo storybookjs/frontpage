@@ -80,7 +80,7 @@ const coreJsLocationOfGatsby = p.join(
   'core-js'
 );
 exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
-  // eslint-disable-next-line import/no-extraneous-dependencies, global-require
+  // eslint-disable-next-line global-require
   const CoreJSUpgradeWebpackPlugin = require('corejs-upgrade-webpack-plugin');
   const webpackConfig = getConfig();
   delete webpackConfig.resolve.alias['core-js'];

@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { FunctionComponent, HTMLAttributes } from 'react';
 import { graphql, Link as GatsbyLink } from 'gatsby';
 import styled from '@emotion/styled';

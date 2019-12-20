@@ -65,7 +65,6 @@ export function PureIndexScreen({ data: { gitHubRepoData }, ...props }) {
       <ValueProp
         orientation="left"
         media={
-          /* eslint-disable jsx-a11y/media-has-caption */
           <Placeholder ratio={0.75}>
             <Video
               src="videos/storybook-workflow-build-optimized-lg.mp4"
@@ -126,7 +125,6 @@ export function PureIndexScreen({ data: { gitHubRepoData }, ...props }) {
         <ValueProp
           orientation="right"
           media={
-            /* eslint-disable jsx-a11y/media-has-caption */
             <Placeholder ratio={0.75}>
               <Video
                 src="videos/storybook-workflow-test-optimized-lg.mp4"
@@ -183,7 +181,6 @@ export function PureIndexScreen({ data: { gitHubRepoData }, ...props }) {
       <ValueProp
         orientation="left"
         media={
-          /* eslint-disable jsx-a11y/media-has-caption */
           <Placeholder ratio={0.75}>
             <Video
               src="videos/storybook-workflow-share-optimized-lg.mp4"
