@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign, global-require */
 const p = require('path');
 
 module.exports = {

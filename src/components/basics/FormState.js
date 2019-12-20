@@ -32,7 +32,6 @@ export default class FormData extends MobxReactForm {
     super(fields, { plugins, hooks, options });
   }
 
-  // eslint-disable-next-line class-methods-use-this
   bindings() {
     return {
       Default: defaultBindings,
