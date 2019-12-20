@@ -6,27 +6,35 @@ import styled from 'styled-components';
 import { styles } from '@storybook/design-system';
 import PageLayout from '../../layout/PageLayout';
 import PageTitle from '../../layout/PageTitle';
-import TeamItem from './TeamItem';
-import TeamList, { Layout } from './TeamList';
+import SteeringCommittee from './SteeringCommittee';
+import Maintainers from './Maintainers';
 
 import Contributors from './Contributors';
 
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import { SocialGraph } from '../../basics';
 
-const { breakpoint } = styles;
+const { breakpoint, pageMargin, pageMargins } = styles;
 
-const Team = styled(TeamList)`
+const Layout = styled.div`
+  ${pageMargins};
+  padding-bottom: 4rem;
+
   @media (min-width: ${breakpoint * 1}px) {
-    margin-bottom: 1rem;
+    margin: 0 ${pageMargin * 3}%;
+    padding-bottom: 6rem;
+  }
+  @media (min-width: ${breakpoint * 2}px) {
+    margin: 0 ${pageMargin * 4}%;
   }
 `;
 
-const ContributorsWrapper = styled(Layout)`
-  padding: 0;
-`;
-
-export function PureTeamScreen({ ...props }) {
+export function PureTeamScreen({
+  data: {
+    gitHubRepoData: { contributorCount },
+  },
+  ...props
+}) {
   const { title, ogImage, urls = {} } = useSiteMetadata();
   return (
     <PageLayout {...props}>
@@ -43,61 +51,12 @@ export function PureTeamScreen({ ...props }) {
         desc="Storybook is maintained by hundreds of contributors worldwide and guided by a steering committee."
         color="purple"
       />
-      <Team>
-        <TeamItem
-          name="Norbert de Langen"
-          title="Open source"
-          company="Chroma"
-          companyUrl="https://hichroma.com"
-          location="Zwolle, Netherlands"
-          avatarUrl="https://avatars2.githubusercontent.com/u/3070389?s=200&v=4"
-          gitHubUrl="https://github.com/ndelangen"
-          twitterUrl="https://twitter.com/NorbertdeLangen"
-        />
-        <TeamItem
-          name="Filipp Riabchun"
-          title="Engineering"
-          company="Jetbrains"
-          companyUrl="https://www.jetbrains.com"
-          location="Bayern, Germany"
-          avatarUrl="https://avatars0.githubusercontent.com/u/6651625?s=200&v=4"
-          gitHubUrl="https://github.com/Hypnosphi"
-          twitterUrl="https://twitter.com/hypnos_phi"
-        />
-        <TeamItem
-          name="Michael Shilman"
-          title="Engineering"
-          company="Chroma"
-          companyUrl="https://hichroma.com"
-          location="San Francisco, USA"
-          avatarUrl="https://avatars0.githubusercontent.com/u/488689?s=200&v=4"
-          gitHubUrl="https://github.com/shilman"
-          twitterUrl="https://twitter.com/mshilman"
-        />
-        <TeamItem
-          name="Igor Davydkin"
-          title="Engineering"
-          company="ClimaCell"
-          companyUrl="https://www.climacell.co/"
-          location="Tel Aviv, Israel"
-          avatarUrl="https://avatars1.githubusercontent.com/u/7867954?s=200&v=4"
-          gitHubUrl="https://github.com/igor-dv"
-          twitterUrl="https://twitter.com/IgorDavydkin"
-        />
-        <TeamItem
-          name="Tom Coleman"
-          title="Engineering"
-          company="Chroma"
-          companyUrl="https://hichroma.com"
-          location="Melbourne, Australia"
-          avatarUrl="https://avatars0.githubusercontent.com/u/132554?s=200&v=4"
-          gitHubUrl="https://github.com/tmeasday"
-          twitterUrl="https://twitter.com/tmeasday"
-        />
-      </Team>
-      <ContributorsWrapper>
-        <Contributors />
-      </ContributorsWrapper>
+
+      <Layout>
+        <SteeringCommittee />
+        <Maintainers />
+        <Contributors contributorCount={contributorCount} />
+      </Layout>
     </PageLayout>
   );
 }

@@ -2,28 +2,13 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Avatar, styles, Link } from '@storybook/design-system';
 
-const { typography } = styles;
+import { Avatar, Link } from '@storybook/design-system';
 
-const Heading = styled.div`
-  font-size: ${typography.size.m2}px;
-  font-weight: ${typography.weight.extrabold};
-  line-height: 28px;
-`;
-
-const Text = styled.h1`
-  font-size: ${typography.size.s3}px;
-  line-height: 28px;
-  margin-top: 12px;
-`;
-
-const Wrapper = styled.div`
-  padding: 1rem;
-`;
+import Section from './Section';
 
 const CommunityAvatars = styled.div`
-  margin-top: 24px;
+  margin-top: 10px;
   margin-left: -10px;
   margin-right: -10px;
   display: flex;
@@ -36,26 +21,28 @@ const AvatarWrapper = styled(Avatar).attrs({ size: 'large' })`
 `;
 
 const StyledLink = styled(Link)`
-  margin-top: 12px;
+  margin-top: 10px;
 `;
 
-const PureContributors = ({ contributors }) => (
-  <Wrapper>
-    <section>
-      <Heading>+{contributors.length} Contributors</Heading>
-      <Text>
-        Storybook the product of hundreds of community contributors from around the globe.
-      </Text>
-      <CommunityAvatars>
-        {contributors.map(contributor => (
-          <AvatarWrapper key={contributor.id} src={contributor.avatar_url} />
-        ))}
-      </CommunityAvatars>
-      <StyledLink withArrow href="https://github.com/storybookjs/frontpage/graphs/contributors">
-        View all on GitHub
-      </StyledLink>
-    </section>
-  </Wrapper>
+const PureContributors = ({ contributors, contributorCount }) => (
+  <Section
+    heading={`+${contributorCount} Contributors`}
+    description="Storybook is the product of hundreds of community contributors from around the globe."
+  >
+    <CommunityAvatars>
+      {contributors.map(contributor => (
+        <AvatarWrapper key={contributor.id} src={contributor.avatar_url} />
+      ))}
+    </CommunityAvatars>
+    <StyledLink
+      withArrow
+      href="https://github.com/storybookjs/storybook/graphs/contributors"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      View all on GitHub
+    </StyledLink>
+  </Section>
 );
 
 PureContributors.propTypes = {
@@ -65,16 +52,18 @@ PureContributors.propTypes = {
       id: PropTypes.number.isRequired,
     })
   ),
+  contributorCount: PropTypes.string.isRequired,
 };
 
 PureContributors.defaultProps = {
   contributors: [],
 };
 
-const contributorsUrl = 'https://api.github.com/repos/storybookjs/frontpage/contributors?per_page=10';
-const sessionStorageKey = 'lsbGithubContributors';
+const contributorsUrl =
+  'https://api.github.com/repos/storybookjs/storybook/contributors?per_page=20';
+const sessionStorageKey = 'storybookFrontpageGithubContributors';
 
-const Contributors = () => {
+const Contributors = props => {
   const [contributors, setContributors] = useState([]);
 
   useEffect(() => {
@@ -96,7 +85,7 @@ const Contributors = () => {
     fetchGithubContributors();
   }, []);
 
-  return <PureContributors contributors={contributors} />;
+  return <PureContributors {...props} contributors={contributors} />;
 };
 
 export { PureContributors };

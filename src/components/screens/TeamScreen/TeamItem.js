@@ -10,10 +10,6 @@ const { color, typography, breakpoint } = styles;
 const Profile = styled(Avatar)`
   height: 50px;
   width: 50px;
-  @media (min-width: ${breakpoint * 1}px) {
-    height: 60px;
-    width: 60px;
-  }
 `;
 
 const ImageOuter = styled.div`
@@ -26,16 +22,16 @@ const Name = styled.div`
   font-size: ${typography.size.s3}px;
   font-weight: ${typography.weight.extrabold};
   color: ${color.darkest};
-  margin-bottom: 0.25rem;
 `;
 const Title = styled.div``;
 const Company = styled.span``;
 
 const Social = styled.div`
-  margin-top: 0.25rem;
+  margin-top: 0.2rem;
 
   > a {
-    margin-right: 15px;
+    margin-right: 10px;
+
     svg {
       height: 1rem;
       width: 1rem;
@@ -46,7 +42,7 @@ const Social = styled.div`
 const Meta = styled.div`
   margin: 0.5em 0 0 0.5em;
   @media (min-width: ${breakpoint * 1}px) {
-    margin: 0.5em 0 0 1em;
+    margin: 0.1em 0 0 1em;
   }
   color: ${color.dark};
 `;
@@ -57,9 +53,10 @@ const Item = styled.div`
   position: relative;
   display: block;
   text-align: left;
-  padding: 1em;
+  padding: 2rem 10px 0 0;
   display: flex;
   flex-direction: row;
+  width: 50%;
 `;
 
 export default function TeamItem({
@@ -67,7 +64,6 @@ export default function TeamItem({
   title,
   company,
   companyUrl,
-  location,
   avatarUrl,
   gitHubUrl,
   twitterUrl,
@@ -118,7 +114,6 @@ TeamItem.propTypes = {
   title: PropTypes.string.isRequired,
   company: PropTypes.string,
   companyUrl: PropTypes.string,
-  location: PropTypes.string.isRequired,
   avatarUrl: PropTypes.string.isRequired,
   gitHubUrl: PropTypes.string,
   twitterUrl: PropTypes.string,
