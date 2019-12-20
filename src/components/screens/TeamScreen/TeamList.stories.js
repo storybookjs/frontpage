@@ -3,8 +3,6 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import TeamItem from './TeamItem';
-import ContributorItem from './ContributorItem';
-import { contributors } from './ContributorItem.stories';
 import TeamList from './TeamList';
 
 const Item = (
@@ -27,10 +25,5 @@ storiesOf('Frontpage|screens/TeamScreen/TeamList', module).add('full', () => (
     {Item}
     {Item}
     {Item}
-    <ContributorItem
-      contributors={contributors}
-      contributorCount={550}
-      gitHubUrl="https://github.com/storybooks/storybook"
-    />
   </TeamList>
 ));

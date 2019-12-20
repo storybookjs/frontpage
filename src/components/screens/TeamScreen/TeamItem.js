@@ -8,19 +8,16 @@ import { LazyLoad } from '../../basics';
 const { color, typography, breakpoint } = styles;
 
 const Profile = styled(Avatar)`
-  height: 80px;
-  width: 80px;
+  height: 50px;
+  width: 50px;
   @media (min-width: ${breakpoint * 1}px) {
-    height: 120px;
-    width: 120px;
+    height: 60px;
+    width: 60px;
   }
 `;
 
 const ImageOuter = styled.div`
-  margin-right: 20px;
-
   @media (min-width: ${breakpoint * 1}px) {
-    margin-right: 0;
     margin-bottom: 1.25rem;
   }
 `;
@@ -33,21 +30,12 @@ const Name = styled.div`
 `;
 const Title = styled.div``;
 const Company = styled.span``;
-const Location = styled.div``;
 
 const Social = styled.div`
   margin-top: 0.25rem;
-  @media (min-width: ${breakpoint * 1}px) {
-    margin-top: 0.5rem;
-  }
 
   > a {
     margin-right: 15px;
-
-    @media (min-width: ${breakpoint * 1}px) {
-      margin: 0 7.5px;
-    }
-
     svg {
       height: 1rem;
       width: 1rem;
@@ -56,6 +44,10 @@ const Social = styled.div`
 `;
 
 const Meta = styled.div`
+  margin: 0.5em 0 0 0.5em;
+  @media (min-width: ${breakpoint * 1}px) {
+    margin: 0.5em 0 0 1em;
+  }
   color: ${color.dark};
 `;
 
@@ -65,14 +57,9 @@ const Item = styled.div`
   position: relative;
   display: block;
   text-align: left;
-
+  padding: 1em;
   display: flex;
   flex-direction: row;
-
-  @media (min-width: ${breakpoint * 1}px) {
-    flex-direction: column;
-    text-align: center;
-  }
 `;
 
 export default function TeamItem({
@@ -106,7 +93,6 @@ export default function TeamItem({
             </Company>
           )}
         </Title>
-        <Location>{location}</Location>
 
         {(gitHubUrl || twitterUrl) && (
           <Social>
