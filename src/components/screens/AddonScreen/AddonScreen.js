@@ -218,7 +218,7 @@ export function PureAddonScreen({ ...props }) {
         <AddonItem
           title="Contexts"
           desc="An elegant way to wrap your component stories and change their contextual environment directly and dynamically in Storybook UI!"
-          addonUrl="https://github.com/leoyli/addon-contexts"
+          addonUrl="https://github.com/storybookjs/storybook/tree/master/addons/contexts"
         />
 
         <Subheader>Test</Subheader>
