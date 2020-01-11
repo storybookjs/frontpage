@@ -13,13 +13,13 @@ const StyledTeamItem = styled(TeamItem)`
 `;
 
 export default function Maintainers({ teams }) {
-  const teamMembers = {};
+  const teamMembersById = {};
 
   teams.edges.forEach(team => {
     team.node.members.edges.forEach(({ node: memberNode }) => {
-      const existingMember = teamMembers[memberNode.id];
+      const existingMember = teamMembersById[memberNode.id];
 
-      teamMembers[memberNode.id] = existingMember
+      teamMembersById[memberNode.id] = existingMember
         ? { ...existingMember, roles: existingMember.roles.concat(team.node.name) }
         : { ...memberNode, roles: [team.node.name] };
     });
@@ -30,8 +30,8 @@ export default function Maintainers({ teams }) {
       heading="Maintainers"
       description="Storybook relies on the regular contribution from dedicated maintainers to evolve and keep up to date. Maintainers are experts in different areas of the project."
     >
-      {Object.keys(teamMembers).map(memberId => {
-        const teamMember = teamMembers[memberId];
+      {Object.keys(teamMembersById).map(memberId => {
+        const teamMember = teamMembersById[memberId];
 
         return (
           <StyledTeamItem
