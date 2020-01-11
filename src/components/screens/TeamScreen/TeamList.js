@@ -14,8 +14,6 @@ const Grid = styled.div`
   flex-direction: column;
   justify-content: start;
 
-  margin: 0 0px;
-
   @media (min-width: ${breakpoint * 1}px) {
     flex-direction: row;
   }
