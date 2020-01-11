@@ -1,7 +1,10 @@
 module.exports = ({ config }) => {
+  // Suppress errors about fs that are not causing a problem
+  config.node = { ...config.node, fs: 'empty' };
+
   // set the NODE_ENV to 'production' by default, to allow babel-plugin-remove-graphql-queries to remove static queries
-  process.env.NODE_ENV = 'production'
-  
+  process.env.NODE_ENV = 'production';
+
   // Prefer Gatsby ES6 entrypoint (module) over commonjs (main) entrypoint
   config.resolve.mainFields = ['browser', 'module', 'main'];
 

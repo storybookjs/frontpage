@@ -11,4 +11,4 @@ const contributors = [...Array(30)].map((_, index) => ({
 
 storiesOf('Frontpage|screens/TeamScreen/Contributors', module)
   .addParameters({ component: PureContributors })
-  .add('default', () => <PureContributors contributors={contributors} />);
+  .add('default', () => <PureContributors contributors={contributors} contributorCount={100} />);

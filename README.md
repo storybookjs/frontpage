@@ -34,6 +34,20 @@ Gatsby is used for basic routing and static site generation.
 
 1. yarn start
 
+### GitHub GraphQL API Authentication
+
+The "team" page hits GitHub's GraphQL API. In order to retrieve information about the `storybookjs` organization, you need to have the proper permissions & also create an environment variable with your access token.
+
+In development:
+
+1. [Create a personal access token](https://github.com/settings/tokens) with the `read:org` scope.
+2. Create a new file, `.env.development` and add `GITHUB_TOKEN=<YOUR_TOKEN>`, replacing `<YOUR_TOKEN>` with the token you generated in step 1.
+3. Restart the dev server.
+
+The application will still run without it, but the sections that rely on it will be hidden.
+
+In production, the variable will get set during the Netlify build.
+
 ## Tooling
 
 This project uses these tools to make our job easier.

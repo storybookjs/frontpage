@@ -9,3 +9,6 @@ storybook-static
 .DS_Store
 .idea
 monorepo
+
+# Secrets
+.env.development

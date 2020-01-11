@@ -1,5 +1,11 @@
 const { global } = require('@storybook/design-system');
+// eslint-disable-next-line import/no-extraneous-dependencies
+const dotenv = require('dotenv'); // This is a Gatsby dep
 const siteMetadata = require('./site-metadata');
+
+if (process.env.NODE_ENV === 'development') {
+  dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
+}
 
 module.exports = {
   siteMetadata,
@@ -35,6 +41,18 @@ module.exports = {
       resolve: 'gatsby-source-github-repo',
       options: {
         repoUrl: 'https://github.com/storybooks/storybook',
+      },
+    },
+    {
+      resolve: 'gatsby-source-graphql',
+      options: {
+        typeName: 'GitHub',
+        fieldName: 'github',
+        url: 'https://api.github.com/graphql',
+        refetchInterval: 43200, // every 12 hours
+        headers: {
+          Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+        },
       },
     },
     {

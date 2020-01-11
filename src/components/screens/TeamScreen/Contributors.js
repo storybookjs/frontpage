@@ -59,6 +59,8 @@ PureContributors.defaultProps = {
   contributors: [],
 };
 
+// At the time of implementation, contributor data is not yet available through
+// the GitHub GraphQL API. Therefore, just use the REST API to get it.
 const contributorsUrl =
   'https://api.github.com/repos/storybookjs/storybook/contributors?per_page=20';
 const sessionStorageKey = 'storybookFrontpageGithubContributors';

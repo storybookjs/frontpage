@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StaticQuery, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 import styled from 'styled-components';
 
 import { styles } from '@storybook/design-system';
@@ -29,13 +29,16 @@ const Layout = styled.div`
   }
 `;
 
-export function PureTeamScreen({
+export default function TeamScreen({
   data: {
+    github,
     gitHubRepoData: { contributorCount },
   },
+  data,
   ...props
 }) {
   const { title, ogImage, urls = {} } = useSiteMetadata();
+
   return (
     <PageLayout {...props}>
       <SocialGraph
@@ -54,29 +57,19 @@ export function PureTeamScreen({
 
       <Layout>
         <SteeringCommittee />
-        <Maintainers />
+        {github && <Maintainers teams={github.organization.team.childTeams} />}
         <Contributors contributorCount={contributorCount} />
       </Layout>
     </PageLayout>
   );
 }
 
-PureTeamScreen.propTypes = {
+TeamScreen.propTypes = {
   data: PropTypes.any.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
-export default function TeamScreen({ ...props }) {
-  return (
-    <StaticQuery
-      query={graphql`
-        query TeamScreenQuery {
-          gitHubRepoData {
-            contributorCount
-            url
-          }
-        }
-      `}
-      render={data => <PureTeamScreen data={data} {...props} />}
-    />
-  );
-}
+export const fragmentGitHubRepoData = graphql`
+  fragment TeamScreenGitHubRepoData on GitHubRepoData {
+    contributorCount
+  }
+`;
