@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { Avatar, Icon, Link, styles } from '@storybook/design-system';
 import { LazyLoad } from '../../basics';
 
-const { color, typography } = styles;
+const { breakpoint, color, typography } = styles;
 
 const Profile = styled(Avatar)`
   height: 50px;
@@ -47,7 +47,13 @@ const Item = styled.div`
   padding: 2rem 10px 0 0;
   display: flex;
   flex-direction: row;
-  width: 50%;
+  width: 100%;
+  justify-content: flex-start;
+
+  @media (min-width: ${breakpoint * 1.3}px) {
+    width: 50%;
+    justify-content: flex-start;
+  }
 
   img {
     width: 50px;
