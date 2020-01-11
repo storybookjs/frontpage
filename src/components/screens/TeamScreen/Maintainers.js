@@ -1,9 +1,16 @@
-import { graphql } from 'gatsby';
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { graphql } from 'gatsby';
 
 import TeamList from './TeamList';
 import TeamItem from './TeamItem';
+
+const StyledTeamItem = styled(TeamItem)`
+  & > *:last-child {
+    align-self: center;
+  }
+`;
 
 export default function Maintainers({ teams }) {
   const teamMembers = {};
@@ -27,7 +34,7 @@ export default function Maintainers({ teams }) {
         const teamMember = teamMembers[memberId];
 
         return (
-          <TeamItem
+          <StyledTeamItem
             key={teamMember.id}
             name={teamMember.name}
             title={teamMember.roles.join(', ')}

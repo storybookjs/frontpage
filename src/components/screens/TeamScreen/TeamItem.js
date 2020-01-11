@@ -5,17 +5,11 @@ import styled from 'styled-components';
 import { Avatar, Icon, Link, styles } from '@storybook/design-system';
 import { LazyLoad } from '../../basics';
 
-const { color, typography, breakpoint } = styles;
+const { color, typography } = styles;
 
 const Profile = styled(Avatar)`
   height: 50px;
   width: 50px;
-`;
-
-const ImageOuter = styled.div`
-  @media (min-width: ${breakpoint * 1}px) {
-    margin-bottom: 1.25rem;
-  }
 `;
 
 const Name = styled.div`
@@ -40,10 +34,7 @@ const Social = styled.div`
 `;
 
 const Meta = styled.div`
-  margin: 0.5em 0 0 0.5em;
-  @media (min-width: ${breakpoint * 1}px) {
-    margin: 0.1em 0 0 1em;
-  }
+  margin: 0.1em 0 0 1em;
   color: ${color.dark};
 `;
 
@@ -57,6 +48,11 @@ const Item = styled.div`
   display: flex;
   flex-direction: row;
   width: 50%;
+
+  img {
+    width: 50px;
+    height: 50px;
+  }
 `;
 
 export default function TeamItem({
@@ -71,11 +67,9 @@ export default function TeamItem({
 }) {
   return (
     <Item {...props}>
-      <ImageOuter>
-        <LazyLoad once placeholder={<Profile loading />} height="100%">
-          <Profile size="large" username={name} src={avatarUrl} />
-        </LazyLoad>
-      </ImageOuter>
+      <LazyLoad once placeholder={<Profile loading />} height="100%">
+        <Profile size="large" username={name} src={avatarUrl} />
+      </LazyLoad>
       <Meta>
         <Name>{name}</Name>
         <Title>
