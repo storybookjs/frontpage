@@ -339,6 +339,11 @@ export function PureAddonScreen({ ...props }) {
           desc="Automatically generate design token documentation from your stylesheets and icon files."
           addonUrl="https://github.com/UX-and-I/storybook-design-token"
         />
+        <AddonItem
+          title="Theme Playground"
+          desc="Select between themes and tweek them directly in a panel."
+          addonUrl="https://github.com/jeslage/storybook-addon-theme-playground"
+        />
 
         <Subheader>Design</Subheader>
         <AddonItem
