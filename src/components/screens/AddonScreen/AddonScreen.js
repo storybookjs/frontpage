@@ -298,6 +298,11 @@ export function PureAddonScreen({ ...props }) {
           addonUrl="https://github.com/dump247/storybook-state/"
         />
         <AddonItem
+          title="State"
+          desc="Manage state inside a story. Update components when this state changes. Create a store and add it to your storybook with the convenient decorator."
+          addonUrl="https://github.com/sambego/storybook-state/"
+        />
+        <AddonItem
           title="GraphCMS"
           desc="Put GraphQL queries to your stories and either see the default formatted output or pass received data to your Components. Can be connected to any GraphQL endpoint but have additional features for GraphCMS projects."
           addonUrl="https://github.com/focusreactive/storybook-addon-graphcms"
