@@ -228,6 +228,11 @@ export function PureAddonScreen({ ...props }) {
           addonUrl="https://github.com/mthuret/storybook-addon-specifications"
         />
         <AddonItem
+          title="Paddings"
+          desc="Add different paddings to your preview. Useful for checking how components behave when surrounded with white space."
+          addonUrl="https://github.com/rbardini/storybook-addon-paddings"
+        />
+        <AddonItem
           title="Props combinations"
           desc="Given possible values for each prop, renders your component with all combinations of prop values. Useful for finding edge cases or just seeing all component states at once."
           addonUrl="https://github.com/evgenykochetkov/react-storybook-addon-props-combinations"
