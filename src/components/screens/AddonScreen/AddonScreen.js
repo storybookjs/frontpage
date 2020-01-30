@@ -351,7 +351,7 @@ export function PureAddonScreen({ ...props }) {
         />
         <AddonItem
           title="Themes"
-          desc="Allows you to change the theme based on the css class name and adds a theme selection control to storybook panel."
+          desc="Allows you to change the theme based on a css class name and adds a theme selection control to the Storybook panel."
           addonUrl="https://github.com/tonai/storybook-addon-themes"
         />
 
