@@ -349,6 +349,11 @@ export function PureAddonScreen({ ...props }) {
           desc="Select between themes and tweek them directly in a panel."
           addonUrl="https://github.com/jeslage/storybook-addon-theme-playground"
         />
+        <AddonItem
+          title="Themes"
+          desc="Allows you to change the theme based on the css class name and adds a theme selection control to storybook panel."
+          addonUrl="https://github.com/tonai/storybook-addon-themes"
+        />
 
         <Subheader>Design</Subheader>
         <AddonItem
