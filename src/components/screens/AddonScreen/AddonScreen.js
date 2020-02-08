@@ -372,6 +372,11 @@ export function PureAddonScreen({ ...props }) {
           addonUrl="https://github.com/morgs32/storybook-addon-xd-designs"
         />
         <AddonItem
+          title="Playroom"
+          desc="Design with Playroom inside Storybook, using each story source as a starting point."
+          addonUrl="https://github.com/rbardini/storybook-addon-playroom"
+        />
+        <AddonItem
           title="Vertical Rhythm decorator"
           desc="Take an eye over the vertical rhythm of your stories with this decorator."
           addonUrl="https://github.com/jmlweb/storybook-vrhythm"
