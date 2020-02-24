@@ -257,6 +257,11 @@ export function PureAddonScreen({ ...props }) {
           desc="View your stories in a range of responsive viewports"
           addonUrl="https://github.com/vizeat/storybook-addon-responsive-views"
         />
+        <AddonItem
+          title="Taffy"
+          desc="Resize your responsive viewports dynamically with a draggable handle, exact px/em width inputs, or with one-click preset size buttons."
+          addonUrl="https://github.com/DEGJS/storybook-addon-taffy"
+        />
 
         <Subheader>Code</Subheader>
         <AddonItem
