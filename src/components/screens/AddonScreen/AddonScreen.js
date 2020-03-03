@@ -295,6 +295,11 @@ export function PureAddonScreen({ ...props }) {
           desc="Display the compiled HTML for each story."
           addonUrl="https://github.com/whitespace-se/storybook-addon-html"
         />
+        <AddonItem
+          title="Code Preview"
+          desc="Display code preview with user selected knobs in various framework code."
+          addonUrl="https://github.com/naver/storybook-addon-preview"
+        />
 
         <Subheader>Data & State</Subheader>
         <AddonItem
