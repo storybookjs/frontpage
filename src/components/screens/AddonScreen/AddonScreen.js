@@ -364,6 +364,11 @@ export function PureAddonScreen({ ...props }) {
           desc="Allows you to change the theme based on a css class name and adds a theme selection control to the Storybook panel."
           addonUrl="https://github.com/tonai/storybook-addon-themes"
         />
+        <AddonItem
+          title="React Theming Addon"
+          desc="Universal addon for developing themed React Apps, Components and Themes objects themselves. Supports Styled Components, Emotion, Material UI and any similar theming providers. Change colors dynamically and switch between themes. Edit props in themes of any shapes. Has API for extending under your needs."
+          addonUrl="https://github.com/react-theming/storybook-addon#storybook-addon--react-theming"
+        />
 
         <Subheader>Design</Subheader>
         <AddonItem
