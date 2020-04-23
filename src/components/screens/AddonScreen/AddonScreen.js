@@ -396,6 +396,11 @@ export function PureAddonScreen({ ...props }) {
           desc="Take an eye over the vertical rhythm of your stories with this decorator."
           addonUrl="https://github.com/jmlweb/storybook-vrhythm"
         />
+        <AddonItem
+          title="Mobile UX Hints"
+          desc="Suggestions on how to tweak the HTML and CSS of your components to be more mobile-friendly."
+          addonUrl="https://github.com/aholachek/storybook-mobile"
+        /> 
         <div>
           <Button
             appearance="secondaryOutline"
