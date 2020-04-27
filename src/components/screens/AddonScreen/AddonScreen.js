@@ -379,7 +379,7 @@ export function PureAddonScreen({ ...props }) {
         <AddonItem
           title="Figma"
           desc="Embed Figma designs in a storybook panel."
-          addonUrl="https://github.com/hharnisc/storybook-addon-figma"
+          addonUrl="https://github.com/pocka/storybook-addon-designs"
         />
         <AddonItem
           title="XD"
