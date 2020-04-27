@@ -400,7 +400,15 @@ export function PureAddonScreen({ ...props }) {
           title="Mobile UX Hints"
           desc="Suggestions on how to tweak the HTML and CSS of your components to be more mobile-friendly."
           addonUrl="https://github.com/aholachek/storybook-mobile"
-        /> 
+        />
+    
+        <Subheader>Themes</Subheader>
+        <AddonItem
+          title="Dark Mode"
+          desc="Change Storybook to dark mode."
+          addonUrl="https://github.com/hipstersmoothie/storybook-dark-mode"
+        />
+    
         <div>
           <Button
             appearance="secondaryOutline"
