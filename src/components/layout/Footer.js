@@ -442,7 +442,7 @@ export default function Footer({ ...props }) {
         </Service>
         <Service>
           <Text>Visual testing by</Text>
-          <a href="https://www.chromaticqa.com/">
+          <a href="https://www.chromatic.com/">
             <Chromatic src={ChromaticLogoSVG} alt="Chromatic" />
           </a>
         </Service>

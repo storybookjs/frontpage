@@ -15,7 +15,7 @@ Contributions welcome! If it’s something small like grammar or punctuation, op
 3. Integrate with Gatsby
 4. Ensure tests pass in [Circle CI storybooks/frontpage](https://circleci.com/gh/storybooks/frontpage)
 5. Ensure site works and is QAed via Netlify previews
-6. Ensure no visual bugs in [Chromatic storybooks/frontpage](https://www.chromaticqa.com/builds?appId=5be26744d2f6250024a9117d)
+6. Ensure no visual bugs in [Chromatic storybooks/frontpage](https://www.chromatic.com/builds?appId=5be26744d2f6250024a9117d)
 7. Pull request
 
 ## Running the project locally
@@ -42,7 +42,7 @@ This project uses these tools to make our job easier.
 
 Master and branches are automatically deployed by Netlify every commit.
 
-### 🖼 Visual testing by [Chromatic](https://www.chromaticqa.com/library?appId=5be26744d2f6250024a9117d)
+### 🖼 Visual testing by [Chromatic](https://www.chromatic.com/library?appId=5be26744d2f6250024a9117d)
 
 All stories in the Storybook are automatically visual tested on desktop and mobile each commit. Ensure all baselines are ✅ accepted before merging.
 
