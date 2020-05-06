@@ -372,6 +372,11 @@ export function PureAddonScreen({ ...props }) {
 
         <Subheader>Design</Subheader>
         <AddonItem
+          title="Zeplin"
+          desc="Embed Zeplin designs in a storybook panel."
+          addonUrl="https://github.com/mertkahyaoglu/storybook-zeplin"
+        />
+        <AddonItem
           title="Story2sketch"
           desc="Convert stories into Sketch symbols."
           addonUrl="https://github.com/chrisvxd/story2sketch"
