@@ -406,6 +406,14 @@ export function PureAddonScreen({ ...props }) {
           desc="Embed Zeplin designs in a storybook panel."
           addonUrl="https://github.com/mertkahyaoglu/storybook-zeplin"
         />
+ 
+        <Subheader>Appearance</Subheader>
+        <AddonItem
+          title="Dark Mode"
+          desc="Change Storybook to dark mode."
+          addonUrl="https://github.com/hipstersmoothie/storybook-dark-mode"
+        />
+   
         <div>
           <Button
             appearance="secondaryOutline"
