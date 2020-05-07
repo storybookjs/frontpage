@@ -400,7 +400,12 @@ export function PureAddonScreen({ ...props }) {
           title="Mobile UX Hints"
           desc="Suggestions on how to tweak the HTML and CSS of your components to be more mobile-friendly."
           addonUrl="https://github.com/aholachek/storybook-mobile"
-        /> 
+        />
+        <AddonItem
+          title="Zeplin"
+          desc="Embed Zeplin designs in a storybook panel."
+          addonUrl="https://github.com/mertkahyaoglu/storybook-zeplin"
+        />
         <div>
           <Button
             appearance="secondaryOutline"
