@@ -402,7 +402,7 @@ export function PureAddonScreen({ ...props }) {
           addonUrl="https://github.com/aholachek/storybook-mobile"
         />
     
-        <Subheader>Themes</Subheader>
+        <Subheader>Appearance</Subheader>
         <AddonItem
           title="Dark Mode"
           desc="Change Storybook to dark mode."
