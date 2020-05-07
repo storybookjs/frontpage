@@ -379,7 +379,7 @@ export function PureAddonScreen({ ...props }) {
         <AddonItem
           title="Figma"
           desc="Embed Figma designs in a storybook panel."
-          addonUrl="https://github.com/hharnisc/storybook-addon-figma"
+          addonUrl="https://github.com/pocka/storybook-addon-designs"
         />
         <AddonItem
           title="XD"
@@ -401,14 +401,19 @@ export function PureAddonScreen({ ...props }) {
           desc="Suggestions on how to tweak the HTML and CSS of your components to be more mobile-friendly."
           addonUrl="https://github.com/aholachek/storybook-mobile"
         />
-    
+        <AddonItem
+          title="Zeplin"
+          desc="Embed Zeplin designs in a storybook panel."
+          addonUrl="https://github.com/mertkahyaoglu/storybook-zeplin"
+        />
+ 
         <Subheader>Appearance</Subheader>
         <AddonItem
           title="Dark Mode"
           desc="Change Storybook to dark mode."
           addonUrl="https://github.com/hipstersmoothie/storybook-dark-mode"
         />
-    
+   
         <div>
           <Button
             appearance="secondaryOutline"
