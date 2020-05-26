@@ -262,6 +262,11 @@ export function PureAddonScreen({ ...props }) {
           desc="Resize your responsive viewports dynamically with a draggable handle, exact px/em width inputs, or with one-click preset size buttons."
           addonUrl="https://github.com/DEGJS/storybook-addon-taffy"
         />
+        <AddonItem
+          title="Matrix"
+          desc="Rendering components with a matrix of props. This addon can also be used with storyshots."
+          addonUrl="https://github.com/tomoya/storybook-addon-matrix"
+        />
 
         <Subheader>Code</Subheader>
         <AddonItem
