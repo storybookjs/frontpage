@@ -100,7 +100,7 @@ export default PureReleasesScreen;
 
 export const query = graphql`
   query ReleasesScreenQuery($slug: String!) {
-    allReleases: allMarkdownRemark {
+    allReleases: allMarkdownRemark(sort: { fields: [fields___version], order: DESC }) {
       edges {
         node {
           html

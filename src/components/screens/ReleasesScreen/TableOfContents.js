@@ -15,22 +15,30 @@ const List = styled.ul`
   margin: 0 0 0 0;
   margin-bottom: 1rem;
   position: relative;
+  text-align: left;
 
   @media screen and (min-width: ${breakpoint}px) {
-    margin-right: 24px;
-    text-align: right;
-
     &:after {
       position: absolute;
       top: 12px;
-      left: auto;
       bottom: 12px;
-      right: -21px;
+      left: 43px;
+      right: auto;
       width: auto;
       height: auto;
       border-right: 1px solid ${color.mediumlight};
       content: '';
       z-index: 0;
+    }
+  }
+
+  @media (min-width: ${breakpoint * 1.5}px) {
+    margin-right: 24px;
+    text-align: right;
+
+    &:after {
+      left: auto;
+      right: -21px;
     }
   }
 `;
