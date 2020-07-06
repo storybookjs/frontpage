@@ -1,6 +1,8 @@
 const { global } = require('@storybook/design-system');
 const siteMetadata = require('./site-metadata');
 
+const { MONOREPO_PATH } = process.env;
+
 module.exports = {
   siteMetadata,
   plugins: [
@@ -42,6 +44,27 @@ module.exports = {
       options: {
         prodKey: 'AvvBObOmHaEMqfub8JJUXq5umjsuaqS8',
         trackPage: true,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `docs`,
+        path: MONOREPO_PATH ? `${MONOREPO_PATH}/docs/src/pages` : `${__dirname}/src/content`,
+      },
+    },
+    'gatsby-transformer-json',
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 800,
+            },
+          },
+        ],
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
