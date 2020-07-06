@@ -50,7 +50,7 @@ const Release = styled.div`
   ${releaseForamtting}
 `;
 
-function PureReleasesScreen({ data, ...props }) {
+function ReleasesScreen({ data, ...props }) {
   const { ogImage, urls = {} } = useSiteMetadata();
   const { home } = urls;
   const {
@@ -92,11 +92,11 @@ function PureReleasesScreen({ data, ...props }) {
   );
 }
 
-PureReleasesScreen.propTypes = {
+ReleasesScreen.propTypes = {
   data: PropTypes.any.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
-export default PureReleasesScreen;
+export default ReleasesScreen;
 
 export const query = graphql`
   query ReleasesScreenQuery($slug: String!) {
