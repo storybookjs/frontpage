@@ -9,3 +9,6 @@ storybook-static
 .DS_Store
 .idea
 monorepo
+
+# Pulled from monorepo
+src/content
