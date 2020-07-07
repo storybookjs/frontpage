@@ -62,7 +62,8 @@ exports.createPages = ({ actions, graphql }) => {
       }
     `).then(({ data: { pages: { edges } } }) => {
       const sortedEdges = edges.sort(
-        ({ node: aNode }, { node: bNode }) => parseFloat(aNode.version) - parseFloat(bNode.version)
+        ({ node: aNode }, { node: bNode }) =>
+          parseFloat(aNode.fields.version) - parseFloat(bNode.fields.version)
       );
       sortedEdges.forEach(({ node }, index) => {
         const { pageType, iframeSlug, slug, version } = node.fields;
