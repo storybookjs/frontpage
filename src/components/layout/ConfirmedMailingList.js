@@ -50,6 +50,7 @@ export default function ConfirmedMailingList(props) {
   const [hasSubscribed, onSetHasSubscribed] = useState(false);
   // eslint-disable-next-line no-unused-vars
   const onSubscribe = async ({ email, optIn }) => {
+    if (!email) return;
     const data = new FormData();
     const fullFields = {
       u: '06a6fce3ab1327784d4342396',
