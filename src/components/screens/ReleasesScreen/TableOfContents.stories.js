@@ -6,6 +6,7 @@ import TableOfContents from './TableOfContents';
 
 const Wrapper = styled.div`
   width: 80px;
+  padding-right: 5px;
 `;
 
 storiesOf('Frontpage|screens/ReleasesScreen/TableOfContents', module)
