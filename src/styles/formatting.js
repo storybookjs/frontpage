@@ -36,6 +36,25 @@ export const releaseForamtting = css`
     line-height: 26px;
   }
 
+  h3 {
+    color: ${color.darkest};
+    font-size: ${typography.size.m1}px;
+    letter-spacing: -0.4px;
+    line-height: 28px;
+    font-weight: ${typography.weight.black};
+    margin-bottom: 9px;
+  }
+
+  h4 {
+    color: ${color.mediumdark};
+    font-size: ${typography.size.s1}px;
+    font-weight: ${typography.weight.extrabold};
+    letter-spacing: 5.14px;
+    line-height: 20px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
   p {
     margin: 1.5em 0;
     position: relative;
