@@ -49,7 +49,7 @@ const ListItem = styled.li`
 
   a {
     display: inline-block;
-    padding: 8px 0;
+    padding: 6px 0;
     line-height: 1.5;
     position: relative;
     z-index: 1;

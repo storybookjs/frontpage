@@ -30,11 +30,16 @@ const Sidebar = styled.div`
   padding-right: 80px;
 `;
 
+const StyledRelease = styled(Release)`
+  max-width: 760px;
+`;
+
 const TOCHeader = styled.div`
   color: ${color.dark};
   font-size: ${typography.size.s3}px;
   font-weight: ${typography.weight.bold};
   line-height: 20px;
+  margin-bottom: 12px;
 `;
 
 function ReleasesScreen({ data, ...props }) {
@@ -69,7 +74,7 @@ function ReleasesScreen({ data, ...props }) {
             <TableOfContents currentPageSlug={currentPageSlug} entries={tocEntries} />
           </Sidebar>
 
-          <Release title={title} html={html} />
+          <StyledRelease title={title} html={html} />
         </Content>
       </PageLayout>
     </>
