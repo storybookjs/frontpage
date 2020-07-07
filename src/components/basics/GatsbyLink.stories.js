@@ -1,14 +1,7 @@
 import React from 'react';
+import { storiesOf } from '@storybook/react';
 import GatsbyLink from './GatsbyLink';
 
-export default {
-  component: GatsbyLink,
-  title: 'Basics/GatsbyLink',
-};
-
-const Story = args => <GatsbyLink {...args} />;
-export const Default = Story.bind({});
-Default.args = {
-  to: '/',
-  children: 'I am a GatsbyLink',
-};
+storiesOf('Frontpage|basics/GatsbyLink', module).add('default', () => (
+  <GatsbyLink to="/">Link</GatsbyLink>
+));
