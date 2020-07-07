@@ -5,7 +5,7 @@ import { darken } from 'polished';
 const { color, typography } = styles;
 
 // eslint-disable-next-line import/prefer-default-export
-export const releaseForamtting = css`
+export const releaseFormatting = css`
   line-height: 28px;
   font-size: ${typography.size.s3}px;
 

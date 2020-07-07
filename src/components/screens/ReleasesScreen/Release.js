@@ -5,12 +5,12 @@ import { Highlight, styles } from '@storybook/design-system';
 
 import ConfirmedMailingList from '../../layout/ConfirmedMailingList';
 
-import { releaseForamtting } from '../../../styles/formatting';
+import { releaseFormatting } from '../../../styles/formatting';
 
 const { color, typography } = styles;
 
 const Wrapper = styled.div`
-  ${releaseForamtting}
+  ${releaseFormatting}
   flex: 1;
 `;
 
