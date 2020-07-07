@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { hoistStatics, compose, withState } from 'recompose';
 
 import { styles, animation } from '@storybook/design-system';
 
@@ -62,7 +61,7 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 
-function ComponentCanvas({ imageUrl, selectedIndex, onSelectIndex, ...props }) {
+function PureComponentCanvas({ imageUrl, selectedIndex, onSelectIndex, ...props }) {
   return (
     <Wrapper {...props}>
       <CanvasWrapper>
@@ -86,18 +85,21 @@ function ComponentCanvas({ imageUrl, selectedIndex, onSelectIndex, ...props }) {
   );
 }
 
-ComponentCanvas.propTypes = {
+PureComponentCanvas.propTypes = {
   imageUrl: PropTypes.string,
   onSelectIndex: PropTypes.func,
   selectedIndex: PropTypes.number,
 };
 
-ComponentCanvas.defaultProps = {
+PureComponentCanvas.defaultProps = {
   imageUrl: null,
   onSelectIndex: () => 0,
   selectedIndex: undefined,
 };
 
-export default hoistStatics(compose(withState('selectedIndex', 'onSelectIndex', 0)))(
-  ComponentCanvas
-);
+export default function ComponentCanvas(props) {
+  const [selectedIndex, onSelectIndex] = useState(0);
+  return (
+    <PureComponentCanvas selectedIndex={selectedIndex} onSelectIndex={onSelectIndex} {...props} />
+  );
+}
