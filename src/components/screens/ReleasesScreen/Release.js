@@ -41,6 +41,10 @@ const Message = styled.div`
   margin-bottom: 16px;
 `;
 
+const StyledConfirmedMailingList = styled(ConfirmedMailingList)`
+  min-width: auto;
+`;
+
 function Release({ title, html }) {
   return (
     <Wrapper>
@@ -49,7 +53,7 @@ function Release({ title, html }) {
       <EmailWrapper>
         <Heading>Join the mailing list</Heading>
         <Message>Get news, free tutorials, and Storybook tips emailed to you.</Message>
-        <ConfirmedMailingList />
+        <StyledConfirmedMailingList />
       </EmailWrapper>
     </Wrapper>
   );
