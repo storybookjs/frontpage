@@ -61,18 +61,18 @@ exports.createPages = ({ actions, graphql }) => {
         }
       }
     `).then(({ data: { pages: { edges } } }) => {
-      edges.forEach(({ node }, index) => {
+      const sortedEdges = edges.sort(
+        ({ node: aNode }, { node: bNode }) => parseFloat(aNode.version) - parseFloat(bNode.version)
+      );
+      sortedEdges.forEach(({ node }, index) => {
         const { pageType, iframeSlug, slug, version } = node.fields;
         // Data passed to context is available in page queries as GraphQL variables.
-        const context = { pageType, version };
+        const context = { pageType, slug, version };
 
         createPage({
           path: slug,
           component: path.resolve(`./src/components/screens/ReleasesScreen/ReleasesScreen.js`),
-          context: {
-            ...context,
-            slug,
-          },
+          context,
         });
 
         createPage({
@@ -80,10 +80,7 @@ exports.createPages = ({ actions, graphql }) => {
           component: path.resolve(
             `./src/components/screens/ReleasesScreen/IframeReleasesScreen.js`
           ),
-          context: {
-            ...context,
-            slug: iframeSlug,
-          },
+          context,
         });
 
         // Leave a /releases/ endpoint, but redirect it to the latest version
