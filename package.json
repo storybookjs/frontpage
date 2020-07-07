@@ -73,13 +73,14 @@
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
     "babel-plugin-styled-components": "^1.9.4",
-    "corejs-upgrade-webpack-plugin": "^4.0.1",
     "babel-preset-gatsby": "^0.5.1",
     "chromatic": "^5.0.0",
+    "corejs-upgrade-webpack-plugin": "^4.0.1",
     "eslint": "^7.4.0",
     "fork-ts-checker-webpack-plugin": "^5.0.6",
     "prettier": "^2.0.5",
-    "prettier-eslint": "^11.0.0"
+    "prettier-eslint": "^11.0.0",
+    "webfontloader": "^1.6.28"
   },
   "repository": {
     "type": "git",

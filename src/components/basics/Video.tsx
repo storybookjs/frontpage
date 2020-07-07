@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 import { window } from 'global';
 
 const StyledVideo = styled.video({

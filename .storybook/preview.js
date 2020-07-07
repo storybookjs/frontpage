@@ -1,7 +1,11 @@
+/* eslint-env browser */
+/* eslint-disable no-underscore-dangle */
 import React, { Fragment } from 'react';
 import isChromatic from 'chromatic/isChromatic';
 import { global as designSystemGlobal } from '@storybook/design-system';
 import WebFont from 'webfontloader';
+import { action } from '@storybook/addon-actions';
+
 import LazyLoad from '../src/components/basics/LazyLoad';
 
 const { GlobalStyle } = designSystemGlobal;
@@ -38,6 +42,6 @@ window.___navigate = (pathname) => {
 };
 
 // Don't use lazyload for chromatic screenshots
-if (window.navigator.userAgent.match('Chromatic')) {
+if (isChromatic()) {
   LazyLoad.disabled = true;
 }
