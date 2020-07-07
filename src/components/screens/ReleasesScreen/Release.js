@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Highlight, styles } from '@storybook/design-system';
 
+import EmailSignup from './EmailSignup';
+
 import { releaseForamtting } from '../../../styles/formatting';
 
 const { color, typography } = styles;
@@ -25,6 +27,7 @@ function Release({ title, html }) {
     <Wrapper>
       <Title>{title}</Title>
       <Highlight>{html}</Highlight>
+      <EmailSignup />
     </Wrapper>
   );
 }
