@@ -3,8 +3,9 @@ import { storiesOf } from '@storybook/react';
 
 import ReleasesScreen from './ReleasesScreen';
 
-const buildRelease = version => ({
-  html: `<h2>This is the release summary for version ${version}</h2>`,
+// eslint-disable-next-line import/prefer-default-export
+export const buildRelease = version => ({
+  html: `<div><h2>This is the release summary for version ${version}</h2><p>Here is a paragraph to describe things.</p></div>`,
   fields: {
     slug: `/${version}`,
     version,

@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import { Highlight, global, styles } from '@storybook/design-system';
+import { global, styles } from '@storybook/design-system';
 import styled from 'styled-components';
 
 import useSiteMetadata from '../../lib/useSiteMetadata';
 
+import Release from './Release';
 import TableOfContents from './TableOfContents';
 import { SocialGraph } from '../../basics';
 import PageLayout from '../../layout/PageLayout';
-import { releaseForamtting } from '../../../styles/formatting';
 
 const { GlobalStyle } = global;
 
@@ -35,19 +35,6 @@ const TOCHeader = styled.div`
   font-size: ${typography.size.s3}px;
   font-weight: ${typography.weight.bold};
   line-height: 20px;
-`;
-
-const Title = styled.div`
-  color: ${color.darkest};
-  font-size: ${typography.size.l1}px;
-  font-weight: ${typography.weight.black};
-  letter-spacing: -0.33px;
-  line-height: 40px;
-  margin-bottom: 9px;
-`;
-
-const Release = styled.div`
-  ${releaseForamtting}
 `;
 
 function ReleasesScreen({ data, ...props }) {
@@ -82,10 +69,7 @@ function ReleasesScreen({ data, ...props }) {
             <TableOfContents currentPageSlug={currentPageSlug} entries={tocEntries} />
           </Sidebar>
 
-          <Release>
-            <Title>{title}</Title>
-            <Highlight>{html}</Highlight>
-          </Release>
+          <Release title={title} html={html} />
         </Content>
       </PageLayout>
     </>

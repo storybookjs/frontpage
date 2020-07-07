@@ -14,8 +14,24 @@ exports.onCreateNode = ({ actions, getNode, node }) => {
     const [pageType, version] = slug.split('/').filter(p => !!p);
 
     createNodeField({ node, name: 'slug', value: slug });
+    createNodeField({ node, name: 'iframeSlug', value: `/releases/iframe/${version}/` });
     createNodeField({ node, name: 'pageType', value: pageType });
     createNodeField({ node, name: 'version', value: version });
+  }
+};
+
+exports.onCreatePage = ({ page, actions }) => {
+  const { createPage, deletePage } = actions;
+
+  // Show a special 404 page for the releases iframe path so that we can identify
+  // when a version is passed that where we don't have any docs.
+  if (page.path.match(/^\/releases\/iframe\/404\/$/)) {
+    const oldPage = { ...page };
+    // eslint-disable-next-line no-param-reassign
+    page.matchPath = `/releases/iframe/*`;
+    // Recreate the modified page
+    deletePage(oldPage);
+    createPage(page);
   }
 };
 
@@ -36,6 +52,7 @@ exports.createPages = ({ actions, graphql }) => {
             node {
               fields {
                 slug
+                iframeSlug
                 pageType
                 version
               }
@@ -45,16 +62,27 @@ exports.createPages = ({ actions, graphql }) => {
       }
     `).then(({ data: { pages: { edges } } }) => {
       edges.forEach(({ node }, index) => {
-        const { pageType, slug, version } = node.fields;
+        const { pageType, iframeSlug, slug, version } = node.fields;
+        // Data passed to context is available in page queries as GraphQL variables.
+        const context = { pageType, version };
 
         createPage({
           path: slug,
           component: path.resolve(`./src/components/screens/ReleasesScreen/ReleasesScreen.js`),
           context: {
-            // Data passed to context is available in page queries as GraphQL variables.
-            pageType,
+            ...context,
             slug,
-            version,
+          },
+        });
+
+        createPage({
+          path: iframeSlug,
+          component: path.resolve(
+            `./src/components/screens/ReleasesScreen/IframeReleasesScreen.js`
+          ),
+          context: {
+            ...context,
+            slug: iframeSlug,
           },
         });
 
