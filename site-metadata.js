@@ -50,6 +50,7 @@ const siteMetadata = {
     addons: `/addons/`,
     community: `/community/`,
     useCases: `/use-cases/`,
+    releases: '/releases/',
     support: `/support/`,
     team: `/team/`,
 
@@ -108,6 +109,7 @@ siteMetadata.urls.navCommunityLinks = [
 siteMetadata.urls.navLinks = [
   { title: 'Docs', href: siteMetadata.urls.docs.home, isGatsby: false },
   { title: 'Tutorials', href: siteMetadata.urls.tutorials, isGatsby: false },
+  { title: 'Releases', href: siteMetadata.urls.releases, isGatsby: true },
   { title: 'Addons', href: siteMetadata.urls.addons, isGatsby: true },
   ...siteMetadata.urls.navCommunityLinks,
 ];

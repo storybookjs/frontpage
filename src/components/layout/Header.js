@@ -153,7 +153,15 @@ LinkWrapper.propTypes = {
 
 export default function Header({ ...props }) {
   const { latestVersion, urls = {} } = useSiteMetadata();
-  const { navCommunityLinks = {}, navLinks = {}, docs, tutorials, addons, gitHub = {} } = urls;
+  const {
+    navCommunityLinks = {},
+    navLinks = {},
+    docs,
+    tutorials,
+    addons,
+    releases,
+    gitHub = {},
+  } = urls;
 
   const navLinksWithGithub = [...navLinks, { title: 'GitHub', href: gitHub.repo, isGatsby: false }];
 
@@ -190,6 +198,11 @@ export default function Header({ ...props }) {
           <NavItem showDesktop>
             <NavLink tertiary href={tutorials}>
               Tutorials
+            </NavLink>
+          </NavItem>
+          <NavItem showDesktop>
+            <NavLink tertiary href={releases} isGatsby>
+              Releases
             </NavLink>
           </NavItem>
           <NavItem showDesktop>

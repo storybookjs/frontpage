@@ -3,6 +3,9 @@
 node_modules
 yarn-error.log
 
+# We use yarn.lock
+package-lock.json
+
 # Build directory
 /public
 storybook-static

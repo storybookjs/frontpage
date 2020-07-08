@@ -1,7 +1,6 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { hoistStatics, compose, withState } from 'recompose';
 
 import { styles, animation } from '@storybook/design-system';
 
@@ -75,7 +74,7 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-function ComponentList({ selectedIndex, onSelectIndex, ...props }) {
+function PureComponentList({ selectedIndex, onSelectIndex, ...props }) {
   return (
     <Wrapper {...props}>
       <Toggle
@@ -170,14 +169,19 @@ function ComponentList({ selectedIndex, onSelectIndex, ...props }) {
   );
 }
 
-ComponentList.propTypes = {
+PureComponentList.propTypes = {
   onSelectIndex: PropTypes.func,
   selectedIndex: PropTypes.number,
 };
 
-ComponentList.defaultProps = {
+PureComponentList.defaultProps = {
   onSelectIndex: () => 0,
   selectedIndex: undefined,
 };
 
-export default hoistStatics(compose(withState('selectedIndex', 'onSelectIndex', 0)))(ComponentList);
+export default function ComponentList(props) {
+  const [selectedIndex, onSelectIndex] = useState(0);
+  return (
+    <PureComponentList selectedIndex={selectedIndex} onSelectIndex={onSelectIndex} {...props} />
+  );
+}

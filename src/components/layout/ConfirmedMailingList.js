@@ -1,7 +1,6 @@
 /* eslint-env browser */
-import React from 'react';
+import React, { useState } from 'react';
 import { PropTypes } from 'prop-types';
-import { compose, withHandlers, withState } from 'recompose';
 import styled from 'styled-components';
 
 import { styles } from '@storybook/design-system';
@@ -47,28 +46,31 @@ PureConfirmedMailingList.propTypes = {
   onSubscribe: PropTypes.func.isRequired,
 };
 
-export default compose(
-  withState('hasSubscribed', 'onSetHasSubscribed', false),
-  withHandlers({
-    onSubscribe: ({ onSetHasSubscribed }) => async ({ email, optIn }) => {
-      const data = new FormData();
-      const fullFields = {
-        u: '06a6fce3ab1327784d4342396',
-        id: '18b5cea6e6',
-        MERGE0: email,
-        // XXX: this is for the opt in checkbox on things like free resources
-        // We don't have this right now, but may have it in the future (need to change the group field)
-        // ...(optIn && { 'group[4969][1]': null }),
-      };
-      // e.g. u, id, SOURCE
-      Object.keys(fullFields).forEach(key => data.append(key, fullFields[key]));
+export default function ConfirmedMailingList(props) {
+  const [hasSubscribed, onSetHasSubscribed] = useState(false);
+  // eslint-disable-next-line no-unused-vars
+  const onSubscribe = async ({ email, optIn }) => {
+    if (!email) return;
+    const data = new FormData();
+    const fullFields = {
+      u: '06a6fce3ab1327784d4342396',
+      id: '18b5cea6e6',
+      MERGE0: email,
+      // XXX: this is for the opt in checkbox on things like free resources
+      // We don't have this right now, but may have it in the future (need to change the group field)
+      // ...(optIn && { 'group[4969][1]': null }),
+    };
+    // e.g. u, id, SOURCE
+    Object.keys(fullFields).forEach(key => data.append(key, fullFields[key]));
 
-      await fetch(listUrl, {
-        method: 'POST',
-        body: data,
-        mode: 'no-cors',
-      });
-      onSetHasSubscribed(true);
-    },
-  })
-)(PureConfirmedMailingList);
+    await fetch(listUrl, {
+      method: 'POST',
+      body: data,
+      mode: 'no-cors',
+    });
+    onSetHasSubscribed(true);
+  };
+  return (
+    <PureConfirmedMailingList hasSubscribed={hasSubscribed} onSubscribe={onSubscribe} {...props} />
+  );
+}
