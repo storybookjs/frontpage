@@ -7,6 +7,7 @@ import { graphql } from 'gatsby';
 import { SocialGraph } from '../../basics';
 import PageLayout from '../../layout/PageLayout';
 import { releaseFormatting } from '../../../styles/formatting';
+import TableOfContents from '../ReleasesScreen/TableOfContents';
 
 const { breakpoint, color, pageMargins, typography } = styles;
 const { GlobalStyle } = global;
@@ -48,13 +49,27 @@ const Wrapper = styled.div`
   flex: 1;
 `;
 
+const TOCHeader = styled.div`
+  color: ${color.dark};
+  font-size: ${typography.size.s3}px;
+  font-weight: ${typography.weight.bold};
+  line-height: 20px;
+  margin-bottom: 12px;
+`;
+
 function DocsScreen({ data, ...props }) {
   const {
+    allDocs: { edges },
     currentPage: {
       html,
       frontmatter: { title },
+      fields: { slug: currentPageSlug },
     },
   } = data;
+  const tocEntries = edges.map(({ node }) => ({
+    slug: node.fields.slug,
+    title: node.frontmatter.title,
+  }));
 
   return (
     <>
@@ -68,8 +83,8 @@ function DocsScreen({ data, ...props }) {
         />
         <Content>
           <Sidebar>
-            {/* <TOCHeader>Versions</TOCHeader> */}
-            {/* <TableOfContents currentPageSlug={currentPageSlug} entries={tocEntries} /> */}
+            <TOCHeader>Versions</TOCHeader>
+            <TableOfContents currentPageSlug={currentPageSlug} entries={tocEntries} />
           </Sidebar>
           <Wrapper {...props}>
             <Title>{title}</Title>
@@ -86,13 +101,12 @@ export default DocsScreen;
 
 export const query = graphql`
   query DocsScreenQuery($slug: String!) {
-    allReleases: allMarkdownRemark(filter: { fields: { pageType: { eq: "docs" } } }) {
+    allDocs: allMarkdownRemark(filter: { fields: { pageType: { eq: "docs" } } }) {
       edges {
         node {
           html
           fields {
             slug
-            version
           }
           frontmatter {
             title
