@@ -48,6 +48,7 @@
   ],
   "license": "MIT",
   "scripts": {
+    "link-monorepo-docs": "./scripts/link-monorepo-docs.sh",
     "extract-monorepo-docs": "./scripts/extract-monorepo-docs.sh",
     "prebuild": "yarn extract-monorepo-docs",
     "build": "gatsby build",

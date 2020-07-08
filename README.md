@@ -44,9 +44,9 @@ Run `yarn extract-monorepo-docs $branch` which will copy the current docs conten
 
 Run this once before running `yarn start` (or any time you want to pull the latest).
 
-2. Use an env var.
+2. Link to the monorepo
 
-If you have the monorepo cloned, you can run `MONOREPO_PATH=path/to/monorepo yarn start` to use the files from there instead.
+If you have the monorepo cloned, you can run `yarn link-monorepo-docs path/to/monorepo` to use the files from there instead.
 
 ### Release notes
 
