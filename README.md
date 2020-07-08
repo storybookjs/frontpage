@@ -48,6 +48,12 @@ Run this once before running `yarn start` (or any time you want to pull the late
 
 If you have the monorepo cloned, you can run `MONOREPO_PATH=path/to/monorepo yarn start` to use the files from there instead.
 
+### Release notes
+
+Release notes are stored in the src/content/releases directory as `.md` files. The name of the file corresponds with the version (major.minor) of the release and will be used to populate the link to the specific release from the releases page.
+
+Within the release's `.md` file, frontmatter is used to create a page title, while the rest of the content is parsed using `gatsby-transformer-remark` and styled with selectors in `src/styles/formatting.js`.
+
 ## Tooling
 
 This project uses these tools to make our job easier.
