@@ -75,13 +75,7 @@ exports.createPages = ({ actions, graphql }) => {
         },
       }) => {
         const sortedReleases = edges
-          .filter(
-            ({
-              node: {
-                fields: { pageType },
-              },
-            }) => pageType === 'release'
-          )
+          .filter((e) => e.node.fields.pageType === 'releases')
           .sort(
             ({ node: aNode }, { node: bNode }) =>
               parseFloat(aNode.fields.version) - parseFloat(bNode.fields.version)
@@ -121,13 +115,7 @@ exports.createPages = ({ actions, graphql }) => {
           });
         }
 
-        const docs = edges.filter(
-          ({
-            node: {
-              fields: { pageType },
-            },
-          }) => pageType === 'docs'
-        );
+        const docs = edges.filter((e) => e.node.fields.pageType === 'docs');
         docs.forEach(({ node }) => {
           const { pageType, slug } = node.fields;
           // Data passed to context is available in page queries as GraphQL variables.
