@@ -84,7 +84,6 @@ class MailingListSubscribeForm extends Component {
       <Form onSubmit={this.formData.onSubmit} {...props}>
         <EmailWrapper>
           <Email
-            // eslint-disable-next-line react/jsx-no-bind
             {...this.formData.select('email').bind()}
             id="email"
             icon="email"

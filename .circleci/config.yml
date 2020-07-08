@@ -2,7 +2,8 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:11
+      # Use node 10 for the monorepo docs sake (temporarily)
+      - image: circleci/node:10
 
     working_directory: ~/repo
 

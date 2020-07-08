@@ -3,8 +3,7 @@ import { storiesOf } from '@storybook/react';
 
 import ReleasesScreen from './ReleasesScreen';
 
-// eslint-disable-next-line import/prefer-default-export
-export const buildRelease = version => ({
+export const buildRelease = (version) => ({
   html: `
     <div>
       <h2>This is the release summary for version ${version}</h2>
