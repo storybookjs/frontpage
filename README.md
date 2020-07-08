@@ -34,6 +34,20 @@ Gatsby is used for basic routing and static site generation.
 
 1. yarn start
 
+#### Docs content
+
+You have two options for including docs content when developing the frontpage:
+
+1. Pull the latest from the monorepo
+
+Run `yarn extract-monorepo-docs $branch` which will copy the current docs content from `master` in the monorepo to `src/content`. `$branch` defaults to `master`.
+
+Run this once before running `yarn start` (or any time you want to pull the latest).
+
+2. Use an env var.
+
+If you have the monorepo cloned, you can run `MONOREPO_PATH=path/to/monorepo yarn start` to use the files from there instead.
+
 ### Release notes
 
 Release notes are stored in the src/content/releases directory as `.md` files. The name of the file corresponds with the version (major.minor) of the release and will be used to populate the link to the specific release from the releases page.
