@@ -5,7 +5,7 @@ BRANCH=${1:-6.0-docs}
 TAR_NAME="storybook-$BRANCH"
 REPO_SUBDIR='docs/src/pages'
 REPO_DEPTH=4 # number of dirs + 1
-REPO_DIRNAME='src/content'
+REPO_DIRNAME='src/content/docs'
 
 set -e
 
