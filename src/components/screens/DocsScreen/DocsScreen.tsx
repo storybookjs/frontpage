@@ -90,7 +90,7 @@ function DocsScreen({ data, ...props }) {
             <Title>{title}</Title>
             <Highlight>{html}</Highlight>
           </Wrapper>
-          >{/* <StyledRelease title={title} html={html} /> */}
+          {/* <StyledRelease title={title} html={html} /> */}
         </Content>
       </PageLayout>
     </>
