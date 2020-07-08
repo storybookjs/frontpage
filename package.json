@@ -48,9 +48,9 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build:self": "gatsby build",
-    "build:docs": "./scripts/clone_and_build_docs.sh",
-    "build": "yarn build:self && yarn build:docs",
+    "extract-monorepo-docs": "./scripts/extract-monorepo-docs.sh",
+    "prebuild": "yarn extract-monorepo-docs",
+    "build": "gatsby build",
     "develop": "gatsby develop",
     "clean": "gatsby clean",
     "start": "npm run develop",
