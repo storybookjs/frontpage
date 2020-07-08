@@ -201,7 +201,7 @@ export default function Header({ ...props }) {
             </NavLink>
           </NavItem>
           <NavItem showDesktop>
-            <NavLink tertiary href={releases}>
+            <NavLink tertiary href={releases} isGatsby>
               Releases
             </NavLink>
           </NavItem>
