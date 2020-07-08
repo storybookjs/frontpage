@@ -97,7 +97,10 @@ export default ReleasesScreen;
 
 export const query = graphql`
   query ReleasesScreenQuery($slug: String!) {
-    allReleases: allMarkdownRemark(sort: { fields: [fields___version], order: DESC }) {
+    allReleases: allMarkdownRemark(
+      sort: { fields: [fields___version], order: DESC }
+      filter: { frontmatter: { prerelease: { ne: true } } }
+    ) {
       edges {
         node {
           html

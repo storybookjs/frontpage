@@ -56,6 +56,9 @@ exports.createPages = ({ actions, graphql }) => {
                 pageType
                 version
               }
+              frontmatter {
+                prerelease
+              }
             }
           }
         }
@@ -65,7 +68,8 @@ exports.createPages = ({ actions, graphql }) => {
         ({ node: aNode }, { node: bNode }) =>
           parseFloat(aNode.fields.version) - parseFloat(bNode.fields.version)
       );
-      sortedEdges.forEach(({ node }, index) => {
+      let latestRelease;
+      sortedEdges.forEach(({ node }) => {
         const { pageType, iframeSlug, slug, version } = node.fields;
         // Data passed to context is available in page queries as GraphQL variables.
         const context = { pageType, slug, version };
@@ -84,16 +88,20 @@ exports.createPages = ({ actions, graphql }) => {
           context,
         });
 
-        // Leave a /releases/ endpoint, but redirect it to the latest version
-        if (index + 1 === edges.length) {
-          createRedirect({
-            fromPath: `/releases/`,
-            isPermanent: false,
-            redirectInBrowser: true,
-            toPath: `/releases/${version}/`,
-          });
+        if (!node.frontmatter.prerelease) {
+          latestRelease = node;
         }
       });
+
+      // Leave a /releases/ endpoint, but redirect it to the latest version
+      if (latestRelease) {
+        createRedirect({
+          fromPath: `/releases/`,
+          isPermanent: false,
+          redirectInBrowser: true,
+          toPath: `/releases/${latestRelease.fields.version}/`,
+        });
+      }
 
       resolve();
     });
