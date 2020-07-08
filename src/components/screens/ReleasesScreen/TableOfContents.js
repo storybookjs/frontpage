@@ -17,7 +17,7 @@ const List = styled.ul`
   position: relative;
   text-align: left;
 
-  @media screen and (min-width: ${breakpoint}px) {
+  @media (min-width: ${breakpoint * 1.333}px) {
     &:after {
       position: absolute;
       top: 12px;
@@ -32,7 +32,7 @@ const List = styled.ul`
     }
   }
 
-  @media (min-width: ${breakpoint * 1.5}px) {
+  @media (min-width: ${breakpoint * 1.333}px) {
     margin-right: 24px;
     text-align: right;
 
@@ -56,7 +56,7 @@ const ListItem = styled.li`
     ${props => props.isActive && `font-weight: ${typography.weight.bold};`}
   }
 
-  @media screen and (min-width: ${breakpoint}px) {
+  @media (min-width: ${breakpoint * 1.333}px) {
     margin-right: 0;
     display: block;
 

@@ -9,12 +9,17 @@ import Release from './Release';
 
 const { GlobalStyle } = global;
 
-const { pageMargins } = styles;
+const { pageMargins, breakpoint } = styles;
 
 const Content = styled.div`
   ${pageMargins}
-  padding-top: 66px;
-  padding-bottom: 66px;
+
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  @media (min-width: ${breakpoint * 1.333}px) {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
 `;
 
 function IframeReleasesScreen({ data }) {

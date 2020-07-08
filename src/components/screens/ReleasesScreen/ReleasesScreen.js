@@ -17,10 +17,11 @@ const { breakpoint, color, pageMargins, typography } = styles;
 
 const Content = styled.div`
   ${pageMargins}
-  padding-top: 66px;
-  padding-bottom: 66px;
+  padding-bottom: 3rem;
 
-  @media (min-width: ${breakpoint * 1.5}px) {
+  @media (min-width: ${breakpoint * 1.333}px) {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
     display: flex;
   }
 `;
@@ -28,6 +29,13 @@ const Content = styled.div`
 const Sidebar = styled.div`
   flex: 0 1 80px;
   padding-right: 80px;
+
+  @media (max-width: ${breakpoint * 1.333 - 1}px) {
+    flex: none;
+    margin: 1rem 0 2rem;
+    width: 100%;
+    border-bottom: 1px solid ${color.mediumlight};
+  }
 `;
 
 const StyledRelease = styled(Release)`
