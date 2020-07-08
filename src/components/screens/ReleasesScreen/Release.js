@@ -45,9 +45,9 @@ const StyledConfirmedMailingList = styled(ConfirmedMailingList)`
   min-width: auto;
 `;
 
-function Release({ title, html }) {
+function Release({ title, html, ...props }) {
   return (
-    <Wrapper>
+    <Wrapper {...props}>
       <Title>{title}</Title>
       <Highlight>{html}</Highlight>
       <EmailWrapper>
