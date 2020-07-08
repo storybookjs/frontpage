@@ -49,10 +49,7 @@ const useSiteMetadata = () => {
               preact
             }
             home
-            docs {
-              home
-              addonInstruction
-            }
+            docs
             releases
             tutorials
             addons

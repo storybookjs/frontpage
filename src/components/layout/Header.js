@@ -86,7 +86,7 @@ const NavItem = styled.div`
   height: 3rem;
   vertical-align: top;
 
-  ${props =>
+  ${(props) =>
     props.showDesktop &&
     css`
       display: none;
@@ -95,7 +95,7 @@ const NavItem = styled.div`
       }
     `};
 
-  ${props =>
+  ${(props) =>
     props.showMobile &&
     css`
       @media (min-width: ${breakpoint * 1.333}px) {
@@ -110,7 +110,7 @@ const NavGroup = styled.div`
   left: 0;
   z-index: 1;
 
-  ${props =>
+  ${(props) =>
     props.right &&
     css`
       left: auto;
@@ -191,7 +191,7 @@ export default function Header({ ...props }) {
 
         <NavGroup right>
           <NavItem showDesktop>
-            <NavLink tertiary href={docs.home}>
+            <NavLink tertiary href={docs} isGatsby>
               Docs
             </NavLink>
           </NavItem>

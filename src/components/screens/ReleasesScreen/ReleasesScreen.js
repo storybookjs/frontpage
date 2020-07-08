@@ -99,7 +99,10 @@ export const query = graphql`
   query ReleasesScreenQuery($slug: String!) {
     allReleases: allMarkdownRemark(
       sort: { fields: [fields___version], order: DESC }
-      filter: { frontmatter: { prerelease: { ne: true } } }
+      filter: {
+        frontmatter: { prerelease: { ne: true } }
+        fields: { pageType: { eq: "releases" } }
+      }
     ) {
       edges {
         node {
