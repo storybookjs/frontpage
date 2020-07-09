@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       # Use node 10 for the monorepo docs sake (temporarily)
-      - image: circleci/node:10
+      - image: circleci/node:12
 
     working_directory: ~/repo
 
