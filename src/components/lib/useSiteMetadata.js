@@ -10,6 +10,11 @@ const useSiteMetadata = () => {
           ogImage
           googleSiteVerification
           latestVersion
+          docsToc {
+            title
+            prefix
+            pages
+          }
           urls {
             gitHubOrg
             homepageUrl

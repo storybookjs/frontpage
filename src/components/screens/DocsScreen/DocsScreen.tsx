@@ -8,6 +8,7 @@ import { SocialGraph } from '../../basics';
 import PageLayout from '../../layout/PageLayout';
 import { releaseFormatting } from '../../../styles/formatting';
 import TableOfContents from '../ReleasesScreen/TableOfContents';
+import useSiteMetadata from '../../lib/useSiteMetadata';
 
 const { breakpoint, color, pageMargins, typography } = styles;
 const { GlobalStyle } = global;
@@ -58,18 +59,15 @@ const TOCHeader = styled.div`
 `;
 
 function DocsScreen({ data, ...props }) {
+  const { docsToc } = useSiteMetadata();
   const {
-    allDocs: { edges },
+    allDocs: { nodes: docsNodes },
     currentPage: {
       html,
       frontmatter: { title },
       fields: { slug: currentPageSlug },
     },
   } = data;
-  const tocEntries = edges.map(({ node }) => ({
-    slug: node.fields.slug,
-    title: node.frontmatter.title,
-  }));
 
   return (
     <>
@@ -83,8 +81,28 @@ function DocsScreen({ data, ...props }) {
         />
         <Content>
           <Sidebar>
-            <TOCHeader>Versions</TOCHeader>
-            <TableOfContents currentPageSlug={currentPageSlug} entries={tocEntries} />
+            {docsToc.map(({ title: section, prefix, pages }) => (
+              <>
+                <TOCHeader>{section}</TOCHeader>
+                <TableOfContents
+                  currentPageSlug={currentPageSlug}
+                  entries={pages.map((page: string) => {
+                    const node = docsNodes.find(
+                      ({ fields }) => fields.prefix === prefix && fields.page === page
+                    );
+                    return node
+                      ? {
+                          slug: node.fields.slug,
+                          title: node.frontmatter.title,
+                        }
+                      : {
+                          slug: `/docs/${prefix}/${page}/`,
+                          title: page,
+                        };
+                  })}
+                />
+              </>
+            ))}
           </Sidebar>
           <Wrapper {...props}>
             <Title>{title}</Title>
@@ -102,15 +120,15 @@ export default DocsScreen;
 export const query = graphql`
   query DocsScreenQuery($slug: String!) {
     allDocs: allMarkdownRemark(filter: { fields: { pageType: { eq: "docs" } } }) {
-      edges {
-        node {
-          html
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-          }
+      nodes {
+        html
+        fields {
+          slug
+          prefix
+          page
+        }
+        frontmatter {
+          title
         }
       }
     }

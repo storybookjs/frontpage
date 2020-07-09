@@ -11,16 +11,20 @@ exports.onCreateNode = ({ actions, getNode, node }) => {
       basePath: 'content',
     });
 
-    const [pageType, version] = slug.split('/').filter((p) => !!p);
+    const [pageType, versionOrPrefix, page] = slug.split('/').filter((p) => !!p);
 
     createNodeField({ node, name: 'pageType', value: pageType });
     createNodeField({ node, name: 'slug', value: slug });
     if (pageType === 'releases') {
-      createNodeField({ node, name: 'iframeSlug', value: `/releases/iframe/${version}/` });
-      createNodeField({ node, name: 'version', value: version });
+      createNodeField({ node, name: 'iframeSlug', value: `/releases/iframe/${versionOrPrefix}/` });
+      createNodeField({ node, name: 'version', value: versionOrPrefix });
+      createNodeField({ node, name: 'prefix', value: null });
+      createNodeField({ node, name: 'page', value: null });
     } else {
       createNodeField({ node, name: 'iframeSlug', value: null });
       createNodeField({ node, name: 'version', value: null });
+      createNodeField({ node, name: 'prefix', value: versionOrPrefix });
+      createNodeField({ node, name: 'page', value: page });
     }
   }
 };
@@ -60,10 +64,20 @@ exports.createPages = ({ actions, graphql }) => {
                 iframeSlug
                 pageType
                 version
+                prefix
+                page
               }
               frontmatter {
                 prerelease
               }
+            }
+          }
+        }
+        site {
+          siteMetadata {
+            docsToc {
+              prefix
+              pages
             }
           }
         }
@@ -72,6 +86,9 @@ exports.createPages = ({ actions, graphql }) => {
       ({
         data: {
           pages: { edges },
+          site: {
+            siteMetadata: { docsToc },
+          },
         },
       }) => {
         const sortedReleases = edges
@@ -115,25 +132,33 @@ exports.createPages = ({ actions, graphql }) => {
           });
         }
 
-        const docs = edges.filter((e) => e.node.fields.pageType === 'docs');
-        docs.forEach(({ node }) => {
-          const { pageType, slug } = node.fields;
-          // Data passed to context is available in page queries as GraphQL variables.
-          const context = { pageType, slug };
+        const docNodes = edges.map((e) => e.node).filter((n) => n.fields.pageType === 'docs');
+        docsToc.forEach(({ prefix, pages }) => {
+          pages.forEach((page) => {
+            const docNode = docNodes.find(
+              ({ fields }) => fields.prefix === prefix && fields.page === page
+            );
 
-          createPage({
-            path: slug,
-            component: path.resolve(`./src/components/screens/DocsScreen/DocsScreen.tsx`),
-            context,
+            if (docNode) {
+              const { pageType, slug } = docNode.fields;
+              createPage({
+                path: slug,
+                component: path.resolve(`./src/components/screens/DocsScreen/DocsScreen.tsx`),
+                context: { pageType, slug },
+              });
+            } else {
+              console.log(`Not creating page for '/docs/${prefix}/${page}/'`);
+            }
           });
         });
 
-        if (docs[0]) {
+        const firstDocsPage = docsToc[0].pages[0];
+        if (firstDocsPage) {
           createRedirect({
             fromPath: `/docs/`,
             isPermanent: false,
             redirectInBrowser: true,
-            toPath: docs[0].node.fields.slug,
+            toPath: `/docs/${docsToc[0].prefix}/${firstDocsPage}`,
           });
         }
 
