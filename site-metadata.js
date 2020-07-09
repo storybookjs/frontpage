@@ -42,10 +42,7 @@ const siteMetadata = {
 
     // Navigation
     home: homepageUrl,
-    docs: {
-      home: `${docsUrl}/basics/introduction/`,
-      addonInstruction: `${docsUrl}/addons/writing-addons/`,
-    },
+    docs: '/docs/',
     tutorials: `https://www.learnstorybook.com/`,
     addons: `/addons/`,
     community: `/community/`,

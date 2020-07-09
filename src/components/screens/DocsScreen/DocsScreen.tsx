@@ -1,29 +1,25 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { graphql } from 'gatsby';
-import { global, styles } from '@storybook/design-system';
+// import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Highlight, global, styles } from '@storybook/design-system';
+import { graphql } from 'gatsby';
 
-import useSiteMetadata from '../../lib/useSiteMetadata';
-
-import Release from './Release';
-import TableOfContents from './TableOfContents';
 import { SocialGraph } from '../../basics';
 import PageLayout from '../../layout/PageLayout';
-
-const { GlobalStyle } = global;
+import { releaseFormatting } from '../../../styles/formatting';
+import TableOfContents from '../ReleasesScreen/TableOfContents';
 
 const { breakpoint, color, pageMargins, typography } = styles;
+const { GlobalStyle } = global;
 
-const Content = styled.div`
-  ${pageMargins}
-  padding-bottom: 3rem;
-
-  @media (min-width: ${breakpoint * 1.333}px) {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-    display: flex;
-  }
+// These styles are reproduced from Releases
+const Title = styled.div`
+  color: ${color.darkest};
+  font-size: ${typography.size.l1}px;
+  font-weight: ${typography.weight.black};
+  letter-spacing: -0.33px;
+  line-height: 40px;
+  margin-bottom: 9px;
 `;
 
 const Sidebar = styled.div`
@@ -38,8 +34,19 @@ const Sidebar = styled.div`
   }
 `;
 
-const StyledRelease = styled(Release)`
-  max-width: 760px;
+const Content = styled.div`
+  ${pageMargins}
+  padding-bottom: 3rem;
+
+  @media (min-width: ${breakpoint * 1.333}px) {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    display: flex;
+  }
+`;
+const Wrapper = styled.div`
+  ${releaseFormatting}
+  flex: 1;
 `;
 
 const TOCHeader = styled.div`
@@ -50,11 +57,9 @@ const TOCHeader = styled.div`
   margin-bottom: 12px;
 `;
 
-function ReleasesScreen({ data, ...props }) {
-  const { ogImage, urls = {} } = useSiteMetadata();
-  const { home } = urls;
+function DocsScreen({ data, ...props }) {
   const {
-    allReleases: { edges },
+    allDocs: { edges },
     currentPage: {
       html,
       frontmatter: { title },
@@ -63,7 +68,7 @@ function ReleasesScreen({ data, ...props }) {
   } = data;
   const tocEntries = edges.map(({ node }) => ({
     slug: node.fields.slug,
-    title: node.fields.version,
+    title: node.frontmatter.title,
   }));
 
   return (
@@ -73,43 +78,35 @@ function ReleasesScreen({ data, ...props }) {
         <SocialGraph
           title="Storybook: UI component explorer for frontend developers"
           desc="Storybook is an open source tool for developing UI components in isolation for React, Vue, and Angular. It makes building stunning UIs organized and efficient."
-          url={home}
-          image={ogImage}
+          // url={home}
+          // image={ogImage}
         />
         <Content>
           <Sidebar>
             <TOCHeader>Versions</TOCHeader>
             <TableOfContents currentPageSlug={currentPageSlug} entries={tocEntries} />
           </Sidebar>
-
-          <StyledRelease title={title} html={html} />
+          <Wrapper {...props}>
+            <Title>{title}</Title>
+            <Highlight>{html}</Highlight>
+          </Wrapper>
+          {/* <StyledRelease title={title} html={html} /> */}
         </Content>
       </PageLayout>
     </>
   );
 }
 
-ReleasesScreen.propTypes = {
-  data: PropTypes.any.isRequired, // eslint-disable-line react/forbid-prop-types
-};
-
-export default ReleasesScreen;
+export default DocsScreen;
 
 export const query = graphql`
-  query ReleasesScreenQuery($slug: String!) {
-    allReleases: allMarkdownRemark(
-      sort: { fields: [fields___version], order: DESC }
-      filter: {
-        frontmatter: { prerelease: { ne: true } }
-        fields: { pageType: { eq: "releases" } }
-      }
-    ) {
+  query DocsScreenQuery($slug: String!) {
+    allDocs: allMarkdownRemark(filter: { fields: { pageType: { eq: "docs" } } }) {
       edges {
         node {
           html
           fields {
             slug
-            version
           }
           frontmatter {
             title
@@ -123,7 +120,6 @@ export const query = graphql`
         title
       }
       fields {
-        version
         slug
       }
     }

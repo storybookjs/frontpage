@@ -11,12 +11,17 @@ exports.onCreateNode = ({ actions, getNode, node }) => {
       basePath: 'content',
     });
 
-    const [pageType, version] = slug.split('/').filter(p => !!p);
+    const [pageType, version] = slug.split('/').filter((p) => !!p);
 
-    createNodeField({ node, name: 'slug', value: slug });
-    createNodeField({ node, name: 'iframeSlug', value: `/releases/iframe/${version}/` });
     createNodeField({ node, name: 'pageType', value: pageType });
-    createNodeField({ node, name: 'version', value: version });
+    createNodeField({ node, name: 'slug', value: slug });
+    if (pageType === 'releases') {
+      createNodeField({ node, name: 'iframeSlug', value: `/releases/iframe/${version}/` });
+      createNodeField({ node, name: 'version', value: version });
+    } else {
+      createNodeField({ node, name: 'iframeSlug', value: null });
+      createNodeField({ node, name: 'version', value: null });
+    }
   }
 };
 
@@ -44,7 +49,7 @@ exports.createPages = ({ actions, graphql }) => {
     toPath: `/`,
   });
 
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     graphql(`
       {
         pages: allMarkdownRemark {
@@ -63,47 +68,77 @@ exports.createPages = ({ actions, graphql }) => {
           }
         }
       }
-    `).then(({ data: { pages: { edges } } }) => {
-      const sortedEdges = edges.sort(
-        ({ node: aNode }, { node: bNode }) =>
-          parseFloat(aNode.fields.version) - parseFloat(bNode.fields.version)
-      );
-      let latestRelease;
-      sortedEdges.forEach(({ node }) => {
-        const { pageType, iframeSlug, slug, version } = node.fields;
-        // Data passed to context is available in page queries as GraphQL variables.
-        const context = { pageType, slug, version };
+    `).then(
+      ({
+        data: {
+          pages: { edges },
+        },
+      }) => {
+        const sortedReleases = edges
+          .filter((e) => e.node.fields.pageType === 'releases')
+          .sort(
+            ({ node: aNode }, { node: bNode }) =>
+              parseFloat(aNode.fields.version) - parseFloat(bNode.fields.version)
+          );
+        let latestRelease;
+        sortedReleases.forEach(({ node }) => {
+          const { pageType, iframeSlug, slug, version } = node.fields;
+          // Data passed to context is available in page queries as GraphQL variables.
+          const context = { pageType, slug, version };
 
-        createPage({
-          path: slug,
-          component: path.resolve(`./src/components/screens/ReleasesScreen/ReleasesScreen.js`),
-          context,
+          createPage({
+            path: slug,
+            component: path.resolve(`./src/components/screens/ReleasesScreen/ReleasesScreen.js`),
+            context,
+          });
+
+          createPage({
+            path: iframeSlug,
+            component: path.resolve(
+              `./src/components/screens/ReleasesScreen/IframeReleasesScreen.js`
+            ),
+            context,
+          });
+
+          if (!node.frontmatter.prerelease) {
+            latestRelease = node;
+          }
         });
 
-        createPage({
-          path: iframeSlug,
-          component: path.resolve(
-            `./src/components/screens/ReleasesScreen/IframeReleasesScreen.js`
-          ),
-          context,
-        });
-
-        if (!node.frontmatter.prerelease) {
-          latestRelease = node;
+        // Leave a /releases/ endpoint, but redirect it to the latest version
+        if (latestRelease) {
+          createRedirect({
+            fromPath: `/releases/`,
+            isPermanent: false,
+            redirectInBrowser: true,
+            toPath: latestRelease.fields.slug,
+          });
         }
-      });
 
-      // Leave a /releases/ endpoint, but redirect it to the latest version
-      if (latestRelease) {
-        createRedirect({
-          fromPath: `/releases/`,
-          isPermanent: false,
-          redirectInBrowser: true,
-          toPath: `/releases/${latestRelease.fields.version}/`,
+        const docs = edges.filter((e) => e.node.fields.pageType === 'docs');
+        docs.forEach(({ node }) => {
+          const { pageType, slug } = node.fields;
+          // Data passed to context is available in page queries as GraphQL variables.
+          const context = { pageType, slug };
+
+          createPage({
+            path: slug,
+            component: path.resolve(`./src/components/screens/DocsScreen/DocsScreen.tsx`),
+            context,
+          });
         });
-      }
 
-      resolve();
-    });
+        if (docs[0]) {
+          createRedirect({
+            fromPath: `/docs/`,
+            isPermanent: false,
+            redirectInBrowser: true,
+            toPath: docs[0].node.fields.slug,
+          });
+        }
+
+        resolve();
+      }
+    );
   });
 };
