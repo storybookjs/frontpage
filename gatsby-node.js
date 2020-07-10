@@ -46,13 +46,6 @@ exports.onCreatePage = ({ page, actions }) => {
 
 exports.createPages = ({ actions, graphql }) => {
   const { createRedirect, createPage } = actions;
-  createRedirect({
-    fromPath: `/docs/`,
-    isPermanent: true,
-    redirectInBrowser: true,
-    toPath: `/`,
-  });
-
   return new Promise((resolve) => {
     graphql(`
       {
