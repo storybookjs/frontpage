@@ -1,7 +1,5 @@
 # See https://www.netlify.com/docs/redirects/
 
-/docs/ / 301
-
 # Move guides into their own paths
 /basics/quick-start-guide /docs/guides/quick-start-guide 301
 /basics/slow-start-guide /docs/guides/slow-start-guide 301

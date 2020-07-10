@@ -52,10 +52,32 @@ module.exports = {
         path: `${__dirname}/src/content/`,
       },
     },
-    'gatsby-transformer-remark',
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 800,
+            },
+          },
+          {
+            resolve: 'gatsby-remark-link-rewrite',
+            options: {
+              // Strip of trailing .md from links. We want them there in the original source so the
+              // relative links work inside github, when you view the .md files directly
+              pattern: /^(.*)\.md$/,
+              replace: '$1',
+            },
+          },
+        ],
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
     // 'gatsby-plugin-offline',
     'gatsby-plugin-netlify',
+    'gatsby-plugin-remove-trailing-slashes',
   ],
 };

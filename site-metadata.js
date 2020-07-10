@@ -1,3 +1,5 @@
+const { toc: docsToc } = require('./src/content/docs/toc');
+
 const gitHubOrg = `https://github.com/storybookjs`;
 const homepageUrl = `https://storybook.js.org`;
 const npmApiBase = `https://api.npmjs.org/downloads/point/last-month`;
@@ -9,6 +11,7 @@ const siteMetadata = {
   ogImage: '/images/social/open-graph.png',
   googleSiteVerification: '',
   latestVersion: 'v5.3',
+  docsToc,
   urls: {
     gitHubOrg,
     homepageUrl,
