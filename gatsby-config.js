@@ -67,8 +67,8 @@ module.exports = {
             options: {
               // Strip of trailing .md from links. We want them there in the original source so the
               // relative links work inside github, when you view the .md files directly
-              pattern: /^(.*)\.md$/,
-              replace: '$1',
+              pattern: /^(.*)\.md(#.*)?$/,
+              replace: '$1$2',
             },
           },
           'gatsby-remark-copy-linked-files',
