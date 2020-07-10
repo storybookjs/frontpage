@@ -62,6 +62,15 @@ module.exports = {
               maxWidth: 800,
             },
           },
+          {
+            resolve: 'gatsby-remark-link-rewrite',
+            options: {
+              // Strip of trailing .md from links. We want them there in the original source so the
+              // relative links work inside github, when you view the .md files directly
+              pattern: /^(.*)\.md$/,
+              replace: '$1',
+            },
+          },
         ],
       },
     },
