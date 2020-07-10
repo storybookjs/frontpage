@@ -71,6 +71,7 @@ module.exports = {
               replace: '$1',
             },
           },
+          'gatsby-remark-copy-linked-files',
         ],
       },
     },
