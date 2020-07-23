@@ -55,6 +55,17 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
     // 'gatsby-plugin-offline',
-    'gatsby-plugin-netlify',
+    {
+      resolve: 'gatsby-plugin-netlify',
+      options: {
+        headers: {
+          // Remove `X-Frame-Options: DENY` default header so that the release notes can
+          // be served in an iframe.
+          '/*': ['X-XSS-Protection: 1; mode=block', 'X-Content-Type-Options: nosniff'],
+        },
+        // Do not use the default security headers. Use those we have defined above.
+        mergeSecurityHeaders: false,
+      },
+    },
   ],
 };
