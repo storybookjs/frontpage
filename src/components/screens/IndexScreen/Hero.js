@@ -388,12 +388,9 @@ Framework.defaultProps = {
   logo: undefined,
 };
 
-export default function Hero({
-  startOpen,
-  ...props
-}) {
+export default function Hero({ startOpen, ...props }) {
   const { latestVersion, urls = {}, contributorCount } = useSiteMetadata();
-  const { docs = {}, framework = {}, github = {} } = urls;
+  const { docs = {}, framework = {}, gitHub = {} } = urls;
 
   const Modal = () => (
     <AspectRatio ratio={0.5625}>
@@ -516,7 +513,7 @@ export default function Hero({
               text="Latest version"
               noPlural
               status="primary"
-              countLink={github.releases}
+              countLink={gitHub.releases}
             />
             <NpmDownloadStat className="chromatic-ignore" />
             <Stat
@@ -525,7 +522,7 @@ export default function Hero({
               text="Contributors"
               noPlural
               status="tertiary"
-              countLink={github.contributors}
+              countLink={gitHub.contributors}
             />
           </Stats>
         </Secondary>

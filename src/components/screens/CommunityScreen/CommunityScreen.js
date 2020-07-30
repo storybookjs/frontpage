@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { rgba } from 'polished';
-import { StaticQuery, graphql } from 'gatsby';
 
 import { Button, Icon, styles } from '@storybook/design-system';
 import useSiteMetadata from '../../lib/useSiteMetadata';
@@ -176,7 +175,8 @@ export function PureCommunityScreen({ ...props }) {
         url={`${home}/community`}
         image={ogImage}
       />
-      <CommunityHero/>
+
+      <CommunityHero />
 
       <CommunitySocial />
 
@@ -383,5 +383,5 @@ PureCommunityScreen.propTypes = {
 };
 
 export default function CommunityScreen(props) {
-  return <PureCommunityScreen {...props} />
+  return <PureCommunityScreen {...props} />;
 }

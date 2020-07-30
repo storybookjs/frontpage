@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 
 import { styles } from '@storybook/design-system';
@@ -62,6 +61,7 @@ const contributors = [
 
 export function PureTeamScreen({ ...props }) {
   const { title, ogImage, urls = {}, contributorCount } = useSiteMetadata();
+  const { gitHub = {} } = urls;
   return (
     <PageLayout {...props}>
       <SocialGraph
@@ -131,7 +131,7 @@ export function PureTeamScreen({ ...props }) {
         <ContributorItem
           contributors={contributors}
           contributorCount={`+${contributorCount}`}
-          gitHubUrl={`https://github.com/storybookjs/storybook/graphs/contributors`}
+          gitHubUrl={gitHub.contributors}
         />
       </Team>
     </PageLayout>
@@ -143,5 +143,5 @@ PureTeamScreen.propTypes = {
 };
 
 export default function TeamScreen({ ...props }) {
-  return <PureTeamScreen {...props} />
+  return <PureTeamScreen {...props} />;
 }

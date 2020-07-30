@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
 import GitHubButton from 'react-github-button';
@@ -161,7 +160,7 @@ const MailingListWrapper = styled.div`
 
 export default function CommunityHero(props) {
   const { urls = {}, contributorCount } = useSiteMetadata();
-  const { github = {} } = urls;
+  const { gitHub = {} } = urls;
   return (
     <Wrapper {...props}>
       <Meta>
@@ -182,7 +181,7 @@ export default function CommunityHero(props) {
             text="Contributors"
             noPlural
             status="tertiary"
-            countLink={github.contributors}
+            countLink={gitHub.contributors}
           />
           <GitHubWrapper className="chromatic-ignore">
             <GitHubButton type="stargazers" namespace="storybookjs" repo="storybook" />

@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 
 import { Button, Link, styles } from '@storybook/design-system';
@@ -261,5 +260,5 @@ PureIndexScreen.propTypes = {
 };
 
 export default function IndexScreen(props) {
-  return <PureIndexScreen {...props} />
+  return <PureIndexScreen {...props} />;
 }
