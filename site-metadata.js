@@ -9,6 +9,7 @@ const siteMetadata = {
   ogImage: '/images/social/open-graph.png',
   googleSiteVerification: '',
   latestVersion: 'v5.3',
+  contributorCount: 1035,
   urls: {
     gitHubOrg,
     homepageUrl,

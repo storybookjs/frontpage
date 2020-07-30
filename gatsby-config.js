@@ -32,12 +32,6 @@ module.exports = {
     },
     `gatsby-plugin-styled-components`,
     {
-      resolve: 'gatsby-source-github-repo',
-      options: {
-        repoUrl: 'https://github.com/storybooks/storybook',
-      },
-    },
-    {
       resolve: 'gatsby-plugin-segment-js',
       options: {
         prodKey: 'AvvBObOmHaEMqfub8JJUXq5umjsuaqS8',

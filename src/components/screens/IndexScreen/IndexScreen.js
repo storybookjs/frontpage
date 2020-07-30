@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 
 import { Button, Link, styles } from '@storybook/design-system';
@@ -39,7 +38,7 @@ const Placeholder = styled(PlaceholderAspectRatio)`
   }
 `;
 
-export function PureIndexScreen({ data: { gitHubRepoData }, ...props }) {
+export function PureIndexScreen({ ...props }) {
   const { ogImage, urls = {} } = useSiteMetadata();
   const { home, docs = {} } = urls;
   return (
@@ -51,7 +50,7 @@ export function PureIndexScreen({ data: { gitHubRepoData }, ...props }) {
         image={ogImage}
       />
 
-      <Hero gitHubRepoData={gitHubRepoData} />
+      <Hero />
 
       <SocialProof
         heading="Trusted by"
@@ -261,19 +260,5 @@ PureIndexScreen.propTypes = {
 };
 
 export default function IndexScreen(props) {
-  return (
-    <StaticQuery
-      query={graphql`
-        query IndexScreenQuery {
-          gitHubRepoData {
-            contributorCount
-            url
-            author
-            name
-          }
-        }
-      `}
-      render={data => <PureIndexScreen data={data} {...props} />}
-    />
-  );
+  return <PureIndexScreen {...props} />;
 }

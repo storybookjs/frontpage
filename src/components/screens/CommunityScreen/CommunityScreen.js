@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { rgba } from 'polished';
-import { StaticQuery, graphql } from 'gatsby';
 
 import { Button, Icon, styles } from '@storybook/design-system';
 import useSiteMetadata from '../../lib/useSiteMetadata';
@@ -154,7 +153,7 @@ const CommunityLayout = styled.div`
   }
 `;
 
-export function PureCommunityScreen({ data: { gitHubRepoData }, ...props }) {
+export function PureCommunityScreen({ ...props }) {
   const { title, ogImage, urls = {} } = useSiteMetadata();
   const {
     home,
@@ -176,7 +175,8 @@ export function PureCommunityScreen({ data: { gitHubRepoData }, ...props }) {
         url={`${home}/community`}
         image={ogImage}
       />
-      <CommunityHero gitHubRepoData={gitHubRepoData} />
+
+      <CommunityHero />
 
       <CommunitySocial />
 
@@ -383,19 +383,5 @@ PureCommunityScreen.propTypes = {
 };
 
 export default function CommunityScreen(props) {
-  return (
-    <StaticQuery
-      query={graphql`
-        query CommunityScreenQuery {
-          gitHubRepoData {
-            contributorCount
-            author
-            name
-            url
-          }
-        }
-      `}
-      render={data => <PureCommunityScreen data={data} {...props} />}
-    />
-  );
+  return <PureCommunityScreen {...props} />;
 }

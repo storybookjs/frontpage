@@ -10,6 +10,7 @@ const useSiteMetadata = () => {
           ogImage
           googleSiteVerification
           latestVersion
+          contributorCount
           urls {
             gitHubOrg
             homepageUrl
