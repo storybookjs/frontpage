@@ -389,12 +389,11 @@ Framework.defaultProps = {
 };
 
 export default function Hero({
-  gitHubRepoData: { contributorCount, url: githubUrl, author, name },
   startOpen,
   ...props
 }) {
-  const { latestVersion, urls = {} } = useSiteMetadata();
-  const { docs = {}, framework = {} } = urls;
+  const { latestVersion, urls = {}, contributorCount } = useSiteMetadata();
+  const { docs = {}, framework = {}, github = {} } = urls;
 
   const Modal = () => (
     <AspectRatio ratio={0.5625}>
@@ -509,7 +508,7 @@ export default function Hero({
 
           <Stats>
             <GitHubWrapper className="chromatic-ignore">
-              <GitHubButton type="stargazers" namespace={author} repo={name} />
+              <GitHubButton type="stargazers" namespace="storybookjs" repo="storybook" />
             </GitHubWrapper>
             <Stat
               size="small"
@@ -517,7 +516,7 @@ export default function Hero({
               text="Latest version"
               noPlural
               status="primary"
-              countLink={`${githubUrl}/releases`}
+              countLink={github.releases}
             />
             <NpmDownloadStat className="chromatic-ignore" />
             <Stat
@@ -526,7 +525,7 @@ export default function Hero({
               text="Contributors"
               noPlural
               status="tertiary"
-              countLink={`${githubUrl}/graphs/contributors`}
+              countLink={github.contributors}
             />
           </Stats>
         </Secondary>
@@ -536,12 +535,6 @@ export default function Hero({
 }
 
 Hero.propTypes = {
-  gitHubRepoData: PropTypes.shape({
-    contributorCount: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    url: PropTypes.string.isRequired,
-    author: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-  }).isRequired,
   startOpen: PropTypes.bool,
 };
 

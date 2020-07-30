@@ -12,6 +12,8 @@ import ConfirmedMailingList from '../../layout/ConfirmedMailingList';
 import NpmDownloadCount from '../../layout/NpmDownloadCount';
 import { Heading, Title, Desc } from '../../layout/PageTitle';
 
+import useSiteMetadata from '../../lib/useSiteMetadata';
+
 const { pageMargins, breakpoint } = styles;
 
 const Image = styled.img``;
@@ -157,10 +159,9 @@ const MailingListWrapper = styled.div`
   }
 `;
 
-export default function CommunityHero({
-  gitHubRepoData: { contributorCount, url: githubUrl, author, name },
-  ...props
-}) {
+export default function CommunityHero(props) {
+  const { urls = {}, contributorCount } = useSiteMetadata();
+  const { github = {} } = urls;
   return (
     <Wrapper {...props}>
       <Meta>
@@ -181,10 +182,10 @@ export default function CommunityHero({
             text="Contributors"
             noPlural
             status="tertiary"
-            countLink={`${githubUrl}/graphs/contributors`}
+            countLink={github.contributors}
           />
           <GitHubWrapper className="chromatic-ignore">
-            <GitHubButton type="stargazers" namespace={author} repo={name} />
+            <GitHubButton type="stargazers" namespace="storybookjs" repo="storybook" />
           </GitHubWrapper>
         </Stats>
       </Meta>
@@ -195,12 +196,3 @@ export default function CommunityHero({
     </Wrapper>
   );
 }
-
-CommunityHero.propTypes = {
-  gitHubRepoData: PropTypes.shape({
-    contributorCount: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    url: PropTypes.string.isRequired,
-    author: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-  }).isRequired,
-};
