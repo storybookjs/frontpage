@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import styled from 'styled-components';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
@@ -11,9 +11,11 @@ import {
   Subheading,
   styles,
 } from '@storybook/design-system';
+
 import { graphql } from 'gatsby';
 import { CodeSnippets } from './CodeSnippets';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
+import useSiteMetadata from '../../lib/useSiteMetadata';
 
 import { mdFormatting } from '../../../styles/formatting';
 
@@ -79,16 +81,24 @@ function DocsScreen({ data, pageContext }) {
       frontmatter: { title },
     },
   } = data;
-  const { tocItem, nextTocItem } = pageContext;
+  const { frameworkSupport } = useSiteMetadata();
+  const { framework, slug, tocItem, nextTocItem } = pageContext;
   const CodeSnippetsWithPageContext = useMemo(() => {
     return (props) => <CodeSnippets pageContext={pageContext} {...props} />;
   }, []); // TODO: Make this dependent on the framework when it is available
+
+  const support = frameworkSupport.find((fs) => `/docs${fs.path}/` === slug);
+  const unsupported =
+    support &&
+    ((support.unsupported && support.unsupported.includes(framework)) ||
+      (support.supported && !support.supported.includes(framework)));
 
   return (
     <>
       <MDSpacing>
         <MDWrapper>
           <Title>{title}</Title>
+          {unsupported && <div>FRAMEWORK UNSUPPORTED</div>}
           <MDXProvider components={{ CodeSnippets: CodeSnippetsWithPageContext }}>
             <StyledHighlight withHTMLChildren={false}>
               <MDXRenderer>{body}</MDXRenderer>

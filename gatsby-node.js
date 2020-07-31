@@ -67,6 +67,12 @@ exports.onCreatePage = ({ page, actions }) => {
   }
 };
 
+function docSlugWithFramework(slug, framework) {
+  const parts = slug.split('/');
+  parts.splice(1, 0, framework);
+  return parts.join('/');
+}
+
 exports.createPages = ({ actions, graphql }) => {
   const { createRedirect, createPage } = actions;
   return new Promise((resolve) => {
@@ -97,12 +103,20 @@ exports.createPages = ({ actions, graphql }) => {
             }
           }
         }
+        site {
+          siteMetadata {
+            frameworks
+          }
+        }
       }
     `).then(
       ({
         data: {
           docsPages: { edges: docsPagesEdges },
           releasePages: { edges: releasePagesEdges },
+          site: {
+            siteMetadata: { frameworks },
+          },
         },
       }) => {
         const sortedReleases = releasePagesEdges.sort(
@@ -158,19 +172,22 @@ exports.createPages = ({ actions, graphql }) => {
                 const { pageType, slug } = docEdge.node.fields;
                 const nextTocItem = tocItems[index + 1];
 
-                createPage({
-                  path: slug,
-                  component: path.resolve(`./src/components/screens/DocsScreen/DocsScreen.tsx`),
-                  context: {
-                    pageType,
-                    slug,
-                    docsToc: docsTocWithPaths,
-                    tocItem,
-                    ...(nextTocItem &&
-                      nextTocItem.type === 'bullet-link' && {
-                        nextTocItem,
-                      }),
-                  },
+                frameworks.forEach((framework) => {
+                  const frameworkSlug = createPage({
+                    path: slug,
+                    component: path.resolve(`./src/components/screens/DocsScreen/DocsScreen.tsx`),
+                    context: {
+                      pageType,
+                      slug: docSlugWithFramework(slug, framework),
+                      framework,
+                      docsToc: docsTocWithPaths,
+                      tocItem,
+                      ...(nextTocItem &&
+                        nextTocItem.type === 'bullet-link' && {
+                          nextTocItem,
+                        }),
+                    },
+                  });
                 });
 
                 docsPagesSlugs.push(slug);
@@ -193,7 +210,7 @@ exports.createPages = ({ actions, graphql }) => {
             fromPath: `/docs/`,
             isPermanent: false,
             redirectInBrowser: true,
-            toPath: firstDocsPageSlug,
+            toPath: docSlugWithFramework(firstDocsPageSlug, frameworks[0]),
           });
         }
 
