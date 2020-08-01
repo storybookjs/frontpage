@@ -9,7 +9,6 @@ import useSiteMetadata from '../../lib/useSiteMetadata';
 import Release from './Release';
 import TableOfContents from './TableOfContents';
 import { SocialGraph } from '../../basics';
-import PageLayout from '../../layout/PageLayout';
 
 const { GlobalStyle } = global;
 
@@ -69,7 +68,7 @@ function ReleasesScreen({ data, ...props }) {
   return (
     <>
       <GlobalStyle />
-      <PageLayout {...props}>
+      <>
         <SocialGraph
           title="Storybook: UI component explorer for frontend developers"
           desc="Storybook is an open source tool for developing UI components in isolation for React, Vue, and Angular. It makes building stunning UIs organized and efficient."
@@ -84,7 +83,7 @@ function ReleasesScreen({ data, ...props }) {
 
           <StyledRelease title={title} html={html} />
         </Content>
-      </PageLayout>
+      </>
     </>
   );
 }

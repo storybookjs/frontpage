@@ -105,7 +105,7 @@ siteMetadata.urls.navCommunityLinks = [
 ];
 
 siteMetadata.urls.navLinks = [
-  { title: 'Docs', href: siteMetadata.urls.docs.home, isGatsby: false },
+  { title: 'Docs', href: siteMetadata.urls.docsUrl, isGatsby: false },
   { title: 'Tutorials', href: siteMetadata.urls.tutorials, isGatsby: false },
   { title: 'Releases', href: siteMetadata.urls.releases, isGatsby: true },
   { title: 'Addons', href: siteMetadata.urls.addons, isGatsby: true },

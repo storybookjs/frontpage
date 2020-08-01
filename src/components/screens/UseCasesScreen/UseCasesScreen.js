@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { styles } from '@storybook/design-system';
-import PageLayout from '../../layout/PageLayout';
 import PageTitle from '../../layout/PageTitle';
 import SocialProof from '../../layout/SocialProof';
 import ValueProp from '../../layout/ValueProp';
@@ -64,7 +63,7 @@ const DesignSystemWrapper = styled.div`
 export function PureUseCasesScreen({ ...props }) {
   const { title, ogImage, urls = {} } = useSiteMetadata();
   return (
-    <PageLayout {...props}>
+    <>
       <SocialGraph
         title={`Use cases | ${title}`}
         desc="See how thousands of teams around the world use Storybook to build production UIs faster."
@@ -228,7 +227,7 @@ export function PureUseCasesScreen({ ...props }) {
         ]}
         grid
       />
-    </PageLayout>
+    </>
   );
 }
 

@@ -165,6 +165,8 @@ export const releaseFormatting = css`
     border-collapse: collapse;
     width: 100%;
     margin: 2em 0;
+    display: block;
+    overflow: scroll;
   }
   table tr {
     border-top: 1px solid ${color.mediumlight};

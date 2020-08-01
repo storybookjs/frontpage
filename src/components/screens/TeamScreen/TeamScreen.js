@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { styles } from '@storybook/design-system';
-import PageLayout from '../../layout/PageLayout';
 import PageTitle from '../../layout/PageTitle';
 import TeamItem from './TeamItem';
 import ContributorItem from './ContributorItem';
@@ -63,7 +62,7 @@ export function PureTeamScreen({ ...props }) {
   const { title, ogImage, urls = {}, contributorCount } = useSiteMetadata();
   const { gitHub = {} } = urls;
   return (
-    <PageLayout {...props}>
+    <>
       <SocialGraph
         title={`Team | ${title}`}
         desc="Storybook is maintained by hundreds of contributors worldwide and guided by a steering committee."
@@ -134,7 +133,7 @@ export function PureTeamScreen({ ...props }) {
           gitHubUrl={gitHub.contributors}
         />
       </Team>
-    </PageLayout>
+    </>
   );
 }
 

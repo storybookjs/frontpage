@@ -22,11 +22,6 @@ exports.onCreateNode = ({ actions, getNode, node }) => {
       const [_, version] = slugParts;
       createNodeField({ node, name: 'iframeSlug', value: `/releases/iframe/${version}/` });
       createNodeField({ node, name: 'version', value: version });
-    } else {
-      const [_, pathPrefix, page] = slugParts;
-      createNodeField({ node, name: 'tocPath', value: `/${pathPrefix}/${page}` });
-      createNodeField({ node, name: 'pathPrefix', value: `/${pathPrefix}` });
-      createNodeField({ node, name: 'page', value: page });
     }
   }
 };
@@ -44,6 +39,11 @@ exports.onCreatePage = ({ page, actions }) => {
     deletePage(oldPage);
     createPage(page);
   }
+
+  if (page.path.match(/^\/docs\//)) {
+    // eslint-disable-next-line no-param-reassign
+    page.context.layout = 'docs';
+  }
 };
 
 exports.createPages = ({ actions, graphql }) => {
@@ -55,11 +55,8 @@ exports.createPages = ({ actions, graphql }) => {
           edges {
             node {
               fields {
-                pathPrefix
-                page
                 pageType
                 slug
-                tocPath
               }
             }
           }
@@ -127,12 +124,17 @@ exports.createPages = ({ actions, graphql }) => {
         }
 
         const docsPagesSlugs = [];
+        const docsPagesEdgesBySlug = docsPagesEdges.reduce(
+          (acc, edge) => ({
+            ...acc,
+            [edge.node.fields.slug]: edge,
+          }),
+          {}
+        );
         const createDocsPages = (tocItems) => {
           tocItems.forEach(({ path: docsPagePath, children }) => {
             if (docsPagePath) {
-              const docEdge = docsPagesEdges.find(
-                ({ node: { fields } }) => fields.tocPath === docsPagePath
-              );
+              const docEdge = docsPagesEdgesBySlug[docsPagePath];
 
               if (docEdge) {
                 const { pageType, slug } = docEdge.node.fields;

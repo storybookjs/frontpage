@@ -6,7 +6,6 @@ import { Button, Link, styles } from '@storybook/design-system';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 
 import { SocialGraph, Video } from '../../basics';
-import PageLayout from '../../layout/PageLayout';
 import Hero from './Hero';
 import SocialProof from '../../layout/SocialProof';
 import PlaceholderAspectRatio from '../../layout/PlaceholderAspectRatio';
@@ -42,7 +41,7 @@ export function PureIndexScreen({ ...props }) {
   const { ogImage, urls = {} } = useSiteMetadata();
   const { home, docs = {} } = urls;
   return (
-    <PageLayout {...props}>
+    <>
       <SocialGraph
         title="Storybook: UI component explorer for frontend developers"
         desc="Storybook is an open source tool for developing UI components in isolation for React, Vue, and Angular. It makes building stunning UIs organized and efficient."
@@ -248,7 +247,7 @@ export function PureIndexScreen({ ...props }) {
           </Button>
         }
       />
-    </PageLayout>
+    </>
   );
 }
 
