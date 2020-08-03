@@ -3,13 +3,13 @@ import { storiesOf } from '@storybook/react';
 
 import DocsLayout from './DocsLayout';
 
-const data = {
+export const data = {
   currentPage: {
     fields: { slug: '/slug' },
   },
 };
 
-const pageContext = {
+export const pageContext = {
   docsToc: [
     {
       title: 'Get Started',
