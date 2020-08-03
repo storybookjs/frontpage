@@ -99,8 +99,8 @@ function DocsLayout({ children, data, pageContext, ...props }) {
       fields: { slug },
     },
   } = data;
-
   const { docsToc, tocItem, nextTocItem } = pageContext;
+
   const addLinkWrappers = (items) =>
     items.map((item) => ({
       ...item,
@@ -108,6 +108,7 @@ function DocsLayout({ children, data, pageContext, ...props }) {
       ...(item.children && { children: addLinkWrappers(item.children) }),
     }));
   const docsTocWithLinkWrappers = addLinkWrappers(docsToc);
+
   const withTooltipProps = {
     placement: 'top',
     trigger: 'hover',
