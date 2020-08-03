@@ -94,14 +94,16 @@ function DocsScreen({ data, pageContext, ...props }) {
           />
         </NextNavigation>
       )}
-      <GithubLinkWrapper>
-        <GithubLinkItem tertiary href={tocItem.githubUrl} target="_blank" rel="noopener">
-          <span role="img" aria-label="write">
-            ✍️
-          </span>{' '}
-          Edit on GitHub – PRs welcome!
-        </GithubLinkItem>
-      </GithubLinkWrapper>
+      {tocItem.githubUrl && (
+        <GithubLinkWrapper>
+          <GithubLinkItem tertiary href={tocItem.githubUrl} target="_blank" rel="noopener">
+            <span role="img" aria-label="write">
+              ✍️
+            </span>{' '}
+            Edit on GitHub – PRs welcome!
+          </GithubLinkItem>
+        </GithubLinkWrapper>
+      )}
     </ScreenWrapper>
   );
 }
