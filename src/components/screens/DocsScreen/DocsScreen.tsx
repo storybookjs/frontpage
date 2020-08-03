@@ -69,7 +69,7 @@ function DocsScreen({ data, pageContext, ...props }) {
       frontmatter: { title },
     },
   } = data;
-  const { docsToc, tocItem, nextTocItem } = pageContext;
+  const { tocItem, nextTocItem } = pageContext;
   return (
     <ScreenWrapper {...props}>
       <MDWrapper>
@@ -94,7 +94,7 @@ function DocsScreen({ data, pageContext, ...props }) {
           />
         </NextNavigation>
       )}
-      {tocItem.githubUrl && (
+      {tocItem && tocItem.githubUrl && (
         <GithubLinkWrapper>
           <GithubLinkItem tertiary href={tocItem.githubUrl} target="_blank" rel="noopener">
             <span role="img" aria-label="write">
