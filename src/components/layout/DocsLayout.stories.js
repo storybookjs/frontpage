@@ -27,7 +27,6 @@ export const pageContext = {
           path: '/get-started/install/',
           title: 'Install',
           type: 'bullet-link',
-          // TODO: Update the description
           description: 'Install the Storybook package in your project',
         },
       ],
