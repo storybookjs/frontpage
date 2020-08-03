@@ -7,7 +7,7 @@
     "email": "dom@hichroma.com"
   },
   "dependencies": {
-    "@storybook/design-system": "^5.1.9",
+    "@storybook/design-system": "^5.1.10",
     "core-js": "^3.6.5",
     "gatsby": "^2.23.22",
     "gatsby-cli": "2.12.58",

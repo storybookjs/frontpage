@@ -24,6 +24,12 @@ const Wrapper = styled.div`
   overflow: hidden;
 `;
 
+const StyledHighlight = styled(Highlight)`
+  > * > *:last-child {
+    margin-bottom: 0;
+  }
+`;
+
 function DocsScreen({ data, ...props }) {
   const {
     currentPage: {
@@ -35,7 +41,7 @@ function DocsScreen({ data, ...props }) {
   return (
     <Wrapper {...props}>
       <Title>{title}</Title>
-      <Highlight>{html}</Highlight>
+      <StyledHighlight>{html}</StyledHighlight>
     </Wrapper>
   );
 }

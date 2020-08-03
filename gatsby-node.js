@@ -132,17 +132,28 @@ exports.createPages = ({ actions, graphql }) => {
           {}
         );
         const createDocsPages = (tocItems) => {
-          tocItems.forEach(({ path: docsPagePath, children }) => {
+          tocItems.forEach((tocItem, index) => {
+            const { path: docsPagePath, children } = tocItem;
             if (docsPagePath) {
               const docEdge = docsPagesEdgesBySlug[docsPagePath];
 
               if (docEdge) {
                 const { pageType, slug } = docEdge.node.fields;
+                const nextTocItem = tocItems[index + 1];
 
                 createPage({
                   path: slug,
                   component: path.resolve(`./src/components/screens/DocsScreen/DocsScreen.tsx`),
-                  context: { pageType, slug, docsToc },
+                  context: {
+                    pageType,
+                    slug,
+                    docsToc,
+                    tocItem,
+                    ...(nextTocItem &&
+                      nextTocItem.type === 'bullet-link' && {
+                        nextTocItem,
+                      }),
+                  },
                 });
 
                 docsPagesSlugs.push(slug);

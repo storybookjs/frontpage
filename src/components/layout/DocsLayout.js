@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import {
+  Button,
   Highlight,
   Icon,
   Input,
+  Subheading,
+  ShadowBoxCTA,
   TableOfContents,
   TooltipNote,
   WithTooltip,
@@ -47,12 +50,16 @@ const SidebarControls = styled.div`
   display: flex;
 `;
 
-const ChildrenWrapper = styled.div`
+const Content = styled.div`
   ${bottomSpacing}
   overflow: hidden;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: -10px;
+  margin-right: -10px;
 `;
 
-const Content = styled.div`
+const Wrapper = styled.div`
   ${pageMargins}
 
   && {
@@ -91,6 +98,16 @@ const ExpandCollapseButton = styled(StyledButton).attrs({ appearance: 'outline' 
   }
 `;
 
+const NextSubheading = styled(Subheading)`
+  color: ${color.mediumdark};
+  display: block;
+  margin-bottom: 17px;
+`;
+
+const NextNavigation = styled.div`
+  margin-top: 48px;
+`;
+
 const LinkWrapper = ({ href, ...props }) => {
   return <GatsbyLink to={href} {...props} />;
 };
@@ -101,13 +118,14 @@ function DocsLayout({ children, data, pageContext, ...props }) {
       fields: { slug },
     },
   } = data;
+  const { docsToc, nextTocItem } = pageContext;
   const addLinkWrappers = (items) =>
     items.map((item) => ({
       ...item,
       ...(item.type.match(/link/) && { LinkWrapper }),
       ...(item.children && { children: addLinkWrappers(item.children) }),
     }));
-  const docsTocWithLinkWrappers = addLinkWrappers(pageContext.docsToc);
+  const docsTocWithLinkWrappers = addLinkWrappers(docsToc);
   const withTooltipProps = {
     placement: 'top',
     trigger: 'hover',
@@ -124,7 +142,7 @@ function DocsLayout({ children, data, pageContext, ...props }) {
         // url={home}
         // image={ogImage}
       />
-      <Content>
+      <Wrapper>
         <Sidebar>
           <StyledTableOfContents currentPath={slug} items={docsTocWithLinkWrappers}>
             {({ menu, allTopLevelMenusAreOpen, toggleAllOpen, toggleAllClosed }) => (
@@ -168,8 +186,28 @@ function DocsLayout({ children, data, pageContext, ...props }) {
           </StyledTableOfContents>
         </Sidebar>
 
-        <ChildrenWrapper>{children}</ChildrenWrapper>
-      </Content>
+        <Content>
+          {children}
+          {nextTocItem && (
+            <NextNavigation>
+              <NextSubheading>Next</NextSubheading>
+              <ShadowBoxCTA
+                action={
+                  <Button
+                    appearance="secondary"
+                    href={nextTocItem.path}
+                    ButtonWrapper={LinkWrapper}
+                  >
+                    Continue
+                  </Button>
+                }
+                headingText={nextTocItem.title}
+                messageText={nextTocItem.description}
+              />
+            </NextNavigation>
+          )}
+        </Content>
+      </Wrapper>
     </>
   );
 }
