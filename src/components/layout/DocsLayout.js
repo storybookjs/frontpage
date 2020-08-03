@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import {
   Highlight,
   Icon,
+  Input,
   TableOfContents,
   TooltipNote,
   WithTooltip,
@@ -42,6 +43,10 @@ const Sidebar = styled.div`
   }
 `;
 
+const SidebarControls = styled.div`
+  display: flex;
+`;
+
 const ChildrenWrapper = styled.div`
   ${bottomSpacing}
   overflow: hidden;
@@ -73,6 +78,7 @@ const ExpandCollapseButton = styled(StyledButton).attrs({ appearance: 'outline' 
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  margin-left: 10px;
 
   svg {
     width: 10px;
@@ -90,7 +96,6 @@ const LinkWrapper = ({ href, ...props }) => {
 };
 
 function DocsLayout({ children, data, pageContext, ...props }) {
-  console.log(data);
   const {
     currentPage: {
       fields: { slug },
@@ -123,32 +128,42 @@ function DocsLayout({ children, data, pageContext, ...props }) {
         <Sidebar>
           <StyledTableOfContents currentPath={slug} items={docsTocWithLinkWrappers}>
             {({ menu, allTopLevelMenusAreOpen, toggleAllOpen, toggleAllClosed }) => (
-              <div>
-                {allTopLevelMenusAreOpen ? (
-                  <WithTooltip
-                    {...withTooltipProps}
-                    tooltip={<TooltipNote note="Collapse all" />}
-                    onClick={toggleAllClosed}
-                  >
-                    <>
-                      <Icon icon="arrowdown" />
-                      <Icon icon="arrowup" />
-                    </>
-                  </WithTooltip>
-                ) : (
-                  <WithTooltip
-                    {...withTooltipProps}
-                    tooltip={<TooltipNote note="Expand all" />}
-                    onClick={toggleAllOpen}
-                  >
-                    <>
-                      <Icon icon="arrowup" />
-                      <Icon icon="arrowdown" />
-                    </>
-                  </WithTooltip>
-                )}
+              <>
+                <SidebarControls>
+                  <Input
+                    id="Pill"
+                    label="Search"
+                    hideLabel
+                    icon="search"
+                    appearance="pill"
+                    placeholder="Search docs"
+                  />
+                  {allTopLevelMenusAreOpen ? (
+                    <WithTooltip
+                      {...withTooltipProps}
+                      tooltip={<TooltipNote note="Collapse all" />}
+                      onClick={toggleAllClosed}
+                    >
+                      <>
+                        <Icon icon="arrowdown" />
+                        <Icon icon="arrowup" />
+                      </>
+                    </WithTooltip>
+                  ) : (
+                    <WithTooltip
+                      {...withTooltipProps}
+                      tooltip={<TooltipNote note="Expand all" />}
+                      onClick={toggleAllOpen}
+                    >
+                      <>
+                        <Icon icon="arrowup" />
+                        <Icon icon="arrowdown" />
+                      </>
+                    </WithTooltip>
+                  )}
+                </SidebarControls>
                 {menu}
-              </div>
+              </>
             )}
           </StyledTableOfContents>
         </Sidebar>
