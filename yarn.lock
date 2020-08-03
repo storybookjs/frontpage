@@ -2552,10 +2552,10 @@
   dependencies:
     lodash "^4.17.15"
 
-"@storybook/design-system@^5.1.7":
-  version "5.1.7"
-  resolved "https://registry.yarnpkg.com/@storybook/design-system/-/design-system-5.1.7.tgz#d10debe66016648639c57a19b923f1c423cad892"
-  integrity sha512-VveB7Lr5aIupzGL1M2yyyD1381CYT3fZ+zy3SB6PrGsnSAoz/b4865qhOZUsz3d50glkXEd5G4slKIUZZBeq9Q==
+"@storybook/design-system@^5.1.9":
+  version "5.1.9"
+  resolved "https://registry.yarnpkg.com/@storybook/design-system/-/design-system-5.1.9.tgz#28e40e62db7b9005069198548fa7205abb5e316c"
+  integrity sha512-gB2R12YYYJpPGqVy9C2K0eF9MhQIiWv53fEb1NrG9nIebHvG9njrLkvHbRUqLr3PAql7FfaJm9U802Fy4zHtcQ==
   dependencies:
     polished "^3.6.4"
     prismjs "1.20.0"

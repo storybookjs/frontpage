@@ -1,17 +1,38 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Highlight, TableOfContents, global, styles } from '@storybook/design-system';
+import React, { useEffect, useState } from 'react';
+import styled, { css } from 'styled-components';
+import {
+  Highlight,
+  Icon,
+  TableOfContents,
+  TooltipNote,
+  WithTooltip,
+  global,
+  styles,
+} from '@storybook/design-system';
 import { graphql, Link as GatsbyLink } from 'gatsby';
+import { StyledButton } from './Button';
 
 import { SocialGraph } from '../basics';
 
 const { breakpoint, color, pageMargins, typography } = styles;
 const { GlobalStyle } = global;
 
+const bottomSpacing = css`
+  padding-bottom: 3rem;
+`;
+
 const Sidebar = styled.div`
+  position: sticky;
+  padding-top: 10px;
+  padding-right: 20px;
+  margin-right: 56px;
+  margin-top: -10px;
+  top: 0;
+  max-height: calc(100vh);
   width: 276px;
   min-width: 276px;
-  padding-right: 56px;
+  overflow: scroll;
+  ${bottomSpacing}
 
   @media (max-width: ${breakpoint * 1.333 - 1}px) {
     flex: none;
@@ -21,9 +42,17 @@ const Sidebar = styled.div`
   }
 `;
 
+const ChildrenWrapper = styled.div`
+  ${bottomSpacing}
+  overflow: hidden;
+`;
+
 const Content = styled.div`
   ${pageMargins}
-  padding-bottom: 3rem;
+
+  && {
+    padding-bottom: 0;
+  }
 
   @media (min-width: ${breakpoint * 1.333}px) {
     padding-top: 4rem;
@@ -33,10 +62,27 @@ const Content = styled.div`
 `;
 
 const StyledTableOfContents = styled(TableOfContents)`
-  position: sticky;
-  top: 20px;
-  max-height: calc(100vh - 40px);
-  overflow: scroll;
+  margin-top: 32px;
+`;
+
+const ExpandCollapseButton = styled(StyledButton).attrs({ appearance: 'outline' })`
+  padding: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  svg {
+    width: 10px;
+    height: 10px;
+    margin: 0;
+
+    &:last-of-type {
+      margin-top: -2px;
+    }
+  }
 `;
 
 const LinkWrapper = ({ href, ...props }) => {
@@ -44,6 +90,7 @@ const LinkWrapper = ({ href, ...props }) => {
 };
 
 function DocsLayout({ children, data, pageContext, ...props }) {
+  console.log(data);
   const {
     currentPage: {
       fields: { slug },
@@ -56,6 +103,12 @@ function DocsLayout({ children, data, pageContext, ...props }) {
       ...(item.children && { children: addLinkWrappers(item.children) }),
     }));
   const docsTocWithLinkWrappers = addLinkWrappers(pageContext.docsToc);
+  const withTooltipProps = {
+    placement: 'top',
+    trigger: 'hover',
+    hasChrome: false,
+    as: ExpandCollapseButton,
+  };
 
   return (
     <>
@@ -68,9 +121,39 @@ function DocsLayout({ children, data, pageContext, ...props }) {
       />
       <Content>
         <Sidebar>
-          <StyledTableOfContents currentPath={slug} items={docsTocWithLinkWrappers} />
+          <StyledTableOfContents currentPath={slug} items={docsTocWithLinkWrappers}>
+            {({ menu, allTopLevelMenusAreOpen, toggleAllOpen, toggleAllClosed }) => (
+              <div>
+                {allTopLevelMenusAreOpen ? (
+                  <WithTooltip
+                    {...withTooltipProps}
+                    tooltip={<TooltipNote note="Collapse all" />}
+                    onClick={toggleAllClosed}
+                  >
+                    <>
+                      <Icon icon="arrowdown" />
+                      <Icon icon="arrowup" />
+                    </>
+                  </WithTooltip>
+                ) : (
+                  <WithTooltip
+                    {...withTooltipProps}
+                    tooltip={<TooltipNote note="Expand all" />}
+                    onClick={toggleAllOpen}
+                  >
+                    <>
+                      <Icon icon="arrowup" />
+                      <Icon icon="arrowdown" />
+                    </>
+                  </WithTooltip>
+                )}
+                {menu}
+              </div>
+            )}
+          </StyledTableOfContents>
         </Sidebar>
-        {children}
+
+        <ChildrenWrapper>{children}</ChildrenWrapper>
       </Content>
     </>
   );
