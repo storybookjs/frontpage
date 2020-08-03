@@ -31,7 +31,7 @@ const Sidebar = styled.div`
   margin-right: 56px;
   margin-top: -10px;
   top: 0;
-  max-height: calc(100vh);
+  max-height: 100vh;
   width: 276px;
   min-width: 276px;
   overflow: scroll;
