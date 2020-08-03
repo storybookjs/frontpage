@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import { Highlight, styles } from '@storybook/design-system';
 import { graphql } from 'gatsby';
 
-import { query as docsLayoutQuery } from '../../layout/DocsLayout';
-
 import { releaseFormatting } from '../../../styles/formatting';
 
 const { color, typography } = styles;

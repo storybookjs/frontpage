@@ -3,6 +3,26 @@ const { toc: docsToc } = require('./src/content/docs/toc');
 
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
+const githubDocsBaseUrl = 'https://github.com/storybookjs/storybook/tree/next';
+const addStateToToc = (items, pathPrefix = '/docs/') =>
+  items.map((item) => {
+    const itemPath = `${pathPrefix}${item.pathSegment}`;
+    // A pathSegment could be an empty string.
+    // Make sure there is not a duplicate slash created.
+    const itemPathWithDirSuffix = `${itemPath.slice(-1) !== '/' ? `${itemPath}/` : itemPath}`;
+
+    return {
+      ...item,
+      ...(item.type.match(/link/) && {
+        path: itemPathWithDirSuffix,
+        githubUrl: `${githubDocsBaseUrl}${itemPath}.md`,
+      }),
+      ...(item.children && { children: addStateToToc(item.children, itemPathWithDirSuffix) }),
+    };
+  });
+
+const docsTocWithPaths = addStateToToc(docsToc);
+
 exports.onCreateNode = ({ actions, getNode, node }) => {
   const { createNodeField } = actions;
   if (node.internal.type === 'MarkdownRemark') {
@@ -147,7 +167,7 @@ exports.createPages = ({ actions, graphql }) => {
                   context: {
                     pageType,
                     slug,
-                    docsToc,
+                    docsToc: docsTocWithPaths,
                     tocItem,
                     ...(nextTocItem &&
                       nextTocItem.type === 'bullet-link' && {
@@ -158,7 +178,7 @@ exports.createPages = ({ actions, graphql }) => {
 
                 docsPagesSlugs.push(slug);
               } else {
-                console.log(`Not creating page for '/docs${docsPagePath}'`);
+                console.log(`Not creating page for '${docsPagePath}'`);
               }
             }
 
@@ -168,7 +188,7 @@ exports.createPages = ({ actions, graphql }) => {
           });
         };
 
-        createDocsPages(docsToc);
+        createDocsPages(docsTocWithPaths);
         const firstDocsPageSlug = docsPagesSlugs[0];
 
         if (firstDocsPageSlug) {

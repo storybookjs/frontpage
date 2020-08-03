@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import {
   Button,
   Highlight,
   Icon,
   Input,
+  Link,
   Subheading,
   ShadowBoxCTA,
+  StyledButton,
   TableOfContents,
   TooltipNote,
   WithTooltip,
@@ -14,7 +17,6 @@ import {
   styles,
 } from '@storybook/design-system';
 import { graphql, Link as GatsbyLink } from 'gatsby';
-import { StyledButton } from './Button';
 
 import { SocialGraph } from '../basics';
 
@@ -108,6 +110,16 @@ const NextNavigation = styled.div`
   margin-top: 48px;
 `;
 
+const GithubLinkWrapper = styled.div`
+  margin-top: 3rem;
+  text-align: center;
+`;
+
+const GithubLinkItem = styled(Link)`
+  font-weight: ${typography.weight.bold};
+  font-size: ${typography.size.s2}px;
+`;
+
 const LinkWrapper = ({ href, ...props }) => {
   return <GatsbyLink to={href} {...props} />;
 };
@@ -118,7 +130,8 @@ function DocsLayout({ children, data, pageContext, ...props }) {
       fields: { slug },
     },
   } = data;
-  const { docsToc, nextTocItem } = pageContext;
+
+  const { docsToc, tocItem, nextTocItem } = pageContext;
   const addLinkWrappers = (items) =>
     items.map((item) => ({
       ...item,
@@ -206,6 +219,15 @@ function DocsLayout({ children, data, pageContext, ...props }) {
               />
             </NextNavigation>
           )}
+
+          <GithubLinkWrapper>
+            <GithubLinkItem tertiary href={tocItem.githubUrl} target="_blank" rel="noopener">
+              <span role="img" aria-label="write">
+                ✍️
+              </span>{' '}
+              Edit on GitHub – PRs welcome!
+            </GithubLinkItem>
+          </GithubLinkWrapper>
         </Content>
       </Wrapper>
     </>
