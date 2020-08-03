@@ -1,11 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Highlight, styles } from '@storybook/design-system';
-import { graphql } from 'gatsby';
+import {
+  Button,
+  Highlight,
+  Link,
+  ShadowBoxCTA,
+  Subheading,
+  styles,
+} from '@storybook/design-system';
+import { graphql, Link as GatsbyLink } from 'gatsby';
+import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 
-import { releaseFormatting } from '../../../styles/formatting';
+import { mdFormatting } from '../../../styles/formatting';
 
 const { color, typography } = styles;
+
+// The ScreenWrapper padding allows the box-shadow of the ShadowBoxCTA to show
+const ScreenWrapper = styled.div`
+  padding-left: 10px;
+  padding-right: 10px;
+`;
 
 const Title = styled.div`
   color: ${color.darkest};
@@ -16,8 +30,8 @@ const Title = styled.div`
   margin-bottom: 9px;
 `;
 
-const Wrapper = styled.div`
-  ${releaseFormatting}
+const MDWrapper = styled.div`
+  ${mdFormatting}
   flex: 1;
   overflow: hidden;
 `;
@@ -28,19 +42,67 @@ const StyledHighlight = styled(Highlight)`
   }
 `;
 
-function DocsScreen({ data, ...props }) {
+const NextSubheading = styled(Subheading)`
+  color: ${color.mediumdark};
+  display: block;
+  margin-bottom: 17px;
+`;
+
+const NextNavigation = styled.div`
+  margin-top: 48px;
+`;
+
+const GithubLinkWrapper = styled.div`
+  margin-top: 3rem;
+  text-align: center;
+`;
+
+const GithubLinkItem = styled(Link)`
+  font-weight: ${typography.weight.bold};
+  font-size: ${typography.size.s2}px;
+`;
+
+function DocsScreen({ data, pageContext, ...props }) {
   const {
     currentPage: {
       html,
       frontmatter: { title },
     },
   } = data;
-
+  const { docsToc, tocItem, nextTocItem } = pageContext;
   return (
-    <Wrapper {...props}>
-      <Title>{title}</Title>
-      <StyledHighlight>{html}</StyledHighlight>
-    </Wrapper>
+    <ScreenWrapper {...props}>
+      <MDWrapper>
+        <Title>{title}</Title>
+        <StyledHighlight>{html}</StyledHighlight>
+      </MDWrapper>
+      {nextTocItem && (
+        <NextNavigation>
+          <NextSubheading>Next</NextSubheading>
+          <ShadowBoxCTA
+            action={
+              <Button
+                appearance="secondary"
+                href={nextTocItem.path}
+                ButtonWrapper={GatsbyLinkWrapper}
+              >
+                Continue
+              </Button>
+            }
+            headingText={nextTocItem.title}
+            messageText={nextTocItem.description}
+          />
+        </NextNavigation>
+      )}
+      <GithubLinkWrapper>
+        <GithubLinkItem tertiary href={tocItem.githubUrl} target="_blank" rel="noopener">
+          <span role="img" aria-label="write">
+            ✍️
+          </span>{' '}
+          Edit on GitHub – PRs welcome!
+        </GithubLinkItem>
+      </GithubLinkWrapper>
+    </ScreenWrapper>
   );
 }
 

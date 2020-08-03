@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import {
-  Button,
-  Highlight,
   Icon,
   Input,
   Link,
-  Subheading,
-  ShadowBoxCTA,
   StyledButton,
   TableOfContents,
   TooltipNote,
@@ -16,9 +12,10 @@ import {
   global,
   styles,
 } from '@storybook/design-system';
-import { graphql, Link as GatsbyLink } from 'gatsby';
+import { graphql } from 'gatsby';
 
 import { SocialGraph } from '../basics';
+import GatsbyLinkWrapper from '../basics/GatsbyLinkWrapper';
 
 const { breakpoint, color, pageMargins, typography } = styles;
 const { GlobalStyle } = global;
@@ -55,10 +52,6 @@ const SidebarControls = styled.div`
 const Content = styled.div`
   ${bottomSpacing}
   overflow: hidden;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-left: -10px;
-  margin-right: -10px;
 `;
 
 const Wrapper = styled.div`
@@ -100,30 +93,6 @@ const ExpandCollapseButton = styled(StyledButton).attrs({ appearance: 'outline' 
   }
 `;
 
-const NextSubheading = styled(Subheading)`
-  color: ${color.mediumdark};
-  display: block;
-  margin-bottom: 17px;
-`;
-
-const NextNavigation = styled.div`
-  margin-top: 48px;
-`;
-
-const GithubLinkWrapper = styled.div`
-  margin-top: 3rem;
-  text-align: center;
-`;
-
-const GithubLinkItem = styled(Link)`
-  font-weight: ${typography.weight.bold};
-  font-size: ${typography.size.s2}px;
-`;
-
-const LinkWrapper = ({ href, ...props }) => {
-  return <GatsbyLink to={href} {...props} />;
-};
-
 function DocsLayout({ children, data, pageContext, ...props }) {
   const {
     currentPage: {
@@ -135,7 +104,7 @@ function DocsLayout({ children, data, pageContext, ...props }) {
   const addLinkWrappers = (items) =>
     items.map((item) => ({
       ...item,
-      ...(item.type.match(/link/) && { LinkWrapper }),
+      ...(item.type.match(/link/) && { LinkWrapper: GatsbyLinkWrapper }),
       ...(item.children && { children: addLinkWrappers(item.children) }),
     }));
   const docsTocWithLinkWrappers = addLinkWrappers(docsToc);
@@ -162,7 +131,7 @@ function DocsLayout({ children, data, pageContext, ...props }) {
               <>
                 <SidebarControls>
                   <Input
-                    id="Pill"
+                    id="search"
                     label="Search"
                     hideLabel
                     icon="search"
@@ -199,36 +168,7 @@ function DocsLayout({ children, data, pageContext, ...props }) {
           </StyledTableOfContents>
         </Sidebar>
 
-        <Content>
-          {children}
-          {nextTocItem && (
-            <NextNavigation>
-              <NextSubheading>Next</NextSubheading>
-              <ShadowBoxCTA
-                action={
-                  <Button
-                    appearance="secondary"
-                    href={nextTocItem.path}
-                    ButtonWrapper={LinkWrapper}
-                  >
-                    Continue
-                  </Button>
-                }
-                headingText={nextTocItem.title}
-                messageText={nextTocItem.description}
-              />
-            </NextNavigation>
-          )}
-
-          <GithubLinkWrapper>
-            <GithubLinkItem tertiary href={tocItem.githubUrl} target="_blank" rel="noopener">
-              <span role="img" aria-label="write">
-                ✍️
-              </span>{' '}
-              Edit on GitHub – PRs welcome!
-            </GithubLinkItem>
-          </GithubLinkWrapper>
-        </Content>
+        <Content>{children}</Content>
       </Wrapper>
     </>
   );

@@ -4,7 +4,7 @@ import { darken } from 'polished';
 
 const { color, typography } = styles;
 
-export const releaseFormatting = css`
+export const mdFormatting = css`
   line-height: 28px;
   font-size: ${typography.size.s3}px;
 
