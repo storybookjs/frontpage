@@ -12,6 +12,7 @@ const siteMetadata = {
   googleSiteVerification: '',
   latestVersion: 'v5.3',
   docsToc,
+  contributorCount: 1035,
   urls: {
     gitHubOrg,
     homepageUrl,

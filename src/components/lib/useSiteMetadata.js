@@ -15,6 +15,7 @@ const useSiteMetadata = () => {
             prefix
             pages
           }
+          contributorCount
           urls {
             gitHubOrg
             homepageUrl

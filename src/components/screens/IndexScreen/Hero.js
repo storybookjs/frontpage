@@ -388,13 +388,9 @@ Framework.defaultProps = {
   logo: undefined,
 };
 
-export default function Hero({
-  gitHubRepoData: { contributorCount, url: githubUrl, author, name },
-  startOpen,
-  ...props
-}) {
-  const { latestVersion, urls = {} } = useSiteMetadata();
-  const { docs = {}, framework = {} } = urls;
+export default function Hero({ startOpen, ...props }) {
+  const { latestVersion, urls = {}, contributorCount } = useSiteMetadata();
+  const { docs = {}, framework = {}, gitHub = {} } = urls;
 
   const Modal = () => (
     <AspectRatio ratio={0.5625}>
@@ -419,7 +415,7 @@ export default function Hero({
         <Title>Build bulletproof UI components faster</Title>
         <Subtitle>
           Storybook is an open source tool for developing UI components in isolation for React, Vue,
-          and Angular. It makes building stunning UIs organized and efficient.
+          Angular, and more. It makes building stunning UIs organized and efficient.
         </Subtitle>
         <PitchActions>
           <Button appearance="primary" isLink href={docs.home}>
@@ -509,7 +505,7 @@ export default function Hero({
 
           <Stats>
             <GitHubWrapper className="chromatic-ignore">
-              <GitHubButton type="stargazers" namespace={author} repo={name} />
+              <GitHubButton type="stargazers" namespace="storybookjs" repo="storybook" />
             </GitHubWrapper>
             <Stat
               size="small"
@@ -517,16 +513,16 @@ export default function Hero({
               text="Latest version"
               noPlural
               status="primary"
-              countLink={`${githubUrl}/releases`}
+              countLink={gitHub.releases}
             />
             <NpmDownloadStat className="chromatic-ignore" />
             <Stat
               size="small"
-              count={`+${contributorCount}`}
+              count={`${contributorCount}+`}
               text="Contributors"
               noPlural
               status="tertiary"
-              countLink={`${githubUrl}/graphs/contributors`}
+              countLink={gitHub.contributors}
             />
           </Stats>
         </Secondary>
@@ -536,12 +532,6 @@ export default function Hero({
 }
 
 Hero.propTypes = {
-  gitHubRepoData: PropTypes.shape({
-    contributorCount: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    url: PropTypes.string.isRequired,
-    author: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-  }).isRequired,
   startOpen: PropTypes.bool,
 };
 
