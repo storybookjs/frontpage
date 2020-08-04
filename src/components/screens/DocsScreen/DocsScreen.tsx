@@ -86,7 +86,7 @@ function DocsScreen({ data, pageContext }) {
   const { tocItem, nextTocItem } = pageContext;
   const CodeSnippetsWithPageContext = useMemo(() => {
     return (props) => <CodeSnippets pageContext={pageContext} {...props} />;
-  }, []);
+  }, []); // TODO: Make this dependent on the framework when it is available
 
   return (
     <>
