@@ -1,5 +1,4 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 
 import DocsLayout from './DocsLayout';
 
@@ -34,8 +33,14 @@ export const pageContext = {
   ],
 };
 
-storiesOf('Frontpage|layout/DocsLayout', module).add('default', () => (
+export default {
+  title: 'Frontpage|layout/DocsLayout',
+  component: DocsLayout,
+  excludeStories: ['data', 'pageContext'],
+};
+
+export const Base = () => (
   <DocsLayout data={data} pageContext={pageContext}>
     children
   </DocsLayout>
-));
+);

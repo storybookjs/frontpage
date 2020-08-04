@@ -16,16 +16,24 @@ const tocItem = { githubUrl: 'github.com' };
 
 const nextTocItem = { path: '/path', title: 'Title', description: 'This is a description.' };
 
-storiesOf('Frontpage|screens/DocsScreen', module)
-  .add('default', () => <DocsScreen data={data} pageContext={{ tocItem: {} }} />)
-  .add('with guide link', () => <DocsScreen data={data} pageContext={{ nextTocItem }} />)
-  .add('with guide link, no description', () => (
-    <DocsScreen
-      data={data}
-      pageContext={{ nextTocItem: { ...nextTocItem, description: undefined } }}
-    />
-  ))
-  .add('with github link', () => <DocsScreen data={data} pageContext={{ tocItem }} />)
-  .add('with github link and guide link', () => (
-    <DocsScreen data={data} pageContext={{ tocItem, nextTocItem }} />
-  ));
+export default {
+  title: 'Frontpage|screens/DocsScreen/DocsScreen',
+  component: DocsScreen,
+};
+
+export const Base = () => <DocsScreen data={data} pageContext={{ tocItem: {} }} />;
+
+export const WithGuideLink = () => <DocsScreen data={data} pageContext={{ nextTocItem }} />;
+
+export const WithGuideLinkNoDescription = () => (
+  <DocsScreen
+    data={data}
+    pageContext={{ nextTocItem: { ...nextTocItem, description: undefined } }}
+  />
+);
+
+export const WithGithubLink = () => <DocsScreen data={data} pageContext={{ tocItem }} />;
+
+export const WithGithubLinkAndGuideLink = () => (
+  <DocsScreen data={data} pageContext={{ tocItem, nextTocItem }} />
+);
