@@ -1,5 +1,3 @@
-const { toc: docsToc } = require('./src/content/docs/toc');
-
 const gitHubOrg = `https://github.com/storybookjs`;
 const homepageUrl = `https://storybook.js.org`;
 const npmApiBase = `https://api.npmjs.org/downloads/point/last-month`;
@@ -11,7 +9,6 @@ const siteMetadata = {
   ogImage: '/images/social/open-graph.png',
   googleSiteVerification: '',
   latestVersion: 'v5.3',
-  docsToc,
   contributorCount: 1035,
   urls: {
     gitHubOrg,
@@ -108,7 +105,7 @@ siteMetadata.urls.navCommunityLinks = [
 ];
 
 siteMetadata.urls.navLinks = [
-  { title: 'Docs', href: siteMetadata.urls.docs.home, isGatsby: false },
+  { title: 'Docs', href: siteMetadata.urls.docsUrl, isGatsby: false },
   { title: 'Tutorials', href: siteMetadata.urls.tutorials, isGatsby: false },
   { title: 'Releases', href: siteMetadata.urls.releases, isGatsby: true },
   { title: 'Addons', href: siteMetadata.urls.addons, isGatsby: true },

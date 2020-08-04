@@ -1,19 +1,20 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Highlight, global, styles } from '@storybook/design-system';
+import {
+  Button,
+  Highlight,
+  Link,
+  ShadowBoxCTA,
+  Subheading,
+  styles,
+} from '@storybook/design-system';
 import { graphql } from 'gatsby';
+import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 
-import { SocialGraph } from '../../basics';
-import PageLayout from '../../layout/PageLayout';
-import { releaseFormatting } from '../../../styles/formatting';
-import TableOfContents from '../ReleasesScreen/TableOfContents';
-import useSiteMetadata from '../../lib/useSiteMetadata';
+import { mdFormatting } from '../../../styles/formatting';
 
-const { breakpoint, color, pageMargins, typography } = styles;
-const { GlobalStyle } = global;
+const { color, typography } = styles;
 
-// These styles are reproduced from Releases
 const Title = styled.div`
   color: ${color.darkest};
   font-size: ${typography.size.l1}px;
@@ -23,94 +24,95 @@ const Title = styled.div`
   margin-bottom: 9px;
 `;
 
-const Sidebar = styled.div`
-  flex: 0 1 80px;
-  padding-right: 80px;
-
-  @media (max-width: ${breakpoint * 1.333 - 1}px) {
-    flex: none;
-    margin: 1rem 0 2rem;
-    width: 100%;
-    border-bottom: 1px solid ${color.mediumlight};
-  }
+// The right and left padding here is used to allow for space to show elements
+// outside of the viewport. These values are exported because they are used to
+// generate negative margins on a container elsewhere that needs to hide the
+// overflow in order to contain the content inside of <Highlight />. By using
+// the combo of padding & negative margins, the full width of the section is
+// maintained in addition to the containment of the <Highlight /> content.
+export const contentLeftPadding = 28;
+export const contentRightPadding = 10;
+const MDSpacing = styled.div`
+  padding-left: ${contentLeftPadding}px;
+  padding-right: ${contentRightPadding}px;
 `;
 
-const Content = styled.div`
-  ${pageMargins}
-  padding-bottom: 3rem;
-
-  @media (min-width: ${breakpoint * 1.333}px) {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-    display: flex;
-  }
-`;
-const Wrapper = styled.div`
-  ${releaseFormatting}
+const MDWrapper = styled.div`
+  ${mdFormatting}
   flex: 1;
 `;
 
-const TOCHeader = styled.div`
-  color: ${color.dark};
-  font-size: ${typography.size.s3}px;
-  font-weight: ${typography.weight.bold};
-  line-height: 20px;
-  margin-bottom: 12px;
+const StyledHighlight = styled(Highlight)`
+  > * > *:last-child {
+    margin-bottom: 0;
+  }
 `;
 
-function DocsScreen({ data, ...props }) {
-  const { docsToc } = useSiteMetadata();
+const NextSubheading = styled(Subheading)`
+  color: ${color.mediumdark};
+  display: block;
+  margin-bottom: 17px;
+`;
+
+const NextNavigation = styled.div`
+  margin-top: 48px;
+`;
+
+const GithubLinkWrapper = styled.div`
+  margin-top: 3rem;
+  text-align: center;
+`;
+
+const GithubLinkItem = styled(Link)`
+  font-weight: ${typography.weight.bold};
+  font-size: ${typography.size.s2}px;
+`;
+
+function DocsScreen({ data, pageContext, ...props }) {
   const {
-    allDocs: { nodes: docsNodes },
     currentPage: {
       html,
       frontmatter: { title },
-      fields: { slug: currentPageSlug },
     },
   } = data;
-
+  const { tocItem, nextTocItem } = pageContext;
   return (
     <>
-      <GlobalStyle />
-      <PageLayout {...props}>
-        <SocialGraph
-          title="Storybook: UI component explorer for frontend developers"
-          desc="Storybook is an open source tool for developing UI components in isolation for React, Vue, and Angular. It makes building stunning UIs organized and efficient."
-          // url={home}
-          // image={ogImage}
-        />
-        <Content>
-          <Sidebar>
-            {docsToc.map(({ title: section, prefix, pages }) => (
-              <>
-                <TOCHeader>{section}</TOCHeader>
-                <TableOfContents
-                  currentPageSlug={currentPageSlug}
-                  entries={pages.map((page: string) => {
-                    const node = docsNodes.find(
-                      ({ fields }) => fields.prefix === prefix && fields.page === page
-                    );
-                    return node
-                      ? {
-                          slug: node.fields.slug,
-                          title: node.frontmatter.title,
-                        }
-                      : {
-                          slug: `/docs/${prefix}/${page}/`,
-                          title: page,
-                        };
-                  })}
-                />
-              </>
-            ))}
-          </Sidebar>
-          <Wrapper {...props}>
-            <Title>{title}</Title>
-            <Highlight>{html}</Highlight>
-          </Wrapper>
-          {/* <StyledRelease title={title} html={html} /> */}
-        </Content>
-      </PageLayout>
+      <MDSpacing>
+        <MDWrapper>
+          <Title>{title}</Title>
+          <StyledHighlight>{html}</StyledHighlight>
+        </MDWrapper>
+
+        {nextTocItem && (
+          <NextNavigation>
+            <NextSubheading>Next</NextSubheading>
+            <ShadowBoxCTA
+              action={
+                <Button
+                  appearance="secondary"
+                  href={nextTocItem.path}
+                  ButtonWrapper={GatsbyLinkWrapper}
+                >
+                  Continue
+                </Button>
+              }
+              headingText={nextTocItem.title}
+              messageText={nextTocItem.description}
+            />
+          </NextNavigation>
+        )}
+      </MDSpacing>
+      {tocItem && tocItem.githubUrl && (
+        <GithubLinkWrapper>
+          <GithubLinkItem tertiary href={tocItem.githubUrl} target="_blank" rel="noopener">
+            <span role="img" aria-label="write">
+              ✍️
+            </span>{' '}
+            Edit on GitHub – PRs welcome!
+          </GithubLinkItem>
+        </GithubLinkWrapper>
+      )}
     </>
   );
 }
@@ -119,27 +121,12 @@ export default DocsScreen;
 
 export const query = graphql`
   query DocsScreenQuery($slug: String!) {
-    allDocs: allMarkdownRemark(filter: { fields: { pageType: { eq: "docs" } } }) {
-      nodes {
-        html
-        fields {
-          slug
-          prefix
-          page
-        }
-        frontmatter {
-          title
-        }
-      }
-    }
     currentPage: markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {
         title
       }
-      fields {
-        slug
-      }
+      ...DocsLayoutCurrentPageQuery
     }
   }
 `;
