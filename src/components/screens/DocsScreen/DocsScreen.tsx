@@ -1,14 +1,12 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Highlight, global, styles } from '@storybook/design-system';
+import { Highlight, TableOfContents, global, styles } from '@storybook/design-system';
 import { graphql } from 'gatsby';
 
 import { SocialGraph } from '../../basics';
 import PageLayout from '../../layout/PageLayout';
 import { releaseFormatting } from '../../../styles/formatting';
-import TableOfContents from '../ReleasesScreen/TableOfContents';
-import useSiteMetadata from '../../lib/useSiteMetadata';
 
 const { breakpoint, color, pageMargins, typography } = styles;
 const { GlobalStyle } = global;
@@ -58,8 +56,7 @@ const TOCHeader = styled.div`
   margin-bottom: 12px;
 `;
 
-function DocsScreen({ data, ...props }) {
-  const { docsToc } = useSiteMetadata();
+function DocsScreen({ data, pageContext, ...props }) {
   const {
     allDocs: { nodes: docsNodes },
     currentPage: {
@@ -81,28 +78,7 @@ function DocsScreen({ data, ...props }) {
         />
         <Content>
           <Sidebar>
-            {docsToc.map(({ title: section, prefix, pages }) => (
-              <>
-                <TOCHeader>{section}</TOCHeader>
-                <TableOfContents
-                  currentPageSlug={currentPageSlug}
-                  entries={pages.map((page: string) => {
-                    const node = docsNodes.find(
-                      ({ fields }) => fields.prefix === prefix && fields.page === page
-                    );
-                    return node
-                      ? {
-                          slug: node.fields.slug,
-                          title: node.frontmatter.title,
-                        }
-                      : {
-                          slug: `/docs/${prefix}/${page}/`,
-                          title: page,
-                        };
-                  })}
-                />
-              </>
-            ))}
+            <TableOfContents items={pageContext.docsToc} />
           </Sidebar>
           <Wrapper {...props}>
             <Title>{title}</Title>
@@ -124,7 +100,7 @@ export const query = graphql`
         html
         fields {
           slug
-          prefix
+          pathPrefix
           page
         }
         frontmatter {

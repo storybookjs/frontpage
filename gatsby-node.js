@@ -1,4 +1,5 @@
 const path = require('path');
+const { toc: docsToc } = require('./src/content/docs/toc');
 
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
@@ -11,19 +12,20 @@ exports.onCreateNode = ({ actions, getNode, node }) => {
       basePath: 'content',
     });
 
-    const [pageType, versionOrPrefix, page] = slug.split('/').filter((p) => !!p);
+    const slugParts = slug.split('/').filter((p) => !!p);
+    const [pageType] = slugParts;
 
     createNodeField({ node, name: 'pageType', value: pageType });
     createNodeField({ node, name: 'slug', value: slug });
+
     if (pageType === 'releases') {
-      createNodeField({ node, name: 'iframeSlug', value: `/releases/iframe/${versionOrPrefix}/` });
-      createNodeField({ node, name: 'version', value: versionOrPrefix });
-      createNodeField({ node, name: 'prefix', value: null });
-      createNodeField({ node, name: 'page', value: null });
+      const [_, version] = slugParts;
+      createNodeField({ node, name: 'iframeSlug', value: `/releases/iframe/${version}/` });
+      createNodeField({ node, name: 'version', value: version });
     } else {
-      createNodeField({ node, name: 'iframeSlug', value: null });
-      createNodeField({ node, name: 'version', value: null });
-      createNodeField({ node, name: 'prefix', value: versionOrPrefix });
+      const [_, pathPrefix, page] = slugParts;
+      createNodeField({ node, name: 'tocPath', value: `/${pathPrefix}/${page}` });
+      createNodeField({ node, name: 'pathPrefix', value: `/${pathPrefix}` });
       createNodeField({ node, name: 'page', value: page });
     }
   }
@@ -49,7 +51,20 @@ exports.createPages = ({ actions, graphql }) => {
   return new Promise((resolve) => {
     graphql(`
       {
-        pages: allMarkdownRemark {
+        docsPages: allMarkdownRemark(filter: { fields: { pageType: { eq: "docs" } } }) {
+          edges {
+            node {
+              fields {
+                pathPrefix
+                page
+                pageType
+                slug
+                tocPath
+              }
+            }
+          }
+        }
+        releasePages: allMarkdownRemark(filter: { fields: { pageType: { eq: "releases" } } }) {
           edges {
             node {
               fields {
@@ -57,8 +72,6 @@ exports.createPages = ({ actions, graphql }) => {
                 iframeSlug
                 pageType
                 version
-                prefix
-                page
               }
               frontmatter {
                 prerelease
@@ -66,30 +79,18 @@ exports.createPages = ({ actions, graphql }) => {
             }
           }
         }
-        site {
-          siteMetadata {
-            docsToc {
-              prefix
-              pages
-            }
-          }
-        }
       }
     `).then(
       ({
         data: {
-          pages: { edges },
-          site: {
-            siteMetadata: { docsToc },
-          },
+          docsPages: { edges: docsPagesEdges },
+          releasePages: { edges: releasePagesEdges },
         },
       }) => {
-        const sortedReleases = edges
-          .filter((e) => e.node.fields.pageType === 'releases')
-          .sort(
-            ({ node: aNode }, { node: bNode }) =>
-              parseFloat(aNode.fields.version) - parseFloat(bNode.fields.version)
-          );
+        const sortedReleases = releasePagesEdges.sort(
+          ({ node: aNode }, { node: bNode }) =>
+            parseFloat(aNode.fields.version) - parseFloat(bNode.fields.version)
+        );
         let latestRelease;
         sortedReleases.forEach(({ node }) => {
           const { pageType, iframeSlug, slug, version } = node.fields;
@@ -125,33 +126,44 @@ exports.createPages = ({ actions, graphql }) => {
           });
         }
 
-        const docNodes = edges.map((e) => e.node).filter((n) => n.fields.pageType === 'docs');
-        docsToc.forEach(({ prefix, pages }) => {
-          pages.forEach((page) => {
-            const docNode = docNodes.find(
-              ({ fields }) => fields.prefix === prefix && fields.page === page
-            );
+        const docsPagesSlugs = [];
+        const createDocsPages = (tocItems) => {
+          tocItems.forEach(({ path: docsPagePath, children }) => {
+            if (docsPagePath) {
+              const docEdge = docsPagesEdges.find(
+                ({ node: { fields } }) => fields.tocPath === docsPagePath
+              );
 
-            if (docNode) {
-              const { pageType, slug } = docNode.fields;
-              createPage({
-                path: slug,
-                component: path.resolve(`./src/components/screens/DocsScreen/DocsScreen.tsx`),
-                context: { pageType, slug },
-              });
-            } else {
-              console.log(`Not creating page for '/docs/${prefix}/${page}/'`);
+              if (docEdge) {
+                const { pageType, slug } = docEdge.node.fields;
+
+                createPage({
+                  path: slug,
+                  component: path.resolve(`./src/components/screens/DocsScreen/DocsScreen.tsx`),
+                  context: { pageType, slug, docsToc },
+                });
+
+                docsPagesSlugs.push(slug);
+              } else {
+                console.log(`Not creating page for '/docs${docsPagePath}'`);
+              }
+            }
+
+            if (children) {
+              createDocsPages(children);
             }
           });
-        });
+        };
 
-        const firstDocsPage = docsToc[0].pages[0];
-        if (firstDocsPage) {
+        createDocsPages(docsToc);
+        const firstDocsPageSlug = docsPagesSlugs[0];
+
+        if (firstDocsPageSlug) {
           createRedirect({
             fromPath: `/docs/`,
             isPermanent: false,
             redirectInBrowser: true,
-            toPath: `/docs/${docsToc[0].prefix}/${firstDocsPage}`,
+            toPath: firstDocsPageSlug,
           });
         }
 
