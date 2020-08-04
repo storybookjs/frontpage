@@ -11,11 +11,23 @@ export const mdFormatting = css`
   h1,
   h2,
   h3,
-  h4 {
+  h4,
+  h5,
+  h6 {
     line-height: 1em;
 
     & + * {
       margin-top: 0 !important;
+    }
+
+    .remark-header-link svg {
+      opacity: 0;
+      transition: opacity 250ms ease-out, visibility 0ms linear 250ms;
+    }
+
+    &:hover .remark-header-link svg {
+      opacity: 1;
+      transition: opacity 250ms ease-out;
     }
   }
 
@@ -90,7 +102,7 @@ export const mdFormatting = css`
     list-style-type: disc;
   }
 
-  a {
+  a:not(.remark-header-link) {
     color: ${color.secondary};
     transition: all 250ms ease-out;
     display: inline-block;
@@ -109,6 +121,32 @@ export const mdFormatting = css`
 
     &:active {
       transform: translate3d(0, 0, 0);
+    }
+  }
+
+  .remark-header-link {
+    display: flex;
+    transition: transform 250ms ease-out;
+    transform: translate3d(-100%, 0, 0);
+    top: 3px;
+    padding-right: 10px;
+
+    &:hover {
+      transform: translate3d(-100%, -1px, 0);
+
+      path {
+        fill: ${color.dark};
+      }
+    }
+
+    path {
+      fill: ${color.mediumdark};
+      transition: fill 250ms ease-out;
+    }
+
+    svg {
+      width: 18px;
+      height: 18px;
     }
   }
 

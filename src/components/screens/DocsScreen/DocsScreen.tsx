@@ -8,18 +8,12 @@ import {
   Subheading,
   styles,
 } from '@storybook/design-system';
-import { graphql, Link as GatsbyLink } from 'gatsby';
+import { graphql } from 'gatsby';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 
 import { mdFormatting } from '../../../styles/formatting';
 
 const { color, typography } = styles;
-
-// The ScreenWrapper padding allows the box-shadow of the ShadowBoxCTA to show
-const ScreenWrapper = styled.div`
-  padding-left: 10px;
-  padding-right: 10px;
-`;
 
 const Title = styled.div`
   color: ${color.darkest};
@@ -30,10 +24,22 @@ const Title = styled.div`
   margin-bottom: 9px;
 `;
 
+// The right and left padding here is used to allow for space to show elements
+// outside of the viewport. These values are exported because they are used to
+// generate negative margins on a container elsewhere that needs to hide the
+// overflow in order to contain the content inside of <Highlight />. By using
+// the combo of padding & negative margins, the full width of the section is
+// maintained in addition to the containment of the <Highlight /> content.
+export const contentLeftPadding = 28;
+export const contentRightPadding = 10;
+const MDSpacing = styled.div`
+  padding-left: ${contentLeftPadding}px;
+  padding-right: ${contentRightPadding}px;
+`;
+
 const MDWrapper = styled.div`
   ${mdFormatting}
   flex: 1;
-  overflow: hidden;
 `;
 
 const StyledHighlight = styled(Highlight)`
@@ -71,29 +77,32 @@ function DocsScreen({ data, pageContext, ...props }) {
   } = data;
   const { tocItem, nextTocItem } = pageContext;
   return (
-    <ScreenWrapper {...props}>
-      <MDWrapper>
-        <Title>{title}</Title>
-        <StyledHighlight>{html}</StyledHighlight>
-      </MDWrapper>
-      {nextTocItem && (
-        <NextNavigation>
-          <NextSubheading>Next</NextSubheading>
-          <ShadowBoxCTA
-            action={
-              <Button
-                appearance="secondary"
-                href={nextTocItem.path}
-                ButtonWrapper={GatsbyLinkWrapper}
-              >
-                Continue
-              </Button>
-            }
-            headingText={nextTocItem.title}
-            messageText={nextTocItem.description}
-          />
-        </NextNavigation>
-      )}
+    <>
+      <MDSpacing>
+        <MDWrapper>
+          <Title>{title}</Title>
+          <StyledHighlight>{html}</StyledHighlight>
+        </MDWrapper>
+
+        {nextTocItem && (
+          <NextNavigation>
+            <NextSubheading>Next</NextSubheading>
+            <ShadowBoxCTA
+              action={
+                <Button
+                  appearance="secondary"
+                  href={nextTocItem.path}
+                  ButtonWrapper={GatsbyLinkWrapper}
+                >
+                  Continue
+                </Button>
+              }
+              headingText={nextTocItem.title}
+              messageText={nextTocItem.description}
+            />
+          </NextNavigation>
+        )}
+      </MDSpacing>
       {tocItem && tocItem.githubUrl && (
         <GithubLinkWrapper>
           <GithubLinkItem tertiary href={tocItem.githubUrl} target="_blank" rel="noopener">
@@ -104,7 +113,7 @@ function DocsScreen({ data, pageContext, ...props }) {
           </GithubLinkItem>
         </GithubLinkWrapper>
       )}
-    </ScreenWrapper>
+    </>
   );
 }
 
