@@ -123,12 +123,6 @@ function DocsLayout({ children, data, pageContext, ...props }) {
   return (
     <>
       <GlobalStyle />
-      <SocialGraph
-        title="Storybook: UI component explorer for frontend developers"
-        desc="Storybook is an open source tool for developing UI components in isolation for React, Vue, and Angular. It makes building stunning UIs organized and efficient."
-        // url={home}
-        // image={ogImage}
-      />
       <Wrapper>
         <Sidebar>
           <StyledTableOfContents currentPath={slug} items={docsTocWithLinkWrappers}>
