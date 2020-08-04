@@ -144,12 +144,8 @@ exports.createPages = ({ actions, graphql }) => {
         }
 
         const docsPagesSlugs = [];
-        const docsPagesEdgesBySlug = docsPagesEdges.reduce(
-          (acc, edge) => ({
-            ...acc,
-            [edge.node.fields.slug]: edge,
-          }),
-          {}
+        const docsPagesEdgesBySlug = Object.fromEntries(
+          docsPagesEdges.map((edge) => [edge.node.fields.slug, edge])
         );
         const createDocsPages = (tocItems) => {
           tocItems.forEach((tocItem, index) => {
