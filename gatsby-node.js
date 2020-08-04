@@ -25,7 +25,8 @@ const docsTocWithPaths = addStateToToc(docsToc);
 
 exports.onCreateNode = ({ actions, getNode, node }) => {
   const { createNodeField } = actions;
-  if (node.internal.type === 'MarkdownRemark') {
+
+  if (node.internal.type === 'Mdx') {
     const slug = createFilePath({
       node,
       getNode,
@@ -71,7 +72,7 @@ exports.createPages = ({ actions, graphql }) => {
   return new Promise((resolve) => {
     graphql(`
       {
-        docsPages: allMarkdownRemark(filter: { fields: { pageType: { eq: "docs" } } }) {
+        docsPages: allMdx(filter: { fields: { pageType: { eq: "docs" } } }) {
           edges {
             node {
               fields {
@@ -81,7 +82,7 @@ exports.createPages = ({ actions, graphql }) => {
             }
           }
         }
-        releasePages: allMarkdownRemark(filter: { fields: { pageType: { eq: "releases" } } }) {
+        releasePages: allMdx(filter: { fields: { pageType: { eq: "releases" } } }) {
           edges {
             node {
               fields {

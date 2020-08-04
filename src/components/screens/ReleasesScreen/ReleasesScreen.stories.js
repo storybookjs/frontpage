@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 import ReleasesScreen from './ReleasesScreen';
 
 export const buildRelease = (version) => ({
-  html: `
+  body: `
     <div>
       <h2>This is the release summary for version ${version}</h2>
       <h3>Here is a level 3 heading</h3>

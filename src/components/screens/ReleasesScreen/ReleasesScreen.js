@@ -55,7 +55,7 @@ function ReleasesScreen({ data, ...props }) {
   const {
     allReleases: { edges },
     currentPage: {
-      html,
+      body,
       frontmatter: { title },
       fields: { slug: currentPageSlug },
     },
@@ -81,7 +81,7 @@ function ReleasesScreen({ data, ...props }) {
             <TableOfContents currentPageSlug={currentPageSlug} entries={tocEntries} />
           </Sidebar>
 
-          <StyledRelease title={title} html={html} />
+          <StyledRelease title={title} body={body} />
         </Content>
       </>
     </>
@@ -96,7 +96,7 @@ export default ReleasesScreen;
 
 export const query = graphql`
   query ReleasesScreenQuery($slug: String!) {
-    allReleases: allMarkdownRemark(
+    allReleases: allMdx(
       sort: { fields: [fields___version], order: DESC }
       filter: {
         frontmatter: { prerelease: { ne: true } }
@@ -105,7 +105,7 @@ export const query = graphql`
     ) {
       edges {
         node {
-          html
+          body
           fields {
             slug
             version
@@ -116,8 +116,8 @@ export const query = graphql`
         }
       }
     }
-    currentPage: markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
+    currentPage: mdx(fields: { slug: { eq: $slug } }) {
+      body
       frontmatter {
         title
       }

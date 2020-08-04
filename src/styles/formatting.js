@@ -125,10 +125,13 @@ export const mdFormatting = css`
   }
 
   .remark-header-link {
+    display: inline-flex;
+    position: absolute;
+    top: 3px;
+    left: 0;
     display: flex;
     transition: transform 250ms ease-out;
     transform: translate3d(-100%, 0, 0);
-    top: 3px;
     padding-right: 10px;
 
     &:hover {

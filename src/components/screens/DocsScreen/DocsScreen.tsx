@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import styled from 'styled-components';
+import { MDXProvider } from '@mdx-js/react';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 import {
   Button,
   Highlight,
@@ -68,20 +70,34 @@ const GithubLinkItem = styled(Link)`
   font-size: ${typography.size.s2}px;
 `;
 
-function DocsScreen({ data, pageContext, ...props }) {
+function CodeSnippets({ snippets, ...rest }) {
+  // TODO: Change hardcoded 'react' to use the pageContext's framework
+  const snippetsByFramework = snippets.filter(({ metadata }) => metadata.framework === 'react');
+  return snippetsByFramework.map(({ metadata, Snippet }) => <Snippet />);
+}
+
+function DocsScreen({ data, pageContext }) {
   const {
     currentPage: {
-      html,
+      body,
       frontmatter: { title },
     },
   } = data;
   const { tocItem, nextTocItem } = pageContext;
+  const CodeSnippetsWithPageContext = useMemo(() => {
+    return (props) => <CodeSnippets pageContext={pageContext} {...props} />;
+  }, []);
+
   return (
     <>
       <MDSpacing>
         <MDWrapper>
           <Title>{title}</Title>
-          <StyledHighlight>{html}</StyledHighlight>
+          <MDXProvider components={{ CodeSnippets: CodeSnippetsWithPageContext }}>
+            <StyledHighlight withHTMLChildren={false}>
+              <MDXRenderer title={title}>{body}</MDXRenderer>
+            </StyledHighlight>
+          </MDXProvider>
         </MDWrapper>
 
         {nextTocItem && (
@@ -121,8 +137,8 @@ export default DocsScreen;
 
 export const query = graphql`
   query DocsScreenQuery($slug: String!) {
-    currentPage: markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
+    currentPage: mdx(fields: { slug: { eq: $slug } }) {
+      body
       frontmatter {
         title
       }

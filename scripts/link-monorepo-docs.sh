@@ -19,6 +19,7 @@ TARGET_DIR="$MONOREPO_PATH/$REPO_SUBDIR"
 if [ -d "$TARGET_DIR" ]; then
   rm -rf "$REPO_DIRNAME"
   ln -s "$RELATIVE_DIRNAME/$TARGET_DIR" "$REPO_DIRNAME"
+  ln -s "../../storybook/node_modules/react" "../node_modules/react"
 else 
   echo "Couldn't find monorepo docs at '$TARGET_DIR'"
   exit 1;
