@@ -60,10 +60,6 @@ module.exports = {
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
-        // shouldBlockNodeFromTransformation: (node) => {
-        //   if (node.dir && node.dir.match(/snippets/)) return true;
-        //   return false;
-        // },
         extensions: ['.md', '.mdx'],
         gatsbyRemarkPlugins: [
           {
