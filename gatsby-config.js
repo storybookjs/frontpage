@@ -47,6 +47,16 @@ module.exports = {
         path: `${__dirname}/src/content/`,
       },
     },
+    // Make sure any symlinked packages are using the right version of React
+    {
+      resolve: `gatsby-plugin-alias-imports`,
+      options: {
+        alias: {
+          react: path.resolve('./node_modules/react'),
+        },
+        extensions: ['js'],
+      },
+    },
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
