@@ -95,7 +95,7 @@ function DocsScreen({ data, pageContext }) {
           <Title>{title}</Title>
           <MDXProvider components={{ CodeSnippets: CodeSnippetsWithPageContext }}>
             <StyledHighlight withHTMLChildren={false}>
-              <MDXRenderer title={title}>{body}</MDXRenderer>
+              <MDXRenderer>{body}</MDXRenderer>
             </StyledHighlight>
           </MDXProvider>
         </MDWrapper>
