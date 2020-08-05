@@ -5,12 +5,13 @@ import GitHubButton from 'react-github-button';
 import 'react-github-button/assets/style.css';
 
 import { styles } from '@storybook/design-system';
-import useSiteMetadata from '../../lib/useSiteMetadata';
 import { Cardinal } from '../../basics';
 
 import ConfirmedMailingList from '../../layout/ConfirmedMailingList';
 import NpmDownloadCount from '../../layout/NpmDownloadCount';
 import { Heading, Title, Desc } from '../../layout/PageTitle';
+
+import useSiteMetadata from '../../lib/useSiteMetadata';
 
 const { pageMargins, breakpoint } = styles;
 

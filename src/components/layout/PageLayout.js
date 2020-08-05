@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Helmet from 'react-helmet';
 
-import useSiteMetadata from '../lib/useSiteMetadata';
 import DocsLayout from './DocsLayout';
+
+import useSiteMetadata from '../lib/useSiteMetadata';
 
 import { SocialGraph } from '../basics';
 import Header from './Header';

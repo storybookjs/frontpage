@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { styles } from '@storybook/design-system';
-import useSiteMetadata from '../../lib/useSiteMetadata';
 import PageTitle from '../../layout/PageTitle';
 import SocialProof from '../../layout/SocialProof';
 import ValueProp from '../../layout/ValueProp';
@@ -15,6 +14,7 @@ import ComponentCanvas from './ComponentCanvas';
 import ComponentList from './ComponentList';
 import LogoToggle from './LogoToggle';
 
+import useSiteMetadata from '../../lib/useSiteMetadata';
 import { SocialGraph } from '../../basics';
 
 import ComponentsSVG from '../../../images/colored-icons/components.svg';

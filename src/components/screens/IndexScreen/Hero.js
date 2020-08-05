@@ -16,9 +16,9 @@ import {
   styles,
 } from '@storybook/design-system';
 
-import useSiteMetadata from '../../lib/useSiteMetadata';
 import { Cardinal, Video } from '../../basics';
 
+import useSiteMetadata from '../../lib/useSiteMetadata';
 import PlaceholderAspectRatio from '../../layout/PlaceholderAspectRatio';
 import NpmDownloadCount from '../../layout/NpmDownloadCount';
 
