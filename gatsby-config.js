@@ -53,7 +53,6 @@ module.exports = {
       options: {
         alias: {
           react: path.resolve('./node_modules/react'),
-          useSiteMetadata: path.resolve('./src/components/lib/useSiteMetadata'),
         },
         extensions: ['js'],
       },

@@ -1,7 +1,7 @@
 import React from 'react';
 import { fetch, window } from 'global';
 import { useOnMount, useSetState } from 'react-hanger';
-import useSiteMetadata from 'useSiteMetadata';
+import useSiteMetadata from '../lib/useSiteMetadata';
 
 import { Cardinal } from '../basics';
 

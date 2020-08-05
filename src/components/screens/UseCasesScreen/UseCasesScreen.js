@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { styles } from '@storybook/design-system';
-import useSiteMetadata from 'useSiteMetadata';
+import useSiteMetadata from '../../lib/useSiteMetadata';
 import PageTitle from '../../layout/PageTitle';
 import SocialProof from '../../layout/SocialProof';
 import ValueProp from '../../layout/ValueProp';

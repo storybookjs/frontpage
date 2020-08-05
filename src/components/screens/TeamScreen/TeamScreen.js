@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { styles } from '@storybook/design-system';
-import useSiteMetadata from 'useSiteMetadata';
+import useSiteMetadata from '../../lib/useSiteMetadata';
 import PageTitle from '../../layout/PageTitle';
 import TeamItem from './TeamItem';
 import ContributorItem from './ContributorItem';

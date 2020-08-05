@@ -127,15 +127,15 @@ export const mdFormatting = css`
   .remark-header-link {
     display: inline-flex;
     position: absolute;
-    top: 3px;
+    top: 50%;
     left: 0;
     display: flex;
     transition: transform 250ms ease-out;
-    transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, -50%, 0);
     padding-right: 10px;
 
     &:hover {
-      transform: translate3d(-100%, -1px, 0);
+      transform: translate3d(-100%, calc(-50% - 1px), 0);
 
       path {
         fill: ${color.dark};

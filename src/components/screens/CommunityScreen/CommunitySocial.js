@@ -2,8 +2,8 @@ import React from 'react';
 
 import styled from 'styled-components';
 import { styles } from '@storybook/design-system';
-import useSiteMetadata from 'useSiteMetadata';
 
+import useSiteMetadata from '../../lib/useSiteMetadata';
 import GitHubSVG from '../../../images/logos/social/github.svg';
 import TwitterSVG from '../../../images/logos/social/twitter.svg';
 import MediumSVG from '../../../images/logos/social/medium.svg';

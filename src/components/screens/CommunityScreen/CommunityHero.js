@@ -5,7 +5,7 @@ import GitHubButton from 'react-github-button';
 import 'react-github-button/assets/style.css';
 
 import { styles } from '@storybook/design-system';
-import useSiteMetadata from 'useSiteMetadata';
+import useSiteMetadata from '../../lib/useSiteMetadata';
 import { Cardinal } from '../../basics';
 
 import ConfirmedMailingList from '../../layout/ConfirmedMailingList';

@@ -16,7 +16,7 @@ import {
   styles,
 } from '@storybook/design-system';
 
-import useSiteMetadata from 'useSiteMetadata';
+import useSiteMetadata from '../../lib/useSiteMetadata';
 import { Cardinal, Video } from '../../basics';
 
 import PlaceholderAspectRatio from '../../layout/PlaceholderAspectRatio';

@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 import { global, styles } from '@storybook/design-system';
 import styled from 'styled-components';
 
-import useSiteMetadata from 'useSiteMetadata';
+import useSiteMetadata from '../../lib/useSiteMetadata';
 
 import Release from './Release';
 import TableOfContents from './TableOfContents';
