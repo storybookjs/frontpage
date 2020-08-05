@@ -70,10 +70,10 @@ const GithubLinkItem = styled(Link)`
   font-size: ${typography.size.s2}px;
 `;
 
-function CodeSnippets({ snippets, ...rest }) {
+function CodeSnippets({ derp, snippets, ...rest }) {
   // TODO: Change hardcoded 'react' to use the pageContext's framework
   const snippetsByFramework = snippets.filter(({ metadata }) => metadata.framework === 'react');
-  return snippetsByFramework.map(({ metadata, Snippet }) => <Snippet />);
+  return snippetsByFramework.map(({ metadata, default: Snippet }) => <Snippet />);
 }
 
 function DocsScreen({ data, pageContext }) {
