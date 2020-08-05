@@ -5,7 +5,7 @@ const siteMetadata = require('../site-metadata.js');
 module.exports = {
   stories: ['../src/**/*.stories.@(js|ts|tsx)'],
   addons: ['@storybook/addon-actions', '@storybook/addon-links'],
-  webpackFinal: async (config) => {
+  webpack: async (config) => {
     const coreJsLocationOfRoot = p.join(__dirname, '..', 'node_modules');
     const coreJsLocationOfGatsby = p.join(
       __dirname,
@@ -43,13 +43,8 @@ module.exports = {
       require.resolve('babel-plugin-remove-graphql-queries'),
     ];
 
-    config.module.rules.push({
-      test: /\.mdx?$/,
-      use: ['babel-loader', '@mdx-js/loader'],
-    });
-
     // TODO: Figure out why Gatsby is throwing this error:
-    // 'The result of this StaticQuery could not be fetched & remove this alias.
+    // 'The result of this StaticQuery could not be fetched' & remove this alias.
     ['.', '..', '../..', '../../..'].forEach((pathPrefix) => {
       config.resolve.alias = {
         ...config.resolve.alias,
