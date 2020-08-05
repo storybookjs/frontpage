@@ -2,11 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { Link, styles } from '@storybook/design-system';
+import useSiteMetadata from 'useSiteMetadata';
 import PageTitle from '../../layout/PageTitle';
 import Feature from '../../layout/Feature';
 import FeaturesLayout from '../../layout/FeaturesLayout';
 
-import useSiteMetadata from '../../lib/useSiteMetadata';
 import { SocialGraph } from '../../basics';
 import GitHubSVG from '../../../images/logos/social/github.svg';
 import DiscordSVG from '../../../images/logos/social/discord.svg';

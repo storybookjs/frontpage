@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { Button, Icon, Subheading, styles } from '@storybook/design-system';
-import useSiteMetadata from '../../lib/useSiteMetadata';
+import useSiteMetadata from 'useSiteMetadata';
 
 import { SocialGraph } from '../../basics';
 import PageTitle from '../../layout/PageTitle';

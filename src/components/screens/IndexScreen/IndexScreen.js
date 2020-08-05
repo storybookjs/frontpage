@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { Button, Link, styles } from '@storybook/design-system';
-import useSiteMetadata from '../../lib/useSiteMetadata';
+import useSiteMetadata from 'useSiteMetadata';
 
 import { SocialGraph, Video } from '../../basics';
 import Hero from './Hero';

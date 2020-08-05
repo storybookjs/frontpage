@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { Link, styles } from '@storybook/design-system';
-import useSiteMetadata from '../../lib/useSiteMetadata';
+import useSiteMetadata from 'useSiteMetadata';
 
 import { LazyLoad } from '../../basics';
 import CustomSVG from '../../../images/addons/custom.svg';

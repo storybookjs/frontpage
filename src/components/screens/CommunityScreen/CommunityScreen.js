@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { rgba } from 'polished';
 
 import { Button, Icon, styles } from '@storybook/design-system';
-import useSiteMetadata from '../../lib/useSiteMetadata';
+import useSiteMetadata from 'useSiteMetadata';
 
 import { LazyLoad, SocialGraph } from '../../basics';
 import CommunityHero from './CommunityHero';

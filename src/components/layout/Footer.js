@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Link as GatsbyLink } from 'gatsby';
 
 import { Icon, Link, Subheading, styles } from '@storybook/design-system';
-import useSiteMetadata from '../lib/useSiteMetadata';
+import useSiteMetadata from 'useSiteMetadata';
 
 import ConfirmedMailingList from './ConfirmedMailingList';
 

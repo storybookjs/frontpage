@@ -1,10 +1,11 @@
 /* eslint-disable no-param-reassign, global-require */
 const p = require('path');
+const siteMetadata = require('../site-metadata.js');
 
 module.exports = {
   stories: ['../src/**/*.stories.@(js|ts|tsx)'],
   addons: ['@storybook/addon-actions', '@storybook/addon-links'],
-  webpack: async config => {
+  webpack: async (config) => {
     const coreJsLocationOfRoot = p.join(__dirname, '..', 'node_modules');
     const coreJsLocationOfGatsby = p.join(
       __dirname,
@@ -48,6 +49,11 @@ module.exports = {
         resolveFrom: [coreJsLocationOfRoot, coreJsLocationOfGatsby],
       })
     );
+
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      useSiteMetadata: p.resolve(__dirname, './useSiteMetadata.js'),
+    };
 
     return config;
   },

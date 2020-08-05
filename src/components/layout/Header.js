@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 import { Link as GatsbyLink } from 'gatsby';
 
 import { Icon, Link, TooltipLinkList, WithTooltip, styles } from '@storybook/design-system';
-import useSiteMetadata from '../lib/useSiteMetadata';
+import useSiteMetadata from 'useSiteMetadata';
 
 import StorybookLogoSVG from '../../images/logo-storybook.svg';
 
