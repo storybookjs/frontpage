@@ -37,4 +37,12 @@ module.exports = {
     ],
     'max-classes-per-file': 'off',
   },
+  settings: {
+    'import/resolver': {
+      alias: {
+        map: [['useSiteMetadata', './src/components/lib/useSiteMetadata']],
+        extensions: ['.ts', '.js'],
+      },
+    },
+  },
 };
