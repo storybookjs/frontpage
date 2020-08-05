@@ -70,10 +70,35 @@ const GithubLinkItem = styled(Link)`
   font-size: ${typography.size.s2}px;
 `;
 
-function CodeSnippets({ snippets, ...rest }) {
-  // TODO: Change hardcoded 'react' to use the pageContext's framework
-  const snippetsByFramework = snippets.filter(({ metadata }) => metadata.framework === 'react');
-  return snippetsByFramework.map(({ metadata, default: Snippet }) => <Snippet />);
+function CodeSnippet({ path }) {
+  const [Component, setComponent] = React.useState(null);
+
+  React.useEffect(() => {
+    // Important: this base path has to be present at the beginning of the import
+    // (it cannot be a variable) because Webpack needs to know about it to make
+    // sure that the MDX files are apart of the bundle.
+    // See: https://github.com/webpack/webpack/issues/6680#issuecomment-370800037
+    import(`../../../content/docs/snippets/${path}`).then(({ default: ModuleComponent }) => {
+      setComponent(
+        <StyledHighlight withHTMLChildren={false}>
+          <ModuleComponent />
+        </StyledHighlight>
+      );
+    });
+  }, []);
+
+  return Component;
+}
+
+function CodeSnippets({ paths, ...rest }) {
+  const activeFrameworkPaths = paths.filter((path) => {
+    const [framework] = path.split('/');
+    return framework === 'react' || framework === 'common';
+  });
+
+  if (!activeFrameworkPaths.length) return null;
+
+  return activeFrameworkPaths.map((path) => <CodeSnippet key={path} path={path} />);
 }
 
 function DocsScreen({ data, pageContext }) {
