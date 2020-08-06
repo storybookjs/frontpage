@@ -92,7 +92,8 @@
     "fork-ts-checker-webpack-plugin": "^5.0.6",
     "prettier": "^2.0.5",
     "prettier-eslint": "^11.0.0",
-    "webfontloader": "^1.6.28"
+    "webfontloader": "^1.6.28",
+    "webpack": "^4.43.0"
   },
   "repository": {
     "type": "git",

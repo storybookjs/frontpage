@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign, global-require */
 const p = require('path');
-const siteMetadata = require('../site-metadata.js');
 const webpack = require('webpack');
+const siteMetadata = require('../site-metadata.js');
 
 module.exports = {
   stories: ['../src/**/*.stories.@(js|ts|tsx)'],
