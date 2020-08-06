@@ -2930,11 +2930,12 @@
   dependencies:
     lodash "^4.17.15"
 
-"@storybook/design-system@^5.1.11":
-  version "5.1.11"
-  resolved "https://registry.yarnpkg.com/@storybook/design-system/-/design-system-5.1.11.tgz#80fbeca6265a6c31cc84a798b441e1982db22817"
-  integrity sha512-yAptLkvs0JLzqgn1k7qVK/Q4Oi2vDz8+x0C4hqtFmpWchrxbesTN2UpwC+H0/G6Blfz9Y/eJNaiqDLK9RdWApw==
+"@storybook/design-system@^5.1.12":
+  version "5.1.12"
+  resolved "https://registry.yarnpkg.com/@storybook/design-system/-/design-system-5.1.12.tgz#173f76c9726ac4b51fbad362a27eb2e242eb75ba"
+  integrity sha512-JiunMZPD5eM56oK9eMgPJVeWWOO7+HHUN7FlK8rKsOLd5LAEfLRjFttQqqxKQ4ZP29TBxCS0eAPeC4lOzcJn9A==
   dependencies:
+    copy-to-clipboard "^3.3.1"
     polished "^3.6.4"
     prismjs "1.20.0"
     prop-types "^15.5.4"
@@ -6656,7 +6657,7 @@ copy-descriptor@^0.1.0:
   resolved "https://registry.yarnpkg.com/copy-descriptor/-/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
   integrity sha1-Z29us8OZl8LuGsOpJP1hJHSPV40=
 
-copy-to-clipboard@^3.0.8:
+copy-to-clipboard@^3.0.8, copy-to-clipboard@^3.3.1:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/copy-to-clipboard/-/copy-to-clipboard-3.3.1.tgz#115aa1a9998ffab6196f93076ad6da3b913662ae"
   integrity sha512-i13qo6kIHTTpCm8/Wup+0b1mVWETvu2kIMzKoK8FpkLkFxlt0znUAHcMzox+T8sPlqtZXq3CulEjQHsYiGFJUw==
