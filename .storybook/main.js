@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign, global-require */
 const p = require('path');
 const siteMetadata = require('../site-metadata.js');
+const webpack = require('webpack');
 
 module.exports = {
   stories: ['../src/**/*.stories.@(js|ts|tsx)'],
@@ -43,20 +44,20 @@ module.exports = {
       require.resolve('babel-plugin-remove-graphql-queries'),
     ];
 
-    // TODO: Figure out why Gatsby is throwing this error:
-    // 'The result of this StaticQuery could not be fetched' & remove this alias.
-    ['.', '..', '../..', '../../..'].forEach((pathPrefix) => {
-      config.resolve.alias = {
-        ...config.resolve.alias,
-        [`${pathPrefix}/lib/useSiteMetadata`]: p.resolve(__dirname, './useSiteMetadata.js'),
-      };
-    });
-
     config.plugins.unshift(
       // eslint-disable-next-line new-cap
       new CoreJSUpgradeWebpackPlugin.default({
         resolveFrom: [coreJsLocationOfRoot, coreJsLocationOfGatsby],
       })
+    );
+
+    // TODO: Figure out why Gatsby is throwing this error:
+    // 'The result of this StaticQuery could not be fetched' & remove this alias.
+    config.plugins.unshift(
+      new webpack.NormalModuleReplacementPlugin(
+        /lib\/useSiteMetadata\.js/,
+        '../../../.storybook/useSiteMetadata.js'
+      )
     );
 
     return config;

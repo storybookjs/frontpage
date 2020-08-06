@@ -72,26 +72,26 @@ export function CodeSnippets({ paths, ...rest }) {
   useEffect(() => {
     async function fetchModuleComponents() {
       const fetchedSnippets = await Promise.all(
-        activeFrameworkPaths.map((path, index) => {
+        activeFrameworkPaths.map(async (path, index) => {
           const [framework, fileName] = path.split('/');
           const [_, syntax] = fileName.split('.');
-          const isFrameworkSpecific = framework !== COMMON;
-          const prettifiedSyntax = prettifySyntax(syntax);
           // Important: this base path has to be present at the beginning of the import
           // (it cannot be a variable) because Webpack needs to know about it to make
-          // sure that the MDX files are apart of the bundle.
+          // sure that the MDX files are available to import.
           // See: https://github.com/webpack/webpack/issues/6680#issuecomment-370800037
-          return import(`../../../content/docs/snippets/${path}`).then(
-            ({ default: ModuleComponent }) => ({
-              id: `${framework}-${syntax}`,
-              Snippet: ModuleComponent,
-              framework,
-              syntax,
-              renderTabLabel: ({ isActive }) => (
-                <TabLabel framework={framework} isActive={isActive} syntax={syntax} />
-              ),
-            })
+          const { default: ModuleComponent } = await import(
+            `../../../content/docs/snippets/${path}`
           );
+
+          return {
+            id: `${framework}-${syntax}`,
+            Snippet: ModuleComponent,
+            framework,
+            syntax,
+            renderTabLabel: ({ isActive }) => (
+              <TabLabel framework={framework} isActive={isActive} syntax={syntax} />
+            ),
+          };
         })
       );
       setSnippets(fetchedSnippets);
