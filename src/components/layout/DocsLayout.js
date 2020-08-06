@@ -176,7 +176,7 @@ function DocsLayout({ children, data, pageContext, ...props }) {
 export default DocsLayout;
 
 export const query = graphql`
-  fragment DocsLayoutCurrentPageQuery on MarkdownRemark {
+  fragment DocsLayoutCurrentPageQuery on Mdx {
     fields {
       slug
     }

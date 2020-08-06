@@ -2,10 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 import DocsScreen from './DocsScreen';
+import compiledMDX from '../../../../.storybook/compiled-mdx';
 
 const data = {
   currentPage: {
-    html: 'html content',
+    body: compiledMDX,
     frontmatter: {
       title: 'Docs Screen Title',
     },

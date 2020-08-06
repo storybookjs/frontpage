@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Highlight, styles } from '@storybook/design-system';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 import ConfirmedMailingList from '../../layout/ConfirmedMailingList';
 
@@ -45,11 +46,13 @@ const StyledConfirmedMailingList = styled(ConfirmedMailingList)`
   min-width: auto;
 `;
 
-function Release({ title, html, ...props }) {
+function Release({ title, body, ...props }) {
   return (
     <Wrapper {...props}>
       <Title>{title}</Title>
-      <Highlight>{html}</Highlight>
+      <Highlight withHTMLChildren={false}>
+        <MDXRenderer>{body}</MDXRenderer>
+      </Highlight>
       <EmailWrapper>
         <Heading>Join the mailing list</Heading>
         <Message>Get news, free tutorials, and Storybook tips emailed to you.</Message>
@@ -60,7 +63,7 @@ function Release({ title, html, ...props }) {
 }
 
 Release.propTypes = {
-  html: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
 };
 
