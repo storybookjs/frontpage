@@ -53,6 +53,13 @@ const snippets = [
   },
 ];
 
+const snippetsWithoutBadges = snippets.map((snippet, index) => ({
+  ...snippet,
+  renderTabLabel: ({ isActive }) => (
+    <TabLabel framework="common" isActive={isActive} syntax={index === 0 ? 'mdx' : 'stories-of'} />
+  ),
+}));
+
 const Wrapper = styled.div`
   ${mdFormatting}
   padding: 10px;
@@ -71,3 +78,5 @@ export default {
 export const Base = () => <PureCodeSnippets snippets={[snippets[0]]} />;
 
 export const Multiple = () => <PureCodeSnippets snippets={snippets} />;
+
+export const MultipleWithoutBadges = () => <PureCodeSnippets snippets={snippetsWithoutBadges} />;
