@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 import { Badge, CodeSnippets as DesignSystemCodeSnippets, styles } from '@storybook/design-system';
 
