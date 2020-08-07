@@ -87,7 +87,6 @@ export function FrameworkSelector({ currentFramework, frameworks, slug, tooltipP
         as="span"
         {...tooltipProps}
       >
-        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
         <FrameworkLink isButton appearance="secondary">
           {stylizeFramework(currentFramework)}
         </FrameworkLink>

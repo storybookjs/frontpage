@@ -112,7 +112,7 @@ function DocsScreen({ data, pageContext }) {
   let featureSupportItem;
   const findFeatureSupportTocItem = (tocItems) =>
     tocItems.forEach((item) => {
-      if (item.pathSegment && item.pathSegment.match(/feature\-support/)) {
+      if (item.pathSegment && item.pathSegment.match(/feature-support/)) {
         featureSupportItem = item;
       }
 
