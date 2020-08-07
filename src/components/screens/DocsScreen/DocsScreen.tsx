@@ -77,6 +77,7 @@ const GithubLinkItem = styled(Link)`
 `;
 
 const UnsupportedBanner = styled.div`
+  margin: 26px 0;
   border-radius: ${spacing.borderRadius.small}px;
   background-color: #fff5cf;
   padding: 20px;
