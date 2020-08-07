@@ -3,7 +3,7 @@ const path = require('path');
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
 const { toc: docsToc } = require('./src/content/docs/toc');
-const buildSlugWithFramework = require('./src/util/build-slug-with-framework');
+const buildPathWithFramework = require('./src/util/build-path-with-framework');
 
 const githubDocsBaseUrl = 'https://github.com/storybookjs/storybook/tree/next';
 const addStateToToc = (items, pathPrefix = '/docs/') =>
@@ -176,7 +176,7 @@ exports.createPages = ({ actions, graphql }) => {
 
                 frameworks.forEach((framework) => {
                   createPage({
-                    path: buildSlugWithFramework(slug, framework),
+                    path: buildPathWithFramework(slug, framework),
                     component: path.resolve(`./src/components/screens/DocsScreen/DocsScreen.tsx`),
                     context: {
                       pageType,
@@ -212,7 +212,7 @@ exports.createPages = ({ actions, graphql }) => {
             fromPath: `/docs/`,
             isPermanent: false,
             redirectInBrowser: true,
-            toPath: buildSlugWithFramework(firstDocsPageSlug, frameworks[0]),
+            toPath: buildPathWithFramework(firstDocsPageSlug, frameworks[0]),
           });
         }
 
