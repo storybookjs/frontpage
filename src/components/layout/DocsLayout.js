@@ -5,7 +5,7 @@ import {
   Icon,
   Input,
   Link,
-  StyledButton,
+  Button,
   TableOfContents,
   TooltipNote,
   WithTooltip,
@@ -28,16 +28,41 @@ const bottomSpacing = css`
 
 const Sidebar = styled.div`
   position: sticky;
-  padding-top: 10px;
-  padding-right: 20px;
-  margin-right: 56px;
-  margin-top: -10px;
   top: 0;
   max-height: 100vh;
-  width: 276px;
-  min-width: 276px;
-  overflow: scroll;
+  padding-right: 20px;
+  margin-right: 20px;
+
+  flex: 0 1 240px;
+
+  /* So that the expandable arrows are rendered outside of the sidebar dimensions */
+  margin-left: -20px;
+  padding-left: 20px;
+
+  overflow-x: hidden;
+  overflow-y: auto;
   ${bottomSpacing}
+
+  &::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    transition: all 150ms ease-out;
+    border-radius: 1em;
+    background: rgba(0, 0, 0, 0.07);
+    &:hover {
+      background: rgba(0, 0, 0, 0.17);
+    }
+    &:active {
+      background: rgba(0, 0, 0, 0.27);
+    }
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
 
   @media (max-width: ${breakpoint * 1.333 - 1}px) {
     flex: none;
@@ -49,13 +74,19 @@ const Sidebar = styled.div`
 
 const SidebarControls = styled.div`
   display: flex;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: ${color.lightest};
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  margin-left: -20px;
+  padding-left: 20px;
 `;
 
 const Content = styled.div`
   ${bottomSpacing}
   overflow: hidden;
-  margin-left: -${contentLeftPadding}px;
-  margin-right: -${contentRightPadding}px;
 `;
 
 const Wrapper = styled.div`
@@ -73,28 +104,16 @@ const Wrapper = styled.div`
 `;
 
 const StyledTableOfContents = styled(TableOfContents)`
-  margin-top: 32px;
+  margin-top: 1rem;
+  /* So that the expandable arrows are rendered outside of the sidebar dimensions */
+  margin-left: -20px;
 `;
 
-const ExpandCollapseButton = styled(StyledButton).attrs({ appearance: 'outline' })`
+const StyledButton = styled(Button)`
   padding: 0;
   width: 28px;
   height: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
   margin-left: 10px;
-
-  svg {
-    width: 10px;
-    height: 10px;
-    margin: 0;
-
-    &:last-of-type {
-      margin-top: -2px;
-    }
-  }
 `;
 
 function DocsLayout({ children, data, pageContext, ...props }) {
@@ -117,7 +136,7 @@ function DocsLayout({ children, data, pageContext, ...props }) {
     placement: 'top',
     trigger: 'hover',
     hasChrome: false,
-    as: ExpandCollapseButton,
+    as: 'span',
   };
 
   return (
@@ -142,22 +161,22 @@ function DocsLayout({ children, data, pageContext, ...props }) {
                       {...withTooltipProps}
                       tooltip={<TooltipNote note="Collapse all" />}
                       onClick={toggleAllClosed}
+                      tabIndex="-1"
                     >
-                      <>
+                      <StyledButton containsIcon appearance="outline">
                         <Icon icon="arrowdown" />
-                        <Icon icon="arrowup" />
-                      </>
+                      </StyledButton>
                     </WithTooltip>
                   ) : (
                     <WithTooltip
                       {...withTooltipProps}
                       tooltip={<TooltipNote note="Expand all" />}
                       onClick={toggleAllOpen}
+                      tabIndex="-1"
                     >
-                      <>
-                        <Icon icon="arrowup" />
-                        <Icon icon="arrowdown" />
-                      </>
+                      <StyledButton containsIcon appearance="outline">
+                        <Icon icon="expandalt" />
+                      </StyledButton>
                     </WithTooltip>
                   )}
                 </SidebarControls>
