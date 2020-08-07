@@ -1,4 +1,4 @@
-const { frameworks, frameworkSupport } = require('./src/content/docs/frameworks');
+const { frameworks, features } = require('./src/content/docs/frameworks');
 
 const gitHubOrg = `https://github.com/storybookjs`;
 const homepageUrl = `https://storybook.js.org`;
@@ -13,7 +13,7 @@ const siteMetadata = {
   latestVersion: 'v5.3',
   contributorCount: 1035,
   frameworks,
-  frameworkSupport,
+  features,
   urls: {
     gitHubOrg,
     homepageUrl,

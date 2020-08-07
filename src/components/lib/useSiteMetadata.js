@@ -12,8 +12,8 @@ const useSiteMetadata = () => {
           latestVersion
           contributorCount
           frameworks
-          frameworkSupport {
-            feature
+          features {
+            name
             supported
             unsupported
             path

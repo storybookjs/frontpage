@@ -14,6 +14,7 @@ import {
 
 import { graphql } from 'gatsby';
 import { CodeSnippets } from './CodeSnippets';
+import { frameworkSupportsFeature, FrameworkSupportTable } from './FrameworkSupportTable';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 
@@ -81,17 +82,24 @@ function DocsScreen({ data, pageContext }) {
       frontmatter: { title },
     },
   } = data;
-  const { frameworkSupport } = useSiteMetadata();
+  const { features } = useSiteMetadata();
   const { framework, slug, tocItem, nextTocItem } = pageContext;
   const CodeSnippetsWithPageContext = useMemo(() => {
     return (props) => <CodeSnippets pageContext={pageContext} {...props} />;
   }, []); // TODO: Make this dependent on the framework when it is available
 
-  const support = frameworkSupport.find((fs) => `/docs${fs.path}/` === slug);
-  const unsupported =
-    support &&
-    ((support.unsupported && support.unsupported.includes(framework)) ||
-      (support.supported && !support.supported.includes(framework)));
+  const FrameworkSupportTableWithFeaturesAndCurrentFramework = useMemo(() => {
+    return ({ frameworks }) => (
+      <FrameworkSupportTable
+        frameworks={frameworks}
+        currentFramework={framework}
+        features={features}
+      />
+    );
+  }, []);
+
+  const feature = features.find((fs) => `/docs${fs.path}/` === slug);
+  const unsupported = feature && !frameworkSupportsFeature(framework, feature);
 
   return (
     <>
@@ -99,7 +107,12 @@ function DocsScreen({ data, pageContext }) {
         <MDWrapper>
           <Title>{title}</Title>
           {unsupported && <div>FRAMEWORK UNSUPPORTED</div>}
-          <MDXProvider components={{ CodeSnippets: CodeSnippetsWithPageContext }}>
+          <MDXProvider
+            components={{
+              CodeSnippets: CodeSnippetsWithPageContext,
+              FrameworkSupportTable: FrameworkSupportTableWithFeaturesAndCurrentFramework,
+            }}
+          >
             <StyledHighlight withHTMLChildren={false}>
               <MDXRenderer>{body}</MDXRenderer>
             </StyledHighlight>
