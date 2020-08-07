@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Link, Subheading, TooltipLinkList, styles, WithTooltip } from '@storybook/design-system';
 
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
-import buildSlugWithFramework from '../../../util/build-slug-with-framework';
+import buildPathWithFramework from '../../../util/build-path-with-framework';
 import stylizeFramework from '../../../util/stylize-framework';
 
 const { color, typography } = styles;
@@ -59,7 +59,7 @@ export function FrameworkSelector({ currentFramework, frameworks, slug, tooltipP
   const links = frameworks.map((framework) => ({
     framework,
     LinkWrapper: GatsbyLinkWrapper,
-    href: buildSlugWithFramework(slug, framework),
+    href: buildPathWithFramework(slug, framework),
     title: (
       <FrameworkSelectorTitle>
         <img src={`/frameworks/logo-${framework}.svg`} alt={stylizeFramework(framework)} />
