@@ -19,6 +19,7 @@ import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 
 import { mdFormatting } from '../../../styles/formatting';
+import buildSlugWithFramework from '../../../util/build-slug-with-framework';
 
 const { color, typography } = styles;
 
@@ -126,7 +127,7 @@ function DocsScreen({ data, pageContext }) {
               action={
                 <Button
                   appearance="secondary"
-                  href={nextTocItem.path}
+                  href={buildSlugWithFramework(nextTocItem.path, framework)}
                   ButtonWrapper={GatsbyLinkWrapper}
                 >
                   Continue

@@ -18,6 +18,7 @@ import { SocialGraph } from '../basics';
 import GatsbyLinkWrapper from '../basics/GatsbyLinkWrapper';
 
 import { contentLeftPadding, contentRightPadding } from '../screens/DocsScreen/DocsScreen';
+import buildSlugWithFramework from '../../util/build-slug-with-framework';
 
 const { breakpoint, color, pageMargins, typography } = styles;
 const { GlobalStyle } = global;
@@ -103,7 +104,7 @@ function DocsLayout({ children, data, pageContext, ...props }) {
       fields: { slug },
     },
   } = data;
-  const { docsToc, tocItem, nextTocItem } = pageContext;
+  const { docsToc, framework } = pageContext;
 
   const addLinkWrappers = (items) =>
     items.map((item) => ({
@@ -125,7 +126,10 @@ function DocsLayout({ children, data, pageContext, ...props }) {
       <GlobalStyle />
       <Wrapper>
         <Sidebar>
-          <StyledTableOfContents currentPath={slug} items={docsTocWithLinkWrappers}>
+          <StyledTableOfContents
+            currentPath={buildSlugWithFramework(slug, framework)}
+            items={docsTocWithLinkWrappers}
+          >
             {({ menu, allTopLevelMenusAreOpen, toggleAllOpen, toggleAllClosed }) => (
               <>
                 <SidebarControls>

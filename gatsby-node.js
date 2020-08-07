@@ -1,7 +1,9 @@
 const path = require('path');
-const { toc: docsToc } = require('./src/content/docs/toc');
 
 const { createFilePath } = require(`gatsby-source-filesystem`);
+
+const { toc: docsToc } = require('./src/content/docs/toc');
+const buildSlugWithFramework = require('./src/util/build-slug-with-framework');
 
 const githubDocsBaseUrl = 'https://github.com/storybookjs/storybook/tree/next';
 const addStateToToc = (items, pathPrefix = '/docs/') =>
@@ -66,12 +68,6 @@ exports.onCreatePage = ({ page, actions }) => {
     page.context.layout = 'docs';
   }
 };
-
-function docSlugWithFramework(slug, framework) {
-  const parts = slug.split('/');
-  parts.splice(2, 0, framework);
-  return parts.join('/');
-}
 
 exports.createPages = ({ actions, graphql }) => {
   const { createRedirect, createPage } = actions;
@@ -162,6 +158,12 @@ exports.createPages = ({ actions, graphql }) => {
         const docsPagesEdgesBySlug = Object.fromEntries(
           docsPagesEdges.map((edge) => [edge.node.fields.slug, edge])
         );
+        const docsTocByFramework = Object.fromEntries(
+          frameworks.map((framework) => [
+            framework,
+            addStateToToc(docsTocWithPaths, `/docs/${framework}/`),
+          ])
+        );
         const createDocsPages = (tocItems) => {
           tocItems.forEach((tocItem, index) => {
             const { path: docsPagePath, children } = tocItem;
@@ -174,13 +176,13 @@ exports.createPages = ({ actions, graphql }) => {
 
                 frameworks.forEach((framework) => {
                   createPage({
-                    path: docSlugWithFramework(slug, framework),
+                    path: buildSlugWithFramework(slug, framework),
                     component: path.resolve(`./src/components/screens/DocsScreen/DocsScreen.tsx`),
                     context: {
                       pageType,
                       slug,
                       framework,
-                      docsToc: docsTocWithPaths,
+                      docsToc: docsTocByFramework[framework],
                       tocItem,
                       ...(nextTocItem &&
                         nextTocItem.type === 'bullet-link' && {
@@ -210,7 +212,7 @@ exports.createPages = ({ actions, graphql }) => {
             fromPath: `/docs/`,
             isPermanent: false,
             redirectInBrowser: true,
-            toPath: docSlugWithFramework(firstDocsPageSlug, frameworks[0]),
+            toPath: buildSlugWithFramework(firstDocsPageSlug, frameworks[0]),
           });
         }
 
