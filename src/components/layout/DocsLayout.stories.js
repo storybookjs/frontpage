@@ -117,7 +117,7 @@ export const pageContext = {
       type: 'menu',
       children: [
         {
-          path: '/introduction/',
+          path: '/essentials-introduction/',
           title: 'Introduction',
           type: 'link',
         },
