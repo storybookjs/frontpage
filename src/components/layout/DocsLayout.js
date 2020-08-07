@@ -22,14 +22,9 @@ import { contentLeftPadding, contentRightPadding } from '../screens/DocsScreen/D
 const { breakpoint, color, pageMargins, typography } = styles;
 const { GlobalStyle } = global;
 
-const bottomSpacing = css`
-  padding-bottom: 3rem;
-`;
-
 const Sidebar = styled.div`
   flex: 0 1 240px;
   padding-right: 20px;
-  ${bottomSpacing}
 
   &:hover {
     &::-webkit-scrollbar {
@@ -70,21 +65,18 @@ const Sidebar = styled.div`
 const SidebarControls = styled.div`
   display: flex;
 
-  z-index: 2;
-  background: ${color.lightest};
+  /* the input */
+  > :first-child {
+    margin-right: 10px;
+  }
 `;
 
 const Content = styled.div`
-  ${bottomSpacing}
   overflow: hidden;
 `;
 
 const Wrapper = styled.div`
   ${pageMargins}
-
-  && {
-    padding-bottom: 0;
-  }
 
   @media (min-width: ${breakpoint * 1.333}px) {
     padding-top: 4rem;
@@ -97,10 +89,6 @@ const StyledTableOfContents = styled(TableOfContents)`
   margin-top: 2rem;
   /* So that the expandable arrows are rendered outside of the sidebar dimensions */
   margin-left: -20px;
-`;
-
-const StyledButton = styled(Button)`
-  margin-left: 10px;
 `;
 
 function DocsLayout({ children, data, pageContext, ...props }) {
@@ -150,9 +138,9 @@ function DocsLayout({ children, data, pageContext, ...props }) {
                       onClick={toggleAllClosed}
                       tabIndex="-1"
                     >
-                      <StyledButton containsIcon appearance="outline" size="small">
+                      <Button containsIcon appearance="outline" size="small">
                         <Icon icon="collapse" aria-label="Collapse sidebar" />
-                      </StyledButton>
+                      </Button>
                     </WithTooltip>
                   ) : (
                     <WithTooltip
@@ -161,9 +149,9 @@ function DocsLayout({ children, data, pageContext, ...props }) {
                       onClick={toggleAllOpen}
                       tabIndex="-1"
                     >
-                      <StyledButton containsIcon appearance="outline" size="small">
+                      <Button containsIcon appearance="outline" size="small">
                         <Icon icon="expandalt" aria-label="Expand sidebar" />
-                      </StyledButton>
+                      </Button>
                     </WithTooltip>
                   )}
                 </SidebarControls>
