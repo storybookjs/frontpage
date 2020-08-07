@@ -69,7 +69,7 @@ exports.onCreatePage = ({ page, actions }) => {
 
 function docSlugWithFramework(slug, framework) {
   const parts = slug.split('/');
-  parts.splice(1, 0, framework);
+  parts.splice(2, 0, framework);
   return parts.join('/');
 }
 
@@ -173,12 +173,12 @@ exports.createPages = ({ actions, graphql }) => {
                 const nextTocItem = tocItems[index + 1];
 
                 frameworks.forEach((framework) => {
-                  const frameworkSlug = createPage({
-                    path: slug,
+                  createPage({
+                    path: docSlugWithFramework(slug, framework),
                     component: path.resolve(`./src/components/screens/DocsScreen/DocsScreen.tsx`),
                     context: {
                       pageType,
-                      slug: docSlugWithFramework(slug, framework),
+                      slug,
                       framework,
                       docsToc: docsTocWithPaths,
                       tocItem,
