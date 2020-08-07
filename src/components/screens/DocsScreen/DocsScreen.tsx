@@ -1,23 +1,27 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import styled from 'styled-components';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import {
   Button,
-  Badge,
   Highlight,
   Link,
   ShadowBoxCTA,
   Subheading,
   styles,
 } from '@storybook/design-system';
+
 import { graphql } from 'gatsby';
 import { CodeSnippets } from './CodeSnippets';
+import { frameworkSupportsFeature, FrameworkSupportTable } from './FrameworkSupportTable';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
+import useSiteMetadata from '../../lib/useSiteMetadata';
 
 import { mdFormatting } from '../../../styles/formatting';
+import buildPathWithFramework from '../../../util/build-path-with-framework';
+import stylizeFramework from '../../../util/stylize-framework';
 
-const { color, typography } = styles;
+const { color, spacing, typography } = styles;
 
 const Title = styled.div`
   color: ${color.darkest};
@@ -72,6 +76,13 @@ const GithubLinkItem = styled(Link)`
   font-size: ${typography.size.s2}px;
 `;
 
+const UnsupportedBanner = styled.div`
+  margin: 26px 0;
+  border-radius: ${spacing.borderRadius.small}px;
+  background-color: #fff5cf;
+  padding: 20px;
+`;
+
 function DocsScreen({ data, pageContext }) {
   const {
     currentPage: {
@@ -79,17 +90,63 @@ function DocsScreen({ data, pageContext }) {
       frontmatter: { title },
     },
   } = data;
-  const { tocItem, nextTocItem } = pageContext;
-  const CodeSnippetsWithPageContext = useMemo(() => {
-    return (props) => <CodeSnippets pageContext={pageContext} {...props} />;
-  }, []); // TODO: Make this dependent on the framework when it is available
+  const { features } = useSiteMetadata();
+  const { framework, docsToc, slug, tocItem, nextTocItem } = pageContext;
+  const CodeSnippetsWithCurrentFramework = useMemo(() => {
+    return (props) => <CodeSnippets currentFramework={framework} {...props} />;
+  }, [framework]);
+
+  const FrameworkSupportTableWithFeaturesAndCurrentFramework = useMemo(() => {
+    return ({ frameworks }) => (
+      <FrameworkSupportTable
+        frameworks={frameworks}
+        currentFramework={framework}
+        features={features}
+      />
+    );
+  }, [framework]);
+
+  const feature = features.find((fs) => `/docs${fs.path}/` === slug);
+  const unsupported = feature && !frameworkSupportsFeature(framework, feature);
+
+  let featureSupportItem;
+  const findFeatureSupportTocItem = (tocItems) =>
+    tocItems.forEach((item) => {
+      if (item.pathSegment && item.pathSegment.match(/feature-support/)) {
+        featureSupportItem = item;
+      }
+
+      if (item.children) {
+        findFeatureSupportTocItem(item.children);
+      }
+    });
+  findFeatureSupportTocItem(docsToc);
 
   return (
     <>
       <MDSpacing>
         <MDWrapper>
           <Title>{title}</Title>
-          <MDXProvider components={{ CodeSnippets: CodeSnippetsWithPageContext }}>
+          {unsupported && (
+            <UnsupportedBanner>
+              This feature is not supported in {stylizeFramework(framework)} yet. Help the open
+              source community by contributing a PR.
+              {featureSupportItem && (
+                <>
+                  {' '}
+                  <Link LinkWrapper={GatsbyLinkWrapper} href={featureSupportItem.path} withArrow>
+                    View feature coverage by framework
+                  </Link>
+                </>
+              )}
+            </UnsupportedBanner>
+          )}
+          <MDXProvider
+            components={{
+              CodeSnippets: CodeSnippetsWithCurrentFramework,
+              FrameworkSupportTable: FrameworkSupportTableWithFeaturesAndCurrentFramework,
+            }}
+          >
             <StyledHighlight withHTMLChildren={false}>
               <MDXRenderer>{body}</MDXRenderer>
             </StyledHighlight>
@@ -103,7 +160,7 @@ function DocsScreen({ data, pageContext }) {
               action={
                 <Button
                   appearance="secondary"
-                  href={nextTocItem.path}
+                  href={buildPathWithFramework(nextTocItem.path, framework)}
                   ButtonWrapper={GatsbyLinkWrapper}
                 >
                   Continue

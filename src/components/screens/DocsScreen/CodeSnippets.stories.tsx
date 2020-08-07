@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Highlight } from '@storybook/design-system';
 
-import { PureCodeSnippets, TabLabel } from './CodeSnippets';
+import { PureCodeSnippets, ModuleComponentWithMessage, TabLabel } from './CodeSnippets';
 import { mdFormatting } from '../../../styles/formatting';
 import compiledMDX from '../../../../.storybook/compiled-mdx';
 
@@ -35,7 +35,13 @@ function TSModuleComponent() {
 const snippets = [
   {
     id: `react-js`,
-    Snippet: JSModuleComponent,
+    Snippet: () => (
+      <ModuleComponentWithMessage
+        ModuleComponent={JSModuleComponent}
+        currentFramework="react"
+        withMissingMessaging={false}
+      />
+    ),
     framework: 'react',
     syntax: 'js',
     renderTabLabel: ({ isActive }) => (
@@ -44,7 +50,13 @@ const snippets = [
   },
   {
     id: `react-ts`,
-    Snippet: TSModuleComponent,
+    Snippet: () => (
+      <ModuleComponentWithMessage
+        ModuleComponent={TSModuleComponent}
+        currentFramework="react"
+        withMissingMessaging={false}
+      />
+    ),
     framework: 'react',
     syntax: 'ts',
     renderTabLabel: ({ isActive }) => (
@@ -57,6 +69,17 @@ const snippetsWithoutBadges = snippets.map((snippet, index) => ({
   ...snippet,
   renderTabLabel: ({ isActive }) => (
     <TabLabel framework="common" isActive={isActive} syntax={index === 0 ? 'mdx' : 'stories-of'} />
+  ),
+}));
+
+const snippetsWithMissingMessaging = snippets.map((snippet, index) => ({
+  ...snippet,
+  Snippet: () => (
+    <ModuleComponentWithMessage
+      ModuleComponent={TSModuleComponent}
+      currentFramework="angular"
+      withMissingMessaging
+    />
   ),
 }));
 
@@ -75,8 +98,18 @@ export default {
   decorators: [(storyFn) => <Wrapper>{storyFn()}</Wrapper>],
 };
 
-export const Base = () => <PureCodeSnippets snippets={[snippets[0]]} />;
+export const Base = () => <PureCodeSnippets currentFramework="react" snippets={[snippets[0]]} />;
 
-export const Multiple = () => <PureCodeSnippets snippets={snippets} />;
+export const Missing = () => (
+  <PureCodeSnippets currentFramework="angular" snippets={[snippetsWithMissingMessaging[0]]} />
+);
 
-export const MultipleWithoutBadges = () => <PureCodeSnippets snippets={snippetsWithoutBadges} />;
+export const Multiple = () => <PureCodeSnippets currentFramework="react" snippets={snippets} />;
+
+export const MultipleMissing = () => (
+  <PureCodeSnippets currentFramework="angular" snippets={snippetsWithMissingMessaging} />
+);
+
+export const MultipleWithoutBadges = () => (
+  <PureCodeSnippets currentFramework="react" snippets={snippetsWithoutBadges} />
+);

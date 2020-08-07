@@ -1,10 +1,17 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
-import { Badge, CodeSnippets as DesignSystemCodeSnippets, styles } from '@storybook/design-system';
+import {
+  Badge,
+  CodeSnippets as DesignSystemCodeSnippets,
+  Link,
+  styles,
+} from '@storybook/design-system';
 
-const { color } = styles;
+import stylizeFramework from '../../../util/stylize-framework';
+
+const { color, typography } = styles;
 
 const CodeSnippetFramework = styled.span`
   text-transform: capitalize;
@@ -36,6 +43,7 @@ const prettifySyntax = (syntax) => {
 };
 
 const COMMON = 'common';
+const DEFAULT_FRAMEWORK = 'react';
 
 export function TabLabel({ isActive, framework, syntax }) {
   const isFrameworkSpecific = framework !== COMMON;
@@ -61,18 +69,56 @@ export function PureCodeSnippets(props) {
   return <StyledDesignSystemCodeSnippets {...props} />;
 }
 
-export function CodeSnippets({ paths, ...rest }) {
+const MissingMessaging = styled.div`
+  background-color: #fdf5d3;
+  padding: 10px 16px;
+  border-bottom: 1px solid ${color.border};
+  font-size: ${typography.size.s2}px;
+  line-height: 20px;
+`;
+
+export function ModuleComponentWithMessage({
+  currentFramework,
+  ModuleComponent,
+  withMissingMessaging,
+}) {
+  return (
+    <>
+      {withMissingMessaging && (
+        <MissingMessaging>
+          This snippet doesnt exist for {stylizeFramework(currentFramework)} yet.{' '}
+          <Link
+            appearance="secondary"
+            href="https://github.com/storybookjs/storybook/tree/next/docs"
+            target="_blank"
+            rel="noopener"
+          >
+            Contribute it in a PR now
+          </Link>
+          . In the meantime, here’s the {stylizeFramework(DEFAULT_FRAMEWORK)} snippet.
+        </MissingMessaging>
+      )}
+      <ModuleComponent />
+    </>
+  );
+}
+
+export function CodeSnippets({ paths, currentFramework, ...rest }) {
   const [snippets, setSnippets] = React.useState([]);
   const activeFrameworkPaths = paths.filter((path) => {
     const [framework] = path.split('/');
-    // TODO: Get the currently active framework rather than hardcoding 'react'
-    return framework === 'react' || framework === COMMON;
+    return framework === currentFramework || framework === COMMON;
   });
+
+  let defaultFrameworkPaths;
+  if (!activeFrameworkPaths.length) {
+    defaultFrameworkPaths = paths.filter((path) => path.split('/')[0] === 'react');
+  }
 
   useEffect(() => {
     async function fetchModuleComponents() {
       const fetchedSnippets = await Promise.all(
-        activeFrameworkPaths.map(async (path, index) => {
+        (defaultFrameworkPaths || activeFrameworkPaths).map(async (path, index) => {
           const [framework, fileName] = path.split('/');
           const [_, syntax] = fileName.split('.');
           // Important: this base path has to be present at the beginning of the import
@@ -85,7 +131,13 @@ export function CodeSnippets({ paths, ...rest }) {
 
           return {
             id: `${framework}-${syntax}`,
-            Snippet: ModuleComponent,
+            Snippet: () => (
+              <ModuleComponentWithMessage
+                ModuleComponent={ModuleComponent}
+                currentFramework={currentFramework}
+                withMissingMessaging={!!defaultFrameworkPaths}
+              />
+            ),
             framework,
             syntax,
             renderTabLabel: ({ isActive }) => (
@@ -98,7 +150,7 @@ export function CodeSnippets({ paths, ...rest }) {
     }
 
     fetchModuleComponents();
-  }, []);
+  }, [currentFramework]);
 
   if (!snippets.length) return null;
 
@@ -107,4 +159,5 @@ export function CodeSnippets({ paths, ...rest }) {
 
 CodeSnippets.propTypes = {
   paths: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  currentFramework: PropTypes.string.isRequired,
 };
