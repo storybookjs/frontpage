@@ -32,7 +32,7 @@ export const FrameworkSupportTable = ({ currentFramework, frameworks, features }
               <a href={`/docs/${currentFramework}${path}`}>{name}</a>
             </th>
             {frameworks.map((framework) => (
-              <td>{frameworkSupportsFeature(framework, { supported, unsupported }) ? '+' : ''}</td>
+              <td>{frameworkSupportsFeature(framework, { supported, unsupported }) ? '✅' : ''}</td>
             ))}
           </tr>
         ))}
