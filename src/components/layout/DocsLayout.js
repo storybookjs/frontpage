@@ -6,7 +6,9 @@ import {
   Input,
   Link,
   StyledButton,
+  Subheading,
   TableOfContents,
+  TooltipLinkList,
   TooltipNote,
   WithTooltip,
   global,
@@ -16,9 +18,11 @@ import { graphql } from 'gatsby';
 
 import { SocialGraph } from '../basics';
 import GatsbyLinkWrapper from '../basics/GatsbyLinkWrapper';
-
+import useSiteMetadata from '../lib/useSiteMetadata';
 import { contentLeftPadding, contentRightPadding } from '../screens/DocsScreen/DocsScreen';
 import buildPathWithFramework from '../../util/build-path-with-framework';
+import { FrameworkSelector } from '../screens/DocsScreen/FrameworkSelector';
+import stylizeFramework from '../../util/stylize-framework';
 
 const { breakpoint, color, pageMargins, typography } = styles;
 const { GlobalStyle } = global;
@@ -98,12 +102,17 @@ const ExpandCollapseButton = styled(StyledButton).attrs({ appearance: 'outline' 
   }
 `;
 
+const StyledFrameworkSelector = styled(FrameworkSelector)`
+  margin-top: 32px;
+`;
+
 function DocsLayout({ children, data, pageContext, ...props }) {
   const {
     currentPage: {
       fields: { slug },
     },
   } = data;
+  const { frameworks } = useSiteMetadata();
   const { docsToc, framework } = pageContext;
 
   const addLinkWrappers = (items) =>
@@ -127,6 +136,7 @@ function DocsLayout({ children, data, pageContext, ...props }) {
       <Wrapper>
         <Sidebar>
           <StyledTableOfContents
+            key={framework}
             currentPath={buildPathWithFramework(slug, framework)}
             items={docsTocWithLinkWrappers}
           >
@@ -165,6 +175,13 @@ function DocsLayout({ children, data, pageContext, ...props }) {
                     </WithTooltip>
                   )}
                 </SidebarControls>
+
+                <StyledFrameworkSelector
+                  currentFramework={framework}
+                  slug={slug}
+                  frameworks={frameworks}
+                />
+
                 {menu}
               </>
             )}
