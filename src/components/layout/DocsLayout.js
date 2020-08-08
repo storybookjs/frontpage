@@ -26,34 +26,6 @@ const Sidebar = styled.div`
   flex: 0 1 240px;
   padding-right: 20px;
 
-  &:hover {
-    &::-webkit-scrollbar {
-      display: block;
-    }
-  }
-
-  &::-webkit-scrollbar {
-    display: none;
-    height: 6px;
-    width: 6px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    transition: all 150ms ease-out;
-    border-radius: 1em;
-    background: rgba(0, 0, 0, 0.07);
-    &:hover {
-      background: rgba(0, 0, 0, 0.17);
-    }
-    &:active {
-      background: rgba(0, 0, 0, 0.27);
-    }
-  }
-
-  &::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
   @media (max-width: ${breakpoint * 1.333 - 1}px) {
     flex: none;
     margin: 1rem 0 2rem;
@@ -73,6 +45,9 @@ const SidebarControls = styled.div`
 
 const Content = styled.div`
   overflow: hidden;
+  flex: 1;
+  max-width: 800px;
+  margin: 0px auto;
 `;
 
 const Wrapper = styled.div`
