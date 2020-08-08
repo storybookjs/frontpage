@@ -13,16 +13,25 @@ const frameworkTitle = (framework) =>
 const monorepoUrlBase = 'https://github.com/storybookjs/storybook/tree/next';
 
 export const FrameworkSupportTable = ({ currentFramework, frameworks, featureGroups }) => {
+  function pathForFeature({ name, path, repoPath }) {
+    if (path) {
+      return `/docs/${currentFramework}/${path}`;
+    }
+    if (repoPath) {
+      return `${monorepoUrlBase}/${repoPath}`;
+    }
+    // Default is it is an addon
+    return `${monorepoUrlBase}/addons/${name}`;
+  }
+
   return (
     <table>
       <thead>
         <tr>
-          {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-          <th />
+          <th aria-label="frameworks" />
           {frameworks.map((framework) => (
             <th>
-              {/* TODO: this should be a link */}
-              {frameworkTitle(framework)}
+              <a href={`${monorepoUrlBase}/app/${framework}`}>{frameworkTitle(framework)}</a>
             </th>
           ))}
         </tr>
@@ -33,15 +42,13 @@ export const FrameworkSupportTable = ({ currentFramework, frameworks, featureGro
             <tr>
               <th colSpan={features.length + 1}>{groupName}</th>
             </tr>
-            {features.map(({ name, path, supported, unsupported }) => (
+            {features.map((feature) => (
               <tr>
                 <th>
-                  <a href={`/docs/${currentFramework}${path}`}>{name}</a>
+                  <a href={pathForFeature(feature)}>{feature.name}</a>
                 </th>
                 {frameworks.map((framework) => (
-                  <td>
-                    {frameworkSupportsFeature(framework, { supported, unsupported }) ? '✅' : ''}
-                  </td>
+                  <td>{frameworkSupportsFeature(framework, feature) ? '✅' : ''}</td>
                 ))}
               </tr>
             ))}
