@@ -273,6 +273,7 @@ const docsToc = [
 ];
 
 export const pageContext = {
+  framework: 'react',
   docsToc: [
     {
       title: 'Get Started',
@@ -537,9 +538,6 @@ export const pageContext = {
       ],
     },
   ],
-
-  framework: 'react',
-  docsToc,
 };
 
 export default {
