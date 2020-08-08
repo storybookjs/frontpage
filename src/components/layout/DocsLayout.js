@@ -17,8 +17,6 @@ import { graphql } from 'gatsby';
 import { SocialGraph } from '../basics';
 import GatsbyLinkWrapper from '../basics/GatsbyLinkWrapper';
 
-import { contentLeftPadding, contentRightPadding } from '../screens/DocsScreen/DocsScreen';
-
 const { breakpoint, color, pageMargins, typography } = styles;
 const { GlobalStyle } = global;
 
@@ -44,7 +42,6 @@ const SidebarControls = styled.div`
 `;
 
 const Content = styled.div`
-  overflow: hidden;
   flex: 1;
   max-width: 800px;
   margin: 0px auto;
