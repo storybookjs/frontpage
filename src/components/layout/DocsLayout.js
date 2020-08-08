@@ -44,7 +44,7 @@ const Sidebar = styled.div`
 
 const StyledFrameworkSelector = styled(FrameworkSelector)`
   @media (min-width: ${breakpoint * 1.333}px) {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
   }
 `;
 
@@ -63,6 +63,7 @@ const SidebarControls = styled.div`
   > *:nth-child(1) {
     @media (min-width: ${breakpoint * 1.333}px) {
       margin-right: 10px;
+      flex: 1;
     }
   }
   /* button */
@@ -71,6 +72,7 @@ const SidebarControls = styled.div`
 
     @media (min-width: ${breakpoint * 1.333}px) {
       display: inline-block;
+      flex: none;
     }
   }
   /* framework picker */
@@ -107,7 +109,7 @@ const StyledTableOfContents = styled(TableOfContents)`
 
   @media (min-width: ${breakpoint * 1.333}px) {
     display: block;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     /* So that the expandable arrows are rendered outside of the sidebar dimensions */
     margin-left: -20px;
   }
