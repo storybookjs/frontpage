@@ -106,7 +106,6 @@ function DocsScreen({ data, pageContext }) {
     );
   }, [framework]);
 
-  console.log(featureGroups, docsToc);
   const features = featureGroups.flatMap((group) => group.features);
   const feature = features.find((fs) => `/docs${fs.path}/` === slug);
   const unsupported = feature && !frameworkSupportsFeature(framework, feature);

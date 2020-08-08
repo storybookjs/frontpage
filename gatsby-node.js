@@ -6,20 +6,17 @@ const { toc: docsToc } = require('./src/content/docs/toc');
 const buildPathWithFramework = require('./src/util/build-path-with-framework');
 
 const githubDocsBaseUrl = 'https://github.com/storybookjs/storybook/tree/next';
-const addStateToToc = (items, pathPrefix = '/docs/') =>
+const addStateToToc = (items, pathPrefix = '/docs') =>
   items.map((item) => {
-    const itemPath = `${pathPrefix}${item.pathSegment}`;
-    // A pathSegment could be an empty string.
-    // Make sure there is not a duplicate slash created.
-    const itemPathWithDirSuffix = `${itemPath.slice(-1) !== '/' ? `${itemPath}/` : itemPath}`;
+    const itemPath = item.pathSegment ? `${pathPrefix}/${item.pathSegment}` : pathPrefix;
 
     return {
       ...item,
       ...(item.type.match(/link/) && {
-        path: itemPathWithDirSuffix,
+        path: itemPath,
         githubUrl: `${githubDocsBaseUrl}${itemPath}.md`,
       }),
-      ...(item.children && { children: addStateToToc(item.children, itemPathWithDirSuffix) }),
+      ...(item.children && { children: addStateToToc(item.children, itemPath) }),
     };
   });
 
@@ -33,6 +30,7 @@ exports.onCreateNode = ({ actions, getNode, node }) => {
       node,
       getNode,
       basePath: 'content',
+      trailingSlash: false,
     });
 
     const slugParts = slug.split('/').filter((p) => !!p);
@@ -61,11 +59,6 @@ exports.onCreatePage = ({ page, actions }) => {
     // Recreate the modified page
     deletePage(oldPage);
     createPage(page);
-  }
-
-  if (page.path.match(/^\/docs\//)) {
-    // eslint-disable-next-line no-param-reassign
-    page.context.layout = 'docs';
   }
 };
 
@@ -161,12 +154,13 @@ exports.createPages = ({ actions, graphql }) => {
         const docsTocByFramework = Object.fromEntries(
           frameworks.map((framework) => [
             framework,
-            addStateToToc(docsTocWithPaths, `/docs/${framework}/`),
+            addStateToToc(docsTocWithPaths, `/docs/${framework}`),
           ])
         );
         const createDocsPages = (tocItems) => {
           tocItems.forEach((tocItem, index) => {
             const { path: docsPagePath, children } = tocItem;
+
             if (docsPagePath) {
               const docEdge = docsPagesEdgesBySlug[docsPagePath];
 
@@ -180,6 +174,7 @@ exports.createPages = ({ actions, graphql }) => {
                     component: path.resolve(`./src/components/screens/DocsScreen/DocsScreen.tsx`),
                     context: {
                       pageType,
+                      layout: 'docs',
                       slug,
                       framework,
                       docsToc: docsTocByFramework[framework],
