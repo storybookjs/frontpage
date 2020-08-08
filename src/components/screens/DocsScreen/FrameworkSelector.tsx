@@ -18,6 +18,10 @@ const Framework = styled.span`
 
 const FrameworkLink = styled(Link)`
   font-weight: ${typography.weight.bold};
+
+  svg {
+    transform: rotate(90deg);
+  }
 `;
 
 const FrameworkSelectorTitle = styled.div`
@@ -87,7 +91,7 @@ export function FrameworkSelector({ currentFramework, frameworks, slug, tooltipP
         as="span"
         {...tooltipProps}
       >
-        <FrameworkLink isButton appearance="secondary">
+        <FrameworkLink isButton appearance="secondary" withArrow>
           {stylizeFramework(currentFramework)}
         </FrameworkLink>
       </WithTooltip>

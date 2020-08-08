@@ -23,27 +23,7 @@ import stylizeFramework from '../../../util/stylize-framework';
 
 const { color, spacing, typography } = styles;
 
-const Title = styled.div`
-  color: ${color.darkest};
-  font-size: ${typography.size.l1}px;
-  font-weight: ${typography.weight.black};
-  letter-spacing: -0.33px;
-  line-height: 40px;
-  margin-bottom: 9px;
-`;
-
-// The right and left padding here is used to allow for space to show elements
-// outside of the viewport. These values are exported because they are used to
-// generate negative margins on a container elsewhere that needs to hide the
-// overflow in order to contain the content inside of <Highlight />. By using
-// the combo of padding & negative margins, the full width of the section is
-// maintained in addition to the containment of the <Highlight /> content.
-export const contentLeftPadding = 28;
-export const contentRightPadding = 10;
-const MDSpacing = styled.div`
-  padding-left: ${contentLeftPadding}px;
-  padding-right: ${contentRightPadding}px;
-`;
+const Title = styled.h1``;
 
 const MDWrapper = styled.div`
   ${mdFormatting}
@@ -58,12 +38,13 @@ const StyledHighlight = styled(Highlight)`
 
 const NextSubheading = styled(Subheading)`
   color: ${color.mediumdark};
+  font-size: ${typography.size.s2}px;
   display: block;
-  margin-bottom: 17px;
+  margin-bottom: 1rem;
 `;
 
 const NextNavigation = styled.div`
-  margin-top: 48px;
+  margin-top: 3rem;
 `;
 
 const GithubLinkWrapper = styled.div`
@@ -125,54 +106,53 @@ function DocsScreen({ data, pageContext }) {
 
   return (
     <>
-      <MDSpacing>
-        <MDWrapper>
-          <Title>{title}</Title>
-          {unsupported && (
-            <UnsupportedBanner>
-              This feature is not supported in {stylizeFramework(framework)} yet. Help the open
-              source community by contributing a PR.
-              {featureSupportItem && (
-                <>
-                  {' '}
-                  <Link LinkWrapper={GatsbyLinkWrapper} href={featureSupportItem.path} withArrow>
-                    View feature coverage by framework
-                  </Link>
-                </>
-              )}
-            </UnsupportedBanner>
-          )}
-          <MDXProvider
-            components={{
-              CodeSnippets: CodeSnippetsWithCurrentFramework,
-              FrameworkSupportTable: FrameworkSupportTableWithFeaturesAndCurrentFramework,
-            }}
-          >
-            <StyledHighlight withHTMLChildren={false}>
-              <MDXRenderer>{body}</MDXRenderer>
-            </StyledHighlight>
-          </MDXProvider>
-        </MDWrapper>
-
-        {nextTocItem && (
-          <NextNavigation>
-            <NextSubheading>Next</NextSubheading>
-            <ShadowBoxCTA
-              action={
-                <Button
-                  appearance="secondary"
-                  href={buildPathWithFramework(nextTocItem.path, framework)}
-                  ButtonWrapper={GatsbyLinkWrapper}
-                >
-                  Continue
-                </Button>
-              }
-              headingText={nextTocItem.title}
-              messageText={nextTocItem.description}
-            />
-          </NextNavigation>
+      <MDWrapper>
+        <Title>{title}</Title>
+        {unsupported && (
+          <UnsupportedBanner>
+            This feature is not supported in {stylizeFramework(framework)} yet. Help the open source
+            community by contributing a PR.
+            {featureSupportItem && (
+              <>
+                {' '}
+                <Link LinkWrapper={GatsbyLinkWrapper} href={featureSupportItem.path} withArrow>
+                  View feature coverage by framework
+                </Link>
+              </>
+            )}
+          </UnsupportedBanner>
         )}
-      </MDSpacing>
+        <MDXProvider
+          components={{
+            CodeSnippets: CodeSnippetsWithCurrentFramework,
+            FrameworkSupportTable: FrameworkSupportTableWithFeaturesAndCurrentFramework,
+          }}
+        >
+          <StyledHighlight withHTMLChildren={false}>
+            <MDXRenderer>{body}</MDXRenderer>
+          </StyledHighlight>
+        </MDXProvider>
+      </MDWrapper>
+
+      {nextTocItem && (
+        <NextNavigation>
+          <NextSubheading>Next</NextSubheading>
+          <ShadowBoxCTA
+            action={
+              <Button
+                appearance="secondary"
+                href={buildPathWithFramework(nextTocItem.path, framework)}
+                ButtonWrapper={GatsbyLinkWrapper}
+              >
+                Continue
+              </Button>
+            }
+            headingText={nextTocItem.title}
+            messageText={nextTocItem.description}
+          />
+        </NextNavigation>
+      )}
+
       {tocItem && tocItem.githubUrl && (
         <GithubLinkWrapper>
           <GithubLinkItem tertiary href={tocItem.githubUrl} target="_blank" rel="noopener">

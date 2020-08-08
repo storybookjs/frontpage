@@ -5,8 +5,7 @@ import {
   Icon,
   Input,
   Link,
-  StyledButton,
-  Subheading,
+  Button,
   TableOfContents,
   TooltipLinkList,
   TooltipNote,
@@ -18,8 +17,8 @@ import { graphql } from 'gatsby';
 
 import { SocialGraph } from '../basics';
 import GatsbyLinkWrapper from '../basics/GatsbyLinkWrapper';
+
 import useSiteMetadata from '../lib/useSiteMetadata';
-import { contentLeftPadding, contentRightPadding } from '../screens/DocsScreen/DocsScreen';
 import buildPathWithFramework from '../../util/build-path-with-framework';
 import { FrameworkSelector } from '../screens/DocsScreen/FrameworkSelector';
 import stylizeFramework from '../../util/stylize-framework';
@@ -27,48 +26,75 @@ import stylizeFramework from '../../util/stylize-framework';
 const { breakpoint, color, pageMargins, typography } = styles;
 const { GlobalStyle } = global;
 
-const bottomSpacing = css`
-  padding-bottom: 3rem;
+const Sidebar = styled.div`
+  flex: 1;
+  margin: 1rem 0 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid ${color.border};
+
+  @media (min-width: ${breakpoint * 1.333}px) {
+    flex: 0 0 240px;
+    margin: 0;
+    padding-bottom: 0;
+    padding-right: 20px;
+    margin-right: 20px;
+    border-bottom: none;
+  }
 `;
 
-const Sidebar = styled.div`
-  position: sticky;
-  padding-top: 10px;
-  padding-right: 20px;
-  margin-right: 56px;
-  margin-top: -10px;
-  top: 0;
-  max-height: 100vh;
-  width: 276px;
-  min-width: 276px;
-  overflow: scroll;
-  ${bottomSpacing}
-
-  @media (max-width: ${breakpoint * 1.333 - 1}px) {
-    flex: none;
-    margin: 1rem 0 2rem;
-    width: 100%;
-    border-bottom: 1px solid ${color.mediumlight};
+const StyledFrameworkSelector = styled(FrameworkSelector)`
+  @media (min-width: ${breakpoint * 1.333}px) {
+    margin-top: 1.5rem;
   }
 `;
 
 const SidebarControls = styled.div`
   display: flex;
+  align-items: center;
+
+  flex-direction: row-reverse;
+  flex-wrap: wrap-reverse;
+  @media (min-width: ${breakpoint * 1.333}px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  /* input */
+  > *:nth-child(1) {
+    @media (min-width: ${breakpoint * 1.333}px) {
+      margin-right: 10px;
+      flex: 1;
+    }
+  }
+  /* button */
+  > *:nth-child(2) {
+    display: none;
+
+    @media (min-width: ${breakpoint * 1.333}px) {
+      display: inline-block;
+      flex: none;
+    }
+  }
+  /* framework picker */
+  > *:nth-child(3) {
+    flex: 1;
+
+    @media (min-width: ${breakpoint * 1.333}px) {
+      flex: 0 0 100%;
+    }
+  }
 `;
 
 const Content = styled.div`
-  ${bottomSpacing}
-  overflow: hidden;
-  margin-left: -${contentLeftPadding}px;
-  margin-right: -${contentRightPadding}px;
+  flex: 1;
+  min-width: 0; /* do not remove  https://weblog.west-wind.com/posts/2016/feb/15/flexbox-containers-pre-tags-and-managing-overflow */
+  max-width: 800px;
+  margin: 0px auto;
 `;
 
 const Wrapper = styled.div`
   ${pageMargins}
-
-  && {
-    padding-bottom: 0;
-  }
+  padding-bottom: 3rem;
 
   @media (min-width: ${breakpoint * 1.333}px) {
     padding-top: 4rem;
@@ -78,32 +104,15 @@ const Wrapper = styled.div`
 `;
 
 const StyledTableOfContents = styled(TableOfContents)`
-  margin-top: 32px;
-`;
+  /* Hide ToC on mobile, the primary navigation is search */
+  display: none;
 
-const ExpandCollapseButton = styled(StyledButton).attrs({ appearance: 'outline' })`
-  padding: 0;
-  width: 28px;
-  height: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  margin-left: 10px;
-
-  svg {
-    width: 10px;
-    height: 10px;
-    margin: 0;
-
-    &:last-of-type {
-      margin-top: -2px;
-    }
+  @media (min-width: ${breakpoint * 1.333}px) {
+    display: block;
+    margin-top: 1.5rem;
+    /* So that the expandable arrows are rendered outside of the sidebar dimensions */
+    margin-left: -20px;
   }
-`;
-
-const StyledFrameworkSelector = styled(FrameworkSelector)`
-  margin-top: 32px;
 `;
 
 function DocsLayout({ children, data, pageContext, ...props }) {
@@ -127,7 +136,7 @@ function DocsLayout({ children, data, pageContext, ...props }) {
     placement: 'top',
     trigger: 'hover',
     hasChrome: false,
-    as: ExpandCollapseButton,
+    as: 'span',
   };
 
   return (
@@ -156,31 +165,31 @@ function DocsLayout({ children, data, pageContext, ...props }) {
                       {...withTooltipProps}
                       tooltip={<TooltipNote note="Collapse all" />}
                       onClick={toggleAllClosed}
+                      tabIndex="-1"
                     >
-                      <>
-                        <Icon icon="arrowdown" />
-                        <Icon icon="arrowup" />
-                      </>
+                      <Button containsIcon appearance="outline" size="small">
+                        <Icon icon="collapse" aria-label="Collapse sidebar" />
+                      </Button>
                     </WithTooltip>
                   ) : (
                     <WithTooltip
                       {...withTooltipProps}
                       tooltip={<TooltipNote note="Expand all" />}
                       onClick={toggleAllOpen}
+                      tabIndex="-1"
                     >
-                      <>
-                        <Icon icon="arrowup" />
-                        <Icon icon="arrowdown" />
-                      </>
+                      <Button containsIcon appearance="outline" size="small">
+                        <Icon icon="expandalt" aria-label="Expand sidebar" />
+                      </Button>
                     </WithTooltip>
                   )}
-                </SidebarControls>
 
-                <StyledFrameworkSelector
-                  currentFramework={framework}
-                  slug={slug}
-                  frameworks={frameworks}
-                />
+                  <StyledFrameworkSelector
+                    currentFramework={framework}
+                    slug={slug}
+                    frameworks={frameworks}
+                  />
+                </SidebarControls>
 
                 {menu}
               </>
