@@ -7,6 +7,7 @@ import {
   Link,
   Button,
   TableOfContents,
+  TooltipLinkList,
   TooltipNote,
   WithTooltip,
   global,
@@ -16,6 +17,11 @@ import { graphql } from 'gatsby';
 
 import { SocialGraph } from '../basics';
 import GatsbyLinkWrapper from '../basics/GatsbyLinkWrapper';
+
+import useSiteMetadata from '../lib/useSiteMetadata';
+import buildPathWithFramework from '../../util/build-path-with-framework';
+import { FrameworkSelector } from '../screens/DocsScreen/FrameworkSelector';
+import stylizeFramework from '../../util/stylize-framework';
 
 const { breakpoint, color, pageMargins, typography } = styles;
 const { GlobalStyle } = global;
@@ -63,13 +69,18 @@ const StyledTableOfContents = styled(TableOfContents)`
   margin-left: -20px;
 `;
 
+const StyledFrameworkSelector = styled(FrameworkSelector)`
+  margin-top: 32px;
+`;
+
 function DocsLayout({ children, data, pageContext, ...props }) {
   const {
     currentPage: {
       fields: { slug },
     },
   } = data;
-  const { docsToc, tocItem, nextTocItem } = pageContext;
+  const { frameworks } = useSiteMetadata();
+  const { docsToc, framework } = pageContext;
 
   const addLinkWrappers = (items) =>
     items.map((item) => ({
@@ -91,7 +102,11 @@ function DocsLayout({ children, data, pageContext, ...props }) {
       <GlobalStyle />
       <Wrapper>
         <Sidebar>
-          <StyledTableOfContents currentPath={slug} items={docsTocWithLinkWrappers}>
+          <StyledTableOfContents
+            key={framework}
+            currentPath={buildPathWithFramework(slug, framework)}
+            items={docsTocWithLinkWrappers}
+          >
             {({ menu, allTopLevelMenusAreOpen, toggleAllOpen, toggleAllClosed }) => (
               <>
                 <SidebarControls>
@@ -127,6 +142,13 @@ function DocsLayout({ children, data, pageContext, ...props }) {
                     </WithTooltip>
                   )}
                 </SidebarControls>
+
+                <StyledFrameworkSelector
+                  currentFramework={framework}
+                  slug={slug}
+                  frameworks={frameworks}
+                />
+
                 {menu}
               </>
             )}
@@ -142,7 +164,7 @@ function DocsLayout({ children, data, pageContext, ...props }) {
 export default DocsLayout;
 
 export const query = graphql`
-  fragment DocsLayoutCurrentPageQuery on MarkdownRemark {
+  fragment DocsLayoutCurrentPageQuery on Mdx {
     fields {
       slug
     }

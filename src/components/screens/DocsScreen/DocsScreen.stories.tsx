@@ -2,10 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 import DocsScreen from './DocsScreen';
+import compiledMDX from '../../../../.storybook/compiled-mdx';
+import { pageContext } from '../../layout/DocsLayout.stories';
 
 const data = {
   currentPage: {
-    html: 'html content',
+    body: compiledMDX,
     frontmatter: {
       title: 'Docs Screen Title',
     },
@@ -26,19 +28,23 @@ export default {
   decorators: [(storyFn) => <Wrapper>{storyFn()}</Wrapper>],
 };
 
-export const Base = () => <DocsScreen data={data} pageContext={{ tocItem: {} }} />;
+export const Base = () => <DocsScreen data={data} pageContext={{ ...pageContext, tocItem: {} }} />;
 
-export const WithGuideLink = () => <DocsScreen data={data} pageContext={{ nextTocItem }} />;
+export const WithGuideLink = () => (
+  <DocsScreen data={data} pageContext={{ ...pageContext, nextTocItem }} />
+);
 
 export const WithGuideLinkNoDescription = () => (
   <DocsScreen
     data={data}
-    pageContext={{ nextTocItem: { ...nextTocItem, description: undefined } }}
+    pageContext={{ ...pageContext, nextTocItem: { ...nextTocItem, description: undefined } }}
   />
 );
 
-export const WithGithubLink = () => <DocsScreen data={data} pageContext={{ tocItem }} />;
+export const WithGithubLink = () => (
+  <DocsScreen data={data} pageContext={{ ...pageContext, tocItem }} />
+);
 
 export const WithGithubLinkAndGuideLink = () => (
-  <DocsScreen data={data} pageContext={{ tocItem, nextTocItem }} />
+  <DocsScreen data={data} pageContext={{ ...pageContext, tocItem, nextTocItem }} />
 );

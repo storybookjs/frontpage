@@ -1,10 +1,12 @@
 /* eslint-disable no-param-reassign, global-require */
 const p = require('path');
+const webpack = require('webpack');
+const siteMetadata = require('../site-metadata.js');
 
 module.exports = {
   stories: ['../src/**/*.stories.@(js|ts|tsx)'],
   addons: ['@storybook/addon-actions', '@storybook/addon-links'],
-  webpack: async config => {
+  webpack: async (config) => {
     const coreJsLocationOfRoot = p.join(__dirname, '..', 'node_modules');
     const coreJsLocationOfGatsby = p.join(
       __dirname,
@@ -47,6 +49,15 @@ module.exports = {
       new CoreJSUpgradeWebpackPlugin.default({
         resolveFrom: [coreJsLocationOfRoot, coreJsLocationOfGatsby],
       })
+    );
+
+    // TODO: Figure out why Gatsby is throwing this error:
+    // 'The result of this StaticQuery could not be fetched' & remove this alias.
+    config.plugins.unshift(
+      new webpack.NormalModuleReplacementPlugin(
+        /lib\/useSiteMetadata\.js/,
+        '../../../.storybook/useSiteMetadata.js'
+      )
     );
 
     return config;

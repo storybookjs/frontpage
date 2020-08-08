@@ -1,23 +1,22 @@
 const path = require('path');
-const { toc: docsToc } = require('./src/content/docs/toc');
 
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
+const { toc: docsToc } = require('./src/content/docs/toc');
+const buildPathWithFramework = require('./src/util/build-path-with-framework');
+
 const githubDocsBaseUrl = 'https://github.com/storybookjs/storybook/tree/next';
-const addStateToToc = (items, pathPrefix = '/docs/') =>
+const addStateToToc = (items, pathPrefix = '/docs') =>
   items.map((item) => {
-    const itemPath = `${pathPrefix}${item.pathSegment}`;
-    // A pathSegment could be an empty string.
-    // Make sure there is not a duplicate slash created.
-    const itemPathWithDirSuffix = `${itemPath.slice(-1) !== '/' ? `${itemPath}/` : itemPath}`;
+    const itemPath = item.pathSegment ? `${pathPrefix}/${item.pathSegment}` : pathPrefix;
 
     return {
       ...item,
       ...(item.type.match(/link/) && {
-        path: itemPathWithDirSuffix,
+        path: itemPath,
         githubUrl: `${githubDocsBaseUrl}${itemPath}.md`,
       }),
-      ...(item.children && { children: addStateToToc(item.children, itemPathWithDirSuffix) }),
+      ...(item.children && { children: addStateToToc(item.children, itemPath) }),
     };
   });
 
@@ -25,11 +24,13 @@ const docsTocWithPaths = addStateToToc(docsToc);
 
 exports.onCreateNode = ({ actions, getNode, node }) => {
   const { createNodeField } = actions;
-  if (node.internal.type === 'MarkdownRemark') {
+
+  if (node.internal.type === 'Mdx') {
     const slug = createFilePath({
       node,
       getNode,
       basePath: 'content',
+      trailingSlash: false,
     });
 
     const slugParts = slug.split('/').filter((p) => !!p);
@@ -59,11 +60,6 @@ exports.onCreatePage = ({ page, actions }) => {
     deletePage(oldPage);
     createPage(page);
   }
-
-  if (page.path.match(/^\/docs\//)) {
-    // eslint-disable-next-line no-param-reassign
-    page.context.layout = 'docs';
-  }
 };
 
 exports.createPages = ({ actions, graphql }) => {
@@ -71,7 +67,7 @@ exports.createPages = ({ actions, graphql }) => {
   return new Promise((resolve) => {
     graphql(`
       {
-        docsPages: allMarkdownRemark(filter: { fields: { pageType: { eq: "docs" } } }) {
+        docsPages: allMdx(filter: { fields: { pageType: { eq: "docs" } } }) {
           edges {
             node {
               fields {
@@ -81,7 +77,7 @@ exports.createPages = ({ actions, graphql }) => {
             }
           }
         }
-        releasePages: allMarkdownRemark(filter: { fields: { pageType: { eq: "releases" } } }) {
+        releasePages: allMdx(filter: { fields: { pageType: { eq: "releases" } } }) {
           edges {
             node {
               fields {
@@ -96,12 +92,20 @@ exports.createPages = ({ actions, graphql }) => {
             }
           }
         }
+        site {
+          siteMetadata {
+            frameworks
+          }
+        }
       }
     `).then(
       ({
         data: {
           docsPages: { edges: docsPagesEdges },
           releasePages: { edges: releasePagesEdges },
+          site: {
+            siteMetadata: { frameworks },
+          },
         },
       }) => {
         const sortedReleases = releasePagesEdges.sort(
@@ -147,9 +151,16 @@ exports.createPages = ({ actions, graphql }) => {
         const docsPagesEdgesBySlug = Object.fromEntries(
           docsPagesEdges.map((edge) => [edge.node.fields.slug, edge])
         );
+        const docsTocByFramework = Object.fromEntries(
+          frameworks.map((framework) => [
+            framework,
+            addStateToToc(docsTocWithPaths, `/docs/${framework}`),
+          ])
+        );
         const createDocsPages = (tocItems) => {
           tocItems.forEach((tocItem, index) => {
             const { path: docsPagePath, children } = tocItem;
+
             if (docsPagePath) {
               const docEdge = docsPagesEdgesBySlug[docsPagePath];
 
@@ -157,19 +168,23 @@ exports.createPages = ({ actions, graphql }) => {
                 const { pageType, slug } = docEdge.node.fields;
                 const nextTocItem = tocItems[index + 1];
 
-                createPage({
-                  path: slug,
-                  component: path.resolve(`./src/components/screens/DocsScreen/DocsScreen.tsx`),
-                  context: {
-                    pageType,
-                    slug,
-                    docsToc: docsTocWithPaths,
-                    tocItem,
-                    ...(nextTocItem &&
-                      nextTocItem.type === 'bullet-link' && {
-                        nextTocItem,
-                      }),
-                  },
+                frameworks.forEach((framework) => {
+                  createPage({
+                    path: buildPathWithFramework(slug, framework),
+                    component: path.resolve(`./src/components/screens/DocsScreen/DocsScreen.tsx`),
+                    context: {
+                      pageType,
+                      layout: 'docs',
+                      slug,
+                      framework,
+                      docsToc: docsTocByFramework[framework],
+                      tocItem,
+                      ...(nextTocItem &&
+                        nextTocItem.type === 'bullet-link' && {
+                          nextTocItem,
+                        }),
+                    },
+                  });
                 });
 
                 docsPagesSlugs.push(slug);
@@ -192,7 +207,7 @@ exports.createPages = ({ actions, graphql }) => {
             fromPath: `/docs/`,
             isPermanent: false,
             redirectInBrowser: true,
-            toPath: firstDocsPageSlug,
+            toPath: buildPathWithFramework(firstDocsPageSlug, frameworks[0]),
           });
         }
 

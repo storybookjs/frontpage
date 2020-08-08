@@ -11,6 +11,16 @@ const useSiteMetadata = () => {
           googleSiteVerification
           latestVersion
           contributorCount
+          frameworks
+          featureGroups {
+            name
+            features {
+              name
+              supported
+              unsupported
+              path
+            }
+          }
           urls {
             gitHubOrg
             homepageUrl
