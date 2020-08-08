@@ -12,11 +12,14 @@ const useSiteMetadata = () => {
           latestVersion
           contributorCount
           frameworks
-          features {
+          featureGroups {
             name
-            supported
-            unsupported
-            path
+            features {
+              name
+              supported
+              unsupported
+              path
+            }
           }
           urls {
             gitHubOrg

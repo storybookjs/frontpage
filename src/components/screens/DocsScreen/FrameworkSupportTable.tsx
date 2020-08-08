@@ -10,7 +10,9 @@ export function frameworkSupportsFeature(framework, { supported, unsupported }) 
 const frameworkTitle = (framework) =>
   framework === 'html' ? 'HTML' : framework[0].toUpperCase() + framework.slice(1);
 
-export const FrameworkSupportTable = ({ currentFramework, frameworks, features }) => {
+const monorepoUrlBase = 'https://github.com/storybookjs/storybook/tree/next';
+
+export const FrameworkSupportTable = ({ currentFramework, frameworks, featureGroups }) => {
   return (
     <table>
       <thead>
@@ -26,15 +28,24 @@ export const FrameworkSupportTable = ({ currentFramework, frameworks, features }
         </tr>
       </thead>
       <tbody>
-        {features.map(({ name, path, supported, unsupported }) => (
-          <tr>
-            <th>
-              <a href={`/docs/${currentFramework}${path}`}>{name}</a>
-            </th>
-            {frameworks.map((framework) => (
-              <td>{frameworkSupportsFeature(framework, { supported, unsupported }) ? '✅' : ''}</td>
+        {featureGroups.map(({ name: groupName, features }) => (
+          <>
+            <tr>
+              <th colSpan={features.length + 1}>{groupName}</th>
+            </tr>
+            {features.map(({ name, path, supported, unsupported }) => (
+              <tr>
+                <th>
+                  <a href={`/docs/${currentFramework}${path}`}>{name}</a>
+                </th>
+                {frameworks.map((framework) => (
+                  <td>
+                    {frameworkSupportsFeature(framework, { supported, unsupported }) ? '✅' : ''}
+                  </td>
+                ))}
+              </tr>
             ))}
-          </tr>
+          </>
         ))}
       </tbody>
     </table>

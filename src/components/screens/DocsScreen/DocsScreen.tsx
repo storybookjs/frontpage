@@ -90,7 +90,7 @@ function DocsScreen({ data, pageContext }) {
       frontmatter: { title },
     },
   } = data;
-  const { features } = useSiteMetadata();
+  const { featureGroups } = useSiteMetadata();
   const { framework, docsToc, slug, tocItem, nextTocItem } = pageContext;
   const CodeSnippetsWithCurrentFramework = useMemo(() => {
     return (props) => <CodeSnippets currentFramework={framework} {...props} />;
@@ -101,11 +101,12 @@ function DocsScreen({ data, pageContext }) {
       <FrameworkSupportTable
         frameworks={frameworks}
         currentFramework={framework}
-        features={features}
+        featureGroups={featureGroups}
       />
     );
   }, [framework]);
 
+  const features = featureGroups.flatMap((group) => group.features);
   const feature = features.find((fs) => `/docs${fs.path}/` === slug);
   const unsupported = feature && !frameworkSupportsFeature(framework, feature);
 
