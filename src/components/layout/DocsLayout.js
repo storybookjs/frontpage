@@ -27,34 +27,72 @@ const { breakpoint, color, pageMargins, typography } = styles;
 const { GlobalStyle } = global;
 
 const Sidebar = styled.div`
-  flex: 0 1 240px;
-  padding-right: 20px;
+  flex: 1;
+  margin: 1rem 0 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid ${color.border};
 
-  @media (max-width: ${breakpoint * 1.333 - 1}px) {
-    flex: none;
-    margin: 1rem 0 2rem;
-    width: 100%;
-    border-bottom: 1px solid ${color.mediumlight};
+  @media (min-width: ${breakpoint * 1.333}px) {
+    flex: 0 0 240px;
+    margin: 0;
+    padding-bottom: 0;
+    padding-right: 20px;
+    margin-right: 20px;
+    border-bottom: none;
+  }
+`;
+
+const StyledFrameworkSelector = styled(FrameworkSelector)`
+  @media (min-width: ${breakpoint * 1.333}px) {
+    margin-top: 2rem;
   }
 `;
 
 const SidebarControls = styled.div`
   display: flex;
+  align-items: center;
 
-  /* the input */
-  > :first-child {
-    margin-right: 10px;
+  flex-direction: row-reverse;
+  flex-wrap: wrap-reverse;
+  @media (min-width: ${breakpoint * 1.333}px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  /* input */
+  > *:nth-child(1) {
+    @media (min-width: ${breakpoint * 1.333}px) {
+      margin-right: 10px;
+    }
+  }
+  /* button */
+  > *:nth-child(2) {
+    display: none;
+
+    @media (min-width: ${breakpoint * 1.333}px) {
+      display: inline-block;
+    }
+  }
+  /* framework picker */
+  > *:nth-child(3) {
+    flex: 1;
+
+    @media (min-width: ${breakpoint * 1.333}px) {
+      flex: 0 0 100%;
+    }
   }
 `;
 
 const Content = styled.div`
   flex: 1;
+  min-width: 0; /* do not remove  https://weblog.west-wind.com/posts/2016/feb/15/flexbox-containers-pre-tags-and-managing-overflow */
   max-width: 800px;
   margin: 0px auto;
 `;
 
 const Wrapper = styled.div`
   ${pageMargins}
+  padding-bottom: 3rem;
 
   @media (min-width: ${breakpoint * 1.333}px) {
     padding-top: 4rem;
@@ -64,13 +102,15 @@ const Wrapper = styled.div`
 `;
 
 const StyledTableOfContents = styled(TableOfContents)`
-  margin-top: 2rem;
-  /* So that the expandable arrows are rendered outside of the sidebar dimensions */
-  margin-left: -20px;
-`;
+  /* Hide ToC on mobile, the primary navigation is search */
+  display: none;
 
-const StyledFrameworkSelector = styled(FrameworkSelector)`
-  margin-top: 32px;
+  @media (min-width: ${breakpoint * 1.333}px) {
+    display: block;
+    margin-top: 2rem;
+    /* So that the expandable arrows are rendered outside of the sidebar dimensions */
+    margin-left: -20px;
+  }
 `;
 
 function DocsLayout({ children, data, pageContext, ...props }) {
@@ -141,13 +181,13 @@ function DocsLayout({ children, data, pageContext, ...props }) {
                       </Button>
                     </WithTooltip>
                   )}
-                </SidebarControls>
 
-                <StyledFrameworkSelector
-                  currentFramework={framework}
-                  slug={slug}
-                  frameworks={frameworks}
-                />
+                  <StyledFrameworkSelector
+                    currentFramework={framework}
+                    slug={slug}
+                    frameworks={frameworks}
+                  />
+                </SidebarControls>
 
                 {menu}
               </>

@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   flex: 1;
 `;
 
-const Title = styled.div`
+const Title = styled.h1`
   color: ${color.darkest};
   font-size: ${typography.size.l1}px;
   font-weight: ${typography.weight.black};
