@@ -10,8 +10,8 @@ const siteMetadata = {
   description: `Storybook is an open source tool for developing UI components in isolation for React, Vue, and Angular`,
   ogImage: '/images/social/open-graph.png',
   googleSiteVerification: '',
-  latestVersion: 'v5.3',
-  contributorCount: 1035,
+  latestVersion: 'v6.0',
+  contributorCount: 1043,
   frameworks,
   featureGroups,
   urls: {
@@ -72,15 +72,15 @@ const siteMetadata = {
 
     // Framework docs
     framework: {
-      react: `${docsUrl}/guides/guide-react/`,
-      reactNative: `${docsUrl}/guides/guide-react-native/`,
-      vue: `${docsUrl}/guides/guide-vue/`,
-      angular: `${docsUrl}/guides/guide-angular/`,
-      ember: `${docsUrl}/guides/guide-ember/`,
-      html: `${docsUrl}/guides/guide-html/`,
-      svelte: `${docsUrl}/guides/guide-svelte/`,
-      mithril: `${docsUrl}/guides/guide-mithril/`,
-      riot: `${docsUrl}/guides/guide-riot/`,
+      react: `${docsUrl}/react/get-started/install`,
+      reactNative: `https://github.com/storybookjs/react-native#storybook-for-react-native`,
+      vue: `${docsUrl}/vue/get-started/install`,
+      angular: `${docsUrl}/angular/get-started/install`,
+      ember: `${docsUrl}/ember/get-started/install`,
+      html: `${docsUrl}/html/get-started/install`,
+      svelte: `${docsUrl}/svelte/get-started/install`,
+      mithril: `${docsUrl}/mithril/get-started/install`,
+      riot: `${docsUrl}/riot/get-started/install`,
     },
 
     // Official addons
