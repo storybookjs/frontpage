@@ -20,6 +20,8 @@ const frameworksWithIcons = [
   'mithril',
   'marko',
   'react-native',
+  'rax',
+  'preact',
 ];
 
 export default {

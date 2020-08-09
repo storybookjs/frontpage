@@ -58,6 +58,10 @@ const FrameworkLinkList = styled(TooltipLinkList)`
 `;
 
 const coreFrameworks = ['react', 'vue', 'angular', 'ember', 'html'];
+const getFrameworkLogo = (framework) => {
+  if (framework === 'rax') return '/frameworks/logo-rax.png';
+  return `/frameworks/logo-${framework}.svg`;
+};
 
 export function FrameworkSelector({ currentFramework, frameworks, slug, tooltipProps, ...rest }) {
   const links = frameworks.map((framework) => ({
@@ -66,7 +70,7 @@ export function FrameworkSelector({ currentFramework, frameworks, slug, tooltipP
     href: buildPathWithFramework(slug, framework),
     title: (
       <FrameworkSelectorTitle>
-        <img src={`/frameworks/logo-${framework}.svg`} alt={stylizeFramework(framework)} />
+        <img src={getFrameworkLogo(framework)} alt={stylizeFramework(framework)} />
         {stylizeFramework(framework)}
       </FrameworkSelectorTitle>
     ),
