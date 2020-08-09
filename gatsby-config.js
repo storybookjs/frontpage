@@ -77,6 +77,7 @@ module.exports = {
               replace: '$1$2',
             },
           },
+          require.resolve('./plugins/rewrite-monorepo-links'),
           'gatsby-remark-copy-linked-files',
           {
             resolve: `gatsby-remark-autolink-headers`,

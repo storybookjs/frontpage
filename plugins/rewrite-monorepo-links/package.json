@@ -1,0 +1,8 @@
+{
+  "name": "rewrite-monorepo-links",
+  "private": true,
+  "main": "./index.js",
+  "dependencies": {
+    "unist-util-visit": "^1.4.1"
+  }
+}
