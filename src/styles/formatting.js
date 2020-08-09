@@ -60,7 +60,7 @@ export const mdFormatting = css`
 
   h3 {
     font-size: ${typography.size.m1}px;
-    font-weight: ${typography.weight.black};
+    font-weight: ${typography.weight.extrabold};
     line-height: 28px;
     margin: 2.5rem 0 0.5rem;
   }
