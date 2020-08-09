@@ -71,10 +71,18 @@ module.exports = {
           {
             resolve: 'gatsby-remark-link-rewrite',
             options: {
-              // Strip of trailing .md from links. We want them there in the original source so the
+              // Strip off trailing .md from links. We want them there in the original source so the
               // relative links work inside github, when you view the .md files directly
               pattern: /^(.*)\.md(#.*)?$/,
               replace: '$1$2',
+            },
+          },
+          {
+            resolve: 'gatsby-remark-link-rewrite',
+            options: {
+              // Replace links that go to the monorepo (outside of docs) w/ full URLs to master
+              pattern: /^\.\.\/\.\.\/(.*)$/,
+              replace: 'https://github.com/storybookjs/storybook/tree/master/$1',
             },
           },
           'gatsby-remark-copy-linked-files',
