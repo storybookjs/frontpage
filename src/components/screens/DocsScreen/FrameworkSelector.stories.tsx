@@ -6,7 +6,7 @@ import { FrameworkSelector } from './FrameworkSelector';
 const Wrapper = styled.span`
   display: inline-block;
   width: 225px;
-  height: 450px;
+  height: 510px;
 `;
 
 const frameworksWithIcons = [
