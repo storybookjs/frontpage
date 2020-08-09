@@ -3,7 +3,7 @@
 # Pull the monorepo docs from the branch specified as the first argument, or `master`.
 
 MONOREPO_CODELOAD_URL='https://codeload.github.com/storybookjs/storybook/tar.gz'
-BRANCH=${1:-6.0-docs}
+BRANCH=${1:-feautre-snippets}
 TAR_NAME="storybook-$BRANCH"
 REPO_SUBDIR='docs/'
 REPO_DEPTH=2 # number of dirs + 1

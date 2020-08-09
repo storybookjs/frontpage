@@ -20,6 +20,7 @@ import useSiteMetadata from '../../lib/useSiteMetadata';
 import { mdFormatting } from '../../../styles/formatting';
 import buildPathWithFramework from '../../../util/build-path-with-framework';
 import stylizeFramework from '../../../util/stylize-framework';
+import { FeatureSnippets } from './FeatureSnippets';
 
 const { color, spacing, typography } = styles;
 
@@ -76,7 +77,9 @@ function DocsScreen({ data, pageContext }) {
   const CodeSnippetsWithCurrentFramework = useMemo(() => {
     return (props) => <CodeSnippets currentFramework={framework} {...props} />;
   }, [framework]);
-
+  const FeatureSnippetsWithCurrentFramework = useMemo(() => {
+    return (props) => <FeatureSnippets currentFramework={framework} {...props} />;
+  }, [framework]);
   const FrameworkSupportTableWithFeaturesAndCurrentFramework = useMemo(() => {
     return ({ frameworks }) => (
       <FrameworkSupportTable
@@ -125,6 +128,7 @@ function DocsScreen({ data, pageContext }) {
         <MDXProvider
           components={{
             CodeSnippets: CodeSnippetsWithCurrentFramework,
+            FeatureSnippets: FeatureSnippetsWithCurrentFramework,
             FrameworkSupportTable: FrameworkSupportTableWithFeaturesAndCurrentFramework,
           }}
         >
