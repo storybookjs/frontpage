@@ -264,6 +264,10 @@ export const mdFormatting = css`
 
   /* Pre and Code styles */
 
+  .codesnippet {
+    margin: 1.5em 0;
+  }
+
   code {
     font-size: 87.5%;
     color: inherit;
@@ -272,11 +276,10 @@ export const mdFormatting = css`
   pre {
     /* Reset styles from global */
     margin: 0;
-    background: transparent;
     /* End resets */
+
     padding: 1em;
     font-size: inherit;
-    padding: 1em;
 
     code {
       padding: 0;
