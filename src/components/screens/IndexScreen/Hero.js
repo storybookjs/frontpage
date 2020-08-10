@@ -479,7 +479,7 @@ export default function Hero({ startOpen, ...props }) {
           <SecondarySubheading>Made for</SecondarySubheading>
           <FrameworkList>
             {frameworks.map((framework) => (
-              <Framework key={framework} framework={framework} href={`/docs/${framework}/`} />
+              <Framework key={framework} framework={framework} href={`/docs/${framework}`} />
             ))}
           </FrameworkList>
           <SecondarySubheading>GitHub</SecondarySubheading>
