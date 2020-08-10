@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import { styles, CodeSnippet } from '@storybook/design-system';
+import { styles } from '@storybook/design-system';
 import { darken } from 'polished';
 
 const { color, typography } = styles;
