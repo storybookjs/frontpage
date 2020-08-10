@@ -128,9 +128,11 @@ function DocsScreen({ data, pageContext }) {
         )}
         <MDXProvider
           components={{
-            pre: ({ children }) => (
-              <Derp snippets={[{ id: '1', Snippet: () => <pre>{children}</pre> }]} />
-            ),
+            pre: (props) => {
+              debugger;
+              console.log(props);
+              return <Derp snippets={[{ id: '1', Snippet: () => props.children }]} />;
+            },
             CodeSnippets: CodeSnippetsWithCurrentFramework,
             FeatureSnippets: FeatureSnippetsWithCurrentFramework,
             FrameworkSupportTable: FrameworkSupportTableWithFeaturesAndCurrentFramework,
