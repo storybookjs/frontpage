@@ -1,11 +1,10 @@
-import React, { useEffect, useMemo, useState, useRef } from 'react';
+import React, { useMemo } from 'react';
 import styled from 'styled-components';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import {
   Button,
   Highlight,
-  CodeSnippets as DesignSystemCodeSnippets,
   Link,
   ShadowBoxCTA,
   Subheading,
@@ -13,7 +12,7 @@ import {
 } from '@storybook/design-system';
 
 import { graphql } from 'gatsby';
-import { CodeSnippets, CODE_SNIPPET_CLASSNAME } from './CodeSnippets';
+import { CodeSnippets } from './CodeSnippets';
 import { frameworkSupportsFeature, FrameworkSupportTable } from './FrameworkSupportTable';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import useSiteMetadata from '../../lib/useSiteMetadata';
@@ -22,6 +21,7 @@ import { mdFormatting } from '../../../styles/formatting';
 import buildPathWithFramework from '../../../util/build-path-with-framework';
 import stylizeFramework from '../../../util/stylize-framework';
 import { FeatureSnippets } from './FeatureSnippets';
+import { Pre } from './Pre';
 
 const { color, spacing, typography } = styles;
 
@@ -65,41 +65,6 @@ const UnsupportedBanner = styled.div`
   background-color: #fff5cf;
   padding: 20px;
 `;
-
-const getIsNestedCodeSnippet = (element) => {
-  const { parentElement } = element;
-
-  if (parentElement.tagName === 'BODY') {
-    return false;
-  }
-
-  if (parentElement.classList.contains(CODE_SNIPPET_CLASSNAME)) {
-    return true;
-  }
-
-  return getIsNestedCodeSnippet(parentElement);
-};
-
-function Pre({ children }) {
-  const [content, setContent] = useState(null);
-  const preRef = useRef();
-
-  useEffect(() => {
-    if (preRef.current) {
-      const isNestedCodeSnippet = getIsNestedCodeSnippet(preRef.current);
-      const baseContent = <pre className={children.className}>{children}</pre>;
-
-      if (isNestedCodeSnippet) {
-        setContent(baseContent);
-        return;
-      }
-
-      setContent(<DesignSystemCodeSnippets snippets={[{ id: '1', Snippet: () => baseContent }]} />);
-    }
-  }, [preRef.current]);
-
-  return <div ref={preRef}>{content}</div>;
-}
 
 function DocsScreen({ data, pageContext }) {
   const {
