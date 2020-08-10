@@ -19,6 +19,7 @@ const useSiteMetadata = () => {
               supported
               unsupported
               path
+              repoPath
             }
           }
           urls {
