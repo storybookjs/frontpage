@@ -88,6 +88,8 @@ const useSiteMetadata = () => {
               svelte
               mithril
               riot
+              preact
+              rax
             }
             officialAddons {
               knobs

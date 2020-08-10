@@ -21,15 +21,8 @@ import { Cardinal, Video } from '../../basics';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import PlaceholderAspectRatio from '../../layout/PlaceholderAspectRatio';
 import NpmDownloadCount from '../../layout/NpmDownloadCount';
-
-import ReactSVG from '../../../images/logos/framework/icon-react.svg';
-import VueSVG from '../../../images/logos/framework/icon-vue.svg';
-import AngularSVG from '../../../images/logos/framework/icon-angular.svg';
-import EmberSVG from '../../../images/logos/framework/icon-ember.svg';
-import HtmlSVG from '../../../images/logos/framework/icon-html.svg';
-import SvelteSVG from '../../../images/logos/framework/icon-svelte.svg';
-import MithrilSVG from '../../../images/logos/framework/icon-mithril.svg';
-import RiotSVG from '../../../images/logos/framework/icon-riot.svg';
+import stylizeFramework from '../../../util/stylize-framework';
+import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 
 const { color, typography, breakpoint, pageMargins } = styles;
 
@@ -347,32 +340,19 @@ const Wrapper = styled.div`
   }
 `;
 
-function Framework({ framework, ...props }) {
-  let logoSVG;
+const getFrameworkLogo = (framework) => {
+  if (framework === 'rax') return '/frameworks/logo-rax.png';
+  return `/frameworks/logo-${framework}.svg`;
+};
 
-  if (framework === 'React' || framework === 'React Native') {
-    logoSVG = ReactSVG;
-  } else if (framework === 'Vue') {
-    logoSVG = VueSVG;
-  } else if (framework === 'Angular') {
-    logoSVG = AngularSVG;
-  } else if (framework === 'Ember') {
-    logoSVG = EmberSVG;
-  } else if (framework === 'HTML') {
-    logoSVG = HtmlSVG;
-  } else if (framework === 'Svelte') {
-    logoSVG = SvelteSVG;
-  } else if (framework === 'Mithril') {
-    logoSVG = MithrilSVG;
-  } else if (framework === 'Riot') {
-    logoSVG = RiotSVG;
-  }
+function Framework({ framework, ...props }) {
+  const logo = getFrameworkLogo(framework);
 
   return (
     <FrameworkItem>
-      <FrameworkLink className="primary" {...props} withArrow>
-        <img src={logoSVG} alt={framework} />
-        <span>{framework}</span>
+      <FrameworkLink className="primary" {...props} LinkWrapper={GatsbyLinkWrapper} withArrow>
+        <img src={logo} alt={framework} />
+        <span>{stylizeFramework(framework)}</span>
       </FrameworkLink>
     </FrameworkItem>
   );
@@ -491,15 +471,17 @@ export default function Hero({ startOpen, ...props }) {
         <Secondary>
           <SecondarySubheading>Made for</SecondarySubheading>
           <FrameworkList>
-            <Framework framework="React" href={framework.react} />
-            <Framework framework="React Native" href={framework.reactNative} />
-            <Framework framework="Vue" href={framework.vue} />
-            <Framework framework="Angular" href={framework.angular} />
-            <Framework framework="Ember" href={framework.ember} />
-            <Framework framework="HTML" href={framework.html} />
-            <Framework framework="Svelte" href={framework.svelte} />
-            <Framework framework="Mithril" href={framework.mithril} />
-            <Framework framework="Riot" href={framework.riot} />
+            <Framework framework="react" href={framework.react} />
+            <Framework framework="react-native" href={framework.reactNative} />
+            <Framework framework="vue" href={framework.vue} />
+            <Framework framework="angular" href={framework.angular} />
+            <Framework framework="ember" href={framework.ember} />
+            <Framework framework="html" href={framework.html} />
+            <Framework framework="svelte" href={framework.svelte} />
+            <Framework framework="mithril" href={framework.mithril} />
+            <Framework framework="riot" href={framework.riot} />
+            <Framework framework="preact" href={framework.preact} />
+            <Framework framework="rax" href={framework.rax} />
           </FrameworkList>
           <SecondarySubheading>GitHub</SecondarySubheading>
 

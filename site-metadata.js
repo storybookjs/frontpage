@@ -72,15 +72,17 @@ const siteMetadata = {
 
     // Framework docs
     framework: {
-      react: `${docsUrl}/react/get-started/install`,
-      reactNative: `https://github.com/storybookjs/react-native#storybook-for-react-native`,
-      vue: `${docsUrl}/vue/get-started/install`,
-      angular: `${docsUrl}/angular/get-started/install`,
-      ember: `${docsUrl}/ember/get-started/install`,
-      html: `${docsUrl}/html/get-started/install`,
-      svelte: `${docsUrl}/svelte/get-started/install`,
-      mithril: `${docsUrl}/mithril/get-started/install`,
-      riot: `${docsUrl}/riot/get-started/install`,
+      react: `/docs/react/`,
+      reactNative: `/docs/react-native/`,
+      vue: `/docs/vue/`,
+      angular: `/docs/angular/`,
+      ember: `/docs/ember/`,
+      html: `/docs/html/`,
+      svelte: `/docs/svelte/`,
+      mithril: `/docs/mithril/`,
+      riot: `/docs/riot/`,
+      preact: `/docs/preact/`,
+      rax: `/docs/rax/`,
     },
 
     // Official addons
