@@ -128,6 +128,11 @@ function DocsScreen({ data, pageContext }) {
         )}
         <MDXProvider
           components={{
+            pre: ({ children, ...rest }) => (
+              <DesignSystemCodeSnippets
+                snippets={[{ id: '1', Snippet: () => <pre>{children}</pre> }]}
+              />
+            ),
             CodeSnippets: CodeSnippetsWithCurrentFramework,
             FeatureSnippets: FeatureSnippetsWithCurrentFramework,
             FrameworkSupportTable: FrameworkSupportTableWithFeaturesAndCurrentFramework,
