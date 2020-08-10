@@ -67,7 +67,8 @@ module.exports = {
             options: {
               // Strip off trailing .md from links. We want them there in the original source so the
               // relative links work inside github, when you view the .md files directly
-              pattern: /^(.*)\.md(#.*)?$/,
+              // (Note we need to ensure we don't match the links below)
+              pattern: /^(?!\.\.\/\.\.\/)(.*)\.md(#.*)?$/,
               replace: '$1$2',
             },
           },
