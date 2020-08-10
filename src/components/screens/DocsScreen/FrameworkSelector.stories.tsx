@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FrameworkSelector } from './FrameworkSelector';
+import useSiteMetadata from '../../../../.storybook/useSiteMetadata';
 
 // The Wrapper helps capture the tooltip contents in the snapshot
 const Wrapper = styled.span`
@@ -9,33 +10,20 @@ const Wrapper = styled.span`
   height: 510px;
 `;
 
-const frameworksWithIcons = [
-  'react',
-  'vue',
-  'angular',
-  'html',
-  'ember',
-  'svelte',
-  'riot',
-  'mithril',
-  'marko',
-  'react-native',
-  'rax',
-  'preact',
-];
-
 export default {
   title: 'Frontpage|screens/DocsScreen/FrameworkSelector',
   component: FrameworkSelector,
   decorators: [(storyFn) => <Wrapper>{storyFn()}</Wrapper>],
 };
 
+const { frameworks } = useSiteMetadata();
+
 const Template = (args) => <FrameworkSelector {...args} />;
 
 export const Base = Template.bind({});
 Base.args = {
-  frameworks: frameworksWithIcons,
-  currentFramework: frameworksWithIcons[0],
+  frameworks,
+  currentFramework: frameworks[0],
   slug: '/slug',
   tooltipProps: { startOpen: true },
 };
