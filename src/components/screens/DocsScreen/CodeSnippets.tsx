@@ -9,6 +9,7 @@ import {
   styles,
 } from '@storybook/design-system';
 
+import { CODE_SNIPPET_CLASSNAME } from '../../../constants/code-snippets';
 import stylizeFramework from '../../../util/stylize-framework';
 
 const { color, typography } = styles;
@@ -27,10 +28,6 @@ const StyledBadge = styled(Badge)`
     background: #E3F3FF;
   `}
 `;
-
-const StyledDesignSystemCodeSnippets = styled(DesignSystemCodeSnippets).attrs({
-  className: 'codesnippet',
-})``;
 
 const syntaxNameMap = {
   'stories-of': 'StoriesOf()',
@@ -66,7 +63,7 @@ TabLabel.propTypes = {
 };
 
 export function PureCodeSnippets(props) {
-  return <StyledDesignSystemCodeSnippets {...props} />;
+  return <DesignSystemCodeSnippets className={CODE_SNIPPET_CLASSNAME} {...props} />;
 }
 
 const MissingMessaging = styled.div`

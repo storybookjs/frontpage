@@ -4,7 +4,6 @@ import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import {
   Button,
-  CodeSnippets as DesignSystemCodeSnippets,
   Highlight,
   Link,
   ShadowBoxCTA,
@@ -22,6 +21,7 @@ import { mdFormatting } from '../../../styles/formatting';
 import buildPathWithFramework from '../../../util/build-path-with-framework';
 import stylizeFramework from '../../../util/stylize-framework';
 import { FeatureSnippets } from './FeatureSnippets';
+import { Pre } from '../../basics/Pre';
 
 const { color, spacing, typography } = styles;
 
@@ -128,11 +128,7 @@ function DocsScreen({ data, pageContext }) {
         )}
         <MDXProvider
           components={{
-            pre: ({ children }) => (
-              <DesignSystemCodeSnippets
-                snippets={[{ id: '1', Snippet: () => <pre>{children}</pre> }]}
-              />
-            ),
+            pre: Pre,
             CodeSnippets: CodeSnippetsWithCurrentFramework,
             FeatureSnippets: FeatureSnippetsWithCurrentFramework,
             FrameworkSupportTable: FrameworkSupportTableWithFeaturesAndCurrentFramework,

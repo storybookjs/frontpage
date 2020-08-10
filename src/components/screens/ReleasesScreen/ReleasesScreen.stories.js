@@ -1,8 +1,8 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 
 import ReleasesScreen from './ReleasesScreen';
 import compiledMDX from '../../../../.storybook/compiled-mdx';
+import { CODE_SNIPPET_CLASSNAME } from '../../../constants/code-snippets';
 
 export const buildRelease = (version) => ({
   body: compiledMDX,
@@ -31,10 +31,13 @@ const data = {
   currentPage,
 };
 
-storiesOf('Frontpage|screens/ReleasesScreen/ReleasesScreen', module).add(
-  'default',
-  () => <ReleasesScreen data={data} />,
-  {
+export default {
+  title: 'Frontpage|screens/ReleasesScreen/ReleasesScreen',
+  component: ReleasesScreen,
+  parameters: {
     chromatic: { viewports: [320, 1200] },
-  }
-);
+  },
+  excludeStories: ['buildRelease'],
+};
+
+export const Base = () => <ReleasesScreen data={data} />;
