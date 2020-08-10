@@ -14,7 +14,8 @@ const data = {
   },
 };
 
-const tocItem = { githubUrl: 'github.com', path: '/path' };
+const tocItem = { path: '/path' };
+const githubUrl = 'github.com';
 
 const nextTocItem = { path: '/path', title: 'Title', description: 'This is a description.' };
 
@@ -28,23 +29,30 @@ export default {
   decorators: [(storyFn) => <Wrapper>{storyFn()}</Wrapper>],
 };
 
-export const Base = () => <DocsScreen data={data} pageContext={{ ...pageContext, tocItem: {} }} />;
+export const Base = () => <DocsScreen data={data} pageContext={{ ...pageContext, tocItem }} />;
 
 export const WithGuideLink = () => (
-  <DocsScreen data={data} pageContext={{ ...pageContext, nextTocItem }} />
+  <DocsScreen data={data} pageContext={{ ...pageContext, tocItem, nextTocItem }} />
 );
 
 export const WithGuideLinkNoDescription = () => (
   <DocsScreen
     data={data}
-    pageContext={{ ...pageContext, nextTocItem: { ...nextTocItem, description: undefined } }}
+    pageContext={{
+      ...pageContext,
+      tocItem,
+      nextTocItem: { ...nextTocItem, description: undefined },
+    }}
   />
 );
 
 export const WithGithubLink = () => (
-  <DocsScreen data={data} pageContext={{ ...pageContext, tocItem }} />
+  <DocsScreen data={data} pageContext={{ ...pageContext, tocItem: { ...tocItem, githubUrl } }} />
 );
 
 export const WithGithubLinkAndGuideLink = () => (
-  <DocsScreen data={data} pageContext={{ ...pageContext, tocItem, nextTocItem }} />
+  <DocsScreen
+    data={data}
+    pageContext={{ ...pageContext, tocItem: { ...tocItem, githubUrl }, nextTocItem }}
+  />
 );
