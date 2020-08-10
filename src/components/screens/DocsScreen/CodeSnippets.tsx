@@ -29,10 +29,6 @@ const StyledBadge = styled(Badge)`
   `}
 `;
 
-const StyledDesignSystemCodeSnippets = styled(DesignSystemCodeSnippets).attrs({
-  className: 'codesnippet',
-})``;
-
 const syntaxNameMap = {
   'stories-of': 'StoriesOf()',
 };
@@ -67,7 +63,7 @@ TabLabel.propTypes = {
 };
 
 export function PureCodeSnippets(props) {
-  return <StyledDesignSystemCodeSnippets className={CODE_SNIPPET_CLASSNAME} {...props} />;
+  return <DesignSystemCodeSnippets className={CODE_SNIPPET_CLASSNAME} {...props} />;
 }
 
 const MissingMessaging = styled.div`

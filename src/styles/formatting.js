@@ -2,6 +2,8 @@ import { css } from 'styled-components';
 import { styles } from '@storybook/design-system';
 import { darken } from 'polished';
 
+import { CODE_SNIPPET_CLASSNAME } from '../constants/code-snippets';
+
 const { color, typography } = styles;
 
 export const mdFormatting = css`
@@ -264,7 +266,7 @@ export const mdFormatting = css`
 
   /* Pre and Code styles */
 
-  .codesnippet {
+  .${CODE_SNIPPET_CLASSNAME} {
     margin: 1.5em 0;
   }
 
