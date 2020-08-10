@@ -39,7 +39,7 @@ export const FrameworkSupportTable = ({ currentFramework, frameworks, featureGro
         {featureGroups.map(({ name: groupName, features }) => (
           <>
             <tr>
-              <th colSpan={features.length + 1}>{groupName}</th>
+              <th colSpan={frameworks.length + 1}>{groupName}</th>
             </tr>
             {features.map((feature) => (
               <tr>
