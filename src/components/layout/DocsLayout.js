@@ -14,6 +14,7 @@ import {
   styles,
 } from '@storybook/design-system';
 import { graphql } from 'gatsby';
+import Helmet from 'react-helmet';
 
 import { SocialGraph } from '../basics';
 import GatsbyLinkWrapper from '../basics/GatsbyLinkWrapper';
@@ -121,7 +122,11 @@ function DocsLayout({ children, data, pageContext, ...props }) {
       fields: { slug },
     },
   } = data;
-  const { coreFrameworks, communityFrameworks } = useSiteMetadata();
+  const {
+    coreFrameworks,
+    communityFrameworks,
+    urls: { homepageUrl },
+  } = useSiteMetadata();
   const { docsToc, framework } = pageContext;
 
   const addLinkWrappers = (items) =>
@@ -142,6 +147,9 @@ function DocsLayout({ children, data, pageContext, ...props }) {
   return (
     <>
       <GlobalStyle />
+      <Helmet>
+        <link rel="canonical" href={`${homepageUrl}${buildPathWithFramework(slug, 'react')}`} />
+      </Helmet>
       <Wrapper>
         <Sidebar>
           <StyledTableOfContents

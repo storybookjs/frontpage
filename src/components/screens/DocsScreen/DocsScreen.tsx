@@ -15,6 +15,7 @@ import {
 import { graphql } from 'gatsby';
 import { CodeSnippets } from './CodeSnippets';
 import { frameworkSupportsFeature, FrameworkSupportTable } from './FrameworkSupportTable';
+import { SocialGraph } from '../../basics';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 
@@ -73,7 +74,13 @@ function DocsScreen({ data, pageContext }) {
       frontmatter: { title },
     },
   } = data;
-  const { coreFrameworks, communityFrameworks, featureGroups } = useSiteMetadata();
+  const {
+    coreFrameworks,
+    communityFrameworks,
+    description,
+    featureGroups,
+    urls: { homepageUrl },
+  } = useSiteMetadata();
   const { framework, docsToc, slug, tocItem, nextTocItem } = pageContext;
   const CodeSnippetsWithCurrentFramework = useMemo(() => {
     return (props) => <CodeSnippets currentFramework={framework} {...props} />;
@@ -110,6 +117,12 @@ function DocsScreen({ data, pageContext }) {
 
   return (
     <>
+      <SocialGraph
+        url={`${homepageUrl}${buildPathWithFramework(nextTocItem.path, framework)}`}
+        title={title}
+        desc={description}
+      />
+
       <MDWrapper>
         <Title>{title}</Title>
         {unsupported && (
