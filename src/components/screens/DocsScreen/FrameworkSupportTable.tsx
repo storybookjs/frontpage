@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link as GatsbyLink } from 'gatsby';
+import stylizeFramework from '../../../util/stylize-framework';
 
 export function frameworkSupportsFeature(framework, { supported, unsupported }) {
   return (
@@ -7,9 +8,6 @@ export function frameworkSupportsFeature(framework, { supported, unsupported }) 
     (unsupported && !unsupported.includes(framework))
   );
 }
-
-const frameworkTitle = (framework) =>
-  framework === 'html' ? 'HTML' : framework[0].toUpperCase() + framework.slice(1);
 
 const monorepoUrlBase = 'https://github.com/storybookjs/storybook/tree/next';
 
@@ -32,7 +30,7 @@ export const FrameworkSupportTable = ({ currentFramework, frameworks, featureGro
           <th aria-label="frameworks" />
           {frameworks.map((framework) => (
             <th>
-              <a href={`${monorepoUrlBase}/app/${framework}`}>{frameworkTitle(framework)}</a>
+              <a href={`${monorepoUrlBase}/app/${framework}`}>{stylizeFramework(framework)}</a>
             </th>
           ))}
         </tr>
