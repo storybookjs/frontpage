@@ -87,15 +87,14 @@ function Pre({ children }) {
   useEffect(() => {
     if (preRef.current) {
       const isNestedCodeSnippet = getIsNestedCodeSnippet(preRef.current);
+      const baseContent = <pre>{children}</pre>;
 
       if (isNestedCodeSnippet) {
-        setContent(children);
+        setContent(baseContent);
         return;
       }
 
-      setContent(
-        <DesignSystemCodeSnippets snippets={[{ id: '1', Snippet: () => <pre>{children}</pre> }]} />
-      );
+      setContent(<DesignSystemCodeSnippets snippets={[{ id: '1', Snippet: () => baseContent }]} />);
     }
   }, [preRef.current]);
 
