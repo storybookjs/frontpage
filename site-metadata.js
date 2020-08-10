@@ -70,19 +70,6 @@ const siteMetadata = {
     presentation: `${gitHubOrg}/brand/tree/master/presentation`,
     video: `${gitHubOrg}/brand/tree/master/video`,
 
-    // Framework docs
-    framework: {
-      react: `${docsUrl}/react/get-started/install`,
-      reactNative: `https://github.com/storybookjs/react-native#storybook-for-react-native`,
-      vue: `${docsUrl}/vue/get-started/install`,
-      angular: `${docsUrl}/angular/get-started/install`,
-      ember: `${docsUrl}/ember/get-started/install`,
-      html: `${docsUrl}/html/get-started/install`,
-      svelte: `${docsUrl}/svelte/get-started/install`,
-      mithril: `${docsUrl}/mithril/get-started/install`,
-      riot: `${docsUrl}/riot/get-started/install`,
-    },
-
     // Official addons
     officialAddons: {
       knobs: `${gitHubOrg}/storybook/tree/master/addons/knobs`,

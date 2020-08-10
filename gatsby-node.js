@@ -209,6 +209,16 @@ exports.createPages = ({ actions, graphql }) => {
             redirectInBrowser: true,
             toPath: buildPathWithFramework(firstDocsPageSlug, frameworks[0]),
           });
+
+          // Setup a redirect for each framework to the first guide
+          frameworks.forEach((framework) => {
+            createRedirect({
+              fromPath: `/docs/${framework}/`,
+              isPermanent: false,
+              redirectInBrowser: true,
+              toPath: buildPathWithFramework(firstDocsPageSlug, framework),
+            });
+          });
         }
 
         resolve();

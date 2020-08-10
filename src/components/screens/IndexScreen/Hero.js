@@ -21,15 +21,8 @@ import { Cardinal, Video } from '../../basics';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import PlaceholderAspectRatio from '../../layout/PlaceholderAspectRatio';
 import NpmDownloadCount from '../../layout/NpmDownloadCount';
-
-import ReactSVG from '../../../images/logos/framework/icon-react.svg';
-import VueSVG from '../../../images/logos/framework/icon-vue.svg';
-import AngularSVG from '../../../images/logos/framework/icon-angular.svg';
-import EmberSVG from '../../../images/logos/framework/icon-ember.svg';
-import HtmlSVG from '../../../images/logos/framework/icon-html.svg';
-import SvelteSVG from '../../../images/logos/framework/icon-svelte.svg';
-import MithrilSVG from '../../../images/logos/framework/icon-mithril.svg';
-import RiotSVG from '../../../images/logos/framework/icon-riot.svg';
+import stylizeFramework from '../../../util/stylize-framework';
+import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 
 const { color, typography, breakpoint, pageMargins } = styles;
 
@@ -206,10 +199,17 @@ const FrameworkLink = styled(Link)`
 
 const FrameworkItem = styled.div`
   display: flex;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   margin-bottom: 0.75rem;
+
+  a {
+    overflow: hidden;
+  }
+
+  a > span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 
   @media (min-width: ${breakpoint * 2}px) {
     &:last-child {
@@ -347,32 +347,19 @@ const Wrapper = styled.div`
   }
 `;
 
-function Framework({ framework, ...props }) {
-  let logoSVG;
+const getFrameworkLogo = (framework) => {
+  if (framework === 'rax') return '/frameworks/logo-rax.png';
+  return `/frameworks/logo-${framework}.svg`;
+};
 
-  if (framework === 'React' || framework === 'React Native') {
-    logoSVG = ReactSVG;
-  } else if (framework === 'Vue') {
-    logoSVG = VueSVG;
-  } else if (framework === 'Angular') {
-    logoSVG = AngularSVG;
-  } else if (framework === 'Ember') {
-    logoSVG = EmberSVG;
-  } else if (framework === 'HTML') {
-    logoSVG = HtmlSVG;
-  } else if (framework === 'Svelte') {
-    logoSVG = SvelteSVG;
-  } else if (framework === 'Mithril') {
-    logoSVG = MithrilSVG;
-  } else if (framework === 'Riot') {
-    logoSVG = RiotSVG;
-  }
+function Framework({ framework, ...props }) {
+  const logo = getFrameworkLogo(framework);
 
   return (
     <FrameworkItem>
-      <FrameworkLink className="primary" {...props} withArrow>
-        <img src={logoSVG} alt={framework} />
-        <span>{framework}</span>
+      <FrameworkLink className="primary" {...props} LinkWrapper={GatsbyLinkWrapper} withArrow>
+        <img src={logo} alt={framework} />
+        <span>{stylizeFramework(framework)}</span>
       </FrameworkLink>
     </FrameworkItem>
   );
@@ -389,8 +376,8 @@ Framework.defaultProps = {
 };
 
 export default function Hero({ startOpen, ...props }) {
-  const { latestVersion, urls = {}, contributorCount } = useSiteMetadata();
-  const { docs = {}, framework = {}, gitHub = {} } = urls;
+  const { frameworks, latestVersion, urls = {}, contributorCount } = useSiteMetadata();
+  const { docs = {}, gitHub = {} } = urls;
 
   const Modal = () => (
     <AspectRatio ratio={0.5625}>
@@ -491,15 +478,9 @@ export default function Hero({ startOpen, ...props }) {
         <Secondary>
           <SecondarySubheading>Made for</SecondarySubheading>
           <FrameworkList>
-            <Framework framework="React" href={framework.react} />
-            <Framework framework="React Native" href={framework.reactNative} />
-            <Framework framework="Vue" href={framework.vue} />
-            <Framework framework="Angular" href={framework.angular} />
-            <Framework framework="Ember" href={framework.ember} />
-            <Framework framework="HTML" href={framework.html} />
-            <Framework framework="Svelte" href={framework.svelte} />
-            <Framework framework="Mithril" href={framework.mithril} />
-            <Framework framework="Riot" href={framework.riot} />
+            {frameworks.map((framework) => (
+              <Framework key={framework} framework={framework} href={`/docs/${framework}/`} />
+            ))}
           </FrameworkList>
           <SecondarySubheading>GitHub</SecondarySubheading>
 
