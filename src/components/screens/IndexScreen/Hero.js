@@ -369,8 +369,8 @@ Framework.defaultProps = {
 };
 
 export default function Hero({ startOpen, ...props }) {
-  const { latestVersion, urls = {}, contributorCount } = useSiteMetadata();
-  const { docs = {}, framework = {}, gitHub = {} } = urls;
+  const { frameworks, latestVersion, urls = {}, contributorCount } = useSiteMetadata();
+  const { docs = {}, gitHub = {} } = urls;
 
   const Modal = () => (
     <AspectRatio ratio={0.5625}>
@@ -471,17 +471,9 @@ export default function Hero({ startOpen, ...props }) {
         <Secondary>
           <SecondarySubheading>Made for</SecondarySubheading>
           <FrameworkList>
-            <Framework framework="react" href={framework.react} />
-            <Framework framework="react-native" href={framework.reactNative} />
-            <Framework framework="vue" href={framework.vue} />
-            <Framework framework="angular" href={framework.angular} />
-            <Framework framework="ember" href={framework.ember} />
-            <Framework framework="html" href={framework.html} />
-            <Framework framework="svelte" href={framework.svelte} />
-            <Framework framework="mithril" href={framework.mithril} />
-            <Framework framework="riot" href={framework.riot} />
-            <Framework framework="preact" href={framework.preact} />
-            <Framework framework="rax" href={framework.rax} />
+            {frameworks.map((framework) => (
+              <Framework key={framework} framework={framework} href={`/docs/${framework}/`} />
+            ))}
           </FrameworkList>
           <SecondarySubheading>GitHub</SecondarySubheading>
 

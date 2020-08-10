@@ -70,21 +70,6 @@ const siteMetadata = {
     presentation: `${gitHubOrg}/brand/tree/master/presentation`,
     video: `${gitHubOrg}/brand/tree/master/video`,
 
-    // Framework docs
-    framework: {
-      react: `/docs/react/`,
-      reactNative: `/docs/react-native/`,
-      vue: `/docs/vue/`,
-      angular: `/docs/angular/`,
-      ember: `/docs/ember/`,
-      html: `/docs/html/`,
-      svelte: `/docs/svelte/`,
-      mithril: `/docs/mithril/`,
-      riot: `/docs/riot/`,
-      preact: `/docs/preact/`,
-      rax: `/docs/rax/`,
-    },
-
     // Official addons
     officialAddons: {
       knobs: `${gitHubOrg}/storybook/tree/master/addons/knobs`,

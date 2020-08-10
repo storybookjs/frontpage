@@ -78,19 +78,6 @@ const useSiteMetadata = () => {
             badge
             presentation
             video
-            framework {
-              react
-              reactNative
-              vue
-              angular
-              ember
-              html
-              svelte
-              mithril
-              riot
-              preact
-              rax
-            }
             officialAddons {
               knobs
               actions
