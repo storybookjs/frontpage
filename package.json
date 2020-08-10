@@ -29,7 +29,6 @@
     "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-remark-autolink-headers": "^2.3.11",
     "gatsby-remark-copy-linked-files": "^2.3.11",
-    "gatsby-remark-images": "^3.3.18",
     "gatsby-remark-link-rewrite": "^0.2.1",
     "gatsby-source-filesystem": "^2.3.18",
     "gatsby-transformer-sharp": "^2.5.10",

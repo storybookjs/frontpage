@@ -63,12 +63,6 @@ module.exports = {
         extensions: ['.md', '.mdx'],
         gatsbyRemarkPlugins: [
           {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 800,
-            },
-          },
-          {
             resolve: 'gatsby-remark-link-rewrite',
             options: {
               // Strip off trailing .md from links. We want them there in the original source so the
@@ -85,7 +79,12 @@ module.exports = {
               replace: 'https://github.com/storybookjs/storybook/tree/master/$1',
             },
           },
-          'gatsby-remark-copy-linked-files',
+          {
+            resolve: 'gatsby-remark-copy-linked-files',
+            options: {
+              ignoreFileExtensions: [],
+            },
+          },
           {
             resolve: `gatsby-remark-autolink-headers`,
             options: {
