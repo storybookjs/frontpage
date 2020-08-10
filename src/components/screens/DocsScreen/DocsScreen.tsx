@@ -4,7 +4,6 @@ import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import {
   Button,
-  CodeSnippets as DesignSystemCodeSnippets,
   Highlight,
   Link,
   ShadowBoxCTA,
@@ -17,6 +16,7 @@ import { CodeSnippets } from './CodeSnippets';
 import { frameworkSupportsFeature, FrameworkSupportTable } from './FrameworkSupportTable';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import useSiteMetadata from '../../lib/useSiteMetadata';
+import { Derp } from './DesignSystemCodeSnippets';
 
 import { mdFormatting } from '../../../styles/formatting';
 import buildPathWithFramework from '../../../util/build-path-with-framework';
@@ -128,10 +128,8 @@ function DocsScreen({ data, pageContext }) {
         )}
         <MDXProvider
           components={{
-            pre: ({ children, ...rest }) => (
-              <DesignSystemCodeSnippets
-                snippets={[{ id: '1', Snippet: () => <pre>{children}</pre> }]}
-              />
+            pre: ({ children }) => (
+              <Derp snippets={[{ id: '1', Snippet: () => <pre>{children}</pre> }]} />
             ),
             CodeSnippets: CodeSnippetsWithCurrentFramework,
             FeatureSnippets: FeatureSnippetsWithCurrentFramework,
