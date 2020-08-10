@@ -57,7 +57,7 @@ const FrameworkLinkList = styled(TooltipLinkList)`
   `}
 `;
 
-const coreFrameworks = ['react', 'vue', 'angular', 'ember', 'html'];
+const coreFrameworks = ['react', 'vue', 'angular', 'web-components'];
 const getFrameworkLogo = (framework) => {
   if (framework === 'rax') return '/frameworks/logo-rax.png';
   return `/frameworks/logo-${framework}.svg`;
