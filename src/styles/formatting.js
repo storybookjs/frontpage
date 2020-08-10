@@ -91,7 +91,7 @@ export const mdFormatting = css`
     padding-left: 30px;
 
     li {
-      margin-bottom: 0.5em;
+      margin-bottom: 0.25em;
     }
 
     ul,
@@ -200,6 +200,7 @@ export const mdFormatting = css`
     background: #f8fafc;
     border-radius: ${styles.spacing.borderRadius.small}px;
     padding: 1em;
+    margin: 1.5em 0;
 
     p:last-child {
       margin-bottom: 0;
@@ -263,28 +264,26 @@ export const mdFormatting = css`
 
   /* Pre and Code styles */
 
+  .codesnippet {
+    margin: 1.5em 0;
+  }
+
   code {
     font-size: 87.5%;
     color: inherit;
   }
 
   pre {
+    /* Reset styles from global */
+    margin: 0;
+    /* End resets */
+
     padding: 1em;
     font-size: inherit;
-    padding: 1em;
-    margin: 1.5em 0;
-    background: ${color.lighter};
 
     code {
       padding: 0;
       line-height: 1.43; /* 14px/20px */
-    }
-
-    & + .aside {
-      margin-top: -1.5rem;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-      border-top: 1px solid rgba(0, 0, 0, 0.1);
     }
   }
 
@@ -317,8 +316,24 @@ export const mdFormatting = css`
     color: ${darken(0.2, color.secondary)};
   }
 
-  details[open] > summary {
-    margin-bottom: 1em;
+  details[open] {
+    position: relative;
+
+    &:before {
+      border-left: 1px solid ${color.border};
+      content: '';
+      height: 100%;
+      left: 4px;
+      position: absolute;
+      top: calc(28px + 1em);
+      height: calc(100% - 2.4rem);
+    }
+    > summary {
+      margin-bottom: 1em;
+    }
+    > summary ~ * {
+      margin-left: 30px;
+    }
   }
 
   details > summary::-webkit-details-marker {

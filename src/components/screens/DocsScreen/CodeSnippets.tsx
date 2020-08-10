@@ -28,9 +28,9 @@ const StyledBadge = styled(Badge)`
   `}
 `;
 
-const StyledDesignSystemCodeSnippets = styled(DesignSystemCodeSnippets)`
-  padding-bottom: 1em;
-`;
+const StyledDesignSystemCodeSnippets = styled(DesignSystemCodeSnippets).attrs({
+  className: 'codesnippet',
+})``;
 
 const syntaxNameMap = {
   'stories-of': 'StoriesOf()',

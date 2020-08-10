@@ -9,7 +9,7 @@
   "dependencies": {
     "@mdx-js/mdx": "^1.6.16",
     "@mdx-js/react": "^1.6.16",
-    "@storybook/design-system": "^5.1.18",
+    "@storybook/design-system": "^5.1.19",
     "core-js": "^2.6.11",
     "gatsby": "^2.24.27",
     "gatsby-cli": "2.12.58",
