@@ -31,7 +31,12 @@ export function Pre({ children }) {
         return;
       }
 
-      setContent(<DesignSystemCodeSnippets snippets={[{ id: '1', Snippet: () => baseContent }]} />);
+      setContent(
+        <DesignSystemCodeSnippets
+          className={CODE_SNIPPET_CLASSNAME}
+          snippets={[{ id: '1', Snippet: () => baseContent }]}
+        />
+      );
     }
   }, [preRef.current]);
 

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Highlight, styles } from '@storybook/design-system';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import Pre from '../../basics/Pre';
+import { Pre } from '../../basics/Pre';
 
 import ConfirmedMailingList from '../../layout/ConfirmedMailingList';
 
