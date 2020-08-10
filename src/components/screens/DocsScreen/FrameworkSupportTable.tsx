@@ -30,7 +30,7 @@ export const FrameworkSupportTable = ({ currentFramework, frameworks, featureGro
           <th aria-label="frameworks" />
           {frameworks.map((framework) => (
             <th>
-              <a href={`${monorepoUrlBase}/app/${framework}`}>{stylizeFramework(framework)}</a>
+              <a href={`/docs/${framework}`}>{stylizeFramework(framework)}</a>
             </th>
           ))}
         </tr>
