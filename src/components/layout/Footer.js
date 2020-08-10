@@ -314,17 +314,7 @@ LinkWrapper.propTypes = {
 
 export default function Footer({ ...props }) {
   const { urls = {}, coreFrameworks } = useSiteMetadata();
-  const {
-    blog,
-    twitter,
-    chat,
-    youtube,
-    navLinks = {},
-
-    docs = {},
-    tutorials,
-    gitHub = {},
-  } = urls;
+  const { blog, twitter, chat, youtube, navLinks = {}, docs = {}, tutorials, gitHub = {} } = urls;
 
   return (
     <FooterWrapper {...props}>
