@@ -118,7 +118,7 @@ function DocsScreen({ data, pageContext }) {
   return (
     <>
       <SocialGraph
-        url={`${homepageUrl}${buildPathWithFramework(nextTocItem.path, framework)}`}
+        url={`${homepageUrl}${buildPathWithFramework(tocItem.path, framework)}`}
         title={title}
         desc={description}
       />
