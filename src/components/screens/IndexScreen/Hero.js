@@ -199,10 +199,17 @@ const FrameworkLink = styled(Link)`
 
 const FrameworkItem = styled.div`
   display: flex;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   margin-bottom: 0.75rem;
+
+  a {
+    overflow: hidden;
+  }
+
+  a > span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 
   @media (min-width: ${breakpoint * 2}px) {
     &:last-child {
