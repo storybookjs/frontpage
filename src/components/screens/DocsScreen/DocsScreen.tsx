@@ -87,7 +87,7 @@ function Pre({ children }) {
   useEffect(() => {
     if (preRef.current) {
       const isNestedCodeSnippet = getIsNestedCodeSnippet(preRef.current);
-      const baseContent = <pre>{children}</pre>;
+      const baseContent = <pre className={children.className}>{children}</pre>;
 
       if (isNestedCodeSnippet) {
         setContent(baseContent);
