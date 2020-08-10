@@ -24,7 +24,7 @@ export const Base = Template.bind({});
 Base.args = {
   coreFrameworks,
   communityFrameworks,
-  currentFramework: frameworks[0],
+  currentFramework: coreFrameworks[0],
   slug: '/slug',
   tooltipProps: { startOpen: true },
 };
