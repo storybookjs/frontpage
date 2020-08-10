@@ -152,14 +152,16 @@ function DocsLayout({ children, data, pageContext, ...props }) {
             {({ menu, allTopLevelMenusAreOpen, toggleAllOpen, toggleAllClosed }) => (
               <>
                 <SidebarControls>
-                  <Input
+                  {/* TODO: Once search is ready, delete the div below and uncomment the Input */}
+                  <div style={{ flex: 'none', marginRight: 0 }} />
+                  {/* <Input
                     id="search"
                     label="Search"
                     hideLabel
                     icon="search"
                     appearance="pill"
                     placeholder="Search docs"
-                  />
+                  /> */}
                   {allTopLevelMenusAreOpen ? (
                     <WithTooltip
                       {...withTooltipProps}

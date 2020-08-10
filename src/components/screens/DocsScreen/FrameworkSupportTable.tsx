@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link as GatsbyLink } from 'gatsby';
 
 export function frameworkSupportsFeature(framework, { supported, unsupported }) {
   return (
@@ -45,7 +46,7 @@ export const FrameworkSupportTable = ({ currentFramework, frameworks, featureGro
             {features.map((feature) => (
               <tr>
                 <th>
-                  <a href={pathForFeature(feature)}>{feature.name}</a>
+                  <GatsbyLink to={pathForFeature(feature)}>{feature.name}</GatsbyLink>
                 </th>
                 {frameworks.map((framework) => (
                   <td>{frameworkSupportsFeature(framework, feature) ? '✅' : ''}</td>
