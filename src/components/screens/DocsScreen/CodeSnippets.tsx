@@ -65,8 +65,10 @@ TabLabel.propTypes = {
   syntax: PropTypes.string.isRequired,
 };
 
+export const CODE_SNIPPET_CLASSNAME = 'frontpage-code-snippets';
+
 export function PureCodeSnippets(props) {
-  return <StyledDesignSystemCodeSnippets {...props} />;
+  return <StyledDesignSystemCodeSnippets className={CODE_SNIPPET_CLASSNAME} {...props} />;
 }
 
 const MissingMessaging = styled.div`

@@ -1,10 +1,11 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo, useState, useRef } from 'react';
 import styled from 'styled-components';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import {
   Button,
   Highlight,
+  CodeSnippets as DesignSystemCodeSnippets,
   Link,
   ShadowBoxCTA,
   Subheading,
@@ -12,11 +13,10 @@ import {
 } from '@storybook/design-system';
 
 import { graphql } from 'gatsby';
-import { CodeSnippets } from './CodeSnippets';
+import { CodeSnippets, CODE_SNIPPET_CLASSNAME } from './CodeSnippets';
 import { frameworkSupportsFeature, FrameworkSupportTable } from './FrameworkSupportTable';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import useSiteMetadata from '../../lib/useSiteMetadata';
-import { Derp } from './DesignSystemCodeSnippets';
 
 import { mdFormatting } from '../../../styles/formatting';
 import buildPathWithFramework from '../../../util/build-path-with-framework';
@@ -65,6 +65,42 @@ const UnsupportedBanner = styled.div`
   background-color: #fff5cf;
   padding: 20px;
 `;
+
+const getIsNestedCodeSnippet = (element) => {
+  const { parentElement } = element;
+
+  if (parentElement.tagName === 'BODY') {
+    return false;
+  }
+
+  if (parentElement.classList.contains(CODE_SNIPPET_CLASSNAME)) {
+    return true;
+  }
+
+  return getIsNestedCodeSnippet(parentElement);
+};
+
+function Pre({ children }) {
+  const [content, setContent] = useState(null);
+  const preRef = useRef();
+
+  useEffect(() => {
+    if (preRef.current) {
+      const isNestedCodeSnippet = getIsNestedCodeSnippet(preRef.current);
+
+      if (isNestedCodeSnippet) {
+        setContent(children);
+        return;
+      }
+
+      setContent(
+        <DesignSystemCodeSnippets snippets={[{ id: '1', Snippet: () => <pre>{children}</pre> }]} />
+      );
+    }
+  }, [preRef.current]);
+
+  return <div ref={preRef}>{content}</div>;
+}
 
 function DocsScreen({ data, pageContext }) {
   const {
@@ -128,11 +164,7 @@ function DocsScreen({ data, pageContext }) {
         )}
         <MDXProvider
           components={{
-            pre: (props) => {
-              debugger;
-              console.log(props);
-              return <Derp snippets={[{ id: '1', Snippet: () => props.children }]} />;
-            },
+            pre: Pre,
             CodeSnippets: CodeSnippetsWithCurrentFramework,
             FeatureSnippets: FeatureSnippetsWithCurrentFramework,
             FrameworkSupportTable: FrameworkSupportTableWithFeaturesAndCurrentFramework,
