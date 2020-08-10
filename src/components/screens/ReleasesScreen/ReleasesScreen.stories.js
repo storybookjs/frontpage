@@ -1,6 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
-import { storiesOf } from '@storybook/react';
 
 import ReleasesScreen from './ReleasesScreen';
 import compiledMDX from '../../../../.storybook/compiled-mdx';
@@ -33,16 +31,9 @@ const data = {
   currentPage,
 };
 
-const Wrapper = styled.div`
-  .${CODE_SNIPPET_CLASSNAME} {
-    margin-top: 15px;
-  }
-`;
-
 export default {
   title: 'Frontpage|screens/ReleasesScreen/ReleasesScreen',
   component: ReleasesScreen,
-  decorators: [(storyFn) => <Wrapper>{storyFn()}</Wrapper>],
   parameters: {
     chromatic: { viewports: [320, 1200] },
   },
