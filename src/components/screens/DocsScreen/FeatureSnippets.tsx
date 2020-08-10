@@ -13,7 +13,11 @@ export function PureFeatureSnippets({ framework, snippetsByFramework }) {
     }
   }
 
-  return <Snippet />;
+  return (
+    <div className="aside">
+      <Snippet />
+    </div>
+  );
 }
 
 export function FeatureSnippets({ currentFramework, paths }) {
