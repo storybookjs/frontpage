@@ -72,7 +72,7 @@ function DocsScreen({ data, pageContext }) {
       frontmatter: { title },
     },
   } = data;
-  const { featureGroups } = useSiteMetadata();
+  const { coreFrameworks, communityFrameworks, featureGroups } = useSiteMetadata();
   const { framework, docsToc, slug, tocItem, nextTocItem } = pageContext;
   const CodeSnippetsWithCurrentFramework = useMemo(() => {
     return (props) => <CodeSnippets currentFramework={framework} {...props} />;
@@ -81,9 +81,9 @@ function DocsScreen({ data, pageContext }) {
     return (props) => <FeatureSnippets currentFramework={framework} {...props} />;
   }, [framework]);
   const FrameworkSupportTableWithFeaturesAndCurrentFramework = useMemo(() => {
-    return ({ frameworks }) => (
+    return ({ core }) => (
       <FrameworkSupportTable
-        frameworks={frameworks}
+        frameworks={core ? coreFrameworks : communityFrameworks}
         currentFramework={framework}
         featureGroups={featureGroups}
       />

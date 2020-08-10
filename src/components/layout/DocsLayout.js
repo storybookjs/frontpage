@@ -121,7 +121,7 @@ function DocsLayout({ children, data, pageContext, ...props }) {
       fields: { slug },
     },
   } = data;
-  const { frameworks } = useSiteMetadata();
+  const { coreFrameworks, communityFrameworks } = useSiteMetadata();
   const { docsToc, framework } = pageContext;
 
   const addLinkWrappers = (items) =>
@@ -189,7 +189,8 @@ function DocsLayout({ children, data, pageContext, ...props }) {
                   <StyledFrameworkSelector
                     currentFramework={framework}
                     slug={slug}
-                    frameworks={frameworks}
+                    coreFrameworks={coreFrameworks}
+                    communityFrameworks={communityFrameworks}
                   />
                 </SidebarControls>
 

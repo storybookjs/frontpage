@@ -11,7 +11,8 @@ const useSiteMetadata = () => {
           googleSiteVerification
           latestVersion
           contributorCount
-          frameworks
+          coreFrameworks
+          communityFrameworks
           featureGroups {
             name
             features {

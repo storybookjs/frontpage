@@ -1,7 +1,7 @@
 import React from 'react';
 import { FrameworkSupportTable } from './FrameworkSupportTable';
 
-const frameworks = ['react', 'react-ts', 'vue', 'angular'];
+const frameworks = ['react', 'vue', 'angular'];
 const featureGroups = [
   {
     name: 'Group',

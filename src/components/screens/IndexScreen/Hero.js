@@ -376,7 +376,13 @@ Framework.defaultProps = {
 };
 
 export default function Hero({ startOpen, ...props }) {
-  const { frameworks, latestVersion, urls = {}, contributorCount } = useSiteMetadata();
+  const {
+    coreFrameworks,
+    communityFrameworks,
+    latestVersion,
+    urls = {},
+    contributorCount,
+  } = useSiteMetadata();
   const { docs = {}, gitHub = {} } = urls;
 
   const Modal = () => (
@@ -478,7 +484,7 @@ export default function Hero({ startOpen, ...props }) {
         <Secondary>
           <SecondarySubheading>Made for</SecondarySubheading>
           <FrameworkList>
-            {frameworks.map((framework) => (
+            {[...coreFrameworks, ...communityFrameworks].map((framework) => (
               <Framework key={framework} framework={framework} href={`/docs/${framework}`} />
             ))}
           </FrameworkList>

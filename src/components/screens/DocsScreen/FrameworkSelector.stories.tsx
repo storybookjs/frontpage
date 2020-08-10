@@ -16,13 +16,14 @@ export default {
   decorators: [(storyFn) => <Wrapper>{storyFn()}</Wrapper>],
 };
 
-const { frameworks } = useSiteMetadata();
+const { coreFrameworks, communityFrameworks } = useSiteMetadata();
 
 const Template = (args) => <FrameworkSelector {...args} />;
 
 export const Base = Template.bind({});
 Base.args = {
-  frameworks,
+  coreFrameworks,
+  communityFrameworks,
   currentFramework: frameworks[0],
   slug: '/slug',
   tooltipProps: { startOpen: true },

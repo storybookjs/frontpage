@@ -94,7 +94,8 @@ exports.createPages = ({ actions, graphql }) => {
         }
         site {
           siteMetadata {
-            frameworks
+            coreFrameworks
+            communityFrameworks
           }
         }
       }
@@ -104,7 +105,7 @@ exports.createPages = ({ actions, graphql }) => {
           docsPages: { edges: docsPagesEdges },
           releasePages: { edges: releasePagesEdges },
           site: {
-            siteMetadata: { frameworks },
+            siteMetadata: { coreFrameworks, communityFrameworks },
           },
         },
       }) => {
@@ -147,6 +148,7 @@ exports.createPages = ({ actions, graphql }) => {
           });
         }
 
+        const frameworks = [...coreFrameworks, ...communityFrameworks];
         const docsPagesSlugs = [];
         const docsPagesEdgesBySlug = Object.fromEntries(
           docsPagesEdges.map((edge) => [edge.node.fields.slug, edge])

@@ -57,14 +57,20 @@ const FrameworkLinkList = styled(TooltipLinkList)`
   `}
 `;
 
-const coreFrameworks = ['react', 'vue', 'angular', 'web-components'];
 const getFrameworkLogo = (framework) => {
   if (framework === 'rax') return '/frameworks/logo-rax.png';
   return `/frameworks/logo-${framework}.svg`;
 };
 
-export function FrameworkSelector({ currentFramework, frameworks, slug, tooltipProps, ...rest }) {
-  const links = frameworks.map((framework) => ({
+export function FrameworkSelector({
+  currentFramework,
+  coreFrameworks,
+  communityFrameworks,
+  slug,
+  tooltipProps,
+  ...rest
+}) {
+  const links = [...coreFrameworks, ...communityFrameworks].map((framework) => ({
     framework,
     LinkWrapper: GatsbyLinkWrapper,
     href: buildPathWithFramework(slug, framework),
@@ -105,7 +111,8 @@ export function FrameworkSelector({ currentFramework, frameworks, slug, tooltipP
 
 FrameworkSelector.propTypes = {
   currentFramework: PropTypes.string.isRequired,
-  frameworks: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  coreFrameworks: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  communityFrameworks: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   slug: PropTypes.string.isRequired,
   tooltipProps: PropTypes.shape({}),
 };
