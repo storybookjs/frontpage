@@ -14,7 +14,7 @@ const data = {
   },
 };
 
-const tocItem = { githubUrl: 'github.com' };
+const tocItem = { githubUrl: 'github.com', path: '/path' };
 
 const nextTocItem = { path: '/path', title: 'Title', description: 'This is a description.' };
 
