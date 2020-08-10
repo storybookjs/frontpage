@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { CodeSnippets as DesignSystemCodeSnippets } from '@storybook/design-system';
+import { CodeSnippets as DesignSystemCodeSnippets, Highlight } from '@storybook/design-system';
 
-import { CODE_SNIPPET_CLASSNAME } from './CodeSnippets';
+import { CODE_SNIPPET_CLASSNAME } from '../../constants/code-snippets';
 
 const getIsNestedCodeSnippet = (element) => {
   const { parentElement } = element;
@@ -27,7 +27,7 @@ export function Pre({ children }) {
       const baseContent = <pre className={children.props.className}>{children}</pre>;
 
       if (isNestedCodeSnippet) {
-        setContent(baseContent);
+        setContent(<Highlight withHTMLChildren={false}>{baseContent}</Highlight>);
         return;
       }
 

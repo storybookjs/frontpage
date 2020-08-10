@@ -21,7 +21,7 @@ import { mdFormatting } from '../../../styles/formatting';
 import buildPathWithFramework from '../../../util/build-path-with-framework';
 import stylizeFramework from '../../../util/stylize-framework';
 import { FeatureSnippets } from './FeatureSnippets';
-import { Pre } from './Pre';
+import { Pre } from '../../basics/Pre';
 
 const { color, spacing, typography } = styles;
 

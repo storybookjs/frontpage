@@ -9,6 +9,7 @@ import {
   styles,
 } from '@storybook/design-system';
 
+import { CODE_SNIPPET_CLASSNAME } from '../../../constants/code-snippets';
 import stylizeFramework from '../../../util/stylize-framework';
 
 const { color, typography } = styles;
@@ -64,8 +65,6 @@ TabLabel.propTypes = {
   framework: PropTypes.string.isRequired,
   syntax: PropTypes.string.isRequired,
 };
-
-export const CODE_SNIPPET_CLASSNAME = 'frontpage-code-snippets';
 
 export function PureCodeSnippets(props) {
   return <StyledDesignSystemCodeSnippets className={CODE_SNIPPET_CLASSNAME} {...props} />;
