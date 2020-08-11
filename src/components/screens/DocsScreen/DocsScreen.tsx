@@ -108,10 +108,12 @@ function DocsScreen({ data, pageContext }) {
     });
   findFeatureSupportTocItem(docsToc);
 
+  // FIXME: a bit of a hack
+  const isFirstTocItem = pageContext.slug === '/docs/get-started/introduction';
   return (
     <>
       <MDWrapper>
-        <Title>{title}</Title>
+        <Title>{isFirstTocItem ? `${title} for ${stylizeFramework(framework)}` : title}</Title>
         {unsupported && (
           <UnsupportedBanner>
             This feature is not supported in {stylizeFramework(framework)} yet. Help the open source
