@@ -23,16 +23,6 @@ const addStateToToc = (items, pathPrefix = '/docs') =>
 
 const docsTocWithPaths = addStateToToc(docsToc);
 
-exports.createSchemaCustomization = ({ actions }) => {
-  const { createTypes } = actions
-  const typeDefs = `
-    type MarkdownRemarkFrontmatter {
-      prerelease: Boolean
-    }
-  `
-  createTypes(typeDefs)
-}
-
 exports.onCreateNode = ({ actions, getNode, node }) => {
   const { createNodeField } = actions;
 
