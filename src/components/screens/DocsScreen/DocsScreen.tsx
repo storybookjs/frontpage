@@ -74,7 +74,7 @@ function DocsScreen({ data, pageContext }) {
     },
   } = data;
   const { coreFrameworks, communityFrameworks, featureGroups } = useSiteMetadata();
-  const { framework, docsToc, slug, tocItem, nextTocItem } = pageContext;
+  const { framework, docsToc, slug, tocItem, nextTocItem, isFirstTocItem } = pageContext;
   const CodeSnippetsWithCurrentFramework = useMemo(() => {
     return (props) => <CodeSnippets currentFramework={framework} {...props} />;
   }, [framework]);
@@ -108,8 +108,6 @@ function DocsScreen({ data, pageContext }) {
     });
   findFeatureSupportTocItem(docsToc);
 
-  // FIXME: a bit of a hack
-  const isFirstTocItem = pageContext.slug === '/docs/get-started/introduction';
   return (
     <>
       <MDWrapper>
