@@ -2930,10 +2930,10 @@
   dependencies:
     lodash "^4.17.15"
 
-"@storybook/design-system@^5.1.21":
-  version "5.1.21"
-  resolved "https://registry.yarnpkg.com/@storybook/design-system/-/design-system-5.1.21.tgz#a8aa2d749a4752b79a904947701524a48e92e96e"
-  integrity sha512-Rd8nVG7cl1MOmZEzfVAbqncZnaW9PIDaH8oM9CYJFh0i3e5MEDFXKEl7abzuWe1jkGwBWt5W89qQuOAemHyS7A==
+"@storybook/design-system@^5.1.22":
+  version "5.1.22"
+  resolved "https://registry.yarnpkg.com/@storybook/design-system/-/design-system-5.1.22.tgz#bd97a5e9eaf9cf98ae9cdc46bd3a1c7dc6ec58fa"
+  integrity sha512-4JUbFIU4yhLl3OgF6XqOwUlWMy2F2PSKPcMHDLuc3snOT5LmkaAckM6Kc3m7xfdkP7FVCNea7KHwbRjUIUk5pw==
   dependencies:
     copy-to-clipboard "^3.3.1"
     polished "^3.6.4"
