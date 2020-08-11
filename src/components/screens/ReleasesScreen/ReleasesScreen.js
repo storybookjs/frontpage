@@ -9,7 +9,6 @@ import useSiteMetadata from '../../lib/useSiteMetadata';
 import Release from './Release';
 import TableOfContents from './TableOfContents';
 import { SocialGraph } from '../../basics';
-import PageLayout from '../../layout/PageLayout';
 
 const { GlobalStyle } = global;
 
@@ -56,7 +55,7 @@ function ReleasesScreen({ data, ...props }) {
   const {
     allReleases: { edges },
     currentPage: {
-      html,
+      body,
       frontmatter: { title },
       fields: { slug: currentPageSlug },
     },
@@ -69,7 +68,7 @@ function ReleasesScreen({ data, ...props }) {
   return (
     <>
       <GlobalStyle />
-      <PageLayout {...props}>
+      <>
         <SocialGraph
           title="Storybook: UI component explorer for frontend developers"
           desc="Storybook is an open source tool for developing UI components in isolation for React, Vue, and Angular. It makes building stunning UIs organized and efficient."
@@ -82,9 +81,9 @@ function ReleasesScreen({ data, ...props }) {
             <TableOfContents currentPageSlug={currentPageSlug} entries={tocEntries} />
           </Sidebar>
 
-          <StyledRelease title={title} html={html} />
+          <StyledRelease title={title} body={body} />
         </Content>
-      </PageLayout>
+      </>
     </>
   );
 }
@@ -97,13 +96,16 @@ export default ReleasesScreen;
 
 export const query = graphql`
   query ReleasesScreenQuery($slug: String!) {
-    allReleases: allMarkdownRemark(
+    allReleases: allMdx(
       sort: { fields: [fields___version], order: DESC }
-      filter: { frontmatter: { prerelease: { ne: true } } }
+      filter: {
+        frontmatter: { prerelease: { ne: true } }
+        fields: { pageType: { eq: "releases" } }
+      }
     ) {
       edges {
         node {
-          html
+          body
           fields {
             slug
             version
@@ -114,8 +116,8 @@ export const query = graphql`
         }
       }
     }
-    currentPage: markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
+    currentPage: mdx(fields: { slug: { eq: $slug } }) {
+      body
       frontmatter {
         title
       }

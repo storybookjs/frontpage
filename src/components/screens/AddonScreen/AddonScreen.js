@@ -5,7 +5,6 @@ import { Button, Icon, Subheading, styles } from '@storybook/design-system';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 
 import { SocialGraph } from '../../basics';
-import PageLayout from '../../layout/PageLayout';
 import PageTitle from '../../layout/PageTitle';
 import AddonItem from './AddonItem';
 import AddonList from './AddonList';
@@ -82,7 +81,7 @@ export function PureAddonScreen({ ...props }) {
   const { title, ogImage, urls = {} } = useSiteMetadata();
   const { home, officialAddons = {}, gitHub = {}, docs = {} } = urls;
   return (
-    <PageLayout {...props}>
+    <>
       <SocialGraph
         title={`Addons | ${title}`}
         desc="Addons enable advanced functionality and unlock new workflows. Contributed by core maintainers and the amazing developer community."
@@ -411,21 +410,19 @@ export function PureAddonScreen({ ...props }) {
           desc="Embed Zeplin designs in a storybook panel."
           addonUrl="https://github.com/mertkahyaoglu/storybook-zeplin"
         />
- 
+
         <Subheader>Appearance</Subheader>
         <AddonItem
           title="Dark Mode"
           desc="Change Storybook to dark mode."
           addonUrl="https://github.com/hipstersmoothie/storybook-dark-mode"
         />
-   
+
         <div>
           <Button
             appearance="secondaryOutline"
             isLink
-            href={`${
-              gitHub.frontpage
-            }/blob/master/src/components/screens/AddonScreen/AddonScreen.js#L158`}
+            href={`${gitHub.frontpage}/blob/master/src/components/screens/AddonScreen/AddonScreen.js#L158`}
           >
             <Icon icon="plus" /> Add your addon here
           </Button>
@@ -440,7 +437,7 @@ export function PureAddonScreen({ ...props }) {
           </Button>
         }
       />
-    </PageLayout>
+    </>
   );
 }
 

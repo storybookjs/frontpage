@@ -48,7 +48,6 @@ PureConfirmedMailingList.propTypes = {
 
 export default function ConfirmedMailingList(props) {
   const [hasSubscribed, onSetHasSubscribed] = useState(false);
-  // eslint-disable-next-line no-unused-vars
   const onSubscribe = async ({ email, optIn }) => {
     if (!email) return;
     const data = new FormData();
@@ -61,7 +60,7 @@ export default function ConfirmedMailingList(props) {
       // ...(optIn && { 'group[4969][1]': null }),
     };
     // e.g. u, id, SOURCE
-    Object.keys(fullFields).forEach(key => data.append(key, fullFields[key]));
+    Object.keys(fullFields).forEach((key) => data.append(key, fullFields[key]));
 
     await fetch(listUrl, {
       method: 'POST',

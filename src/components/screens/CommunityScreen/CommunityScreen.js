@@ -7,7 +7,6 @@ import { Button, Icon, styles } from '@storybook/design-system';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 
 import { LazyLoad, SocialGraph } from '../../basics';
-import PageLayout from '../../layout/PageLayout';
 import CommunityHero from './CommunityHero';
 import CommunitySocial from './CommunitySocial';
 import CommunitySidebar from './CommunitySidebar';
@@ -168,7 +167,7 @@ export function PureCommunityScreen({ ...props }) {
     openCollective,
   } = urls;
   return (
-    <PageLayout {...props}>
+    <>
       <SocialGraph
         title={`Community | ${title}`}
         desc="Join thousands of frontend developers to learn new Storybook techniques, get help, and develop UIs faster."
@@ -374,7 +373,7 @@ export function PureCommunityScreen({ ...props }) {
           </LogoLink>
         </OpenCollectiveLogos>
       </CommunityLayout>
-    </PageLayout>
+    </>
   );
 }
 

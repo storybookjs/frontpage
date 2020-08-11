@@ -1,5 +1,12 @@
+const {
+  coreFrameworks,
+  communityFrameworks,
+  featureGroups,
+} = require('./src/content/docs/frameworks');
+
+const isDeployPreview = process.env.CONTEXT === 'deploy-preview';
+const homepageUrl = isDeployPreview ? process.env.DEPLOY_PRIME_URL : 'https://storybook.js.org';
 const gitHubOrg = `https://github.com/storybookjs`;
-const homepageUrl = `https://storybook.js.org`;
 const npmApiBase = `https://api.npmjs.org/downloads/point/last-month`;
 const docsUrl = `${homepageUrl}/docs`;
 
@@ -8,8 +15,11 @@ const siteMetadata = {
   description: `Storybook is an open source tool for developing UI components in isolation for React, Vue, and Angular`,
   ogImage: '/images/social/open-graph.png',
   googleSiteVerification: '',
-  latestVersion: 'v5.3',
-  contributorCount: 1035,
+  latestVersion: 'v6.0',
+  contributorCount: 1043,
+  coreFrameworks,
+  communityFrameworks,
+  featureGroups,
   urls: {
     gitHubOrg,
     homepageUrl,
@@ -43,10 +53,7 @@ const siteMetadata = {
 
     // Navigation
     home: homepageUrl,
-    docs: {
-      home: `${docsUrl}/basics/introduction/`,
-      addonInstruction: `${docsUrl}/addons/writing-addons/`,
-    },
+    docs: '/docs/',
     tutorials: `https://www.learnstorybook.com/`,
     addons: `/addons/`,
     community: `/community/`,
@@ -68,19 +75,6 @@ const siteMetadata = {
     badge: `${gitHubOrg}/brand/tree/master/badge`,
     presentation: `${gitHubOrg}/brand/tree/master/presentation`,
     video: `${gitHubOrg}/brand/tree/master/video`,
-
-    // Framework docs
-    framework: {
-      react: `${docsUrl}/guides/guide-react/`,
-      reactNative: `${docsUrl}/guides/guide-react-native/`,
-      vue: `${docsUrl}/guides/guide-vue/`,
-      angular: `${docsUrl}/guides/guide-angular/`,
-      ember: `${docsUrl}/guides/guide-ember/`,
-      html: `${docsUrl}/guides/guide-html/`,
-      svelte: `${docsUrl}/guides/guide-svelte/`,
-      mithril: `${docsUrl}/guides/guide-mithril/`,
-      riot: `${docsUrl}/guides/guide-riot/`,
-    },
 
     // Official addons
     officialAddons: {
@@ -108,7 +102,7 @@ siteMetadata.urls.navCommunityLinks = [
 ];
 
 siteMetadata.urls.navLinks = [
-  { title: 'Docs', href: siteMetadata.urls.docs.home, isGatsby: false },
+  { title: 'Docs', href: siteMetadata.urls.docsUrl, isGatsby: false },
   { title: 'Tutorials', href: siteMetadata.urls.tutorials, isGatsby: false },
   { title: 'Releases', href: siteMetadata.urls.releases, isGatsby: true },
   { title: 'Addons', href: siteMetadata.urls.addons, isGatsby: true },

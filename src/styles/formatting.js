@@ -2,21 +2,34 @@ import { css } from 'styled-components';
 import { styles } from '@storybook/design-system';
 import { darken } from 'polished';
 
+import { CODE_SNIPPET_CLASSNAME } from '../constants/code-snippets';
+
 const { color, typography } = styles;
 
-// eslint-disable-next-line import/prefer-default-export
-export const releaseFormatting = css`
+export const mdFormatting = css`
   line-height: 28px;
   font-size: ${typography.size.s3}px;
 
   h1,
   h2,
   h3,
-  h4 {
+  h4,
+  h5,
+  h6 {
     line-height: 1em;
 
     & + * {
       margin-top: 0 !important;
+    }
+
+    .remark-header-link svg {
+      opacity: 0;
+      transition: opacity 250ms ease-out, visibility 0ms linear 250ms;
+    }
+
+    &:hover .remark-header-link svg {
+      opacity: 1;
+      transition: opacity 250ms ease-out;
     }
   }
 
@@ -28,31 +41,36 @@ export const releaseFormatting = css`
     margin-top: 0 !important;
   }
 
+  h1 {
+    font-size: ${typography.size.l1}px;
+    font-weight: ${typography.weight.black};
+
+    line-height: 36px;
+    margin-bottom: 1.5rem;
+  }
+
   h2 {
-    margin-bottom: 24px;
-    color: ${color.dark};
-    font-size: ${typography.size.m1}px;
-    letter-spacing: -0.31px;
-    line-height: 26px;
+    font-size: ${typography.size.m2}px;
+    font-weight: ${typography.weight.extrabold};
+    line-height: ${typography.size.m3}px;
+    margin-bottom: 0.5em;
+  }
+
+  h2:not(:first-child) {
+    margin-top: 2.5rem;
   }
 
   h3 {
-    color: ${color.darkest};
     font-size: ${typography.size.m1}px;
-    letter-spacing: -0.4px;
+    font-weight: ${typography.weight.extrabold};
     line-height: 28px;
-    font-weight: ${typography.weight.black};
-    margin-bottom: 9px;
+    margin: 2.5rem 0 0.5rem;
   }
 
   h4 {
-    color: ${color.mediumdark};
-    font-size: ${typography.size.s1}px;
+    font-size: ${typography.size.s3}px;
     font-weight: ${typography.weight.extrabold};
-    letter-spacing: 5.14px;
-    line-height: 20px;
-    text-transform: uppercase;
-    margin-bottom: 8px;
+    margin: 2rem 0 0.5rem;
   }
 
   p {
@@ -70,8 +88,8 @@ export const releaseFormatting = css`
   ol,
   ul {
     list-style-position: outside;
-    margin-bottom: 1em;
-    margin-top: 1em;
+    margin-bottom: 1.5em;
+    margin-top: 1.5em;
     padding-left: 30px;
 
     li {
@@ -91,13 +109,13 @@ export const releaseFormatting = css`
     list-style-type: disc;
   }
 
-  a {
-    color: ${color.secondary};
+  a:not(.remark-header-link) {
     transition: all 250ms ease-out;
     display: inline-block;
     text-decoration: none;
     transform: translate3d(0, 0, 0);
 
+    &,
     &:hover,
     &:focus,
     &:hover:focus {
@@ -110,6 +128,35 @@ export const releaseFormatting = css`
 
     &:active {
       transform: translate3d(0, 0, 0);
+    }
+  }
+
+  .remark-header-link {
+    display: inline-flex;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    display: flex;
+    transition: transform 250ms ease-out;
+    transform: translate3d(-100%, -50%, 0);
+    padding-right: 10px;
+
+    &:hover {
+      transform: translate3d(-100%, calc(-50% - 1px), 0);
+
+      path {
+        fill: ${color.dark};
+      }
+    }
+
+    path {
+      fill: ${color.mediumdark};
+      transition: fill 250ms ease-out;
+    }
+
+    svg {
+      width: 18px;
+      height: 18px;
     }
   }
 
@@ -147,12 +194,15 @@ export const releaseFormatting = css`
       margin-top: 1em;
     }
   }
+
   .aside {
-    font-size: ${typography.size.s3}px;
-    color: ${color.darker};
+    font-size: 87.5%;
+    line-height: 1.43;
+    color: ${color.dark};
     background: #f8fafc;
     border-radius: ${styles.spacing.borderRadius.small}px;
-    padding: 20px;
+    padding: 1em;
+    margin: 1.5em 0;
 
     p:last-child {
       margin-bottom: 0;
@@ -166,6 +216,7 @@ export const releaseFormatting = css`
     border-collapse: collapse;
     width: 100%;
     margin: 2em 0;
+    overflow: auto;
   }
   table tr {
     border-top: 1px solid ${color.mediumlight};
@@ -213,25 +264,29 @@ export const releaseFormatting = css`
     margin: 2em 0;
   }
 
-  ${'' /* Tweak Prism styling */};
-  *:not(pre) > code[class*='language-'],
-  pre[class*='language-'] {
-    background: ${color.lighter};
-    margin: 2em 0;
-  }
+  /* Pre and Code styles */
 
-  code[class*='language-'],
-  pre[class*='language-'] {
-    font-size: ${typography.size.s2}px;
-    line-height: ${typography.size.m1}px;
+  .${CODE_SNIPPET_CLASSNAME} {
+    margin: 1.5em 0;
   }
 
   code {
-    font-size: ${typography.size.s3 - 2}px;
+    font-size: 87.5%;
+    color: inherit;
   }
 
-  .aside code {
-    font-size: ${typography.size.s3 - 2}px;
+  pre {
+    /* Reset styles from global */
+    margin: 0;
+    /* End resets */
+
+    padding: 1em;
+    font-size: inherit;
+
+    code {
+      padding: 0;
+      line-height: 1.43; /* 14px/20px */
+    }
   }
 
   blockquote {
@@ -240,5 +295,51 @@ export const releaseFormatting = css`
     line-height: 1.75;
     margin-top: 2rem;
     margin-bottom: 2.5rem;
+  }
+
+  details {
+    margin: 1.5em 0;
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      display: inline;
+    }
+
+    &:not([open]) + details {
+      margin-top: -1em;
+    }
+  }
+
+  details > summary {
+    display: inline-block;
+    cursor: pointer;
+    color: ${darken(0.2, color.secondary)};
+  }
+
+  details[open] {
+    position: relative;
+
+    &:before {
+      border-left: 1px solid ${color.border};
+      content: '';
+      height: 100%;
+      left: 4px;
+      position: absolute;
+      top: calc(28px + 1em);
+      height: calc(100% - 2.4rem);
+    }
+    > summary {
+      margin-bottom: 1em;
+    }
+    > summary ~ * {
+      margin-left: 30px;
+    }
+  }
+
+  details > summary::-webkit-details-marker {
+    height: 10px;
+    width: 10px;
   }
 `;

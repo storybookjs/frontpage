@@ -1,31 +1,40 @@
 module.exports = {
-  parser: 'babel-eslint',
-  extends: ['airbnb', 'prettier', 'prettier/react'],
-  plugins: ['prettier'],
+  root: true,
+  extends: ['@storybook/eslint-config-storybook'],
   rules: {
-    'prettier/prettier': [
-      'warn',
-      {
-        printWidth: 100,
-        tabWidth: 2,
-        bracketSpacing: true,
-        trailingComma: 'es5',
-        singleQuote: true,
-        jsxBracketSameLine: false,
-      },
+    'import/extensions': [
+      'error',
+      'never',
+      { ignorePackages: true, md: 'always', svg: 'always', json: 'always', tag: 'always' },
     ],
-    'react/jsx-filename-extension': [
-      1,
-      {
-        extensions: ['.js'],
-      },
-    ],
-    'react/jsx-wrap-multilines': [
+    'import/no-unresolved': ['error', { ignore: ['@storybook'] }],
+    'react/state-in-constructor': 'off',
+    'react/static-property-placement': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    'react/jsx-fragments': 'off',
+    'react/prop-types': 'off',
+    '@typescript-eslint/ban-ts-ignore': 'off',
+    '@typescript-eslint/no-object-literal-type-assertion': 'off',
+    'react/sort-comp': [
       'error',
       {
-        arrow: false,
+        order: [
+          'staticLifecycle',
+          'static-methods',
+          'instance-variables',
+          'lifecycle',
+          '/^on.+$/',
+          '/^(get|set)(?!(DerivedStateFromProps|SnapshotBeforeUpdate$)).+$/',
+          'instance-methods',
+          'instance-variables',
+          'everything-else',
+          'render',
+        ],
+        groups: {
+          staticLifecycle: ['displayName', 'propTypes', 'defaultProps', 'getDerivedStateFromProps'],
+        },
       },
     ],
-    'import/no-extraneous-dependencies': ['error', { devDependencies: ['**/*.stories.js'] }],
+    'max-classes-per-file': 'off',
   },
 };
