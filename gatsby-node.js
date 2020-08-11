@@ -1,3 +1,4 @@
+const fs = require('fs');
 const path = require('path');
 
 const { createFilePath } = require(`gatsby-source-filesystem`);
@@ -227,4 +228,26 @@ exports.createPages = ({ actions, graphql }) => {
       }
     );
   });
+};
+
+function getVersionData(distTag) {
+  const versionFile = `./src/content/docs/versions/${distTag}.json`;
+  if (!fs.existsSync(versionFile)) {
+    return null;
+  }
+  const data = {
+    [distTag]: JSON.parse(fs.readFileSync(versionFile)),
+  };
+  return data;
+}
+
+function generateVersionsFile() {
+  const latest = getVersionData('latest');
+  const next = getVersionData('next');
+  const data = { ...latest, ...next };
+  fs.writeFileSync('./public/versions.json', JSON.stringify(data));
+}
+
+exports.onPostBuild = () => {
+  generateVersionsFile();
 };
