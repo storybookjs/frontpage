@@ -81,7 +81,7 @@ function DocsScreen({ data, pageContext }) {
     featureGroups,
     urls: { homepageUrl },
   } = useSiteMetadata();
-  const { framework, docsToc, slug, tocItem, nextTocItem } = pageContext;
+  const { framework, docsToc, slug, tocItem, nextTocItem, isFirstTocItem } = pageContext;
   const CodeSnippetsWithCurrentFramework = useMemo(() => {
     return (props) => <CodeSnippets currentFramework={framework} {...props} />;
   }, [framework]);
@@ -124,7 +124,7 @@ function DocsScreen({ data, pageContext }) {
       />
 
       <MDWrapper>
-        <Title>{title}</Title>
+        <Title>{isFirstTocItem ? `${title} for ${stylizeFramework(framework)}` : title}</Title>
         {unsupported && (
           <UnsupportedBanner>
             This feature is not supported in {stylizeFramework(framework)} yet. Help the open source
