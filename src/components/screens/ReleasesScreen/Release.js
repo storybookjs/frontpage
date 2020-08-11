@@ -2,19 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Highlight, styles } from '@storybook/design-system';
+import { MDXProvider } from '@mdx-js/react';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { Pre } from '../../basics/Pre';
 
 import ConfirmedMailingList from '../../layout/ConfirmedMailingList';
 
-import { releaseFormatting } from '../../../styles/formatting';
+import { mdFormatting } from '../../../styles/formatting';
 
 const { color, typography } = styles;
 
 const Wrapper = styled.div`
-  ${releaseFormatting}
+  ${mdFormatting}
   flex: 1;
 `;
 
-const Title = styled.div`
+const Title = styled.h1`
   color: ${color.darkest};
   font-size: ${typography.size.l1}px;
   font-weight: ${typography.weight.black};
@@ -45,11 +48,15 @@ const StyledConfirmedMailingList = styled(ConfirmedMailingList)`
   min-width: auto;
 `;
 
-function Release({ title, html, ...props }) {
+function Release({ title, body, ...props }) {
   return (
     <Wrapper {...props}>
       <Title>{title}</Title>
-      <Highlight>{html}</Highlight>
+      <MDXProvider components={{ pre: Pre }}>
+        <Highlight withHTMLChildren={false}>
+          <MDXRenderer>{body}</MDXRenderer>
+        </Highlight>
+      </MDXProvider>
       <EmailWrapper>
         <Heading>Join the mailing list</Heading>
         <Message>Get news, free tutorials, and Storybook tips emailed to you.</Message>
@@ -60,7 +67,7 @@ function Release({ title, html, ...props }) {
 }
 
 Release.propTypes = {
-  html: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
 };
 

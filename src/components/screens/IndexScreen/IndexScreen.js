@@ -6,7 +6,6 @@ import { Button, Link, styles } from '@storybook/design-system';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 
 import { SocialGraph, Video } from '../../basics';
-import PageLayout from '../../layout/PageLayout';
 import Hero from './Hero';
 import SocialProof from '../../layout/SocialProof';
 import PlaceholderAspectRatio from '../../layout/PlaceholderAspectRatio';
@@ -42,7 +41,7 @@ export function PureIndexScreen({ ...props }) {
   const { ogImage, urls = {} } = useSiteMetadata();
   const { home, docs = {} } = urls;
   return (
-    <PageLayout {...props}>
+    <>
       <SocialGraph
         title="Storybook: UI component explorer for frontend developers"
         desc="Storybook is an open source tool for developing UI components in isolation for React, Vue, and Angular. It makes building stunning UIs organized and efficient."
@@ -64,7 +63,6 @@ export function PureIndexScreen({ ...props }) {
       <ValueProp
         orientation="left"
         media={
-          /* eslint-disable jsx-a11y/media-has-caption */
           <Placeholder ratio={0.75}>
             <Video
               src="videos/storybook-workflow-build-optimized-lg.mp4"
@@ -125,7 +123,6 @@ export function PureIndexScreen({ ...props }) {
         <ValueProp
           orientation="right"
           media={
-            /* eslint-disable jsx-a11y/media-has-caption */
             <Placeholder ratio={0.75}>
               <Video
                 src="videos/storybook-workflow-test-optimized-lg.mp4"
@@ -182,7 +179,6 @@ export function PureIndexScreen({ ...props }) {
       <ValueProp
         orientation="left"
         media={
-          /* eslint-disable jsx-a11y/media-has-caption */
           <Placeholder ratio={0.75}>
             <Video
               src="videos/storybook-workflow-share-optimized-lg.mp4"
@@ -251,7 +247,7 @@ export function PureIndexScreen({ ...props }) {
           </Button>
         }
       />
-    </PageLayout>
+    </>
   );
 }
 

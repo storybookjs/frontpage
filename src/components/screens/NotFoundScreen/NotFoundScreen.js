@@ -3,7 +3,6 @@ import Helmet from 'react-helmet';
 import styled from 'styled-components';
 
 import { Link, styles } from '@storybook/design-system';
-import PageLayout from '../../layout/PageLayout';
 import PageTitle from '../../layout/PageTitle';
 import Feature from '../../layout/Feature';
 import FeaturesLayout from '../../layout/FeaturesLayout';
@@ -24,7 +23,7 @@ export function PureNotFoundScreen({ ...props }) {
   const { urls = {} } = useSiteMetadata();
   const { gitHub = {}, chat } = urls;
   return (
-    <PageLayout {...props}>
+    <>
       <Helmet>
         <meta name="robots" content="noindex" />
       </Helmet>
@@ -55,7 +54,7 @@ export function PureNotFoundScreen({ ...props }) {
           </Link>
         </Feature>
       </Features>
-    </PageLayout>
+    </>
   );
 }
 

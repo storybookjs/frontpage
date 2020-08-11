@@ -25,7 +25,7 @@ const Content = styled.div`
 function IframeReleasesScreen({ data }) {
   const {
     currentPage: {
-      html,
+      body,
       frontmatter: { title },
     },
   } = data;
@@ -37,7 +37,7 @@ function IframeReleasesScreen({ data }) {
         <meta name="robots" content="noindex" />
       </Helmet>
       <Content>
-        <Release title={title} html={html} />
+        <Release title={title} body={body} />
       </Content>
     </>
   );
@@ -51,8 +51,8 @@ export default IframeReleasesScreen;
 
 export const query = graphql`
   query IframeReleasesScreenQuery($slug: String!) {
-    currentPage: markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
+    currentPage: mdx(fields: { slug: { eq: $slug } }) {
+      body
       frontmatter {
         title
       }

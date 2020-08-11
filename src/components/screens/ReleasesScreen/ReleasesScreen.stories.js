@@ -1,19 +1,11 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 
 import ReleasesScreen from './ReleasesScreen';
+import compiledMDX from '../../../../.storybook/compiled-mdx';
+import { CODE_SNIPPET_CLASSNAME } from '../../../constants/code-snippets';
 
-// eslint-disable-next-line import/prefer-default-export
-export const buildRelease = version => ({
-  html: `
-    <div>
-      <h2>This is the release summary for version ${version}</h2>
-      <h3>Here is a level 3 heading</h3>
-      <h4>Here is a level 4 heading</h4>
-      <p>Here is a paragraph to describe things.</p>
-      <pre class="language-js"><code class=" language-js"><span class="token keyword">const</span> thing <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'thing'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-    </div>
-  `,
+export const buildRelease = (version) => ({
+  body: compiledMDX,
   fields: {
     slug: `/${version}`,
     version,
@@ -39,10 +31,13 @@ const data = {
   currentPage,
 };
 
-storiesOf('Frontpage|screens/ReleasesScreen/ReleasesScreen', module).add(
-  'default',
-  () => <ReleasesScreen data={data} />,
-  {
+export default {
+  title: 'Frontpage|screens/ReleasesScreen/ReleasesScreen',
+  component: ReleasesScreen,
+  parameters: {
     chromatic: { viewports: [320, 1200] },
-  }
-);
+  },
+  excludeStories: ['buildRelease'],
+};
+
+export const Base = () => <ReleasesScreen data={data} />;

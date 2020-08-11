@@ -35,6 +35,7 @@ const ResourceDesc = styled.div`
 
 const ResourceAction = styled(Link)`
   margin-right: 15px;
+  text-transform: capitalize;
 `;
 
 const ResourceActions = styled.div``;
@@ -312,18 +313,8 @@ LinkWrapper.propTypes = {
 };
 
 export default function Footer({ ...props }) {
-  const { urls = {} } = useSiteMetadata();
-  const {
-    blog,
-    twitter,
-    chat,
-    youtube,
-    navLinks = {},
-    framework = {},
-    docs = {},
-    tutorials,
-    gitHub = {},
-  } = urls;
+  const { urls = {}, coreFrameworks } = useSiteMetadata();
+  const { blog, twitter, chat, youtube, navLinks = {}, docs = {}, tutorials, gitHub = {} } = urls;
 
   return (
     <FooterWrapper {...props}>
@@ -339,18 +330,15 @@ export default function Footer({ ...props }) {
                   easier.
                 </ResourceDesc>
                 <ResourceActions>
-                  <ResourceAction withArrow href={framework.react}>
-                    React
-                  </ResourceAction>
-                  <ResourceAction withArrow href={framework.vue}>
-                    Vue
-                  </ResourceAction>
-                  <ResourceAction withArrow href={framework.angular}>
-                    Angular
-                  </ResourceAction>
-                  <ResourceAction withArrow href={docs.home}>
-                    View more
-                  </ResourceAction>
+                  {coreFrameworks.map((framework) => (
+                    <ResourceAction
+                      withArrow
+                      key={framework}
+                      href={`/docs/${framework}/get-started/introduction`}
+                    >
+                      {framework}
+                    </ResourceAction>
+                  ))}
                 </ResourceActions>
               </Meta>
             </Resource>

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Helmet from 'react-helmet';
 
+import DocsLayout from './DocsLayout';
+
 import useSiteMetadata from '../lib/useSiteMetadata';
 
 import { SocialGraph } from '../basics';
@@ -11,7 +13,7 @@ import Footer from './Footer';
 
 const Layout = styled.div``;
 
-export default function PageLayout({ children, ...props }) {
+export default function PageLayout({ children, pageContext, ...props }) {
   const { urls = {}, title, description, ogImage, googleSiteVerification } = useSiteMetadata();
   return (
     <Layout {...props}>
@@ -42,7 +44,13 @@ export default function PageLayout({ children, ...props }) {
         <meta name="google-site-verification" content={googleSiteVerification} />
       </Helmet>
       <Header />
-      {children}
+      {pageContext && pageContext.layout === 'docs' ? (
+        <DocsLayout pageContext={pageContext} {...props}>
+          {children}
+        </DocsLayout>
+      ) : (
+        children
+      )}
       <Footer />
     </Layout>
   );
