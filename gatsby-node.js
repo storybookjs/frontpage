@@ -231,7 +231,7 @@ exports.createPages = ({ actions, graphql }) => {
 };
 
 function getVersionData(distTag) {
-  const versionFile = `${__dirname}/versions/${distTag}.json`;
+  const versionFile = `./src/content/docs/versions/${distTag}.json`;
   if (!fs.existsSync(versionFile)) {
     return null;
   }
@@ -245,7 +245,7 @@ function generateVersionsFile() {
   const latest = getVersionData('latest');
   const next = getVersionData('next');
   const data = { ...latest, ...next };
-  fs.writeFileSync(`${__dirname}/public/versions.json`, JSON.stringify(data));
+  fs.writeFileSync('./public/versions.json', JSON.stringify(data));
 }
 
 exports.onPostBuild = () => {
