@@ -41,7 +41,7 @@
 /docs/guides/slow-start-guide/ /docs/react/configure/overview 301
 /docs/guides/guide-html/ /docs/html/ 301
 /docs/guides/guide-react/ /docs/react/ 301
-/docs/guides/guide-react-native/ /docs/react-native/ 301
+/docs/guides/guide-react-native/ https://github.com/storybookjs/react-native#storybook-for-react-native 301
 /docs/guides/guide-vue/ /docs/vue/ 301
 /docs/guides/guide-angular/ /docs/angular/ 301
 /docs/guides/guide-mithril/ /docs/mithril/ 301
