@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Highlight, styles } from '@storybook/design-system';
+import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { Pre } from '../../basics/Pre';
 
 import ConfirmedMailingList from '../../layout/ConfirmedMailingList';
 
@@ -50,9 +52,11 @@ function Release({ title, body, ...props }) {
   return (
     <Wrapper {...props}>
       <Title>{title}</Title>
-      <Highlight withHTMLChildren={false}>
-        <MDXRenderer>{body}</MDXRenderer>
-      </Highlight>
+      <MDXProvider components={{ pre: Pre }}>
+        <Highlight withHTMLChildren={false}>
+          <MDXRenderer>{body}</MDXRenderer>
+        </Highlight>
+      </MDXProvider>
       <EmailWrapper>
         <Heading>Join the mailing list</Heading>
         <Message>Get news, free tutorials, and Storybook tips emailed to you.</Message>

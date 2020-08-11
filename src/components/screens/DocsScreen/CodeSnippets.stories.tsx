@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Highlight } from '@storybook/design-system';
 
-import { PureCodeSnippets, ModuleComponentWithMessage, TabLabel } from './CodeSnippets';
+import { PureCodeSnippets, MissingMessage, TabLabel } from './CodeSnippets';
 import { mdFormatting } from '../../../styles/formatting';
 import compiledMDX from '../../../../.storybook/compiled-mdx';
 
@@ -35,13 +35,7 @@ function TSModuleComponent() {
 const snippets = [
   {
     id: `react-js`,
-    Snippet: () => (
-      <ModuleComponentWithMessage
-        ModuleComponent={JSModuleComponent}
-        currentFramework="react"
-        withMissingMessaging={false}
-      />
-    ),
+    Snippet: JSModuleComponent,
     framework: 'react',
     syntax: 'js',
     renderTabLabel: ({ isActive }) => (
@@ -50,13 +44,7 @@ const snippets = [
   },
   {
     id: `react-ts`,
-    Snippet: () => (
-      <ModuleComponentWithMessage
-        ModuleComponent={TSModuleComponent}
-        currentFramework="react"
-        withMissingMessaging={false}
-      />
-    ),
+    Snippet: TSModuleComponent,
     framework: 'react',
     syntax: 'ts',
     renderTabLabel: ({ isActive }) => (
@@ -74,13 +62,8 @@ const snippetsWithoutBadges = snippets.map((snippet, index) => ({
 
 const snippetsWithMissingMessaging = snippets.map((snippet, index) => ({
   ...snippet,
-  Snippet: () => (
-    <ModuleComponentWithMessage
-      ModuleComponent={TSModuleComponent}
-      currentFramework="angular"
-      withMissingMessaging
-    />
-  ),
+  PreSnippet: () => <MissingMessage currentFramework="angular" />,
+  Snippet: TSModuleComponent,
 }));
 
 const Wrapper = styled.div`

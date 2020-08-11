@@ -9,6 +9,7 @@ import {
   styles,
 } from '@storybook/design-system';
 
+import { CODE_SNIPPET_CLASSNAME } from '../../../constants/code-snippets';
 import stylizeFramework from '../../../util/stylize-framework';
 
 const { color, typography } = styles;
@@ -26,10 +27,6 @@ const StyledBadge = styled(Badge)`
     color: ${color.secondary};
     background: #E3F3FF;
   `}
-`;
-
-const StyledDesignSystemCodeSnippets = styled(DesignSystemCodeSnippets)`
-  padding-bottom: 1em;
 `;
 
 const syntaxNameMap = {
@@ -66,10 +63,10 @@ TabLabel.propTypes = {
 };
 
 export function PureCodeSnippets(props) {
-  return <StyledDesignSystemCodeSnippets {...props} />;
+  return <DesignSystemCodeSnippets className={CODE_SNIPPET_CLASSNAME} {...props} />;
 }
 
-const MissingMessaging = styled.div`
+const MissingMessagingWrapper = styled.div`
   background-color: #fdf5d3;
   padding: 10px 16px;
   border-bottom: 1px solid ${color.border};
@@ -77,29 +74,20 @@ const MissingMessaging = styled.div`
   line-height: 20px;
 `;
 
-export function ModuleComponentWithMessage({
-  currentFramework,
-  ModuleComponent,
-  withMissingMessaging,
-}) {
+export function MissingMessage({ currentFramework }) {
   return (
-    <>
-      {withMissingMessaging && (
-        <MissingMessaging>
-          This snippet doesnt exist for {stylizeFramework(currentFramework)} yet.{' '}
-          <Link
-            appearance="secondary"
-            href="https://github.com/storybookjs/storybook/tree/next/docs"
-            target="_blank"
-            rel="noopener"
-          >
-            Contribute it in a PR now
-          </Link>
-          . In the meantime, here’s the {stylizeFramework(DEFAULT_FRAMEWORK)} snippet.
-        </MissingMessaging>
-      )}
-      <ModuleComponent />
-    </>
+    <MissingMessagingWrapper>
+      This snippet doesnt exist for {stylizeFramework(currentFramework)} yet.{' '}
+      <Link
+        appearance="secondary"
+        href="https://github.com/storybookjs/storybook/tree/next/docs"
+        target="_blank"
+        rel="noopener"
+      >
+        Contribute it in a PR now
+      </Link>
+      . In the meantime, here’s the {stylizeFramework(DEFAULT_FRAMEWORK)} snippet.
+    </MissingMessagingWrapper>
   );
 }
 
@@ -131,13 +119,10 @@ export function CodeSnippets({ paths, currentFramework, ...rest }) {
 
           return {
             id: `${framework}-${syntax}`,
-            Snippet: () => (
-              <ModuleComponentWithMessage
-                ModuleComponent={ModuleComponent}
-                currentFramework={currentFramework}
-                withMissingMessaging={!!defaultFrameworkPaths}
-              />
-            ),
+            PreSnippet: defaultFrameworkPaths
+              ? () => <MissingMessage currentFramework={currentFramework} />
+              : undefined,
+            Snippet: ModuleComponent,
             framework,
             syntax,
             renderTabLabel: ({ isActive }) => (

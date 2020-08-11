@@ -4,7 +4,6 @@ import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import {
   Button,
-  CodeSnippets as DesignSystemCodeSnippets,
   Highlight,
   Link,
   ShadowBoxCTA,
@@ -15,6 +14,7 @@ import {
 import { graphql } from 'gatsby';
 import { CodeSnippets } from './CodeSnippets';
 import { frameworkSupportsFeature, FrameworkSupportTable } from './FrameworkSupportTable';
+import { SocialGraph } from '../../basics';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 
@@ -22,6 +22,7 @@ import { mdFormatting } from '../../../styles/formatting';
 import buildPathWithFramework from '../../../util/build-path-with-framework';
 import stylizeFramework from '../../../util/stylize-framework';
 import { FeatureSnippets } from './FeatureSnippets';
+import { Pre } from '../../basics/Pre';
 
 const { color, spacing, typography } = styles;
 
@@ -73,7 +74,13 @@ function DocsScreen({ data, pageContext }) {
       frontmatter: { title },
     },
   } = data;
-  const { coreFrameworks, communityFrameworks, featureGroups } = useSiteMetadata();
+  const {
+    coreFrameworks,
+    communityFrameworks,
+    description,
+    featureGroups,
+    urls: { homepageUrl },
+  } = useSiteMetadata();
   const { framework, docsToc, slug, tocItem, nextTocItem, isFirstTocItem } = pageContext;
   const CodeSnippetsWithCurrentFramework = useMemo(() => {
     return (props) => <CodeSnippets currentFramework={framework} {...props} />;
@@ -110,6 +117,12 @@ function DocsScreen({ data, pageContext }) {
 
   return (
     <>
+      <SocialGraph
+        url={`${homepageUrl}${buildPathWithFramework(tocItem.path, framework)}`}
+        title={title}
+        desc={description}
+      />
+
       <MDWrapper>
         <Title>{isFirstTocItem ? `${title} for ${stylizeFramework(framework)}` : title}</Title>
         {unsupported && (
@@ -128,11 +141,7 @@ function DocsScreen({ data, pageContext }) {
         )}
         <MDXProvider
           components={{
-            pre: ({ children }) => (
-              <DesignSystemCodeSnippets
-                snippets={[{ id: '1', Snippet: () => <pre>{children}</pre> }]}
-              />
-            ),
+            pre: Pre,
             CodeSnippets: CodeSnippetsWithCurrentFramework,
             FeatureSnippets: FeatureSnippetsWithCurrentFramework,
             FrameworkSupportTable: FrameworkSupportTableWithFeaturesAndCurrentFramework,

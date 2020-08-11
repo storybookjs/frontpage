@@ -4,8 +4,9 @@ const {
   featureGroups,
 } = require('./src/content/docs/frameworks');
 
+const isDeployPreview = process.env.CONTEXT === 'deploy-preview';
+const homepageUrl = isDeployPreview ? process.env.DEPLOY_PRIME_URL : 'https://storybook.js.org';
 const gitHubOrg = `https://github.com/storybookjs`;
-const homepageUrl = `https://storybook.js.org`;
 const npmApiBase = `https://api.npmjs.org/downloads/point/last-month`;
 const docsUrl = `${homepageUrl}/docs`;
 
