@@ -1,6 +1,6 @@
 # See https://www.netlify.com/docs/redirects/
 
-# Move guides into their own paths
+# Older (prev 5.0 doc URLs)
 /basics/quick-start-guide /docs/guides/quick-start-guide 301
 /basics/slow-start-guide /docs/guides/slow-start-guide 301
 /basics/guide-react /docs/guides/guide-react 301
@@ -29,3 +29,54 @@
 /logos/* /docs/logos/:splat 301
 /testing/* /docs/testing/:splat 301
 /addons/addon-gallery/ /addons/ 301
+
+# Pre 6.0 URLs
+/docs/basics/introduction/ /docs/react/get-started/introduction 301
+/docs/basics/writing-stories/ /docs/react/get-started/whats-a-story 301
+/docs/basics/exporting-storybook/ /docs/react/workflows/publish-storybook 301
+/docs/basics/faq/ /docs/react/workflows/faq 301
+/docs/basics/live-examples/ https://github.com/storybookjs/storybook/blob/next/examples/README.md 301
+
+/docs/guides/quick-start-guide/ /docs/react/get-started/install 301
+/docs/guides/slow-start-guide/ /docs/react/configure/overview 301
+/docs/guides/guide-html/ /docs/html/ 301
+/docs/guides/guide-react/ /docs/react/ 301
+/docs/guides/guide-react-native/ /docs/react-native/ 301
+/docs/guides/guide-vue/ /docs/vue/ 301
+/docs/guides/guide-angular/ /docs/angular/ 301
+/docs/guides/guide-mithril/ /docs/mithril/ 301
+/docs/guides/guide-marko/ /docs/marko/ 301
+/docs/guides/guide-ember/ /docs/ember/ 301
+/docs/guides/guide-riot/ /docs/riot/ 301
+/docs/guides/guide-svelte/ /docs/svelte/ 301
+/docs/guides/guide-preact/ /docs/preact/ 301
+  
+
+/docs/configurations/overview/ /docs/react/configure/overview 301
+/docs/configurations/options-parameter/ /docs/react/configure/features-and-behavior 301
+/docs/configurations/default-config/ /docs/react/configure/overview 301
+/docs/configurations/custom-webpack-config/ /docs/react/configure/webpack 301
+/docs/configurations/custom-babel-config/ /docs/react/configure/babel 301
+/docs/configurations/typescript-config/ /docs/react/configure/typescript 301
+/docs/configurations/add-custom-head-tags/ /docs/react/configure/story-rendering#adding-to-head 301
+/docs/configurations/add-custom-body/ /docs/react/configure/story-rendering#adding-to-body 301
+/docs/configurations/serving-static-files/ /docs/react/configure/images-and-assets#serving-static-files-via-storybook 301
+/docs/configurations/env-vars/ /docs/react/configure/environment-variables 301
+/docs/configurations/theming/ /docs/react/configure/theming 301
+/docs/configurations/cli-options/ /docs/react/api/cli-options 301
+/docs/configurations/standalone-options/ https://github.com/storybookjs/storybook/blob/next/lib/core/docs/standalone.md 301
+/docs/formats/component-story-format/ /docs/react/api/csf 301
+/docs/formats/storiesof-api/ https://github.com/storybookjs/storybook/blob/next/lib/core/docs/storiesOf.md 301
+/docs/formats/mdx-syntax/ /docs/react/api/mdx 301
+/docs/testing/react-ui-testing/ /docs/react/workflows/testing-with-storybook 301
+/docs/testing/structural-testing/ /docs/react/workflows/snapshot-testing 301
+/docs/testing/interaction-testing/ /docs/react/workflows/interaction-testing 301
+/docs/testing/automated-visual-testing/ /docs/react/workflows/visual-testing 301
+/docs/testing/manual-testing/ /docs/react/workflows/testing-with-storybook 301
+/docs/addons/introduction/ /docs/react/configure/storybook-addons 301
+/docs/addons/using-addons/ /docs/react/configure/storybook-addons 301
+/docs/addons/writing-addons/ /docs/react/api/addons 301
+/docs/addons/api/ /docs/react/api/addons-api 301
+/docs/presets/introduction/ /docs/react/api/presets 301
+/docs/presets/preset-gallery/ https://github.com/storybookjs/presets 301
+/docs/presets/writing-presets/ /docs/react/api/writing-presets 301
