@@ -30,7 +30,7 @@ export const FrameworkSupportTable = ({ currentFramework, frameworks, featureGro
           <th aria-label="frameworks" />
           {frameworks.map((framework) => (
             <th>
-              <a href={`/docs/${framework}`}>{stylizeFramework(framework)}</a>
+              <GatsbyLink to={`/docs/${framework}`}>{stylizeFramework(framework)}</GatsbyLink>
             </th>
           ))}
         </tr>
