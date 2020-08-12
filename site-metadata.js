@@ -85,6 +85,7 @@ const siteMetadata = {
       actions: `${essentialsBase}/actions`,
       viewport: `${essentialsBase}/viewport`,
       backgrounds: `${essentialsBase}/backgrounds`,
+      toolbars: `${essentialsBase}/toolbars-and-globals`,
       knobs: `${gitHubOrg}/storybook/tree/master/addons/knobs`,
       source: `${gitHubOrg}/storybook/tree/master/addons/storysource`,
       info: `${gitHubOrg}/storybook/tree/master/addons/info`,
