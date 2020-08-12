@@ -11,7 +11,7 @@ import AddonList from './AddonList';
 import AddonCustom from './AddonCustom';
 import CTA from '../../layout/CTA';
 
-import KnobsSVG from '../../../images/addons/knobs.svg';
+import ControlsSVG from '../../../images/addons/knobs.svg';
 import ActionsSVG from '../../../images/addons/actions.svg';
 import SourceSVG from '../../../images/addons/source.svg';
 import DocsSVG from '../../../images/addons/docs.svg';
@@ -100,10 +100,17 @@ export function PureAddonScreen({ ...props }) {
       <AddonList appearance="official">
         <AddonItem
           appearance="official"
-          image={<img src={KnobsSVG} alt="knobs" />}
-          title="Knobs"
+          image={<img src={DocsSVG} alt="docs" />}
+          title="Docs"
+          desc="Document component usage and properties in Markdown"
+          addonUrl={officialAddons.docs}
+        />
+        <AddonItem
+          appearance="official"
+          image={<img src={ControlsSVG} alt="controls" />}
+          title="Controls"
           desc="Interact with component inputs dynamically in the Storybook UI"
-          addonUrl={officialAddons.knobs}
+          addonUrl={officialAddons.controls}
         />
         <AddonItem
           appearance="official"
@@ -114,20 +121,6 @@ export function PureAddonScreen({ ...props }) {
         />
         <AddonItem
           appearance="official"
-          image={<img src={SourceSVG} alt="source" />}
-          title="Source"
-          desc="View a story’s source code to see how it works and paste into your app."
-          addonUrl={officialAddons.source}
-        />
-        <AddonItem
-          appearance="official"
-          image={<img src={DocsSVG} alt="docs" />}
-          title="Docs"
-          desc="Document component usage and properties in Markdown"
-          addonUrl={officialAddons.docs}
-        />
-        <AddonItem
-          appearance="official"
           image={<img src={ViewPortSVG} alt="viewport" />}
           title="Viewport"
           desc="Build responsive components by adjusting Storybook’s viewport size and orientation"
@@ -135,17 +128,24 @@ export function PureAddonScreen({ ...props }) {
         />
         <AddonItem
           appearance="official"
-          image={<img src={StoryshotsSVG} alt="storyshots" />}
-          title="Storyshots"
-          desc="Take a code snapshot of every story automatically with Jest"
-          addonUrl={officialAddons.storyshots}
-        />
-        <AddonItem
-          appearance="official"
           image={<img src={BackgroundsSVG} alt="backgrounds" />}
           title="Backgrounds"
           desc="Switch backgrounds to view components in different settings"
           addonUrl={officialAddons.backgrounds}
+        />
+        <AddonItem
+          appearance="official"
+          image={<img src={SourceSVG} alt="source" />}
+          title="Source"
+          desc="View a story’s source code to see how it works and paste into your app."
+          addonUrl={officialAddons.source}
+        />
+        <AddonItem
+          appearance="official"
+          image={<img src={StoryshotsSVG} alt="storyshots" />}
+          title="Storyshots"
+          desc="Take a code snapshot of every story automatically with Jest"
+          addonUrl={officialAddons.storyshots}
         />
         <AddonItem
           appearance="official"
