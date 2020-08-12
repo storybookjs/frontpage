@@ -17059,11 +17059,6 @@ react-github-button@^0.1.11:
   dependencies:
     prop-types "^15.5.10"
 
-react-hanger@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/react-hanger/-/react-hanger-1.2.0.tgz#26d3ccdebc7bd561640de6239fb9250a9c4834cd"
-  integrity sha512-YKMFa4wkWb8pvsxSX9F6atEpsvxfddbfyIv5TmReYs/0oWOZrGIYmVY95kQOX0bnsyy3xRSnjyv62+uZqzZrlQ==
-
 react-helmet-async@^1.0.2:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/react-helmet-async/-/react-helmet-async-1.0.6.tgz#11c15c74e79b3f66670c73779bef3e0e352b1d4e"
