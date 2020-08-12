@@ -20,6 +20,7 @@ import AccessibilitySVG from '../../../images/addons/accessibility.svg';
 import StoryshotsSVG from '../../../images/addons/storyshots.svg';
 import ConsoleSVG from '../../../images/addons/console.svg';
 import LinksSVG from '../../../images/addons/links.svg';
+import ToolbarsSVG from '../../../images/addons/toolbars.svg';
 import BackgroundsSVG from '../../../images/addons/backgrounds.svg';
 
 const { color, typography, spacing, pageMargins, breakpoint } = styles;
@@ -132,6 +133,13 @@ export function PureAddonScreen({ ...props }) {
           title="Backgrounds"
           desc="Switch backgrounds to view components in different settings"
           addonUrl={officialAddons.backgrounds}
+        />
+        <AddonItem
+          appearance="official"
+          image={<img src={ToolbarsSVG} alt="Toolbars" />}
+          title="Toolbars"
+          desc="Create your own toolbar items that control story rendering."
+          addonUrl={officialAddons.toolbars}
         />
         <AddonItem
           appearance="official"

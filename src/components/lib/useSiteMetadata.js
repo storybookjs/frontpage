@@ -94,6 +94,7 @@ const useSiteMetadata = () => {
               accessibility
               console
               links
+              toolbars
             }
           }
         }
