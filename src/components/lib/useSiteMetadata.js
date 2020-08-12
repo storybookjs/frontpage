@@ -70,6 +70,7 @@ const useSiteMetadata = () => {
             useCases
             support
             team
+            addonsApi
             blog
             medium
             twitter
