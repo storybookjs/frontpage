@@ -411,7 +411,7 @@ export default function Hero({ startOpen, ...props }) {
           Angular, and more. It makes building stunning UIs organized and efficient.
         </Subtitle>
         <PitchActions>
-          <Button appearance="primary" isLink href={docs.home}>
+          <Button appearance="primary" isLink href={docs}>
             Get Started
           </Button>
           <WithModal startOpen={startOpen} modal={Modal}>

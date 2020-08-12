@@ -44,7 +44,7 @@ export function PureSupportScreen({ ...props }) {
           title="Check the docs"
           desc="First check the Storybook docs. There’s likely an article for your issue already."
         >
-          <Link withArrow href={docs.home}>
+          <Link withArrow href={docs}>
             Read docs
           </Link>
         </Feature>

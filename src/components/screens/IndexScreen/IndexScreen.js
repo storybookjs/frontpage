@@ -242,7 +242,7 @@ export function PureIndexScreen({ ...props }) {
       <CTA
         text={<span>Storybook is quick to install and it’s easy to get started.</span>}
         action={
-          <Button appearance="secondary" isLink href={docs.home}>
+          <Button appearance="secondary" isLink href={docs}>
             Get started
           </Button>
         }
