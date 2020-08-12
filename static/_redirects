@@ -36,6 +36,7 @@
 /docs/basics/exporting-storybook/ /docs/react/workflows/publish-storybook 301
 /docs/basics/faq/ /docs/react/workflows/faq 301
 /docs/basics/live-examples/ https://github.com/storybookjs/storybook/blob/next/examples/README.md 301
+/docs/examples/ /docs/react/get-started/examples 301
 
 /docs/guides/quick-start-guide/ /docs/react/get-started/install 301
 /docs/guides/slow-start-guide/ /docs/react/configure/overview 301
