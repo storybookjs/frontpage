@@ -10,6 +10,7 @@ import AddonItem from './AddonItem';
 import AddonList from './AddonList';
 import AddonCustom from './AddonCustom';
 import CTA from '../../layout/CTA';
+import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 
 import ControlsSVG from '../../../images/addons/knobs.svg';
 import ActionsSVG from '../../../images/addons/actions.svg';
@@ -105,6 +106,7 @@ export function PureAddonScreen({ ...props }) {
           title="Docs"
           desc="Document component usage and properties in Markdown"
           addonUrl={officialAddons.docs}
+          LinkWrapper={GatsbyLinkWrapper}
         />
         <AddonItem
           appearance="official"
@@ -112,6 +114,7 @@ export function PureAddonScreen({ ...props }) {
           title="Controls"
           desc="Interact with component inputs dynamically in the Storybook UI"
           addonUrl={officialAddons.controls}
+          LinkWrapper={GatsbyLinkWrapper}
         />
         <AddonItem
           appearance="official"
@@ -119,6 +122,7 @@ export function PureAddonScreen({ ...props }) {
           title="Actions"
           desc="Get UI feedback when an action is performed on an interactive element."
           addonUrl={officialAddons.actions}
+          LinkWrapper={GatsbyLinkWrapper}
         />
         <AddonItem
           appearance="official"
@@ -126,6 +130,7 @@ export function PureAddonScreen({ ...props }) {
           title="Viewport"
           desc="Build responsive components by adjusting Storybook’s viewport size and orientation"
           addonUrl={officialAddons.viewport}
+          LinkWrapper={GatsbyLinkWrapper}
         />
         <AddonItem
           appearance="official"
@@ -133,6 +138,7 @@ export function PureAddonScreen({ ...props }) {
           title="Backgrounds"
           desc="Switch backgrounds to view components in different settings"
           addonUrl={officialAddons.backgrounds}
+          LinkWrapper={GatsbyLinkWrapper}
         />
         <AddonItem
           appearance="official"
@@ -140,6 +146,7 @@ export function PureAddonScreen({ ...props }) {
           title="Toolbars"
           desc="Create your own toolbar items that control story rendering."
           addonUrl={officialAddons.toolbars}
+          LinkWrapper={GatsbyLinkWrapper}
         />
         <AddonItem
           appearance="official"
