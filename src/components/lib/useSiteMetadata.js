@@ -83,6 +83,7 @@ const useSiteMetadata = () => {
             video
             officialAddons {
               knobs
+              controls
               actions
               source
               info

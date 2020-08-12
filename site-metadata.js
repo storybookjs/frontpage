@@ -9,6 +9,7 @@ const homepageUrl = isDeployPreview ? process.env.DEPLOY_PRIME_URL : 'https://st
 const gitHubOrg = `https://github.com/storybookjs`;
 const npmApiBase = `https://api.npmjs.org/downloads/point/last-month`;
 const docsUrl = `${homepageUrl}/docs`;
+const essentialsBase = '/docs/react/essentials';
 
 const siteMetadata = {
   title: 'Storybook',
@@ -79,15 +80,16 @@ const siteMetadata = {
 
     // Official addons
     officialAddons: {
+      docs: '/docs/react/writing-docs/introduction',
+      controls: `${essentialsBase}/controls`,
+      actions: `${essentialsBase}/actions`,
+      viewport: `${essentialsBase}/viewport`,
+      backgrounds: `${essentialsBase}/backgrounds`,
       knobs: `${gitHubOrg}/storybook/tree/master/addons/knobs`,
-      actions: `${gitHubOrg}/storybook/tree/master/addons/actions`,
       source: `${gitHubOrg}/storybook/tree/master/addons/storysource`,
       info: `${gitHubOrg}/storybook/tree/master/addons/info`,
-      docs: `${gitHubOrg}/storybook/tree/master/addons/docs`,
       notes: `${gitHubOrg}/storybook/tree/master/addons/notes`,
-      viewport: `${gitHubOrg}/storybook/tree/master/addons/viewport`,
       storyshots: `${gitHubOrg}/storybook/tree/master/addons/storyshots`,
-      backgrounds: `${gitHubOrg}/storybook/tree/master/addons/backgrounds`,
       accessibility: `${gitHubOrg}/storybook/tree/master/addons/a11y`,
       console: `${gitHubOrg}/storybook-addon-console`,
       links: `${gitHubOrg}/storybook/tree/master/addons/links`,
