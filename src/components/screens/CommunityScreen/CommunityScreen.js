@@ -239,7 +239,7 @@ export function PureCommunityScreen({ ...props }) {
               image={<img src={DocsSVG} alt="docs" />}
               title="Write and update docs"
               desc="Teach fellow developers how to take advantage of Storybook. Help write, edit, and improve docs."
-              links={[{ title: 'Get started with docs', href: docs.home }]}
+              links={[{ title: 'Get started with docs', href: docs }]}
             />
             <Item
               image={<img src={PullRequestSVG} alt="pull request" />}

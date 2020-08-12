@@ -432,7 +432,7 @@ export function PureAddonScreen({ ...props }) {
       <CTA
         text={<span>Build UIs faster. Add Storybook to your project now.</span>}
         action={
-          <Button appearance="secondary" isLink href={docs.home}>
+          <Button appearance="secondary" isLink href={docs}>
             Get started
           </Button>
         }

@@ -61,6 +61,7 @@ const siteMetadata = {
     releases: '/releases/',
     support: `/support/`,
     team: `/team/`,
+    addonsApi: '/docs/react/api/addons',
 
     // Social
     blog: `https://medium.com/storybookjs`,
