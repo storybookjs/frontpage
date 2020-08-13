@@ -56,6 +56,16 @@ Release notes are stored in the src/content/releases directory as `.md` files. T
 
 Within the release's `.md` file, frontmatter is used to create a page title, while the rest of the content is parsed using `gatsby-transformer-remark` and styled with selectors in `src/styles/formatting.js`.
 
+### Search
+
+Search within the docs is powered by [DocSearch](https://docsearch.algolia.com/). In order for this to work, an environment variable is required:
+
+`GATSBY_ALGOLIA_API_KEY`
+
+In development and with local production builds, that environment variable can be configured with `.env` files as explaned [here](https://www.gatsbyjs.com/docs/environment-variables/#client-side-javascript). In deploy previews and production deploys, that variable is set with Netlify's build variables.
+
+The site is crawled every 24 hours so any updates will be reflected in that amount of time.
+
 ## Tooling
 
 This project uses these tools to make our job easier.

@@ -15,3 +15,7 @@ monorepo
 
 # Pulled from monorepo
 src/content/docs
+
+# Env vars
+.env.production
+.env.development
