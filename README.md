@@ -36,17 +36,19 @@ Gatsby is used for basic routing and static site generation.
 
 #### Docs content
 
-You have two options for including docs content when developing the frontpage:
+The content for the documentation section is in the `docs/` subdirectory of the Storybook monorepo: https://github.com/storybookjs/storybook/tree/next/docs.
 
-1. Pull the latest from the monorepo
+To run this app while editing those files, checkout both this repository and the monorepo, and link them from this app:
 
-Run `yarn extract-monorepo-docs $branch` which will copy the current docs content from `master` in the monorepo to `src/content`. `$branch` defaults to `master`.
+```
+yarn link-monorepo-docs path/to/monorepo
+```
 
-Run this once before running `yarn start` (or any time you want to pull the latest).
+Alternatively, if you just want to serve the current content, run:
 
-2. Link to the monorepo
-
-If you have the monorepo cloned, you can run `yarn link-monorepo-docs path/to/monorepo` to use the files from there instead.
+```
+yarn extract-monorepo-docs $branch
+```
 
 ### Release notes
 
