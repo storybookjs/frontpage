@@ -109,6 +109,10 @@ module.exports = {
           // Remove `X-Frame-Options: DENY` default header so that the release notes can
           // be served in an iframe.
           '/*': ['X-XSS-Protection: 1; mode=block', 'X-Content-Type-Options: nosniff'],
+          '/versions.json': [
+            'Access-Control-Allow-Origin: *',
+            'Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept',
+          ],
         },
         // Do not use the default security headers. Use those we have defined above.
         mergeSecurityHeaders: false,
