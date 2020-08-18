@@ -85,6 +85,19 @@ const SidebarControls = styled.div`
       flex: 0 0 100%;
     }
   }
+
+  .algolia-autocomplete .ds-dropdown-menu {
+    font-size: 0.8em;
+  }
+
+  .algolia-autocomplete a {
+    text-decoration: none;
+    transition: transform 150ms ease-out, color 150ms ease-out;
+
+    &:hover {
+      transform: translateY(-1px);
+    }
+  }
 `;
 
 const Content = styled.div`
