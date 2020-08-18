@@ -62,7 +62,7 @@ Search within the docs is powered by [DocSearch](https://docsearch.algolia.com/)
 
 `GATSBY_ALGOLIA_API_KEY`
 
-In development and with local production builds, that environment variable can be configured with `.env` files as explaned [here](https://www.gatsbyjs.com/docs/environment-variables/#client-side-javascript). In deploy previews and production deploys, that variable is set with Netlify's build variables.
+In development and with local production builds, that environment variable can be configured with `.env` files as explaned [here](https://www.gatsbyjs.com/docs/environment-variables/#client-side-javascript). The `GATSBY_` prefix ensures that the variable is available in client-side code. In deploy previews and production deploys, that variable is set with Netlify's build variables.
 
 The site is crawled every 24 hours so any updates will be reflected in that amount of time.
 
