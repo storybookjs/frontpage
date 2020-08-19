@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import {
@@ -23,6 +23,7 @@ import useSiteMetadata from '../lib/useSiteMetadata';
 import buildPathWithFramework from '../../util/build-path-with-framework';
 import { FrameworkSelector } from '../screens/DocsScreen/FrameworkSelector';
 import stylizeFramework from '../../util/stylize-framework';
+import useAlgoliaSearch, { SEARCH_INPUT_ID } from '../../hooks/use-algolia-search';
 
 const { breakpoint, color, pageMargins, typography } = styles;
 const { GlobalStyle } = global;
@@ -84,6 +85,19 @@ const SidebarControls = styled.div`
       flex: 0 0 100%;
     }
   }
+
+  .algolia-autocomplete .ds-dropdown-menu {
+    font-size: 0.8em;
+  }
+
+  .algolia-autocomplete a {
+    text-decoration: none;
+    transition: transform 150ms ease-out, color 150ms ease-out;
+
+    &:hover {
+      transform: translateY(-1px);
+    }
+  }
 `;
 
 const Content = styled.div`
@@ -128,6 +142,8 @@ function DocsLayout({ children, data, pageContext, ...props }) {
     urls: { homepageUrl },
   } = useSiteMetadata();
   const { docsToc, framework } = pageContext;
+  const [searchValue, setSearchValue] = useState('');
+  const { isSearchVisible } = useAlgoliaSearch({ framework });
 
   const addLinkWrappers = (items) =>
     items.map((item) => ({
@@ -150,6 +166,10 @@ function DocsLayout({ children, data, pageContext, ...props }) {
       <Helmet>
         <link rel="canonical" href={`${homepageUrl}${buildPathWithFramework(slug, 'react')}`} />
         <meta name="docsearch:framework" content={framework} />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"
+        />
       </Helmet>
       <Wrapper>
         <Sidebar>
@@ -161,16 +181,23 @@ function DocsLayout({ children, data, pageContext, ...props }) {
             {({ menu, allTopLevelMenusAreOpen, toggleAllOpen, toggleAllClosed }) => (
               <>
                 <SidebarControls>
-                  {/* TODO: Once search is ready, delete the div below and uncomment the Input */}
-                  <div style={{ flex: 'none', marginRight: 0 }} />
-                  {/* <Input
-                    id="search"
-                    label="Search"
-                    hideLabel
-                    icon="search"
-                    appearance="pill"
-                    placeholder="Search docs"
-                  /> */}
+                  {isSearchVisible ? (
+                    <Input
+                      id={SEARCH_INPUT_ID}
+                      label="Search"
+                      hideLabel
+                      icon="search"
+                      appearance="pill"
+                      placeholder="Search docs"
+                      value={searchValue}
+                      onChange={(event) => setSearchValue(event.target.value)}
+                    />
+                  ) : (
+                    <>
+                      {/* Placeholder to preserve styling given the input is missing. */}
+                      <div style={{ flex: 'none', marginRight: 0 }} />
+                    </>
+                  )}
                   {allTopLevelMenusAreOpen ? (
                     <WithTooltip
                       {...withTooltipProps}
