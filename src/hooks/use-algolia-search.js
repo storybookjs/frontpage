@@ -1,11 +1,12 @@
 /* eslint-env browser */
 import { useEffect, useState } from 'react';
+import { navigate } from 'gatsby';
 
 export const SEARCH_INPUT_ID = 'algolia-search';
 const SEARCH_LIBRARY_SCRIPT_ID = 'algolia-search-library';
 const SEARCH_INIT_SCRIPT_ID = 'algolia-search-init';
 
-export default ({ framework }) => {
+export default ({ framework, clearInput }) => {
   const [isSearchVisible, setSearchVisible] = useState(!!process.env.GATSBY_ALGOLIA_API_KEY);
 
   useEffect(() => {
@@ -23,6 +24,17 @@ export default ({ framework }) => {
           indexName: 'storybook-js',
           inputSelector: `#${SEARCH_INPUT_ID}`,
           algoliaOptions: { facetFilters: ['tags:docs', `framework:${framework}`] },
+          handleSelected: (input, event, suggestion, datasetNumber, context) => {
+            // input.setVal resets the search for Algolia
+            input.setVal('');
+            // clearInput updates the state of the element for React
+            clearInput();
+            const inputElement = document.querySelector(`#${SEARCH_INPUT_ID}`);
+            if (inputElement) inputElement.blur();
+            // All search results have the full URL. In order to navigate within
+            // the Gatsby app, we need to use a relative path.
+            navigate(suggestion.url.replace('https://storybook.js.org', ''));
+          },
         });
       } catch (err) {
         setSearchVisible(false);
