@@ -29,9 +29,9 @@ export default ({ framework }) => {
       }
     };
 
-    const placedLibaryScript = document.querySelector(`#${SEARCH_LIBRARY_SCRIPT_ID}`);
+    const placedLibraryScript = document.querySelector(`#${SEARCH_LIBRARY_SCRIPT_ID}`);
 
-    if (placedLibaryScript) {
+    if (placedLibraryScript) {
       initSearch();
     } else {
       const libraryScript = document.createElement('script');
