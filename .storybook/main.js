@@ -60,6 +60,12 @@ module.exports = {
       )
     );
 
+    config.plugins.unshift(
+      new webpack.DefinePlugin({
+        'process.env.GATSBY_ALGOLIA_API_KEY': JSON.stringify(process.env.GATSBY_ALGOLIA_API_KEY),
+      })
+    );
+
     return config;
   },
 };
