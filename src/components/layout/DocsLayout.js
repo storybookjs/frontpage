@@ -50,6 +50,12 @@ const StyledFrameworkSelector = styled(FrameworkSelector)`
   }
 `;
 
+const SearchInput = styled(Input)`
+  .algolia-autocomplete {
+    width: 100%;
+  }
+`;
+
 const SidebarControls = styled.div`
   display: flex;
   align-items: center;
@@ -62,7 +68,7 @@ const SidebarControls = styled.div`
   }
 
   /* input */
-  > *:nth-child(1) {
+  ${SearchInput} {
     @media (min-width: ${breakpoint * 1.333}px) {
       margin-right: 10px;
       flex: 1;
@@ -182,7 +188,7 @@ function DocsLayout({ children, data, pageContext, ...props }) {
               <>
                 <SidebarControls>
                   {isSearchVisible ? (
-                    <Input
+                    <SearchInput
                       id={SEARCH_INPUT_ID}
                       label="Search"
                       hideLabel
