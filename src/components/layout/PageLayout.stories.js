@@ -9,7 +9,7 @@ export default {
   component: PageLayout,
 };
 
-export const Base = () => <PageLayout>children</PageLayout>;
+export const Base = () => <PageLayout pageContext={{}}>children</PageLayout>;
 
 export const DocsLayout = () => (
   <PageLayout data={docsLayoutData} pageContext={{ ...docsPageContext, layout: 'docs' }}>
