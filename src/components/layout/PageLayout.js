@@ -43,7 +43,7 @@ export default function PageLayout({ children, pageContext, ...props }) {
 
         <meta name="google-site-verification" content={googleSiteVerification} />
       </Helmet>
-      <Header />
+      {pageContext && pageContext.layout !== 'iframe' && <Header />}
       {pageContext && pageContext.layout === 'docs' ? (
         <DocsLayout pageContext={pageContext} {...props}>
           {children}
@@ -51,7 +51,7 @@ export default function PageLayout({ children, pageContext, ...props }) {
       ) : (
         children
       )}
-      <Footer />
+      {pageContext && pageContext.layout !== 'iframe' && <Footer />}
     </Layout>
   );
 }
