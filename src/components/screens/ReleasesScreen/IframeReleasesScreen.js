@@ -34,11 +34,11 @@ function IframeReleasesScreen({ data, ...rest }) {
       frontmatter: { title },
     },
   } = data;
-  const wrapperRef = useRef();
+  const releaseRef = useRef();
 
   useEffect(() => {
-    if (wrapperRef && wrapperRef.current) {
-      const links = wrapperRef.current.querySelectorAll('a');
+    if (releaseRef && releaseRef.current) {
+      const links = releaseRef.current.querySelectorAll('a');
       links.forEach((link) => {
         /* eslint-disable no-param-reassign */
         link.target = '_blank';
@@ -46,19 +46,19 @@ function IframeReleasesScreen({ data, ...rest }) {
         /* eslint-enable no-param-reassign */
       });
     }
-  }, [wrapperRef]);
+  }, [releaseRef]);
 
   return (
-    <div ref={wrapperRef}>
+    <>
       <GlobalStyle />
       <WhiteBackground />
       <Helmet>
         <meta name="robots" content="noindex" />
       </Helmet>
       <Content>
-        <Release title={title} body={body} />
+        <Release ref={releaseRef} title={title} body={body} />
       </Content>
-    </div>
+    </>
   );
 }
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Highlight, styles } from '@storybook/design-system';
@@ -48,23 +48,21 @@ const StyledConfirmedMailingList = styled(ConfirmedMailingList)`
   min-width: auto;
 `;
 
-function Release({ title, body, ...props }) {
-  return (
-    <Wrapper {...props}>
-      <Title>{title}</Title>
-      <MDXProvider components={{ pre: Pre }}>
-        <Highlight withHTMLChildren={false}>
-          <MDXRenderer>{body}</MDXRenderer>
-        </Highlight>
-      </MDXProvider>
-      <EmailWrapper>
-        <Heading>Join the mailing list</Heading>
-        <Message>Get news, free tutorials, and Storybook tips emailed to you.</Message>
-        <StyledConfirmedMailingList />
-      </EmailWrapper>
-    </Wrapper>
-  );
-}
+const Release = forwardRef(({ title, body, ...props }, ref) => (
+  <Wrapper {...props} ref={ref}>
+    <Title>{title}</Title>
+    <MDXProvider components={{ pre: Pre }}>
+      <Highlight withHTMLChildren={false}>
+        <MDXRenderer>{body}</MDXRenderer>
+      </Highlight>
+    </MDXProvider>
+    <EmailWrapper>
+      <Heading>Join the mailing list</Heading>
+      <Message>Get news, free tutorials, and Storybook tips emailed to you.</Message>
+      <StyledConfirmedMailingList />
+    </EmailWrapper>
+  </Wrapper>
+));
 
 Release.propTypes = {
   body: PropTypes.string.isRequired,
