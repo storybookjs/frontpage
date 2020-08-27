@@ -16,3 +16,7 @@ export const DocsLayout = () => (
     children
   </PageLayout>
 );
+
+export const IframeLayout = () => (
+  <PageLayout pageContext={{ layout: 'iframe' }}>children</PageLayout>
+);

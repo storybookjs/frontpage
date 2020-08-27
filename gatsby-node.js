@@ -131,7 +131,10 @@ exports.createPages = ({ actions, graphql }) => {
             component: path.resolve(
               `./src/components/screens/ReleasesScreen/IframeReleasesScreen.js`
             ),
-            context,
+            context: {
+              ...context,
+              layout: 'iframe',
+            },
           });
 
           if (!node.frontmatter.prerelease) {
