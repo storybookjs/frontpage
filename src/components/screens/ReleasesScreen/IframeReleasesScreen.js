@@ -21,6 +21,11 @@ const Content = styled.div`
 
   padding-top: 3rem;
   padding-bottom: 3rem;
+
+  .remark-header-link {
+    display: none;
+  }
+
   @media (min-width: ${breakpoint * 1.333}px) {
     padding-top: 4rem;
     padding-bottom: 4rem;
