@@ -125,5 +125,6 @@ module.exports = {
         component: require.resolve('./src/components/layout/PageLayout'),
       },
     },
+    'gatsby-plugin-sitemap',
   ],
 };
