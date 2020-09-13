@@ -6,6 +6,14 @@ const { createFilePath } = require(`gatsby-source-filesystem`);
 const { toc: docsToc } = require('./src/content/docs/toc');
 const buildPathWithFramework = require('./src/util/build-path-with-framework');
 
+// apply polifyll for Node < 12
+Object.fromEntries = Object.fromEntries || function (iterable) {
+  return [...iterable].reduce((obj, [key, val]) => {
+    obj[key] = val
+    return obj
+  }, {})
+}
+
 const githubDocsBaseUrl = 'https://github.com/storybookjs/storybook/tree/next';
 const addStateToToc = (items, pathPrefix = '/docs') =>
   items.map((item) => {
@@ -187,8 +195,8 @@ exports.createPages = ({ actions, graphql }) => {
                       tocItem,
                       ...(nextTocItem &&
                         nextTocItem.type === 'bullet-link' && {
-                          nextTocItem,
-                        }),
+                        nextTocItem,
+                      }),
                       isFirstTocItem: docsPagesSlugs.length === 0,
                     },
                   });
