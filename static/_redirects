@@ -81,3 +81,4 @@
 /docs/presets/introduction/ /docs/react/api/presets 301
 /docs/presets/preset-gallery/ https://github.com/storybookjs/presets 301
 /docs/presets/writing-presets/ /docs/react/api/writing-presets 301
+/versions.json /.netlify/functions/versions/:splat 200

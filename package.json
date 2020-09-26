@@ -48,7 +48,14 @@
     "react-lazyload": "^2.6.5",
     "recompose": "^0.30.0",
     "styled-components": "^4.4.1",
-    "validatorjs": "^3.15.1"
+    "validatorjs": "^3.15.1",
+    "@google-cloud/bigquery": "^5.2.0",
+    "encoding": "^0.1.13",
+    "lru-cache": "^6.0.0",
+    "node-fetch": "^2.6.1",
+    "querystring": "^0.2.0",
+    "request": "^2.88.2",
+    "semver": "^7.3.2"
   },
   "keywords": [
     "storybook"
@@ -69,7 +76,11 @@
     "storybook": "start-storybook -p 6006 -s static",
     "build-storybook": "build-storybook -s static",
     "chromatic": "CHROMATIC_PROJECT_TOKEN=dd2oqshntir chromatic test",
-    "generate-types": "graphql-codegen --config graphql-types-codegen.yml"
+    "generate-types": "graphql-codegen --config graphql-types-codegen.yml",
+    "build:functions": "netlify-lambda build src/functions",
+    "build:all": "npm run build && npm run build:functions",
+    "develop:functions": "netlify-lambda serve src/functions",
+    "develop:all": "concurrently --kill-others \"npm run develop\" \"npm run develop:functions\""
   },
   "devDependencies": {
     "@babel/core": "^7.10.4",
@@ -93,7 +104,9 @@
     "prettier": "^2.0.5",
     "prettier-eslint": "^11.0.0",
     "webfontloader": "^1.6.28",
-    "webpack": "^4.43.0"
+    "webpack": "^4.43.0",
+    "concurrently": "^5.3.0",
+    "netlify-lambda": "^2.0.1"
   },
   "repository": {
     "type": "git",
@@ -104,5 +117,13 @@
   },
   "readme": "ERROR: No README data found!",
   "homepage": "https://github.com/storybooks/frontpage#readme",
-  "_id": "gatsby-storybook-frontpage@1.0.0"
+  "_id": "gatsby-storybook-frontpage@1.0.0",
+  "proxy": {
+    "/.netlify/functions": {
+      "target": "http://localhost:9000",
+      "pathRewrite": {
+        "^/\\.netlify/functions": ""
+      }
+    }
+  }
 }
