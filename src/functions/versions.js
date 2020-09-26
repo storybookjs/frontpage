@@ -60,9 +60,10 @@ const log = async (event) => {
   const table = dataset.table('requests');
 
   const { current: version } = event.queryStringParameters || {};
+
   const { headers } = event;
-  let remotehost = headers['x-forwarded-for'] || headers.host;
   const truncatedHost = truncate(remotehost);
+  let remotehost = headers['x-forwarded-for'] || headers.host;
   if (!DEBUG_IPS) {
     remotehost = md5(remotehost);
   }
