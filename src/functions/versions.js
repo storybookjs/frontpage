@@ -18,7 +18,7 @@ const logger = { log: () => {} };
 const {
   SB_VERSIONS_ENDPOINT = 'http://localhost:8000/versions-raw.json',
   GCP_CREDENTIALS,
-  DEBUG_IPS,
+  SKIP_IP_HASH,
 } = process.env;
 
 const md5 = (host) => {
@@ -64,7 +64,7 @@ const log = async (event) => {
   const { headers } = event;
   const truncatedHost = truncate(remotehost);
   let remotehost = headers['x-forwarded-for'] || headers.host;
-  if (DEBUG_IPS !== 'true') {
+  if (SKIP_IP_HASH !== 'true') {
     remotehost = md5(remotehost);
   }
   const userAgent = headers['user-agent'];
