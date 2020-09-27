@@ -12,8 +12,8 @@ const cache = new LRU({
   length: (n, key) => n.length,
 });
 
-// const logger = console;
-const logger = { log: () => {} };
+const logger = console;
+// const logger = { log: () => {} };
 
 const {
   SB_VERSIONS_ENDPOINT = 'http://localhost:8000/versions-raw.json',
@@ -63,10 +63,11 @@ const log = async (event) => {
 
   const { headers } = event;
   let remotehost = headers['x-forwarded-for'] || headers.host;
-  const truncatedHost = truncate(remotehost);
+  logger.log({ SKIP_IP_HASH });
   if (SKIP_IP_HASH !== 'true') {
     remotehost = md5(remotehost);
   }
+  const truncatedHost = truncate(remotehost);
   const userAgent = headers['user-agent'];
 
   const row = {
