@@ -64,7 +64,7 @@ const log = async (event) => {
   const { headers } = event;
   const truncatedHost = truncate(remotehost);
   let remotehost = headers['x-forwarded-for'] || headers.host;
-  if (!DEBUG_IPS) {
+  if (DEBUG_IPS !== 'true') {
     remotehost = md5(remotehost);
   }
   const userAgent = headers['user-agent'];
