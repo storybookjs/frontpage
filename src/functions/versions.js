@@ -62,8 +62,8 @@ const log = async (event) => {
   const { current: version } = event.queryStringParameters || {};
 
   const { headers } = event;
-  const truncatedHost = truncate(remotehost);
   let remotehost = headers['x-forwarded-for'] || headers.host;
+  const truncatedHost = truncate(remotehost);
   if (SKIP_IP_HASH !== 'true') {
     remotehost = md5(remotehost);
   }
