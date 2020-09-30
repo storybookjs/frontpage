@@ -19,3 +19,6 @@ src/content/docs
 # Env vars
 .env.production
 .env.development
+
+# Netlify functions
+/functions

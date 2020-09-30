@@ -249,7 +249,7 @@ function generateVersionsFile() {
   const latest = getVersionData('latest');
   const next = getVersionData('next');
   const data = { ...latest, ...next };
-  fs.writeFileSync('./public/versions.json', JSON.stringify(data));
+  fs.writeFileSync('./public/versions-raw.json', JSON.stringify(data));
 }
 
 exports.onPostBuild = () => {
