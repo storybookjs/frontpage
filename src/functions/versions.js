@@ -36,7 +36,13 @@ const splitVersion = (version) => {
   const parsed = semver.parse(version);
   if (!parsed) return {};
 
+  let shortVersion = `${parsed.major}.${parsed.minor}`;
+  if (parsed.prerelease.length > 0) {
+    shortVersion = `${shortVersion}-${parsed.prerelease[0]}`;
+  }
+
   return {
+    shortVersion,
     versionMajor: parsed.major,
     versionMinor: parsed.minor,
     versionPatch: parsed.patch,
