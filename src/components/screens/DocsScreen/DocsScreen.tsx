@@ -34,6 +34,8 @@ const MDWrapper = styled.div`
 `;
 
 const StyledHighlight = styled(Highlight)`
+  -webkit-text-size-adjust: none;
+
   > * > *:last-child {
     margin-bottom: 0;
   }
