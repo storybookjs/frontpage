@@ -202,7 +202,7 @@ export function PureAddonScreen({ ...props }) {
         <AddonItem
           title="Info"
           desc="Build a nice-looking style guide with docs and automatic sample source code with a PropType explorer."
-          addonUrl="https://github.com/storybooks/storybook/tree/master/addons/info"
+          addonUrl="https://github.com/storybooks/storybook/tree/master/addons/docs"
         />
         <AddonItem
           title="Readme"
