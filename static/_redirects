@@ -51,7 +51,7 @@
 /docs/guides/guide-riot/ /docs/riot/ 301
 /docs/guides/guide-svelte/ /docs/svelte/ 301
 /docs/guides/guide-preact/ /docs/preact/ 301
-  
+
 
 /docs/configurations/overview/ /docs/react/configure/overview 301
 /docs/configurations/options-parameter/ /docs/react/configure/features-and-behavior 301
@@ -82,3 +82,4 @@
 /docs/presets/preset-gallery/ https://github.com/storybookjs/presets 301
 /docs/presets/writing-presets/ /docs/react/api/writing-presets 301
 /versions.json /.netlify/functions/versions/:splat 200
+/blog/* https://storybook-blog.netlify.app/blog/:splat 200
