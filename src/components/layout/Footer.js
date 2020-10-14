@@ -400,7 +400,7 @@ export default function Footer({ ...props }) {
             <Icon icon="github" /> GitHub
           </FooterLink>
           <FooterLink tertiary href={blog}>
-            <Icon icon="medium" /> Blog
+            <Icon icon="doclist" /> Blog
           </FooterLink>
           <FooterLink tertiary href={twitter}>
             <Icon icon="twitter" /> Twitter

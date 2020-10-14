@@ -66,7 +66,7 @@ const siteMetadata = {
     addonsApi: '/docs/react/api/addons',
 
     // Social
-    blog: `https://medium.com/storybookjs`,
+    blog: `http://storybook.js.org/blog`,
     medium: `https://medium.com/storybookjs`,
     twitter: `https://twitter.com/storybookjs`,
     chat: `https://discord.gg/UUt2PJb`,
@@ -100,6 +100,7 @@ const siteMetadata = {
 };
 
 siteMetadata.urls.navCommunityLinks = [
+  { title: 'Blog', href: siteMetadata.urls.blog, isGatsby: false },
   { title: 'Get involved', href: siteMetadata.urls.community, isGatsby: true },
   { title: 'Use cases', href: siteMetadata.urls.useCases, isGatsby: true },
   { title: 'Support', href: siteMetadata.urls.support, isGatsby: true },

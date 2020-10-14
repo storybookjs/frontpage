@@ -2,7 +2,6 @@ import React from 'react';
 
 import styled from 'styled-components';
 import GitHubButton from 'react-github-button';
-import 'react-github-button/assets/style.css';
 
 import { styles } from '@storybook/design-system';
 import { Cardinal } from '../../basics';

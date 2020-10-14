@@ -3122,15 +3122,16 @@
   dependencies:
     lodash "^4.17.15"
 
-"@storybook/design-system@^5.1.25":
-  version "5.1.25"
-  resolved "https://registry.yarnpkg.com/@storybook/design-system/-/design-system-5.1.25.tgz#8375ca0e5d16112fe7a52286db86f5e9341061e1"
-  integrity sha512-mBy+83S5GfYDejlZU77meOD2lM31oJaxK2UQKj8ZAlRoFkXibhLsFDW8tTSlEAo3JunK2H9edB4AzyO+BvRgCQ==
+"@storybook/design-system@^5.1.27":
+  version "5.1.27"
+  resolved "https://registry.yarnpkg.com/@storybook/design-system/-/design-system-5.1.27.tgz#a18cf481d01b246d041b41a2743660d9aa864c3d"
+  integrity sha512-uUN+VJ7CvKZO6zhtB6yfAembhba+B7eiDUdu+LfxD5kdEFQYYk0iQ13gULjVsga3PhZbdTE9fmQj0F1T8zh9nA==
   dependencies:
     copy-to-clipboard "^3.3.1"
     polished "^3.6.4"
     prismjs "1.20.0"
     prop-types "^15.5.4"
+    react-github-button "^0.1.11"
     react-modal "^3.11.2"
     react-popper-tooltip "^2.11.1"
     styled-components "^4.4.1"

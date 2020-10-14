@@ -1,9 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { Link as GatsbyLink } from 'gatsby';
+import GitHubButton from 'react-github-button';
+import 'react-github-button/assets/style.css';
 
-import { Icon, Link, TooltipLinkList, WithTooltip, styles } from '@storybook/design-system';
+import {
+  Header as DSHeader,
+  NavLink,
+  NavItem,
+  Icon,
+  Link,
+  TooltipLinkList,
+  WithTooltip,
+  styles,
+} from '@storybook/design-system';
 import useSiteMetadata from '../lib/useSiteMetadata';
 
 import StorybookLogoSVG from '../../images/logo-storybook.svg';
@@ -44,99 +55,6 @@ const Version = styled(Link)`
   color: ${color.mediumdark};
 `;
 
-const TooltipLinkListWrapper = styled.div`
-  padding: 8px 5px;
-  color: ${color.darkest};
-`;
-
-const NavLink = styled(Link)`
-  font-size: ${typography.size.s2}px;
-  font-weight: ${typography.weight.bold};
-`;
-
-const Menu = styled(Link)`
-  width: 3rem;
-  height: 3rem;
-  border: none !important;
-  text-decoration: none !important;
-  background: none !important;
-  text-align: right;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-
-  svg {
-    height: 1rem;
-    width: 1rem;
-    margin: 0;
-  }
-`;
-
-const MobileMenu = styled.div`
-  font-size: ${typography.size.s1}px;
-
-  ${TooltipLinkListWrapper} {
-    padding: 5px 0;
-  }
-`;
-
-const NavItem = styled.div`
-  display: inline-block;
-  line-height: 3rem;
-  height: 3rem;
-  vertical-align: top;
-
-  ${(props) =>
-    props.showDesktop &&
-    css`
-      display: none;
-      @media (min-width: ${breakpoint * 1.333}px) {
-        display: inline-block;
-      }
-    `};
-
-  ${(props) =>
-    props.showMobile &&
-    css`
-      @media (min-width: ${breakpoint * 1.333}px) {
-        display: none;
-      }
-    `};
-`;
-
-const NavGroup = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-
-  ${(props) =>
-    props.right &&
-    css`
-      left: auto;
-      right: 0;
-    `}
-
-  ${NavItem} + ${NavItem} {
-    margin-left: 25px;
-  }
-`;
-
-const Nav = styled.div`
-  height: 3rem;
-  position: relative;
-  text-align: center;
-  z-index: 3;
-`;
-
-const NavWrapper = styled.nav`
-  ${pageMargins};
-  padding-top: 12px;
-  @media (min-width: ${breakpoint}px) {
-    padding-top: 36px;
-  }
-`;
-
 const LinkWrapper = ({ href, isGatsby, ...props }) => {
   if (isGatsby) {
     return <GatsbyLink to={href} {...props} />;
@@ -165,31 +83,23 @@ export default function Header({ ...props }) {
 
   const navLinksWithGithub = [...navLinks, { title: 'GitHub', href: gitHub.repo, isGatsby: false }];
 
-  const mobileMenu = (
-    <MobileMenu>
-      <TooltipLinkList links={navLinksWithGithub} LinkWrapper={LinkWrapper} />
-    </MobileMenu>
-  );
+  const mobileMenu = <TooltipLinkList links={navLinksWithGithub} LinkWrapper={LinkWrapper} />;
 
-  const communityMenu = (
-    <MobileMenu>
-      <TooltipLinkList links={navCommunityLinks} LinkWrapper={LinkWrapper} />
-    </MobileMenu>
-  );
+  const communityMenu = <TooltipLinkList links={navCommunityLinks} LinkWrapper={LinkWrapper} />;
 
   return (
-    <NavWrapper {...props}>
-      <Nav>
-        <NavGroup>
-          <NavItem>
-            <LogotypeWrapper LinkWrapper={GatsbyLink} to="/">
-              <img src={StorybookLogoSVG} alt="Storybook" />
-            </LogotypeWrapper>
-            <Version href={gitHub.releases}>{latestVersion}</Version>
-          </NavItem>
-        </NavGroup>
-
-        <NavGroup right>
+    <DSHeader
+      navBreakpoint={1.333 * breakpoint}
+      logo={
+        <>
+          <LogotypeWrapper LinkWrapper={GatsbyLink} to="/">
+            <img src={StorybookLogoSVG} alt="Storybook" />
+          </LogotypeWrapper>
+          <Version href={gitHub.releases}>{latestVersion}</Version>
+        </>
+      }
+      links={
+        <>
           <NavItem showDesktop>
             <NavLink tertiary href={docs} isGatsby>
               Docs
@@ -211,27 +121,22 @@ export default function Header({ ...props }) {
             </NavLink>
           </NavItem>
           <NavItem showDesktop>
-            <WithTooltip tagName="span" placement="top" trigger="hover" tooltip={communityMenu}>
+            <WithTooltip
+              tagName="span"
+              placement="top"
+              trigger="click"
+              tooltip={communityMenu}
+              closeOnClick
+            >
               <NavLink tertiary>
                 Community <Icon icon="arrowdown" />
               </NavLink>
             </WithTooltip>
           </NavItem>
-          <NavItem showDesktop>
-            <NavLink tertiary href={gitHub.repo}>
-              GitHub
-            </NavLink>
-          </NavItem>
-
-          <NavItem showMobile>
-            <WithTooltip tagName="span" placement="top" trigger="click" tooltip={mobileMenu}>
-              <Menu secondary icon={1} isButton>
-                <Icon icon="menu" />
-              </Menu>
-            </WithTooltip>
-          </NavItem>
-        </NavGroup>
-      </Nav>
-    </NavWrapper>
+        </>
+      }
+      github={<GitHubButton type="stargazers" namespace="storybookjs" repo="storybook" />}
+      mobileMenu={mobileMenu}
+    />
   );
 }
