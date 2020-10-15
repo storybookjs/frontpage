@@ -22,3 +22,7 @@ src/content/docs
 
 # Netlify functions
 /functions
+
+# Local Netlify folder
+.netlify/
+.netlify
