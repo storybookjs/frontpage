@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import GitHubButton from 'react-github-button';
 
-import 'react-github-button/assets/style.css';
-
 import {
   Button,
   Icon,
