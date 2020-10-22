@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import GitHubButton from 'react-github-button';
 
 import {
   Button,
@@ -267,33 +266,6 @@ const Stats = styled.div`
   }
 `;
 
-const GitHubWrapper = styled.div`
-  margin-bottom: 0.75rem;
-
-  @media (min-width: ${breakpoint * 2}px) {
-    ${'' /* this has a bit different styling than stats children */};
-    margin-bottom: 1.25rem;
-  }
-
-  ${'' /* Overrides to make a medium-sized button */};
-  .github-btn {
-    font: bold 12px/14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    display: block;
-
-    height: auto;
-    .gh-btn,
-    .gh-count {
-      padding: 2px 6px;
-    }
-
-    .gh-ico {
-      height: 12px;
-      width: 12px;
-      margin-top: 1px;
-    }
-  }
-`;
-
 const SecondarySubheading = styled(Subheading)`
   font-size: 11px;
   display: block;
@@ -489,9 +461,6 @@ export default function Hero({ startOpen, ...props }) {
           <SecondarySubheading>GitHub</SecondarySubheading>
 
           <Stats>
-            <GitHubWrapper className="chromatic-ignore">
-              <GitHubButton type="stargazers" namespace="storybookjs" repo="storybook" />
-            </GitHubWrapper>
             <Stat
               size="small"
               count={latestVersion}
