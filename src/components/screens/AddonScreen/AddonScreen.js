@@ -420,6 +420,11 @@ export function PureAddonScreen({ ...props }) {
           desc="Embed Zeplin designs in a storybook panel."
           addonUrl="https://github.com/mertkahyaoglu/storybook-zeplin"
         />
+        <AddonItem
+          title="Contrast"
+          desc="Embed Contrast handoff tool in a storybook panel."
+          addonUrl="https://github.com/toyboxsystems/storybook-contrast"
+        />
 
         <Subheader>Appearance</Subheader>
         <AddonItem
