@@ -400,11 +400,6 @@ export function PureAddonScreen({ ...props }) {
           desc="Embed XD designs in a storybook panel."
           addonUrl="https://github.com/morgs32/storybook-addon-xd-designs"
         />
-       <AddonItem
-          title="Contrast"
-          desc="Embed Contrast handoff tool in a storybook panel."
-          addonUrl="https://github.com/toyboxsystems/storybook-contrast"
-        />
         <AddonItem
           title="Playroom"
           desc="Design with Playroom inside Storybook, using each story source as a starting point."
@@ -424,6 +419,11 @@ export function PureAddonScreen({ ...props }) {
           title="Zeplin"
           desc="Embed Zeplin designs in a storybook panel."
           addonUrl="https://github.com/mertkahyaoglu/storybook-zeplin"
+        />
+        <AddonItem
+          title="Contrast"
+          desc="Embed Contrast handoff tool in a storybook panel."
+          addonUrl="https://github.com/toyboxsystems/storybook-contrast"
         />
 
         <Subheader>Appearance</Subheader>
