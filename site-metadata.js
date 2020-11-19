@@ -17,7 +17,7 @@ const siteMetadata = {
   ogImage: '/images/social/open-graph.png',
   siteUrl: homepageUrl, // Used for gatsby-plugin-sitemap
   googleSiteVerification: '',
-  latestVersion: 'v6.0',
+  latestVersion: 'v6.1',
   contributorCount: 1043,
   coreFrameworks,
   communityFrameworks,
