@@ -21,6 +21,11 @@ import StorybookLogoSVG from '../../images/logo-storybook.svg';
 
 const { color, typography, pageMargins, breakpoint } = styles;
 
+const StyledGitHubButton = styled(GitHubButton)`
+  display: block;
+  min-width: 104px;
+`;
+
 const LogoWrapper = styled.div`
   display: inline-block;
   align-self: stretch;
@@ -140,7 +145,7 @@ export default function Header({ ...props }) {
           </NavItem>
         </>
       }
-      github={<GitHubButton type="stargazers" namespace="storybookjs" repo="storybook" />}
+      github={<StyledGitHubButton type="stargazers" namespace="storybookjs" repo="storybook" />}
       mobileMenu={mobileMenu}
     />
   );
