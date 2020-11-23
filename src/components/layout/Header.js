@@ -23,7 +23,7 @@ const { color, typography, pageMargins, breakpoint } = styles;
 
 const StyledGitHubButton = styled(GitHubButton)`
   display: block;
-  min-width: 104px;
+  min-width: 124px;
 `;
 
 const LogoWrapper = styled.div`
