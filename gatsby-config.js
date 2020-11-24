@@ -44,7 +44,7 @@ module.exports = {
         // the plugin to avoid using it with the manualLoad option. We call
         // analytics.load(SEGMENT_WRITE_KEY) manually so we can avoid having
         // the script fire on iframe pages which load within Storybook.
-        prodKey: process.env.SEGMENT_WRITE_KEY,
+        prodKey: process.env.GATSBY_SEGMENT_WRITE_KEY,
         manualLoad: true,
       },
     },
