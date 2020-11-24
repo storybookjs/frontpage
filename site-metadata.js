@@ -115,4 +115,14 @@ siteMetadata.urls.navLinks = [
   ...siteMetadata.urls.navCommunityLinks,
 ];
 
+siteMetadata.urls.addonsLearnLinks = [
+  { title: 'How to install addons', icon: 'book', href: '' },
+  {
+    title: 'Create an addon',
+    icon: 'edit',
+    href: 'https://www.chromatic.com/blog/how-to-build-a-storybook-addon/',
+  },
+  { title: 'Add to the catalog', icon: 'add', href: '' },
+];
+
 module.exports = siteMetadata;

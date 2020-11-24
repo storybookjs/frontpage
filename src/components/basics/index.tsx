@@ -5,3 +5,5 @@ export { default as FormState } from './FormState';
 
 export { default as SocialGraph } from './SocialGraph';
 export { default as Video } from './Video';
+
+export * from './Breadcrumb';

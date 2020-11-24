@@ -3887,12 +3887,14 @@
   dependencies:
     lodash "^4.17.15"
 
-"@storybook/design-system@^5.1.27":
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/@storybook/design-system/-/design-system-5.2.0.tgz#97ec7b1cef5eda1200a949cd460c9543f7bdc837"
-  integrity sha512-Lncnev1z9QsFjEIiyxggRsWPiRysGS4n2MHcG5PSNTkr8INzLTPdBwFwlvMHVYqpv0q/qp5GZDhy2co1lNEKNg==
+"@storybook/design-system@^5.4.2":
+  version "5.4.2"
+  resolved "https://registry.yarnpkg.com/@storybook/design-system/-/design-system-5.4.2.tgz#1fa252d62d7126be0c08479420d69b7a5498bba0"
+  integrity sha512-9SapsCtw9RmBLC1iKWAlqEAoSGmwmCKEt2j4h2RFkuKx2IOMwQvT5nNdvhAdxgpaenFhmUhzJ6h+Q212A213Rw==
   dependencies:
+    "@types/pluralize" "^0.0.29"
     copy-to-clipboard "^3.3.1"
+    pluralize "^8.0.0"
     polished "^3.6.4"
     prismjs "1.20.0"
     prop-types "^15.5.4"
@@ -4443,6 +4445,11 @@
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/@types/parse5/-/parse5-5.0.3.tgz#e7b5aebbac150f8b5fdd4a46e7f0bd8e65e19109"
   integrity sha512-kUNnecmtkunAoQ3CnjmMkzNU/gtxG8guhi+Fk2U/kOpIKjIMKnXGp4IJCgQJrXSgMsWYimYG4TGjz/UzbGEBTw==
+
+"@types/pluralize@^0.0.29":
+  version "0.0.29"
+  resolved "https://registry.yarnpkg.com/@types/pluralize/-/pluralize-0.0.29.tgz#6ffa33ed1fc8813c469b859681d09707eb40d03c"
+  integrity sha512-BYOID+l2Aco2nBik+iYS4SZX0Lf20KPILP5RGmM1IgzdwNdTs0eebiFriOPcej1sX9mLnSoiNte5zcFxssgpGA==
 
 "@types/prettier@^1.19.0":
   version "1.19.1"
@@ -12811,6 +12818,11 @@ https-proxy-agent@^5.0.0:
   dependencies:
     agent-base "6"
     debug "4"
+
+human-format@^0.11.0:
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/human-format/-/human-format-0.11.0.tgz#bfc85a6e135f9a9292d641a38e979ed9f82557e9"
+  integrity sha512-g4UtoBnhfitCjkGjjiOlY8tkmArIcrstBa5adihxSJwSde1A7iQzvrNLB5ceX89FHXzYi9yTi04t3m82J/XIag==
 
 human-signals@^1.1.1:
   version "1.1.1"
