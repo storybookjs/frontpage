@@ -11094,9 +11094,9 @@ gatsby-plugin-remove-trailing-slashes@^2.3.11:
     "@babel/runtime" "^7.10.3"
 
 gatsby-plugin-segment-js@^3.1.0:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-segment-js/-/gatsby-plugin-segment-js-3.3.0.tgz#6cc4c7e705e24a404f9e52f4e195ffb63ae29dd5"
-  integrity sha512-uN3gux4dR+umTI9C73s1V9kgcnDi4jenyTaS0/KqbxPCEQcntXFf/UJoMJCi//FILoYoU373vLmnTShlRyV/mw==
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-segment-js/-/gatsby-plugin-segment-js-3.6.0.tgz#740b2a5e6730119147e0dd1fb2c39acca83e353d"
+  integrity sha512-kdpXV5RUGR5dRcSJHsUxP2+FY8XDOAqi3disj0SHdR5mZDAg4QtpiCQZYRB6Ji1/aP87oypoJVyeu6s1+GpHSw==
 
 gatsby-plugin-sharp@^2.6.18:
   version "2.6.18"

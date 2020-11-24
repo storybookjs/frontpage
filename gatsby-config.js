@@ -2,6 +2,10 @@ const path = require('path');
 const { global } = require('@storybook/design-system');
 const siteMetadata = require('./site-metadata');
 
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   siteMetadata,
   plugins: [
@@ -36,8 +40,12 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-segment-js',
       options: {
-        prodKey: 'AvvBObOmHaEMqfub8JJUXq5umjsuaqS8',
-        trackPage: true,
+        // This plugin requires prodKey despite the fact that we instruct
+        // the plugin to avoid using it with the manualLoad option. We call
+        // analytics.load(SEGMENT_WRITE_KEY) manually so we can avoid having
+        // the script fire on iframe pages which load within Storybook.
+        prodKey: process.env.SEGMENT_WRITE_KEY,
+        manualLoad: true,
       },
     },
     {
