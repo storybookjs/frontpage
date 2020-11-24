@@ -111,7 +111,7 @@ export default function Header({ ...props }) {
       links={
         <>
           <NavItem showDesktop>
-            <NavLink tertiary href={docs} isGatsby>
+            <NavLink tertiary href={docs} isGatsby LinkWrapper={LinkWrapper}>
               Docs
             </NavLink>
           </NavItem>
@@ -121,7 +121,7 @@ export default function Header({ ...props }) {
             </NavLink>
           </NavItem>
           <NavItem showDesktop>
-            <NavLink tertiary href={releases} isGatsby>
+            <NavLink tertiary href={releases} isGatsby LinkWrapper={LinkWrapper}>
               Releases
             </NavLink>
           </NavItem>
