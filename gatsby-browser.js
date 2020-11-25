@@ -1,7 +1,16 @@
-/**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/browser-apis/
- */
+/* eslint-env browser */
+exports.onRouteUpdate = ({ location }) => {
+  if (
+    location.pathname.match(/iframe/) ||
+    !window.analytics ||
+    !process.env.GATSBY_SEGMENT_WRITE_KEY
+  )
+    return;
 
-// You can delete this file if you're not using it
+  // Segment removes the load function when it has been called already
+  if (window.analytics.load) {
+    window.analytics.load(process.env.GATSBY_SEGMENT_WRITE_KEY);
+  }
+
+  window.analytics.page();
+};
