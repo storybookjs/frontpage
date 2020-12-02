@@ -202,12 +202,10 @@ export const AddonItem = ({
       </Image>
       <div>
         <Title isLoading={isLoading}>
-          <span>
-            {isLoading ? 'loading' : title}
-            {['official', 'integrator'].includes(appearance) && (
-              <VerifiedBadge appearance={appearance} />
-            )}
-          </span>
+          <span>{isLoading ? 'loading' : title}</span>
+          {['official', 'integrator'].includes(appearance) && (
+            <VerifiedBadge appearance={appearance} />
+          )}
         </Title>
         <Description isLoading={isLoading}>
           <span>{isLoading ? 'loading description of addon' : description}</span>
