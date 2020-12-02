@@ -71,7 +71,7 @@ export const SearchResults = () => (
     data={data}
     pageContext={pageContext}
     searchQuery="notes"
-    searchResults={{ addons: addonItemsData, relatedTags: relatedTags }}
+    searchResults={{ addons: addonItemsData, relatedTags }}
   >
     children
   </AddonsLayout>

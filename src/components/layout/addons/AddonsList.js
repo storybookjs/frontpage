@@ -24,7 +24,7 @@ export const AddonsList = ({ addonItems, isLoading, ...props }) => {
     <ListWrapper
       role="feed"
       aria-live={isLoading ? 'polite' : 'off'}
-      aria-busy={isLoading ? true : false}
+      aria-busy={!!isLoading}
       {...props}
     >
       {items.map((addon) => (

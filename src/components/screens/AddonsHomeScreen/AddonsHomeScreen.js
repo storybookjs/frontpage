@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { ButtonToggle, styles } from '@storybook/design-system';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import { SocialGraph } from '../../basics';
-import { AddonGrid } from '../../layout/addons/AddonsGrid';
+import { AddonsGrid } from '../../layout/addons/AddonsGrid';
 
 const { color, typography, breakpoint } = styles;
 
@@ -36,7 +36,7 @@ const Subheading = styled.div`
   }
 `;
 
-const PopularAddons = styled(AddonGrid)`
+const PopularAddons = styled(AddonsGrid)`
   margin-bottom: 48px;
 `;
 
@@ -71,7 +71,7 @@ export const AddonsHomeScreen = ({ popularAddons, trendingAddons }) => {
           />
         }
       />
-      <AddonGrid title="Trending" addonItems={trendingAddons} />
+      <AddonsGrid title="Trending" addonItems={trendingAddons} />
     </>
   );
 };

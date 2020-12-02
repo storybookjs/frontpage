@@ -12,22 +12,22 @@ export const Heading = styled(Subheading)`
   color: ${color.mediumdark};
   opacity: 0.8;
 
-  ${props =>
+  ${(props) =>
     props.color === 'green' &&
     css`
       color: ${color.green};
     `};
-  ${props =>
+  ${(props) =>
     props.color === 'seafoam' &&
     css`
       color: ${color.seafoam};
     `};
-  ${props =>
+  ${(props) =>
     props.color === 'purple' &&
     css`
       color: ${color.purple};
     `};
-  ${props =>
+  ${(props) =>
     props.color === 'gold' &&
     css`
       color: ${color.gold};

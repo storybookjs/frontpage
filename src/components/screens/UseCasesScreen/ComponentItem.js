@@ -50,7 +50,7 @@ const Item = styled.div`
   display: block;
   color: ${color.darkest};
 
-  ${props =>
+  ${(props) =>
     !props.loading &&
     css`
       ${FigureWrapper} {
@@ -58,7 +58,7 @@ const Item = styled.div`
         transition: all 150ms ease-out;
       }
     `};
-  ${props =>
+  ${(props) =>
     props.loading &&
     css`
       ${ImageOuter} {

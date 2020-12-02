@@ -15,7 +15,7 @@ const Toggle = styled(LogoToggle)`
     animation: ${shake} 10s ease-in-out infinite 5s;
   }
 
-  ${props =>
+  ${(props) =>
     props.clicked &&
     css`
       > * {

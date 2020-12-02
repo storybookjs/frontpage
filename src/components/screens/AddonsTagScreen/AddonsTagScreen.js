@@ -44,9 +44,9 @@ export const AddonsTagScreen = ({ tag, addons, relatedTags }) => {
           <AddonsAsideTitle>Related tags</AddonsAsideTitle>
           <RelatedTagsList
             limit={6}
-            tags={relatedTags.map((tag) => (
-              <TagLink key={tag.link} href={tag.link}>
-                {tag.name}
+            tags={relatedTags.map((relatedTag) => (
+              <TagLink key={relatedTag.link} href={relatedTag.link}>
+                {relatedTag.name}
               </TagLink>
             ))}
           />
@@ -59,4 +59,8 @@ export const AddonsTagScreen = ({ tag, addons, relatedTags }) => {
 AddonsTagScreen.propTypes = {
   tag: PropTypes.string.isRequired,
   addons: AddonsList.propTypes.addonItems,
+};
+
+AddonsTagScreen.defaultProps = {
+  addons: [],
 };

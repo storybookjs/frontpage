@@ -243,14 +243,16 @@ function AddonsLayout({
 }
 
 AddonsLayout.propTypes = {
-  children: PropTypes.node,
-  data: PropTypes.object,
-  pageContext: PropTypes.object,
+  children: PropTypes.node.isRequired,
+  data: PropTypes.shape({}),
+  pageContext: PropTypes.shape({}),
   hideSidebar: PropTypes.bool,
 };
 
 AddonsLayout.defaultProps = {
   hideSidebar: false,
+  data: {},
+  pageContext: {},
 };
 
 export default AddonsLayout;

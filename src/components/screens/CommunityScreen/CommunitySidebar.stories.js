@@ -5,7 +5,7 @@ import { Button } from '@storybook/design-system';
 import CommunitySidebar from './CommunitySidebar';
 
 storiesOf('Frontpage|screens/CommunityScreen/CommunitySidebar', module)
-  .addDecorator(storyFn => <div style={{ width: '400px' }}>{storyFn()}</div>)
+  .addDecorator((storyFn) => <div style={{ width: '400px' }}>{storyFn()}</div>)
   .add('children', () => (
     <CommunitySidebar
       title="Contribute code"

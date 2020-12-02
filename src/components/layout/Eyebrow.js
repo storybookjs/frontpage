@@ -14,13 +14,13 @@ const Wrapper = styled.div`
   background: ${background.appInverse};
   color: ${color.lightest};
 
-  ${props =>
+  ${(props) =>
     props.warning &&
     css`
       background: ${background.warning};
       color: ${color.darker};
     `};
-  ${props =>
+  ${(props) =>
     props.positive &&
     css`
       background: ${background.positive};

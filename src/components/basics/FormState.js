@@ -19,7 +19,7 @@ function defaultBindings({ field, props, $try }) {
     'error',
   ];
   const bindings = {};
-  keys.forEach(key => {
+  keys.forEach((key) => {
     bindings[key] = $try(props[key], field[key]);
   });
   // For react keys

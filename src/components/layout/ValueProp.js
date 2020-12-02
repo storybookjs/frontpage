@@ -71,7 +71,7 @@ const Wrapper = styled.div`
       width: 50%;
     }
 
-    ${props =>
+    ${(props) =>
       props.orientation === 'left' &&
       css`
         /* Text on left */
@@ -80,7 +80,7 @@ const Wrapper = styled.div`
         }
       `};
 
-    ${props =>
+    ${(props) =>
       props.orientation === 'right' &&
       css`
         /* Text on right */
@@ -91,7 +91,7 @@ const Wrapper = styled.div`
         }
       `};
 
-    ${props =>
+    ${(props) =>
       props.orientation === 'center' &&
       css`
         /* Image in center */

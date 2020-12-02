@@ -6,5 +6,5 @@ import ComponentCanvas from './ComponentCanvas';
 
 const onSelectIndex = action('onSelectIndex');
 storiesOf('Frontpage|screens/UseCasesScreen/ComponentCanvas', module)
-  .addDecorator(storyFn => <div style={{ padding: '60px' }}>{storyFn()}</div>)
+  .addDecorator((storyFn) => <div style={{ padding: '60px' }}>{storyFn()}</div>)
   .add('default', () => <ComponentCanvas selectedIndex={0} onSelectIndex={onSelectIndex} />);

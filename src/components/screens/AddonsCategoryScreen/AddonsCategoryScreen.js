@@ -28,6 +28,7 @@ export const AddonsCategoryScreen = ({ category, description, addons }) => {
   );
 };
 
+/* eslint-disable react/require-default-props */
 AddonsCategoryScreen.propTypes = {
   category: PropTypes.string.isRequired,
   description: PropTypes.string,

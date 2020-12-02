@@ -35,7 +35,7 @@ const Children = styled.div`
   @media (min-width: ${breakpoint * 1.333}px) {
     margin-top: 1.5rem;
   }
-  ${props =>
+  ${(props) =>
     !props.loneChild &&
     css`
       border-top: 1px solid ${color.border};

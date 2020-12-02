@@ -309,7 +309,7 @@ export function PureAddonScreen({ ...props }) {
           desc="Display code preview with user selected knobs in various framework code."
           addonUrl="https://github.com/naver/storybook-addon-preview"
         />
-         <AddonItem
+        <AddonItem
           title="Open Component Code"
           desc="Open the code of the component used in story directly in VS code (dev/local) and in Github repo (deployed/production)"
           addonUrl="https://github.com/product-ride/storybook-addon-vscode-source"

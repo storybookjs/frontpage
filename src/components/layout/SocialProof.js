@@ -24,7 +24,7 @@ const Logo = styled.img`
     max-height: 32px;
   }
 
-  ${props =>
+  ${(props) =>
     props.monochrome &&
     css`
       opacity: 0.4;
@@ -61,7 +61,7 @@ const Logos = styled.div`
     margin-bottom: 0.5rem;
   }
 
-  ${props =>
+  ${(props) =>
     props.grid &&
     css`
       @media (min-width: ${breakpoint * 1.333}px) {
@@ -97,7 +97,7 @@ export default function SocialProof({ path, brands, heading, grid, monochrome, .
     <Wrapper {...props}>
       <Logos grid={grid}>
         {!grid && heading && <Heading>{heading}</Heading>}
-        {brands.map(brand => (
+        {brands.map((brand) => (
           <LogoWrapper key={brand} title={brand}>
             <Logo src={`${path}/logo-${brand}.svg`} alt={brand} monochrome={monochrome} />
           </LogoWrapper>

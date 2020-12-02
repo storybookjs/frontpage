@@ -260,4 +260,6 @@ AddonItem.defaultProps = {
   authors: [],
   isLoading: false,
   addonUrl: '#',
+  title: '',
+  description: '',
 };

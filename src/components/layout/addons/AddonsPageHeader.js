@@ -45,6 +45,7 @@ export const AddonsPageHeader = ({ title, subtitle, kicker, ...props }) => (
   </Header>
 );
 
+/* eslint-disable react/require-default-props */
 AddonsPageHeader.propTypes = {
   title: PropTypes.string,
   subtitle: PropTypes.string,
