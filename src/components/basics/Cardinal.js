@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import pluralize from 'pluralize';
 
 import { Link, styles, animation } from '@storybook/design-system';
@@ -14,19 +14,19 @@ const Count = styled.div`
 
   ${(props) =>
     props.status === 'primary' &&
-    css`
+    `
       color: ${color.gold};
     `};
 
   ${(props) =>
     props.status === 'secondary' &&
-    css`
+    `
       color: ${color.secondary};
     `};
 
   ${(props) =>
     props.status === 'tertiary' &&
-    css`
+    `
       color: ${color.green};
     `};
 
@@ -50,7 +50,7 @@ const CardinalInner = styled.div`
 
   ${(props) =>
     props.loading &&
-    css`
+    `
       ${Count}, ${Text} {
         overflow: hidden;
 

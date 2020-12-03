@@ -31,7 +31,7 @@ const AddonItemLink = styled.a`
 
     ${(props) =>
       props.orientation === 'horizontal' &&
-      css`
+      `
         flex-direction: row;
         align-items: center;
       `}
@@ -73,7 +73,7 @@ const Image = styled.div`
 
     ${(props) =>
       props.orientation === 'vertical' &&
-      css`
+      `
         margin-bottom: 16px;
       `}
   }
@@ -132,14 +132,14 @@ const AddonInfo = styled.div`
   @media (min-width: ${breakpoint}px) {
     ${(props) =>
       props.orientation === 'horizontal' &&
-      css`
+      `
         align-items: center;
         margin-right: ${spacing.padding.large}px;
       `}
 
     ${(props) =>
       props.orientation === 'vertical' &&
-      css`
+      `
         display: block;
         margin-bottom: ${spacing.padding.medium}px;
       `}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { styles, Button } from '@storybook/design-system';
@@ -14,7 +14,7 @@ const ListWrapper = styled.div`
 
 export const AddonsList = ({ addonItems, isLoading, ...props }) => {
   const [visibleCount, setVisibleCount] = useState(6);
-  const items = addonItems.slice(0, visibleCount);
+  const items = useMemo(() => addonItems.slice(0, visibleCount), [visibleCount, addonItems]);
 
   const loadMore = () => {
     setVisibleCount(Math.min(visibleCount + 6, addonItems.length - 1));

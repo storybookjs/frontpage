@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import pluralize from 'pluralize';
 import { Input, TableOfContents, global, styles, TagList, TagLink } from '@storybook/design-system';
 import { graphql } from 'gatsby';
@@ -67,10 +67,10 @@ const ToCContent = styled.div`
 
   ${(props) =>
     props.hideToC
-      ? css`
+      ? `
           display: none;
         `
-      : css`
+      : `
           @media (min-width: ${breakpoint * 1.333}px) {
             display: block;
             margin-top: 1.5rem;
