@@ -70,6 +70,7 @@ export const addonItemsData = [
   {
     id: '2',
     appearance: 'integrator',
+    verifiedCreator: 'Contrast',
     image: ContrastPNG,
     title: 'Contrast',
     description: 'Embed Contrast handoff tool in a storybook panel',
@@ -84,7 +85,7 @@ export const addonItemsData = [
     title: 'Accessibility',
     description: 'Test component compliance with web accessibility standards',
     downloads: 923,
-    authors: [],
+    authors: authors.slice(2, 3),
     addonUrl: '/addons/accessibility',
   },
   {
@@ -123,12 +124,13 @@ export const addonItemsData = [
     title: 'Controls',
     description: 'Interact with component inputs dynamically in the Storybook UI',
     downloads: 12,
-    authors: [],
+    authors: authors.slice(1, 2),
     addonUrl: '/addons/controls',
   },
   {
     id: '8',
     appearance: 'integrator',
+    verifiedCreator: 'InVision',
     image: DocsSVG,
     title: 'Docs',
     description: 'Document component usage and properties in Markdown',
@@ -166,6 +168,7 @@ export const addonItemsData = [
   {
     id: '12',
     appearance: 'integrator',
+    verifiedCreator: 'Someone',
     image: StoryshotsSVG,
     title: 'Storyshots',
     description: 'Take a code snapshot of every story automatically with Jest',

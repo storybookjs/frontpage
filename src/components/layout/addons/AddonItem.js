@@ -2,29 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import humanFormat from 'human-format';
-import { styles, animation, Cardinal, AvatarList, Icon } from '@storybook/design-system';
+import { Link as GatsbyLinkWrapper } from 'gatsby';
+import { styles, animation, Cardinal, AvatarList } from '@storybook/design-system';
 import customSVG from '../../../images/addon-catalog/custom.svg';
+import { VerifiedBadge } from './VerifiedBadge';
 
 const { hoverEffect, spacing, color, typography, breakpoint } = styles;
 const { inlineGlow } = animation;
 
-const VerifiedBadge = styled(Icon).attrs({ icon: 'verified', block: true })`
-  color: ${(props) => (props.appearance === 'official' ? color.secondary : color.green)};
-  width: 14px;
-  height: 14px;
-  margin-left: ${spacing.padding.small}px;
-  margin-bottom: 2px;
-`;
-VerifiedBadge.propTypes = {
-  appearance: PropTypes.oneOf(['official', 'integrator']),
-};
-
-const AddonItemLink = styled.a`
+const AddonItemWrapper = styled.div`
   ${hoverEffect}
   display: flex;
   flex-direction: column;
   padding: ${spacing.padding.medium}px ${spacing.padding.medium}px 0;
   text-decoration: none;
+  position: relative;
 
   @media (min-width: ${breakpoint}px) {
     padding: ${spacing.padding.medium}px;
@@ -37,9 +29,18 @@ const AddonItemLink = styled.a`
       `}
   }
 `;
-AddonItemLink.propTypes = {
+AddonItemWrapper.propTypes = {
   orientation: PropTypes.oneOf(['vertical', 'horizontal']).isRequired,
 };
+
+const ClickIntercept = styled.a`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+`;
 
 const Image = styled.div`
   flex: none;
@@ -193,9 +194,11 @@ export const AddonItem = ({
   orientation,
   appearance,
   isLoading,
+  verifiedCreator,
   ...props
 }) => (
-  <AddonItemLink href={addonUrl} orientation={orientation} {...props}>
+  <AddonItemWrapper orientation={orientation} {...props}>
+    {!isLoading && addonUrl && <ClickIntercept as={GatsbyLinkWrapper} to={addonUrl} />}
     <AddonInfo orientation={orientation}>
       <Image orientation={orientation} isLoading={isLoading}>
         <img alt="" src={image} />
@@ -204,7 +207,7 @@ export const AddonItem = ({
         <Title isLoading={isLoading}>
           <span>{isLoading ? 'loading' : title}</span>
           {['official', 'integrator'].includes(appearance) && (
-            <VerifiedBadge appearance={appearance} />
+            <VerifiedBadge appearance={appearance} creator={verifiedCreator} />
           )}
         </Title>
         <Description isLoading={isLoading}>
@@ -221,6 +224,7 @@ export const AddonItem = ({
             ? undefined
             : humanFormat(downloads, {
                 decimals: 1,
+                separator: '',
               })
         }
         text={isLoading ? undefined : 'Downloads'}
@@ -229,7 +233,7 @@ export const AddonItem = ({
       />
       <Authors users={isLoading ? undefined : authors} isLoading={isLoading} />
     </Meta>
-  </AddonItemLink>
+  </AddonItemWrapper>
 );
 
 AddonItem.propTypes = {
@@ -248,6 +252,7 @@ AddonItem.propTypes = {
   ),
   addonUrl: PropTypes.string,
   isLoading: PropTypes.bool,
+  verifiedCreator: PropTypes.string,
 };
 
 AddonItem.defaultProps = {
@@ -260,4 +265,5 @@ AddonItem.defaultProps = {
   addonUrl: '#',
   title: '',
   description: '',
+  verifiedCreator: '',
 };

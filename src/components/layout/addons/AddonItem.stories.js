@@ -80,6 +80,7 @@ OfficialIntegrator.args = {
   title: 'Contrast',
   description: 'Embed Contrast handoff tool in a storybook panel',
   downloads: 17143,
+  verifiedCreator: 'Contrast',
 };
 
 export const Community = Template.bind({});
@@ -102,4 +103,30 @@ WithoutImage.args = {
 export const Loading = Template.bind({});
 Loading.args = {
   isLoading: true,
+};
+
+const StatsWrapper = styled.div`
+  > * {
+    margin-bottom: 16px;
+  }
+`;
+
+export const StatVariations = (args) => (
+  <StatsWrapper>
+    <AddonItem {...args} downloads={104} />
+    <AddonItem {...args} downloads={726} />
+    <AddonItem {...args} downloads={5026} />
+    <AddonItem {...args} downloads={17143} />
+    <AddonItem {...args} downloads={171043} />
+    <AddonItem {...args} downloads={3871043} />
+  </StatsWrapper>
+);
+StatVariations.args = {
+  orientation: 'horizontal',
+  appearance: 'official',
+  image: ControlsSVG,
+  title: 'Controls',
+  description: 'Interact with component inputs dynamically in the Storybook UI',
+  authors,
+  addonUrl: '/addons/controls',
 };
