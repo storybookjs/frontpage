@@ -7,8 +7,9 @@ import useSiteMetadata from '../../lib/useSiteMetadata';
 import { SocialGraph, Breadcrumb } from '../../basics';
 import { AddonsPageHeader } from '../../layout/addons/AddonsPageHeader';
 import { AddonsList } from '../../layout/addons/AddonsList';
-import { AddonsAside, AddonsAsideTitle } from '../../layout/addons/AddonsAside';
 import { AddonsLayout } from '../../layout/addons/AddonsLayout';
+import { AddonsAside } from '../../layout/addons/AddonsAside';
+import { AddonsSubheading } from '../../layout/addons/AddonsSubheading';
 
 const Container = styled.div`
   display: flex;
@@ -43,7 +44,7 @@ export const AddonsTagScreen = ({ tag, addons, relatedTags }) => {
         <Container>
           <StyledAddonsList addonItems={addons} />
           <AddonsAside>
-            <AddonsAsideTitle>Related tags</AddonsAsideTitle>
+            <AddonsSubheading>Related tags</AddonsSubheading>
             <RelatedTagsList
               limit={6}
               tags={relatedTags.map((relatedTag) => (

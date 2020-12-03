@@ -1,5 +1,6 @@
 import React from 'react';
-import { AddonsAside, AddonsAsideTitle } from './AddonsAside';
+import { AddonsAside } from './AddonsAside';
+import { AddonsSubheading } from './AddonsSubheading';
 
 export default {
   title: 'Frontpage|layout/addons/AddonsAside',
@@ -16,7 +17,7 @@ export const WithChildren = () => (
 
 export const WithSectionTitle = () => (
   <AddonsAside>
-    <AddonsAsideTitle>Title</AddonsAsideTitle>
+    <AddonsSubheading>Title</AddonsSubheading>
     <div style={{ marginBottom: 48 }}>children</div>
   </AddonsAside>
 );

@@ -7,7 +7,8 @@ import { graphql } from 'gatsby';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import { AddonsLearn } from './AddonsLearn';
 import { AddonsList } from './AddonsList';
-import { AddonsAside, AddonsAsideTitle } from './AddonsAside';
+import { AddonsAside } from './AddonsAside';
+import { AddonsSubheading } from './AddonsSubheading';
 
 const { breakpoint, spacing, color, pageMargins, typography } = styles;
 const { GlobalStyle } = global;
@@ -225,7 +226,7 @@ export const AddonsLayout = ({
           <SearchContainer {...props}>
             <StyledAddonsList addonItems={searchResults.addons} />
             <AddonsAside>
-              <AddonsAsideTitle>Related tags</AddonsAsideTitle>
+              <AddonsSubheading>Related tags</AddonsSubheading>
               <RelatedTagsList
                 limit={6}
                 tags={searchResults.relatedTags.map((tag) => (
