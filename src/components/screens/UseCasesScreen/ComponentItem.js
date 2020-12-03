@@ -52,7 +52,7 @@ const Item = styled.div`
 
   ${(props) =>
     !props.loading &&
-    css`
+    `
       ${FigureWrapper} {
         transform: translate3d(0, 0, 0);
         transition: all 150ms ease-out;

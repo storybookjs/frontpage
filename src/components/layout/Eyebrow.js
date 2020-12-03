@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { styles } from '@storybook/design-system';
 
@@ -16,13 +16,13 @@ const Wrapper = styled.div`
 
   ${(props) =>
     props.warning &&
-    css`
+    `
       background: ${background.warning};
       color: ${color.darker};
     `};
   ${(props) =>
     props.positive &&
-    css`
+    `
       background: ${background.positive};
       color: ${color.darker};
     `};

@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import pluralize from 'pluralize';
 
 import { Link, styles, animation } from '@storybook/design-system';
@@ -50,7 +50,7 @@ const CardinalInner = styled.div`
 
   ${(props) =>
     props.loading &&
-    `
+    css`
       ${Count}, ${Text} {
         overflow: hidden;
 

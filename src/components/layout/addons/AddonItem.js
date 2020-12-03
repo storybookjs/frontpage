@@ -38,7 +38,7 @@ const AddonItemLink = styled.a`
   }
 `;
 AddonItemLink.propTypes = {
-  orientation: PropTypes.oneOf(['vertical', 'horizontal']),
+  orientation: PropTypes.oneOf(['vertical', 'horizontal']).isRequired,
 };
 
 const Image = styled.div`
@@ -79,8 +79,8 @@ const Image = styled.div`
   }
 `;
 Image.propTypes = {
-  orientation: PropTypes.oneOf(['vertical', 'horizontal']),
-  isLoading: PropTypes.bool,
+  orientation: PropTypes.oneOf(['vertical', 'horizontal']).isRequired,
+  isLoading: PropTypes.bool.isRequired,
 };
 
 const Title = styled.div`
@@ -103,7 +103,7 @@ const Title = styled.div`
     `}
 `;
 Title.propTypes = {
-  isLoading: PropTypes.bool,
+  isLoading: PropTypes.bool.isRequired,
 };
 
 const Description = styled.div`
@@ -122,7 +122,7 @@ const Description = styled.div`
     `}
 `;
 Description.propTypes = {
-  isLoading: PropTypes.bool,
+  isLoading: PropTypes.bool.isRequired,
 };
 
 const AddonInfo = styled.div`
@@ -146,7 +146,7 @@ const AddonInfo = styled.div`
   }
 `;
 AddonInfo.propTypes = {
-  orientation: PropTypes.oneOf(['vertical', 'horizontal']),
+  orientation: PropTypes.oneOf(['vertical', 'horizontal']).isRequired,
 };
 
 const Spacer = styled.div`

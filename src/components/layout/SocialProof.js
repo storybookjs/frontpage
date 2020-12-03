@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { Subheading, styles } from '@storybook/design-system';
 
@@ -26,7 +26,7 @@ const Logo = styled.img`
 
   ${(props) =>
     props.monochrome &&
-    css`
+    `
       opacity: 0.4;
       filter: grayscale(100%);
     `};
@@ -63,7 +63,7 @@ const Logos = styled.div`
 
   ${(props) =>
     props.grid &&
-    css`
+    `
       @media (min-width: ${breakpoint * 1.333}px) {
         justify-content: space-evenly;
 

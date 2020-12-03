@@ -58,7 +58,7 @@ const Sidebar = styled.div`
 `;
 
 Sidebar.propTypes = {
-  hideSidebar: PropTypes.bool,
+  hideSidebar: PropTypes.bool.isRequired,
 };
 
 const ToCContent = styled.div`
@@ -79,7 +79,7 @@ const ToCContent = styled.div`
 `;
 
 ToCContent.propTypes = {
-  hideToC: PropTypes.bool,
+  hideToC: PropTypes.bool.isRequired,
 };
 
 const SearchContainer = styled.div`
