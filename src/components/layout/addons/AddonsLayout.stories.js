@@ -1,6 +1,9 @@
 import React from 'react';
+import seedrandom from 'seedrandom';
 import AddonsLayout from './AddonsLayout';
 import { addonItemsData } from './AddonsGrid.stories';
+
+seedrandom('chromatic testing', { global: true });
 
 export const data = {
   currentPage: {
