@@ -1,40 +1,27 @@
 import React from 'react';
 import seedrandom from 'seedrandom';
-import AddonsLayout from './AddonsLayout';
+import { AddonsLayout } from './AddonsLayout';
 import { addonItemsData } from './AddonsGrid.stories';
 
 seedrandom('chromatic testing', { global: true });
 
-export const data = {
-  currentPage: {
-    fields: { slug: '/addons/essentials/' },
-  },
-};
-
-export const pageContext = {};
-
 export default {
   title: 'Frontpage|layout/addons/AddonsLayout',
   component: AddonsLayout,
-  excludeStories: ['data', 'pageContext'],
+  excludeStories: ['data'],
 };
 
-export const Base = () => (
-  <AddonsLayout data={data} pageContext={pageContext}>
-    children
-  </AddonsLayout>
-);
+export const Base = () => <AddonsLayout currentPath="/addons/essentials/">children</AddonsLayout>;
 
 export const HideTableOfContents = () => (
-  <AddonsLayout data={data} pageContext={pageContext} hideSidebar>
+  <AddonsLayout currentPath="/addons/essentials/" hideSidebar>
     children
   </AddonsLayout>
 );
 
 export const SearchLoading = () => (
   <AddonsLayout
-    data={data}
-    pageContext={pageContext}
+    currentPath="/addons/essentials/"
     searchQuery="notes"
     searchResults={{ addons: undefined, relatedTags: [] }}
   >
@@ -71,8 +58,7 @@ const relatedTags = [
 
 export const SearchResults = () => (
   <AddonsLayout
-    data={data}
-    pageContext={pageContext}
+    currentPath="/addons/essentials/"
     searchQuery="notes"
     searchResults={{ addons: addonItemsData, relatedTags }}
   >

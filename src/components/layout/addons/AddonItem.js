@@ -18,7 +18,7 @@ const AddonItemWrapper = styled.div`
   text-decoration: none;
   position: relative;
 
-  @media (min-width: ${breakpoint}px) {
+  @media (min-width: ${breakpoint * 1.5}px) {
     padding: ${spacing.padding.medium}px;
 
     ${(props) =>
@@ -68,7 +68,7 @@ const Image = styled.div`
       }
     `}
 
-  @media (min-width: ${breakpoint}px) {
+  @media (min-width: ${breakpoint * 1.5}px) {
     width: 64px;
     height: 64px;
 
@@ -130,7 +130,7 @@ const AddonInfo = styled.div`
   display: flex;
   align-items: flex-start;
 
-  @media (min-width: ${breakpoint}px) {
+  @media (min-width: ${breakpoint * 1.5}px) {
     ${(props) =>
       props.orientation === 'horizontal' &&
       `
@@ -154,7 +154,7 @@ const Spacer = styled.div`
   border-top: 1px solid ${color.border};
   margin-top: ${spacing.padding.large}px;
 
-  @media (min-width: ${breakpoint}px) {
+  @media (min-width: ${breakpoint * 1.5}px) {
     flex: 1 1 auto;
     min-width: 0;
     margin: 0;
@@ -170,7 +170,7 @@ const Meta = styled.div`
   padding-top: 16px;
   padding-bottom: 16px;
 
-  @media (min-width: ${breakpoint}px) {
+  @media (min-width: ${breakpoint * 1.5}px) {
     padding: 0;
   }
 `;

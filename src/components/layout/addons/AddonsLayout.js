@@ -13,10 +13,8 @@ const { breakpoint, spacing, color, pageMargins, typography } = styles;
 const { GlobalStyle } = global;
 
 const Content = styled.main`
-  flex: 1;
+  flex: 1 1 auto;
   min-width: 0; /* do not remove  https://weblog.west-wind.com/posts/2016/feb/15/flexbox-containers-pre-tags-and-managing-overflow */
-  max-width: 800px;
-  margin: 0px auto;
 `;
 
 const Wrapper = styled.div`
@@ -96,6 +94,17 @@ const RelatedTagsList = styled(TagList)`
 
 const SearchInput = styled(Input)`
   flex: 1 1 auto;
+  font-size: ${typography.size.s2}px;
+
+  #addons-search {
+    padding-left: 40px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  svg {
+    left: 18px;
+  }
 
   @media (min-width: ${breakpoint * 1.333}px) {
     max-width: 220px;
@@ -166,21 +175,15 @@ const sidebarItems = [
   },
 ];
 
-function AddonsLayout({
+export const AddonsLayout = ({
   children,
   data,
-  pageContext,
   hideSidebar,
   searchQuery,
   searchResults,
+  currentPath,
   ...props
-}) {
-  const {
-    currentPage: {
-      fields: { slug },
-    },
-  } = data;
-
+}) => {
   // TODO: connect to back-end
   const searching = !!(searchQuery && searchQuery !== '');
 
@@ -207,7 +210,7 @@ function AddonsLayout({
               </SearchSummary>
             )}
           </Searchbar>
-          <TableOfContents currentPath={slug} items={sidebarItems}>
+          <TableOfContents currentPath={currentPath} items={sidebarItems}>
             {({ menu }) => (
               <ToCContent hideToC={searching}>
                 {menu}
@@ -235,32 +238,20 @@ function AddonsLayout({
             </AddonsAside>
           </SearchContainer>
         ) : (
-          <Content {...props}>children</Content>
+          <Content {...props}>{children}</Content>
         )}
       </Wrapper>
     </>
   );
-}
+};
 
 AddonsLayout.propTypes = {
   children: PropTypes.node.isRequired,
-  data: PropTypes.shape({}),
-  pageContext: PropTypes.shape({}),
+  currentPath: PropTypes.string,
   hideSidebar: PropTypes.bool,
 };
 
 AddonsLayout.defaultProps = {
   hideSidebar: false,
-  data: {},
-  pageContext: {},
+  currentPath: '',
 };
-
-export default AddonsLayout;
-
-export const query = graphql`
-  fragment DocsLayoutCurrentPageQuery on Mdx {
-    fields {
-      slug
-    }
-  }
-`;

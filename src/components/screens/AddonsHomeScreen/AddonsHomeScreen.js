@@ -4,6 +4,7 @@ import { ButtonToggle, styles } from '@storybook/design-system';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import { SocialGraph } from '../../basics';
 import { AddonsGrid } from '../../layout/addons/AddonsGrid';
+import { AddonsLayout } from '../../layout/addons/AddonsLayout';
 
 const { color, typography, breakpoint } = styles;
 
@@ -53,25 +54,27 @@ export const AddonsHomeScreen = ({ popularAddons, trendingAddons }) => {
         url={`${home}/addons`}
         image={ogImage}
       />
-      <Heading>Supercharge Storybooks</Heading>
-      <Subheading>Addons unlock advanced features and new workflows for Storybook</Subheading>
-      <PopularAddons
-        title="Popular"
-        addonItems={popularAddons}
-        actions={
-          <ButtonToggle
-            selectedIndex={timePeriod === 'MONTH' ? 0 : 1}
-            onSelectIndex={() => {
-              setTimePeriod(timePeriod === 'MONTH' ? 'YEAR' : 'MONTH');
-            }}
-            titles={[
-              { title: 'Month', tooltip: 'Month' },
-              { title: 'Year', tooltip: 'Year' },
-            ]}
-          />
-        }
-      />
-      <AddonsGrid title="Trending" addonItems={trendingAddons} />
+      <AddonsLayout currentPath="/addons/popular/">
+        <Heading>Supercharge Storybooks</Heading>
+        <Subheading>Addons unlock advanced features and new workflows for Storybook</Subheading>
+        <PopularAddons
+          title="Popular"
+          addonItems={popularAddons}
+          actions={
+            <ButtonToggle
+              selectedIndex={timePeriod === 'MONTH' ? 0 : 1}
+              onSelectIndex={() => {
+                setTimePeriod(timePeriod === 'MONTH' ? 'YEAR' : 'MONTH');
+              }}
+              titles={[
+                { title: 'Month', tooltip: 'Month' },
+                { title: 'Year', tooltip: 'Year' },
+              ]}
+            />
+          }
+        />
+        <AddonsGrid title="Trending" addonItems={trendingAddons} />
+      </AddonsLayout>
     </>
   );
 };

@@ -11,7 +11,7 @@ const Aside = styled.aside`
   margin-left: 40px;
   flex: none;
 
-  @media (min-width: ${breakpoint * 1.333}px) {
+  @media (min-width: ${breakpoint * 1.5}px) {
     display: block;
   }
 `;

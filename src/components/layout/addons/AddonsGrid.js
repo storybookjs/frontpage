@@ -11,7 +11,7 @@ const Grid = styled.div`
   grid-gap: ${spacing.padding.medium}px;
   grid-template-columns: repeat(auto-fit, 1fr);
 
-  @media (min-width: ${breakpoint * 1}px) {
+  @media (min-width: ${breakpoint}px) {
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   }
 `;

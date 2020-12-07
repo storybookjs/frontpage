@@ -5,6 +5,7 @@ import useSiteMetadata from '../../lib/useSiteMetadata';
 import { SocialGraph } from '../../basics';
 import { AddonsPageHeader } from '../../layout/addons/AddonsPageHeader';
 import { AddonsList } from '../../layout/addons/AddonsList';
+import { AddonsLayout } from '../../layout/addons/AddonsLayout';
 
 export const AddonsCategoryScreen = ({ category, description, addons }) => {
   const { title, ogImage, urls = {} } = useSiteMetadata();
@@ -18,12 +19,14 @@ export const AddonsCategoryScreen = ({ category, description, addons }) => {
         url={`${home}/addons`}
         image={ogImage}
       />
-      <AddonsPageHeader
-        title={category}
-        subtitle={description}
-        kicker={pluralize('addon', addons.length, true)}
-      />
-      <AddonsList addonItems={addons} />
+      <AddonsLayout currentPath="/addons/essentials/">
+        <AddonsPageHeader
+          title={category}
+          subtitle={description}
+          kicker={pluralize('addon', addons.length, true)}
+        />
+        <AddonsList addonItems={addons} />
+      </AddonsLayout>
     </>
   );
 };

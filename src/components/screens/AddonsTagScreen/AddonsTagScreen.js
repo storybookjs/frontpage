@@ -8,6 +8,7 @@ import { SocialGraph, Breadcrumb } from '../../basics';
 import { AddonsPageHeader } from '../../layout/addons/AddonsPageHeader';
 import { AddonsList } from '../../layout/addons/AddonsList';
 import { AddonsAside, AddonsAsideTitle } from '../../layout/addons/AddonsAside';
+import { AddonsLayout } from '../../layout/addons/AddonsLayout';
 
 const Container = styled.div`
   display: flex;
@@ -33,25 +34,27 @@ export const AddonsTagScreen = ({ tag, addons, relatedTags }) => {
         url={`${home}/addons`}
         image={ogImage}
       />
-      <Breadcrumb to={`${home}/addons`}>View full catalog</Breadcrumb>
-      <AddonsPageHeader
-        title={`${tag} tag`}
-        kicker={`${addons.length} tagged ${pluralize('addons', addons.length)}`}
-      />
-      <Container>
-        <StyledAddonsList addonItems={addons} />
-        <AddonsAside>
-          <AddonsAsideTitle>Related tags</AddonsAsideTitle>
-          <RelatedTagsList
-            limit={6}
-            tags={relatedTags.map((relatedTag) => (
-              <TagLink key={relatedTag.link} href={relatedTag.link}>
-                {relatedTag.name}
-              </TagLink>
-            ))}
-          />
-        </AddonsAside>
-      </Container>
+      <AddonsLayout hideSidebar>
+        <Breadcrumb to={`${home}/addons`}>View full catalog</Breadcrumb>
+        <AddonsPageHeader
+          title={`${tag} tag`}
+          kicker={`${addons.length} tagged ${pluralize('addons', addons.length)}`}
+        />
+        <Container>
+          <StyledAddonsList addonItems={addons} />
+          <AddonsAside>
+            <AddonsAsideTitle>Related tags</AddonsAsideTitle>
+            <RelatedTagsList
+              limit={6}
+              tags={relatedTags.map((relatedTag) => (
+                <TagLink key={relatedTag.link} href={relatedTag.link}>
+                  {relatedTag.name}
+                </TagLink>
+              ))}
+            />
+          </AddonsAside>
+        </Container>
+      </AddonsLayout>
     </>
   );
 };
