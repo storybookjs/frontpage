@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { styles } from '@storybook/design-system';
 
@@ -26,7 +26,7 @@ const Layout = styled.div`
 
   ${(props) =>
     props.columns === 2 &&
-    `
+    css`
       ${pageMargins};
       @media (min-width: ${breakpoint * 1}px) {
         margin: 0 ${pageMargin * 3}%;
@@ -41,7 +41,7 @@ const Layout = styled.div`
 
   ${(props) =>
     props.columns === 3 &&
-    `
+    css`
       ${pageMargins};
       @media (min-width: ${breakpoint * 1}px) {
         > * {
