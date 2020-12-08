@@ -94,16 +94,16 @@ const RelatedTagsList = styled(TagList)`
 
 const SearchInput = styled(Input)`
   flex: 1 1 auto;
-  font-size: ${typography.size.s2}px;
 
   #addons-search {
+    font-size: ${typography.size.s2}px;
     padding-left: 40px;
     padding-top: 12px;
     padding-bottom: 12px;
   }
 
   svg {
-    left: 18px;
+    left: 16px;
   }
 
   @media (min-width: ${breakpoint * 1.333}px) {
