@@ -37,10 +37,8 @@ const Divider = styled.div`
 const Sidebar = styled.div`
   flex: 1;
   margin: 1rem 0 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid ${color.border};
   display: ${(props) => (props.hideSidebar ? 'none' : 'block')};
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 
   @media (min-width: ${breakpoint * 1.333}px) {
     flex: 0 0 240px;
@@ -49,7 +47,6 @@ const Sidebar = styled.div`
     margin-left: auto;
     margin-right: ${(props) => (props.searchLayout ? 'auto' : '20px')};
     margin-bottom: ${(props) => (props.searchLayout ? spacing.padding.medium : 0)}px;
-    padding-bottom: 0;
     padding-right: ${(props) => (props.searchLayout ? 0 : 20)}px;
     border-bottom: none;
   }
