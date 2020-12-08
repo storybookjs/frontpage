@@ -8,12 +8,8 @@ import { SocialGraph, Breadcrumb } from '../../basics';
 import { AddonsPageHeader } from '../../layout/addons/AddonsPageHeader';
 import { AddonsList } from '../../layout/addons/AddonsList';
 import { AddonsLayout } from '../../layout/addons/AddonsLayout';
-import { AddonsAside } from '../../layout/addons/AddonsAside';
+import { AddonsAside, AddonsAsideContainer } from '../../layout/addons/AddonsAsideLayout';
 import { AddonsSubheading } from '../../layout/addons/AddonsSubheading';
-
-const Container = styled.div`
-  display: flex;
-`;
 
 const StyledAddonsList = styled(AddonsList)`
   flex: 1 1 auto;
@@ -41,7 +37,7 @@ export const AddonsTagScreen = ({ tag, addons, relatedTags }) => {
           title={`${tag} tag`}
           kicker={`${addons.length} tagged ${pluralize('addons', addons.length)}`}
         />
-        <Container>
+        <AddonsAsideContainer>
           <StyledAddonsList addonItems={addons} />
           <AddonsAside>
             <AddonsSubheading>Related tags</AddonsSubheading>
@@ -54,7 +50,7 @@ export const AddonsTagScreen = ({ tag, addons, relatedTags }) => {
               ))}
             />
           </AddonsAside>
-        </Container>
+        </AddonsAsideContainer>
       </AddonsLayout>
     </>
   );

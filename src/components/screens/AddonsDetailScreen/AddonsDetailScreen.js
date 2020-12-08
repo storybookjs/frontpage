@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { styles, Link, TagList, TagLink, Highlight, Avatar } from '@storybook/design-system';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import { SocialGraph } from '../../basics';
-import { AddonsAside } from '../../layout/addons/AddonsAside';
+import { AddonsAside, AddonsAsideContainer } from '../../layout/addons/AddonsAsideLayout';
 import { AddonsSubheading } from '../../layout/addons/AddonsSubheading';
 import { AddonItemDetail } from '../../layout/addons/AddonItemDetail';
 import { AddonsLayout } from '../../layout/addons/AddonsLayout';
@@ -12,10 +12,6 @@ import Eyebrow from '../../layout/Eyebrow';
 import { mdFormatting } from '../../../styles/formatting';
 
 const { color, typography, spacing } = styles;
-
-const Container = styled.div`
-  display: flex;
-`;
 
 const StyledTagsList = styled(TagList)`
   margin-bottom: 30px;
@@ -89,7 +85,7 @@ export const AddonsDetailScreen = ({ addon, readMe, supportedFrameworks, tags, a
       />
       <AddonsLayout hideSidebar>
         <AddonItemDetail {...addon} />
-        <Container>
+        <AddonsAsideContainer>
           <ReadMe>
             <ReadMeTitle>
               <AddonsSubheading>Readme</AddonsSubheading>
@@ -130,7 +126,7 @@ export const AddonsDetailScreen = ({ addon, readMe, supportedFrameworks, tags, a
               <MissingInfo warning>Tags not available</MissingInfo>
             )}
           </AddonsAside>
-        </Container>
+        </AddonsAsideContainer>
       </AddonsLayout>
     </>
   );

@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import pluralize from 'pluralize';
 import { Input, TableOfContents, global, styles, TagList, TagLink } from '@storybook/design-system';
-import { graphql } from 'gatsby';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import { AddonsLearn } from './AddonsLearn';
 import { AddonsList } from './AddonsList';
-import { AddonsAside } from './AddonsAside';
+import { AddonsAside, AddonsAsideContainer } from './AddonsAsideLayout';
 import { AddonsSubheading } from './AddonsSubheading';
 
 const { breakpoint, spacing, color, pageMargins, typography } = styles;
@@ -81,10 +80,6 @@ ToCContent.propTypes = {
   hideToC: PropTypes.bool.isRequired,
 };
 
-const SearchContainer = styled.div`
-  display: flex;
-`;
-
 const StyledAddonsList = styled(AddonsList)`
   flex: 1 1 auto;
 `;
@@ -105,6 +100,7 @@ const SearchInput = styled(Input)`
 
   svg {
     left: 16px;
+    font-size: ${typography.size.s2}px;
   }
 
   @media (min-width: ${breakpoint * 1.333}px) {
@@ -214,6 +210,7 @@ export const AddonsLayout = ({
           <TableOfContents currentPath={currentPath} items={sidebarItems}>
             {({ menu }) => (
               <ToCContent hideToC={searching}>
+                <AddonsSubheading>Categories</AddonsSubheading>
                 {menu}
                 <Divider />
                 <AddonsLearn />
@@ -223,7 +220,7 @@ export const AddonsLayout = ({
         </Sidebar>
 
         {searching ? (
-          <SearchContainer {...props}>
+          <AddonsAsideContainer {...props}>
             <StyledAddonsList addonItems={searchResults.addons} />
             <AddonsAside>
               <AddonsSubheading>Related tags</AddonsSubheading>
@@ -237,7 +234,7 @@ export const AddonsLayout = ({
                 isLoading={searchResults.relatedTags?.length === 0}
               />
             </AddonsAside>
-          </SearchContainer>
+          </AddonsAsideContainer>
         ) : (
           <Content {...props}>{children}</Content>
         )}

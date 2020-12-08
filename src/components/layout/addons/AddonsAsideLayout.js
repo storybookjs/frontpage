@@ -6,13 +6,22 @@ import { AddonsLearn } from './AddonsLearn';
 const { breakpoint } = styles;
 
 const Aside = styled.aside`
-  display: none;
-  width: 210px;
-  margin-left: 40px;
-  flex: none;
+  margin-top: 80px;
 
   @media (min-width: ${breakpoint * 1.5}px) {
-    display: block;
+    flex: none;
+    width: 210px;
+    margin-left: 40px;
+    margin-top: 0;
+  }
+`;
+
+export const AddonsAsideContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: ${breakpoint * 1.5}px) {
+    flex-direction: row;
   }
 `;
 
