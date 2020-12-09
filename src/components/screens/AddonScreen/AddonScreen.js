@@ -232,6 +232,11 @@ export function PureAddonScreen({ ...props }) {
 
         <Subheader>Test</Subheader>
         <AddonItem
+          title="Creevey"
+          desc="Cross-browser screenshot testing tool for Storybook with fancy UI Runner."
+          addonUrl="https://github.com/wKich/creevey"
+        />
+        <AddonItem
           title="Specs"
           desc="This addon will allow you to write tests based on your stories and display results directly inside Storybook."
           addonUrl="https://github.com/mthuret/storybook-addon-specifications"
