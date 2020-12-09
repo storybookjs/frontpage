@@ -116,6 +116,10 @@ const SearchSummary = styled.div`
   color: ${color.darkest};
 `;
 
+const CategoriesHeading = styled(AddonsSubheading)`
+  margin-bottom: ${spacing.padding.medium}px;
+`;
+
 export const SEARCH_INPUT_ID = 'addons-search';
 
 const sidebarItems = [
@@ -207,7 +211,7 @@ export const AddonsLayout = ({
           <TableOfContents currentPath={currentPath} items={sidebarItems}>
             {({ menu }) => (
               <ToCContent hideToC={searching}>
-                <AddonsSubheading>Categories</AddonsSubheading>
+                <CategoriesHeading>Categories</CategoriesHeading>
                 {menu}
                 <Divider />
                 <AddonsLearn />
