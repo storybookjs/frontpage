@@ -24,7 +24,7 @@ const Layout = styled.div`
     }
   }
 
-  ${props =>
+  ${(props) =>
     props.columns === 2 &&
     css`
       ${pageMargins};
@@ -39,7 +39,7 @@ const Layout = styled.div`
       }
     `};
 
-  ${props =>
+  ${(props) =>
     props.columns === 3 &&
     css`
       ${pageMargins};

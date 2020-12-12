@@ -10,7 +10,7 @@ const Wrapper = styled.div`
 `;
 
 storiesOf('Frontpage|screens/ReleasesScreen/TableOfContents', module)
-  .addDecorator(storyFn => <Wrapper>{storyFn()}</Wrapper>)
+  .addDecorator((storyFn) => <Wrapper>{storyFn()}</Wrapper>)
   .add('default', () => (
     <TableOfContents
       currentPageSlug="/2.0"

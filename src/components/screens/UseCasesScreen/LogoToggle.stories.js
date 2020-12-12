@@ -6,7 +6,7 @@ import LogoToggle from './LogoToggle';
 
 const onSelectIndex = action('onSelectIndex');
 storiesOf('Frontpage|screens/UseCasesScreen/LogoToggle', module)
-  .addDecorator(storyFn => <div style={{ padding: '60px' }}>{storyFn()}</div>)
+  .addDecorator((storyFn) => <div style={{ padding: '60px' }}>{storyFn()}</div>)
   .add('default', () => (
     <LogoToggle
       path="images/logos/user"

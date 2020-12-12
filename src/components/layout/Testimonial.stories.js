@@ -6,7 +6,7 @@ import Testimonial from './Testimonial';
 import ChromaticLogoSVG from '../../images/logos/user/logo-chromatic.svg';
 
 storiesOf('Frontpage|layout/Testimonial', module)
-  .addDecorator(storyFn => <div style={{ padding: '60px 0' }}>{storyFn()}</div>)
+  .addDecorator((storyFn) => <div style={{ padding: '60px 0' }}>{storyFn()}</div>)
   .add('default', () => (
     <Testimonial
       text={

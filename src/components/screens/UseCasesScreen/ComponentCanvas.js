@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { styles, animation } from '@storybook/design-system';
 
@@ -15,9 +15,9 @@ const Toggle = styled(LogoToggle)`
     animation: ${shake} 10s ease-in-out infinite 5s;
   }
 
-  ${props =>
+  ${(props) =>
     props.clicked &&
-    css`
+    `
       > * {
         animation: none !important;
       }

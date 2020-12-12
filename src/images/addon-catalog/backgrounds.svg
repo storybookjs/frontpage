@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="140px" height="140px" viewBox="0 0 140 140" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>addons/backgrounds</title>
+    <g id="addons/backgrounds" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" fill-opacity="0.8">
+        <g id="Group-2" transform="translate(6.000000, 6.000000)" fill="#FF4785" stroke="#FF4785">
+            <rect id="Rectangle" opacity="0.900000036" x="0.5" y="0.5" width="39" height="39" rx="2"></rect>
+            <rect id="Rectangle-Copy-14" opacity="0.699999988" x="0.5" y="44.5" width="39" height="39" rx="2"></rect>
+            <rect id="Rectangle-Copy-21" opacity="0.5" x="0.5" y="88.5" width="39" height="39" rx="2"></rect>
+            <rect id="Rectangle-Copy-6" opacity="0.699999988" x="44.5" y="0.5" width="39" height="39" rx="2"></rect>
+            <rect id="Rectangle-Copy-18" opacity="0.5" x="44.5" y="44.5" width="39" height="39" rx="2"></rect>
+            <rect id="Rectangle-Copy-22" opacity="0.300000012" x="44.5" y="88.5" width="39" height="39" rx="2"></rect>
+            <rect id="Rectangle-Copy-12" opacity="0.5" x="88.5" y="0.5" width="39" height="39" rx="2"></rect>
+            <rect id="Rectangle-Copy-19" opacity="0.300000012" x="88.5" y="44.5" width="39" height="39" rx="2"></rect>
+            <rect id="Rectangle-Copy-23" opacity="0.200000003" x="88.5" y="88.5" width="39" height="39" rx="2"></rect>
+        </g>
+    </g>
+</svg>

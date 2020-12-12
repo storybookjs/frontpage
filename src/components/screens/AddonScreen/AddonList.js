@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { styles } from '@storybook/design-system';
 import AddonItem from './AddonItem';
@@ -57,14 +57,14 @@ const Grid = styled.div`
 const Layout = styled.div`
   ${pageMargins};
 
-  ${props =>
+  ${(props) =>
     props.appearance === 'official' &&
-    css`
+    `
       padding-bottom: calc(5rem - 40px);
     `};
-  ${props =>
+  ${(props) =>
     props.appearance === 'community' &&
-    css`
+    `
       padding-bottom: 3rem;
     `};
 `;

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { styles } from '@storybook/design-system';
 import { LazyLoad } from '../basics';
@@ -71,18 +71,18 @@ const Wrapper = styled.div`
       width: 50%;
     }
 
-    ${props =>
+    ${(props) =>
       props.orientation === 'left' &&
-      css`
+      `
         /* Text on left */
         ${Meta} {
           padding-right: 10%;
         }
       `};
 
-    ${props =>
+    ${(props) =>
       props.orientation === 'right' &&
-      css`
+      `
         /* Text on right */
         flex-direction: row-reverse;
         ${Meta} {
@@ -91,9 +91,9 @@ const Wrapper = styled.div`
         }
       `};
 
-    ${props =>
+    ${(props) =>
       props.orientation === 'center' &&
-      css`
+      `
         /* Image in center */
         padding-top: 5rem !important;
         padding-bottom: 5rem !important;

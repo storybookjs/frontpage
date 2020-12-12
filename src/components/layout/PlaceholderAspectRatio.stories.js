@@ -9,7 +9,7 @@ const Placeholder = styled(PlaceholderAspectRatio)`
 `;
 
 storiesOf('Frontpage|layout/PlaceholderAspectRatio', module)
-  .addDecorator(storyFn => (
+  .addDecorator((storyFn) => (
     <div style={{ background: 'papayawhip', width: '400px', height: '400px' }}>{storyFn()}</div>
   ))
   .add('default', () => <Placeholder ratio={0.75} />);

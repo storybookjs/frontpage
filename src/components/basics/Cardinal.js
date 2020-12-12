@@ -12,21 +12,21 @@ const Count = styled.div`
   color: ${color.dark};
   display: block;
 
-  ${props =>
+  ${(props) =>
     props.status === 'primary' &&
-    css`
+    `
       color: ${color.gold};
     `};
 
-  ${props =>
+  ${(props) =>
     props.status === 'secondary' &&
-    css`
+    `
       color: ${color.secondary};
     `};
 
-  ${props =>
+  ${(props) =>
     props.status === 'tertiary' &&
-    css`
+    `
       color: ${color.green};
     `};
 
@@ -43,12 +43,12 @@ const Text = styled.div`
 
 const CardinalInner = styled.div`
   display: inline-block;
-  text-align: ${props => (props.size === 'small' ? 'left' : 'center')};
+  text-align: ${(props) => (props.size === 'small' ? 'left' : 'center')};
   vertical-align: top;
   padding: 8px 12px;
   border-radius: 4px;
 
-  ${props =>
+  ${(props) =>
     props.loading &&
     css`
       ${Count}, ${Text} {
@@ -62,16 +62,16 @@ const CardinalInner = styled.div`
     `};
 
   ${Count} {
-    font-weight: ${props =>
+    font-weight: ${(props) =>
       props.size === 'small' ? typography.weight.bold : typography.weight.regular};
-    font-size: ${props => (props.size === 'small' ? typography.size.s2 : typography.size.l1)}px;
-    line-height: ${props => (props.size === 'small' ? typography.size.s3 : typography.size.l1)}px;
+    font-size: ${(props) => (props.size === 'small' ? typography.size.s2 : typography.size.l1)}px;
+    line-height: ${(props) => (props.size === 'small' ? typography.size.s3 : typography.size.l1)}px;
     margin-bottom: 2px;
   }
 
   ${Text} {
-    color: ${props => (props.size === 'small' ? color.mediumdark : color.dark)};
-    font-size: ${props => (props.size === 'small' ? typography.size.s1 : typography.size.s2)}px;
+    color: ${(props) => (props.size === 'small' ? color.mediumdark : color.dark)};
+    font-size: ${(props) => (props.size === 'small' ? typography.size.s1 : typography.size.s2)}px;
     line-height: ${typography.size.s2}px;
     clear: both;
   }

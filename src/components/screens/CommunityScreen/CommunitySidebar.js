@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { styles } from '@storybook/design-system';
 
@@ -35,9 +35,9 @@ const Children = styled.div`
   @media (min-width: ${breakpoint * 1.333}px) {
     margin-top: 1.5rem;
   }
-  ${props =>
+  ${(props) =>
     !props.loneChild &&
-    css`
+    `
       border-top: 1px solid ${color.border};
       padding-top: 1rem;
       @media (min-width: ${breakpoint * 1.333}px) {
