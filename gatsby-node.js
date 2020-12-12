@@ -4,6 +4,7 @@ const path = require('path');
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
 const { toc: docsToc } = require('./src/content/docs/toc');
+const { categories: addonCategories } = require('./src/content/addons/categories');
 const buildPathWithFramework = require('./src/util/build-path-with-framework');
 
 const githubDocsBaseUrl = 'https://github.com/storybookjs/storybook/tree/next';
@@ -63,6 +64,33 @@ exports.onCreatePage = ({ page, actions }) => {
   }
 };
 
+const addonsByCategoryQuery = Object.keys(addonCategories)
+  .map(
+    (categoryType) => `
+    ${categoryType}Addons: allAddonsYaml(filter: { tags: { eq: "${addonCategories[categoryType].id}" } }) {
+      nodes {
+        id: name
+        name
+        displayName
+        description
+        icon
+        authors {
+          id: username
+          avatarUrl: gravatarUrl
+          name: username
+        }
+        weeklyDownloads
+        tags
+        repositoryUrl
+        addonUrl: npmUrl
+        appearance: verified
+        verifiedCreator
+      }
+    }
+  `
+  )
+  .join('');
+
 exports.createPages = ({ actions, graphql }) => {
   const { createRedirect, createPage } = actions;
   return new Promise((resolve) => {
@@ -99,6 +127,7 @@ exports.createPages = ({ actions, graphql }) => {
             communityFrameworks
           }
         }
+        ${addonsByCategoryQuery}
       }
     `).then(
       ({
@@ -108,6 +137,7 @@ exports.createPages = ({ actions, graphql }) => {
           site: {
             siteMetadata: { coreFrameworks, communityFrameworks },
           },
+          ...addonsByCategory
         },
       }) => {
         const sortedReleases = releasePagesEdges.sort(
@@ -227,6 +257,24 @@ exports.createPages = ({ actions, graphql }) => {
             });
           });
         }
+
+        const createAddonCategoryPage = (category, addons) =>
+          createPage({
+            path: category.path,
+            component: path.resolve(
+              `./src/components/screens/AddonsCategoryScreen/AddonsCategoryScreen.js`
+            ),
+            context: {
+              category: category.name,
+              description: category.description,
+              addons,
+            },
+          });
+
+        Object.keys(addonCategories).forEach((categoryType) => {
+          const addons = addonsByCategory[`${categoryType}Addons`].nodes;
+          createAddonCategoryPage(addonCategories[categoryType], addons);
+        });
 
         resolve();
       }

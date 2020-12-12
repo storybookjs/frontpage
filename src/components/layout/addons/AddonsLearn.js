@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Icon, Link, styles } from '@storybook/design-system';
+import { Link as GatsbyLink } from 'gatsby';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 
 const { spacing, typography } = styles;
@@ -16,12 +17,12 @@ const LearnLink = styled(Link)`
 `;
 
 export const AddonsLearn = () => {
-  const { urls } = useSiteMetadata();
+  const { urls = {} } = useSiteMetadata();
 
   return (
     <div>
-      {urls.addonsLearnLinks.map(({ icon, title, href }) => (
-        <LearnLink key={title} tertiary href={href}>
+      {urls.addonsLearnLinks.map(({ icon, title, to }) => (
+        <LearnLink key={title} tertiary to={to} LinkWrapper={GatsbyLink}>
           <Icon icon={icon} /> {title}
         </LearnLink>
       ))}

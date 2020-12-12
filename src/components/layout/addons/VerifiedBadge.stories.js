@@ -16,7 +16,7 @@ Official.args = {
 
 export const Integrator = Template.bind({});
 Integrator.args = {
-  appearance: 'integrator',
+  appearance: 'integrators',
   creator: 'InVision',
 };
 

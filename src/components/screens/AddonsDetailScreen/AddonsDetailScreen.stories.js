@@ -92,9 +92,9 @@ const Template = ({ addon, ...args }) => (
   <AddonsDetailScreen
     addon={{
       appearance: 'community',
-      title: 'Mobile UX lint',
+      name: 'Mobile UX lint',
       description: 'Interact with component inputs dynamically in the Storybook UI',
-      downloads: 17143,
+      weeklyDownloads: 17143,
       updated: {
         date: '2020-11-05T05:00:00.000Z',
         url: 'https://npmjs.org/',
@@ -116,11 +116,11 @@ export const Default = Template.bind({});
 export const Official = Template.bind({});
 Official.args = {
   addon: {
-    image: ViewportSVG,
-    title: 'Viewport',
+    icon: ViewportSVG,
+    name: 'Viewport',
     description:
       'The Viewport toolbar item allows you to adjust the dimensions of the iframe your story is rendered in. This makes it easy to develop responsive UIs.',
-    downloads: 428,
+    weeklyDownloads: 428,
     appearance: 'official',
   },
 };
@@ -128,10 +128,10 @@ Official.args = {
 export const Essential = Template.bind({});
 Essential.args = {
   addon: {
-    image: ControlsSVG,
-    title: 'Controls',
+    icon: ControlsSVG,
+    name: 'Controls',
     description: 'Interact with component inputs dynamically in the Storybook UI',
-    downloads: 83474,
+    weeklyDownloads: 83474,
     status: 'essential',
     appearance: 'official',
   },
@@ -140,11 +140,11 @@ Essential.args = {
 export const MissingInfo = Template.bind({});
 MissingInfo.args = {
   addon: {
-    image: ViewportSVG,
-    title: 'Viewport',
+    icon: ViewportSVG,
+    name: 'Viewport',
     description:
       'The Viewport toolbar item allows you to adjust the dimensions of the iframe your story is rendered in. This makes it easy to develop responsive UIs.',
-    downloads: 428,
+    weeklyDownloads: 428,
     appearance: 'official',
   },
   supportedFrameworks: [],

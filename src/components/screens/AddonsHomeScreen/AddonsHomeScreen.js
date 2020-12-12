@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import styled from 'styled-components';
 import { ButtonToggle, styles } from '@storybook/design-system';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import { SocialGraph } from '../../basics';
 import { AddonsGrid } from '../../layout/addons/AddonsGrid';
 import { AddonsLayout } from '../../layout/addons/AddonsLayout';
+import { sortAddons } from '../../../util/sort-addons';
 
 const { color, typography, breakpoint } = styles;
 
@@ -42,9 +43,10 @@ const PopularAddons = styled(AddonsGrid)`
 `;
 
 export const AddonsHomeScreen = ({ popularAddons, trendingAddons }) => {
-  const { title, ogImage, urls = {} } = useSiteMetadata();
+  const { title, ogImageAddons, urls = {} } = useSiteMetadata();
   const { home } = urls;
   const [timePeriod, setTimePeriod] = useState('MONTH');
+  const sortedPopularAddons = useMemo(() => sortAddons(popularAddons), [popularAddons]);
 
   return (
     <>
@@ -52,28 +54,30 @@ export const AddonsHomeScreen = ({ popularAddons, trendingAddons }) => {
         title={`Addons | ${title}`}
         desc="Addons enable advanced functionality and unlock new workflows. Contributed by core maintainers and the amazing developer community."
         url={`${home}/addons`}
-        image={ogImage}
+        image={ogImageAddons}
       />
-      <AddonsLayout currentPath="/addons/popular/">
-        <Heading>Supercharge Storybooks</Heading>
+      <AddonsLayout currentPath="/addons/">
+        <Heading>Supercharge Storybook</Heading>
         <Subheading>Addons unlock advanced features and new workflows for Storybook</Subheading>
         <PopularAddons
           title="Popular"
-          addonItems={popularAddons}
-          actions={
-            <ButtonToggle
-              selectedIndex={timePeriod === 'MONTH' ? 0 : 1}
-              onSelectIndex={() => {
-                setTimePeriod(timePeriod === 'MONTH' ? 'YEAR' : 'MONTH');
-              }}
-              titles={[
-                { title: 'Month', tooltip: 'Month' },
-                { title: 'Year', tooltip: 'Year' },
-              ]}
-            />
-          }
+          addonItems={sortedPopularAddons}
+          // TODO: re-enable preview release
+          // actions={
+          //   <ButtonToggle
+          //     selectedIndex={timePeriod === 'MONTH' ? 0 : 1}
+          //     onSelectIndex={() => {
+          //       setTimePeriod(timePeriod === 'MONTH' ? 'YEAR' : 'MONTH');
+          //     }}
+          //     titles={[
+          //       { title: 'Month', tooltip: 'Month' },
+          //       { title: 'Year', tooltip: 'Year' },
+          //     ]}
+          //   />
+          // }
         />
-        <AddonsGrid title="Trending" addonItems={trendingAddons} />
+        {/* TODO: re-enable preview release */}
+        {/* <AddonsGrid title="Trending" addonItems={trendingAddons} /> */}
       </AddonsLayout>
     </>
   );

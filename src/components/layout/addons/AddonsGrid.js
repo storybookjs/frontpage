@@ -45,6 +45,7 @@ export const AddonsGrid = ({ title, actions, addonItems, ...props }) => (
 );
 
 AddonsGrid.propTypes = {
+  title: PropTypes.string.isRequired,
   addonItems: PropTypes.arrayOf(
     PropTypes.shape({ id: PropTypes.string.isRequired, ...AddonItem.propTypes })
   ),

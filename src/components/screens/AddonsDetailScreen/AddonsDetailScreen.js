@@ -72,7 +72,7 @@ const MissingInfo = styled(Eyebrow)`
 `;
 
 export const AddonsDetailScreen = ({ addon, readMe, supportedFrameworks, tags, authors }) => {
-  const { title, ogImage, urls = {} } = useSiteMetadata();
+  const { title, ogImageAddons, urls = {} } = useSiteMetadata();
   const { home } = urls;
 
   return (
@@ -81,7 +81,7 @@ export const AddonsDetailScreen = ({ addon, readMe, supportedFrameworks, tags, a
         title={`Addons | ${title}`}
         desc="Addons enable advanced functionality and unlock new workflows. Contributed by core maintainers and the amazing developer community."
         url={`${home}/addons`}
-        image={ogImage}
+        image={ogImageAddons}
       />
       <AddonsLayout hideSidebar>
         <AddonItemDetail {...addon} />

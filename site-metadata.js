@@ -15,6 +15,7 @@ const siteMetadata = {
   title: 'Storybook',
   description: `Storybook is an open source tool for developing UI components in isolation for React, Vue, and Angular`,
   ogImage: '/images/social/open-graph.png',
+  ogImageAddons: '/images/social/og-addons.png',
   siteUrl: homepageUrl, // Used for gatsby-plugin-sitemap
   googleSiteVerification: '',
   latestVersion: 'v6.1',
@@ -81,7 +82,10 @@ const siteMetadata = {
 
     // Official addons
     officialAddons: {
-      docs: '/docs/react/writing-docs/introduction',
+      docs: '/docs/react/addons/introduction',
+      install: '/docs/react/addons/install-addons',
+      create: '/docs/react/addons/writing-addons',
+      publish: '/docs/react/addons/addon-catalog',
       controls: `${essentialsBase}/controls`,
       actions: `${essentialsBase}/actions`,
       viewport: `${essentialsBase}/viewport`,
@@ -116,13 +120,17 @@ siteMetadata.urls.navLinks = [
 ];
 
 siteMetadata.urls.addonsLearnLinks = [
-  { title: 'How to install addons', icon: 'book', href: '' },
+  {
+    title: 'How to install addons',
+    icon: 'book',
+    to: siteMetadata.urls.officialAddons.install,
+  },
   {
     title: 'Create an addon',
     icon: 'edit',
-    href: 'https://www.chromatic.com/blog/how-to-build-a-storybook-addon/',
+    to: siteMetadata.urls.officialAddons.create,
   },
-  { title: 'Add to the catalog', icon: 'add', href: '' },
+  { title: 'Add to the catalog', icon: 'add', to: siteMetadata.urls.officialAddons.publish },
 ];
 
 module.exports = siteMetadata;

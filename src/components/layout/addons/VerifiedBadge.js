@@ -14,7 +14,7 @@ const VerifiedBadgeIcon = styled(Icon).attrs({ icon: 'verified', block: true })`
   position: relative;
 `;
 VerifiedBadgeIcon.propTypes = {
-  appearance: PropTypes.oneOf(['official', 'integrator']).isRequired,
+  appearance: PropTypes.oneOf(['official', 'integrators']).isRequired,
 };
 
 const BadgeWrapper = styled(WithTooltip)`
@@ -40,7 +40,7 @@ export const VerifiedBadge = ({ trigger, creator, appearance }) => (
 );
 
 VerifiedBadge.propTypes = {
-  appearance: PropTypes.oneOf(['official', 'integrator']).isRequired,
+  appearance: PropTypes.oneOf(['official', 'integrators']).isRequired,
   trigger: PropTypes.oneOf(['hover', 'click']),
   creator: PropTypes.string.isRequired,
 };

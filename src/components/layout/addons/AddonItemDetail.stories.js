@@ -48,10 +48,10 @@ const offsetDate = (offset) => {
 export const OfficialStorybook = Template.bind({});
 OfficialStorybook.args = {
   appearance: 'official',
-  image: ControlsSVG,
-  title: 'Controls',
+  icon: ControlsSVG,
+  name: 'Controls',
   description: 'Interact with component inputs dynamically in the Storybook UI',
-  downloads: 17143,
+  weeklyDownloads: 17143,
   updated: {
     date: offsetDate(-35),
     url: 'https://npmjs.org/',
@@ -61,11 +61,11 @@ OfficialStorybook.args = {
 
 export const OfficialIntegrator = Template.bind({});
 OfficialIntegrator.args = {
-  appearance: 'integrator',
-  image: ContrastPNG,
-  title: 'Contrast',
+  appearance: 'integrators',
+  icon: ContrastPNG,
+  name: 'Contrast',
   description: 'Embed Contrast handoff tool in a storybook panel',
-  downloads: 17143,
+  weeklyDownloads: 17143,
   updated: {
     date: offsetDate(-5),
     url: 'https://npmjs.org/',
@@ -75,12 +75,12 @@ OfficialIntegrator.args = {
 
 export const Community = Template.bind({});
 Community.args = {
-  image: ViewportSVG,
+  icon: ViewportSVG,
   appearance: 'community',
-  title: 'Mobile UX Hints',
+  name: 'Mobile UX Hints',
   description:
     'Suggestions on how to tweak the HTML and CSS of your components to be more mobile-friendly.',
-  downloads: 12253,
+  weeklyDownloads: 12253,
   updated: {
     date: offsetDate(-365),
     url: 'https://npmjs.org/',
@@ -90,9 +90,9 @@ Community.args = {
 
 export const WithoutImage = Template.bind({});
 WithoutImage.args = {
-  title: 'Controls',
+  name: 'Controls',
   description: 'Interact with component inputs dynamically in the Storybook UI',
-  downloads: 238,
+  weeklyDownloads: 238,
   updated: {
     date: offsetDate(-72),
     url: 'https://npmjs.org/',
@@ -102,9 +102,9 @@ WithoutImage.args = {
 
 export const Essential = Template.bind({});
 Essential.args = {
-  title: 'Controls',
+  name: 'Controls',
   description: 'Interact with component inputs dynamically in the Storybook UI',
-  downloads: 238,
+  weeklyDownloads: 238,
   updated: {
     date: offsetDate(-32),
     url: 'https://npmjs.org/',
@@ -117,10 +117,10 @@ Essential.args = {
 export const Deprecated = Template.bind({});
 Deprecated.args = {
   appearance: 'official',
-  image: ControlsSVG,
-  title: 'Controls',
+  icon: ControlsSVG,
+  name: 'Controls',
   description: 'Interact with component inputs dynamically in the Storybook UI',
-  downloads: 17143,
+  weeklyDownloads: 17143,
   status: 'deprecated',
   updated: {
     date: offsetDate(-730),
