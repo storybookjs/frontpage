@@ -147,7 +147,7 @@
   verified: official
 - name: '@storybook/addon-knobs'
   displayName: Knobs
-  description: Storybook Addon Prop Editor Component
+  description: Edit props dynamically. Made for Storybook 5.X. Use Controls addon instead for 6.0+.  
   icon: ''
   publisher:
     username: shilman
@@ -431,6 +431,7 @@
   weeklyDownloads: 414097
   verified: official
 - name: storybook-addon-vue-info
+  displayName: Vue info
   description: Storybook addon that shows Vue component information
   icon: ''
   publisher:
@@ -810,6 +811,7 @@
   monthlyDownloads: 1507241
   verified: official
 - name: storybook-addon-toolbar-actions
+  displayName: Toolbar actions
   description: >-
     An Addon to add a button from within any react functional component to the
     storybook toolbar
@@ -881,6 +883,7 @@
   monthlyDownloads: 2890
   verified: null
 - name: '@storybook/addon-cssresources'
+  displayName: CSS Resources
   description: A storybook addon to switch between css resources at runtime for your story
   icon: ''
   publisher:
@@ -1300,6 +1303,7 @@
   monthlyDownloads: 415
   verified: null
 - name: storybook-addon-react-docgen
+  displayName: React docgen
   description: A storybook addon to display react docgen info.
   icon: ''
   publisher:
@@ -1365,6 +1369,7 @@
   weeklyDownloads: 4854
   verified: null
 - name: storybook-addon-paddings
+  displayName: Paddings
   description: A Storybook addon to add different paddings to your preview
   icon: ''
   publisher:
@@ -1440,7 +1445,7 @@
   monthlyDownloads: 6729
   verified: null
 - name: '@storybook/addon-graphql'
-  displayName: GraphQL
+  displayName: GraphiQL IDE
   description: Storybook addon to display the GraphiQL IDE
   icon: 'https://pbs.twimg.com/profile_images/618131103509909504/VQLBJ0TR_400x400.png'
   publisher:
@@ -1477,6 +1482,7 @@
   weeklyDownloads: 8015
   verified: official
 - name: '@degjs/storybook-addon-taffy'
+  displayName: Taffy responsive viewports
   description: A responsive viewport addon for Storybook
   icon: ''
   publisher:
@@ -1527,6 +1533,7 @@
   weeklyDownloads: 802
   verified: null
 - name: '@storybook/addon-ondevice-backgrounds'
+  displayName: On device backgrounds
   description: >-
     A react-native storybook addon to show different backgrounds for your
     preview
@@ -1728,6 +1735,7 @@
   monthlyDownloads: 15337
   verified: official
 - name: '@storybook/addon-ondevice-notes'
+  displayName: On device notes
   description: Write notes for your react-native Storybook stories.
   icon: ''
   publisher:
@@ -1794,8 +1802,7 @@
 - name: '@splice/addon-storybook-preview-branch'
   displayName: Preview branch
   description: >-
-    <img width="1056" alt="addon-preview-branch"
-    src="https://user-images.githubusercontent.com/18332/74503402-a4392400-4ea5-11ea-9c7c-0dbb7d0fc001.png">
+    Show the branch name in the toolbar. Swap between branches.
   icon: 'https://avatars0.githubusercontent.com/u/6558396?s=200&v=4'
   publisher:
     username: splicers
@@ -1817,6 +1824,7 @@
   weeklyDownloads: 2110
   verified: null
 - name: '@react-theming/storybook-addon'
+  displayName: React theming
   description: 'Develop themable components with Emotion, Styled Components or Material-UI'
   icon: ''
   publisher:
@@ -1909,7 +1917,7 @@
   repositoryUrl: 'https://github.com/chromaui/storybook-outline'
   weeklyDownloads: 65
   monthlyDownloads: 333
-  verified: null
+  verified: official
 - name: '@component-controls/storybook'
   description: Storybook Addon For live editing of component controls
   icon: ''
@@ -2295,6 +2303,7 @@
   monthlyDownloads: 82
   verified: null
 - name: '@storybook/addon-ondevice-knobs'
+  displayName: On device knobs
   description: Display storybook story knobs on your deviced.
   icon: ''
   publisher:
@@ -2603,6 +2612,7 @@
   monthlyDownloads: 1124
   verified: null
 - name: storybook-addon-selector
+  displayName: Selector
   description: A storybook addon to have selector for your preview
   icon: ''
   publisher:
@@ -2838,6 +2848,7 @@
   weeklyDownloads: 5
   verified: null
 - name: '@ergosign/storybook-addon-pseudo-states-react'
+  displayName: Pseudo states for React
   description: >-
     Storybook decorator to enable automatic generation and displaying of CSS
     pseudo states for components.
