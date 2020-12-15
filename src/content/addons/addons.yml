@@ -922,6 +922,7 @@
   weeklyDownloads: 15096
   verified: official
 - name: storybook-addon-themes
+  displayName: Theme switcher
   description: A storybook addon to switch between different themes for your preview
   icon: ''
   publisher:
@@ -1082,6 +1083,7 @@
   weeklyDownloads: 21
   verified: null
 - name: '@storybook/addon-storyshots-puppeteer'
+  displayName: Storyshots Puppeteer
   description: Image snapshots addition to StoryShots based on puppeteer
   icon: 'https://user-images.githubusercontent.com/263385/101991676-48cdf300-3c7c-11eb-8aa1-944dab6ab29b.png'
   publisher:
@@ -1639,6 +1641,7 @@
   monthlyDownloads: 182540
   verified: null
 - name: storybook-addon-playwright
+  displayName: Playwright
   description: >-
     An addon to visually test the stories in the multiple browsers within
     storybook environment
@@ -2481,6 +2484,7 @@
   monthlyDownloads: 286
   verified: null
 - name: addon-storyshots-wdio
+  displayName: WebdriverIO
   description: Image snappshots addition to StoryShots base on WebdriverIO
   icon: ''
   publisher:
@@ -2977,6 +2981,7 @@
   monthlyDownloads: 779
   verified: null
 - name: '@etchteam/storybook-addon-bugherd'
+  displayName: Bugherd
   description: Add a Bugherd feedback button to the storybook UI
   icon: ''
   publisher:
