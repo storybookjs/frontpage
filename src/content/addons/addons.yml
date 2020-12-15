@@ -1,0 +1,3803 @@
+- name: '@storybook/addon-docs'
+  displayName: Docs
+  description: Document component usage and properties in Markdown
+  icon: 'https://user-images.githubusercontent.com/263385/101991672-48355c80-3c7c-11eb-82d9-95fa12438f64.png'
+  publisher:
+    username: shilman
+    email: michael@lab80.co
+    gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+  authors:
+    - username: ndelangen
+      email: ndelangen@me.com
+      gravatarUrl: //www.gravatar.com/avatar/537eed32d6998089dd5aa6a7e6ea2691?s=200
+    - username: shilman
+      email: michael@lab80.co
+      gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+    - username: domyen
+      email: dom@hichroma.com
+      gravatarUrl: //www.gravatar.com/avatar/a7c0aa21a99fd9b8e009d5b197221ada?s=200
+    - username: tmeasday
+      email: tom@thesnail.org
+      gravatarUrl: //www.gravatar.com/avatar/9a4c135ce6e37b086dd365f790187f3c?s=20
+    - username: hypnosphi
+      email: talpa@yandex.ru
+      gravatarUrl: //www.gravatar.com/avatar/2c5d901d88e08349ff0ac305fa2b8cfc?s=200
+    - username: igor-dv
+      email: davydkin.igor@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/ca088fbf1d620c20019a9a3205e6191c?s=200
+  tags:
+    - addon
+    - notes
+    - storybook
+    - essentials
+    - popular
+    - organize
+  npmUrl: 'https://www.npmjs.com/package/%40storybook%2Faddon-docs'
+  homepageUrl: 'https://github.com/storybookjs/storybook/tree/master/addons/docs'
+  repositoryUrl: 'https://github.com/storybookjs/storybook'
+  monthlyDownloads: 3357508
+  weeklyDownloads: 814978
+  verified: official
+- name: storybook-addon-intl
+  displayName: Intl
+  description: Addon to provide locale switcher and react-intl for storybook
+  icon: ''
+  publisher:
+    username: floriangosse
+    email: florian@essog.de
+    gravatarUrl: //www.gravatar.com/avatar/65fa3c2b20ce54cb0d4aae1e63903302?s=200
+  authors:
+    - username: floriangosse
+      email: florian@essog.de
+      gravatarUrl: //www.gravatar.com/avatar/65fa3c2b20ce54cb0d4aae1e63903302?s=200
+  tags:
+    - storybook
+    - storybook-addon
+    - react-intl
+    - i18n
+    - l10n
+    - test
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-intl'
+  homepageUrl: 'https://github.com/truffls/storybook-addon-intl#readme'
+  repositoryUrl: 'https://github.com/truffls/storybook-addon-intl'
+  monthlyDownloads: 128423
+  weeklyDownloads: 31101
+  verified: null
+- name: storybook-addon-jsx
+  displayName: JSX Preview
+  description: Display the JSX of the story
+  icon: 'https://raw.githubusercontent.com/storybookjs/addon-jsx/HEAD/storybook-jsx.png'
+  publisher:
+    username: alisowski
+    email: lisowski54@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/ff725a631f869cdb78beeb003825bb40?s=200
+  authors:
+    - username: shegunmb
+      email: shegunmb@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/374fa0aba09bccc626d03325d70db4fb?s=200
+    - username: alefevre19
+      email: alefevre@extia.fr
+      gravatarUrl: //www.gravatar.com/avatar/a79c16ff99fd8d853194dc1566bc7d42?s=200
+    - username: ndelangen
+      email: ndelangen@me.com
+      gravatarUrl: //www.gravatar.com/avatar/537eed32d6998089dd5aa6a7e6ea2691?s=200
+    - username: shilman
+      email: michael@lab80.co
+      gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+    - username: kilix_user
+      email: vamos-ops@extia.fr
+      gravatarUrl: //www.gravatar.com/avatar/bd8188b144542960cb8e99fa7072683a?s=200
+    - username: alfredo-delgado
+      email: alfred@adelgado.org
+      gravatarUrl: //www.gravatar.com/avatar/1c9bac6de934bf4e5125fa08630f9550?s=200
+    - username: hypnosphi
+      email: talpa@yandex.ru
+      gravatarUrl: //www.gravatar.com/avatar/2c5d901d88e08349ff0ac305fa2b8cfc?s=200
+    - username: wcastand
+      email: wcastand@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/9203bec458fc92e931c51d840f682ed5?s=200
+    - username: alisowski
+      email: lisowski54@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/ff725a631f869cdb78beeb003825bb40?s=200
+  tags:
+    - code
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-jsx'
+  homepageUrl: 'https://github.com/storybookjs/addon-jsx#readme'
+  repositoryUrl: 'https://github.com/storybookjs/addon-jsx'
+  monthlyDownloads: 227620
+  weeklyDownloads: 47819
+  verified: null
+- name: '@storybook/addon-actions'
+  displayName: Actions
+  description: Get UI feedback when an action is performed on an interactive element.
+  icon: 'https://user-images.githubusercontent.com/263385/101991666-479cc600-3c7c-11eb-837b-be4e5ffa1bb8.png'
+  publisher:
+    username: shilman
+    email: michael@lab80.co
+    gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+  authors:
+    - username: ndelangen
+      email: ndelangen@me.com
+      gravatarUrl: //www.gravatar.com/avatar/537eed32d6998089dd5aa6a7e6ea2691?s=200
+    - username: shilman
+      email: michael@lab80.co
+      gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+    - username: domyen
+      email: dom@hichroma.com
+      gravatarUrl: //www.gravatar.com/avatar/a7c0aa21a99fd9b8e009d5b197221ada?s=200
+    - username: tmeasday
+      email: tom@thesnail.org
+      gravatarUrl: //www.gravatar.com/avatar/9a4c135ce6e37b086dd365f790187f3c?s=200
+    - username: hypnosphi
+      email: talpa@yandex.ru
+      gravatarUrl: //www.gravatar.com/avatar/2c5d901d88e08349ff0ac305fa2b8cfc?s=200
+    - username: igor-dv
+      email: davydkin.igor@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/ca088fbf1d620c20019a9a3205e6191c?s=200
+  tags:
+    - storybook
+    - essentials
+    - popular
+    - data-state
+  npmUrl: 'https://www.npmjs.com/package/%40storybook%2Faddon-actions'
+  homepageUrl: 'https://github.com/storybookjs/storybook/tree/master/addons/actions'
+  repositoryUrl: 'https://github.com/storybookjs/storybook'
+  monthlyDownloads: 7450456
+  weeklyDownloads: 1775111
+  verified: official
+- name: '@storybook/addon-knobs'
+  displayName: Knobs
+  description: Edit props dynamically. Made for Storybook 5.X. Use Controls addon instead for 6.0+.  
+  icon: ''
+  publisher:
+    username: shilman
+    email: michael@lab80.co
+    gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+  authors:
+    - username: ndelangen
+      email: ndelangen@me.com
+      gravatarUrl: //www.gravatar.com/avatar/537eed32d6998089dd5aa6a7e6ea2691?s=200
+    - username: shilman
+      email: michael@lab80.co
+      gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+    - username: domyen
+      email: dom@hichroma.com
+      gravatarUrl: //www.gravatar.com/avatar/a7c0aa21a99fd9b8e009d5b197221ada?s=200
+    - username: tmeasday
+      email: tom@thesnail.org
+      gravatarUrl: //www.gravatar.com/avatar/9a4c135ce6e37b086dd365f790187f3c?s=200
+    - username: hypnosphi
+      email: talpa@yandex.ru
+      gravatarUrl: //www.gravatar.com/avatar/2c5d901d88e08349ff0ac305fa2b8cfc?s=200
+    - username: igor-dv
+      email: davydkin.igor@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/ca088fbf1d620c20019a9a3205e6191c?s=200
+  tags:
+    - addon
+    - storybook
+    - test
+  npmUrl: 'https://www.npmjs.com/package/%40storybook%2Faddon-knobs'
+  homepageUrl: 'https://github.com/storybookjs/storybook/tree/master/addons/knobs'
+  repositoryUrl: 'https://github.com/storybookjs/storybook'
+  monthlyDownloads: 4618352
+  weeklyDownloads: 1069354
+  verified: official
+- name: '@storybook/addon-links'
+  displayName: Links
+  description: Link stories together to build demos and prototypes with your UI components
+  icon: 'https://user-images.githubusercontent.com/263385/101991673-48355c80-3c7c-11eb-9b6e-b627c96a75f6.png'
+  publisher:
+    username: shilman
+    email: michael@lab80.co
+    gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+  authors:
+    - username: ndelangen
+      email: ndelangen@me.com
+      gravatarUrl: //www.gravatar.com/avatar/537eed32d6998089dd5aa6a7e6ea2691?s=200
+    - username: shilman
+      email: michael@lab80.co
+      gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+    - username: domyen
+      email: dom@hichroma.com
+      gravatarUrl: //www.gravatar.com/avatar/a7c0aa21a99fd9b8e009d5b197221ada?s=200
+    - username: tmeasday
+      email: tom@thesnail.org
+      gravatarUrl: //www.gravatar.com/avatar/9a4c135ce6e37b086dd365f790187f3c?s=200
+    - username: hypnosphi
+      email: talpa@yandex.ru
+      gravatarUrl: //www.gravatar.com/avatar/2c5d901d88e08349ff0ac305fa2b8cfc?s=200
+    - username: igor-dv
+      email: davydkin.igor@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/ca088fbf1d620c20019a9a3205e6191c?s=200
+  tags:
+    - addon
+    - storybook
+    - popular
+    - organize
+  npmUrl: 'https://www.npmjs.com/package/%40storybook%2Faddon-links'
+  homepageUrl: 'https://github.com/storybookjs/storybook/tree/master/addons/links'
+  repositoryUrl: 'https://github.com/storybookjs/storybook'
+  monthlyDownloads: 5037681
+  weeklyDownloads: 1198424
+  verified: official
+- name: storycap
+  description: 'A Storybook addon, Save the screenshot image of your stories! via puppeteer.'
+  icon: ''
+  publisher:
+    username: quramy
+    email: yosuke.kurami@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/893f54413c2bd9ba41d11d753aacaf2c?s=200
+  authors:
+    - username: quramy
+      email: yosuke.kurami@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/893f54413c2bd9ba41d11d753aacaf2c?s=200
+  tags:
+    - storybook
+    - testing
+    - addon
+    - puppeteer
+    - chrome
+    - screenshot
+    - capture
+    - visual-testing
+    - test
+  npmUrl: 'https://www.npmjs.com/package/storycap'
+  homepageUrl: 'https://github.com/reg-viz/storycap#readme'
+  repositoryUrl: 'https://github.com/reg-viz/storycap'
+  weeklyDownloads: 20567
+  monthlyDownloads: 83036
+  verified: null
+- name: '@storybook/addon-console'
+  displayName: Console
+  description: Show console output like logs, errors, and warnings in the Storybook
+  icon: 'https://user-images.githubusercontent.com/263385/101991668-479cc600-3c7c-11eb-9aac-09cd7b5b9f97.png'
+  publisher:
+    username: usulpro
+    email: regx@usul.su
+    gravatarUrl: //www.gravatar.com/avatar/f9b12bc1aa320b434dff7ae42be6c561?s=200
+  authors:
+    - username: ndelangen
+      email: ndelangen@me.com
+      gravatarUrl: //www.gravatar.com/avatar/537eed32d6998089dd5aa6a7e6ea2691?s=200
+    - username: shilman
+      email: michael@lab80.co
+      gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+    - username: domyen
+      email: dom@hichroma.com
+      gravatarUrl: //www.gravatar.com/avatar/a7c0aa21a99fd9b8e009d5b197221ada?s=200
+    - username: tmeasday
+      email: tom@thesnail.org
+      gravatarUrl: //www.gravatar.com/avatar/9a4c135ce6e37b086dd365f790187f3c?s=200
+    - username: hypnosphi
+      email: talpa@yandex.ru
+      gravatarUrl: //www.gravatar.com/avatar/2c5d901d88e08349ff0ac305fa2b8cfc?s=200
+    - username: igor-dv
+      email: davydkin.igor@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/ca088fbf1d620c20019a9a3205e6191c?s=200
+  tags:
+    - storybook
+    - storybookjs
+    - storybook-addon
+    - addon
+    - console
+    - action
+    - logs
+    - output
+    - decorator
+    - warning
+    - warnings
+    - error
+    - errors
+    - redirect
+    - devtools
+    - code
+  npmUrl: 'https://www.npmjs.com/package/%40storybook%2Faddon-console'
+  homepageUrl: 'https://github.com/storybooks/storybook-addon-console'
+  repositoryUrl: 'https://github.com/storybooks/storybook-addon-console'
+  monthlyDownloads: 393607
+  weeklyDownloads: 89979
+  verified: official
+- name: '@storybook/addon-viewport'
+  displayName: Viewport
+  description: Build responsive components by adjusting Storybook’s viewport size and orientation
+  icon: 'https://user-images.githubusercontent.com/263385/101991678-48cdf300-3c7c-11eb-9764-f8af293c1b28.png'
+  publisher:
+    username: shilman
+    email: michael@lab80.co
+    gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+  authors:
+    - username: ndelangen
+      email: ndelangen@me.com
+      gravatarUrl: //www.gravatar.com/avatar/537eed32d6998089dd5aa6a7e6ea2691?s=200
+    - username: shilman
+      email: michael@lab80.co
+      gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+    - username: domyen
+      email: dom@hichroma.com
+      gravatarUrl: //www.gravatar.com/avatar/a7c0aa21a99fd9b8e009d5b197221ada?s=200
+    - username: tmeasday
+      email: tom@thesnail.org
+      gravatarUrl: //www.gravatar.com/avatar/9a4c135ce6e37b086dd365f790187f3c?s=200
+    - username: hypnosphi
+      email: talpa@yandex.ru
+      gravatarUrl: //www.gravatar.com/avatar/2c5d901d88e08349ff0ac305fa2b8cfc?s=200
+    - username: igor-dv
+      email: davydkin.igor@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/ca088fbf1d620c20019a9a3205e6191c?s=200
+  tags:
+    - addon
+    - storybook
+    - style
+    - essentials
+  npmUrl: 'https://www.npmjs.com/package/%40storybook%2Faddon-viewport'
+  homepageUrl: 'https://github.com/storybookjs/storybook/tree/master/addons/viewport'
+  repositoryUrl: 'https://github.com/storybookjs/storybook'
+  monthlyDownloads: 4255924
+  weeklyDownloads: 1022142
+  verified: official
+- name: chromatic
+  displayName: Chromatic
+  description: >-
+    Automate visual testing across browsers. Gather UI feedback. Versioned documentation.
+  icon: 'https://user-images.githubusercontent.com/263385/101995175-2e087800-3c96-11eb-9a33-9860a1c3ce62.gif'
+  publisher:
+    username: ndelangen
+    email: ndelangen@me.com
+    gravatarUrl: //www.gravatar.com/avatar/537eed32d6998089dd5aa6a7e6ea2691?s=200
+  authors:
+    - username: tmeasday
+      email: tom@thesnail.org
+      gravatarUrl: //www.gravatar.com/avatar/9a4c135ce6e37b086dd365f790187f3c?s=200
+    - username: ndelangen
+      email: ndelangen@me.com
+      gravatarUrl: //www.gravatar.com/avatar/537eed32d6998089dd5aa6a7e6ea2691?s=200
+    - username: shilman
+      email: michael@lab80.co
+      gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+    - username: domyen
+      email: dom@hichroma.com
+      gravatarUrl: //www.gravatar.com/avatar/a7c0aa21a99fd9b8e009d5b197221ada?s=200
+  tags:
+    - storybook
+    - addon
+    - test
+    - popular
+  npmUrl: 'https://www.npmjs.com/package/chromatic'
+  homepageUrl: 'https://www.chromatic.com/'
+  repositoryUrl: 'https://github.com/chromaui/chromatic-cli'
+  weeklyDownloads: 134653
+  monthlyDownloads: 450442
+  verified: official
+- name: storybook-addon-xd-designs
+  displayName: Adobe XD
+  description: Storybook addon for embedding your Adobe XD design preview in addon panel
+  icon: 'https://pbs.twimg.com/profile_images/1272878892232007680/TIM90dV6_400x400.png'
+  publisher:
+    username: morgs32
+    email: morgan.intrator@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/65a05287a642987f9462b7f38e6330df?s=200
+  authors:
+    - username: morgs32
+      email: morgan.intrator@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/65a05287a642987f9462b7f38e6330df?s=200
+  tags:
+    - design
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-xd-designs'
+  homepageUrl: 'https://github.com/morgs32/storybook-addon-xd-designs'
+  repositoryUrl: 'https://github.com/morgs32/storybook-addon-xd-designs'
+  weeklyDownloads: 1459
+  monthlyDownloads: 6330
+  verified: null
+- name: '@storybook/addon-a11y'
+  displayName: Accessibility
+  description: Test component compliance with web accessibility standards
+  icon: 'https://user-images.githubusercontent.com/263385/101991665-47042f80-3c7c-11eb-8f00-64b5a18f498a.png'
+  publisher:
+    username: shilman
+    email: michael@lab80.co
+    gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+  authors:
+    - username: ndelangen
+      email: ndelangen@me.com
+      gravatarUrl: //www.gravatar.com/avatar/537eed32d6998089dd5aa6a7e6ea2691?s=200
+    - username: shilman
+      email: michael@lab80.co
+      gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+    - username: domyen
+      email: dom@hichroma.com
+      gravatarUrl: //www.gravatar.com/avatar/a7c0aa21a99fd9b8e009d5b197221ada?s=200
+    - username: tmeasday
+      email: tom@thesnail.org
+      gravatarUrl: //www.gravatar.com/avatar/9a4c135ce6e37b086dd365f790187f3c?s=200
+    - username: hypnosphi
+      email: talpa@yandex.ru
+      gravatarUrl: //www.gravatar.com/avatar/2c5d901d88e08349ff0ac305fa2b8cfc?s=200
+    - username: igor-dv
+      email: davydkin.igor@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/ca088fbf1d620c20019a9a3205e6191c?s=200
+  tags:
+    - a11y
+    - accessibility
+    - addon
+    - storybook
+    - valid
+    - verify
+    - popular
+    - test
+  npmUrl: 'https://www.npmjs.com/package/%40storybook%2Faddon-a11y'
+  homepageUrl: 'https://github.com/storybookjs/storybook#readme'
+  repositoryUrl: 'https://github.com/storybookjs/storybook'
+  monthlyDownloads: 1809512
+  weeklyDownloads: 414097
+  verified: official
+- name: storybook-addon-vue-info
+  displayName: Vue info
+  description: Storybook addon that shows Vue component information
+  icon: ''
+  publisher:
+    username: pocka
+    email: pockawoooh@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/72a93fb838d1b765673ebc418d7757ca?s=200
+  authors:
+    - username: pocka
+      email: pocka.moe@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/0abd919722389a2787628eed676a1c4c?s=200
+  tags:
+    - vue
+    - storybook
+    - organize
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-vue-info'
+  homepageUrl: 'https://github.com/pocka/storybook-addon-vue-info#readme'
+  repositoryUrl: 'https://github.com/pocka/storybook-addon-vue-info'
+  weeklyDownloads: 19617
+  monthlyDownloads: 92240
+  verified: null
+- name: storybook-addon-designs
+  displayName: Figma designs
+  description: Storybook addon for embedding your design preview in addon panel
+  icon: 'https://raw.githubusercontent.com/pocka/storybook-addon-designs/master/packages/assets/logo.png'
+  publisher:
+    username: pocka
+    email: pockawoooh@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/72a93fb838d1b765673ebc418d7757ca?s=200
+  authors:
+    - username: pocka
+      email: pocka.moe@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/0abd919722389a2787628eed676a1c4c?s=200
+  tags:
+    - design
+    - figma
+    - popular
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-designs'
+  homepageUrl: 'https://github.com/pocka/storybook-addon-designs'
+  repositoryUrl: 'https://github.com/pocka/storybook-addon-designs'
+  monthlyDownloads: 283922
+  weeklyDownloads: 66287
+  verified: null
+- name: storybook-mobile
+  displayName: Mobile UX Hints
+  description: >-
+    This addon offers suggestions on how you can improve the HTML, CSS and UX of
+    your components to be more mobile-friendly.
+  icon: 'https://user-images.githubusercontent.com/263385/101992264-ee369600-3c7f-11eb-8e9f-876d8b5ddff9.png'
+  publisher:
+    username: aholachek
+    email: alex.holachek@datadoghq.com
+    gravatarUrl: //www.gravatar.com/avatar/18420f5bb1bd90ae4bd544d6bc0aff21?s=200
+  authors:
+    - username: aholachek
+      email: alex.holachek@datadoghq.com
+      gravatarUrl: //www.gravatar.com/avatar/18420f5bb1bd90ae4bd544d6bc0aff21?s=200
+  tags:
+    - test
+    - popular
+  npmUrl: 'https://www.npmjs.com/package/storybook-mobile'
+  homepageUrl: 'https://github.com/aholachek/storybook-mobile#readme'
+  repositoryUrl: 'https://github.com/aholachek/storybook-mobile'
+  monthlyDownloads: 5578
+  weeklyDownloads: 1333
+  verified: null
+- name: '@storybook/addon-storyshots'
+  displayName: Storyshots
+  description: Take a code snapshot of every story automatically with Jest
+  icon: 'https://user-images.githubusercontent.com/263385/101991676-48cdf300-3c7c-11eb-8aa1-944dab6ab29b.png'
+  publisher:
+    username: shilman
+    email: michael@lab80.co
+    gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+  authors:
+    - username: ndelangen
+      email: ndelangen@me.com
+      gravatarUrl: //www.gravatar.com/avatar/537eed32d6998089dd5aa6a7e6ea2691?s=200
+    - username: shilman
+      email: michael@lab80.co
+      gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+    - username: domyen
+      email: dom@hichroma.com
+      gravatarUrl: //www.gravatar.com/avatar/a7c0aa21a99fd9b8e009d5b197221ada?s=200
+    - username: tmeasday
+      email: tom@thesnail.org
+      gravatarUrl: //www.gravatar.com/avatar/9a4c135ce6e37b086dd365f790187f3c?s=200
+    - username: hypnosphi
+      email: talpa@yandex.ru
+      gravatarUrl: //www.gravatar.com/avatar/2c5d901d88e08349ff0ac305fa2b8cfc?s=200
+    - username: igor-dv
+      email: davydkin.igor@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/ca088fbf1d620c20019a9a3205e6191c?s=200
+  tags:
+    - addon
+    - storybook
+    - test
+    - popular
+  npmUrl: 'https://www.npmjs.com/package/%40storybook%2Faddon-storyshots'
+  homepageUrl: >-
+    https://github.com/storybookjs/storybook/tree/master/addons/storyshots/storyshots-core
+  repositoryUrl: 'https://github.com/storybookjs/storybook'
+  weeklyDownloads: 389247
+  monthlyDownloads: 1522842
+  verified: official
+- name: '@storybook/addon-backgrounds'
+  displayName: Backgrounds
+  description: Switch backgrounds to view components in different settings
+  icon: 'https://user-images.githubusercontent.com/263385/101991667-479cc600-3c7c-11eb-96d3-410e936252e7.png'
+  publisher:
+    username: shilman
+    email: michael@lab80.co
+    gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+  authors:
+    - username: ndelangen
+      email: ndelangen@me.com
+      gravatarUrl: //www.gravatar.com/avatar/537eed32d6998089dd5aa6a7e6ea2691?s=200
+    - username: shilman
+      email: michael@lab80.co
+      gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+    - username: domyen
+      email: dom@hichroma.com
+      gravatarUrl: //www.gravatar.com/avatar/a7c0aa21a99fd9b8e009d5b197221ada?s=200
+    - username: tmeasday
+      email: tom@thesnail.org
+      gravatarUrl: //www.gravatar.com/avatar/9a4c135ce6e37b086dd365f790187f3c?s=200
+    - username: hypnosphi
+      email: talpa@yandex.ru
+      gravatarUrl: //www.gravatar.com/avatar/2c5d901d88e08349ff0ac305fa2b8cfc?s=200
+    - username: igor-dv
+      email: davydkin.igor@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/ca088fbf1d620c20019a9a3205e6191c?s=200
+  tags:
+    - addon
+    - background
+    - react
+    - storybook
+    - essentials
+  npmUrl: 'https://www.npmjs.com/package/%40storybook%2Faddon-backgrounds'
+  homepageUrl: 'https://github.com/storybookjs/storybook/tree/master/addons/backgrounds'
+  repositoryUrl: 'https://github.com/storybookjs/storybook'
+  monthlyDownloads: 2548452
+  weeklyDownloads: 634657
+  verified: official
+- name: '@storybook/addon-info'
+  displayName: Info
+  description: A Storybook addon to show additional information for your stories.
+  icon: ''
+  publisher:
+    username: shilman
+    email: michael@lab80.co
+    gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+  authors:
+    - username: ndelangen
+      email: ndelangen@me.com
+      gravatarUrl: //www.gravatar.com/avatar/537eed32d6998089dd5aa6a7e6ea2691?s=200
+    - username: shilman
+      email: michael@lab80.co
+      gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+    - username: domyen
+      email: dom@hichroma.com
+      gravatarUrl: //www.gravatar.com/avatar/a7c0aa21a99fd9b8e009d5b197221ada?s=200
+    - username: tmeasday
+      email: tom@thesnail.org
+      gravatarUrl: //www.gravatar.com/avatar/9a4c135ce6e37b086dd365f790187f3c?s=200
+    - username: hypnosphi
+      email: talpa@yandex.ru
+      gravatarUrl: //www.gravatar.com/avatar/2c5d901d88e08349ff0ac305fa2b8cfc?s=200
+    - username: igor-dv
+      email: davydkin.igor@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/ca088fbf1d620c20019a9a3205e6191c?s=200
+  tags:
+    - addon
+    - storybook
+    - organize
+  npmUrl: 'https://www.npmjs.com/package/%40storybook%2Faddon-info'
+  homepageUrl: 'https://github.com/storybookjs/storybook#readme'
+  repositoryUrl: 'https://github.com/storybookjs/storybook'
+  weeklyDownloads: 270002
+  monthlyDownloads: 1222077
+  verified: official
+- name: '@storybook/addon-notes'
+  displayName: Notes
+  description: Write notes for your Storybook stories.
+  icon: ''
+  publisher:
+    username: shilman
+    email: michael@lab80.co
+    gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+  authors:
+    - username: ndelangen
+      email: ndelangen@me.com
+      gravatarUrl: //www.gravatar.com/avatar/537eed32d6998089dd5aa6a7e6ea2691?s=200
+    - username: shilman
+      email: michael@lab80.co
+      gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+    - username: domyen
+      email: dom@hichroma.com
+      gravatarUrl: //www.gravatar.com/avatar/a7c0aa21a99fd9b8e009d5b197221ada?s=200
+    - username: tmeasday
+      email: tom@thesnail.org
+      gravatarUrl: //www.gravatar.com/avatar/9a4c135ce6e37b086dd365f790187f3c?s=200
+    - username: hyposphi
+      email: talpa@yandex.ru
+      gravatarUrl: //www.gravatar.com/avatar/2c5d901d88e08349ff0ac305fa2b8cfc?s=200
+    - username: igor-dv
+      email: davydkin.igor@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/ca088fbf1d620c20019a9a3205e6191c?s=200
+  tags:
+    - addon
+    - notes
+    - storybook
+    - organize
+  npmUrl: 'https://www.npmjs.com/package/%40storybook%2Faddon-notes'
+  homepageUrl: 'https://github.com/storybookjs/storybook#readme'
+  repositoryUrl: 'https://github.com/storybookjs/storybook'
+  monthlyDownloads: 918509
+  weeklyDownloads: 208971
+  verified: official
+- name: '@storybook/addon-controls'
+  displayName: Controls
+  description: Interact with component inputs dynamically in the Storybook UI
+  icon: 'https://user-images.githubusercontent.com/263385/101991669-479cc600-3c7c-11eb-93d9-38b67e8371f2.png'
+  publisher:
+    username: shilman
+    email: michael@lab80.co
+    gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+  authors:
+    - username: ndelangen
+      email: ndelangen@me.com
+      gravatarUrl: //www.gravatar.com/avatar/537eed32d6998089dd5aa6a7e6ea2691?s=200
+    - username: shilman
+      email: michael@lab80.co
+      gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+    - username: domyen
+      email: dom@hichroma.com
+      gravatarUrl: //www.gravatar.com/avatar/a7c0aa21a99fd9b8e009d5b197221ada?s=200
+    - username: tmeasday
+      email: tom@thesnail.org
+      gravatarUrl: //www.gravatar.com/avatar/9a4c135ce6e37b086dd365f790187f3c?s=200
+    - username: hypnospi
+      email: talpa@yandex.ru
+      gravatarUrl: //www.gravatar.com/avatar/2c5d901d88e08349ff0ac305fa2b8cfc?s=200
+    - username: igor-dv
+      email: davydkin.igor@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/ca088fbf1d620c20019a9a3205e6191c?s=200
+  tags:
+    - addon
+    - storybook
+    - knobs
+    - controls
+    - properties
+    - essentials
+  npmUrl: 'https://www.npmjs.com/package/%40storybook%2Faddon-controls'
+  homepageUrl: 'https://github.com/storybookjs/storybook/tree/next/addons/controls'
+  repositoryUrl: 'https://github.com/storybookjs/storybook'
+  weeklyDownloads: 530141
+  monthlyDownloads: 2082661
+  verified: official
+- name: '@storybook/addon-toolbars'
+  displayName: Toolbars
+  description: Create your own toolbar items that control story rendering.
+  icon: 'https://user-images.githubusercontent.com/263385/101991677-48cdf300-3c7c-11eb-93b4-19b0e3366959.png'
+  publisher:
+    username: shilman
+    email: michael@lab80.co
+    gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+  authors:
+    - username: ndelangen
+      email: ndelangen@me.com
+      gravatarUrl: //www.gravatar.com/avatar/537eed32d6998089dd5aa6a7e6ea2691?s=200
+    - username: shilman
+      email: michael@lab80.co
+      gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+    - username: domyen
+      email: dom@hichroma.com
+      gravatarUrl: //www.gravatar.com/avatar/a7c0aa21a99fd9b8e009d5b197221ada?s=200
+    - username: tmeasday
+      email: tom@thesnail.org
+      gravatarUrl: //www.gravatar.com/avatar/9a4c135ce6e37b086dd365f790187f3c?s=200
+    - username: hypnosph
+      email: talpa@yandex.ru
+      gravatarUrl: //www.gravatar.com/avatar/2c5d901d88e08349ff0ac305fa2b8cfc?s=200
+    - username: igor-dv
+      email: davydkin.igor@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/ca088fbf1d620c20019a9a3205e6191c?s=200
+  tags:
+    - addon
+    - storybook
+    - theming
+    - i18n
+    - internationalization
+    - test
+    - essentials
+  npmUrl: 'https://www.npmjs.com/package/%40storybook%2Faddon-toolbars'
+  homepageUrl: 'https://github.com/storybookjs/storybook/tree/next/addons/toolbars'
+  repositoryUrl: 'https://github.com/storybookjs/storybook'
+  weeklyDownloads: 480861
+  monthlyDownloads: 1856549
+  verified: official
+- name: react-native-storysource-transformer
+  description: Provides storybook source in react-native to display on storybook web server
+  icon: ''
+  publisher:
+    username: fabien88
+    email: fabien.lenoir.npm@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/666a4f24ef19bef0b5d6c4d10bf7ef08?s=200
+  authors:
+    - username: fabien88
+      email: fabien.lenoir.npm@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/666a4f24ef19bef0b5d6c4d10bf7ef08?s=200
+  tags:
+    - addon
+    - storybook
+    - code
+  npmUrl: 'https://www.npmjs.com/package/react-native-storysource-transformer'
+  homepageUrl: 'https://github.com/fabien88/react-native-storysource-transformer#readme'
+  repositoryUrl: 'https://github.com/fabien88/react-native-storysource-transformer'
+  weeklyDownloads: 8
+  monthlyDownloads: 29
+  verified: null
+- name: storybook-addon-storyout
+  description: >-
+    Storybook Addon StoryOut adds a tab panel that lets you visualize and copy
+    the output of a story.
+  icon: ''
+  publisher:
+    username: dwightjack
+    email: marco.solazzi@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/d16df72790a8532b8e6999eb5ac0e3f7?s=200
+  authors:
+    - username: dwightjack
+      email: marco.solazzi@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/d16df72790a8532b8e6999eb5ac0e3f7?s=200
+  tags:
+    - code
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-storyout'
+  homepageUrl: 'https://github.com/dwightjack/storybook-addon-storyout#readme'
+  repositoryUrl: 'https://github.com/dwightjack/storybook-addon-storyout'
+  weeklyDownloads: 25
+  monthlyDownloads: 100
+  verified: null
+- name: '@storybook/addon-storysource'
+  displayName: Storysource
+  description: View a story’s source code to see how it works and paste into your app.
+  icon: 'https://user-images.githubusercontent.com/263385/101991675-48cdf300-3c7c-11eb-9400-58de5ac6daa7.png'
+  publisher:
+    username: shilman
+    email: michael@lab80.co
+    gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+  authors:
+    - username: ndelangen
+      email: ndelangen@me.com
+      gravatarUrl: //www.gravatar.com/avatar/537eed32d6998089dd5aa6a7e6ea2691?s=200
+    - username: shilman
+      email: michael@lab80.co
+      gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+    - username: domyen
+      email: dom@hichroma.com
+      gravatarUrl: //www.gravatar.com/avatar/a7c0aa21a99fd9b8e009d5b197221ada?s=200
+    - username: tmeasday
+      email: tom@thesnail.org
+      gravatarUrl: //www.gravatar.com/avatar/9a4c135ce6e37b086dd365f790187f3c?s=200
+    - username: hypnosphi
+      email: talpa@yandex.ru
+      gravatarUrl: //www.gravatar.com/avatar/2c5d901d88e08349ff0ac305fa2b8cfc?s=200
+    - username: igor-dv
+      email: davydkin.igor@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/ca088fbf1d620c20019a9a3205e6191c?s=200
+  tags:
+    - addon
+    - storybook
+    - code
+  npmUrl: 'https://www.npmjs.com/package/%40storybook%2Faddon-storysource'
+  homepageUrl: 'https://github.com/storybookjs/storybook/tree/master/addons/storysource'
+  repositoryUrl: 'https://github.com/storybookjs/storybook'
+  weeklyDownloads: 333083
+  monthlyDownloads: 1507241
+  verified: official
+- name: storybook-addon-toolbar-actions
+  displayName: Toolbar actions
+  description: >-
+    An Addon to add a button from within any react functional component to the
+    storybook toolbar
+  icon: ''
+  publisher:
+    username: cyrus-d
+    email: mdoaie@yahoo.co.uk
+    gravatarUrl: //www.gravatar.com/avatar/bd97755f922e6915dbe5ce9a26930035?s=200
+  authors:
+    - username: cyrus-d
+      email: mdoaie@yahoo.co.uk
+      gravatarUrl: //www.gravatar.com/avatar/bd97755f922e6915dbe5ce9a26930035?s=200
+  tags:
+    - appearance
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-toolbar-actions'
+  homepageUrl: 'https://github.com/ccpu/storybook-addon-toolbar-actions#readme'
+  repositoryUrl: 'https://github.com/ccpu/storybook-addon-toolbar-actions'
+  weeklyDownloads: 30
+  monthlyDownloads: 54
+  verified: null
+- name: storybook-addon-styled-component-theme
+  displayName: styled-component theme
+  description: storybook addon with styled-components theme
+  icon: 'https://styled-components.com/icon.png'
+  publisher:
+    username: echoulen
+    email: echoulen@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/87bc27495fef5229aed38134f932544f?s=200
+  authors:
+    - username: echoulen
+      email: echoulen@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/87bc27495fef5229aed38134f932544f?s=200
+  tags:
+    - storybook
+    - styled-component
+    - addon
+    - theme
+    - react
+    - typescript
+    - style
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-styled-component-theme'
+  homepageUrl: null
+  repositoryUrl: null
+  weeklyDownloads: 29170
+  monthlyDownloads: 125418
+  verified: null
+- name: storybook-addon-preview
+  description: >-
+    Storybook Addon Preview can show user selected knobs in various framework
+    code in Storybook
+  icon: ''
+  publisher:
+    username: younkue
+    email: daybrush@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/8103a48926aaf790cbfa14dfcb3f0670?s=200
+  authors:
+    - username: younkue
+      email: daybrush@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/8103a48926aaf790cbfa14dfcb3f0670?s=200
+  tags:
+    - storybook
+    - addon
+    - preview
+    - code
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-preview'
+  homepageUrl: 'https://github.com/naver/storybook-addon-preview#readme'
+  repositoryUrl: 'https://github.com/naver/storybook-addon-preview'
+  weeklyDownloads: 686
+  monthlyDownloads: 2890
+  verified: null
+- name: '@storybook/addon-cssresources'
+  displayName: CSS Resources
+  description: A storybook addon to switch between css resources at runtime for your story
+  icon: ''
+  publisher:
+    username: shilman
+    email: michael@lab80.co
+    gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+  authors:
+    - username: ndelangen
+      email: ndelangen@me.com
+      gravatarUrl: //www.gravatar.com/avatar/537eed32d6998089dd5aa6a7e6ea2691?s=200
+    - username: shilman
+      email: michael@lab80.co
+      gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+    - username: domyen
+      email: dom@hichroma.com
+      gravatarUrl: //www.gravatar.com/avatar/a7c0aa21a99fd9b8e009d5b197221ada?s=200
+    - username: tmeasday
+      email: tom@thesnail.org
+      gravatarUrl: //www.gravatar.com/avatar/9a4c135ce6e37b086dd365f790187f3c?s=200
+    - username: hypnosphi
+      emal: talpa@yandex.ru
+      gravatarUrl: //www.gravatar.com/avatar/2c5d901d88e08349ff0ac305fa2b8cfc?s=200
+    - username: igor-dv
+      email: davydkin.igor@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/ca088fbf1d620c20019a9a3205e6191c?s=200
+  tags:
+    - addon
+    - cssresources
+    - react
+    - storybook
+    - style
+  npmUrl: 'https://www.npmjs.com/package/%40storybook%2Faddon-cssresources'
+  homepageUrl: 'https://storybook.js.org'
+  repositoryUrl: 'https://github.com/storybookjs/storybook'
+  monthlyDownloads: 69960
+  weeklyDownloads: 15096
+  verified: official
+- name: storybook-addon-themes
+  displayName: Theme switcher
+  description: A storybook addon to switch between different themes for your preview
+  icon: ''
+  publisher:
+    username: tonai
+    email: tonai59+npm@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/a240e6d475c0ca75c8141e572cce4f02?s=200
+  authors:
+    - username: tonai
+      email: tonai59+npm@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/a240e6d475c0ca75c8141e572cce4f02?s=200
+  tags:
+    - addon
+    - frontend
+    - react
+    - reactjs
+    - storybook
+    - storybookjs
+    - svelte
+    - theme
+    - tool
+    - ui
+    - user interface
+    - vue
+    - vuejs
+    - style
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-themes'
+  homepageUrl: 'https://github.com/tonai/storybook-addon-themes'
+  repositoryUrl: 'https://github.com/tonai/storybook-addon-themes'
+  monthlyDownloads: 80697
+  weeklyDownloads: 17608
+  verified: null
+- name: storybook-design-token
+  description: >-
+    The Storybook Design Token Addon allows you to generate design token
+    documentation from your stylesheets.
+  icon: ''
+  publisher:
+    username: psiekmann
+    email: philippsiekmann@me.com
+    gravatarUrl: //www.gravatar.com/avatar/47a43367f6cde85bc1a713068358e11f?s=200
+  authors:
+    - username: psiekmann
+      email: philippsiekmann@me.com
+      gravatarUrl: //www.gravatar.com/avatar/47a43367f6cde85bc1a713068358e11f?s=200
+  tags:
+    - storybook
+    - addon
+    - design system
+    - design pattern
+    - design tokens
+    - react
+    - angular
+    - vue
+    - style
+  npmUrl: 'https://www.npmjs.com/package/storybook-design-token'
+  homepageUrl: 'https://github.com/UX-and-I/storybook-design-token#readme'
+  repositoryUrl: 'https://github.com/UX-and-I/storybook-design-token'
+  weeklyDownloads: 2076
+  monthlyDownloads: 9575
+  verified: null
+- name: '@storybook/addon-ondevice-actions'
+  displayName: On device actions
+  description: Action Logger addon for react-native storybook
+  icon: 'https://user-images.githubusercontent.com/263385/101991666-479cc600-3c7c-11eb-837b-be4e5ffa1bb8.png'
+  publisher:
+    username: dannyhw
+    email: danny.h.williams@hotmail.com
+    gravatarUrl: //www.gravatar.com/avatar/192232380b9d497003c30a75433be42b?s=200
+  authors:
+    - username: ndelangen
+      email: ndelangen@me.com
+      gravatarUrl: //www.gravatar.com/avatar/537eed32d6998089dd5aa6a7e6ea2691?s=200
+    - username: shilman
+      email: michael@lab80.co
+      gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+    - username: domyen
+      email: dom@hichroma.com
+      gravatarUrl: //www.gravatar.com/avatar/a7c0aa21a99fd9b8e009d5b197221ada?s=200
+    - username: tmeasday
+      email: tom@thesnail.org
+      gravatarUrl: //www.gravatar.com/avatar/9a4c135ce6e37b086dd365f790187f3c?s=200
+    - username: hypnosphi
+      email: alpa@yandex.ru
+      gravatarUrl: //www.gravatar.com/avatar/2c5d901d88e08349ff0ac305fa2b8cfc?s=200
+    - username: igor-dv
+      email: davydkin.igor@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/ca088fbf1d620c20019a9a3205e6191c?s=200
+  tags:
+    - storybook
+    - data-state
+  npmUrl: 'https://www.npmjs.com/package/%40storybook%2Faddon-ondevice-actions'
+  homepageUrl: 'https://storybook.js.org/'
+  repositoryUrl: 'https://github.com/storybookjs/react-native'
+  monthlyDownloads: 81238
+  weeklyDownloads: 21444
+  verified: official
+- name: '@storybook/addon-jest'
+  displayName: Jest
+  description: React storybook addon that show component jest report
+  icon: 'https://pbs.twimg.com/profile_images/821713465245102080/mMtKIMax_400x400.jpg'
+  publisher:
+    username: shilman
+    email: michael@lab80.co
+    gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+  authors:
+    - username: ndelangen
+      email: ndelangen@me.com
+      gravatarUrl: //www.gravatar.com/avatar/537eed32d6998089dd5aa6a7e6ea2691?s=200
+    - username: shilman
+      email: michael@lab80.co
+      gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+    - username: domyen
+      email: dom@hichroma.com
+      gravatarUrl: //www.gravatar.com/avatar/a7c0aa21a99fd9b8e009d5b197221ada?s=200
+    - username: tmeasday
+      email: tom@thesnail.org
+      gravatarUrl: //www.gravatar.com/avatar/9a4c135ce6e37b086dd365f790187f3c?s=200
+    - username: hypnosphi
+      email: talp@yandex.ru
+      gravatarUrl: //www.gravatar.com/avatar/2c5d901d88e08349ff0ac305fa2b8cfc?s=200
+    - username: igor-dv
+      email: davydkin.igor@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/ca088fbf1d620c20019a9a3205e6191c?s=200
+  tags:
+    - addon
+    - jest
+    - react
+    - report
+    - results
+    - storybook
+    - unit-testing
+    - test
+  npmUrl: 'https://www.npmjs.com/package/%40storybook%2Faddon-jest'
+  homepageUrl: 'https://github.com/storybookjs/storybook/tree/master/addons/jest'
+  repositoryUrl: 'https://github.com/storybookjs/storybook'
+  weeklyDownloads: 35292
+  monthlyDownloads: 154381
+  verified: official
+- name: storybook-template-source
+  description: >-
+    Provides an addon for storybook that can display your template as source in
+    a seperate tab
+  icon: ''
+  publisher:
+    username: sandervanteinde
+    email: sandervanteinde@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/0796fc3614b31d2aa1d609a687c08dd9?s=200
+  authors:
+    - username: sandervanteinde
+      email: sandervanteinde@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/0796fc3614b31d2aa1d609a687c08dd9?s=200
+  tags:
+    - code
+  npmUrl: 'https://www.npmjs.com/package/storybook-template-source'
+  homepageUrl: null
+  repositoryUrl: null
+  monthlyDownloads: 45
+  weeklyDownloads: 21
+  verified: null
+- name: '@storybook/addon-storyshots-puppeteer'
+  displayName: Storyshots Puppeteer
+  description: Image snapshots addition to StoryShots based on puppeteer
+  icon: 'https://user-images.githubusercontent.com/263385/101991676-48cdf300-3c7c-11eb-8aa1-944dab6ab29b.png'
+  publisher:
+    username: shilman
+    email: michael@lab80.co
+    gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+  authors:
+    - username: ndelangen
+      email: ndelangen@me.com
+      gravatarUrl: //www.gravatar.com/avatar/537eed32d6998089dd5aa6a7e6ea2691?s=200
+    - username: shilman
+      email: michael@lab80.co
+      gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+    - username: domyen
+      email: dom@hichroma.com
+      gravatarUrl: //www.gravatar.com/avatar/a7c0aa21a99fd9b8e009d5b197221ada?s=200
+    - username: tmeasday
+      email: tom@thesnail.org
+      gravatarUrl: //www.gravatar.com/avatar/9a4c135ce6e37b086dd365f790187f3c?s=200
+    - username: hypnosphi
+      email: talpa@yadex.ru
+      gravatarUrl: //www.gravatar.com/avatar/2c5d901d88e08349ff0ac305fa2b8cfc?s=200
+    - username: igor-dv
+      email: davydkin.igor@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/ca088fbf1d620c20019a9a3205e6191c?s=200
+  tags:
+    - addon
+    - storybook
+    - test
+  npmUrl: 'https://www.npmjs.com/package/%40storybook%2Faddon-storyshots-puppeteer'
+  homepageUrl: >-
+    https://github.com/storybookjs/storybook/tree/master/addons/storyshots/storyshots-puppeteer
+  repositoryUrl: 'https://github.com/storybookjs/storybook'
+  monthlyDownloads: 281420
+  weeklyDownloads: 67233
+  verified: official
+- name: storybook-addon-headless
+  description: Storybook addon to preview content from a headless CMS in components
+  icon: ''
+  publisher:
+    username: arrayknight
+    email: array.knight+npm@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/3219ed522413f9359936cbe32bed13f6?s=200
+  authors:
+    - username: arrayknight
+      email: array.knight+npm@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/3219ed522413f9359936cbe32bed13f6?s=200
+  tags:
+    - storybook
+    - storybookjs
+    - storybook-addon
+    - addon
+    - headless
+    - headless-cms
+    - rest
+    - graphql
+    - organize
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-headless'
+  homepageUrl: 'https://storybook-addon-headless.netlify.com/'
+  repositoryUrl: 'https://github.com/ArrayKnight/storybook-addon-headless'
+  weeklyDownloads: 28
+  monthlyDownloads: 142
+  verified: null
+- name: '@panosvoudouris/addon-versions'
+  description: Navigate different versions of storybook style guides.
+  icon: ''
+  publisher:
+    username: panosvoudouris
+    email: panosvoudouris@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/68200fa3a9c8525880fb4f37d209208d?s=200
+  authors:
+    - username: panosvoudouris
+      email: panosvoudouris@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/68200fa3a9c8525880fb4f37d209208d?s=200
+  tags:
+    - atomic-design
+    - react
+    - storybook
+    - storybook-addon
+    - storybook-addon-versions
+    - versions
+    - organize
+  npmUrl: 'https://www.npmjs.com/package/%40panosvoudouris%2Faddon-versions'
+  homepageUrl: 'https://github.com/panosvoudouris/storybook-addon-versions#readme'
+  repositoryUrl: 'https://github.com/panosvoudouris/storybook-addon-versions'
+  monthlyDownloads: 1428
+  weeklyDownloads: 362
+  verified: null
+- name: '@storybook/addon-contexts'
+  displayName: Contexts
+  description: Storybook Addon Contexts
+  icon: ''
+  publisher:
+    username: shilman
+    email: michael@lab80.co
+    gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+  authors:
+    - username: ndelangen
+      email: ndelangen@me.com
+      gravatarUrl: //www.gravatar.com/avatar/537eed32d6998089dd5aa6a7e6ea2691?s=200
+    - username: shilman
+      email: michael@lab80.co
+      gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+    - username: domyen
+      email: dom@hichroma.com
+      gravatarUrl: //www.gravatar.com/avatar/a7c0aa21a99fd9b8e009d5b197221ada?s=200
+    - username: tmeasday
+      email: tom@thesnail.org
+      gravatarUrl: //www.gravatar.com/avatar/9a4c135ce6e37b086dd365f790187f3c?s=200
+    - username: hypnosphi
+      email: talpa@yandexru
+      gravatarUrl: //www.gravatar.com/avatar/2c5d901d88e08349ff0ac305fa2b8cfc?s=200
+    - username: igor-dv
+      email: davydkin.igor@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/ca088fbf1d620c20019a9a3205e6191c?s=200
+  tags:
+    - preact
+    - react
+    - storybook
+    - vue
+    - data-state
+  npmUrl: 'https://www.npmjs.com/package/%40storybook%2Faddon-contexts'
+  homepageUrl: 'https://github.com/storybookjs/storybook#readme'
+  repositoryUrl: 'https://github.com/storybookjs/storybook'
+  weeklyDownloads: 17609
+  monthlyDownloads: 73838
+  verified: official
+- name: storybook-addon-next-router
+  displayName: Next.js router
+  description: Use Next.js Router in your Storybook stories.
+  icon: 'https://camo.githubusercontent.com/92ec9eb7eeab7db4f5919e3205918918c42e6772562afb4112a2909c1aaaa875/68747470733a2f2f6173736574732e76657263656c2e636f6d2f696d6167652f75706c6f61642f76313630373535343338352f7265706f7369746f726965732f6e6578742d6a732f6e6578742d6c6f676f2e706e67'
+  publisher:
+    username: lifeiscontent
+    email: aaron@lifeiscontent.net
+    gravatarUrl: //www.gravatar.com/avatar/6c826fedce728989963254e4c34943c8?s=200
+  authors:
+    - username: lifeiscontent
+      email: aaron@lifeiscontent.net
+      gravatarUrl: //www.gravatar.com/avatar/6c826fedce728989963254e4c34943c8?s=200
+  tags:
+    - data-state
+    - popular
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-next-router'
+  homepageUrl: 'https://github.com/lifeiscontent/storybook-addon-next-router#readme'
+  repositoryUrl: 'https://github.com/lifeiscontent/storybook-addon-next-router'
+  monthlyDownloads: 71032
+  weeklyDownloads: 21690
+  verified: null
+- name: storybook-formik
+  displayName: Formik
+  description: >-
+    A storybook addon that allows you to use components in your stories that
+    rely on Formik context and see internal Formik state in a panel.
+  icon: 'https://pbs.twimg.com/profile_images/1148688127252471810/-UcA36Bw_400x400.png'
+  publisher:
+    username: bhishp
+    email: bhishma_p@hotmail.com
+    gravatarUrl: //www.gravatar.com/avatar/107b69bf508045f15e36b710f7d2d6e3?s=200
+  authors:
+    - username: bhishp
+      email: bhishma_p@hotmail.com
+      gravatarUrl: //www.gravatar.com/avatar/107b69bf508045f15e36b710f7d2d6e3?s=200
+  tags:
+    - storybook
+    - react
+    - formik
+    - form
+    - forms
+    - code
+    - popular
+  npmUrl: 'https://www.npmjs.com/package/storybook-formik'
+  homepageUrl: 'https://bhishp.github.io/storybook-formik/'
+  repositoryUrl: null
+  monthlyDownloads: 19663
+  weeklyDownloads: 4339
+  verified: null
+- name: storybook-zeplin
+  displayName: Zeplin
+  description: Zeplin addon for Storybook
+  icon: 'https://pbs.twimg.com/profile_images/1156483710138671104/bro-lNVH_400x400.png'
+  publisher:
+    username: mertkahyaoglu
+    email: mertkahyaoglu93@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/750640c488c6303ce06c232023266830?s=200
+  authors:
+    - username: mertkahyaoglu
+      email: mertkahyaoglu93@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/750640c488c6303ce06c232023266830?s=200
+  tags:
+    - storybook
+    - zeplin
+    - addon
+    - design
+    - popular
+  npmUrl: 'https://www.npmjs.com/package/storybook-zeplin'
+  homepageUrl: 'https://github.com/mertkahyaoglu/storybook-zeplin#readme'
+  repositoryUrl: 'https://github.com/mertkahyaoglu/storybook-zeplin'
+  monthlyDownloads: 24097
+  weeklyDownloads: 5667
+  verified: integrators
+  verifiedCreator: Zeplin
+- name: storybook-addon-locale
+  description: A storybook addons that lets you select locale from the list
+  icon: ''
+  publisher:
+    username: cyrus-d
+    email: mdoaie@yahoo.co.uk
+    gravatarUrl: //www.gravatar.com/avatar/bd97755f922e6915dbe5ce9a26930035?s=200
+  authors:
+    - username: cyrus-d
+      email: mdoaie@yahoo.co.uk
+      gravatarUrl: //www.gravatar.com/avatar/bd97755f922e6915dbe5ce9a26930035?s=200
+  tags:
+    - data-state
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-locale'
+  homepageUrl: 'https://github.com/Cyrus-d/storybook-addon-locale#readme'
+  repositoryUrl: 'https://github.com/Cyrus-d/storybook-addon-locale'
+  weeklyDownloads: 164
+  monthlyDownloads: 415
+  verified: null
+- name: storybook-addon-react-docgen
+  displayName: React docgen
+  description: A storybook addon to display react docgen info.
+  icon: ''
+  publisher:
+    username: alisowski
+    email: lisowski54@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/ff725a631f869cdb78beeb003825bb40?s=200
+  authors:
+    - username: alisowski
+      email: lisowski54@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/ff725a631f869cdb78beeb003825bb40?s=200
+  tags:
+    - storybook
+    - addon
+    - react
+    - docgen
+    - typescript
+    - organize
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-react-docgen'
+  homepageUrl: 'https://github.com/hipstersmoothie/storybook-addon-react-docgen#readme'
+  repositoryUrl: 'https://github.com/hipstersmoothie/storybook-addon-react-docgen'
+  weeklyDownloads: 9644
+  monthlyDownloads: 43496
+  verified: null
+- name: '@whitespace/storybook-addon-html'
+  displayName: HTML preview
+  description: >-
+    A Storybook addon that extracts and displays compiled syntax-highlighted
+    HTML
+  icon: 'https://avatars1.githubusercontent.com/u/10450088?s=400&u=b2a95469b7d2addf63366a93a17f0bd06f9894cc&v=4'
+  publisher:
+    username: jeanfredrik
+    email: jeanfredrik@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/8a2818abf782e6f797c8ccf5eb0bc6e7?s=200
+  authors:
+    - username: pbrotherton
+      email: paul.brotherton@whitespace.se
+      gravatarUrl: //www.gravatar.com/avatar/47c6c5b51c759734221c714a1330321d?s=200
+    - username: whitespace-se
+      email: code@whitespace.se
+      gravatarUrl: //www.gravatar.com/avatar/955d7b68d181e09c89138a1d75789d4e?s=200
+    - username: younus_abdalla
+      email: younus.abdalla@whitespace.se
+      gravatarUrl: //www.gravatar.com/avatar/ed3d59982b2cba177d34d0499d426b16?s=200
+    - username: cmiumiu
+      email: cynthia.dao@whitespace.se
+      gravatarUrl: //www.gravatar.com/avatar/2c3ec80a071393f82473a7a08807d9af?s=200
+    - username: linnws
+      email: linn.nilsson@whitespace.se
+      gravatarUrl: //www.gravatar.com/avatar/3c6dffe9a6d073aaa69058eda077f160?s=200
+    - username: jeanfredrik
+      email: jeanfredrik@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/8a2818abf782e6f797c8ccf5eb0bc6e7?s=200
+  tags:
+    - addon
+    - storybook
+    - html
+    - code
+    - popular
+  npmUrl: 'https://www.npmjs.com/package/%40whitespace%2Fstorybook-addon-html'
+  homepageUrl: 'https://github.com/whitespace-se/storybook-addon-html#readme'
+  repositoryUrl: 'https://github.com/whitespace-se/storybook-addon-html'
+  monthlyDownloads: 18834
+  weeklyDownloads: 4854
+  verified: null
+- name: storybook-addon-paddings
+  displayName: Paddings
+  description: A Storybook addon to add different paddings to your preview
+  icon: ''
+  publisher:
+    username: rbardini
+    email: rafael@rbardini.com
+    gravatarUrl: //www.gravatar.com/avatar/305c0ea79fb9d9980912bb9092dcbbdc?s=200
+  authors:
+    - username: rbardini
+      email: rafael@rbardini.com
+      gravatarUrl: //www.gravatar.com/avatar/305c0ea79fb9d9980912bb9092dcbbdc?s=200
+  tags:
+    - storybook
+    - addon
+    - padding
+    - margin
+    - spacing
+    - whitespace
+    - appearance
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-paddings'
+  homepageUrl: 'https://github.com/rbardini/storybook-addon-paddings'
+  repositoryUrl: 'https://github.com/rbardini/storybook-addon-paddings'
+  weeklyDownloads: 11162
+  monthlyDownloads: 47243
+  verified: null
+- name: storybook-addon-deps
+  description: A storybook addon to display component dependencies
+  icon: ''
+  publisher:
+    username: atanasster
+    email: atanasster@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/9b9913091795a48655ec0b10dcd62a95?s=200
+  authors:
+    - username: atanasster
+      email: atanasster@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/9b9913091795a48655ec0b10dcd62a95?s=200
+  tags:
+    - addon
+    - dependencies
+    - webpack
+    - storybook
+    - organize
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-deps'
+  homepageUrl: 'https://github.com/atanasster/storybook-addon-deps/'
+  repositoryUrl: 'https://github.com/atanasster/storybook-addon-deps'
+  weeklyDownloads: 3185
+  monthlyDownloads: 12765
+  verified: null
+- name: storybook-addon-playroom
+  displayName: Playroom
+  description: >-
+    Design with Playroom inside Storybook, using each story source as a starting
+    point
+  icon: 'https://user-images.githubusercontent.com/263385/102231945-8b7e0e00-3ebc-11eb-9f1f-5da27319d553.png'
+  publisher:
+    username: rbardini
+    email: rafael@rbardini.com
+    gravatarUrl: //www.gravatar.com/avatar/305c0ea79fb9d9980912bb9092dcbbdc?s=200
+  authors:
+    - username: rbardini
+      email: rafael@rbardini.com
+      gravatarUrl: //www.gravatar.com/avatar/305c0ea79fb9d9980912bb9092dcbbdc?s=200
+  tags:
+    - storybook
+    - addon
+    - playroom
+    - react
+    - jsx
+    - design
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-playroom'
+  homepageUrl: 'https://github.com/rbardini/storybook-addon-playroom'
+  repositoryUrl: 'https://github.com/rbardini/storybook-addon-playroom'
+  weeklyDownloads: 1331
+  monthlyDownloads: 6729
+  verified: null
+- name: '@storybook/addon-graphql'
+  displayName: GraphiQL IDE
+  description: Storybook addon to display the GraphiQL IDE
+  icon: 'https://pbs.twimg.com/profile_images/618131103509909504/VQLBJ0TR_400x400.png'
+  publisher:
+    username: shilman
+    email: michael@lab80.co
+    gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+  authors:
+    - username: ndelangen
+      email: ndelangen@me.com
+      gravatarUrl: //www.gravatar.com/avatar/537eed32d6998089dd5aa6a7e6ea2691?s=200
+    - username: shilman
+      email: michael@lab80.co
+      gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+    - username: domyen
+      email: dom@hichroma.com
+      gravatarUrl: //www.gravatar.com/avatar/a7c0aa21a99fd9b8e009d5b197221ada?s=200
+    - username: tmeasday
+      email: tom@thesnail.org
+      gravatarUrl: //www.gravatar.com/avatar/9a4c135ce6e37b086dd365f790187f3c?s=200
+    - username: hypnosphi
+      email: talpa@yandex.r
+      gravatarUrl: //www.gravatar.com/avatar/2c5d901d88e08349ff0ac305fa2b8cfc?s=200
+    - username: igor-dv
+      email: davydkin.igor@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/ca088fbf1d620c20019a9a3205e6191c?s=200
+  tags:
+    - addon
+    - storybook
+    - data-state
+  npmUrl: 'https://www.npmjs.com/package/%40storybook%2Faddon-graphql'
+  homepageUrl: 'https://github.com/storybookjs/storybook/tree/master/addons/graphql'
+  repositoryUrl: 'https://github.com/storybookjs/storybook'
+  monthlyDownloads: 42980
+  weeklyDownloads: 8015
+  verified: official
+- name: '@degjs/storybook-addon-taffy'
+  displayName: Taffy responsive viewports
+  description: A responsive viewport addon for Storybook
+  icon: ''
+  publisher:
+    username: aladage
+    email: aladage@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/c2f249134b0f94d044279b40a0251922?s=200
+  authors:
+    - username: vequanc
+      email: vequanclark@yahoo.com
+      gravatarUrl: //www.gravatar.com/avatar/7fdd68862c7a2ca05c8ac0ff1f8424c4?s=200
+    - username: alejcerro
+      email: alejcerro@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/3484a17222e99fa8a39693a83aed62b4?s=200
+    - username: kylegeary
+      email: kgeary09@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/8d6840407bbf8e2c0ef7f06e776da058?s=200
+    - username: scheul93
+      email: scheul93@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/fab02bac5fe4c5165cc088d9df54911a?s=200
+    - username: heaper
+      email: heaper@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/d802a1206dad38d6c571fcb897da599f?s=200
+    - username: briangraves
+      email: mail@brianleegraves.com
+      gravatarUrl: //www.gravatar.com/avatar/8b8063eb1fecbaf7db2f045a89e73349?s=200
+    - username: aladage
+      email: aladage@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/c2f249134b0f94d044279b40a0251922?s=200
+    - username: jsmapr1
+      email: jsmapr1@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/7ace5b8f56fc673dbaab2069dcc6d536?s=200
+    - username: jlawhorn
+      email: jlawhorn@degdigital.com
+      gravatarUrl: //www.gravatar.com/avatar/d71a6ac05c8d3448a4256754008144e2?s=200
+    - username: designbykhalid
+      email: khalid@designbykhalid.com
+      gravatarUrl: //www.gravatar.com/avatar/e50b9129ae5b847e52eb97b3550a8dc0?s=200
+  tags:
+    - storybook
+    - responsive
+    - taffy
+    - addon
+    - style
+  npmUrl: 'https://www.npmjs.com/package/%40degjs%2Fstorybook-addon-taffy'
+  homepageUrl: 'https://github.com/DEGJS/storybook-addon-taffy#readme'
+  repositoryUrl: 'https://github.com/DEGJS/storybook-addon-taffy'
+  monthlyDownloads: 3891
+  weeklyDownloads: 802
+  verified: null
+- name: '@storybook/addon-ondevice-backgrounds'
+  displayName: On device backgrounds
+  description: >-
+    A react-native storybook addon to show different backgrounds for your
+    preview
+  icon: ''
+  publisher:
+    username: dannyhw
+    email: danny.h.williams@hotmail.com
+    gravatarUrl: //www.gravatar.com/avatar/192232380b9d497003c30a75433be42b?s=200
+  authors:
+    - username: ndelangen
+      email: ndelangen@me.com
+      gravatarUrl: //www.gravatar.com/avatar/537eed32d6998089dd5aa6a7e6ea2691?s=200
+    - username: shilman
+      email: michael@lab80.co
+      gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+    - username: domyen
+      email: dom@hichroma.com
+      gravatarUrl: //www.gravatar.com/avatar/a7c0aa21a99fd9b8e009d5b197221ada?s=200
+    - username: tmeasday
+      email: tom@thesnail.org
+      gravatarUrl: //www.gravatar.com/avatar/9a4c135ce6e37b086dd365f790187f3c?s=200
+    - username: hypnosphi
+      email: talpa@yandex.r
+      gravatarUrl: //www.gravatar.com/avatar/2c5d901d88e08349ff0ac305fa2b8cfc?s=200
+    - username: igor-dv
+      email: davydkin.igor@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/ca088fbf1d620c20019a9a3205e6191c?s=200
+  tags:
+    - addon
+    - background
+    - react
+    - storybook
+    - style
+  npmUrl: 'https://www.npmjs.com/package/%40storybook%2Faddon-ondevice-backgrounds'
+  homepageUrl: 'https://storybook.js.org'
+  repositoryUrl: 'https://github.com/storybookjs/react-native'
+  weeklyDownloads: 3230
+  monthlyDownloads: 14555
+  verified: official
+- name: '@alisowski/storybook-addon-notes'
+  description: Write notes for your Storybook stories.
+  icon: ''
+  publisher:
+    username: alisowski
+    email: lisowski54@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/ff725a631f869cdb78beeb003825bb40?s=200
+  authors:
+    - username: alisowski
+      email: lisowski54@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/ff725a631f869cdb78beeb003825bb40?s=200
+  tags:
+    - addon
+    - notes
+    - storybook
+    - organize
+  npmUrl: 'https://www.npmjs.com/package/%40alisowski%2Fstorybook-addon-notes'
+  homepageUrl: 'https://github.com/hipstersmoothie/storybook-addon-notes#readme'
+  repositoryUrl: 'https://github.com/hipstersmoothie/storybook-addon-notes'
+  monthlyDownloads: 845
+  weeklyDownloads: 193
+  verified: null
+- name: storybook-addon-apollo-client
+  displayName: Apollo Client
+  description: Use Apollo Client in your Storybook stories.
+  icon: 'https://pbs.twimg.com/profile_images/1314271818027499522/0WAECoWU_400x400.png'
+  publisher:
+    username: lifeiscontent
+    email: aaron@lifeiscontent.net
+    gravatarUrl: //www.gravatar.com/avatar/6c826fedce728989963254e4c34943c8?s=200
+  authors:
+    - username: lifeiscontent
+      email: aaron@lifeiscontent.net
+      gravatarUrl: //www.gravatar.com/avatar/6c826fedce728989963254e4c34943c8?s=200
+  tags:
+    - data-state
+    - apollo
+    - popular
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-apollo-client'
+  homepageUrl: 'https://github.com/lifeiscontent/storybook-addon-apollo-client#readme'
+  repositoryUrl: 'https://github.com/lifeiscontent/storybook-addon-apollo-client'
+  monthlyDownloads: 6722
+  weeklyDownloads: 1602
+  verified: null
+- name: storybook-pretty-props
+  description: >-
+    Render prop types in a pretty way! Useful for storybook addons that display
+    prop types.
+  icon: ''
+  publisher:
+    username: alisowski
+    email: lisowski54@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/ff725a631f869cdb78beeb003825bb40?s=200
+  authors:
+    - username: alisowski
+      email: lisowski54@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/ff725a631f869cdb78beeb003825bb40?s=200
+  tags:
+    - organize
+  npmUrl: 'https://www.npmjs.com/package/storybook-pretty-props'
+  homepageUrl: 'https://github.com/hipstersmoothie/storybook-pretty-props#readme'
+  repositoryUrl: 'https://github.com/hipstersmoothie/storybook-pretty-props'
+  weeklyDownloads: 40099
+  monthlyDownloads: 182540
+  verified: null
+- name: storybook-addon-playwright
+  displayName: Playwright
+  description: >-
+    An addon to visually test the stories in the multiple browsers within
+    storybook environment
+  icon: ''
+  publisher:
+    username: cyrus-d
+    email: mdoaie@yahoo.co.uk
+    gravatarUrl: //www.gravatar.com/avatar/bd97755f922e6915dbe5ce9a26930035?s=200
+  authors:
+    - username: cyrus-d
+      email: mdoaie@yahoo.co.uk
+      gravatarUrl: //www.gravatar.com/avatar/bd97755f922e6915dbe5ce9a26930035?s=200
+  tags:
+    - playwright
+    - browser
+    - e2e
+    - storybook
+    - addon
+    - cross browser testing
+    - end-to-end
+    - test
+    - testing
+    - visual
+    - visual testing
+    - screenshot
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-playwright'
+  homepageUrl: 'https://github.com/ccpu/storybook-addon-playwright#readme'
+  repositoryUrl: 'https://github.com/ccpu/storybook-addon-playwright'
+  weeklyDownloads: 89
+  monthlyDownloads: 641
+  verified: null
+- name: '@harelpls/storybook-addon-materialui'
+  displayName: Material UI
+  description: A simple decorator to wrap your stories in a @mui-org material-ui theme
+  icon: 'https://pbs.twimg.com/profile_images/1216314751770333184/6pMOe8z7_400x400.jpg'
+  publisher:
+    username: harelpls
+    email: harley.alexander.au@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/1d9892bf85d49124a1ee23956e417549?s=200
+  authors:
+    - username: harelpls
+      email: harley.alexander@melbourne.vic.gov.au
+      gravatarUrl: //www.gravatar.com/avatar/2db81cae723571bdd16fbda27b5f4a6d?s=200
+  tags:
+    - style
+  npmUrl: 'https://www.npmjs.com/package/%40harelpls%2Fstorybook-addon-materialui'
+  homepageUrl: null
+  repositoryUrl: null
+  weeklyDownloads: 938
+  monthlyDownloads: 5264
+  verified: null
+- name: '@storybook/addon-devkit'
+  displayName: Addon devkit
+  description: Storybook Addon Development Kit
+  icon: ''
+  publisher:
+    username: usulpro
+    email: regx@usul.su
+    gravatarUrl: //www.gravatar.com/avatar/f9b12bc1aa320b434dff7ae42be6c561?s=200
+  authors:
+    - username: ndelangen
+      email: ndelangen@me.com
+      gravatarUrl: //www.gravatar.com/avatar/537eed32d6998089dd5aa6a7e6ea2691?s=200
+    - username: shilman
+      email: michael@lab80.co
+      gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+    - username: domyen
+      email: dom@hichroma.com
+      gravatarUrl: //www.gravatar.com/avatar/a7c0aa21a99fd9b8e009d5b197221ada?s=200
+    - username: tmeasday
+      email: tom@thesnail.org
+      gravatarUrl: //www.gravatar.com/avatar/9a4c135ce6e37b086dd365f790187f3c?s=200
+    - username: hypnosphi
+      email: talpa@yandex.r
+      gravatarUrl: //www.gravatar.com/avatar/2c5d901d88e08349ff0ac305fa2b8cfc?s=200
+    - username: igor-dv
+      email: davydkin.igor@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/ca088fbf1d620c20019a9a3205e6191c?s=200
+  tags:
+    - storybook
+    - react
+    - addon
+    - decorator
+    - customization
+    - boilerplate
+    - npm
+    - development
+    - addons
+    - appearance
+  npmUrl: 'https://www.npmjs.com/package/%40storybook%2Faddon-devkit'
+  homepageUrl: 'https://github.com/storybookjs/addon-development-kit'
+  repositoryUrl: 'https://github.com/storybookjs/addon-development-kit'
+  weeklyDownloads: 4228
+  monthlyDownloads: 15337
+  verified: official
+- name: '@storybook/addon-ondevice-notes'
+  displayName: On device notes
+  description: Write notes for your react-native Storybook stories.
+  icon: ''
+  publisher:
+    username: dannyhw
+    email: danny.h.williams@hotmail.com
+    gravatarUrl: //www.gravatar.com/avatar/192232380b9d497003c30a75433be42b?s=200
+  authors:
+    - username: ndelangen
+      email: ndelangen@me.com
+      gravatarUrl: //www.gravatar.com/avatar/537eed32d6998089dd5aa6a7e6ea2691?s=200
+    - username: shilman
+      email: michael@lab80.co
+      gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+    - username: domyen
+      email: dom@hichroma.com
+      gravatarUrl: //www.gravatar.com/avatar/a7c0aa21a99fd9b8e009d5b197221ada?s=200
+    - username: tmeasday
+      email: tom@thesnail.org
+      gravatarUrl: //www.gravatar.com/avatar/9a4c135ce6e37b086dd365f790187f3c?s=200
+    - username: hypnosphi
+      email: talpa@yandex.r
+      gravatarUrl: //www.gravatar.com/avatar/2c5d901d88e08349ff0ac305fa2b8cfc?s=200
+    - username: igor-dv
+      email: davydkin.igor@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/ca088fbf1d620c20019a9a3205e6191c?s=200
+  tags:
+    - addon
+    - notes
+    - react-native
+    - storybook
+    - organize
+  npmUrl: 'https://www.npmjs.com/package/%40storybook%2Faddon-ondevice-notes'
+  homepageUrl: 'https://github.com/storybookjs/react-native#readme'
+  repositoryUrl: 'https://github.com/storybookjs/react-native'
+  weeklyDownloads: 11972
+  monthlyDownloads: 53491
+  verified: official
+- name: '@pxblue/storybook-rtl-addon'
+  description: RTL Toggle for Storybook
+  icon: ''
+  publisher:
+    username: px-blue
+    email: pxblue@eaton.com
+    gravatarUrl: //www.gravatar.com/avatar/98ef44a172f41a6be9a78235753b8407?s=200
+  authors:
+    - username: px-blue
+      email: pxblue@eaton.com
+      gravatarUrl: //www.gravatar.com/avatar/98ef44a172f41a6be9a78235753b8407?s=200
+  tags:
+    - pxblue
+    - storybook
+    - addon
+    - rtl
+    - i18n
+    - bidirection
+    - pxblue
+    - style
+  npmUrl: 'https://www.npmjs.com/package/%40pxblue%2Fstorybook-rtl-addon'
+  homepageUrl: null
+  repositoryUrl: null
+  weeklyDownloads: 140
+  monthlyDownloads: 670
+  verified: null
+- name: '@splice/addon-storybook-preview-branch'
+  displayName: Preview branch
+  description: >-
+    Show the branch name in the toolbar. Swap between branches.
+  icon: 'https://avatars0.githubusercontent.com/u/6558396?s=200&v=4'
+  publisher:
+    username: splicers
+    email: engineering@splice.com
+    gravatarUrl: //www.gravatar.com/avatar/f68361d3ebbb9e87af48c6ac93090978?s=200
+  authors:
+    - username: mattetti
+      email: mattaimonetti@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/c69521d6e22fc0bbd69337ec8b1698df?s=200
+    - username: splicers
+      email: engineering@splice.com
+      gravatarUrl: //www.gravatar.com/avatar/f68361d3ebbb9e87af48c6ac93090978?s=200
+  tags:
+    - organize
+  npmUrl: 'https://www.npmjs.com/package/%40splice%2Faddon-storybook-preview-branch'
+  homepageUrl: null
+  repositoryUrl: null
+  monthlyDownloads: 9760
+  weeklyDownloads: 2110
+  verified: null
+- name: '@react-theming/storybook-addon'
+  displayName: React theming
+  description: 'Develop themable components with Emotion, Styled Components or Material-UI'
+  icon: ''
+  publisher:
+    username: usulpro
+    email: regx@usul.su
+    gravatarUrl: //www.gravatar.com/avatar/f9b12bc1aa320b434dff7ae42be6c561?s=200
+  authors:
+    - username: smartlight
+      email: info@sm-artlight.com
+      gravatarUrl: //www.gravatar.com/avatar/9ab7fcd1cc9c2d0af6c5648c4af33fc3?s=200
+  tags:
+    - storybook
+    - react
+    - material
+    - ui
+    - material-ui
+    - emotion
+    - styled-components
+    - jss
+    - addon
+    - decorator
+    - theme
+    - theming
+    - themable
+    - editor
+    - switch themes
+    - change colors
+    - tool
+    - develop
+    - isolation
+    - themable components
+    - customization
+    - dark theme
+    - light theme
+    - appearance
+  npmUrl: 'https://www.npmjs.com/package/%40react-theming%2Fstorybook-addon'
+  homepageUrl: 'https://github.com/react-theming/storybook-addon'
+  repositoryUrl: 'https://github.com/react-theming/storybook-addon'
+  weeklyDownloads: 3472
+  monthlyDownloads: 12539
+  verified: null
+- name: storybook-readme
+  displayName: 'Readme'
+  description: Storybook addon to show components README (for React and Vue)
+  icon: ''
+  publisher:
+    username: tuchk4
+    email: valeriy.sorokobatko@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/01bd51562a5914866813dc8d5e832a68?s=200
+  authors:
+    - username: tuchk4
+      email: valeriy.sorokobatko@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/01bd51562a5914866813dc8d5e832a68?s=200
+    - username: ndelangen
+      email: ndelangen@me.com
+      gravatarUrl: //www.gravatar.com/avatar/537eed32d6998089dd5aa6a7e6ea2691?s=200
+  tags:
+    - storybook
+    - react-storybook
+    - docs
+    - readme
+    - organize
+  npmUrl: 'https://www.npmjs.com/package/storybook-readme'
+  homepageUrl: 'https://github.com/tuchk4/storybook-readme'
+  repositoryUrl: 'https://github.com/tuchk4/storybook-readme'
+  monthlyDownloads: 215454
+  weeklyDownloads: 44707
+  verified: null
+- name: storybook-addon-outline
+  displayName: Outline
+  description: Outline all elements with CSS to help with layout placement and alignment
+  icon: 'https://user-images.githubusercontent.com/263385/101991674-48355c80-3c7c-11eb-9686-f684e755fcdd.png'
+  publisher:
+    username: winkervsbecks
+    email: varunvachhar@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/dc3909557c0f933a066fe5faea796fdf?s=200
+  authors:
+    - username: winkervsbecks
+      email: varunvachhar@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/dc3909557c0f933a066fe5faea796fdf?s=200
+  tags:
+    - storybook-addons
+    - outline
+    - css
+    - layout
+    - debug
+    - style
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-outline'
+  homepageUrl: 'https://github.com/chromaui/storybook-outline#readme'
+  repositoryUrl: 'https://github.com/chromaui/storybook-outline'
+  weeklyDownloads: 65
+  monthlyDownloads: 333
+  verified: official
+- name: '@component-controls/storybook'
+  description: Storybook Addon For live editing of component controls
+  icon: ''
+  publisher:
+    username: atanasster
+    email: atanasster@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/9b9913091795a48655ec0b10dcd62a95?s=200
+  authors:
+    - username: atanasster
+      email: atanasster@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/9b9913091795a48655ec0b10dcd62a95?s=200
+  tags:
+    - addon
+    - storybook
+    - organize
+  npmUrl: 'https://www.npmjs.com/package/%40component-controls%2Fstorybook'
+  homepageUrl: 'https://github.com/ccontrols/component-controls'
+  repositoryUrl: 'https://github.com/ccontrols/component-controls'
+  weeklyDownloads: 557
+  monthlyDownloads: 2913
+  verified: null
+- name: '@storybook/addon-events'
+  displayName: Events
+  description: Add events to your Storybook stories.
+  icon: ''
+  publisher:
+    username: shilman
+    email: michael@lab80.co
+    gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+  authors:
+    - username: ndelangen
+      email: ndelangen@me.com
+      gravatarUrl: //www.gravatar.com/avatar/537eed32d6998089dd5aa6a7e6ea2691?s=200
+    - username: shilman
+      email: michael@lab80.co
+      gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+    - username: domyen
+      email: dom@hichroma.com
+      gravatarUrl: //www.gravatar.com/avatar/a7c0aa21a99fd9b8e009d5b197221ada?s=200
+    - username: tmeasday
+      email: tom@thesnail.org
+      gravatarUrl: //www.gravatar.com/avatar/9a4c135ce6e37b086dd365f790187f3c?s=200
+    - username: hypnosphi
+      email: talpa@yandex.r
+      gravatarUrl: //www.gravatar.com/avatar/2c5d901d88e08349ff0ac305fa2b8cfc?s=200
+    - username: igor-dv
+      email: davydkin.igor@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/ca088fbf1d620c20019a9a3205e6191c?s=200
+  tags:
+    - addon
+    - events
+    - react
+    - storybook
+    - data-state
+  npmUrl: 'https://www.npmjs.com/package/%40storybook%2Faddon-events'
+  homepageUrl: 'https://github.com/storybookjs/storybook/tree/master/addons/events'
+  repositoryUrl: 'https://github.com/storybookjs/storybook'
+  monthlyDownloads: 29832
+  weeklyDownloads: 5719
+  verified: official
+- name: '@storybook/addon-queryparams'
+  displayName: Query params
+  description: parameter addon for storybook
+  icon: ''
+  publisher:
+    username: shilman
+    email: michael@lab80.co
+    gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+  authors:
+    - username: ndelangen
+      email: ndelangen@me.com
+      gravatarUrl: //www.gravatar.com/avatar/537eed32d6998089dd5aa6a7e6ea2691?s=200
+    - username: shilman
+      email: michael@lab80.co
+      gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+    - username: domyen
+      email: dom@hichroma.com
+      gravatarUrl: //www.gravatar.com/avatar/a7c0aa21a99fd9b8e009d5b197221ada?s=200
+    - username: tmeasday
+      email: tom@thesnail.org
+      gravatarUrl: //www.gravatar.com/avatar/9a4c135ce6e37b086dd365f790187f3c?s=200
+    - username: hypnosphi
+      email: talpa@yandex.r
+      gravatarUrl: //www.gravatar.com/avatar/2c5d901d88e08349ff0ac305fa2b8cfc?s=200
+    - username: igor-dv
+      email: davydkin.igor@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/ca088fbf1d620c20019a9a3205e6191c?s=200
+  tags:
+    - addon
+    - query
+    - storybook
+    - data-state
+  npmUrl: 'https://www.npmjs.com/package/%40storybook%2Faddon-queryparams'
+  homepageUrl: 'https://github.com/storybookjs/storybook#readme'
+  repositoryUrl: 'https://github.com/storybookjs/storybook'
+  weeklyDownloads: 7274
+  monthlyDownloads: 30322
+  verified: official
+- name: '@focus-reactive/storybook-graphql-kit'
+  displayName: GraphQL Kit
+  description: Storybook addon for writing stories in GraphQL
+  icon: ''
+  publisher:
+    username: usulpro
+    email: regx@usul.su
+    gravatarUrl: //www.gravatar.com/avatar/f9b12bc1aa320b434dff7ae42be6c561?s=200
+  authors:
+    - username: alex_hramovich
+      email: alex@focusreactive.com
+      gravatarUrl: //www.gravatar.com/avatar/1abe1721c2b4aeb4a8cfa1ca0d61b0a3?s=200
+    - username: usulpro
+      email: regx@usul.su
+      gravatarUrl: //www.gravatar.com/avatar/f9b12bc1aa320b434dff7ae42be6c561?s=200
+    - username: operatino
+      email: robert@focusreactive.com
+      gravatarUrl: //www.gravatar.com/avatar/e3e235f02da7a61461558a0ce182e156?s=200
+    - username: pixelscommander
+      email: denis.radin@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/55c9248a6821d121d30073c7f8c0eb93?s=200
+  tags:
+    - graphql
+    - kit
+    - query
+    - queries
+    - search
+    - storybook
+    - storybookjs
+    - storybook-addon
+    - addon
+    - devtools
+    - graphql-kit
+    - data-state
+  npmUrl: 'https://www.npmjs.com/package/%40focus-reactive%2Fstorybook-graphql-kit'
+  homepageUrl: null
+  repositoryUrl: null
+  weeklyDownloads: 549
+  monthlyDownloads: 2340
+  verified: null
+- name: storybook-addon-web-components-knobs
+  description: Storybook knobs for web-components based on custom-elements.json
+  icon: ''
+  publisher:
+    username: modern-web
+    email: hello@modern-web.dev
+    gravatarUrl: //www.gravatar.com/avatar/4cf582f52813c2163f66c3a8b597d86b?s=200
+  authors:
+    - username: d4kmor
+      email: d4kmor@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/7e73784447925bca329cbde8951b3690?s=200
+    - username: modern-web
+      email: hello@modern-web.dev
+      gravatarUrl: //www.gravatar.com/avatar/4cf582f52813c2163f66c3a8b597d86b?s=200
+  tags:
+    - storybook
+    - demo
+    - demo-states
+    - testing
+    - test
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-web-components-knobs'
+  homepageUrl: >-
+    https://github.com/open-wc/open-wc/tree/master/packages/storybook-addon-web-components-knobs
+  repositoryUrl: 'https://github.com/open-wc/open-wc'
+  weeklyDownloads: 410
+  monthlyDownloads: 1088
+  verified: null
+- name: '@component-controls/storybook-custom-docs'
+  description: Storybook custom docs pages
+  icon: ''
+  publisher:
+    username: atanasster
+    email: atanasster@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/9b9913091795a48655ec0b10dcd62a95?s=200
+  authors:
+    - username: atanasster
+      email: atanasster@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/9b9913091795a48655ec0b10dcd62a95?s=200
+  tags:
+    - addon
+    - storybook
+    - organize
+  npmUrl: 'https://www.npmjs.com/package/%40component-controls%2Fstorybook-custom-docs'
+  homepageUrl: 'https://github.com/ccontrols/component-controls'
+  repositoryUrl: 'https://github.com/ccontrols/component-controls'
+  weeklyDownloads: 144
+  monthlyDownloads: 791
+  verified: null
+- name: storybook-addon-markdown-docs
+  description: Write documentation in markdown for storybook
+  icon: ''
+  publisher:
+    username: modern-web
+    email: hello@modern-web.dev
+    gravatarUrl: //www.gravatar.com/avatar/4cf582f52813c2163f66c3a8b597d86b?s=200
+  authors:
+    - username: d4kmor
+      email: d4kmor@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/7e73784447925bca329cbde8951b3690?s=200
+    - username: larsdenbakker
+      email: larsdenbakker@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/4bf04c45aa462c0b44dce80be6a1012e?s=200
+    - username: modern-web
+      email: hello@modern-web.dev
+      gravatarUrl: //www.gravatar.com/avatar/4cf582f52813c2163f66c3a8b597d86b?s=200
+  tags:
+    - organize
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-markdown-docs'
+  homepageUrl: >-
+    https://github.com/open-wc/open-wc/tree/master/packages/storybook-addon-markdown-docs
+  repositoryUrl: 'https://github.com/open-wc/open-wc'
+  monthlyDownloads: 6870
+  weeklyDownloads: 1020
+  verified: null
+- name: storybook-addons-abstract
+  displayName: Abstract
+  description: Abstract previews for storybook
+  icon: 'https://pbs.twimg.com/profile_images/1145737312837545984/MrfJUSa4_400x400.png'
+  publisher:
+    username: amccloud
+    email: andrew@amccloud.com
+    gravatarUrl: //www.gravatar.com/avatar/373d40a9bd5e73f80afe6dc196c2f37f?s=200
+  authors:
+    - username: amccloud
+      email: andrew@amccloud.com
+      gravatarUrl: //www.gravatar.com/avatar/373d40a9bd5e73f80afe6dc196c2f37f?s=200
+  tags:
+    - storybook
+    - design
+    - abstract
+    - sketch
+    - xd
+    - popular
+  npmUrl: 'https://www.npmjs.com/package/storybook-addons-abstract'
+  homepageUrl: 'https://github.com/amccloud/storybook-addons-abstract#readme'
+  repositoryUrl: 'https://github.com/amccloud/storybook-addons-abstract'
+  monthlyDownloads: 42041
+  weeklyDownloads: 11736
+  verified: integrators
+  verifiedCreator: Abstract
+- name: storybook-vscode-component
+  description: A simple Storybook addon to open the component source in VS Code
+  icon: ''
+  publisher:
+    username: vilvaathibanpb
+    email: vilvaathiban@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/151361d84321c762664e8cff95f01de2?s=200
+  authors:
+    - username: vilvaathibanpb
+      email: vilvaathiban@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/151361d84321c762664e8cff95f01de2?s=200
+  tags:
+    - storybook
+    - vs
+    - code
+    - storybook-addon
+    - addon
+    - organize
+  npmUrl: 'https://www.npmjs.com/package/storybook-vscode-component'
+  homepageUrl: null
+  repositoryUrl: null
+  weeklyDownloads: 96
+  monthlyDownloads: 337
+  verified: null
+- name: storybook-addon-responsive-views
+  description: View your Storybook stories in a range of responsive viewports
+  icon: ''
+  publisher:
+    username: jparker
+    email: npm@jeremie-parker.com
+    gravatarUrl: //www.gravatar.com/avatar/54c352963dd69e764c4b5eb5318c8973?s=200
+  authors:
+    - username: fernando_beck
+      email: fernando@eatwith.com
+      gravatarUrl: //www.gravatar.com/avatar/58bb7b08e0c544900e38f004724f163d?s=200
+    - username: jparker
+      email: npm@jeremie-parker.com
+      gravatarUrl: //www.gravatar.com/avatar/54c352963dd69e764c4b5eb5318c8973?s=200
+    - username: albanv
+      email: me@alban.io
+      gravatarUrl: //www.gravatar.com/avatar/ab1177e7bb63c1c8b2d104bb76943588?s=200
+    - username: juliamitchelmore
+      email: julia.mitchelmore@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/659a8684d0cc8edab8e47a9e867a8767?s=200
+  tags:
+    - addon
+    - responsive
+    - storybook
+    - style
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-responsive-views'
+  homepageUrl: 'https://github.com/vizeat/storybook-addon-responsive-views'
+  repositoryUrl: 'https://github.com/vizeat/storybook-addon-responsive-views'
+  monthlyDownloads: 16638
+  weeklyDownloads: 3519
+  verified: null
+- name: '@alexanderjeurissen/use-storybook'
+  description: >-
+    Storybook provider / hook add-on for consuming storyContext and storyFn
+    anywhere in the story render tree.
+  icon: ''
+  publisher:
+    username: alexanderjeurissen
+    email: alexander+npm@jeurissen.email
+    gravatarUrl: //www.gravatar.com/avatar/e8b12287aa58cc7e3d05c708cbbc9c35?s=200
+  authors:
+    - username: alexanderjeurissen
+      email: alexander+npm@jeurissen.email
+      gravatarUrl: //www.gravatar.com/avatar/e8b12287aa58cc7e3d05c708cbbc9c35?s=200
+  tags:
+    - storybook
+    - storybook-addon
+    - storybookjs
+    - provider
+    - hooks
+    - hook
+    - react
+    - reactjs
+    - jsx
+    - component
+    - data-state
+  npmUrl: 'https://www.npmjs.com/package/%40alexanderjeurissen%2Fuse-storybook'
+  homepageUrl: 'https://github.com/alexanderjeurissen/use-storybook#readme'
+  repositoryUrl: 'https://github.com/alexanderjeurissen/use-storybook'
+  monthlyDownloads: 6988
+  weeklyDownloads: 1834
+  verified: null
+- name: storybook-addon-material-ui
+  description: Storybook Addon for Material UI Library
+  icon: ''
+  publisher:
+    username: usulpro
+    email: regx@usul.su
+    gravatarUrl: //www.gravatar.com/avatar/f9b12bc1aa320b434dff7ae42be6c561?s=200
+  authors:
+    - username: smartlight
+      email: info@sm-artlight.com
+      gravatarUrl: //www.gravatar.com/avatar/9ab7fcd1cc9c2d0af6c5648c4af33fc3?s=200
+    - username: usulpro
+      email: regx@usul.su
+      gravatarUrl: //www.gravatar.com/avatar/f9b12bc1aa320b434dff7ae42be6c561?s=200
+  tags:
+    - storybook
+    - react
+    - material
+    - ui
+    - material-ui
+    - addon
+    - decorator
+    - theme
+    - editor
+    - customization
+    - dark theme
+    - light theme
+    - style
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-material-ui'
+  homepageUrl: 'https://github.com/react-theming/storybook-addon-material-ui'
+  repositoryUrl: 'https://github.com/react-theming/storybook-addon-material-ui'
+  weeklyDownloads: 29306
+  monthlyDownloads: 124483
+  verified: null
+- name: storybook-addon-storypa11y
+  displayName: Storypa11y
+  description: >-
+    Storybook-addon-storypa11y is an addon for storybook that runs pa11y tests
+    over each story in a storybook. It is based on top of the official
+    storyshots addon
+  icon: ''
+  publisher:
+    username: tobilen
+    email: tobias@lengsholz.de
+    gravatarUrl: //www.gravatar.com/avatar/8e409fb7c76b46962cfe8507b40c1be0?s=200
+  authors:
+    - username: tobilen
+      email: tobias@lengsholz.de
+      gravatarUrl: //www.gravatar.com/avatar/8e409fb7c76b46962cfe8507b40c1be0?s=200
+  tags:
+    - addon
+    - storybook
+    - pa11y
+    - test
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-storypa11y'
+  homepageUrl: 'https://github.com/tobilen/storybook-addon-storypa11y'
+  repositoryUrl: 'https://github.com/tobilen/storybook-addon-storypa11y'
+  weeklyDownloads: 19
+  monthlyDownloads: 82
+  verified: null
+- name: '@storybook/addon-ondevice-knobs'
+  displayName: On device knobs
+  description: Display storybook story knobs on your deviced.
+  icon: ''
+  publisher:
+    username: dannyhw
+    email: danny.h.williams@hotmail.com
+    gravatarUrl: //www.gravatar.com/avatar/192232380b9d497003c30a75433be42b?s=200
+  authors:
+    - username: ndelangen
+      email: ndelangen@me.com
+      gravatarUrl: //www.gravatar.com/avatar/537eed32d6998089dd5aa6a7e6ea2691?s=200
+    - username: shilman
+      email: michael@lab80.co
+      gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+    - username: domyen
+      email: dom@hichroma.com
+      gravatarUrl: //www.gravatar.com/avatar/a7c0aa21a99fd9b8e009d5b197221ada?s=200
+    - username: tmeasday
+      email: tom@thesnail.org
+      gravatarUrl: //www.gravatar.com/avatar/9a4c135ce6e37b086dd365f790187f3c?s=200
+    - username: hypnosphi
+      email: talpa@yandex.r
+      gravatarUrl: //www.gravatar.com/avatar/2c5d901d88e08349ff0ac305fa2b8cfc?s=200
+    - username: igor-dv
+      email: davydkin.igor@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/ca088fbf1d620c20019a9a3205e6191c?s=200
+  tags:
+    - addon
+    - knobs
+    - ondevice
+    - react-native
+    - storybook
+    - test
+  npmUrl: 'https://www.npmjs.com/package/%40storybook%2Faddon-ondevice-knobs'
+  homepageUrl: 'https://github.com/storybookjs/react-native#readme'
+  repositoryUrl: 'https://github.com/storybookjs/react-native'
+  weeklyDownloads: 35164
+  monthlyDownloads: 138133
+  verified: official
+- name: storybook-addon-i18n
+  description: >-
+    Storybook I18n Addon can be used to change locale of the component inside
+    the preview in storybook
+  icon: ''
+  publisher:
+    username: trucknet
+    email: admin@trucknet.io
+    gravatarUrl: //www.gravatar.com/avatar/f25a36aa4dbeeca5d4ec10ded7000a13?s=200
+  authors:
+    - username: trucknet
+      email: admin@trucknet.io
+      gravatarUrl: //www.gravatar.com/avatar/f25a36aa4dbeeca5d4ec10ded7000a13?s=200
+  tags:
+    - addon
+    - i18n
+    - react
+    - storybook
+    - test
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-i18n'
+  homepageUrl: null
+  repositoryUrl: null
+  monthlyDownloads: 20142
+  weeklyDownloads: 5503
+  verified: null
+- name: storybook-addon-theme-playground
+  description: Select between themes and tweak them directly in a panel.
+  icon: ''
+  publisher:
+    username: jeslage
+    email: hello@johanneseslage.de
+    gravatarUrl: //www.gravatar.com/avatar/9a9c786a566b8d7ddf4e4b2854c220ef?s=200
+  authors:
+    - username: jeslage
+      email: hello@johanneseslage.de
+      gravatarUrl: //www.gravatar.com/avatar/9a9c786a566b8d7ddf4e4b2854c220ef?s=200
+  tags:
+    - storybook
+    - addon
+    - theme
+    - playground
+    - react
+    - typescript
+    - style
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-theme-playground'
+  homepageUrl: 'https://github.com/jeslage/storybook-addon-theme-playground#readme'
+  repositoryUrl: 'https://github.com/jeslage/storybook-addon-theme-playground'
+  weeklyDownloads: 892
+  monthlyDownloads: 4834
+  verified: null
+- name: '@storybook/addon-design-assets'
+  displayName: Design assets
+  description: Design asset preview for storybook
+  icon: ''
+  publisher:
+    username: shilman
+    email: michael@lab80.co
+    gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+  authors:
+    - username: ndelangen
+      email: ndelangen@me.com
+      gravatarUrl: //www.gravatar.com/avatar/537eed32d6998089dd5aa6a7e6ea2691?s=200
+    - username: shilman
+      email: michael@lab80.co
+      gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+    - username: domyen
+      email: dom@hichroma.com
+      gravatarUrl: //www.gravatar.com/avatar/a7c0aa21a99fd9b8e009d5b197221ada?s=200
+    - username: tmeasday
+      email: tom@thesnail.org
+      gravatarUrl: //www.gravatar.com/avatar/9a4c135ce6e37b086dd365f790187f3c?s=200
+    - username: hypnosphi
+      email: talpa@yandex.r
+      gravatarUrl: //www.gravatar.com/avatar/2c5d901d88e08349ff0ac305fa2b8cfc?s=200
+    - username: igor-dv
+      email: davydkin.igor@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/ca088fbf1d620c20019a9a3205e6191c?s=200
+  tags:
+    - addon
+    - assets
+    - design
+    - files
+    - parameter
+    - storybook
+    - viewer
+  npmUrl: 'https://www.npmjs.com/package/%40storybook%2Faddon-design-assets'
+  homepageUrl: 'https://github.com/storybookjs/storybook#readme'
+  repositoryUrl: 'https://github.com/storybookjs/storybook'
+  weeklyDownloads: 3934
+  monthlyDownloads: 23221
+  verified: official
+- name: storybook-facelift
+  displayName: Facelift
+  description: Theme control and UI enhancement for Storybook v6
+  icon: ''
+  publisher:
+    username: monkeyworks
+    email: igor.szyporyn@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/ce3818bdebb0be99e05ba071eb1c83c4?s=200
+  authors:
+    - username: monkeyworks
+      email: igor.szyporyn@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/ce3818bdebb0be99e05ba071eb1c83c4?s=200
+  tags:
+    - addon
+    - theming
+    - react
+    - storybook
+    - appearance
+  npmUrl: 'https://www.npmjs.com/package/storybook-facelift'
+  homepageUrl: 'https://github.com/IgorSzyporyn/storybook-facelift#readme'
+  repositoryUrl: 'https://github.com/IgorSzyporyn/storybook-facelift'
+  monthlyDownloads: 86
+  weeklyDownloads: 41
+  verified: null
+- name: storybook-addon-grommet
+  description: A storybook addon to select grommet themes
+  icon: ''
+  publisher:
+    username: atanasster
+    email: atanasster@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/9b9913091795a48655ec0b10dcd62a95?s=200
+  authors:
+    - username: atanasster
+      email: atanasster@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/9b9913091795a48655ec0b10dcd62a95?s=200
+  tags:
+    - addon
+    - grommet
+    - react
+    - storybook
+    - style
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-grommet'
+  homepageUrl: 'https://github.com/atanasster/storybook-addon-grommet/'
+  repositoryUrl: 'https://github.com/atanasster/storybook-addon-grommet'
+  weeklyDownloads: 47
+  monthlyDownloads: 286
+  verified: null
+- name: addon-storyshots-wdio
+  displayName: WebdriverIO
+  description: Image snappshots addition to StoryShots base on WebdriverIO
+  icon: ''
+  publisher:
+    username: andrcuns
+    email: andrejs.cunskis@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/8823caebdd4ba1fdfcce9b650a9a9937?s=200
+  authors:
+    - username: andrcuns
+      email: andrejs.cunskis@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/8823caebdd4ba1fdfcce9b650a9a9937?s=200
+  tags:
+    - addon
+    - storybook
+    - webdriverio
+    - test
+  npmUrl: 'https://www.npmjs.com/package/addon-storyshots-wdio'
+  homepageUrl: 'https://github.com/andrcuns/addon-storyshots-wdio'
+  repositoryUrl: 'https://github.com/andrcuns/addon-storyshots-wdio'
+  weeklyDownloads: 29
+  monthlyDownloads: 52
+  verified: null
+- name: storybook-rtl-addon
+  description: Toggle between ltr-rtl
+  icon: ''
+  publisher:
+    username: cyrus-d
+    email: mdoaie@yahoo.co.uk
+    gravatarUrl: //www.gravatar.com/avatar/bd97755f922e6915dbe5ce9a26930035?s=200
+  authors:
+    - username: cyrus-d
+      email: mdoaie@yahoo.co.uk
+      gravatarUrl: //www.gravatar.com/avatar/bd97755f922e6915dbe5ce9a26930035?s=200
+  tags:
+    - test
+  npmUrl: 'https://www.npmjs.com/package/storybook-rtl-addon'
+  homepageUrl: 'https://github.com/cyrus-d/storybook-rtl-addon#readme'
+  repositoryUrl: 'https://github.com/cyrus-d/storybook-rtl-addon'
+  monthlyDownloads: 648
+  weeklyDownloads: 212
+  verified: null
+- name: '@focus-reactive/storybook-addon-graphcms'
+  displayName: GraphCMS
+  description: Storybook addon for GraphQL and GraphCMS
+  icon: 'https://pbs.twimg.com/profile_images/1240607161639632896/65lOOz86_400x400.jpg'
+  publisher:
+    username: usulpro
+    email: regx@usul.su
+    gravatarUrl: //www.gravatar.com/avatar/f9b12bc1aa320b434dff7ae42be6c561?s=200
+  authors:
+    - username: alex_hramovich
+      email: alex@focusreactive.com
+      gravatarUrl: //www.gravatar.com/avatar/1abe1721c2b4aeb4a8cfa1ca0d61b0a3?s=200
+    - username: usulpro
+      email: regx@usul.su
+      gravatarUrl: //www.gravatar.com/avatar/f9b12bc1aa320b434dff7ae42be6c561?s=200
+    - username: operatino
+      email: robert@focusreactive.com
+      gravatarUrl: //www.gravatar.com/avatar/e3e235f02da7a61461558a0ce182e156?s=200
+    - username: pixelscommander
+      email: denis.radin@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/55c9248a6821d121d30073c7f8c0eb93?s=200
+  tags:
+    - graphql
+    - graphcms
+    - query
+    - queries
+    - search
+    - storybookjs
+    - storybook-addon
+    - addon
+    - devtools
+    - data-state
+  npmUrl: 'https://www.npmjs.com/package/%40focus-reactive%2Fstorybook-addon-graphcms'
+  homepageUrl: null
+  repositoryUrl: null
+  weeklyDownloads: 47
+  monthlyDownloads: 224
+  verified: null
+- name: '@component-controls/axe-plugin'
+  description: Axe ally testing plugin
+  icon: ''
+  publisher:
+    username: atanasster
+    email: atanasster@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/9b9913091795a48655ec0b10dcd62a95?s=200
+  authors:
+    - username: atanasster
+      email: atanasster@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/9b9913091795a48655ec0b10dcd62a95?s=200
+  tags:
+    - addon
+    - storybook
+    - test
+  npmUrl: 'https://www.npmjs.com/package/%40component-controls%2Faxe-plugin'
+  homepageUrl: 'https://github.com/ccontrols/component-controls'
+  repositoryUrl: 'https://github.com/ccontrols/component-controls'
+  monthlyDownloads: 2779
+  weeklyDownloads: 565
+  verified: null
+- name: '@etchteam/storybook-addon-status'
+  displayName: Status
+  description: Add component status to the storybook UI
+  icon: 'https://pbs.twimg.com/profile_images/998947662287130625/7Ff1hOdQ_400x400.jpg'
+  publisher:
+    username: gavmck
+    email: gavyn@etch.co
+    gravatarUrl: //www.gravatar.com/avatar/84b8104edfee7aae001ff7beee048c04?s=200
+  authors:
+    - username: dan-webb
+      email: mail@danwebb.co
+      gravatarUrl: //www.gravatar.com/avatar/7e96d49ecf769a10915f2dd47213e723?s=200
+    - username: gavmck
+      email: gavyn@etch.co
+      gravatarUrl: //www.gravatar.com/avatar/84b8104edfee7aae001ff7beee048c04?s=200
+    - username: joshthewanderer
+      email: josh@etch.co
+      gravatarUrl: //www.gravatar.com/avatar/aaf00f886754932f3033d4cfd430aa52?s=200
+  tags:
+    - storybook
+    - addon
+    - status
+    - react
+    - organize
+    - popular
+  npmUrl: 'https://www.npmjs.com/package/%40etchteam%2Fstorybook-addon-status'
+  homepageUrl: 'https://github.com/etchteam/storybook-addon-status#readme'
+  repositoryUrl: 'https://github.com/etchteam/storybook-addon-status'
+  weeklyDownloads: 317
+  monthlyDownloads: 1124
+  verified: null
+- name: storybook-addon-selector
+  displayName: Selector
+  description: A storybook addon to have selector for your preview
+  icon: ''
+  publisher:
+    username: sijav
+    email: sinajavaheri@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/236478d1d46714ba9e1decb910d22907?s=200
+  authors:
+    - username: sijav
+      email: sinajavaheri@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/236478d1d46714ba9e1decb910d22907?s=200
+  tags:
+    - appearance
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-selector'
+  homepageUrl: null
+  repositoryUrl: null
+  monthlyDownloads: 1868
+  weeklyDownloads: 338
+  verified: null
+- name: '@pluralsight/ps-design-system-storybook-addon-theme'
+  description: Storybook addon for Theme switching
+  icon: ''
+  publisher:
+    username: pluralsight
+    email: staff-ops@pluralsight.com
+    gravatarUrl: //www.gravatar.com/avatar/07486c001615d5e7a38ec02ab50ef23c?s=200
+  authors:
+    - username: jaketrent
+      email: trent.jake+npm@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/546428bc5a6ad40643d0f20eb28d832f?s=200
+    - username: danethurber
+      email: dane.thurber@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/f2bc1cf21709c8eda6a651844dcb6859?s=200
+    - username: pluralsight
+      email: staff-ops@pluralsight.com
+      gravatarUrl: //www.gravatar.com/avatar/07486c001615d5e7a38ec02ab50ef23c?s=200
+  tags:
+    - react-storybook
+    - style
+  npmUrl: >-
+    https://www.npmjs.com/package/%40pluralsight%2Fps-design-system-storybook-addon-theme
+  homepageUrl: 'https://github.com/pluralsight/design-system#readme'
+  repositoryUrl: 'https://github.com/pluralsight/design-system'
+  weeklyDownloads: 171
+  monthlyDownloads: 1289
+  verified: null
+- name: storybook-addon-mock
+  displayName: Mock
+  description: An addon for storybook to mock apis for the components
+  icon: ''
+  publisher:
+    username: nutboltu
+    email: farhad.yasir.nb@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/0ccf04445f2c35822719c14fc8de51cd?s=200
+  authors:
+    - username: nutboltu
+      email: farhad.yasir.nb@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/0ccf04445f2c35822719c14fc8de51cd?s=200
+  tags:
+    - storybook
+    - mock
+    - mock-api
+    - mock-fetch
+    - mock-data
+    - data-state
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-mock'
+  homepageUrl: null
+  repositoryUrl: null
+  weeklyDownloads: 1277
+  monthlyDownloads: 4469
+  verified: null
+- name: storybook-docs-toc
+  description: Table of contents addon for Storybook Docs
+  icon: ''
+  publisher:
+    username: frassinier
+    email: frassinier@talend.com
+    gravatarUrl: //www.gravatar.com/avatar/40ebe6c2274dbb01ea49a5b6849627fc?s=200
+  authors:
+    - username: frassinier
+      email: frassinier@talend.com
+      gravatarUrl: //www.gravatar.com/avatar/40ebe6c2274dbb01ea49a5b6849627fc?s=200
+  tags:
+    - organize
+  npmUrl: 'https://www.npmjs.com/package/storybook-docs-toc'
+  homepageUrl: null
+  repositoryUrl: null
+  weeklyDownloads: 46
+  monthlyDownloads: 195
+  verified: null
+- name: storybook-addon-performance
+  displayName: Performance
+  description: >-
+    A storybook addon to help better understand and debug performance for React
+    components
+  icon: 'https://pbs.twimg.com/profile_images/1118574145724399616/oIyuo8uz_400x400.png'
+  publisher:
+    username: alexreardon
+    email: alexreardon@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/f1ec56d088fe76ace84680f9de981f62?s=200
+  authors:
+    - username: alexreardon
+      email: alexreardon@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/f1ec56d088fe76ace84680f9de981f62?s=200
+  tags:
+    - addon
+    - storybook
+    - performance
+    - test
+    - popular
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-performance'
+  homepageUrl: 'https://github.com/atlassian-labs/storybook-addon-performance#readme'
+  repositoryUrl: 'https://github.com/atlassian-labs/storybook-addon-performance'
+  weeklyDownloads: 12222
+  monthlyDownloads: 45210
+  verified: null
+- name: '@ampproject/storybook-addon'
+  displayName: AMP
+  description: Storybook addon for building and testing AMP components
+  icon: 'https://pbs.twimg.com/profile_images/1226932750596182016/lpoN_WD6_400x400.jpg'
+  publisher:
+    username: alanorozco
+    email: orozcoalan@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/7d0e65f5bcdea03847c17e343285cbb8?s=200
+  authors:
+    - username: alanorozco
+      email: orozcoalan@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/7d0e65f5bcdea03847c17e343285cbb8?s=200
+    - username: patrickkettner
+      email: patrickkettner@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/3fada965c1f65adc0599bb9cd606524d?s=200
+    - username: dvoytenko
+      email: dvoytenko@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/840be30f13df211e2682ea992b3603c2?s=200
+    - username: rsimha
+      email: rsimha@amp.dev
+      gravatarUrl: //www.gravatar.com/avatar/6deeae842d98527dd241635caca95559?s=200
+    - username: caroqliu
+      email: carolineliu@google.com
+      gravatarUrl: //www.gravatar.com/avatar/7727c25ef51610f70875365bda090233?s=200
+    - username: samouri
+      email: jzfisgreat@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/97311fdf4e8b46fc687d0de4c2e9fa49?s=200
+    - username: erwinmombay
+      email: erwin.mombay@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/f9bf3f8bdeeb3bafa7a6205b93a48295?s=200
+    - username: fstanis
+      email: filip@stanis.me
+      gravatarUrl: //www.gravatar.com/avatar/da43f5b7c261d4743f0a8134969bafc8?s=200
+    - username: amp-toolbox
+      email: amp-toolbox-eng@google.com
+      gravatarUrl: //www.gravatar.com/avatar/6d349aa397029b88e69bb6f47d5bdc25?s=200
+    - username: choumx
+      email: willchou@google.com
+      gravatarUrl: //www.gravatar.com/avatar/991c551a2171bf7c8be7ce041d6c0599?s=200
+    - username: ampproject-admin
+      email: admin@ampproject.org
+      gravatarUrl: //www.gravatar.com/avatar/0615a418df6df170d0c76a0f93d6b8f9?s=200
+    - username: kristoferbaxter
+      email: kbax@me.com
+      gravatarUrl: //www.gravatar.com/avatar/69214799d9e3c93ee79d103b5ad2acfb?s=200
+    - username: jridgewell
+      email: justin+npm@ridgewell.name
+      gravatarUrl: //www.gravatar.com/avatar/826dc5d9fcfab89fee5219e73720adf7?s=200
+  tags:
+    - code
+    - popular
+  npmUrl: 'https://www.npmjs.com/package/%40ampproject%2Fstorybook-addon'
+  homepageUrl: 'https://github.com/ampproject/storybook-addon-amp'
+  repositoryUrl: 'https://github.com/ampproject/storybook-addon-amp'
+  weeklyDownloads: 125
+  monthlyDownloads: 546
+  verified: integrators
+  verifiedCreator: AMP
+- name: storybook-ruler-addon
+  displayName: Ruler
+  description: This addon add a vertical and horizontal ruler to your storybook.
+  icon: ''
+  publisher:
+    username: eagle_ben2000
+    email: ben.stoyer@ufirstgroup.ch
+    gravatarUrl: //www.gravatar.com/avatar/46e6225b4b484c12d34230ae65f7f69d?s=200
+  authors:
+    - username: eagle_ben2000
+      email: ben.stoyer@ufirstgroup.ch
+      gravatarUrl: //www.gravatar.com/avatar/46e6225b4b484c12d34230ae65f7f69d?s=200
+  tags:
+    - ruler
+    - storybook-ruler-addon
+    - storybook
+    - addon
+    - appearance
+  npmUrl: 'https://www.npmjs.com/package/storybook-ruler-addon'
+  homepageUrl: 'https://gitlab.com/ufirstgroup/storybook-ruler-addon#readme'
+  repositoryUrl: 'https://gitlab.com/ufirstgroup/storybook-ruler-addon'
+  weeklyDownloads: 327
+  monthlyDownloads: 608
+  verified: null
+- name: '@whitespace/storybook-addon-code'
+  description: A Storybook addon that extracts and displays syntax-highlighted source code
+  icon: 'https://avatars1.githubusercontent.com/u/10450088?s=400&u=b2a95469b7d2addf63366a93a17f0bd06f9894cc&v=4'
+  publisher:
+    username: jeanfredrik
+    email: jeanfredrik@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/8a2818abf782e6f797c8ccf5eb0bc6e7?s=200
+  authors:
+    - username: pbrotherton
+      email: paul.brotherton@whitespace.se
+      gravatarUrl: //www.gravatar.com/avatar/47c6c5b51c759734221c714a1330321d?s=200
+    - username: whitespace-se
+      email: code@whitespace.se
+      gravatarUrl: //www.gravatar.com/avatar/955d7b68d181e09c89138a1d75789d4e?s=200
+    - username: younus_abdalla
+      email: younus.abdalla@whitespace.se
+      gravatarUrl: //www.gravatar.com/avatar/ed3d59982b2cba177d34d0499d426b16?s=200
+    - username: cmiumiu
+      email: cynthia.dao@whitespace.se
+      gravatarUrl: //www.gravatar.com/avatar/2c3ec80a071393f82473a7a08807d9af?s=200
+    - username: linnws
+      email: linn.nilsson@whitespace.se
+      gravatarUrl: //www.gravatar.com/avatar/3c6dffe9a6d073aaa69058eda077f160?s=200
+    - username: jeanfredrik
+      email: jeanfredrik@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/8a2818abf782e6f797c8ccf5eb0bc6e7?s=200
+  tags:
+    - addon
+    - storybook
+    - code
+    - source
+  npmUrl: 'https://www.npmjs.com/package/%40whitespace%2Fstorybook-addon-code'
+  homepageUrl: 'https://github.com/whitespace-se/storybook-addon-code#readme'
+  repositoryUrl: 'https://github.com/whitespace-se/storybook-addon-code'
+  monthlyDownloads: 20
+  weeklyDownloads: 5
+  verified: null
+- name: '@ergosign/storybook-addon-pseudo-states-react'
+  displayName: Pseudo states for React
+  description: >-
+    Storybook decorator to enable automatic generation and displaying of CSS
+    pseudo states for components.
+  icon: 'https://avatars2.githubusercontent.com/u/12492523?s=200&v=4'
+  publisher:
+    username: philippone
+    email: philipp@schardt.dev
+    gravatarUrl: //www.gravatar.com/avatar/f4bab1e99bf2a4e162a6afed1f08520e?s=200
+  authors:
+    - username: grouchal
+      email: npm@albriggs.com
+      gravatarUrl: //www.gravatar.com/avatar/173b88c32e3b5dc8ddc7e2280586d7e4?s=200
+    - username: philippone
+      email: philipp@schardt.dev
+      gravatarUrl: //www.gravatar.com/avatar/f4bab1e99bf2a4e162a6afed1f08520e?s=200
+    - username: ergosign-dev
+      email: npm@ergosign.de
+      gravatarUrl: //www.gravatar.com/avatar/ba1d646546383f8ea905c51c43c16e28?s=200
+  tags:
+    - storybook
+    - storybookjs
+    - addon
+    - decorator
+    - pseudo states
+    - css
+    - react
+    - components
+    - tool
+    - ui
+    - user interface
+    - style
+  npmUrl: >-
+    https://www.npmjs.com/package/%40ergosign%2Fstorybook-addon-pseudo-states-react
+  homepageUrl: 'https://github.com/Ergosign/storybook-addon-pseudo-states#readme'
+  repositoryUrl: 'https://github.com/Ergosign/storybook-addon-pseudo-states'
+  weeklyDownloads: 351
+  monthlyDownloads: 1516
+  verified: null
+- name: storybook-addon-react-view
+  description: Storybook addon which makes your story source interactive
+  icon: ''
+  publisher:
+    username: jmarceli
+    email: grzegorowski@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/9f603b48405f66cc4f4341a2f2425caa?s=200
+  authors:
+    - username: jmarceli
+      email: grzegorowski@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/9f603b48405f66cc4f4341a2f2425caa?s=200
+  tags:
+    - addon
+    - react-view
+    - interactive source
+    - react
+    - storybook
+    - code
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-react-view'
+  homepageUrl: null
+  repositoryUrl: null
+  weeklyDownloads: 7
+  monthlyDownloads: 147
+  verified: null
+- name: storybook-amp
+  description: >-
+    Storybook addon that allows you to display AMP HTML components generated
+    with react in your stories
+  icon: ''
+  publisher:
+    username: prototypa
+    email: prototypearea.com@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/52b091985bbbd889b81c3fb3e1284fb4?s=200
+  authors:
+    - username: prototypa
+      email: prototypearea.com@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/52b091985bbbd889b81c3fb3e1284fb4?s=200
+  tags:
+    - storybook
+    - addon
+    - react
+    - amp
+    - amp-html
+    - code
+  npmUrl: 'https://www.npmjs.com/package/storybook-amp'
+  homepageUrl: 'https://github.com/prototypearea/storybook-amp'
+  repositoryUrl: 'https://github.com/prototypearea/storybook-amp'
+  weeklyDownloads: 514
+  monthlyDownloads: 1543
+  verified: null
+- name: '@ergosign/storybook-addon-pseudo-states-angular'
+  description: >-
+    Storybook decorator to enable automatic generation and displaying of CSS
+    pseudo states for components.
+  icon: 'https://avatars2.githubusercontent.com/u/12492523?s=200&v=4'
+  publisher:
+    username: philippone
+    email: philipp@schardt.dev
+    gravatarUrl: //www.gravatar.com/avatar/f4bab1e99bf2a4e162a6afed1f08520e?s=200
+  authors:
+    - username: grouchal
+      email: npm@albriggs.com
+      gravatarUrl: //www.gravatar.com/avatar/173b88c32e3b5dc8ddc7e2280586d7e4?s=200
+    - username: philippone
+      email: philipp@schardt.dev
+      gravatarUrl: //www.gravatar.com/avatar/f4bab1e99bf2a4e162a6afed1f08520e?s=200
+    - username: ergosign-dev
+      email: npm@ergosign.de
+      gravatarUrl: //www.gravatar.com/avatar/ba1d646546383f8ea905c51c43c16e28?s=200
+  tags:
+    - storybook
+    - storybookjs
+    - addon
+    - decorator
+    - pseudo states
+    - css
+    - angular
+    - components
+    - tool
+    - ui
+    - user interface
+    - style
+  npmUrl: >-
+    https://www.npmjs.com/package/%40ergosign%2Fstorybook-addon-pseudo-states-angular
+  homepageUrl: 'https://github.com/Ergosign/storybook-addon-pseudo-states#readme'
+  repositoryUrl: 'https://github.com/Ergosign/storybook-addon-pseudo-states'
+  weeklyDownloads: 132
+  monthlyDownloads: 779
+  verified: null
+- name: '@etchteam/storybook-addon-bugherd'
+  displayName: Bugherd
+  description: Add a Bugherd feedback button to the storybook UI
+  icon: ''
+  publisher:
+    username: gavmck
+    email: gavyn@etch.co
+    gravatarUrl: //www.gravatar.com/avatar/84b8104edfee7aae001ff7beee048c04?s=200
+  authors:
+    - username: dan-webb
+      email: mail@danwebb.co
+      gravatarUrl: //www.gravatar.com/avatar/7e96d49ecf769a10915f2dd47213e723?s=200
+    - username: gavmck
+      email: gavyn@etch.co
+      gravatarUrl: //www.gravatar.com/avatar/84b8104edfee7aae001ff7beee048c04?s=200
+    - username: joshthewanderer
+      email: josh@etch.co
+      gravatarUrl: //www.gravatar.com/avatar/aaf00f886754932f3033d4cfd430aa52?s=200
+  tags:
+    - storybook
+    - addon
+    - status
+    - react
+    - test
+  npmUrl: 'https://www.npmjs.com/package/%40etchteam%2Fstorybook-addon-bugherd'
+  homepageUrl: null
+  repositoryUrl: null
+  monthlyDownloads: 5
+  weeklyDownloads: 1
+  verified: null
+- name: '@ergosign/storybook-addon-pseudo-states-html'
+  description: >-
+    Storybook decorator to enable automatic generation and displaying of CSS
+    pseudo states for components.
+  icon: 'https://avatars2.githubusercontent.com/u/12492523?s=200&v=4'
+  publisher:
+    username: philippone
+    email: philipp@schardt.dev
+    gravatarUrl: //www.gravatar.com/avatar/f4bab1e99bf2a4e162a6afed1f08520e?s=200
+  authors:
+    - username: grouchal
+      email: npm@albriggs.com
+      gravatarUrl: //www.gravatar.com/avatar/173b88c32e3b5dc8ddc7e2280586d7e4?s=200
+    - username: philippone
+      email: philipp@schardt.dev
+      gravatarUrl: //www.gravatar.com/avatar/f4bab1e99bf2a4e162a6afed1f08520e?s=200
+    - username: ergosign-dev
+      email: npm@ergosign.de
+      gravatarUrl: //www.gravatar.com/avatar/ba1d646546383f8ea905c51c43c16e28?s=200
+  tags:
+    - storybook
+    - storybookjs
+    - addon
+    - decorator
+    - pseudo states
+    - css
+    - html
+    - components
+    - tool
+    - ui
+    - user interface
+    - style
+  npmUrl: >-
+    https://www.npmjs.com/package/%40ergosign%2Fstorybook-addon-pseudo-states-html
+  homepageUrl: 'https://github.com/Ergosign/storybook-addon-pseudo-states#readme'
+  repositoryUrl: 'https://github.com/Ergosign/storybook-addon-pseudo-states'
+  monthlyDownloads: 267
+  weeklyDownloads: 26
+  verified: null
+- name: '@storybook/addon-decorator'
+  description: decorator addon for storybook
+  icon: ''
+  publisher:
+    username: shilman
+    email: michael@lab80.co
+    gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+  authors:
+    - username: ndelangen
+      email: ndelangen@me.com
+      gravatarUrl: //www.gravatar.com/avatar/537eed32d6998089dd5aa6a7e6ea2691?s=200
+    - username: shilman
+      email: michael@lab80.co
+      gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+    - username: domyen
+      email: dom@hichroma.com
+      gravatarUrl: //www.gravatar.com/avatar/a7c0aa21a99fd9b8e009d5b197221ada?s=200
+    - username: tmeasday
+      email: tom@thesnail.org
+      gravatarUrl: //www.gravatar.com/avatar/9a4c135ce6e37b086dd365f790187f3c?s=200
+    - username: hypnosphi
+      email: talpa@yandex.r
+      gravatarUrl: //www.gravatar.com/avatar/2c5d901d88e08349ff0ac305fa2b8cfc?s=200
+    - username: igor-dv
+      email: davydkin.igor@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/ca088fbf1d620c20019a9a3205e6191c?s=200
+  tags:
+    - addon
+    - decorator
+    - devkit
+    - storybook
+    - code
+  npmUrl: 'https://www.npmjs.com/package/%40storybook%2Faddon-decorator'
+  homepageUrl: 'https://github.com/storybookjs/storybook/tree/master/addons/actions'
+  repositoryUrl: 'https://github.com/storybookjs/storybook'
+  weeklyDownloads: 925
+  monthlyDownloads: 6895
+  verified: official
+- name: '@storybook/addon-google-analytics'
+  displayName: Google Analytics
+  description: Storybook addon for google analytics
+  icon: 'https://pbs.twimg.com/profile_images/1021848775885651968/cU74ahCn_400x400.jpg'
+  publisher:
+    username: shilman
+    email: michael@lab80.co
+    gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+  authors:
+    - username: ndelangen
+      email: ndelangen@me.com
+      gravatarUrl: //www.gravatar.com/avatar/537eed32d6998089dd5aa6a7e6ea2691?s=200
+    - username: shilman
+      email: michael@lab80.co
+      gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+    - username: domyen
+      email: dom@hichroma.com
+      gravatarUrl: //www.gravatar.com/avatar/a7c0aa21a99fd9b8e009d5b197221ada?s=200
+    - username: tmeasday
+      email: tom@thesnail.org
+      gravatarUrl: //www.gravatar.com/avatar/9a4c135ce6e37b086dd365f790187f3c?s=200
+    - username: hypnosphi
+      email: talpa@yandex.r
+      gravatarUrl: //www.gravatar.com/avatar/2c5d901d88e08349ff0ac305fa2b8cfc?s=200
+    - username: igor-dv
+      email: davydkin.igor@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/ca088fbf1d620c20019a9a3205e6191c?s=200
+  tags:
+    - addon
+    - storybook
+    - code
+  npmUrl: 'https://www.npmjs.com/package/%40storybook%2Faddon-google-analytics'
+  homepageUrl: 'https://github.com/storybookjs/storybook/tree/master/addons/google-analytics'
+  repositoryUrl: 'https://github.com/storybookjs/storybook'
+  weeklyDownloads: 7521
+  monthlyDownloads: 31859
+  verified: official
+- name: '@storybook/addon-parameter'
+  description: parameter addon for storybook
+  icon: ''
+  publisher:
+    username: shilman
+    email: michael@lab80.co
+    gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+  authors:
+    - username: ndelangen
+      email: ndelangen@me.com
+      gravatarUrl: //www.gravatar.com/avatar/537eed32d6998089dd5aa6a7e6ea2691?s=200
+    - username: shilman
+      email: michael@lab80.co
+      gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+    - username: domyen
+      email: dom@hichroma.com
+      gravatarUrl: //www.gravatar.com/avatar/a7c0aa21a99fd9b8e009d5b197221ada?s=200
+    - username: tmeasday
+      email: tom@thesnail.org
+      gravatarUrl: //www.gravatar.com/avatar/9a4c135ce6e37b086dd365f790187f3c?s=200
+    - username: hypnosphi
+      email: talpa@yandex.r
+      gravatarUrl: //www.gravatar.com/avatar/2c5d901d88e08349ff0ac305fa2b8cfc?s=200
+    - username: igor-dv
+      email: davydkin.igor@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/ca088fbf1d620c20019a9a3205e6191c?s=200
+  tags:
+    - addon
+    - devkit
+    - parameter
+    - storybook
+    - code
+  npmUrl: 'https://www.npmjs.com/package/%40storybook%2Faddon-parameter'
+  homepageUrl: 'https://github.com/storybookjs/storybook#readme'
+  repositoryUrl: 'https://github.com/storybookjs/storybook'
+  monthlyDownloads: 6740
+  weeklyDownloads: 909
+  verified: official
+- name: '@storybook/addon-roundtrip'
+  description: roundtrip addon for storybook
+  icon: ''
+  publisher:
+    username: shilman
+    email: michael@lab80.co
+    gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+  authors:
+    - username: ndelangen
+      email: ndelangen@me.com
+      gravatarUrl: //www.gravatar.com/avatar/537eed32d6998089dd5aa6a7e6ea2691?s=200
+    - username: shilman
+      email: michael@lab80.co
+      gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+    - username: domyen
+      email: dom@hichroma.com
+      gravatarUrl: //www.gravatar.com/avatar/a7c0aa21a99fd9b8e009d5b197221ada?s=200
+    - username: tmeasday
+      email: tom@thesnail.org
+      gravatarUrl: //www.gravatar.com/avatar/9a4c135ce6e37b086dd365f790187f3c?s=200
+    - username: hypnosphi
+      email: talpa@yandex.r
+      gravatarUrl: //www.gravatar.com/avatar/2c5d901d88e08349ff0ac305fa2b8cfc?s=200
+    - username: igor-dv
+      email: davydkin.igor@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/ca088fbf1d620c20019a9a3205e6191c?s=200
+  tags:
+    - addon
+    - devkit
+    - roundtrip
+    - storybook
+    - code
+  npmUrl: 'https://www.npmjs.com/package/%40storybook%2Faddon-roundtrip'
+  homepageUrl: 'https://github.com/storybooks/storybook#readme'
+  repositoryUrl: 'https://github.com/storybooks/storybook'
+  weeklyDownloads: 969
+  monthlyDownloads: 6656
+  verified: official
+- name: storybook-darkmode-vue
+  description: Storybook addons supporting darkmode in vue app
+  icon: ''
+  publisher:
+    username: eddie0329
+    email: choi.jongsun0329@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/ef511ed042cd9b76cd2b5b63adc66f9a?s=200
+  authors:
+    - username: eddie0329
+      email: choi.jongsun0329@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/ef511ed042cd9b76cd2b5b63adc66f9a?s=200
+  tags:
+    - storybook darkmode
+    - storybook darkmode for vue
+    - storybook darkmode vue
+    - style
+  npmUrl: 'https://www.npmjs.com/package/storybook-darkmode-vue'
+  homepageUrl: 'https://github.com/eddie0329/storybook-darkmode-vue#readme'
+  repositoryUrl: 'https://github.com/eddie0329/storybook-darkmode-vue'
+  weeklyDownloads: 36
+  monthlyDownloads: 111
+  verified: null
+- name: '@urql/storybook-addon'
+  displayName: URQL
+  description: Make stories in Storybook with urql
+  icon: 'https://github.com/FormidableLabs/urql/raw/main/packages/site/src/assets/sidebar-badge.svg'
+  publisher:
+    username: philpl
+    email: phil@kitten.sh
+    gravatarUrl: //www.gravatar.com/avatar/7e03a6007d4a640b9818d9f6934e1b62?s=200
+  authors:
+    - username: jdecroock
+      email: decroockjovi@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/c345c9251166c45ebeb9ace4bbf921b9?s=200
+    - username: formidable-owner
+      email: admin@formidablelabs.com
+      gravatarUrl: //www.gravatar.com/avatar/919db598909b37604240cee63c997320?s=200
+    - username: andyrichardson
+      email: andy.john.richardson@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/b9534af76521f9544f5d6bea6207bf94?s=200
+    - username: philpl
+      email: phil@kitten.sh
+      gravatarUrl: //www.gravatar.com/avatar/7e03a6007d4a640b9818d9f6934e1b62?s=200
+  tags:
+    - addon
+    - storybook
+    - urql
+    - formidablelabs
+    - preact
+    - react
+    - data-state
+  npmUrl: 'https://www.npmjs.com/package/%40urql%2Fstorybook-addon'
+  homepageUrl: 'https://github.com/FormidableLabs/urql/tree/main/packages/storybook-addon'
+  repositoryUrl: 'https://github.com/FormidableLabs/urql'
+  monthlyDownloads: 636
+  weeklyDownloads: 134
+  verified: integrators
+  verifiedCreator: Formidable
+- name: '@ergosign/storybook-addon-pseudo-states-lit'
+  description: >-
+    Storybook decorator to enable automatic generation and displaying of CSS
+    pseudo states for components.
+  icon: 'https://avatars2.githubusercontent.com/u/12492523?s=200&v=4'
+  publisher:
+    username: philippone
+    email: philipp@schardt.dev
+    gravatarUrl: //www.gravatar.com/avatar/f4bab1e99bf2a4e162a6afed1f08520e?s=200
+  authors:
+    - username: grouchal
+      email: npm@albriggs.com
+      gravatarUrl: //www.gravatar.com/avatar/173b88c32e3b5dc8ddc7e2280586d7e4?s=200
+    - username: philippone
+      email: philipp@schardt.dev
+      gravatarUrl: //www.gravatar.com/avatar/f4bab1e99bf2a4e162a6afed1f08520e?s=200
+    - username: ergosign-dev
+      email: npm@ergosign.de
+      gravatarUrl: //www.gravatar.com/avatar/ba1d646546383f8ea905c51c43c16e28?s=200
+  tags:
+    - storybook
+    - storybookjs
+    - addon
+    - decorator
+    - pseudo states
+    - css
+    - lit-html
+    - components
+    - tool
+    - ui
+    - user interface
+    - style
+  npmUrl: >-
+    https://www.npmjs.com/package/%40ergosign%2Fstorybook-addon-pseudo-states-lit
+  homepageUrl: 'https://github.com/Ergosign/storybook-addon-pseudo-states#readme'
+  repositoryUrl: 'https://github.com/Ergosign/storybook-addon-pseudo-states'
+  monthlyDownloads: 141
+  weeklyDownloads: 38
+  verified: null
+- name: '@ergosign/storybook-addon-pseudo-states-vue'
+  description: >-
+    Storybook decorator to enable automatic generation and displaying of CSS
+    pseudo states for components.
+  icon: 'https://avatars2.githubusercontent.com/u/12492523?s=200&v=4'
+  publisher:
+    username: philippone
+    email: philipp@schardt.dev
+    gravatarUrl: //www.gravatar.com/avatar/f4bab1e99bf2a4e162a6afed1f08520e?s=200
+  authors:
+    - username: grouchal
+      email: npm@albriggs.com
+      gravatarUrl: //www.gravatar.com/avatar/173b88c32e3b5dc8ddc7e2280586d7e4?s=200
+    - username: philippone
+      email: philipp@schardt.dev
+      gravatarUrl: //www.gravatar.com/avatar/f4bab1e99bf2a4e162a6afed1f08520e?s=200
+    - username: ergosign-dev
+      email: npm@ergosign.de
+      gravatarUrl: //www.gravatar.com/avatar/ba1d646546383f8ea905c51c43c16e28?s=200
+  tags:
+    - storybook
+    - storybookjs
+    - addon
+    - decorator
+    - pseudo states
+    - css
+    - vue
+    - vuejs
+    - components
+    - tool
+    - ui
+    - user interface
+    - style
+  npmUrl: >-
+    https://www.npmjs.com/package/%40ergosign%2Fstorybook-addon-pseudo-states-vue
+  homepageUrl: 'https://github.com/Ergosign/storybook-addon-pseudo-states#readme'
+  repositoryUrl: 'https://github.com/Ergosign/storybook-addon-pseudo-states'
+  weeklyDownloads: 37
+  monthlyDownloads: 134
+  verified: null
+- name: '@storybook/addon-preview-wrapper'
+  description: preview wrapper addon for storybook
+  icon: ''
+  publisher:
+    username: shilman
+    email: michael@lab80.co
+    gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+  authors:
+    - username: ndelangen
+      email: ndelangen@me.com
+      gravatarUrl: //www.gravatar.com/avatar/537eed32d6998089dd5aa6a7e6ea2691?s=200
+    - username: shilman
+      email: michael@lab80.co
+      gravatarUrl: //www.gravatar.com/avatar/081cff21c8a5cecb08863f55fbf30b80?s=200
+    - username: domyen
+      email: dom@hichroma.com
+      gravatarUrl: //www.gravatar.com/avatar/a7c0aa21a99fd9b8e009d5b197221ada?s=200
+    - username: tmeasday
+      email: tom@thesnail.org
+      gravatarUrl: //www.gravatar.com/avatar/9a4c135ce6e37b086dd365f790187f3c?s=200
+    - username: hypnosphi
+      email: talpa@yandex.r
+      gravatarUrl: //www.gravatar.com/avatar/2c5d901d88e08349ff0ac305fa2b8cfc?s=200
+    - username: igor-dv
+      email: davydkin.igor@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/ca088fbf1d620c20019a9a3205e6191c?s=200
+  tags:
+    - addon
+    - devkit
+    - storybook
+    - types
+    - code
+  npmUrl: 'https://www.npmjs.com/package/%40storybook%2Faddon-preview-wrapper'
+  homepageUrl: 'https://github.com/storybookjs/storybook#readme'
+  repositoryUrl: 'https://github.com/storybookjs/storybook'
+  weeklyDownloads: 780
+  monthlyDownloads: 4927
+  verified: official
+- name: storybook-addon-angularjs
+  description: A simple addon to create Storybook stories with AngularJS components.
+  icon: ''
+  publisher:
+    username: titonobre
+    email: titonobre@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/1de91532466faeade5302937634760ae?s=200
+  authors:
+    - username: titonobre
+      email: titonobre@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/1de91532466faeade5302937634760ae?s=200
+  tags:
+    - storybook
+    - angularjs
+    - code
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-angularjs'
+  homepageUrl: 'https://github.com/titonobre/storybook-addon-angularjs#readme'
+  repositoryUrl: 'https://github.com/titonobre/storybook-addon-angularjs'
+  weeklyDownloads: 2025
+  monthlyDownloads: 9732
+  verified: null
+- name: '@taiga-ui/addon-doc'
+  description: >-
+    Taiga UI based library for developing documentation portals for Angular
+    libraries.
+  icon: ''
+  publisher:
+    username: marsibarsi
+    email: darragon-nn@yandex.ru
+    gravatarUrl: //www.gravatar.com/avatar/89a000d682946323d2ef6167274242b2?s=200
+  authors:
+    - username: vladimir.potekhin
+      email: vladimir.potekh@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/f6ff26214e5335b41b053e745f60a18e?s=200
+    - username: waterplea
+      email: alexander@inkin.ru
+      gravatarUrl: //www.gravatar.com/avatar/2a6d09d53c63ffa6535828f4ab7adfb6?s=200
+    - username: defenderbass
+      email: katsuba.igor@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/8f7dfc979adf6229b27246a45dc10c70?s=200
+    - username: marsibarsi
+      email: darragon-nn@yandex.ru
+      gravatarUrl: //www.gravatar.com/avatar/89a000d682946323d2ef6167274242b2?s=200
+  tags:
+    - angular
+    - component
+    - library
+    - docs
+    - documentation
+    - storybook
+    - organize
+  npmUrl: 'https://www.npmjs.com/package/%40taiga-ui%2Faddon-doc'
+  homepageUrl: 'https://github.com/TinkoffCreditSystems/taiga-ui'
+  repositoryUrl: 'https://github.com/TinkoffCreditSystems/taiga-ui'
+  weeklyDownloads: 112
+  monthlyDownloads: 151
+  verified: null
+- name: storybook-addon-sketch
+  displayName: Sketch download
+  description: Get the sketch files for you stories in storybook
+  icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Sketch_Logo.svg/200px-Sketch_Logo.svg.png'
+  publisher:
+    username: alisowski
+    email: lisowski54@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/ff725a631f869cdb78beeb003825bb40?s=200
+  authors:
+    - username: alisowski
+      email: lisowski54@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/ff725a631f869cdb78beeb003825bb40?s=200
+  tags:
+    - design
+    - popular
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-sketch'
+  homepageUrl: null
+  repositoryUrl: null
+  weeklyDownloads: 347
+  monthlyDownloads: 1102
+  verified: null
+- name: storybook-addon-multi-theme
+  description: Multiple themes simultaneously
+  icon: ''
+  publisher:
+    username: clbagrat
+    email: gobedashvilibagrat@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/48e2f2211f4393b77bdd0944e973e745?s=200
+  authors:
+    - username: clbagrat
+      email: gobedashvilibagrat@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/48e2f2211f4393b77bdd0944e973e745?s=200
+  tags:
+    - addon
+    - storybook
+    - theme
+    - style
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-multi-theme'
+  homepageUrl: null
+  repositoryUrl: null
+  monthlyDownloads: 292
+  weeklyDownloads: 9
+  verified: null
+- name: matts-storybook-addon-figma
+  description: Storybook addon for figma
+  icon: ''
+  publisher:
+    username: matt-shade
+    email: hellomattshade@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/c44a0720d2173ccf5e227cf058cca6e8?s=200
+  authors:
+    - username: matt-shade
+      email: hellomattshade@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/c44a0720d2173ccf5e227cf058cca6e8?s=200
+  tags:
+    - storybook
+    - addon
+    - figma
+    - design
+  npmUrl: 'https://www.npmjs.com/package/matts-storybook-addon-figma'
+  homepageUrl: 'https://github.com/cnbc/WEB.storybook-addon-figma#readme'
+  repositoryUrl: 'https://github.com/cnbc/WEB.storybook-addon-figma'
+  monthlyDownloads: 620
+  weeklyDownloads: 181
+  verified: null
+- name: storybook-addon-mdx-embed
+  displayName: MDX Embed
+  description: Embed 3rd party media content in MDX - no import required
+  icon: 'https://www.mdx-embed.com/mdx-embed-logo.svg'
+  publisher:
+    username: pauliescanlon
+    email: pauliescanlon@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/a177dca9628783406e94bad84b2b541a?s=200
+  authors:
+    - username: pauliescanlon
+      email: pauliescanlon@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/a177dca9628783406e94bad84b2b541a?s=200
+  tags:
+    - addon
+    - react
+    - storybook
+    - mdx
+    - mdx-embed
+    - organize
+    - popular
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-mdx-embed'
+  homepageUrl: 'https://github.com/PaulieScanlon/mdx-embed#readme'
+  repositoryUrl: 'https://github.com/PaulieScanlon/mdx-embed'
+  weeklyDownloads: 36
+  monthlyDownloads: 96
+  verified: null
+- name: storybook-addon-state
+  description: A storybook addon to keep state
+  icon: ''
+  publisher:
+    username: adierkens
+    email: adam@dierkens.com
+    gravatarUrl: //www.gravatar.com/avatar/3db19fe14eb91b67c73a75d86c37e13e?s=200
+  authors:
+    - username: adierkens
+      email: adam@dierkens.com
+      gravatarUrl: //www.gravatar.com/avatar/3db19fe14eb91b67c73a75d86c37e13e?s=200
+  tags:
+    - data-state
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-state'
+  homepageUrl: 'https://github.com/adierkens/storybook-addon-state#readme'
+  repositoryUrl: 'https://github.com/adierkens/storybook-addon-state'
+  monthlyDownloads: 8188
+  weeklyDownloads: 2080
+  verified: null
+- name: storybook-fixtures
+  description: >-
+    Add data fixtures to your components by using local data (JSON files or
+    hardcoded) or even URLs to fetch the data from.
+  icon: ''
+  publisher:
+    username: tyom
+    email: inspiro@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/e887687ef8b984727c0cd262a1fc9843?s=200
+  authors:
+    - username: tyom
+      email: inspiro@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/e887687ef8b984727c0cd262a1fc9843?s=200
+  tags:
+    - react
+    - vue
+    - react-storybook
+    - vue-storybook
+    - addon
+    - fixtures
+    - test
+  npmUrl: 'https://www.npmjs.com/package/storybook-fixtures'
+  homepageUrl: >-
+    https://github.com/tyom/storybook-addons/tree/master/packages/storybook-fixtures
+  repositoryUrl: 'https://github.com/tyom/storybook-addons'
+  weeklyDownloads: 203
+  monthlyDownloads: 628
+  verified: null
+- name: storybook-addon-emotion-theme
+  displayName: Emotion theme
+  description: storybook addon with emotion theme
+  icon: 'https://pbs.twimg.com/profile_images/1090383376731652096/fWr8fHp1_400x400.jpg'
+  publisher:
+    username: patrickgordon
+    email: pgord1@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/129352fb15374b8febd37cc99150c7c5?s=200
+  authors:
+    - username: patrickgordon
+      email: pgord1@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/129352fb15374b8febd37cc99150c7c5?s=200
+  tags:
+    - storybook
+    - emotion
+    - addon
+    - theme
+    - react
+    - typescript
+    - style
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-emotion-theme'
+  homepageUrl: >-
+    https://github.com/JumboInteractiveLimited/storybook-addon-emotion-theme#readme
+  repositoryUrl: 'https://github.com/JumboInteractiveLimited/storybook-addon-emotion-theme'
+  weeklyDownloads: 1460
+  monthlyDownloads: 7641
+  verified: null
+- name: '@buildit/storybook-addon-versions'
+  description: Navigate different versions of storybook style guides.
+  icon: ''
+  publisher:
+    username: panosvoudouris
+    email: panosvoudouris@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/68200fa3a9c8525880fb4f37d209208d?s=200
+  authors:
+    - username: james.nash
+      email: james.nash@wipro.com
+      gravatarUrl: //www.gravatar.com/avatar/c7c83a5a0b806f0f03c1208e8fa4e377?s=200
+    - username: buildit.dev
+      email: buildit.dev@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/1fe8f9825485e86aaf8d93c525e60325?s=200
+  tags:
+    - atomic-design
+    - react
+    - storybook
+    - storybook-addon
+    - storybook-addon-versions
+    - versions
+    - organize
+  npmUrl: 'https://www.npmjs.com/package/%40buildit%2Fstorybook-addon-versions'
+  homepageUrl: 'https://github.com/buildit/storybook-addon-versions#readme'
+  repositoryUrl: 'https://github.com/buildit/storybook-addon-versions'
+  weeklyDownloads: 11
+  monthlyDownloads: 61
+  verified: null
+- name: storybook-contrast
+  displayName: Contrast
+  description: Contrast storybook integration
+  icon: 'https://uploads-ssl.webflow.com/5f04ba70fef2f0170e90b439/5f0779faf0a4fd678d7c8062_Group%201237-min.png'
+  publisher:
+    username: contrastapp
+    email: jono@contrast.app
+    gravatarUrl: //www.gravatar.com/avatar/05772e7ecfb33e8b57cd41e9650c1879?s=200
+  authors:
+    - username: contrastapp
+      email: jono@contrast.app
+      gravatarUrl: //www.gravatar.com/avatar/05772e7ecfb33e8b57cd41e9650c1879?s=200
+  tags:
+    - storybook
+    - addon
+    - react
+    - flow
+    - editor
+    - live
+    - design
+    - figma
+    - popular
+  npmUrl: 'https://www.npmjs.com/package/storybook-contrast'
+  homepageUrl: 'https://github.com/toyboxsystems/storybook-contrast#readme'
+  repositoryUrl: 'https://github.com/toyboxsystems/storybook-contrast'
+  monthlyDownloads: 515
+  weeklyDownloads: 167
+  verified: integrators
+  verifiedCreator: Contrast
+- name: storybook-addon-themepack
+  description: Storybook addon for theme packs
+  icon: ''
+  publisher:
+    username: hhcz
+    email: cubisto@ya.ru
+    gravatarUrl: //www.gravatar.com/avatar/bff06c5f4b1be669e2c0241fd04a5c5b?s=200
+  authors:
+    - username: hhcz
+      email: cubisto@ya.ru
+      gravatarUrl: //www.gravatar.com/avatar/bff06c5f4b1be669e2c0241fd04a5c5b?s=200
+  tags:
+    - style
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-themepack'
+  homepageUrl: null
+  repositoryUrl: null
+  weeklyDownloads: 5
+  monthlyDownloads: 90
+  verified: null
+- name: storybook-addon-html-document
+  description: >-
+    A Storybook addon that extracts and displays compiled syntax-highlighted
+    HTML, and can load html documents.
+  icon: ''
+  publisher:
+    username: dengbupapapa
+    email: meizhanghao1989@qq.com
+    gravatarUrl: //www.gravatar.com/avatar/20bb721ac1639cd69cbddc48fc338783?s=200
+  authors:
+    - username: dengbupapapa
+      email: meizhanghao1989@qq.com
+      gravatarUrl: //www.gravatar.com/avatar/20bb721ac1639cd69cbddc48fc338783?s=200
+  tags:
+    - storybook
+    - addons
+    - html-document
+    - data-state
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-html-document'
+  homepageUrl: null
+  repositoryUrl: null
+  monthlyDownloads: 157
+  weeklyDownloads: 45
+  verified: null
+- name: '@tommyem/storybook-design-token'
+  displayName: Design Token
+  description: >-
+    The Storybook Design Token Addon allows you to generate design token
+    documentation from your stylesheets.
+  icon: ''
+  publisher:
+    username: tommyem
+    email: tommyholyshit@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/a5b858e7eaa82be679f0eff21f0df089?s=200
+  authors:
+    - username: tommyem
+      email: tommyholyshit@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/a5b858e7eaa82be679f0eff21f0df089?s=200
+  tags:
+    - storybook
+    - addon
+    - design system
+    - design pattern
+    - design tokens
+    - react
+    - angular
+    - vue
+    - style
+  npmUrl: 'https://www.npmjs.com/package/%40tommyem%2Fstorybook-design-token'
+  homepageUrl: 'https://github.com/TommyEm/storybook-design-token#readme'
+  repositoryUrl: 'https://github.com/TommyEm/storybook-design-token'
+  monthlyDownloads: 6
+  weeklyDownloads: 2
+  verified: null
+- name: storybook-react-context
+  description: >-
+    Manipulate React context inside Storybook. Read state and dispatch updates
+    from outside of React component.
+  icon: ''
+  publisher:
+    username: tyom
+    email: inspiro@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/e887687ef8b984727c0cd262a1fc9843?s=200
+  authors:
+    - username: tyom
+      email: inspiro@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/e887687ef8b984727c0cd262a1fc9843?s=200
+  tags:
+    - react
+    - react-storybook
+    - addon
+    - context
+    - data-state
+  npmUrl: 'https://www.npmjs.com/package/storybook-react-context'
+  homepageUrl: >-
+    https://github.com/tyom/storybook-addons/tree/master/packages/storybook-react-context
+  repositoryUrl: 'https://github.com/tyom/storybook-addons'
+  monthlyDownloads: 175
+  weeklyDownloads: 37
+  verified: null
+- name: storybook-addon-root-attribute
+  description: >-
+    Storybook Addon Root Attribute to switch html or body attribute at runtime
+    for your story
+  icon: ''
+  publisher:
+    username: leopard_me
+    email: leopard.not.a@gmail.com
+    gravatarUrl: //www.gravatar.com/avatar/2b18d4346ca1ec18cb310cd86a51a4e2?s=200
+  authors:
+    - username: leopard_me
+      email: leopard.not.a@gmail.com
+      gravatarUrl: //www.gravatar.com/avatar/2b18d4346ca1ec18cb310cd86a51a4e2?s=200
+  tags:
+    - storybook
+    - addon
+    - root
+    - attribute
+    - code
+  npmUrl: 'https://www.npmjs.com/package/storybook-addon-root-attribute'
+  homepageUrl: 'https://github.com/le0pard/storybook-addon-root-attribute#readme'
+  repositoryUrl: 'https://github.com/le0pard/storybook-addon-root-attribute'
+  weeklyDownloads: 867
+  monthlyDownloads: 4321
+  verified: null
+- name: creevey
+  displayName: Creevey
+  description: Cross-browser screenshot testing tool for Storybook with fancy UI Runner
+  icon: ''
+  publisher:
+    username: wkich
+    email: w@kich.dev
+    gravatarUrl: //www.gravatar.com/avatar/0378b6884c1ca846819f60c531e4d658?s=200
+  authors:
+    - username: wkich
+      email: w@kich.dev
+      gravatarUrl: //www.gravatar.com/avatar/0378b6884c1ca846819f60c531e4d658?s=200
+  tags:
+    - storybook
+    - addon
+    - test
+    - visual-testing
+  npmUrl: 'https://www.npmjs.com/package/creevey'
+  homepageUrl: 'https://github.com/wKich/creevey#readme'
+  repositoryUrl: 'https://github.com/wKich/creevey'
+  weeklyDownloads: 832
+  monthlyDownloads: 3328
+  verified: null

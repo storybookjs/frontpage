@@ -8,6 +8,7 @@ import { AddonsLearn } from './AddonsLearn';
 import { AddonsList } from './AddonsList';
 import { AddonsAside, AddonsAsideContainer } from './AddonsAsideLayout';
 import { AddonsSubheading } from './AddonsSubheading';
+import { toc as addonsToc } from '../../../content/addons/categories';
 
 const { breakpoint, spacing, color, pageMargins, typography } = styles;
 const { GlobalStyle } = global;
@@ -56,21 +57,52 @@ Sidebar.propTypes = {
   hideSidebar: PropTypes.bool.isRequired,
 };
 
-const ToCContent = styled.div`
-  /* Hide ToC on mobile, the primary navigation is search */
-  display: none;
+// TODO: use after preview release
+// const ToCContent = styled.div`
+//   /* Hide ToC on mobile, the primary navigation is search */
+//   display: none;
 
-  ${(props) =>
-    props.hideToC
-      ? `
-          display: none;
-        `
-      : `
-          @media (min-width: ${breakpoint * 1.333}px) {
-            display: block;
-            margin-top: 1.5rem;
-          }
-        `}
+//    ${(props) =>
+//     props.hideToC
+//       ? `
+//           display: none;
+//         `
+//       : `
+//           @media (min-width: ${breakpoint * 1.333}px) {
+//             display: block;
+//             margin-top: 1.5rem;
+//           }
+//         `}
+// `;
+
+// TODO: remove after preview release
+const ToCContent = styled.div`
+  margin-top: 1.5rem;
+
+  .hide-on-mobile {
+    display: none;
+  }
+
+  @media (min-width: ${breakpoint * 1.333}px) {
+    margin-top: 0.5rem;
+
+    .hide-on-mobile {
+      display: block;
+    }
+  }
+
+  @media (max-width: ${breakpoint * 1.333}px) {
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    li {
+      padding-top: 0;
+      margin-right: ${spacing.padding.medium}px;
+      margin-bottom: ${spacing.padding.small}px;
+    }
+  }
 `;
 
 ToCContent.propTypes = {
@@ -122,56 +154,7 @@ const CategoriesHeading = styled(AddonsSubheading)`
 
 export const SEARCH_INPUT_ID = 'addons-search';
 
-const sidebarItems = [
-  {
-    title: '⭐️  Popular',
-    path: '/addons/popular/',
-    type: 'link',
-    LinkWrapper: GatsbyLinkWrapper,
-  },
-  {
-    title: '🧩  Essentials',
-    path: '/addons/essentials/',
-    type: 'link',
-    LinkWrapper: GatsbyLinkWrapper,
-  },
-  {
-    title: '🛠  Code',
-    path: '/addons/code/',
-    type: 'link',
-    LinkWrapper: GatsbyLinkWrapper,
-  },
-  {
-    title: '⚡️  Data & state',
-    path: '/addons/data-state/',
-    type: 'link',
-    LinkWrapper: GatsbyLinkWrapper,
-  },
-  {
-    title: '💅  Style',
-    path: '/addons/style/',
-    type: 'link',
-    LinkWrapper: GatsbyLinkWrapper,
-  },
-  {
-    title: '🎨  Design',
-    path: '/addons/design/',
-    type: 'link',
-    LinkWrapper: GatsbyLinkWrapper,
-  },
-  {
-    title: '⚙️  Appearance',
-    path: '/addons/appearance/',
-    type: 'link',
-    LinkWrapper: GatsbyLinkWrapper,
-  },
-  {
-    title: '🗄  Organize',
-    path: '/addons/organize/',
-    type: 'link',
-    LinkWrapper: GatsbyLinkWrapper,
-  },
-];
+const sidebarItems = addonsToc.map((item) => ({ ...item, LinkWrapper: GatsbyLinkWrapper }));
 
 export const AddonsLayout = ({
   children,
@@ -190,7 +173,8 @@ export const AddonsLayout = ({
       <GlobalStyle />
       <Wrapper searchLayout={searching}>
         <Sidebar hideSidebar={hideSidebar} searchLayout={searching}>
-          <Searchbar>
+          {/* TODO: enable after preview release */}
+          {/* <Searchbar>
             <SearchInput
               searchLayout={searching}
               id={SEARCH_INPUT_ID}
@@ -207,14 +191,17 @@ export const AddonsLayout = ({
                 {pluralize('addons', searchResults.addons.length, true)}
               </SearchSummary>
             )}
-          </Searchbar>
+          </Searchbar> */}
           <TableOfContents currentPath={currentPath} items={sidebarItems}>
             {({ menu }) => (
               <ToCContent hideToC={searching}>
                 <CategoriesHeading>Categories</CategoriesHeading>
                 {menu}
-                <Divider />
-                <AddonsLearn />
+                {/* TODO: remove after preview release */}
+                <div className="hide-on-mobile">
+                  <Divider />
+                  <AddonsLearn />
+                </div>
               </ToCContent>
             )}
           </TableOfContents>

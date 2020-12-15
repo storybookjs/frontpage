@@ -47,25 +47,15 @@ const Image = styled.div`
   width: 48px;
   height: 48px;
   margin-right: ${spacing.padding.medium}px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-
-  img {
-    display: block;
-    max-width: 100px;
-    width: 100%;
-    height: auto;
-  }
+  background-image: url(${(props) => props.src});
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 
   ${(props) =>
     props.isLoading &&
     css`
       ${inlineGlow}
-      img {
-        display: none;
-      }
     `}
 
   @media (min-width: ${breakpoint * 1.5}px) {
@@ -82,6 +72,7 @@ const Image = styled.div`
 Image.propTypes = {
   orientation: PropTypes.oneOf(['vertical', 'horizontal']).isRequired,
   isLoading: PropTypes.bool.isRequired,
+  src: PropTypes.string.isRequired,
 };
 
 const Title = styled.div`
@@ -185,10 +176,11 @@ const Authors = styled(AvatarList)`
 `;
 
 export const AddonItem = ({
-  image,
-  title,
+  icon,
+  name,
+  displayName,
   description,
-  downloads,
+  weeklyDownloads,
   addonUrl,
   authors,
   orientation,
@@ -198,15 +190,16 @@ export const AddonItem = ({
   ...props
 }) => (
   <AddonItemWrapper orientation={orientation} {...props}>
-    {!isLoading && addonUrl && <ClickIntercept as={GatsbyLinkWrapper} to={addonUrl} />}
+    {/* TODO: as={GatsbyLinkWrapper} to={addonUrl} when detail page is enabled */}
+    {!isLoading && addonUrl && (
+      <ClickIntercept href={addonUrl} target="_blank" rel="noopener noreferrer" />
+    )}
     <AddonInfo orientation={orientation}>
-      <Image orientation={orientation} isLoading={isLoading}>
-        <img alt="" src={image} />
-      </Image>
+      <Image orientation={orientation} isLoading={isLoading} src={icon === '' ? customSVG : icon} />
       <div>
         <Title isLoading={isLoading}>
-          <span>{isLoading ? 'loading' : title}</span>
-          {['official', 'integrator'].includes(appearance) && (
+          <span>{isLoading ? 'loading' : displayName || name}</span>
+          {['official', 'integrators'].includes(appearance) && (
             <VerifiedBadge appearance={appearance} creator={verifiedCreator} />
           )}
         </Title>
@@ -222,7 +215,7 @@ export const AddonItem = ({
         count={
           isLoading
             ? undefined
-            : humanFormat(downloads, {
+            : humanFormat(weeklyDownloads, {
                 decimals: 1,
                 separator: '',
               })
@@ -236,13 +229,15 @@ export const AddonItem = ({
   </AddonItemWrapper>
 );
 
+/* eslint-disable react/require-default-props */
 AddonItem.propTypes = {
   orientation: PropTypes.oneOf(['vertical', 'horizontal']),
-  appearance: PropTypes.oneOf(['official', 'integrator', 'community']),
-  image: PropTypes.node,
-  title: PropTypes.node,
+  appearance: PropTypes.oneOf(['official', 'integrators', 'community']),
+  icon: PropTypes.node,
+  name: PropTypes.node,
+  displayName: PropTypes.node,
   description: PropTypes.node,
-  downloads: PropTypes.number,
+  weeklyDownloads: PropTypes.number,
   authors: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -258,12 +253,12 @@ AddonItem.propTypes = {
 AddonItem.defaultProps = {
   orientation: 'horizontal',
   appearance: 'community',
-  image: customSVG,
-  downloads: 0,
+  icon: '',
+  weeklyDownloads: 0,
   authors: [],
   isLoading: false,
   addonUrl: '#',
-  title: '',
+  name: '',
   description: '',
   verifiedCreator: '',
 };

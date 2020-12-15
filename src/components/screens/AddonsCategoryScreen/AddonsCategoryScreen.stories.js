@@ -8,13 +8,15 @@ export default {
 };
 
 export const Default = () => (
-  <AddonsCategoryScreen category="Data and state" addons={addonItemsData} />
+  <AddonsCategoryScreen pageContext={{ category: 'Data and state', addons: addonItemsData }} />
 );
 
 export const WithDesc = () => (
   <AddonsCategoryScreen
-    category="Essentials"
-    description="Pre-installed addons that power the core Storybook experience"
-    addons={addonItemsData}
+    pageContext={{
+      category: 'Essentials',
+      description: 'Pre-installed addons that power the core Storybook experience',
+      addons: addonItemsData,
+    }}
   />
 );

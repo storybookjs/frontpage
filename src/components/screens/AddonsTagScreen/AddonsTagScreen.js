@@ -20,7 +20,7 @@ const RelatedTagsList = styled(TagList)`
 `;
 
 export const AddonsTagScreen = ({ tag, addons, relatedTags }) => {
-  const { title, ogImage, urls = {} } = useSiteMetadata();
+  const { title, ogImageAddons, urls = {} } = useSiteMetadata();
   const { home } = urls;
 
   return (
@@ -29,7 +29,7 @@ export const AddonsTagScreen = ({ tag, addons, relatedTags }) => {
         title={`Addons | ${title}`}
         desc="Addons enable advanced functionality and unlock new workflows. Contributed by core maintainers and the amazing developer community."
         url={`${home}/addons`}
-        image={ogImage}
+        image={ogImageAddons}
       />
       <AddonsLayout hideSidebar>
         <Breadcrumb to={`${home}/addons`}>View full catalog</Breadcrumb>

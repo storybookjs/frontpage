@@ -8,6 +8,7 @@ const useSiteMetadata = () => {
           title
           description
           ogImage
+          ogImageAddons
           googleSiteVerification
           latestVersion
           contributorCount
@@ -24,6 +25,11 @@ const useSiteMetadata = () => {
             }
           }
           urls {
+            addonsLearnLinks {
+              title
+              icon
+              to
+            }
             gitHubOrg
             homepageUrl
             docsUrl

@@ -17,7 +17,7 @@ export const AddonsList = ({ addonItems, isLoading, ...props }) => {
   const items = useMemo(() => addonItems.slice(0, visibleCount), [visibleCount, addonItems]);
 
   const loadMore = () => {
-    setVisibleCount(Math.min(visibleCount + 6, addonItems.length - 1));
+    setVisibleCount(Math.min(visibleCount + 6, addonItems.length));
   };
 
   return (
@@ -30,7 +30,7 @@ export const AddonsList = ({ addonItems, isLoading, ...props }) => {
       {items.map((addon) => (
         <AddonItem key={addon.id} orientation="horizontal" {...addon} />
       ))}
-      {addonItems.length > 6 && (
+      {addonItems.length > 6 && visibleCount < addonItems.length && (
         <Button tertiary onClick={loadMore}>
           Load more addons
         </Button>

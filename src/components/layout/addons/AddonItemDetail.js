@@ -34,25 +34,15 @@ const Image = styled.div`
   flex: none;
   width: 80px;
   height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-
-  img {
-    display: block;
-    max-width: 100px;
-    width: 100%;
-    height: auto;
-  }
+  background-image: url(${(props) => props.src});
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 
   ${(props) =>
     props.isLoading &&
     css`
       ${inlineGlow}
-      img {
-        display: none;
-      }
     `}
 
   @media (min-width: ${1.5 * breakpoint}px) {
@@ -61,6 +51,7 @@ const Image = styled.div`
 `;
 Image.propTypes = {
   isLoading: PropTypes.bool.isRequired,
+  src: PropTypes.string.isRequired,
 };
 
 const Title = styled.div`
@@ -203,10 +194,11 @@ const MadeByStorybook = styled(StorybookBadge)`
 `;
 
 export const AddonItemDetail = ({
-  image,
-  title,
+  icon,
+  name,
+  displayName,
   description,
-  downloads,
+  weeklyDownloads,
   addonUrl,
   appearance,
   status,
@@ -218,13 +210,11 @@ export const AddonItemDetail = ({
 }) => (
   <AddonItemWrapper {...props}>
     <AddonInfo>
-      <Image isLoading={isLoading}>
-        <img alt="" src={image} />
-      </Image>
+      <Image isLoading={isLoading} src={icon === '' ? customSVG : icon} />
       <div>
         <Title isLoading={isLoading}>
-          <span>{isLoading ? 'loading' : title}</span>
-          {['official', 'integrator'].includes(appearance) && (
+          <span>{isLoading ? 'loading' : displayName || name}</span>
+          {['official', 'integrators'].includes(appearance) && (
             <VerifiedBadge appearance={appearance} creator={verifiedCreator} />
           )}
           {status === 'deprecated' && <DeprecatedBadge>Deprecated</DeprecatedBadge>}
@@ -256,7 +246,7 @@ export const AddonItemDetail = ({
         count={
           isLoading
             ? undefined
-            : humanFormat(downloads, {
+            : humanFormat(weeklyDownloads, {
                 decimals: 1,
                 separator: '',
               })
@@ -270,13 +260,15 @@ export const AddonItemDetail = ({
   </AddonItemWrapper>
 );
 
+/* eslint-disable react/require-default-props */
 AddonItemDetail.propTypes = {
-  appearance: PropTypes.oneOf(['official', 'integrator', 'community']),
+  appearance: PropTypes.oneOf(['official', 'integrators', 'community']),
   status: PropTypes.oneOf(['default', 'essential', 'deprecated']),
-  image: PropTypes.node,
-  title: PropTypes.node,
+  icon: PropTypes.node,
+  name: PropTypes.node,
+  displayName: PropTypes.node,
   description: PropTypes.node,
-  downloads: PropTypes.number,
+  weeklyDownloads: PropTypes.number,
   addonUrl: PropTypes.string,
   isLoading: PropTypes.bool,
   verifiedCreator: PropTypes.string,
@@ -290,11 +282,11 @@ AddonItemDetail.propTypes = {
 AddonItemDetail.defaultProps = {
   appearance: 'community',
   status: 'default',
-  image: customSVG,
-  downloads: 0,
+  icon: '',
+  weeklyDownloads: 0,
   isLoading: false,
   addonUrl: '#',
-  title: '',
+  name: '',
   description: '',
   verifiedCreator: '',
 };

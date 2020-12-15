@@ -67,37 +67,37 @@ const Template = (args) => (
 export const OfficialStorybook = Template.bind({});
 OfficialStorybook.args = {
   appearance: 'official',
-  image: ControlsSVG,
-  title: 'Controls',
+  icon: ControlsSVG,
+  name: 'Controls',
   description: 'Interact with component inputs dynamically in the Storybook UI',
-  downloads: 17143,
+  weeklyDownloads: 17143,
 };
 
 export const OfficialIntegrator = Template.bind({});
 OfficialIntegrator.args = {
-  appearance: 'integrator',
-  image: ContrastPNG,
-  title: 'Contrast',
+  appearance: 'integrators',
+  icon: ContrastPNG,
+  name: 'Contrast',
   description: 'Embed Contrast handoff tool in a storybook panel',
-  downloads: 17143,
+  weeklyDownloads: 17143,
   verifiedCreator: 'Contrast',
 };
 
 export const Community = Template.bind({});
 Community.args = {
-  image: ViewportSVG,
+  icon: ViewportSVG,
   appearance: 'community',
-  title: 'Mobile UX Hints',
+  name: 'Mobile UX Hints',
   description:
     'Suggestions on how to tweak the HTML and CSS of your components to be more mobile-friendly.',
-  downloads: 12253,
+  weeklyDownloads: 12253,
 };
 
 export const WithoutImage = Template.bind({});
 WithoutImage.args = {
-  title: 'Controls',
+  name: 'Controls',
   description: 'Interact with component inputs dynamically in the Storybook UI',
-  downloads: 238,
+  weeklyDownloads: 238,
 };
 
 export const Loading = Template.bind({});
@@ -113,19 +113,19 @@ const StatsWrapper = styled.div`
 
 export const StatVariations = (args) => (
   <StatsWrapper>
-    <AddonItem {...args} downloads={104} />
-    <AddonItem {...args} downloads={726} />
-    <AddonItem {...args} downloads={5026} />
-    <AddonItem {...args} downloads={17143} />
-    <AddonItem {...args} downloads={171043} />
-    <AddonItem {...args} downloads={3871043} />
+    <AddonItem {...args} weeklyDownloads={104} />
+    <AddonItem {...args} weeklyDownloads={726} />
+    <AddonItem {...args} weeklyDownloads={5026} />
+    <AddonItem {...args} weeklyDownloads={17143} />
+    <AddonItem {...args} weeklyDownloads={171043} />
+    <AddonItem {...args} weeklyDownloads={3871043} />
   </StatsWrapper>
 );
 StatVariations.args = {
   orientation: 'horizontal',
   appearance: 'official',
-  image: ControlsSVG,
-  title: 'Controls',
+  icon: ControlsSVG,
+  name: 'Controls',
   description: 'Interact with component inputs dynamically in the Storybook UI',
   authors,
   addonUrl: '/addons/controls',
