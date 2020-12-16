@@ -7,6 +7,7 @@ const useSiteMetadata = () => {
         siteMetadata {
           title
           description
+          siteUrl
           ogImage
           ogImageAddons
           googleSiteVerification
