@@ -181,21 +181,24 @@ export const AddonItem = ({
   displayName,
   description,
   weeklyDownloads,
-  addonUrl,
   authors,
   orientation,
   appearance,
   isLoading,
   verifiedCreator,
+  from,
   ...props
 }) => (
   <AddonItemWrapper orientation={orientation} {...props}>
-    {/* TODO: as={GatsbyLinkWrapper} to={addonUrl} when detail page is enabled */}
-    {!isLoading && addonUrl && (
-      <ClickIntercept href={addonUrl} target="_blank" rel="noopener noreferrer" />
+    {!isLoading && (
+      <ClickIntercept state={{ from }} as={GatsbyLinkWrapper} to={`/addons/${name}`} />
     )}
     <AddonInfo orientation={orientation}>
-      <Image orientation={orientation} isLoading={isLoading} src={icon === '' ? customSVG : icon} />
+      <Image
+        orientation={orientation}
+        isLoading={isLoading}
+        src={icon && icon !== '' ? icon : customSVG}
+      />
       <div>
         <Title isLoading={isLoading}>
           <span>{isLoading ? 'loading' : displayName || name}</span>
@@ -233,10 +236,10 @@ export const AddonItem = ({
 AddonItem.propTypes = {
   orientation: PropTypes.oneOf(['vertical', 'horizontal']),
   appearance: PropTypes.oneOf(['official', 'integrators', 'community']),
-  icon: PropTypes.node,
-  name: PropTypes.node,
-  displayName: PropTypes.node,
-  description: PropTypes.node,
+  icon: PropTypes.string,
+  name: PropTypes.string,
+  displayName: PropTypes.string,
+  description: PropTypes.string,
   weeklyDownloads: PropTypes.number,
   authors: PropTypes.arrayOf(
     PropTypes.shape({
@@ -245,19 +248,20 @@ AddonItem.propTypes = {
       avatarUrl: PropTypes.string,
     })
   ),
-  addonUrl: PropTypes.string,
   isLoading: PropTypes.bool,
   verifiedCreator: PropTypes.string,
+  from: PropTypes.shape({
+    title: PropTypes.string,
+    link: PropTypes.string,
+  }),
 };
 
 AddonItem.defaultProps = {
   orientation: 'horizontal',
   appearance: 'community',
-  icon: '',
   weeklyDownloads: 0,
   authors: [],
   isLoading: false,
-  addonUrl: '#',
   name: '',
   description: '',
   verifiedCreator: '',

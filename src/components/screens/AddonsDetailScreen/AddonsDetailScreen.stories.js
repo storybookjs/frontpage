@@ -8,7 +8,7 @@ export default {
   component: AddonsDetailScreen,
 };
 
-const readMe = `<h1 id="-storybook-mobile">📱storybook-mobile</h1>
+const readme = `<h1 id="-storybook-mobile">📱storybook-mobile</h1>
 <p><a href="https://badge.fury.io/js/storybook-mobile"><img src="https://badge.fury.io/js/storybook-mobile.svg" alt="npm version"></a></p>
 <p>This addon offers suggestions on how you can improve the HTML, CSS and UX of your components to be more mobile-friendly.</p>
 <p><a href="https://storybook-mobile.netlify.app/?path=/story/signup-form--default" alt="screenshot of storybook-mobile addon">
@@ -73,40 +73,50 @@ const tags = [
   },
 ];
 
-const supportedFrameworks = [
+const compatibility = [
+  { name: 'react', displayName: 'React', icon: '/frameworks/logo-react.svg' },
+  { name: 'vue', displayName: 'Vue', icon: '/frameworks/logo-vue.svg' },
+  { name: 'angular', displayName: 'Angular', icon: '/frameworks/logo-angular.svg' },
   {
-    link: '/react',
-    name: '⚛️ React',
+    name: 'web-components',
+    displayName: 'Web Components',
+    icon: '/frameworks/logo-web-components.svg',
   },
+  { name: 'ember', displayName: 'Ember', icon: '/frameworks/logo-ember.svg' },
+  { name: 'html', displayName: 'HTML', icon: '/frameworks/logo-html.svg' },
+  { name: 'mithril', displayName: 'Mithril', icon: '/frameworks/logo-mithril.svg' },
+  { name: 'marko', displayName: 'Marko', icon: '/frameworks/logo-marko.svg' },
+  { name: 'svelte', displayName: 'Svelte', icon: '/frameworks/logo-svelte.svg' },
+  { name: 'riot', displayName: 'Riot', icon: '/frameworks/logo-riot.svg' },
+  { name: 'preact', displayName: 'Preact', icon: '/frameworks/logo-preact.svg' },
+  { name: 'rax', displayName: 'Rax', icon: '/frameworks/logo-rax.png' },
+  { name: 'aurelia', displayName: 'Aurelia', icon: '/frameworks/logo-aurelia.svg' },
+  { name: 'marionette', displayName: 'Marionette', icon: '/frameworks/logo-marionette.svg' },
   {
-    link: '/vue',
-    name: ' 🔽 Vue',
-  },
-  {
-    link: '/angular',
-    name: '🔺 Angular',
+    name: 'react-native',
+    displayName: 'React native',
+    icon: '/frameworks/logo-react-native.svg',
   },
 ];
 
 const Template = ({ addon, ...args }) => (
   <AddonsDetailScreen
-    addon={{
+    pageContext={{
       appearance: 'community',
-      name: 'Mobile UX lint',
+      name: 'storybook-mobile',
+      displayName: 'Mobile UX lint',
       description: 'Interact with component inputs dynamically in the Storybook UI',
       weeklyDownloads: 17143,
-      updated: {
-        date: '2020-11-05T05:00:00.000Z',
-        url: 'https://npmjs.org/',
-      },
-      packageName: '@storybook/addon-controls',
-      addonUrl: '/addons/controls',
+      publishedAt: 1604552400000,
+      repositoryUrl: 'http://github.com/',
+      homepageUrl: 'http://github.com/',
+      authors,
+      compatibility,
+      tags,
+      readme,
       ...addon,
     }}
-    authors={authors}
-    supportedFrameworks={supportedFrameworks}
-    tags={tags}
-    readMe={{ content: readMe, url: 'https://github.com/' }}
+    location={{}}
     {...args}
   />
 );
@@ -117,7 +127,8 @@ export const Official = Template.bind({});
 Official.args = {
   addon: {
     icon: ViewportSVG,
-    name: 'Viewport',
+    displayName: 'Viewport',
+    name: '@storybook/addon-viewport',
     description:
       'The Viewport toolbar item allows you to adjust the dimensions of the iframe your story is rendered in. This makes it easy to develop responsive UIs.',
     weeklyDownloads: 428,
@@ -129,7 +140,8 @@ export const Essential = Template.bind({});
 Essential.args = {
   addon: {
     icon: ControlsSVG,
-    name: 'Controls',
+    name: '@storybook/addon-controls',
+    displayName: 'Controls',
     description: 'Interact with component inputs dynamically in the Storybook UI',
     weeklyDownloads: 83474,
     status: 'essential',
@@ -137,16 +149,37 @@ Essential.args = {
   },
 };
 
+export const MoreThanFiveAuthors = Template.bind({});
+MoreThanFiveAuthors.args = {
+  addon: {
+    authors: [...authors, ...authors.map((a, idx) => ({ ...a, id: a.id + idx }))],
+  },
+};
+
+export const WithFromBreadcrumb = Template.bind({});
+WithFromBreadcrumb.args = {
+  location: {
+    state: {
+      from: {
+        link: '/addons/data-state',
+        title: 'Data & State',
+      },
+    },
+  },
+};
+
 export const MissingInfo = Template.bind({});
 MissingInfo.args = {
   addon: {
     icon: ViewportSVG,
-    name: 'Viewport',
+    displayName: 'Viewport',
+    name: '@storybook/addon-viewport',
     description:
       'The Viewport toolbar item allows you to adjust the dimensions of the iframe your story is rendered in. This makes it easy to develop responsive UIs.',
     weeklyDownloads: 428,
     appearance: 'official',
+    compatibility: [],
+    tags: [],
+    readme: null,
   },
-  supportedFrameworks: [],
-  tags: [],
 };

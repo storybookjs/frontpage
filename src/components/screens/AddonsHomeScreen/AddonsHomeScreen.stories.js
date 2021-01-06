@@ -9,7 +9,7 @@ export default {
 
 export const Default = () => (
   <AddonsHomeScreen
-    popularAddons={addonItemsData.slice(0, 9)}
+    popularAddons={{ MONTH: addonItemsData.slice(0, 9), YEAR: addonItemsData.slice(-9) }}
     trendingAddons={addonItemsData.slice(-9)}
   />
 );

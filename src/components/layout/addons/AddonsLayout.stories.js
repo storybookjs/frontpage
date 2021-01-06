@@ -1,7 +1,7 @@
 import React from 'react';
 import seedrandom from 'seedrandom';
 import { AddonsLayout } from './AddonsLayout';
-import { addonItemsData } from './AddonsGrid.stories';
+import { UseAddonsSearchDecorator } from '../../../../.storybook/use-addons-search.mock';
 
 seedrandom('chromatic testing', { global: true });
 
@@ -9,6 +9,7 @@ export default {
   title: 'Frontpage|layout/addons/AddonsLayout',
   component: AddonsLayout,
   excludeStories: ['data'],
+  decorators: [UseAddonsSearchDecorator],
 };
 
 export const Base = () => <AddonsLayout currentPath="/addons/essentials/">children</AddonsLayout>;
@@ -20,48 +21,29 @@ export const HideTableOfContents = () => (
 );
 
 export const SearchLoading = () => (
-  <AddonsLayout
-    currentPath="/addons/essentials/"
-    searchQuery="notes"
-    searchResults={{ addons: undefined, relatedTags: [] }}
-  >
-    children
-  </AddonsLayout>
+  <AddonsLayout currentPath="/addons/essentials/">children</AddonsLayout>
 );
 
-const relatedTags = [
-  {
-    link: '/notes',
-    name: '🗒 Notes',
-  },
-  {
-    link: '/storybook',
-    name: '📕 Storybook',
-  },
-  {
-    link: '/qa',
-    name: '🕵️‍♀️ QA',
-  },
-  {
-    link: '/prototype',
-    name: '✨ Prototype',
-  },
-  {
-    link: '/testing',
-    name: '✅ Testing',
-  },
-  {
-    link: '/deploy',
-    name: '☁️ Deploy',
-  },
-];
+SearchLoading.parameters = {
+  isSearching: true,
+  isSearchLoading: true,
+};
 
 export const SearchResults = () => (
-  <AddonsLayout
-    currentPath="/addons/essentials/"
-    searchQuery="notes"
-    searchResults={{ addons: addonItemsData, relatedTags }}
-  >
-    children
-  </AddonsLayout>
+  <AddonsLayout currentPath="/addons/essentials/">children</AddonsLayout>
 );
+
+SearchResults.parameters = {
+  isSearching: true,
+  isSearchLoading: false,
+};
+
+export const SearchNoResults = () => (
+  <AddonsLayout currentPath="/addons/essentials/">children</AddonsLayout>
+);
+
+SearchNoResults.parameters = {
+  isSearching: true,
+  isSearchLoading: false,
+  noResults: true,
+};

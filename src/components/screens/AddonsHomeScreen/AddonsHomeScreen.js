@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { ButtonToggle, styles } from '@storybook/design-system';
 import useSiteMetadata from '../../lib/useSiteMetadata';
@@ -46,7 +47,10 @@ export const AddonsHomeScreen = ({ popularAddons, trendingAddons }) => {
   const { title, ogImageAddons, urls = {} } = useSiteMetadata();
   const { home } = urls;
   const [timePeriod, setTimePeriod] = useState('MONTH');
-  const sortedPopularAddons = useMemo(() => sortAddons(popularAddons), [popularAddons]);
+  const sortedPopularAddons = useMemo(() => sortAddons(popularAddons[timePeriod]), [
+    popularAddons,
+    timePeriod,
+  ]);
 
   return (
     <>
@@ -62,25 +66,29 @@ export const AddonsHomeScreen = ({ popularAddons, trendingAddons }) => {
         <PopularAddons
           title="Popular"
           addonItems={sortedPopularAddons}
-          // TODO: re-enable preview release
-          // actions={
-          //   <ButtonToggle
-          //     selectedIndex={timePeriod === 'MONTH' ? 0 : 1}
-          //     onSelectIndex={() => {
-          //       setTimePeriod(timePeriod === 'MONTH' ? 'YEAR' : 'MONTH');
-          //     }}
-          //     titles={[
-          //       { title: 'Month', tooltip: 'Month' },
-          //       { title: 'Year', tooltip: 'Year' },
-          //     ]}
-          //   />
-          // }
+          actions={
+            <ButtonToggle
+              selectedIndex={timePeriod === 'MONTH' ? 0 : 1}
+              onSelectIndex={() => {
+                setTimePeriod(timePeriod === 'MONTH' ? 'YEAR' : 'MONTH');
+              }}
+              titles={[
+                { title: 'Month', tooltip: 'Month' },
+                { title: 'Year', tooltip: 'Year' },
+              ]}
+            />
+          }
         />
-        {/* TODO: re-enable preview release */}
-        {/* <AddonsGrid title="Trending" addonItems={trendingAddons} /> */}
+        <AddonsGrid title="Trending" addonItems={trendingAddons} />
       </AddonsLayout>
     </>
   );
 };
 
-AddonsHomeScreen.propTypes = {};
+AddonsHomeScreen.propTypes = {
+  popularAddons: PropTypes.shape({
+    MONTH: AddonsGrid.propTypes.addonItems,
+    YEAR: AddonsGrid.propTypes.addonItems,
+  }).isRequired,
+  trendingAddons: AddonsGrid.propTypes.addonItems.isRequired,
+};

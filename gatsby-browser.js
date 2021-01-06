@@ -1,5 +1,5 @@
 /* eslint-env browser */
-exports.onRouteUpdate = ({ location }) => {
+exports.onRouteUpdate = ({ location, prevLocation }) => {
   if (
     location.pathname.match(/iframe/) ||
     !window.analytics ||
