@@ -60,6 +60,13 @@ module.exports = {
       )
     );
 
+    config.resolve.alias['../../../hooks/use-addons-search'] = require.resolve(
+      './use-addons-search.mock.js'
+    );
+    config.resolve.alias['../../../hooks/use-addons-related-tags'] = require.resolve(
+      './use-addons-related-tags.mock.js'
+    );
+
     config.plugins.unshift(
       new webpack.DefinePlugin({
         'process.env.GATSBY_ALGOLIA_API_KEY': JSON.stringify(process.env.GATSBY_ALGOLIA_API_KEY),

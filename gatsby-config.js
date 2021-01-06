@@ -8,15 +8,28 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata,
+  flags: {
+    PRESERVE_WEBPACK_CACHE: true,
+    FAST_DEV: true,
+    QUERY_ON_DEMAND: true,
+  },
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-typescript',
-    'gatsby-transformer-yaml',
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-graphql',
+      options: {
+        fieldName: `addons`,
+        url: `https://boring-heisenberg-43a6ed.netlify.app/`,
+        typeName: `ADDON`,
+        // refetchInterval: 60,
       },
     },
     'gatsby-transformer-sharp',

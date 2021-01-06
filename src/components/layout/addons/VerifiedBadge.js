@@ -42,9 +42,10 @@ export const VerifiedBadge = ({ trigger, creator, appearance }) => (
 VerifiedBadge.propTypes = {
   appearance: PropTypes.oneOf(['official', 'integrators']).isRequired,
   trigger: PropTypes.oneOf(['hover', 'click']),
-  creator: PropTypes.string.isRequired,
+  creator: PropTypes.string,
 };
 
 VerifiedBadge.defaultProps = {
   trigger: 'hover',
+  creator: '',
 };

@@ -199,18 +199,17 @@ export const AddonItemDetail = ({
   displayName,
   description,
   weeklyDownloads,
-  addonUrl,
   appearance,
   status,
   isLoading,
-  packageName,
   verifiedCreator,
-  updated,
+  publishedAt,
+  npmUrl,
   ...props
 }) => (
   <AddonItemWrapper {...props}>
     <AddonInfo>
-      <Image isLoading={isLoading} src={icon === '' ? customSVG : icon} />
+      <Image isLoading={isLoading} src={icon || customSVG} />
       <div>
         <Title isLoading={isLoading}>
           <span>{isLoading ? 'loading' : displayName || name}</span>
@@ -223,18 +222,20 @@ export const AddonItemDetail = ({
           <span>{isLoading ? 'loading description of addon' : description}</span>
         </Description>
         <Instructions status={status}>
-          <ClipboardCode code={`npx install ${packageName}`} />
-          <Update>
-            <Link href={updated.url}>
-              Last updated {formatDistanceToNow(new Date(updated.date), { addSuffix: true })}
-            </Link>
-            {status === 'essential' && (
-              <>
-                {' • '}
-                <Link href={updated.url}>Pre-installed with Storybook</Link>
-              </>
-            )}
-          </Update>
+          <ClipboardCode code={`npx install ${name}`} />
+          {publishedAt && (
+            <Update>
+              <Link href={npmUrl} target="_blank" rel="noopener nofollow noreferrer">
+                Last updated {formatDistanceToNow(new Date(publishedAt), { addSuffix: true })}
+              </Link>
+              {status === 'essential' && (
+                <>
+                  {' • '}
+                  <Link href={npmUrl}>Pre-installed with Storybook</Link>
+                </>
+              )}
+            </Update>
+          )}
         </Instructions>
       </div>
     </AddonInfo>
@@ -264,29 +265,24 @@ export const AddonItemDetail = ({
 AddonItemDetail.propTypes = {
   appearance: PropTypes.oneOf(['official', 'integrators', 'community']),
   status: PropTypes.oneOf(['default', 'essential', 'deprecated']),
-  icon: PropTypes.node,
-  name: PropTypes.node,
-  displayName: PropTypes.node,
-  description: PropTypes.node,
+  icon: PropTypes.string,
+  name: PropTypes.string,
+  displayName: PropTypes.string,
+  description: PropTypes.string,
   weeklyDownloads: PropTypes.number,
-  addonUrl: PropTypes.string,
   isLoading: PropTypes.bool,
   verifiedCreator: PropTypes.string,
-  updated: PropTypes.shape({
-    date: PropTypes.string.isRequired,
-    url: PropTypes.string.isRequired,
-  }).isRequired,
-  packageName: PropTypes.string.isRequired,
+  publishedAt: PropTypes.number,
+  npmUrl: PropTypes.string,
 };
 
 AddonItemDetail.defaultProps = {
   appearance: 'community',
   status: 'default',
-  icon: '',
   weeklyDownloads: 0,
   isLoading: false,
-  addonUrl: '#',
   name: '',
   description: '',
   verifiedCreator: '',
+  npmUrl: '',
 };

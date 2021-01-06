@@ -30,7 +30,7 @@ const SectionHeader = styled.div`
   margin-bottom: ${spacing.padding.medium}px;
 `;
 
-export const AddonsGrid = ({ title, actions, addonItems, ...props }) => (
+export const AddonsGrid = ({ title, actions, addonItems, from, ...props }) => (
   <section>
     <SectionHeader>
       <Title>{title}</Title>
@@ -38,17 +38,22 @@ export const AddonsGrid = ({ title, actions, addonItems, ...props }) => (
     </SectionHeader>
     <Grid {...props}>
       {addonItems.map((addon) => (
-        <AddonItem key={addon.id} orientation="vertical" {...addon} />
+        <AddonItem key={addon.id} from={from} orientation="vertical" {...addon} />
       ))}
     </Grid>
   </section>
 );
 
+/* eslint-disable react/require-default-props */
 AddonsGrid.propTypes = {
   title: PropTypes.string.isRequired,
   addonItems: PropTypes.arrayOf(
     PropTypes.shape({ id: PropTypes.string.isRequired, ...AddonItem.propTypes })
   ),
+  from: PropTypes.shape({
+    title: PropTypes.string,
+    link: PropTypes.string,
+  }),
 };
 
 AddonsGrid.defaultProps = {

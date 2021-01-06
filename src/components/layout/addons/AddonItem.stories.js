@@ -52,15 +52,9 @@ const authors = [
 const Template = (args) => (
   <Wrapper>
     <h2>Horizontal</h2>
-    <AddonItem authors={authors} addonUrl="/addons/controls" {...args} />
+    <AddonItem authors={authors} {...args} />
     <h2>Vertical</h2>
-    <AddonItem
-      orientation="vertical"
-      authors={authors}
-      addonUrl="/addons/controls"
-      style={{ width: 300 }}
-      {...args}
-    />
+    <AddonItem orientation="vertical" authors={authors} style={{ width: 300 }} {...args} />
   </Wrapper>
 );
 
@@ -68,7 +62,7 @@ export const OfficialStorybook = Template.bind({});
 OfficialStorybook.args = {
   appearance: 'official',
   icon: ControlsSVG,
-  name: 'Controls',
+  displayName: 'Controls',
   description: 'Interact with component inputs dynamically in the Storybook UI',
   weeklyDownloads: 17143,
 };
@@ -77,7 +71,7 @@ export const OfficialIntegrator = Template.bind({});
 OfficialIntegrator.args = {
   appearance: 'integrators',
   icon: ContrastPNG,
-  name: 'Contrast',
+  displayName: 'Contrast',
   description: 'Embed Contrast handoff tool in a storybook panel',
   weeklyDownloads: 17143,
   verifiedCreator: 'Contrast',
@@ -87,7 +81,7 @@ export const Community = Template.bind({});
 Community.args = {
   icon: ViewportSVG,
   appearance: 'community',
-  name: 'Mobile UX Hints',
+  displayName: 'Mobile UX Hints',
   description:
     'Suggestions on how to tweak the HTML and CSS of your components to be more mobile-friendly.',
   weeklyDownloads: 12253,
@@ -95,7 +89,15 @@ Community.args = {
 
 export const WithoutImage = Template.bind({});
 WithoutImage.args = {
-  name: 'Controls',
+  displayName: 'Controls',
+  description: 'Interact with component inputs dynamically in the Storybook UI',
+  weeklyDownloads: 238,
+};
+
+export const WithoutDisplayName = Template.bind({});
+WithoutDisplayName.args = {
+  displayName: null,
+  name: '@storybook/addon-controls',
   description: 'Interact with component inputs dynamically in the Storybook UI',
   weeklyDownloads: 238,
 };
@@ -125,8 +127,8 @@ StatVariations.args = {
   orientation: 'horizontal',
   appearance: 'official',
   icon: ControlsSVG,
-  name: 'Controls',
+  name: '@storybook/addon-controls',
+  displayName: 'Controls',
   description: 'Interact with component inputs dynamically in the Storybook UI',
   authors,
-  addonUrl: '/addons/controls',
 };

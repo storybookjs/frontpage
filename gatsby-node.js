@@ -1,11 +1,15 @@
 const fs = require('fs');
 const path = require('path');
+const remark = require('remark');
+const remarkHTML = require('remark-html');
 
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
 const { toc: docsToc } = require('./src/content/docs/toc');
-const { categories: addonCategories } = require('./src/content/addons/categories');
 const buildPathWithFramework = require('./src/util/build-path-with-framework');
+const buildTagLinks = require('./src/util/build-tag-links');
+
+const processor = remark().use(remarkHTML);
 
 const githubDocsBaseUrl = 'https://github.com/storybookjs/storybook/tree/next';
 const addStateToToc = (items, pathPrefix = '/docs') =>
@@ -64,32 +68,20 @@ exports.onCreatePage = ({ page, actions }) => {
   }
 };
 
-const addonsByCategoryQuery = Object.keys(addonCategories)
-  .map(
-    (categoryType) => `
-    ${categoryType}Addons: allAddonsYaml(filter: { tags: { eq: "${addonCategories[categoryType].id}" } }) {
-      nodes {
-        id: name
-        name
-        displayName
-        description
-        icon
-        authors {
-          id: username
-          avatarUrl: gravatarUrl
-          name: username
-        }
-        weeklyDownloads
-        tags
-        repositoryUrl
-        addonUrl: npmUrl
-        appearance: verified
-        verifiedCreator
-      }
-    }
-  `
-  )
-  .join('');
+const addonDetail = `
+  id: name
+  name
+  displayName
+  description
+  icon
+  authors {
+    id: username
+    avatarUrl: gravatarUrl
+    name: username
+  }
+  weeklyDownloads
+  appearance: verified
+  verifiedCreator`;
 
 exports.createPages = ({ actions, graphql }) => {
   const { createRedirect, createPage } = actions;
@@ -121,23 +113,61 @@ exports.createPages = ({ actions, graphql }) => {
             }
           }
         }
+        addons {
+          addonPages: top(sort: monthlyDownloads) {
+            ${addonDetail}
+            tags {
+              name
+              displayName
+              description
+              icon
+            }
+            compatibility {
+              name
+              displayName
+              icon
+            }
+            status
+            readme
+            publishedAt
+            repositoryUrl
+            homepageUrl
+          }
+          tagPages: tags(isCategory: false) {
+            name
+            displayName
+            description
+            icon
+            addons: top(sort: monthlyDownloads) {
+              ${addonDetail}
+            }
+          }
+          categoryPages: tags(isCategory: true) {
+            name
+            displayName
+            description
+            icon
+            addons: top(sort: monthlyDownloads) {
+              ${addonDetail}
+            }
+          }
+        }
         site {
           siteMetadata {
             coreFrameworks
             communityFrameworks
           }
         }
-        ${addonsByCategoryQuery}
       }
     `).then(
       ({
         data: {
           docsPages: { edges: docsPagesEdges },
           releasePages: { edges: releasePagesEdges },
+          addons: { addonPages, tagPages, categoryPages },
           site: {
             siteMetadata: { coreFrameworks, communityFrameworks },
           },
-          ...addonsByCategory
         },
       }) => {
         const sortedReleases = releasePagesEdges.sort(
@@ -258,22 +288,43 @@ exports.createPages = ({ actions, graphql }) => {
           });
         }
 
-        const createAddonCategoryPage = (category, addons) =>
+        addonPages.forEach((addon) => {
           createPage({
-            path: category.path,
+            path: `/addons/${addon.name}`,
+            component: path.resolve(
+              `./src/components/screens/AddonsDetailScreen/AddonsDetailScreen.js`
+            ),
+            context: {
+              ...addon,
+              tags: buildTagLinks(addon.tags),
+              readme: processor.processSync(addon.readme).toString(),
+            },
+          });
+        });
+
+        tagPages.forEach((tag) => {
+          createPage({
+            path: `/addons/${tag.name}`,
+            component: path.resolve(`./src/components/screens/AddonsTagScreen/AddonsTagScreen.js`),
+            context: {
+              tag,
+              name: tag.name,
+            },
+          });
+        });
+
+        categoryPages.forEach((category) => {
+          createPage({
+            path: `/addons/${category.name}`,
             component: path.resolve(
               `./src/components/screens/AddonsCategoryScreen/AddonsCategoryScreen.js`
             ),
             context: {
-              category: category.name,
+              category: category.displayName,
               description: category.description,
-              addons,
+              addons: category.addons,
             },
           });
-
-        Object.keys(addonCategories).forEach((categoryType) => {
-          const addons = addonsByCategory[`${categoryType}Addons`].nodes;
-          createAddonCategoryPage(addonCategories[categoryType], addons);
         });
 
         resolve();

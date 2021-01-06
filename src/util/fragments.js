@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby';
 
 export const addonItem = graphql`
-  fragment AddonItem on AddonsYaml {
+  fragment AddonItem on ADDON_Addon {
     id: name
     name
     displayName
@@ -13,9 +13,14 @@ export const addonItem = graphql`
       name: username
     }
     weeklyDownloads
-    tags
+    tags {
+      name
+      displayName
+      description
+      icon
+    }
     repositoryUrl
-    addonUrl: npmUrl
+    npmUrl
     appearance: verified
     verifiedCreator
   }

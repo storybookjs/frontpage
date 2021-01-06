@@ -11,6 +11,11 @@ export const Default = () => (
   <AddonsCategoryScreen pageContext={{ category: 'Data and state', addons: addonItemsData }} />
 );
 
+Default.parameters = {
+  isSearching: false,
+  isSearchLoading: false,
+};
+
 export const WithDesc = () => (
   <AddonsCategoryScreen
     pageContext={{
