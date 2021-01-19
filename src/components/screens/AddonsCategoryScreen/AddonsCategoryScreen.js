@@ -20,8 +20,11 @@ export const AddonsCategoryScreen = ({ path, pageContext }) => {
     <>
       <SocialGraph
         title={`Addons | ${category} | ${title}`}
-        desc={description}
-        url={`${home}/${path}`}
+        desc={
+          description ||
+          'Addons enable advanced functionality and unlock new workflows. Contributed by core maintainers and the amazing developer community.'
+        }
+        url={`${home}${path}`}
         image={ogImageAddons}
       />
       <AddonsLayout currentPath={path}>
@@ -30,7 +33,7 @@ export const AddonsCategoryScreen = ({ path, pageContext }) => {
           subtitle={description}
           kicker={pluralize('addon', addons.length, true)}
         />
-        <AddonsList addonItems={sortedAddons} />
+        <AddonsList from={{ title: category, link: path }} addonItems={sortedAddons} />
       </AddonsLayout>
     </>
   );

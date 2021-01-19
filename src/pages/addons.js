@@ -6,18 +6,29 @@ import { AddonsHomeScreen } from '../components/screens/AddonsHomeScreen/AddonsH
 
 const { GlobalStyle } = global;
 
-// In theory we could pass in props that we'd fetched via Gatsby's GraphQL
 export default ({ data }) => (
   <Fragment>
     <GlobalStyle />
-    <AddonsHomeScreen popularAddons={data.popularAddons.nodes} />
+    <AddonsHomeScreen
+      popularAddons={{
+        MONTH: data.addons.popularMonthly,
+        YEAR: data.addons.popularYearly,
+      }}
+      trendingAddons={data.addons.trending}
+    />
   </Fragment>
 );
 
 export const query = graphql`
   query AddonsHomeQuery {
-    popularAddons: allAddonsYaml(filter: { tags: { eq: "popular" } }) {
-      nodes {
+    addons {
+      popularMonthly: top(sort: monthlyDownloads, limit: 12) {
+        ...AddonItem
+      }
+      popularYearly: top(sort: yearlyDownloads, limit: 12) {
+        ...AddonItem
+      }
+      trending: top(sort: trending, limit: 12) {
         ...AddonItem
       }
     }

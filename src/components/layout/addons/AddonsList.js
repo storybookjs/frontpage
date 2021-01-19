@@ -12,7 +12,16 @@ const ListWrapper = styled.div`
   }
 `;
 
-export const AddonsList = ({ addonItems, isLoading, ...props }) => {
+const loadingItems = [
+  { id: '1', isLoading: true },
+  { id: '2', isLoading: true },
+  { id: '3', isLoading: true },
+  { id: '4', isLoading: true },
+  { id: '5', isLoading: true },
+  { id: '6', isLoading: true },
+];
+
+export const AddonsList = ({ addonItems, isLoading, from, ...props }) => {
   const [visibleCount, setVisibleCount] = useState(6);
   const items = useMemo(() => addonItems.slice(0, visibleCount), [visibleCount, addonItems]);
 
@@ -27,8 +36,8 @@ export const AddonsList = ({ addonItems, isLoading, ...props }) => {
       aria-busy={!!isLoading}
       {...props}
     >
-      {items.map((addon) => (
-        <AddonItem key={addon.id} orientation="horizontal" {...addon} />
+      {(isLoading ? loadingItems : items).map((addon) => (
+        <AddonItem key={addon.id} from={from} orientation="horizontal" {...addon} />
       ))}
       {addonItems.length > 6 && visibleCount < addonItems.length && (
         <Button tertiary onClick={loadMore}>
@@ -39,11 +48,16 @@ export const AddonsList = ({ addonItems, isLoading, ...props }) => {
   );
 };
 
+/* eslint-disable react/require-default-props */
 AddonsList.propTypes = {
   addonItems: PropTypes.arrayOf(
     PropTypes.shape({ id: PropTypes.string.isRequired, ...AddonItem.propTypes })
   ),
   isLoading: PropTypes.bool,
+  from: PropTypes.shape({
+    title: PropTypes.string,
+    link: PropTypes.string,
+  }),
 };
 
 AddonsList.defaultProps = {

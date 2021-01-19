@@ -1,14 +1,13 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import pluralize from 'pluralize';
-import { Input, TableOfContents, global, styles, TagList, TagLink } from '@storybook/design-system';
+import { Input, Icon, TableOfContents, global, styles } from '@storybook/design-system';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import { AddonsLearn } from './AddonsLearn';
-import { AddonsList } from './AddonsList';
-import { AddonsAside, AddonsAsideContainer } from './AddonsAsideLayout';
 import { AddonsSubheading } from './AddonsSubheading';
+import { AddonsSearchSummary, AddonsSearchResults } from './AddonsSearchResults';
 import { toc as addonsToc } from '../../../content/addons/categories';
+import { useAddonsSearch } from '../../../hooks/use-addons-search';
 
 const { breakpoint, spacing, color, pageMargins, typography } = styles;
 const { GlobalStyle } = global;
@@ -57,80 +56,30 @@ Sidebar.propTypes = {
   hideSidebar: PropTypes.bool.isRequired,
 };
 
-// TODO: use after preview release
-// const ToCContent = styled.div`
-//   /* Hide ToC on mobile, the primary navigation is search */
-//   display: none;
-
-//    ${(props) =>
-//     props.hideToC
-//       ? `
-//           display: none;
-//         `
-//       : `
-//           @media (min-width: ${breakpoint * 1.333}px) {
-//             display: block;
-//             margin-top: 1.5rem;
-//           }
-//         `}
-// `;
-
-// TODO: remove after preview release
 const ToCContent = styled.div`
-  margin-top: 1.5rem;
+  /* Hide ToC on mobile, the primary navigation is search */
+  display: none;
 
-  .hide-on-mobile {
-    display: none;
-  }
-
-  @media (min-width: ${breakpoint * 1.333}px) {
-    margin-top: 0.5rem;
-
-    .hide-on-mobile {
-      display: block;
-    }
-  }
-
-  @media (max-width: ${breakpoint * 1.333}px) {
-    ul {
-      display: flex;
-      flex-wrap: wrap;
-    }
-
-    li {
-      padding-top: 0;
-      margin-right: ${spacing.padding.medium}px;
-      margin-bottom: ${spacing.padding.small}px;
-    }
-  }
+  ${(props) =>
+    props.hideToC
+      ? `
+          display: none;
+        `
+      : `
+          @media (min-width: ${breakpoint * 1.333}px) {
+            display: block;
+            margin-top: 1.5rem;
+          }
+        `}
 `;
 
 ToCContent.propTypes = {
   hideToC: PropTypes.bool.isRequired,
 };
 
-const StyledAddonsList = styled(AddonsList)`
+const SearchInputContainer = styled.div`
   flex: 1 1 auto;
-`;
-
-const RelatedTagsList = styled(TagList)`
-  margin-bottom: 48px;
-`;
-
-const SearchInput = styled(Input)`
-  flex: 1 1 auto;
-
-  #addons-search {
-    font-size: ${typography.size.s2}px;
-    padding-left: 40px;
-    padding-top: 12px;
-    padding-bottom: 12px;
-  }
-
-  svg {
-    left: 16px;
-    font-size: ${typography.size.s2}px;
-  }
+  position: relative;
 
   @media (min-width: ${breakpoint * 1.333}px) {
     max-width: 220px;
@@ -138,17 +87,63 @@ const SearchInput = styled(Input)`
   }
 `;
 
-const Searchbar = styled.div`
-  display: flex;
+const ClearButton = styled.button`
+  background-color: ${color.border};
+  background-repeat: no-repeat;
+  border: none;
+  border-radius: 100%;
+  overflow: hidden;
+  outline: none;
+
+  font-size: 10px;
+  line-height: 1;
+  position: absolute;
+  top: 11px;
+  right: 16px;
+  padding: 4px;
+
+  &:focus {
+    box-shadow: ${color.secondary} 0 0 0 1px inset;
+  }
+
+  svg {
+    display: block;
+    margin-right: 0;
+    height: 1em;
+    width: 1em;
+    color: ${color.dark};
+  }
 `;
 
-const SearchSummary = styled.div`
-  font-size: ${typography.weight.black};
-  line-height: 28px;
-  color: ${color.darkest};
+const SearchInput = styled(Input)`
+  width: 100%;
+
+  #addons-search {
+    font-size: ${typography.size.s2}px;
+    padding-left: 40px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-decoration {
+      -webkit-appearance: none;
+      appearance: none;
+    }
+  }
+
+  svg {
+    left: 16px;
+    font-size: ${typography.size.s2}px;
+  }
+`;
+
+const Searchbar = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 const CategoriesHeading = styled(AddonsSubheading)`
+  margin-top: ${spacing.padding.medium}px;
   margin-bottom: ${spacing.padding.medium}px;
 `;
 
@@ -156,73 +151,65 @@ export const SEARCH_INPUT_ID = 'addons-search';
 
 const sidebarItems = addonsToc.map((item) => ({ ...item, LinkWrapper: GatsbyLinkWrapper }));
 
-export const AddonsLayout = ({
-  children,
-  data,
-  hideSidebar,
-  searchQuery,
-  searchResults,
-  currentPath,
-  ...props
-}) => {
-  // TODO: connect to back-end
-  const searching = !!(searchQuery && searchQuery !== '');
+export const AddonsLayout = ({ children, data, hideSidebar, currentPath, ...props }) => {
+  const { query, setQuery, isSearching, isSearchLoading, results } = useAddonsSearch();
+  const inputRef = useRef(null);
 
   return (
     <>
       <GlobalStyle />
-      <Wrapper searchLayout={searching}>
-        <Sidebar hideSidebar={hideSidebar} searchLayout={searching}>
-          {/* TODO: enable after preview release */}
-          {/* <Searchbar>
-            <SearchInput
-              searchLayout={searching}
-              id={SEARCH_INPUT_ID}
-              label="Search"
-              hideLabel
-              icon="search"
-              appearance="pill"
-              placeholder="Search addons"
-              value={searchQuery}
-              onChange={() => {}}
-            />
-            {searching && searchResults.addons && (
-              <SearchSummary>
-                {pluralize('addons', searchResults.addons.length, true)}
-              </SearchSummary>
+      <Wrapper searchLayout={isSearching}>
+        <Sidebar hideSidebar={hideSidebar} searchLayout={isSearching}>
+          <Searchbar>
+            <SearchInputContainer searchLayout={isSearching}>
+              <SearchInput
+                id={SEARCH_INPUT_ID}
+                ref={inputRef}
+                type="search"
+                label="Search"
+                hideLabel
+                icon="search"
+                appearance="pill"
+                placeholder="Search addons"
+                value={query}
+                onChange={(e) => {
+                  setQuery(e.target.value);
+                }}
+              />
+              {query !== '' && (
+                <ClearButton
+                  onClick={() => {
+                    setQuery('');
+                    inputRef.current.focus();
+                  }}
+                >
+                  <Icon icon="closeAlt" aria-label="clear" />
+                </ClearButton>
+              )}
+            </SearchInputContainer>
+            {isSearching && results.search && (
+              <AddonsSearchSummary isLoading={isSearchLoading} count={results.search.length} />
             )}
-          </Searchbar> */}
+          </Searchbar>
           <TableOfContents currentPath={currentPath} items={sidebarItems}>
             {({ menu }) => (
-              <ToCContent hideToC={searching}>
+              <ToCContent hideToC={isSearching}>
                 <CategoriesHeading>Categories</CategoriesHeading>
                 {menu}
-                {/* TODO: remove after preview release */}
-                <div className="hide-on-mobile">
-                  <Divider />
-                  <AddonsLearn />
-                </div>
+                <Divider />
+                <AddonsLearn />
               </ToCContent>
             )}
           </TableOfContents>
         </Sidebar>
 
-        {searching ? (
-          <AddonsAsideContainer {...props}>
-            <StyledAddonsList addonItems={searchResults.addons} />
-            <AddonsAside>
-              <AddonsSubheading>Related tags</AddonsSubheading>
-              <RelatedTagsList
-                limit={6}
-                tags={searchResults.relatedTags.map((tag) => (
-                  <TagLink key={tag.link} href={tag.link}>
-                    {tag.name}
-                  </TagLink>
-                ))}
-                isLoading={searchResults.relatedTags?.length === 0}
-              />
-            </AddonsAside>
-          </AddonsAsideContainer>
+        {isSearching ? (
+          <AddonsSearchResults
+            isLoading={isSearchLoading}
+            results={results.search}
+            relatedTags={results.relatedTags}
+            {...props}
+          />
         ) : (
           <Content {...props}>{children}</Content>
         )}

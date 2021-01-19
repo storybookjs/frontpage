@@ -4,8 +4,8 @@ const path = require('path');
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
 const { toc: docsToc } = require('./src/content/docs/toc');
-const { categories: addonCategories } = require('./src/content/addons/categories');
 const buildPathWithFramework = require('./src/util/build-path-with-framework');
+const createAddonsPages = require('./src/util/create-addons-pages');
 
 const githubDocsBaseUrl = 'https://github.com/storybookjs/storybook/tree/next';
 const addStateToToc = (items, pathPrefix = '/docs') =>
@@ -64,33 +64,6 @@ exports.onCreatePage = ({ page, actions }) => {
   }
 };
 
-const addonsByCategoryQuery = Object.keys(addonCategories)
-  .map(
-    (categoryType) => `
-    ${categoryType}Addons: allAddonsYaml(filter: { tags: { eq: "${addonCategories[categoryType].id}" } }) {
-      nodes {
-        id: name
-        name
-        displayName
-        description
-        icon
-        authors {
-          id: username
-          avatarUrl: gravatarUrl
-          name: username
-        }
-        weeklyDownloads
-        tags
-        repositoryUrl
-        addonUrl: npmUrl
-        appearance: verified
-        verifiedCreator
-      }
-    }
-  `
-  )
-  .join('');
-
 exports.createPages = ({ actions, graphql }) => {
   const { createRedirect, createPage } = actions;
   return new Promise((resolve) => {
@@ -127,158 +100,141 @@ exports.createPages = ({ actions, graphql }) => {
             communityFrameworks
           }
         }
-        ${addonsByCategoryQuery}
       }
-    `).then(
-      ({
-        data: {
-          docsPages: { edges: docsPagesEdges },
-          releasePages: { edges: releasePagesEdges },
-          site: {
-            siteMetadata: { coreFrameworks, communityFrameworks },
-          },
-          ...addonsByCategory
-        },
-      }) => {
-        const sortedReleases = releasePagesEdges.sort(
-          ({ node: aNode }, { node: bNode }) =>
-            parseFloat(aNode.fields.version) - parseFloat(bNode.fields.version)
-        );
-        let latestRelease;
-        sortedReleases.forEach(({ node }) => {
-          const { pageType, iframeSlug, slug, version } = node.fields;
-          // Data passed to context is available in page queries as GraphQL variables.
-          const context = { pageType, slug, version };
-
-          createPage({
-            path: slug,
-            component: path.resolve(`./src/components/screens/ReleasesScreen/ReleasesScreen.js`),
-            context,
-          });
-
-          createPage({
-            path: iframeSlug,
-            component: path.resolve(
-              `./src/components/screens/ReleasesScreen/IframeReleasesScreen.js`
-            ),
-            context: {
-              ...context,
-              layout: 'iframe',
+    `)
+      .then(
+        ({
+          data: {
+            docsPages: { edges: docsPagesEdges },
+            releasePages: { edges: releasePagesEdges },
+            site: {
+              siteMetadata: { coreFrameworks, communityFrameworks },
             },
-          });
+          },
+        }) => {
+          const sortedReleases = releasePagesEdges.sort(
+            ({ node: aNode }, { node: bNode }) =>
+              parseFloat(aNode.fields.version) - parseFloat(bNode.fields.version)
+          );
+          let latestRelease;
+          sortedReleases.forEach(({ node }) => {
+            const { pageType, iframeSlug, slug, version } = node.fields;
+            // Data passed to context is available in page queries as GraphQL variables.
+            const context = { pageType, slug, version };
 
-          if (!node.frontmatter.prerelease) {
-            latestRelease = node;
-          }
-        });
+            createPage({
+              path: slug,
+              component: path.resolve(`./src/components/screens/ReleasesScreen/ReleasesScreen.js`),
+              context,
+            });
 
-        // Leave a /releases/ endpoint, but redirect it to the latest version
-        if (latestRelease) {
-          createRedirect({
-            fromPath: `/releases/`,
-            isPermanent: false,
-            redirectInBrowser: true,
-            toPath: latestRelease.fields.slug,
-          });
-        }
+            createPage({
+              path: iframeSlug,
+              component: path.resolve(
+                `./src/components/screens/ReleasesScreen/IframeReleasesScreen.js`
+              ),
+              context: {
+                ...context,
+                layout: 'iframe',
+              },
+            });
 
-        const frameworks = [...coreFrameworks, ...communityFrameworks];
-        const docsPagesSlugs = [];
-        const docsPagesEdgesBySlug = Object.fromEntries(
-          docsPagesEdges.map((edge) => [edge.node.fields.slug, edge])
-        );
-        const docsTocByFramework = Object.fromEntries(
-          frameworks.map((framework) => [
-            framework,
-            addStateToToc(docsTocWithPaths, `/docs/${framework}`),
-          ])
-        );
-        const createDocsPages = (tocItems) => {
-          tocItems.forEach((tocItem, index) => {
-            const { path: docsPagePath, children } = tocItem;
-
-            if (docsPagePath) {
-              const docEdge = docsPagesEdgesBySlug[docsPagePath];
-
-              if (docEdge) {
-                const { pageType, slug } = docEdge.node.fields;
-                const nextTocItem = tocItems[index + 1];
-
-                frameworks.forEach((framework) => {
-                  createPage({
-                    path: buildPathWithFramework(slug, framework),
-                    component: path.resolve(`./src/components/screens/DocsScreen/DocsScreen.tsx`),
-                    context: {
-                      pageType,
-                      layout: 'docs',
-                      slug,
-                      framework,
-                      docsToc: docsTocByFramework[framework],
-                      tocItem,
-                      ...(nextTocItem &&
-                        nextTocItem.type === 'bullet-link' && {
-                          nextTocItem,
-                        }),
-                      isFirstTocItem: docsPagesSlugs.length === 0,
-                    },
-                  });
-                });
-
-                docsPagesSlugs.push(slug);
-              } else {
-                console.log(`Not creating page for '${docsPagePath}'`);
-              }
-            }
-
-            if (children) {
-              createDocsPages(children);
+            if (!node.frontmatter.prerelease) {
+              latestRelease = node;
             }
           });
-        };
 
-        createDocsPages(docsTocWithPaths);
-        const firstDocsPageSlug = docsPagesSlugs[0];
-
-        if (firstDocsPageSlug) {
-          createRedirect({
-            fromPath: `/docs/`,
-            isPermanent: false,
-            redirectInBrowser: true,
-            toPath: buildPathWithFramework(firstDocsPageSlug, frameworks[0]),
-          });
-
-          // Setup a redirect for each framework to the first guide
-          frameworks.forEach((framework) => {
+          // Leave a /releases/ endpoint, but redirect it to the latest version
+          if (latestRelease) {
             createRedirect({
-              fromPath: `/docs/${framework}`,
+              fromPath: `/releases/`,
               isPermanent: false,
               redirectInBrowser: true,
-              toPath: buildPathWithFramework(firstDocsPageSlug, framework),
+              toPath: latestRelease.fields.slug,
             });
-          });
+          }
+
+          const frameworks = [...coreFrameworks, ...communityFrameworks];
+          const docsPagesSlugs = [];
+          const docsPagesEdgesBySlug = Object.fromEntries(
+            docsPagesEdges.map((edge) => [edge.node.fields.slug, edge])
+          );
+          const docsTocByFramework = Object.fromEntries(
+            frameworks.map((framework) => [
+              framework,
+              addStateToToc(docsTocWithPaths, `/docs/${framework}`),
+            ])
+          );
+          const createDocsPages = (tocItems) => {
+            tocItems.forEach((tocItem, index) => {
+              const { path: docsPagePath, children } = tocItem;
+
+              if (docsPagePath) {
+                const docEdge = docsPagesEdgesBySlug[docsPagePath];
+
+                if (docEdge) {
+                  const { pageType, slug } = docEdge.node.fields;
+                  const nextTocItem = tocItems[index + 1];
+
+                  frameworks.forEach((framework) => {
+                    createPage({
+                      path: buildPathWithFramework(slug, framework),
+                      component: path.resolve(`./src/components/screens/DocsScreen/DocsScreen.tsx`),
+                      context: {
+                        pageType,
+                        layout: 'docs',
+                        slug,
+                        framework,
+                        docsToc: docsTocByFramework[framework],
+                        tocItem,
+                        ...(nextTocItem &&
+                          nextTocItem.type === 'bullet-link' && {
+                            nextTocItem,
+                          }),
+                        isFirstTocItem: docsPagesSlugs.length === 0,
+                      },
+                    });
+                  });
+
+                  docsPagesSlugs.push(slug);
+                } else {
+                  console.log(`Not creating page for '${docsPagePath}'`);
+                }
+              }
+
+              if (children) {
+                createDocsPages(children);
+              }
+            });
+          };
+
+          createDocsPages(docsTocWithPaths);
+          const firstDocsPageSlug = docsPagesSlugs[0];
+
+          if (firstDocsPageSlug) {
+            createRedirect({
+              fromPath: `/docs/`,
+              isPermanent: false,
+              redirectInBrowser: true,
+              toPath: buildPathWithFramework(firstDocsPageSlug, frameworks[0]),
+            });
+
+            // Setup a redirect for each framework to the first guide
+            frameworks.forEach((framework) => {
+              createRedirect({
+                fromPath: `/docs/${framework}`,
+                isPermanent: false,
+                redirectInBrowser: true,
+                toPath: buildPathWithFramework(firstDocsPageSlug, framework),
+              });
+            });
+          }
         }
-
-        const createAddonCategoryPage = (category, addons) =>
-          createPage({
-            path: category.path,
-            component: path.resolve(
-              `./src/components/screens/AddonsCategoryScreen/AddonsCategoryScreen.js`
-            ),
-            context: {
-              category: category.name,
-              description: category.description,
-              addons,
-            },
-          });
-
-        Object.keys(addonCategories).forEach((categoryType) => {
-          const addons = addonsByCategory[`${categoryType}Addons`].nodes;
-          createAddonCategoryPage(addonCategories[categoryType], addons);
-        });
-
+      )
+      .then(() => createAddonsPages({ actions, graphql }))
+      .then(() => {
         resolve();
-      }
-    );
+      });
   });
 };
 

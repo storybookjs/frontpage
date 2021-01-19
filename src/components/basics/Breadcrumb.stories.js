@@ -6,4 +6,8 @@ export default {
   component: Breadcrumb,
 };
 
-export const Default = () => <Breadcrumb to="/">View full catalog</Breadcrumb>;
+export const Default = () => (
+  <div style={{ paddingTop: '2rem' }}>
+    <Breadcrumb to="/">View full catalog</Breadcrumb>
+  </div>
+);
