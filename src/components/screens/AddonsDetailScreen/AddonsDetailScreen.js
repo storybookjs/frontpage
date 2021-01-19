@@ -30,6 +30,9 @@ const StyledTagsList = styled(TagList)`
 const ReadMe = styled.section`
   flex: 1 1 820px;
   min-width: 0;
+`;
+
+const ReadMeContent = styled.div`
   ${mdFormatting}
 `;
 
@@ -115,6 +118,8 @@ const MissingInfo = styled.div`
   text-align: center;
 
   h3 {
+    font-size: ${typography.size.s2}px;
+    line-height: ${typography.size.m1}px;
     font-weight: ${typography.weight.black};
   }
 `;
@@ -170,9 +175,8 @@ export const AddonsDetailScreen = ({ path, location, pageContext }) => {
               </ViewOnGithubLink>
             </ReadMeTitle>
             <Highlight withHTMLChildren={false}>
-              {/* eslint-disable react/no-danger */}
               {readme ? (
-                <div dangerouslySetInnerHTML={{ __html: readme }} />
+                <ReadMeContent dangerouslySetInnerHTML={{ __html: readme }} />
               ) : (
                 <NoReadmeFound repositoryUrl={repositoryUrl || homepageUrl} />
               )}

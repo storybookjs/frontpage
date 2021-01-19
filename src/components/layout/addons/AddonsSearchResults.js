@@ -55,6 +55,8 @@ const NoAddonsFoundInner = styled.div`
   text-align: center;
 
   h3 {
+    font-size: ${typography.size.s2}px;
+    line-height: ${typography.size.m1}px;
     font-weight: ${typography.weight.black};
   }
 `;

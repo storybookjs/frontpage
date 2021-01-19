@@ -14,13 +14,21 @@ const BreadcrumbLink = styled(GatsbyLink)`
 
   @media (min-width: ${breakpoint * 1.333}px) {
     margin-top: 0;
-    margin-bottom: 8px;
+    margin-bottom: 16px;
+  }
+`;
+
+const BreadcrumbInner = styled.div`
+  @media (min-width: ${breakpoint * 1.333}px) {
+    margin-top: -1rem;
   }
 `;
 
 export const Breadcrumb = ({ children, ...props }) => (
-  <BreadcrumbLink withIcon {...props}>
-    <Icon icon="arrowleft" />
-    {children}
-  </BreadcrumbLink>
+  <BreadcrumbInner>
+    <BreadcrumbLink withIcon {...props}>
+      <Icon icon="arrowleft" />
+      {children}
+    </BreadcrumbLink>
+  </BreadcrumbInner>
 );

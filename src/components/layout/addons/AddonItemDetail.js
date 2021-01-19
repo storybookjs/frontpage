@@ -22,7 +22,7 @@ const AddonItemWrapper = styled.div`
   margin-bottom: 40px;
 
   @media (min-width: ${1.5 * breakpoint}px) {
-    padding-top: ${spacing.padding.medium}px;
+    padding-top: 0px;
     padding-bottom: 40px;
     flex-direction: row;
     align-items: flex-start;

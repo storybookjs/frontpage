@@ -27,7 +27,6 @@ export const AddonsTagScreen = ({ path, pageContext, ...props }) => {
   const { tag } = pageContext;
   const relatedTags = buildTagLinks(tag.relatedTags || []);
   const breadcrumb = generateBreadcrumb();
-  console.log(relatedTags);
 
   return (
     <>
