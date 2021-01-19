@@ -15,6 +15,38 @@ export const Default = () => (
         displayName: 'Notes',
         icon: '🗒️',
         addons: addonItemsData,
+        relatedTags: [
+          {
+            link: '/notes',
+            displayName: 'Notes',
+            icon: '🗒',
+          },
+          {
+            link: '/storybook',
+            displayName: 'Storybook',
+            icon: '📕',
+          },
+          {
+            link: '/qa',
+            displayName: 'QA',
+            icon: '🕵️‍♀️',
+          },
+          {
+            link: '/prototype',
+            displayName: 'Prototype',
+            icon: '✨',
+          },
+          {
+            link: '/testing',
+            displayName: 'Testing',
+            icon: '✅',
+          },
+          {
+            link: '/deploy',
+            displayName: 'Deploy',
+            icon: '☁️',
+          },
+        ],
       },
     }}
   />

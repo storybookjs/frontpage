@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import pluralize from 'pluralize';
@@ -12,7 +12,6 @@ import { AddonsAside, AddonsAsideContainer } from '../../layout/addons/AddonsAsi
 import { AddonsSubheading } from '../../layout/addons/AddonsSubheading';
 import { generateBreadcrumb } from '../../../util/generate-breadcrumb';
 import buildTagLinks from '../../../util/build-tag-links';
-import { useAddonsRelatedTags } from '../../../hooks/use-addons-related-tags';
 
 const StyledAddonsList = styled(AddonsList)`
   flex: 1 1 auto;
@@ -22,12 +21,13 @@ const RelatedTagsList = styled(TagList)`
   margin-bottom: 48px;
 `;
 
-export const AddonsTagScreen = ({ path, pageContext }) => {
+export const AddonsTagScreen = ({ path, pageContext, ...props }) => {
   const { title, ogImageAddons, urls = {} } = useSiteMetadata();
   const { home } = urls;
   const { tag } = pageContext;
-  const relatedTags = useAddonsRelatedTags(tag.name);
+  const relatedTags = buildTagLinks(tag.relatedTags || []);
   const breadcrumb = generateBreadcrumb();
+  console.log(relatedTags);
 
   return (
     <>
@@ -73,6 +73,13 @@ AddonsTagScreen.propTypes = {
       displayName: PropTypes.string,
       icon: PropTypes.string,
       addons: AddonsList.propTypes.addonItems,
+      relatedTags: PropTypes.arrayOf(
+        PropTypes.shape({
+          name: PropTypes.string.isRequired,
+          displayName: PropTypes.string,
+          icon: PropTypes.string,
+        })
+      ).isRequired,
     }).isRequired,
   }).isRequired,
 };
