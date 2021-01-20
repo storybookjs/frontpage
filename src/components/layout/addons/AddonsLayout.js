@@ -120,9 +120,9 @@ const SearchInput = styled(Input)`
 
   #addons-search {
     font-size: ${typography.size.s2}px;
-    padding-left: 40px;
-    padding-top: 12px;
-    padding-bottom: 12px;
+    padding-left: 36px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 
     &::-webkit-search-cancel-button,
     &::-webkit-search-decoration {
@@ -132,7 +132,7 @@ const SearchInput = styled(Input)`
   }
 
   svg {
-    left: 16px;
+    left: 14px;
     font-size: ${typography.size.s2}px;
   }
 `;

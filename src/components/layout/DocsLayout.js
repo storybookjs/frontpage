@@ -54,6 +54,23 @@ const SearchInput = styled(Input)`
   .algolia-autocomplete {
     width: 100%;
   }
+
+  && input {
+    font-size: ${typography.size.s2}px;
+    padding-left: 36px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  && svg {
+    left: 14px;
+    font-size: ${typography.size.s2}px;
+  }
+`;
+
+const ExpandButton = styled(Button)`
+  height: 36px;
+  width: 36px;
 `;
 
 const SidebarControls = styled.div`
@@ -211,9 +228,9 @@ function DocsLayout({ children, data, pageContext, ...props }) {
                       onClick={toggleAllClosed}
                       tabIndex="-1"
                     >
-                      <Button containsIcon appearance="outline" size="small">
+                      <ExpandButton containsIcon appearance="outline" size="small">
                         <Icon icon="collapse" aria-label="Collapse sidebar" />
-                      </Button>
+                      </ExpandButton>
                     </WithTooltip>
                   ) : (
                     <WithTooltip
@@ -222,9 +239,9 @@ function DocsLayout({ children, data, pageContext, ...props }) {
                       onClick={toggleAllOpen}
                       tabIndex="-1"
                     >
-                      <Button containsIcon appearance="outline" size="small">
+                      <ExpandButton containsIcon appearance="outline" size="small">
                         <Icon icon="expandalt" aria-label="Expand sidebar" />
-                      </Button>
+                      </ExpandButton>
                     </WithTooltip>
                   )}
 
