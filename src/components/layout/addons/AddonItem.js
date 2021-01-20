@@ -218,7 +218,7 @@ export const AddonItem = ({
         count={
           isLoading
             ? undefined
-            : humanFormat(weeklyDownloads, {
+            : humanFormat(weeklyDownloads || 0, {
                 decimals: 1,
                 separator: '',
               })
