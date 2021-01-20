@@ -36,7 +36,7 @@ const RelatedTagsList = styled(TagList)`
 export const AddonsSearchSummary = ({ isLoading, count }) => {
   return isLoading ? null : (
     <SearchSummaryCopy>
-      {count === 0 ? 'No Addons' : pluralize('addons', count, true)}
+      {count === 0 ? 'No addons' : pluralize('addons', count, true)}
     </SearchSummaryCopy>
   );
 };
