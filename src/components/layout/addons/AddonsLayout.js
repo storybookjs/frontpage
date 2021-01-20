@@ -83,7 +83,7 @@ const SearchInputContainer = styled.div`
 
   @media (min-width: ${breakpoint * 1.333}px) {
     max-width: 220px;
-    margin-right: ${(props) => (props.searchLayout ? 40 : 0)}px;
+    margin-right: ${(props) => (props.searchLayout ? 20 : 0)}px;
   }
 `;
 
