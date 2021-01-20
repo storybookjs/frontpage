@@ -3844,10 +3844,10 @@
   dependencies:
     lodash "^4.17.15"
 
-"@storybook/design-system@^5.4.4":
-  version "5.4.4"
-  resolved "https://registry.yarnpkg.com/@storybook/design-system/-/design-system-5.4.4.tgz#6d0a3d050bc95b433b396792a9e3a9a2b45803b8"
-  integrity sha512-u9qijaNPw3h9xdlMeEqNY9O3f4gQLVB/7T9RSR/D6ENeAkLrE0Vwe2zHVdW/shkW6CxHmVyhPvV7785l/6PMmw==
+"@storybook/design-system@^5.4.7":
+  version "5.4.7"
+  resolved "https://registry.yarnpkg.com/@storybook/design-system/-/design-system-5.4.7.tgz#771cf1cd918653b6849ca95a1e6b7da296c4f792"
+  integrity sha512-ugCwjKcZr3yTrNwYAu4FikqHdAgN5xqpKL5IDvft0vPkPrvpaYeTautnPtAMQBJH9N9PBFtBCEecPQFpShS4Cg==
   dependencies:
     "@types/pluralize" "^0.0.29"
     copy-to-clipboard "^3.3.1"
