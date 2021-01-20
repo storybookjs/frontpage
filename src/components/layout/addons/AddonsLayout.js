@@ -98,8 +98,8 @@ const ClearButton = styled.button`
   font-size: 10px;
   line-height: 1;
   position: absolute;
-  top: 11px;
-  right: 16px;
+  top: 9px;
+  right: 10px;
   padding: 4px;
 
   &:focus {
