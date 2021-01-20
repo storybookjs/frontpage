@@ -46,7 +46,7 @@ const Image = styled.div`
     `}
 
   @media (min-width: ${1.5 * breakpoint}px) {
-    margin-right: ${spacing.padding.medium}px;
+    margin-right: ${spacing.padding.large}px;
   }
 `;
 Image.propTypes = {
@@ -65,7 +65,7 @@ const Title = styled.div`
   margin-top: 12px;
 
   @media (min-width: ${1.5 * breakpoint}px) {
-    margin-top: 4px;
+    margin-top: 0px;
   }
 
   ${(props) =>

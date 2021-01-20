@@ -7,7 +7,7 @@ const { breakpoint, typography } = styles;
 
 const BreadcrumbLink = styled(GatsbyLink)`
   font-size: ${typography.size.s2}px;
-  line-height: ${typography.size.m2}px;
+  line-height: ${typography.size.m1}px;
   font-weight: ${typography.weight.bold};
   margin-top: 16px;
   margin-bottom: 16px;
