@@ -14,7 +14,7 @@ const BreadcrumbLink = styled(GatsbyLink)`
 
   @media (min-width: ${breakpoint * 1.333}px) {
     margin-top: 0;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
   }
 `;
 

@@ -84,7 +84,7 @@ Title.propTypes = {
 
 const Description = styled.div`
   font-size: ${typography.size.s3}px;
-  line-height: ${typography.size.m1}px;
+  line-height: ${typography.size.m2}px;
   color: ${color.darkest};
   position: relative;
   margin-bottom: 16px;
