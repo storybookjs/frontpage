@@ -22,7 +22,6 @@
 /docs/basics/guide-riot /docs/guides/guide-riot 301
 /docs/basics/guide-html /docs/guides/guide-html 301
 
-/addons/* /docs/addons/:splat 301
 /basics/* /docs/basics/:splat 301
 /configurations/* /docs/configurations/:splat 301
 /examples/* /docs/examples/:splat 301
