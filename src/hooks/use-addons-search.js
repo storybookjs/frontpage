@@ -9,7 +9,7 @@ export function useAddonsSearch() {
   const [results, setResults] = useState(initalValue);
   const [isSearchLoading, setIsSearchLoading] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
-  const debouncedSearchTerm = useDebounce(query, 500);
+  const debouncedSearchTerm = useDebounce(query, 150);
 
   // When the user starts typing, show the loading state
   useEffect(() => {
