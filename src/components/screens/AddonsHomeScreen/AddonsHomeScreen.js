@@ -6,7 +6,6 @@ import useSiteMetadata from '../../lib/useSiteMetadata';
 import { SocialGraph } from '../../basics';
 import { AddonsGrid } from '../../layout/addons/AddonsGrid';
 import { AddonsLayout } from '../../layout/addons/AddonsLayout';
-import { sortAddons } from '../../../util/sort-addons';
 
 const { color, typography, breakpoint } = styles;
 
@@ -47,7 +46,7 @@ export const AddonsHomeScreen = ({ popularAddons, trendingAddons }) => {
   const { title, ogImageAddons, urls = {} } = useSiteMetadata();
   const { home } = urls;
   const [timePeriod, setTimePeriod] = useState('MONTH');
-  const sortedPopularAddons = useMemo(() => sortAddons(popularAddons[timePeriod]), [
+  const popularAddonsForTimePeriod = useMemo(() => popularAddons[timePeriod], [
     popularAddons,
     timePeriod,
   ]);
@@ -65,7 +64,7 @@ export const AddonsHomeScreen = ({ popularAddons, trendingAddons }) => {
         <Subheading>Addons unlock advanced features and new workflows for Storybook</Subheading>
         <PopularAddons
           title="Popular"
-          addonItems={sortedPopularAddons}
+          addonItems={popularAddonsForTimePeriod}
           actions={
             <ButtonToggle
               selectedIndex={timePeriod === 'MONTH' ? 0 : 1}
