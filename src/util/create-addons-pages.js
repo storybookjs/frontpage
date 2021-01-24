@@ -27,25 +27,6 @@ module.exports = function createAddonsPages({ actions, graphql }) {
     `
       {
         addons {
-          addonPages: top(sort: monthlyDownloads) {
-            ${addonDetail}
-            tags {
-              name
-              displayName
-              description
-              icon
-            }
-            compatibility {
-              name
-              displayName
-              icon
-            }
-            status
-            readme
-            publishedAt
-            repositoryUrl
-            homepageUrl
-          }
           categoryPages: tags(isCategory: true) {
             name
             displayName
@@ -62,23 +43,9 @@ module.exports = function createAddonsPages({ actions, graphql }) {
     .then(
       ({
         data: {
-          addons: { addonPages, categoryPages },
+          addons: { categoryPages },
         },
       }) => {
-        addonPages.forEach((addon) => {
-          createPage({
-            path: `/addons/${addon.name}`,
-            component: path.resolve(
-              `./src/components/screens/AddonsDetailScreen/AddonsDetailScreen.js`
-            ),
-            context: {
-              ...addon,
-              tags: buildTagLinks(addon.tags),
-              readme: processor.processSync(addon.readme).toString(),
-            },
-          });
-        });
-
         categoryPages.forEach((category) => {
           createPage({
             path: `/addons/${category.name}`,
@@ -94,8 +61,70 @@ module.exports = function createAddonsPages({ actions, graphql }) {
         });
       }
     )
+    .then(() => fetchAddonsDetailPages(createPage, graphql))
     .then(() => fetchTagPages(createPage, graphql));
 };
+
+function fetchAddonsDetailPages(createPage, graphql, skip = 0) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, 100);
+  })
+    .then(() =>
+      graphql(
+        `{
+          addons {
+            addonPages: top(sort: monthlyDownloads, limit: 30, skip: ${skip}) {
+              ${addonDetail}
+              tags {
+                name
+                displayName
+                description
+                icon
+              }
+              compatibility {
+                name
+                displayName
+                icon
+              }
+              status
+              readme
+              publishedAt
+              repositoryUrl
+              homepageUrl
+            }
+          }
+        }`
+      )
+    )
+    .then(
+      ({
+        data: {
+          addons: { addonPages },
+        },
+      }) => {
+        if (addonPages && addonPages.length > 0) {
+          createAddonsDetailPages(createPage, addonPages);
+          return fetchAddonsDetailPages(createPage, graphql, skip + addonPages.length);
+        }
+
+        return null;
+      }
+    );
+}
+
+function createAddonsDetailPages(createPage, addonPages) {
+  addonPages.forEach((addon) => {
+    createPage({
+      path: `/addons/${addon.name}`,
+      component: path.resolve(`./src/components/screens/AddonsDetailScreen/AddonsDetailScreen.js`),
+      context: {
+        ...addon,
+        tags: buildTagLinks(addon.tags),
+        readme: processor.processSync(addon.readme).toString(),
+      },
+    });
+  });
+}
 
 function fetchTagPages(createPage, graphql, skip = 0) {
   return new Promise((resolve) => {
