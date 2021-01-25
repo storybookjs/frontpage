@@ -23,6 +23,12 @@ const addonDetail = `
 
 module.exports = function createAddonsPages({ actions, graphql }) {
   const { createPage } = actions;
+  return fetchCategoryPages(createPage, graphql)
+    .then(() => fetchAddonsDetailPages(createPage, graphql))
+    .then(() => fetchTagPages(createPage, graphql));
+};
+
+function fetchCategoryPages(createPage, graphql) {
   return graphql(
     `
       {
@@ -40,6 +46,7 @@ module.exports = function createAddonsPages({ actions, graphql }) {
       }
     `
   )
+    .then(checkForErrors)
     .then(
       ({
         data: {
@@ -48,7 +55,7 @@ module.exports = function createAddonsPages({ actions, graphql }) {
       }) => {
         categoryPages.forEach((category) => {
           createPage({
-            path: `/addons/${category.name}`,
+            path: `/addons/tag/${category.name}`,
             component: path.resolve(
               `./src/components/screens/AddonsCategoryScreen/AddonsCategoryScreen.js`
             ),
@@ -60,10 +67,8 @@ module.exports = function createAddonsPages({ actions, graphql }) {
           });
         });
       }
-    )
-    .then(() => fetchAddonsDetailPages(createPage, graphql))
-    .then(() => fetchTagPages(createPage, graphql));
-};
+    );
+}
 
 function fetchAddonsDetailPages(createPage, graphql, skip = 0) {
   return new Promise((resolve) => {
@@ -96,6 +101,7 @@ function fetchAddonsDetailPages(createPage, graphql, skip = 0) {
         }`
       )
     )
+    .then(checkForErrors)
     .then(
       ({
         data: {
@@ -152,6 +158,7 @@ function fetchTagPages(createPage, graphql, skip = 0) {
     }`
       )
     )
+    .then(checkForErrors)
     .then(
       ({
         data: {
@@ -171,11 +178,19 @@ function fetchTagPages(createPage, graphql, skip = 0) {
 function createTagPages(createPage, tagPages) {
   tagPages.forEach((tag) => {
     createPage({
-      path: `/addons/${tag.name}`,
+      path: `/addons/tag/${tag.name}`,
       component: path.resolve(`./src/components/screens/AddonsTagScreen/AddonsTagScreen.js`),
       context: {
         tag,
       },
     });
   });
+}
+
+function checkForErrors(response) {
+  if (response.error) {
+    throw new Error(response.error.errors[0].message);
+  }
+
+  return response;
 }
