@@ -189,7 +189,7 @@ function createTagPages(createPage, tagPages) {
 
 function checkForErrors(response) {
   if (response.error) {
-    throw new Error(response.error.errors[0].message);
+    throw new Error(response.error.errorMessage || response.errors[0].message);
   }
 
   return response;
