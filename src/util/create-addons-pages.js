@@ -78,7 +78,7 @@ function fetchAddonsDetailPages(createPage, graphql, skip = 0) {
       graphql(
         `{
           addons {
-            addonPages: top(sort: monthlyDownloads, limit: 30, skip: ${skip}) {
+            addonPages: addons(limit: 30, skip: ${skip}) {
               ${addonDetail}
               tags {
                 name
