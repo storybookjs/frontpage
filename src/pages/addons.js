@@ -22,10 +22,10 @@ export default ({ data }) => (
 export const query = graphql`
   query AddonsHomeQuery {
     addons {
-      popularMonthly: top(sort: monthlyDownloads, limit: 12) {
+      popularMonthly: top(sort: featuredMonthly, limit: 12) {
         ...AddonItem
       }
-      popularYearly: top(sort: yearlyDownloads, limit: 12) {
+      popularYearly: top(sort: featuredYearly, limit: 12) {
         ...AddonItem
       }
       trending: top(sort: trending, limit: 12) {
