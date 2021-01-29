@@ -17,9 +17,9 @@ import { AddonsAside, AddonsAsideContainer } from '../../layout/addons/AddonsAsi
 import { AddonsSubheading } from '../../layout/addons/AddonsSubheading';
 import { AddonItemDetail } from '../../layout/addons/AddonItemDetail';
 import { AddonsLayout } from '../../layout/addons/AddonsLayout';
-import Eyebrow from '../../layout/Eyebrow';
 import { mdFormatting } from '../../../styles/formatting';
 import { generateBreadcrumb } from '../../../util/generate-breadcrumb';
+import { orderCompatibility } from '../../../util/order-compatibility';
 
 const { color, typography, spacing } = styles;
 
@@ -151,6 +151,8 @@ export const AddonsDetailScreen = ({ path, location, pageContext }) => {
 
   const breadcrumb = generateBreadcrumb(location.state);
 
+  const orderedCompatibility = useMemo(() => orderCompatibility(compatibility), [compatibility]);
+
   return (
     <>
       <SocialGraph
@@ -190,7 +192,7 @@ export const AddonsDetailScreen = ({ path, location, pageContext }) => {
                 <AddonsSubheading>Works with</AddonsSubheading>
                 <StyledTagsList
                   limit={6}
-                  tags={compatibility.map((framework) => (
+                  tags={orderedCompatibility.map((framework) => (
                     <Framework key={framework.name}>
                       {framework.icon && <FrameworkIcon src={framework.icon} />}
                       {framework.displayName}
