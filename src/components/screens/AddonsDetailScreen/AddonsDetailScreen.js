@@ -34,6 +34,10 @@ const ReadMe = styled.section`
 
 const ReadMeContent = styled.div`
   ${mdFormatting}
+
+  table {
+    display: block;
+  }
 `;
 
 const ReadMeTitle = styled.div`
