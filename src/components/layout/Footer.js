@@ -390,17 +390,11 @@ export default function Footer({ ...props }) {
               {title}
             </FooterLink>
           ))}
-          <FooterLink tertiary href={gitHub.releases}>
-            Releases
-          </FooterLink>
         </Column>
         <Column>
           <Title>Community</Title>
           <FooterLink tertiary href={gitHub.repo}>
             <Icon icon="github" /> GitHub
-          </FooterLink>
-          <FooterLink tertiary href={blog}>
-            <Icon icon="doclist" /> Blog
           </FooterLink>
           <FooterLink tertiary href={twitter}>
             <Icon icon="twitter" /> Twitter

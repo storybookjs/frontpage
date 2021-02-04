@@ -86,6 +86,7 @@ export default function Header({ ...props }) {
     navLinks = {},
     docs,
     tutorials,
+    blog,
     addons,
     releases,
     gitHub = {},
@@ -99,7 +100,7 @@ export default function Header({ ...props }) {
 
   return (
     <DSHeader
-      navBreakpoint={1.333 * breakpoint}
+      navBreakpoint={1.5 * breakpoint}
       logo={
         <LogoWrapper>
           <LogotypeWrapper LinkWrapper={GatsbyLink} to="/">
@@ -128,6 +129,11 @@ export default function Header({ ...props }) {
           <NavItem showDesktop>
             <NavLink tertiary href={addons} isGatsby LinkWrapper={LinkWrapper}>
               Addons
+            </NavLink>
+          </NavItem>
+          <NavItem showDesktop>
+            <NavLink tertiary href={blog}>
+              Blog
             </NavLink>
           </NavItem>
           <NavItem showDesktop>
