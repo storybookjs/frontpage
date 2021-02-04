@@ -96,6 +96,7 @@ function fetchAddonsDetailPages(createPage, graphql, skip = 0) {
               publishedAt
               repositoryUrl
               homepageUrl
+              npmUrl
             }
           }
         }`
