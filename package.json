@@ -57,10 +57,14 @@
     "react-helmet": "^5.2.1",
     "react-lazyload": "^2.6.5",
     "recompose": "^0.30.0",
+    "rehype": "^11.0.0",
+    "rehype-stringify": "^8.0.0",
+    "rehype-urls": "^1.1.1",
     "remark-html": "^13.0.1",
     "request": "^2.88.2",
     "semver": "^7.3.2",
     "styled-components": "^4.4.1",
+    "unist-util-visit": "^2.0.3",
     "validatorjs": "^3.15.1"
   },
   "keywords": [

@@ -3,8 +3,7 @@ const path = require('path');
 const remark = require('remark');
 const remarkHTML = require('remark-html');
 const buildTagLinks = require('./build-tag-links');
-
-const processor = remark().use(remarkHTML);
+const absoluteLinks = require('./absolute-links');
 
 const addonDetail = `
   id: name
@@ -121,6 +120,12 @@ function fetchAddonsDetailPages(createPage, graphql, skip = 0) {
 
 function createAddonsDetailPages(createPage, addonPages) {
   addonPages.forEach((addon) => {
+    const processor = remark()
+      .use(absoluteLinks, {
+        base: `${addon.repositoryUrl}/`,
+      })
+      .use(remarkHTML);
+
     createPage({
       path: `/addons/${addon.name}`,
       component: path.resolve(`./src/components/screens/AddonsDetailScreen/AddonsDetailScreen.js`),
