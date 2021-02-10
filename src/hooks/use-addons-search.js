@@ -1,5 +1,5 @@
 /* eslint-env browser */
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import buildTagLinks from '../util/build-tag-links';
 
 const initalValue = { search: [], relatedTags: [] };
@@ -9,7 +9,7 @@ export function useAddonsSearch() {
   const [results, setResults] = useState(initalValue);
   const [isSearchLoading, setIsSearchLoading] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
-  const debouncedSearchTerm = useDebounce(query, 150);
+  const debouncedSearchTerm = useDebounce(query, 100);
 
   // When the user starts typing, show the loading state
   useEffect(() => {
@@ -19,7 +19,8 @@ export function useAddonsSearch() {
 
     if (query === '') {
       setIsSearching(false);
-    } else if (query !== '' && isSearching === false) {
+      setResults(initalValue);
+    } else if (query !== '' && query.length > 3 && isSearching === false) {
       setIsSearching(true);
     }
   }, [query]);
@@ -31,8 +32,6 @@ export function useAddonsSearch() {
         setIsSearchLoading(false);
         setResults(resultsData);
       });
-    } else {
-      setResults(initalValue);
     }
   }, [debouncedSearchTerm]);
 
@@ -88,14 +87,19 @@ function searchAddons(query) {
 
 function useDebounce(value, delay) {
   const [debouncedValue, setDebouncedValue] = useState(value);
+  const timeout = useRef();
 
-  useEffect(() => {
-    const handler = setTimeout(() => {
+  useLayoutEffect(() => {
+    if (!timeout.current) {
+      setDebouncedValue(value);
+    }
+
+    timeout.current = setTimeout(() => {
       setDebouncedValue(value);
     }, delay);
 
     return () => {
-      clearTimeout(handler);
+      clearTimeout(timeout.current);
     };
   }, [value, delay]);
 
