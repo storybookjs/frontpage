@@ -70,7 +70,7 @@ const siteMetadata = {
     blog: `http://storybook.js.org/blog`,
     medium: `https://medium.com/storybookjs`,
     twitter: `https://twitter.com/storybookjs`,
-    chat: `https://discord.gg/UUt2PJb`,
+    chat: `https://discord.gg/storybook`,
     youtube: `https://www.youtube.com/channel/UCr7Quur3eIyA_oe8FNYexfg`,
 
     // Brand
