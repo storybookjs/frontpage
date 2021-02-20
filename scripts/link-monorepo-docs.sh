@@ -17,9 +17,15 @@ fi
 TARGET_DIR="$MONOREPO_PATH/$REPO_SUBDIR"
 
 if [ -d "$TARGET_DIR" ]; then
-  rm -rf "$REPO_DIRNAME"
+  if [ ! -L $REPO_DIRNAME ]; then
+    echo "Deleting default docs"
+    rm -rf "$REPO_DIRNAME"
+  else
+    # remove softlink
+    rm "$REPO_DIRNAME"
+  fi
   ln -s "$RELATIVE_DIRNAME/$TARGET_DIR" "$REPO_DIRNAME"
-else 
+else
   echo "Couldn't find monorepo docs at '$TARGET_DIR'"
   exit 1;
 fi
