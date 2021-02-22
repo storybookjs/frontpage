@@ -355,9 +355,9 @@ export default function Footer({ ...props }) {
                   as you build a UI from scratch.
                 </ResourceDesc>
                 <ResourceActions>
-                  <ResourceAction withArrow href={tutorials}>
+                  <Link withArrow href={tutorials}>
                     Learn Storybook now
-                  </ResourceAction>
+                  </Link>
                 </ResourceActions>
               </Meta>
             </Resource>
