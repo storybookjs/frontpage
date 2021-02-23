@@ -57,7 +57,7 @@ const siteMetadata = {
     // Navigation
     home: homepageUrl,
     docs: '/docs/',
-    tutorials: `https://www.learnstorybook.com/`,
+    tutorials: `http://storybook.js.org/tutorials/`,
     addons: `/addons/`,
     community: `/community/`,
     useCases: `/use-cases/`,
