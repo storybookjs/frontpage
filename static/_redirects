@@ -82,4 +82,4 @@
 /docs/presets/writing-presets/ /docs/react/api/writing-presets 301
 /versions.json /.netlify/functions/versions/:splat 200
 /blog/* https://storybook-blog.netlify.app/blog/:splat 200
-/tutorials/* https://www.learnstorybook.com/tutorials/:splat 200
+/tutorials/* https://storybook-tutorials.netlify.app/tutorials/:splat 200
