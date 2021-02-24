@@ -87,19 +87,19 @@ module.exports = {
           {
             resolve: 'gatsby-remark-link-rewrite',
             options: {
-              // Strip off trailing .md from links. We want them there in the original source so the
-              // relative links work inside github, when you view the .md files directly
-              // (Note we need to ensure we don't match the links below)
-              pattern: /^(?!\.\.\/\.\.\/)(.*)\.md(#.*)?$/,
-              replace: '$1$2',
+              // Replace links that go to the monorepo (outside of docs) w/ full URLs to master
+              pattern: /^\.\.\/\.\.\/(.*)$/,
+              replace: 'https://github.com/storybookjs/storybook/tree/master/$1',
             },
           },
           {
             resolve: 'gatsby-remark-link-rewrite',
             options: {
-              // Replace links that go to the monorepo (outside of docs) w/ full URLs to master
-              pattern: /^\.\.\/\.\.\/(.*)$/,
-              replace: 'https://github.com/storybookjs/storybook/tree/master/$1',
+              // Strip off trailing .md from links. We want them there in the original source so the
+              // relative links work inside github, when you view the .md files directly
+              // (Note we need to ensure we don't match the links below)
+              pattern: /^(?!\.\.\/\.\.\/)(.*)\.md(#.*)?$/,
+              replace: '../$1$2',
             },
           },
           {
@@ -140,7 +140,6 @@ module.exports = {
         mergeSecurityHeaders: false,
       },
     },
-    'gatsby-plugin-remove-trailing-slashes',
     {
       resolve: 'gatsby-plugin-layout',
       options: {
