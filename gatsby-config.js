@@ -140,7 +140,7 @@ module.exports = {
         mergeSecurityHeaders: false,
       },
     },
-    'gatsby-plugin-remove-trailing-slashes',
+    // 'gatsby-plugin-remove-trailing-slashes',
     {
       resolve: 'gatsby-plugin-layout',
       options: {
