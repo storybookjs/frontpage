@@ -99,6 +99,16 @@ function DocsScreen({ data, pageContext }) {
       />
     );
   }, [framework]);
+  const AbsoluteLinks = useMemo(() => {
+    return ({ href, ...props }) => {
+      const url = buildPathWithFramework(
+        href.replace(/^(?!\.\.\/\.\.\/)(\.\.\/)(.*)$/, '/docs/$2'),
+        framework
+      );
+      // eslint-disable-next-line
+      return <a href={url} {...props} />;
+    };
+  }, [framework]);
 
   const features = featureGroups.flatMap((group) => group.features);
   const feature = features.find((fs) => `/docs${fs.path}/` === slug);
@@ -147,6 +157,7 @@ function DocsScreen({ data, pageContext }) {
             CodeSnippets: CodeSnippetsWithCurrentFramework,
             FeatureSnippets: FeatureSnippetsWithCurrentFramework,
             FrameworkSupportTable: FrameworkSupportTableWithFeaturesAndCurrentFramework,
+            a: AbsoluteLinks,
           }}
         >
           <StyledHighlight withHTMLChildren={false}>
