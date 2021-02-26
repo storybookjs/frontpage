@@ -10,7 +10,6 @@ import {
   Subheading,
   styles,
 } from '@storybook/design-system';
-
 import { graphql } from 'gatsby';
 import { CodeSnippets } from './CodeSnippets';
 import { frameworkSupportsFeature, FrameworkSupportTable } from './FrameworkSupportTable';
@@ -20,6 +19,7 @@ import useSiteMetadata from '../../lib/useSiteMetadata';
 
 import { mdFormatting } from '../../../styles/formatting';
 import buildPathWithFramework from '../../../util/build-path-with-framework';
+import relativeToRootLinks from '../../../util/relative-to-root-links';
 import stylizeFramework from '../../../util/stylize-framework';
 import { FeatureSnippets } from './FeatureSnippets';
 import { Pre } from '../../basics/Pre';
@@ -69,7 +69,7 @@ const UnsupportedBanner = styled.div`
   padding: 20px;
 `;
 
-function DocsScreen({ data, pageContext }) {
+function DocsScreen({ data, pageContext, location }) {
   const {
     currentPage: {
       body,
@@ -99,12 +99,9 @@ function DocsScreen({ data, pageContext }) {
       />
     );
   }, [framework]);
-  const AbsoluteLinks = useMemo(() => {
+  const LinksWithPrefix = useMemo(() => {
     return ({ href, ...props }) => {
-      const url = buildPathWithFramework(
-        href.replace(/^(?!\.\.\/\.\.\/)(\.\.\/)(.*)$/, '/docs/$2'),
-        framework
-      );
+      const url = relativeToRootLinks(href, framework, location.pathname);
       // eslint-disable-next-line
       return <a href={url} {...props} />;
     };
@@ -157,7 +154,7 @@ function DocsScreen({ data, pageContext }) {
             CodeSnippets: CodeSnippetsWithCurrentFramework,
             FeatureSnippets: FeatureSnippetsWithCurrentFramework,
             FrameworkSupportTable: FrameworkSupportTableWithFeaturesAndCurrentFramework,
-            a: AbsoluteLinks,
+            a: LinksWithPrefix,
           }}
         >
           <StyledHighlight withHTMLChildren={false}>
