@@ -11147,12 +11147,12 @@ gatsby-plugin-react-helmet@^3.3.9:
   dependencies:
     "@babel/runtime" "^7.10.3"
 
-gatsby-plugin-remove-trailing-slashes@^2.3.11:
-  version "2.3.11"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-remove-trailing-slashes/-/gatsby-plugin-remove-trailing-slashes-2.3.11.tgz#1ebcf55a01c34686a83cdefd9b83d98ed13c9e56"
-  integrity sha512-wYlfSDhUWqAapdyO4bClQIYZFIwHZmBUDdoNTmly+DU4Cw+yN1Q/jQSsT81jYyBHGvlOmnnfYPWyzQwMl0hUXA==
+gatsby-plugin-remove-trailing-slashes@^2.10.0:
+  version "2.10.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-remove-trailing-slashes/-/gatsby-plugin-remove-trailing-slashes-2.10.0.tgz#dfb5a2d457a2941730ebf1d550fc7b5a0b37c471"
+  integrity sha512-8kx9wBgPJXVcxGt1lUxtfZe1XD+4SRimHnU1T/KE7qiWlSZ8qIupF9rwnjRpxJd35zHjv25Teicy3u/60EXG+A==
   dependencies:
-    "@babel/runtime" "^7.10.3"
+    "@babel/runtime" "^7.12.5"
 
 gatsby-plugin-segment-js@^3.1.0:
   version "3.6.0"
@@ -11388,6 +11388,13 @@ gatsby-remark-autolink-headers@^2.3.11:
     github-slugger "^1.3.0"
     lodash "^4.17.15"
     mdast-util-to-string "^1.1.0"
+    unist-util-visit "^1.4.1"
+
+gatsby-remark-check-links@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-check-links/-/gatsby-remark-check-links-2.1.0.tgz#8e8a2b1b82ac6c516fcc2074e8f806e2c0d53571"
+  integrity sha512-TbhT8oVlAgJfxe0WUQWDOb0kLkMUYo1N4AfFstejClPWO4OjRlznt3IMW3weQkwuweiovF5cxVpQcFrkCGVFBw==
+  dependencies:
     unist-util-visit "^1.4.1"
 
 gatsby-remark-copy-linked-files@^2.3.11:
