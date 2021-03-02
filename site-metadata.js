@@ -57,7 +57,7 @@ const siteMetadata = {
     // Navigation
     home: homepageUrl,
     docs: '/docs/',
-    tutorials: `http://storybook.js.org/tutorials/`,
+    tutorials: `https://storybook.js.org/tutorials/`,
     addons: `/addons/`,
     community: `/community/`,
     useCases: `/use-cases/`,
@@ -67,7 +67,7 @@ const siteMetadata = {
     addonsApi: '/docs/react/api/addons',
 
     // Social
-    blog: `http://storybook.js.org/blog`,
+    blog: `https://storybook.js.org/blog`,
     medium: `https://medium.com/storybookjs`,
     twitter: `https://twitter.com/storybookjs`,
     chat: `https://discord.gg/storybook`,
