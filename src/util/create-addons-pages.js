@@ -171,7 +171,7 @@ function fetchTagPages(createPage, graphql, skip = 0) {
           addons: { tagPages },
         },
       }) => {
-        if (tagPages && tagPages.length > 0) {
+        if (tagPages.length > 0) {
           createTagPages(createPage, tagPages);
           return fetchTagPages(createPage, graphql, skip + tagPages.length);
         }
