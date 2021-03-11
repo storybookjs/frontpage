@@ -187,7 +187,7 @@ function DocsLayout({ children, data, pageContext, ...props }) {
     <>
       <GlobalStyle />
       <Helmet>
-        <link rel="canonical" href={`${homepageUrl}${buildPathWithFramework(slug, 'react')}`} />
+        <link rel="canonical" href={`${homepageUrl}${buildPathWithFramework(slug, 'react')}/`} />
         <meta name="docsearch:framework" content={framework} />
         <link
           rel="stylesheet"
