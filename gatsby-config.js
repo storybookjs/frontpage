@@ -148,6 +148,21 @@ module.exports = {
         component: require.resolve('./src/components/layout/PageLayout'),
       },
     },
-    'gatsby-plugin-sitemap',
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        serialize: ({ site, allSitePage }) => {
+          const allPages = allSitePage.edges.map((edge) => edge.node);
+
+          return allPages.map((page) => {
+            return {
+              url: `${site.siteMetadata.siteUrl}${page.path}/`,
+              changefreq: `daily`,
+              priority: 0.7,
+            };
+          });
+        },
+      },
+    },
   ],
 };
