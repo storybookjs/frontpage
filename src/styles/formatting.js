@@ -313,7 +313,7 @@ export const mdFormatting = css`
   }
 
   details > summary {
-    display: inline-block;
+    display: list-item;
     cursor: pointer;
     color: ${darken(0.2, color.secondary)};
   }
