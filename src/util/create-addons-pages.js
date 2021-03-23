@@ -54,7 +54,7 @@ function fetchCategoryPages(createPage, graphql) {
       }) => {
         categoryPages.forEach((category) => {
           createPage({
-            path: `/addons/tag/${category.name}`,
+            path: `/addons/tag/${category.name}/`,
             component: path.resolve(
               `./src/components/screens/AddonsCategoryScreen/AddonsCategoryScreen.js`
             ),
@@ -127,7 +127,7 @@ function createAddonsDetailPages(createPage, addonPages) {
       .use(remarkHTML);
 
     createPage({
-      path: `/addons/${addon.name}`,
+      path: `/addons/${addon.name}/`,
       component: path.resolve(`./src/components/screens/AddonsDetailScreen/AddonsDetailScreen.js`),
       context: {
         ...addon,
@@ -184,7 +184,7 @@ function fetchTagPages(createPage, graphql, skip = 0) {
 function createTagPages(createPage, tagPages) {
   tagPages.forEach((tag) => {
     createPage({
-      path: `/addons/tag/${tag.name}`,
+      path: `/addons/tag/${tag.name}/`,
       component: path.resolve(`./src/components/screens/AddonsTagScreen/AddonsTagScreen.js`),
       context: {
         tag,
