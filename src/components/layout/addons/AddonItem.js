@@ -191,7 +191,7 @@ export const AddonItem = ({
 }) => (
   <AddonItemWrapper orientation={orientation} {...props}>
     {!isLoading && (
-      <ClickIntercept state={{ from }} as={GatsbyLinkWrapper} to={`/addons/${name}`} />
+      <ClickIntercept state={{ from }} as={GatsbyLinkWrapper} to={`/addons/${name}/`} />
     )}
     <AddonInfo orientation={orientation}>
       <Image
