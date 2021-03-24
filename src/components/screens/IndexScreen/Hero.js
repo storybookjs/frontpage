@@ -397,7 +397,11 @@ export default function Hero({ startOpen, ...props }) {
       <Content>
         <Primary>
           <VideoWrapper>
-            <Video src="/videos/storybook-hero-video-optimized.mp4" alt="Demo video" />
+            <Video
+              src="/videos/storybook-hero-video-optimized-lg.mp4"
+              alt="Demo video"
+              shouldChangeSize
+            />
             <TooltipCanvas
               tagName="span"
               placement="bottom"
