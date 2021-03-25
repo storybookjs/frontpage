@@ -222,7 +222,7 @@ export const AddonItemDetail = ({
           <span>{isLoading ? 'loading description of addon' : description}</span>
         </Description>
         <Instructions status={status}>
-          <ClipboardCode code={`npx install ${name}`} />
+          <ClipboardCode code={`npm install ${name}`} />
           {publishedAt && (
             <Update>
               <Link href={npmUrl} target="_blank" rel="noopener nofollow noreferrer">
