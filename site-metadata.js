@@ -64,7 +64,7 @@ const siteMetadata = {
     releases: '/releases/',
     support: `/support/`,
     team: `/team/`,
-    addonsApi: '/docs/react/api/addons',
+    addonsApi: '/docs/react/addons/addons-api/',
 
     // Social
     blog: `https://storybook.js.org/blog`,
@@ -82,10 +82,10 @@ const siteMetadata = {
 
     // Official addons
     officialAddons: {
-      docs: '/docs/react/addons/introduction',
-      install: '/docs/react/addons/install-addons',
-      create: '/docs/react/addons/writing-addons',
-      publish: '/docs/react/addons/addon-catalog',
+      docs: '/docs/react/addons/introduction/',
+      install: '/docs/react/addons/install-addons/',
+      create: '/docs/react/addons/writing-addons/',
+      publish: '/docs/react/addons/addon-catalog/',
       controls: `${essentialsBase}/controls`,
       actions: `${essentialsBase}/actions`,
       viewport: `${essentialsBase}/viewport`,
