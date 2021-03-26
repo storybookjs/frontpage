@@ -75,7 +75,8 @@
 /docs/testing/manual-testing/ /docs/react/workflows/testing-with-storybook/ 301
 /docs/addons/introduction/ /docs/react/addons/introduction/ 301
 /docs/addons/using-addons/ /docs/react/addons/install-addons/ 301
-/docs/addons/writing-addons/ /react/addons/writing-addons/ 301
+/docs/addons/writing-addons/ /docs/react/addons/writing-addons/ 301
+/addons/writing-addons/ /docs/react/addons/writing-addons/ 301
 /docs/addons/api/ /docs/react/addons/addons-api/ 301
 /docs/presets/introduction/ /docs/react/api/presets/ 301
 /docs/presets/preset-gallery/ https://github.com/storybookjs/presets 301

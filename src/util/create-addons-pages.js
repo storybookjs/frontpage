@@ -122,7 +122,7 @@ function createAddonsDetailPages(createPage, addonPages) {
   addonPages.forEach((addon) => {
     const processor = remark()
       .use(absoluteLinks, {
-        base: `${addon.repositoryUrl}/`,
+        base: `${addon.repositoryUrl || addon.npmUrl}/`,
       })
       .use(remarkHTML);
 
