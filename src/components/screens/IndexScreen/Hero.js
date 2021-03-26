@@ -13,7 +13,7 @@ import {
   styles,
 } from '@storybook/design-system';
 
-import { Cardinal, Video } from '../../basics';
+import { Cardinal, Video, LazyLoad } from '../../basics';
 
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import PlaceholderAspectRatio from '../../layout/PlaceholderAspectRatio';
@@ -22,6 +22,14 @@ import stylizeFramework from '../../../util/stylize-framework';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 
 const { color, typography, breakpoint, pageMargins } = styles;
+
+const Placeholder = styled(PlaceholderAspectRatio)`
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+`;
 
 const ModalVideo = styled.iframe`
   width: 100%;
@@ -397,7 +405,15 @@ export default function Hero({ startOpen, ...props }) {
       <Content>
         <Primary>
           <VideoWrapper>
-            <Video src="/videos/storybook-hero-video-optimized.mp4" alt="Demo video" />
+            <LazyLoad once placeholder={<Placeholder ratio={0.667} />}>
+              <Placeholder ratio={0.667}>
+                <Video
+                  src="/videos/storybook-hero-video-optimized-lg.mp4"
+                  alt="Demo video"
+                  shouldChangeSize
+                />
+              </Placeholder>
+            </LazyLoad>
             <TooltipCanvas
               tagName="span"
               placement="bottom"
