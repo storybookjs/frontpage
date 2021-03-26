@@ -144,6 +144,7 @@ export const AddonsDetailScreen = ({ path, location, pageContext }) => {
   const {
     homepageUrl,
     repositoryUrl,
+    npmUrl,
     readme,
     compatibility,
     tags,
@@ -173,7 +174,7 @@ export const AddonsDetailScreen = ({ path, location, pageContext }) => {
             <ReadMeTitle>
               <AddonsSubheading>Readme</AddonsSubheading>
               <ViewOnGithubLink
-                href={repositoryUrl || homepageUrl}
+                href={repositoryUrl || homepageUrl || npmUrl}
                 target="_blank"
                 rel="noopener nofollow noreferrer"
               >
@@ -184,7 +185,7 @@ export const AddonsDetailScreen = ({ path, location, pageContext }) => {
               {readme ? (
                 <ReadMeContent dangerouslySetInnerHTML={{ __html: readme }} />
               ) : (
-                <NoReadmeFound repositoryUrl={repositoryUrl || homepageUrl} />
+                <NoReadmeFound repositoryUrl={repositoryUrl || homepageUrl || npmUrl} />
               )}
             </Highlight>
           </ReadMe>
