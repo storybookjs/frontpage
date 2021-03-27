@@ -27,7 +27,7 @@ export const AddonsCategoryScreen = ({ path, pageContext }) => {
         url={`${home}${path}`}
         image={ogImageAddons}
       />
-      <AddonsLayout currentPath={path}>
+      <AddonsLayout currentPath={`${path}/`}>
         <AddonsPageHeader
           title={category}
           subtitle={description}
