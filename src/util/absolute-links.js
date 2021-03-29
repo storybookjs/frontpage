@@ -4,17 +4,17 @@ const rehypeUrls = require('rehype-urls');
 const rehypeStringify = require('rehype-stringify');
 const visit = require('unist-util-visit');
 
-function absoluteLink(link, { base } = {}) {
+function absoluteLink(link, { base, assetBase, isAsset } = {}) {
   if (link.startsWith('#')) {
     return link;
   }
-  return resolve(base, link);
+  return resolve(isAsset ? assetBase : base, link);
 }
 
 function absoluteLinksHtml(html, opts) {
   const buf = rehype()
-    .use(rehypeUrls, (url) => {
-      return absoluteLink(format(url), opts);
+    .use(rehypeUrls, (url, node) => {
+      return absoluteLink(format(url), { ...opts, isAsset: node.properties.src });
     })
     .use(rehypeStringify, { closeSelfClosing: true })
     .processSync(html);
@@ -23,14 +23,16 @@ function absoluteLinksHtml(html, opts) {
 }
 
 module.exports = function absoluteLinks(opts) {
+  // eslint-disable-next-line
+  opts.assetBase = assetUrl(opts.base);
+
   return transform;
 
   function transform(tree) {
-    visit(tree, ['link', 'html'], visitor);
+    // https://github.com/syntax-tree/mdast#nodes
+    visit(tree, ['link', 'image', 'html'], visitor);
 
     function visitor(node) {
-      // console.log('visit', node);
-
       if (!node) return;
 
       switch (node.type) {
@@ -44,9 +46,31 @@ module.exports = function absoluteLinks(opts) {
           node.value = absoluteLinksHtml(node.value, opts);
           return;
         }
+        case 'image': {
+          // eslint-disable-next-line
+          node.url = absoluteLink(node.url, {
+            ...opts,
+            isAsset: true,
+          });
+          return;
+        }
         default:
           throw new Error(`Unexpected: ${node.type}`);
       }
     }
   }
 };
+
+function assetUrl(repositoryUrl) {
+  if (!repositoryUrl) return repositoryUrl;
+
+  const repositoryRegex = /github\.com\/(.+\/.+)\//;
+  const parseResult = repositoryUrl.match(repositoryRegex);
+
+  if (parseResult && parseResult[1]) {
+    const repository = parseResult[1];
+    return `https://raw.githubusercontent.com/${repository}/HEAD/`;
+  }
+
+  return repositoryUrl;
+}
