@@ -91,7 +91,6 @@ class MailingListSubscribeForm extends Component {
             hideLabel
             autoCapitalize="off"
             autoCorrect="off"
-            appearance="secondary"
           />
           <Send type="submit" appearance="secondary" onClick={this.formData.onSubmit}>
             {cta || 'Send'}
