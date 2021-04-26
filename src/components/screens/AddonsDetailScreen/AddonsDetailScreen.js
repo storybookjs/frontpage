@@ -63,10 +63,14 @@ const AuthorName = styled.div`
   margin-left: ${spacing.padding.small}px;
 `;
 
-const Author = styled.div`
-  display: flex;
-  align-items: center;
+const Author = styled(Link)`
+  display: block;
   margin-bottom: 16px;
+
+  span {
+    display: flex;
+    align-items: center;
+  }
 `;
 
 const AuthorListInner = styled.div`
@@ -87,7 +91,12 @@ const AuthorList = ({ authors }) => {
   return (
     <AuthorListInner>
       {authorsSubset.map((author) => (
-        <Author key={author.id}>
+        <Author
+          key={author.id}
+          href={`https://www.npmjs.com/~${author.name}`}
+          target="_blank"
+          rel="noopener nofollow noreferrer"
+        >
           <Avatar size="medium" username={author.name} src={author.avatarUrl} />
           <AuthorName>{author.name}</AuthorName>
         </Author>
