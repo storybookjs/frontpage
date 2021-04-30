@@ -18,6 +18,9 @@ const SocialGraph: FunctionComponent<Props> = ({ title, desc, url = null, image 
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={desc} />
       <meta name="twitter:site" content="@storybookjs" />
+
+      <link rel="webmention" href="https://webmention.io/storybook.js.org/webmention" />
+      <link rel="pingback" href="https://webmention.io/storybook.js.org/xmlrpc" />
     </Helmet>
   );
 };
