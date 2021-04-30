@@ -391,7 +391,7 @@ export default function Footer({ ...props }) {
           <FooterLink tertiary href={gitHub.repo}>
             <Icon icon="github" /> GitHub
           </FooterLink>
-          <FooterLink tertiary href={twitter}>
+          <FooterLink tertiary href={twitter} rel="me">
             <Icon icon="twitter" /> Twitter
           </FooterLink>
           <FooterLink tertiary href={chat}>
