@@ -176,7 +176,7 @@ export default function CommunityHero(props) {
           <NpmDownloadStat className="chromatic-ignore" />
           <Stat
             size="small"
-            count={`+${contributorCount}`}
+            count={`${contributorCount}+`}
             text="Contributors"
             noPlural
             status="tertiary"
