@@ -59,12 +59,12 @@ const Title = styled.h1`
 
   font-size: ${typography.size.m3}px;
   line-height: 32px;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 
   @media (min-width: ${breakpoint * 1}px) {
     font-size: ${typography.size.l3}px;
     line-height: 52px;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
   }
 
   @media (min-width: ${breakpoint * 2}px) {
