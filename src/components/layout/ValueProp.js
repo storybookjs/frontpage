@@ -28,7 +28,7 @@ const Title = styled.h2`
 const Desc = styled.div`
   font-size: ${typography.size.s3}px;
   line-height: 1.5;
-  color: ${color.dark};
+  color: ${color.darker};
 
   @media (min-width: ${breakpoint}px) {
     font-size: ${typography.size.m1}px;
