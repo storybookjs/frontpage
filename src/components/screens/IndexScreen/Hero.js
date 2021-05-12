@@ -385,16 +385,16 @@ export default function Hero({ startOpen, ...props }) {
       <Pitch>
         <Title>Build bulletproof UI components faster</Title>
         <Subtitle>
-          Storybook is an open source tool for developing UI components and pages in isolation. It
-          simplifies building, documenting, and testing UIs.
+          Storybook is an open source tool for building UI components and pages in isolation. It
+          streamlines UI development, testing, and documentation.
         </Subtitle>
         <PitchActions>
-          <Button appearance="primary" isLink href={docs}>
-            Get Started
+          <Button appearance="secondary" isLink href={docs}>
+            Go to the docs
           </Button>
           <WithModal startOpen={startOpen} modal={Modal}>
             {({ onOpen }) => (
-              <Button appearance="primaryOutline" onClick={onOpen}>
+              <Button appearance="secondaryOutline" onClick={onOpen}>
                 <Icon icon="play" aria-hidden />
                 Watch video
               </Button>
