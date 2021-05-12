@@ -15,12 +15,12 @@ const Media = styled.div`
 const Title = styled.h2`
   font-size: ${typography.size.m2}px;
   font-weight: ${typography.weight.extrabold};
-  line-height: 24px;
+  line-height: ${typography.size.l1}px;
   margin-bottom: 0.5rem;
 
   @media (min-width: ${breakpoint}px) {
     font-size: ${typography.size.l1}px;
-    line-height: 36px;
+    line-height: ${typography.size.l2}px;
     margin-bottom: 0.75rem;
   }
 `;

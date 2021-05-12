@@ -16,7 +16,7 @@ const Quote = styled.div`
     color: ${color.darkest};
     font-weight: ${typography.weight.regular};
     font-size: ${typography.size.m1}px;
-    line-height: ${typography.size.m3}px;
+    line-height: ${typography.size.l1}px;
   }
   margin-bottom: 1.5rem;
   max-width: 480px;
