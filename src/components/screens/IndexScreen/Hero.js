@@ -59,12 +59,12 @@ const Title = styled.h1`
 
   font-size: ${typography.size.m3}px;
   line-height: 32px;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 
   @media (min-width: ${breakpoint * 1}px) {
     font-size: ${typography.size.l3}px;
     line-height: 52px;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
   }
 
   @media (min-width: ${breakpoint * 2}px) {
@@ -88,10 +88,16 @@ const Subtitle = styled.div`
 
 const PitchActions = styled.div`
   > * {
-    margin: 0 10px;
     width: 140px;
+    margin: 0 5px;
+    &:first-child {
+      margin-bottom: 0.75rem;
+    }
     @media (min-width: ${breakpoint * 1}px) {
       width: 180px;
+      &:first-child {
+        margin-bottom: 0;
+      }
     }
   }
 `;
@@ -100,7 +106,7 @@ const Pitch = styled.div`
   text-align: center;
   max-width: 600px;
   margin: 0 auto;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
   @media (min-width: ${breakpoint * 2}px) {
     margin-bottom: 5rem;
   }
@@ -385,16 +391,16 @@ export default function Hero({ startOpen, ...props }) {
       <Pitch>
         <Title>Build bulletproof UI components faster</Title>
         <Subtitle>
-          Storybook is an open source tool for developing UI components and pages in isolation. It
-          simplifies building, documenting, and testing UIs.
+          Storybook is an open source tool for building UI components and pages in isolation. It
+          streamlines UI development, testing, and documentation.
         </Subtitle>
         <PitchActions>
-          <Button appearance="primary" isLink href={docs}>
-            Get Started
+          <Button appearance="secondary" isLink href={docs}>
+            Go to the docs
           </Button>
           <WithModal startOpen={startOpen} modal={Modal}>
             {({ onOpen }) => (
-              <Button appearance="primaryOutline" onClick={onOpen}>
+              <Button appearance="secondaryOutline" onClick={onOpen}>
                 <Icon icon="play" aria-hidden />
                 Watch video
               </Button>
