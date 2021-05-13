@@ -95,6 +95,9 @@ const PitchActions = styled.div`
     }
     @media (min-width: ${breakpoint * 1}px) {
       width: 180px;
+      &:first-child {
+        margin-bottom: 0;
+      }
     }
   }
 `;
