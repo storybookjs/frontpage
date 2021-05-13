@@ -32,7 +32,9 @@ The Storybook for Storybook contains every UI component. The UI is built followi
 
 Gatsby is used for basic routing and static site generation.
 
-1. yarn start
+1. `yarn start` to run the entire site
+
+2. `yarn start:skip-addons` to skip building the addon catalog
 
 #### Docs content
 
@@ -62,7 +64,7 @@ Search within the docs is powered by [DocSearch](https://docsearch.algolia.com/)
 
 `GATSBY_ALGOLIA_API_KEY`
 
-In development and with local production builds, that environment variable can be configured with `.env` files as explaned [here](https://www.gatsbyjs.com/docs/environment-variables/#client-side-javascript). The `GATSBY_` prefix ensures that the variable is available in client-side code. 
+In development and with local production builds, that environment variable can be configured with `.env` files as explaned [here](https://www.gatsbyjs.com/docs/environment-variables/#client-side-javascript). The `GATSBY_` prefix ensures that the variable is available in client-side code.
 
 How to setup on your machine:
 
