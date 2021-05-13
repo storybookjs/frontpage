@@ -5,6 +5,8 @@ const remarkHTML = require('remark-html');
 const buildTagLinks = require('./build-tag-links');
 const absoluteLinks = require('./absolute-links');
 
+const DELAY = 200;
+
 const addonDetail = `
   id: name
   name
@@ -71,7 +73,7 @@ function fetchCategoryPages(createPage, graphql) {
 
 function fetchAddonsDetailPages(createPage, graphql, skip = 0) {
   return new Promise((resolve) => {
-    setTimeout(resolve, 100);
+    setTimeout(resolve, DELAY);
   })
     .then(() =>
       graphql(
@@ -140,7 +142,7 @@ function createAddonsDetailPages(createPage, addonPages) {
 
 function fetchTagPages(createPage, graphql, skip = 0) {
   return new Promise((resolve) => {
-    setTimeout(resolve, 100);
+    setTimeout(resolve, DELAY);
   })
     .then(() =>
       graphql(

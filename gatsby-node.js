@@ -231,7 +231,11 @@ exports.createPages = ({ actions, graphql }) => {
           }
         }
       )
-      .then(() => createAddonsPages({ actions, graphql }))
+      .then(() => {
+        return process.env.GATSBY_SKIP_ADDON_PAGES
+          ? Promise.resolve()
+          : createAddonsPages({ actions, graphql });
+      })
       .then(() => {
         resolve();
       });
