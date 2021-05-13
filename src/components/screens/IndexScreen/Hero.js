@@ -88,8 +88,11 @@ const Subtitle = styled.div`
 
 const PitchActions = styled.div`
   > * {
-    margin: 0 10px;
     width: 140px;
+    margin: 0 5px;
+    &:first-child {
+      margin-bottom: 0.75rem;
+    }
     @media (min-width: ${breakpoint * 1}px) {
       width: 180px;
     }
@@ -100,7 +103,7 @@ const Pitch = styled.div`
   text-align: center;
   max-width: 600px;
   margin: 0 auto;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
   @media (min-width: ${breakpoint * 2}px) {
     margin-bottom: 5rem;
   }
