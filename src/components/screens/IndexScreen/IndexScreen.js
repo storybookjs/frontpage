@@ -193,7 +193,7 @@ export function PureIndexScreen({ ...props }) {
           </Placeholder>
         }
         title="Document UI to share with your team"
-        desc="Stories show how UI actually works not just how it's supposed to work. That makes
+        desc="Stories show how UIs actually work not just how they're supposed to work. That makes
             gathering feedback and reproductions easy."
         lazyloadPlaceholder={<Placeholder ratio={0.75} />}
       />

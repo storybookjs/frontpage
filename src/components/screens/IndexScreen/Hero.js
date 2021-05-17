@@ -89,7 +89,7 @@ const Subtitle = styled.div`
 const PitchActions = styled.div`
   > * {
     width: 140px;
-    margin: 0 5px;
+    margin: 0 10px;
     &:first-child {
       margin-bottom: 0.75rem;
     }
