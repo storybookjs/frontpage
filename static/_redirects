@@ -84,3 +84,5 @@
 /versions.json /.netlify/functions/versions/:splat 200
 /blog/* https://storybook-blog.netlify.app/blog/:splat 200
 /tutorials/* https://storybook-tutorials.netlify.app/tutorials/:splat 200
+
+/design-system https://5ccbc373887ca40020446347-oghpnhotjv.chromatic.com
