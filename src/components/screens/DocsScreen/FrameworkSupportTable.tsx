@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link as GatsbyLink } from 'gatsby';
 import stylizeFramework from '../../../util/stylize-framework';
+import { fetchCommunityAddons } from '../../../util/community-addons';
 
 export function frameworkSupportsFeature(framework, { supported, unsupported }) {
   return (
@@ -19,8 +20,9 @@ export const FrameworkSupportTable = ({ currentFramework, frameworks, featureGro
     if (repoPath) {
       return `${monorepoUrlBase}/${repoPath}`;
     }
-    // Default is it is an addon
-    return `${monorepoUrlBase}/addons/${name}`;
+    // Default is it is an addon (moved into the community or actively maintained)
+    const communityAddon= fetchCommunityAddons(name);
+    return communityAddon || `${monorepoUrlBase}/addons/${name}`;
   }
 
   return (
