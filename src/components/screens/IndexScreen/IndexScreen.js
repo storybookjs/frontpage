@@ -18,7 +18,7 @@ import CTA from '../../layout/CTA';
 
 import AtomicDesignLogoSVG from '../../../images/logos/user/logo-atomicdesign.svg';
 import GitlabLogoSVG from '../../../images/logos/user/logo-gitlab.svg';
-import SalesForceLogoSVG from '../../../images/logos/user/logo-salesforce.svg';
+import AirBnBLogoSVG from '../../../images/logos/user/logo-airbnb.svg';
 
 const { background } = styles;
 
@@ -169,13 +169,14 @@ export function PureIndexScreen({ ...props }) {
         <Testimonial
           text={
             <span>
-              “Storybook is crucial to our UX process. The “old way” seems ludicrous now!”
+              “The tool we use for editing UI is Storybook. It is the perfect place to make sure
+              your work aligns with designs to the pixel across breakpoints.”
             </span>
           }
-          avatarUrl="https://avatars3.githubusercontent.com/u/31106469?s=100&v=4"
-          name="Andrew Frankel"
-          jobTitle="Principal engineer"
-          logo={SalesForceLogoSVG}
+          avatarUrl="https://avatars2.githubusercontent.com/u/1247751?s=100&v=4"
+          name="Adam Neary"
+          jobTitle="Tech lead"
+          logo={AirBnBLogoSVG}
         />
 
         <Separator />
