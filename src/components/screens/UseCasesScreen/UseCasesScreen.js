@@ -78,7 +78,7 @@ export function PureUseCasesScreen({ ...props }) {
       />
       <PageTitleSocialProof
         path="/images/logos/user"
-        brands={['airbnb', 'govuk', 'atlassian', 'lyft', 'auth0', 'salesforce', 'jetbrains']}
+        brands={['airbnb', 'govuk', 'atlassian', 'lyft', 'auth0', 'microsoft', 'jetbrains']}
       />
       <Separator />
       <ValueProp
@@ -168,13 +168,13 @@ export function PureUseCasesScreen({ ...props }) {
             <DesignSystem src="/images/use-cases/design-system.jpg" />
             <DesignSystemLogos
               path="/images/logos/user"
-              brands={['github', 'salesforce', 'govuk']}
+              brands={['github', 'adobe', 'govuk']}
               readOnly
             />
           </DesignSystemWrapper>
         }
         title="Design systems"
-        desc="Engineering teams at GitHub, Salesforce, and UK Home Office rely on Storybook to build and distribute UI components that impact millions of people."
+        desc="Engineering teams at GitHub, Adobe, and UK Home Office rely on Storybook to build and distribute UI components that impact millions of people."
         lazyloadPlaceholder={<PlaceholderAspectRatio ratio={0.74} />}
       />
       <FeaturesLayout columns={3}>
