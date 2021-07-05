@@ -400,6 +400,9 @@ export default function Footer({ ...props }) {
           <FooterLink tertiary href={youtube}>
             <Icon icon="youtube" /> Youtube
           </FooterLink>
+          <FooterLink tertiary href="https://componentdriven.org/">
+            Component Driven UIs
+          </FooterLink>
         </Column>
         <Subscribe>
           <Title>Subscribe</Title>
