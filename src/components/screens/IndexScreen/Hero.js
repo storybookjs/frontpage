@@ -373,7 +373,7 @@ export default function Hero({ startOpen, ...props }) {
     <AspectRatio ratio={0.5625}>
       <ModalVideoWrapper>
         <ModalVideo
-          title="Chromatic intro video"
+          title="Storybook intro video"
           width="560"
           height="315"
           src="https://www.youtube.com/embed/p-LFh5Y89eM?autoplay=1&rel=0&amp;showinfo=0"
@@ -389,7 +389,7 @@ export default function Hero({ startOpen, ...props }) {
   return (
     <Wrapper {...props}>
       <Pitch>
-        <Title>Build bulletproof UI components faster</Title>
+        <Title>Build component driven UIs faster</Title>
         <Subtitle>
           Storybook is an open source tool for building UI components and pages in isolation. It
           streamlines UI development, testing, and documentation.
