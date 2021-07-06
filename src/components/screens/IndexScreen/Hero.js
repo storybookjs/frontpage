@@ -104,7 +104,7 @@ const PitchActions = styled.div`
 
 const Pitch = styled.div`
   text-align: center;
-  max-width: 600px;
+  max-width: 640px;
   margin: 0 auto;
   margin-bottom: 3rem;
   @media (min-width: ${breakpoint * 2}px) {
