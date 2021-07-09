@@ -183,11 +183,18 @@ function DocsLayout({ children, data, pageContext, ...props }) {
     as: 'span',
   };
 
+  // The React specific docs are treated as canonical except for the
+  // docs home page for all other frameworks.
+  const canonicalFramework = slug === '/docs/get-started/introduction' ? framework : 'react';
+
   return (
     <>
       <GlobalStyle />
       <Helmet>
-        <link rel="canonical" href={`${homepageUrl}${buildPathWithFramework(slug, framework)}/`} />
+        <link
+          rel="canonical"
+          href={`${homepageUrl}${buildPathWithFramework(slug, canonicalFramework)}/`}
+        />
         <meta name="docsearch:framework" content={framework} />
         <link
           rel="stylesheet"
