@@ -12307,11 +12307,12 @@ gatsby-plugin-sharp@^2.6.18:
     uuid "^3.4.0"
 
 gatsby-plugin-sitemap@^2.4.12:
-  version "2.4.12"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-sitemap/-/gatsby-plugin-sitemap-2.4.12.tgz#4564800ac0e8dfaad7edf7054d7625dad7ecb793"
-  integrity sha512-nQK3EyqECUpUcCoQr5ZCfGYPUCc+hI6tK+hvoqr4lkhMr0sjfXUvGkSlVarhMVLRNRe+e6Q39JFhVtsTXUp8Iw==
+  version "2.12.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-sitemap/-/gatsby-plugin-sitemap-2.12.0.tgz#bd3dc88d59ee9a94b0131a28623d79eb738dc375"
+  integrity sha512-oY0SzFl7xDVfIp3f4dhsKuGknc6tLsZIdNWPB9jv3HEDIFpyohFjJ4tcH2rHG8Wm8ceW34XjgSW0fcyu/QQYxQ==
   dependencies:
-    "@babel/runtime" "^7.10.3"
+    "@babel/runtime" "^7.12.5"
+    common-tags "^1.8.0"
     minimatch "^3.0.4"
     pify "^3.0.0"
     sitemap "^1.13.0"
@@ -23786,9 +23787,9 @@ underscore.string@^3.3.5:
     util-deprecate "^1.0.2"
 
 underscore@^1.7.0:
-  version "1.10.2"
-  resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.10.2.tgz#73d6aa3668f3188e4adb0f1943bd12cfd7efaaaf"
-  integrity sha512-N4P+Q/BuyuEKFJ43B9gYuOj4TQUHXX+j2FqguVOpjkssLUUrnJofCcBccJSCoeturDoZU6GorDTHSvUDlSQbTg==
+  version "1.13.1"
+  resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.13.1.tgz#0c1c6bd2df54b6b69f2314066d65b6cde6fcf9d1"
+  integrity sha512-hzSoAVtJF+3ZtiFX0VgfFPHEDRm7Y/QPjGyNo4TVdnDTdft3tr8hEkD25a1jC+TjTuE7tkHGKkhwCgs9dgBB2g==
 
 unfetch@^4.2.0:
   version "4.2.0"

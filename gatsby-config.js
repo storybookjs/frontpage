@@ -162,6 +162,9 @@ module.exports = {
             };
           });
         },
+        // Exclude all doc pages not for React
+        // except the get-started/introduction page for all frameworks
+        exclude: ['{/docs/!(react)/!(get-started)/**,/docs/!(react)/get-started/!(introduction)}'],
       },
     },
   ],
