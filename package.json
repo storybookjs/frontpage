@@ -42,7 +42,7 @@
     "gatsby-transformer-yaml": "^2.7.0",
     "global": "^4.4.0",
     "human-format": "^0.11.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "lru-cache": "^6.0.0",
     "mobx": "^5.15.1",
     "mobx-react": "^6.1.4",
