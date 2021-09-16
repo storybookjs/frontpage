@@ -6,8 +6,8 @@ import useSiteMetadata from '../../lib/useSiteMetadata';
 
 import GitHubSVG from '../../../images/logos/social/github.svg';
 import TwitterSVG from '../../../images/logos/social/twitter.svg';
-import MediumSVG from '../../../images/logos/social/medium.svg';
 import DiscordSVG from '../../../images/logos/social/discord.svg';
+import StorybookIconSVG from '../../../images/logos/icon-storybook.svg';
 
 const { color, typography, breakpoint } = styles;
 
@@ -21,7 +21,7 @@ const Image = styled.img`
   @media (min-width: ${breakpoint * 1}px) {
     width: 48px;
     height: 48px;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
     margin-right: 0;
   }
 `;
@@ -129,7 +129,7 @@ export default function CommunitySocial({ ...props }) {
         </Meta>
       </Item>
       <Item href={blog}>
-        <Image src={MediumSVG} />
+        <Image src={StorybookIconSVG} />
         <Meta>
           <Title>Read the blog</Title>
           <Desc>Get news, articles, and guides from the Storybook community</Desc>
