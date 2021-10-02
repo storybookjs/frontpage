@@ -216,7 +216,7 @@ export function PureIndexScreen({ ...props }) {
         />
         <BenefitItem
           image={<img src="/images/home/share-document.png" alt="create a styleguide" />}
-          title="Generate a UI docs automatically"
+          title="Generate UI docs automatically"
           desc={
             <>
               Write Markdown/MDX to generate a customizable site for component libraries and design
