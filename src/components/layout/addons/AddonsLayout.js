@@ -94,7 +94,7 @@ const ClearButton = styled.button`
   border-radius: 100%;
   overflow: hidden;
   outline: none;
-
+  cursor: pointer;
   font-size: 10px;
   line-height: 1;
   position: absolute;
@@ -123,6 +123,7 @@ const SearchInput = styled(Input)`
     padding-left: 36px;
     padding-top: 10px;
     padding-bottom: 10px;
+    padding-right: 30px;
 
     &::-webkit-search-cancel-button,
     &::-webkit-search-decoration {
