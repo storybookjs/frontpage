@@ -10,13 +10,14 @@ const {
 } = require('./src/util/build-path-with-framework');
 const createAddonsPages = require('./src/util/create-addons-pages');
 
-const { BRANCH = 'master' } = process.env;
-let versionFromBranch = BRANCH;
-if (BRANCH === 'master') {
-  versionFromBranch = '6.3'; // TODO: Grab from SB package.json
-}
+const { BRANCH } = process.env;
+let versionFromBranch;
 if (BRANCH === 'next') {
   versionFromBranch = '6.4'; // TODO: Grab from SB package.json
+} else if (BRANCH && BRANCH.includes('release/')) {
+  versionFromBranch = BRANCH.replace('release/', '');
+} else {
+  versionFromBranch = '6.3'; // TODO: Grab from SB package.json
 }
 
 const githubDocsBaseUrl = 'https://github.com/storybookjs/storybook/tree/next';
