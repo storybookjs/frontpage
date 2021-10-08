@@ -18,7 +18,10 @@ import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 
 import { mdFormatting } from '../../../styles/formatting';
-import { buildPathWithFramework } from '../../../util/build-path-with-framework';
+import {
+  buildPathWithFramework,
+  buildPathWithVersionAndFramework,
+} from '../../../util/build-path-with-framework';
 import relativeToRootLinks from '../../../util/relative-to-root-links';
 import stylizeFramework from '../../../util/stylize-framework';
 import { FeatureSnippets } from './FeatureSnippets';
@@ -83,7 +86,7 @@ function DocsScreen({ data, pageContext, location }) {
     featureGroups,
     urls: { homepageUrl },
   } = useSiteMetadata();
-  const { framework, docsToc, slug, tocItem, nextTocItem, isFirstTocItem } = pageContext;
+  const { framework, docsToc, slug, tocItem, nextTocItem, isFirstTocItem, version } = pageContext;
   const CodeSnippetsWithCurrentFramework = useMemo(() => {
     return (props) => <CodeSnippets currentFramework={framework} {...props} />;
   }, [framework]);
@@ -101,7 +104,7 @@ function DocsScreen({ data, pageContext, location }) {
   }, [framework]);
   const LinksWithPrefix = useMemo(() => {
     return ({ href, ...props }) => {
-      const url = relativeToRootLinks(href, framework, location.pathname);
+      const url = relativeToRootLinks(href, version, framework, location.pathname);
       // eslint-disable-next-line
       return <a href={url} {...props} />;
     };
@@ -170,7 +173,7 @@ function DocsScreen({ data, pageContext, location }) {
             action={
               <Button
                 appearance="secondary"
-                href={buildPathWithFramework(nextTocItem.path, framework)}
+                href={buildPathWithVersionAndFramework(nextTocItem.path, version, framework)}
                 ButtonWrapper={GatsbyLinkWrapper}
               >
                 Continue

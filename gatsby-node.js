@@ -193,7 +193,7 @@ exports.createPages = ({ actions, graphql }) => {
 
                   frameworks.forEach((framework) => {
                     createPage({
-                      path: buildPathWithFramework(slug, framework),
+                      path: buildPathWithVersionAndFramework(slug, versionFromBranch, framework),
                       component: path.resolve(`./src/components/screens/DocsScreen/DocsScreen.tsx`),
                       context: {
                         pageType,
