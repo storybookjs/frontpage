@@ -166,6 +166,9 @@ exports.createPages = ({ actions, graphql }) => {
             });
           }
 
+          const versions = sortedReleases
+            .filter(({ node }) => Number(node.fields.version) >= 6)
+            .map(({ node }) => node.fields.version.match(/^(\d+\.\d+)/)[1]);
           const frameworks = [...coreFrameworks, ...communityFrameworks];
           const docsPagesSlugs = [];
           const docsPagesEdgesBySlug = Object.fromEntries(
@@ -197,6 +200,7 @@ exports.createPages = ({ actions, graphql }) => {
                         layout: 'docs',
                         slug,
                         version: versionFromBranch,
+                        versions,
                         framework,
                         docsToc: docsTocByFramework[framework],
                         tocItem,

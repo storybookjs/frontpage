@@ -22,6 +22,7 @@ import GatsbyLinkWrapper from '../basics/GatsbyLinkWrapper';
 import useSiteMetadata from '../lib/useSiteMetadata';
 import { buildPathWithVersionAndFramework } from '../../util/build-path-with-framework';
 import { FrameworkSelector } from '../screens/DocsScreen/FrameworkSelector';
+import { VersionSelector } from '../screens/DocsScreen/VersionSelector';
 import stylizeFramework from '../../util/stylize-framework';
 import useAlgoliaSearch, { SEARCH_INPUT_ID } from '../../hooks/use-algolia-search';
 
@@ -44,7 +45,9 @@ const Sidebar = styled.div`
   }
 `;
 
-const StyledFrameworkSelector = styled(FrameworkSelector)`
+const StyledVersionSelector = styled(VersionSelector)`
+  margin-bottom: 0.75rem;
+
   @media (min-width: ${breakpoint * 1.333}px) {
     margin-top: 1.5rem;
   }
@@ -162,9 +165,10 @@ function DocsLayout({ children, data, pageContext, ...props }) {
   const {
     coreFrameworks,
     communityFrameworks,
+    latestVersion,
     urls: { homepageUrl },
   } = useSiteMetadata();
-  const { docsToc, framework: currentFramework, version: currentVersion } = pageContext;
+  const { docsToc, framework: currentFramework, version: currentVersion, versions } = pageContext;
   const [searchValue, setSearchValue] = useState('');
   const { isSearchVisible } = useAlgoliaSearch({ framework: currentFramework }); // TODO
 
@@ -250,7 +254,15 @@ function DocsLayout({ children, data, pageContext, ...props }) {
                     </WithTooltip>
                   )}
 
-                  <StyledFrameworkSelector
+                  <StyledVersionSelector
+                    currentFramework={currentFramework}
+                    currentVersion={currentVersion}
+                    latestVersion={latestVersion}
+                    slug={slug}
+                    versions={versions}
+                  />
+
+                  <FrameworkSelector
                     currentFramework={currentFramework}
                     currentVersion={currentVersion}
                     slug={slug}
