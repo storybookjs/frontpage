@@ -4,8 +4,20 @@ const path = require('path');
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
 const { toc: docsToc } = require('./src/content/docs/toc');
-const buildPathWithFramework = require('./src/util/build-path-with-framework');
+const {
+  buildPathWithFramework,
+  buildPathWithVersionAndFramework,
+} = require('./src/util/build-path-with-framework');
 const createAddonsPages = require('./src/util/create-addons-pages');
+
+const { BRANCH = 'master' } = process.env;
+let versionFromBranch = BRANCH;
+if (BRANCH === 'master') {
+  versionFromBranch = '6.3'; // TODO: Grab from SB package.json
+}
+if (BRANCH === 'next') {
+  versionFromBranch = '6.4'; // TODO: Grab from SB package.json
+}
 
 const githubDocsBaseUrl = 'https://github.com/storybookjs/storybook/tree/next';
 const addStateToToc = (items, pathPrefix = '/docs') =>
@@ -162,7 +174,7 @@ exports.createPages = ({ actions, graphql }) => {
           const docsTocByFramework = Object.fromEntries(
             frameworks.map((framework) => [
               framework,
-              addStateToToc(docsTocWithPaths, `/docs/${framework}`),
+              addStateToToc(docsTocWithPaths, `/docs/${versionFromBranch}/${framework}`),
             ])
           );
           const createDocsPages = (tocItems) => {
@@ -184,6 +196,7 @@ exports.createPages = ({ actions, graphql }) => {
                         pageType,
                         layout: 'docs',
                         slug,
+                        version: versionFromBranch,
                         framework,
                         docsToc: docsTocByFramework[framework],
                         tocItem,

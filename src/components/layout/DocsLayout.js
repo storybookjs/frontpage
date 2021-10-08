@@ -20,7 +20,7 @@ import { SocialGraph } from '../basics';
 import GatsbyLinkWrapper from '../basics/GatsbyLinkWrapper';
 
 import useSiteMetadata from '../lib/useSiteMetadata';
-import buildPathWithFramework from '../../util/build-path-with-framework';
+import { buildPathWithVersionAndFramework } from '../../util/build-path-with-framework';
 import { FrameworkSelector } from '../screens/DocsScreen/FrameworkSelector';
 import stylizeFramework from '../../util/stylize-framework';
 import useAlgoliaSearch, { SEARCH_INPUT_ID } from '../../hooks/use-algolia-search';
@@ -164,9 +164,9 @@ function DocsLayout({ children, data, pageContext, ...props }) {
     communityFrameworks,
     urls: { homepageUrl },
   } = useSiteMetadata();
-  const { docsToc, framework } = pageContext;
+  const { docsToc, framework: currentFramework, version: currentVersion } = pageContext;
   const [searchValue, setSearchValue] = useState('');
-  const { isSearchVisible } = useAlgoliaSearch({ framework });
+  const { isSearchVisible } = useAlgoliaSearch({ framework: currentFramework }); // TODO
 
   const addLinkWrappers = (items) =>
     items.map((item) => ({
@@ -185,17 +185,15 @@ function DocsLayout({ children, data, pageContext, ...props }) {
 
   // The React specific docs are treated as canonical except for the
   // docs home page for all other frameworks.
-  const canonicalFramework = slug === '/docs/get-started/introduction' ? framework : 'react';
+  const canonicalFramework = slug === '/docs/get-started/introduction' ? currentFramework : 'react';
+  const currentPath = buildPathWithVersionAndFramework(slug, currentVersion, canonicalFramework);
 
   return (
     <>
       <GlobalStyle />
       <Helmet>
-        <link
-          rel="canonical"
-          href={`${homepageUrl}${buildPathWithFramework(slug, canonicalFramework)}/`}
-        />
-        <meta name="docsearch:framework" content={framework} />
+        <link rel="canonical" href={`${homepageUrl}${currentPath}/`} />
+        <meta name="docsearch:framework" content={currentFramework} />
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"
@@ -204,8 +202,8 @@ function DocsLayout({ children, data, pageContext, ...props }) {
       <Wrapper>
         <Sidebar>
           <StyledTableOfContents
-            key={framework}
-            currentPath={buildPathWithFramework(slug, framework)}
+            key={`${currentVersion}${currentFramework}`}
+            currentPath={currentPath}
             items={docsTocWithLinkWrappers}
           >
             {({ menu, allTopLevelMenusAreOpen, toggleAllOpen, toggleAllClosed }) => (
@@ -253,7 +251,8 @@ function DocsLayout({ children, data, pageContext, ...props }) {
                   )}
 
                   <StyledFrameworkSelector
-                    currentFramework={framework}
+                    currentFramework={currentFramework}
+                    currentVersion={currentVersion}
                     slug={slug}
                     coreFrameworks={coreFrameworks}
                     communityFrameworks={communityFrameworks}

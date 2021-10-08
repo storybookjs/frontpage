@@ -18,7 +18,7 @@ import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 
 import { mdFormatting } from '../../../styles/formatting';
-import buildPathWithFramework from '../../../util/build-path-with-framework';
+import { buildPathWithFramework } from '../../../util/build-path-with-framework';
 import relativeToRootLinks from '../../../util/relative-to-root-links';
 import stylizeFramework from '../../../util/stylize-framework';
 import { FeatureSnippets } from './FeatureSnippets';
@@ -127,7 +127,7 @@ function DocsScreen({ data, pageContext, location }) {
   return (
     <>
       <SocialGraph
-        url={`${homepageUrl}${buildPathWithFramework(tocItem.path, framework)}/`}
+        url={`${homepageUrl}${buildPathWithFramework(tocItem.path, framework)}/`} // TODO
         title={title}
         desc={description}
       />

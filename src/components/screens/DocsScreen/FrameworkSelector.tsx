@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Link, Subheading, TooltipLinkList, styles, WithTooltip } from '@storybook/design-system';
 
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
-import buildPathWithFramework from '../../../util/build-path-with-framework';
+import { buildPathWithVersionAndFramework } from '../../../util/build-path-with-framework';
 import stylizeFramework from '../../../util/stylize-framework';
 
 const { color, typography } = styles;
@@ -66,6 +66,7 @@ export function FrameworkSelector({
   currentFramework,
   coreFrameworks,
   communityFrameworks,
+  currentVersion,
   slug,
   tooltipProps,
   ...rest
@@ -73,7 +74,7 @@ export function FrameworkSelector({
   const links = [...coreFrameworks, ...communityFrameworks].map((framework) => ({
     framework,
     LinkWrapper: GatsbyLinkWrapper,
-    href: buildPathWithFramework(slug, framework),
+    href: buildPathWithVersionAndFramework(slug, currentVersion, framework),
     title: (
       <FrameworkSelectorTitle>
         <img src={getFrameworkLogo(framework)} alt={stylizeFramework(framework)} />
@@ -111,6 +112,7 @@ export function FrameworkSelector({
 
 FrameworkSelector.propTypes = {
   currentFramework: PropTypes.string.isRequired,
+  currentVersion: PropTypes.string.isRequired,
   coreFrameworks: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   communityFrameworks: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   slug: PropTypes.string.isRequired,
