@@ -54,19 +54,21 @@ function fetchCategoryPages(createPage, graphql) {
           addons: { categoryPages },
         },
       }) => {
-        categoryPages.forEach((category) => {
-          createPage({
-            path: `/addons/tag/${category.name}/`,
-            component: path.resolve(
-              `./src/components/screens/AddonsCategoryScreen/AddonsCategoryScreen.js`
-            ),
-            context: {
-              category: category.displayName,
-              description: category.description,
-              addons: category.addons,
-            },
+        if (categoryPages) {
+          categoryPages.forEach((category) => {
+            createPage({
+              path: `/addons/tag/${category.name}/`,
+              component: path.resolve(
+                `./src/components/screens/AddonsCategoryScreen/AddonsCategoryScreen.js`
+              ),
+              context: {
+                category: category.displayName,
+                description: category.description,
+                addons: category.addons,
+              },
+            });
           });
-        });
+        }
       }
     );
 }

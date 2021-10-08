@@ -3,6 +3,7 @@ const path = require('path');
 
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
+const { latestVersion } = require('./site-metadata');
 const { toc: docsToc } = require('./src/content/docs/toc');
 const {
   buildPathWithFramework,
@@ -12,12 +13,14 @@ const createAddonsPages = require('./src/util/create-addons-pages');
 
 const { BRANCH } = process.env;
 let versionFromBranch;
+let isLatestVersion = false;
 if (BRANCH === 'next') {
   versionFromBranch = '6.4'; // TODO: Grab from SB package.json
 } else if (BRANCH && BRANCH.includes('release/')) {
   versionFromBranch = BRANCH.replace('release/', '');
 } else {
-  versionFromBranch = '6.3'; // TODO: Grab from SB package.json
+  isLatestVersion = true;
+  versionFromBranch = latestVersion;
 }
 
 const githubDocsBaseUrl = 'https://github.com/storybookjs/storybook/tree/next';
@@ -250,7 +253,7 @@ exports.createPages = ({ actions, graphql }) => {
         }
       )
       .then(() => {
-        return process.env.GATSBY_SKIP_ADDON_PAGES
+        return process.env.GATSBY_SKIP_ADDON_PAGES || !isLatestVersion
           ? Promise.resolve()
           : createAddonsPages({ actions, graphql });
       })
