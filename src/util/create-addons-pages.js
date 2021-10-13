@@ -23,6 +23,8 @@ const addonDetail = `
   verifiedCreator`;
 
 module.exports = function createAddonsPages({ actions, graphql }) {
+  // eslint-disable-next-line no-console
+  console.log('Creating addons pages...');
   const { createPage } = actions;
   return fetchCategoryPages(createPage, graphql)
     .then(() => fetchAddonsDetailPages(createPage, graphql))
@@ -47,28 +49,26 @@ function fetchCategoryPages(createPage, graphql) {
       }
     `
   )
-    .then(checkForErrors)
+    .then((res) => checkForErrors(res, (data) => data.addons.categoryPages))
     .then(
       ({
         data: {
           addons: { categoryPages },
         },
       }) => {
-        if (categoryPages) {
-          categoryPages.forEach((category) => {
-            createPage({
-              path: `/addons/tag/${category.name}/`,
-              component: path.resolve(
-                `./src/components/screens/AddonsCategoryScreen/AddonsCategoryScreen.js`
-              ),
-              context: {
-                category: category.displayName,
-                description: category.description,
-                addons: category.addons,
-              },
-            });
+        categoryPages.forEach((category) => {
+          createPage({
+            path: `/addons/tag/${category.name}/`,
+            component: path.resolve(
+              `./src/components/screens/AddonsCategoryScreen/AddonsCategoryScreen.js`
+            ),
+            context: {
+              category: category.displayName,
+              description: category.description,
+              addons: category.addons,
+            },
           });
-        }
+        });
       }
     );
 }
@@ -105,14 +105,14 @@ function fetchAddonsDetailPages(createPage, graphql, skip = 0) {
         }`
       )
     )
-    .then(checkForErrors)
+    .then((res) => checkForErrors(res, (data) => data.addons.addonPages))
     .then(
       ({
         data: {
           addons: { addonPages },
         },
       }) => {
-        if (addonPages && addonPages.length > 0) {
+        if (addonPages.length > 0) {
           createAddonsDetailPages(createPage, addonPages);
           return fetchAddonsDetailPages(createPage, graphql, skip + addonPages.length);
         }
@@ -168,14 +168,14 @@ function fetchTagPages(createPage, graphql, skip = 0) {
     }`
       )
     )
-    .then(checkForErrors)
+    .then((res) => checkForErrors(res, (data) => data.addons.tagPages))
     .then(
       ({
         data: {
           addons: { tagPages },
         },
       }) => {
-        if (tagPages && tagPages.length > 0) {
+        if (tagPages.length > 0) {
           createTagPages(createPage, tagPages);
           return fetchTagPages(createPage, graphql, skip + tagPages.length);
         }
@@ -197,9 +197,13 @@ function createTagPages(createPage, tagPages) {
   });
 }
 
-function checkForErrors(response) {
+function checkForErrors(response, predicate) {
   if (response.error) {
     throw new Error(response.error.errorMessage || response.errors[0].message);
+  }
+
+  if (predicate && predicate(response.data)) {
+    throw new Error(`Data not found for ${predicate.toString()}`);
   }
 
   return response;
