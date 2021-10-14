@@ -20,7 +20,10 @@ import { SocialGraph } from '../basics';
 import GatsbyLinkWrapper from '../basics/GatsbyLinkWrapper';
 
 import useSiteMetadata from '../lib/useSiteMetadata';
-import { buildPathWithVersionAndFramework } from '../../util/build-path-with-framework';
+import {
+  buildPathWithFramework,
+  buildPathWithVersionAndFramework,
+} from '../../util/build-path-with-framework';
 import { FrameworkSelector } from '../screens/DocsScreen/FrameworkSelector';
 import { VersionSelector } from '../screens/DocsScreen/VersionSelector';
 import stylizeFramework from '../../util/stylize-framework';
@@ -190,13 +193,15 @@ function DocsLayout({ children, data, pageContext, ...props }) {
   // The React specific docs are treated as canonical except for the
   // docs home page for all other frameworks.
   const canonicalFramework = slug === '/docs/get-started/introduction' ? currentFramework : 'react';
-  const currentPath = buildPathWithVersionAndFramework(slug, currentVersion, canonicalFramework);
 
   return (
     <>
       <GlobalStyle />
       <Helmet>
-        <link rel="canonical" href={`${homepageUrl}${currentPath}/`} />
+        <link
+          rel="canonical"
+          href={`${homepageUrl}${buildPathWithFramework(slug, canonicalFramework)}/`}
+        />
         <meta name="docsearch:framework" content={currentFramework} />
         <link
           rel="stylesheet"
@@ -207,7 +212,7 @@ function DocsLayout({ children, data, pageContext, ...props }) {
         <Sidebar>
           <StyledTableOfContents
             key={`${currentVersion}${currentFramework}`}
-            currentPath={currentPath}
+            currentPath={buildPathWithVersionAndFramework(slug, currentVersion, canonicalFramework)}
             items={docsTocWithLinkWrappers}
           >
             {({ menu, allTopLevelMenusAreOpen, toggleAllOpen, toggleAllClosed }) => (
