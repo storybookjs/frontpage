@@ -5,7 +5,7 @@
 MONOREPO_CODELOAD_URL='https://codeload.github.com/storybookjs/storybook/tar.gz'
 
 MAPPED_BRANCH=main
-if [[ "$BRANCH" == "next" || "$BRANCH" == "release/"* ]]; then
+if [[ "$BRANCH" == "next" || "$BRANCH" == "release-"* ]]; then
   MAPPED_BRANCH=$BRANCH
 fi
 FINAL_BRANCH=${1:-$MAPPED_BRANCH}

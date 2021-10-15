@@ -16,8 +16,8 @@ let versionFromBranch;
 let isLatestVersion = false;
 if (BRANCH === 'next') {
   versionFromBranch = '6.4'; // TODO: Grab from SB package.json
-} else if (BRANCH && BRANCH.includes('release/')) {
-  versionFromBranch = BRANCH.replace('release/', '');
+} else if (BRANCH && BRANCH.includes('release-')) {
+  versionFromBranch = BRANCH.replace(/^release-(\d+)-(\d+)/, '$1.$2');
 } else {
   isLatestVersion = true;
   versionFromBranch = latestVersion;
