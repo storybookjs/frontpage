@@ -12,17 +12,23 @@ const { toc: docsToc } = require('./src/content/docs/toc');
 const { version: nextVersionFull } = require('./src/content/docs/next-package.json');
 const { earliestDocsVersion, latestVersion } = require('./site-metadata');
 
+function shortenVersion(version) {
+  return version.match(/^\d+\.\d+/)[0];
+}
+
 const { BRANCH } = process.env;
 let versionFromBranch;
-let isLatestVersion = false;
-if (BRANCH === 'next') {
-  [versionFromBranch] = nextVersionFull.match(/^\d+\.\d+/);
+const nextVersion = shortenVersion(nextVersionFull);
+const NEXT_BRANCH = 'next';
+if (BRANCH === NEXT_BRANCH) {
+  versionFromBranch = nextVersion;
 } else if (BRANCH && BRANCH.includes('release-')) {
   versionFromBranch = BRANCH.replace(/^release-(\d+)-(\d+)/, '$1.$2');
 } else {
-  isLatestVersion = true;
-  versionFromBranch = null; // latest version of docs are un-versioned
+  versionFromBranch = null; // latest version of docs is un-versioned
 }
+
+let versions;
 
 const githubDocsBaseUrl = 'https://github.com/storybookjs/storybook/tree/next';
 const addStateToToc = (items, pathPrefix = '/docs') =>
@@ -171,7 +177,7 @@ exports.createPages = ({ actions, graphql }) => {
             });
           }
 
-          const versions = sortedReleases
+          versions = sortedReleases
             .filter(({ node }) => {
               const versionNum = Number(node.fields.version);
               return (
@@ -263,7 +269,7 @@ exports.createPages = ({ actions, graphql }) => {
         }
       )
       .then(() => {
-        return process.env.GATSBY_SKIP_ADDON_PAGES || !isLatestVersion
+        return process.env.GATSBY_SKIP_ADDON_PAGES || versionFromBranch
           ? Promise.resolve()
           : createAddonsPages({ actions, graphql });
       })
@@ -286,11 +292,32 @@ function getVersionData(distTag) {
 
 function generateVersionsFile() {
   const latest = getVersionData('latest');
-  const next = getVersionData('next');
+  const next = getVersionData(NEXT_BRANCH);
   const data = { ...latest, ...next };
   fs.writeFileSync('./public/versions-raw.json', JSON.stringify(data));
 }
 
+function updateRedirectsFile() {
+  const originalContents = fs.readFileSync('./static/_redirects');
+  const newContents = versions
+    .reduce((acc, versionFull) => {
+      if (versionFull) {
+        const version = shortenVersion(versionFull);
+        const branch =
+          version === nextVersion ? NEXT_BRANCH : `release-${version.replace('.', '-')}`;
+        acc.push(
+          // prettier-ignore
+          `/docs/${version}/* https://${branch}--storybook-frontpage.netlify.app/docs/${version}/:splat 200`
+        );
+      }
+      return acc;
+    }, [])
+    .concat([`/docs/next/* /docs/${nextVersion}/:splat 302`])
+    .join('\n');
+  fs.writeFileSync('./public/_redirects', `${originalContents}\n\n${newContents}`);
+}
+
 exports.onPostBuild = () => {
   generateVersionsFile();
+  updateRedirectsFile();
 };
