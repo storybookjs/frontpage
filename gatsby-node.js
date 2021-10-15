@@ -21,7 +21,7 @@ if (BRANCH === 'next') {
   versionFromBranch = BRANCH.replace(/^release-(\d+)-(\d+)/, '$1.$2');
 } else {
   isLatestVersion = true;
-  versionFromBranch = latestVersion;
+  versionFromBranch = null; // latest version of docs are un-versioned
 }
 
 const githubDocsBaseUrl = 'https://github.com/storybookjs/storybook/tree/next';
@@ -178,7 +178,7 @@ exports.createPages = ({ actions, graphql }) => {
                 versionNum >= Number(earliestDocsVersion) && versionNum <= Number(latestVersion)
               );
             })
-            .map(({ node }) => node.fields.version)
+            .map(({ node }) => (node.fields.version === latestVersion ? null : node.fields.version))
             .concat([nextVersionFull]);
           const frameworks = [...coreFrameworks, ...communityFrameworks];
           const docsPagesSlugs = [];
@@ -188,7 +188,10 @@ exports.createPages = ({ actions, graphql }) => {
           const docsTocByFramework = Object.fromEntries(
             frameworks.map((framework) => [
               framework,
-              addStateToToc(docsTocWithPaths, `/docs/${versionFromBranch}/${framework}`),
+              addStateToToc(
+                docsTocWithPaths,
+                `/docs/${versionFromBranch ? `${versionFromBranch}/${framework}` : framework}`
+              ),
             ])
           );
           const createDocsPages = (tocItems) => {

@@ -51,16 +51,15 @@ const VersionLinkList = styled(TooltipLinkList)`
 `;
 
 function shortenVersion(version) {
-  return version.match(/^\d+\.\d/)[0];
+  return version && version.match(/^\d+\.\d/)[0];
 }
 
 function stylizeVersion(version, latestVersion) {
-  const shortVersion = shortenVersion(version);
-
-  if (shortVersion === latestVersion) {
-    return `${shortVersion} (latest)`;
+  if (!version) {
+    return `${latestVersion} (latest)`;
   }
 
+  const shortVersion = shortenVersion(version);
   const versionNum = Number(shortVersion);
   const latestVersionNum = Number(latestVersion);
 

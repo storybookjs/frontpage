@@ -6,7 +6,7 @@ function buildPathWithFramework(slug, framework) {
 
 function buildPathWithVersionAndFramework(slug, version, framework) {
   const parts = slug.split('/');
-  parts.splice(2, 0, `${version}/${framework}`);
+  parts.splice(2, 0, `${version ? `${version}/${framework}` : framework}`);
   return parts.join('/');
 }
 
