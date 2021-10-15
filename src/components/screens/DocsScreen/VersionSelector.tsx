@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Link, TooltipLinkList, styles, WithTooltip } from '@storybook/design-system';
+import { Link, Subheading, TooltipLinkList, styles, WithTooltip } from '@storybook/design-system';
 
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import { buildPathWithVersionAndFramework } from '../../../util/build-path-with-framework';
@@ -34,26 +34,42 @@ const VersionSelectorTitle = styled.div`
   }
 `;
 
+const LinkHeading = styled(Subheading)`
+  display: block;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 4.29px;
+  line-height: 18px;
+  color: ${color.mediumdark};
+  padding: 7px 15px;
+  border-bottom: 1px solid #eee;
+  ${(props) => props.withTopBorder && `border-top: 1px solid #eee;`}
+`;
+
 const VersionLinkList = styled(TooltipLinkList)`
   border-radius: 0;
 `;
 
-const SB_NEXT_PACKAGE_VERSION = '6.4.0-beta.6';
+function shortenVersion(version) {
+  return version.match(/^\d+\.\d/)[0];
+}
 
-function getLabeledVersion(version, latestVersion) {
-  if (version === latestVersion) {
-    return `${version} (latest)`;
+function stylizeVersion(version, latestVersion) {
+  const shortVersion = shortenVersion(version);
+
+  if (shortVersion === latestVersion) {
+    return `${shortVersion} (latest)`;
   }
 
-  const versionNum = Number(version);
+  const versionNum = Number(shortVersion);
   const latestVersionNum = Number(latestVersion);
 
   if (versionNum > latestVersionNum) {
-    const [, preReleaseVersion, label] = SB_NEXT_PACKAGE_VERSION.match(/^(\d+\.\d).*-(\w+)\./);
+    const [, preReleaseVersion, label] = version.match(/^(\d+\.\d+).*-(\w+)\./);
     return `${preReleaseVersion} (${label})`;
   }
 
-  return version;
+  return shortVersion;
 }
 
 export function VersionSelector({
@@ -65,11 +81,25 @@ export function VersionSelector({
   tooltipProps,
   ...rest
 }) {
-  const links = versions.map((version) => ({
+  const getVersionLink = (version) => ({
     LinkWrapper: GatsbyLinkWrapper,
-    href: buildPathWithVersionAndFramework(slug, version, currentFramework),
-    title: <VersionSelectorTitle>{getLabeledVersion(version, latestVersion)}</VersionSelectorTitle>,
-  }));
+    href: buildPathWithVersionAndFramework(slug, shortenVersion(version), currentFramework),
+    title: <VersionSelectorTitle>{stylizeVersion(version, latestVersion)}</VersionSelectorTitle>,
+  });
+
+  const latestVersionNum = Number(latestVersion);
+  const stableVersionLinks = [];
+  const preReleaseVersionLinks = [];
+
+  versions.forEach((version) => {
+    const link = getVersionLink(version);
+
+    if (Number(shortenVersion(version)) > latestVersionNum) {
+      preReleaseVersionLinks.push(link);
+    } else {
+      stableVersionLinks.push(link);
+    }
+  });
 
   return (
     <Wrapper {...rest}>
@@ -77,12 +107,19 @@ export function VersionSelector({
       <WithTooltip
         placement="bottom"
         trigger="click"
-        tooltip={<VersionLinkList links={links} />}
+        tooltip={
+          <>
+            <LinkHeading>Stable</LinkHeading>
+            <VersionLinkList links={stableVersionLinks} />
+            <LinkHeading withTopBorder>Pre-release</LinkHeading>
+            <VersionLinkList links={preReleaseVersionLinks} />
+          </>
+        }
         as="span"
         {...tooltipProps}
       >
         <VersionLink isButton appearance="secondary" withArrow>
-          {getLabeledVersion(currentVersion, latestVersion)}
+          {stylizeVersion(currentVersion, latestVersion)}
         </VersionLink>
       </WithTooltip>
     </Wrapper>
