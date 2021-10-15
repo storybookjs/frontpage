@@ -177,15 +177,29 @@ exports.createPages = ({ actions, graphql }) => {
             });
           }
 
-          versions = sortedReleases
-            .filter(({ node }) => {
-              const versionNum = Number(node.fields.version);
-              return (
-                versionNum >= Number(earliestDocsVersion) && versionNum <= Number(latestVersion)
-              );
-            })
-            .map(({ node }) => (node.fields.version === latestVersion ? null : node.fields.version))
-            .concat([nextVersionFull]);
+          versions = sortedReleases.reduce(
+            (acc, { node }) => {
+              const { version } = node.fields;
+              const versionNum = Number(version);
+              if (versionNum >= earliestDocsVersion) {
+                if (versionNum > latestVersion) {
+                  acc.preRelease.push({
+                    version,
+                    stylized: `${nextVersion} (${nextVersionFull.match(/-(\w+)\./)[1]})`,
+                    number: versionNum,
+                  });
+                } else {
+                  acc.stable.push({
+                    version: versionNum === latestVersion ? null : version,
+                    stylized: versionNum === latestVersion ? `${latestVersion} (latest)` : version,
+                    number: versionNum,
+                  });
+                }
+              }
+              return acc;
+            },
+            { stable: [], preRelease: [] }
+          );
           const frameworks = [...coreFrameworks, ...communityFrameworks];
           const docsPagesSlugs = [];
           const docsPagesEdgesBySlug = Object.fromEntries(
@@ -299,10 +313,9 @@ function generateVersionsFile() {
 
 function updateRedirectsFile() {
   const originalContents = fs.readFileSync('./static/_redirects');
-  const newContents = versions
-    .reduce((acc, versionFull) => {
-      if (versionFull) {
-        const version = shortenVersion(versionFull);
+  const newContents = [...versions.stable, ...versions.preRelease]
+    .reduce((acc, { version }) => {
+      if (version) {
         const branch =
           version === nextVersion ? NEXT_BRANCH : `release-${version.replace('.', '-')}`;
         acc.push(
@@ -312,7 +325,7 @@ function updateRedirectsFile() {
       }
       return acc;
     }, [])
-    .concat([`/docs/next/* /docs/${nextVersion}/:splat 302`])
+    .concat([`/docs/${NEXT_BRANCH}/* /docs/${nextVersion}/:splat 302`])
     .join('\n');
   fs.writeFileSync('./public/_redirects', `${originalContents}\n\n${newContents}`);
 }

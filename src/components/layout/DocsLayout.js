@@ -168,7 +168,6 @@ function DocsLayout({ children, data, pageContext, ...props }) {
   const {
     coreFrameworks,
     communityFrameworks,
-    latestVersion,
     urls: { homepageUrl },
   } = useSiteMetadata();
   const { docsToc, framework: currentFramework, version: currentVersion, versions } = pageContext;
@@ -262,7 +261,6 @@ function DocsLayout({ children, data, pageContext, ...props }) {
                   <StyledVersionSelector
                     currentFramework={currentFramework}
                     currentVersion={currentVersion}
-                    latestVersion={latestVersion}
                     slug={slug}
                     versions={versions}
                   />

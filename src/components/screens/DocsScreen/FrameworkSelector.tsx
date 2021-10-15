@@ -112,7 +112,7 @@ export function FrameworkSelector({
 
 FrameworkSelector.propTypes = {
   currentFramework: PropTypes.string.isRequired,
-  currentVersion: PropTypes.string.isRequired,
+  currentVersion: PropTypes.oneOfType([PropTypes.string, PropTypes.oneOf([null])]),
   coreFrameworks: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   communityFrameworks: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   slug: PropTypes.string.isRequired,
@@ -120,5 +120,6 @@ FrameworkSelector.propTypes = {
 };
 
 FrameworkSelector.defaultProps = {
+  currentVersion: null,
   tooltipProps: {},
 };

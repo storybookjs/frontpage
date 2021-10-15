@@ -50,54 +50,18 @@ const VersionLinkList = styled(TooltipLinkList)`
   border-radius: 0;
 `;
 
-function shortenVersion(version) {
-  return version && version.match(/^\d+\.\d/)[0];
-}
-
-function stylizeVersion(version, latestVersion) {
-  if (!version) {
-    return `${latestVersion} (latest)`;
-  }
-
-  const shortVersion = shortenVersion(version);
-  const versionNum = Number(shortVersion);
-  const latestVersionNum = Number(latestVersion);
-
-  if (versionNum > latestVersionNum) {
-    const [, preReleaseVersion, label] = version.match(/^(\d+\.\d+).*-(\w+)\./);
-    return `${preReleaseVersion} (${label})`;
-  }
-
-  return shortVersion;
-}
-
 export function VersionSelector({
   currentFramework,
   currentVersion,
-  latestVersion,
   versions,
   slug,
   tooltipProps,
   ...rest
 }) {
-  const getVersionLink = (version) => ({
+  const getVersionLink = ({ version, stylized }) => ({
     LinkWrapper: GatsbyLinkWrapper,
-    href: buildPathWithVersionAndFramework(slug, shortenVersion(version), currentFramework),
-    title: <VersionSelectorTitle>{stylizeVersion(version, latestVersion)}</VersionSelectorTitle>,
-  });
-
-  const latestVersionNum = Number(latestVersion);
-  const stableVersionLinks = [];
-  const preReleaseVersionLinks = [];
-
-  versions.forEach((version) => {
-    const link = getVersionLink(version);
-
-    if (Number(shortenVersion(version)) > latestVersionNum) {
-      preReleaseVersionLinks.push(link);
-    } else {
-      stableVersionLinks.push(link);
-    }
+    href: buildPathWithVersionAndFramework(slug, version, currentFramework),
+    title: <VersionSelectorTitle>{stylized}</VersionSelectorTitle>,
   });
 
   return (
@@ -109,16 +73,20 @@ export function VersionSelector({
         tooltip={
           <>
             <LinkHeading>Stable</LinkHeading>
-            <VersionLinkList links={stableVersionLinks} />
+            <VersionLinkList links={versions.stable.map(getVersionLink)} />
             <LinkHeading withTopBorder>Pre-release</LinkHeading>
-            <VersionLinkList links={preReleaseVersionLinks} />
+            <VersionLinkList links={versions.preRelease.map(getVersionLink)} />
           </>
         }
         as="span"
         {...tooltipProps}
       >
         <VersionLink isButton appearance="secondary" withArrow>
-          {stylizeVersion(currentVersion, latestVersion)}
+          {
+            [...versions.stable, ...versions.preRelease].find(
+              ({ version }) => version === currentVersion
+            ).stylized
+          }
         </VersionLink>
       </WithTooltip>
     </Wrapper>
@@ -127,13 +95,28 @@ export function VersionSelector({
 
 VersionSelector.propTypes = {
   currentFramework: PropTypes.string.isRequired,
-  currentVersion: PropTypes.string.isRequired,
-  latestVersion: PropTypes.string.isRequired,
+  currentVersion: PropTypes.oneOfType([PropTypes.string, PropTypes.oneOf([null])]),
   slug: PropTypes.string.isRequired,
   tooltipProps: PropTypes.shape({}),
-  versions: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  versions: PropTypes.shape({
+    stable: PropTypes.arrayOf(
+      PropTypes.shape({
+        version: PropTypes.oneOfType([PropTypes.string, PropTypes.oneOf([null])]),
+        number: PropTypes.oneOfType([PropTypes.number, PropTypes.oneOf([null])]),
+        stylized: PropTypes.string.isRequired,
+      }).isRequired
+    ).isRequired,
+    preRelease: PropTypes.arrayOf(
+      PropTypes.shape({
+        version: PropTypes.string.isRequired,
+        number: PropTypes.number.isRequired,
+        stylized: PropTypes.string.isRequired,
+      }).isRequired
+    ).isRequired,
+  }).isRequired,
 };
 
 VersionSelector.defaultProps = {
+  currentVersion: null,
   tooltipProps: {},
 };

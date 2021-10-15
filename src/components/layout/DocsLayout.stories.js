@@ -272,12 +272,20 @@ const docsToc = [
   },
 ];
 
-const versions = ['6.0', '6.1', '6.2', null, '6.4.0-beta.11'];
+const versions = {
+  stable: [
+    { version: '6.0', number: 6.0, stylized: '6.0' },
+    { version: '6.1', number: 6.1, stylized: '6.1' },
+    { version: '6.2', number: 6.2, stylized: '6.2' },
+    { version: null, number: null, stylized: '6.3 (latest)' },
+  ],
+  preRelease: [{ version: '6.4', number: 6.4, stylized: '6.4 (beta)' }],
+};
 
 export const pageContext = {
   docsToc,
   framework: 'react',
-  version: versions[0],
+  version: null,
   versions,
 };
 

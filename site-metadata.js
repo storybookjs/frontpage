@@ -18,8 +18,8 @@ const siteMetadata = {
   ogImageAddons: '/images/social/og-addons.png',
   siteUrl: homepageUrl, // Used for gatsby-plugin-sitemap
   googleSiteVerification: '_OxxMv1o0aRcxPfieLW0BRsMxxIzkpA9Vv6O0AB5xg0',
-  latestVersion: '6.3', // TODO: Could get this from monorepo...
-  earliestDocsVersion: '6.0',
+  latestVersion: 6.3, // TODO: Could get this from monorepo...
+  earliestDocsVersion: 6.0,
   contributorCount: 1290,
   coreFrameworks,
   communityFrameworks,

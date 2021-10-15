@@ -16,16 +16,23 @@ export default {
   decorators: [(storyFn) => <Wrapper>{storyFn()}</Wrapper>],
 };
 
-const { coreFrameworks, latestVersion } = useSiteMetadata();
-const versions = ['6.0', '6.1', '6.2', null, '6.4.0-beta.11'];
+const { coreFrameworks } = useSiteMetadata();
+const versions = {
+  stable: [
+    { version: '6.0', number: 6.0, stylized: '6.0' },
+    { version: '6.1', number: 6.1, stylized: '6.1' },
+    { version: '6.2', number: 6.2, stylized: '6.2' },
+    { version: null, number: null, stylized: '6.3 (latest)' },
+  ],
+  preRelease: [{ version: '6.4', number: 6.4, stylized: '6.4 (beta)' }],
+};
 
 const Template = (args) => <VersionSelector {...args} />;
 
 export const Base = Template.bind({});
 Base.args = {
   currentFramework: coreFrameworks[0],
-  currentVersion: versions[0],
-  latestVersion,
+  currentVersion: versions.stable[0].version,
   slug: '/docs/get-started/introduction',
   tooltipProps: { startOpen: true },
   versions,
