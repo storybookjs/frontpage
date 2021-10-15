@@ -2,20 +2,21 @@ const fs = require('fs');
 const path = require('path');
 
 const { createFilePath } = require(`gatsby-source-filesystem`);
-
-const { latestVersion } = require('./site-metadata');
-const { toc: docsToc } = require('./src/content/docs/toc');
 const {
   buildPathWithFramework,
   buildPathWithVersionAndFramework,
 } = require('./src/util/build-path-with-framework');
 const createAddonsPages = require('./src/util/create-addons-pages');
 
+const { toc: docsToc } = require('./src/content/docs/toc');
+const { version: nextVersionFull } = require('./src/content/docs/next-package.json');
+const { earliestDocsVersion, latestVersion } = require('./site-metadata');
+
 const { BRANCH } = process.env;
 let versionFromBranch;
 let isLatestVersion = false;
 if (BRANCH === 'next') {
-  versionFromBranch = '6.4'; // TODO: Grab from SB package.json
+  [versionFromBranch] = nextVersionFull.match(/^\d+\.\d+/);
 } else if (BRANCH && BRANCH.includes('release-')) {
   versionFromBranch = BRANCH.replace(/^release-(\d+)-(\d+)/, '$1.$2');
 } else {
@@ -171,8 +172,14 @@ exports.createPages = ({ actions, graphql }) => {
           }
 
           const versions = sortedReleases
-            .filter(({ node }) => Number(node.fields.version) >= 6)
-            .map(({ node }) => node.fields.version.match(/^(\d+\.\d+)/)[1]);
+            .filter(({ node }) => {
+              const versionNum = Number(node.fields.version);
+              return (
+                versionNum >= Number(earliestDocsVersion) && versionNum <= Number(latestVersion)
+              );
+            })
+            .map(({ node }) => node.fields.version)
+            .concat([nextVersionFull]);
           const frameworks = [...coreFrameworks, ...communityFrameworks];
           const docsPagesSlugs = [];
           const docsPagesEdgesBySlug = Object.fromEntries(

@@ -17,7 +17,7 @@ export default {
 };
 
 const { coreFrameworks, latestVersion } = useSiteMetadata();
-const versions = ['6.0', '6.1', '6.2', '6.3', '6.4'];
+const versions = ['6.0', '6.1', '6.2', '6.3', '6.4.0-beta.11'];
 
 const Template = (args) => <VersionSelector {...args} />;
 
