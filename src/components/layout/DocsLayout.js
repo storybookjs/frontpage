@@ -4,10 +4,8 @@ import styled, { css } from 'styled-components';
 import {
   Icon,
   Input,
-  Link,
   Button,
   TableOfContents,
-  TooltipLinkList,
   TooltipNote,
   WithTooltip,
   global,
@@ -26,7 +24,7 @@ import {
 } from '../../util/build-path-with-framework';
 import { FrameworkSelector } from '../screens/DocsScreen/FrameworkSelector';
 import { VersionSelector } from '../screens/DocsScreen/VersionSelector';
-import stylizeFramework from '../../util/stylize-framework';
+import { VersionCTA } from '../screens/DocsScreen/VersionCTA';
 import useAlgoliaSearch, { SEARCH_INPUT_ID } from '../../hooks/use-algolia-search';
 
 const { breakpoint, color, pageMargins, typography } = styles;
@@ -49,9 +47,11 @@ const Sidebar = styled.div`
 `;
 
 const StyledVersionSelector = styled(VersionSelector)`
-  margin-bottom: 0.75rem;
+  margin-left: 24px;
 
   @media (min-width: ${breakpoint * 1.333}px) {
+    margin-left: 0;
+    margin-bottom: 0.75rem;
     margin-top: 1.5rem;
   }
 `;
@@ -136,6 +136,10 @@ const Content = styled.div`
   margin: 0px auto;
 `;
 
+const StyledVersionCTA = styled(VersionCTA)`
+  margin-bottom: 24px;
+`;
+
 const Wrapper = styled.div`
   ${pageMargins}
   padding-bottom: 3rem;
@@ -168,6 +172,7 @@ function DocsLayout({ children, data, pageContext, ...props }) {
   const {
     coreFrameworks,
     communityFrameworks,
+    latestVersion,
     urls: { homepageUrl },
   } = useSiteMetadata();
   const { docsToc, framework: currentFramework, version: currentVersion, versions } = pageContext;
@@ -211,7 +216,7 @@ function DocsLayout({ children, data, pageContext, ...props }) {
         <Sidebar>
           <StyledTableOfContents
             key={`${currentVersion}${currentFramework}`}
-            currentPath={buildPathWithVersionAndFramework(slug, currentVersion, canonicalFramework)}
+            currentPath={buildPathWithVersionAndFramework(slug, currentVersion, currentFramework)}
             items={docsTocWithLinkWrappers}
           >
             {({ menu, allTopLevelMenusAreOpen, toggleAllOpen, toggleAllClosed }) => (
@@ -280,7 +285,17 @@ function DocsLayout({ children, data, pageContext, ...props }) {
           </StyledTableOfContents>
         </Sidebar>
 
-        <Content>{children}</Content>
+        <Content>
+          {currentVersion && (
+            <StyledVersionCTA
+              currentFramework={currentFramework}
+              currentVersion={currentVersion}
+              latestVersion={latestVersion}
+              slug={slug}
+            />
+          )}
+          {children}
+        </Content>
       </Wrapper>
     </>
   );

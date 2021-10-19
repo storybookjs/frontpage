@@ -4,7 +4,7 @@ import DocsLayout from './DocsLayout';
 
 export const data = {
   currentPage: {
-    fields: { slug: '/introduction/' },
+    fields: { slug: '/docs/introduction/' },
   },
 };
 
@@ -295,8 +295,20 @@ export default {
   excludeStories: ['data', 'pageContext'],
 };
 
-export const Base = () => (
-  <DocsLayout data={data} pageContext={pageContext}>
-    children
-  </DocsLayout>
-);
+const Template = (args) => <DocsLayout {...args} />;
+
+export const Base = Template.bind({});
+Base.args = {
+  children: 'children',
+  data,
+  pageContext,
+};
+
+export const NonLatestVersion = Template.bind({});
+NonLatestVersion.args = {
+  ...Base.args,
+  pageContext: {
+    ...pageContext,
+    version: versions.stable[0].version,
+  },
+};
