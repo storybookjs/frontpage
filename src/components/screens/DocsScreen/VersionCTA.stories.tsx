@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { VersionCTA } from './VersionCTA';
 import useSiteMetadata from '../../../../.storybook/useSiteMetadata';
+import { versions } from './VersionSelector.stories';
 
 const Wrapper = styled.div`
   padding: 20px;
@@ -13,22 +14,22 @@ export default {
   decorators: [(storyFn) => <Wrapper>{storyFn()}</Wrapper>],
 };
 
-const { coreFrameworks, latestVersion } = useSiteMetadata();
+const { coreFrameworks } = useSiteMetadata();
 
 const Template = (args) => <VersionCTA {...args} />;
 
 export const OldVersion = Template.bind({});
 OldVersion.args = {
   currentFramework: coreFrameworks[0],
-  currentVersion: '6.0',
-  latestVersion,
+  currentVersion: versions.stable[0].version,
+  // All of this weirdness is so we can get a stable latest version, instead of pulling from siteMetaData
+  latestVersion: versions.stable[versions.stable.length - 1].stylized.match(/\d+\.\d+/),
   slug: '/docs/get-started/introduction',
+  versions,
 };
 
 export const PreReleaseVersion = Template.bind({});
 PreReleaseVersion.args = {
-  currentFramework: coreFrameworks[0],
-  currentVersion: `${(latestVersion + 0.1).toFixed(1)}`,
-  latestVersion,
-  slug: '/docs/get-started/introduction',
+  ...OldVersion.args,
+  currentVersion: versions.preRelease[0].version,
 };

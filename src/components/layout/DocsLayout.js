@@ -292,6 +292,7 @@ function DocsLayout({ children, data, pageContext, ...props }) {
               currentVersion={currentVersion}
               latestVersion={latestVersion}
               slug={slug}
+              versions={versions}
             />
           )}
           {children}

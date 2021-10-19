@@ -14,10 +14,11 @@ export default {
   title: 'Frontpage|screens/DocsScreen/VersionSelector',
   component: VersionSelector,
   decorators: [(storyFn) => <Wrapper>{storyFn()}</Wrapper>],
+  excludeStories: ['versions'],
 };
 
 const { coreFrameworks } = useSiteMetadata();
-const versions = {
+export const versions = {
   stable: [
     { version: '6.0', number: 6.0, stylized: '6.0' },
     { version: '6.1', number: 6.1, stylized: '6.1' },
