@@ -202,7 +202,7 @@ function checkForErrors(response, predicate) {
     throw new Error(response.error.errorMessage || response.errors[0].message);
   }
 
-  if (predicate && predicate(response.data)) {
+  if (predicate && !predicate(response.data)) {
     throw new Error(`Data not found for ${predicate.toString()}`);
   }
 
