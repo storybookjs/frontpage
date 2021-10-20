@@ -10,7 +10,7 @@ export const data = {
 
 const docsToc = [
   {
-    title: 'Get Started',
+    title: '🚀 Get Started',
     type: 'menu',
     children: [
       {
@@ -51,7 +51,7 @@ const docsToc = [
     ],
   },
   {
-    title: 'Writing Stories',
+    title: '🖋 Writing Stories',
     path: '/writing-stories/',
     type: 'menu',
     children: [
@@ -83,7 +83,7 @@ const docsToc = [
     ],
   },
   {
-    title: 'Writing Docs',
+    title: '📖 Writing Docs',
     path: '/writing-docs/',
     type: 'menu',
     children: [
@@ -110,7 +110,7 @@ const docsToc = [
     ],
   },
   {
-    title: 'Essentials',
+    title: '🧩 Essential addons',
     path: '/essentials/',
     type: 'menu',
     children: [
@@ -147,7 +147,7 @@ const docsToc = [
     ],
   },
   {
-    title: 'Configure',
+    title: '⚙️ Configure',
     path: '/configure/',
     type: 'menu',
     children: [
@@ -174,7 +174,7 @@ const docsToc = [
     ],
   },
   {
-    title: 'Workflows',
+    title: '🔄 Workflows',
     path: '/workflows/',
     type: 'menu',
     children: [
@@ -239,7 +239,7 @@ const docsToc = [
     ],
   },
   {
-    title: 'API',
+    title: '🔌 API',
     path: '/api/',
     type: 'menu',
     children: [
