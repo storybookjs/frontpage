@@ -47,11 +47,13 @@ const Sidebar = styled.div`
 `;
 
 const StyledVersionSelector = styled(VersionSelector)`
-  margin-left: 24px;
+  margin-left: 10px;
+  margin-right: 10px;
 
   @media (min-width: ${breakpoint * 1.333}px) {
     margin-left: 0;
-    margin-bottom: 0.75rem;
+    margin-right: 0;
+    margin-bottom: 0.5rem;
     margin-top: 1.5rem;
   }
 `;
@@ -82,6 +84,7 @@ const ExpandButton = styled(Button)`
 const SidebarControls = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
   flex-direction: row-reverse;
   flex-wrap: wrap-reverse;
@@ -106,9 +109,17 @@ const SidebarControls = styled.div`
       flex: none;
     }
   }
-  /* framework picker */
+  /* version picker */
   > *:nth-child(3) {
-    flex: 1;
+    //flex: 1;
+
+    @media (min-width: ${breakpoint * 1.333}px) {
+      flex: 0 0 100%;
+    }
+  }
+  /* framework picker */
+  > *:nth-child(4) {
+    //flex: 1;
 
     @media (min-width: ${breakpoint * 1.333}px) {
       flex: 0 0 100%;
