@@ -20,12 +20,12 @@ export default {
 const { coreFrameworks } = useSiteMetadata();
 export const versions = {
   stable: [
-    { version: '6.0', number: 6.0, stylized: '6.0' },
-    { version: '6.1', number: 6.1, stylized: '6.1' },
-    { version: '6.2', number: 6.2, stylized: '6.2' },
-    { version: null, number: null, stylized: '6.3 (latest)' },
+    { version: '6.0', number: 6.0, string: '6.0' },
+    { version: '6.1', number: 6.1, string: '6.1' },
+    { version: '6.2', number: 6.2, string: '6.2' },
+    { version: null, label: 'latest', number: 6.3, string: '6.3' },
   ],
-  preRelease: [{ version: '6.4', number: 6.4, stylized: '6.4 (beta)' }],
+  preRelease: [{ version: '6.4', label: 'beta', number: 6.4, string: '6.4' }],
 };
 
 const Template = (args) => <VersionSelector {...args} />;

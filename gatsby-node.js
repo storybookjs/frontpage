@@ -28,8 +28,6 @@ if (BRANCH === NEXT_BRANCH) {
   versionFromBranch = null; // latest version of docs is un-versioned
 }
 
-let versions;
-
 const githubDocsBaseUrl = 'https://github.com/storybookjs/storybook/tree/next';
 const addStateToToc = (items, pathPrefix = '/docs') =>
   items.map((item) => {
@@ -46,6 +44,42 @@ const addStateToToc = (items, pathPrefix = '/docs') =>
   });
 
 const docsTocWithPaths = addStateToToc(docsToc);
+
+let versions;
+const buildVersions = (releases) =>
+  releases.reduce(
+    (acc, { node }) => {
+      const { version } = node.fields;
+      const versionNum = Number(version);
+      if (versionNum >= earliestDocsVersion) {
+        if (versionNum > latestVersion) {
+          const label = nextVersionFull.match(/-(\w+)\./)[1];
+          acc.preRelease.push({
+            version,
+            label,
+            number: versionNum,
+            string: version,
+          });
+        } else if (versionNum === latestVersion) {
+          const label = 'latest';
+          acc.stable.push({
+            version: null,
+            label,
+            number: versionNum,
+            string: `${latestVersion}`,
+          });
+        } else {
+          acc.stable.push({
+            version,
+            number: versionNum,
+            string: version,
+          });
+        }
+      }
+      return acc;
+    },
+    { stable: [], preRelease: [] }
+  );
 
 exports.onCreateNode = ({ actions, getNode, node }) => {
   const { createNodeField } = actions;
@@ -177,29 +211,7 @@ exports.createPages = ({ actions, graphql }) => {
             });
           }
 
-          versions = sortedReleases.reduce(
-            (acc, { node }) => {
-              const { version } = node.fields;
-              const versionNum = Number(version);
-              if (versionNum >= earliestDocsVersion) {
-                if (versionNum > latestVersion) {
-                  acc.preRelease.push({
-                    version,
-                    stylized: `${nextVersion} (${nextVersionFull.match(/-(\w+)\./)[1]})`,
-                    number: versionNum,
-                  });
-                } else {
-                  acc.stable.push({
-                    version: versionNum === latestVersion ? null : version,
-                    stylized: versionNum === latestVersion ? `${latestVersion} (latest)` : version,
-                    number: versionNum,
-                  });
-                }
-              }
-              return acc;
-            },
-            { stable: [], preRelease: [] }
-          );
+          versions = buildVersions(sortedReleases);
           const frameworks = [...coreFrameworks, ...communityFrameworks];
           const docsPagesSlugs = [];
           const docsPagesEdgesBySlug = Object.fromEntries(

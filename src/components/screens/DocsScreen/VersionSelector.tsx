@@ -27,17 +27,6 @@ const VersionLink = styled(Link)`
   }
 `;
 
-const VersionSelectorTitle = styled.div`
-  display: flex;
-  align-items: center;
-
-  img {
-    width: 16px;
-    height: 16px;
-    margin-right: 10px;
-  }
-`;
-
 const LinkHeading = styled(Subheading)`
   display: block;
   font-size: 10px;
@@ -54,6 +43,10 @@ const VersionLinkList = styled(TooltipLinkList)`
   border-radius: 0;
 `;
 
+function stylizeVersion({ label, string }) {
+  return `${string}${label ? ` (${label})` : ''}`;
+}
+
 export function VersionSelector({
   currentFramework,
   currentVersion,
@@ -62,11 +55,14 @@ export function VersionSelector({
   tooltipProps,
   ...rest
 }) {
-  const getVersionLink = ({ version, stylized }) => ({
+  const getVersionLink = ({ version, label, string }) => ({
     LinkWrapper: GatsbyLinkWrapper,
     href: buildPathWithVersionAndFramework(slug, version, currentFramework),
-    title: <VersionSelectorTitle>{stylized}</VersionSelectorTitle>,
+    title: stylizeVersion({ label, string }),
   });
+
+  const stableLinks = versions.stable.slice().reverse().map(getVersionLink);
+  const preReleaseLinks = versions.preRelease.slice().reverse().map(getVersionLink);
 
   return (
     <Wrapper {...rest}>
@@ -77,20 +73,20 @@ export function VersionSelector({
         tooltip={
           <>
             <LinkHeading>Stable</LinkHeading>
-            <VersionLinkList links={versions.stable.map(getVersionLink)} />
+            <VersionLinkList links={stableLinks} />
             <LinkHeading withTopBorder>Pre-release</LinkHeading>
-            <VersionLinkList links={versions.preRelease.map(getVersionLink)} />
+            <VersionLinkList links={preReleaseLinks} />
           </>
         }
         as="span"
         {...tooltipProps}
       >
         <VersionLink isButton primary withArrow>
-          {
+          {stylizeVersion(
             [...versions.stable, ...versions.preRelease].find(
               ({ version }) => version === currentVersion
-            ).stylized
-          }
+            )
+          )}
         </VersionLink>
       </WithTooltip>
     </Wrapper>
@@ -106,15 +102,17 @@ VersionSelector.propTypes = {
     stable: PropTypes.arrayOf(
       PropTypes.shape({
         version: PropTypes.oneOfType([PropTypes.string, PropTypes.oneOf([null])]),
-        number: PropTypes.oneOfType([PropTypes.number, PropTypes.oneOf([null])]),
-        stylized: PropTypes.string.isRequired,
+        label: PropTypes.oneOf(['latest']),
+        number: PropTypes.number.isRequired,
+        string: PropTypes.string.isRequired,
       }).isRequired
     ).isRequired,
     preRelease: PropTypes.arrayOf(
       PropTypes.shape({
         version: PropTypes.string.isRequired,
+        label: PropTypes.oneOf(['alpha', 'beta', 'rc']).isRequired,
         number: PropTypes.number.isRequired,
-        stylized: PropTypes.string.isRequired,
+        string: PropTypes.string.isRequired,
       }).isRequired
     ).isRequired,
   }).isRequired,

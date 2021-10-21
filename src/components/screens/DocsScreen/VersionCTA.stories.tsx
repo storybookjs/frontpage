@@ -22,8 +22,7 @@ export const OldVersion = Template.bind({});
 OldVersion.args = {
   currentFramework: coreFrameworks[0],
   currentVersion: versions.stable[0].version,
-  // All of this weirdness is so we can get a stable latest version, instead of pulling from siteMetaData
-  latestVersion: versions.stable[versions.stable.length - 1].stylized.match(/\d+\.\d+/),
+  latestVersion: versions.stable[versions.stable.length - 1].string,
   slug: '/docs/get-started/introduction',
   versions,
 };
@@ -32,4 +31,13 @@ export const PreReleaseVersion = Template.bind({});
 PreReleaseVersion.args = {
   ...OldVersion.args,
   currentVersion: versions.preRelease[0].version,
+};
+
+export const PreReleaseRCVersion = Template.bind({});
+PreReleaseRCVersion.args = {
+  ...PreReleaseVersion.args,
+  versions: {
+    ...versions,
+    preRelease: [{ ...versions.preRelease[0], label: 'rc' }],
+  },
 };

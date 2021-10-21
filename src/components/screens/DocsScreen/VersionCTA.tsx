@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Badge, OutlineCTA } from '@storybook/design-system';
+import { startCase } from 'lodash';
 import GatsbyLink from '../../basics/GatsbyLink';
 import { buildPathWithVersionAndFramework } from '../../../util/build-path-with-framework';
 import { VersionSelector } from './VersionSelector';
@@ -13,12 +14,24 @@ export function VersionCTA({
   versions,
   ...rest
 }) {
-  const isPreRelease = Number(currentVersion) > latestVersion;
-  const versionMessage = isPreRelease
-    ? `You're viewing docs for a pre-release version ${
-        versions.preRelease.find(({ version }) => version === currentVersion).stylized
-      } of Storybook.`
-    : `You're viewing docs for an older version ${currentVersion} of Storybook.`;
+  let message = `You're viewing older docs for version ${currentVersion}.`;
+  let badge = <Badge status="positive">New</Badge>;
+
+  if (Number(currentVersion) > latestVersion) {
+    const { label, string } = versions.preRelease.find(({ version }) => version === currentVersion);
+    message = `You're viewing pre-release docs for version ${string}.`;
+    badge = (
+      <Badge status="warning">
+        {label === 'rc' ? (
+          <abbr title="Release Candidate" style={{ textDecoration: 'none' }}>
+            {label.toUpperCase()}
+          </abbr>
+        ) : (
+          startCase(label)
+        )}
+      </Badge>
+    );
+  }
 
   return (
     <OutlineCTA
@@ -27,10 +40,10 @@ export function VersionCTA({
           View latest docs
         </GatsbyLink>
       }
-      badge={<Badge status={isPreRelease ? 'warning' : 'positive'}>New</Badge>}
+      badge={badge}
       {...rest}
     >
-      {versionMessage}
+      {message}
     </OutlineCTA>
   );
 }
