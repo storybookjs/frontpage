@@ -337,7 +337,10 @@ function updateRedirectsFile() {
       }
       return acc;
     }, [])
-    .concat([`/docs/${NEXT_BRANCH}/* /docs/${nextVersion}/:splat 302`])
+    .concat([
+      `/docs/${NEXT_BRANCH}/* /docs/${nextVersion}/:splat 302`,
+      `/docs/* https://storybook-frontpage.netlify.app/docs/:splat 200`,
+    ])
     .join('\n');
   fs.writeFileSync('./public/_redirects', `${originalContents}\n\n${newContents}`);
 }
