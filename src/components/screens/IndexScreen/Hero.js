@@ -485,7 +485,7 @@ export default function Hero({ startOpen, ...props }) {
           <Stats>
             <Stat
               size="small"
-              count={`v${latestVersion}`}
+              count={latestVersion}
               text="Latest version"
               noPlural
               status="primary"

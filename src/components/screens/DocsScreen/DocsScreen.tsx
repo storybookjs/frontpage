@@ -18,7 +18,7 @@ import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 
 import { mdFormatting } from '../../../styles/formatting';
-import { buildPathWithVersionAndFramework } from '../../../util/build-path-with-framework';
+import buildPathWithFramework from '../../../util/build-path-with-framework';
 import relativeToRootLinks from '../../../util/relative-to-root-links';
 import stylizeFramework from '../../../util/stylize-framework';
 import { FeatureSnippets } from './FeatureSnippets';
@@ -83,7 +83,7 @@ function DocsScreen({ data, pageContext, location }) {
     featureGroups,
     urls: { homepageUrl },
   } = useSiteMetadata();
-  const { framework, docsToc, slug, tocItem, nextTocItem, isFirstTocItem, version } = pageContext;
+  const { framework, docsToc, slug, tocItem, nextTocItem, isFirstTocItem } = pageContext;
   const CodeSnippetsWithCurrentFramework = useMemo(() => {
     return (props) => <CodeSnippets currentFramework={framework} {...props} />;
   }, [framework]);
@@ -101,7 +101,7 @@ function DocsScreen({ data, pageContext, location }) {
   }, [framework]);
   const LinksWithPrefix = useMemo(() => {
     return ({ href, ...props }) => {
-      const url = relativeToRootLinks(href, version, framework, location.pathname);
+      const url = relativeToRootLinks(href, framework, location.pathname);
       // eslint-disable-next-line
       return <a href={url} {...props} />;
     };
@@ -127,7 +127,7 @@ function DocsScreen({ data, pageContext, location }) {
   return (
     <>
       <SocialGraph
-        url={`${homepageUrl}${buildPathWithVersionAndFramework(tocItem.path, version, framework)}/`}
+        url={`${homepageUrl}${buildPathWithFramework(tocItem.path, framework)}/`}
         title={title}
         desc={description}
       />
@@ -170,7 +170,7 @@ function DocsScreen({ data, pageContext, location }) {
             action={
               <Button
                 appearance="secondary"
-                href={buildPathWithVersionAndFramework(nextTocItem.path, version, framework)}
+                href={buildPathWithFramework(nextTocItem.path, framework)}
                 ButtonWrapper={GatsbyLinkWrapper}
               >
                 Continue

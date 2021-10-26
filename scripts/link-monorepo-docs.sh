@@ -29,5 +29,3 @@ else
   echo "Couldn't find monorepo docs at '$TARGET_DIR'"
   exit 1;
 fi
-
-./scripts/extract-next-monorepo-version.sh

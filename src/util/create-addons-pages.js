@@ -23,8 +23,6 @@ const addonDetail = `
   verifiedCreator`;
 
 module.exports = function createAddonsPages({ actions, graphql }) {
-  // eslint-disable-next-line no-console
-  console.log('Creating addons pages...');
   const { createPage } = actions;
   return fetchCategoryPages(createPage, graphql)
     .then(() => fetchAddonsDetailPages(createPage, graphql))
@@ -49,7 +47,7 @@ function fetchCategoryPages(createPage, graphql) {
       }
     `
   )
-    .then((res) => checkForErrors(res, (data) => data.addons.categoryPages))
+    .then(checkForErrors)
     .then(
       ({
         data: {
@@ -105,14 +103,14 @@ function fetchAddonsDetailPages(createPage, graphql, skip = 0) {
         }`
       )
     )
-    .then((res) => checkForErrors(res, (data) => data.addons.addonPages))
+    .then(checkForErrors)
     .then(
       ({
         data: {
           addons: { addonPages },
         },
       }) => {
-        if (addonPages.length > 0) {
+        if (addonPages && addonPages.length > 0) {
           createAddonsDetailPages(createPage, addonPages);
           return fetchAddonsDetailPages(createPage, graphql, skip + addonPages.length);
         }
@@ -168,7 +166,7 @@ function fetchTagPages(createPage, graphql, skip = 0) {
     }`
       )
     )
-    .then((res) => checkForErrors(res, (data) => data.addons.tagPages))
+    .then(checkForErrors)
     .then(
       ({
         data: {
@@ -197,13 +195,9 @@ function createTagPages(createPage, tagPages) {
   });
 }
 
-function checkForErrors(response, predicate) {
+function checkForErrors(response) {
   if (response.error) {
     throw new Error(response.error.errorMessage || response.errors[0].message);
-  }
-
-  if (predicate && !predicate(response.data)) {
-    throw new Error(`Data not found for ${predicate.toString()}`);
   }
 
   return response;

@@ -4,8 +4,10 @@ import styled, { css } from 'styled-components';
 import {
   Icon,
   Input,
+  Link,
   Button,
   TableOfContents,
+  TooltipLinkList,
   TooltipNote,
   WithTooltip,
   global,
@@ -18,13 +20,9 @@ import { SocialGraph } from '../basics';
 import GatsbyLinkWrapper from '../basics/GatsbyLinkWrapper';
 
 import useSiteMetadata from '../lib/useSiteMetadata';
-import {
-  buildPathWithFramework,
-  buildPathWithVersionAndFramework,
-} from '../../util/build-path-with-framework';
+import buildPathWithFramework from '../../util/build-path-with-framework';
 import { FrameworkSelector } from '../screens/DocsScreen/FrameworkSelector';
-import { VersionSelector } from '../screens/DocsScreen/VersionSelector';
-import { VersionCTA } from '../screens/DocsScreen/VersionCTA';
+import stylizeFramework from '../../util/stylize-framework';
 import useAlgoliaSearch, { SEARCH_INPUT_ID } from '../../hooks/use-algolia-search';
 
 const { breakpoint, color, pageMargins, typography } = styles;
@@ -46,14 +44,8 @@ const Sidebar = styled.div`
   }
 `;
 
-const StyledVersionSelector = styled(VersionSelector)`
-  margin-left: 10px;
-  margin-right: 10px;
-
+const StyledFrameworkSelector = styled(FrameworkSelector)`
   @media (min-width: ${breakpoint * 1.333}px) {
-    margin-left: 0;
-    margin-right: 0;
-    margin-bottom: 0.5rem;
     margin-top: 1.5rem;
   }
 `;
@@ -84,7 +76,6 @@ const ExpandButton = styled(Button)`
 const SidebarControls = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
 
   flex-direction: row-reverse;
   flex-wrap: wrap-reverse;
@@ -109,17 +100,9 @@ const SidebarControls = styled.div`
       flex: none;
     }
   }
-  /* version picker */
-  > *:nth-child(3) {
-    //flex: 1;
-
-    @media (min-width: ${breakpoint * 1.333}px) {
-      flex: 0 0 100%;
-    }
-  }
   /* framework picker */
-  > *:nth-child(4) {
-    //flex: 1;
+  > *:nth-child(3) {
+    flex: 1;
 
     @media (min-width: ${breakpoint * 1.333}px) {
       flex: 0 0 100%;
@@ -145,10 +128,6 @@ const Content = styled.div`
   min-width: 0; /* do not remove  https://weblog.west-wind.com/posts/2016/feb/15/flexbox-containers-pre-tags-and-managing-overflow */
   max-width: 800px;
   margin: 0px auto;
-`;
-
-const StyledVersionCTA = styled(VersionCTA)`
-  margin-bottom: 24px;
 `;
 
 const Wrapper = styled.div`
@@ -183,12 +162,11 @@ function DocsLayout({ children, data, pageContext, ...props }) {
   const {
     coreFrameworks,
     communityFrameworks,
-    latestVersion,
     urls: { homepageUrl },
   } = useSiteMetadata();
-  const { docsToc, framework: currentFramework, version: currentVersion, versions } = pageContext;
+  const { docsToc, framework } = pageContext;
   const [searchValue, setSearchValue] = useState('');
-  const { isSearchVisible } = useAlgoliaSearch({ framework: currentFramework }); // TODO
+  const { isSearchVisible } = useAlgoliaSearch({ framework });
 
   const addLinkWrappers = (items) =>
     items.map((item) => ({
@@ -207,7 +185,7 @@ function DocsLayout({ children, data, pageContext, ...props }) {
 
   // The React specific docs are treated as canonical except for the
   // docs home page for all other frameworks.
-  const canonicalFramework = slug === '/docs/get-started/introduction' ? currentFramework : 'react';
+  const canonicalFramework = slug === '/docs/get-started/introduction' ? framework : 'react';
 
   return (
     <>
@@ -217,7 +195,7 @@ function DocsLayout({ children, data, pageContext, ...props }) {
           rel="canonical"
           href={`${homepageUrl}${buildPathWithFramework(slug, canonicalFramework)}/`}
         />
-        <meta name="docsearch:framework" content={currentFramework} />
+        <meta name="docsearch:framework" content={framework} />
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"
@@ -226,8 +204,8 @@ function DocsLayout({ children, data, pageContext, ...props }) {
       <Wrapper>
         <Sidebar>
           <StyledTableOfContents
-            key={`${currentVersion}${currentFramework}`}
-            currentPath={buildPathWithVersionAndFramework(slug, currentVersion, currentFramework)}
+            key={framework}
+            currentPath={buildPathWithFramework(slug, framework)}
             items={docsTocWithLinkWrappers}
           >
             {({ menu, allTopLevelMenusAreOpen, toggleAllOpen, toggleAllClosed }) => (
@@ -274,16 +252,8 @@ function DocsLayout({ children, data, pageContext, ...props }) {
                     </WithTooltip>
                   )}
 
-                  <StyledVersionSelector
-                    currentFramework={currentFramework}
-                    currentVersion={currentVersion}
-                    slug={slug}
-                    versions={versions}
-                  />
-
-                  <FrameworkSelector
-                    currentFramework={currentFramework}
-                    currentVersion={currentVersion}
+                  <StyledFrameworkSelector
+                    currentFramework={framework}
                     slug={slug}
                     coreFrameworks={coreFrameworks}
                     communityFrameworks={communityFrameworks}
@@ -296,18 +266,7 @@ function DocsLayout({ children, data, pageContext, ...props }) {
           </StyledTableOfContents>
         </Sidebar>
 
-        <Content>
-          {currentVersion && (
-            <StyledVersionCTA
-              currentFramework={currentFramework}
-              currentVersion={currentVersion}
-              latestVersion={latestVersion}
-              slug={slug}
-              versions={versions}
-            />
-          )}
-          {children}
-        </Content>
+        <Content>{children}</Content>
       </Wrapper>
     </>
   );

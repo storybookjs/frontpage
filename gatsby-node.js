@@ -2,31 +2,10 @@ const fs = require('fs');
 const path = require('path');
 
 const { createFilePath } = require(`gatsby-source-filesystem`);
-const {
-  buildPathWithFramework,
-  buildPathWithVersionAndFramework,
-} = require('./src/util/build-path-with-framework');
-const createAddonsPages = require('./src/util/create-addons-pages');
 
 const { toc: docsToc } = require('./src/content/docs/toc');
-const { version: nextVersionFull } = require('./src/content/docs/next-package.json');
-const { earliestDocsVersion, latestVersion } = require('./site-metadata');
-
-function shortenVersion(version) {
-  return version.match(/^\d+\.\d+/)[0];
-}
-
-const { BRANCH } = process.env;
-let versionFromBranch;
-const nextVersion = shortenVersion(nextVersionFull);
-const NEXT_BRANCH = 'next';
-if (BRANCH === NEXT_BRANCH) {
-  versionFromBranch = nextVersion;
-} else if (BRANCH && BRANCH.includes('release-')) {
-  versionFromBranch = BRANCH.replace(/^release-(\d+)-(\d+)/, '$1.$2');
-} else {
-  versionFromBranch = null; // latest version of docs is un-versioned
-}
+const buildPathWithFramework = require('./src/util/build-path-with-framework');
+const createAddonsPages = require('./src/util/create-addons-pages');
 
 const githubDocsBaseUrl = 'https://github.com/storybookjs/storybook/tree/next';
 const addStateToToc = (items, pathPrefix = '/docs') =>
@@ -44,42 +23,6 @@ const addStateToToc = (items, pathPrefix = '/docs') =>
   });
 
 const docsTocWithPaths = addStateToToc(docsToc);
-
-let versions;
-const buildVersions = (releases) =>
-  releases.reduce(
-    (acc, { node }) => {
-      const { version } = node.fields;
-      const versionNum = Number(version);
-      if (versionNum >= earliestDocsVersion) {
-        if (versionNum > latestVersion) {
-          const label = nextVersionFull.match(/-(\w+)\./)[1];
-          acc.preRelease.push({
-            version,
-            label,
-            number: versionNum,
-            string: version,
-          });
-        } else if (versionNum === latestVersion) {
-          const label = 'latest';
-          acc.stable.push({
-            version: null,
-            label,
-            number: versionNum,
-            string: `${latestVersion}`,
-          });
-        } else {
-          acc.stable.push({
-            version,
-            number: versionNum,
-            string: version,
-          });
-        }
-      }
-      return acc;
-    },
-    { stable: [], preRelease: [] }
-  );
 
 exports.onCreateNode = ({ actions, getNode, node }) => {
   const { createNodeField } = actions;
@@ -211,7 +154,6 @@ exports.createPages = ({ actions, graphql }) => {
             });
           }
 
-          versions = buildVersions(sortedReleases);
           const frameworks = [...coreFrameworks, ...communityFrameworks];
           const docsPagesSlugs = [];
           const docsPagesEdgesBySlug = Object.fromEntries(
@@ -220,10 +162,7 @@ exports.createPages = ({ actions, graphql }) => {
           const docsTocByFramework = Object.fromEntries(
             frameworks.map((framework) => [
               framework,
-              addStateToToc(
-                docsTocWithPaths,
-                `/docs/${versionFromBranch ? `${versionFromBranch}/${framework}` : framework}`
-              ),
+              addStateToToc(docsTocWithPaths, `/docs/${framework}`),
             ])
           );
           const createDocsPages = (tocItems) => {
@@ -239,14 +178,12 @@ exports.createPages = ({ actions, graphql }) => {
 
                   frameworks.forEach((framework) => {
                     createPage({
-                      path: buildPathWithVersionAndFramework(slug, versionFromBranch, framework),
+                      path: buildPathWithFramework(slug, framework),
                       component: path.resolve(`./src/components/screens/DocsScreen/DocsScreen.tsx`),
                       context: {
                         pageType,
                         layout: 'docs',
                         slug,
-                        version: versionFromBranch,
-                        versions,
                         framework,
                         docsToc: docsTocByFramework[framework],
                         tocItem,
@@ -295,7 +232,7 @@ exports.createPages = ({ actions, graphql }) => {
         }
       )
       .then(() => {
-        return process.env.GATSBY_SKIP_ADDON_PAGES || versionFromBranch
+        return process.env.GATSBY_SKIP_ADDON_PAGES
           ? Promise.resolve()
           : createAddonsPages({ actions, graphql });
       })
@@ -318,34 +255,11 @@ function getVersionData(distTag) {
 
 function generateVersionsFile() {
   const latest = getVersionData('latest');
-  const next = getVersionData(NEXT_BRANCH);
+  const next = getVersionData('next');
   const data = { ...latest, ...next };
   fs.writeFileSync('./public/versions-raw.json', JSON.stringify(data));
 }
 
-function updateRedirectsFile() {
-  const originalContents = fs.readFileSync('./static/_redirects');
-  const newContents = [...versions.stable, ...versions.preRelease]
-    .reduce((acc, { version }) => {
-      if (version) {
-        const branch =
-          version === nextVersion ? NEXT_BRANCH : `release-${version.replace('.', '-')}`;
-        acc.push(
-          // prettier-ignore
-          `/docs/${version}/* https://${branch}--storybook-frontpage.netlify.app/docs/${version}/:splat 200`
-        );
-      }
-      return acc;
-    }, [])
-    .concat([
-      `/docs/${NEXT_BRANCH}/* /docs/${nextVersion}/:splat 302`,
-      `/docs/* https://storybook-frontpage.netlify.app/docs/:splat 200`,
-    ])
-    .join('\n');
-  fs.writeFileSync('./public/_redirects', `${originalContents}\n\n${newContents}`);
-}
-
 exports.onPostBuild = () => {
   generateVersionsFile();
-  updateRedirectsFile();
 };

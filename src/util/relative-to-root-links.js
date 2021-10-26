@@ -1,4 +1,4 @@
-const { buildPathWithVersionAndFramework } = require('./build-path-with-framework');
+const buildPathWithFramework = require('./build-path-with-framework');
 
 /**
  *
@@ -9,7 +9,7 @@ const { buildPathWithVersionAndFramework } = require('./build-path-with-framewor
  * ../../app/ember/README remain untouched (these are converted to github links elsewhere)
  * /addons remains untouched
  */
-function relativeToRootLinks(href, version, framework, path = '') {
+function relativeToRootLinks(href, framework, path = '') {
   const relativeUrlRegex = /^(?!\.\.\/\.\.\/)(\.\/)(.*)$/;
   const multiLevelRelativeUrlRegex = /^(?!\.\.\/\.\.\/)(\.\.\/)(.*)$/;
 
@@ -21,12 +21,8 @@ function relativeToRootLinks(href, version, framework, path = '') {
     slugParts.splice(-1, 1, href.replace(relativeUrlRegex, '$2'));
     url = `/${slugParts.join('/')}`;
   } else if (multiLevelRelativeUrlRegex.test(href)) {
-    // rewrite ../some_path style urls to /docs/version/framework/some_path
-    url = buildPathWithVersionAndFramework(
-      href.replace(multiLevelRelativeUrlRegex, '/docs/$2'),
-      version,
-      framework
-    );
+    // rewrite ../some_path style urls to /docs/framework/some_path
+    url = buildPathWithFramework(href.replace(multiLevelRelativeUrlRegex, '/docs/$2'), framework);
   }
 
   return url;
