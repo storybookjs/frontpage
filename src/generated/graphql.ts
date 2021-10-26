@@ -2709,7 +2709,7 @@ export type SiteSiteMetadata = {
   description?: Maybe<Scalars['String']>;
   ogImage?: Maybe<Scalars['String']>;
   googleSiteVerification?: Maybe<Scalars['String']>;
-  latestVersion?: Maybe<Scalars['String']>;
+  latestVersion?: Maybe<Scalars['Float']>;
   urls?: Maybe<SiteSiteMetadataUrls>;
 };
 

@@ -36,6 +36,9 @@ Gatsby is used for basic routing and static site generation.
 
 2. `yarn start:skip-addons` to skip building the addon catalog
 
+3. `BRANCH=next yarn start` to run the site with docs associated with a specific branch
+   - Also work with `yarn build`
+
 #### Docs content
 
 The content for the documentation section is in the `docs/` subdirectory of the Storybook monorepo: https://github.com/storybookjs/storybook/tree/next/docs.
@@ -57,6 +60,36 @@ yarn extract-monorepo-docs $branch
 Release notes are stored in the src/content/releases directory as `.md` files. The name of the file corresponds with the version (major.minor) of the release and will be used to populate the link to the specific release from the releases page.
 
 Within the release's `.md` file, frontmatter is used to create a page title, while the rest of the content is parsed using `gatsby-transformer-remark` and styled with selectors in `src/styles/formatting.js`.
+
+#### Publishing docs for a new release
+
+When a new major or minor version of the monorepo is published, follow these steps to build new versioned docs.
+
+_If the "latest" was `6.3` and is now `6.4`, and "next" is now `6.5`_
+
+1. Make sure there's an appropriate release branch (`release-6-3`) on the monorepo
+1. Add that branch to [Netlify's branch deploy settings](https://app.netlify.com/sites/storybook-frontpage/settings/deploys#branches)
+
+1. **On `master`**
+
+   1. Update `latestVersion` to `6.4` in `/site-metadata.js`
+   1. Create a `6.5.md` file in the `src/content/releases` directory
+   1. Update `6.4.md` in that directory to remove `prerelease: true`
+   1. Do not push yet
+   1. Create a `release-6-3` branch
+
+1. **On `next` and all other `release-*-*` branches**
+
+   1. Rebase onto `master`
+
+1. **Push updates**
+
+   Do this last and in this order to help ensure mis-matched docs are short-lived on the published site
+
+   1. `release-6-3`
+   1. All other `release-*-*` branches
+   1. `next`
+   1. `master`
 
 ### Search
 
