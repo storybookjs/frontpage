@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import styled from 'styled-components';
+import { styled } from '@storybook/theming';
 import { window } from 'global';
 
 const StyledVideo = styled.video({

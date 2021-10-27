@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import { styled } from '@storybook/theming';
 import { styles, Icon, TooltipMessage, WithTooltip } from '@storybook/design-system';
 
 const { spacing, color } = styles;
 
-const VerifiedBadgeIcon = styled(Icon).attrs({ icon: 'verified', block: true })`
+const VerifiedBadgeIcon = styled(Icon)`
   color: ${(props) => (props.appearance === 'official' ? color.secondary : color.green)};
   width: 14px;
   height: 14px;
@@ -35,7 +35,7 @@ export const VerifiedBadge = ({ trigger, creator, appearance }) => (
       />
     }
   >
-    <VerifiedBadgeIcon appearance={appearance} />
+    <VerifiedBadgeIcon icon="verified" block appearance={appearance} />
   </BadgeWrapper>
 );
 

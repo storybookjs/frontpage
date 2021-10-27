@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import { styled } from '@storybook/theming';
 import { Icon, Link, styles } from '@storybook/design-system';
 import { Link as GatsbyLink } from 'gatsby';
 import useSiteMetadata from '../../lib/useSiteMetadata';

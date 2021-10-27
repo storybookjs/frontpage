@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import { styled } from '@storybook/theming';
 import { Icon, styles } from '@storybook/design-system';
 
 const { color, typography } = styles;
@@ -13,7 +13,7 @@ const Centered = styled.div`
   textalign: center;
 `;
 
-const Alert = styled(Icon).attrs({ icon: 'alert' })`
+const Alert = styled(Icon)`
   color: ${color.mediumdark};
   width: 40px;
   height: 40px;
@@ -34,7 +34,7 @@ export const Message = styled.div`
 function ReleaseNotFound({ version }) {
   return (
     <Centered>
-      <Alert />
+      <Alert icon="alert" />
       <Message>There are no release notes yet for version {version}.</Message>
     </Centered>
   );

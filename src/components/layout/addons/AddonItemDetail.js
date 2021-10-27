@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import { css, styled } from '@storybook/theming';
 import humanFormat from 'human-format';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import { styles, animation, Cardinal, ClipboardCode, Link, Badge } from '@storybook/design-system';
@@ -146,7 +146,7 @@ const Stats = styled(Cardinal)`
   }
 `;
 
-const DeprecatedBadge = styled(Badge).attrs({ status: 'warning' })`
+const DeprecatedBadge = styled(Badge)`
   margin-left: ${spacing.padding.small}px;
 `;
 
@@ -216,7 +216,9 @@ export const AddonItemDetail = ({
           {['official', 'integrators'].includes(appearance) && (
             <VerifiedBadge appearance={appearance} creator={verifiedCreator} />
           )}
-          {status === 'deprecated' && <DeprecatedBadge>Deprecated</DeprecatedBadge>}
+          {status === 'deprecated' && (
+            <DeprecatedBadge status="warning">Deprecated</DeprecatedBadge>
+          )}
         </Title>
         <Description isLoading={isLoading}>
           <span>{isLoading ? 'loading description of addon' : description}</span>

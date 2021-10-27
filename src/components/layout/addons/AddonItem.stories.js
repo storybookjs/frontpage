@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import { styled } from '@storybook/theming';
 import { AddonItem } from './AddonItem';
 import ControlsSVG from '../../../images/addon-catalog/controls.svg';
 import ViewportSVG from '../../../images/addon-catalog/viewports.svg';

@@ -1,5 +1,5 @@
-import { css } from 'styled-components';
 import { styles } from '@storybook/design-system';
+import { css } from '@storybook/theming';
 import { darken } from 'polished';
 
 import { CODE_SNIPPET_CLASSNAME } from '../constants/code-snippets';

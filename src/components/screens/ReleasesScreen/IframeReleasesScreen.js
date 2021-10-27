@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import { global, styles } from '@storybook/design-system';
-import styled, { createGlobalStyle } from 'styled-components';
+import { css, Global, styled } from '@storybook/theming';
 import Helmet from 'react-helmet';
 
 import Release from './Release';
@@ -14,7 +14,11 @@ const { pageMargins, breakpoint } = styles;
 // The white background is necessary so that the page text is visible when
 // this iframe is being used in a 'dark' theme context. Otherwise, the
 // background & text are both dark.
-const WhiteBackground = createGlobalStyle`body { background: white; }`;
+const whiteBackground = css`
+  body {
+    background: white;
+  }
+`;
 
 const Content = styled.div`
   ${pageMargins}
@@ -56,7 +60,7 @@ function IframeReleasesScreen({ data, ...rest }) {
   return (
     <>
       <GlobalStyle />
-      <WhiteBackground />
+      <Global styles={whiteBackground} />
       <Helmet>
         <meta name="robots" content="noindex" />
       </Helmet>

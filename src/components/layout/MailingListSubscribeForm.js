@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import { styled } from '@storybook/theming';
 import { observer } from 'mobx-react';
 
 import { Button, Checkbox, Input, styles } from '@storybook/design-system';
