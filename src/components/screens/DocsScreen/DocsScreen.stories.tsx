@@ -8,13 +8,13 @@ import { pageContext } from '../../layout/DocsLayout.stories';
 const data = {
   currentPage: {
     body: compiledMDX,
+    fields: { version: null },
     frontmatter: {
       title: 'Docs Screen Title',
     },
   },
 };
 
-const tocItem = { path: '/path' };
 const githubUrl = 'github.com';
 const location = { pathname: '/docs/react/foo' };
 
@@ -30,16 +30,10 @@ export default {
   decorators: [(storyFn) => <Wrapper>{storyFn()}</Wrapper>],
 };
 
-export const Base = () => (
-  <DocsScreen data={data} pageContext={{ ...pageContext, tocItem }} location={location} />
-);
+export const Base = () => <DocsScreen data={data} pageContext={pageContext} location={location} />;
 
 export const WithGuideLink = () => (
-  <DocsScreen
-    data={data}
-    pageContext={{ ...pageContext, tocItem, nextTocItem }}
-    location={location}
-  />
+  <DocsScreen data={data} pageContext={{ ...pageContext, nextTocItem }} location={location} />
 );
 
 export const WithGuideLinkNoDescription = () => (
@@ -48,7 +42,6 @@ export const WithGuideLinkNoDescription = () => (
     location={location}
     pageContext={{
       ...pageContext,
-      tocItem,
       nextTocItem: { ...nextTocItem, description: undefined },
     }}
   />
@@ -57,7 +50,7 @@ export const WithGuideLinkNoDescription = () => (
 export const WithGithubLink = () => (
   <DocsScreen
     data={data}
-    pageContext={{ ...pageContext, tocItem: { ...tocItem, githubUrl } }}
+    pageContext={{ ...pageContext, tocItem: { ...pageContext.tocItem, githubUrl } }}
     location={location}
   />
 );
@@ -65,7 +58,7 @@ export const WithGithubLink = () => (
 export const WithGithubLinkAndGuideLink = () => (
   <DocsScreen
     data={data}
-    pageContext={{ ...pageContext, tocItem: { ...tocItem, githubUrl }, nextTocItem }}
+    pageContext={{ ...pageContext, tocItem: { ...pageContext.tocItem, githubUrl }, nextTocItem }}
     location={location}
   />
 );

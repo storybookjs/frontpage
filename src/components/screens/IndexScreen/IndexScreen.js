@@ -38,7 +38,7 @@ const Placeholder = styled(PlaceholderAspectRatio)`
   }
 `;
 
-export function PureIndexScreen({ ...props }) {
+export function PureIndexScreen(props) {
   const { ogImage, urls = {} } = useSiteMetadata();
   const { home, docs = {} } = urls;
   return (
@@ -251,10 +251,6 @@ export function PureIndexScreen({ ...props }) {
     </>
   );
 }
-
-PureIndexScreen.propTypes = {
-  data: PropTypes.any.isRequired, // eslint-disable-line react/forbid-prop-types
-};
 
 export default function IndexScreen(props) {
   return <PureIndexScreen {...props} />;

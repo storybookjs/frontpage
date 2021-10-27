@@ -1,6 +1,5 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-
 import Hero from './Hero';
 
 storiesOf('Frontpage|screens/IndexScreen/Hero', module).add('default', () => (

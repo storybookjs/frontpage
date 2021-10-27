@@ -13,18 +13,6 @@ const useSiteMetadata = () => {
           googleSiteVerification
           latestVersion
           contributorCount
-          coreFrameworks
-          communityFrameworks
-          featureGroups {
-            name
-            features {
-              name
-              supported
-              unsupported
-              path
-              repoPath
-            }
-          }
           urls {
             addonsLearnLinks {
               title

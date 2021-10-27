@@ -1,9 +1,3 @@
-const {
-  coreFrameworks,
-  communityFrameworks,
-  featureGroups,
-} = require('./src/content/docs/frameworks');
-
 const isDeployPreview = process.env.CONTEXT === 'deploy-preview';
 const homepageUrl = isDeployPreview ? process.env.DEPLOY_PRIME_URL : 'https://storybook.js.org';
 const gitHubOrg = `https://github.com/storybookjs`;
@@ -20,9 +14,6 @@ const siteMetadata = {
   googleSiteVerification: '_OxxMv1o0aRcxPfieLW0BRsMxxIzkpA9Vv6O0AB5xg0',
   latestVersion: 6.3, // TODO: Could get this from monorepo...
   contributorCount: 1290,
-  coreFrameworks,
-  communityFrameworks,
-  featureGroups,
   urls: {
     gitHubOrg,
     homepageUrl,

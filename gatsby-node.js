@@ -3,26 +3,10 @@ const path = require('path');
 
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
-const { toc: docsToc } = require('./src/content/docs/toc');
+const addStateToToc = require('./src/util/add-state-to-toc');
 const buildPathWithFramework = require('./src/util/build-path-with-framework');
 const createAddonsPages = require('./src/util/create-addons-pages');
-
-const githubDocsBaseUrl = 'https://github.com/storybookjs/storybook/tree/next';
-const addStateToToc = (items, pathPrefix = '/docs') =>
-  items.map((item) => {
-    const itemPath = item.pathSegment ? `${pathPrefix}/${item.pathSegment}` : pathPrefix;
-
-    return {
-      ...item,
-      ...(item.type.match(/link/) && {
-        path: itemPath,
-        githubUrl: `${githubDocsBaseUrl}${itemPath}.md`,
-      }),
-      ...(item.children && { children: addStateToToc(item.children, itemPath) }),
-    };
-  });
-
-const docsTocWithPaths = addStateToToc(docsToc);
+const injectPathSegment = require('./src/util/inject-path-segment');
 
 exports.onCreateNode = ({ actions, getNode, node }) => {
   const { createNodeField } = actions;
@@ -36,15 +20,17 @@ exports.onCreateNode = ({ actions, getNode, node }) => {
     });
 
     const slugParts = slug.split('/').filter((p) => !!p);
-    const [pageType] = slugParts;
+    const [pageType, maybeVersion] = slugParts;
+    const version = maybeVersion.match(/^\d+\.\d+$/) ? maybeVersion : null; // null = latest (un-versioned)
 
     createNodeField({ node, name: 'pageType', value: pageType });
+    createNodeField({ node, name: 'version', value: version });
     createNodeField({ node, name: 'slug', value: slug });
 
     if (pageType === 'releases') {
-      const [_, version] = slugParts;
-      createNodeField({ node, name: 'iframeSlug', value: `/releases/iframe/${version}/` });
-      createNodeField({ node, name: 'version', value: version });
+      const [_, releaseVersion] = slugParts;
+      createNodeField({ node, name: 'iframeSlug', value: `/releases/iframe/${releaseVersion}/` });
+      createNodeField({ node, name: 'version', value: releaseVersion });
     }
   }
 };
@@ -74,6 +60,7 @@ exports.createPages = ({ actions, graphql }) => {
             node {
               fields {
                 pageType
+                version
                 slug
               }
             }
@@ -94,12 +81,6 @@ exports.createPages = ({ actions, graphql }) => {
             }
           }
         }
-        site {
-          siteMetadata {
-            coreFrameworks
-            communityFrameworks
-          }
-        }
       }
     `)
       .then(
@@ -107,9 +88,6 @@ exports.createPages = ({ actions, graphql }) => {
           data: {
             docsPages: { edges: docsPagesEdges },
             releasePages: { edges: releasePagesEdges },
-            site: {
-              siteMetadata: { coreFrameworks, communityFrameworks },
-            },
           },
         }) => {
           const sortedReleases = releasePagesEdges.sort(
@@ -154,81 +132,112 @@ exports.createPages = ({ actions, graphql }) => {
             });
           }
 
-          const frameworks = [...coreFrameworks, ...communityFrameworks];
-          const docsPagesSlugs = [];
+          const versions = docsPagesEdges.reduce((acc, edge) => {
+            const { version } = edge.node.fields;
+            if (!acc.includes(version)) {
+              acc.push(version);
+            }
+            return acc;
+          }, []);
+          const structuredVersions = buildStructuredVersions(versions);
           const docsPagesEdgesBySlug = Object.fromEntries(
             docsPagesEdges.map((edge) => [edge.node.fields.slug, edge])
           );
-          const docsTocByFramework = Object.fromEntries(
-            frameworks.map((framework) => [
-              framework,
-              addStateToToc(docsTocWithPaths, `/docs/${framework}`),
-            ])
-          );
-          const createDocsPages = (tocItems) => {
-            tocItems.forEach((tocItem, index) => {
-              const { path: docsPagePath, children } = tocItem;
 
-              if (docsPagePath) {
-                const docEdge = docsPagesEdgesBySlug[docsPagePath];
+          versions.forEach((version) => {
+            const versionDir = version ? `${version}/` : '';
 
-                if (docEdge) {
-                  const { pageType, slug } = docEdge.node.fields;
-                  const nextTocItem = tocItems[index + 1];
+            const { toc: docsToc } = require(`./src/content/docs/${versionDir}toc`);
+            const docsTocWithPaths = addStateToToc(docsToc);
+            const docsPagesSlugs = [];
 
-                  frameworks.forEach((framework) => {
-                    createPage({
-                      path: buildPathWithFramework(slug, framework),
-                      component: path.resolve(`./src/components/screens/DocsScreen/DocsScreen.tsx`),
-                      context: {
-                        pageType,
-                        layout: 'docs',
-                        slug,
-                        framework,
-                        docsToc: docsTocByFramework[framework],
-                        tocItem,
-                        ...(nextTocItem &&
-                          nextTocItem.type === 'bullet-link' && {
-                            nextTocItem,
-                          }),
-                        isFirstTocItem: docsPagesSlugs.length === 0,
-                      },
+            const {
+              coreFrameworks,
+              communityFrameworks,
+              featureGroups,
+            } = require(`./src/content/docs/${versionDir}frameworks`);
+            const frameworks = [...coreFrameworks, ...communityFrameworks];
+            const docsTocByFramework = Object.fromEntries(
+              frameworks.map((framework) => [
+                framework,
+                addStateToToc(docsTocWithPaths, `/docs/${versionDir}${framework}`),
+              ])
+            );
+            const createDocsPages = (tocItems) => {
+              tocItems.forEach((tocItem, index) => {
+                const { path: docsPagePath, children } = tocItem;
+
+                if (docsPagePath) {
+                  const pagePathWithVersion = version
+                    ? injectPathSegment(docsPagePath, version, 2)
+                    : docsPagePath;
+                  const docEdge = docsPagesEdgesBySlug[pagePathWithVersion];
+
+                  if (docEdge) {
+                    const { pageType, slug } = docEdge.node.fields;
+                    const nextTocItem = tocItems[index + 1];
+
+                    frameworks.forEach((framework) => {
+                      const pagePath = buildPathWithFramework(slug, framework);
+                      createPage({
+                        path: pagePath,
+                        component: path.resolve(
+                          `./src/components/screens/DocsScreen/DocsScreen.tsx`
+                        ),
+                        context: {
+                          pageType,
+                          layout: 'docs',
+                          slug,
+                          fullPath: pagePath,
+                          framework,
+                          coreFrameworks,
+                          communityFrameworks,
+                          featureGroups,
+                          docsToc: docsTocByFramework[framework],
+                          tocItem,
+                          ...(nextTocItem &&
+                            nextTocItem.type === 'bullet-link' && {
+                              nextTocItem,
+                            }),
+                          isFirstTocItem: docsPagesSlugs.length === 0,
+                        },
+                      });
                     });
-                  });
 
-                  docsPagesSlugs.push(slug);
-                } else {
-                  console.log(`Not creating page for '${docsPagePath}'`);
+                    docsPagesSlugs.push(slug);
+                  } else {
+                    console.log(`Not creating page for '${docsPagePath}'`);
+                  }
                 }
-              }
 
-              if (children) {
-                createDocsPages(children);
-              }
-            });
-          };
+                if (children) {
+                  createDocsPages(children);
+                }
+              });
+            };
 
-          createDocsPages(docsTocWithPaths);
-          const firstDocsPageSlug = docsPagesSlugs[0];
+            createDocsPages(docsTocWithPaths);
+            const firstDocsPageSlug = docsPagesSlugs[0];
 
-          if (firstDocsPageSlug) {
-            createRedirect({
-              fromPath: `/docs/`,
-              isPermanent: false,
-              redirectInBrowser: true,
-              toPath: buildPathWithFramework(firstDocsPageSlug, frameworks[0]),
-            });
-
-            // Setup a redirect for each framework to the first guide
-            frameworks.forEach((framework) => {
+            if (firstDocsPageSlug) {
               createRedirect({
-                fromPath: `/docs/${framework}`,
+                fromPath: `/docs/${version ? `${version}/` : ''}`,
                 isPermanent: false,
                 redirectInBrowser: true,
-                toPath: buildPathWithFramework(firstDocsPageSlug, framework),
+                toPath: buildPathWithFramework(firstDocsPageSlug, frameworks[0]),
               });
-            });
-          }
+
+              // Setup a redirect for each framework to the first guide
+              frameworks.forEach((framework) => {
+                createRedirect({
+                  fromPath: `/docs/${version ? `${version}/` : ''}${framework}`,
+                  isPermanent: false,
+                  redirectInBrowser: true,
+                  toPath: buildPathWithFramework(firstDocsPageSlug, framework),
+                });
+              });
+            }
+          });
         }
       )
       .then(() => {

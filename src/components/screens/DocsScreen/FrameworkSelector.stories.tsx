@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FrameworkSelector } from './FrameworkSelector';
-import useSiteMetadata from '../../../../.storybook/useSiteMetadata';
+
+const { coreFrameworks, communityFrameworks } = require('../../../content/docs/frameworks');
 
 // The Wrapper helps capture the tooltip contents in the snapshot
 const Wrapper = styled.span`
@@ -16,8 +17,6 @@ export default {
   decorators: [(storyFn) => <Wrapper>{storyFn()}</Wrapper>],
 };
 
-const { coreFrameworks, communityFrameworks } = useSiteMetadata();
-
 const Template = (args) => <FrameworkSelector {...args} />;
 
 export const Base = Template.bind({});
@@ -25,6 +24,6 @@ Base.args = {
   coreFrameworks,
   communityFrameworks,
   currentFramework: coreFrameworks[0],
-  slug: '/slug',
+  path: '/docs/get-started/introduction',
   tooltipProps: { startOpen: true },
 };

@@ -18,7 +18,7 @@ import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 
 import { mdFormatting } from '../../../styles/formatting';
-import buildPathWithFramework from '../../../util/build-path-with-framework';
+import injectPathSegment from '../../../util/inject-path-segment';
 import relativeToRootLinks from '../../../util/relative-to-root-links';
 import stylizeFramework from '../../../util/stylize-framework';
 import { FeatureSnippets } from './FeatureSnippets';
@@ -73,23 +73,35 @@ function DocsScreen({ data, pageContext, location }) {
   const {
     currentPage: {
       body,
+      fields: { version },
       frontmatter: { title },
     },
   } = data;
   const {
-    coreFrameworks,
-    communityFrameworks,
     description,
-    featureGroups,
     urls: { homepageUrl },
   } = useSiteMetadata();
-  const { framework, docsToc, slug, tocItem, nextTocItem, isFirstTocItem } = pageContext;
-  const CodeSnippetsWithCurrentFramework = useMemo(() => {
-    return (props) => <CodeSnippets currentFramework={framework} {...props} />;
-  }, [framework]);
-  const FeatureSnippetsWithCurrentFramework = useMemo(() => {
-    return (props) => <FeatureSnippets currentFramework={framework} {...props} />;
-  }, [framework]);
+  const {
+    framework,
+    coreFrameworks,
+    communityFrameworks,
+    featureGroups,
+    docsToc,
+    tocItem,
+    nextTocItem,
+    isFirstTocItem,
+    fullPath,
+  } = pageContext;
+  const CodeSnippetsWithCurrentVersionAndFramework = useMemo(() => {
+    return (props) => (
+      <CodeSnippets currentFramework={framework} currentVersion={version} {...props} />
+    );
+  }, [framework, version]);
+  const FeatureSnippetsWithCurrentVersionAndFramework = useMemo(() => {
+    return (props) => (
+      <FeatureSnippets currentFramework={framework} currentVersion={version} {...props} />
+    );
+  }, [framework, version]);
   const FrameworkSupportTableWithFeaturesAndCurrentFramework = useMemo(() => {
     return ({ core }) => (
       <FrameworkSupportTable
@@ -101,14 +113,14 @@ function DocsScreen({ data, pageContext, location }) {
   }, [framework]);
   const LinksWithPrefix = useMemo(() => {
     return ({ href, ...props }) => {
-      const url = relativeToRootLinks(href, framework, location.pathname);
+      const url = relativeToRootLinks(href, version, framework, location.pathname);
       // eslint-disable-next-line
       return <a href={url} {...props} />;
     };
   }, [framework]);
 
   const features = featureGroups.flatMap((group) => group.features);
-  const feature = features.find((fs) => `/docs${fs.path}/` === slug);
+  const feature = features.find((fs) => `/docs${fs.path}/` === tocItem.path);
   const unsupported = feature && !frameworkSupportsFeature(framework, feature);
 
   let featureSupportItem;
@@ -126,11 +138,7 @@ function DocsScreen({ data, pageContext, location }) {
 
   return (
     <>
-      <SocialGraph
-        url={`${homepageUrl}${buildPathWithFramework(tocItem.path, framework)}/`}
-        title={title}
-        desc={description}
-      />
+      <SocialGraph url={`${homepageUrl}${fullPath}/`} title={title} desc={description} />
 
       <MDWrapper>
         <Title>{isFirstTocItem ? `${title} for ${stylizeFramework(framework)}` : title}</Title>
@@ -151,8 +159,8 @@ function DocsScreen({ data, pageContext, location }) {
         <MDXProvider
           components={{
             pre: Pre,
-            CodeSnippets: CodeSnippetsWithCurrentFramework,
-            FeatureSnippets: FeatureSnippetsWithCurrentFramework,
+            CodeSnippets: CodeSnippetsWithCurrentVersionAndFramework,
+            FeatureSnippets: FeatureSnippetsWithCurrentVersionAndFramework,
             FrameworkSupportTable: FrameworkSupportTableWithFeaturesAndCurrentFramework,
             a: LinksWithPrefix,
           }}
@@ -170,7 +178,11 @@ function DocsScreen({ data, pageContext, location }) {
             action={
               <Button
                 appearance="secondary"
-                href={buildPathWithFramework(nextTocItem.path, framework)}
+                href={injectPathSegment(
+                  nextTocItem.path,
+                  version ? `${version}/${framework}` : framework,
+                  2
+                )}
                 ButtonWrapper={GatsbyLinkWrapper}
               >
                 Continue

@@ -7,7 +7,9 @@ import { Icon, Link, Subheading, styles } from '@storybook/design-system';
 import useSiteMetadata from '../lib/useSiteMetadata';
 
 import ConfirmedMailingList from './ConfirmedMailingList';
-
+// This is only resolved if `./src/content/docs` is empty
+// eslint-disable-next-line import/no-unresolved
+import { coreFrameworks } from '../../content/docs/frameworks';
 import DirectionSVG from '../../images/colored-icons/direction.svg';
 import RepoSVG from '../../images/colored-icons/repo.svg';
 import StorybookLogoSVG from '../../images/logo-storybook.svg';
@@ -307,8 +309,8 @@ LinkWrapper.propTypes = {
   isGatsby: PropTypes.bool.isRequired,
 };
 
-export default function Footer({ ...props }) {
-  const { urls = {}, coreFrameworks } = useSiteMetadata();
+export default function Footer(props) {
+  const { urls = {} } = useSiteMetadata();
   const { blog, twitter, chat, youtube, navLinks = {}, docs = {}, tutorials, gitHub = {} } = urls;
 
   return (

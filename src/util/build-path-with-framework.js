@@ -1,5 +1,6 @@
+const injectPathSegment = require('./inject-path-segment');
+
 module.exports = function buildPathWithFramework(slug, framework) {
-  const parts = slug.split('/');
-  parts.splice(2, 0, framework);
-  return parts.join('/');
+  const containsVersion = slug.match(/^\/docs\/\d+\.\d+/);
+  return injectPathSegment(slug, framework, containsVersion ? 3 : 2);
 };

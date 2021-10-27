@@ -20,14 +20,16 @@ export function PureFeatureSnippets({ framework, snippetsByFramework }) {
   );
 }
 
-export function FeatureSnippets({ currentFramework, paths }) {
+export function FeatureSnippets({ currentFramework, currentVersion, paths }) {
   const [snippetsByFramework, setSnippetsByFramework] = useState({});
   useEffect(() => {
     const fetchSnippetsByFramework = async () => {
       const entries = await Promise.all(
         paths.map(async (path) => {
           // See comment in CodeSnippets
-          const { default: ModuleComponent } = await import(`../../../content/docs/${path}`);
+          const { default: ModuleComponent } = await import(
+            `../../../content/docs/${currentVersion ? `${currentVersion}/` : ''}${path}`
+          );
 
           const parts = basename(path, '.mdx').split('-');
           const framework = parts[parts.length - 1];

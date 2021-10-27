@@ -12,14 +12,15 @@ import {
   WithTooltip,
   styles,
 } from '@storybook/design-system';
-
+// This is only resolved if `./src/content/docs` is empty
+// eslint-disable-next-line import/no-unresolved
+import { coreFrameworks, communityFrameworks } from '../../../content/docs/frameworks';
 import { Cardinal, Video, LazyLoad } from '../../basics';
-
-import useSiteMetadata from '../../lib/useSiteMetadata';
-import PlaceholderAspectRatio from '../../layout/PlaceholderAspectRatio';
-import NpmDownloadCount from '../../layout/NpmDownloadCount';
-import stylizeFramework from '../../../util/stylize-framework';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
+import useSiteMetadata from '../../lib/useSiteMetadata';
+import NpmDownloadCount from '../../layout/NpmDownloadCount';
+import PlaceholderAspectRatio from '../../layout/PlaceholderAspectRatio';
+import stylizeFramework from '../../../util/stylize-framework';
 
 const { color, typography, breakpoint, pageMargins } = styles;
 
@@ -360,13 +361,7 @@ Framework.defaultProps = {
 };
 
 export default function Hero({ startOpen, ...props }) {
-  const {
-    coreFrameworks,
-    communityFrameworks,
-    latestVersion,
-    urls = {},
-    contributorCount,
-  } = useSiteMetadata();
+  const { latestVersion, urls = {}, contributorCount } = useSiteMetadata();
   const { docs = {}, gitHub = {} } = urls;
 
   const Modal = () => (

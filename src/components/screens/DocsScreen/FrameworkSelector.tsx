@@ -5,6 +5,7 @@ import { Link, Subheading, TooltipLinkList, styles, WithTooltip } from '@storybo
 
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import buildPathWithFramework from '../../../util/build-path-with-framework';
+import injectPathSegment from '../../../util/inject-path-segment';
 import stylizeFramework from '../../../util/stylize-framework';
 
 const { color, typography } = styles;
@@ -66,14 +67,15 @@ export function FrameworkSelector({
   currentFramework,
   coreFrameworks,
   communityFrameworks,
-  slug,
+  path,
   tooltipProps,
+  version,
   ...rest
 }) {
   const links = [...coreFrameworks, ...communityFrameworks].map((framework) => ({
     framework,
     LinkWrapper: GatsbyLinkWrapper,
-    href: buildPathWithFramework(slug, framework),
+    href: buildPathWithFramework(version ? injectPathSegment(path, version, 2) : path, framework),
     title: (
       <FrameworkSelectorTitle>
         <img src={getFrameworkLogo(framework)} alt={stylizeFramework(framework)} />
@@ -113,10 +115,12 @@ FrameworkSelector.propTypes = {
   currentFramework: PropTypes.string.isRequired,
   coreFrameworks: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   communityFrameworks: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  slug: PropTypes.string.isRequired,
+  path: PropTypes.string.isRequired,
   tooltipProps: PropTypes.shape({}),
+  version: PropTypes.oneOfType([PropTypes.string, PropTypes.oneOf([null])]),
 };
 
 FrameworkSelector.defaultProps = {
   tooltipProps: {},
+  version: null,
 };

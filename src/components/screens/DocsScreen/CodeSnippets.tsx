@@ -91,7 +91,7 @@ export function MissingMessage({ currentFramework }) {
   );
 }
 
-export function CodeSnippets({ paths, currentFramework, ...rest }) {
+export function CodeSnippets({ paths, currentFramework, currentVersion, ...rest }) {
   const [snippets, setSnippets] = React.useState([]);
   const activeFrameworkPaths = paths.filter((path) => {
     const [framework] = path.split('/');
@@ -114,7 +114,7 @@ export function CodeSnippets({ paths, currentFramework, ...rest }) {
           // sure that the MDX files are available to import.
           // See: https://github.com/webpack/webpack/issues/6680#issuecomment-370800037
           const { default: ModuleComponent } = await import(
-            `../../../content/docs/snippets/${path}`
+            `../../../content/docs/${currentVersion ? `${currentVersion}/` : ''}snippets/${path}`
           );
 
           return {
@@ -145,4 +145,9 @@ export function CodeSnippets({ paths, currentFramework, ...rest }) {
 CodeSnippets.propTypes = {
   paths: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   currentFramework: PropTypes.string.isRequired,
+  currentVersion: PropTypes.oneOfType([PropTypes.string, PropTypes.oneOf([null])]),
+};
+
+CodeSnippets.defaultProps = {
+  currentVersion: null,
 };

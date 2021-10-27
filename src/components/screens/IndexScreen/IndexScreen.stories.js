@@ -1,6 +1,5 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-
 import { PureIndexScreen } from './IndexScreen';
 
 storiesOf('Frontpage|screens/IndexScreen/IndexScreen', module).add(

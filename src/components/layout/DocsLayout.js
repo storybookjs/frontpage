@@ -156,15 +156,20 @@ const StyledTableOfContents = styled(TableOfContents)`
 function DocsLayout({ children, data, pageContext, ...props }) {
   const {
     currentPage: {
-      fields: { slug },
+      fields: { version },
     },
   } = data;
   const {
-    coreFrameworks,
-    communityFrameworks,
     urls: { homepageUrl },
   } = useSiteMetadata();
-  const { docsToc, framework } = pageContext;
+  const {
+    docsToc,
+    framework,
+    coreFrameworks,
+    communityFrameworks,
+    tocItem,
+    fullPath,
+  } = pageContext;
   const [searchValue, setSearchValue] = useState('');
   const { isSearchVisible } = useAlgoliaSearch({ framework });
 
@@ -185,7 +190,8 @@ function DocsLayout({ children, data, pageContext, ...props }) {
 
   // The React specific docs are treated as canonical except for the
   // docs home page for all other frameworks.
-  const canonicalFramework = slug === '/docs/get-started/introduction' ? framework : 'react';
+  const canonicalFramework =
+    tocItem.path === '/docs/get-started/introduction' ? framework : 'react';
 
   return (
     <>
@@ -193,7 +199,7 @@ function DocsLayout({ children, data, pageContext, ...props }) {
       <Helmet>
         <link
           rel="canonical"
-          href={`${homepageUrl}${buildPathWithFramework(slug, canonicalFramework)}/`}
+          href={`${homepageUrl}${buildPathWithFramework(tocItem.path, canonicalFramework)}/`}
         />
         <meta name="docsearch:framework" content={framework} />
         <link
@@ -204,8 +210,8 @@ function DocsLayout({ children, data, pageContext, ...props }) {
       <Wrapper>
         <Sidebar>
           <StyledTableOfContents
-            key={framework}
-            currentPath={buildPathWithFramework(slug, framework)}
+            key={`${version}${framework}`}
+            currentPath={fullPath}
             items={docsTocWithLinkWrappers}
           >
             {({ menu, allTopLevelMenusAreOpen, toggleAllOpen, toggleAllClosed }) => (
@@ -254,9 +260,10 @@ function DocsLayout({ children, data, pageContext, ...props }) {
 
                   <StyledFrameworkSelector
                     currentFramework={framework}
-                    slug={slug}
+                    path={tocItem.path}
                     coreFrameworks={coreFrameworks}
                     communityFrameworks={communityFrameworks}
+                    version={version}
                   />
                 </SidebarControls>
 
@@ -277,7 +284,7 @@ export default DocsLayout;
 export const query = graphql`
   fragment DocsLayoutCurrentPageQuery on Mdx {
     fields {
-      slug
+      version
     }
   }
 `;
