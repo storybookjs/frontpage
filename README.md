@@ -36,7 +36,7 @@ Gatsby is used for basic routing and static site generation.
 
 2. `yarn start:skip-addons` to skip building the addon catalog
 
-#### Docs content
+### Docs content
 
 The content for the documentation section is in the `docs/` subdirectory of the Storybook monorepo: https://github.com/storybookjs/storybook/tree/next/docs.
 
@@ -50,6 +50,26 @@ Alternatively, if you just want to serve the current content, run:
 
 ```
 yarn extract-monorepo-docs $branch
+```
+
+> **Note** After running these commands locally, the content should display correctly for any source branch, but the version selector may be incorrect for any branch that isn't "main" (or based on it).
+
+#### Versioned docs
+
+This site is capable of building multiple versions of the docs pages, based on the files in `./src/content/releases` and the corresponding content in the monorepo. For example:
+
+| Docs subdir                          | Monorepo branch |
+| :----------------------------------- | :-------------- |
+| n/a (latest; content is in root dir) | main            |
+| 6.4 (pre-release)                    | next            |
+| 6.0                                  | release-6-0     |
+| 6.1                                  | release-6-1     |
+| And so on...                         |                 |
+
+The following command (which is ran prior to building) will extract all relevant versioned docs content:
+
+```
+yarn extract-all-monorepo-docs
 ```
 
 ### Release notes
