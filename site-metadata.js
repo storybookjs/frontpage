@@ -1,3 +1,12 @@
+const { version: latestVersionFull } = require('./src/content/docs/versions/latest.json');
+const { version: nextVersionFull } = require('./src/content/docs/versions/next.json');
+
+console.log('Extracted docs versions:', { latest: latestVersionFull, next: nextVersionFull });
+
+const VERSION_PARTS_REGEX = /^(\d+\.\d+)\.\d+-?(\w+)?(?:\.\d+$)?/;
+const [, latestVersion] = latestVersionFull.match(VERSION_PARTS_REGEX);
+const [, nextVersion, nextLabel] = nextVersionFull.match(VERSION_PARTS_REGEX);
+
 const isDeployPreview = process.env.CONTEXT === 'deploy-preview';
 const homepageUrl = isDeployPreview ? process.env.DEPLOY_PRIME_URL : 'https://storybook.js.org';
 const gitHubOrg = `https://github.com/storybookjs`;
@@ -12,7 +21,9 @@ const siteMetadata = {
   ogImageAddons: '/images/social/og-addons.png',
   siteUrl: homepageUrl, // Used for gatsby-plugin-sitemap
   googleSiteVerification: '_OxxMv1o0aRcxPfieLW0BRsMxxIzkpA9Vv6O0AB5xg0',
-  latestVersion: 6.3, // TODO: Could get this from monorepo...
+  latestVersion: Number(latestVersion),
+  nextVersion,
+  nextLabel,
   contributorCount: 1290,
   urls: {
     gitHubOrg,

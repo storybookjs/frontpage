@@ -22,6 +22,7 @@ import GatsbyLinkWrapper from '../basics/GatsbyLinkWrapper';
 import useSiteMetadata from '../lib/useSiteMetadata';
 import buildPathWithFramework from '../../util/build-path-with-framework';
 import { FrameworkSelector } from '../screens/DocsScreen/FrameworkSelector';
+import { VersionSelector } from '../screens/DocsScreen/VersionSelector';
 import stylizeFramework from '../../util/stylize-framework';
 import useAlgoliaSearch, { SEARCH_INPUT_ID } from '../../hooks/use-algolia-search';
 
@@ -41,12 +42,6 @@ const Sidebar = styled.div`
     padding-right: 20px;
     margin-right: 20px;
     border-bottom: none;
-  }
-`;
-
-const StyledFrameworkSelector = styled(FrameworkSelector)`
-  @media (min-width: ${breakpoint * 1.333}px) {
-    margin-top: 1.5rem;
   }
 `;
 
@@ -76,6 +71,7 @@ const ExpandButton = styled(Button)`
 const SidebarControls = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
   flex-direction: row-reverse;
   flex-wrap: wrap-reverse;
@@ -84,11 +80,11 @@ const SidebarControls = styled.div`
     flex-wrap: wrap;
   }
 
-  /* input */
   ${SearchInput} {
+    flex: 1;
+
     @media (min-width: ${breakpoint * 1.333}px) {
       margin-right: 10px;
-      flex: 1;
     }
   }
   /* button */
@@ -100,12 +96,30 @@ const SidebarControls = styled.div`
       flex: none;
     }
   }
-  /* framework picker */
+
+  /* version picker */
   > *:nth-child(3) {
-    flex: 1;
+    order: 3;
 
     @media (min-width: ${breakpoint * 1.333}px) {
       flex: 0 0 100%;
+      order: initial;
+      margin-bottom: 0.5rem;
+      margin-top: 1.5rem;
+    }
+  }
+
+  /* framework picker */
+  > *:nth-child(4) {
+    margin-left: 10px;
+    margin-right: 10px;
+    order: 2;
+
+    @media (min-width: ${breakpoint * 1.333}px) {
+      flex: 0 0 100%;
+      order: initial;
+      margin-left: 0;
+      margin-right: 0;
     }
   }
 
@@ -169,6 +183,7 @@ function DocsLayout({ children, data, pageContext, ...props }) {
     communityFrameworks,
     tocItem,
     fullPath,
+    versions,
   } = pageContext;
   const [searchValue, setSearchValue] = useState('');
   const { isSearchVisible } = useAlgoliaSearch({ framework });
@@ -258,7 +273,14 @@ function DocsLayout({ children, data, pageContext, ...props }) {
                     </WithTooltip>
                   )}
 
-                  <StyledFrameworkSelector
+                  <VersionSelector
+                    currentFramework={framework}
+                    currentVersion={version}
+                    path={tocItem.path}
+                    versions={versions}
+                  />
+
+                  <FrameworkSelector
                     currentFramework={framework}
                     path={tocItem.path}
                     coreFrameworks={coreFrameworks}

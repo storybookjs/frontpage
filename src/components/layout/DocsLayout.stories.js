@@ -1,5 +1,6 @@
 import React from 'react';
 import DocsLayout from './DocsLayout';
+import { versions } from '../screens/DocsScreen/VersionSelector.stories';
 
 const {
   coreFrameworks,
@@ -26,6 +27,7 @@ export const pageContext = {
   docsToc: docsTocWithPathsAndFramework,
   tocItem: { ...docsTocWithPaths[0].children[0], githubUrl: undefined },
   fullPath: '/docs/react/get-started/introduction',
+  versions,
 };
 
 export default {

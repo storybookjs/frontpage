@@ -8,6 +8,38 @@ const buildPathWithFramework = require('./src/util/build-path-with-framework');
 const createAddonsPages = require('./src/util/create-addons-pages');
 const injectPathSegment = require('./src/util/inject-path-segment');
 
+const { latestVersion, nextLabel } = require('./site-metadata');
+
+const buildStructuredVersions = (versions) => {
+  const sortedVersions = versions
+    .slice()
+    .sort((a, b) => parseFloat(b || latestVersion) - parseFloat(a || latestVersion));
+  return sortedVersions.reduce(
+    (acc, version) => {
+      if (!version) {
+        acc.stable.push({
+          version,
+          label: 'latest',
+          string: latestVersion.toString(),
+        });
+      } else if (Number(version) > latestVersion) {
+        acc.preRelease.push({
+          version,
+          label: nextLabel,
+          string: version,
+        });
+      } else {
+        acc.stable.push({
+          version,
+          string: version,
+        });
+      }
+      return acc;
+    },
+    { stable: [], preRelease: [] }
+  );
+};
+
 exports.onCreateNode = ({ actions, getNode, node }) => {
   const { createNodeField } = actions;
 
@@ -189,6 +221,7 @@ exports.createPages = ({ actions, graphql }) => {
                           layout: 'docs',
                           slug,
                           fullPath: pagePath,
+                          versions: structuredVersions,
                           framework,
                           coreFrameworks,
                           communityFrameworks,
