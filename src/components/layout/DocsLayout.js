@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import {
   Icon,
   Input,
-  Link,
   Button,
   TableOfContents,
-  TooltipLinkList,
   TooltipNote,
   WithTooltip,
   global,
@@ -15,15 +12,12 @@ import {
 } from '@storybook/design-system';
 import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
-
-import { SocialGraph } from '../basics';
 import GatsbyLinkWrapper from '../basics/GatsbyLinkWrapper';
-
 import useSiteMetadata from '../lib/useSiteMetadata';
 import buildPathWithFramework from '../../util/build-path-with-framework';
 import { FrameworkSelector } from '../screens/DocsScreen/FrameworkSelector';
 import { VersionSelector } from '../screens/DocsScreen/VersionSelector';
-import stylizeFramework from '../../util/stylize-framework';
+import { VersionCTA } from '../screens/DocsScreen/VersionCTA';
 import useAlgoliaSearch, { SEARCH_INPUT_ID } from '../../hooks/use-algolia-search';
 
 const { breakpoint, color, pageMargins, typography } = styles;
@@ -144,6 +138,10 @@ const Content = styled.div`
   margin: 0px auto;
 `;
 
+const StyledVersionCTA = styled(VersionCTA)`
+  margin-bottom: 24px;
+`;
+
 const Wrapper = styled.div`
   ${pageMargins}
   padding-bottom: 3rem;
@@ -175,6 +173,7 @@ function DocsLayout({ children, data, pageContext, ...props }) {
   } = data;
   const {
     urls: { homepageUrl },
+    latestVersion,
   } = useSiteMetadata();
   const {
     docsToc,
@@ -295,7 +294,18 @@ function DocsLayout({ children, data, pageContext, ...props }) {
           </StyledTableOfContents>
         </Sidebar>
 
-        <Content>{children}</Content>
+        <Content>
+          {version && (
+            <StyledVersionCTA
+              currentFramework={framework}
+              currentVersion={version}
+              latestVersion={latestVersion}
+              path={tocItem.path}
+              versions={versions}
+            />
+          )}
+          {children}
+        </Content>
       </Wrapper>
     </>
   );
