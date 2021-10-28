@@ -8,7 +8,7 @@ const buildPathWithFramework = require('./src/util/build-path-with-framework');
 const createAddonsPages = require('./src/util/create-addons-pages');
 const injectPathSegment = require('./src/util/inject-path-segment');
 
-const { latestVersion, nextLabel } = require('./site-metadata');
+const { latestVersion, nextVersion, nextLabel } = require('./site-metadata');
 
 const buildStructuredVersions = (versions) => {
   const sortedVersions = versions
@@ -302,6 +302,13 @@ function generateVersionsFile() {
   fs.writeFileSync('./public/versions-raw.json', JSON.stringify(data));
 }
 
+function updateRedirectsFile() {
+  const originalContents = fs.readFileSync('./static/_redirects');
+  const newContents = [`/docs/next/* /docs/${nextVersion}/:splat 302`].join('\n');
+  fs.writeFileSync('./public/_redirects', `${originalContents}\n\n${newContents}`);
+}
+
 exports.onPostBuild = () => {
   generateVersionsFile();
+  updateRedirectsFile();
 };

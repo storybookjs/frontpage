@@ -1,3 +1,4 @@
+const fs = require('fs');
 const path = require('path');
 const { global } = require('@storybook/design-system');
 const siteMetadata = require('./site-metadata');
@@ -5,6 +6,14 @@ const siteMetadata = require('./site-metadata');
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
+
+const nonLatestVersionHeaders = fs
+  .readdirSync('./src/content/docs')
+  .filter((version) => version.match(/^\d+\.\d+$/))
+  .reduce((acc, version) => {
+    acc[`/docs/${version}/*`] = ['X-Robots-Tag: noindex'];
+    return acc;
+  }, {});
 
 module.exports = {
   siteMetadata,
@@ -136,6 +145,7 @@ module.exports = {
             'Access-Control-Allow-Origin: *',
             'Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept',
           ],
+          ...nonLatestVersionHeaders,
         },
         // Do not use the default security headers. Use those we have defined above.
         mergeSecurityHeaders: false,
