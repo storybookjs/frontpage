@@ -70,7 +70,7 @@ const Wrapper = styled.div`
   ${mdFormatting}
   padding: 10px;
 
-  && pre[class*='language-'] {
+  &&& pre[class*='language-'] {
     padding-top: 0;
   }
 `;
