@@ -275,7 +275,7 @@ export const mdFormatting = css`
     color: inherit;
   }
 
-  pre {
+  && pre {
     /* Reset styles from global */
     margin: 0;
     /* End resets */

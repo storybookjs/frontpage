@@ -132,7 +132,7 @@ const SearchInput = styled(Input)`
     }
   }
 
-  svg {
+  && svg {
     left: 14px;
     font-size: ${typography.size.s2}px;
   }

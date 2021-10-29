@@ -49,7 +49,9 @@ const PageTitleSocialProof = styled(SocialProof)`
 
 const DesignSystem = styled.img``;
 const DesignSystemLogos = styled(LogoToggle)`
-  justify-content: center;
+  && {
+    justify-content: center;
+  }
 `;
 
 const DesignSystemWrapper = styled.div`
