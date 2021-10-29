@@ -87,7 +87,7 @@ const Subtitle = styled.div`
 `;
 
 const PitchActions = styled.div`
-  > * {
+  && > * {
     width: 140px;
     margin: 0 10px;
     &:first-child {
