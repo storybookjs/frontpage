@@ -18,7 +18,7 @@ const CodeSnippetFramework = styled.span`
   text-transform: capitalize;
 `;
 
-const StyledBadge = styled(Badge)`
+const StyledBadge = styled(Badge)<{ isActive?: boolean }>`
   margin-left: 5px;
   padding: 4px 7px;
   ${(props) =>
@@ -79,7 +79,6 @@ export function MissingMessage({ currentFramework }) {
     <MissingMessagingWrapper>
       This snippet doesnt exist for {stylizeFramework(currentFramework)} yet.{' '}
       <Link
-        appearance="secondary"
         href="https://github.com/storybookjs/storybook/tree/next/docs"
         target="_blank"
         rel="noopener"

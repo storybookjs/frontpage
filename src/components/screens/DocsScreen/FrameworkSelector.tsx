@@ -35,7 +35,7 @@ const FrameworkSelectorTitle = styled.div`
   }
 `;
 
-const LinkHeading = styled(Subheading)`
+const LinkHeading = styled(Subheading)<{ withTopBorder?: boolean }>`
   display: block;
   font-size: 10px;
   font-weight: 800;
@@ -47,7 +47,7 @@ const LinkHeading = styled(Subheading)`
   ${(props) => props.withTopBorder && `border-top: 1px solid #eee;`}
 `;
 
-const FrameworkLinkList = styled(TooltipLinkList)`
+const FrameworkLinkList = styled(TooltipLinkList)<{ isLast?: boolean }>`
   border-radius: 0;
   ${(props) =>
     props.isLast &&
@@ -95,13 +95,14 @@ export function FrameworkSelector({
             <LinkHeading>Core</LinkHeading>
             <FrameworkLinkList links={coreLinks} />
             <LinkHeading withTopBorder>Community</LinkHeading>
+            {/* @ts-ignore TODO fix this typo */}
             <FrameworkLinkList isLAst links={communityLinks} />
           </>
         }
         as="span"
         {...tooltipProps}
       >
-        <FrameworkLink isButton appearance="secondary" withArrow>
+        <FrameworkLink isButton withArrow>
           {stylizeFramework(currentFramework)}
         </FrameworkLink>
       </WithTooltip>
