@@ -26,7 +26,7 @@ const Content = styled.div`
   padding-top: 3rem;
   padding-bottom: 3rem;
 
-  .remark-header-link {
+  && .remark-header-link {
     display: none;
   }
 
