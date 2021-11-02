@@ -62,6 +62,7 @@ const DesignSystemWrapper = styled.div`
 
 export function PureUseCasesScreen({ ...props }) {
   const { title, ogImage, urls = {} } = useSiteMetadata();
+
   return (
     <>
       <SocialGraph
@@ -83,9 +84,7 @@ export function PureUseCasesScreen({ ...props }) {
       <Separator />
       <ValueProp
         orientation="left"
-        media={
-          <ComponentCanvas className="chromatic-ignore" selectedIndex={0} onSelectIndex={() => 0} />
-        }
+        media={<ComponentCanvas className="chromatic-ignore" />}
         title="Create components"
         desc="UI engineers at Airbnb, Algolia, and Atlassian create the web’s most dependable UI components with Storybook."
         lazyloadPlaceholder={<PlaceholderAspectRatio ratio={0.75} />}
