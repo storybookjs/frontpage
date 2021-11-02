@@ -6,6 +6,9 @@
     "name": "Dominic Nguyen",
     "email": "dom@hichroma.com"
   },
+  "resolutions": {
+    "sharp": "^0.29.0"
+  },
   "dependencies": {
     "@google-cloud/bigquery": "^5.2.0",
     "@mdx-js/mdx": "^1.6.16",
