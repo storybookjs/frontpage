@@ -80,6 +80,7 @@
     "extract-monorepo-docs": "./scripts/extract-monorepo-docs.sh",
     "prebuild": "yarn extract-monorepo-docs",
     "build": "gatsby build",
+    "postbuild": "./scripts/move-built-files.sh",
     "serve": "gatsby serve",
     "develop": "gatsby develop",
     "clean": "gatsby clean",

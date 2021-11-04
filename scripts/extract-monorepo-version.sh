@@ -13,9 +13,6 @@ if [[ $BRANCH_ARG == 'main' ]]; then
 fi
 TAR_NAME="storybook-$BRANCH_ARG"
 
-echo "BRANCH_ARG = $BRANCH_ARG"
-echo "LABEL = $LABEL"
-
 set -e
 
 echo "Extracting $LABEL version info..."

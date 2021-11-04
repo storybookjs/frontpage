@@ -199,7 +199,7 @@ export const AddonsDetailScreen = ({ path, location, pageContext }) => {
           </ReadMe>
           <AddonsAside>
             <AddonsSubheading>Made by</AddonsSubheading>
-            <AuthorList authors={authors} />
+            <AuthorList authors={authors || []} />
             {compatibility?.length > 0 && (
               <>
                 <AddonsSubheading>Works with</AddonsSubheading>
