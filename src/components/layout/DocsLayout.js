@@ -16,7 +16,7 @@ import useSiteMetadata from '../lib/useSiteMetadata';
 import buildPathWithFramework from '../../util/build-path-with-framework';
 import { FrameworkSelector } from '../screens/DocsScreen/FrameworkSelector';
 import { VersionSelector } from '../screens/DocsScreen/VersionSelector';
-import stylizeFramework from '../../util/stylize-framework';
+import { VersionCTA } from '../screens/DocsScreen/VersionCTA';
 import useAlgoliaSearch, { SEARCH_INPUT_ID } from '../../hooks/use-algolia-search';
 
 const { breakpoint, color, pageMargins, typography } = styles;
@@ -126,6 +126,10 @@ const Content = styled.div`
   margin: 0px auto;
 `;
 
+const StyledVersionCTA = styled(VersionCTA)`
+  margin-bottom: 24px;
+`;
+
 const Wrapper = styled.div`
   ${pageMargins}
   padding-bottom: 3rem;
@@ -149,12 +153,14 @@ const StyledTableOfContents = styled(TableOfContents)`
   }
 `;
 
-function DocsLayout({ children, pageContext, ...props }) {
+function DocsLayout({ children, isLatest: isLatestProp, pageContext, ...props }) {
   const {
     coreFrameworks,
     communityFrameworks,
     urls: { homepageUrl },
     version,
+    latestVersion,
+    isLatest,
   } = useSiteMetadata();
   const { docsToc, framework, fullPath, slug, versions } = pageContext;
   const [searchValue, setSearchValue] = useState('');
@@ -265,7 +271,18 @@ function DocsLayout({ children, pageContext, ...props }) {
           </StyledTableOfContents>
         </Sidebar>
 
-        <Content>{children}</Content>
+        <Content>
+          {(isLatestProp === false || !isLatest) && (
+            <StyledVersionCTA
+              framework={framework}
+              version={version}
+              latestVersion={latestVersion}
+              versions={versions}
+              slug={slug}
+            />
+          )}
+          {children}
+        </Content>
       </Wrapper>
     </>
   );

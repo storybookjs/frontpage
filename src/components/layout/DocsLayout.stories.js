@@ -35,4 +35,16 @@ export default {
   excludeStories: ['pageContext'],
 };
 
-export const Base = () => <DocsLayout pageContext={pageContext}>children</DocsLayout>;
+const Template = (args) => <DocsLayout {...args} />;
+
+export const Base = Template.bind({});
+Base.args = {
+  children: 'children',
+  pageContext,
+};
+
+export const NonLatestVersion = Template.bind({});
+NonLatestVersion.args = {
+  ...Base.args,
+  isLatest: false,
+};
