@@ -1,28 +1,20 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import {
   Icon,
   Input,
-  Link,
   Button,
   TableOfContents,
-  TooltipLinkList,
   TooltipNote,
   WithTooltip,
   global,
   styles,
 } from '@storybook/design-system';
-import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
-
-import { SocialGraph } from '../basics';
 import GatsbyLinkWrapper from '../basics/GatsbyLinkWrapper';
-
 import useSiteMetadata from '../lib/useSiteMetadata';
 import buildPathWithFramework from '../../util/build-path-with-framework';
 import { FrameworkSelector } from '../screens/DocsScreen/FrameworkSelector';
-import stylizeFramework from '../../util/stylize-framework';
 import useAlgoliaSearch, { SEARCH_INPUT_ID } from '../../hooks/use-algolia-search';
 
 const { breakpoint, color, pageMargins, typography } = styles;
@@ -153,18 +145,13 @@ const StyledTableOfContents = styled(TableOfContents)`
   }
 `;
 
-function DocsLayout({ children, data, pageContext, ...props }) {
-  const {
-    currentPage: {
-      fields: { slug },
-    },
-  } = data;
+function DocsLayout({ children, pageContext, ...props }) {
   const {
     coreFrameworks,
     communityFrameworks,
     urls: { homepageUrl },
   } = useSiteMetadata();
-  const { docsToc, framework } = pageContext;
+  const { docsToc, framework, fullPath, slug } = pageContext;
   const [searchValue, setSearchValue] = useState('');
   const { isSearchVisible } = useAlgoliaSearch({ framework });
 
@@ -205,7 +192,7 @@ function DocsLayout({ children, data, pageContext, ...props }) {
         <Sidebar>
           <StyledTableOfContents
             key={framework}
-            currentPath={buildPathWithFramework(slug, framework)}
+            currentPath={fullPath}
             items={docsTocWithLinkWrappers}
           >
             {({ menu, allTopLevelMenusAreOpen, toggleAllOpen, toggleAllClosed }) => (
@@ -273,11 +260,3 @@ function DocsLayout({ children, data, pageContext, ...props }) {
 }
 
 export default DocsLayout;
-
-export const query = graphql`
-  fragment DocsLayoutCurrentPageQuery on Mdx {
-    fields {
-      slug
-    }
-  }
-`;

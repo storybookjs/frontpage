@@ -5,6 +5,8 @@ import DocsScreen from './DocsScreen';
 import compiledMDX from '../../../../.storybook/compiled-mdx';
 import { pageContext } from '../../layout/DocsLayout.stories';
 
+const { tocItem } = pageContext;
+
 const data = {
   currentPage: {
     body: compiledMDX,
@@ -14,9 +16,8 @@ const data = {
   },
 };
 
-const tocItem = { path: '/path' };
 const githubUrl = 'github.com';
-const location = { pathname: '/docs/react/foo' };
+const location = { pathname: pageContext.fullPath };
 
 const nextTocItem = { path: '/path', title: 'Title', description: 'This is a description.' };
 
@@ -30,16 +31,10 @@ export default {
   decorators: [(storyFn) => <Wrapper>{storyFn()}</Wrapper>],
 };
 
-export const Base = () => (
-  <DocsScreen data={data} pageContext={{ ...pageContext, tocItem }} location={location} />
-);
+export const Base = () => <DocsScreen data={data} pageContext={pageContext} location={location} />;
 
 export const WithGuideLink = () => (
-  <DocsScreen
-    data={data}
-    pageContext={{ ...pageContext, tocItem, nextTocItem }}
-    location={location}
-  />
+  <DocsScreen data={data} pageContext={{ ...pageContext, nextTocItem }} location={location} />
 );
 
 export const WithGuideLinkNoDescription = () => (
@@ -48,7 +43,6 @@ export const WithGuideLinkNoDescription = () => (
     location={location}
     pageContext={{
       ...pageContext,
-      tocItem,
       nextTocItem: { ...nextTocItem, description: undefined },
     }}
   />

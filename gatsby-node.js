@@ -3,24 +3,11 @@ const path = require('path');
 
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
+const { versionString, isLatest } = require('./site-metadata');
 const { toc: docsToc } = require('./src/content/docs/toc');
+const addStateToToc = require('./src/util/add-state-to-toc');
 const buildPathWithFramework = require('./src/util/build-path-with-framework');
 const createAddonsPages = require('./src/util/create-addons-pages');
-
-const githubDocsBaseUrl = 'https://github.com/storybookjs/storybook/tree/next';
-const addStateToToc = (items, pathPrefix = '/docs') =>
-  items.map((item) => {
-    const itemPath = item.pathSegment ? `${pathPrefix}/${item.pathSegment}` : pathPrefix;
-
-    return {
-      ...item,
-      ...(item.type.match(/link/) && {
-        path: itemPath,
-        githubUrl: `${githubDocsBaseUrl}${itemPath}.md`,
-      }),
-      ...(item.children && { children: addStateToToc(item.children, itemPath) }),
-    };
-  });
 
 const docsTocWithPaths = addStateToToc(docsToc);
 
@@ -42,9 +29,9 @@ exports.onCreateNode = ({ actions, getNode, node }) => {
     createNodeField({ node, name: 'slug', value: slug });
 
     if (pageType === 'releases') {
-      const [_, version] = slugParts;
-      createNodeField({ node, name: 'iframeSlug', value: `/releases/iframe/${version}/` });
-      createNodeField({ node, name: 'version', value: version });
+      const [_, releaseVersion] = slugParts;
+      createNodeField({ node, name: 'iframeSlug', value: `/releases/iframe/${releaseVersion}/` });
+      createNodeField({ node, name: 'version', value: releaseVersion });
     }
   }
 };
@@ -118,9 +105,9 @@ exports.createPages = ({ actions, graphql }) => {
           );
           let latestRelease;
           sortedReleases.forEach(({ node }) => {
-            const { pageType, iframeSlug, slug, version } = node.fields;
+            const { pageType, iframeSlug, slug, version: releaseVersion } = node.fields;
             // Data passed to context is available in page queries as GraphQL variables.
-            const context = { pageType, slug, version };
+            const context = { pageType, slug, version: releaseVersion };
 
             createPage({
               path: slug,
@@ -162,7 +149,10 @@ exports.createPages = ({ actions, graphql }) => {
           const docsTocByFramework = Object.fromEntries(
             frameworks.map((framework) => [
               framework,
-              addStateToToc(docsTocWithPaths, `/docs/${framework}`),
+              addStateToToc(
+                docsTocWithPaths,
+                `/docs/${isLatest ? framework : `${versionString}/${framework}`}`
+              ),
             ])
           );
           const createDocsPages = (tocItems) => {
@@ -177,13 +167,15 @@ exports.createPages = ({ actions, graphql }) => {
                   const nextTocItem = tocItems[index + 1];
 
                   frameworks.forEach((framework) => {
+                    const fullPath = buildPathWithFramework(slug, framework);
                     createPage({
-                      path: buildPathWithFramework(slug, framework),
+                      path: fullPath,
                       component: path.resolve(`./src/components/screens/DocsScreen/DocsScreen.tsx`),
                       context: {
                         pageType,
                         layout: 'docs',
                         slug,
+                        fullPath,
                         framework,
                         docsToc: docsTocByFramework[framework],
                         tocItem,
@@ -213,7 +205,7 @@ exports.createPages = ({ actions, graphql }) => {
 
           if (firstDocsPageSlug) {
             createRedirect({
-              fromPath: `/docs/`,
+              fromPath: `/docs/${isLatest ? '' : versionString}`,
               isPermanent: false,
               redirectInBrowser: true,
               toPath: buildPathWithFramework(firstDocsPageSlug, frameworks[0]),
@@ -222,7 +214,7 @@ exports.createPages = ({ actions, graphql }) => {
             // Setup a redirect for each framework to the first guide
             frameworks.forEach((framework) => {
               createRedirect({
-                fromPath: `/docs/${framework}`,
+                fromPath: `/docs/${isLatest ? framework : `${versionString}/${framework}`}`,
                 isPermanent: false,
                 redirectInBrowser: true,
                 toPath: buildPathWithFramework(firstDocsPageSlug, framework),

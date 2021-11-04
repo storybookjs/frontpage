@@ -25,6 +25,6 @@ Base.args = {
   coreFrameworks,
   communityFrameworks,
   currentFramework: coreFrameworks[0],
-  slug: '/slug',
+  slug: '/docs/get-started/introduction',
   tooltipProps: { startOpen: true },
 };
