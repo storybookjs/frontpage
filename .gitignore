@@ -15,6 +15,7 @@ monorepo
 
 # Pulled from monorepo
 src/content/docs
+src/generated/versions
 
 # Env vars
 .env.production

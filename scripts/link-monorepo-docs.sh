@@ -12,8 +12,6 @@ if [ "$MONOREPO_PATH" = "" ]; then
   exit 1;
 fi
 
-
-
 TARGET_DIR="$MONOREPO_PATH/$REPO_SUBDIR"
 
 if [ -d "$TARGET_DIR" ]; then
@@ -29,3 +27,10 @@ else
   echo "Couldn't find monorepo docs at '$TARGET_DIR'"
   exit 1;
 fi
+
+FINAL_BRANCH=main
+if  [[ "$BRANCH" == "release-"* ]]; then
+  FINAL_BRANCH=$BRANCH
+fi
+
+./scripts/extract-all-monorepo-versions.sh $FINAL_BRANCH

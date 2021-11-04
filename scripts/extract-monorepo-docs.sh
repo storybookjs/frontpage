@@ -22,3 +22,5 @@ echo "Extracting docs from $FINAL_BRANCH branch..."
 mkdir -p $REPO_DIRNAME
 rm -rf $REPO_DIRNAME/*
 curl $MONOREPO_CODELOAD_URL/$FINAL_BRANCH | tar -zxvC $REPO_DIRNAME --strip $SB_REPO_DEPTH $BRANCH_TAR_NAME/$SB_REPO_SUBDIR
+
+./scripts/extract-all-monorepo-versions.sh $FINAL_BRANCH
