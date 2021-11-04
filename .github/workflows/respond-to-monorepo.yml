@@ -1,0 +1,14 @@
+name: Respond to monorepo
+
+on: [repository_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.action == 'request-create-frontpage-branch'
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          echo 'Creating branch ${{ github.event.client_payload.branch }}...'
+          git branch temp
+          git push -f origin temp:${{ github.event.client_payload.branch }}
