@@ -29,6 +29,7 @@ const siteMetadata = {
   version,
   versionString,
   latestVersion,
+  latestVersionString,
   isLatest: version === latestVersion,
   contributorCount: 1290,
   coreFrameworks,

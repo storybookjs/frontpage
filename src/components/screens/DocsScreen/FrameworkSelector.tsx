@@ -7,18 +7,21 @@ import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import buildPathWithFramework from '../../../util/build-path-with-framework';
 import stylizeFramework from '../../../util/stylize-framework';
 
-const { color, typography } = styles;
+const { breakpoint, color, typography } = styles;
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  font-size: ${typography.size.s2}px;
+`;
 
 const Framework = styled.span`
-  font-weight: ${typography.weight.bold};
-  color: ${color.dark};
+  color: ${color.darker};
+  display: none;
+  @media (min-width: ${breakpoint * 1}px) {
+    display: inline;
+  }
 `;
 
 const FrameworkLink = styled(Link)`
-  font-weight: ${typography.weight.bold};
-
   svg {
     transform: rotate(90deg);
   }
@@ -27,11 +30,10 @@ const FrameworkLink = styled(Link)`
 const FrameworkSelectorTitle = styled.div`
   display: flex;
   align-items: center;
-
   img {
-    width: 17px;
+    width: 16px;
     height: 16px;
-    margin-right: 9px;
+    margin-right: 10px;
   }
 `;
 
@@ -43,11 +45,11 @@ const LinkHeading = styled(Subheading)`
   line-height: 18px;
   color: ${color.mediumdark};
   padding: 7px 15px;
-  border-bottom: 1px solid #eee;
-  ${(props) => props.withTopBorder && `border-top: 1px solid #eee;`}
+  border-bottom: 1px solid ${color.border};
+  ${(props) => props.withTopBorder && `border-top: 1px solid ${color.border};`}
 `;
 
-const FrameworkLinkList = styled(TooltipLinkList)`
+const FrameworkLinkList = styled(TooltipLinkList)<{ isLast?: boolean }>`
   border-radius: 0;
   ${(props) =>
     props.isLast &&
@@ -63,26 +65,26 @@ const getFrameworkLogo = (framework) => {
 };
 
 export function FrameworkSelector({
-  currentFramework,
+  framework,
   coreFrameworks,
   communityFrameworks,
   slug,
   tooltipProps,
   ...rest
 }) {
-  const links = [...coreFrameworks, ...communityFrameworks].map((framework) => ({
+  const links = [...coreFrameworks, ...communityFrameworks].map((f) => ({
     framework,
     LinkWrapper: GatsbyLinkWrapper,
-    href: buildPathWithFramework(slug, framework),
+    href: buildPathWithFramework(slug, f),
     title: (
       <FrameworkSelectorTitle>
-        <img src={getFrameworkLogo(framework)} alt={stylizeFramework(framework)} />
-        {stylizeFramework(framework)}
+        <img src={getFrameworkLogo(f)} alt={stylizeFramework(f)} />
+        {stylizeFramework(f)}
       </FrameworkSelectorTitle>
     ),
   }));
-  const coreLinks = links.filter(({ framework }) => coreFrameworks.includes(framework));
-  const communityLinks = links.filter(({ framework }) => !coreFrameworks.includes(framework));
+  const coreLinks = links.filter(({ framework: f }) => coreFrameworks.includes(f));
+  const communityLinks = links.filter(({ framework: f }) => !coreFrameworks.includes(f));
 
   return (
     <Wrapper {...rest}>
@@ -95,14 +97,14 @@ export function FrameworkSelector({
             <LinkHeading>Core</LinkHeading>
             <FrameworkLinkList links={coreLinks} />
             <LinkHeading withTopBorder>Community</LinkHeading>
-            <FrameworkLinkList isLAst links={communityLinks} />
+            <FrameworkLinkList isLast links={communityLinks} />
           </>
         }
         as="span"
         {...tooltipProps}
       >
-        <FrameworkLink isButton appearance="secondary" withArrow>
-          {stylizeFramework(currentFramework)}
+        <FrameworkLink isButton primary withArrow>
+          {stylizeFramework(framework)}
         </FrameworkLink>
       </WithTooltip>
     </Wrapper>
@@ -110,7 +112,7 @@ export function FrameworkSelector({
 }
 
 FrameworkSelector.propTypes = {
-  currentFramework: PropTypes.string.isRequired,
+  framework: PropTypes.string.isRequired,
   coreFrameworks: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   communityFrameworks: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   slug: PropTypes.string.isRequired,

@@ -14,6 +14,7 @@ const useSiteMetadata = () => {
           version
           versionString
           latestVersion
+          latestVersionString
           isLatest
           contributorCount
           coreFrameworks

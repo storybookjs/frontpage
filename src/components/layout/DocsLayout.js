@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import {
   Icon,
   Input,
@@ -15,6 +15,8 @@ import GatsbyLinkWrapper from '../basics/GatsbyLinkWrapper';
 import useSiteMetadata from '../lib/useSiteMetadata';
 import buildPathWithFramework from '../../util/build-path-with-framework';
 import { FrameworkSelector } from '../screens/DocsScreen/FrameworkSelector';
+import { VersionSelector } from '../screens/DocsScreen/VersionSelector';
+import stylizeFramework from '../../util/stylize-framework';
 import useAlgoliaSearch, { SEARCH_INPUT_ID } from '../../hooks/use-algolia-search';
 
 const { breakpoint, color, pageMargins, typography } = styles;
@@ -25,7 +27,6 @@ const Sidebar = styled.div`
   margin: 1rem 0 2rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid ${color.border};
-
   @media (min-width: ${breakpoint * 1.333}px) {
     flex: 0 0 240px;
     margin: 0;
@@ -36,24 +37,16 @@ const Sidebar = styled.div`
   }
 `;
 
-const StyledFrameworkSelector = styled(FrameworkSelector)`
-  @media (min-width: ${breakpoint * 1.333}px) {
-    margin-top: 1.5rem;
-  }
-`;
-
 const SearchInput = styled(Input)`
   .algolia-autocomplete {
     width: 100%;
   }
-
   && input {
     font-size: ${typography.size.s2}px;
     padding-left: 36px;
     padding-top: 10px;
     padding-bottom: 10px;
   }
-
   && svg {
     left: 14px;
     font-size: ${typography.size.s2}px;
@@ -68,36 +61,47 @@ const ExpandButton = styled(Button)`
 const SidebarControls = styled.div`
   display: flex;
   align-items: center;
-
+  justify-content: space-between;
   flex-direction: row-reverse;
   flex-wrap: wrap-reverse;
   @media (min-width: ${breakpoint * 1.333}px) {
     flex-direction: row;
     flex-wrap: wrap;
   }
-
-  /* input */
   ${SearchInput} {
+    flex: 1;
     @media (min-width: ${breakpoint * 1.333}px) {
       margin-right: 10px;
-      flex: 1;
     }
   }
   /* button */
   > *:nth-child(2) {
     display: none;
-
     @media (min-width: ${breakpoint * 1.333}px) {
       display: inline-block;
       flex: none;
     }
   }
-  /* framework picker */
+  /* version picker */
   > *:nth-child(3) {
-    flex: 1;
-
+    order: 3;
     @media (min-width: ${breakpoint * 1.333}px) {
       flex: 0 0 100%;
+      order: initial;
+      margin-bottom: 0.5rem;
+      margin-top: 1.5rem;
+    }
+  }
+  /* framework picker */
+  > *:nth-child(4) {
+    margin-left: 10px;
+    margin-right: 10px;
+    order: 2;
+    @media (min-width: ${breakpoint * 1.333}px) {
+      flex: 0 0 100%;
+      order: initial;
+      margin-left: 0;
+      margin-right: 0;
     }
   }
 
@@ -150,8 +154,9 @@ function DocsLayout({ children, pageContext, ...props }) {
     coreFrameworks,
     communityFrameworks,
     urls: { homepageUrl },
+    version,
   } = useSiteMetadata();
-  const { docsToc, framework, fullPath, slug } = pageContext;
+  const { docsToc, framework, fullPath, slug, versions } = pageContext;
   const [searchValue, setSearchValue] = useState('');
   const { isSearchVisible } = useAlgoliaSearch({ framework });
 
@@ -239,11 +244,18 @@ function DocsLayout({ children, pageContext, ...props }) {
                     </WithTooltip>
                   )}
 
-                  <StyledFrameworkSelector
-                    currentFramework={framework}
+                  <VersionSelector
+                    version={version}
+                    versions={versions}
+                    framework={framework}
                     slug={slug}
+                  />
+
+                  <FrameworkSelector
+                    framework={framework}
                     coreFrameworks={coreFrameworks}
                     communityFrameworks={communityFrameworks}
+                    slug={slug}
                   />
                 </SidebarControls>
 
