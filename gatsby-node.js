@@ -8,6 +8,7 @@ const { toc: docsToc } = require('./src/content/docs/toc');
 const addStateToToc = require('./src/util/add-state-to-toc');
 const buildPathWithFramework = require('./src/util/build-path-with-framework');
 const createAddonsPages = require('./src/util/create-addons-pages');
+const getReleaseBranchUrl = require('./src/util/get-release-branch-url');
 
 const VERSION_PARTS_REGEX = /^(\d+\.\d+)(?:\.\d+)?-?(\w+)?(?:\.\d+$)?/;
 
@@ -287,8 +288,6 @@ exports.createPages = ({ actions, graphql }) => {
   });
 };
 
-const getReleaseBranch = (version) => `release-${version.replace('.', '-')}`;
-
 function getVersionData(distTag) {
   const versionFile = `./src/content/docs/versions/${distTag}.json`;
   if (!fs.existsSync(versionFile)) {
@@ -312,17 +311,13 @@ function updateRedirectsFile() {
   const newContents = [...versions.stable, ...versions.preRelease]
     .reduce((acc, { string, label }) => {
       if (label !== 'latest') {
-        acc.push(
-          // prettier-ignore
-          `/docs/${string}/* https://${getReleaseBranch(string)}--storybook-frontpage.netlify.app/docs/${string}/:splat 200`
-        );
+        acc.push(`/docs/${string}/* ${getReleaseBranchUrl(string)}/docs/${string}/:splat 200`);
       }
       return acc;
     }, [])
-    .concat(
-      // prettier-ignore
-      [`/docs/next/* https://${getReleaseBranch(nextVersionString)}--storybook-frontpage.netlify.app/docs/${nextVersionString}/:splat 302`]
-    )
+    .concat([
+      `/docs/next/* ${getReleaseBranchUrl(nextVersionString)}/docs/${nextVersionString}/:splat 302`,
+    ])
     .join('\n');
   fs.writeFileSync('./public/_redirects', `${originalContents}\n\n${newContents}`);
 }

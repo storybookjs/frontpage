@@ -1,6 +1,7 @@
 const path = require('path');
 const { global } = require('@storybook/design-system');
 const siteMetadata = require('./site-metadata');
+const getReleaseBranchUrl = require('./src/util/get-release-branch-url');
 
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
@@ -15,6 +16,7 @@ module.exports = {
     FAST_DEV: true,
     QUERY_ON_DEMAND: true,
   },
+  ...(!isLatest ? { assetPrefix: getReleaseBranchUrl(versionString) } : undefined),
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-typescript',
@@ -133,7 +135,11 @@ module.exports = {
         headers: {
           // Remove `X-Frame-Options: DENY` default header so that the release notes can
           // be served in an iframe.
-          '/*': ['X-XSS-Protection: 1; mode=block', 'X-Content-Type-Options: nosniff'],
+          '/*': [
+            'X-XSS-Protection: 1; mode=block',
+            'X-Content-Type-Options: nosniff',
+            ...(!isLatest ? ['Access-Control-Allow-Origin: *'] : []),
+          ],
           '/versions.json': [
             'Access-Control-Allow-Origin: *',
             'Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept',
