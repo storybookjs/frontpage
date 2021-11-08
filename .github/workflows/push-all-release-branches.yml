@@ -1,0 +1,13 @@
+name: Push all release branches
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  push-branches:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: ./scripts/push-all-release-branches.sh
