@@ -309,14 +309,14 @@ function generateVersionsFile() {
 function updateRedirectsFile() {
   const originalContents = fs.readFileSync('./static/_redirects');
   const newContents = [...versions.stable, ...versions.preRelease]
-    .reduce((acc, { string, label }) => {
-      if (label !== 'latest') {
+    .reduce((acc, { string }) => {
+      if (string !== latestVersionString) {
         acc.push(`/docs/${string}/* ${getReleaseBranchUrl(string)}/docs/${string}/:splat 200`);
       }
       return acc;
     }, [])
     .concat([
-      `/docs/next/* ${getReleaseBranchUrl(nextVersionString)}/docs/${nextVersionString}/:splat 302`,
+      `/docs/next/* ${getReleaseBranchUrl(nextVersionString)}/docs/${nextVersionString}/:splat 200`,
     ])
     .join('\n');
   fs.writeFileSync('./public/_redirects', `${originalContents}\n\n${newContents}`);
