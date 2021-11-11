@@ -9,6 +9,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: |
+          REMOTE_BRANCH=$(git branch -a | grep remotes/origin/${{ github.event.client_payload.branch }})
+          if [[ ! -z $REMOTE_BRANCH ]]; then git push origin --delete ${{ github.event.client_payload.branch }}; fi
+          LOCAL_BRANCH=$(git branch -a | grep ${{ github.event.client_payload.branch }})
+          if [[ ! -z $LOCAL_BRANCH ]]; then git branch -D ${{ github.event.client_payload.branch }}; fi
           echo 'Creating branch ${{ github.event.client_payload.branch }}...'
-          git branch temp
-          git push -f origin temp:${{ github.event.client_payload.branch }}
+          git push origin HEAD:${{ github.event.client_payload.branch }}
