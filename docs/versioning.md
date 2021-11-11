@@ -1,0 +1,45 @@
+# Docs versioning
+
+This site is configured to build its doc pages from a variable version of the content in the [Storybook monorepo](https://github.com/storybookjs/storybook). This is mostly automated.
+
+> In this document, assume "latest" is `6.3` and "next" is `6.4`.
+>
+> "monorepo release branch" = `main`, `next`, and `release-x-x` (starting with `release-6-0`).
+> "frontpage release branch" = `master` and `release-x-x` (starting with `release-6-0`).
+
+## Publishing new versions
+
+When a pre-release ("next") version graduates to stable (and a new "next" version is cut):
+
+_First, in the monorepo:_
+
+1. Create a release branch from `main`.
+   - `release-6-3`, in this document.
+1. Make sure any release branch has an appropriate version in its root `package.json`.
+
+_Second, in this repo:_
+
+1. Make sure each release branch in the monorepo has a corresponding [release note](../README.md#release-notes), and that their contents are correct.
+1. Add the version that _was_ "latest" to the [Netlify branch deploy setting](https://app.netlify.com/sites/storybook-frontpage/settings/deploys).
+   - `release-6-3`, in this document.
+1. Push any updates to `master`.
+
+## How it works
+
+1. Pushing to a monorepo release branch triggers a [workflow](https://github.com/storybookjs/storybook/tree/next/.github/workflows/handle-release-branches.yml):
+   - On push to `main`
+     - Use webhook to kick off production frontpage deploy
+   - On push to `next`
+     - Creates & force-pushes `release-6-4` branch
+     - Sends [dispatch event](https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#repository_dispatch) to this repo which kicks off a [workflow](../.github/workflows/respond-to-monorepo.yml) to create and force-push `release-6-4` branch
+   - On push to `release-x-x`
+     - If pushing to `release-6-4`
+       - Warns that changes will be lost on next push to `next`
+     - Else
+       - Sends dispatch event to this repo which kicks off a workflow to create and force-push `release-x-x` branch
+1. Pushing those `release-x-x` in this repo will kick off a [Netlify branch deploy](https://docs.netlify.com/site-deploys/overview/#branches-and-deploys) for the appropriate version.
+1. When the docs content is extracted from the monorepo, each of the other version's info is extracted as well (for generating the list of available versions)
+1. Based on the latest and current version info, the site adjusts the URLs and other details appropriately. ([See the PR for details](https://github.com/storybookjs/frontpage/pull/310).)
+1. Using [Netlify proxy rewrites](https://docs.netlify.com/routing/redirects/rewrites-proxies/#proxy-to-another-netlify-site), the production site and branch deploys are stitched together to appear as a single site.
+1. Pushing to `master` in this repo kicks off a [workflow](../.github/workflows/push-all-release-branches.yml) which will create new release branches from `master` and push them, kicking off branch deploys for each.
+   - This ensures all branch deploys stay in-sync with any updates to production

@@ -60,11 +60,7 @@ Within the release's `.md` file, frontmatter is used to create a page title, whi
 
 ### Publishing new versions
 
-When a pre-release version graduates to stable (and a new pre-release version is cut):
-
-1. Make sure all relevant [release notes](#release-notes) are present and correct
-2. Add the version that _was_ "latest" to the [Netlify branch deploy setting](https://app.netlify.com/sites/storybook-frontpage/settings/deploys)
-    - e.g. if "latest" was `6.3`, add `release-6-3`
+[See detailed docs](docs/versioning.md)
 
 ### Search
 
