@@ -22,8 +22,8 @@ do
       VERSION_BRANCH=($(echo $VERSION | sed -E 's/([0-9]+)\.([0-9]+)/release-\1-\2/'))
       REMOTE_BRANCH=$(git branch -a | grep remotes/origin/$VERSION_BRANCH)
       if [[ ! -z $REMOTE_BRANCH ]]; then git push origin --delete $VERSION_BRANCH; fi
-      echo 'Pushing branch $VERSION_BRANCH...'
-      git push origin HEAD:$VERSION_BRANCH
+      echo "Pushing branch $VERSION_BRANCH..."
+      git push -f origin HEAD:$VERSION_BRANCH
     fi
   fi
 done
