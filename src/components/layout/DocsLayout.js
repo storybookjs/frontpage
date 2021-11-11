@@ -160,6 +160,7 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext, ...props })
     urls: { homepageUrl },
     version,
     latestVersion,
+    latestVersionString,
     isLatest,
   } = useSiteMetadata();
   const { docsToc, framework, fullPath, slug, versions } = pageContext;
@@ -277,6 +278,7 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext, ...props })
               framework={framework}
               version={version}
               latestVersion={latestVersion}
+              latestVersionString={latestVersionString}
               versions={versions}
               slug={slug}
             />

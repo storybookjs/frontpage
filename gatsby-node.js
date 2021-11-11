@@ -3,12 +3,17 @@ const path = require('path');
 
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
-const { versionString, latestVersion, latestVersionString, isLatest } = require('./site-metadata');
 const { toc: docsToc } = require('./src/content/docs/toc');
 const addStateToToc = require('./src/util/add-state-to-toc');
 const buildPathWithFramework = require('./src/util/build-path-with-framework');
 const createAddonsPages = require('./src/util/create-addons-pages');
 const getReleaseBranchUrl = require('./src/util/get-release-branch-url');
+const {
+  versionString,
+  latestVersion,
+  latestVersionString,
+  isLatest,
+} = require('./src/util/version-data');
 
 const VERSION_PARTS_REGEX = /^(\d+\.\d+)(?:\.\d+)?-?(\w+)?(?:\.\d+$)?/;
 
@@ -259,7 +264,7 @@ exports.createPages = ({ actions, graphql }) => {
 
           if (firstDocsPageSlug) {
             createRedirect({
-              fromPath: `/docs/${isLatest ? '' : versionString}`,
+              fromPath: `/docs/${isLatest ? '' : `${versionString}/`}`,
               isPermanent: false,
               redirectInBrowser: true,
               toPath: buildPathWithFramework(firstDocsPageSlug, frameworks[0]),

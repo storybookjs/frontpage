@@ -23,7 +23,8 @@ export const OldVersion = Template.bind({});
 OldVersion.args = {
   framework: coreFrameworks[0],
   version: versions.stable[1].version,
-  latestVersion: Number(versions.stable[0].string),
+  latestVersion: versions.stable[0].version,
+  latestVersionString: versions.stable[0].string,
   versions,
   slug: '/docs/get-started/introduction',
 };
