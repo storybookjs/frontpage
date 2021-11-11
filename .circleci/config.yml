@@ -1,4 +1,3 @@
-version: 2
 jobs:
   build:
     docker:
@@ -27,3 +26,12 @@ jobs:
       - run: GATSBY_CPU_COUNT=1 GATSBY_SKIP_ADDON_PAGES=true yarn build
       - run: yarn build-storybook
       - run: yarn chromatic --storybook-build-dir storybook-static --exit-zero-on-changes
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build:
+          filters:
+              branches:
+                ignore: \^release-[0-9]+-[0-9]+$\

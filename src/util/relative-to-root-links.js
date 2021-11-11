@@ -21,7 +21,7 @@ function relativeToRootLinks(href, framework, path = '') {
     slugParts.splice(-1, 1, href.replace(relativeUrlRegex, '$2'));
     url = `/${slugParts.join('/')}`;
   } else if (multiLevelRelativeUrlRegex.test(href)) {
-    // rewrite ../some_path style urls to /docs/framework/some_path
+    // rewrite ../some_path style urls to /docs/version/framework/some_path
     url = buildPathWithFramework(href.replace(multiLevelRelativeUrlRegex, '/docs/$2'), framework);
   }
 

@@ -26,13 +26,10 @@ const StyledGitHubButton = styled(GitHubButton)`
   min-width: 124px;
 `;
 
-const LogoWrapper = styled.div`
-  display: inline-block;
-  align-self: stretch;
-`;
-
 const LogotypeWrapper = styled(Link)`
   display: inline-block;
+  align-self: stretch;
+
   img {
     height: 22px;
     width: auto;
@@ -55,16 +52,6 @@ const LogotypeWrapper = styled(Link)`
   }
 `;
 
-const Version = styled(Link)`
-  display: inline-block;
-  vertical-align: top;
-  margin-left: 10px;
-  position: relative;
-  top: 2px;
-  font-size: ${typography.size.s1}px;
-  color: ${color.mediumdark};
-`;
-
 const LinkWrapper = ({ href, isGatsby, ...props }) => {
   if (isGatsby) {
     return <GatsbyLink to={href} {...props} />;
@@ -80,7 +67,7 @@ LinkWrapper.propTypes = {
 };
 
 export default function Header({ ...props }) {
-  const { latestVersion, urls = {} } = useSiteMetadata();
+  const { urls = {} } = useSiteMetadata();
   const {
     navCommunityLinks = {},
     navLinks = {},
@@ -102,12 +89,9 @@ export default function Header({ ...props }) {
     <DSHeader
       navBreakpoint={1.5 * breakpoint}
       logo={
-        <LogoWrapper>
-          <LogotypeWrapper LinkWrapper={GatsbyLink} to="/">
-            <img src={StorybookLogoSVG} alt="Storybook" />
-          </LogotypeWrapper>
-          <Version href={gitHub.releases}>{latestVersion}</Version>
-        </LogoWrapper>
+        <LogotypeWrapper LinkWrapper={GatsbyLink} to="/">
+          <img src={StorybookLogoSVG} alt="Storybook" />
+        </LogotypeWrapper>
       }
       links={
         <>

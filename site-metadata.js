@@ -3,6 +3,14 @@ const {
   communityFrameworks,
   featureGroups,
 } = require('./src/content/docs/frameworks');
+const { version: versionFull } = require('./src/generated/versions/current/package.json');
+const { version: latestVersionFull } = require('./src/generated/versions/latest/package.json');
+
+const VERSION_PARTS_REGEX = /^(\d+\.\d+)(?:\.\d+)?-?(\w+)?(?:\.\d+$)?/;
+const [, versionString] = versionFull.match(VERSION_PARTS_REGEX);
+const version = parseFloat(versionString);
+const [, latestVersionString] = latestVersionFull.match(VERSION_PARTS_REGEX);
+const latestVersion = parseFloat(latestVersionString);
 
 const isDeployPreview = process.env.CONTEXT === 'deploy-preview';
 const homepageUrl = isDeployPreview ? process.env.DEPLOY_PRIME_URL : 'https://storybook.js.org';
@@ -18,7 +26,11 @@ const siteMetadata = {
   ogImageAddons: '/images/social/og-addons.png',
   siteUrl: homepageUrl, // Used for gatsby-plugin-sitemap
   googleSiteVerification: '_OxxMv1o0aRcxPfieLW0BRsMxxIzkpA9Vv6O0AB5xg0',
-  latestVersion: 'v6.3',
+  version,
+  versionString,
+  latestVersion,
+  latestVersionString,
+  isLatest: version === latestVersion,
   contributorCount: 1290,
   coreFrameworks,
   communityFrameworks,

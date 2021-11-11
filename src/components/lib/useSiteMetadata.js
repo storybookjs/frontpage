@@ -11,7 +11,11 @@ const useSiteMetadata = () => {
           ogImage
           ogImageAddons
           googleSiteVerification
+          version
+          versionString
           latestVersion
+          latestVersionString
+          isLatest
           contributorCount
           coreFrameworks
           communityFrameworks

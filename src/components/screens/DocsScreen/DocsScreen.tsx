@@ -83,7 +83,7 @@ function DocsScreen({ data, pageContext, location }) {
     featureGroups,
     urls: { homepageUrl },
   } = useSiteMetadata();
-  const { framework, docsToc, slug, tocItem, nextTocItem, isFirstTocItem } = pageContext;
+  const { framework, docsToc, fullPath, slug, tocItem, nextTocItem, isFirstTocItem } = pageContext;
   const CodeSnippetsWithCurrentFramework = useMemo(() => {
     return (props) => <CodeSnippets currentFramework={framework} {...props} />;
   }, [framework]);
@@ -126,11 +126,7 @@ function DocsScreen({ data, pageContext, location }) {
 
   return (
     <>
-      <SocialGraph
-        url={`${homepageUrl}${buildPathWithFramework(tocItem.path, framework)}/`}
-        title={title}
-        desc={description}
-      />
+      <SocialGraph url={`${homepageUrl}${fullPath}/`} title={title} desc={description} />
 
       <MDWrapper>
         <Title>{isFirstTocItem ? `${title} for ${stylizeFramework(framework)}` : title}</Title>
@@ -205,7 +201,6 @@ export const query = graphql`
       frontmatter {
         title
       }
-      ...DocsLayoutCurrentPageQuery
     }
   }
 `;
