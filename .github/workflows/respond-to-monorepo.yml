@@ -3,7 +3,7 @@ name: Respond to monorepo
 on: [repository_dispatch]
 
 jobs:
-  build:
+  push-release-branch:
     runs-on: ubuntu-latest
     if: github.event.action == 'request-create-frontpage-branch'
     steps:
@@ -11,7 +11,5 @@ jobs:
       - run: |
           REMOTE_BRANCH=$(git branch -a | grep remotes/origin/${{ github.event.client_payload.branch }})
           if [[ ! -z $REMOTE_BRANCH ]]; then git push origin --delete ${{ github.event.client_payload.branch }}; fi
-          LOCAL_BRANCH=$(git branch -a | grep ${{ github.event.client_payload.branch }})
-          if [[ ! -z $LOCAL_BRANCH ]]; then git branch -D ${{ github.event.client_payload.branch }}; fi
-          echo 'Creating branch ${{ github.event.client_payload.branch }}...'
+          echo 'Pushing branch ${{ github.event.client_payload.branch }}...'
           git push origin HEAD:${{ github.event.client_payload.branch }}
