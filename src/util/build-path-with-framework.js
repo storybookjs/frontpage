@@ -1,4 +1,4 @@
-const { versionString, latestVersionString } = require('../../site-metadata');
+const { versionString, latestVersionString } = require('./version-data');
 
 module.exports = function buildPathWithFramework(slug, framework, overrideVersion) {
   const version = overrideVersion || versionString;

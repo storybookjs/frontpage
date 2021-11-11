@@ -6,7 +6,15 @@ import GatsbyLink from '../../basics/GatsbyLink';
 import buildPathWithFramework from '../../../util/build-path-with-framework';
 import { VersionSelector } from './VersionSelector';
 
-export function VersionCTA({ framework, version, latestVersion, slug, versions, ...rest }) {
+export function VersionCTA({
+  framework,
+  version,
+  latestVersion,
+  latestVersionString,
+  slug,
+  versions,
+  ...rest
+}) {
   let message = `You're viewing older docs for version ${version.toFixed(1)}.`;
   let badge = <Badge status="positive">New</Badge>;
 
@@ -29,7 +37,7 @@ export function VersionCTA({ framework, version, latestVersion, slug, versions, 
   return (
     <OutlineCTA
       action={
-        <GatsbyLink to={buildPathWithFramework(slug, framework)} withArrow>
+        <GatsbyLink to={buildPathWithFramework(slug, framework, latestVersionString)} withArrow>
           View latest docs
         </GatsbyLink>
       }

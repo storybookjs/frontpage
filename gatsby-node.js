@@ -3,12 +3,17 @@ const path = require('path');
 
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
-const { versionString, latestVersion, latestVersionString, isLatest } = require('./site-metadata');
 const { toc: docsToc } = require('./src/content/docs/toc');
 const addStateToToc = require('./src/util/add-state-to-toc');
 const buildPathWithFramework = require('./src/util/build-path-with-framework');
 const createAddonsPages = require('./src/util/create-addons-pages');
 const getReleaseBranchUrl = require('./src/util/get-release-branch-url');
+const {
+  versionString,
+  latestVersion,
+  latestVersionString,
+  isLatest,
+} = require('./src/util/version-data');
 
 const VERSION_PARTS_REGEX = /^(\d+\.\d+)(?:\.\d+)?-?(\w+)?(?:\.\d+$)?/;
 
@@ -63,6 +68,9 @@ const versions = fs
     }
   );
 const nextVersionString = versions.preRelease[0].string;
+
+let frameworks;
+let firstDocsPageSlug;
 
 exports.onCreateNode = ({ actions, getNode, node }) => {
   const { createNodeField } = actions;
@@ -194,7 +202,7 @@ exports.createPages = ({ actions, graphql }) => {
             });
           }
 
-          const frameworks = [...coreFrameworks, ...communityFrameworks];
+          frameworks = [...coreFrameworks, ...communityFrameworks];
           const docsPagesSlugs = [];
           const docsPagesEdgesBySlug = Object.fromEntries(
             docsPagesEdges.map((edge) => [edge.node.fields.slug, edge])
@@ -255,26 +263,7 @@ exports.createPages = ({ actions, graphql }) => {
           };
 
           createDocsPages(docsTocWithPaths);
-          const firstDocsPageSlug = docsPagesSlugs[0];
-
-          if (firstDocsPageSlug) {
-            createRedirect({
-              fromPath: `/docs/${isLatest ? '' : versionString}`,
-              isPermanent: false,
-              redirectInBrowser: true,
-              toPath: buildPathWithFramework(firstDocsPageSlug, frameworks[0]),
-            });
-
-            // Setup a redirect for each framework to the first guide
-            frameworks.forEach((framework) => {
-              createRedirect({
-                fromPath: `/docs/${isLatest ? framework : `${versionString}/${framework}`}`,
-                isPermanent: false,
-                redirectInBrowser: true,
-                toPath: buildPathWithFramework(firstDocsPageSlug, framework),
-              });
-            });
-          }
+          [firstDocsPageSlug] = docsPagesSlugs;
         }
       )
       .then(() => {
@@ -308,16 +297,30 @@ function generateVersionsFile() {
 
 function updateRedirectsFile() {
   const originalContents = fs.readFileSync('./static/_redirects');
-  const newContents = [...versions.stable, ...versions.preRelease]
+  const newContents = [...versions.stable, ...versions.preRelease, { string: 'next' }]
     .reduce((acc, { string }) => {
-      if (string !== latestVersionString) {
-        acc.push(`/docs/${string}/* ${getReleaseBranchUrl(string)}/docs/${string}/:splat 200`);
+      const isLatestLocal = string === latestVersionString;
+      const versionStringLocal = string === 'next' ? nextVersionString : string;
+      const versionSlug = isLatestLocal ? '' : `/${string}`;
+      const versionBranch = isLatestLocal ? '' : getReleaseBranchUrl(versionStringLocal);
+
+      if (firstDocsPageSlug) {
+        acc.push(
+          // prettier-ignore
+          `/docs${versionSlug} ${versionBranch}${buildPathWithFramework(firstDocsPageSlug, frameworks[0], versionStringLocal)} 301`
+        );
+        frameworks.forEach((f) =>
+          // prettier-ignore
+          acc.push(`/docs${versionSlug}/${f} ${versionBranch}${buildPathWithFramework(firstDocsPageSlug, f, versionStringLocal)} 301`)
+        );
       }
+
+      if (!isLatestLocal) {
+        acc.push(`/docs/${string}/* ${versionBranch}/docs/${versionStringLocal}/:splat 200`);
+      }
+
       return acc;
     }, [])
-    .concat([
-      `/docs/next/* ${getReleaseBranchUrl(nextVersionString)}/docs/${nextVersionString}/:splat 200`,
-    ])
     .join('\n');
   fs.writeFileSync('./public/_redirects', `${originalContents}\n\n${newContents}`);
 }
