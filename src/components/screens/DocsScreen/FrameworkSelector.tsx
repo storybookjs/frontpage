@@ -73,7 +73,7 @@ export function FrameworkSelector({
   ...rest
 }) {
   const links = [...coreFrameworks, ...communityFrameworks].map((f) => ({
-    framework,
+    framework: f,
     LinkWrapper: GatsbyLinkWrapper,
     href: buildPathWithFramework(slug, f),
     title: (
