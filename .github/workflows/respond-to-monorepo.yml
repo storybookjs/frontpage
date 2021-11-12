@@ -12,7 +12,8 @@ jobs:
           fetch-depth: 0
 
       - run: |
-          REMOTE_BRANCH=$(git branch -a | grep remotes/origin/${{ github.event.client_payload.branch }})
+          set +e
+          REMOTE_BRANCH=$(git branch -r | grep origin/${{ github.event.client_payload.branch }})
           if [[ ! -z $REMOTE_BRANCH ]]; then git push origin --delete ${{ github.event.client_payload.branch }}; fi
           echo 'Pushing branch ${{ github.event.client_payload.branch }}...'
           git push -f origin HEAD:${{ github.event.client_payload.branch }}
