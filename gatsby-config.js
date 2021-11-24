@@ -1,18 +1,26 @@
 const path = require('path');
 const { global } = require('@storybook/design-system');
 const siteMetadata = require('./site-metadata');
+const getReleaseBranchUrl = require('./src/util/get-release-branch-url');
+const versionData = require('./src/util/version-data');
 
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
 module.exports = {
-  siteMetadata,
+  siteMetadata: {
+    ...siteMetadata,
+    ...versionData,
+  },
   flags: {
     PRESERVE_WEBPACK_CACHE: true,
     FAST_DEV: true,
     QUERY_ON_DEMAND: true,
   },
+  ...(!versionData.isLatest
+    ? { assetPrefix: getReleaseBranchUrl(versionData.versionString) }
+    : undefined),
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-typescript',
@@ -131,11 +139,18 @@ module.exports = {
         headers: {
           // Remove `X-Frame-Options: DENY` default header so that the release notes can
           // be served in an iframe.
-          '/*': ['X-XSS-Protection: 1; mode=block', 'X-Content-Type-Options: nosniff'],
+          '/*': [
+            'X-XSS-Protection: 1; mode=block',
+            'X-Content-Type-Options: nosniff',
+            ...(!versionData.isLatest ? ['Access-Control-Allow-Origin: *'] : []),
+          ],
           '/versions.json': [
             'Access-Control-Allow-Origin: *',
             'Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept',
           ],
+          ...(!versionData.isLatest && {
+            [`/docs/${versionData.versionString}/*`]: ['X-Robots-Tag: noindex'],
+          }),
         },
         // Do not use the default security headers. Use those we have defined above.
         mergeSecurityHeaders: false,
@@ -148,24 +163,30 @@ module.exports = {
         component: require.resolve('./src/components/layout/PageLayout'),
       },
     },
-    {
-      resolve: `gatsby-plugin-sitemap`,
-      options: {
-        serialize: ({ site, allSitePage }) => {
-          const allPages = allSitePage.edges.map((edge) => edge.node);
+    ...(versionData.isLatest
+      ? [
+          {
+            resolve: `gatsby-plugin-sitemap`,
+            options: {
+              serialize: ({ site, allSitePage }) => {
+                const allPages = allSitePage.edges.map((edge) => edge.node);
 
-          return allPages.map((page) => {
-            return {
-              url: `${site.siteMetadata.siteUrl}${page.path}/`,
-              changefreq: `daily`,
-              priority: 0.7,
-            };
-          });
-        },
-        // Exclude all doc pages not for React
-        // except the get-started/introduction page for all frameworks
-        exclude: ['{/docs/!(react)/!(get-started)/**,/docs/!(react)/get-started/!(introduction)}'],
-      },
-    },
+                return allPages.map((page) => {
+                  return {
+                    url: `${site.siteMetadata.siteUrl}${page.path}/`,
+                    changefreq: `daily`,
+                    priority: 0.7,
+                  };
+                });
+              },
+              // Exclude all doc pages not for React
+              // except the get-started/introduction page for all frameworks
+              exclude: [
+                '{/docs/!(react)/!(get-started)/**,/docs/!(react)/get-started/!(introduction)}',
+              ],
+            },
+          },
+        ]
+      : []),
   ],
 };

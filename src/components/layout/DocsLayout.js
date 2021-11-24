@@ -1,28 +1,22 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { css, styled } from '@storybook/theming';
 import {
   Icon,
   Input,
-  Link,
   Button,
   TableOfContents,
-  TooltipLinkList,
   TooltipNote,
   WithTooltip,
   global,
   styles,
 } from '@storybook/design-system';
-import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
-
-import { SocialGraph } from '../basics';
 import GatsbyLinkWrapper from '../basics/GatsbyLinkWrapper';
-
 import useSiteMetadata from '../lib/useSiteMetadata';
 import buildPathWithFramework from '../../util/build-path-with-framework';
 import { FrameworkSelector } from '../screens/DocsScreen/FrameworkSelector';
-import stylizeFramework from '../../util/stylize-framework';
+import { VersionSelector } from '../screens/DocsScreen/VersionSelector';
+import { VersionCTA } from '../screens/DocsScreen/VersionCTA';
 import useAlgoliaSearch, { SEARCH_INPUT_ID } from '../../hooks/use-algolia-search';
 
 const { breakpoint, color, pageMargins, typography } = styles;
@@ -33,7 +27,6 @@ const Sidebar = styled.div`
   margin: 1rem 0 2rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid ${color.border};
-
   @media (min-width: ${breakpoint * 1.333}px) {
     flex: 0 0 240px;
     margin: 0;
@@ -44,24 +37,16 @@ const Sidebar = styled.div`
   }
 `;
 
-const StyledFrameworkSelector = styled(FrameworkSelector)`
-  @media (min-width: ${breakpoint * 1.333}px) {
-    margin-top: 1.5rem;
-  }
-`;
-
 const SearchInput = styled(Input)`
   .algolia-autocomplete {
     width: 100%;
   }
-
   && input {
     font-size: ${typography.size.s2}px;
     padding-left: 36px;
     padding-top: 10px;
     padding-bottom: 10px;
   }
-
   && svg {
     left: 14px;
     font-size: ${typography.size.s2}px;
@@ -76,36 +61,47 @@ const ExpandButton = styled(Button)`
 const SidebarControls = styled.div`
   display: flex;
   align-items: center;
-
+  justify-content: space-between;
   flex-direction: row-reverse;
   flex-wrap: wrap-reverse;
   @media (min-width: ${breakpoint * 1.333}px) {
     flex-direction: row;
     flex-wrap: wrap;
   }
-
-  /* input */
   ${SearchInput} {
+    flex: 1;
     @media (min-width: ${breakpoint * 1.333}px) {
       margin-right: 10px;
-      flex: 1;
     }
   }
   /* button */
   > *:nth-child(2) {
     display: none;
-
     @media (min-width: ${breakpoint * 1.333}px) {
       display: inline-block;
       flex: none;
     }
   }
-  /* framework picker */
+  /* version picker */
   > *:nth-child(3) {
-    flex: 1;
-
+    order: 3;
     @media (min-width: ${breakpoint * 1.333}px) {
       flex: 0 0 100%;
+      order: initial;
+      margin-bottom: 0.5rem;
+      margin-top: 1.5rem;
+    }
+  }
+  /* framework picker */
+  > *:nth-child(4) {
+    margin-left: 10px;
+    margin-right: 10px;
+    order: 2;
+    @media (min-width: ${breakpoint * 1.333}px) {
+      flex: 0 0 100%;
+      order: initial;
+      margin-left: 0;
+      margin-right: 0;
     }
   }
 
@@ -128,6 +124,10 @@ const Content = styled.div`
   min-width: 0; /* do not remove  https://weblog.west-wind.com/posts/2016/feb/15/flexbox-containers-pre-tags-and-managing-overflow */
   max-width: 800px;
   margin: 0px auto;
+`;
+
+const StyledVersionCTA = styled(VersionCTA)`
+  margin-bottom: 24px;
 `;
 
 const Wrapper = styled.div`
@@ -153,18 +153,17 @@ const StyledTableOfContents = styled(TableOfContents)`
   }
 `;
 
-function DocsLayout({ children, data, pageContext, ...props }) {
-  const {
-    currentPage: {
-      fields: { slug },
-    },
-  } = data;
+function DocsLayout({ children, isLatest: isLatestProp, pageContext, ...props }) {
   const {
     coreFrameworks,
     communityFrameworks,
     urls: { homepageUrl },
+    version,
+    latestVersion,
+    latestVersionString,
+    isLatest,
   } = useSiteMetadata();
-  const { docsToc, framework } = pageContext;
+  const { docsToc, framework, fullPath, slug, versions } = pageContext;
   const [searchValue, setSearchValue] = useState('');
   const { isSearchVisible } = useAlgoliaSearch({ framework });
 
@@ -205,7 +204,7 @@ function DocsLayout({ children, data, pageContext, ...props }) {
         <Sidebar>
           <StyledTableOfContents
             key={framework}
-            currentPath={buildPathWithFramework(slug, framework)}
+            currentPath={fullPath}
             items={docsTocWithLinkWrappers}
           >
             {({ menu, allTopLevelMenusAreOpen, toggleAllOpen, toggleAllClosed }) => (
@@ -252,11 +251,18 @@ function DocsLayout({ children, data, pageContext, ...props }) {
                     </WithTooltip>
                   )}
 
-                  <StyledFrameworkSelector
-                    currentFramework={framework}
+                  <VersionSelector
+                    version={version}
+                    versions={versions}
+                    framework={framework}
                     slug={slug}
+                  />
+
+                  <FrameworkSelector
+                    framework={framework}
                     coreFrameworks={coreFrameworks}
                     communityFrameworks={communityFrameworks}
+                    slug={slug}
                   />
                 </SidebarControls>
 
@@ -266,18 +272,22 @@ function DocsLayout({ children, data, pageContext, ...props }) {
           </StyledTableOfContents>
         </Sidebar>
 
-        <Content>{children}</Content>
+        <Content>
+          {(isLatestProp === false || !isLatest) && (
+            <StyledVersionCTA
+              framework={framework}
+              version={version}
+              latestVersion={latestVersion}
+              latestVersionString={latestVersionString}
+              versions={versions}
+              slug={slug}
+            />
+          )}
+          {children}
+        </Content>
       </Wrapper>
     </>
   );
 }
 
 export default DocsLayout;
-
-export const query = graphql`
-  fragment DocsLayoutCurrentPageQuery on Mdx {
-    fields {
-      slug
-    }
-  }
-`;

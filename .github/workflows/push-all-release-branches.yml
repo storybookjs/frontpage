@@ -1,0 +1,25 @@
+name: Push all release branches
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  push-branches:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - run: ./scripts/push-all-release-branches.sh
+
+  deploy-production:
+    if: ${{ github.event_name == 'workflow_dispatch' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - run: curl -X POST "https://api.netlify.com/build_hooks/${{ secrets.DEPLOY_PROD_HOOK }}"

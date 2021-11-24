@@ -1,0 +1,19 @@
+name: Respond to monorepo
+
+on: [repository_dispatch]
+
+jobs:
+  push-release-branch:
+    runs-on: ubuntu-latest
+    if: github.event.action == 'request-create-frontpage-branch'
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - run: |
+          set +e
+          REMOTE_BRANCH=$(git branch -r | grep origin/${{ github.event.client_payload.branch }})
+          if [[ ! -z $REMOTE_BRANCH ]]; then git push origin --delete ${{ github.event.client_payload.branch }}; fi
+          echo 'Pushing branch ${{ github.event.client_payload.branch }}...'
+          git push -f origin HEAD:${{ github.event.client_payload.branch }}

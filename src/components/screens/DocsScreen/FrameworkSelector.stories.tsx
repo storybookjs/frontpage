@@ -22,9 +22,9 @@ const Template = (args) => <FrameworkSelector {...args} />;
 
 export const Base = Template.bind({});
 Base.args = {
+  framework: coreFrameworks[0],
   coreFrameworks,
   communityFrameworks,
-  currentFramework: coreFrameworks[0],
-  slug: '/slug',
+  slug: '/docs/get-started/introduction',
   tooltipProps: { startOpen: true },
 };

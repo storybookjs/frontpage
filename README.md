@@ -58,6 +58,10 @@ Release notes are stored in the src/content/releases directory as `.md` files. T
 
 Within the release's `.md` file, frontmatter is used to create a page title, while the rest of the content is parsed using `gatsby-transformer-remark` and styled with selectors in `src/styles/formatting.js`.
 
+### Publishing new versions
+
+[See detailed docs](docs/versioning.md)
+
 ### Search
 
 Search within the docs is powered by [DocSearch](https://docsearch.algolia.com/). In order for this to work, an environment variable is required:
