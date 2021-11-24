@@ -5,12 +5,16 @@ import isChromatic from 'chromatic/isChromatic';
 import { global as designSystemGlobal } from '@storybook/design-system';
 import WebFont from 'webfontloader';
 import { action } from '@storybook/addon-actions';
-import { createGlobalStyle } from 'styled-components';
+import { css, Global } from '@storybook/theming';
 
 import LazyLoad from '../src/components/basics/LazyLoad';
 
 const { GlobalStyle } = designSystemGlobal;
-const NoBodyPadding = createGlobalStyle`body { padding: 0 !important; }`;
+const noBodyPadding = css`
+  body {
+    padding: 0 !important;
+  }
+`;
 
 WebFont.load({
   custom: {
@@ -22,7 +26,7 @@ export const decorators = [
   (story) => (
     <Fragment>
       <GlobalStyle />
-      <NoBodyPadding />
+      <Global styles={noBodyPadding} />
       {story()}
     </Fragment>
   ),

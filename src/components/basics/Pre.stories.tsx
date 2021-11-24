@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import { styled } from '@storybook/theming';
 
 import { Pre } from './Pre';
 import { CODE_SNIPPET_CLASSNAME } from '../../constants/code-snippets';

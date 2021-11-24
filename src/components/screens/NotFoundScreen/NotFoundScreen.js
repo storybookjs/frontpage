@@ -1,6 +1,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import styled from 'styled-components';
+import { styled } from '@storybook/theming';
 
 import { Link, styles } from '@storybook/design-system';
 import PageTitle from '../../layout/PageTitle';

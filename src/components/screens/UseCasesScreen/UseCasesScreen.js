@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import { styled } from '@storybook/theming';
 
 import { styles } from '@storybook/design-system';
 import PageTitle from '../../layout/PageTitle';
@@ -49,7 +49,9 @@ const PageTitleSocialProof = styled(SocialProof)`
 
 const DesignSystem = styled.img``;
 const DesignSystemLogos = styled(LogoToggle)`
-  justify-content: center;
+  && {
+    justify-content: center;
+  }
 `;
 
 const DesignSystemWrapper = styled.div`

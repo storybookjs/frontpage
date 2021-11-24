@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import { styled } from '@storybook/theming';
 import PropTypes from 'prop-types';
 import pluralize from 'pluralize';
 import { TagList, TagLink } from '@storybook/design-system';

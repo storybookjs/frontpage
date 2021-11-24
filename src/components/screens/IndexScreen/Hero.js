@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import { css, styled } from '@storybook/theming';
 
 import {
   Button,
@@ -87,7 +87,7 @@ const Subtitle = styled.div`
 `;
 
 const PitchActions = styled.div`
-  > * {
+  && > * {
     width: 140px;
     margin: 0 10px;
     &:first-child {

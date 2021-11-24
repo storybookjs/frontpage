@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import { styled } from '@storybook/theming';
 import { Highlight } from '@storybook/design-system';
 
 import { PureCodeSnippets, MissingMessage, TabLabel } from './CodeSnippets';
@@ -70,7 +70,7 @@ const Wrapper = styled.div`
   ${mdFormatting}
   padding: 10px;
 
-  && pre[class*='language-'] {
+  &&& pre[class*='language-'] {
     padding-top: 0;
   }
 `;

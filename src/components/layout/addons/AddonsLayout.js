@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import { styled } from '@storybook/theming';
 import { Input, Icon, TableOfContents, global, styles } from '@storybook/design-system';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import { AddonsLearn } from './AddonsLearn';
@@ -132,7 +132,7 @@ const SearchInput = styled(Input)`
     }
   }
 
-  svg {
+  && svg {
     left: 14px;
     font-size: ${typography.size.s2}px;
   }

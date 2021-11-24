@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import { styled } from '@storybook/theming';
 import { Link, Subheading, TooltipLinkList, styles, WithTooltip } from '@storybook/design-system';
 
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
@@ -37,7 +37,7 @@ const FrameworkSelectorTitle = styled.div`
   }
 `;
 
-const LinkHeading = styled(Subheading)`
+const LinkHeading = styled(Subheading)<{ withTopBorder?: boolean }>`
   display: block;
   font-size: 10px;
   font-weight: 800;
@@ -97,13 +97,14 @@ export function FrameworkSelector({
             <LinkHeading>Core</LinkHeading>
             <FrameworkLinkList links={coreLinks} />
             <LinkHeading withTopBorder>Community</LinkHeading>
-            <FrameworkLinkList isLast links={communityLinks} />
+            {/* @ts-ignore TODO fix this typo */}
+            <FrameworkLinkList isLAst links={communityLinks} />
           </>
         }
         as="span"
         {...tooltipProps}
       >
-        <FrameworkLink isButton primary withArrow>
+        <FrameworkLink isButton withArrow>
           {stylizeFramework(framework)}
         </FrameworkLink>
       </WithTooltip>

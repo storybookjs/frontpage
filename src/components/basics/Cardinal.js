@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import { css, styled } from '@storybook/theming';
 import pluralize from 'pluralize';
 
 import { Link, styles, animation } from '@storybook/design-system';

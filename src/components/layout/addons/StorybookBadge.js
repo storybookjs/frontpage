@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import { styled } from '@storybook/theming';
 import { styles, Icon, TooltipMessage, WithTooltip } from '@storybook/design-system';
 
 const { typography, color } = styles;
