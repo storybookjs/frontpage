@@ -105,7 +105,7 @@ export function FrameworkSelector({
         {...tooltipProps}
       >
         <FrameworkLink isButton withArrow>
-          {stylizeFramework(currentFramework)}
+          {stylizeFramework(framework)}
         </FrameworkLink>
       </WithTooltip>
     </Wrapper>
