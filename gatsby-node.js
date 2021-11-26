@@ -164,7 +164,6 @@ exports.createPages = ({ actions, graphql }) => {
             ({ node: aNode }, { node: bNode }) =>
               parseFloat(aNode.fields.version) - parseFloat(bNode.fields.version)
           );
-          let latestRelease;
           sortedReleases.forEach(({ node }) => {
             const { pageType, iframeSlug, slug, version: releaseVersion } = node.fields;
             // Data passed to context is available in page queries as GraphQL variables.
@@ -186,21 +185,7 @@ exports.createPages = ({ actions, graphql }) => {
                 layout: 'iframe',
               },
             });
-
-            if (!node.frontmatter.prerelease) {
-              latestRelease = node;
-            }
           });
-
-          // Leave a /releases/ endpoint, but redirect it to the latest version
-          if (latestRelease) {
-            createRedirect({
-              fromPath: `/releases/`,
-              isPermanent: false,
-              redirectInBrowser: true,
-              toPath: latestRelease.fields.slug,
-            });
-          }
 
           frameworks = [...coreFrameworks, ...communityFrameworks];
           const docsPagesSlugs = [];
@@ -317,10 +302,13 @@ function updateRedirectsFile() {
 
       if (!isLatestLocal) {
         acc.push(`/docs/${string}/* ${versionBranch}/docs/${versionStringLocal}/:splat 200`);
+      } else {
+        acc.push(`/docs/${versionStringLocal}/* /docs/:splat 301`);
       }
 
       return acc;
     }, [])
+    .concat([`/releases /releases/${latestVersionString} 301`])
     .join('\n');
   fs.writeFileSync('./public/_redirects', `${originalContents}\n\n${newContents}`);
 }
