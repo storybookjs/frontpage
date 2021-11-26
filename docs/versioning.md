@@ -11,17 +11,26 @@ This site is configured to build its doc pages from a variable version of the co
 
 When a pre-release ("next") version graduates to stable (and a new "next" version is cut):
 
-_First, in the monorepo:_
+_**First**, in the monorepo:_
+
+> **Important**: After each of these steps, cancel any [Netlify deploys](https://app.netlify.com/sites/storybook-frontpage/deploys) that are kicked off.
+>
+> This is to avoid publishing any confusing states in the version selector.
 
 1. Create a release branch from `main`.
    - `release-6-3`, in this document.
-1. Make sure any release branch has an appropriate version in its root `package.json`.
+1. Follow the normal monorepo release process for `main` and `next` branches
+1. Delete the previous "next" release branch
+   - `release-6-4`, in this document
+1. Make sure all release branches, including `main` and `next`, have an appropriate version in their root `package.json`.
 
-_Second, in this repo:_
+_**Second**, in this repo:_
 
 1. Make sure each release branch in the monorepo has a corresponding [release note](../README.md#release-notes), and that their contents are correct.
 1. Add the version that _was_ "latest" to the [Netlify branch deploy setting](https://app.netlify.com/sites/storybook-frontpage/settings/deploys).
    - `release-6-3`, in this document.
+1. Remove the version that _was_ "next" from the [Netlify branch deploy setting](https://app.netlify.com/sites/storybook-frontpage/settings/deploys)
+   - `release-6-4`, in this document.
 1. Push any updates to `master`
    - This kicks off a production deploy and a [workflow to deploy all release branches](#keeping-everything-in-sync).
 
