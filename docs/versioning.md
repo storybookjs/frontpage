@@ -13,6 +13,8 @@ When a pre-release ("next") version graduates to stable (and a new "next" versio
 
 _First, in the monorepo:_
 
+1. Create a release branch from `next`.
+   - `release-6-5`, in this document.
 1. Create a release branch from `main`.
    - `release-6-3`, in this document.
 1. Make sure any release branch has an appropriate version in its root `package.json`.
