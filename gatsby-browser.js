@@ -1,5 +1,11 @@
+import React from 'react';
+import { CacheProvider } from '@storybook/theming';
+import createCache from '@emotion/cache';
+
+const EMOTION_KEY = 'chr';
+
 /* eslint-env browser */
-exports.onRouteUpdate = ({ location, prevLocation }) => {
+export const onRouteUpdate = ({ location, prevLocation }) => {
   if (
     location.pathname.match(/iframe/) ||
     !window.analytics ||
@@ -14,3 +20,10 @@ exports.onRouteUpdate = ({ location, prevLocation }) => {
 
   window.analytics.page();
 };
+
+const cache = createCache({ key: EMOTION_KEY });
+cache.compat = true;
+
+export const wrapRootElement = ({ element }) => (
+  <CacheProvider value={cache}>{element}</CacheProvider>
+);
