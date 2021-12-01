@@ -288,15 +288,16 @@ function updateRedirectsFile() {
       const versionStringLocal = string === 'next' ? nextVersionString : string;
       const versionSlug = isLatestLocal ? '' : `/${string}`;
       const versionBranch = isLatestLocal ? '' : getReleaseBranchUrl(versionStringLocal);
+      const redirectCode = isLatestLocal ? 301 : 200;
 
       if (firstDocsPageSlug) {
         acc.push(
           // prettier-ignore
-          `/docs${versionSlug} ${versionBranch}${buildPathWithFramework(firstDocsPageSlug, frameworks[0], versionStringLocal)} 301`
+          `/docs${versionSlug} ${versionBranch}${buildPathWithFramework(firstDocsPageSlug, frameworks[0], versionStringLocal)} ${redirectCode}`
         );
         frameworks.forEach((f) =>
           // prettier-ignore
-          acc.push(`/docs${versionSlug}/${f} ${versionBranch}${buildPathWithFramework(firstDocsPageSlug, f, versionStringLocal)} 301`)
+          acc.push(`/docs${versionSlug}/${f} ${versionBranch}${buildPathWithFramework(firstDocsPageSlug, f, versionStringLocal)} ${redirectCode}`)
         );
       }
 
