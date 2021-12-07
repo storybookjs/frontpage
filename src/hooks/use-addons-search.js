@@ -28,7 +28,7 @@ export function useAddonsSearch() {
 
   // Fetch search results with a debounce
   useEffect(() => {
-    if (debouncedSearchTerm && debouncedSearchTerm.length > 2) {
+    if (debouncedSearchTerm && debouncedSearchTerm.length > minQueryLength) {
       searchAddons(debouncedSearchTerm).then((resultsData) => {
         setIsSearchLoading(false);
         setResults(resultsData);
