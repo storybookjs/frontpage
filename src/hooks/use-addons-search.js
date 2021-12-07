@@ -3,6 +3,7 @@ import { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import buildTagLinks from '../util/build-tag-links';
 
 const initalValue = { search: [], relatedTags: [] };
+const minQueryLength = 2;
 
 export function useAddonsSearch() {
   const [query, setQuery] = useState('');
@@ -20,14 +21,14 @@ export function useAddonsSearch() {
     if (query === '') {
       setIsSearching(false);
       setResults(initalValue);
-    } else if (query !== '' && query.length > 3 && isSearching === false) {
+    } else if (query !== '' && query.length > minQueryLength && isSearching === false) {
       setIsSearching(true);
     }
   }, [query]);
 
   // Fetch search results with a debounce
   useEffect(() => {
-    if (debouncedSearchTerm && debouncedSearchTerm.length >= 3) {
+    if (debouncedSearchTerm && debouncedSearchTerm.length > minQueryLength) {
       searchAddons(debouncedSearchTerm).then((resultsData) => {
         setIsSearchLoading(false);
         setResults(resultsData);
