@@ -81,6 +81,17 @@
 /docs/presets/introduction/ /docs/react/api/presets/ 301
 /docs/presets/preset-gallery/ https://github.com/storybookjs/presets 301
 /docs/presets/writing-presets/ /docs/react/api/writing-presets/ 301
+/docs/workflows/testing-with-storybook/ /docs/react/writing-tests/introduction/ 301
+/docs/workflows/unit-testing/ /docs/react/writing-tests/importing-stories-in-tests/ 301
+/docs/workflows/visual-testing/ /docs/react/writing-tests/visual-testing/ 301
+/docs/workflows/interaction-testing/ /docs/react/writing-tests/interaction-testing/ 301
+/docs/workflows/snapshot-testing/ /docs/react/writing-tests/snapshot-testing/ 301
+/docs/workflows/build-pages-with-storybook/ /docs/react/writing-stories/build-pages-with-storybook/ 301
+/docs/workflows/stories-for-multiple-components/ /docs/react/writing-stories/stories-for-multiple-components/ 301
+/docs/workflows/publish-storybook/ /docs/react/sharing/publish-storybook/ 301
+/docs/workflows/storybook-composition/ /docs/react/sharing/storybook-composition/ 301
+/docs/workflows/package-composition/ /docs/react/sharing/package-composition/ 301
+/docs/workflows/faq/ /docs/react/faq/
 /versions.json /.netlify/functions/versions/:splat 200
 /blog/* https://storybook-blog.netlify.app/blog/:splat 200
 /tutorials/* https://storybook-tutorials.netlify.app/tutorials/:splat 200
