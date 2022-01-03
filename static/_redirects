@@ -1,26 +1,26 @@
 # See https://www.netlify.com/docs/redirects/
 
 # Older (prev 5.0 doc URLs)
-/basics/quick-start-guide                   /docs/guides/quick-start-guide                                                 301
-/basics/slow-start-guide                    /docs/guides/slow-start-guide                                                  301
-/basics/guide-react                         /docs/guides/guide-react                                                       301
-/basics/guide-react-native                  /docs/guides/guide-react-native                                                301
-/basics/guide-vue                           /docs/guides/guide-vue                                                         301
-/basics/guide-angular                       /docs/guides/guide-angular                                                     301
-/basics/guide-mithril                       /docs/guides/guide-mithril                                                     301
-/basics/guide-ember                         /docs/guides/guide-ember                                                       301
-/basics/guide-riot                          /docs/guides/guide-riot                                                        301
-/basics/guide-html                          /docs/guides/guide-html                                                        301
-/docs/basics/quick-start-guide              /docs/guides/quick-start-guide                                                 301
-/docs/basics/slow-start-guide               /docs/guides/slow-start-guide                                                  301
-/docs/basics/guide-react                    /docs/guides/guide-react                                                       301
-/docs/basics/guide-react-native             /docs/guides/guide-react-native                                                301
-/docs/basics/guide-vue                      /docs/guides/guide-vue                                                         301
-/docs/basics/guide-angular                  /docs/guides/guide-angular                                                     301
-/docs/basics/guide-mithril                  /docs/guides/guide-mithril                                                     301
-/docs/basics/guide-ember                    /docs/guides/guide-ember                                                       301
-/docs/basics/guide-riot                     /docs/guides/guide-riot                                                        301
-/docs/basics/guide-html                     /docs/guides/guide-html                                                        301
+/basics/quick-start-guide                   /docs/react/get-started/install/                                               301
+/basics/slow-start-guide                    /docs/react/configure/overview/                                                301
+/basics/guide-react                         /docs/react/                                                                   301
+/basics/guide-react-native                  https://github.com/storybookjs/react-native#storybook-for-react-native         301
+/basics/guide-vue                           /docs/vue/                                                                     301
+/basics/guide-angular                       /docs/angular/                                                                 301
+/basics/guide-mithril                       /docs/mithril/                                                                 301
+/basics/guide-ember                         /docs/ember/                                                                   301
+/basics/guide-riot                          /docs/riot/                                                                    301
+/basics/guide-html                          /docs/html/                                                                    301
+/docs/basics/quick-start-guide              /docs/react/get-started/install/                                               301
+/docs/basics/slow-start-guide               /docs/react/configure/overview/                                                301
+/docs/basics/guide-react                    /docs/react/                                                                   301
+/docs/basics/guide-react-native             https://github.com/storybookjs/react-native#storybook-for-react-native         301
+/docs/basics/guide-vue                      /docs/vue/                                                                     301
+/docs/basics/guide-angular                  /docs/angular/                                                                 301
+/docs/basics/guide-mithril                  /docs/mithril/                                                                 301
+/docs/basics/guide-ember                    /docs/ember/                                                                   301
+/docs/basics/guide-riot                     /docs/riot/                                                                    301
+/docs/basics/guide-html                     /docs/html/                                                                    301
 
 /basics/*                                   /docs/basics/:splat                                                            301
 /configurations/*                           /docs/configurations/:splat                                                    301
