@@ -237,6 +237,7 @@ exports.createPages = ({ actions, graphql }) => {
 
                   docsPagesSlugs.push(slug);
                 } else {
+                  // eslint-disable-next-line no-console
                   console.log(`Not creating page for '${docsPagePath}'`);
                 }
               }
@@ -280,9 +281,28 @@ function generateVersionsFile() {
   fs.writeFileSync('./public/versions-raw.json', JSON.stringify(data));
 }
 
+const buildLatestPathWithFramework = (slug, framework) =>
+  buildPathWithFramework(slug, framework, latestVersionString);
+
 function updateRedirectsFile() {
   const originalContents = fs.readFileSync('./static/_redirects');
-  const newContents = [...versions.stable, ...versions.preRelease, { string: 'next' }]
+
+  const rawRedirects = fs.readFileSync(path.join(__dirname, './src/util/redirects-raw.txt'), {
+    encoding: 'utf-8',
+  });
+  const redirectsWithFramework = rawRedirects
+    .split(/\n/)
+    .map((line) => line.split(/\s+/))
+    .reduce((acc, [from, to, code]) => {
+      frameworks.forEach((f) =>
+        // prettier-ignore
+        acc.push(`${buildLatestPathWithFramework(from, f)} ${buildLatestPathWithFramework(to, f)} ${code}`)
+      );
+      return acc;
+    }, [])
+    .join('\n');
+
+  const versionRedirects = [...versions.stable, ...versions.preRelease, { string: 'next' }]
     .reduce((acc, { string }) => {
       const isLatestLocal = string === latestVersionString;
       const versionStringLocal = string === 'next' ? nextVersionString : string;
@@ -311,7 +331,9 @@ function updateRedirectsFile() {
     }, [])
     .concat([`/releases /releases/${latestVersionString} 301`])
     .join('\n');
-  fs.writeFileSync('./public/_redirects', `${originalContents}\n\n${newContents}`);
+
+  // prettier-ignore
+  fs.writeFileSync('./public/_redirects', `${originalContents}\n\n${redirectsWithFramework}\n\n${versionRedirects}`);
 }
 
 exports.onPostBuild = () => {

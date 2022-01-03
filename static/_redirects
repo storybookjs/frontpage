@@ -1,99 +1,67 @@
 # See https://www.netlify.com/docs/redirects/
 
 # Older (prev 5.0 doc URLs)
-/basics/quick-start-guide /docs/guides/quick-start-guide 301
-/basics/slow-start-guide /docs/guides/slow-start-guide 301
-/basics/guide-react /docs/guides/guide-react 301
-/basics/guide-react-native /docs/guides/guide-react-native 301
-/basics/guide-vue /docs/guides/guide-vue 301
-/basics/guide-angular /docs/guides/guide-angular 301
-/basics/guide-mithril /docs/guides/guide-mithril 301
-/basics/guide-ember /docs/guides/guide-ember 301
-/basics/guide-riot /docs/guides/guide-riot 301
-/basics/guide-html /docs/guides/guide-html 301
-/docs/basics/quick-start-guide /docs/guides/quick-start-guide 301
-/docs/basics/slow-start-guide /docs/guides/slow-start-guide 301
-/docs/basics/guide-react /docs/guides/guide-react 301
-/docs/basics/guide-react-native /docs/guides/guide-react-native 301
-/docs/basics/guide-vue /docs/guides/guide-vue 301
-/docs/basics/guide-angular /docs/guides/guide-angular 301
-/docs/basics/guide-mithril /docs/guides/guide-mithril 301
-/docs/basics/guide-ember /docs/guides/guide-ember 301
-/docs/basics/guide-riot /docs/guides/guide-riot 301
-/docs/basics/guide-html /docs/guides/guide-html 301
+/basics/quick-start-guide                        /docs/guides/quick-start-guide                                                 301
+/basics/slow-start-guide                         /docs/guides/slow-start-guide                                                  301
+/basics/guide-react                              /docs/guides/guide-react                                                       301
+/basics/guide-react-native                       /docs/guides/guide-react-native                                                301
+/basics/guide-vue                                /docs/guides/guide-vue                                                         301
+/basics/guide-angular                            /docs/guides/guide-angular                                                     301
+/basics/guide-mithril                            /docs/guides/guide-mithril                                                     301
+/basics/guide-ember                              /docs/guides/guide-ember                                                       301
+/basics/guide-riot                               /docs/guides/guide-riot                                                        301
+/basics/guide-html                               /docs/guides/guide-html                                                        301
+/docs/basics/quick-start-guide                   /docs/guides/quick-start-guide                                                 301
+/docs/basics/slow-start-guide                    /docs/guides/slow-start-guide                                                  301
+/docs/basics/guide-react                         /docs/guides/guide-react                                                       301
+/docs/basics/guide-react-native                  /docs/guides/guide-react-native                                                301
+/docs/basics/guide-vue                           /docs/guides/guide-vue                                                         301
+/docs/basics/guide-angular                       /docs/guides/guide-angular                                                     301
+/docs/basics/guide-mithril                       /docs/guides/guide-mithril                                                     301
+/docs/basics/guide-ember                         /docs/guides/guide-ember                                                       301
+/docs/basics/guide-riot                          /docs/guides/guide-riot                                                        301
+/docs/basics/guide-html                          /docs/guides/guide-html                                                        301
 
-/basics/* /docs/basics/:splat 301
-/configurations/* /docs/configurations/:splat 301
-/examples/* /docs/examples/:splat 301
-/logos/* /docs/logos/:splat 301
-/testing/* /docs/testing/:splat 301
-/addons/addon-gallery/ /addons/ 301
+/basics/*                                        /docs/basics/:splat                                                            301
+/configurations/*                                /docs/configurations/:splat                                                    301
+/examples/*                                      /docs/examples/:splat                                                          301
+/logos/*                                         /docs/logos/:splat                                                             301
+/testing/*                                       /docs/testing/:splat                                                           301
+/addons/addon-gallery/                           /addons/                                                                       301
 
 # Pre 6.0 URLs
-/docs/basics/introduction/ /docs/react/get-started/introduction/ 301
-/docs/basics/writing-stories/ /docs/react/get-started/whats-a-story/ 301
-/docs/basics/exporting-storybook/ /docs/react/workflows/publish-storybook/ 301
-/docs/basics/faq/ /docs/react/workflows/faq/ 301
-/docs/basics/live-examples/ https://github.com/storybookjs/storybook/blob/next/examples/README.md 301
-/docs/examples/ /docs/react/get-started/examples/ 301
+/docs/basics/introduction/                       /docs/react/get-started/introduction/                                          301
+/docs/basics/writing-stories/                    /docs/react/get-started/whats-a-story/                                         301
+/docs/basics/exporting-storybook/                /docs/react/workflows/publish-storybook/                                       301
+/docs/basics/faq/                                /docs/react/workflows/faq/                                                     301
+/docs/basics/live-examples/                      https://github.com/storybookjs/storybook/blob/next/examples/README.md          301
+/docs/examples/                                  /docs/react/get-started/examples/                                              301
 
-/docs/guides/quick-start-guide/ /docs/react/get-started/install/ 301
-/docs/guides/slow-start-guide/ /docs/react/configure/overview/ 301
-/docs/guides/guide-html/ /docs/html/ 301
-/docs/guides/guide-react/ /docs/react/ 301
-/docs/guides/guide-react-native/ https://github.com/storybookjs/react-native#storybook-for-react-native 301
-/docs/guides/guide-vue/ /docs/vue/ 301
-/docs/guides/guide-angular/ /docs/angular/ 301
-/docs/guides/guide-mithril/ /docs/mithril/ 301
-/docs/guides/guide-marko/ /docs/marko/ 301
-/docs/guides/guide-ember/ /docs/ember/ 301
-/docs/guides/guide-riot/ /docs/riot/ 301
-/docs/guides/guide-svelte/ /docs/svelte/ 301
-/docs/guides/guide-preact/ /docs/preact/ 301
+/docs/guides/quick-start-guide/                  /docs/react/get-started/install/                                               301
+/docs/guides/slow-start-guide/                   /docs/react/configure/overview/                                                301
+/docs/guides/guide-html/                         /docs/html/                                                                    301
+/docs/guides/guide-react/                        /docs/react/                                                                   301
+/docs/guides/guide-react-native/                 https://github.com/storybookjs/react-native#storybook-for-react-native         301
+/docs/guides/guide-vue/                          /docs/vue/                                                                     301
+/docs/guides/guide-angular/                      /docs/angular/                                                                 301
+/docs/guides/guide-mithril/                      /docs/mithril/                                                                 301
+/docs/guides/guide-marko/                        /docs/marko/                                                                   301
+/docs/guides/guide-ember/                        /docs/ember/                                                                   301
+/docs/guides/guide-riot/                         /docs/riot/                                                                    301
+/docs/guides/guide-svelte/                       /docs/svelte/                                                                  301
+/docs/guides/guide-preact/                       /docs/preact/                                                                  301
 
+/docs/configurations/standalone-options/         https://github.com/storybookjs/storybook/blob/next/lib/core/docs/standalone.md 301
+/docs/formats/storiesof-api/                     https://github.com/storybookjs/storybook/blob/next/lib/core/docs/storiesOf.md  301
+/docs/presets/preset-gallery/                    https://github.com/storybookjs/presets                                         301
+/docs/testing/react-ui-testing/                  /docs/react/writing-tests/introduction/                                        301
+/addons/writing-addons/                          /docs/react/addons/writing-addons/                                             301                                                                     301
+/docs/workflows/faq/                             /docs/faq/                                                                     301
 
-/docs/configurations/overview/ /docs/react/configure/overview/ 301
-/docs/configurations/options-parameter/ /docs/react/configure/features-and-behavior/ 301
-/docs/configurations/default-config/ /docs/react/configure/overview/ 301
-/docs/configurations/custom-webpack-config/ /docs/react/configure/webpack/ 301
-/docs/configurations/custom-babel-config/ /docs/react/configure/babel/ 301
-/docs/configurations/typescript-config/ /docs/react/configure/typescript/ 301
-/docs/configurations/add-custom-head-tags/ /docs/react/configure/story-rendering#adding-to-head/ 301
-/docs/configurations/add-custom-body/ /docs/react/configure/story-rendering#adding-to-body/ 301
-/docs/configurations/serving-static-files/ /docs/react/configure/images-and-assets#serving-static-files-via-storybook/ 301
-/docs/configurations/env-vars/ /docs/react/configure/environment-variables/ 301
-/docs/configurations/theming/ /docs/react/configure/theming/ 301
-/docs/configurations/cli-options/ /docs/react/api/cli-options/ 301
-/docs/configurations/standalone-options/ https://github.com/storybookjs/storybook/blob/next/lib/core/docs/standalone.md 301
-/docs/formats/component-story-format/ /docs/react/api/csf/ 301
-/docs/formats/storiesof-api/ https://github.com/storybookjs/storybook/blob/next/lib/core/docs/storiesOf.md 301
-/docs/formats/mdx-syntax/ /docs/react/api/mdx/ 301
-/docs/testing/react-ui-testing/ /docs/react/workflows/testing-with-storybook/ 301
-/docs/testing/structural-testing/ /docs/react/workflows/snapshot-testing/ 301
-/docs/testing/interaction-testing/ /docs/react/workflows/interaction-testing/ 301
-/docs/testing/automated-visual-testing/ /docs/react/workflows/visual-testing/ 301
-/docs/testing/manual-testing/ /docs/react/workflows/testing-with-storybook/ 301
-/docs/addons/introduction/ /docs/react/addons/introduction/ 301
-/docs/addons/using-addons/ /docs/react/addons/install-addons/ 301
-/docs/addons/writing-addons/ /docs/react/addons/writing-addons/ 301
-/addons/writing-addons/ /docs/react/addons/writing-addons/ 301
-/docs/addons/api/ /docs/react/addons/addons-api/ 301
-/docs/presets/introduction/ /docs/react/api/presets/ 301
-/docs/presets/preset-gallery/ https://github.com/storybookjs/presets 301
-/docs/presets/writing-presets/ /docs/react/api/writing-presets/ 301
-/docs/workflows/testing-with-storybook/ /docs/react/writing-tests/introduction/ 301
-/docs/workflows/unit-testing/ /docs/react/writing-tests/importing-stories-in-tests/ 301
-/docs/workflows/visual-testing/ /docs/react/writing-tests/visual-testing/ 301
-/docs/workflows/interaction-testing/ /docs/react/writing-tests/interaction-testing/ 301
-/docs/workflows/snapshot-testing/ /docs/react/writing-tests/snapshot-testing/ 301
-/docs/workflows/build-pages-with-storybook/ /docs/react/writing-stories/build-pages-with-storybook/ 301
-/docs/workflows/stories-for-multiple-components/ /docs/react/writing-stories/stories-for-multiple-components/ 301
-/docs/workflows/publish-storybook/ /docs/react/sharing/publish-storybook/ 301
-/docs/workflows/storybook-composition/ /docs/react/sharing/storybook-composition/ 301
-/docs/workflows/package-composition/ /docs/react/sharing/package-composition/ 301
-/docs/workflows/faq/ /docs/react/faq/
-/versions.json /.netlify/functions/versions/:splat 200
-/blog/* https://storybook-blog.netlify.app/blog/:splat 200
-/tutorials/* https://storybook-tutorials.netlify.app/tutorials/:splat 200
+/versions.json                                   /.netlify/functions/versions/:splat                                            200
+/blog/*                                          https://storybook-blog.netlify.app/blog/:splat                                 200
+/tutorials/*                                     https://storybook-tutorials.netlify.app/tutorials/:splat                       200
 
-/design-system https://5ccbc373887ca40020446347-oghpnhotjv.chromatic.com
+/design-system                                   https://5ccbc373887ca40020446347-oghpnhotjv.chromatic.com
+
+# Rest of this file is generated (see gatsby-node.js > updateRedirectsFile)
