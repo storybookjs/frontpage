@@ -1,0 +1,11 @@
+/docs/workflows/testing-with-storybook/          /docs/writing-tests/introduction/                                              301
+/docs/workflows/unit-testing/                    /docs/writing-tests/importing-stories-in-tests/                                301
+/docs/workflows/visual-testing/                  /docs/writing-tests/visual-testing/                                            301
+/docs/workflows/interaction-testing/             /docs/writing-tests/interaction-testing/                                       301
+/docs/workflows/snapshot-testing/                /docs/writing-tests/snapshot-testing/                                          301
+/docs/workflows/build-pages-with-storybook/      /docs/writing-stories/build-pages-with-storybook/                              301
+/docs/workflows/stories-for-multiple-components/ /docs/writing-stories/stories-for-multiple-components/                         301
+/docs/workflows/publish-storybook/               /docs/sharing/publish-storybook/                                               301
+/docs/workflows/storybook-composition/           /docs/sharing/storybook-composition/                                           301
+/docs/workflows/package-composition/             /docs/sharing/package-composition/                                             301
+/docs/workflows/faq/                             /docs/faq/                                                                     301
