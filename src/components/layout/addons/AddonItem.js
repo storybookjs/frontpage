@@ -227,7 +227,7 @@ export const AddonItem = ({
         noPlural
         isLoading={isLoading}
       />
-      <Authors users={isLoading ? undefined : authors} isLoading={isLoading} />
+      <Authors users={isLoading ? undefined : authors || []} isLoading={isLoading} />
     </Meta>
   </AddonItemWrapper>
 );
