@@ -5,7 +5,7 @@ export const SEARCH_INPUT_ID = 'algolia-search';
 const SEARCH_LIBRARY_SCRIPT_ID = 'algolia-search-library';
 const SEARCH_INIT_SCRIPT_ID = 'algolia-search-init';
 
-export default ({ framework }) => {
+export default ({ framework, version }) => {
   const [isSearchVisible, setSearchVisible] = useState(!!process.env.GATSBY_ALGOLIA_API_KEY);
 
   useEffect(() => {
@@ -22,7 +22,9 @@ export default ({ framework }) => {
           apiKey: process.env.GATSBY_ALGOLIA_API_KEY,
           indexName: 'storybook-js',
           inputSelector: `#${SEARCH_INPUT_ID}`,
-          algoliaOptions: { facetFilters: ['tags:docs', `framework:${framework}`] },
+          algoliaOptions: {
+            facetFilters: ['tags:docs', `framework:${framework}`, `version:${version}`],
+          },
         });
       } catch (err) {
         setSearchVisible(false);
@@ -41,7 +43,7 @@ export default ({ framework }) => {
       libraryScript.src = 'https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js';
       document.body.appendChild(libraryScript);
     }
-  }, [framework]);
+  }, [framework, version]);
 
   return { isSearchVisible };
 };

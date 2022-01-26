@@ -165,7 +165,7 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext, ...props })
   } = useSiteMetadata();
   const { docsToc, framework, fullPath, slug, versions } = pageContext;
   const [searchValue, setSearchValue] = useState('');
-  const { isSearchVisible } = useAlgoliaSearch({ framework });
+  const { isSearchVisible } = useAlgoliaSearch({ framework, version });
 
   const addLinkWrappers = (items) =>
     items.map((item) => ({
