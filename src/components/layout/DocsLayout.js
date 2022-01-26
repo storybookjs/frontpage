@@ -195,6 +195,7 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext, ...props })
           href={`${homepageUrl}${buildPathWithFramework(slug, canonicalFramework)}/`}
         />
         <meta name="docsearch:framework" content={framework} />
+        <meta name="docsearch:version" content={version} />
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"
