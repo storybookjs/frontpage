@@ -77,6 +77,7 @@ const useSiteMetadata = () => {
             releases
             tutorials
             addons
+            showcase
             community
             useCases
             support

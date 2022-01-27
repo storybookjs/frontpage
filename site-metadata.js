@@ -55,6 +55,7 @@ const siteMetadata = {
 
     // Navigation
     home: homepageUrl,
+    showcase: `https://storybook.js.org/showcase/`,
     docs: '/docs/',
     tutorials: `https://storybook.js.org/tutorials/`,
     addons: `/addons/`,
@@ -103,6 +104,8 @@ const siteMetadata = {
 };
 
 siteMetadata.urls.navCommunityLinks = [
+  { title: 'Blog', href: siteMetadata.urls.blog, isGatsby: false },
+  { title: 'Releases', href: siteMetadata.urls.releases, isGatsby: true },
   { title: 'Get involved', href: siteMetadata.urls.community, isGatsby: true },
   { title: 'Use cases', href: siteMetadata.urls.useCases, isGatsby: true },
   { title: 'Support', href: siteMetadata.urls.support, isGatsby: true },
@@ -110,11 +113,10 @@ siteMetadata.urls.navCommunityLinks = [
 ];
 
 siteMetadata.urls.navLinks = [
+  { title: 'Showcase', href: siteMetadata.urls.showcase, isGatsby: false },
   { title: 'Docs', href: siteMetadata.urls.docsUrl, isGatsby: false },
   { title: 'Tutorials', href: siteMetadata.urls.tutorials, isGatsby: false },
-  { title: 'Releases', href: siteMetadata.urls.releases, isGatsby: true },
   { title: 'Addons', href: siteMetadata.urls.addons, isGatsby: true },
-  { title: 'Blog', href: siteMetadata.urls.blog, isGatsby: false },
   ...siteMetadata.urls.navCommunityLinks,
 ];
 
