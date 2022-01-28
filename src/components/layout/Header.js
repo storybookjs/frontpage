@@ -95,7 +95,7 @@ export default function Header({ ...props }) {
       links={
         <>
           <NavItem showDesktop>
-            <NavLink tertiary href={showcase} isGatsby LinkWrapper={LinkWrapper}>
+            <NavLink tertiary href={showcase} LinkWrapper={LinkWrapper}>
               Showcase
             </NavLink>
           </NavItem>
