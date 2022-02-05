@@ -40,13 +40,13 @@ const Title = styled.div`
   @media (min-width: ${breakpoint * 1.5}px) {
     margin-bottom: 0.5rem;
     font-size: ${typography.size.m1}px;
-    line-height: ${typography.size.m2}px;
+    line-height: ${typography.size.m3}px;
   }
 `;
 const Desc = styled.div`
   color: ${color.dark};
   font-size: ${typography.size.s3}px;
-  line-height: 1.5;
+  line-height: ${typography.size.m3}px;
 `;
 
 const Meta = styled.div``;
