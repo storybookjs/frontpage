@@ -9,6 +9,7 @@ import { SocialGraph, Video } from '../../basics';
 import GatsbyLink from '../../basics/GatsbyLink';
 import Hero from './Hero';
 import SocialProof from '../../layout/SocialProof';
+import Integrations from './Integrations';
 import PlaceholderAspectRatio from '../../layout/PlaceholderAspectRatio';
 import ValueProp from '../../layout/ValueProp';
 import Testimonial from '../../layout/Testimonial';
@@ -382,16 +383,18 @@ export function PureIndexScreen({ ...props }) {
             }
           />
         </BenefitList>
+        <CTA
+          text={<span>Storybook is quick to install and it’s easy to get started.</span>}
+          action={
+            <Button appearance="secondary" isLink href={docs}>
+              Go to the docs
+            </Button>
+          }
+        />
+        <Separator />
       </Contrast>
 
-      <CTA
-        text={<span>Storybook is quick to install and it’s easy to get started.</span>}
-        action={
-          <Button appearance="secondary" isLink href={docs}>
-            Go to the docs
-          </Button>
-        }
-      />
+      <Integrations />
     </>
   );
 }
