@@ -1,5 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { styled } from '@storybook/theming';
 
 import { Button, Link, styles } from '@storybook/design-system';
@@ -9,6 +9,7 @@ import { SocialGraph, Video } from '../../basics';
 import GatsbyLink from '../../basics/GatsbyLink';
 import Hero from './Hero';
 import SocialProof from '../../layout/SocialProof';
+import Integrations from './Integrations';
 import PlaceholderAspectRatio from '../../layout/PlaceholderAspectRatio';
 import ValueProp from '../../layout/ValueProp';
 import Testimonial from '../../layout/Testimonial';
@@ -20,7 +21,7 @@ import AtomicDesignLogoSVG from '../../../images/logos/user/logo-atomicdesign.sv
 import GitlabLogoSVG from '../../../images/logos/user/logo-gitlab.svg';
 import AirBnBLogoSVG from '../../../images/logos/user/logo-airbnb.svg';
 
-const { background } = styles;
+const { background, color } = styles;
 
 const Contrast = styled.div`
   background-color: ${background.app};
@@ -36,6 +37,18 @@ const Placeholder = styled(PlaceholderAspectRatio)`
     height: auto;
     display: block;
   }
+`;
+
+const Code = styled.code`
+  background-color: ${color.lighter};
+  border-radius: 3px;
+
+  color: inherit;
+  border: 1px solid ${color.border};
+  font-size: 85%;
+  line-height: 1;
+  padding: 3px 5px;
+  white-space: nowrap;
 `;
 
 export function PureIndexScreen({ ...props }) {
@@ -80,7 +93,12 @@ export function PureIndexScreen({ ...props }) {
         <BenefitItem
           image={<img src="/images/home/build-canvas.png" alt="isolate" />}
           title="Build UIs in isolation"
-          desc="Implement components and pages without needing to fuss with data, APIs, or business logic."
+          desc={
+            <>
+              Implement <Link href={docs}>components and pages</Link> without needing to fuss with
+              data, APIs, or business logic.
+            </>
+          }
         />
         <BenefitItem
           image={<img src="/images/home/build-cases.png" alt="mock states" />}
@@ -89,13 +107,11 @@ export function PureIndexScreen({ ...props }) {
         />
         <BenefitItem
           image={<img src="/images/home/build-sidebar.png" alt="save use cases" />}
-          title="Document use cases as stories"
+          title="Keep track of use cases as stories"
           desc={
             <>
               Save use cases as stories in{' '}
-              <Link href="https://storybook.js.org/basics/writing-stories/" target="_blank">
-                plain JavaScript
-              </Link>{' '}
+              <Link href="https://storybook.js.org/basics/writing-stories/">plain JavaScript</Link>{' '}
               to revisit during development, testing, and QA.
             </>
           }
@@ -103,7 +119,12 @@ export function PureIndexScreen({ ...props }) {
         <BenefitItem
           image={<img src="/images/home/build-addons.png" alt="extend with addons" />}
           title="Supercharge your workflow with addons"
-          desc="Use addons to customize your workflow, automate testing, and integrate with your favorite tools."
+          desc={
+            <>
+              Use <GatsbyLink to="/addons">addons</GatsbyLink> to customize your workflow, automate
+              testing, and integrate with your favorite tools.
+            </>
+          }
         />
       </BenefitList>
       <Testimonial
@@ -140,27 +161,70 @@ export function PureIndexScreen({ ...props }) {
           <BenefitItem
             image={<img src="/images/home/test-visual.png" alt="visual test" />}
             title="Spot test in a glance"
-            desc="Whenever you write a story you get a handy test case. Quickly browse stories to make sure your UI looks right."
+            desc={
+              <>
+                Whenever you write a story you get a{' '}
+                <Link href={`${docs}react/writing-tests/introduction`}>handy test case</Link>.
+                Quickly browse stories to make sure your UI looks right.
+              </>
+            }
           />
           <BenefitItem
             image={
               <img src="/images/home/test-visual-regression.png" alt="visual regression test" />
             }
             title="Visual test appearance"
-            desc="Pinpoint UI changes down to the pixel by comparing image snapshots of stories."
+            desc={
+              <>
+                Pinpoint UI changes down to the pixel by comparing{' '}
+                <Link href={`${docs}react/writing-tests/visual-testing`}>image snapshots</Link> of
+                stories.
+              </>
+            }
           />
+
           <BenefitItem
-            image={<img src="/images/home/test-unit.png" alt="unit test" />}
-            title="Unit test functionality"
-            desc="Reuse stories in your unit tests to confirm nuanced functionality."
+            image={<img src="/images/home/test-interactions.png" alt="Interaction test" />}
+            title="Interaction test behavior"
+            desc={
+              <>
+                Verify interactions by simulating
+                <Link href={`${docs}react/writing-tests/interaction-testing`}>user behavior</Link>.
+                Debug visually alongside your story. Integrates with Testing Library.
+              </>
+            }
           />
+
           <BenefitItem
             image={<img src="/images/home/test-accessibility.png" alt="accessibility test" />}
             title="Accessibility test"
             desc={
               <>
-                Check stories for WCAG and ARIA issues with the{' '}
-                <GatsbyLink to="/addons/@storybook/addon-a11y/">A11y addon</GatsbyLink>.
+                Check stories for WCAG and ARIA issues in your browser with the{' '}
+                <Link href={`${docs}react/writing-tests/accessibility-testing`}>A11y addon</Link>.
+              </>
+            }
+          />
+
+          <BenefitItem
+            image={<img src="/images/home/test-snapshot.png" alt="accessibility test" />}
+            title="Snapshot test markup"
+            desc={
+              <>
+                Detect regressions in DOM markup and run smoke tests with{' '}
+                <Link href={`${docs}react/writing-tests/interaction-testing`}>code snapshots</Link>.
+              </>
+            }
+          />
+          <BenefitItem
+            image={<img src="/images/home/test-unit.png" alt="unit test" />}
+            title="Unit test functionality"
+            desc={
+              <>
+                <Link href={`${docs}react/writing-tests/importing-stories-in-tests`}>
+                  Reuse stories
+                </Link>{' '}
+                in your unit tests to confirm nuanced functionality.
               </>
             }
           />
@@ -187,41 +251,56 @@ export function PureIndexScreen({ ...props }) {
         media={
           <Placeholder ratio={0.75}>
             <Video
-              src="videos/storybook-workflow-share-optimized-lg.mp4"
+              src="videos/storybook-workflow-document-optimized-lg.mp4"
               alt="Storybook component reuse workflow video"
               shouldChangeSize
             />
           </Placeholder>
         }
-        title="Document UI to share with your team"
-        desc="Stories show how UIs actually work not just how they're supposed to work. That makes
-            gathering feedback and reproductions easy."
+        title="Document UI for your team to reuse"
+        desc="Storybook brings together UI, examples, and documentation in one place. That helps teammates adopt existing UI patterns."
         lazyloadPlaceholder={<Placeholder ratio={0.75} />}
       />
       <BenefitList>
         <BenefitItem
-          image={<img src="/images/home/share-search.png" alt="search stories" />}
+          image={<img src="/images/home/document-search.png" alt="search stories" />}
           title="Find any component or page in your app"
-          desc="Storybook is a searchable, single source of truth for your UI."
+          desc={
+            <>
+              Storybook is a searchable,{' '}
+              <Link href={`${docs}react/get-started/browse-stories`}>single source of truth</Link>{' '}
+              for your UI.
+            </>
+          }
         />
         <BenefitItem
-          image={<img src="/images/home/share-collaborate.png" alt="collaborate" />}
-          title="Get timely feedback during development"
-          desc="Publish Storybook online to give your team a universal reference point for feedback."
-        />
-        <BenefitItem
-          image={<img src="/images/home/share-reuse.png" alt="share stories" />}
-          title="Share components across screens and apps"
-          desc="Every story is a use case that your team can find and reuse. "
-        />
-        <BenefitItem
-          image={<img src="/images/home/share-document.png" alt="create a styleguide" />}
+          image={<img src="/images/home/document-docs-site.png" alt="create a styleguide" />}
           title="Generate UI docs automatically"
           desc={
             <>
-              Write Markdown/MDX to generate a customizable site for component libraries and design
-              systems with our{' '}
-              <GatsbyLink to="/addons/@storybook/addon-docs/">Docs addon</GatsbyLink>.
+              Write Markdown/MDX to generate a{' '}
+              <Link href={`${docs}react/writing-docs/introduction`}>docs site</Link> for component
+              libraries and design systems.
+            </>
+          }
+        />
+        <BenefitItem
+          image={<img src="/images/home/document-reuse.png" alt="Reuse stories" />}
+          title="Reuse components across screens and apps"
+          desc="Every story is a use case that your team can find and reuse. "
+        />
+        <BenefitItem
+          image={
+            <img
+              src="/images/home/document-version-history.png"
+              alt="Component history and versions"
+            />
+          }
+          title="Track component history and versions"
+          desc={
+            <>
+              QA unexpected bugs by going back in time to compare components from previous
+              Storybooks with the <GatsbyLink to="/addons/chromatic/">Chromatic addon</GatsbyLink>.
             </>
           }
         />
@@ -240,14 +319,87 @@ export function PureIndexScreen({ ...props }) {
         logo={GitlabLogoSVG}
       />
 
-      <CTA
-        text={<span>Storybook is quick to install and it’s easy to get started.</span>}
-        action={
-          <Button appearance="secondary" isLink href={docs}>
-            Go to the docs
-          </Button>
-        }
-      />
+      <Contrast>
+        <Separator />
+        <ValueProp
+          orientation="right"
+          media={
+            <Placeholder ratio={0.75}>
+              <Video
+                src="videos/storybook-publish-review-greybg-optimized-lg.mp4"
+                alt="Publish to review workflow video"
+                shouldChangeSize
+              />
+            </Placeholder>
+          }
+          title="Share to get sign off from teammates"
+          desc="Stories show how UIs actually work not just how they're supposed to work. That makes
+            gathering feedback and reproductions easy."
+          lazyloadPlaceholder={<Placeholder ratio={0.75} />}
+        />
+        <BenefitList>
+          <BenefitItem
+            image={<img src="/images/home/share-publish.png" alt="Publish Storybook online" />}
+            title="Publish to get feedback"
+            desc={
+              <>
+                <Link href={`${docs}react/sharing/publish-storybook`}>Publish Storybook</Link>{' '}
+                online to give your team a universal reference point for feedback.
+              </>
+            }
+          />
+          <BenefitItem
+            image={<img src="/images/home/share-embed.png" alt="Embed stories" />}
+            title="Embed stories in your favorite sites"
+            desc={
+              <>
+                <Link href={`${docs}react/sharing/embed`}>Embed stories</Link> to showcase live
+                interactive examples in your docs. Works with Notion, Medium and any site supporting
+                the oEmbed standard.
+              </>
+            }
+          />
+          <BenefitItem
+            image={<img src="/images/home/share-compose-storybooks.png" alt="Compose Storybooks" />}
+            title="Compose multiple Storybooks together"
+            desc={
+              <>
+                <Link href={`${docs}react/sharing/composition`}>Reference external Storybooks</Link>{' '}
+                inside your local Storybook, no matter the view layer, tech stack, or dependencies.
+              </>
+            }
+          />
+          <BenefitItem
+            image={<img src="/images/home/share-import-stories.png" alt="Import stories" />}
+            title={
+              <>
+                <Code>import</Code> stories into other JavaScript tooling
+              </>
+            }
+            desc={
+              <>
+                Stories are a{' '}
+                <Link href={`${docs}react/writing-tests/importing-stories-in-tests`}>
+                  portable standard
+                </Link>{' '}
+                based on ES6 modules. Write stories once and import them into any JavaScript testing
+                library.
+              </>
+            }
+          />
+        </BenefitList>
+        <CTA
+          text={<span>Storybook is quick to install and it’s easy to get started.</span>}
+          action={
+            <Button appearance="secondary" isLink href={docs}>
+              Go to the docs
+            </Button>
+          }
+        />
+        <Separator />
+      </Contrast>
+
+      <Integrations docs={docs} />
     </>
   );
 }
