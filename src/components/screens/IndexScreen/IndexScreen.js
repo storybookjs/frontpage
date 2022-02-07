@@ -188,7 +188,7 @@ export function PureIndexScreen({ ...props }) {
             title="Interaction test behavior"
             desc={
               <>
-                Verify interactions by simulating
+                Verify interactions by simulating{' '}
                 <Link href={`${docs}react/writing-tests/interaction-testing`}>user behavior</Link>.
                 Debug visually alongside your story. Integrates with Testing Library.
               </>
@@ -212,7 +212,7 @@ export function PureIndexScreen({ ...props }) {
             desc={
               <>
                 Detect regressions in DOM markup and run smoke tests with{' '}
-                <Link href={`${docs}react/writing-tests/interaction-testing`}>code snapshots</Link>.
+                <Link href={`${docs}react/writing-tests/snapshot-testing`}>code snapshots</Link>.
               </>
             }
           />
@@ -364,7 +364,9 @@ export function PureIndexScreen({ ...props }) {
             title="Compose multiple Storybooks together"
             desc={
               <>
-                <Link href={`${docs}react/sharing/composition`}>Reference external Storybooks</Link>{' '}
+                <Link href={`${docs}react/sharing/storybook-composition`}>
+                  Reference external Storybooks
+                </Link>{' '}
                 inside your local Storybook, no matter the view layer, tech stack, or dependencies.
               </>
             }
