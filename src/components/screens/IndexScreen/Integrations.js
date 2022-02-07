@@ -139,7 +139,7 @@ export default function Integrations({ docs, ...props }) {
             </IntegrationItem>
             <IntegrationItem
               as={GatsbyLinkWrapper}
-              to={`${docs}docs/react/writing-tests/importing-stories-in-tests`}
+              to={`${docs}react/writing-tests/importing-stories-in-tests`}
             >
               <img src={TestingLib} title="TestingLib" alt="TestingLib" />
             </IntegrationItem>
@@ -148,7 +148,7 @@ export default function Integrations({ docs, ...props }) {
             </IntegrationItem>
             <IntegrationItem
               as={GatsbyLinkWrapper}
-              to={`${docs}docs/react/writing-tests/importing-stories-in-tests`}
+              to={`${docs}react/writing-tests/importing-stories-in-tests`}
             >
               <img src={Puppeteer} title="Puppeteer" alt="Puppeteer" />
             </IntegrationItem>
@@ -174,7 +174,7 @@ export default function Integrations({ docs, ...props }) {
             </IntegrationItem>
             <IntegrationItem
               as={GatsbyLinkWrapper}
-              to={`${docs}docs/react/writing-tests/importing-stories-in-tests`}
+              to={`${docs}react/writing-tests/importing-stories-in-tests`}
             >
               <img src={Playwright} title="Playwright" alt="Playwright" />
             </IntegrationItem>
@@ -183,7 +183,7 @@ export default function Integrations({ docs, ...props }) {
             </IntegrationItem>
             <IntegrationItem
               as={GatsbyLinkWrapper}
-              to={`${docs}docs/react/writing-tests/importing-stories-in-tests`}
+              to={`${docs}react/writing-tests/importing-stories-in-tests`}
             >
               <img src={Cypress} title="Cypress" alt="Cypress" />
             </IntegrationItem>
