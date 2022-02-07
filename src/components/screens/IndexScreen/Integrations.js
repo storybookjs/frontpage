@@ -119,7 +119,7 @@ export default function Integrations({ docs, ...props }) {
             <IntegrationItem as={GatsbyLinkWrapper} to="/addons/@storybook/addon-jest">
               <img src={Jest} title="Jest" alt="Jest" />
             </IntegrationItem>
-            <IntegrationItem href="https://storybook.js.org/basics/blog/figma-plugin-sneak-peek">
+            <IntegrationItem href="https://storybook.js.org/blog/figma-plugin-sneak-peek">
               <img src={Figma} title="Figma" alt="Figma" />
             </IntegrationItem>
             <IntegrationItem target="_blank" href="https://www.chromatic.com/">
