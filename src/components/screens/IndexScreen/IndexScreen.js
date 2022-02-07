@@ -353,8 +353,9 @@ export function PureIndexScreen({ ...props }) {
             title="Embed stories in your favorite sites"
             desc={
               <>
-                <Link href={`${docs}react/sharing/embed`}>Embed stories</Link> to showcase your work
-                to teammates and the developer community. Works with the oEmbed standard.
+                <Link href={`${docs}react/sharing/embed`}>Embed stories</Link> to showcase live
+                interactive examples in your docs. Works with Notion, Medium and any site supporting
+                the oEmbed standard.
               </>
             }
           />
@@ -377,8 +378,12 @@ export function PureIndexScreen({ ...props }) {
             }
             desc={
               <>
-                Stories are a <Link href={`${docs}react/writing-tests/importing-stories-in-tests`}>portable standard</Link> based on
-                ES6 modules. Write stories once and import them into any JavaScript library.
+                Stories are a{' '}
+                <Link href={`${docs}react/writing-tests/importing-stories-in-tests`}>
+                  portable standard
+                </Link>{' '}
+                based on ES6 modules. Write stories once and import them into any JavaScript testing
+                library.
               </>
             }
           />
@@ -394,7 +399,7 @@ export function PureIndexScreen({ ...props }) {
         <Separator />
       </Contrast>
 
-      <Integrations />
+      <Integrations docs={docs} />
     </>
   );
 }
