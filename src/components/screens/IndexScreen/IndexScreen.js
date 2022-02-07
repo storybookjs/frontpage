@@ -377,7 +377,7 @@ export function PureIndexScreen({ ...props }) {
             }
             desc={
               <>
-                Stories are a <Link href={`${docs}react/api/csf`}>portable standard</Link> based on
+                Stories are a <Link href={`${docs}react/writing-tests/importing-stories-in-tests`}>portable standard</Link> based on
                 ES6 modules. Write stories once and import them into any JavaScript library.
               </>
             }
