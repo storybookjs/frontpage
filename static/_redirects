@@ -87,6 +87,20 @@
 /showcase/*                                 https://storybook-component-catalog.netlify.app/showcase/:splat                200
 /tutorials/*                                https://storybook-tutorials.netlify.app/tutorials/:splat                       200
 
+# We can't use updateRedirectsFile for these because it adds the framework to the destination
+/docs/react/get-started/examples            /showcase                                                                      301
+/docs/vue/get-started/examples              /showcase                                                                      301
+/docs/angular/get-started/examples          /showcase                                                                      301
+/docs/web-components/get-started/examples   /showcase                                                                      301
+/docs/ember/get-started/examples            /showcase                                                                      301
+/docs/html/get-started/examples             /showcase                                                                      301
+/docs/mithril/get-started/examples          /showcase                                                                      301
+/docs/marko/get-started/examples            /showcase                                                                      301
+/docs/svelte/get-started/examples           /showcase                                                                      301
+/docs/riot/get-started/examples             /showcase                                                                      301
+/docs/preact/get-started/examples           /showcase                                                                      301
+/docs/rax/get-started/examples              /showcase                                                                      301
+
 /design-system                              https://master--5ccbc373887ca40020446347.chromatic.com
 
 # Rest of this file is generated (see gatsby-node.js > updateRedirectsFile)
