@@ -69,13 +69,12 @@ LinkWrapper.propTypes = {
 export default function Header({ ...props }) {
   const { urls = {} } = useSiteMetadata();
   const {
-    navCommunityLinks = {},
-    navLinks = {},
+    navCommunityLinks = [],
+    navLinks = [],
     docs,
     tutorials,
-    blog,
     addons,
-    releases,
+    showcase,
     gitHub = {},
   } = urls;
 
@@ -96,6 +95,11 @@ export default function Header({ ...props }) {
       links={
         <>
           <NavItem showDesktop>
+            <NavLink tertiary href={showcase} LinkWrapper={LinkWrapper}>
+              Showcase
+            </NavLink>
+          </NavItem>
+          <NavItem showDesktop>
             <NavLink tertiary href={docs} isGatsby LinkWrapper={LinkWrapper}>
               Docs
             </NavLink>
@@ -106,18 +110,8 @@ export default function Header({ ...props }) {
             </NavLink>
           </NavItem>
           <NavItem showDesktop>
-            <NavLink tertiary href={releases} isGatsby LinkWrapper={LinkWrapper}>
-              Releases
-            </NavLink>
-          </NavItem>
-          <NavItem showDesktop>
             <NavLink tertiary href={addons} isGatsby LinkWrapper={LinkWrapper}>
               Addons
-            </NavLink>
-          </NavItem>
-          <NavItem showDesktop>
-            <NavLink tertiary href={blog}>
-              Blog
             </NavLink>
           </NavItem>
           <NavItem showDesktop>
