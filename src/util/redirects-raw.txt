@@ -9,3 +9,4 @@
 /docs/workflows/storybook-composition/           /docs/sharing/storybook-composition/                                           301
 /docs/workflows/package-composition/             /docs/sharing/package-composition/                                             301
 /docs/workflows/faq/                             /docs/faq/                                                                     301
+/docs/get-started/examples                       /showcase                                                                      301
