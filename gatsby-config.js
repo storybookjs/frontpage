@@ -3,6 +3,7 @@ const { global } = require('@storybook/design-system');
 const siteMetadata = require('./site-metadata');
 const getReleaseBranchUrl = require('./src/util/get-release-branch-url');
 const versionData = require('./src/util/version-data');
+const versions = require('./src/util/versions');
 
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
@@ -184,6 +185,43 @@ module.exports = {
               exclude: [
                 '{/docs/!(react)/!(get-started)/**,/docs/!(react)/get-started/!(introduction)}',
               ],
+            },
+          },
+          {
+            // Generate a sitemap for all pages, all versions, all frameworks
+            resolve: `gatsby-plugin-sitemap`,
+            options: {
+              output: '/sitemap-all.xml',
+              serialize: ({ site, allSitePage }) => {
+                const allPages = allSitePage.edges.map((edge) => edge.node);
+
+                return allPages.reduce((acc, page) => {
+                  if (page.path.startsWith('/docs')) {
+                    [...versions.stable, ...versions.preRelease].forEach(({ label, string }) => {
+                      let pagePath = page.path;
+                      if (label !== 'latest') {
+                        const parts = page.path.split('/');
+                        parts.splice(2, 0, string);
+                        pagePath = parts.join('/');
+                      }
+
+                      acc.push({
+                        url: `${site.siteMetadata.siteUrl}${pagePath}`,
+                        changefreq: 'daily',
+                        priority: 0.7,
+                      });
+                    });
+                  } else {
+                    acc.push({
+                      url: `${site.siteMetadata.siteUrl}${page.path}/`,
+                      changefreq: `daily`,
+                      priority: 0.7,
+                    });
+                  }
+
+                  return acc;
+                }, []);
+              },
             },
           },
         ]
