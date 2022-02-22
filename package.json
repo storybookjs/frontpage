@@ -10,6 +10,8 @@
     "sharp": "^0.29.0"
   },
   "dependencies": {
+    "@docsearch/css": "^3.0.0",
+    "@docsearch/react": "^3.0.0",
     "@emotion/cache": "^10.0.29",
     "@google-cloud/bigquery": "^5.2.0",
     "@mdx-js/mdx": "^1.6.16",

@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import { css, styled } from '@storybook/theming';
+import React from 'react';
+import { styled } from '@storybook/theming';
 import {
   Icon,
-  Input,
   Button,
   TableOfContents,
   TooltipNote,
@@ -14,12 +13,12 @@ import Helmet from 'react-helmet';
 import GatsbyLinkWrapper from '../basics/GatsbyLinkWrapper';
 import useSiteMetadata from '../lib/useSiteMetadata';
 import buildPathWithFramework from '../../util/build-path-with-framework';
+import { DocsSearch, classNames as docsSearchClassNames } from '../screens/DocsScreen/DocsSearch';
 import { FrameworkSelector } from '../screens/DocsScreen/FrameworkSelector';
 import { VersionSelector } from '../screens/DocsScreen/VersionSelector';
 import { VersionCTA } from '../screens/DocsScreen/VersionCTA';
-import useAlgoliaSearch, { SEARCH_INPUT_ID } from '../../hooks/use-algolia-search';
 
-const { breakpoint, color, pageMargins, typography } = styles;
+const { breakpoint, color, pageMargins } = styles;
 const { GlobalStyle } = global;
 
 const Sidebar = styled.div`
@@ -34,22 +33,6 @@ const Sidebar = styled.div`
     padding-right: 20px;
     margin-right: 20px;
     border-bottom: none;
-  }
-`;
-
-const SearchInput = styled(Input)`
-  .algolia-autocomplete {
-    width: 100%;
-  }
-  && input {
-    font-size: ${typography.size.s2}px;
-    padding-left: 36px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-  && svg {
-    left: 14px;
-    font-size: ${typography.size.s2}px;
   }
 `;
 
@@ -68,7 +51,7 @@ const SidebarControls = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
   }
-  ${SearchInput} {
+  ${docsSearchClassNames.BUTTON} {
     flex: 1;
     @media (min-width: ${breakpoint * 1.333}px) {
       margin-right: 10px;
@@ -102,19 +85,6 @@ const SidebarControls = styled.div`
       order: initial;
       margin-left: 0;
       margin-right: 0;
-    }
-  }
-
-  .algolia-autocomplete .ds-dropdown-menu {
-    font-size: 0.8em;
-  }
-
-  .algolia-autocomplete a {
-    text-decoration: none;
-    transition: transform 150ms ease-out, color 150ms ease-out;
-
-    &:hover {
-      transform: translateY(-1px);
     }
   }
 `;
@@ -165,8 +135,6 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext, ...props })
     isLatest,
   } = useSiteMetadata();
   const { docsToc, framework, fullPath, slug, versions } = pageContext;
-  const [searchValue, setSearchValue] = useState('');
-  const { isSearchVisible } = useAlgoliaSearch({ framework });
 
   const addLinkWrappers = (items) =>
     items.map((item) => ({
@@ -202,10 +170,6 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext, ...props })
         {version !== latestVersion ? <meta name="robots" content="noindex" /> : null}
         <meta name="docsearch:framework" content={framework} />
         <meta name="docsearch:version" content={versionString} />
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"
-        />
       </Helmet>
       <Wrapper>
         <Sidebar className="sidebar">
@@ -217,23 +181,8 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext, ...props })
             {({ menu, allTopLevelMenusAreOpen, toggleAllOpen, toggleAllClosed }) => (
               <>
                 <SidebarControls>
-                  {isSearchVisible ? (
-                    <SearchInput
-                      id={SEARCH_INPUT_ID}
-                      label="Search"
-                      hideLabel
-                      icon="search"
-                      appearance="pill"
-                      placeholder="Search docs"
-                      value={searchValue}
-                      onChange={(event) => setSearchValue(event.target.value)}
-                    />
-                  ) : (
-                    <>
-                      {/* Placeholder to preserve styling given the input is missing. */}
-                      <div style={{ flex: 'none', marginRight: 0 }} />
-                    </>
-                  )}
+                  <DocsSearch framework={framework} version={version} />
+
                   {allTopLevelMenusAreOpen ? (
                     <WithTooltip
                       {...withTooltipProps}
