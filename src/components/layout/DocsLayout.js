@@ -193,8 +193,13 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext, ...props })
       <Helmet>
         <link
           rel="canonical"
-          href={`${homepageUrl}${buildPathWithFramework(slug, canonicalFramework)}/`}
+          href={`${homepageUrl}${buildPathWithFramework(
+            slug,
+            canonicalFramework,
+            latestVersionString
+          )}/`}
         />
+        {version !== latestVersion ? <meta name="robots" content="noindex" /> : null}
         <meta name="docsearch:framework" content={framework} />
         <meta name="docsearch:version" content={versionString} />
         <link
