@@ -286,7 +286,7 @@ const Lower = styled.div`
   }
 `;
 
-const FooterWrapper = styled.div`
+const FooterWrapper = styled.footer`
   background-color: ${background.app};
   border-top: 1px solid ${color.border};
   font-size: ${typography.size.s2}px;

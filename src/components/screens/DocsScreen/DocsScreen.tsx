@@ -28,7 +28,7 @@ const { color, spacing, typography } = styles;
 
 const Title = styled.h1``;
 
-const MDWrapper = styled.div`
+const MDWrapper = styled.main`
   ${mdFormatting}
   flex: 1;
 `;

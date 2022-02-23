@@ -12,7 +12,7 @@ import { mdFormatting } from '../../../styles/formatting';
 
 const { color, typography } = styles;
 
-const Wrapper = styled.div`
+const Wrapper = styled.main`
   ${mdFormatting}
   flex: 1;
 `;
@@ -56,7 +56,7 @@ const Release = forwardRef(({ title, body, ...props }, ref) => (
         <MDXRenderer>{body}</MDXRenderer>
       </Highlight>
     </MDXProvider>
-    <EmailWrapper>
+    <EmailWrapper className="email">
       <Heading>Join the mailing list</Heading>
       <Message>Get news, free tutorials, and Storybook tips emailed to you.</Message>
       <StyledConfirmedMailingList />
