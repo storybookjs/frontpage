@@ -76,7 +76,7 @@ function ReleasesScreen({ data, ...props }) {
           image={ogImage}
         />
         <Content>
-          <Sidebar>
+          <Sidebar className="sidebar">
             <TOCHeader>Versions</TOCHeader>
             <TableOfContents currentPageSlug={currentPageSlug} entries={tocEntries} />
           </Sidebar>

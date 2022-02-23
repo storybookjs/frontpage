@@ -208,7 +208,7 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext, ...props })
         />
       </Helmet>
       <Wrapper>
-        <Sidebar>
+        <Sidebar className="sidebar">
           <StyledTableOfContents
             key={framework}
             currentPath={fullPath}
