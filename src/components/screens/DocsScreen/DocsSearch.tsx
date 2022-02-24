@@ -1,6 +1,6 @@
 /* eslint-disable react/require-default-props */
 import React from 'react';
-import { css, Global } from '@storybook/theming';
+import { css, Global, styled } from '@storybook/theming';
 import { global, styles } from '@storybook/design-system';
 import { DocSearch } from '@docsearch/react';
 import useSiteMetadata from '../../lib/useSiteMetadata';
@@ -31,6 +31,11 @@ const idleButtonStyles = css`
 
 // Designed to match Input from @storybook/design-system
 const docSearchStyles = css`
+  :root {
+    --docsearch-primary-color: ${styles.color.secondary};
+    --docsearch-muted-color: ${styles.color.dark};
+  }
+  
   ${classNames.BUTTON} {
     ${idleButtonStyles}
     font-size: ${styles.typography.size.s2}px;
@@ -60,12 +65,24 @@ const docSearchStyles = css`
     padding: 0;
   }
 
-  .DocSearch-Button-Keys {
-    display: none;
+  .DocSearch-Button-Key,
+  .DocSearch-Commands-Key {
+    background: rgba(0,0,0,0.07);
+    border-radius: 2px;
+    box-shadow: none;
+    color: ${styles.color.darker};
+    font-size: 11px;
+    height: 16px;
+    line-height: 17px;
+    margin-right: 2px;
+    min-width: 16px;
+    padding: 0 2px;
+    user-select: none;
+    width: auto;
   }
 
-  .DocSearch-Modal {
-    --docsearch-primary-color: ${styles.color.secondary};
+  .DocSearch-Label {
+    margin-left: 2px;
   }
 `;
 const DocSearchStyles = () => <Global styles={docSearchStyles} />;
