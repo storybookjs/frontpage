@@ -9,7 +9,7 @@ const buildPathWithFramework = require('./src/util/build-path-with-framework');
 const createAddonsPages = require('./src/util/create-addons-pages');
 const getReleaseBranchUrl = require('./src/util/get-release-branch-url');
 const { versionString, latestVersionString, isLatest } = require('./src/util/version-data');
-const versions = require('./src/util/versions');
+const { versions } = require('./src/util/versions');
 
 const docsTocWithPaths = addStateToToc(docsToc);
 

@@ -3,7 +3,7 @@ const { global } = require('@storybook/design-system');
 const siteMetadata = require('./site-metadata');
 const getReleaseBranchUrl = require('./src/util/get-release-branch-url');
 const versionData = require('./src/util/version-data');
-const versions = require('./src/util/versions');
+const { versionsWithToc } = require('./src/util/versions');
 
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
@@ -169,17 +169,12 @@ module.exports = {
           {
             resolve: `gatsby-plugin-sitemap`,
             options: {
-              serialize: ({ site, allSitePage }) => {
-                const allPages = allSitePage.edges.map((edge) => edge.node);
-
-                return allPages.map((page) => {
-                  return {
-                    url: `${site.siteMetadata.siteUrl}${page.path}/`,
-                    changefreq: `daily`,
-                    priority: 0.7,
-                  };
-                });
-              },
+              serialize: ({ site, allSitePage }) =>
+                allSitePage.edges.map((edge) => ({
+                  url: `${site.siteMetadata.siteUrl}${edge.node.path}/`,
+                  changefreq: 'daily',
+                  priority: 0.7,
+                })),
               // Exclude all doc pages not for React
               // except the get-started/introduction page for all frameworks
               exclude: [
@@ -193,34 +188,47 @@ module.exports = {
             options: {
               output: '/sitemap-all.xml',
               serialize: ({ site, allSitePage }) => {
-                const allPages = allSitePage.edges.map((edge) => edge.node);
+                const latestPages = allSitePage.edges.map((edge) => ({
+                  url: `${site.siteMetadata.siteUrl}${edge.node.path}/`,
+                  changefreq: 'daily',
+                  priority: 0.7,
+                }));
 
-                return allPages.reduce((acc, page) => {
-                  if (page.path.startsWith('/docs')) {
-                    [...versions.stable, ...versions.preRelease].forEach(({ label, string }) => {
-                      let pagePath = page.path;
-                      if (label !== 'latest') {
-                        const parts = page.path.split('/');
-                        parts.splice(2, 0, string);
-                        pagePath = parts.join('/');
-                      }
+                const nonLatestDocsPages = [];
+                versionsWithToc.forEach(({ string, toc }) => {
+                  [...siteMetadata.coreFrameworks, ...siteMetadata.communityFrameworks].forEach(
+                    (framework) => {
+                      const createDocsPageEntries = (tocItems, pathPrefix) => {
+                        tocItems.forEach(({ children, pathSegment }) => {
+                          const pagePath = pathSegment
+                            ? `${pathPrefix}/${pathSegment}`
+                            : pathPrefix;
 
-                      acc.push({
-                        url: `${site.siteMetadata.siteUrl}${pagePath}`,
-                        changefreq: 'daily',
-                        priority: 0.7,
-                      });
-                    });
-                  } else {
-                    acc.push({
-                      url: `${site.siteMetadata.siteUrl}${page.path}/`,
-                      changefreq: `daily`,
-                      priority: 0.7,
-                    });
-                  }
+                          if (pathSegment) {
+                            nonLatestDocsPages.push({
+                              url: `${site.siteMetadata.siteUrl}${pagePath}/`,
+                              changefreq: 'daily',
+                              priority: 0.7,
+                            });
+                          }
 
-                  return acc;
-                }, []);
+                          if (children) {
+                            createDocsPageEntries(children, pagePath);
+                          }
+                        });
+                      };
+
+                      createDocsPageEntries(
+                        toc,
+                        string !== versionData.latestVersionString
+                          ? `/docs/${string}/${framework}`
+                          : `/docs/${framework}`
+                      );
+                    }
+                  );
+                });
+
+                return [...latestPages, ...nonLatestDocsPages];
               },
             },
           },
