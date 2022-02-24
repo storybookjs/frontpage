@@ -16,6 +16,7 @@
     "@google-cloud/bigquery": "^5.2.0",
     "@mdx-js/mdx": "^1.6.16",
     "@mdx-js/react": "^1.6.16",
+    "@storybook/api": "^6.4.19",
     "@storybook/design-system": "^7.0.2",
     "@storybook/theming": "^6.4.19",
     "core-js": "^2.6.11",
