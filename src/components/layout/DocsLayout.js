@@ -186,7 +186,7 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext, ...props })
             {({ menu, allTopLevelMenusAreOpen, toggleAllOpen, toggleAllClosed }) => (
               <>
                 <SidebarControls>
-                  <DocsSearch framework={framework} version={version} />
+                  <DocsSearch framework={framework} version={versionString} />
 
                   {allTopLevelMenusAreOpen ? (
                     <WithTooltip
