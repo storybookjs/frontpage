@@ -19,6 +19,10 @@ const siteMetadata = {
   siteUrl: homepageUrl, // Used for gatsby-plugin-sitemap
   googleSiteVerification: '_OxxMv1o0aRcxPfieLW0BRsMxxIzkpA9Vv6O0AB5xg0',
   contributorCount: 1440,
+  algoliaDocSearchConfig: {
+    appId: '6L6UWBTLCK',
+    indexName: 'storybook-js',
+  },
   coreFrameworks,
   communityFrameworks,
   featureGroups,

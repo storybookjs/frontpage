@@ -17,6 +17,10 @@ const useSiteMetadata = () => {
           latestVersionString
           isLatest
           contributorCount
+          algoliaDocSearchConfig {
+            appId
+            indexName
+          }
           coreFrameworks
           communityFrameworks
           featureGroups {
