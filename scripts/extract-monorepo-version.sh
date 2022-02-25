@@ -19,6 +19,7 @@ echo "Extracting $LABEL version info..."
 
 mkdir -p "$VERSIONS_DIR/$LABEL"
 
-curl $MONOREPO_CODELOAD_URL/$BRANCH_ARG | tar -zxvC $VERSIONS_DIR "$TAR_NAME/package.json"
+curl $MONOREPO_CODELOAD_URL/$BRANCH_ARG | tar -zxvC $VERSIONS_DIR "$TAR_NAME/package.json" "$TAR_NAME/docs/toc.js"
 mv "$VERSIONS_DIR/$TAR_NAME/package.json" "$VERSIONS_DIR/$LABEL/package.json"
+mv "$VERSIONS_DIR/$TAR_NAME/docs/toc.js" "$VERSIONS_DIR/$LABEL/toc.js"
 rm -r "$VERSIONS_DIR/$TAR_NAME"
