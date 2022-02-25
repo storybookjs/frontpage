@@ -125,6 +125,7 @@ const StyledTableOfContents = styled(TableOfContents)`
 
 function DocsLayout({ children, isLatest: isLatestProp, pageContext, ...props }) {
   const {
+    algoliaDocSearchConfig,
     coreFrameworks,
     communityFrameworks,
     urls: { homepageUrl },
@@ -167,9 +168,13 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext, ...props })
             latestVersionString
           )}/`}
         />
-        {version !== latestVersion ? <meta name="robots" content="noindex" /> : null}
         <meta name="docsearch:framework" content={framework} />
         <meta name="docsearch:version" content={versionString} />
+        <link
+          rel="preconnect"
+          href={`https://${algoliaDocSearchConfig.appId}-dsn.algolia.net`}
+          crossOrigin
+        />
       </Helmet>
       <Wrapper>
         <Sidebar className="sidebar">
