@@ -123,6 +123,44 @@ const StyledTableOfContents = styled(TableOfContents)`
   }
 `;
 
+const getTocSectionTitles = (toc, path) => {
+  const pathParts = path.split('/');
+  const title = [];
+
+  const buildTitle = (items, pathPartIndex) => {
+    let item = items.find(({ pathSegment }) => pathSegment === pathParts[pathPartIndex]);
+
+    if (!item) {
+      /**
+       * Some toc items use an empty `pathSegment` to create a menu that isn't reflected in the URL
+       * e.g. Configure > Integration > Webpack -> configure/webpack
+       * If we can't find a direct match for the current slug segment, we look in these "empty" items
+       * (note that there can be more than one!) and try to find a match in their `children`
+       */
+      items
+        .filter(({ pathSegment }) => pathSegment === '')
+        .forEach(({ children }) => {
+          item =
+            children?.find(({ pathSegment }) => pathSegment === pathParts[pathPartIndex]) || item;
+        });
+    }
+
+    if (item) {
+      const { children, title: titlePart } = item;
+      if (titlePart) {
+        title.push(titlePart);
+      }
+      if (children) {
+        buildTitle(children, pathPartIndex + 1);
+      }
+    }
+  };
+
+  buildTitle(toc, 0);
+
+  return title.join(' » ');
+};
+
 function DocsLayout({ children, isLatest: isLatestProp, pageContext, ...props }) {
   const {
     algoliaDocSearchConfig,
@@ -136,6 +174,8 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext, ...props })
     isLatest,
   } = useSiteMetadata();
   const { docsToc, framework, fullPath, slug, versions } = pageContext;
+
+  const tocSectionTitles = getTocSectionTitles(docsToc, slug.split('/docs/')[1]);
 
   const addLinkWrappers = (items) =>
     items.map((item) => ({
@@ -234,6 +274,11 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext, ...props })
         </Sidebar>
 
         <Content>
+          {tocSectionTitles && (
+            <span hidden id="toc-section-titles">
+              {tocSectionTitles}
+            </span>
+          )}
           {(isLatestProp === false || !isLatest) && (
             <StyledVersionCTA
               framework={framework}
