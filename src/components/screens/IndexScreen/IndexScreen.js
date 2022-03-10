@@ -16,12 +16,19 @@ import Testimonial from '../../layout/Testimonial';
 import BenefitItem from './BenefitItem';
 import BenefitList from './BenefitList';
 import CTA from '../../layout/CTA';
+import { BlogCTA as _BlogCTA } from './BlogCTA';
 
 import AtomicDesignLogoSVG from '../../../images/logos/user/logo-atomicdesign.svg';
 import GitlabLogoSVG from '../../../images/logos/user/logo-gitlab.svg';
 import AirBnBLogoSVG from '../../../images/logos/user/logo-airbnb.svg';
 
 const { background, color } = styles;
+
+const BlogCTA = styled(_BlogCTA)`
+  margin: ${styles.spacing.padding.medium}px auto 0;
+  width: min-content;
+  white-space: nowrap;
+`;
 
 const Contrast = styled.div`
   background-color: ${background.app};
@@ -51,7 +58,7 @@ const Code = styled.code`
   white-space: nowrap;
 `;
 
-export function PureIndexScreen({ ...props }) {
+export function PureIndexScreen({ latestBlogPost }) {
   const { ogImage, urls = {} } = useSiteMetadata();
   const { home, docs = {} } = urls;
   return (
@@ -63,6 +70,8 @@ export function PureIndexScreen({ ...props }) {
         url={home}
         image={ogImage}
       />
+
+      {latestBlogPost && <BlogCTA {...latestBlogPost} />}
 
       <Hero />
 
@@ -407,7 +416,11 @@ export function PureIndexScreen({ ...props }) {
 }
 
 PureIndexScreen.propTypes = {
-  data: PropTypes.any.isRequired, // eslint-disable-line react/forbid-prop-types
+  // eslint-disable-next-line react/require-default-props
+  latestBlogPost: PropTypes.shape({
+    slug: PropTypes.string,
+    title: PropTypes.string,
+  }),
 };
 
 export default function IndexScreen(props) {

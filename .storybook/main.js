@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const siteMetadata = require('../site-metadata.js');
 
 module.exports = {
-  stories: ['../src/**/*.stories.@(js|ts|tsx)'],
+  stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: ['@storybook/addon-actions', '@storybook/addon-links', 'storybook-addon-outline'],
   webpack: async (config) => {
     const coreJsLocationOfRoot = p.join(__dirname, '..', 'node_modules');
