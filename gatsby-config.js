@@ -41,6 +41,13 @@ module.exports = {
         // refetchInterval: 60,
       },
     },
+    {
+      resolve: 'gatsby-source-ghost',
+      options: {
+        apiUrl: 'https://storybookblog.ghost.io',
+        contentApiKey: process.env.GHOST_STORYBOOK_API_KEY,
+      },
+    },
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     {

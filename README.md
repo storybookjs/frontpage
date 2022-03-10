@@ -62,13 +62,17 @@ Within the release's `.md` file, frontmatter is used to create a page title, whi
 
 [See detailed docs](docs/versioning.md)
 
-### Search
+### Environment variables
+
+In development and with local production builds, environment variables can be configured with `.env` files as [explained here](https://www.gatsbyjs.com/docs/environment-variables/#client-side-javascript). Variables are prefixed with `GATSBY_` when that variable needs to be available in client-side code.
+
+In deploy previews and production deploys, these variables are set with Netlify's build variables.
+
+#### Search
 
 Search within the docs is powered by [DocSearch](https://docsearch.algolia.com/). In order for this to work, an environment variable is required:
 
 `GATSBY_ALGOLIA_API_KEY`
-
-In development and with local production builds, that environment variable can be configured with `.env` files as explaned [here](https://www.gatsbyjs.com/docs/environment-variables/#client-side-javascript). The `GATSBY_` prefix ensures that the variable is available in client-side code.
 
 How to setup on your machine:
 
@@ -76,9 +80,19 @@ How to setup on your machine:
 2. Get the key here: https://app.netlify.com/sites/storybook-frontpage/settings/deploys#environment
 3. Add `GATSBY_ALGOLIA_API_KEY=key` to the file from step 1
 
-In deploy previews and production deploys, that variable is set with Netlify's build variables.
-
 The site is crawled every 24 hours so any updates will be reflected in that amount of time.
+
+#### Blog posts
+
+The latest blog post is fetched from [Ghost](https://ghost.org). You will need to add In order for this to work, an environment variable is required:
+
+`GHOST_STORYBOOK_API_KEY`
+
+How to setup on your machine:
+
+1. Create a .env.development file locally
+2. Get the key here: https://storybookblog.ghost.io/ghost
+3. Add `GHOST_STORYBOOK_API_KEY=key` to the file from step 1
 
 ## Tooling
 

@@ -1,4 +1,11 @@
 const siteMetadata = require('../site-metadata.js');
-const versionData = require('../src/util/version-data.js');
+
+const versionData = {
+  version: 6.3,
+  versionString: '6.3',
+  latestVersion: 6.3,
+  latestVersionString: '6.3',
+  isLatest: true,
+};
 
 export default () => ({ ...siteMetadata, ...versionData });
