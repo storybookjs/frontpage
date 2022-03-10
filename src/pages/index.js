@@ -20,9 +20,18 @@ export default ({ data }) => {
   );
 };
 
+// prettier-ignore
 export const query = graphql`
   query IndexScreenQuery {
-    latestBlogPosts: allGhostPost(sort: { order: DESC, fields: [published_at] }, limit: 1) {
+    latestBlogPosts: allGhostPost(
+      filter: {
+        tags: {
+          elemMatch: { slug: { nin: ["data-schema", "hash-preview"] } }
+        }
+      }
+      sort: { order: DESC, fields: [published_at] }
+      limit: 1
+    ) {
       edges {
         node {
           slug
