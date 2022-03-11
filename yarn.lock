@@ -5373,10 +5373,10 @@
   dependencies:
     lodash "^4.17.15"
 
-"@storybook/design-system@^7.0.2":
-  version "7.0.2"
-  resolved "https://registry.yarnpkg.com/@storybook/design-system/-/design-system-7.0.2.tgz#6daf2beb23f023903dcb059ea4768daf4bbae8fb"
-  integrity sha512-yJH3aadopSR489AMSfcahvfQpmtCkubToQh8HyE4geCdWW6u8Do81OP9cXSKrMftbFukI5xur/C/t0VM9mxyHQ==
+"@storybook/design-system@^7.3.1":
+  version "7.3.1"
+  resolved "https://registry.yarnpkg.com/@storybook/design-system/-/design-system-7.3.1.tgz#00cb3c65b3cb5347a5ebd77c1a1227df8e0365ee"
+  integrity sha512-OSIn5mAYfUjFtZeRCTyQ3atdqNl2YIXyvosxYW1BZFS3Jpac0NWoz8qFlUvOX3fZaQSGOmbeOmuT9BqZyPyrRQ==
   dependencies:
     "@emotion/weak-memoize" "^0.2.5"
     "@storybook/theming" "^6.2.0"
@@ -5385,9 +5385,10 @@
     "@types/react-modal" "^3.12.1"
     "@types/uuid" "^8.3.1"
     copy-to-clipboard "^3.3.1"
+    human-format "^0.11.0"
     pluralize "^8.0.0"
     polished "^3.6.4"
-    prismjs "1.23.0"
+    prismjs "1.25.0"
     react-github-button "^0.1.11"
     react-modal "^3.11.2"
     react-popper-tooltip "^2.11.1"
@@ -20674,12 +20675,10 @@ prisma-yml@1.34.10:
     scuid "^1.0.2"
     yaml-ast-parser "^0.0.40"
 
-prismjs@1.23.0:
-  version "1.23.0"
-  resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.23.0.tgz#d3b3967f7d72440690497652a9d40ff046067f33"
-  integrity sha512-c29LVsqOaLbBHuIbsTxaKENh1N2EQBOHaWv7gkHN4dgRbxSREqDnDbtFJYdpPauS4YCplMSNCABQ6Eeor69bAA==
-  optionalDependencies:
-    clipboard "^2.0.0"
+prismjs@1.25.0:
+  version "1.25.0"
+  resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.25.0.tgz#6f822df1bdad965734b310b315a23315cf999756"
+  integrity sha512-WCjJHl1KEWbnkQom1+SzftbtXMKQoezOCYs5rECqMN+jP+apI7ftoflyqigqzopSO3hMhTEb0mFClA8lkolgEg==
 
 prismjs@^1.21.0, prismjs@~1.22.0:
   version "1.22.0"

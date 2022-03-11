@@ -26,8 +26,8 @@ const { background, color } = styles;
 
 const BlogCTA = styled(_BlogCTA)`
   margin: ${styles.spacing.padding.medium}px auto 0;
-  width: min-content;
-  white-space: nowrap;
+  max-width: 90%;
+  width: fit-content;
 `;
 
 const Contrast = styled.div`
