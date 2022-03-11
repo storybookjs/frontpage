@@ -22,12 +22,16 @@ import AtomicDesignLogoSVG from '../../../images/logos/user/logo-atomicdesign.sv
 import GitlabLogoSVG from '../../../images/logos/user/logo-gitlab.svg';
 import AirBnBLogoSVG from '../../../images/logos/user/logo-airbnb.svg';
 
-const { background, color } = styles;
+const { background, color, breakpoint } = styles;
 
 const BlogCTAWrapper = styled.div`
   display: flex;
   justify-content: center;
-  padding: 40px ${styles.spacing.padding.medium}px 0;
+  padding: 20px ${styles.spacing.padding.medium}px 0;
+
+  @media (min-width: ${breakpoint * 1}px) {
+    padding-top: 40px;
+  }
 `;
 
 const Contrast = styled.div`
