@@ -322,7 +322,7 @@ const Content = styled.section`
 const Wrapper = styled.div`
   ${pageMargins};
   position: relative;
-  top: 5vh;
+  top: 2vh;
   padding-top: 3rem;
   padding-bottom: 3rem;
   @media (min-width: ${breakpoint * 2}px) {

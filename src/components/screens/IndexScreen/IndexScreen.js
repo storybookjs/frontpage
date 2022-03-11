@@ -16,7 +16,7 @@ import Testimonial from '../../layout/Testimonial';
 import BenefitItem from './BenefitItem';
 import BenefitList from './BenefitList';
 import CTA from '../../layout/CTA';
-import { BlogCTA as _BlogCTA } from './BlogCTA';
+import { BlogCTA } from './BlogCTA';
 
 import AtomicDesignLogoSVG from '../../../images/logos/user/logo-atomicdesign.svg';
 import GitlabLogoSVG from '../../../images/logos/user/logo-gitlab.svg';
@@ -24,10 +24,10 @@ import AirBnBLogoSVG from '../../../images/logos/user/logo-airbnb.svg';
 
 const { background, color } = styles;
 
-const BlogCTA = styled(_BlogCTA)`
-  margin: ${styles.spacing.padding.medium}px auto 0;
-  width: min-content;
-  white-space: nowrap;
+const BlogCTAWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 40px ${styles.spacing.padding.medium}px 0;
 `;
 
 const Contrast = styled.div`
@@ -71,7 +71,11 @@ export function PureIndexScreen({ latestBlogPost }) {
         image={ogImage}
       />
 
-      {latestBlogPost && <BlogCTA {...latestBlogPost} />}
+      {latestBlogPost && (
+        <BlogCTAWrapper>
+          <BlogCTA {...latestBlogPost} />
+        </BlogCTAWrapper>
+      )}
 
       <Hero />
 
