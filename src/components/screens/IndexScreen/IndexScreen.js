@@ -28,10 +28,6 @@ const BlogCTAWrapper = styled.div`
   display: flex;
   justify-content: center;
   padding: 20px ${styles.spacing.padding.medium}px 0;
-
-  @media (min-width: ${breakpoint * 1}px) {
-    padding-top: 40px;
-  }
 `;
 
 const Contrast = styled.div`
