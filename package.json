@@ -17,7 +17,7 @@
     "@mdx-js/mdx": "^1.6.16",
     "@mdx-js/react": "^1.6.16",
     "@storybook/api": "^6.4.19",
-    "@storybook/design-system": "^7.0.2",
+    "@storybook/design-system": "^7.3.1",
     "@storybook/theming": "^6.4.19",
     "core-js": "^2.6.11",
     "create-emotion-server": "^10.0.27",
