@@ -88,6 +88,7 @@
 
 # Other
 /versions.json                              /.netlify/functions/versions/:splat                                            200
+/event-log                                  https://kfw513vykj.execute-api.us-west-2.amazonaws.com/event-log               200
 /blog/*                                     https://storybook-blog.netlify.app/blog/:splat                                 200
 /showcase/*                                 https://storybook-component-catalog.netlify.app/showcase/:splat                200
 /tutorials/*                                https://storybook-tutorials.netlify.app/tutorials/:splat                       200
