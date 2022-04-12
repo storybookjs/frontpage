@@ -67,6 +67,7 @@ const siteMetadata = {
     useCases: `/use-cases/`,
     releases: '/releases/',
     support: `/support/`,
+    telemetry: `/telemetry/`,
     team: `/team/`,
     addonsApi: '/docs/react/addons/addons-api/',
 
@@ -113,6 +114,7 @@ siteMetadata.urls.navCommunityLinks = [
   { title: 'Get involved', href: siteMetadata.urls.community, isGatsby: true },
   { title: 'Use cases', href: siteMetadata.urls.useCases, isGatsby: true },
   { title: 'Support', href: siteMetadata.urls.support, isGatsby: true },
+  { title: 'Telemetry', href: siteMetadata.urls.telemetry, isGatsby: true },
   { title: 'Team', href: siteMetadata.urls.team, isGatsby: true },
 ];
 
