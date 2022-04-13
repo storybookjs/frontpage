@@ -10,6 +10,7 @@ import {
   TagItem,
   Highlight,
   Avatar,
+  Icon,
 } from '@storybook/design-system';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import { SocialGraph, Breadcrumb } from '../../basics';
@@ -186,7 +187,7 @@ export const AddonsDetailScreen = ({ path, location, pageContext }) => {
                 target="_blank"
                 rel="noopener nofollow noreferrer"
               >
-                View on GitHub
+                <Icon icon="github" /> View on GitHub
               </ViewOnGithubLink>
             </ReadMeTitle>
             <Highlight withHTMLChildren={false}>
