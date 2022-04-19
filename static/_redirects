@@ -88,7 +88,7 @@
 
 # Other
 /versions.json                              /.netlify/functions/versions/:splat                                            200
-/event-log                                  https://us-central1-storybook-warehouse.cloudfunctions.net/storybook-event-log-dev-event-log               200
+/event-log                                  https://us-central1-storybook-warehouse.cloudfunctions.net/storybook-event-log-production-event-log               200
 /blog/*                                     https://storybook-blog.netlify.app/blog/:splat                                 200
 /showcase/*                                 https://storybook-component-catalog.netlify.app/showcase/:splat                200
 /tutorials/*                                https://storybook-tutorials.netlify.app/tutorials/:splat                       200
