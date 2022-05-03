@@ -93,7 +93,7 @@
 /showcase/*                                 https://storybook-component-catalog.netlify.app/showcase/:splat                                     200
 /tutorials/*                                https://storybook-tutorials.netlify.app/tutorials/:splat                                            200
 
-/telemetry                                  /docs/react/configure/telemetry                                                                     301
+/telemetry                                  /docs/6.5/react/configure/telemetry                                                                 301
 
 # We can't use updateRedirectsFile for these because it adds the framework to the destination
 /docs/react/get-started/examples            /showcase                                                                                           301
