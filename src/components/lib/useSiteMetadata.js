@@ -85,6 +85,7 @@ const useSiteMetadata = () => {
             community
             useCases
             support
+            telemetry
             team
             addonsApi
             blog
