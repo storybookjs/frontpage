@@ -309,7 +309,21 @@ LinkWrapper.propTypes = {
 
 export default function Footer({ ...props }) {
   const { urls = {}, coreFrameworks } = useSiteMetadata();
-  const { blog, twitter, chat, youtube, navLinks = {}, docs = {}, tutorials, gitHub = {} } = urls;
+  const {
+    blog,
+    twitter,
+    chat,
+    youtube,
+    navLinks: _navLinks = {},
+    docs = {},
+    tutorials,
+    gitHub = {},
+  } = urls;
+
+  // Insert the Telemetry link immediately following Support
+  const navLinks = _navLinks.slice();
+  const insertIndex = navLinks.findIndex(({ title }) => title === 'Support');
+  navLinks.splice(insertIndex + 1, 0, { title: 'Telemetry', href: urls.telemetry, isGatsby: true });
 
   return (
     <FooterWrapper {...props}>

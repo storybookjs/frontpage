@@ -67,6 +67,7 @@ const siteMetadata = {
     useCases: `/use-cases/`,
     releases: '/releases/',
     support: `/support/`,
+    telemetry: `/telemetry/`,
     team: `/team/`,
     addonsApi: '/docs/react/addons/addons-api/',
 
