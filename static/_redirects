@@ -59,7 +59,7 @@
 /docs/configurations/overview/              /docs/react/configure/overview/                                                                     301
 /docs/configurations/options-parameter/     /docs/react/configure/features-and-behavior/                                                        301
 /docs/configurations/default-config/        /docs/react/configure/overview/                                                                     301
-/docs/configurations/custom-webpack-config/ /docs/react/configure/webpack/                                                                      301
+/docs/configurations/custom-webpack-config/ /docs/react/builders/webpack/                                                                       301
 /docs/configurations/custom-babel-config/   /docs/react/configure/babel/                                                                        301
 /docs/configurations/typescript-config/     /docs/react/configure/typescript/                                                                   301
 /docs/configurations/add-custom-head-tags/  /docs/react/configure/story-rendering#adding-to-head                                                301
