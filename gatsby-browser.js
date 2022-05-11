@@ -1,6 +1,5 @@
 import React from 'react';
-import { CacheProvider } from '@storybook/theming';
-import createCache from '@emotion/cache';
+import { CacheProvider, createCache } from '@storybook/theming';
 
 const EMOTION_KEY = 'chr';
 

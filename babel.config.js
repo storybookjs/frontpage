@@ -9,5 +9,18 @@ module.exports = {
       },
     ],
   ],
-  plugins: ['babel-plugin-emotion'],
+  plugins: [
+    [
+      '@emotion',
+      {
+        importMap: {
+          '@storybook/theming': {
+            styled: { canonicalImport: ['@emotion/styled', 'default'] },
+            css: { canonicalImport: ['@emotion/react', 'css'] },
+            Global: { canonicalImport: ['@emotion/react', 'Global'] },
+          },
+        },
+      },
+    ],
+  ],
 };
