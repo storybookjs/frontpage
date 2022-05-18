@@ -5,11 +5,12 @@ This site is configured to build its doc pages from a variable version of the co
 > In this document, assume "latest" is `6.3` and "next" is `6.4`.
 >
 > "monorepo release branch" = `main`, `next`, and `release-x-x` (starting with `release-6-0`).
+>
 > "frontpage release branch" = `master` and `release-x-x` (starting with `release-6-0`).
 
 ## Publishing new versions
 
-When a pre-release ("next") version graduates to stable (and a new "next" version is cut):
+When a pre-release ("next") version (`6.4`, in this document) graduates to stable, and therefore a new "next" version (`6.5`, in this document) is cut:
 
 _**First**, in the monorepo:_
 
@@ -17,22 +18,28 @@ _**First**, in the monorepo:_
 >
 > This is to avoid publishing any confusing states in the version selector.
 
-1. Create a release branch from `main`.
-   - `release-6-3`, in this document.
-1. Follow the normal monorepo release process for `main` and `next` branches
+1. Create a release branch from `main`
+   - `release-6-3`, in this document
 1. Delete the previous "next" release branch
    - `release-6-4`, in this document
-1. Make sure all release branches, including `main` and `next`, have an appropriate version in their root `package.json`.
+   - This is done to maintain proper hygiene, as it would otherwise be the only `release-x-x` branch that doesn't serve a purpose
+1. Follow the normal monorepo release process for `main` and `next` branches
+1. Make sure all release branches, including `main` and `next`, have an appropriate version in their root `package.json`
 
 _**Second**, in this repo:_
 
-1. Make sure each release branch in the monorepo has a corresponding [release note](../README.md#release-notes), and that their contents are correct.
-1. Add the version that _was_ "latest" to the [Netlify branch deploy setting](https://app.netlify.com/sites/storybook-frontpage/settings/deploys).
-   - `release-6-3`, in this document.
-1. Remove the version that _was_ "next" from the [Netlify branch deploy setting](https://app.netlify.com/sites/storybook-frontpage/settings/deploys)
-   - `release-6-4`, in this document.
+1. Make sure each release branch in the monorepo has a corresponding [release note](../README.md#release-notes), and that their contents are correct
+   - _But **do not** push these changes yet_
+1. In the [Netlify branch deploy setting](https://app.netlify.com/sites/storybook-frontpage/settings/deploys):
+   1. Add the version that _was_ "latest"
+      - `release-6-3`, in this document
+   1. Add the version that _will be_ "next" to the [Netlify branch deploy setting](https://app.netlify.com/sites/storybook-frontpage/settings/deploys)
+      - `release-6-5`, in this document
+   1. Remove the version that _was_ "next" from the [Netlify branch deploy setting](https://app.netlify.com/sites/storybook-frontpage/settings/deploys)
+      - `release-6-4`, in this document
 1. Push any updates to `master`
-   - This kicks off a production deploy and a [workflow to deploy all release branches](#keeping-everything-in-sync).
+   - i.e. merge the PR containing the changes from Step 1
+   - This kicks off a production deploy and a [workflow to deploy all release branches](#keeping-everything-in-sync)
 
 🚨 **IMPORTANT** — Make sure all of the [Netlify builds](https://app.netlify.com/sites/storybook-frontpage/deploys) are successful, especially production.
 
@@ -55,7 +62,7 @@ _**Second**, in this repo:_
        - Warns that changes will be lost on next push to `next`
      - Else
        - Sends dispatch event to this repo which kicks off a workflow to create and force-push `release-x-x` branch
-1. Pushing those `release-x-x` in this repo will kick off a [Netlify branch deploy](https://docs.netlify.com/site-deploys/overview/#branches-and-deploys) for the appropriate version.
+1. Pushing those `release-x-x` branches in this repo will kick off a [Netlify branch deploy](https://docs.netlify.com/site-deploys/overview/#branches-and-deploys) for the appropriate version.
 1. When the docs content is extracted from the monorepo, each of the other version's info is extracted as well (for generating the list of available versions)
 1. Based on the latest and current version info, the site adjusts the URLs and other details appropriately. ([See the PR for details](https://github.com/storybookjs/frontpage/pull/310).)
 1. Using [Netlify proxy rewrites](https://docs.netlify.com/routing/redirects/rewrites-proxies/#proxy-to-another-netlify-site), the production site and branch deploys are stitched together to appear as a single site.
