@@ -1,8 +1,7 @@
 jobs:
   build:
     docker:
-      # Use node 10 for the monorepo docs sake (temporarily)
-      - image: circleci/node:12
+      - image: circleci/node:14
 
     working_directory: ~/repo
 
@@ -33,5 +32,5 @@ workflows:
     jobs:
       - build:
           filters:
-              branches:
-                ignore: \^release-[0-9]+-[0-9]+$\
+            branches:
+              ignore: \^release-[0-9]+-[0-9]+$\
