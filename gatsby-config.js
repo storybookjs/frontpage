@@ -14,11 +14,11 @@ module.exports = {
     ...siteMetadata,
     ...versionData,
   },
-  flags: {
-    PRESERVE_WEBPACK_CACHE: true,
-    FAST_DEV: true,
-    QUERY_ON_DEMAND: true,
-  },
+  // flags: {
+  //   PRESERVE_WEBPACK_CACHE: true,
+  //   FAST_DEV: true,
+  //   QUERY_ON_DEMAND: true,
+  // },
   ...(!versionData.isLatest
     ? { assetPrefix: getReleaseBranchUrl(versionData.versionString) }
     : undefined),
@@ -56,6 +56,7 @@ module.exports = {
         name: 'gatsby-starter-default',
         short_name: 'starter',
         start_url: '/',
+        icon: 'src/images/logos/icon-storybook.svg',
       },
     },
     {

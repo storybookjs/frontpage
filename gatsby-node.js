@@ -18,6 +18,16 @@ const nextVersionString = versions.preRelease[0].string;
 let frameworks;
 let firstDocsPageSlug;
 
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      fallback: {
+        path: require.resolve('path-browserify'),
+      },
+    },
+  });
+};
+
 exports.onCreateNode = ({ actions, getNode, node }) => {
   const { createNodeField } = actions;
 
