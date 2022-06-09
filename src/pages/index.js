@@ -6,7 +6,7 @@ import IndexScreen from '../components/screens/IndexScreen/IndexScreen';
 
 const { GlobalStyle } = global;
 
-export default ({ data }) => {
+const HomePage = ({ data }) => {
   const {
     latestBlogPosts: { edges },
   } = data;
@@ -19,6 +19,8 @@ export default ({ data }) => {
     </Fragment>
   );
 };
+
+export default HomePage;
 
 // prettier-ignore
 export const query = graphql`

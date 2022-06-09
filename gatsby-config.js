@@ -205,6 +205,24 @@ module.exports = {
             resolve: `gatsby-plugin-sitemap`,
             options: {
               output: '/sitemap-all.xml',
+              query: `
+                {
+                  site {
+                    siteMetadata {
+                      siteUrl
+                      coreFrameworks
+                      communityFrameworks
+                    }
+                  }
+                  allSitePage {
+                    edges {
+                      node {
+                        path
+                      }
+                    }
+                  }
+                }
+              `,
               serialize: ({ site, allSitePage }) => {
                 const latestPages = allSitePage.edges.map((edge) => ({
                   url: `${site.siteMetadata.siteUrl}${edge.node.path}/`,

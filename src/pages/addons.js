@@ -6,7 +6,7 @@ import { AddonsHomeScreen } from '../components/screens/AddonsHomeScreen/AddonsH
 
 const { GlobalStyle } = global;
 
-export default ({ data }) => (
+const AddonsPage = ({ data }) => (
   <Fragment>
     <GlobalStyle />
     <AddonsHomeScreen
@@ -18,6 +18,8 @@ export default ({ data }) => (
     />
   </Fragment>
 );
+
+export default AddonsPage;
 
 export const query = graphql`
   query AddonsHomeQuery {
