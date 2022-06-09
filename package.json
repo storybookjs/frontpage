@@ -82,6 +82,7 @@
     "link-monorepo-docs": "./scripts/link-monorepo-docs.sh",
     "extract-monorepo-docs": "./scripts/extract-monorepo-docs.sh",
     "prebuild": "yarn extract-monorepo-docs",
+    "build2": "GATSBY_SKIP_ADDON_PAGES=true gatsby build",
     "build": "gatsby build",
     "serve": "gatsby serve --prefix-paths",
     "develop": "gatsby develop",

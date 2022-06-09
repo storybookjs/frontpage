@@ -178,24 +178,27 @@ module.exports = {
             options: {
               query: `
                 {
+                  site {
+                    siteMetadata {
+                      siteUrl
+                    }
+                  }
                   allSitePage {
-                    edges {
-                      node {
-                        path
-                      }
+                    nodes {
+                      path
                     }
                   }
                 }
               `,
-              serialize: ({ site, allSitePage }) =>
-                allSitePage.edges.map((edge) => ({
-                  url: `${site.siteMetadata.siteUrl}${edge.node.path}/`,
-                  changefreq: 'daily',
-                  priority: 0.7,
+              resolvePages: ({ site, allSitePage: { nodes: allPages } }) =>
+                allPages.map((page) => ({
+                  url: `${site.siteMetadata.siteUrl}${page.path}/`,
+                  ...page,
                 })),
+              serialize: ({ url }) => ({ url, changefreq: 'daily', priority: 0.7 }),
               // Exclude all doc pages not for React
               // except the get-started/introduction page for all frameworks
-              exclude: [
+              excludes: [
                 '{/docs/!(react)/!(get-started)/**,/docs/!(react)/get-started/!(introduction)}',
               ],
             },
@@ -215,19 +218,16 @@ module.exports = {
                     }
                   }
                   allSitePage {
-                    edges {
-                      node {
-                        path
-                      }
+                    nodes {
+                      path
                     }
                   }
                 }
               `,
-              serialize: ({ site, allSitePage }) => {
-                const latestPages = allSitePage.edges.map((edge) => ({
-                  url: `${site.siteMetadata.siteUrl}${edge.node.path}/`,
-                  changefreq: 'daily',
-                  priority: 0.7,
+              resolvePages: ({ site, allSitePage: { nodes: allPages } }) => {
+                const latestPages = allPages.map((page) => ({
+                  url: `${site.siteMetadata.siteUrl}${page.path}/`,
+                  ...page,
                 }));
 
                 const nonLatestDocsPages = [];
@@ -243,8 +243,7 @@ module.exports = {
                           if (pathSegment) {
                             nonLatestDocsPages.push({
                               url: `${site.siteMetadata.siteUrl}${pagePath}/`,
-                              changefreq: 'daily',
-                              priority: 0.7,
+                              path: `${site.siteMetadata.siteUrl}${pagePath}/`,
                             });
                           }
 
@@ -266,6 +265,7 @@ module.exports = {
 
                 return [...latestPages, ...nonLatestDocsPages];
               },
+              serialize: ({ url }) => ({ url, changefreq: 'daily', priority: 0.7 }),
             },
           },
         ]
