@@ -14,11 +14,10 @@ module.exports = {
     ...siteMetadata,
     ...versionData,
   },
-  // flags: {
-  //   PRESERVE_WEBPACK_CACHE: true,
-  //   FAST_DEV: true,
-  //   QUERY_ON_DEMAND: true,
-  // },
+  flags: {
+    FAST_DEV: true,
+    QUERY_ON_DEMAND: true,
+  },
   ...(!versionData.isLatest
     ? { assetPrefix: getReleaseBranchUrl(versionData.versionString) }
     : undefined),
@@ -177,6 +176,17 @@ module.exports = {
           {
             resolve: `gatsby-plugin-sitemap`,
             options: {
+              query: `
+                {
+                  allSitePage {
+                    edges {
+                      node {
+                        path
+                      }
+                    }
+                  }
+                }
+              `,
               serialize: ({ site, allSitePage }) =>
                 allSitePage.edges.map((edge) => ({
                   url: `${site.siteMetadata.siteUrl}${edge.node.path}/`,
