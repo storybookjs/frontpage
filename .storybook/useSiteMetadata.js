@@ -1,4 +1,4 @@
-const siteMetadata = require('../site-metadata.js');
+const siteMetadata = require('../site-metadata');
 
 const versionData = {
   version: 6.3,

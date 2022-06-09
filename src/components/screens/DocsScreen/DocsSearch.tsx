@@ -59,7 +59,7 @@ const docSearchStyles = css`
     --docsearch-primary-color: ${styles.color.secondary};
     --docsearch-muted-color: ${styles.color.dark};
   }
-  
+
   ${classNames.BUTTON} {
     ${idleButtonStyles}
     font-size: ${styles.typography.size.s2}px;
@@ -147,7 +147,7 @@ export function DocsSearch({ framework, version, visible }: DocsSearchProps) {
               'tags:docs',
               `framework:${framework}`,
               `version:${version}`
-            ]
+            ],
             }}
             translations={{
               button: {

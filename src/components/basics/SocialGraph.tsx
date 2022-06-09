@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import Helmet from 'react-helmet';
 import useSiteMetadata from '../lib/useSiteMetadata';
 
-const SocialGraph: FunctionComponent<Props> = ({ title, desc, url = null, image = null }) => {
+const SocialGraph: FunctionComponent<Props> = ({ title, desc, url, image }) => {
   const { siteUrl } = useSiteMetadata();
 
   return (
@@ -23,6 +23,11 @@ const SocialGraph: FunctionComponent<Props> = ({ title, desc, url = null, image 
       <link rel="pingback" href="https://webmention.io/storybook.js.org/xmlrpc" />
     </Helmet>
   );
+};
+
+SocialGraph.defaultProps = {
+  url: null,
+  image: null,
 };
 
 export default SocialGraph;

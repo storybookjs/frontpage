@@ -151,15 +151,8 @@ const NoReadmeFound = ({ repositoryUrl }) => (
 );
 
 export const AddonsDetailScreen = ({ path, location, pageContext }) => {
-  const {
-    homepageUrl,
-    repositoryUrl,
-    readme,
-    compatibility,
-    tags,
-    authors,
-    ...addon
-  } = pageContext;
+  const { homepageUrl, repositoryUrl, readme, compatibility, tags, authors, ...addon } =
+    pageContext;
   const { title, ogImageAddons, urls = {} } = useSiteMetadata();
   const { home } = urls;
 

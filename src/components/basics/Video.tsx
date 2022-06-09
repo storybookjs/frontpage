@@ -12,7 +12,7 @@ interface Prop {
   shouldChangeSize?: boolean;
 }
 
-const Video: FunctionComponent<Prop> = ({ src, shouldChangeSize = false, ...props }) => {
+const Video: FunctionComponent<Prop> = ({ src, shouldChangeSize, ...props }) => {
   const videoSize = shouldChangeSize && window.innerWidth < 600 ? 'sm' : 'lg';
   const videoSrc = videoSize === 'sm' ? src.replace('lg', 'sm') : src;
 
@@ -21,6 +21,10 @@ const Video: FunctionComponent<Prop> = ({ src, shouldChangeSize = false, ...prop
       <source src={videoSrc} type="video/mp4" />
     </StyledVideo>
   );
+};
+
+Video.defaultProps = {
+  shouldChangeSize: false,
 };
 
 export default Video;

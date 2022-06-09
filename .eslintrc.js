@@ -1,5 +1,6 @@
 module.exports = {
   root: true,
+  ignorePatterns: ['src/generated/**/*'],
   extends: ['@storybook/eslint-config-storybook'],
   rules: {
     'import/extensions': [
@@ -7,6 +8,8 @@ module.exports = {
       'never',
       { ignorePackages: true, md: 'always', svg: 'always', json: 'always', tag: 'always' },
     ],
+    'no-use-before-define': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
     'import/no-unresolved': ['error', { ignore: ['@storybook'] }],
     'react/state-in-constructor': 'off',
     'react/static-property-placement': 'off',
