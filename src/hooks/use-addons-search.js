@@ -24,6 +24,7 @@ export function useAddonsSearch() {
     } else if (query !== '' && query.length > minQueryLength && isSearching === false) {
       setIsSearching(true);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
 
   // Fetch search results with a debounce

@@ -16,6 +16,7 @@ export default {
   decorators: [(storyFn) => <Wrapper>{storyFn()}</Wrapper>],
 };
 
+// eslint-disable-next-line react-hooks/rules-of-hooks
 const { coreFrameworks, communityFrameworks } = useSiteMetadata();
 
 const Template = (args) => <FrameworkSelector {...args} />;

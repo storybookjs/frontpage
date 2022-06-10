@@ -1,4 +1,4 @@
-/* eslint-disable no-param-reassign, global-require */
+/* eslint-disable no-param-reassign */
 const webpack = require('webpack');
 
 module.exports = {

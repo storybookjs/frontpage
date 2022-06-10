@@ -107,6 +107,7 @@ export function CodeSnippets({ paths, currentFramework, ...rest }) {
       const fetchedSnippets = await Promise.all(
         (defaultFrameworkPaths || activeFrameworkPaths).map(async (path, index) => {
           const [framework, fileName] = path.split('/');
+          // eslint-disable-next-line @typescript-eslint/naming-convention
           const [_, syntax] = fileName.split('.');
           // Important: this base path has to be present at the beginning of the import
           // (it cannot be a variable) because Webpack needs to know about it to make
@@ -134,6 +135,7 @@ export function CodeSnippets({ paths, currentFramework, ...rest }) {
     }
 
     fetchModuleComponents();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentFramework]);
 
   if (!snippets.length) return null;

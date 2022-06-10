@@ -314,6 +314,7 @@ export default function Footer({ ...props }) {
     twitter,
     chat,
     youtube,
+    // eslint-disable-next-line
     navLinks: _navLinks = {},
     docs = {},
     tutorials,

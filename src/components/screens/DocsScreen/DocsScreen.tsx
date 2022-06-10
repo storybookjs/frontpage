@@ -98,6 +98,7 @@ function DocsScreen({ data, pageContext, location }) {
         featureGroups={featureGroups}
       />
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [framework]);
   const LinksWithPrefix = useMemo(() => {
     return ({ href, ...props }) => {
@@ -105,6 +106,7 @@ function DocsScreen({ data, pageContext, location }) {
       // eslint-disable-next-line
       return <a href={url} {...props} />;
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [framework]);
 
   const features = featureGroups.flatMap((group) => group.features);

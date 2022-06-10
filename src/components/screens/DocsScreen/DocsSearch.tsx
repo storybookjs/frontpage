@@ -1,4 +1,3 @@
-/* eslint-disable react/require-default-props */
 import React from 'react';
 import { controlOrMetaKey, shortcutToHumanString } from '@storybook/api/shortcut';
 import { css, Global, styled } from '@storybook/theming';

@@ -30,7 +30,7 @@ export const FrameworkSupportTable = ({ currentFramework, frameworks, featureGro
         <tr>
           <th aria-label="frameworks" />
           {frameworks.map((framework) => (
-            <th>
+            <th key={framework}>
               <GatsbyLink to={`/docs/${framework}`}>{stylizeFramework(framework)}</GatsbyLink>
             </th>
           ))}
@@ -43,12 +43,14 @@ export const FrameworkSupportTable = ({ currentFramework, frameworks, featureGro
               <th colSpan={frameworks.length + 1}>{groupName}</th>
             </tr>
             {features.map((feature) => (
-              <tr>
+              <tr key={feature.name}>
                 <th>
                   <GatsbyLink to={pathForFeature(feature)}>{feature.name}</GatsbyLink>
                 </th>
                 {frameworks.map((framework) => (
-                  <td>{frameworkSupportsFeature(framework, feature) ? '✅' : ''}</td>
+                  <td key={`${framework}-${feature.name}`}>
+                    {frameworkSupportsFeature(framework, feature) ? '✅' : ''}
+                  </td>
                 ))}
               </tr>
             ))}

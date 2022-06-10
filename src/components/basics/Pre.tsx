@@ -43,6 +43,7 @@ export function Pre({ children }) {
         />
       );
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [preRef.current]);
 
   return <div ref={preRef}>{content}</div>;

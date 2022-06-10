@@ -41,7 +41,7 @@ const NpmDownloadCount = (props) => {
         npmDownloads: window.sessionStorage.getItem('monthlyNpmDownloads'),
       });
     }
-  }, []);
+  }, [npmApi]);
 
   return (
     <Cardinal
