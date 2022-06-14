@@ -5,9 +5,11 @@ import NotFoundScreen from '../components/screens/NotFoundScreen/NotFoundScreen'
 
 const { GlobalStyle } = global;
 
-export default () => (
+const Page404 = () => (
   <Fragment>
     <GlobalStyle />
     <NotFoundScreen />
   </Fragment>
 );
+
+export default Page404;

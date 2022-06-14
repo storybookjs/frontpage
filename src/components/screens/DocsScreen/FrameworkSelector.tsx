@@ -97,8 +97,7 @@ export function FrameworkSelector({
             <LinkHeading>Core</LinkHeading>
             <FrameworkLinkList links={coreLinks} />
             <LinkHeading withTopBorder>Community</LinkHeading>
-            {/* @ts-ignore TODO fix this typo */}
-            <FrameworkLinkList isLAst links={communityLinks} />
+            <FrameworkLinkList isLast links={communityLinks} />
           </>
         }
         as="span"

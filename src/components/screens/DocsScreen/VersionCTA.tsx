@@ -54,6 +54,5 @@ VersionCTA.propTypes = {
   latestVersion: PropTypes.number.isRequired,
   slug: PropTypes.string.isRequired,
   version: PropTypes.number.isRequired,
-  // eslint-disable-next-line react/require-default-props
   versions: VersionSelector.propTypes.versions,
 };

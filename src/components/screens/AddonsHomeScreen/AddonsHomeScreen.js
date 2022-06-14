@@ -46,10 +46,10 @@ export const AddonsHomeScreen = ({ popularAddons, trendingAddons }) => {
   const { title, ogImageAddons, urls = {} } = useSiteMetadata();
   const { home } = urls;
   const [timePeriod, setTimePeriod] = useState('MONTH');
-  const popularAddonsForTimePeriod = useMemo(() => popularAddons[timePeriod], [
-    popularAddons,
-    timePeriod,
-  ]);
+  const popularAddonsForTimePeriod = useMemo(
+    () => popularAddons[timePeriod],
+    [popularAddons, timePeriod]
+  );
 
   return (
     <>

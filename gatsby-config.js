@@ -15,7 +15,6 @@ module.exports = {
     ...versionData,
   },
   flags: {
-    PRESERVE_WEBPACK_CACHE: true,
     FAST_DEV: true,
     QUERY_ON_DEMAND: true,
   },
@@ -56,6 +55,7 @@ module.exports = {
         name: 'gatsby-starter-default',
         short_name: 'starter',
         start_url: '/',
+        icon: 'src/images/logos/icon-storybook.svg',
       },
     },
     {
@@ -176,15 +176,29 @@ module.exports = {
           {
             resolve: `gatsby-plugin-sitemap`,
             options: {
-              serialize: ({ site, allSitePage }) =>
-                allSitePage.edges.map((edge) => ({
-                  url: `${site.siteMetadata.siteUrl}${edge.node.path}/`,
-                  changefreq: 'daily',
-                  priority: 0.7,
+              query: `
+                {
+                  site {
+                    siteMetadata {
+                      siteUrl
+                    }
+                  }
+                  allSitePage {
+                    nodes {
+                      path
+                    }
+                  }
+                }
+              `,
+              resolvePages: ({ site, allSitePage: { nodes: allPages } }) =>
+                allPages.map((page) => ({
+                  url: `${site.siteMetadata.siteUrl}${page.path}/`,
+                  ...page,
                 })),
+              serialize: ({ url }) => ({ url, changefreq: 'daily', priority: 0.7 }),
               // Exclude all doc pages not for React
               // except the get-started/introduction page for all frameworks
-              exclude: [
+              excludes: [
                 '{/docs/!(react)/!(get-started)/**,/docs/!(react)/get-started/!(introduction)}',
               ],
             },
@@ -194,11 +208,26 @@ module.exports = {
             resolve: `gatsby-plugin-sitemap`,
             options: {
               output: '/sitemap-all.xml',
-              serialize: ({ site, allSitePage }) => {
-                const latestPages = allSitePage.edges.map((edge) => ({
-                  url: `${site.siteMetadata.siteUrl}${edge.node.path}/`,
-                  changefreq: 'daily',
-                  priority: 0.7,
+              query: `
+                {
+                  site {
+                    siteMetadata {
+                      siteUrl
+                      coreFrameworks
+                      communityFrameworks
+                    }
+                  }
+                  allSitePage {
+                    nodes {
+                      path
+                    }
+                  }
+                }
+              `,
+              resolvePages: ({ site, allSitePage: { nodes: allPages } }) => {
+                const latestPages = allPages.map((page) => ({
+                  url: `${site.siteMetadata.siteUrl}${page.path}/`,
+                  ...page,
                 }));
 
                 const nonLatestDocsPages = [];
@@ -214,8 +243,7 @@ module.exports = {
                           if (pathSegment) {
                             nonLatestDocsPages.push({
                               url: `${site.siteMetadata.siteUrl}${pagePath}/`,
-                              changefreq: 'daily',
-                              priority: 0.7,
+                              path: `${site.siteMetadata.siteUrl}${pagePath}/`,
                             });
                           }
 
@@ -237,6 +265,7 @@ module.exports = {
 
                 return [...latestPages, ...nonLatestDocsPages];
               },
+              serialize: ({ url }) => ({ url, changefreq: 'daily', priority: 0.7 }),
             },
           },
         ]

@@ -1,4 +1,6 @@
+// eslint-disable-next-line import/extensions
 const { version: versionFull } = require('../generated/versions/current/package.json');
+// eslint-disable-next-line import/extensions
 const { version: latestVersionFull } = require('../generated/versions/latest/package.json');
 
 const VERSION_PARTS_REGEX = /^(\d+\.\d+)(?:\.\d+)?-?(\w+)?(?:\.\d+$)?/;

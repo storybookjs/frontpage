@@ -38,6 +38,7 @@ export function FeatureSnippets({ currentFramework, paths }) {
       setSnippetsByFramework(Object.fromEntries(entries));
     };
     fetchSnippetsByFramework();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

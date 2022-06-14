@@ -3,7 +3,7 @@
 import React, { FunctionComponent } from 'react';
 import ReactLazyLoad from 'react-lazyload';
 
-const LazyLoad: FunctionComponent<{}> = ({ children, ...props }) => {
+const LazyLoad: any = ({ children, ...props }) => {
   if (LazyLoad.disabled) {
     return children;
   }

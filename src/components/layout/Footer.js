@@ -222,14 +222,14 @@ const Services = styled.div`
   a {
     display: inline-block;
     transition: all 150ms ease-out;
-    transform: translate3d(0,0,0);
+    transform: translate3d(0, 0, 0);
 
     &:hover {
-      transform: translate3d(0,-2px,0);
+      transform: translate3d(0, -2px, 0);
     }
 
     &:active {
-      transform: translate3d(0,0,0);
+      transform: translate3d(0, 0, 0);
     }
   }
 
@@ -242,7 +242,7 @@ const Services = styled.div`
 
   ${CircleCI} {
     /* Turn down the pure black of these logos */
-    opacity: .75;
+    opacity: 0.75;
   }
 `;
 
@@ -314,6 +314,7 @@ export default function Footer({ ...props }) {
     twitter,
     chat,
     youtube,
+    // eslint-disable-next-line
     navLinks: _navLinks = {},
     docs = {},
     tutorials,

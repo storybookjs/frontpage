@@ -26,8 +26,7 @@ const mockResults = {
       name: 'storybook-addon-outline',
       displayName: 'Outline',
       description: 'Outline all elements with CSS to help with layout placement and alignment',
-      icon:
-        'https://user-images.githubusercontent.com/263385/101991674-48355c80-3c7c-11eb-9686-f684e755fcdd.png',
+      icon: 'https://user-images.githubusercontent.com/263385/101991674-48355c80-3c7c-11eb-9686-f684e755fcdd.png',
       authors: [
         {
           id: 'winkervsbecks',
