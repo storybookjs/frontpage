@@ -120,6 +120,7 @@ Description.propTypes = {
 const AddonInfo = styled.div`
   display: flex;
   align-items: flex-start;
+  word-break: break-word;
 
   @media (min-width: ${breakpoint * 1.5}px) {
     ${(props) =>
