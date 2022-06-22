@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const fetch = require('node-fetch');
 
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
@@ -46,7 +47,7 @@ exports.onCreateNode = ({ actions, getNode, node }) => {
     createNodeField({ node, name: 'slug', value: slug });
 
     if (pageType === 'releases') {
-      const [_, releaseVersion] = slugParts;
+      const [, releaseVersion] = slugParts;
       createNodeField({ node, name: 'iframeSlug', value: `/releases/iframe/${releaseVersion}/` });
       createNodeField({ node, name: 'version', value: releaseVersion });
     }
@@ -292,7 +293,48 @@ function updateRedirectsFile() {
   fs.writeFileSync('./public/_redirects', `${originalContents}\n\n${redirectsWithFramework}\n\n${versionRedirects}`);
 }
 
-exports.onPostBuild = () => {
+const otherSitemaps = ['blog/sitemap.xml', 'showcase/sitemap-0.xml', 'tutorials/sitemap.xml'];
+
+/* eslint-disable no-restricted-syntax, no-await-in-loop */
+async function copyOtherSitemaps() {
+  for (const sitemap of otherSitemaps) {
+    const directory = `./public/sitemap/${sitemap.split('/')[0]}`;
+    if (!fs.existsSync(directory)) {
+      fs.mkdirSync(directory);
+    }
+
+    try {
+      const response = await fetch(`https://storybook.js.org/${sitemap}`);
+      const content = await response.text();
+      fs.writeFileSync(`./public/sitemap/${sitemap}`, content);
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error(error);
+    }
+  }
+}
+/* eslint-enable no-restricted-syntax, no-await-in-loop */
+
+function updateSitemapIndex() {
+  const originalContents = fs.readFileSync('./public/sitemap/sitemap-index.xml');
+
+  const newLocations = otherSitemaps.map(
+    (sitemap) => `<loc>https://storybook.js.org/sitemap/${sitemap}</loc>`
+  );
+
+  const insertIndex = originalContents.indexOf('</sitemap>');
+  const newContent = [
+    originalContents.slice(0, insertIndex),
+    ...newLocations,
+    originalContents.slice(insertIndex),
+  ].join('');
+
+  fs.writeFileSync('./public/sitemap/sitemap-index.xml', newContent);
+}
+
+exports.onPostBuild = async () => {
+  await copyOtherSitemaps();
+  updateSitemapIndex();
   generateVersionsFile();
   updateRedirectsFile();
 };
