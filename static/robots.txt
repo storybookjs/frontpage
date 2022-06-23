@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: https://storybook.js.org/sitemap/sitemap-index.xml
