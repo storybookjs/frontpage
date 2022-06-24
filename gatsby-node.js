@@ -333,8 +333,10 @@ function updateSitemapIndex() {
 }
 
 exports.onPostBuild = async () => {
-  await copyOtherSitemaps();
-  updateSitemapIndex();
-  generateVersionsFile();
-  updateRedirectsFile();
+  if (isLatest) {
+    await copyOtherSitemaps();
+    updateSitemapIndex();
+    generateVersionsFile();
+    updateRedirectsFile();
+  }
 };
