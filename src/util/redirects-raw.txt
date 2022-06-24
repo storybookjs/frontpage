@@ -1,3 +1,4 @@
+/docs/writing-docs/doc-blocks/                   /docs/writing-docs/doc-block-argstable                                         301
 /docs/workflows/testing-with-storybook/          /docs/writing-tests/introduction/                                              301
 /docs/workflows/unit-testing/                    /docs/writing-tests/importing-stories-in-tests/                                301
 /docs/workflows/visual-testing/                  /docs/writing-tests/visual-testing/                                            301
@@ -10,3 +11,6 @@
 /docs/workflows/package-composition/             /docs/sharing/package-composition/                                             301
 /docs/workflows/faq/                             /docs/faq/                                                                     301
 /docs/configure/webpack                          /docs/builders/webpack                                                         301
+/docs/api/addons                                 /docs/addons/introduction                                                      301
+/docs/api/addons-api                             /docs/addons/addons-api                                                        301
+/docs/api/presets                                /docs/addons/writing-presets                                                   301
