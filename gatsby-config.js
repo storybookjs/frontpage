@@ -190,12 +190,17 @@ module.exports = {
                   }
                 }
               `,
-              resolvePages: ({ site, allSitePage: { nodes: allPages } }) =>
+              resolvePages: ({
+                site: {
+                  siteMetadata: { siteUrl },
+                },
+                allSitePage: { nodes: allPages },
+              }) =>
                 allPages.map((page) => ({
-                  url: `${site.siteMetadata.siteUrl}${page.path}/`,
+                  url: `${siteUrl}${page.path}/`,
                   ...page,
                 })),
-              serialize: ({ url }) => ({ url, changefreq: 'daily', priority: 0.7 }),
+              serialize: ({ url }) => ({ url }),
               // Exclude all doc pages not for React
               // except the get-started/introduction page for all frameworks
               excludes: [
@@ -224,9 +229,14 @@ module.exports = {
                   }
                 }
               `,
-              resolvePages: ({ site, allSitePage: { nodes: allPages } }) => {
+              resolvePages: ({
+                site: {
+                  siteMetadata: { siteUrl },
+                },
+                allSitePage: { nodes: allPages },
+              }) => {
                 const latestPages = allPages.map((page) => ({
-                  url: `${site.siteMetadata.siteUrl}${page.path}/`,
+                  url: `${siteUrl}${page.path}/`,
                   ...page,
                 }));
 
@@ -242,8 +252,8 @@ module.exports = {
 
                           if (pathSegment) {
                             nonLatestDocsPages.push({
-                              url: `${site.siteMetadata.siteUrl}${pagePath}/`,
-                              path: `${site.siteMetadata.siteUrl}${pagePath}/`,
+                              url: `${siteUrl}${pagePath}/`,
+                              path: `${pagePath}/`,
                             });
                           }
 
@@ -265,7 +275,7 @@ module.exports = {
 
                 return [...latestPages, ...nonLatestDocsPages];
               },
-              serialize: ({ url }) => ({ url, changefreq: 'daily', priority: 0.7 }),
+              serialize: ({ url }) => ({ url }),
             },
           },
         ]
