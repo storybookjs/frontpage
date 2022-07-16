@@ -315,19 +315,15 @@ async function copyOtherSitemaps() {
 }
 /* eslint-enable no-restricted-syntax, no-await-in-loop */
 
-function updateSitemapIndex() {
-  const originalContents = fs.readFileSync('./public/sitemap/sitemap-index.xml');
+async function updateSitemapIndex() {
+  const data = await fs.promises.readFile('./public/sitemap/sitemap-index.xml');
+  const originalContents = data.toString();
 
-  const newLocations = otherSitemaps.map(
-    (sitemap) => `<loc>https://storybook.js.org/sitemap/${sitemap}</loc>`
-  );
+  const newLocations = otherSitemaps
+    .map((sitemap) => `<sitemap><loc>https://storybook.js.org/sitemap/${sitemap}</loc></sitemap>`)
+    .join('');
 
-  const insertIndex = originalContents.indexOf('</sitemap>');
-  const newContent = [
-    originalContents.slice(0, insertIndex),
-    ...newLocations,
-    originalContents.slice(insertIndex),
-  ].join('');
+  const newContent = originalContents.replace(/(<sitemap>.*<\/sitemap>)/, `$1${newLocations}`);
 
   fs.writeFileSync('./public/sitemap/sitemap-index.xml', newContent);
 }
@@ -335,7 +331,7 @@ function updateSitemapIndex() {
 exports.onPostBuild = async () => {
   if (isLatest) {
     await copyOtherSitemaps();
-    updateSitemapIndex();
+    await updateSitemapIndex();
     generateVersionsFile();
     updateRedirectsFile();
   }
