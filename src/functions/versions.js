@@ -68,7 +68,8 @@ const log = async (event) => {
   const { current: version } = event.queryStringParameters || {};
 
   const { headers } = event;
-  let remotehost = headers['x-forwarded-for'] || headers.host;
+  // x-forwarded-for can contain a list of comma-separated proxies
+  let remotehost = (headers['x-forwarded-for'] || headers.host).split(',')[0];
   const truncatedHost = truncate(remotehost);
   logger.log({ SKIP_IP_HASH });
   if (SKIP_IP_HASH !== 'true') {
