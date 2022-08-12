@@ -76,6 +76,11 @@ const IntegrationsGrid = styled(Integrations)`
   top: 4rem;
 `;
 
+const Stats = styled.div`
+  display: flex;
+  gap: 30px;
+`;
+
 export function Develop({ startOpen, ...props }) {
   return (
     <Wrapper {...props}>
@@ -149,10 +154,10 @@ export function Develop({ startOpen, ...props }) {
             </Link>
           }
           meta={
-            <>
+            <Stats>
               <Stat count="400+" text="Integrations" noPlural />
               <Stat count="35M" text="Downloads per week" noPlural />
-            </>
+            </Stats>
           }
         />
         <IntegrationsGrid />

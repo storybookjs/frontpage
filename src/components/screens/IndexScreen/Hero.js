@@ -94,6 +94,11 @@ const Modal = () => (
   </AspectRatio>
 );
 
+const Stats = styled.div`
+  display: flex;
+  gap: 40px;
+`;
+
 export function Hero({ startOpen, ...props }) {
   const {
     coreFrameworks,
@@ -125,7 +130,7 @@ export function Hero({ startOpen, ...props }) {
           </>
         }
         meta={
-          <>
+          <Stats>
             <Stat
               count={`v${latestVersion}`}
               text="Latest version"
@@ -139,7 +144,7 @@ export function Hero({ startOpen, ...props }) {
               countLink={gitHub.contributors}
               noPlural
             />
-          </>
+          </Stats>
         }
       />
       <Content>

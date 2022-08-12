@@ -67,7 +67,7 @@ export function PureIndexScreen({ latestBlogPost }) {
 
       <Hero />
       <Develop />
-      <div style={{ height: 400 }}></div>
+      <div style={{ height: 400 }} />
     </>
   );
 }

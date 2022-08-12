@@ -3,7 +3,8 @@ import { styled } from '@storybook/theming';
 import { Cardinal } from '@storybook/design-system';
 
 export const Stat = styled(Cardinal)`
-  margin-left: -12px;
+  /* margin-left: -12px; */
+  padding: 0;
 `;
 Stat.defaultProps = {
   size: 'small',

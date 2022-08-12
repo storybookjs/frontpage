@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Cardinal } from '@storybook/design-system';
 import { fetch, window } from 'global';
 import useSiteMetadata from '../lib/useSiteMetadata';
 import { Stat } from '../basics/Stat';
@@ -49,7 +48,7 @@ export const NpmDownloadCount = (props) => {
       text="Installs per month"
       noPlural
       countLink={npm}
-      loading={state.loading}
+      isLoading={state.loading}
       {...props}
     />
   );
