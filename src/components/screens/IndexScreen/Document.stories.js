@@ -1,16 +1,16 @@
 import React from 'react';
-import { Develop } from './Develop';
+import { Document } from './Document';
 
 export default {
-  title: 'Screens/IndexScreen/Develop',
-  component: Develop,
+  title: 'Screens/IndexScreen/Document',
+  component: Document,
   parameters: {
     chromatic: { viewports: [320, 1200] },
     layout: 'fullscreen',
   },
 };
 
-export const Default = () => <Develop docs="/" />;
+export const Default = () => <Document />;
 Default.parameters = {
   backgrounds: { default: 'dark' },
 };

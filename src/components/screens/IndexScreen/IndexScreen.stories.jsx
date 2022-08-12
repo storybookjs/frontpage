@@ -6,7 +6,7 @@ export default {
   title: 'Screens/IndexScreen/IndexScreen',
   component: PureIndexScreen,
   parameters: {
-    chromatic: { viewports: [320, 1200] },
+    chromatic: { viewports: [440, 600, 900, 1200] },
     layout: 'fullscreen',
   },
 };
@@ -18,11 +18,11 @@ Default.parameters = {
   backgrounds: { default: 'dark' },
 };
 
-export const WithLatestBlogPost = Template.bind({});
-WithLatestBlogPost.parameters = Default.parameters;
-WithLatestBlogPost.args = {
-  latestBlogPost: {
-    slug: '#',
-    title: 'Latest blog post title is a bit long to test layout',
-  },
-};
+// export const WithLatestBlogPost = Template.bind({});
+// WithLatestBlogPost.parameters = Default.parameters;
+// WithLatestBlogPost.args = {
+//   latestBlogPost: {
+//     slug: '#',
+//     title: 'Latest blog post title is a bit long to test layout',
+//   },
+// };

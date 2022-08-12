@@ -100,7 +100,7 @@ const Stats = styled.div`
   gap: 30px;
 `;
 
-export function Develop({ startOpen, ...props }) {
+export function Develop({ docs, startOpen, ...props }) {
   return (
     <Wrapper {...props}>
       <SectionLede
@@ -179,7 +179,7 @@ export function Develop({ startOpen, ...props }) {
             </Stats>
           }
         />
-        <IntegrationsGrid />
+        <IntegrationsGrid docs={docs} />
       </Content>
       <Testimonial
         inverse
@@ -201,6 +201,7 @@ export function Develop({ startOpen, ...props }) {
 
 Develop.propTypes = {
   startOpen: PropTypes.bool,
+  docs: PropTypes.string.isRequired,
 };
 
 Develop.defaultProps = {

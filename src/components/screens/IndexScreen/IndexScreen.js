@@ -8,6 +8,8 @@ import { SocialGraph } from '../../basics';
 import { BlogCTA } from './BlogCTA';
 import { Hero } from './Hero';
 import { Develop } from './Develop';
+import { Test } from './Test';
+import { Document } from './Document';
 
 const globalStyles = css`
   body {
@@ -66,8 +68,9 @@ export function PureIndexScreen({ latestBlogPost }) {
       </LinksContextProvider>
 
       <Hero />
-      <Develop />
-      <div style={{ height: 400 }} />
+      <Develop docs={docs} />
+      <Test docs={docs} />
+      <Document docs={docs} />
     </>
   );
 }
