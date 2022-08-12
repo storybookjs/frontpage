@@ -55,25 +55,44 @@ const ValueProp = styled(ValuePropCopy)`
   }
 `;
 
+const ValuePropIntegrations = styled(ValuePropCopy)`
+  align-self: center;
+`;
+
 const Content = styled.div`
   ${pageMargins};
   padding-top: 16rem;
 
   display: grid;
-  grid-template-columns: minmax(320px, 1fr) 1fr;
+  grid-template-columns: 1fr;
+  justify-items: center;
   gap: 6rem;
+
+  @media (min-width: ${breakpoints[2]}px) {
+    justify-items: flex-start;
+    grid-template-columns: minmax(max-content, 320px) 1fr;
+  }
 `;
 
 const StorybookDemo = styled.img`
-  grid-column: 2 / 3;
   position: sticky;
   top: 4rem;
+  width: 100%;
+  order: -1;
+  z-index: 999;
+
+  @media (min-width: ${breakpoints[2]}px) {
+    grid-column: 2 / 3;
+  }
 `;
 
 const IntegrationsGrid = styled(Integrations)`
-  grid-column: 2 / 3;
   position: sticky;
   top: 4rem;
+
+  @media (min-width: ${breakpoints[2]}px) {
+    grid-column: 2 / 3;
+  }
 `;
 
 const Stats = styled.div`
@@ -144,7 +163,7 @@ export function Develop({ startOpen, ...props }) {
         />
       </Content>
       <Content>
-        <ValueProp
+        <ValuePropIntegrations
           inverse
           heading="Integrate with the tools you already use"
           description="Storybook is incrementally adoptable and integrates with industry-standard tools. That means your team doesn’t have to change their workflow."

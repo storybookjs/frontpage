@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { styles } from '@storybook/design-system';
+import { styles } from '@storybook/components-marketing';
 import { css, styled } from '@storybook/theming';
 import { Link as GatsbyLinkWrapper } from 'gatsby';
 import AdobeXD from '../../../images/integrations/adobexd.svg';
@@ -34,22 +34,23 @@ import Ionic from '../../../images/integrations/ionic.svg';
 import Launchdarkly from '../../../images/integrations/launchdarkly.svg';
 import Supernova from '../../../images/integrations/supernova.svg';
 
-const { color, spacing, pageMargin, breakpoint } = styles;
+const { color, breakpoints } = styles;
 
 const IntegrationItem = styled.a`
-  width: 48px;
-  height: 48px;
-
-  @media (min-width: ${breakpoint * 1.333}px) {
-    width: 80px;
-    height: 80px;
-  }
+  width: 100%;
+  height: auto;
 
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 10px;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.05), 0 5px 15px 0 rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+  user-select: none;
+
+  @media (min-width: ${breakpoints[2]}px) {
+    pointer-events: initial;
+  }
 
   img {
     width: 100%;
@@ -67,44 +68,35 @@ const IntegrationItem = styled.a`
     `}
 `;
 
-const IntegrationList = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 80px);
-  grid-auto-rows: max-content;
-  gap: 20px;
-
-  @media (min-width: ${breakpoint * 1.333}px) {
-    gap: 30px;
-    max-width: 660px;
-  }
-
-  &:last-child {
-    margin-bottom: 0 !important;
-  }
-`;
-
-const Inner = styled.div`
+const Wrapper = styled.div`
   position: relative;
   align-items: center;
   text-align: center;
+`;
 
-  @media (min-width: ${breakpoint * 1}px) {
-    padding-bottom: 2.5rem;
+const IntegrationGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: max-content;
+  grid-auto-flow: row dense;
+  gap: 20px;
+  justify-content: center;
+
+  @media (min-width: 1400px) {
+    gap: 30px;
   }
 `;
 
 const Scrim = styled.div`
   position: absolute;
   height: 50%;
-  bottom: 0;
+  bottom: -2.5rem;
   left: 0;
   right: 0;
   pointer-events: none;
 
   background: linear-gradient(180deg, rgba(23, 28, 35, 0) 0%, #171c23 86.87%);
 `;
-
-const Wrapper = styled.div``;
 
 export function Integrations({ docs, ...props }) {
   const integrations = [
@@ -279,16 +271,14 @@ export function Integrations({ docs, ...props }) {
 
   return (
     <Wrapper {...props}>
-      <Inner>
-        <IntegrationList>
-          {integrations.map(({ image, name, ...integration }) => (
-            <IntegrationItem key={name} {...integration}>
-              <img src={image} alt={name} />
-            </IntegrationItem>
-          ))}
-        </IntegrationList>
-        <Scrim />
-      </Inner>
+      <IntegrationGrid>
+        {integrations.map(({ image, name, ...integration }) => (
+          <IntegrationItem key={name} {...integration}>
+            <img src={image} alt={name} />
+          </IntegrationItem>
+        ))}
+      </IntegrationGrid>
+      <Scrim />
     </Wrapper>
   );
 }
