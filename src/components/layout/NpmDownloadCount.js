@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { Cardinal } from '@storybook/design-system';
 import { fetch, window } from 'global';
 import useSiteMetadata from '../lib/useSiteMetadata';
-
-import { Cardinal } from '../basics';
+import { Stat } from '../basics/Stat';
 
 const fetchNpmDownloads = async (npmApiUrls) => {
   const promises = Object.values(npmApiUrls).map(async (uri) => {
@@ -17,7 +17,7 @@ const fetchNpmDownloads = async (npmApiUrls) => {
   return results.reduce((a, b) => a + b, 0);
 };
 
-const NpmDownloadCount = (props) => {
+export const NpmDownloadCount = (props) => {
   const [state, setState] = useState({ loading: true, npmDownloads: 0 });
   const { urls = {} } = useSiteMetadata();
   const { npm, npmApi } = urls;
@@ -44,17 +44,13 @@ const NpmDownloadCount = (props) => {
   }, [npmApi]);
 
   return (
-    <Cardinal
-      size="small"
+    <Stat
       count={npmDownloadsDisplay}
       text="Installs per month"
       noPlural
-      status="secondary"
       countLink={npm}
       loading={state.loading}
       {...props}
     />
   );
 };
-
-export default NpmDownloadCount;

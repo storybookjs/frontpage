@@ -1,16 +1,16 @@
 import React from 'react';
-import { Hero } from './Hero';
+import { Develop } from './Develop';
 
 export default {
-  title: 'Screens/IndexScreen/Hero',
-  component: Hero,
+  title: 'Screens/IndexScreen/Develop',
+  component: Develop,
   parameters: {
     chromatic: { viewports: [320, 1200] },
     layout: 'fullscreen',
   },
 };
 
-export const Default = () => <Hero />;
+export const Default = () => <Develop />;
 Default.parameters = {
   backgrounds: { default: 'dark' },
 };

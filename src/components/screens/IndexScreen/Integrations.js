@@ -27,22 +27,13 @@ import Zeroheight from '../../../images/integrations/zeroheight.svg';
 
 const { color, spacing, pageMargin, breakpoint } = styles;
 
-const Title = styled(Subheading)`
-  display: block;
-  margin-bottom: 1.5rem;
-  color: ${color.dark};
-  @media (min-width: ${breakpoint * 1}px) {
-    margin-bottom: 2rem;
-  }
-`;
-
 const IntegrationItem = styled.a`
   width: 48px;
   height: 48px;
 
   @media (min-width: ${breakpoint * 1.333}px) {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
   }
 
   display: flex;
@@ -68,16 +59,15 @@ const IntegrationItem = styled.a`
 `;
 
 const IntegrationList = styled.div`
-  margin: 0 auto 16px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px 30px;
-  justify-content: center;
-  max-width: 516px;
-  align-items: start;
+  /* margin: 0 auto 16px; */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 80px);
+  grid-auto-rows: max-content;
+  gap: 20px;
+
   @media (min-width: ${breakpoint * 1.333}px) {
-    margin: 0 auto 30px;
-    gap: 30px 40px;
+    /* margin: 0 auto 30px; */
+    gap: 30px;
     max-width: 660px;
   }
 
@@ -94,120 +84,126 @@ const IntegrationsWrapper = styled.div`
 `;
 
 const Inner = styled.div`
+  position: relative;
   align-items: center;
   text-align: center;
 
-  padding: 3rem ${spacing.padding.medium}px;
+  /* padding: 3rem ${spacing.padding.medium}px; */
+
   @media (min-width: ${breakpoint * 1}px) {
-    /* margin: 0 ${pageMargin * 3}%; */
-    padding-bottom: 5rem;
+    padding-bottom: 2.5rem;
   }
-  @media (min-width: ${breakpoint * 2}px) {
-    /* margin: 0 ${pageMargin * 4}%; */
-  }
+`;
+
+const Scrim = styled.div`
+  position: absolute;
+  height: 50%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  background: linear-gradient(180deg, rgba(23, 28, 35, 0) 0%, #171c23 86.87%);
 `;
 
 const Wrapper = styled.div``;
 
-export default function Integrations({ docs, ...props }) {
+export function Integrations({ docs, ...props }) {
   return (
     <Wrapper {...props}>
       <Inner>
-        <Title>Integrations</Title>
-        <IntegrationsWrapper>
-          <IntegrationList>
-            <IntegrationItem as={GatsbyLinkWrapper} to="/addons/@storybook/addon-jest">
-              <img src={Jest} title="Jest" alt="Jest" />
-            </IntegrationItem>
-            <IntegrationItem href="https://storybook.js.org/blog/figma-plugin-sneak-peek">
-              <img src={Figma} title="Figma" alt="Figma" />
-            </IntegrationItem>
-            <IntegrationItem target="_blank" href="https://www.chromatic.com/">
-              <img src={Chromatic} title="Chromatic" alt="Chromatic" />
-            </IntegrationItem>
-            <IntegrationItem as={GatsbyLinkWrapper} to="/addons/storybook-zeplin">
-              <img src={Zeplin} title="Zeplin" alt="Zeplin" />
-            </IntegrationItem>
-            <IntegrationItem as={GatsbyLinkWrapper} to="/addons/@storybook/addon-a11y">
-              <img src={Axe} title="Axe" alt="Axe" />
-            </IntegrationItem>
-            <IntegrationItem href="https://github.com/storybookjs/presets/tree/master/packages/preset-scss">
-              <img src={Sass} title="Sass" alt="Sass" />
-            </IntegrationItem>
-            <IntegrationItem as={GatsbyLinkWrapper} to="/addons/storybook-addon-next">
-              <img src={Nextjs} title="Nextjs" alt="Nextjs" />
-            </IntegrationItem>
-            <IntegrationItem
-              as={GatsbyLinkWrapper}
-              to={`${docs}react/writing-tests/importing-stories-in-tests`}
-            >
-              <img src={TestingLib} title="TestingLib" alt="TestingLib" />
-            </IntegrationItem>
-            <IntegrationItem as={GatsbyLinkWrapper} to="/addons/storybook-addon-sketch">
-              <img src={Sketch} title="Sketch" alt="Sketch" />
-            </IntegrationItem>
-            <IntegrationItem
-              as={GatsbyLinkWrapper}
-              to={`${docs}react/writing-tests/importing-stories-in-tests`}
-            >
-              <img src={Puppeteer} title="Puppeteer" alt="Puppeteer" />
-            </IntegrationItem>
-            <IntegrationItem
-              href="https://zeroheight.com/3xlwst8/p/507ba7-storybook"
-              target="_blank"
-              rel="noopener nofollow noreferrer"
-            >
-              <img src={Zeroheight} title="Zeroheight" alt="Zeroheight" />
-            </IntegrationItem>
-            <IntegrationItem as={GatsbyLinkWrapper} to="/addons/storybook-addon-apollo-client">
-              <img src={Apollo} title="Apollo" alt="Apollo" />
-            </IntegrationItem>
-            <IntegrationItem
-              target="_blank"
-              rel="noopener nofollow noreferrer"
-              href="https://medium.com/storybookjs/building-a-front-end-project-with-react-tailwindcss-and-storybook-742bdb1417da"
-            >
-              <img src={Tailwind} title="Tailwind" alt="Tailwind" />
-            </IntegrationItem>
-            <IntegrationItem href="https://storybook.js.org/blog/storybook-for-vite/">
-              <img src={Vite} title="Vite" alt="Vite" />
-            </IntegrationItem>
-            <IntegrationItem
-              as={GatsbyLinkWrapper}
-              to={`${docs}react/writing-tests/importing-stories-in-tests`}
-            >
-              <img src={Playwright} title="Playwright" alt="Playwright" />
-            </IntegrationItem>
-            <IntegrationItem as={GatsbyLinkWrapper} to="/addons/storybook-addon-xd-designs">
-              <img src={AdobeXD} title="AdobeXD" alt="AdobeXD" />
-            </IntegrationItem>
-            <IntegrationItem
-              as={GatsbyLinkWrapper}
-              to={`${docs}react/writing-tests/importing-stories-in-tests`}
-            >
-              <img src={Cypress} title="Cypress" alt="Cypress" />
-            </IntegrationItem>
-            <IntegrationItem
-              target="_blank"
-              rel="noopener nofollow noreferrer"
-              href="https://support.invisionapp.com/hc/en-us/articles/360051565792"
-            >
-              <img src={Invision} title="Invision" alt="Invision" />
-            </IntegrationItem>
-            <IntegrationItem as={GatsbyLinkWrapper} to="/addons/@storybook/testing-angular">
-              <img src={Jasmine} title="Jasmine" alt="Jasmine" />
-            </IntegrationItem>
-            <IntegrationItem as={GatsbyLinkWrapper} to="/addons/@react-theming/storybook-addon">
-              <img src={Emotion} title="Emotion" alt="Emotion" />
-            </IntegrationItem>
-            <IntegrationItem
-              as={GatsbyLinkWrapper}
-              to={`${docs}react/sharing/embed#embed-stories-on-other-platforms`}
-            >
-              <img src={Notion} title="Notion" alt="Notion" />
-            </IntegrationItem>
-          </IntegrationList>
-        </IntegrationsWrapper>
+        <IntegrationList>
+          <IntegrationItem as={GatsbyLinkWrapper} to="/addons/@storybook/addon-jest">
+            <img src={Jest} title="Jest" alt="Jest" />
+          </IntegrationItem>
+          <IntegrationItem href="https://storybook.js.org/blog/figma-plugin-sneak-peek">
+            <img src={Figma} title="Figma" alt="Figma" />
+          </IntegrationItem>
+          <IntegrationItem target="_blank" href="https://www.chromatic.com/">
+            <img src={Chromatic} title="Chromatic" alt="Chromatic" />
+          </IntegrationItem>
+          <IntegrationItem as={GatsbyLinkWrapper} to="/addons/storybook-zeplin">
+            <img src={Zeplin} title="Zeplin" alt="Zeplin" />
+          </IntegrationItem>
+          <IntegrationItem as={GatsbyLinkWrapper} to="/addons/@storybook/addon-a11y">
+            <img src={Axe} title="Axe" alt="Axe" />
+          </IntegrationItem>
+          <IntegrationItem href="https://github.com/storybookjs/presets/tree/master/packages/preset-scss">
+            <img src={Sass} title="Sass" alt="Sass" />
+          </IntegrationItem>
+          <IntegrationItem as={GatsbyLinkWrapper} to="/addons/storybook-addon-next">
+            <img src={Nextjs} title="Nextjs" alt="Nextjs" />
+          </IntegrationItem>
+          <IntegrationItem
+            as={GatsbyLinkWrapper}
+            to={`${docs}react/writing-tests/importing-stories-in-tests`}
+          >
+            <img src={TestingLib} title="TestingLib" alt="TestingLib" />
+          </IntegrationItem>
+          <IntegrationItem as={GatsbyLinkWrapper} to="/addons/storybook-addon-sketch">
+            <img src={Sketch} title="Sketch" alt="Sketch" />
+          </IntegrationItem>
+          <IntegrationItem
+            as={GatsbyLinkWrapper}
+            to={`${docs}react/writing-tests/importing-stories-in-tests`}
+          >
+            <img src={Puppeteer} title="Puppeteer" alt="Puppeteer" />
+          </IntegrationItem>
+          <IntegrationItem
+            href="https://zeroheight.com/3xlwst8/p/507ba7-storybook"
+            target="_blank"
+            rel="noopener nofollow noreferrer"
+          >
+            <img src={Zeroheight} title="Zeroheight" alt="Zeroheight" />
+          </IntegrationItem>
+          <IntegrationItem as={GatsbyLinkWrapper} to="/addons/storybook-addon-apollo-client">
+            <img src={Apollo} title="Apollo" alt="Apollo" />
+          </IntegrationItem>
+          <IntegrationItem
+            target="_blank"
+            rel="noopener nofollow noreferrer"
+            href="https://medium.com/storybookjs/building-a-front-end-project-with-react-tailwindcss-and-storybook-742bdb1417da"
+          >
+            <img src={Tailwind} title="Tailwind" alt="Tailwind" />
+          </IntegrationItem>
+          <IntegrationItem href="https://storybook.js.org/blog/storybook-for-vite/">
+            <img src={Vite} title="Vite" alt="Vite" />
+          </IntegrationItem>
+          <IntegrationItem
+            as={GatsbyLinkWrapper}
+            to={`${docs}react/writing-tests/importing-stories-in-tests`}
+          >
+            <img src={Playwright} title="Playwright" alt="Playwright" />
+          </IntegrationItem>
+          <IntegrationItem as={GatsbyLinkWrapper} to="/addons/storybook-addon-xd-designs">
+            <img src={AdobeXD} title="AdobeXD" alt="AdobeXD" />
+          </IntegrationItem>
+          <IntegrationItem
+            as={GatsbyLinkWrapper}
+            to={`${docs}react/writing-tests/importing-stories-in-tests`}
+          >
+            <img src={Cypress} title="Cypress" alt="Cypress" />
+          </IntegrationItem>
+          <IntegrationItem
+            target="_blank"
+            rel="noopener nofollow noreferrer"
+            href="https://support.invisionapp.com/hc/en-us/articles/360051565792"
+          >
+            <img src={Invision} title="Invision" alt="Invision" />
+          </IntegrationItem>
+          <IntegrationItem as={GatsbyLinkWrapper} to="/addons/@storybook/testing-angular">
+            <img src={Jasmine} title="Jasmine" alt="Jasmine" />
+          </IntegrationItem>
+          <IntegrationItem as={GatsbyLinkWrapper} to="/addons/@react-theming/storybook-addon">
+            <img src={Emotion} title="Emotion" alt="Emotion" />
+          </IntegrationItem>
+          <IntegrationItem
+            as={GatsbyLinkWrapper}
+            to={`${docs}react/sharing/embed#embed-stories-on-other-platforms`}
+          >
+            <img src={Notion} title="Notion" alt="Notion" />
+          </IntegrationItem>
+        </IntegrationList>
+        <Scrim />
       </Inner>
     </Wrapper>
   );

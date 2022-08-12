@@ -3,19 +3,23 @@ import React from 'react';
 import { PureIndexScreen } from './IndexScreen';
 
 export default {
-  title: 'Frontpage|screens/IndexScreen/IndexScreen',
+  title: 'Screens/IndexScreen/IndexScreen',
   component: PureIndexScreen,
   parameters: {
     chromatic: { viewports: [320, 1200] },
+    layout: 'fullscreen',
   },
 };
 
 const Template = (args) => <PureIndexScreen {...args} />;
 
 export const Default = Template.bind({});
-Default.storyName = 'default';
+Default.parameters = {
+  backgrounds: { default: 'dark' },
+};
 
 export const WithLatestBlogPost = Template.bind({});
+WithLatestBlogPost.parameters = Default.parameters;
 WithLatestBlogPost.args = {
   latestBlogPost: {
     slug: '#',
