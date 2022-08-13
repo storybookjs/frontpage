@@ -10,7 +10,7 @@ export default {
   },
 };
 
-export const Default = () => <Share />;
+export const Default = () => <Share docs="/" />;
 Default.parameters = {
   backgrounds: { default: 'dark' },
 };

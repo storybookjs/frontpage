@@ -10,6 +10,7 @@ import { Hero } from './Hero';
 import { Develop } from './Develop';
 import { Test } from './Test';
 import { Document } from './Document';
+import { Share } from './Share';
 
 const globalStyles = css`
   body {
@@ -71,6 +72,7 @@ export function PureIndexScreen({ latestBlogPost }) {
       <Develop docs={docs} />
       <Test docs={docs} />
       <Document docs={docs} />
+      <Share docs={docs} />
     </>
   );
 }
