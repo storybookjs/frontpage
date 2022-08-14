@@ -29,8 +29,6 @@ const Wrapper = styled.section`
 `;
 
 const ValueProp = styled(ValuePropCopy)`
-  padding-top: 32rem;
-  padding-bottom: 32rem;
   grid-column: 1 / 2;
 
   &:first-child {
@@ -40,12 +38,13 @@ const ValueProp = styled(ValuePropCopy)`
 
 const Content = styled.div`
   ${pageMargins};
-  padding-top: 16rem;
+  padding-top: 7rem;
+  padding-bottom: 1rem;
 
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
-  gap: 6rem;
+  gap: 12rem 6rem;
 
   @media (min-width: ${breakpoints[2]}px) {
     justify-items: flex-start;
@@ -161,9 +160,7 @@ export function Share({ docs, ...props }) {
             </Link>
           }
         />
-        <Illustration>
-          <IntegrationsCarousel integrations={embedIntegrations} overflowLabel="+ and more" />
-        </Illustration>
+        <IntegrationsCarousel integrations={embedIntegrations} overflowLabel="+ and more" />
         <ValueProp
           inverse
           heading="Embed stories in wikis, Markdown, and Figma"
@@ -174,9 +171,7 @@ export function Share({ docs, ...props }) {
             </Link>
           }
         />
-        <Illustration>
-          <IntegrationsCarousel integrations={embedIntegrations} overflowLabel="+ and more" />
-        </Illustration>
+        <IntegrationsCarousel integrations={embedIntegrations} overflowLabel="+ and more" />
         <ValueProp
           inverse
           heading={
@@ -191,9 +186,7 @@ export function Share({ docs, ...props }) {
             </Link>
           }
         />
-        <Illustration>
-          <IntegrationsCarousel integrations={testIntegrations} overflowLabel="+ and more" />
-        </Illustration>
+        <IntegrationsCarousel integrations={testIntegrations} overflowLabel="+ and more" />
       </Content>
       <Testimonial
         inverse

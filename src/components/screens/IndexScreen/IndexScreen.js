@@ -5,23 +5,17 @@ import { Nav, LinksContextProvider, styles } from '@storybook/components-marketi
 import { Link as GatsbyLinkWrapper } from 'gatsby';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import { SocialGraph } from '../../basics';
-import { BlogCTA } from './BlogCTA';
 import { Hero } from './Hero';
 import { Develop } from './Develop';
 import { Test } from './Test';
 import { Document } from './Document';
 import { Share } from './Share';
+import { Automate } from './Automate';
 
 const globalStyles = css`
   body {
     background-color: ${styles.color.midnight};
   }
-`;
-
-const BlogCTAWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  padding: 20px ${styles.spacing.padding.medium}px 0;
 `;
 
 const navLinks = {
@@ -45,7 +39,7 @@ const navLinks = {
   hiring: { url: 'https://www.chromatic.com/company/jobs' },
 };
 
-export function PureIndexScreen({ latestBlogPost }) {
+export function PureIndexScreen() {
   const { ogImage, urls = {} } = useSiteMetadata();
   const { home, docs = {} } = urls;
   return (
@@ -58,11 +52,6 @@ export function PureIndexScreen({ latestBlogPost }) {
         url={home}
         image={ogImage}
       />
-      {latestBlogPost && (
-        <BlogCTAWrapper>
-          <BlogCTA {...latestBlogPost} />
-        </BlogCTAWrapper>
-      )}
 
       <LinksContextProvider value={navLinks}>
         <Nav inverse />
@@ -73,17 +62,12 @@ export function PureIndexScreen({ latestBlogPost }) {
       <Test docs={docs} />
       <Document docs={docs} />
       <Share docs={docs} />
+      <Automate docs={docs} />
     </>
   );
 }
 
-PureIndexScreen.propTypes = {
-  // eslint-disable-next-line react/require-default-props
-  latestBlogPost: PropTypes.shape({
-    slug: PropTypes.string,
-    title: PropTypes.string,
-  }),
-};
+PureIndexScreen.propTypes = {};
 
 export default function IndexScreen(props) {
   return <PureIndexScreen {...props} />;

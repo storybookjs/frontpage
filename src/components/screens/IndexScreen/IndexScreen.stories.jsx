@@ -17,12 +17,3 @@ export const Default = Template.bind({});
 Default.parameters = {
   backgrounds: { default: 'dark' },
 };
-
-// export const WithLatestBlogPost = Template.bind({});
-// WithLatestBlogPost.parameters = Default.parameters;
-// WithLatestBlogPost.args = {
-//   latestBlogPost: {
-//     slug: '#',
-//     title: 'Latest blog post title is a bit long to test layout',
-//   },
-// };
