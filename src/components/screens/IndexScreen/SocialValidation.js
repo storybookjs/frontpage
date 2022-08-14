@@ -13,8 +13,7 @@ import {
   ColoredIcon,
 } from '@storybook/components-marketing';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
-import GitlabLogoSVG from '../../../images/logos/user/logo-gitlab.svg';
-import storybookMockUI from './storybook-mock-ui.svg';
+import { Community } from './Community';
 
 const { typography, breakpoints, pageMargins } = styles;
 
@@ -61,7 +60,6 @@ const Storybooks = styled(HorizontalScroll)`
 
 const SocialCTAs = styled.div`
   ${pageMargins};
-  padding-top: 7rem;
   padding-bottom: 7rem;
   display: grid;
   grid-template-columns: 1fr;
@@ -109,6 +107,7 @@ export function SocialValidation({ docs, projects, storybooks, ...props }) {
           <ProjectCard key={project.logoAlt} {...project} />
         ))}
       </Projects>
+      <Community />
       <SocialCTAs>
         <SocialCard
           inverse

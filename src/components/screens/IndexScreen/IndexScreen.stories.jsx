@@ -1,6 +1,6 @@
 import React from 'react';
-
 import { PureIndexScreen } from './IndexScreen';
+import { projects, storybooks } from './SocialValidation.stories';
 
 export default {
   title: 'Screens/IndexScreen/IndexScreen',
@@ -14,6 +14,10 @@ export default {
 const Template = (args) => <PureIndexScreen {...args} />;
 
 export const Default = Template.bind({});
+Default.args = {
+  projects,
+  storybooks,
+};
 Default.parameters = {
   backgrounds: { default: 'dark' },
 };

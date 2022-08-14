@@ -8,9 +8,10 @@ export default {
     chromatic: { viewports: [320, 1200] },
     layout: 'fullscreen',
   },
+  excludeStories: ['projects', 'storybooks'],
 };
 
-const projects = [
+export const projects = [
   {
     name: 'Design System',
     accentColor: {
@@ -79,45 +80,45 @@ const projects = [
   },
 ];
 
-const storybooks = [
+export const storybooks = [
   {
     name: 'D2IQ',
-    logo: '/d2iq-sb.png',
+    logo: 'https://via.placeholder.com/280',
     image: { src: 'images/home/storybooks/d2iq.png', width: 957, height: 681 },
   },
   {
     name: 'Drei',
-    logo: '/d2iq-sb.png',
+    logo: 'https://via.placeholder.com/280',
     image: { src: 'images/home/storybooks/drei.png', width: 957, height: 681 },
   },
   {
     name: 'Grommet',
-    logo: '/d2iq-sb.png',
+    logo: 'https://via.placeholder.com/280',
     image: { src: 'images/home/storybooks/grommet.png', width: 957, height: 681 },
   },
   {
     name: 'JSTOR',
-    logo: '/d2iq-sb.png',
+    logo: 'https://via.placeholder.com/280',
     image: { src: 'images/home/storybooks/jstor.png', width: 957, height: 681 },
   },
   {
     name: 'kickstartDS',
-    logo: '/d2iq-sb.png',
+    logo: 'https://via.placeholder.com/280',
     image: { src: 'images/home/storybooks/kickstart-ds.png', width: 957, height: 681 },
   },
   {
     name: 'Microsoft',
-    logo: '/d2iq-sb.png',
+    logo: 'https://via.placeholder.com/280',
     image: { src: 'images/home/storybooks/microsoft.png', width: 957, height: 681 },
   },
   {
     name: 'Monday.com',
-    logo: '/d2iq-sb.png',
+    logo: 'https://via.placeholder.com/280',
     image: { src: 'images/home/storybooks/monday-com.png', width: 957, height: 681 },
   },
   {
     name: 'Shopify',
-    logo: '/d2iq-sb.png',
+    logo: 'https://via.placeholder.com/280',
     image: { src: 'images/home/storybooks/shopify.png', width: 957, height: 681 },
   },
 ];

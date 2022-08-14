@@ -11,6 +11,7 @@ import { Test } from './Test';
 import { Document } from './Document';
 import { Share } from './Share';
 import { Automate } from './Automate';
+import { SocialValidation } from './SocialValidation';
 
 const globalStyles = css`
   body {
@@ -39,7 +40,7 @@ const navLinks = {
   hiring: { url: 'https://www.chromatic.com/company/jobs' },
 };
 
-export function PureIndexScreen() {
+export function PureIndexScreen({ projects, storybooks }) {
   const { ogImage, urls = {} } = useSiteMetadata();
   const { home, docs = {} } = urls;
   return (
@@ -63,6 +64,7 @@ export function PureIndexScreen() {
       <Document docs={docs} />
       <Share docs={docs} />
       <Automate docs={docs} />
+      <SocialValidation docs={docs} projects={projects} storybooks={storybooks} />
     </>
   );
 }
