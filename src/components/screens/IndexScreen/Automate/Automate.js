@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { styled } from '@storybook/theming';
 import { Link } from '@storybook/design-system';
 import { styles, FeatureStep, StepIcon } from '@storybook/components-marketing';
-import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
-import GitlabLogoSVG from '../../../images/logos/user/logo-gitlab.svg';
-import storybookMockUI from './storybook-mock-ui.svg';
+import GatsbyLinkWrapper from '../../../basics/GatsbyLinkWrapper';
+import GitlabLogoSVG from '../../../../images/logos/user/logo-gitlab.svg';
+import { Publish } from './Publish';
 
 const MergeIcon = styled(StepIcon)`
   background: linear-gradient(180deg, #cf60ff 0%, #af44ff 100%);
@@ -88,7 +88,7 @@ export function Automate({ docs, ...props }) {
             </Link>
           }
         />
-
+        <Publish />
         <FeatureStep
           inverse
           title="UI Tests"

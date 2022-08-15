@@ -10,7 +10,7 @@ import { Develop } from './Develop';
 import { Test } from './Test';
 import { Document } from './Document';
 import { Share } from './Share';
-import { Automate } from './Automate';
+import { Automate } from './Automate/Automate';
 import { SocialValidation } from './SocialValidation';
 
 const globalStyles = css`

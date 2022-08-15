@@ -79,8 +79,12 @@ const IntegrationGrid = styled.div`
   grid-template-columns: repeat(6, 1fr);
   grid-auto-rows: max-content;
   grid-auto-flow: row dense;
-  gap: 20px;
+  gap: 10px;
   justify-content: center;
+
+  @media (min-width: ${breakpoints[2]}px) {
+    gap: 30px;
+  }
 
   @media (min-width: 1400px) {
     gap: 30px;
