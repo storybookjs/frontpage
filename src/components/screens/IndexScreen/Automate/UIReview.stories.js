@@ -1,9 +1,9 @@
 import React from 'react';
-import { Publish } from './Publish';
+import { UIReview } from './UIReview';
 
 export default {
-  title: 'Screens/IndexScreen/Automate/Publish',
-  component: Publish,
+  title: 'Screens/IndexScreen/Automate/UIReview',
+  component: UIReview,
   parameters: {
     chromatic: { disableSnapshot: true },
     layout: 'fullscreen',
@@ -13,7 +13,7 @@ export default {
 // animation only triggers when the element scrolls into view
 export const Default = () => (
   <div style={{ marginTop: 1200, marginBottom: 300 }}>
-    <Publish docs="/" />
+    <UIReview docs="/" />
   </div>
 );
 Default.parameters = {

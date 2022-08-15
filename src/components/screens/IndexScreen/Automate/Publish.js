@@ -1,13 +1,15 @@
 import React from 'react';
 import { styled } from '@storybook/theming';
-import { Link } from '@storybook/design-system';
 import { motion } from 'framer-motion';
-import { styles, FeatureStep, StepIcon } from '@storybook/components-marketing';
-import GitlabLogoSVG from '../../../../images/logos/user/logo-gitlab.svg';
+import { styles } from '@storybook/components-marketing';
 
-const { color, marketing, breakpoints, pageMargins } = styles;
+const { breakpoints, pageMargins } = styles;
 
-const Wrapper = styled.div`
+const Figure = styled.figure`
+  ${pageMargins};
+`;
+
+const Content = styled.div`
   position: relative;
   margin-top: 3rem;
   margin-left: auto;
@@ -27,17 +29,18 @@ const CalendarComponent = styled(motion.img)`
 const Status = styled(motion.div)`
   display: block;
   position: absolute;
-  width: 32px;
-  height: 32px;
-  top: -16px;
-  right: -16px;
+  width: 8%;
+  height: 0;
+  padding-bottom: 8%;
+  top: 0;
+  right: 0;
   perspective: 1000px;
   transform-style: preserve-3d;
 `;
-
 const PublishingImg = styled.img`
   transform: rotateY(0deg);
   backface-visibility: hidden;
+  width: 100%;
   position: absolute;
   top: 0;
   left: 0;
@@ -48,51 +51,87 @@ const PublishingImg = styled.img`
 const PublishedImg = styled.img`
   transform: rotateY(180deg);
   backface-visibility: hidden;
+  width: 100%;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
 `;
-const Arrow = styled.img`
+
+const Arrow = styled(motion.img)`
   position: absolute;
-  width: 40px;
-  height: 40px;
-  left: -36px;
-  bottom: -8px;
+  width: 10%;
+  height: auto;
+  left: -9%;
+  bottom: -4%;
+  z-index: 2;
+`;
+const PointerHand = styled(motion.img)`
+  position: absolute;
+  width: 10%;
+  height: auto;
+  top: 44%;
+  right: 12%;
+  z-index: 2;
 `;
 
 const calendarVariants = {
   initial: { opacity: 0.5, filter: 'grayscale(100%)' },
   animate: { opacity: 1, filter: 'grayscale(0%)' },
 };
-
 const statusVariants = {
-  spin: { rotate: 720, transition: { delay: 1, duration: 1 } },
-  animate: { rotateY: 180, transition: { delay: 3, duration: 1 } },
+  initial: { x: '50%', y: '-50%' },
+  spin: { rotate: 720, x: '50%', y: '-50%', transition: { delay: 1, duration: 1 } },
+  animate: { rotateY: 180, x: '50%', y: '-50%', transition: { delay: 2, duration: 1 } },
+};
+
+const decorationVariants = {
+  initial: { y: '15%', opacity: 0 },
+  animate: { y: 0, opacity: 1 },
 };
 
 export function Publish({ docs, ...props }) {
   return (
-    <Wrapper {...props}>
-      <CalendarComponent
-        src="images/home/automate/datepicker-compact-week.svg"
-        alt=""
-        variants={calendarVariants}
-        initial="initial"
-        whileInView="animate"
-        viewport={{ once: true, amount: 'all' }}
-        transition={{ duration: 1, delay: 1 }}
-      />
-      <Status
-        variants={statusVariants}
-        whileInView={['spin', 'animate']}
-        viewport={{ once: true, amount: 'all' }}
-      >
-        <PublishingImg src="images/home/automate/status-publishing.svg" alt="" />
-        <PublishedImg src="images/home/automate/status-published.svg" alt="" />
-      </Status>
-      <Arrow src="images/home/automate/arrow.svg" alt="" />
-    </Wrapper>
+    <Figure {...props}>
+      <Content>
+        <Arrow
+          variants={decorationVariants}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, amount: 'all' }}
+          transition={{ duration: 0.3, delay: 3 }}
+          src="images/home/automate/arrow.svg"
+          alt=""
+        />
+        <PointerHand
+          variants={decorationVariants}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, amount: 'all' }}
+          transition={{ duration: 0.3, delay: 3 }}
+          src="images/home/automate/pointerhand.svg"
+          alt=""
+        />
+        <CalendarComponent
+          src="images/home/automate/datepicker-compact-week.svg"
+          alt=""
+          variants={calendarVariants}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, amount: 'all' }}
+          transition={{ duration: 1, delay: 1 }}
+        />
+        <Status
+          initial="initial"
+          variants={statusVariants}
+          whileInView={['spin', 'animate']}
+          viewport={{ once: true, amount: 'all' }}
+        >
+          <PublishingImg src="images/home/automate/status-publishing.svg" alt="" />
+          <PublishedImg src="images/home/automate/status-published.svg" alt="" />
+        </Status>
+      </Content>
+    </Figure>
   );
 }
