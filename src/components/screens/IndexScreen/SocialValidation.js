@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@storybook/theming';
-import { Link, Icon } from '@storybook/design-system';
+import { Button } from '@storybook/design-system';
 import {
   styles,
   SectionLede,
-  ValuePropCopy,
   ProjectCard,
   HorizontalScroll,
   StorybookProject,
@@ -30,11 +29,19 @@ const Wrapper = styled.section`
   }
 `;
 
-const ValueProp = styled(ValuePropCopy)`
-  grid-column: 1 / 2;
+const Storybooks = styled(HorizontalScroll)`
+  padding: 0 30px;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
 
-  &:first-child {
-    padding-top: 0;
+  & > * {
+    width: 240px;
+  }
+
+  @media (min-width: ${breakpoints[1]}px) {
+    & > * {
+      width: 480px;
+    }
   }
 `;
 
@@ -45,16 +52,6 @@ const Projects = styled(HorizontalScroll)`
 
   & > * {
     width: 240px;
-  }
-`;
-
-const Storybooks = styled(HorizontalScroll)`
-  padding: 0 30px;
-  margin-top: 5rem;
-  margin-bottom: 5rem;
-
-  & > * {
-    width: 480px;
   }
 `;
 
@@ -88,6 +85,49 @@ const YouTubeIcon = styled.div`
   }
 `;
 
+const Contributors = styled.div`
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+
+  img {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+  }
+
+  img:not(:first-child) {
+    margin-left: -5px;
+  }
+
+  img:nth-child(2n + 1) {
+    display: none;
+  }
+
+  @media (min-width: ${breakpoints[1]}px) {
+    img:nth-child(2n + 1) {
+      display: block;
+    }
+  }
+`;
+
+const CommunityCTA = styled.div`
+  display: flex;
+  gap: 30px;
+  align-items: center;
+`;
+
+const contributors = [
+  'images/community/contributor1.jpg',
+  'images/community/contributor2.jpg',
+  'images/community/contributor3.jpg',
+  'images/community/contributor4.jpg',
+  'images/community/contributor5.jpg',
+  'images/community/contributor6.jpg',
+];
+
 export function SocialValidation({ docs, projects, storybooks, ...props }) {
   return (
     <Wrapper {...props}>
@@ -95,14 +135,30 @@ export function SocialValidation({ docs, projects, storybooks, ...props }) {
         inverse
         heading="Made for frontend developers"
         copy="The top frontend engineering teams rely on Storybook to ship world-changing products. Join our open source community to learn new techniques and get support."
-        links="TODO: Get involved and avatar list"
+        actions={
+          <CommunityCTA>
+            <Button
+              appearance="inverseOutline"
+              href="/community/"
+              isLink
+              ButtonWrapper={GatsbyLinkWrapper}
+            >
+              Get involved
+            </Button>
+            <Contributors>
+              {contributors.map((image) => (
+                <img key={image} src={image} alt="" />
+              ))}
+            </Contributors>
+          </CommunityCTA>
+        }
       />
-      <Storybooks gap="30px">
+      <Storybooks gap="30px" scrollPadding="0 30px">
         {storybooks.map((storybookProject) => (
           <StorybookProject key={storybookProject.name} {...storybookProject} />
         ))}
       </Storybooks>
-      <Projects gap="30px">
+      <Projects gap="30px" scrollPadding="0 30px">
         {projects.map((project) => (
           <ProjectCard key={project.logoAlt} {...project} />
         ))}

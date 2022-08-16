@@ -150,7 +150,7 @@ export const AnimatedVideoCard = ({ videos, offset = 0 }) => {
       } else {
         setActiveIndex(activeIndex + 1);
       }
-    }, 5000 + offset);
+    }, 9000 + offset);
 
     return () => {
       clearInterval(id);
