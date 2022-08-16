@@ -5,6 +5,7 @@ import { Link } from '@storybook/design-system';
 import { styles, FeatureStep, StepIcon } from '@storybook/components-marketing';
 import { Publish } from './Publish';
 import { UIReview } from './UIReview';
+import { MergeAndShip } from './MergeAndShip';
 
 const MergeIcon = styled(StepIcon)`
   background: linear-gradient(180deg, #cf60ff 0%, #af44ff 100%);
@@ -18,14 +19,17 @@ const { color, marketing, breakpoints, pageMargins } = styles;
 
 const Wrapper = styled.section`
   padding-top: 3rem;
+  padding-bottom: 3rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
   @media (min-width: ${breakpoints[1]}px) {
     padding-top: 5rem;
+    padding-bottom: 5rem;
   }
 
   @media (min-width: ${breakpoints[2]}px) {
     padding-top: 7rem;
+    padding-bottom: 7rem;
   }
 `;
 
@@ -120,6 +124,7 @@ export function Automate({ docs, ...props }) {
             </Link>
           }
         />
+        <MergeAndShip />
       </Content>
     </Wrapper>
   );

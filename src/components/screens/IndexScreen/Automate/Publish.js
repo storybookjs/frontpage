@@ -82,10 +82,9 @@ const calendarVariants = {
 };
 const statusVariants = {
   initial: { x: '50%', y: '-50%' },
-  spin: { rotate: 720, x: '50%', y: '-50%', transition: { delay: 1, duration: 1 } },
-  animate: { rotateY: 180, x: '50%', y: '-50%', transition: { delay: 2, duration: 1 } },
+  spin: { rotate: 720, x: '50%', y: '-50%', transition: { duration: 0.8 } },
+  animate: { rotateY: 180, x: '50%', y: '-50%', transition: { delay: 1.6, duration: 0.8 } },
 };
-
 const decorationVariants = {
   initial: { y: '15%', opacity: 0 },
   animate: { y: 0, opacity: 1 },
@@ -100,7 +99,7 @@ export function Publish({ docs, ...props }) {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true, amount: 'all' }}
-          transition={{ duration: 0.3, delay: 3 }}
+          transition={{ duration: 0.3, delay: 1.8 }}
           src="images/home/automate/arrow.svg"
           alt=""
         />
@@ -109,7 +108,7 @@ export function Publish({ docs, ...props }) {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true, amount: 'all' }}
-          transition={{ duration: 0.3, delay: 3 }}
+          transition={{ duration: 0.3, delay: 1.8 }}
           src="images/home/automate/pointerhand.svg"
           alt=""
         />
@@ -120,7 +119,7 @@ export function Publish({ docs, ...props }) {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true, amount: 'all' }}
-          transition={{ duration: 1, delay: 1 }}
+          transition={{ duration: 0.8 }}
         />
         <Status
           initial="initial"

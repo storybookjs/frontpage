@@ -60,20 +60,16 @@ export function UIReview({ docs, ...props }) {
   const isInView = useInView(ref, { once: true, amount: 'all' });
 
   useEffect(() => {
-    let id;
-    if (isInView) {
-      id = setInterval(() => {
-        const commentId = reviewComments.length;
-        if (commentId < 3) {
-          setReviewComments([...reviewComments, { id: commentId, image: comments[commentId] }]);
-        } else {
-          clearInterval(id);
-        }
-      }, 1000);
-    }
+    const addComment = (id) => {
+      setReviewComments((c) => [...c, { id, image: comments[id] }]);
+    };
 
-    return () => clearInterval(id);
-  }, [isInView, reviewComments]);
+    if (isInView) {
+      addComment(0);
+      setTimeout(() => addComment(1), 1000);
+      setTimeout(() => addComment(2), 2000);
+    }
+  }, [isInView]);
 
   return (
     <Figure>
