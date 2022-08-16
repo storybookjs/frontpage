@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Icon } from '@storybook/design-system';
 import { styles } from '@storybook/components-marketing';
 import { css, keyframes, styled } from '@storybook/theming';
 import { useReducedMotion, useInView } from 'framer-motion';
@@ -20,8 +19,8 @@ import Slider from '../../../../images/home/Slider.svg';
 const { color, breakpoints, pageMargins } = styles;
 
 const workflowWidth = 210;
-const initialAnimationLength = 0; // 3000
-const eachWorkflowAnimationLength = 4000; // 9000
+const initialAnimationLength = 0;
+const eachWorkflowAnimationLength = 4000;
 const easing = 'ease-in-out';
 
 /**
@@ -186,155 +185,7 @@ const VerticalLine = styled(Line)`
     `}
 `;
 
-const checklistInitialAnimation = keyframes`
-  0% { opacity: 1; }
-  70% { opacity: 1; }
-  100% { opacity: 0; }
-`;
-
-const checklistAnimation = keyframes`
-  0% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { opacity: 0; }
-`;
-
-const Checklist = styled.ul`
-  width: 160px;
-  margin: 0 auto;
-  padding: 0;
-  list-style: none;
-  text-align: left;
-  color: ${color.lightest};
-  margin-top: 24px;
-  will-change: opacity;
-  ${(props) =>
-    props.didQueueTimer &&
-    css`
-      animation: ${props.isAnimatingLoop ? checklistAnimation : checklistInitialAnimation}
-        ${props.isAnimatingLoop ? eachWorkflowAnimationLength : initialAnimationLength}ms ${easing}
-        forwards;
-    `}
-`;
-
-function getChecklistAnimationDelay({ index }) {
-  const animationDelayStep = 375;
-  // Start the checklist animation early so it has started when the line
-  // animation is currently ending.
-  const visualLineAnimationOffset = 150;
-
-  return (
-    lineAnimationLength +
-    lineAnimationDelay -
-    visualLineAnimationOffset +
-    index * animationDelayStep
-  );
-}
-
-const checklistAnimationLength = 450;
-const checklistIconAnimation = keyframes`
-  0% { opacity: 0; transform: scale(0.5); }
-  100% { opacity: 1; transform: scale(1); }
-`;
-
-const ChecklistListItem = styled.li`
-  line-height: 21px;
-  white-space: nowrap;
-  margin-top: 16px;
-  position: relative;
-
-  &:after {
-    content: '';
-    position: absolute;
-    width: 1px;
-    height: 6px;
-    background-color: rgba(255, 255, 255, 0.1);
-    left: 10px;
-    top: 26px;
-    /**
-      Delay this animation slightly more than the others since it appears
-      after the icon & test visually. It should look like it comes in just
-      a bit later.
-    */
-    will-change: transform, opacity;
-    ${(props) =>
-      props.isAnimatingLoop &&
-      css`
-        opacity: 0;
-        animation: ${checklistIconAnimation} ${checklistAnimationLength}ms ${easing}
-          ${getChecklistAnimationDelay(props) + 100}ms forwards;
-      `}
-  }
-
-  &:first-child {
-    margin-top: 0;
-  }
-
-  &:last-child:after {
-    display: none;
-  }
-`;
-
-const ChecklistIcon = styled(Icon)`
-  vertical-align: top;
-  margin-right: 10px;
-  color: ${color.lightest};
-  border-radius: 100%;
-  position: relative;
-  will-change: transform, opacity;
-  width: 20px;
-  height: 20px;
-  ${(props) =>
-    props.isAnimatingLoop &&
-    css`
-      opacity: 0;
-      animation: ${checklistIconAnimation} ${checklistAnimationLength}ms ${easing}
-        ${getChecklistAnimationDelay(props)}ms forwards;
-    `}
-`;
-
-const CheckIcon = styled((props) => <ChecklistIcon {...props} icon="check" />)`
-  padding: 4px;
-  background: linear-gradient(#23c991, #61d135);
-`;
-
-const MergeIcon = styled((props) => <ChecklistIcon {...props} icon="merge" />)`
-  padding: 4px 3px 4px 5px;
-  background: linear-gradient(#cf60ff, #af44ff);
-`;
-
-const checklistItemTextAnimation = keyframes`
-  0% { opacity: 0; transform: translateX(-10px); }
-  40% { opacity: 0; transform: translateX(-10px); }
-  100% { opacity: 1; transform: translateX(0); }
-`;
-
-const ChecklistItemText = styled.span`
-  display: inline-block;
-  will-change: transform, opacity;
-  ${(props) =>
-    props.isAnimatingLoop &&
-    css`
-      opacity: 0;
-      animation: ${checklistItemTextAnimation} ${checklistAnimationLength}ms ${easing}
-        ${getChecklistAnimationDelay(props)}ms forwards;
-    `}
-`;
-
-const checklistItems = [
-  { Icon: CheckIcon, message: 'Publish Storybook' },
-  { Icon: CheckIcon, message: 'Visual test' },
-  { Icon: CheckIcon, message: 'Review with team' },
-  { Icon: MergeIcon, message: 'Ready to merge!' },
-];
-
-function PureUITests({
-  forwardRef,
-  activeIndex,
-  didQueueTimer,
-  isAnimatingLoop,
-  isPaused,
-  workflows,
-}) {
+function PureUITests({ forwardRef, activeIndex, isAnimatingLoop, isPaused, workflows }) {
   return (
     <Figure ref={forwardRef}>
       <Wrapper isPaused={isPaused}>
@@ -359,17 +210,6 @@ function PureUITests({
             );
           })}
         </WorkflowComponents>
-
-        {/* <Checklist key={workflows[0]} isAnimatingLoop={isAnimatingLoop} didQueueTimer={didQueueTimer}>
-        {checklistItems.map((item, index) => (
-          <ChecklistListItem key={item.message} index={index} isAnimatingLoop={isAnimatingLoop}>
-            <item.Icon index={index} isAnimatingLoop={isAnimatingLoop} />
-            <ChecklistItemText index={index} isAnimatingLoop={isAnimatingLoop}>
-              {item.message}
-            </ChecklistItemText>
-          </ChecklistListItem>
-        ))}
-      </Checklist> */}
       </Wrapper>
     </Figure>
   );
@@ -377,7 +217,6 @@ function PureUITests({
 
 PureUITests.propTypes = {
   activeIndex: PropTypes.number.isRequired,
-  didQueueTimer: PropTypes.bool.isRequired,
   isAnimatingLoop: PropTypes.bool.isRequired,
   isPaused: PropTypes.bool.isRequired,
   workflows: PropTypes.arrayOf(PropTypes.func.isRequired).isRequired,
