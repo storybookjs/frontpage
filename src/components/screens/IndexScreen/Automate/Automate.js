@@ -4,6 +4,7 @@ import { styled } from '@storybook/theming';
 import { Link } from '@storybook/design-system';
 import { styles, FeatureStep, StepIcon } from '@storybook/components-marketing';
 import { Publish } from './Publish';
+import { UITests } from './UITests';
 import { UIReview } from './UIReview';
 import { MergeAndShip } from './MergeAndShip';
 
@@ -102,6 +103,7 @@ export function Automate({ docs, ...props }) {
             </Link>
           }
         />
+        <UITests />
         <FeatureStep
           inverse
           title="UI Review"

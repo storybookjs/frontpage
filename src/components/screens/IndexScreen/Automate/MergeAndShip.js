@@ -3,7 +3,7 @@ import { styled } from '@storybook/theming';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { styles } from '@storybook/components-marketing';
 
-const { spacing, breakpoints, pageMargins, color } = styles;
+const { spacing, breakpoints, color } = styles;
 
 const Figure = styled.figure`
   margin: 0;
@@ -20,11 +20,6 @@ const Content = styled.div`
   @media (min-width: ${breakpoints[1]}px) {
     margin-top: 5rem;
   }
-`;
-
-const CalendarComponent = styled(motion.img)`
-  display: block;
-  width: 100%;
 `;
 
 const Status = styled(motion.div)`
