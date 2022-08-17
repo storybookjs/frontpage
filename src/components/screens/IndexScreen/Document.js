@@ -66,8 +66,8 @@ export function Document({ docs, ...props }) {
     <Wrapper {...props}>
       <SectionLede
         inverse
-        heading="Test UIs with less effort and no flake"
-        copy="Stories capture the “known good” states of UI components. They’re a pragmatic, reproducible way to keep track of UI edge cases. Reuse stories to power automated tests."
+        heading="Document UI for your team to reuse"
+        copy="Storybook brings together UI, examples, and documentation in one place. That helps your team adopt existing UI patterns."
       />
       <IllustratedFeatureList inverse alignment="right" features={features} bgColor="#B8EFA7" />
       <Testimonial
