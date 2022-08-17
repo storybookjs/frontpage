@@ -31,7 +31,7 @@ const Wrapper = styled.section`
 const ValueProp = styled(ValuePropCopy)`
   grid-column: 1 / 2;
 
-  &:first-child {
+  &:first-of-type {
     padding-top: 0;
   }
 `;

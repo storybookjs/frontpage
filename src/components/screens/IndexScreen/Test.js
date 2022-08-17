@@ -33,7 +33,7 @@ const features = [
     description: 'Stories are tests you can debug in dev and QA.',
     link: { label: 'Learn about UI Tests', href: '#' },
     media: 'videos/test/homepage-spot-testing-lg.mp4',
-    poster: 'videos/test/homepage-spot-testing-lg-poster-lg.jpg',
+    poster: 'videos/test/homepage-spot-testing-poster-lg.jpg',
   },
   {
     icon: <ColoredIcons.Pixel />,
@@ -41,7 +41,7 @@ const features = [
     description: 'Pinpoint UI changes down to the pixel.',
     link: { label: 'Learn about UI Tests', href: '#' },
     media: 'videos/test/homepage-visual-testing-lg.mp4',
-    poster: 'videos/test/homepage-visual-testing-lg-poster-lg.jpg',
+    poster: 'videos/test/homepage-visual-testing-poster-lg.jpg',
   },
   {
     icon: <ColoredIcons.Interact />,
@@ -49,7 +49,7 @@ const features = [
     description: 'Simulate user behavior and assert in the browser.',
     link: { label: 'Learn about UI Tests', href: '#' },
     media: 'videos/test/homepage-interaction-testing-lg.mp4',
-    poster: 'videos/test/homepage-interaction-testing-lg-poster-lg.jpg',
+    poster: 'videos/test/homepage-interaction-testing-poster-lg.jpg',
   },
   {
     icon: <ColoredIcons.Accessibility />,
@@ -57,7 +57,7 @@ const features = [
     description: 'Check stories for WCAG and ARIA issues.',
     link: { label: 'Learn about UI Tests', href: '#' },
     media: 'videos/test/homepage-accessibility-testing-lg.mp4',
-    poster: 'videos/test/homepage-accessibility-testing-lg-poster-lg.jpg',
+    poster: 'videos/test/homepage-accessibility-testing-poster-lg.jpg',
   },
   {
     icon: <ColoredIcons.Code />,
@@ -65,7 +65,7 @@ const features = [
     description: 'Detect regressions in DOM markup.',
     link: { label: 'Learn about UI Tests', href: '#' },
     media: 'videos/test/homepage-snapshot-testing-lg.mp4',
-    poster: 'videos/test/homepage-snapshot-testing-lg-poster-lg.jpg',
+    poster: 'videos/test/homepage-snapshot-testing-poster-lg.jpg',
   },
   {
     icon: <ColoredIcons.Projects />,
@@ -73,7 +73,7 @@ const features = [
     description: 'Write stories once to reuse across your test suite.',
     link: { label: 'Learn about UI Tests', href: '#' },
     media: 'videos/test/homepage-reuse-testing-lg.mp4',
-    poster: 'videos/test/homepage-reuse-testing-lg-poster-lg.jpg',
+    poster: 'videos/test/homepage-reuse-testing-poster-lg.jpg',
   },
 ];
 

@@ -98,16 +98,16 @@ const Contributors = styled.div`
     border-radius: 100%;
   }
 
-  img:not(:first-child) {
+  img:not(:first-of-type) {
     margin-left: -5px;
   }
 
-  img:nth-child(2n + 1) {
+  img:nth-of-type(2n + 1) {
     display: none;
   }
 
   @media (min-width: ${breakpoints[1]}px) {
-    img:nth-child(2n + 1) {
+    img:nth-of-type(2n + 1) {
       display: block;
     }
   }

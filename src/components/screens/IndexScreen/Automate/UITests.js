@@ -219,7 +219,7 @@ PureUITests.propTypes = {
   activeIndex: PropTypes.number.isRequired,
   isAnimatingLoop: PropTypes.bool.isRequired,
   isPaused: PropTypes.bool.isRequired,
-  workflows: PropTypes.arrayOf(PropTypes.func.isRequired).isRequired,
+  workflows: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
 };
 
 export const baseWorkflows = [

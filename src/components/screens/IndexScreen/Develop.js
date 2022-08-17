@@ -50,7 +50,7 @@ const ValueProp = styled(ValuePropCopy)`
   padding-bottom: 32rem;
   grid-column: 1 / 2;
 
-  &:first-child {
+  &:first-of-type {
     padding-top: 0;
   }
 `;
