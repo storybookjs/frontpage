@@ -44,7 +44,7 @@ module.exports = {
       resolve: 'gatsby-source-graphql',
       options: {
         fieldName: `storybookProjects`,
-        url: process.env.GRAPHCMS_ENDPOINT,
+        url: `https://api-us-west-2.hygraph.com/v2/ckyko33ox031l01xo8a944g1b/master`,
         typeName: `STORYBOOK_PROJECTS`,
         refetchInterval: 60,
         headers: {

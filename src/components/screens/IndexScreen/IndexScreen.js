@@ -31,7 +31,6 @@ export function PureIndexScreen({ projects, storybooks }) {
         url={home}
         image={ogImage}
       />
-      <Document docs={docs} />
       <Hero />
       <Develop docs={docs} />
       <Test docs={docs} />
