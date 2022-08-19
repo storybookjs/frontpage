@@ -170,7 +170,6 @@ export const AnimatedVideoCard = ({ videos, offset = 0 }) => {
         }}
         src={videos[activeIndex]}
         autoPlay
-        loop
         playsInline
       />
     </AnimatePresence>

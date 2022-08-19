@@ -13,7 +13,7 @@ import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import GitlabLogoSVG from '../../../images/logos/user/logo-gitlab.svg';
 import storybookMockUI from './storybook-mock-ui.svg';
 
-const { typography, breakpoints, pageMargins } = styles;
+const { typography, breakpoints, pageMargins, spacing, breakpoint, pageMargin } = styles;
 
 const Wrapper = styled.section`
   padding-top: 3rem;
@@ -81,30 +81,74 @@ const IntegrationDemo = styled.div`
   align-items: center;
 `;
 
+const Pane = styled.img`
+  display: block;
+  width: 100%;
+`;
+
+const EmbedIntegrationsCarousel = styled(IntegrationsCarousel)`
+  @media (min-width: ${breakpoint * 1}px) {
+    margin-right: -${pageMargin * 1}vw;
+  }
+  @media (min-width: ${breakpoint * 2}px) {
+    margin-right: -${pageMargin * 2}vw;
+  }
+  @media (min-width: ${breakpoint * 3}px) {
+    margin-right: -${pageMargin * 3}vw;
+  }
+  @media (min-width: ${breakpoint * 4}px) {
+    margin-right: -${pageMargin * 4}vw;
+  }
+`;
+
 const embedIntegrations = [
   {
     name: 'NextJS',
     image: '/images/home/next-js.svg',
     color: '#000',
-    media: <IntegrationDemo>NextJS</IntegrationDemo>,
+    media: (
+      <Pane
+        src="/images/embed/figma.svg"
+        alt="Embed stories using iframes in your NextJS sites"
+        loading="lazy"
+      />
+    ),
   },
   {
     name: 'Figma',
     image: '/images/home/figma.svg',
     color: '#000',
-    media: <IntegrationDemo>Figma</IntegrationDemo>,
+    media: (
+      <Pane
+        src="/images/embed/medium.svg"
+        alt="Use the Storybook Connect plugin to embed stories in a Figma file"
+        loading="lazy"
+      />
+    ),
   },
   {
     name: 'Notion',
     image: '/images/home/notion.svg',
     color: '#fff',
-    media: <IntegrationDemo>Notion</IntegrationDemo>,
+    media: (
+      <Pane
+        src="/images/embed/next.svg"
+        alt="Embed stories in Notion documents using the oEmbed support"
+        loading="lazy"
+      />
+    ),
   },
   {
     name: 'Medium',
     image: '/images/home/medium.svg',
     color: '#F5C347',
-    media: <IntegrationDemo>Medium</IntegrationDemo>,
+    media: (
+      <Pane
+        src="/images/embed/notion.svg"
+        alt="Embed stories in Medium articles using the oEmbed support"
+        loading="lazy"
+      />
+    ),
   },
 ];
 
@@ -160,7 +204,7 @@ export function Share({ docs, ...props }) {
             </Link>
           }
         />
-        <IntegrationsCarousel integrations={embedIntegrations} overflowLabel="+ and more" />
+        {/* <IntegrationsCarousel integrations={embedIntegrations} overflowLabel="+ and more" /> */}
         <ValueProp
           inverse
           heading="Embed stories in wikis, Markdown, and Figma"
@@ -171,7 +215,7 @@ export function Share({ docs, ...props }) {
             </Link>
           }
         />
-        <IntegrationsCarousel integrations={embedIntegrations} overflowLabel="+ and more" />
+        <EmbedIntegrationsCarousel integrations={embedIntegrations} overflowLabel="+ and more" />
         <ValueProp
           inverse
           heading={

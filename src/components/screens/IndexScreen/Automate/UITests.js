@@ -81,11 +81,12 @@ const WorkflowWrapper = styled.div`
 `;
 
 const Workflow = styled.div`
-  border-radius: 4px;
+  border-radius: 5px;
   transition: transform 350ms ${easing}, box-shadow 350ms ${easing};
   transform: ${(props) =>
     props.isActive ? 'scale(1) translateY(0)' : 'scale(0.76) translateY(33px)'};
   background-color: ${color.lightest};
+  opacity: ${(props) => (props.done ? 1 : 0.5)};
   box-shadow: ${(props) =>
     props.isActive
       ? `
@@ -192,6 +193,7 @@ function PureUITests({ forwardRef, activeIndex, isAnimatingLoop, isPaused, workf
         <WorkflowComponents activeIndex={activeIndex}>
           {workflows.map((workflow, index) => {
             const isActive = index - activeIndex === 0;
+            const done = index <= activeIndex;
 
             return (
               <WorkflowWrapper
@@ -199,8 +201,8 @@ function PureUITests({ forwardRef, activeIndex, isAnimatingLoop, isPaused, workf
                 isActive={isActive}
                 key={workflow}
               >
-                <Workflow isActive={isActive}>
-                  <img src={workflow} alt="" />
+                <Workflow isActive={isActive} done={done}>
+                  <img loading="lazy" src={workflow} alt="" />
                 </Workflow>
                 <Lines>
                   <HorizontalLine isActive={isActive} isAnimatingLoop={isAnimatingLoop} />

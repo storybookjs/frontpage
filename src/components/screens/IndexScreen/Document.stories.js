@@ -10,7 +10,7 @@ export default {
   },
 };
 
-export const Default = () => <Document />;
+export const Default = () => <Document docs="/" />;
 Default.parameters = {
   backgrounds: { default: 'dark' },
 };

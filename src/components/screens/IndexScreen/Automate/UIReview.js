@@ -40,18 +40,18 @@ const Comments = styled(motion.div)`
   position: absolute;
   right: 0;
   top: 0;
-  transform: translate3d(-12%, 10%, 0);
+  transform: translate3d(0%, 8.5%, 0);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  gap: 2%;
+  gap: 2.5%;
 `;
 
 const Comment = styled(motion.img)`
   display: block;
   height: 32%;
   width: auto;
-  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1), 0px 0px 15px 0px rgba(0, 0, 0, 0.05);
+  filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.2)) drop-shadow(0px 0px 15px rgba(0, 0, 0, 0.1));
 `;
 
 export function UIReview({ docs, ...props }) {
@@ -66,8 +66,8 @@ export function UIReview({ docs, ...props }) {
 
     if (isInView) {
       addComment(0);
-      setTimeout(() => addComment(1), 1000);
-      setTimeout(() => addComment(2), 2000);
+      setTimeout(() => addComment(1), 2500);
+      setTimeout(() => addComment(2), 4000);
     }
   }, [isInView]);
 

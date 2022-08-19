@@ -147,7 +147,7 @@ export function SocialValidation({ docs, projects, storybooks, ...props }) {
             </Button>
             <Contributors>
               {contributors.map((image) => (
-                <img key={image} src={image} alt="" />
+                <img loading="lazy" key={image} src={image} alt="" />
               ))}
             </Contributors>
           </CommunityCTA>

@@ -138,7 +138,6 @@ const checksVariants = {
       duration: 0.4,
       when: 'afterChildren',
       staggerChildren: 0.1,
-      staggerDirection: -1,
     },
   },
 };
@@ -147,12 +146,12 @@ const statusVariants = {
   checked: { rotateY: 180 },
 };
 const textVariantsChecking = {
-  initial: { opacity: 1, y: 0 },
-  checked: { opacity: 0, y: -20 },
+  initial: { opacity: 1 },
+  checked: { opacity: 0 },
 };
 const textVariantsChecked = {
-  initial: { opacity: 0, y: 20 },
-  checked: { opacity: 1, y: 0 },
+  initial: { opacity: 0 },
+  checked: { opacity: 1 },
 };
 
 const checks = [
@@ -200,17 +199,17 @@ export function MergeAndShip({ docs, ...props }) {
       <Content>
         <Checks layout ref={ref} variants={checksVariants} initial="initial" animate={state}>
           <CheckItemLarge>
-            <StatusLarge variants={statusVariants} transition={{ duration: 0.4 }}>
+            <StatusLarge variants={statusVariants} transition={{ duration: 0.4, delay: 1.4 }}>
               <Checking src="images/home/automate/ci-check-yellow.svg" alt="" />
               <Done src="images/home/automate/ci-check-green.svg" alt="" />
             </StatusLarge>
             <CheckLabel>
               <b>
                 <TextWrapper>
-                  <Text variants={textVariantsChecked} transition={{ duration: 0.4 }}>
+                  <Text variants={textVariantsChecked} transition={{ duration: 0.4, delay: 1.4 }}>
                     All CI checks have passed!
                   </Text>
-                  <Text variants={textVariantsChecking} transition={{ duration: 0.4 }}>
+                  <Text variants={textVariantsChecking} transition={{ duration: 0.4, delay: 1.4 }}>
                     Running CI checks on components
                   </Text>
                 </TextWrapper>

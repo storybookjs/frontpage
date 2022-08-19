@@ -69,7 +69,7 @@ export function Document({ docs, ...props }) {
         heading="Document UI for your team to reuse"
         copy="Storybook brings together UI, examples, and documentation in one place. That helps your team adopt existing UI patterns."
       />
-      <IllustratedFeatureList inverse alignment="right" features={features} bgColor="#B8EFA7" />
+      <IllustratedFeatureList inverse alignment="right" features={features} bgColor="#c3eeaf" />
       <Testimonial
         inverse
         text={

@@ -82,7 +82,7 @@ const calendarVariants = {
 };
 const statusVariants = {
   initial: { x: '50%', y: '-50%' },
-  spin: { rotate: 720, x: '50%', y: '-50%', transition: { duration: 0.8 } },
+  spin: { rotate: 1440, x: '50%', y: '-50%', transition: { duration: 0.8 } },
   animate: { rotateY: 180, x: '50%', y: '-50%', transition: { delay: 1.6, duration: 0.8 } },
 };
 const decorationVariants = {
