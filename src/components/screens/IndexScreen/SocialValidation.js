@@ -14,7 +14,7 @@ import {
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import { Community } from './Community';
 
-const { typography, breakpoints, pageMargins } = styles;
+const { color, breakpoints, pageMargins } = styles;
 
 const Wrapper = styled.section`
   padding-top: 3rem;
@@ -33,6 +33,10 @@ const Storybooks = styled(HorizontalScroll)`
   padding: 0 30px;
   margin-top: 5rem;
   margin-bottom: 5rem;
+
+  & * {
+    color: ${color.lightest} !important;
+  }
 
   & > * {
     width: 240px;

@@ -41,6 +41,18 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-source-graphql',
+      options: {
+        fieldName: `storybookProjects`,
+        url: process.env.GRAPHCMS_ENDPOINT,
+        typeName: `STORYBOOK_PROJECTS`,
+        refetchInterval: 60,
+        headers: {
+          Authorization: `Bearer ${process.env.GRAPHCMS_PAT}`,
+        },
+      },
+    },
+    {
       resolve: 'gatsby-source-ghost',
       options: {
         apiUrl: 'https://storybookblog.ghost.io',
