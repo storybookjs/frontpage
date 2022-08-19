@@ -10,7 +10,7 @@ import {
   IntegrationsCarousel,
 } from '@storybook/components-marketing';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
-import GitlabLogoSVG from '../../../images/logos/user/logo-gitlab.svg';
+import CloudbeesLogoSVG from '../../../images/logos/user/logo-cloudbees.svg';
 import storybookMockUI from './storybook-mock-ui.svg';
 
 const { typography, breakpoints, pageMargins, spacing, breakpoint, pageMargin } = styles;
@@ -236,14 +236,14 @@ export function Share({ docs, ...props }) {
         inverse
         text={
           <span>
-            “Storybook has made developing components more streamlined by allowing us to easily
-            include technical documentation within our design system!”
+            “Storybook is my go-to when starting a new design system. It makes getting something in
+            place quick and easy for both design and engineering.”
           </span>
         }
-        avatarUrl="https://avatars0.githubusercontent.com/u/3028593?s=460&v=4"
-        name="Taurie Davis"
+        avatarUrl="https://avatars2.githubusercontent.com/u/8724083?s=460&v=4"
+        name="Sarrah Vesselov"
         jobTitle="Author of Building Design Systems"
-        logo={GitlabLogoSVG}
+        logo={CloudbeesLogoSVG}
       />
     </Wrapper>
   );

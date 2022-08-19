@@ -145,11 +145,8 @@ export const AnimatedVideoCard = ({ videos, offset = 0 }) => {
 
   useEffect(() => {
     const id = setInterval(() => {
-      if (activeIndex === videos.length - 1) {
-        setActiveIndex(0);
-      } else {
-        setActiveIndex(activeIndex + 1);
-      }
+      const nextIndex = activeIndex === videos.length - 1 ? 0 : activeIndex + 1;
+      setActiveIndex(nextIndex);
     }, 9000 + offset);
 
     return () => {

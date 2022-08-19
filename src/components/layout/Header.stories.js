@@ -1,8 +1,27 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
+import { Header } from './Header';
 
-import Header from './Header';
+export default {
+  title: 'Frontpage|layout/Header',
+  component: Header,
+  parameters: {
+    layout: 'fullscreen',
+  },
+};
 
-storiesOf('Frontpage|layout/Header', module)
-  .addDecorator((storyFn) => <div style={{ height: '300px' }}>{storyFn()}</div>)
-  .add('default', () => <Header />);
+const Template = (args) => <Header {...args} />;
+
+export const Default = Template.bind({});
+Default.args = {
+  label: 'Storybook Lazy Compilation for Webpack',
+  link: 'https://storybook.js.org/blog/storybook-lazy-compilation-for-webpack/',
+};
+
+export const Inverse = Template.bind({});
+Inverse.args = {
+  ...Default.args,
+  inverse: true,
+};
+Inverse.parameters = {
+  backgrounds: { default: 'dark' },
+};

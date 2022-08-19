@@ -1,136 +1,44 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import { styled } from '@storybook/theming';
-import { Link as GatsbyLink } from 'gatsby';
-import GitHubButton from 'react-github-button';
-import 'react-github-button/assets/style.css';
+import React from 'react';
+import { Nav, LinksContextProvider, Eyebrow } from '@storybook/components-marketing';
+import { Link as GatsbyLinkWrapper } from 'gatsby';
 
-import {
-  Header as DSHeader,
-  NavLink,
-  NavItem,
-  Icon,
-  Link,
-  TooltipLinkList,
-  WithTooltip,
-  styles,
-} from '@storybook/design-system';
-import useSiteMetadata from '../lib/useSiteMetadata';
-
-import StorybookLogoSVG from '../../images/logo-storybook.svg';
-
-const { color, typography, pageMargins, breakpoint } = styles;
-
-const StyledGitHubButton = styled(GitHubButton)`
-  display: block;
-  min-width: 124px;
-`;
-
-const LogotypeWrapper = styled(Link)`
-  display: inline-block;
-  align-self: stretch;
-
-  img {
-    height: 22px;
-    width: auto;
-    margin-top: 14px;
-    @media (min-width: ${breakpoint}px) {
-      height: 26px;
-      margin-top: 10px;
-    }
-
-    display: block;
-
-    transition: all 150ms ease-out;
-    transform: translate3d(0, 0, 0);
-    &:hover {
-      transform: translate3d(0, -1px, 0);
-    }
-    &:active {
-      transform: translate3d(0, 0, 0);
-    }
-  }
-`;
-
-const LinkWrapper = ({ href, isGatsby, ...props }) => {
-  if (isGatsby) {
-    return <GatsbyLink to={href} {...props} />;
-  }
-
-  // eslint-disable-next-line jsx-a11y/anchor-has-content
-  return <a href={href} {...props} />;
+const navLinks = {
+  home: { url: '/', linkWrapper: GatsbyLinkWrapper },
+  whyStorybook: { url: '/why', linkWrapper: GatsbyLinkWrapper },
+  useCases: { url: '/use-cases', linkWrapper: GatsbyLinkWrapper },
+  caseStudies: { url: '/case-studies', linkWrapper: GatsbyLinkWrapper },
+  componentDriven: { url: 'https://componentdriven.org' },
+  getStarted: { url: '/docs', linkWrapper: GatsbyLinkWrapper },
+  guides: { url: '/docs/guides', linkWrapper: GatsbyLinkWrapper },
+  tutorials: { url: 'https://storybook.js.org/tutorials' },
+  api: { url: '/docs/api', linkWrapper: GatsbyLinkWrapper },
+  changelog: { url: '/changelog', linkWrapper: GatsbyLinkWrapper },
+  telemetry: { url: '/telemetry', linkWrapper: GatsbyLinkWrapper },
+  showcase: { url: 'https://storybook.js.org/showcase' },
+  projects: { url: 'https://storybook.js.org/showcase/projects' },
+  componentGlossary: { url: 'https://storybook.js.org/showcase/glossary' },
+  integrations: { url: '/integrations', linkWrapper: GatsbyLinkWrapper },
+  getInvolved: { url: '/get-involved', linkWrapper: GatsbyLinkWrapper },
+  blog: { url: 'https://storybook.js.org/blog' },
+  hiring: { url: 'https://www.chromatic.com/company/jobs' },
 };
 
-LinkWrapper.propTypes = {
-  href: PropTypes.string.isRequired,
-  isGatsby: PropTypes.bool.isRequired,
-};
-
-export default function Header({ ...props }) {
-  const { urls = {} } = useSiteMetadata();
-  const {
-    navCommunityLinks = [],
-    navLinks = [],
-    docs,
-    tutorials,
-    addons,
-    showcase,
-    gitHub = {},
-  } = urls;
-
-  const navLinksWithGithub = [...navLinks, { title: 'GitHub', href: gitHub.repo, isGatsby: false }];
-
-  const mobileMenu = <TooltipLinkList links={navLinksWithGithub} LinkWrapper={LinkWrapper} />;
-
-  const communityMenu = <TooltipLinkList links={navCommunityLinks} LinkWrapper={LinkWrapper} />;
-
+export const Header = ({ inverse, label, link }) => {
   return (
-    <DSHeader
-      navBreakpoint={1.5 * breakpoint}
-      logo={
-        <LogotypeWrapper LinkWrapper={GatsbyLink} to="/">
-          <img src={StorybookLogoSVG} alt="Storybook" />
-        </LogotypeWrapper>
-      }
-      links={
-        <>
-          <NavItem showDesktop>
-            <NavLink tertiary href={showcase} LinkWrapper={LinkWrapper}>
-              Showcase
-            </NavLink>
-          </NavItem>
-          <NavItem showDesktop>
-            <NavLink tertiary href={docs} isGatsby LinkWrapper={LinkWrapper}>
-              Docs
-            </NavLink>
-          </NavItem>
-          <NavItem showDesktop>
-            <NavLink tertiary href={tutorials}>
-              Tutorials
-            </NavLink>
-          </NavItem>
-          <NavItem showDesktop>
-            <NavLink tertiary href={addons} isGatsby LinkWrapper={LinkWrapper}>
-              Addons
-            </NavLink>
-          </NavItem>
-          <NavItem showDesktop>
-            <WithTooltip
-              tagName="span"
-              placement="top"
-              trigger="click"
-              tooltip={communityMenu}
-              closeOnClick
-            >
-              <NavLink tertiary>
-                Community <Icon icon="arrowdown" />
-              </NavLink>
-            </WithTooltip>
-          </NavItem>
-        </>
-      }
-      github={<StyledGitHubButton type="stargazers" namespace="storybookjs" repo="storybook" />}
-      mobileMenu={mobileMenu}
-    />
+    <LinksContextProvider value={navLinks}>
+      <Eyebrow label={label} link={link} inverse={inverse} />
+      <Nav inverse={inverse} />
+    </LinksContextProvider>
   );
-}
+};
+
+Header.propTypes = {
+  inverse: PropTypes.bool,
+  label: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired,
+};
+
+Header.defaultProps = {
+  inverse: false,
+};

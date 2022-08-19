@@ -10,7 +10,7 @@ import { Stat } from '../../basics/Stat';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import PlaceholderAspectRatio from '../../layout/PlaceholderAspectRatio';
 
-const { color, typography, breakpoints, pageMargins } = styles;
+const { color, breakpoints, pageMargins } = styles;
 
 const ModalVideo = styled.iframe`
   width: 100%;
@@ -45,7 +45,7 @@ const Content = styled.section`
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 `;
 
-const PageLede = styled(SectionLede)`
+const PageLedeContainer = styled.div`
   padding-bottom: 3rem;
   padding-top: 3rem;
 
@@ -68,9 +68,6 @@ const StorybookDemo = styled.div`
   }
 
   @media (min-width: ${breakpoints[1]}px) {
-    /* to prevent margin collapse */
-    padding-top: 1px;
-
     img {
       margin-top: -12.625rem;
     }
@@ -100,54 +97,50 @@ const Stats = styled.div`
 `;
 
 export function Hero({ startOpen, ...props }) {
-  const {
-    coreFrameworks,
-    communityFrameworks,
-    latestVersion,
-    urls = {},
-    contributorCount,
-  } = useSiteMetadata();
+  const { latestVersion, urls = {}, contributorCount } = useSiteMetadata();
   const { docs = {}, gitHub = {} } = urls;
 
   return (
     <Wrapper {...props}>
-      <PageLede
-        inverse
-        heading="Build UIs without the grunt work"
-        headingWrapper="h1"
-        copy="Storybook is a frontend workshop for building UI components and pages in isolation. Thousands of teams use it for UI development, testing, and documentation. It’s open source and free."
-        actions={
-          <>
-            <Button appearance="secondary" isLink href={docs}>
-              Get started
-            </Button>
-            <WithModal startOpen={startOpen} modal={Modal}>
-              {({ onOpen }) => (
-                <Button appearance="inverseOutline" onClick={onOpen}>
-                  <Icon icon="play" aria-hidden /> Watch video
-                </Button>
-              )}
-            </WithModal>
-          </>
-        }
-        meta={
-          <Stats>
-            <Stat
-              count={`v${latestVersion}`}
-              text="Latest version"
-              countLink={gitHub.releases}
-              noPlural
-            />
-            <NpmDownloadCount />
-            <Stat
-              count={`${contributorCount}+`}
-              text="Contributors"
-              countLink={gitHub.contributors}
-              noPlural
-            />
-          </Stats>
-        }
-      />
+      <PageLedeContainer>
+        <SectionLede
+          inverse
+          heading="Build UIs without the grunt work"
+          headingWrapper="h1"
+          copy="Storybook is a frontend workshop for building UI components and pages in isolation. Thousands of teams use it for UI development, testing, and documentation. It’s open source and free."
+          actions={
+            <>
+              <Button appearance="secondary" isLink href={docs}>
+                Get started
+              </Button>
+              <WithModal startOpen={startOpen} modal={Modal}>
+                {({ onOpen }) => (
+                  <Button appearance="inverseOutline" onClick={onOpen}>
+                    <Icon icon="play" aria-hidden /> Watch video
+                  </Button>
+                )}
+              </WithModal>
+            </>
+          }
+          meta={
+            <Stats>
+              <Stat
+                count={`v${latestVersion}`}
+                text="Latest version"
+                countLink={gitHub.releases}
+                noPlural
+              />
+              <NpmDownloadCount />
+              <Stat
+                count={`${contributorCount}+`}
+                text="Contributors"
+                countLink={gitHub.contributors}
+                noPlural
+              />
+            </Stats>
+          }
+        />
+      </PageLedeContainer>
       <Content>
         <StorybookDemo>
           <img src={mockUI} alt="" style={{ width: '100%' }} />

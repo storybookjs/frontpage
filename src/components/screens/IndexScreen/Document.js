@@ -9,7 +9,7 @@ import {
   Testimonial,
 } from '@storybook/components-marketing';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
-import AirBnBLogoSVG from '../../../images/logos/user/logo-airbnb.svg';
+import GitlabLogoSVG from '../../../images/logos/user/logo-gitlab.svg';
 
 const { breakpoints } = styles;
 
@@ -74,14 +74,14 @@ export function Document({ docs, ...props }) {
         inverse
         text={
           <span>
-            “The tool we use for editing UI is Storybook. It is the perfect place to make sure your
-            work aligns with designs to the pixel across breakpoints.”
+            “Storybook has made developing components more streamlined by allowing us to easily
+            include technical documentation within our design system!”
           </span>
         }
-        avatarUrl="https://avatars2.githubusercontent.com/u/1247751?s=100&v=4"
-        name="Adam Neary"
-        jobTitle="Tech lead"
-        logo={AirBnBLogoSVG}
+        avatarUrl="https://avatars0.githubusercontent.com/u/3028593?s=460&v=4"
+        name="Taurie Davis"
+        jobTitle="Author of Building Design Systems"
+        logo={GitlabLogoSVG}
       />
     </Wrapper>
   );
