@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { styled } from '@storybook/theming';
 import { styles } from '@storybook/components-marketing';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -6,20 +6,26 @@ import { motion, AnimatePresence } from 'framer-motion';
 const { breakpoints, pageMargins } = styles;
 
 const images = [
-  'images/community/community-gert.webp',
   'images/community/community-michele.webp',
+  'images/community/community-gert.webp',
   'images/community/community-yann.webp',
 ];
 
 const videosA = [
-  'videos/community/brad.mp4',
-  'videos/community/esther.mp4',
-  'videos/community/jackherrington.mp4',
+  { src: 'videos/community/brad.mp4', link: 'https://www.youtube.com/watch?v=jR0Gefa4lpg' },
+  { src: 'videos/community/esther.mp4', link: 'https://www.youtube.com/watch?v=U7lW6qAsvrg' },
+  {
+    src: 'videos/community/jackherrington.mp4',
+    link: 'https://www.youtube.com/watch?v=NgkYH97Z3nk',
+  },
 ];
 const videosB = [
-  'videos/community/katerina.mp4',
-  'videos/community/jackpritchard.mp4',
-  'videos/community/jarrod.mp4',
+  {
+    src: 'videos/community/jackpritchard.mp4',
+    link: 'https://www.youtube.com/watch?v=8GxTENqNjYI',
+  },
+  { src: 'videos/community/katerina.mp4', link: 'https://www.youtube.com/watch?v=VgxrR2Ypbuc' },
+  { src: 'videos/community/jarrod.mp4', link: 'https://www.youtube.com/watch?v=L4F5dSu0FcQ' },
 ];
 
 const Wrapper = styled.div`
@@ -49,7 +55,7 @@ const ImageCardWrapper = styled.div`
     grid-column: 1 / 3;
   }
 `;
-const VideoCardAWrapper = styled.div`
+const VideoCardALink = styled.a`
   position: relative;
   grid-column: 1 / 3;
 
@@ -57,7 +63,7 @@ const VideoCardAWrapper = styled.div`
     grid-column: 3 / 4;
   }
 `;
-const VideoCardBWrapper = styled.div`
+const VideoCardBLink = styled.a`
   position: relative;
   grid-column: 3 / 5;
 
@@ -106,85 +112,114 @@ const variants = {
   },
 };
 
-export const AnimatedImageCard = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+let count = 0;
+const options = ['img', 'videoA', 'videoB'];
+
+function nextOption() {
+  const index = count % options.length;
+  count += 1;
+  return options[index];
+}
+
+function useAnimationState(totalCount) {
+  const [activeIndex, setActiveIndex] = useState({ img: 0, videoA: 0, videoB: 0 });
+  const [animateNext, setAnimateNext] = useState('videoB');
 
   useEffect(() => {
     const id = setInterval(() => {
-      if (activeIndex === images.length - 1) {
-        setActiveIndex(0);
-      } else {
-        setActiveIndex(activeIndex + 1);
-      }
-    }, 8000);
+      const nextIndex =
+        activeIndex[animateNext] === totalCount - 1 ? 0 : activeIndex[animateNext] + 1;
+      setActiveIndex({ ...activeIndex, [animateNext]: nextIndex });
+      setAnimateNext(nextOption());
+    }, 6000);
 
     return () => {
       clearInterval(id);
     };
-  }, [activeIndex]);
+  }, [activeIndex, animateNext, totalCount]);
 
-  return (
-    <AnimatePresence initial={false}>
-      <ImageCard
-        key={activeIndex}
-        style={{ backgroundImage: `url('${images[activeIndex]}')` }}
-        variants={variants}
-        initial="enter"
-        animate="center"
-        exit="exit"
-        transition={{
-          opacity: { duration: 0.4 },
-        }}
-      />
-    </AnimatePresence>
-  );
-};
-
-export const AnimatedVideoCard = ({ videos, offset = 0 }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  useEffect(() => {
-    const id = setInterval(() => {
-      const nextIndex = activeIndex === videos.length - 1 ? 0 : activeIndex + 1;
-      setActiveIndex(nextIndex);
-    }, 9000 + offset);
-
-    return () => {
-      clearInterval(id);
-    };
-  }, [activeIndex, videos, offset]);
-
-  return (
-    <AnimatePresence initial={false}>
-      <VideoCard
-        key={activeIndex}
-        variants={variants}
-        initial="enter"
-        animate="center"
-        exit="exit"
-        transition={{
-          opacity: { duration: 0.8 },
-        }}
-        src={videos[activeIndex]}
-        autoPlay
-        playsInline
-      />
-    </AnimatePresence>
-  );
-};
+  return activeIndex;
+}
 
 export function Community(props) {
+  const activeIndex = useAnimationState(3);
+  const videoBRef = useRef(null);
+  const [pauseVideoB, setPauseVideoB] = useState(false);
+
+  // Pause Video B (on first load)
+  // so that only one video is playing at a time
+  useEffect(() => {
+    const pauseVideo = () => {
+      videoBRef.current.pause();
+      videoBRef.current.removeEventListener('loadeddata', pauseVideo);
+    };
+
+    if (videoBRef.current && !pauseVideoB) {
+      videoBRef.current.addEventListener('loadeddata', pauseVideo);
+      setPauseVideoB(true);
+    }
+  }, [videoBRef, pauseVideoB]);
+
   return (
     <Wrapper {...props}>
       <ImageCardWrapper>
-        <AnimatedImageCard />
+        <AnimatePresence initial={false}>
+          <ImageCard
+            key={activeIndex.img}
+            style={{ backgroundImage: `url('${images[activeIndex.img]}')` }}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{
+              opacity: { duration: 0.4 },
+            }}
+          />
+        </AnimatePresence>
       </ImageCardWrapper>
-      <VideoCardAWrapper>
-        <AnimatedVideoCard videos={videosA} />
-      </VideoCardAWrapper>
-      <VideoCardBWrapper>
-        <AnimatedVideoCard videos={videosB} offset={1000} />
-      </VideoCardBWrapper>
+      <VideoCardALink
+        href={videosA[activeIndex.videoA].link}
+        target="_blank"
+        rel="noopener nofollow noreferrer"
+      >
+        <AnimatePresence initial={false}>
+          <VideoCard
+            key={activeIndex.videoA}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{
+              opacity: { duration: 0.8 },
+            }}
+            src={videosA[activeIndex.videoA].src}
+            autoPlay
+            playsInline
+          />
+        </AnimatePresence>
+      </VideoCardALink>
+      <VideoCardBLink
+        href={videosB[activeIndex.videoB].link}
+        target="_blank"
+        rel="noopener nofollow noreferrer"
+      >
+        <AnimatePresence initial={false}>
+          <VideoCard
+            ref={videoBRef}
+            key={activeIndex.videoB}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{
+              opacity: { duration: 0.8 },
+            }}
+            src={videosB[activeIndex.videoB].src}
+            autoPlay
+            playsInline
+          />
+        </AnimatePresence>
+      </VideoCardBLink>
     </Wrapper>
   );
 }
