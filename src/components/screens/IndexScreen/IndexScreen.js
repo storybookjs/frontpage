@@ -46,44 +46,44 @@ PureIndexScreen.propTypes = {};
 
 export const storybooks = [
   {
-    name: 'D2IQ',
-    logo: 'https://avatars.githubusercontent.com/u/19392808?v=4',
-    image: { src: 'images/home/storybooks/d2iq.png', width: 957, height: 681 },
-  },
-  {
-    name: 'Drei',
-    logo: 'https://avatars.githubusercontent.com/u/45790596?v=4',
-    image: { src: 'images/home/storybooks/drei.png', width: 957, height: 681 },
-  },
-  {
-    name: 'Grommet',
-    logo: 'https://avatars.githubusercontent.com/u/14203820?v=4',
-    image: { src: 'images/home/storybooks/grommet.png', width: 957, height: 681 },
-  },
-  {
-    name: 'JSTOR',
-    logo: 'https://avatars.githubusercontent.com/u/74469?v=4',
-    image: { src: 'images/home/storybooks/jstor.png', width: 957, height: 681 },
-  },
-  {
-    name: 'kickstartDS',
-    logo: 'https://avatars.githubusercontent.com/u/79609753?v=4',
-    image: { src: 'images/home/storybooks/kickstart-ds.png', width: 957, height: 681 },
+    name: 'Monday.com',
+    logo: 'https://avatars.githubusercontent.com/u/61420283?v=4',
+    image: { src: 'images/home/storybooks/monday-com.webp', width: 1440, height: 1050 },
   },
   {
     name: 'Microsoft',
     logo: 'https://avatars.githubusercontent.com/u/6154722?v=4',
-    image: { src: 'images/home/storybooks/microsoft.png', width: 957, height: 681 },
+    image: { src: 'images/home/storybooks/microsoft.webp', width: 1440, height: 1050 },
   },
   {
-    name: 'Monday.com',
-    logo: 'https://avatars.githubusercontent.com/u/61420283?v=4',
-    image: { src: 'images/home/storybooks/monday-com.png', width: 957, height: 681 },
+    name: 'D2IQ',
+    logo: 'https://avatars.githubusercontent.com/u/19392808?v=4',
+    image: { src: 'images/home/storybooks/d2iq.webp', width: 1440, height: 1050 },
+  },
+  {
+    name: 'Drei',
+    logo: 'https://avatars.githubusercontent.com/u/45790596?v=4',
+    image: { src: 'images/home/storybooks/drei.webp', width: 1440, height: 1050 },
   },
   {
     name: 'Shopify',
     logo: 'https://avatars.githubusercontent.com/u/8085?v=4',
-    image: { src: 'images/home/storybooks/shopify.png', width: 957, height: 681 },
+    image: { src: 'images/home/storybooks/shopify.webp', width: 1440, height: 1050 },
+  },
+  {
+    name: 'kickstartDS',
+    logo: 'https://avatars.githubusercontent.com/u/79609753?v=4',
+    image: { src: 'images/home/storybooks/kickstart-ds.webp', width: 1440, height: 1050 },
+  },
+  {
+    name: 'Grommet',
+    logo: 'https://avatars.githubusercontent.com/u/14203820?v=4',
+    image: { src: 'images/home/storybooks/grommet.webp', width: 1440, height: 1050 },
+  },
+  {
+    name: 'JSTOR',
+    logo: 'https://avatars.githubusercontent.com/u/74469?v=4',
+    image: { src: 'images/home/storybooks/jstor.webp', width: 1440, height: 1050 },
   },
 ];
 

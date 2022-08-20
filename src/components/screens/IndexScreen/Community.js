@@ -6,9 +6,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 const { breakpoints, pageMargins } = styles;
 
 const images = [
-  'images/home/community-gert.jpg',
-  'images/home/community-michele.jpg',
-  'images/home/community-yann.jpg',
+  'images/community/community-gert.webp',
+  'images/community/community-michele.webp',
+  'images/community/community-yann.webp',
 ];
 
 const videosA = [
@@ -173,7 +173,7 @@ export const AnimatedVideoCard = ({ videos, offset = 0 }) => {
   );
 };
 
-export function Community({ docs, projects, storybooks, ...props }) {
+export function Community(props) {
   return (
     <Wrapper {...props}>
       <ImageCardWrapper>
