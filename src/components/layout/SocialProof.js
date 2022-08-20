@@ -1,123 +1,95 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@storybook/theming';
+import { NormalizeArea, styles } from '@storybook/components-marketing';
 
-import { Subheading, styles } from '@storybook/design-system';
-
-const { color, spacing, typography, pageMargins, breakpoint } = styles;
-
-const Heading = styled(Subheading)`
-  color: ${color.medium};
-`;
+const { color, spacing, typography, pageMargins, breakpoints } = styles;
 
 const Logo = styled.img`
-  display: inline-block;
-  width: 100%;
+  display: block;
   height: auto;
-
-  max-width: 80px;
-  max-height: 24px;
-  object-fit: contain;
-
-  @media (min-width: ${breakpoint * 1.333}px) {
-    max-width: 92px;
-    max-height: 32px;
-  }
-
-  ${(props) =>
-    props.monochrome &&
-    `
-      opacity: 0.4;
-      filter: grayscale(100%);
-    `};
-`;
-
-const LogoWrapper = styled.div`
-  padding: 0 ${spacing.padding.medium}px;
-  display: inline-block;
-  text-align: center;
+  opacity: 0.4;
+  filter: grayscale(100%);
 `;
 
 const Logos = styled.div`
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
 
-  &:not(:only-child) {
-    padding-bottom: 0.75rem;
+  @media (min-width: ${breakpoints[2]}px) {
+    gap: 2.75rem;
   }
-
-  @media (min-width: ${breakpoint * 1.333}px) {
-    flex-wrap: wrap;
-    justify-content: space-between;
-    &:not(:only-child) {
-      padding-bottom: 1.5rem;
-    }
-  }
-
-  ${LogoWrapper} {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-  }
-
-  ${(props) =>
-    props.grid &&
-    `
-      @media (min-width: ${breakpoint * 1.333}px) {
-        justify-content: space-evenly;
-
-        ${LogoWrapper} {
-          flex: 0 1 16.666%;
-          margin-top: 1.5rem;
-          margin-bottom: 1.5rem;
-        }
-
-        ${Logo} {
-          opacity: 1;
-        }
-      }
-    `};
-`;
-
-const Subtext = styled.div`
-  font-size: ${typography.size.s1}px;
-  color: ${color.mediumdark};
-  text-align: center;
 `;
 
 const Wrapper = styled.div`
   ${pageMargins};
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 `;
 
-export default function SocialProof({ path, brands, heading, grid, monochrome, ...props }) {
+const brands = [
+  {
+    name: 'VScode',
+    image: 'images/logos/user/logo-vscode.svg',
+    width: 33,
+    height: 34,
+  },
+  {
+    name: 'GovUK',
+    image: 'images/logos/user/logo-govuk.svg',
+    width: 134,
+    height: 22,
+  },
+  {
+    name: 'EU',
+    image: 'images/logos/user/logo-eu.svg',
+    width: 48,
+    height: 31,
+  },
+  {
+    name: 'Github',
+    image: 'images/logos/user/logo-github.svg',
+    width: 92,
+    height: 26,
+  },
+  {
+    name: 'Airbnb',
+    image: 'images/logos/user/logo-airbnb.svg',
+    width: 300,
+    height: 94,
+  },
+  {
+    name: 'Mozilla',
+    image: 'images/logos/user/logo-mozilla.svg',
+    width: 360,
+    height: 103,
+  },
+  {
+    name: 'BBC',
+    image: 'images/logos/user/logo-bbc.svg',
+    width: 120,
+    height: 32,
+  },
+];
+
+export default function SocialProof(props) {
   return (
     <Wrapper {...props}>
-      <Logos grid={grid}>
-        {!grid && heading && <Heading>{heading}</Heading>}
+      <Logos>
         {brands.map((brand) => (
-          <LogoWrapper key={brand} title={brand}>
-            <Logo src={`${path}/logo-${brand}.svg`} alt={brand} monochrome={monochrome} />
-          </LogoWrapper>
+          <NormalizeArea
+            key={brand.name}
+            width={brand.width}
+            height={brand.height}
+            idealArea={5000}
+          >
+            <Logo src={brand.image} alt={brand.name} />
+          </NormalizeArea>
         ))}
       </Logos>
-      {grid && <Subtext>Trusted by these teams and thousands more</Subtext>}
     </Wrapper>
   );
 }
-
-SocialProof.propTypes = {
-  path: PropTypes.string.isRequired,
-  brands: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  heading: PropTypes.string,
-  grid: PropTypes.bool,
-  monochrome: PropTypes.bool,
-};
-
-SocialProof.defaultProps = {
-  heading: null,
-  grid: false,
-  monochrome: false,
-};

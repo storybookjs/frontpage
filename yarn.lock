@@ -4155,17 +4155,17 @@
     core-js "^3.8.2"
     global "^4.4.0"
 
-"@storybook/components-marketing@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@storybook/components-marketing/-/components-marketing-2.0.2.tgz#bb66758e670d7d88c22a6b26271f349c06887510"
-  integrity sha512-crow6H5O2AtmTtfF/hDbSg0LjXlMXjChDW3bxG1LKm+ZmSQ1qoXawd5pGLAhL6P8uI5LOlF9l8fS9mwRGuYVfA==
+"@storybook/components-marketing@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@storybook/components-marketing/-/components-marketing-2.0.3.tgz#6cc7bf89a80fc9df7275e84b5c46755b2db30b76"
+  integrity sha512-9vM4/s7N5xiEa/Oxjm5r12X0r1Q695EhcxVsPh7vcQv7uBOGHP997upysgtbRL0FLiLKzTuOvpQpVDkVxl4gKQ==
   dependencies:
     "@docsearch/css" "^3.1.0"
     "@docsearch/react" "^3.1.0"
     "@emotion/weak-memoize" "^0.2.5"
     "@floating-ui/react-dom-interactions" "^0.6.5"
     "@storybook/api" "^6.5.9"
-    "@storybook/design-system" "^7.7.11"
+    "@storybook/design-system" "^7.8.2"
     "@storybook/theming" "^6.5.9"
     formik "^2.1.5"
     human-format "^0.11.0"
@@ -4447,10 +4447,10 @@
     react-popper-tooltip "^2.11.1"
     uuid "^3.3.3"
 
-"@storybook/design-system@^7.7.11":
-  version "7.7.14"
-  resolved "https://registry.yarnpkg.com/@storybook/design-system/-/design-system-7.7.14.tgz#ec7bff39e8847511caac020a5a2039bca5cf19d3"
-  integrity sha512-pj3eVN+pgnLY31OHzNK4SdEKbQy5yPGu5S5N0TFpFtMttgAa2r5G53TRg9+xXAM8n/qv+nVl8AqL2fymp7gztg==
+"@storybook/design-system@^7.8.2":
+  version "7.8.2"
+  resolved "https://registry.yarnpkg.com/@storybook/design-system/-/design-system-7.8.2.tgz#cc13ef4f233e0b0317ff2e6db6eb0a5e168adb96"
+  integrity sha512-cUTLsDZmLQ2kqEcM8boSVrZHyes96aqikAyP80JzXsjLeVE9eK+JEUiuk5nISRgwQFjChfIAjGxc0HpcC+mkUA==
   dependencies:
     "@emotion/weak-memoize" "^0.2.5"
     "@storybook/theming" "^6.5.9"
