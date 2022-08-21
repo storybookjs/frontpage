@@ -88,6 +88,8 @@ const EmbedPane = styled.img`
 `;
 
 const EmbedIntegrationsCarousel = styled(IntegrationsCarousel)`
+  width: 100%;
+
   @media (min-width: ${breakpoint * 1}px) {
     margin-right: -${pageMargin * 1}vw;
   }
@@ -111,8 +113,6 @@ const embedIntegrations = [
       <EmbedPane
         src="/images/embed/next.svg"
         alt="Embed stories using iframes in your NextJS sites"
-        width="1202"
-        height="910"
         loading="lazy"
       />
     ),
@@ -125,8 +125,6 @@ const embedIntegrations = [
       <EmbedPane
         src="/images/embed/figma.svg"
         alt="Use the Storybook Connect plugin to embed stories in a Figma file"
-        width="1202"
-        height="910"
         loading="lazy"
       />
     ),
@@ -139,8 +137,6 @@ const embedIntegrations = [
       <EmbedPane
         src="/images/embed/notion.svg"
         alt="Embed stories in Notion documents using the oEmbed support"
-        width="1202"
-        height="910"
         loading="lazy"
       />
     ),
@@ -153,8 +149,6 @@ const embedIntegrations = [
       <EmbedPane
         src="/images/embed/medium.svg"
         alt="Embed stories in Medium articles using the oEmbed support"
-        width="1202"
-        height="910"
         loading="lazy"
       />
     ),
@@ -224,7 +218,11 @@ export function Share({ docs, ...props }) {
             </Link>
           }
         />
-        <EmbedIntegrationsCarousel integrations={embedIntegrations} overflowLabel="+ and more" />
+        <EmbedIntegrationsCarousel
+          integrations={embedIntegrations}
+          overflowLabel="+ and more"
+          aspectRatio={1202 / 910}
+        />
         <ValueProp
           inverse
           heading={

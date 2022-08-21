@@ -4155,10 +4155,10 @@
     core-js "^3.8.2"
     global "^4.4.0"
 
-"@storybook/components-marketing@^2.0.3":
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/@storybook/components-marketing/-/components-marketing-2.0.3.tgz#6cc7bf89a80fc9df7275e84b5c46755b2db30b76"
-  integrity sha512-9vM4/s7N5xiEa/Oxjm5r12X0r1Q695EhcxVsPh7vcQv7uBOGHP997upysgtbRL0FLiLKzTuOvpQpVDkVxl4gKQ==
+"@storybook/components-marketing@^2.0.5":
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/@storybook/components-marketing/-/components-marketing-2.0.5.tgz#7752defe7d407adddb4c6d72bba5dab81c164100"
+  integrity sha512-ZexX7ywszeeVZWqICPRnCdSxcstRfsxEIYlHLj/NeXdPDTTdVo8RmFI983rkG69bKDNdVuc/aQkUSwdZ90GPqg==
   dependencies:
     "@docsearch/css" "^3.1.0"
     "@docsearch/react" "^3.1.0"
