@@ -87,22 +87,42 @@ const EmbedPane = styled.img`
   height: auto;
 `;
 
-const EmbedIntegrationsCarousel = styled(IntegrationsCarousel)`
+const EmbedIntegrationsWrapper = styled.div`
+  position: relative;
   width: 100%;
 
-  @media (min-width: ${breakpoint * 1}px) {
-    margin-right: -${pageMargin * 1}vw;
-  }
-  @media (min-width: ${breakpoint * 2}px) {
-    margin-right: -${pageMargin * 2}vw;
-  }
-  @media (min-width: ${breakpoint * 3}px) {
-    margin-right: -${pageMargin * 3}vw;
-  }
-  @media (min-width: ${breakpoint * 4}px) {
-    margin-right: -${pageMargin * 4}vw;
+  @media (min-width: ${breakpoints[2]}px) {
+    width: 150%;
   }
 `;
+const EmbedIntegrationsCarousel = styled(IntegrationsCarousel)`
+  max-width: 800px;
+  margin-left: 14%;
+`;
+const TimeFramePicker = styled.img`
+  display: block;
+  width: 40%;
+  height: auto;
+  position: absolute;
+  top: 22%;
+  left: 0;
+`;
+TimeFramePicker.defaultProps = {
+  src: 'images/home/TimeFramePicker.svg',
+  alt: '',
+};
+const Connector = styled.img`
+  display: block;
+  width: 20%;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 20%;
+`;
+Connector.defaultProps = {
+  src: 'images/home/connector.svg',
+  alt: '',
+};
 
 const embedIntegrations = [
   {
@@ -218,11 +238,16 @@ export function Share({ docs, ...props }) {
             </Link>
           }
         />
-        <EmbedIntegrationsCarousel
-          integrations={embedIntegrations}
-          overflowLabel="+ and more"
-          aspectRatio={1202 / 910}
-        />
+        <EmbedIntegrationsWrapper>
+          <EmbedIntegrationsCarousel
+            integrations={embedIntegrations}
+            overflowLabel="+ and more"
+            aspectRatio={1202 / 910}
+          />
+          <Connector />
+          <TimeFramePicker />
+        </EmbedIntegrationsWrapper>
+
         <ValueProp
           inverse
           heading={
