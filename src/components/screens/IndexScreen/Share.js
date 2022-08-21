@@ -81,9 +81,10 @@ const IntegrationDemo = styled.div`
   align-items: center;
 `;
 
-const Pane = styled.img`
+const EmbedPane = styled.img`
   display: block;
   width: 100%;
+  height: auto;
 `;
 
 const EmbedIntegrationsCarousel = styled(IntegrationsCarousel)`
@@ -107,9 +108,11 @@ const embedIntegrations = [
     image: '/images/home/next-js.svg',
     color: '#000',
     media: (
-      <Pane
-        src="/images/embed/figma.svg"
+      <EmbedPane
+        src="/images/embed/next.svg"
         alt="Embed stories using iframes in your NextJS sites"
+        width="1202"
+        height="910"
         loading="lazy"
       />
     ),
@@ -119,9 +122,11 @@ const embedIntegrations = [
     image: '/images/home/figma.svg',
     color: '#000',
     media: (
-      <Pane
-        src="/images/embed/medium.svg"
+      <EmbedPane
+        src="/images/embed/figma.svg"
         alt="Use the Storybook Connect plugin to embed stories in a Figma file"
+        width="1202"
+        height="910"
         loading="lazy"
       />
     ),
@@ -131,9 +136,11 @@ const embedIntegrations = [
     image: '/images/home/notion.svg',
     color: '#fff',
     media: (
-      <Pane
-        src="/images/embed/next.svg"
+      <EmbedPane
+        src="/images/embed/notion.svg"
         alt="Embed stories in Notion documents using the oEmbed support"
+        width="1202"
+        height="910"
         loading="lazy"
       />
     ),
@@ -143,9 +150,11 @@ const embedIntegrations = [
     image: '/images/home/medium.svg',
     color: '#F5C347',
     media: (
-      <Pane
-        src="/images/embed/notion.svg"
+      <EmbedPane
+        src="/images/embed/medium.svg"
         alt="Embed stories in Medium articles using the oEmbed support"
+        width="1202"
+        height="910"
         loading="lazy"
       />
     ),
