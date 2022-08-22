@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
 
-const apiURL = 'https://storybook-dx.netlify.app/.netlify/functions/marketing-data';
+const apiURL = 'https://storybook-dx.netlify.app/.netlify/functions/dx-data';
 
 async function fetchDXData() {
   const response = await fetch(apiURL);
@@ -14,7 +14,7 @@ module.exports = async function sourceDXData({ actions, createNodeId, createCont
   const response = await fetchDXData();
 
   const nodeMeta = {
-    id: createNodeId(`my-data-dx`),
+    id: createNodeId(`storybook-dx-data`),
     parent: null,
     children: [],
     internal: {

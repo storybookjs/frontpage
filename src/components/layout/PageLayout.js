@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { styled } from '@storybook/theming';
 import Helmet from 'react-helmet';
 import { Nav, LinksContextProvider, Eyebrow, Footer } from '@storybook/components-marketing';
-import { Link as GatsbyLinkWrapper } from 'gatsby';
+import { Link as GatsbyLinkWrapper, useStaticQuery, graphql } from 'gatsby';
 
 import DocsLayout from './DocsLayout';
 
@@ -38,6 +38,18 @@ export default function PageLayout({ children, pageContext, ...props }) {
   const { urls = {}, title, description, ogImage, googleSiteVerification } = useSiteMetadata();
   const isHomePage = props.location.pathname === '/';
 
+  const { dxData } = useStaticQuery(graphql`
+    query DXQuery {
+      dxData {
+        subscriberCount
+        latestPost {
+          title
+          url
+        }
+      }
+    }
+  `);
+
   return (
     <LinksContextProvider value={navLinks}>
       <Layout {...props}>
@@ -70,8 +82,8 @@ export default function PageLayout({ children, pageContext, ...props }) {
         {pageContext && pageContext.layout !== 'iframe' && (
           <>
             <Eyebrow
-              label="Storybook Lazy Compilation for Webpack"
-              link="https://storybook.js.org/blog/storybook-lazy-compilation-for-webpack/"
+              label={dxData.latestPost.title}
+              link={dxData.latestPost.url}
               inverse={isHomePage}
             />
             <Nav inverse={isHomePage} />
@@ -85,7 +97,11 @@ export default function PageLayout({ children, pageContext, ...props }) {
           children
         )}
         {pageContext && pageContext.layout !== 'iframe' && (
-          <Footer subscriberCount={5363} onSubscribe={() => {}} inverse={isHomePage} />
+          <Footer
+            subscriberCount={dxData.subscriberCount}
+            onSubscribe={() => {}}
+            inverse={isHomePage}
+          />
         )}
       </Layout>
     </LinksContextProvider>
