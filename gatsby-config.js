@@ -37,7 +37,6 @@ module.exports = {
         fieldName: `addons`,
         url: `https://boring-heisenberg-43a6ed.netlify.app/`,
         typeName: `ADDON`,
-        // refetchInterval: 60,
       },
     },
     {
@@ -46,7 +45,6 @@ module.exports = {
         fieldName: `storybookProjects`,
         url: `https://api-us-west-2.hygraph.com/v2/ckyko33ox031l01xo8a944g1b/master`,
         typeName: `STORYBOOK_PROJECTS`,
-        refetchInterval: 60,
         headers: {
           Authorization: `Bearer ${process.env.GRAPHCMS_PAT}`,
         },
