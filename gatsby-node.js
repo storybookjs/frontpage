@@ -10,6 +10,7 @@ const buildPathWithFramework = require('./src/util/build-path-with-framework');
 const createAddonsPages = require('./src/util/create-addons-pages');
 const getReleaseBranchUrl = require('./src/util/get-release-branch-url');
 const { versionString, latestVersionString, isLatest } = require('./src/util/version-data');
+const sourceDXData = require('./src/util/source-dx-data');
 const { versions } = require('./src/util/versions');
 
 const docsTocWithPaths = addStateToToc(docsToc);
@@ -25,6 +26,31 @@ exports.onCreateWebpackConfig = ({ actions }) => {
       fallback: {
         path: require.resolve('path-browserify'),
       },
+    },
+  });
+};
+
+exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }) => {
+  await sourceDXData({ actions, createNodeId, createContentDigest });
+};
+
+exports.onCreateWebpackConfig = ({ getConfig, actions, plugins }) => {
+  // Pass the netlify context to runtime
+  const envVarsToAdd = {
+    'process.env.CONTEXT': JSON.stringify(process.env.CONTEXT),
+  };
+
+  let pluginsToAdd = [plugins.define(envVarsToAdd)];
+
+  // Resolve publication specific modules, i.e., *.storybook.js or *.ink.js
+  const config = getConfig();
+
+  const extensions = [...config.resolve.extensions, `.${process.env.GATSBY_PUBLICATION}.js`];
+
+  actions.setWebpackConfig({
+    plugins: pluginsToAdd,
+    resolve: {
+      extensions,
     },
   });
 };
