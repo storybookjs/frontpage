@@ -34,27 +34,6 @@ exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }) => 
   await sourceDXData({ actions, createNodeId, createContentDigest });
 };
 
-exports.onCreateWebpackConfig = ({ getConfig, actions, plugins }) => {
-  // Pass the netlify context to runtime
-  const envVarsToAdd = {
-    'process.env.CONTEXT': JSON.stringify(process.env.CONTEXT),
-  };
-
-  let pluginsToAdd = [plugins.define(envVarsToAdd)];
-
-  // Resolve publication specific modules, i.e., *.storybook.js or *.ink.js
-  const config = getConfig();
-
-  const extensions = [...config.resolve.extensions, `.${process.env.GATSBY_PUBLICATION}.js`];
-
-  actions.setWebpackConfig({
-    plugins: pluginsToAdd,
-    resolve: {
-      extensions,
-    },
-  });
-};
-
 exports.onCreateNode = ({ actions, getNode, node }) => {
   const { createNodeField } = actions;
 
