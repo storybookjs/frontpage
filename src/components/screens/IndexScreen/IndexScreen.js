@@ -8,7 +8,7 @@ import { Hero } from './Hero';
 import { Develop } from './Develop';
 import { Test } from './Test';
 import { Document } from './Document';
-import { Share } from './Share';
+import { Share } from './Share/Share';
 import { Automate } from './Automate/Automate';
 import { SocialValidation } from './SocialValidation';
 
