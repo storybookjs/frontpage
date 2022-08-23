@@ -79,7 +79,11 @@ it('Should empty the search field', () => {
 });
 `;
 
-export const jasmine = `import { render, screen, fireEvent } from 'testing-library/angular';
+export const jasmine = `import {
+  render,
+  screen,
+  fireEvent,
+} from 'testing-library/angular';
 import {
   composeStory,
   createMountableStoryComponent,

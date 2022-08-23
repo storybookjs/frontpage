@@ -11,6 +11,7 @@ export const Default = () => (
     <TestIntegrations />
   </div>
 );
+Default.storyName = 'TestIntegrations';
 Default.parameters = {
   backgrounds: { default: 'dark' },
 };

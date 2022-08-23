@@ -9,8 +9,13 @@ const { typography, breakpoints, pageMargins, spacing, breakpoint, pageMargin } 
 const StyledCodeExample = styled(CodeExample)`
   width: 100%;
   max-width: 800px;
-  height: 600px;
-  font-size: ${typography.size.s1}px;
+  height: 550px;
+  font-size: 10px;
+
+  @media (min-width: ${breakpoints[1]}px) {
+    height: 600px;
+    font-size: ${typography.size.s1}px;
+  }
 
   @media (min-width: ${breakpoints[3]}px) {
     font-size: ${typography.size.s3}px;
@@ -53,7 +58,7 @@ const testIntegrations = [
     image: '/images/home/jasmine.svg',
     color: '#8A4182',
     media: (
-      <StyledCodeExample language="jsx" fileName="delete-customer.spec.js">
+      <StyledCodeExample language="javascript" fileName="delete-customer.spec.js">
         {snippets.jasmine}
       </StyledCodeExample>
     ),
@@ -62,6 +67,15 @@ const testIntegrations = [
 
 const TestIntegrationsCarousel = styled(IntegrationsCarousel)`
   width: 100%;
+  display: grid;
+
+  @media (min-width: ${breakpoints[1]}px) {
+    grid-template-columns: min-content;
+  }
+
+  figure {
+    display: contents;
+  }
 `;
 
 export const TestIntegrations = () => (

@@ -11,6 +11,7 @@ export default {
 };
 
 export const Default = () => <Share docs="/" />;
+Default.storyName = 'Share';
 Default.parameters = {
   backgrounds: { default: 'dark' },
 };
