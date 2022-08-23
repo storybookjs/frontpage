@@ -7,9 +7,9 @@ export default {
 };
 
 export const Default = () => (
-  // <div style={{ maxWidth: 800, padding: 32 }}>
-  <EmbedIntegrations />
-  // </div>
+  <div style={{ maxWidth: 800, padding: 32 }}>
+    <EmbedIntegrations />
+  </div>
 );
 Default.storyName = 'EmbedIntegrations';
 Default.parameters = {

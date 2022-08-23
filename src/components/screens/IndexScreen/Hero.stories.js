@@ -4,13 +4,9 @@ import { Hero } from './Hero';
 export default {
   title: 'Screens/IndexScreen/Hero',
   component: Hero,
-  parameters: {
-    chromatic: { viewports: [320, 1200] },
-    layout: 'fullscreen',
-  },
 };
 
-export const Default = () => <Hero />;
+export const Default = () => <Hero npmDownloads={16094826} />;
 Default.parameters = {
   backgrounds: { default: 'dark' },
 };

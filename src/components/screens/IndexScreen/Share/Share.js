@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@storybook/theming';
 import { Link } from '@storybook/design-system';
 import { styles, SectionLede, ValuePropCopy, Testimonial } from '@storybook/components-marketing';
+import { useInView } from 'framer-motion';
 import CloudbeesLogoSVG from '../../../../images/logos/user/logo-cloudbees.svg';
+import { PublishIntegrations } from './PublishIntegrations';
 import { TestIntegrations } from './TestIntegrations';
 import { EmbedIntegrations } from './EmbedIntegrations';
 
@@ -23,10 +25,20 @@ const Wrapper = styled.section`
 `;
 
 const ValueProp = styled(ValuePropCopy)`
-  grid-column: 1 / 2;
+  grid-column: 1 / -1;
+  margin-bottom: 3rem;
 
   &:first-of-type {
     padding-top: 0;
+    margin-bottom: 0;
+  }
+
+  @media (max-width: ${breakpoints[1]}px) {
+    max-width: 100%;
+  }
+
+  @media (min-width: ${breakpoints[2]}px) {
+    grid-column: 1 / 2;
   }
 `;
 
@@ -37,12 +49,14 @@ const Content = styled.div`
 
   display: grid;
   grid-template-columns: 1fr;
+  grid-auto-flow: dense;
   justify-items: center;
-  gap: 12rem 6rem;
+  gap: 3rem;
 
   @media (min-width: ${breakpoints[2]}px) {
     justify-items: flex-start;
     grid-template-columns: minmax(max-content, 320px) 1fr;
+    gap: 12rem 6rem;
   }
 `;
 
@@ -58,6 +72,14 @@ const Code = styled.span`
 `;
 
 export function Share({ docs, ...props }) {
+  const publishRef = useRef(null);
+  const embedRef = useRef(null);
+  const testRef = useRef(null);
+
+  const publishInView = useInView(publishRef, { amount: 'full' });
+  const embedInView = useInView(embedRef, { amount: 0.5 });
+  const testInView = useInView(testRef, { amount: 0.5 });
+
   return (
     <Wrapper {...props}>
       <SectionLede
@@ -66,6 +88,10 @@ export function Share({ docs, ...props }) {
         copy="Stories show how UIs actually work not just a static design of how they're supposed to work. That keeps everyone aligned on what’s currently in production."
       />
       <Content>
+        <PublishIntegrations
+          ref={publishRef}
+          isInView={publishInView && !embedInView && !testInView}
+        />
         <ValueProp
           inverse
           heading="Publish Storybook to get sign off from teammates"
@@ -76,11 +102,8 @@ export function Share({ docs, ...props }) {
             </Link>
           }
         />
-        <img
-          src="images/home/storybook-mock-ui.svg"
-          alt=""
-          style={{ width: '100%', display: 'block' }}
-        />
+
+        <EmbedIntegrations ref={embedRef} isInView={embedInView && !testInView} />
         <ValueProp
           inverse
           heading="Embed stories in wikis, Markdown, and Figma"
@@ -91,7 +114,8 @@ export function Share({ docs, ...props }) {
             </Link>
           }
         />
-        <EmbedIntegrations />
+
+        <TestIntegrations ref={testRef} isInView={testInView} />
         <ValueProp
           inverse
           heading={
@@ -106,7 +130,6 @@ export function Share({ docs, ...props }) {
             </Link>
           }
         />
-        <TestIntegrations />
       </Content>
       <Testimonial
         inverse

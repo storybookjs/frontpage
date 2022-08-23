@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { styled } from '@storybook/theming';
 import { styles, IntegrationsCarousel } from '@storybook/components-marketing';
+import { motion, useInView } from 'framer-motion';
 import { CodeExample } from '../../../basics/CodeExample';
 import * as snippets from './embed-snippets';
 
-const { typography, breakpoints, pageMargins, spacing, breakpoint, pageMargin } = styles;
+const { typography, breakpoints } = styles;
 
 const StyledCodeExample = styled(CodeExample)`
   width: 100%;
@@ -78,6 +79,38 @@ const TestIntegrationsCarousel = styled(IntegrationsCarousel)`
   }
 `;
 
-export const TestIntegrations = () => (
-  <TestIntegrationsCarousel integrations={testIntegrations} overflowLabel="+ and more" />
-);
+const TimeFramePicker = styled(motion.img)`
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+`;
+TimeFramePicker.defaultProps = {
+  src: 'images/embed/time-frame-picker.svg',
+  alt: '',
+};
+
+const TestIntegrationsWrapper = styled.div`
+  position: relative;
+
+  @media (min-width: ${breakpoints[2]}px) {
+    grid-column: 2 / 3;
+  }
+`;
+
+export const TestIntegrations = React.forwardRef(({ isInView }, ref) => {
+  return (
+    <TestIntegrationsWrapper ref={ref}>
+      <TestIntegrationsCarousel integrations={testIntegrations} overflowLabel="+ and more" />
+      {isInView && (
+        <TimeFramePicker
+          layoutId="TimeFramePicker"
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 0 }}
+          transition={{ duration: 0.8 }}
+        />
+      )}
+    </TestIntegrationsWrapper>
+  );
+});

@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { styled } from '@storybook/theming';
-import { motion, useInView, AnimatePresence } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { styles } from '@storybook/components-marketing';
 
 const { spacing, breakpoints, color } = styles;

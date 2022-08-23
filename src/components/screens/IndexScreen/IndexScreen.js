@@ -18,7 +18,7 @@ const globalStyles = css`
   }
 `;
 
-export function PureIndexScreen({ projects, storybooks }) {
+export function PureIndexScreen({ projects, storybooks, npmDownloads }) {
   const { ogImage, urls = {} } = useSiteMetadata();
   const { home, docs = {} } = urls;
   return (
@@ -31,7 +31,7 @@ export function PureIndexScreen({ projects, storybooks }) {
         url={home}
         image={ogImage}
       />
-      <Hero />
+      <Hero npmDownloads={npmDownloads} />
       <Develop docs={docs} />
       <Test docs={docs} />
       <Document docs={docs} />
@@ -42,7 +42,13 @@ export function PureIndexScreen({ projects, storybooks }) {
   );
 }
 
-PureIndexScreen.propTypes = {};
+PureIndexScreen.propTypes = {
+  npmDownloads: PropTypes.number.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  projects: PropTypes.array.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  storybooks: PropTypes.array.isRequired,
+};
 
 export const storybooks = [
   {
@@ -87,6 +93,13 @@ export const storybooks = [
   },
 ];
 
-export default function IndexScreen({ projects, ...props }) {
-  return <PureIndexScreen {...props} projects={projects} storybooks={storybooks} />;
+export default function IndexScreen({ projects, npmDownloads, ...props }) {
+  return (
+    <PureIndexScreen
+      {...props}
+      projects={projects}
+      storybooks={storybooks}
+      npmDownloads={npmDownloads}
+    />
+  );
 }

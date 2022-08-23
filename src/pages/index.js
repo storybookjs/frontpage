@@ -77,5 +77,9 @@ export const query = graphql`
         }
       }
     }
+
+    dxData {
+      npmDownloads
+    }
   }
 `;

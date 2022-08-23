@@ -96,7 +96,7 @@ const Stats = styled.div`
   gap: 40px;
 `;
 
-export function Hero({ startOpen, ...props }) {
+export function Hero({ npmDownloads, startOpen, ...props }) {
   const { latestVersion, urls = {}, contributorCount } = useSiteMetadata();
   const { docs = {}, gitHub = {} } = urls;
 
@@ -130,7 +130,7 @@ export function Hero({ startOpen, ...props }) {
                 countLink={gitHub.releases}
                 noPlural
               />
-              <NpmDownloadCount />
+              <NpmDownloadCount downloads={npmDownloads} />
               <Stat
                 count={`${contributorCount}+`}
                 text="Contributors"
@@ -158,6 +158,7 @@ export function Hero({ startOpen, ...props }) {
 
 Hero.propTypes = {
   startOpen: PropTypes.bool,
+  npmDownloads: PropTypes.number.isRequired,
 };
 
 Hero.defaultProps = {

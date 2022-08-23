@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { styled } from '@storybook/theming';
 import { styles, IntegrationsCarousel, AspectRatio } from '@storybook/components-marketing';
+import { motion, useInView } from 'framer-motion';
 
 const { breakpoints } = styles;
 
@@ -10,28 +11,10 @@ const EmbedPane = styled.img`
   height: auto;
 `;
 
-const EmbedIntegrationsWrapper = styled.div`
-  width: 100%;
-  position: relative;
-  display: table;
-  max-width: 800px;
-  margin-left: 30px;
-
-  @media (min-width: ${breakpoints[1]}px) {
-    margin-left: 30px;
-  }
-
-  @media (min-width: ${breakpoints[2]}px) {
-    width: 150%;
-  }
-  @media (min-width: ${breakpoints[3]}px) {
-    margin-left: 120px;
-  }
-`;
 const EmbedIntegrationsCarousel = styled(IntegrationsCarousel)`
   display: table-cell;
 `;
-const TimeFramePicker = styled.img`
+const TimeFramePicker = styled(motion.img)`
   display: block;
   width: 56%;
   max-width: 440px;
@@ -53,7 +36,25 @@ const TimeFramePicker = styled.img`
   }
 `;
 TimeFramePicker.defaultProps = {
-  src: 'images/embed/TimeFramePicker.svg',
+  src: 'images/embed/time-frame-picker.svg',
+  alt: '',
+};
+
+const Connector = styled(motion.img)`
+  display: block;
+  width: 28%;
+  max-width: 262px;
+  height: auto;
+  position: absolute;
+  top: 45%;
+  left: 5%;
+
+  @media (min-width: ${breakpoints[3]}px) {
+    left: 4%;
+  }
+`;
+Connector.defaultProps = {
+  src: 'images/embed/connector.svg',
   alt: '',
 };
 
@@ -112,9 +113,35 @@ const embedIntegrations = [
   },
 ];
 
-export const EmbedIntegrations = () => (
-  <EmbedIntegrationsWrapper>
-    <EmbedIntegrationsCarousel integrations={embedIntegrations} overflowLabel="+ and more" />
-    <TimeFramePicker />
-  </EmbedIntegrationsWrapper>
-);
+const EmbedIntegrationsWrapper = styled.div`
+  width: 100%;
+  position: relative;
+  display: table;
+  max-width: 800px;
+  margin-left: 30px;
+
+  @media (min-width: ${breakpoints[1]}px) {
+    margin-left: 30px;
+  }
+
+  @media (min-width: ${breakpoints[2]}px) {
+    width: 150%;
+    grid-column: 2 / 3;
+  }
+  @media (min-width: ${breakpoints[3]}px) {
+    margin-left: 120px;
+  }
+`;
+
+export const EmbedIntegrations = React.forwardRef(({ isInView }, ref) => {
+  return (
+    <EmbedIntegrationsWrapper ref={ref}>
+      <EmbedIntegrationsCarousel integrations={embedIntegrations} overflowLabel="+ and more" />
+      <Connector
+        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 0.4, delay: 1 }}
+      />
+      {isInView && <TimeFramePicker layoutId="TimeFramePicker" transition={{ duration: 0.8 }} />}
+    </EmbedIntegrationsWrapper>
+  );
+});

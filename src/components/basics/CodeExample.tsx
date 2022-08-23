@@ -177,6 +177,10 @@ const FileName = styled.div`
   transform: translate3d(-50%, -50%, 0);
   font-family: ${typography.type.code};
   font-size: ${typography.size.s1}px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 const controlColors = {

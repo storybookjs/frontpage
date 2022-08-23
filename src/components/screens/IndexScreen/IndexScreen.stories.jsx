@@ -17,6 +17,7 @@ export const Default = Template.bind({});
 Default.args = {
   projects,
   storybooks,
+  npmDownloadCount: 16094826,
 };
 Default.parameters = {
   backgrounds: { default: 'dark' },
