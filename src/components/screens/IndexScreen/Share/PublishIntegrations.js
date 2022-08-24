@@ -73,7 +73,12 @@ const symbolVariants = {
 
 export const PublishIntegrations = React.forwardRef(({ isInView }, ref) => {
   return (
-    <PublishIntegrationsWrapper ref={ref} whileInView="animate" initial="initial">
+    <PublishIntegrationsWrapper
+      ref={ref}
+      whileInView="animate"
+      initial="initial"
+      viewport={{ once: true }}
+    >
       <Storybook />
       {isInView && (
         <TimeFramePicker
@@ -85,12 +90,12 @@ export const PublishIntegrations = React.forwardRef(({ isInView }, ref) => {
         />
       )}
       <PointerHand variants={symbolVariants} transition={{ duration: 0.4, delay: 0.8 }} />
+      <Player type="blue" x="6%" y="-12%" delay={1} />
       <Arrow variants={symbolVariants} transition={{ duration: 0.4, delay: 2.6 }} />
+      <Player type="red" x="-7%" y="45%" delay={2.8} />
       <Caret variants={symbolVariants} transition={{ duration: 0.4, delay: 4.8 }} />
-      <Player type={0} x="6%" y="-12%" delay={1} />
-      <Player type={1} x="-7%" y="45%" delay={3} />
-      <Player type={2} x="30%" y="56%" delay={7} />
-      <Player type={3} x="65%" y="9%" delay={5} />
+      <Player type="purple" x="65%" y="9%" delay={5} />
+      <Player type="yellow" x="30%" y="56%" delay={7} />
     </PublishIntegrationsWrapper>
   );
 });

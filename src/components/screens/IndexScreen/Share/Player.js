@@ -84,12 +84,12 @@ const Wave = styled(motion.div)`
     `}
 `;
 
-const players = [
-  { image: 'images/home/avatar-1.png', color: 'blue' },
-  { image: 'images/home/avatar-2.png', color: 'red' },
-  { image: 'images/home/avatar-3.png', color: 'yellow' },
-  { image: 'images/home/avatar-4.png', color: 'purple' },
-];
+const players = {
+  blue: 'images/home/avatar-1.png',
+  red: 'images/home/avatar-2.png',
+  yellow: 'images/home/avatar-3.png',
+  purple: 'images/home/avatar-4.png',
+};
 
 const transition = (delay) => ({
   ease: 'linear',
@@ -115,7 +115,7 @@ export const Player = ({ x, y, type, delay }) => (
     transition={{ delay, duration: 0.4 }}
   >
     <Wave
-      color={players[type].color}
+      color={type}
       size="big"
       style={{ x: '-50%', y: '-50%' }}
       variants={{
@@ -125,7 +125,7 @@ export const Player = ({ x, y, type, delay }) => (
       transition={transition(delay)}
     />
     <Wave
-      color={players[type].color}
+      color={type}
       size="medium"
       style={{ x: '-50%', y: '-50%' }}
       variants={{
@@ -135,7 +135,7 @@ export const Player = ({ x, y, type, delay }) => (
       transition={transition(delay)}
     />
     <Wave
-      color={players[type].color}
+      color={type}
       size="small"
       style={{ x: '-50%', y: '-50%' }}
       variants={{
@@ -144,12 +144,12 @@ export const Player = ({ x, y, type, delay }) => (
       }}
       transition={transition(delay)}
     />
-    <Avatar src={players[type].image} />
+    <Avatar src={players[type]} />
   </AvatarWrapper>
 );
 
 Player.propTypes = {
   x: PropTypes.string.isRequired,
   y: PropTypes.string.isRequired,
-  type: PropTypes.oneOf([0, 1, 2, 3]).isRequired,
+  type: PropTypes.oneOf(['blue', 'red', 'yellow', 'purple']).isRequired,
 };
