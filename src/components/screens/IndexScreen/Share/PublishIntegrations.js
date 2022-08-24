@@ -1,7 +1,8 @@
 import React, { useRef } from 'react';
 import { styled } from '@storybook/theming';
 import { styles, IntegrationsCarousel, AspectRatio } from '@storybook/components-marketing';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, AnimatePresence } from 'framer-motion';
+import { Player } from './Player';
 
 const { breakpoints } = styles;
 
@@ -19,7 +20,7 @@ TimeFramePicker.defaultProps = {
   alt: '',
 };
 
-const PublishIntegrationsWrapper = styled.div`
+const PublishIntegrationsWrapper = styled(motion.div)`
   position: relative;
   width: 100%;
   max-width: 800px;
@@ -40,11 +41,56 @@ Storybook.defaultProps = {
   alt: '',
 };
 
+const Arrow = styled(motion.img)`
+  position: absolute;
+  top: 64%;
+  left: 10%;
+  width: auto;
+  height: 5%;
+`;
+Arrow.defaultProps = { src: 'images/home/arrow.svg', alt: '' };
+const PointerHand = styled(motion.img)`
+  position: absolute;
+  top: 10%;
+  left: 32%;
+  width: auto;
+  height: 5%;
+`;
+PointerHand.defaultProps = { src: 'images/home/pointerhand.svg', alt: '' };
+const Caret = styled(motion.img)`
+  position: absolute;
+  top: 20%;
+  left: 66%;
+  width: auto;
+  height: 5%;
+`;
+Caret.defaultProps = { src: 'images/home/caret.svg', alt: '' };
+
+const symbolVariants = {
+  initial: { y: 20, opacity: 0 },
+  animate: { y: 0, opacity: 1 },
+};
+
 export const PublishIntegrations = React.forwardRef(({ isInView }, ref) => {
   return (
-    <PublishIntegrationsWrapper ref={ref}>
+    <PublishIntegrationsWrapper ref={ref} whileInView="animate" initial="initial">
       <Storybook />
-      {isInView && <TimeFramePicker layoutId="TimeFramePicker" transition={{ duration: 0.8 }} />}
+      {isInView && (
+        <TimeFramePicker
+          key="TimeFramePicker"
+          layoutId="TimeFramePicker"
+          transition={{ duration: 0.8 }}
+          width="458"
+          height="244"
+        />
+      )}
+      <PointerHand variants={symbolVariants} transition={{ duration: 0.4, delay: 0.8 }} />
+      <Arrow variants={symbolVariants} transition={{ duration: 0.4, delay: 2.6 }} />
+      <Caret variants={symbolVariants} transition={{ duration: 0.4, delay: 4.8 }} />
+      <Player type={0} x="6%" y="-12%" delay={1} />
+      <Player type={1} x="-7%" y="45%" delay={3} />
+      <Player type={2} x="30%" y="56%" delay={7} />
+      <Player type={3} x="65%" y="9%" delay={5} />
     </PublishIntegrationsWrapper>
   );
 });

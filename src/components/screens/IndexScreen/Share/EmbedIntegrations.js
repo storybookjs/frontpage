@@ -1,7 +1,7 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { styled } from '@storybook/theming';
 import { styles, IntegrationsCarousel, AspectRatio } from '@storybook/components-marketing';
-import { motion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const { breakpoints } = styles;
 
@@ -141,7 +141,15 @@ export const EmbedIntegrations = React.forwardRef(({ isInView }, ref) => {
         animate={isInView ? { opacity: 1 } : { opacity: 0 }}
         transition={{ duration: 0.4, delay: 1 }}
       />
-      {isInView && <TimeFramePicker layoutId="TimeFramePicker" transition={{ duration: 0.8 }} />}
+      {isInView && (
+        <TimeFramePicker
+          key="TimeFramePicker"
+          layoutId="TimeFramePicker"
+          transition={{ duration: 0.8 }}
+          width="458"
+          height="244"
+        />
+      )}
     </EmbedIntegrationsWrapper>
   );
 });

@@ -30,7 +30,6 @@ const ValueProp = styled(ValuePropCopy)`
 
   &:first-of-type {
     padding-top: 0;
-    margin-bottom: 0;
   }
 
   @media (max-width: ${breakpoints[1]}px) {
@@ -39,6 +38,10 @@ const ValueProp = styled(ValuePropCopy)`
 
   @media (min-width: ${breakpoints[2]}px) {
     grid-column: 1 / 2;
+
+    &:first-of-type {
+      margin-bottom: 0;
+    }
   }
 `;
 
@@ -75,10 +78,21 @@ export function Share({ docs, ...props }) {
   const publishRef = useRef(null);
   const embedRef = useRef(null);
   const testRef = useRef(null);
+  const [step, setStep] = React.useState(0);
 
   const publishInView = useInView(publishRef, { amount: 'full' });
   const embedInView = useInView(embedRef, { amount: 0.5 });
   const testInView = useInView(testRef, { amount: 0.5 });
+
+  React.useEffect(() => {
+    if (testInView) {
+      setStep(2);
+    } else if (embedInView) {
+      setStep(1);
+    } else if (publishInView) {
+      setStep(0);
+    }
+  }, [publishInView, embedInView, testInView]);
 
   return (
     <Wrapper {...props}>
@@ -90,7 +104,7 @@ export function Share({ docs, ...props }) {
       <Content>
         <PublishIntegrations
           ref={publishRef}
-          isInView={publishInView && !embedInView && !testInView}
+          isInView={step === 0 /* publishInView && !embedInView && !testInView */}
         />
         <ValueProp
           inverse
@@ -103,7 +117,7 @@ export function Share({ docs, ...props }) {
           }
         />
 
-        <EmbedIntegrations ref={embedRef} isInView={embedInView && !testInView} />
+        <EmbedIntegrations ref={embedRef} isInView={step === 1 /* embedInView && !testInView */} />
         <ValueProp
           inverse
           heading="Embed stories in wikis, Markdown, and Figma"
@@ -115,7 +129,7 @@ export function Share({ docs, ...props }) {
           }
         />
 
-        <TestIntegrations ref={testRef} isInView={testInView} />
+        <TestIntegrations ref={testRef} isInView={step === 2 /* testInView */} />
         <ValueProp
           inverse
           heading={

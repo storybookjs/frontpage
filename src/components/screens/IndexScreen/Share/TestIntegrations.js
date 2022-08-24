@@ -1,7 +1,7 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { styled } from '@storybook/theming';
 import { styles, IntegrationsCarousel } from '@storybook/components-marketing';
-import { motion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { CodeExample } from '../../../basics/CodeExample';
 import * as snippets from './embed-snippets';
 
@@ -105,10 +105,13 @@ export const TestIntegrations = React.forwardRef(({ isInView }, ref) => {
       <TestIntegrationsCarousel integrations={testIntegrations} overflowLabel="+ and more" />
       {isInView && (
         <TimeFramePicker
+          key="TimeFramePicker"
           layoutId="TimeFramePicker"
           initial={{ opacity: 1 }}
           animate={{ opacity: 0 }}
           transition={{ duration: 0.8 }}
+          width="458"
+          height="244"
         />
       )}
     </TestIntegrationsWrapper>

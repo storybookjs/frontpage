@@ -100,7 +100,7 @@ export function Publish({ docs, ...props }) {
           whileInView="animate"
           viewport={{ once: true, amount: 'all' }}
           transition={{ duration: 0.3, delay: 1.8 }}
-          src="images/home/automate/arrow.svg"
+          src="images/home/arrow.svg"
           alt=""
         />
         <PointerHand
@@ -109,7 +109,7 @@ export function Publish({ docs, ...props }) {
           whileInView="animate"
           viewport={{ once: true, amount: 'all' }}
           transition={{ duration: 0.3, delay: 1.8 }}
-          src="images/home/automate/pointerhand.svg"
+          src="images/home/pointerhand.svg"
           alt=""
         />
         <CalendarComponent
