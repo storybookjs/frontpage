@@ -17,7 +17,7 @@ import AtomicDesignLogoSVG from '../../../images/logos/user/logo-atomicdesign.sv
 import { Integrations } from './Integrations';
 import { Storybook } from './Storybook';
 
-const { subheading, breakpoints, pageMargins } = styles;
+const { color, subheading, breakpoints, pageMargins } = styles;
 
 const Wrapper = styled.section`
   padding-top: 3rem;
@@ -47,14 +47,18 @@ const MadeFor = styled.section`
   margin-bottom: 12px;
 `;
 
-const ValueProp = styled(ValuePropCopy)`
-  padding-top: 32rem;
-  padding-bottom: 32rem;
+const StickText = styled.div`
   grid-column: 1 / 2;
+`;
 
-  &:first-of-type {
-    padding-top: 0;
-  }
+const Spacer = styled.div`
+  height: 64rem;
+`;
+
+const ValueProp = styled(ValuePropCopy)`
+  position: sticky;
+  top: 4rem;
+  z-index: 999;
 `;
 
 const ValuePropIntegrations = styled(ValuePropCopy)`
@@ -143,23 +147,26 @@ export function Develop({ docs, startOpen, ...props }) {
         }
       />
       <Content>
-        <ValueProp
-          inverse
-          heading="Build UI components and pages in isolation"
-          description="Implement components and pages without needing to fuss with data, APIs, or business logic."
-          links={
-            <>
-              <Link containsIcon withArrow href="/why-storybook">
-                Why build UIs in isolation?
-              </Link>
-              <Link containsIcon withArrow href="/integrations">
-                How does this fit in my tech stack?
-              </Link>
-            </>
-          }
-        />
         <StorybookDemo activeStory={activeStory} />
-        <div ref={ref}>
+        <StickText>
+          <ValueProp
+            inverse
+            heading="Build UI components and pages in isolation"
+            description="Implement components and pages without needing to fuss with data, APIs, or business logic."
+            links={
+              <>
+                <Link containsIcon withArrow href="/why-storybook">
+                  Why build UIs in isolation?
+                </Link>
+                <Link containsIcon withArrow href="/integrations">
+                  How does this fit in my tech stack?
+                </Link>
+              </>
+            }
+          />
+          <Spacer />
+        </StickText>
+        <StickText ref={ref}>
           <ValueProp
             inverse
             heading="Mock hard-to-reach edge cases as stories"
@@ -170,27 +177,34 @@ export function Develop({ docs, startOpen, ...props }) {
               </Link>
             }
           />
-        </div>
-        <ValueProp
-          inverse
-          heading="Supercharge your workflow with addons"
-          description="Addons extend and customize your UI development workflow. There are hundreds of addons that help you build UI faster, document component libraries, and integrate with other tools."
-          links={
-            <Link containsIcon withArrow href="/why-storybook">
-              Learn about addons
-            </Link>
-          }
-        />
-        <ValueProp
-          inverse
-          heading="Drop the finished UI components into your app"
-          description="Once you finish developing UI components in isolation, drop them into your app. You’ll have confidence that the components are hardened to support every possible edge case."
-          links={
-            <Link containsIcon withArrow href="/why-storybook">
-              Why build UIs in isolation?
-            </Link>
-          }
-        />
+          <Spacer />
+        </StickText>
+        <StickText>
+          <ValueProp
+            inverse
+            heading="Supercharge your workflow with addons"
+            description="Addons extend and customize your UI development workflow. There are hundreds of addons that help you build UI faster, document component libraries, and integrate with other tools."
+            links={
+              <Link containsIcon withArrow href="/why-storybook">
+                Learn about addons
+              </Link>
+            }
+          />
+          <Spacer />
+        </StickText>
+        <StickText>
+          <ValueProp
+            inverse
+            heading="Drop the finished UI components into your app"
+            description="Once you finish developing UI components in isolation, drop them into your app. You’ll have confidence that the components are hardened to support every possible edge case."
+            links={
+              <Link containsIcon withArrow href="/why-storybook">
+                Why build UIs in isolation?
+              </Link>
+            }
+          />
+          <Spacer />
+        </StickText>
       </Content>
       <Content>
         <ValuePropIntegrations

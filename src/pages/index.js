@@ -10,6 +10,7 @@ const HomePage = ({ data }) => {
   const {
     latestBlogPosts: { edges },
     storybookProjects,
+    dxData: { npmDownloads },
   } = data;
   const latestBlogPost = edges[0]?.node;
 
@@ -28,7 +29,11 @@ const HomePage = ({ data }) => {
   return (
     <Fragment>
       <GlobalStyle />
-      <IndexScreen latestBlogPost={latestBlogPost} projects={projects} />
+      <IndexScreen
+        latestBlogPost={latestBlogPost}
+        projects={projects}
+        npmDownloads={npmDownloads}
+      />
     </Fragment>
   );
 };
