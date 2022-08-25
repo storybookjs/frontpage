@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { styled } from '@storybook/theming';
-import { motion, useCycle, useAnimationControls } from 'framer-motion';
+import { motion, useTransform } from 'framer-motion';
 
 const SVG = styled.svg`
   display: block;
@@ -30,17 +30,22 @@ const inputRangeStoryVariants = {
   'input-range': { opacity: 1 },
 };
 
-export const Storybook = () => {
-  const [activeStory, cycleActiveStory] = useCycle('default', 'no-selection', 'input-range');
-  const controls = useAnimationControls();
+const opacity = {
+  defaultStory: [1, 0, 0, 1],
+  noSelectionStory: [0, 1, 0, 0],
+  inputRangeStory: [0, 0, 1, 0],
+};
 
-  useEffect(() => {
-    const id = setTimeout(() => {
-      cycleActiveStory();
-      controls.set(activeStory);
-    }, 1000);
-    return () => clearTimeout(id);
-  }, [activeStory, cycleActiveStory, controls]);
+export const Storybook = ({ activeStory, ...props }) => {
+  const defaultStoryOpacity = useTransform(activeStory, (value) => opacity.defaultStory[value]);
+  const noSelectionStoryOpacity = useTransform(
+    activeStory,
+    (value) => opacity.noSelectionStory[value]
+  );
+  const inputRangeStoryOpacity = useTransform(
+    activeStory,
+    (value) => opacity.inputRangeStory[value]
+  );
 
   return (
     <SVG
@@ -49,6 +54,7 @@ export const Storybook = () => {
       height="800"
       fill="none"
       viewBox="0 0 1200 800"
+      {...props}
     >
       <path fill="#EEE" d="M0 0h1200v800H0z" />
       <g clipPath="url(#clip0_3666_63519)">
@@ -396,12 +402,7 @@ export const Storybook = () => {
                   </g>
                 </g>
               </g>
-              <motion.g
-                id="default-active"
-                custom="default"
-                animate={controls}
-                variants={defaultStoryVariants}
-              >
+              <motion.g id="default-active" style={{ opacity: defaultStoryOpacity }}>
                 <g>
                   <path fill="#1EA7FD" d="M0 0h251v24H0z" transform="translate(0 351)" />
                   <g>
@@ -444,12 +445,7 @@ export const Storybook = () => {
                   </g>
                 </g>
               </g>
-              <motion.g
-                id="no-selection-active"
-                custom="no-selection"
-                animate={controls}
-                variants={noSelectionStoryVariants}
-              >
+              <motion.g id="no-selection-active" style={{ opacity: noSelectionStoryOpacity }}>
                 <g>
                   <path fill="#1EA7FD" d="M0 0h251v24H0z" transform="translate(0 375)" />
                   <g>
@@ -512,12 +508,7 @@ export const Storybook = () => {
                   </g>
                 </g>
               </g>
-              <motion.g
-                id="input-range-active"
-                custom="input-range"
-                animate={controls}
-                variants={inputRangeStoryVariants}
-              >
+              <motion.g id="input-range-active" style={{ opacity: inputRangeStoryOpacity }}>
                 <g>
                   <path fill="#1EA7FD" d="M0 0h251v24H0z" transform="translate(0 423)" />
                   <g>

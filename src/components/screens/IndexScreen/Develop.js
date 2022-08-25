@@ -9,12 +9,13 @@ import {
   ValuePropCopy,
   Testimonial,
 } from '@storybook/components-marketing';
-import { motion, useScroll } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import { Stat } from '../../basics/Stat';
 import storybookMockUI from './storybook-mock-ui.svg';
 import AtomicDesignLogoSVG from '../../../images/logos/user/logo-atomicdesign.svg';
 import { Integrations } from './Integrations';
+import { Storybook } from './Storybook';
 
 const { subheading, breakpoints, pageMargins } = styles;
 
@@ -76,7 +77,7 @@ const Content = styled.div`
   }
 `;
 
-const StorybookDemo = styled.img`
+const StorybookDemo = styled(Storybook)`
   position: sticky;
   top: 4rem;
   width: 100%;
@@ -104,10 +105,12 @@ const Stats = styled.div`
 
 export function Develop({ docs, startOpen, ...props }) {
   const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
+  const { scrollYProgress: storiesScrollProgress } = useScroll({
     target: ref,
     offset: ['start end', 'start start'],
   });
+
+  const activeStory = useTransform(storiesScrollProgress, (value) => Math.floor(value * 3));
 
   return (
     <Wrapper {...props}>
@@ -116,6 +119,7 @@ export function Develop({ docs, startOpen, ...props }) {
         width="75"
         height="75"
         viewBox="0 0 100 100"
+        strokeWidth="4"
       >
         <circle cx="50" cy="50" r="30" pathLength="1" stroke="#fe0222" opacity="0.2" />
         <motion.circle
@@ -124,7 +128,7 @@ export function Develop({ docs, startOpen, ...props }) {
           r="30"
           pathLength="1"
           stroke="#fe0222"
-          style={{ pathLength: scrollYProgress }}
+          style={{ pathLength: storiesScrollProgress }}
         />
       </svg>
       <SectionLede
@@ -154,7 +158,7 @@ export function Develop({ docs, startOpen, ...props }) {
             </>
           }
         />
-        <StorybookDemo src={storybookMockUI} alt="" />
+        <StorybookDemo activeStory={activeStory} />
         <div ref={ref}>
           <ValueProp
             inverse

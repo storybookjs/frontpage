@@ -1,3 +1,4 @@
+import { useMotionValue } from 'framer-motion';
 import React from 'react';
 import { Storybook } from './Storybook';
 
@@ -11,7 +12,7 @@ export default {
 
 export const Default = () => (
   <div style={{ maxWidth: 800 }}>
-    <Storybook docs="/" />
+    <Storybook docs="/" activeStory={useMotionValue(0)} />
   </div>
 );
 Default.parameters = {

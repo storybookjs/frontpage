@@ -1,16 +1,22 @@
 import { useEffect, useState } from 'react';
 
+const isBrowser = typeof window !== 'undefined';
+
 export function useMediaQuery(query: string | string[]): boolean[] {
   const queries = Array.isArray(query) ? query : [query];
 
   const [value, setValue] = useState(() => {
     return queries.map((q) => ({
       media: q,
-      matches: window.matchMedia(q).matches,
+      matches: isBrowser ? window.matchMedia(q).matches : false,
     }));
   });
 
   useEffect(() => {
+    if (!isBrowser) {
+      return () => {};
+    }
+
     setValue(
       queries.map((q) => ({
         media: q,
