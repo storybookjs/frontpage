@@ -5,6 +5,7 @@ import { Link } from '@storybook/design-system';
 import { styles, SectionLede, ValuePropCopy, Testimonial } from '@storybook/components-marketing';
 import { useInView } from 'framer-motion';
 import CloudbeesLogoSVG from '../../../../images/logos/user/logo-cloudbees.svg';
+import { useMediaQuery } from '../../../lib/useMediaQuery';
 import { PublishIntegrations } from './PublishIntegrations';
 import { TestIntegrations } from './TestIntegrations';
 import { EmbedIntegrations } from './EmbedIntegrations';
@@ -82,6 +83,7 @@ export function Share({ docs, ...props }) {
   const embedRef = useRef(null);
   const testRef = useRef(null);
   const [step, setStep] = React.useState(0);
+  const [greaterThanBreakpoint2] = useMediaQuery(`(min-width: ${breakpoints[2]}px)`);
 
   const publishInView = useInView(publishRef, { amount: 'full' });
   const embedInView = useInView(embedRef, { amount: 0.5 });
@@ -115,7 +117,11 @@ export function Share({ docs, ...props }) {
             </Link>
           }
         />
-        <PublishIntegrations ref={publishRef} isInView={step === 0} />
+        <PublishIntegrations
+          ref={publishRef}
+          isInView={step === 0}
+          disableScrollAnimation={!greaterThanBreakpoint2}
+        />
 
         <ValueProp
           inverse
@@ -127,7 +133,11 @@ export function Share({ docs, ...props }) {
             </Link>
           }
         />
-        <EmbedIntegrations ref={embedRef} isInView={step === 1} />
+        <EmbedIntegrations
+          ref={embedRef}
+          isInView={step === 1}
+          disableScrollAnimation={!greaterThanBreakpoint2}
+        />
 
         <ValueProp
           inverse
@@ -143,7 +153,11 @@ export function Share({ docs, ...props }) {
             </Link>
           }
         />
-        <TestIntegrations ref={testRef} isInView={step === 2} />
+        <TestIntegrations
+          ref={testRef}
+          isInView={step === 2}
+          disableScrollAnimation={!greaterThanBreakpoint2}
+        />
       </Content>
       <Testimonial
         inverse

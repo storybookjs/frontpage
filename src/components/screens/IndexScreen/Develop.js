@@ -106,7 +106,7 @@ export function Develop({ docs, startOpen, ...props }) {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ['start end', 'center center'],
+    offset: ['start end', 'start start'],
   });
 
   return (

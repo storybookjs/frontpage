@@ -70,8 +70,8 @@ const TestIntegrationsCarousel = styled(IntegrationsCarousel)`
   width: 100%;
   display: grid;
 
-  @media (min-width: ${breakpoints[1]}px) {
-    grid-template-columns: min-content;
+  @media (min-width: ${breakpoints[2]}px) {
+    width: 125%;
   }
 
   figure {
@@ -100,20 +100,20 @@ const TestIntegrationsWrapper = styled.div`
   }
 `;
 
-export const TestIntegrations = React.forwardRef(({ isInView }, ref) => {
+export const TestIntegrations = React.forwardRef(({ isInView, disableScrollAnimation }, ref) => {
+  const layoutAnimProps = disableScrollAnimation
+    ? {}
+    : {
+        layoutId: 'TimeFramePicker',
+        initial: { opacity: 1, scale: 1 },
+        animate: { opacity: 0, scale: 0 },
+        transition: { duration: 0.8 },
+      };
   return (
     <TestIntegrationsWrapper ref={ref}>
       <TestIntegrationsCarousel integrations={testIntegrations} overflowLabel="+ and more" />
-      {isInView && (
-        <TimeFramePicker
-          key="TimeFramePicker"
-          layoutId="TimeFramePicker"
-          initial={{ opacity: 1, scale: 1 }}
-          animate={{ opacity: 0, scale: 0 }}
-          transition={{ duration: 0.8 }}
-          width="458"
-          height="244"
-        />
+      {isInView && !disableScrollAnimation && (
+        <TimeFramePicker {...layoutAnimProps} width="458" height="244" />
       )}
     </TestIntegrationsWrapper>
   );

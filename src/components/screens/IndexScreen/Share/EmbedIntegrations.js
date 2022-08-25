@@ -133,7 +133,13 @@ const EmbedIntegrationsWrapper = styled.div`
   }
 `;
 
-export const EmbedIntegrations = React.forwardRef(({ isInView }, ref) => {
+export const EmbedIntegrations = React.forwardRef(({ isInView, disableScrollAnimation }, ref) => {
+  const layoutAnimProps = disableScrollAnimation
+    ? {}
+    : {
+        layoutId: 'TimeFramePicker',
+        transition: { duration: 0.8 },
+      };
   return (
     <EmbedIntegrationsWrapper ref={ref}>
       <EmbedIntegrationsCarousel integrations={embedIntegrations} overflowLabel="+ and more" />
@@ -141,15 +147,8 @@ export const EmbedIntegrations = React.forwardRef(({ isInView }, ref) => {
         animate={isInView ? { opacity: 1 } : { opacity: 0 }}
         transition={{ duration: 0.4, delay: 1 }}
       />
-      {isInView && (
-        <TimeFramePicker
-          key="TimeFramePicker"
-          layoutId="TimeFramePicker"
-          initial={false}
-          transition={{ duration: 0.8 }}
-          width="458"
-          height="244"
-        />
+      {(isInView || disableScrollAnimation) && (
+        <TimeFramePicker {...layoutAnimProps} width="458" height="244" />
       )}
     </EmbedIntegrationsWrapper>
   );
