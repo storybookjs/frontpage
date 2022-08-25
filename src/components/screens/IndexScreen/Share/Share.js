@@ -26,7 +26,11 @@ const Wrapper = styled.section`
 
 const ValueProp = styled(ValuePropCopy)`
   grid-column: 1 / -1;
-  margin-bottom: 3rem;
+  /* TODO! */
+  h3 {
+    font-size: 20px;
+    line-height: 1.2;
+  }
 
   &:first-of-type {
     padding-top: 0;
@@ -34,29 +38,28 @@ const ValueProp = styled(ValuePropCopy)`
 
   @media (max-width: ${breakpoints[1]}px) {
     max-width: 100%;
+    padding-top: 4rem;
   }
 
   @media (min-width: ${breakpoints[2]}px) {
     grid-column: 1 / 2;
-
-    &:first-of-type {
-      margin-bottom: 0;
-    }
   }
 `;
 
 const Content = styled.div`
   ${pageMargins};
-  padding-top: 7rem;
+  padding-top: 3rem;
   padding-bottom: 1rem;
 
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-flow: dense;
   justify-items: center;
+  align-items: center;
   gap: 3rem;
 
   @media (min-width: ${breakpoints[2]}px) {
+    padding-top: 7rem;
     justify-items: flex-start;
     grid-template-columns: minmax(max-content, 320px) 1fr;
     gap: 12rem 6rem;
@@ -70,8 +73,8 @@ const Code = styled.span`
   border-radius: 4px;
   font-family: ${typography.type.code};
   padding: 4px 7px;
-  font-size: 22px;
-  line-height: 22px;
+  font-size: 80%;
+  line-height: 1;
 `;
 
 export function Share({ docs, ...props }) {
@@ -102,10 +105,6 @@ export function Share({ docs, ...props }) {
         copy="Stories show how UIs actually work not just a static design of how they're supposed to work. That keeps everyone aligned on what’s currently in production."
       />
       <Content>
-        <PublishIntegrations
-          ref={publishRef}
-          isInView={step === 0 /* publishInView && !embedInView && !testInView */}
-        />
         <ValueProp
           inverse
           heading="Publish Storybook to get sign off from teammates"
@@ -116,8 +115,8 @@ export function Share({ docs, ...props }) {
             </Link>
           }
         />
+        <PublishIntegrations ref={publishRef} isInView={step === 0} />
 
-        <EmbedIntegrations ref={embedRef} isInView={step === 1 /* embedInView && !testInView */} />
         <ValueProp
           inverse
           heading="Embed stories in wikis, Markdown, and Figma"
@@ -128,8 +127,8 @@ export function Share({ docs, ...props }) {
             </Link>
           }
         />
+        <EmbedIntegrations ref={embedRef} isInView={step === 1} />
 
-        <TestIntegrations ref={testRef} isInView={step === 2 /* testInView */} />
         <ValueProp
           inverse
           heading={
@@ -144,6 +143,7 @@ export function Share({ docs, ...props }) {
             </Link>
           }
         />
+        <TestIntegrations ref={testRef} isInView={step === 2} />
       </Content>
       <Testimonial
         inverse

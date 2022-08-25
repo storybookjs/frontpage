@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@storybook/theming';
 import { Link } from '@storybook/design-system';
@@ -9,6 +9,7 @@ import {
   ValuePropCopy,
   Testimonial,
 } from '@storybook/components-marketing';
+import { motion, useScroll } from 'framer-motion';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import { Stat } from '../../basics/Stat';
 import storybookMockUI from './storybook-mock-ui.svg';
@@ -67,6 +68,7 @@ const Content = styled.div`
   grid-template-columns: 1fr;
   justify-items: center;
   gap: 6rem;
+  grid-auto-flow: dense;
 
   @media (min-width: ${breakpoints[2]}px) {
     justify-items: flex-start;
@@ -101,8 +103,30 @@ const Stats = styled.div`
 `;
 
 export function Develop({ docs, startOpen, ...props }) {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start end', 'center center'],
+  });
+
   return (
     <Wrapper {...props}>
+      <svg
+        style={{ position: 'fixed', top: 20, left: 20 }}
+        width="75"
+        height="75"
+        viewBox="0 0 100 100"
+      >
+        <circle cx="50" cy="50" r="30" pathLength="1" stroke="#fe0222" opacity="0.2" />
+        <motion.circle
+          cx="50"
+          cy="50"
+          r="30"
+          pathLength="1"
+          stroke="#fe0222"
+          style={{ pathLength: scrollYProgress }}
+        />
+      </svg>
       <SectionLede
         inverse
         heading="Develop durable user interfaces"
@@ -131,16 +155,18 @@ export function Develop({ docs, startOpen, ...props }) {
           }
         />
         <StorybookDemo src={storybookMockUI} alt="" />
-        <ValueProp
-          inverse
-          heading="Mock hard-to-reach edge cases as stories"
-          description="Render components in key states that are tricky to reproduce in an app. Then save those states as stories to revisit during development, testing, and QA."
-          links={
-            <Link containsIcon withArrow href="/why-storybook">
-              How to write a story
-            </Link>
-          }
-        />
+        <div ref={ref}>
+          <ValueProp
+            inverse
+            heading="Mock hard-to-reach edge cases as stories"
+            description="Render components in key states that are tricky to reproduce in an app. Then save those states as stories to revisit during development, testing, and QA."
+            links={
+              <Link containsIcon withArrow href="/why-storybook">
+                How to write a story
+              </Link>
+            }
+          />
+        </div>
         <ValueProp
           inverse
           heading="Supercharge your workflow with addons"

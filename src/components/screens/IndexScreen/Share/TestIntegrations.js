@@ -19,7 +19,7 @@ const StyledCodeExample = styled(CodeExample)`
   }
 
   @media (min-width: ${breakpoints[3]}px) {
-    font-size: ${typography.size.s3}px;
+    font-size: ${typography.size.s2}px;
   }
 `;
 
@@ -93,6 +93,7 @@ TimeFramePicker.defaultProps = {
 
 const TestIntegrationsWrapper = styled.div`
   position: relative;
+  width: 100%;
 
   @media (min-width: ${breakpoints[2]}px) {
     grid-column: 2 / 3;
@@ -107,8 +108,8 @@ export const TestIntegrations = React.forwardRef(({ isInView }, ref) => {
         <TimeFramePicker
           key="TimeFramePicker"
           layoutId="TimeFramePicker"
-          initial={{ opacity: 1 }}
-          animate={{ opacity: 0 }}
+          initial={{ opacity: 1, scale: 1 }}
+          animate={{ opacity: 0, scale: 0 }}
           transition={{ duration: 0.8 }}
           width="458"
           height="244"

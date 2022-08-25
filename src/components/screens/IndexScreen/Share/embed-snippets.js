@@ -79,15 +79,8 @@ it('Should empty the search field', () => {
 });
 `;
 
-export const jasmine = `import {
-  render,
-  screen,
-  fireEvent,
-} from 'testing-library/angular';
-import {
-  composeStory,
-  createMountableStoryComponent,
-} from '@storybook/testing-angular';
+export const jasmine = `import { render, screen, fireEvent } from 'testing-library/angular';
+import { composeStory, createMountableStoryComponent } from '@storybook/testing-angular';
 
 import Meta, {
   Default as DefaultStory,

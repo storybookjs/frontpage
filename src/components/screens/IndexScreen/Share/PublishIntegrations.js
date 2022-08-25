@@ -8,12 +8,17 @@ const { breakpoints } = styles;
 
 const TimeFramePicker = styled(motion.img)`
   display: block;
-  width: 56%;
+  width: 46%;
   max-width: 440px;
   height: auto;
   position: absolute;
-  top: 15%;
-  left: 30%;
+  top: 18%;
+  left: 37%;
+
+  @media (min-width: ${breakpoints[2]}px) {
+    top: 15%;
+    left: 25%;
+  }
 `;
 TimeFramePicker.defaultProps = {
   src: 'images/embed/time-frame-picker.svg',
@@ -44,9 +49,13 @@ Storybook.defaultProps = {
 const Arrow = styled(motion.img)`
   position: absolute;
   top: 64%;
-  left: 10%;
+  left: 20%;
   width: auto;
   height: 5%;
+
+  @media (min-width: ${breakpoints[1]}px) {
+    left: 10%;
+  }
 `;
 Arrow.defaultProps = { src: 'images/home/arrow.svg', alt: '' };
 const PointerHand = styled(motion.img)`
@@ -90,12 +99,12 @@ export const PublishIntegrations = React.forwardRef(({ isInView }, ref) => {
         />
       )}
       <PointerHand variants={symbolVariants} transition={{ duration: 0.4, delay: 0.8 }} />
-      <Player type="blue" x="6%" y="-12%" delay={1} />
-      <Arrow variants={symbolVariants} transition={{ duration: 0.4, delay: 2.6 }} />
-      <Player type="red" x="-7%" y="45%" delay={2.8} />
-      <Caret variants={symbolVariants} transition={{ duration: 0.4, delay: 4.8 }} />
-      <Player type="purple" x="65%" y="9%" delay={5} />
-      <Player type="yellow" x="30%" y="56%" delay={7} />
+      <Player type="blue" x="6%" y="-12%" delay={1} count={2} />
+      <Arrow variants={symbolVariants} transition={{ duration: 0.4, delay: 1.6 }} />
+      <Player type="red" x="-7%" y="45%" delay={1.8} count={4} />
+      <Player type="yellow" x="30%" y="56%" delay={3} count={2} />
+      <Caret variants={symbolVariants} transition={{ duration: 0.4, delay: 3.6 }} />
+      <Player type="purple" x="65%" y="9%" delay={3.8} count={1} />
     </PublishIntegrationsWrapper>
   );
 });

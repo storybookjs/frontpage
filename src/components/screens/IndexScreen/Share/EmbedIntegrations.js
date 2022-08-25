@@ -145,6 +145,7 @@ export const EmbedIntegrations = React.forwardRef(({ isInView }, ref) => {
         <TimeFramePicker
           key="TimeFramePicker"
           layoutId="TimeFramePicker"
+          initial={false}
           transition={{ duration: 0.8 }}
           width="458"
           height="244"

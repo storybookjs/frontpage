@@ -37,7 +37,7 @@ const StyledHighlight = styled(Highlight)`
 
     /* Code blocks */
     pre[class*='language-'] {
-      padding: 0.5rem;
+      padding: 8px;
       margin: 0;
       overflow: auto;
       width: 100%;
@@ -50,13 +50,7 @@ const StyledHighlight = styled(Highlight)`
 
     @media (min-width: ${breakpoints[1]}px) {
       pre[class*='language-'] {
-        padding: 1rem;
-      }
-    }
-
-    @media (min-width: ${breakpoints[3]}px) {
-      pre[class*='language-'] {
-        padding: 1.5rem;
+        padding: 15px;
       }
     }
 
@@ -176,11 +170,15 @@ const FileName = styled.div`
   top: 50%;
   transform: translate3d(-50%, -50%, 0);
   font-family: ${typography.type.code};
-  font-size: ${typography.size.s1}px;
+  font-size: 10px;
 
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+
+  @media (min-width: ${breakpoints[1]}px) {
+    font-size: ${typography.size.s1}px;
+  }
 `;
 
 const controlColors = {

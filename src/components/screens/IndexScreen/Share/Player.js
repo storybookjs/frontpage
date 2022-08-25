@@ -1,14 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css, styled } from '@storybook/theming';
-import { AspectRatio } from '@storybook/components-marketing';
+import { AspectRatio, styles } from '@storybook/components-marketing';
 import { motion } from 'framer-motion';
 
+const { breakpoints } = styles;
+
 const AvatarWrapper = styled(motion(AspectRatio))`
-  width: 14%;
+  width: 28%;
   position: absolute;
   left: ${(props) => props.x};
   top: ${(props) => props.y};
+
+  @media (min-width: ${breakpoints[1]}px) {
+    width: 20%;
+  }
+
+  @media (min-width: ${breakpoints[3]}px) {
+    width: 14%;
+  }
 `;
 AvatarWrapper.propTypes = { x: PropTypes.string.isRequired, y: PropTypes.string.isRequired };
 
@@ -91,28 +101,28 @@ const players = {
   purple: 'images/home/avatar-4.png',
 };
 
-const transition = (delay) => ({
+const transition = (delay, count = 4) => ({
   ease: 'linear',
-  repeat: 4,
+  repeat: count,
   repeatType: 'loop',
-  duration: 0.4,
+  duration: 0.3,
   delay: delay + 0.4,
   repeatDelay: 0,
 });
 
-export const Player = ({ x, y, type, delay }) => (
+export const Player = ({ x, y, type, delay, count }) => (
   <AvatarWrapper
     ratio={`${1} / ${1}`}
     x={x}
     y={y}
     variants={{
-      initial: { y: '10%', opacity: 0 },
-      animate: { y: '0%', opacity: 1 },
+      initial: { scale: 0, opacity: 0 },
+      animate: { scale: 1, opacity: 1 },
     }}
     initial="initial"
     whileInView="animate"
     viewport={{ once: true }}
-    transition={{ delay, duration: 0.4 }}
+    transition={{ type: 'pop', delay, duration: 0.4 }}
   >
     <Wave
       color={type}
@@ -122,7 +132,7 @@ export const Player = ({ x, y, type, delay }) => (
         initial: { opacity: 0.1 },
         animate: { opacity: 0 },
       }}
-      transition={transition(delay)}
+      transition={transition(delay, count)}
     />
     <Wave
       color={type}
@@ -132,7 +142,7 @@ export const Player = ({ x, y, type, delay }) => (
         initial: { scale: 1, opacity: 0.3 },
         animate: { scale: 1.66666667, opacity: 0.1 },
       }}
-      transition={transition(delay)}
+      transition={transition(delay, count)}
     />
     <Wave
       color={type}
@@ -142,7 +152,7 @@ export const Player = ({ x, y, type, delay }) => (
         initial: { scale: 1, opacity: 0 },
         animate: { scale: 2.14285714, opacity: 0.3 },
       }}
-      transition={transition(delay)}
+      transition={transition(delay, count)}
     />
     <Avatar src={players[type]} />
   </AvatarWrapper>
