@@ -1,10 +1,10 @@
 import { useMotionValue } from 'framer-motion';
 import React from 'react';
-import { Storybook } from './Storybook';
+import { StorybookDemo } from './StorybookDemo';
 
 export default {
-  title: 'Screens/IndexScreen/Storybook',
-  component: Storybook,
+  title: 'Screens/IndexScreen/StorybookDemo',
+  component: StorybookDemo,
   parameters: {
     layout: 'centered',
   },
@@ -12,7 +12,7 @@ export default {
 
 export const Default = () => (
   <div style={{ maxWidth: 800 }}>
-    <Storybook docs="/" activeStory={useMotionValue(0)} />
+    <StorybookDemo activeStory={useMotionValue(0)} />
   </div>
 );
 Default.parameters = {

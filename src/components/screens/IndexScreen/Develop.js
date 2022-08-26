@@ -12,12 +12,11 @@ import {
 import { motion, useScroll, useTransform } from 'framer-motion';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import { Stat } from '../../basics/Stat';
-import storybookMockUI from './storybook-mock-ui.svg';
 import AtomicDesignLogoSVG from '../../../images/logos/user/logo-atomicdesign.svg';
 import { Integrations } from './Integrations';
-import { Storybook } from './Storybook';
+import { StorybookDemo as Storybook } from './StorybookDemo/StorybookDemo';
 
-const { color, subheading, breakpoints, pageMargins } = styles;
+const { subheading, breakpoints, pageMargins } = styles;
 
 const Wrapper = styled.section`
   padding-top: 3rem;
@@ -89,6 +88,7 @@ const StorybookDemo = styled(Storybook)`
   z-index: 999;
 
   @media (min-width: ${breakpoints[2]}px) {
+    width: 150%;
     grid-column: 2 / 3;
   }
 `;
@@ -111,7 +111,7 @@ export function Develop({ docs, startOpen, ...props }) {
   const ref = useRef(null);
   const { scrollYProgress: storiesScrollProgress } = useScroll({
     target: ref,
-    offset: ['start end', 'start start'],
+    offset: ['start start', 'end start'],
   });
 
   const activeStory = useTransform(storiesScrollProgress, (value) => Math.floor(value * 3));
