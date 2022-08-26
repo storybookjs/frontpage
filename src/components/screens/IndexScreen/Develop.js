@@ -9,12 +9,12 @@ import {
   ValuePropCopy,
   Testimonial,
 } from '@storybook/components-marketing';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import { Stat } from '../../basics/Stat';
 import AtomicDesignLogoSVG from '../../../images/logos/user/logo-atomicdesign.svg';
 import { Integrations } from './Integrations';
-import { StorybookDemo as Storybook } from './StorybookDemo/StorybookDemo';
+import { StorybookDemo } from './StorybookDemo/StorybookDemo';
 
 const { subheading, breakpoints, pageMargins } = styles;
 
@@ -56,8 +56,19 @@ const Spacer = styled.div`
 
 const ValueProp = styled(ValuePropCopy)`
   position: sticky;
-  top: 4rem;
-  z-index: 999;
+  top: 40%;
+
+  @media (min-width: ${breakpoints[0]}px) {
+    top: 50%;
+  }
+
+  @media (min-width: ${breakpoints[1]}px) {
+    top: 60%;
+  }
+
+  @media (min-width: ${breakpoints[2]}px) {
+    top: 4rem;
+  }
 `;
 
 const ValuePropIntegrations = styled(ValuePropCopy)`
@@ -80,15 +91,18 @@ const Content = styled.div`
   }
 `;
 
-const StorybookDemo = styled(Storybook)`
+const StorybookDemoWrapper = styled.figure`
   position: sticky;
   top: 4rem;
   width: 100%;
   order: -1;
   z-index: 999;
+  margin: 0;
+  align-self: flex-start;
 
   @media (min-width: ${breakpoints[2]}px) {
     width: 150%;
+    max-width: 800px;
     grid-column: 2 / 3;
   }
 `;
@@ -107,34 +121,49 @@ const Stats = styled.div`
   gap: 30px;
 `;
 
+const debug = true;
+
 export function Develop({ docs, startOpen, ...props }) {
-  const ref = useRef(null);
-  const { scrollYProgress: storiesScrollProgress } = useScroll({
-    target: ref,
-    offset: ['start start', 'end start'],
+  // Step 1
+  const isolationRef = useRef(null);
+  const { scrollYProgress: isolationScrollProgress } = useScroll({
+    target: isolationRef,
+    offset: ['end end', 'end start'],
+  });
+  const smoothIsolationScrollProgress = useSpring(isolationScrollProgress, {
+    stiffness: 1000,
+    damping: 100,
   });
 
+  // Step 2
+  const storiesRef = useRef(null);
+  const { scrollYProgress: storiesScrollProgress } = useScroll({
+    target: storiesRef,
+    offset: ['start start', 'end start'],
+  });
   const activeStory = useTransform(storiesScrollProgress, (value) => Math.floor(value * 3));
 
   return (
     <Wrapper {...props}>
-      <svg
-        style={{ position: 'fixed', top: 20, left: 20 }}
-        width="75"
-        height="75"
-        viewBox="0 0 100 100"
-        strokeWidth="4"
-      >
-        <circle cx="50" cy="50" r="30" pathLength="1" stroke="#fe0222" opacity="0.2" />
-        <motion.circle
-          cx="50"
-          cy="50"
-          r="30"
-          pathLength="1"
-          stroke="#fe0222"
-          style={{ pathLength: storiesScrollProgress }}
-        />
-      </svg>
+      {debug && (
+        <svg
+          style={{ position: 'fixed', top: 20, left: 20 }}
+          width="75"
+          height="75"
+          viewBox="0 0 100 100"
+          strokeWidth="4"
+        >
+          <circle cx="50" cy="50" r="30" pathLength="1" stroke="#fe0222" opacity="0.2" />
+          <motion.circle
+            cx="50"
+            cy="50"
+            r="30"
+            pathLength="1"
+            stroke="#fe0222"
+            style={{ pathLength: storiesScrollProgress }}
+          />
+        </svg>
+      )}
       <SectionLede
         inverse
         heading="Develop durable user interfaces"
@@ -147,8 +176,13 @@ export function Develop({ docs, startOpen, ...props }) {
         }
       />
       <Content>
-        <StorybookDemo activeStory={activeStory} />
-        <StickText>
+        <StorybookDemoWrapper>
+          <StorybookDemo
+            activeStory={activeStory}
+            isolationScrollProgress={smoothIsolationScrollProgress}
+          />
+        </StorybookDemoWrapper>
+        <StickText ref={isolationRef}>
           <ValueProp
             inverse
             heading="Build UI components and pages in isolation"
@@ -166,7 +200,7 @@ export function Develop({ docs, startOpen, ...props }) {
           />
           <Spacer />
         </StickText>
-        <StickText ref={ref}>
+        <StickText ref={storiesRef}>
           <ValueProp
             inverse
             heading="Mock hard-to-reach edge cases as stories"

@@ -30,7 +30,7 @@ export const AddonsPanel = () => (
                     fill="#7A858E"
                     xmlSpace="preserve"
                     style={{ whiteSpace: 'pre' }}
-                    fontFamily="Nunito Sans"
+                    fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize="14"
                     fontWeight="bold"
                     letterSpacing="0em"
@@ -51,7 +51,7 @@ export const AddonsPanel = () => (
                     fill="#7A858E"
                     xmlSpace="preserve"
                     style={{ whiteSpace: 'pre' }}
-                    fontFamily="Nunito Sans"
+                    fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize="14"
                     fontWeight="bold"
                     letterSpacing="0em"
@@ -72,7 +72,7 @@ export const AddonsPanel = () => (
                     fill="#7A858E"
                     xmlSpace="preserve"
                     style={{ whiteSpace: 'pre' }}
-                    fontFamily="Nunito Sans"
+                    fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize="14"
                     fontWeight="bold"
                     letterSpacing="0em"
@@ -93,7 +93,7 @@ export const AddonsPanel = () => (
                     fill="#1EA7FD"
                     xmlSpace="preserve"
                     style={{ whiteSpace: 'pre' }}
-                    fontFamily="Nunito Sans"
+                    fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize="14"
                     fontWeight="bold"
                     letterSpacing="0em"
@@ -117,7 +117,7 @@ export const AddonsPanel = () => (
                     fill="#7A858E"
                     xmlSpace="preserve"
                     style={{ whiteSpace: 'pre' }}
-                    fontFamily="Nunito Sans"
+                    fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize="14"
                     fontWeight="bold"
                     letterSpacing="0em"
@@ -174,7 +174,7 @@ export const AddonsPanel = () => (
                   fill="#D53900"
                   xmlSpace="preserve"
                   style={{ whiteSpace: 'pre' }}
-                  fontFamily="Nunito Sans"
+                  fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize="13"
                   fontWeight="bold"
                   letterSpacing="0em"
@@ -190,7 +190,7 @@ export const AddonsPanel = () => (
                   fill="#D43900"
                   xmlSpace="preserve"
                   style={{ whiteSpace: 'pre' }}
-                  fontFamily="Nunito Sans"
+                  fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize="12"
                   fontWeight="bold"
                   letterSpacing="0em"
@@ -221,7 +221,7 @@ export const AddonsPanel = () => (
                   fill="#7A858E"
                   xmlSpace="preserve"
                   style={{ whiteSpace: 'pre' }}
-                  fontFamily="Nunito Sans"
+                  fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize="13"
                   fontWeight="bold"
                   letterSpacing="0em"
@@ -237,7 +237,7 @@ export const AddonsPanel = () => (
                   fill="#666"
                   xmlSpace="preserve"
                   style={{ whiteSpace: 'pre' }}
-                  fontFamily="Nunito Sans"
+                  fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize="12"
                   fontWeight="bold"
                   letterSpacing="0em"
@@ -265,7 +265,7 @@ export const AddonsPanel = () => (
                   fill="#7A858E"
                   xmlSpace="preserve"
                   style={{ whiteSpace: 'pre' }}
-                  fontFamily="Nunito Sans"
+                  fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize="13"
                   fontWeight="bold"
                   letterSpacing="0em"
@@ -281,7 +281,7 @@ export const AddonsPanel = () => (
                   fill="#666"
                   xmlSpace="preserve"
                   style={{ whiteSpace: 'pre' }}
-                  fontFamily="Nunito Sans"
+                  fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize="12"
                   fontWeight="bold"
                   letterSpacing="0em"
@@ -308,7 +308,7 @@ export const AddonsPanel = () => (
             fill="#7A858E"
             xmlSpace="preserve"
             style={{ whiteSpace: 'pre' }}
-            fontFamily="Nunito Sans"
+            fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="13"
             letterSpacing="0em"
           >
@@ -336,7 +336,7 @@ export const AddonsPanel = () => (
                 fill="#333"
                 xmlSpace="preserve"
                 style={{ whiteSpace: 'pre' }}
-                fontFamily="Nunito Sans"
+                fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                 fontSize="13"
                 fontWeight="bold"
                 letterSpacing="0em"
@@ -353,7 +353,7 @@ export const AddonsPanel = () => (
                       fill="#D43900"
                       xmlSpace="preserve"
                       style={{ whiteSpace: 'pre' }}
-                      fontFamily="Nunito Sans"
+                      fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                       fontSize="12"
                       fontWeight="bold"
                       letterSpacing="0em"
@@ -387,7 +387,7 @@ export const AddonsPanel = () => (
                 fill="#333"
                 xmlSpace="preserve"
                 style={{ whiteSpace: 'pre' }}
-                fontFamily="Nunito Sans"
+                fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                 fontSize="13"
                 fontWeight="bold"
                 letterSpacing="0em"
@@ -404,7 +404,7 @@ export const AddonsPanel = () => (
                       fill="#D43900"
                       xmlSpace="preserve"
                       style={{ whiteSpace: 'pre' }}
-                      fontFamily="Nunito Sans"
+                      fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                       fontSize="12"
                       fontWeight="bold"
                       letterSpacing="0em"
@@ -442,7 +442,7 @@ export const AddonsPanel = () => (
                   fill="#333"
                   xmlSpace="preserve"
                   style={{ whiteSpace: 'pre' }}
-                  fontFamily="Nunito Sans"
+                  fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize="13"
                   fontWeight="bold"
                   letterSpacing="0em"
@@ -459,7 +459,7 @@ export const AddonsPanel = () => (
                         fill="#D43900"
                         xmlSpace="preserve"
                         style={{ whiteSpace: 'pre' }}
-                        fontFamily="Nunito Sans"
+                        fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                         fontSize="12"
                         fontWeight="bold"
                         letterSpacing="0em"
@@ -489,7 +489,11 @@ export const AddonsPanel = () => (
               </g>
               <g>
                 <g>
-                  <g fontFamily="Nunito Sans" fontSize="13" letterSpacing="0em">
+                  <g
+                    fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
+                    fontSize="13"
+                    letterSpacing="0em"
+                  >
                     <text fill="#666" xmlSpace="preserve" style={{ whiteSpace: 'pre' }}>
                       <tspan x="307" y="650.28">
                         Text color contrast ratio does not meet WCAG 2 AA guidelines.
@@ -506,7 +510,11 @@ export const AddonsPanel = () => (
                       </tspan>
                     </text>
                   </g>
-                  <g fontFamily="Nunito Sans" fontSize="13" letterSpacing="0em">
+                  <g
+                    fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
+                    fontSize="13"
+                    letterSpacing="0em"
+                  >
                     <text fill="#666" xmlSpace="preserve" style={{ whiteSpace: 'pre' }}>
                       <tspan x="307" y="701.28">
                         Improve contrast ratio to 4.5:1
@@ -529,7 +537,7 @@ export const AddonsPanel = () => (
                         fill="#1EA7FD"
                         xmlSpace="preserve"
                         style={{ whiteSpace: 'pre' }}
-                        fontFamily="Nunito Sans"
+                        fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                         fontSize="13"
                         letterSpacing="0em"
                       >
@@ -549,7 +557,7 @@ export const AddonsPanel = () => (
                         fill="#1EA7FD"
                         xmlSpace="preserve"
                         style={{ whiteSpace: 'pre' }}
-                        fontFamily="Nunito Sans"
+                        fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                         fontSize="13"
                         letterSpacing="0em"
                       >
@@ -579,7 +587,7 @@ export const AddonsPanel = () => (
                       fill="#333"
                       xmlSpace="preserve"
                       style={{ whiteSpace: 'pre' }}
-                      fontFamily="Nunito Sans"
+                      fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                       fontSize="13"
                       fontWeight="bold"
                       letterSpacing="0em"
@@ -592,7 +600,7 @@ export const AddonsPanel = () => (
                       fill="#7A858E"
                       xmlSpace="preserve"
                       style={{ whiteSpace: 'pre' }}
-                      fontFamily="Nunito Sans"
+                      fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                       fontSize="13"
                       letterSpacing="0em"
                     >
@@ -606,7 +614,7 @@ export const AddonsPanel = () => (
                       fill="#666"
                       xmlSpace="preserve"
                       style={{ whiteSpace: 'pre' }}
-                      fontFamily="Nunito Sans"
+                      fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                       fontSize="13"
                       fontWeight="bold"
                       letterSpacing="0em"
@@ -655,7 +663,7 @@ export const AddonsPanel = () => (
                       fill="#666"
                       xmlSpace="preserve"
                       style={{ whiteSpace: 'pre' }}
-                      fontFamily="Nunito Sans"
+                      fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                       fontSize="13"
                       fontWeight="bold"
                       letterSpacing="0em"
@@ -704,7 +712,7 @@ export const AddonsPanel = () => (
                       fill="#666"
                       xmlSpace="preserve"
                       style={{ whiteSpace: 'pre' }}
-                      fontFamily="Nunito Sans"
+                      fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                       fontSize="13"
                       fontWeight="bold"
                       letterSpacing="0em"
@@ -753,7 +761,7 @@ export const AddonsPanel = () => (
                       fill="#666"
                       xmlSpace="preserve"
                       style={{ whiteSpace: 'pre' }}
-                      fontFamily="Nunito Sans"
+                      fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                       fontSize="13"
                       fontWeight="bold"
                       letterSpacing="0em"
@@ -807,7 +815,7 @@ export const AddonsPanel = () => (
                 fill="#333"
                 xmlSpace="preserve"
                 style={{ whiteSpace: 'pre' }}
-                fontFamily="Nunito Sans"
+                fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                 fontSize="13"
                 fontWeight="bold"
                 letterSpacing="0em"
@@ -824,7 +832,7 @@ export const AddonsPanel = () => (
                       fill="#D43900"
                       xmlSpace="preserve"
                       style={{ whiteSpace: 'pre' }}
-                      fontFamily="Nunito Sans"
+                      fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                       fontSize="12"
                       fontWeight="bold"
                       letterSpacing="0em"
@@ -886,7 +894,7 @@ export const AddonsPanel = () => (
                     fill="#7A858E"
                     xmlSpace="preserve"
                     style={{ whiteSpace: 'pre' }}
-                    fontFamily="Nunito Sans"
+                    fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize="14"
                     fontWeight="bold"
                     letterSpacing="0em"
@@ -907,7 +915,7 @@ export const AddonsPanel = () => (
                     fill="#7A858E"
                     xmlSpace="preserve"
                     style={{ whiteSpace: 'pre' }}
-                    fontFamily="Nunito Sans"
+                    fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize="14"
                     fontWeight="bold"
                     letterSpacing="0em"
@@ -928,7 +936,7 @@ export const AddonsPanel = () => (
                     fill="#1EA7FD"
                     xmlSpace="preserve"
                     style={{ whiteSpace: 'pre' }}
-                    fontFamily="Nunito Sans"
+                    fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize="14"
                     fontWeight="bold"
                     letterSpacing="0em"
@@ -952,7 +960,7 @@ export const AddonsPanel = () => (
                     fill="#7A858E"
                     xmlSpace="preserve"
                     style={{ whiteSpace: 'pre' }}
-                    fontFamily="Nunito Sans"
+                    fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize="14"
                     fontWeight="bold"
                     letterSpacing="0em"
@@ -973,7 +981,7 @@ export const AddonsPanel = () => (
                     fill="#7A858E"
                     xmlSpace="preserve"
                     style={{ whiteSpace: 'pre' }}
-                    fontFamily="Nunito Sans"
+                    fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize="14"
                     fontWeight="bold"
                     letterSpacing="0em"
@@ -1030,7 +1038,7 @@ export const AddonsPanel = () => (
               fill="#333"
               xmlSpace="preserve"
               style={{ whiteSpace: 'pre' }}
-              fontFamily="Nunito Sans"
+              fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize="7.95"
               fontWeight="bold"
               letterSpacing="0em"
@@ -1043,7 +1051,7 @@ export const AddonsPanel = () => (
               fill="#333"
               xmlSpace="preserve"
               style={{ whiteSpace: 'pre' }}
-              fontFamily="Nunito Sans"
+              fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize="7.95"
               fontWeight="bold"
               letterSpacing="0em"
@@ -1059,7 +1067,7 @@ export const AddonsPanel = () => (
                   fill="#333"
                   xmlSpace="preserve"
                   style={{ whiteSpace: 'pre' }}
-                  fontFamily="Nunito Sans"
+                  fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize="7.95"
                   letterSpacing="0em"
                 >
@@ -1085,7 +1093,7 @@ export const AddonsPanel = () => (
                   fill="#999"
                   xmlSpace="preserve"
                   style={{ whiteSpace: 'pre' }}
-                  fontFamily="Nunito Sans"
+                  fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize="7.95"
                   letterSpacing="0em"
                 >
@@ -1200,7 +1208,12 @@ export const AddonsPanel = () => (
             d="M679.36 682.71h-.61v2.45h.6v-2.45zm137.02 0h-.6v2.45h.6v-2.45zm-69.12 0h.61v2.45h-.61v-2.45zm103.38 0h-.61v2.45h.61v-2.45zm-137.64 0h.62v2.45H713v-2.45zm69.13 0h-.61v2.45h.6v-2.45z"
             clipRule="evenodd"
           />
-          <g fill="#999" fontFamily="Nunito Sans" fontSize="6.12" letterSpacing="0">
+          <g
+            fill="#999"
+            fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
+            fontSize="6.12"
+            letterSpacing="0"
+          >
             <text xmlSpace="preserve" style={{ whiteSpace: 'pre' }}>
               <tspan x="708.66" y="693">
                 20
@@ -1236,7 +1249,7 @@ export const AddonsPanel = () => (
             fill="#333"
             xmlSpace="preserve"
             style={{ whiteSpace: 'pre' }}
-            fontFamily="Nunito Sans"
+            fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="7.95"
             fontWeight="bold"
             letterSpacing="0em"
@@ -1361,7 +1374,7 @@ export const AddonsPanel = () => (
                     fill="#7A858E"
                     xmlSpace="preserve"
                     style={{ whiteSpace: 'pre' }}
-                    fontFamily="Nunito Sans"
+                    fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize="14"
                     fontWeight="bold"
                     letterSpacing="0em"
@@ -1382,7 +1395,7 @@ export const AddonsPanel = () => (
                     fill="#1EA7FD"
                     xmlSpace="preserve"
                     style={{ whiteSpace: 'pre' }}
-                    fontFamily="Nunito Sans"
+                    fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize="14"
                     fontWeight="bold"
                     letterSpacing="0em"
@@ -1406,7 +1419,7 @@ export const AddonsPanel = () => (
                     fill="#7A858E"
                     xmlSpace="preserve"
                     style={{ whiteSpace: 'pre' }}
-                    fontFamily="Nunito Sans"
+                    fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize="14"
                     fontWeight="bold"
                     letterSpacing="0em"
@@ -1427,7 +1440,7 @@ export const AddonsPanel = () => (
                     fill="#7A858E"
                     xmlSpace="preserve"
                     style={{ whiteSpace: 'pre' }}
-                    fontFamily="Nunito Sans"
+                    fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize="14"
                     fontWeight="bold"
                     letterSpacing="0em"
@@ -1448,7 +1461,7 @@ export const AddonsPanel = () => (
                     fill="#7A858E"
                     xmlSpace="preserve"
                     style={{ whiteSpace: 'pre' }}
-                    fontFamily="Nunito Sans"
+                    fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize="14"
                     fontWeight="bold"
                     letterSpacing="0em"
@@ -1504,7 +1517,7 @@ export const AddonsPanel = () => (
               fill="#fff"
               xmlSpace="preserve"
               style={{ whiteSpace: 'pre' }}
-              fontFamily="Nunito Sans"
+              fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize="11"
               fontWeight="800"
               letterSpacing=".4em"
@@ -1519,7 +1532,7 @@ export const AddonsPanel = () => (
               fill="#666"
               xmlSpace="preserve"
               style={{ whiteSpace: 'pre' }}
-              fontFamily="Nunito Sans"
+              fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize="13"
               fontWeight="bold"
               letterSpacing="0em"
@@ -1610,7 +1623,7 @@ export const AddonsPanel = () => (
             fill="#666"
             xmlSpace="preserve"
             style={{ whiteSpace: 'pre' }}
-            fontFamily="Nunito Sans"
+            fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="13"
             letterSpacing="0em"
           >
@@ -1635,7 +1648,7 @@ export const AddonsPanel = () => (
                     fill="#999"
                     xmlSpace="preserve"
                     style={{ whiteSpace: 'pre' }}
-                    fontFamily="Nunito Sans"
+                    fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize="13"
                     letterSpacing="0em"
                   >
@@ -1665,7 +1678,7 @@ export const AddonsPanel = () => (
                     fill="#333"
                     xmlSpace="preserve"
                     style={{ whiteSpace: 'pre' }}
-                    fontFamily="Nunito Sans"
+                    fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize="13"
                     letterSpacing="0em"
                   >
@@ -1693,7 +1706,7 @@ export const AddonsPanel = () => (
                     fill="#999"
                     xmlSpace="preserve"
                     style={{ whiteSpace: 'pre' }}
-                    fontFamily="Nunito Sans"
+                    fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize="13"
                     letterSpacing="0em"
                   >
@@ -1723,7 +1736,7 @@ export const AddonsPanel = () => (
                     fill="#333"
                     xmlSpace="preserve"
                     style={{ whiteSpace: 'pre' }}
-                    fontFamily="Nunito Sans"
+                    fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize="13"
                     letterSpacing="0em"
                   >
@@ -1751,7 +1764,7 @@ export const AddonsPanel = () => (
                     fill="#999"
                     xmlSpace="preserve"
                     style={{ whiteSpace: 'pre' }}
-                    fontFamily="Nunito Sans"
+                    fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize="13"
                     letterSpacing="0em"
                   >
@@ -1781,7 +1794,7 @@ export const AddonsPanel = () => (
                     fill="#333"
                     xmlSpace="preserve"
                     style={{ whiteSpace: 'pre' }}
-                    fontFamily="Nunito Sans"
+                    fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize="13"
                     letterSpacing="0em"
                   >
@@ -1838,7 +1851,7 @@ export const AddonsPanel = () => (
                     fill="#1EA7FD"
                     xmlSpace="preserve"
                     style={{ whiteSpace: 'pre' }}
-                    fontFamily="Nunito Sans"
+                    fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize="14"
                     fontWeight="bold"
                     letterSpacing="0em"
@@ -1862,7 +1875,7 @@ export const AddonsPanel = () => (
                     fill="#7A858E"
                     xmlSpace="preserve"
                     style={{ whiteSpace: 'pre' }}
-                    fontFamily="Nunito Sans"
+                    fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize="14"
                     fontWeight="bold"
                     letterSpacing="0em"
@@ -1883,7 +1896,7 @@ export const AddonsPanel = () => (
                     fill="#7A858E"
                     xmlSpace="preserve"
                     style={{ whiteSpace: 'pre' }}
-                    fontFamily="Nunito Sans"
+                    fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize="14"
                     fontWeight="bold"
                     letterSpacing="0em"
@@ -1904,7 +1917,7 @@ export const AddonsPanel = () => (
                     fill="#7A858E"
                     xmlSpace="preserve"
                     style={{ whiteSpace: 'pre' }}
-                    fontFamily="Nunito Sans"
+                    fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize="14"
                     fontWeight="bold"
                     letterSpacing="0em"
@@ -1925,7 +1938,7 @@ export const AddonsPanel = () => (
                     fill="#7A858E"
                     xmlSpace="preserve"
                     style={{ whiteSpace: 'pre' }}
-                    fontFamily="Nunito Sans"
+                    fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize="14"
                     fontWeight="bold"
                     letterSpacing="0em"
@@ -1978,7 +1991,7 @@ export const AddonsPanel = () => (
           fill="#666"
           xmlSpace="preserve"
           style={{ whiteSpace: 'pre' }}
-          fontFamily="Nunito Sans"
+          fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
           fontSize="13"
           fontWeight="bold"
           letterSpacing="0em"
@@ -1991,7 +2004,7 @@ export const AddonsPanel = () => (
           fill="#666"
           xmlSpace="preserve"
           style={{ whiteSpace: 'pre' }}
-          fontFamily="Nunito Sans"
+          fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
           fontSize="13"
           fontWeight="bold"
           letterSpacing="0em"
@@ -2004,7 +2017,7 @@ export const AddonsPanel = () => (
           fill="#666"
           xmlSpace="preserve"
           style={{ whiteSpace: 'pre' }}
-          fontFamily="Nunito Sans"
+          fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
           fontSize="13"
           fontWeight="bold"
           letterSpacing="0em"
@@ -2017,7 +2030,7 @@ export const AddonsPanel = () => (
           fill="#666"
           xmlSpace="preserve"
           style={{ whiteSpace: 'pre' }}
-          fontFamily="Nunito Sans"
+          fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
           fontSize="13"
           fontWeight="bold"
           letterSpacing="0em"
@@ -2046,7 +2059,7 @@ export const AddonsPanel = () => (
               fill="#666"
               xmlSpace="preserve"
               style={{ whiteSpace: 'pre' }}
-              fontFamily="Nunito Sans"
+              fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize="11"
               fontWeight="800"
               letterSpacing=".38em"
@@ -2068,7 +2081,7 @@ export const AddonsPanel = () => (
             fill="#666"
             xmlSpace="preserve"
             style={{ whiteSpace: 'pre' }}
-            fontFamily="Nunito Sans"
+            fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="13"
             fontWeight="bold"
             letterSpacing="0em"
@@ -2109,7 +2122,7 @@ export const AddonsPanel = () => (
             fill="#666"
             xmlSpace="preserve"
             style={{ whiteSpace: 'pre' }}
-            fontFamily="Nunito Sans"
+            fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="13"
             letterSpacing="0em"
           >
@@ -2124,7 +2137,7 @@ export const AddonsPanel = () => (
             fill="#333"
             xmlSpace="preserve"
             style={{ whiteSpace: 'pre' }}
-            fontFamily="Nunito Sans"
+            fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="12"
             letterSpacing="0em"
           >
@@ -2150,7 +2163,7 @@ export const AddonsPanel = () => (
             fill="#666"
             xmlSpace="preserve"
             style={{ whiteSpace: 'pre' }}
-            fontFamily="Nunito Sans"
+            fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="13"
             fontWeight="bold"
             letterSpacing="0em"
@@ -2165,7 +2178,7 @@ export const AddonsPanel = () => (
             fill="#666"
             xmlSpace="preserve"
             style={{ whiteSpace: 'pre' }}
-            fontFamily="Nunito Sans"
+            fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="13"
             letterSpacing="0em"
           >
@@ -2230,7 +2243,7 @@ export const AddonsPanel = () => (
             fill="#7A858E"
             xmlSpace="preserve"
             style={{ whiteSpace: 'pre' }}
-            fontFamily="Nunito Sans"
+            fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="12"
             letterSpacing="0em"
           >
@@ -2256,7 +2269,7 @@ export const AddonsPanel = () => (
             fill="#666"
             xmlSpace="preserve"
             style={{ whiteSpace: 'pre' }}
-            fontFamily="Nunito Sans"
+            fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="13"
             fontWeight="bold"
             letterSpacing="0em"
@@ -2271,7 +2284,7 @@ export const AddonsPanel = () => (
             fill="#666"
             xmlSpace="preserve"
             style={{ whiteSpace: 'pre' }}
-            fontFamily="Nunito Sans"
+            fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="13"
             letterSpacing="0em"
           >
@@ -2336,7 +2349,7 @@ export const AddonsPanel = () => (
             fill="#333"
             xmlSpace="preserve"
             style={{ whiteSpace: 'pre' }}
-            fontFamily="Nunito Sans"
+            fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="12"
             letterSpacing="0em"
           >
@@ -2359,7 +2372,7 @@ export const AddonsPanel = () => (
             fill="#666"
             xmlSpace="preserve"
             style={{ whiteSpace: 'pre' }}
-            fontFamily="Nunito Sans"
+            fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="13"
             fontWeight="bold"
             letterSpacing="0em"
@@ -2374,7 +2387,7 @@ export const AddonsPanel = () => (
             fill="#666"
             xmlSpace="preserve"
             style={{ whiteSpace: 'pre' }}
-            fontFamily="Nunito Sans"
+            fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="13"
             letterSpacing="0em"
           >
@@ -2432,7 +2445,7 @@ export const AddonsPanel = () => (
             fill="#666"
             xmlSpace="preserve"
             style={{ whiteSpace: 'pre' }}
-            fontFamily="Nunito Sans"
+            fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="13"
             letterSpacing="0em"
           >
@@ -2448,7 +2461,7 @@ export const AddonsPanel = () => (
               fill="#304756"
               xmlSpace="preserve"
               style={{ whiteSpace: 'pre' }}
-              fontFamily="Nunito Sans"
+              fontFamily="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize="12"
               fontWeight="bold"
               letterSpacing="0em"
