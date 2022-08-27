@@ -21,65 +21,62 @@ const opacity = {
   inputRangeStory: [0, 0, 1, 0],
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled(motion.div)`
   position: relative;
   width: 100%;
   height: 0;
   padding-bottom: 71.81889149%;
+  overflow: hidden;
 `;
 
 interface StorybookDemoProps {
   type: 'rangeSlider' | 'timeFrame';
-  isolationScrollProgress: MotionValue;
+  isolationProgress: MotionValue;
+  addonsProgress: MotionValue;
   storyIndex: MotionValue;
+  panelIndex: MotionValue;
 }
 
 export const StorybookDemo = ({
   type = 'rangeSlider',
-  isolationScrollProgress,
+  isolationProgress,
+  addonsProgress,
   storyIndex,
+  panelIndex,
   ...props
 }: StorybookDemoProps) => {
   const [activeStory, setActiveStory] = useState('default');
+  const [activePanel, setActivePanel] = useState('controls');
 
   useEffect(() => {
     function updateId() {
       setActiveStory(['default', 'no-selection', 'input-range', 'default'][storyIndex.get()]);
     }
+    const unsubscribeStoryIndex = storyIndex.onChange(updateId);
 
-    const unsubscribe = storyIndex.onChange(updateId);
+    function updatePanel() {
+      setActivePanel(['controls', 'interactions', 'design', 'a11y', 'controls'][panelIndex.get()]);
+    }
+    const unsubscribePanel = panelIndex.onChange(updatePanel);
 
     return () => {
-      unsubscribe();
+      unsubscribeStoryIndex();
+      unsubscribePanel();
     };
   }, []);
 
-  const width = useTransform(isolationScrollProgress, [0, 1], ['100%', '157%']);
-  const scale = useTransform(isolationScrollProgress, [0, 1], [1, 1.5]);
-  // const x = useTransform(isolationScrollProgress, [0, 1], ['0%', '-3.2%']);
-  // const y = useTransform(isolationScrollProgress, [0, 1], ['0%', '-6.15%']);
-  const x = useTransform(isolationScrollProgress, [0, 1], ['0%', '35.3%']);
-  const y = useTransform(isolationScrollProgress, [0, 1], ['0%', '41%']);
+  const scale = useTransform(isolationProgress, [0, 1], [1, 1.5], { clamp: true });
+  const x = useTransform(isolationProgress, [0, 1], ['0%', '25%'], { clamp: true });
+  const y = useTransform(isolationProgress, [0, 1], ['0%', '25%'], { clamp: true });
 
   return (
-    <Wrapper {...props}>
-      <Frame
-        src="images/develop/storybook-frame.svg"
-        layout
-        style={{ scale, x, y }}
-        transition={{ delay: 0.4 }}
-      />
-      <Sidebar
-        type={type}
-        activeStory={activeStory}
-        layout
-        style={{ scale, x, y }}
-        transition={{ delay: 0.4 }}
-      />
-      {/* <AddonsPanel /> */}
+    <Wrapper style={{ scale, x, y, z: isolationProgress }} transition={{ delay: 0.4 }} {...props}>
+      <Frame src="images/develop/storybook-frame.svg" />
+      <Sidebar type={type} activeStory={activeStory} />
+      <AddonsPanel scrollProgress={addonsProgress} activePanel={activePanel} />
       <MotionConfig transition={{ duration: 1 }}>
         <RangeSlider activeStory={activeStory} />
-        <VSCode scrollProgress={isolationScrollProgress} />
+        <VSCode scrollProgress={isolationProgress} />
       </MotionConfig>
     </Wrapper>
   );

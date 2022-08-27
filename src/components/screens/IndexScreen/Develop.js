@@ -126,22 +126,38 @@ const debug = true;
 export function Develop({ docs, startOpen, ...props }) {
   // Step 1
   const isolationRef = useRef(null);
-  const { scrollYProgress: isolationScrollProgress } = useScroll({
+  const { scrollYProgress: isolationProgress } = useScroll({
     target: isolationRef,
     offset: ['end end', 'end start'],
   });
-  const smoothIsolationScrollProgress = useSpring(isolationScrollProgress, {
+  const smoothIsolationProgress = useSpring(isolationProgress, {
     stiffness: 1000,
     damping: 100,
   });
 
   // Step 2
   const storiesRef = useRef(null);
-  const { scrollYProgress: storiesScrollProgress } = useScroll({
+  const { scrollYProgress: storiesProgress } = useScroll({
     target: storiesRef,
     offset: ['start start', 'end start'],
   });
-  const activeStory = useTransform(storiesScrollProgress, (value) => Math.floor(value * 3));
+  const activeStory = useTransform(storiesProgress, (value) => Math.floor(value * 3));
+  const smoothStoriesProgress = useSpring(storiesProgress, {
+    stiffness: 1000,
+    damping: 100,
+  });
+
+  // Step 3
+  const addonsRef = useRef(null);
+  const { scrollYProgress: addonsProgress } = useScroll({
+    target: addonsRef,
+    offset: ['start start', 'end start'],
+  });
+  const activePanel = useTransform(addonsProgress, (value) => Math.floor(value * 4));
+  // const smoothAddonsProgress = useSpring(addonsProgress, {
+  //   stiffness: 1000,
+  //   damping: 100,
+  // });
 
   return (
     <Wrapper {...props}>
@@ -160,7 +176,7 @@ export function Develop({ docs, startOpen, ...props }) {
             r="30"
             pathLength="1"
             stroke="#fe0222"
-            style={{ pathLength: storiesScrollProgress }}
+            style={{ pathLength: storiesProgress }}
           />
         </svg>
       )}
@@ -179,7 +195,9 @@ export function Develop({ docs, startOpen, ...props }) {
         <StorybookDemoWrapper>
           <StorybookDemo
             storyIndex={activeStory}
-            isolationScrollProgress={smoothIsolationScrollProgress}
+            panelIndex={activePanel}
+            isolationProgress={smoothIsolationProgress}
+            addonsProgress={smoothStoriesProgress}
           />
         </StorybookDemoWrapper>
         <StickText ref={isolationRef}>
@@ -213,7 +231,7 @@ export function Develop({ docs, startOpen, ...props }) {
           />
           <Spacer />
         </StickText>
-        <StickText>
+        <StickText ref={addonsRef}>
           <ValueProp
             inverse
             heading="Supercharge your workflow with addons"

@@ -1,109 +1,115 @@
-<svg width="948" height="360" viewBox="0 0 948 360" fill="none" xmlns="http://www.w3.org/2000/svg">
-<mask id="path-2-outside-1_5691_94895" maskUnits="userSpaceOnUse" x="0" y="0" width="948" height="360" fill="black">
-<rect fill="white" width="948" height="360"/>
-<path d="M0 1H948V355C948 357.761 945.761 360 943 360H4.99998C2.23855 360 0 357.761 0 355V1Z"/>
+<svg width="1281" height="920" viewBox="0 0 1281 920" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_5704_90610)">
+<mask id="path-3-outside-2_5704_90610" maskUnits="userSpaceOnUse" x="292" y="489" width="948" height="360" fill="black">
+<rect fill="white" x="292" y="489" width="948" height="360"/>
+<path d="M292 490H1240V841C1240 845.418 1236.42 849 1232 849H300C295.582 849 292 845.418 292 841V490Z"/>
 </mask>
-<path d="M0 1H948V355C948 357.761 945.761 360 943 360H4.99998C2.23855 360 0 357.761 0 355V1Z" fill="white"/>
-<mask id="path-4-inside-2_5691_94895" fill="white">
-<path d="M0 1H948V42H0V1Z"/>
+<path d="M292 490H1240V841C1240 845.418 1236.42 849 1232 849H300C295.582 849 292 845.418 292 841V490Z" fill="white"/>
+<mask id="path-5-inside-3_5704_90610" fill="white">
+<path d="M292 490H1240V531H292V490Z"/>
 </mask>
-<path d="M0 1H948V42H0V1Z" fill="white"/>
-<text fill="#1EA7FD" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="15" y="25.606">Controls</tspan></text>
-<rect y="38" width="85" height="3" fill="#1EA7FD"/>
-<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="100" y="25.606">Interactions</tspan></text>
-<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="207" y="25.606">Design</tspan></text>
-<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="283" y="25.606">Accessibility</tspan></text>
-<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="394" y="25.606">Actions</tspan></text>
-<path d="M894.5 18.5039C894.5 18.2278 894.724 18.0039 895 18.0039H896C896.276 18.0039 896.5 18.2278 896.5 18.5039C896.5 18.78 896.276 19.0039 896 19.0039H895C894.724 19.0039 894.5 18.78 894.5 18.5039Z" fill="#7A858E"/>
-<path d="M895 20.0039C894.724 20.0039 894.5 20.2278 894.5 20.5039C894.5 20.78 894.724 21.0039 895 21.0039H896C896.276 21.0039 896.5 20.78 896.5 20.5039C896.5 20.2278 896.276 20.0039 896 20.0039H895Z" fill="#7A858E"/>
-<path d="M894.5 22.5039C894.5 22.2278 894.724 22.0039 895 22.0039H896C896.276 22.0039 896.5 22.2278 896.5 22.5039C896.5 22.78 896.276 23.0039 896 23.0039H895C894.724 23.0039 894.5 22.78 894.5 22.5039Z" fill="#7A858E"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M886.5 27.0039C886.224 27.0039 886 26.78 886 26.5039V15.5039C886 15.2278 886.224 15.0039 886.5 15.0039H897.5C897.776 15.0039 898 15.2278 898 15.5039V26.5039C898 26.78 897.776 27.0039 897.5 27.0039H886.5ZM887 26.0039V16.0039H893V26.0039H887ZM894 16.0039H897V26.0039H894V16.0039Z" fill="#7A858E"/>
-<g clip-path="url(#clip0_5691_94895)">
-<path d="M926.854 18.1464C927.049 18.3417 927.049 18.6583 926.854 18.8536L924.707 21L926.854 23.1464C927.049 23.3417 927.049 23.6583 926.854 23.8536C926.658 24.0488 926.342 24.0488 926.146 23.8536L924 21.7071L921.854 23.8536C921.658 24.0488 921.342 24.0488 921.146 23.8536C920.951 23.6583 920.951 23.3417 921.146 23.1464L923.293 21L921.146 18.8536C920.951 18.6583 920.951 18.3417 921.146 18.1464C921.342 17.9512 921.658 17.9512 921.854 18.1464L924 20.2929L926.146 18.1464C926.342 17.9512 926.658 17.9512 926.854 18.1464Z" fill="#7A858E"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M924 28C927.866 28 931 24.866 931 21C931 17.134 927.866 14 924 14C920.134 14 917 17.134 917 21C917 24.866 920.134 28 924 28ZM924 27C927.314 27 930 24.3137 930 21C930 17.6863 927.314 15 924 15C920.686 15 918 17.6863 918 21C918 24.3137 920.686 27 924 27Z" fill="#7A858E"/>
+<path d="M292 490H1240V531H292V490Z" fill="white"/>
+<text fill="#1EA7FD" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="307" y="514.606">Controls</tspan></text>
+<rect x="292" y="527" width="85" height="3" fill="#1EA7FD"/>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="392" y="514.606">Interactions</tspan></text>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="499" y="514.606">Design</tspan></text>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="575" y="514.606">Accessibility</tspan></text>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="686" y="514.606">Actions</tspan></text>
+<path d="M1186.5 507.504C1186.5 507.228 1186.72 507.004 1187 507.004H1188C1188.28 507.004 1188.5 507.228 1188.5 507.504C1188.5 507.78 1188.28 508.004 1188 508.004H1187C1186.72 508.004 1186.5 507.78 1186.5 507.504Z" fill="#7A858E"/>
+<path d="M1187 509.004C1186.72 509.004 1186.5 509.228 1186.5 509.504C1186.5 509.78 1186.72 510.004 1187 510.004H1188C1188.28 510.004 1188.5 509.78 1188.5 509.504C1188.5 509.228 1188.28 509.004 1188 509.004H1187Z" fill="#7A858E"/>
+<path d="M1186.5 511.504C1186.5 511.228 1186.72 511.004 1187 511.004H1188C1188.28 511.004 1188.5 511.228 1188.5 511.504C1188.5 511.78 1188.28 512.004 1188 512.004H1187C1186.72 512.004 1186.5 511.78 1186.5 511.504Z" fill="#7A858E"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M1178.5 516.004C1178.22 516.004 1178 515.78 1178 515.504V504.504C1178 504.228 1178.22 504.004 1178.5 504.004H1189.5C1189.78 504.004 1190 504.228 1190 504.504V515.504C1190 515.78 1189.78 516.004 1189.5 516.004H1178.5ZM1179 515.004V505.004H1185V515.004H1179ZM1186 505.004H1189V515.004H1186V505.004Z" fill="#7A858E"/>
+<g clip-path="url(#clip1_5704_90610)">
+<path d="M1218.85 507.146C1219.05 507.342 1219.05 507.658 1218.85 507.854L1216.71 510L1218.85 512.146C1219.05 512.342 1219.05 512.658 1218.85 512.854C1218.66 513.049 1218.34 513.049 1218.15 512.854L1216 510.707L1213.85 512.854C1213.66 513.049 1213.34 513.049 1213.15 512.854C1212.95 512.658 1212.95 512.342 1213.15 512.146L1215.29 510L1213.15 507.854C1212.95 507.658 1212.95 507.342 1213.15 507.146C1213.34 506.951 1213.66 506.951 1213.85 507.146L1216 509.293L1218.15 507.146C1218.34 506.951 1218.66 506.951 1218.85 507.146Z" fill="#7A858E"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M1216 517C1219.87 517 1223 513.866 1223 510C1223 506.134 1219.87 503 1216 503C1212.13 503 1209 506.134 1209 510C1209 513.866 1212.13 517 1216 517ZM1216 516C1219.31 516 1222 513.314 1222 510C1222 506.686 1219.31 504 1216 504C1212.69 504 1210 506.686 1210 510C1210 513.314 1212.69 516 1216 516Z" fill="#7A858E"/>
 </g>
-<path d="M948 41H0V43H948V41Z" fill="#E1E5E8" mask="url(#path-4-inside-2_5691_94895)"/>
-<rect width="948" height="40" transform="translate(0 42)" fill="white"/>
-<rect y="81" width="948" height="1" fill="#DDDDDD"/>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="20" y="66.277">Name</tspan></text>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="242" y="66.277">Description</tspan></text>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="484" y="66.277">Default</tspan></text>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="726" y="66.277">Controls</tspan></text>
-<g clip-path="url(#clip1_5691_94895)">
-<path d="M922.5 56C922.5 55.7239 922.276 55.5 922 55.5H919C918.724 55.5 918.5 55.7239 918.5 56C918.5 56.2761 918.724 56.5 919 56.5H920.535C918.712 57.651 917.5 59.6836 917.5 62C917.5 65.2213 919.843 67.8944 922.917 68.4102C923.19 68.4559 923.447 68.2722 923.493 67.9998C923.539 67.7275 923.355 67.4697 923.083 67.424C920.482 66.9876 918.5 64.7248 918.5 62C918.5 59.8633 919.719 58.0102 921.5 57.0996V59C921.5 59.2761 921.724 59.5 922 59.5C922.276 59.5 922.5 59.2761 922.5 59V56.3531C922.5 56.3454 922.5 56.3376 922.5 56.3298V56Z" fill="#7A858E"/>
-<path d="M924.507 56.0003C924.553 55.7279 924.81 55.5442 925.083 55.5899C928.157 56.1057 930.5 58.7788 930.5 62C930.5 64.3165 929.288 66.349 927.466 67.5H929C929.276 67.5 929.5 67.7239 929.5 68C929.5 68.2761 929.276 68.5 929 68.5H926C925.724 68.5 925.5 68.2761 925.5 68V65C925.5 64.7239 925.724 64.5 926 64.5C926.276 64.5 926.5 64.7239 926.5 65V66.9005C928.281 65.9898 929.5 64.1367 929.5 62C929.5 59.2753 927.518 57.0125 924.917 56.5761C924.645 56.5304 924.461 56.2726 924.507 56.0003Z" fill="#7A858E"/>
+<path d="M1240 530H292V532H1240V530Z" fill="#E1E5E8" mask="url(#path-5-inside-3_5704_90610)"/>
+<rect width="948" height="40" transform="translate(292 531)" fill="white"/>
+<rect x="292" y="570" width="948" height="1" fill="#DDDDDD"/>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="312" y="555.277">Name</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="534" y="555.277">Description</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="776" y="555.277">Default</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="1018" y="555.277">Controls</tspan></text>
+<g clip-path="url(#clip2_5704_90610)">
+<path d="M1214.5 545C1214.5 544.724 1214.28 544.5 1214 544.5H1211C1210.72 544.5 1210.5 544.724 1210.5 545C1210.5 545.276 1210.72 545.5 1211 545.5H1212.53C1210.71 546.651 1209.5 548.684 1209.5 551C1209.5 554.221 1211.84 556.894 1214.92 557.41C1215.19 557.456 1215.45 557.272 1215.49 557C1215.54 556.727 1215.36 556.47 1215.08 556.424C1212.48 555.988 1210.5 553.725 1210.5 551C1210.5 548.863 1211.72 547.01 1213.5 546.1V548C1213.5 548.276 1213.72 548.5 1214 548.5C1214.28 548.5 1214.5 548.276 1214.5 548V545.353C1214.5 545.345 1214.5 545.338 1214.5 545.33V545Z" fill="#7A858E"/>
+<path d="M1216.51 545C1216.55 544.728 1216.81 544.544 1217.08 544.59C1220.16 545.106 1222.5 547.779 1222.5 551C1222.5 553.316 1221.29 555.349 1219.47 556.5H1221C1221.28 556.5 1221.5 556.724 1221.5 557C1221.5 557.276 1221.28 557.5 1221 557.5H1218C1217.72 557.5 1217.5 557.276 1217.5 557V554C1217.5 553.724 1217.72 553.5 1218 553.5C1218.28 553.5 1218.5 553.724 1218.5 554V555.9C1220.28 554.99 1221.5 553.137 1221.5 551C1221.5 548.275 1219.52 546.012 1216.92 545.576C1216.64 545.53 1216.46 545.273 1216.51 545Z" fill="#7A858E"/>
 </g>
-<rect width="948" height="40" transform="translate(0 82)" fill="#F6F9FC"/>
-<rect y="121" width="948" height="1" fill="#DDDDDD"/>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="800" letter-spacing="0.38em"><tspan x="11" y="105.119">PROPS</tspan></text>
-<mask id="path-25-inside-3_5691_94895" fill="white">
-<path d="M0 122H948V180H0V122Z"/>
+<rect width="948" height="40" transform="translate(292 571)" fill="#F6F9FC"/>
+<rect x="292" y="610" width="948" height="1" fill="#DDDDDD"/>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="11" font-weight="800" letter-spacing="0.38em"><tspan x="303" y="594.119">PROPS</tspan></text>
+<mask id="path-26-inside-4_5704_90610" fill="white">
+<path d="M292 611H1240V669H292V611Z"/>
 </mask>
-<path d="M0 122H948V180H0V122Z" fill="white"/>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="20" y="145.277">label</tspan></text>
-<rect x="242" y="132" width="56" height="16" rx="2" fill="#F3F3F3"/>
-<text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="Menlo" font-size="12" letter-spacing="0em"><tspan x="248" y="144.154">String</tspan></text>
-<rect x="242.5" y="132.5" width="55" height="15" rx="1.5" stroke="black" stroke-opacity="0.1"/>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="484" y="145.277">-</tspan></text>
-<rect x="726.5" y="132.5" width="201" height="31" rx="3.5" fill="white"/>
-<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" letter-spacing="0em"><tspan x="738" y="152.948">Average nightly price:</tspan></text>
-<rect x="726.5" y="132.5" width="201" height="31" rx="3.5" stroke="#E1E5E8"/>
-<path d="M948 179H0V181H948V179Z" fill="#E1E5E8" mask="url(#path-25-inside-3_5691_94895)"/>
-<mask id="path-34-inside-4_5691_94895" fill="white">
-<path d="M0 180H948V238H0V180Z"/>
+<path d="M292 611H1240V669H292V611Z" fill="white"/>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="312" y="634.277">label</tspan></text>
+<rect x="534" y="621" width="56" height="16" rx="2" fill="#F3F3F3"/>
+<text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="Menlo" font-size="12" letter-spacing="0em"><tspan x="540" y="633.154">String</tspan></text>
+<rect x="534.5" y="621.5" width="55" height="15" rx="1.5" stroke="black" stroke-opacity="0.1"/>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" letter-spacing="0em"><tspan x="776" y="634.277">-</tspan></text>
+<rect x="1018.5" y="621.5" width="201" height="31" rx="3.5" fill="white"/>
+<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="12" letter-spacing="0em"><tspan x="1030" y="641.948">Average nightly price:</tspan></text>
+<rect x="1018.5" y="621.5" width="201" height="31" rx="3.5" stroke="#E1E5E8"/>
+<path d="M1240 668H292V670H1240V668Z" fill="#E1E5E8" mask="url(#path-26-inside-4_5704_90610)"/>
+<mask id="path-35-inside-5_5704_90610" fill="white">
+<path d="M292 669H1240V727H292V669Z"/>
 </mask>
-<path d="M0 180H948V238H0V180Z" fill="white"/>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="20" y="203.277">mininumPrice</tspan></text>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="242" y="203.277">Minimum price</tspan></text>
-<rect x="242" y="210" width="56" height="16" rx="2" fill="#F3F3F3"/>
-<text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="Menlo" font-size="12" letter-spacing="0em"><tspan x="248" y="222.154">Number</tspan></text>
-<rect x="242.5" y="210.5" width="55" height="15" rx="1.5" stroke="black" stroke-opacity="0.1"/>
-<rect x="484" y="190" width="20" height="16" rx="2" fill="#F3F3F3"/>
-<text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="Menlo" font-size="12" letter-spacing="0em"><tspan x="490" y="202.154">0</tspan></text>
-<rect x="484.5" y="190.5" width="19" height="15" rx="1.5" stroke="black" stroke-opacity="0.1"/>
-<rect x="726.5" y="190.5" width="201" height="31" rx="3.5" fill="white"/>
-<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" letter-spacing="0em"><tspan x="738" y="210.948">Edit number...</tspan></text>
-<rect x="726.5" y="190.5" width="201" height="31" rx="3.5" stroke="#E1E5E8"/>
-<path d="M948 237H0V239H948V237Z" fill="#E1E5E8" mask="url(#path-34-inside-4_5691_94895)"/>
-<mask id="path-46-inside-5_5691_94895" fill="white">
-<path d="M0 238H948V296H0V238Z"/>
+<path d="M292 669H1240V727H292V669Z" fill="white"/>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="312" y="692.277">mininumPrice</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" letter-spacing="0em"><tspan x="534" y="692.277">Minimum price</tspan></text>
+<rect x="534" y="699" width="56" height="16" rx="2" fill="#F3F3F3"/>
+<text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="Menlo" font-size="12" letter-spacing="0em"><tspan x="540" y="711.154">Number</tspan></text>
+<rect x="534.5" y="699.5" width="55" height="15" rx="1.5" stroke="black" stroke-opacity="0.1"/>
+<rect x="776" y="679" width="20" height="16" rx="2" fill="#F3F3F3"/>
+<text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="Menlo" font-size="12" letter-spacing="0em"><tspan x="782" y="691.154">0</tspan></text>
+<rect x="776.5" y="679.5" width="19" height="15" rx="1.5" stroke="black" stroke-opacity="0.1"/>
+<rect x="1018.5" y="679.5" width="201" height="31" rx="3.5" fill="white"/>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="12" letter-spacing="0em"><tspan x="1030" y="699.948">Edit number...</tspan></text>
+<rect x="1018.5" y="679.5" width="201" height="31" rx="3.5" stroke="#E1E5E8"/>
+<path d="M1240 726H292V728H1240V726Z" fill="#E1E5E8" mask="url(#path-35-inside-5_5704_90610)"/>
+<mask id="path-47-inside-6_5704_90610" fill="white">
+<path d="M292 727H1240V785H292V727Z"/>
 </mask>
-<path d="M0 238H948V296H0V238Z" fill="white"/>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="20" y="261.277">maximumPrice</tspan></text>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="242" y="261.277">Maximum price</tspan></text>
-<rect x="242" y="268" width="56" height="16" rx="2" fill="#F3F3F3"/>
-<text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="Menlo" font-size="12" letter-spacing="0em"><tspan x="248" y="280.154">Number</tspan></text>
-<rect x="242.5" y="268.5" width="55" height="15" rx="1.5" stroke="black" stroke-opacity="0.1"/>
-<rect x="484" y="248" width="20" height="16" rx="2" fill="#F3F3F3"/>
-<text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="Menlo" font-size="12" letter-spacing="0em"><tspan x="490" y="260.154">0</tspan></text>
-<rect x="484.5" y="248.5" width="19" height="15" rx="1.5" stroke="black" stroke-opacity="0.1"/>
-<rect x="726.5" y="248.5" width="201" height="31" rx="3.5" fill="white"/>
-<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" letter-spacing="0em"><tspan x="738" y="268.948">87</tspan></text>
-<rect x="726.5" y="248.5" width="201" height="31" rx="3.5" stroke="#E1E5E8"/>
-<path d="M948 295H0V297H948V295Z" fill="#E1E5E8" mask="url(#path-46-inside-5_5691_94895)"/>
-<rect width="948" height="58" transform="translate(0 296)" fill="white"/>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="20" y="319.277">availableStays</tspan></text>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="242" y="319.277">TBD</tspan></text>
-<rect x="242" y="326" width="69" height="18" rx="3" fill="#F8F8F8"/>
-<text fill="#1EA7FD" xml:space="preserve" style="white-space: pre" font-family="Monaco" font-size="12" letter-spacing="0px"><tspan x="247" y="339.5">object</tspan></text>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M300.693 338.195L296.96 334.139C296.791 333.955 296.791 333.656 296.96 333.472C297.13 333.288 297.404 333.288 297.574 333.472L301 337.195L304.426 333.472C304.595 333.287 304.87 333.287 305.04 333.472C305.209 333.656 305.209 333.954 305.039 334.138L301.306 338.195C301.222 338.287 301.111 338.333 301 338.333C300.889 338.333 300.778 338.287 300.693 338.195Z" fill="#666666"/>
-<mask id="mask0_5691_94895" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="296" y="333" width="10" height="6">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M300.693 338.195L296.96 334.139C296.791 333.955 296.791 333.656 296.96 333.472C297.13 333.288 297.404 333.288 297.574 333.472L301 337.195L304.426 333.472C304.595 333.287 304.87 333.287 305.04 333.472C305.209 333.656 305.209 333.954 305.039 334.138L301.306 338.195C301.222 338.287 301.111 338.333 301 338.333C300.889 338.333 300.778 338.287 300.693 338.195Z" fill="white"/>
+<path d="M292 727H1240V785H292V727Z" fill="white"/>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="312" y="750.277">maximumPrice</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" letter-spacing="0em"><tspan x="534" y="750.277">Maximum price</tspan></text>
+<rect x="534" y="757" width="56" height="16" rx="2" fill="#F3F3F3"/>
+<text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="Menlo" font-size="12" letter-spacing="0em"><tspan x="540" y="769.154">Number</tspan></text>
+<rect x="534.5" y="757.5" width="55" height="15" rx="1.5" stroke="black" stroke-opacity="0.1"/>
+<rect x="776" y="737" width="20" height="16" rx="2" fill="#F3F3F3"/>
+<text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="Menlo" font-size="12" letter-spacing="0em"><tspan x="782" y="749.154">0</tspan></text>
+<rect x="776.5" y="737.5" width="19" height="15" rx="1.5" stroke="black" stroke-opacity="0.1"/>
+<rect x="1018.5" y="737.5" width="201" height="31" rx="3.5" fill="white"/>
+<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="12" letter-spacing="0em"><tspan x="1030" y="757.948">87</tspan></text>
+<rect x="1018.5" y="737.5" width="201" height="31" rx="3.5" stroke="#E1E5E8"/>
+<path d="M1240 784H292V786H1240V784Z" fill="#E1E5E8" mask="url(#path-47-inside-6_5704_90610)"/>
+<rect width="948" height="58" transform="translate(292 785)" fill="white"/>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="312" y="808.277">availableStays</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" letter-spacing="0em"><tspan x="534" y="808.277">TBD</tspan></text>
+<rect x="534" y="815" width="69" height="18" rx="3" fill="#F8F8F8"/>
+<text fill="#1EA7FD" xml:space="preserve" style="white-space: pre" font-family="Monaco" font-size="12" letter-spacing="0px"><tspan x="539" y="828.5">object</tspan></text>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M592.693 827.195L588.96 823.139C588.791 822.955 588.791 822.656 588.96 822.472C589.13 822.288 589.404 822.288 589.574 822.472L593 826.195L596.426 822.472C596.595 822.287 596.87 822.287 597.04 822.472C597.209 822.656 597.209 822.954 597.039 823.138L593.306 827.195C593.222 827.287 593.111 827.333 593 827.333C592.889 827.333 592.778 827.287 592.693 827.195Z" fill="#666666"/>
+<mask id="mask0_5704_90610" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="588" y="822" width="10" height="6">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M592.693 827.195L588.96 823.139C588.791 822.955 588.791 822.656 588.96 822.472C589.13 822.288 589.404 822.288 589.574 822.472L593 826.195L596.426 822.472C596.595 822.287 596.87 822.287 597.04 822.472C597.209 822.656 597.209 822.954 597.039 823.138L593.306 827.195C593.222 827.287 593.111 827.333 593 827.333C592.889 827.333 592.778 827.287 592.693 827.195Z" fill="white"/>
 </mask>
-<g mask="url(#mask0_5691_94895)">
-<rect x="296" y="330" width="10" height="10" fill="#1EA7FD"/>
+<g mask="url(#mask0_5704_90610)">
+<rect x="588" y="819" width="10" height="10" fill="#1EA7FD"/>
 </g>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="484" y="319.277">-</tspan></text>
-<rect x="726.5" y="306.5" width="79" height="31" rx="3.5" fill="#F0F9FF"/>
-<text fill="#304756" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="738" y="325.948">Set object</tspan></text>
-<rect x="726.5" y="306.5" width="79" height="31" rx="3.5" stroke="#CBE1EE"/>
-<path d="M0 0H948V2H0V0ZM948 360H0H948ZM0 360V1V360ZM948 1V360V1Z" fill="#E1E5E8" mask="url(#path-2-outside-1_5691_94895)"/>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" letter-spacing="0em"><tspan x="776" y="808.277">-</tspan></text>
+<rect x="1018.5" y="795.5" width="79" height="31" rx="3.5" fill="#F0F9FF"/>
+<text fill="#304756" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="1030" y="814.948">Set object</tspan></text>
+<rect x="1018.5" y="795.5" width="79" height="31" rx="3.5" stroke="#CBE1EE"/>
+<path d="M292 489H1240V491H292V489ZM1240 849H292H1240ZM292 849V490V849ZM1240 490V849V490Z" fill="#E1E5E8" mask="url(#path-3-outside-2_5704_90610)"/>
+</g>
+<path d="M292 489H1240V491H292V489ZM1240 849H292H1240ZM292 849V490V849ZM1240 490V849V490Z" fill="#E1E5E8" mask="url(#path-1-inside-1_5704_90610)"/>
 <defs>
-<clipPath id="clip0_5691_94895">
-<rect width="14" height="14" fill="white" transform="translate(917 14)"/>
+<clipPath id="clip0_5704_90610">
+<path d="M292 490H1240V841C1240 845.418 1236.42 849 1232 849H300C295.582 849 292 845.418 292 841V490Z" fill="white"/>
 </clipPath>
-<clipPath id="clip1_5691_94895">
-<rect width="14" height="14" fill="white" transform="translate(917 55)"/>
+<clipPath id="clip1_5704_90610">
+<rect width="14" height="14" fill="white" transform="translate(1209 503)"/>
+</clipPath>
+<clipPath id="clip2_5704_90610">
+<rect width="14" height="14" fill="white" transform="translate(1209 544)"/>
 </clipPath>
 </defs>
 </svg>
