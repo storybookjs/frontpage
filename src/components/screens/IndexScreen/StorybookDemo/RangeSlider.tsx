@@ -1,6 +1,6 @@
 import React from 'react';
 import { styled } from '@storybook/theming';
-import { motion, useTransform } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const RangeSliderWrapper = styled(motion.div)`
   position: absolute;
@@ -23,12 +23,11 @@ RangeSliderVariant.defaultProps = {
   height: '303',
 };
 
-export const RangeSlider = ({
-  rpDefaultOpacity,
-  rpNoSelectionOpacity,
-  rpInputRangeOpacity,
-  ...props
-}) => {
+interface RangeSliderProps {
+  activeStory: string;
+}
+
+export const RangeSlider = ({ activeStory, ...props }) => {
   return (
     <RangeSliderWrapper
       whileInView={{
@@ -38,21 +37,13 @@ export const RangeSlider = ({
       viewport={{ amount: 'some' }}
       {...props}
     >
-      <RangeSliderVariant
-        style={{ opacity: rpDefaultOpacity }}
-        src="images/develop/range-slider-default.svg"
-        alt=""
-      />
-      <RangeSliderVariant
-        style={{ opacity: rpNoSelectionOpacity }}
-        src="images/develop/range-slider-no-selection.svg"
-        alt=""
-      />
-      <RangeSliderVariant
-        style={{ opacity: rpInputRangeOpacity }}
-        src="images/develop/range-slider-input-range.svg"
-        alt=""
-      />
+      <AnimatePresence initial={false}>
+        <RangeSliderVariant
+          key={activeStory}
+          src={`images/develop/range-slider-${activeStory}.svg`}
+          alt=""
+        />
+      </AnimatePresence>
     </RangeSliderWrapper>
   );
 };

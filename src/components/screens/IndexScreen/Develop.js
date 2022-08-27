@@ -178,7 +178,7 @@ export function Develop({ docs, startOpen, ...props }) {
       <Content>
         <StorybookDemoWrapper>
           <StorybookDemo
-            activeStory={activeStory}
+            storyIndex={activeStory}
             isolationScrollProgress={smoothIsolationScrollProgress}
           />
         </StorybookDemoWrapper>

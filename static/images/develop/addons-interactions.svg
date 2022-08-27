@@ -1,0 +1,106 @@
+<svg width="950" height="360" viewBox="0 0 950 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="path-2-outside-1_5692_94896" maskUnits="userSpaceOnUse" x="1" y="0" width="948" height="360" fill="black">
+<rect fill="white" x="1" width="948" height="360"/>
+<path d="M1 1H949V355C949 357.761 946.761 360 944 360H5.99998C3.23855 360 1 357.761 1 355V1Z"/>
+</mask>
+<path d="M1 1H949V355C949 357.761 946.761 360 944 360H5.99998C3.23855 360 1 357.761 1 355V1Z" fill="white"/>
+<mask id="path-4-inside-2_5692_94896" fill="white">
+<path d="M1 1H949V42H1V1Z"/>
+</mask>
+<path d="M1 1H949V42H1V1Z" fill="white"/>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="16" y="25.606">Controls</tspan></text>
+<text fill="#1EA7FD" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="101" y="25.606">Interactions</tspan></text>
+<rect x="86" y="38" width="107" height="3" fill="#1EA7FD"/>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="208" y="25.606">Design</tspan></text>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="284" y="25.606">Accessibility</tspan></text>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="395" y="25.606">Actions</tspan></text>
+<path d="M895.5 18.5039C895.5 18.2278 895.724 18.0039 896 18.0039H897C897.276 18.0039 897.5 18.2278 897.5 18.5039C897.5 18.78 897.276 19.0039 897 19.0039H896C895.724 19.0039 895.5 18.78 895.5 18.5039Z" fill="#7A858E"/>
+<path d="M896 20.0039C895.724 20.0039 895.5 20.2278 895.5 20.5039C895.5 20.78 895.724 21.0039 896 21.0039H897C897.276 21.0039 897.5 20.78 897.5 20.5039C897.5 20.2278 897.276 20.0039 897 20.0039H896Z" fill="#7A858E"/>
+<path d="M895.5 22.5039C895.5 22.2278 895.724 22.0039 896 22.0039H897C897.276 22.0039 897.5 22.2278 897.5 22.5039C897.5 22.78 897.276 23.0039 897 23.0039H896C895.724 23.0039 895.5 22.78 895.5 22.5039Z" fill="#7A858E"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M887.5 27.0039C887.224 27.0039 887 26.78 887 26.5039V15.5039C887 15.2278 887.224 15.0039 887.5 15.0039H898.5C898.776 15.0039 899 15.2278 899 15.5039V26.5039C899 26.78 898.776 27.0039 898.5 27.0039H887.5ZM888 26.0039V16.0039H894V26.0039H888ZM895 16.0039H898V26.0039H895V16.0039Z" fill="#7A858E"/>
+<g clip-path="url(#clip0_5692_94896)">
+<path d="M927.854 18.1464C928.049 18.3417 928.049 18.6583 927.854 18.8536L925.707 21L927.854 23.1464C928.049 23.3417 928.049 23.6583 927.854 23.8536C927.658 24.0488 927.342 24.0488 927.146 23.8536L925 21.7071L922.854 23.8536C922.658 24.0488 922.342 24.0488 922.146 23.8536C921.951 23.6583 921.951 23.3417 922.146 23.1464L924.293 21L922.146 18.8536C921.951 18.6583 921.951 18.3417 922.146 18.1464C922.342 17.9512 922.658 17.9512 922.854 18.1464L925 20.2929L927.146 18.1464C927.342 17.9512 927.658 17.9512 927.854 18.1464Z" fill="#7A858E"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M925 28C928.866 28 932 24.866 932 21C932 17.134 928.866 14 925 14C921.134 14 918 17.134 918 21C918 24.866 921.134 28 925 28ZM925 27C928.314 27 931 24.3137 931 21C931 17.6863 928.314 15 925 15C921.686 15 919 17.6863 919 21C919 24.3137 921.686 27 925 27Z" fill="#7A858E"/>
+</g>
+<path d="M949 41H1V43H949V41Z" fill="#E1E5E8" mask="url(#path-4-inside-2_5692_94896)"/>
+<rect width="948" height="40" transform="translate(1 42)" fill="#F6F9FC"/>
+<rect x="1" y="81" width="948" height="1" fill="#DDDDDD"/>
+<rect x="16" y="50" width="65" height="24" rx="5" fill="#66BF3C"/>
+<text fill="white" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="800" letter-spacing="0.4em"><tspan x="27.398" y="65.619">PASS</tspan></text>
+<g opacity="0.5">
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="96" y="66.277">Scroll to end</tspan></text>
+</g>
+<rect x="188" y="50" width="1" height="24" fill="black" fill-opacity="0.1"/>
+<g opacity="0.4">
+<path d="M218 57.4193V59.735L222.228 56.999C222.561 56.7837 223 57.0225 223 57.4188V66.5806C223 66.9769 222.561 67.2157 222.228 67.0004L218 64.2644V66.5811C218 66.9774 217.561 67.2162 217.228 67.0009L210.5 62.6473V66.25C210.5 66.6642 210.164 67 209.75 67C209.336 67 209 66.6642 209 66.25V57.75C209 57.3358 209.336 57 209.75 57C210.164 57 210.5 57.3358 210.5 57.75V61.3531L217.228 56.9995C217.561 56.7842 218 57.023 218 57.4193Z" fill="#999999"/>
+</g>
+<g opacity="0.4">
+<path d="M249.239 67.035L241.698 62.4265C241.605 62.3695 241.539 62.2894 241.5 62.1998V66.2499C241.5 66.6641 241.164 66.9999 240.75 66.9999C240.336 66.9999 240 66.6641 240 66.2499V57.7499C240 57.3357 240.336 56.9999 240.75 56.9999C241.164 56.9999 241.5 57.3357 241.5 57.7499L241.5 61.7999C241.539 61.7104 241.605 61.6303 241.698 61.5732L249.239 56.9648C249.572 56.7612 250 57.0009 250 57.3914V66.6084C250 66.9988 249.572 67.2386 249.239 67.035Z" fill="#999999"/>
+</g>
+<g opacity="0.5">
+<path d="M269.761 67.035L277.302 62.4265C277.395 62.3695 277.461 62.2894 277.5 62.1998V66.2499C277.5 66.6641 277.836 66.9999 278.25 66.9999C278.664 66.9999 279 66.6641 279 66.2499V57.7499C279 57.3357 278.664 56.9999 278.25 56.9999C277.836 56.9999 277.5 57.3357 277.5 57.7499V61.7999C277.461 61.7104 277.395 61.6303 277.302 61.5732L269.761 56.9648C269.428 56.7612 269 57.0009 269 57.3914V66.6084C269 66.9988 269.428 67.2386 269.761 67.035Z" fill="#999999"/>
+</g>
+<g opacity="0.5">
+<path d="M301 57.4193V59.735L296.772 56.999C296.439 56.7837 296 57.0225 296 57.4188V66.5806C296 66.9769 296.439 67.2157 296.772 67.0004L301 64.2644V66.5811C301 66.9774 301.439 67.2162 301.772 67.0009L308.5 62.6473V66.25C308.5 66.6642 308.836 67 309.25 67C309.664 67 310 66.6642 310 66.25V57.75C310 57.3358 309.664 57 309.25 57C308.836 57 308.5 57.3358 308.5 57.75V61.3531L301.772 56.9995C301.439 56.7842 301 57.023 301 57.4193Z" fill="#999999"/>
+</g>
+<path d="M218 57.4193V59.735L222.228 56.999C222.561 56.7837 223 57.0225 223 57.4188V66.5806C223 66.9769 222.561 67.2157 222.228 67.0004L218 64.2644V66.5811C218 66.9774 217.561 67.2162 217.228 67.0009L210.5 62.6473V66.25C210.5 66.6642 210.164 67 209.75 67C209.336 67 209 66.6642 209 66.25V57.75C209 57.3358 209.336 57 209.75 57C210.164 57 210.5 57.3358 210.5 57.75V61.3531L217.228 56.9995C217.561 56.7842 218 57.023 218 57.4193Z" fill="#999999"/>
+<path d="M249.239 67.035L241.698 62.4265C241.605 62.3695 241.539 62.2894 241.5 62.1998V66.2499C241.5 66.6641 241.164 66.9999 240.75 66.9999C240.336 66.9999 240 66.6641 240 66.2499V57.7499C240 57.3357 240.336 56.9999 240.75 56.9999C241.164 56.9999 241.5 57.3357 241.5 57.7499L241.5 61.7999C241.539 61.7104 241.605 61.6303 241.698 61.5732L249.239 56.9648C249.572 56.7612 250 57.0009 250 57.3914V66.6084C250 66.9988 249.572 67.2386 249.239 67.035Z" fill="#999999"/>
+<path d="M269.761 67.035L277.302 62.4265C277.395 62.3695 277.461 62.2894 277.5 62.1998V66.2499C277.5 66.6641 277.836 66.9999 278.25 66.9999C278.664 66.9999 279 66.6641 279 66.2499V57.7499C279 57.3357 278.664 56.9999 278.25 56.9999C277.836 56.9999 277.5 57.3357 277.5 57.7499V61.7999C277.461 61.7104 277.395 61.6303 277.302 61.5732L269.761 56.9648C269.428 56.7612 269 57.0009 269 57.3914V66.6084C269 66.9988 269.428 67.2386 269.761 67.035Z" fill="#999999"/>
+<path d="M301 57.4193V59.735L296.772 56.999C296.439 56.7837 296 57.0225 296 57.4188V66.5806C296 66.9769 296.439 67.2157 296.772 67.0004L301 64.2644V66.5811C301 66.9774 301.439 67.2162 301.772 67.0009L308.5 62.6473V66.25C308.5 66.6642 308.836 67 309.25 67C309.664 67 310 66.6642 310 66.25V57.75C310 57.3358 309.664 57 309.25 57C308.836 57 308.5 57.3358 308.5 57.75V61.3531L301.772 56.9995C301.439 56.7842 301 57.023 301 57.4193Z" fill="#999999"/>
+<g clip-path="url(#clip1_5692_94896)">
+<path d="M330.5 56C330.5 55.7239 330.276 55.5 330 55.5H327C326.724 55.5 326.5 55.7239 326.5 56C326.5 56.2761 326.724 56.5 327 56.5H328.535C326.712 57.651 325.5 59.6836 325.5 62C325.5 65.2213 327.843 67.8944 330.917 68.4102C331.19 68.4559 331.447 68.2722 331.493 67.9998C331.539 67.7275 331.355 67.4697 331.083 67.424C328.482 66.9876 326.5 64.7248 326.5 62C326.5 59.8633 327.719 58.0102 329.5 57.0996V59C329.5 59.2761 329.724 59.5 330 59.5C330.276 59.5 330.5 59.2761 330.5 59V56.3531C330.5 56.3454 330.5 56.3376 330.5 56.3298V56Z" fill="#999999"/>
+<path d="M332.507 56.0003C332.553 55.7279 332.81 55.5442 333.083 55.5899C336.157 56.1057 338.5 58.7788 338.5 62C338.5 64.3165 337.288 66.349 335.466 67.5H337C337.276 67.5 337.5 67.7239 337.5 68C337.5 68.2761 337.276 68.5 337 68.5H334C333.724 68.5 333.5 68.2761 333.5 68V65C333.5 64.7239 333.724 64.5 334 64.5C334.276 64.5 334.5 64.7239 334.5 65V66.9005C336.281 65.9898 337.5 64.1367 337.5 62C337.5 59.2753 335.518 57.0125 332.917 56.5761C332.645 56.5304 332.461 56.2726 332.507 56.0003Z" fill="#999999"/>
+</g>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="802.172" y="66.277">RangeSlider.stories.tsx</tspan></text>
+<circle cx="22" cy="102" r="3" fill="#CCCCCC"/>
+<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="34" y="106.277">Raise the minimum value by dragging the slider thumb</tspan></text>
+<rect x="0.5" y="81.5" width="949" height="41" stroke="#EEEEEE"/>
+<rect x="0.5" y="81.5" width="949" height="41" fill="white"/>
+<g clip-path="url(#clip2_5692_94896)">
+<path d="M27.8745 98.8747C28.0418 98.7073 28.0418 98.436 27.8745 98.2686C27.7071 98.1012 27.4358 98.1012 27.2684 98.2686L20.2857 105.251L16.7316 101.697C16.5642 101.53 16.2929 101.53 16.1255 101.697C15.9582 101.865 15.9582 102.136 16.1255 102.303L19.9827 106.16C20.15 106.328 20.4214 106.328 20.5888 106.16L27.8745 98.8747Z" fill="#66BF3C"/>
+</g>
+<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="34" y="106.277">Raise the minimum value by dragging the slider thumb</tspan></text>
+<rect x="0.5" y="81.5" width="949" height="41" stroke="#EEEEEE"/>
+<circle cx="22" cy="143" r="3" fill="#CCCCCC"/>
+<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="34" y="147.277">Lower the maximum value by dragging the slider thumb</tspan></text>
+<rect x="0.5" y="122.5" width="949" height="41" stroke="#EEEEEE"/>
+<rect x="0.5" y="122.5" width="949" height="41" fill="white"/>
+<g clip-path="url(#clip3_5692_94896)">
+<path d="M27.8745 139.875C28.0418 139.707 28.0418 139.436 27.8745 139.269C27.7071 139.101 27.4358 139.101 27.2684 139.269L20.2857 146.251L16.7316 142.697C16.5642 142.53 16.2929 142.53 16.1255 142.697C15.9582 142.865 15.9582 143.136 16.1255 143.303L19.9827 147.16C20.15 147.328 20.4214 147.328 20.5888 147.16L27.8745 139.875Z" fill="#66BF3C"/>
+</g>
+<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="34" y="147.277">Lower the maximum value by dragging the slider thumb</tspan></text>
+<rect x="0.5" y="122.5" width="949" height="41" stroke="#EEEEEE"/>
+<circle cx="22" cy="184" r="3" fill="#CCCCCC"/>
+<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="34" y="188.277">Average price should update</tspan></text>
+<rect x="0.5" y="163.5" width="949" height="41" stroke="#EEEEEE"/>
+<rect x="0.5" y="163.5" width="949" height="41" fill="white"/>
+<g clip-path="url(#clip4_5692_94896)">
+<path d="M27.8745 180.875C28.0418 180.707 28.0418 180.436 27.8745 180.269C27.7071 180.101 27.4358 180.101 27.2684 180.269L20.2857 187.251L16.7316 183.697C16.5642 183.53 16.2929 183.53 16.1255 183.697C15.9582 183.865 15.9582 184.136 16.1255 184.303L19.9827 188.16C20.15 188.328 20.4214 188.328 20.5888 188.16L27.8745 180.875Z" fill="#66BF3C"/>
+</g>
+<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="34" y="188.277">Average price should update</tspan></text>
+<rect x="0.5" y="163.5" width="949" height="41" stroke="#EEEEEE"/>
+<rect width="948" height="1" transform="translate(1 163)" fill="#E69D00"/>
+<path d="M1 159L7.5 163.5L1 168V159Z" fill="#E69D00"/>
+<rect width="948" height="1" transform="translate(1 122)" fill="#E69D00"/>
+<path d="M1 118L7.5 122.5L1 127V118Z" fill="#E69D00"/>
+<rect width="948" height="1" transform="translate(1 81)" fill="#E69D00"/>
+<path d="M1 77L7.5 81.5L1 86V77Z" fill="#E69D00"/>
+<path d="M1 0H949V2H1V0ZM949 360H1H949ZM1 360V1V360ZM949 1V360V1Z" fill="#E1E5E8" mask="url(#path-2-outside-1_5692_94896)"/>
+<defs>
+<clipPath id="clip0_5692_94896">
+<rect width="14" height="14" fill="white" transform="translate(918 14)"/>
+</clipPath>
+<clipPath id="clip1_5692_94896">
+<rect width="14" height="14" fill="white" transform="translate(325 55)"/>
+</clipPath>
+<clipPath id="clip2_5692_94896">
+<rect width="12" height="12" fill="white" transform="translate(16 96)"/>
+</clipPath>
+<clipPath id="clip3_5692_94896">
+<rect width="12" height="12" fill="white" transform="translate(16 137)"/>
+</clipPath>
+<clipPath id="clip4_5692_94896">
+<rect width="12" height="12" fill="white" transform="translate(16 178)"/>
+</clipPath>
+</defs>
+</svg>

@@ -1,0 +1,147 @@
+<svg width="950" height="360" viewBox="0 0 950 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="path-2-outside-1_5692_96234" maskUnits="userSpaceOnUse" x="1" y="0" width="948" height="360" fill="black">
+<rect fill="white" x="1" width="948" height="360"/>
+<path d="M1 1H949V360H1V1Z"/>
+</mask>
+<path d="M1 1H949V360H1V1Z" fill="white"/>
+<mask id="path-4-inside-2_5692_96234" fill="white">
+<path d="M1 1H949V42H1V1Z"/>
+</mask>
+<path d="M1 1H949V42H1V1Z" fill="white"/>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="16" y="25.606">Controls</tspan></text>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="101" y="25.606">Interactions</tspan></text>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="208" y="25.606">Design</tspan></text>
+<text fill="#1EA7FD" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="284" y="25.606">Accessibility</tspan></text>
+<rect x="269" y="38" width="111" height="3" fill="#1EA7FD"/>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="395" y="25.606">Actions</tspan></text>
+<path d="M895.5 18.5039C895.5 18.2278 895.724 18.0039 896 18.0039H897C897.276 18.0039 897.5 18.2278 897.5 18.5039C897.5 18.78 897.276 19.0039 897 19.0039H896C895.724 19.0039 895.5 18.78 895.5 18.5039Z" fill="#7A858E"/>
+<path d="M896 20.0039C895.724 20.0039 895.5 20.2278 895.5 20.5039C895.5 20.78 895.724 21.0039 896 21.0039H897C897.276 21.0039 897.5 20.78 897.5 20.5039C897.5 20.2278 897.276 20.0039 897 20.0039H896Z" fill="#7A858E"/>
+<path d="M895.5 22.5039C895.5 22.2278 895.724 22.0039 896 22.0039H897C897.276 22.0039 897.5 22.2278 897.5 22.5039C897.5 22.78 897.276 23.0039 897 23.0039H896C895.724 23.0039 895.5 22.78 895.5 22.5039Z" fill="#7A858E"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M887.5 27.0039C887.224 27.0039 887 26.78 887 26.5039V15.5039C887 15.2278 887.224 15.0039 887.5 15.0039H898.5C898.776 15.0039 899 15.2278 899 15.5039V26.5039C899 26.78 898.776 27.0039 898.5 27.0039H887.5ZM888 26.0039V16.0039H894V26.0039H888ZM895 16.0039H898V26.0039H895V16.0039Z" fill="#7A858E"/>
+<g clip-path="url(#clip0_5692_96234)">
+<path d="M927.854 18.1464C928.049 18.3417 928.049 18.6583 927.854 18.8536L925.707 21L927.854 23.1464C928.049 23.3417 928.049 23.6583 927.854 23.8536C927.658 24.0488 927.342 24.0488 927.146 23.8536L925 21.7071L922.854 23.8536C922.658 24.0488 922.342 24.0488 922.146 23.8536C921.951 23.6583 921.951 23.3417 922.146 23.1464L924.293 21L922.146 18.8536C921.951 18.6583 921.951 18.3417 922.146 18.1464C922.342 17.9512 922.658 17.9512 922.854 18.1464L925 20.2929L927.146 18.1464C927.342 17.9512 927.658 17.9512 927.854 18.1464Z" fill="#7A858E"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M925 28C928.866 28 932 24.866 932 21C932 17.134 928.866 14 925 14C921.134 14 918 17.134 918 21C918 24.866 921.134 28 925 28ZM925 27C928.314 27 931 24.3137 931 21C931 17.6863 928.314 15 925 15C921.686 15 919 17.6863 919 21C919 24.3137 921.686 27 925 27Z" fill="#7A858E"/>
+</g>
+<path d="M949 41H1V43H949V41Z" fill="#E1E5E8" mask="url(#path-4-inside-2_5692_96234)"/>
+<g clip-path="url(#clip1_5692_96234)">
+<rect width="948" height="40" transform="translate(1 42)" fill="#F6F9FC"/>
+<rect x="1" y="81" width="948" height="1" fill="#DDDDDD"/>
+<text fill="#D53900" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="16" y="66.277">Failed</tspan></text>
+<rect x="58" y="52" width="20" height="20" rx="10" fill="#FEDED2"/>
+<text fill="#D43900" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="64" y="65.948">2</tspan></text>
+<rect x="58.5" y="52.5" width="19" height="19" rx="9.5" stroke="#D43900" stroke-opacity="0.1"/>
+<rect x="1" y="79" width="92" height="3" fill="#FF4400"/>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="108" y="66.277">Inconclusive</tspan></text>
+<rect x="188" y="52" width="20" height="20" rx="10" fill="#EEEEEE"/>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="194" y="65.948">1</tspan></text>
+<rect x="188.5" y="52.5" width="19" height="19" rx="9.5" stroke="#666666" stroke-opacity="0.1"/>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="238" y="66.277">Passed</tspan></text>
+<rect x="287" y="52" width="27" height="20" rx="10" fill="#EEEEEE"/>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="293" y="65.948">11</tspan></text>
+<rect x="287.5" y="52.5" width="26" height="19" rx="9.5" stroke="#666666" stroke-opacity="0.1"/>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="823.029" y="66.277">Show highlights</tspan></text>
+<path d="M929 64.1431C930.183 64.1431 931.143 63.1837 931.143 62.0002C931.143 60.8167 930.183 59.8574 929 59.8574C927.817 59.8574 926.857 60.8167 926.857 62.0002C926.857 63.1837 927.817 64.1431 929 64.1431Z" fill="#7A858E"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M935 62.0003L934.821 62.251C934.715 62.3984 932.204 65.8574 929 65.8574C925.796 65.8574 923.285 62.3984 923.179 62.251L923 62.0003L923.179 61.7494C923.285 61.6023 925.796 58.1431 929 58.1431C932.204 58.1431 934.715 61.6023 934.821 61.7494L935 62.0003ZM925.482 60.5448C924.817 61.1091 924.321 61.6829 924.067 62.0003C924.321 62.3175 924.816 62.8913 925.482 63.4557C926.464 64.2887 927.698 65.0002 929 65.0002C930.301 65.0002 931.536 64.2887 932.518 63.4557C933.183 62.8913 933.679 62.3175 933.933 62.0003C933.678 61.6829 933.183 61.1091 932.518 60.5448C931.536 59.7118 930.301 59.0002 929 59.0002C927.698 59.0002 926.464 59.7118 925.482 60.5448Z" fill="#7A858E"/>
+</g>
+<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="16" y="105.277">Insufficient color contrast</tspan></text>
+<rect x="841" y="91" width="66" height="20" rx="10" fill="#FEDED2"/>
+<text fill="#D43900" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="853" y="104.948">Serious</tspan></text>
+<rect x="841.5" y="91.5" width="65" height="19" rx="9.5" stroke="#D43900" stroke-opacity="0.1"/>
+<path d="M928.354 94.1464L932.354 98.1464C932.549 98.3417 932.549 98.6583 932.354 98.8536C932.158 99.0488 931.842 99.0488 931.646 98.8536L928 95.2071L924.354 98.8536C924.158 99.0488 923.842 99.0488 923.646 98.8536C923.451 98.6583 923.451 98.3417 923.646 98.1464L927.646 94.1464C927.842 93.9512 928.158 93.9512 928.354 94.1464Z" fill="#7A858E"/>
+<path d="M932.354 103.146C932.549 103.342 932.549 103.658 932.354 103.854L928.354 107.854C928.158 108.049 927.842 108.049 927.646 107.854L923.646 103.854C923.451 103.658 923.451 103.342 923.646 103.146C923.842 102.951 924.158 102.951 924.354 103.146L928 106.793L931.646 103.146C931.842 102.951 932.158 102.951 932.354 103.146Z" fill="#7A858E"/>
+<rect x="0.5" y="81.5" width="949" height="39" stroke="#EEEEEE"/>
+<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="16" y="144.277">Incorrect tab order</tspan></text>
+<rect x="841" y="130" width="66" height="20" rx="10" fill="#FEDED2"/>
+<text fill="#D43900" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="853" y="143.948">Serious</tspan></text>
+<rect x="841.5" y="130.5" width="65" height="19" rx="9.5" stroke="#D43900" stroke-opacity="0.1"/>
+<path d="M928.354 133.146L932.354 137.146C932.549 137.342 932.549 137.658 932.354 137.854C932.158 138.049 931.842 138.049 931.646 137.854L928 134.207L924.354 137.854C924.158 138.049 923.842 138.049 923.646 137.854C923.451 137.658 923.451 137.342 923.646 137.146L927.646 133.146C927.842 132.951 928.158 132.951 928.354 133.146Z" fill="#7A858E"/>
+<path d="M932.354 142.146C932.549 142.342 932.549 142.658 932.354 142.854L928.354 146.854C928.158 147.049 927.842 147.049 927.646 146.854L923.646 142.854C923.451 142.658 923.451 142.342 923.646 142.146C923.842 141.951 924.158 141.951 924.354 142.146L928 145.793L931.646 142.146C931.842 141.951 932.158 141.951 932.354 142.146Z" fill="#7A858E"/>
+<rect x="0.5" y="120.5" width="949" height="39" stroke="#EEEEEE"/>
+<g clip-path="url(#clip2_5692_96234)">
+<rect x="1" y="82" width="948" height="201" fill="white"/>
+<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="16" y="105.277">Insufficient color contrast</tspan></text>
+<rect x="841" y="91" width="66" height="20" rx="10" fill="#FEDED2"/>
+<text fill="#D43900" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="853" y="104.948">Serious</tspan></text>
+<rect x="841.5" y="91.5" width="65" height="19" rx="9.5" stroke="#D43900" stroke-opacity="0.1"/>
+<path d="M924.354 94.1464C924.158 93.9512 923.842 93.9512 923.646 94.1464C923.451 94.3417 923.451 94.6583 923.646 94.8536L927.646 98.8536C927.842 99.0488 928.158 99.0488 928.354 98.8536L932.354 94.8536C932.549 94.6583 932.549 94.3417 932.354 94.1464C932.158 93.9512 931.842 93.9512 931.646 94.1464L928 97.7929L924.354 94.1464Z" fill="#7A858E"/>
+<path d="M927.646 103.146C927.842 102.951 928.158 102.951 928.354 103.146L932.354 107.146C932.549 107.342 932.549 107.658 932.354 107.854C932.158 108.049 931.842 108.049 931.646 107.854L928 104.207L924.354 107.854C924.158 108.049 923.842 108.049 923.646 107.854C923.451 107.658 923.451 107.342 923.646 107.146L927.646 103.146Z" fill="#7A858E"/>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="16" y="161.277">Text color contrast ratio does not meet WCAG 2 AA guidelines.</tspan></text>
+<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="16" y="143.277">What&#x2019;s wrong?</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="16" y="212.277">Improve contrast ratio to 4.5:1</tspan></text>
+<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="16" y="194.277">How to fix</tspan></text>
+<text fill="#1EA7FD" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="16" y="245.277">Color contrast checker</tspan></text>
+<g clip-path="url(#clip3_5692_96234)">
+<path d="M152.714 234.86C152.241 234.86 151.857 235.244 151.857 235.717V244.289C151.857 244.762 152.241 245.146 152.714 245.146H161.286C161.759 245.146 162.143 244.762 162.143 244.289V240.432C162.143 240.195 161.951 240.003 161.714 240.003C161.478 240.003 161.286 240.195 161.286 240.432V244.289H152.714V235.717L156.571 235.717C156.808 235.717 157 235.526 157 235.289C157 235.052 156.808 234.86 156.571 234.86H152.714Z" fill="#1EA7FD"/>
+<path d="M157.303 240.306L161.286 236.324V237.86C161.286 238.097 161.478 238.289 161.714 238.289C161.951 238.289 162.143 238.097 162.143 237.86V235.289C162.143 235.052 161.951 234.86 161.714 234.86H159.143C158.906 234.86 158.714 235.052 158.714 235.289C158.714 235.526 158.906 235.717 159.143 235.717H160.68L156.697 239.7C156.53 239.868 156.53 240.139 156.697 240.306C156.864 240.474 157.136 240.474 157.303 240.306Z" fill="#1EA7FD"/>
+</g>
+<text fill="#1EA7FD" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="16" y="263.277">WCAG 2 AA Guidelines</tspan></text>
+<g clip-path="url(#clip4_5692_96234)">
+<path d="M162.714 252.86C162.241 252.86 161.857 253.244 161.857 253.717V262.289C161.857 262.762 162.241 263.146 162.714 263.146H171.286C171.759 263.146 172.143 262.762 172.143 262.289V258.432C172.143 258.195 171.951 258.003 171.714 258.003C171.478 258.003 171.286 258.195 171.286 258.432V262.289H162.714V253.717L166.571 253.717C166.808 253.717 167 253.526 167 253.289C167 253.052 166.808 252.86 166.571 252.86H162.714Z" fill="#1EA7FD"/>
+<path d="M167.303 258.306L171.286 254.324V255.86C171.286 256.097 171.478 256.289 171.714 256.289C171.951 256.289 172.143 256.097 172.143 255.86V253.289C172.143 253.052 171.951 252.86 171.714 252.86H169.143C168.906 252.86 168.714 253.052 168.714 253.289C168.714 253.526 168.906 253.717 169.143 253.717H170.68L166.697 257.7C166.53 257.868 166.53 258.139 166.697 258.306C166.864 258.474 167.136 258.474 167.303 258.306Z" fill="#1EA7FD"/>
+</g>
+<rect x="462" y="125" width="1" height="143" fill="black" fill-opacity="0.05"/>
+<g clip-path="url(#clip5_5692_96234)">
+<path d="M924.589 133.982C924.421 133.815 924.15 133.815 923.983 133.982C923.815 134.15 923.815 134.421 923.983 134.589L933.411 144.017C933.579 144.184 933.85 144.184 934.017 144.017C934.185 143.85 934.185 143.578 934.017 143.411L924.589 133.982Z" fill="#7A858E"/>
+<path d="M932.518 140.455C932.366 140.584 932.207 140.71 932.044 140.831L932.656 141.444C933.937 140.469 934.761 139.334 934.821 139.251L935 139L934.821 138.749C934.715 138.602 932.204 135.143 929 135.143C928.237 135.143 927.513 135.339 926.852 135.64L927.507 136.294C927.986 136.11 928.488 136 929 136C930.301 136 931.536 136.711 932.518 137.544C933.183 138.109 933.678 138.682 933.933 139C933.679 139.317 933.183 139.891 932.518 140.455Z" fill="#7A858E"/>
+<path d="M923.179 138.749C923.239 138.666 924.063 137.531 925.344 136.556L925.956 137.168C925.792 137.289 925.634 137.415 925.482 137.544C924.817 138.109 924.321 138.682 924.067 139C924.321 139.317 924.816 139.891 925.482 140.455C926.464 141.288 927.698 142 929 142C929.512 142 930.014 141.89 930.493 141.705L931.148 142.36C930.487 142.661 929.763 142.857 929 142.857C925.796 142.857 923.285 139.398 923.179 139.251L923 139L923.179 138.749Z" fill="#7A858E"/>
+<path d="M926.857 139C926.857 138.723 926.909 138.459 927.005 138.217L929.783 140.995C929.541 141.09 929.276 141.143 929 141.143C927.817 141.143 926.857 140.183 926.857 139Z" fill="#7A858E"/>
+<path d="M930.995 139.783L928.217 137.005C928.459 136.909 928.724 136.857 929 136.857C930.183 136.857 931.143 137.816 931.143 139C931.143 139.276 931.091 139.54 930.995 139.783Z" fill="#7A858E"/>
+</g>
+<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="484" y="143.277">Selectors</tspan></text>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="829.225" y="143.277">Hide highlights</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="484.98" y="171.777">1.</tspan></text>
+<rect x="501" y="158" width="92" height="16" rx="2" fill="#F3F3F3"/>
+<text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="Menlo" font-size="12" letter-spacing="0em"><tspan x="507" y="170.154">span.uexA_u</tspan></text>
+<rect x="501.5" y="158.5" width="91" height="15" rx="1.5" stroke="black" stroke-opacity="0.1"/>
+<path d="M929 169.143C930.183 169.143 931.143 168.184 931.143 167C931.143 165.817 930.183 164.857 929 164.857C927.817 164.857 926.857 165.817 926.857 167C926.857 168.184 927.817 169.143 929 169.143Z" fill="#1EA7FD"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M935 167L934.821 167.251C934.715 167.398 932.204 170.857 929 170.857C925.796 170.857 923.285 167.398 923.179 167.251L923 167L923.179 166.749C923.285 166.602 925.796 163.143 929 163.143C932.204 163.143 934.715 166.602 934.821 166.749L935 167ZM925.482 165.545C924.817 166.109 924.321 166.683 924.067 167C924.321 167.317 924.816 167.891 925.482 168.456C926.464 169.289 927.698 170 929 170C930.301 170 931.536 169.289 932.518 168.456C933.183 167.891 933.679 167.317 933.933 167C933.678 166.683 933.183 166.109 932.518 165.545C931.536 164.712 930.301 164 929 164C927.698 164 926.464 164.712 925.482 165.545Z" fill="#1EA7FD"/>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="484.968" y="199.777">2.</tspan></text>
+<rect x="501" y="186" width="106" height="16" rx="2" fill="#F3F3F3"/>
+<text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="Menlo" font-size="12" letter-spacing="0em"><tspan x="507" y="198.154">button.feA_uL</tspan></text>
+<rect x="501.5" y="186.5" width="105" height="15" rx="1.5" stroke="black" stroke-opacity="0.1"/>
+<path d="M929 197.143C930.183 197.143 931.143 196.184 931.143 195C931.143 193.817 930.183 192.857 929 192.857C927.817 192.857 926.857 193.817 926.857 195C926.857 196.184 927.817 197.143 929 197.143Z" fill="#1EA7FD"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M935 195L934.821 195.251C934.715 195.398 932.204 198.857 929 198.857C925.796 198.857 923.285 195.398 923.179 195.251L923 195L923.179 194.749C923.285 194.602 925.796 191.143 929 191.143C932.204 191.143 934.715 194.602 934.821 194.749L935 195ZM925.482 193.545C924.817 194.109 924.321 194.683 924.067 195C924.321 195.317 924.816 195.891 925.482 196.456C926.464 197.289 927.698 198 929 198C930.301 198 931.536 197.289 932.518 196.456C933.183 195.891 933.679 195.317 933.933 195C933.678 194.683 933.183 194.109 932.518 193.545C931.536 192.712 930.301 192 929 192C927.698 192 926.464 192.712 925.482 193.545Z" fill="#1EA7FD"/>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="484.98" y="227.777">3.</tspan></text>
+<rect x="501" y="214" width="157" height="16" rx="2" fill="#F3F3F3"/>
+<text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="Menlo" font-size="12" letter-spacing="0em"><tspan x="507" y="226.154">button.feA_uL.hYaIqu</tspan></text>
+<rect x="501.5" y="214.5" width="156" height="15" rx="1.5" stroke="black" stroke-opacity="0.1"/>
+<path d="M929 225.143C930.183 225.143 931.143 224.184 931.143 223C931.143 221.817 930.183 220.857 929 220.857C927.817 220.857 926.857 221.817 926.857 223C926.857 224.184 927.817 225.143 929 225.143Z" fill="#1EA7FD"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M935 223L934.821 223.251C934.715 223.398 932.204 226.857 929 226.857C925.796 226.857 923.285 223.398 923.179 223.251L923 223L923.179 222.749C923.285 222.602 925.796 219.143 929 219.143C932.204 219.143 934.715 222.602 934.821 222.749L935 223ZM925.482 221.545C924.817 222.109 924.321 222.683 924.067 223C924.321 223.317 924.816 223.891 925.482 224.456C926.464 225.289 927.698 226 929 226C930.301 226 931.536 225.289 932.518 224.456C933.183 223.891 933.679 223.317 933.933 223C933.678 222.683 933.183 222.109 932.518 221.545C931.536 220.712 930.301 220 929 220C927.698 220 926.464 220.712 925.482 221.545Z" fill="#1EA7FD"/>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="484.98" y="255.777">4.</tspan></text>
+<rect x="501" y="242" width="70" height="16" rx="2" fill="#F3F3F3"/>
+<text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="Menlo" font-size="12" letter-spacing="0em"><tspan x="507" y="254.154">a.eNIcSW</tspan></text>
+<rect x="501.5" y="242.5" width="69" height="15" rx="1.5" stroke="black" stroke-opacity="0.1"/>
+<path d="M929 253.143C930.183 253.143 931.143 252.184 931.143 251C931.143 249.817 930.183 248.857 929 248.857C927.817 248.857 926.857 249.817 926.857 251C926.857 252.184 927.817 253.143 929 253.143Z" fill="#1EA7FD"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M935 251L934.821 251.251C934.715 251.398 932.204 254.857 929 254.857C925.796 254.857 923.285 251.398 923.179 251.251L923 251L923.179 250.749C923.285 250.602 925.796 247.143 929 247.143C932.204 247.143 934.715 250.602 934.821 250.749L935 251ZM925.482 249.545C924.817 250.109 924.321 250.683 924.067 251C924.321 251.317 924.816 251.891 925.482 252.456C926.464 253.289 927.698 254 929 254C930.301 254 931.536 253.289 932.518 252.456C933.183 251.891 933.679 251.317 933.933 251C933.678 250.683 933.183 250.109 932.518 249.545C931.536 248.712 930.301 248 929 248C927.698 248 926.464 248.712 925.482 249.545Z" fill="#1EA7FD"/>
+</g>
+<rect x="0.5" y="81.5" width="949" height="202" stroke="#EEEEEE"/>
+<rect x="0.5" y="283.5" width="949" height="39" fill="white"/>
+<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="16" y="307.277">Incorrect tab order</tspan></text>
+<rect x="841" y="293" width="66" height="20" rx="10" fill="#FEDED2"/>
+<text fill="#D43900" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="853" y="306.948">Serious</tspan></text>
+<rect x="841.5" y="293.5" width="65" height="19" rx="9.5" stroke="#D43900" stroke-opacity="0.1"/>
+<path d="M928.354 296.146L932.354 300.146C932.549 300.342 932.549 300.658 932.354 300.854C932.158 301.049 931.842 301.049 931.646 300.854L928 297.207L924.354 300.854C924.158 301.049 923.842 301.049 923.646 300.854C923.451 300.658 923.451 300.342 923.646 300.146L927.646 296.146C927.842 295.951 928.158 295.951 928.354 296.146Z" fill="#7A858E"/>
+<path d="M932.354 305.146C932.549 305.342 932.549 305.658 932.354 305.854L928.354 309.854C928.158 310.049 927.842 310.049 927.646 309.854L923.646 305.854C923.451 305.658 923.451 305.342 923.646 305.146C923.842 304.951 924.158 304.951 924.354 305.146L928 308.793L931.646 305.146C931.842 304.951 932.158 304.951 932.354 305.146Z" fill="#7A858E"/>
+<rect x="0.5" y="283.5" width="949" height="39" stroke="#EEEEEE"/>
+<path d="M1 2H949V0H1V2Z" fill="#E1E5E8" mask="url(#path-2-outside-1_5692_96234)"/>
+<defs>
+<clipPath id="clip0_5692_96234">
+<rect width="14" height="14" fill="white" transform="translate(918 14)"/>
+</clipPath>
+<clipPath id="clip1_5692_96234">
+<rect width="948" height="40" fill="white" transform="translate(1 42)"/>
+</clipPath>
+<clipPath id="clip2_5692_96234">
+<rect x="1" y="82" width="948" height="201" fill="white"/>
+</clipPath>
+<clipPath id="clip3_5692_96234">
+<rect width="12" height="12" fill="white" transform="translate(151 234)"/>
+</clipPath>
+<clipPath id="clip4_5692_96234">
+<rect width="12" height="12" fill="white" transform="translate(161 252)"/>
+</clipPath>
+<clipPath id="clip5_5692_96234">
+<rect width="12" height="12" fill="white" transform="translate(923 133)"/>
+</clipPath>
+</defs>
+</svg>

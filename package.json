@@ -24,7 +24,7 @@
     "date-fns": "^2.16.1",
     "dotenv": "^8.2.0",
     "encoding": "^0.1.13",
-    "framer-motion": "^7.2.1",
+    "framer-motion": "7.0.0",
     "gatsby": "^4.16.0",
     "gatsby-cli": "4.16.0",
     "gatsby-image": "^3.11.0",

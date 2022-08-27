@@ -2,7 +2,7 @@
 /* eslint-disable react/self-closing-comp */
 import React from 'react';
 import { styled } from '@storybook/theming';
-import { motion, useTransform, useWillChange } from 'framer-motion';
+import { motion, useTransform } from 'framer-motion';
 
 const SVG = styled(motion.svg)`
   display: block;
@@ -16,7 +16,6 @@ const SVG = styled(motion.svg)`
 export const VSCode = ({ scrollProgress }) => {
   const x = useTransform(scrollProgress, [0, 1], ['0%', '40%']);
   const opacity = useTransform(scrollProgress, [0, 0.5, 1], [1, 1, 0]);
-  const willChange = useWillChange();
 
   return (
     <SVG
@@ -27,7 +26,7 @@ export const VSCode = ({ scrollProgress }) => {
       viewBox="0 0 1280 993"
       initial="initial"
       whileInView="animate"
-      style={{ translateX: x, opacity, willChange }}
+      style={{ translateX: x, opacity }}
       viewport={{ amount: 'some' }}
       transition={{ duration: 0.5 }}
       layout

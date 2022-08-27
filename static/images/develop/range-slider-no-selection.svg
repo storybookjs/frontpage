@@ -4,20 +4,20 @@
 <rect x="15" y="10" width="340" height="273" rx="10" fill="white"/>
 </g>
 <g id="Group 74">
-<text id="Requests" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="45" y="222.277">Minimum</tspan></text>
-<text id="Requests_2" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="205" y="222.277">Maximum</tspan></text>
+<text id="Requests" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="45" y="222.277">Minimum</tspan></text>
+<text id="Requests_2" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="205" y="222.277">Maximum</tspan></text>
 <rect id="Rectangle 163" x="181" y="246" width="8" height="1" fill="black" fill-opacity="0.1"/>
 <g id="Input / Text">
 <g id="_Input / Text">
 <rect x="205" y="231" width="120" height="32" rx="4" fill="white"/>
-<text id="Text" fill="#999999" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" letter-spacing="0em"><tspan x="215" y="251.277">Set price</tspan></text>
+<text id="Text" fill="#999999" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="215" y="251.277">Set price</tspan></text>
 <rect x="205.5" y="231.5" width="119" height="31" rx="3.5" stroke="black" stroke-opacity="0.1"/>
 </g>
 </g>
 <g id="Input / Text_2">
 <g id="_Input / Text_2">
 <rect x="45" y="231" width="120" height="32" rx="4" fill="white"/>
-<text id="Text_2" fill="#999999" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" letter-spacing="0em"><tspan x="55" y="251.277">Set price</tspan></text>
+<text id="Text_2" fill="#999999" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="55" y="251.277">Set price</tspan></text>
 <rect x="45.5" y="231.5" width="119" height="31" rx="3.5" stroke="black" stroke-opacity="0.1"/>
 </g>
 </g>
@@ -43,14 +43,14 @@
 </g>
 <path id="xticks" fill-rule="evenodd" clip-rule="evenodd" d="M45 173H44V177H45V173ZM269 173H268V177H269V173ZM156 173H157V177H156V173ZM325 173H324V177H325V173ZM100 173H101V177H100V173ZM213 173H212V177H213V173Z" fill="black" fill-opacity="0.1"/>
 <g id="xaxis">
-<text id="30ms" fill="#999999" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="10" letter-spacing="0px"><tspan x="94.0039" y="190.29">20</tspan></text>
-<text id="40ms" fill="#999999" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="10" letter-spacing="0px"><tspan x="150.004" y="190.29">40</tspan></text>
-<text id="50ms" fill="#999999" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="10" letter-spacing="0px"><tspan x="207.004" y="190.29">60</tspan></text>
-<text id="60ms" fill="#999999" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="10" letter-spacing="0px"><tspan x="263.004" y="190.29">80</tspan></text>
-<text id="80ms" fill="#999999" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="10" letter-spacing="0px"><tspan x="312.006" y="190.29">100</tspan></text>
-<text id="20ms" fill="#999999" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="10" letter-spacing="0px"><tspan x="42.002" y="190.29">0</tspan></text>
+<text id="30ms" fill="#999999" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10" letter-spacing="0px"><tspan x="94.0039" y="190.29">20</tspan></text>
+<text id="40ms" fill="#999999" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10" letter-spacing="0px"><tspan x="150.004" y="190.29">40</tspan></text>
+<text id="50ms" fill="#999999" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10" letter-spacing="0px"><tspan x="207.004" y="190.29">60</tspan></text>
+<text id="60ms" fill="#999999" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10" letter-spacing="0px"><tspan x="263.004" y="190.29">80</tspan></text>
+<text id="80ms" fill="#999999" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10" letter-spacing="0px"><tspan x="312.006" y="190.29">100</tspan></text>
+<text id="20ms" fill="#999999" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10" letter-spacing="0px"><tspan x="42.002" y="190.29">0</tspan></text>
 </g>
-<text id="Latency distribution" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="45" y="53.277">Average nightly price: $0</tspan></text>
+<text id="Latency distribution" fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="45" y="53.277">Average nightly price: $0</tspan></text>
 <rect id="Rectangle 162" x="355" y="169" width="340" height="2" transform="rotate(-180 355 169)" fill="black" fill-opacity="0.1"/>
 <g id="Group 72">
 <g id="Oval" filter="url(#filter1_d_3666_63519)">
