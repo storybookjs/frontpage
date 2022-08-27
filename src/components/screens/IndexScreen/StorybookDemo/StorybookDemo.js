@@ -6,6 +6,15 @@ import { AddonsPanel } from './AddonsPanel';
 import { RangeSlider } from './RangeSlider';
 import { VSCode } from './VSCode';
 
+const Img = styled(motion.img)`
+  display: block;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+`;
+
 const SVG = styled(motion.svg)`
   display: block;
   /* width: 100%; */
@@ -43,14 +52,20 @@ export const StorybookDemo = ({ isolationScrollProgress, activeStory, ...props }
 
   const width = useTransform(isolationScrollProgress, [0, 1], ['100%', '157%']);
   const scale = useTransform(isolationScrollProgress, [0, 1], [1, 1.5]);
-  const x = useTransform(isolationScrollProgress, [0, 1], ['0%', '-3.2%']);
-  const y = useTransform(isolationScrollProgress, [0, 1], ['0%', '-6.15%']);
-  // const x = useTransform(isolationScrollProgress, [0, 1], ['0%', '35.3%']);
-  // const y = useTransform(isolationScrollProgress, [0, 1], ['0%', '41%']);
+  // const x = useTransform(isolationScrollProgress, [0, 1], ['0%', '-3.2%']);
+  // const y = useTransform(isolationScrollProgress, [0, 1], ['0%', '-6.15%']);
+  const x = useTransform(isolationScrollProgress, [0, 1], ['0%', '35.3%']);
+  const y = useTransform(isolationScrollProgress, [0, 1], ['0%', '41%']);
 
   return (
     <Wrapper {...props}>
-      <SVG
+      <Img
+        src="images/home/storybook-mock-ui.svg"
+        layout
+        style={{ scale, x, y, willChange }}
+        transition={{ delay: 0.4 }}
+      />
+      {/* <SVG
         xmlns="http://www.w3.org/2000/svg"
         width="1281"
         height="920"
@@ -1036,6 +1051,7 @@ export const StorybookDemo = ({ isolationScrollProgress, activeStory, ...props }
           </filter>
         </defs>
       </SVG>
+      */}
       <MotionConfig transition={{ duration: 1 }}>
         <RangeSlider
           rpDefaultOpacity={defaultStoryOpacity}
