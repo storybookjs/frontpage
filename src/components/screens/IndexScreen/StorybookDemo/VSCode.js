@@ -30,7 +30,7 @@ export const VSCode = ({ scrollProgress }) => {
     <>
       <Img src="images/develop/vscode.svg" width="1280" height="993" style={{ x, opacity }} />
       <Clip
-        style={{ transformOrigin: 'center bottom' }}
+        style={{ transformOrigin: 'center bottom', x, opacity }}
         initial={{ scaleY: 1 }}
         whileInView={{ scaleY: 0 }}
         viewport={{ amount: 'some' }}

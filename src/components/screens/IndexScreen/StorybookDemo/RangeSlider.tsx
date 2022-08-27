@@ -27,7 +27,7 @@ interface RangeSliderProps {
   activeStory: string;
 }
 
-export const RangeSlider = ({ activeStory, ...props }) => {
+export const RangeSlider = ({ activeStory, ...props }: RangeSliderProps) => {
   return (
     <RangeSliderWrapper
       whileInView={{
@@ -37,11 +37,16 @@ export const RangeSlider = ({ activeStory, ...props }) => {
       viewport={{ amount: 'some' }}
       {...props}
     >
-      <AnimatePresence initial={false}>
+      <AnimatePresence initial={false} exitBeforeEnter>
         <RangeSliderVariant
           key={activeStory}
           src={`images/develop/range-slider-${activeStory}.svg`}
           alt=""
+          width="370"
+          height="303"
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.4 }}
         />
       </AnimatePresence>
     </RangeSliderWrapper>

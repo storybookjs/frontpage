@@ -24,7 +24,7 @@ interface AddonsProps extends MotionProps {
 }
 
 export const AddonsPanel = ({ scrollProgress, activePanel, ...props }: AddonsProps) => {
-  const y = useTransform(scrollProgress, [0, 0.85, 1], ['100%', '100%', '0%'], { clamp: true });
+  const y = useTransform(scrollProgress, [0, 0.15], ['100%', '0%'], { clamp: true });
 
   return (
     <AddonsWrapper {...props}>

@@ -46,7 +46,7 @@ const MadeFor = styled.section`
   margin-bottom: 12px;
 `;
 
-const StickText = styled.div`
+const StickTextWrapper = styled.div`
   grid-column: 1 / 2;
 `;
 
@@ -121,8 +121,6 @@ const Stats = styled.div`
   gap: 30px;
 `;
 
-const debug = true;
-
 export function Develop({ docs, startOpen, ...props }) {
   // Step 1
   const isolationRef = useRef(null);
@@ -151,35 +149,27 @@ export function Develop({ docs, startOpen, ...props }) {
   const addonsRef = useRef(null);
   const { scrollYProgress: addonsProgress } = useScroll({
     target: addonsRef,
-    offset: ['start start', 'end start'],
+    offset: ['start .25', 'end start'],
   });
   const activePanel = useTransform(addonsProgress, (value) => Math.floor(value * 4));
-  // const smoothAddonsProgress = useSpring(addonsProgress, {
-  //   stiffness: 1000,
-  //   damping: 100,
-  // });
+  const smoothAddonsProgress = useSpring(addonsProgress, {
+    stiffness: 1000,
+    damping: 100,
+  });
+
+  // Step 4
+  const dropInRef = useRef(null);
+  const { scrollYProgress: dropInProgress } = useScroll({
+    target: dropInRef,
+    offset: ['start 0.25', 'start start'],
+  });
+  const smoothDropInProgress = useSpring(dropInProgress, {
+    stiffness: 1000,
+    damping: 100,
+  });
 
   return (
     <Wrapper {...props}>
-      {debug && (
-        <svg
-          style={{ position: 'fixed', top: 20, left: 20 }}
-          width="75"
-          height="75"
-          viewBox="0 0 100 100"
-          strokeWidth="4"
-        >
-          <circle cx="50" cy="50" r="30" pathLength="1" stroke="#fe0222" opacity="0.2" />
-          <motion.circle
-            cx="50"
-            cy="50"
-            r="30"
-            pathLength="1"
-            stroke="#fe0222"
-            style={{ pathLength: storiesProgress }}
-          />
-        </svg>
-      )}
       <SectionLede
         inverse
         heading="Develop durable user interfaces"
@@ -197,10 +187,11 @@ export function Develop({ docs, startOpen, ...props }) {
             storyIndex={activeStory}
             panelIndex={activePanel}
             isolationProgress={smoothIsolationProgress}
-            addonsProgress={smoothStoriesProgress}
+            addonsProgress={smoothAddonsProgress}
+            dropInProgress={smoothDropInProgress}
           />
         </StorybookDemoWrapper>
-        <StickText ref={isolationRef}>
+        <StickTextWrapper ref={isolationRef}>
           <ValueProp
             inverse
             heading="Build UI components and pages in isolation"
@@ -217,8 +208,8 @@ export function Develop({ docs, startOpen, ...props }) {
             }
           />
           <Spacer />
-        </StickText>
-        <StickText ref={storiesRef}>
+        </StickTextWrapper>
+        <StickTextWrapper ref={storiesRef}>
           <ValueProp
             inverse
             heading="Mock hard-to-reach edge cases as stories"
@@ -230,8 +221,8 @@ export function Develop({ docs, startOpen, ...props }) {
             }
           />
           <Spacer />
-        </StickText>
-        <StickText ref={addonsRef}>
+        </StickTextWrapper>
+        <StickTextWrapper ref={addonsRef}>
           <ValueProp
             inverse
             heading="Supercharge your workflow with addons"
@@ -243,8 +234,8 @@ export function Develop({ docs, startOpen, ...props }) {
             }
           />
           <Spacer />
-        </StickText>
-        <StickText>
+        </StickTextWrapper>
+        <StickTextWrapper ref={dropInRef}>
           <ValueProp
             inverse
             heading="Drop the finished UI components into your app"
@@ -256,7 +247,7 @@ export function Develop({ docs, startOpen, ...props }) {
             }
           />
           <Spacer />
-        </StickText>
+        </StickTextWrapper>
       </Content>
       <Content>
         <ValuePropIntegrations
