@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { styled } from '@storybook/theming';
-import { motion, MotionConfig, MotionValue, useTransform } from 'framer-motion';
+import { motion, MotionValue, useTransform } from 'framer-motion';
 import { Sidebar } from './Sidebar';
 import { AddonsPanel } from './AddonsPanel';
 import { RangeSlider } from './RangeSlider';
 import { VSCode } from './VSCode';
+import { App } from './App';
+import { Connector } from '../Connector';
 
 const Frame = styled(motion.img)`
   display: block;
@@ -36,6 +38,15 @@ const rangeSlider = {
   addons: ['controls', 'interactions', 'design', 'a11y', 'controls'],
 };
 
+const StyledConnector = styled(Connector)`
+  width: 24%;
+  height: auto;
+  position: absolute;
+  top: 25%;
+  left: 17.8%;
+  transform: rotate(-56deg);
+`;
+
 export const StorybookDemo = ({
   type = 'rangeSlider',
   isolationProgress,
@@ -65,18 +76,20 @@ export const StorybookDemo = ({
     };
   }, []);
 
-  // const zoom = useTransform(
-  //   [isolationProgress, dropInProgress],
-  //   ([latestIsolationProgress, latestDropInProgress]: number[]) =>
-  //     latestIsolationProgress - latestDropInProgress
-  // );
+  const zoom = useTransform(
+    [isolationProgress, dropInProgress],
+    ([latestIsolationProgress, latestDropInProgress]: number[]) =>
+      latestIsolationProgress - latestDropInProgress
+  );
 
-  const scale = useTransform(isolationProgress, [0, 1], [1, 1.5], { clamp: true });
-  const x = useTransform(isolationProgress, [0, 1], ['0%', '25%'], { clamp: true });
-  const y = useTransform(isolationProgress, [0, 1], ['0%', '25%'], { clamp: true });
+  const scale = useTransform(zoom, [0, 1], [1, 1.5], { clamp: true });
+  const x = useTransform(zoom, [0, 1], ['0%', '25%'], { clamp: true });
+  const y = useTransform(zoom, [0, 1], ['0%', '25%'], { clamp: true });
 
   const frameScale = useTransform(dropInProgress, [0, 1], [1, 0], { clamp: true });
   const frameOpacity = useTransform(dropInProgress, [0, 1], [1, 0.25], { clamp: true });
+
+  const connectorProgress = useTransform(dropInProgress, [0.75, 1], [0, 1], { clamp: true });
 
   return (
     <Wrapper style={{ scale, x, y }} transition={{ delay: 0.4 }} {...props}>
@@ -104,10 +117,10 @@ export const StorybookDemo = ({
           opacity: frameOpacity,
         }}
       />
-      <MotionConfig transition={{ duration: 1 }}>
-        <RangeSlider activeStory={activeStory} />
-        <VSCode scrollProgress={isolationProgress} />
-      </MotionConfig>
+      <App scrollProgress={dropInProgress} />
+      <StyledConnector name="rs-to-app" progress={connectorProgress} />
+      <RangeSlider activeStory={activeStory} scrollProgress={dropInProgress} />
+      <VSCode scrollProgress={isolationProgress} />
     </Wrapper>
   );
 };

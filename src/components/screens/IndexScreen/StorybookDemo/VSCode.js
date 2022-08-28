@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-curly-brace-presence */
-/* eslint-disable react/self-closing-comp */
 import React from 'react';
 import { styled } from '@storybook/theming';
 import { motion, useTransform } from 'framer-motion';
@@ -34,7 +32,7 @@ export const VSCode = ({ scrollProgress }) => {
         initial={{ scaleY: 1 }}
         whileInView={{ scaleY: 0 }}
         viewport={{ amount: 'some' }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.5, delay: 1 }}
       />
     </>
   );

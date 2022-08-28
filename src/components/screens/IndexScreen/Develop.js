@@ -9,7 +9,7 @@ import {
   ValuePropCopy,
   Testimonial,
 } from '@storybook/components-marketing';
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { useScroll, useTransform, useSpring } from 'framer-motion';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import { Stat } from '../../basics/Stat';
 import AtomicDesignLogoSVG from '../../../images/logos/user/logo-atomicdesign.svg';
@@ -140,16 +140,12 @@ export function Develop({ docs, startOpen, ...props }) {
     offset: ['start start', 'end start'],
   });
   const activeStory = useTransform(storiesProgress, (value) => Math.floor(value * 3));
-  const smoothStoriesProgress = useSpring(storiesProgress, {
-    stiffness: 1000,
-    damping: 100,
-  });
 
   // Step 3
   const addonsRef = useRef(null);
   const { scrollYProgress: addonsProgress } = useScroll({
     target: addonsRef,
-    offset: ['start .25', 'end start'],
+    offset: ['start .2', 'end start'],
   });
   const activePanel = useTransform(addonsProgress, (value) => Math.floor(value * 4));
   const smoothAddonsProgress = useSpring(addonsProgress, {
@@ -161,7 +157,7 @@ export function Develop({ docs, startOpen, ...props }) {
   const dropInRef = useRef(null);
   const { scrollYProgress: dropInProgress } = useScroll({
     target: dropInRef,
-    offset: ['start 0.25', 'start start'],
+    offset: ['start .25', 'start start'],
   });
   const smoothDropInProgress = useSpring(dropInProgress, {
     stiffness: 1000,
