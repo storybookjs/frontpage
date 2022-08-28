@@ -98,20 +98,21 @@ const Content = styled.div`
 
 const StorybookDemoWrapper = styled.figure`
   position: sticky;
-  top: 1rem;
+  top: 4rem;
   width: 100%;
   order: -1;
   z-index: 999;
   margin: 0;
   align-self: flex-start;
 
+  @media (min-width: ${breakpoints[1]}px) {
+    top: 3rem;
+  }
+
   @media (min-width: ${breakpoints[2]}px) {
     width: 150%;
     max-width: 800px;
     grid-column: 2 / 3;
-  }
-
-  @media (min-width: ${breakpoints[2]}px) {
     top: 4rem;
   }
 `;

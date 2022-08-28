@@ -31,12 +31,11 @@ const Wrapper = styled(motion.div)`
 
 const Scrim = styled(motion.div)`
   position: absolute;
-  height: 150%;
-  top: -30%;
+  height: 135%;
+  top: -25%;
   left: 0;
   right: 0;
-  pointer-events: none;
-  background: linear-gradient(0deg, rgba(23, 28, 35, 0%) 0%, rgba(23, 28, 35, 100%) 50%);
+  background: linear-gradient(0deg, rgba(23, 28, 35, 0%) 0%, rgba(23, 28, 35, 100%) 10%);
 `;
 
 interface StorybookDemoProps {
@@ -102,6 +101,7 @@ export const StorybookDemo = ({
   const scale = useTransform(zoom, [0, 1], [1, stacked ? 1.5 : 1.25], { clamp: true });
   const x = useTransform(zoom, [0, 1], ['0%', stacked ? '25%' : '12.5%'], { clamp: true });
   const y = useTransform(zoom, [0, 1], ['0%', stacked ? '25.5%' : '12.5%'], { clamp: true });
+  const scrimY = useTransform(zoom, [0, 1], ['0%', '-5%'], { clamp: true });
 
   const frameScale = useTransform(dropInProgress, [0, 1], [1, 0], { clamp: true });
   const frameOpacity = useTransform(dropInProgress, [0, 1], [1, 0.25], { clamp: true });
@@ -110,7 +110,7 @@ export const StorybookDemo = ({
 
   return (
     <Wrapper style={{ scale, x, y }} transition={{ delay: 0.4 }} {...props}>
-      <Scrim />
+      <Scrim style={{ y: scrimY }} />
       <Frame
         src="images/develop/storybook-frame.svg"
         alt=""
