@@ -50,23 +50,28 @@ const StickTextWrapper = styled.div`
   grid-column: 1 / 2;
 `;
 
-const Spacer = styled.div`
+const TopSpacer = styled.div`
   height: 64rem;
+
+  @media (min-width: ${breakpoints[2]}px) {
+    display: none;
+  }
+`;
+const BottomSpacer = styled.div`
+  height: 64rem;
+  display: none;
+
+  @media (min-width: ${breakpoints[2]}px) {
+    display: block;
+  }
 `;
 
 const ValueProp = styled(ValuePropCopy)`
   position: sticky;
-  top: 40%;
-
-  @media (min-width: ${breakpoints[0]}px) {
-    top: 50%;
-  }
-
-  @media (min-width: ${breakpoints[1]}px) {
-    top: 60%;
-  }
+  bottom: 2rem;
 
   @media (min-width: ${breakpoints[2]}px) {
+    bottom: unset;
     top: 4rem;
   }
 `;
@@ -93,7 +98,7 @@ const Content = styled.div`
 
 const StorybookDemoWrapper = styled.figure`
   position: sticky;
-  top: 4rem;
+  top: 1rem;
   width: 100%;
   order: -1;
   z-index: 999;
@@ -104,6 +109,10 @@ const StorybookDemoWrapper = styled.figure`
     width: 150%;
     max-width: 800px;
     grid-column: 2 / 3;
+  }
+
+  @media (min-width: ${breakpoints[2]}px) {
+    top: 4rem;
   }
 `;
 
@@ -188,6 +197,7 @@ export function Develop({ docs, startOpen, ...props }) {
           />
         </StorybookDemoWrapper>
         <StickTextWrapper ref={isolationRef}>
+          <TopSpacer />
           <ValueProp
             inverse
             heading="Build UI components and pages in isolation"
@@ -203,9 +213,10 @@ export function Develop({ docs, startOpen, ...props }) {
               </>
             }
           />
-          <Spacer />
+          <BottomSpacer />
         </StickTextWrapper>
         <StickTextWrapper ref={storiesRef}>
+          <TopSpacer />
           <ValueProp
             inverse
             heading="Mock hard-to-reach edge cases as stories"
@@ -216,9 +227,10 @@ export function Develop({ docs, startOpen, ...props }) {
               </Link>
             }
           />
-          <Spacer />
+          <BottomSpacer />
         </StickTextWrapper>
         <StickTextWrapper ref={addonsRef}>
+          <TopSpacer />
           <ValueProp
             inverse
             heading="Supercharge your workflow with addons"
@@ -229,9 +241,10 @@ export function Develop({ docs, startOpen, ...props }) {
               </Link>
             }
           />
-          <Spacer />
+          <BottomSpacer />
         </StickTextWrapper>
         <StickTextWrapper ref={dropInRef}>
+          <TopSpacer />
           <ValueProp
             inverse
             heading="Drop the finished UI components into your app"
@@ -242,7 +255,7 @@ export function Develop({ docs, startOpen, ...props }) {
               </Link>
             }
           />
-          <Spacer />
+          <BottomSpacer />
         </StickTextWrapper>
       </Content>
       <Content>

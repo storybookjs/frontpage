@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { styled } from '@storybook/theming';
+import { styles } from '@storybook/components-marketing';
 import { motion, MotionValue, useTransform } from 'framer-motion';
 import { Sidebar } from './Sidebar';
 import { AddonsPanel } from './AddonsPanel';
@@ -7,6 +8,9 @@ import { RangeSlider } from './RangeSlider';
 import { VSCode } from './VSCode';
 import { App } from './App';
 import { Connector } from '../Connector';
+import { useMediaQuery } from '../../../lib/useMediaQuery';
+
+const { breakpoints } = styles;
 
 const Frame = styled(motion.img)`
   display: block;
@@ -22,6 +26,17 @@ const Wrapper = styled(motion.div)`
   width: 100%;
   height: 0;
   padding-bottom: 71.81889149%;
+  z-index: 999;
+`;
+
+const Scrim = styled(motion.div)`
+  position: absolute;
+  height: 150%;
+  top: -30%;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  background: linear-gradient(0deg, rgba(23, 28, 35, 0%) 0%, rgba(23, 28, 35, 100%) 50%);
 `;
 
 interface StorybookDemoProps {
@@ -82,9 +97,11 @@ export const StorybookDemo = ({
       latestIsolationProgress - latestDropInProgress
   );
 
-  const scale = useTransform(zoom, [0, 1], [1, 1.5], { clamp: true });
-  const x = useTransform(zoom, [0, 1], ['0%', '25%'], { clamp: true });
-  const y = useTransform(zoom, [0, 1], ['0%', '25%'], { clamp: true });
+  const [stacked] = useMediaQuery(`(min-width: ${breakpoints[2]}px)`);
+
+  const scale = useTransform(zoom, [0, 1], [1, stacked ? 1.5 : 1.25], { clamp: true });
+  const x = useTransform(zoom, [0, 1], ['0%', stacked ? '25%' : '12.5%'], { clamp: true });
+  const y = useTransform(zoom, [0, 1], ['0%', stacked ? '25.5%' : '12.5%'], { clamp: true });
 
   const frameScale = useTransform(dropInProgress, [0, 1], [1, 0], { clamp: true });
   const frameOpacity = useTransform(dropInProgress, [0, 1], [1, 0.25], { clamp: true });
@@ -93,6 +110,7 @@ export const StorybookDemo = ({
 
   return (
     <Wrapper style={{ scale, x, y }} transition={{ delay: 0.4 }} {...props}>
+      <Scrim />
       <Frame
         src="images/develop/storybook-frame.svg"
         alt=""
