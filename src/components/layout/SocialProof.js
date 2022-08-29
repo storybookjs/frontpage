@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@storybook/theming';
 import { NormalizeArea, styles } from '@storybook/components-marketing';
+import { useMediaQuery } from '../lib/useMediaQuery';
 
 const { color, spacing, typography, pageMargins, breakpoints } = styles;
 
@@ -16,7 +17,7 @@ const Logos = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
   flex-wrap: wrap;
 
   @media (min-width: ${breakpoints[2]}px) {
@@ -26,8 +27,13 @@ const Logos = styled.div`
 
 const Wrapper = styled.div`
   ${pageMargins};
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+
+  @media (min-width: ${breakpoints[2]}px) {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
 `;
 
 const brands = [
@@ -76,6 +82,8 @@ const brands = [
 ];
 
 export default function SocialProof(props) {
+  const [greaterThanBreakpoint2] = useMediaQuery(`(min-width: ${breakpoints[2]}px)`);
+
   return (
     <Wrapper {...props}>
       <Logos>
@@ -84,7 +92,7 @@ export default function SocialProof(props) {
             key={brand.name}
             width={brand.width}
             height={brand.height}
-            idealArea={5000}
+            idealArea={greaterThanBreakpoint2 ? 5000 : 1500}
           >
             <Logo src={brand.image} alt={brand.name} />
           </NormalizeArea>

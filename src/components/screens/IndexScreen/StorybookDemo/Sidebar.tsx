@@ -31,15 +31,19 @@ export const Sidebar = ({ activeStory, type = 'rangeSlider', ...props }: Sidebar
         </AnimatePresence>
       )}
       {type === 'timeFrame' && (
-        <>
-          <AnimatePresence initial={false}>
-            <Instance
-              key={activeStory}
-              src={`images/develop/sidebar-tf-${activeStory}.svg`}
-              alt=""
-            />
-          </AnimatePresence>
-        </>
+        <AnimatePresence initial={false}>
+          <Instance
+            key={activeStory}
+            src={`images/develop/sidebar-tf-${
+              ['start-time', 'end-time'].includes(activeStory) ? 'all-day' : activeStory
+            }.svg`}
+            alt=""
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: ['start-time', 'end-time'].includes(activeStory) ? 0 : 0.1 }}
+          />
+        </AnimatePresence>
       )}
     </SidebarWrapper>
   );

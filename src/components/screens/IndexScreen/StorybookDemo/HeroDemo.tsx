@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { styled } from '@storybook/theming';
 import { styles } from '@storybook/components-marketing';
-import { motion, MotionValue, useTransform } from 'framer-motion';
+import { motion, MotionValue, useAnimationControls, AnimationControls } from 'framer-motion';
 import { Sidebar } from './Sidebar';
 import { Controls } from './Controls';
-import { useMediaQuery } from '../../../lib/useMediaQuery';
 import { TimeFrame } from './TimeFrame';
 
 const { breakpoints } = styles;
@@ -24,15 +23,11 @@ const Wrapper = styled(motion.div)`
   height: 0;
   padding-bottom: 71.81889149%;
   z-index: 999;
-`;
+  overflow: hidden;
 
-const Scrim = styled(motion.div)`
-  position: absolute;
-  height: 135%;
-  top: -25%;
-  left: 0;
-  right: 0;
-  background: linear-gradient(0deg, rgba(23, 28, 35, 0%) 0%, rgba(23, 28, 35, 100%) 10%);
+  @media (min-width: ${breakpoints[1]}px) {
+    margin-top: -12.625rem;
+  }
 `;
 
 interface HeroDemoProps {
@@ -43,57 +38,159 @@ interface HeroDemoProps {
   panelIndex: MotionValue;
 }
 
-const timeFrame = {
-  stories: ['no-selection', 'last-hour', 'all-day'],
-  addons: ['controls', 'interactions', 'design', 'a11y', 'controls'],
+const Pointer = styled(motion.img)`
+  display: block;
+  width: 5.66%;
+  height: auto;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+`;
+
+const click = async (controls: AnimationControls, callback: () => void) => {
+  return Promise.all([
+    new Promise((res) => setTimeout(res, 525)).then(callback),
+    controls.start({
+      scale: [1, 0.9, 1],
+      transition: { type: 'spring', stiffness: 700, damping: 80, duration: 0.3, delay: 0.4 },
+    }),
+  ]);
 };
 
-export const HeroDemo = ({
-  isolationProgress,
-  addonsProgress,
-  dropInProgress,
-  storyIndex,
-  panelIndex,
-  ...props
-}: HeroDemoProps) => {
+export const HeroDemo = ({ ...props }: HeroDemoProps) => {
   const [activeStory, setActiveStory] = useState('no-selection');
-  const [activePanel, setActivePanel] = useState('controls');
+
+  const pointerControls = useAnimationControls();
+  const startTimeControls = useAnimationControls();
+  const endTimeControls = useAnimationControls();
 
   useEffect(() => {
-    function updateId() {
-      setActiveStory(timeFrame.stories[storyIndex.get()]);
-    }
-    const unsubscribeStoryIndex = storyIndex.onChange(updateId);
+    const sequence = async () => {
+      // Cycle through stories
+      await pointerControls.start({
+        opacity: [0, 1],
+        x: '-730%',
+        y: '-466%',
+        transition: {
+          delay: 1,
+          duration: 1,
+          opacity: { duration: 0.4 },
+        },
+      });
+      await click(pointerControls, () => {
+        setActiveStory('last-hour');
+      });
+      await pointerControls.start({
+        y: '-434%',
+        transition: {
+          delay: 1,
+          duration: 0.4,
+        },
+      });
+      await click(pointerControls, () => {
+        setActiveStory('all-day');
+      });
+      // Update startTime control
+      await pointerControls.start({
+        x: '520%',
+        y: '-294%',
+        transition: { delay: 1, duration: 1 },
+      });
+      await Promise.all([
+        pointerControls.start({
+          scale: 0.9,
+          opacity: 0,
+          transition: {
+            scale: {
+              type: 'spring',
+              stiffness: 700,
+              damping: 80,
+              duration: 0.4,
+              delay: 0.4,
+            },
+            opacity: { delay: 0.4, duration: 0.1 },
+          },
+        }),
+        startTimeControls.start('visible'),
+      ]);
+      setActiveStory('start-time');
+      // Update endTime control
+      await pointerControls.start({
+        opacity: 1,
+        x: '520%',
+        y: '-220%',
+        transition: { delay: 1, duration: 1, opacity: { duration: 0.2 } },
+      });
+      await Promise.all([
+        pointerControls.start({
+          scale: 0.9,
+          opacity: 0,
+          transition: {
+            scale: {
+              type: 'spring',
+              stiffness: 700,
+              damping: 80,
+              duration: 0.4,
+              delay: 0.4,
+            },
+            opacity: { delay: 0.4, duration: 0.1 },
+          },
+        }),
+        endTimeControls.start('visible'),
+      ]);
+      setActiveStory('end-time');
 
-    function updatePanel() {
-      setActivePanel(timeFrame.addons[panelIndex.get()]);
-    }
-    const unsubscribePanel = panelIndex.onChange(updatePanel);
+      // Show docs
+      await pointerControls.start({
+        opacity: 1,
+        x: '-730%',
+        y: '-532%',
+        transition: { delay: 1, duration: 1, opacity: { duration: 0.2 } },
+      });
+      await click(pointerControls, () => {
+        setActiveStory('overview');
+      });
 
-    return () => {
-      unsubscribeStoryIndex();
-      unsubscribePanel();
+      // Reset state
+      await pointerControls.start({
+        x: '-730%',
+        y: '-498%',
+        transition: {
+          delay: 1,
+          duration: 1,
+        },
+      });
+      await click(pointerControls, () => {
+        setActiveStory('no-selection');
+      });
+      await Promise.all([
+        pointerControls.start({
+          x: '0%',
+          y: '0%',
+          opacity: 0,
+          transition: { delay: 1, duration: 1, opacity: { duration: 0.4 } },
+        }),
+        endTimeControls.start('initial'),
+        startTimeControls.start('initial'),
+      ]);
     };
-  }, []);
 
-  const zoom = useTransform(
-    [isolationProgress, dropInProgress],
-    ([latestIsolationProgress, latestDropInProgress]: number[]) =>
-      latestIsolationProgress - latestDropInProgress
-  );
-
-  const [stacked] = useMediaQuery(`(min-width: ${breakpoints[2]}px)`);
-
-  const scale = useTransform(zoom, [0, 1], [1, stacked ? 1.5 : 1.25], { clamp: true });
-  const x = useTransform(zoom, [0, 1], ['0%', stacked ? '25%' : '12.5%'], { clamp: true });
-  const y = useTransform(zoom, [0, 1], ['0%', stacked ? '25.5%' : '12.5%'], { clamp: true });
+    sequence();
+  }, [pointerControls, startTimeControls, endTimeControls]);
 
   return (
-    <Wrapper style={{ scale, x, y }} transition={{ delay: 0.4 }} {...props}>
+    <Wrapper {...props}>
       <Frame src="images/develop/storybook-frame.svg" alt="" />
       <Sidebar type="timeFrame" activeStory={activeStory} />
-      <Controls scrollProgress={addonsProgress} activePanel={activePanel} />
+      <Controls startTimeControls={startTimeControls} endTimeControls={endTimeControls} />
       <TimeFrame activeStory={activeStory} />
+      <Pointer
+        animate={pointerControls}
+        src="images/develop/pointer.svg"
+        alt=""
+        width="68"
+        height="74"
+      />
     </Wrapper>
   );
 };

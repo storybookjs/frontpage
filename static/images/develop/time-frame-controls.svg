@@ -8,12 +8,12 @@
 <path d="M292 490H1240V531H292V490Z"/>
 </mask>
 <path d="M292 490H1240V531H292V490Z" fill="white"/>
-<text fill="#1EA7FD" xml:space="preserve" style="white-space: pre" Last hourfont-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="307" y="514.606">Controls</tspan></text>
+<text fill="#1EA7FD" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="307" y="514.606">Controls</tspan></text>
 <rect x="292" y="527" width="85" height="3" fill="#1EA7FD"/>
-<text fill="#7A858E" xml:space="preserve" style="white-space: pre" Last hourfont-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="392" y="514.606">Interactions</tspan></text>
-<text fill="#7A858E" xml:space="preserve" style="white-space: pre" Last hourfont-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="499" y="514.606">Design</tspan></text>
-<text fill="#7A858E" xml:space="preserve" style="white-space: pre" Last hourfont-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="575" y="514.606">Accessibility</tspan></text>
-<text fill="#7A858E" xml:space="preserve" style="white-space: pre" Last hourfont-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="686" y="514.606">Actions</tspan></text>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="392" y="514.606">Interactions</tspan></text>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="499" y="514.606">Design</tspan></text>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="575" y="514.606">Accessibility</tspan></text>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="686" y="514.606">Actions</tspan></text>
 <path d="M1186.5 507.504C1186.5 507.228 1186.72 507.004 1187 507.004H1188C1188.28 507.004 1188.5 507.228 1188.5 507.504C1188.5 507.78 1188.28 508.004 1188 508.004H1187C1186.72 508.004 1186.5 507.78 1186.5 507.504Z" fill="#7A858E"/>
 <path d="M1187 509.004C1186.72 509.004 1186.5 509.228 1186.5 509.504C1186.5 509.78 1186.72 510.004 1187 510.004H1188C1188.28 510.004 1188.5 509.78 1188.5 509.504C1188.5 509.228 1188.28 509.004 1188 509.004H1187Z" fill="#7A858E"/>
 <path d="M1186.5 511.504C1186.5 511.228 1186.72 511.004 1187 511.004H1188C1188.28 511.004 1188.5 511.228 1188.5 511.504C1188.5 511.78 1188.28 512.004 1188 512.004H1187C1186.72 512.004 1186.5 511.78 1186.5 511.504Z" fill="#7A858E"/>
@@ -25,23 +25,23 @@
 <path d="M1240 530H292V532H1240V530Z" fill="#E1E5E8" mask="url(#path-3-inside-2_5745_88617)"/>
 <rect width="948" height="40" transform="translate(292 531)" fill="white"/>
 <rect x="292" y="570" width="948" height="1" fill="#DDDDDD"/>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" Last hourfont-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="312" y="555.277">Name</tspan></text>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" Last hourfont-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="534" y="555.277">Description</tspan></text>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" Last hourfont-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="776" y="555.277">Default</tspan></text>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" Last hourfont-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="1018" y="555.277">Controls</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="312" y="555.277">Name</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="534" y="555.277">Description</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="776" y="555.277">Default</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="1018" y="555.277">Controls</tspan></text>
 <g clip-path="url(#clip1_5745_88617)">
 <path d="M1214.5 545C1214.5 544.724 1214.28 544.5 1214 544.5H1211C1210.72 544.5 1210.5 544.724 1210.5 545C1210.5 545.276 1210.72 545.5 1211 545.5H1212.53C1210.71 546.651 1209.5 548.684 1209.5 551C1209.5 554.221 1211.84 556.894 1214.92 557.41C1215.19 557.456 1215.45 557.272 1215.49 557C1215.54 556.727 1215.36 556.47 1215.08 556.424C1212.48 555.988 1210.5 553.725 1210.5 551C1210.5 548.863 1211.72 547.01 1213.5 546.1V548C1213.5 548.276 1213.72 548.5 1214 548.5C1214.28 548.5 1214.5 548.276 1214.5 548V545.353C1214.5 545.345 1214.5 545.338 1214.5 545.33V545Z" fill="#7A858E"/>
 <path d="M1216.51 545C1216.55 544.728 1216.81 544.544 1217.08 544.59C1220.16 545.106 1222.5 547.779 1222.5 551C1222.5 553.316 1221.29 555.349 1219.47 556.5H1221C1221.28 556.5 1221.5 556.724 1221.5 557C1221.5 557.276 1221.28 557.5 1221 557.5H1218C1217.72 557.5 1217.5 557.276 1217.5 557V554C1217.5 553.724 1217.72 553.5 1218 553.5C1218.28 553.5 1218.5 553.724 1218.5 554V555.9C1220.28 554.99 1221.5 553.137 1221.5 551C1221.5 548.275 1219.52 546.012 1216.92 545.576C1216.64 545.53 1216.46 545.273 1216.51 545Z" fill="#7A858E"/>
 </g>
 <rect width="948" height="40" transform="translate(292 571)" fill="#F6F9FC"/>
 <rect x="292" y="610" width="948" height="1" fill="#DDDDDD"/>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" Last hourfont-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="800" letter-spacing="0.38em"><tspan x="303" y="594.119">PROPS</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="800" letter-spacing="0.38em"><tspan x="303" y="594.119">PROPS</tspan></text>
 <mask id="path-24-inside-3_5745_88617" fill="white">
 <path d="M292 611H1240V669H292V611Z"/>
 </mask>
 <path d="M292 611H1240V669H292V611Z" fill="white"/>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" Last hourfont-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="312" y="634.277">label</tspan></text>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" Last hourfont-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="534" y="634.277">Label of component</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="312" y="634.277">label</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="534" y="634.277">Label of component</tspan></text>
 <rect x="534" y="641" width="56" height="16" rx="2" fill="#F3F3F3"/>
 <text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="Menlo" font-size="12" letter-spacing="0em"><tspan x="540" y="653.154">String</tspan></text>
 <rect x="534.5" y="641.5" width="55" height="15" rx="1.5" stroke="black" stroke-opacity="0.1"/>
@@ -49,15 +49,15 @@
 <text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="Menlo" font-size="12" letter-spacing="0em"><tspan x="782" y="633.154">Choose time frame</tspan></text>
 <rect x="776.5" y="621.5" width="134" height="15" rx="1.5" stroke="black" stroke-opacity="0.1"/>
 <rect x="1018.5" y="621.5" width="201" height="31" rx="3.5" fill="white"/>
-<text fill="#333333" xml:space="preserve" style="white-space: pre" Last hourfont-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="1030" y="641.277">Usage frequency</tspan></text>
+<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="1030" y="641.277">Usage frequency</tspan></text>
 <rect x="1018.5" y="621.5" width="201" height="31" rx="3.5" stroke="#E1E5E8"/>
 <path d="M1240 668H292V670H1240V668Z" fill="#E1E5E8" mask="url(#path-24-inside-3_5745_88617)"/>
 <mask id="path-36-inside-4_5745_88617" fill="white">
 <path d="M292 669H1240V727H292V669Z"/>
 </mask>
 <path d="M292 669H1240V727H292V669Z" fill="white"/>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" Last hourfont-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="312" y="692.277">startTime</tspan></text>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" Last hourfont-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="534" y="692.277">Start time in 24h notation</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="312" y="692.277">startTime</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="534" y="692.277">Start time in 24h notation</tspan></text>
 <rect x="534" y="699" width="56" height="16" rx="2" fill="#F3F3F3"/>
 <text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="Menlo" font-size="12" letter-spacing="0em"><tspan x="540" y="711.154">string</tspan></text>
 <rect x="534.5" y="699.5" width="55" height="15" rx="1.5" stroke="black" stroke-opacity="0.1"/>
@@ -65,15 +65,15 @@
 <text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="Menlo" font-size="12" letter-spacing="0em"><tspan x="782" y="691.154">undefined</tspan></text>
 <rect x="776.5" y="679.5" width="77" height="15" rx="1.5" stroke="black" stroke-opacity="0.1"/>
 <rect x="1018.5" y="679.5" width="201" height="31" rx="3.5" fill="white"/>
-<text fill="#333333" xml:space="preserve" style="white-space: pre" Last hourfont-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="1030" y="700.277">13:30</tspan></text>
+<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="1030" y="700.277">00:00</tspan></text>
 <rect x="1018.5" y="679.5" width="201" height="31" rx="3.5" stroke="#E1E5E8"/>
 <path d="M1240 726H292V728H1240V726Z" fill="#E1E5E8" mask="url(#path-36-inside-4_5745_88617)"/>
 <mask id="path-48-inside-5_5745_88617" fill="white">
 <path d="M292 727H1240V785H292V727Z"/>
 </mask>
 <path d="M292 727H1240V785H292V727Z" fill="white"/>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" Last hourfont-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="312" y="750.277">endTime</tspan></text>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" Last hourfont-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="534" y="750.277">End time in 24h notation</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="312" y="750.277">endTime</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="534" y="750.277">End time in 24h notation</tspan></text>
 <rect x="534" y="757" width="56" height="16" rx="2" fill="#F3F3F3"/>
 <text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="Menlo" font-size="12" letter-spacing="0em"><tspan x="540" y="769.154">string</tspan></text>
 <rect x="534.5" y="757.5" width="55" height="15" rx="1.5" stroke="black" stroke-opacity="0.1"/>
@@ -81,15 +81,15 @@
 <text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="Menlo" font-size="12" letter-spacing="0em"><tspan x="782" y="749.154">undefined</tspan></text>
 <rect x="776.5" y="737.5" width="77" height="15" rx="1.5" stroke="black" stroke-opacity="0.1"/>
 <rect x="1018.5" y="737.5" width="201" height="31" rx="3.5" fill="white"/>
-<text fill="#333333" xml:space="preserve" style="white-space: pre" Last hourfont-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="1030" y="758.277">14:30</tspan></text>
+<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="1030" y="758.277">20:00</tspan></text>
 <rect x="1018.5" y="737.5" width="201" height="31" rx="3.5" stroke="#E1E5E8"/>
 <path d="M1240 784H292V786H1240V784Z" fill="#E1E5E8" mask="url(#path-48-inside-5_5745_88617)"/>
 <mask id="path-60-inside-6_5745_88617" fill="white">
 <path d="M292 785H1240V843H292V785Z"/>
 </mask>
 <path d="M292 785H1240V843H292V785Z" fill="white"/>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" Last hourfont-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="312" y="808.277">accentColor</tspan></text>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" Last hourfont-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="534" y="808.277">Color of selected time frame</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="312" y="808.277">accentColor</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="534" y="808.277">Color of selected time frame</tspan></text>
 <rect x="776" y="795" width="56" height="16" rx="2" fill="#F3F3F3"/>
 <text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="Menlo" font-size="12" letter-spacing="0em"><tspan x="782" y="807.154">FA8961</tspan></text>
 <rect x="776.5" y="795.5" width="55" height="15" rx="1.5" stroke="black" stroke-opacity="0.1"/>
@@ -98,7 +98,7 @@
 <path d="M1200.85 808.099C1201.03 808.251 1201.05 808.521 1200.9 808.703L1198.99 811L1200.9 813.297C1201.05 813.479 1201.03 813.749 1200.85 813.9C1200.66 814.052 1200.39 814.027 1200.24 813.846L1198.1 811.274C1197.97 811.115 1197.97 810.884 1198.1 810.725L1200.24 808.154C1200.39 807.972 1200.66 807.948 1200.85 808.099Z" fill="#7A858E"/>
 <path d="M1207.15 808.099C1206.97 808.251 1206.95 808.521 1207.1 808.703L1209.01 811L1207.1 813.297C1206.95 813.479 1206.97 813.749 1207.15 813.9C1207.34 814.052 1207.61 814.027 1207.76 813.846L1209.9 811.274C1210.03 811.115 1210.03 810.884 1209.9 810.725L1207.76 808.154C1207.61 807.972 1207.34 807.948 1207.15 808.099Z" fill="#7A858E"/>
 </g>
-<text fill="#333333" xml:space="preserve" style="white-space: pre" Last hourfont-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="1050" y="815.277">#37D5D3</tspan></text>
+<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="1050" y="815.277">#37D5D3</tspan></text>
 <rect x="1028" y="803" width="16" height="16" rx="4" fill="#37D5D3"/>
 <rect x="1028.5" y="803.5" width="15" height="15" rx="3.5" stroke="black" stroke-opacity="0.1"/>
 <rect x="1018.5" y="795.5" width="201" height="31" rx="3.5" stroke="#E1E5E8"/>

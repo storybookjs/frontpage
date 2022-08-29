@@ -3,7 +3,7 @@
 <path d="M9.86588 12.4176C9.86588 9.35147 12.3515 6.86584 15.4177 6.86584H441.582C444.648 6.86584 447.134 9.35147 447.134 12.4176V225.576C447.134 228.643 444.648 231.128 441.582 231.128H15.4177C12.3515 231.128 9.86588 228.643 9.86588 225.576V12.4176Z" fill="white"/>
 <path d="M15.4177 6.43291C12.1124 6.43291 9.43294 9.11236 9.43294 12.4176V225.576C9.43294 228.882 12.1124 231.561 15.4177 231.561H441.582C444.888 231.561 447.567 228.882 447.567 225.576V12.4176C447.567 9.11237 444.888 6.43291 441.582 6.43291H15.4177Z" stroke="black" stroke-opacity="0.1" stroke-width="0.865878"/>
 </g>
-<text fill="#333333" xml:space="preserve" style="white-space: pre" Last hourfont-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="27.1834" y="27.5939">Usage frequency</tspan></text>
+<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="27.1834" y="27.5939">Usage frequency</tspan></text>
 <rect width="437.268" height="155.858" transform="translate(9.86588 42.3668)" fill="url(#paint0_linear_5661_83874)"/>
 <rect x="155.333" y="42.3668" width="0.865878" height="155.858" fill="black" fill-opacity="0.1"/>
 <rect x="300.801" y="42.3668" width="0.865878" height="155.858" fill="black" fill-opacity="0.1"/>
@@ -109,12 +109,12 @@
 <rect x="309.46" y="42.3668" width="0.865878" height="157.59" fill="#FF4400" fill-opacity="0.7"/>
 <rect x="9.86591" y="198.225" width="437.268" height="1.73176" fill="black" fill-opacity="0.1"/>
 <rect x="9.86591" y="41.501" width="437.268" height="0.865878" fill="black" fill-opacity="0.1"/>
-<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="8.65878" letter-spacing="0em"><tspan x="22.854" y="217.924">0:00</tspan></text>
-<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="8.65878" letter-spacing="0em"><tspan x="98.1855" y="217.924">4:00</tspan></text>
-<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="8.65878" letter-spacing="0em"><tspan x="173.517" y="217.924">8:00</tspan></text>
-<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="8.65878" letter-spacing="0em"><tspan x="248.848" y="217.924">12:00</tspan></text>
-<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="8.65878" letter-spacing="0em"><tspan x="329.375" y="217.924">16:00</tspan></text>
-<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="8.65878" letter-spacing="0em"><tspan x="409.901" y="217.924">20:00</tspan></text>
+<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace" font-size="8.65878" letter-spacing="0em"><tspan x="22.854" y="217.924">0:00</tspan></text>
+<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace" font-size="8.65878" letter-spacing="0em"><tspan x="98.1855" y="217.924">4:00</tspan></text>
+<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace" font-size="8.65878" letter-spacing="0em"><tspan x="173.517" y="217.924">8:00</tspan></text>
+<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace" font-size="8.65878" letter-spacing="0em"><tspan x="248.848" y="217.924">12:00</tspan></text>
+<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace" font-size="8.65878" letter-spacing="0em"><tspan x="329.375" y="217.924">16:00</tspan></text>
+<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace" font-size="8.65878" letter-spacing="0em"><tspan x="409.901" y="217.924">20:00</tspan></text>
 <g filter="url(#filter1_d_5661_83874)">
 <circle cx="273.093" cy="199.957" r="6.92702" fill="white"/>
 <circle cx="273.093" cy="199.957" r="6.92702" stroke="black" stroke-opacity="0.1" stroke-width="0.865878"/>
@@ -132,7 +132,7 @@
 <path d="M366.608 21.5298C366.778 21.5298 366.917 21.6683 366.917 21.8391V24.313L368.463 24.313C368.634 24.313 368.772 24.4514 368.772 24.6222C368.772 24.793 368.634 24.9315 368.463 24.9315L366.608 24.9315C366.437 24.9315 366.298 24.793 366.298 24.6222V21.8391C366.298 21.6683 366.437 21.5298 366.608 21.5298Z" fill="#666666"/>
 <path fill-rule="evenodd" clip-rule="evenodd" d="M366.608 28.9516C368.999 28.9516 370.937 27.0133 370.937 24.6222C370.937 22.2312 368.999 20.2928 366.608 20.2928C364.216 20.2928 362.278 22.2312 362.278 24.6222C362.278 27.0133 364.216 28.9516 366.608 28.9516ZM366.608 28.3331C368.657 28.3331 370.318 26.6717 370.318 24.6222C370.318 22.5728 368.657 20.9113 366.608 20.9113C364.558 20.9113 362.897 22.5728 362.897 24.6222C362.897 26.6717 364.558 28.3331 366.608 28.3331Z" fill="#666666"/>
 </g>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" Last hourfont-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.65878" letter-spacing="0em"><tspan x="374.757" y="27.0322">13:30 &#x2013; 14:30</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.65878" letter-spacing="0em"><tspan x="374.757" y="27.0322">13:30 &#x2013; 14:30</tspan></text>
 <defs>
 <filter id="filter0_dd_5661_83874" x="0.672294" y="0.448196" width="455.655" height="242.649" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>

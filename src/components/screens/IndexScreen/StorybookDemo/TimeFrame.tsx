@@ -28,18 +28,29 @@ interface TimeFrameProps {
   activeStory: string;
 }
 
+const variants = {
+  initial: (controls) => {
+    return controls ? { opacity: 0 } : { scale: 0.9, opacity: 0 };
+  },
+  animate: (controls) => {
+    return controls ? { opacity: 1 } : { scale: 1, opacity: 1 };
+  },
+};
+
 export const TimeFrame = ({ activeStory, ...props }: TimeFrameProps) => {
   return (
     <TimeFrameWrapper {...props}>
-      <AnimatePresence initial={false} exitBeforeEnter>
+      <AnimatePresence initial={false} custom={['start-time', 'end-time'].includes(activeStory)}>
         <TimeFrameVariant
           key={activeStory}
           src={`images/develop/time-frame-${activeStory}.svg`}
           alt=""
           width="370"
           height="303"
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
+          custom={['start-time', 'end-time'].includes(activeStory)}
+          initial="initial"
+          animate="animate"
+          variants={variants}
           transition={{ duration: 0.4 }}
         />
       </AnimatePresence>

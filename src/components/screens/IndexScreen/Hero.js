@@ -9,6 +9,7 @@ import { NpmDownloadCount } from '../../layout/NpmDownloadCount';
 import { Stat } from '../../basics/Stat';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import PlaceholderAspectRatio from '../../layout/PlaceholderAspectRatio';
+import { HeroDemo } from './StorybookDemo/HeroDemo';
 
 const { color, breakpoints, pageMargins } = styles;
 
@@ -58,20 +59,6 @@ const PageLedeContainer = styled.div`
 const StorybookDemo = styled.div`
   ${pageMargins};
   padding-top: 3rem;
-
-  img {
-    display: block;
-    filter: drop-shadow(0px 0.882px 2.646px rgba(0, 0, 0, 0.1))
-      drop-shadow(0px 8.819px 17.637px rgba(0, 0, 0, 0.1))
-      drop-shadow(0px 17.637px 35.274px rgba(0, 0, 0, 0.05))
-      drop-shadow(0px 35.274px 26.456px rgba(0, 0, 0, 0.05));
-  }
-
-  @media (min-width: ${breakpoints[1]}px) {
-    img {
-      margin-top: -12.625rem;
-    }
-  }
 `;
 
 const Modal = () => (
@@ -143,7 +130,7 @@ export function Hero({ npmDownloads, startOpen, ...props }) {
       </PageLedeContainer>
       <Content>
         <StorybookDemo>
-          <img src={mockUI} alt="" style={{ width: '100%' }} />
+          <HeroDemo />
         </StorybookDemo>
 
         <SocialProof

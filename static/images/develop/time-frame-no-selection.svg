@@ -3,7 +3,7 @@
 <path d="M9.86588 12.4176C9.86588 9.35147 12.3515 6.86584 15.4177 6.86584H441.582C444.648 6.86584 447.134 9.35147 447.134 12.4176V225.576C447.134 228.643 444.648 231.128 441.582 231.128H15.4177C12.3515 231.128 9.86588 228.643 9.86588 225.576V12.4176Z" fill="white"/>
 <path d="M15.4177 6.43291C12.1124 6.43291 9.43294 9.11236 9.43294 12.4176V225.576C9.43294 228.882 12.1124 231.561 15.4177 231.561H441.582C444.888 231.561 447.567 228.882 447.567 225.576V12.4176C447.567 9.11237 444.888 6.43291 441.582 6.43291H15.4177Z" stroke="black" stroke-opacity="0.1" stroke-width="0.865878"/>
 </g>
-<text fill="#333333" xml:space="preserve" style="white-space: pre" Last hourfont-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="27.1834" y="27.5939">Usage frequency</tspan></text>
+<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="27.1834" y="27.5939">Usage frequency</tspan></text>
 <rect width="437.268" height="155.858" transform="translate(9.86588 42.3668)" fill="url(#paint0_linear_5661_84008)"/>
 <rect x="155.333" y="42.3668" width="0.865878" height="155.858" fill="black" fill-opacity="0.1"/>
 <rect x="300.801" y="42.3668" width="0.865878" height="155.858" fill="black" fill-opacity="0.1"/>
@@ -107,18 +107,18 @@
 <circle cx="410.658" cy="171.523" r="4.04325" fill="#CBDFDD"/>
 <rect x="9.86584" y="198.225" width="437.268" height="1.73176" fill="black" fill-opacity="0.1"/>
 <rect x="9.86584" y="41.501" width="437.268" height="0.865878" fill="black" fill-opacity="0.1"/>
-<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="8.65878" letter-spacing="0em"><tspan x="22.854" y="217.924">0:00</tspan></text>
-<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="8.65878" letter-spacing="0em"><tspan x="98.1854" y="217.924">4:00</tspan></text>
-<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="8.65878" letter-spacing="0em"><tspan x="173.517" y="217.924">8:00</tspan></text>
-<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="8.65878" letter-spacing="0em"><tspan x="248.848" y="217.924">12:00</tspan></text>
-<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="8.65878" letter-spacing="0em"><tspan x="329.375" y="217.924">16:00</tspan></text>
-<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="8.65878" letter-spacing="0em"><tspan x="409.901" y="217.924">20:00</tspan></text>
+<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace" font-size="8.65878" letter-spacing="0em"><tspan x="22.854" y="217.924">0:00</tspan></text>
+<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace" font-size="8.65878" letter-spacing="0em"><tspan x="98.1854" y="217.924">4:00</tspan></text>
+<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace" font-size="8.65878" letter-spacing="0em"><tspan x="173.517" y="217.924">8:00</tspan></text>
+<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace" font-size="8.65878" letter-spacing="0em"><tspan x="248.848" y="217.924">12:00</tspan></text>
+<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace" font-size="8.65878" letter-spacing="0em"><tspan x="329.375" y="217.924">16:00</tspan></text>
+<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace" font-size="8.65878" letter-spacing="0em"><tspan x="409.901" y="217.924">20:00</tspan></text>
 <rect x="344.961" y="15.5247" width="88.5128" height="18.1953" rx="2.59763" fill="black" fill-opacity="0.05"/>
 <g clip-path="url(#clip0_5661_84008)">
 <path d="M354.485 21.5298C354.656 21.5298 354.794 21.6683 354.794 21.8391V24.313L356.341 24.313C356.511 24.313 356.65 24.4514 356.65 24.6222C356.65 24.793 356.511 24.9315 356.341 24.9315L354.485 24.9315C354.314 24.9315 354.176 24.793 354.176 24.6222V21.8391C354.176 21.6683 354.314 21.5298 354.485 21.5298Z" fill="#666666"/>
 <path fill-rule="evenodd" clip-rule="evenodd" d="M354.485 28.9516C356.876 28.9516 358.815 27.0133 358.815 24.6222C358.815 22.2312 356.876 20.2928 354.485 20.2928C352.094 20.2928 350.156 22.2312 350.156 24.6222C350.156 27.0133 352.094 28.9516 354.485 28.9516ZM354.485 28.3331C356.535 28.3331 358.196 26.6717 358.196 24.6222C358.196 22.5728 356.535 20.9113 354.485 20.9113C352.436 20.9113 350.774 22.5728 350.774 24.6222C350.774 26.6717 352.436 28.3331 354.485 28.3331Z" fill="#666666"/>
 </g>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" Last hourfont-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.65878" letter-spacing="0em"><tspan x="362.732" y="27.0322">Select timeframe</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.65878" letter-spacing="0em"><tspan x="362.732" y="27.0322">Select timeframe</tspan></text>
 <defs>
 <filter id="filter0_dd_5661_84008" x="0.672294" y="0.448196" width="455.655" height="242.649" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
