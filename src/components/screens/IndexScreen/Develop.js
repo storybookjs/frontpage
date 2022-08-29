@@ -14,7 +14,7 @@ import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import { Stat } from '../../basics/Stat';
 import AtomicDesignLogoSVG from '../../../images/logos/user/logo-atomicdesign.svg';
 import { Integrations } from './Integrations';
-import { StorybookDemo } from './StorybookDemo/StorybookDemo';
+import { ScrollDemo } from './StorybookDemo/ScrollDemo';
 
 const { subheading, breakpoints, pageMargins } = styles;
 
@@ -189,7 +189,7 @@ export function Develop({ docs, startOpen, ...props }) {
       />
       <Content>
         <StorybookDemoWrapper>
-          <StorybookDemo
+          <ScrollDemo
             storyIndex={activeStory}
             panelIndex={activePanel}
             isolationProgress={smoothIsolationProgress}

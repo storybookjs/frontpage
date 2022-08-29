@@ -3,12 +3,9 @@ import { styled } from '@storybook/theming';
 import { styles } from '@storybook/components-marketing';
 import { motion, MotionValue, useTransform } from 'framer-motion';
 import { Sidebar } from './Sidebar';
-import { AddonsPanel } from './AddonsPanel';
-import { RangeSlider } from './RangeSlider';
-import { VSCode } from './VSCode';
-import { App } from './App';
-import { Connector } from '../Connector';
+import { Controls } from './Controls';
 import { useMediaQuery } from '../../../lib/useMediaQuery';
+import { TimeFrame } from './TimeFrame';
 
 const { breakpoints } = styles;
 
@@ -38,8 +35,7 @@ const Scrim = styled(motion.div)`
   background: linear-gradient(0deg, rgba(23, 28, 35, 0%) 0%, rgba(23, 28, 35, 100%) 10%);
 `;
 
-interface StorybookDemoProps {
-  type: 'rangeSlider' | 'timeFrame';
+interface HeroDemoProps {
   isolationProgress: MotionValue;
   addonsProgress: MotionValue;
   dropInProgress: MotionValue;
@@ -47,40 +43,30 @@ interface StorybookDemoProps {
   panelIndex: MotionValue;
 }
 
-const rangeSlider = {
-  stories: ['default', 'no-selection', 'input-range', 'default'],
+const timeFrame = {
+  stories: ['no-selection', 'last-hour', 'all-day'],
   addons: ['controls', 'interactions', 'design', 'a11y', 'controls'],
 };
 
-const StyledConnector = styled(Connector)`
-  width: 24%;
-  height: auto;
-  position: absolute;
-  top: 25%;
-  left: 17.8%;
-  transform: rotate(-56deg);
-`;
-
-export const StorybookDemo = ({
-  type = 'rangeSlider',
+export const HeroDemo = ({
   isolationProgress,
   addonsProgress,
   dropInProgress,
   storyIndex,
   panelIndex,
   ...props
-}: StorybookDemoProps) => {
-  const [activeStory, setActiveStory] = useState('default');
+}: HeroDemoProps) => {
+  const [activeStory, setActiveStory] = useState('no-selection');
   const [activePanel, setActivePanel] = useState('controls');
 
   useEffect(() => {
     function updateId() {
-      setActiveStory(rangeSlider.stories[storyIndex.get()]);
+      setActiveStory(timeFrame.stories[storyIndex.get()]);
     }
     const unsubscribeStoryIndex = storyIndex.onChange(updateId);
 
     function updatePanel() {
-      setActivePanel(rangeSlider.addons[panelIndex.get()]);
+      setActivePanel(timeFrame.addons[panelIndex.get()]);
     }
     const unsubscribePanel = panelIndex.onChange(updatePanel);
 
@@ -101,44 +87,13 @@ export const StorybookDemo = ({
   const scale = useTransform(zoom, [0, 1], [1, stacked ? 1.5 : 1.25], { clamp: true });
   const x = useTransform(zoom, [0, 1], ['0%', stacked ? '25%' : '12.5%'], { clamp: true });
   const y = useTransform(zoom, [0, 1], ['0%', stacked ? '25.5%' : '12.5%'], { clamp: true });
-  const scrimY = useTransform(zoom, [0, 1], ['0%', '-5%'], { clamp: true });
-
-  const frameScale = useTransform(dropInProgress, [0, 1], [1, 0], { clamp: true });
-  const frameOpacity = useTransform(dropInProgress, [0, 1], [1, 0.25], { clamp: true });
-
-  const connectorProgress = useTransform(dropInProgress, [0.75, 1], [0, 1], { clamp: true });
 
   return (
     <Wrapper style={{ scale, x, y }} transition={{ delay: 0.4 }} {...props}>
-      <Scrim style={{ y: scrimY }} />
-      <Frame
-        src="images/develop/storybook-frame.svg"
-        alt=""
-        style={{
-          scale: frameScale,
-          opacity: frameOpacity,
-        }}
-      />
-      <Sidebar
-        type={type}
-        activeStory={activeStory}
-        style={{
-          scale: frameScale,
-          opacity: frameOpacity,
-        }}
-      />
-      <AddonsPanel
-        scrollProgress={addonsProgress}
-        activePanel={activePanel}
-        style={{
-          scale: frameScale,
-          opacity: frameOpacity,
-        }}
-      />
-      <App scrollProgress={dropInProgress} />
-      <StyledConnector name="rs-to-app" progress={connectorProgress} />
-      <RangeSlider activeStory={activeStory} scrollProgress={dropInProgress} />
-      <VSCode scrollProgress={isolationProgress} />
+      <Frame src="images/develop/storybook-frame.svg" alt="" />
+      <Sidebar type="timeFrame" activeStory={activeStory} />
+      <Controls scrollProgress={addonsProgress} activePanel={activePanel} />
+      <TimeFrame activeStory={activeStory} />
     </Wrapper>
   );
 };

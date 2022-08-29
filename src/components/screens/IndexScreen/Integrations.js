@@ -278,7 +278,7 @@ export function Integrations({ docs, ...props }) {
       <IntegrationGrid>
         {integrations.map(({ image, name, ...integration }) => (
           <IntegrationItem key={name} {...integration}>
-            <img loading="lazy" src={image} alt={name} />
+            <img loading="lazy" src={image} alt={name} width="80" height="80" />
           </IntegrationItem>
         ))}
       </IntegrationGrid>
