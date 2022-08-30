@@ -31,7 +31,7 @@ const Wrapper = styled.div`
   padding-bottom: 2rem;
 
   @media (min-width: ${breakpoints[2]}px) {
-    padding-top: 4rem;
+    padding-top: 3rem;
     padding-bottom: 4rem;
   }
 `;

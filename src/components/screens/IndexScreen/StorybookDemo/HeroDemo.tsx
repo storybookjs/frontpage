@@ -1,7 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { styled } from '@storybook/theming';
 import { styles } from '@storybook/components-marketing';
-import { motion, MotionValue, useAnimationControls, AnimationControls } from 'framer-motion';
+import {
+  motion,
+  MotionValue,
+  useAnimationControls,
+  AnimationControls,
+  useInView,
+} from 'framer-motion';
 import { Sidebar } from './Sidebar';
 import { Controls } from './Controls';
 import { TimeFrame } from './TimeFrame';
@@ -58,6 +64,9 @@ const click = async (controls: AnimationControls, callback: () => void) => {
 };
 
 export const HeroDemo = ({ ...props }: HeroDemoProps) => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { amount: 0.5 });
+
   const [activeStory, setActiveStory] = useState('no-selection');
 
   const pointerControls = useAnimationControls();
@@ -173,13 +182,37 @@ export const HeroDemo = ({ ...props }: HeroDemoProps) => {
         endTimeControls.start('initial'),
         startTimeControls.start('initial'),
       ]);
+
+      if (inView) {
+        sequence();
+      }
     };
 
-    sequence();
-  }, [pointerControls, startTimeControls, endTimeControls]);
+    const stop = async () => {
+      // Reset state
+      setActiveStory('no-selection');
+      pointerControls.set({ x: '0%', y: '0%', opacity: 0 });
+      endTimeControls.set('initial');
+      startTimeControls.set('initial');
+      // stop animations
+      pointerControls.stop();
+      startTimeControls.stop();
+      endTimeControls.stop();
+    };
+
+    if (inView) {
+      sequence();
+    } else {
+      stop();
+    }
+
+    return async () => {
+      await stop();
+    };
+  }, [pointerControls, startTimeControls, endTimeControls, inView]);
 
   return (
-    <Wrapper {...props}>
+    <Wrapper ref={ref} {...props}>
       <Frame src="images/develop/storybook-frame.svg" alt="" />
       <Sidebar type="timeFrame" activeStory={activeStory} />
       <Controls startTimeControls={startTimeControls} endTimeControls={endTimeControls} />
