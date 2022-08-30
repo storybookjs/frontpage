@@ -8,8 +8,8 @@
 <path d="M366.608 21.5299C366.778 21.5299 366.917 21.6683 366.917 21.8391V24.3131L368.463 24.3131C368.634 24.3131 368.772 24.4515 368.772 24.6223C368.772 24.7931 368.634 24.9315 368.463 24.9315L366.608 24.9315C366.437 24.9315 366.298 24.7931 366.298 24.6223V21.8391C366.298 21.6683 366.437 21.5299 366.608 21.5299Z" fill="#666666"/>
 <path fill-rule="evenodd" clip-rule="evenodd" d="M366.608 28.9517C368.999 28.9517 370.937 27.0134 370.937 24.6223C370.937 22.2312 368.999 20.2929 366.608 20.2929C364.216 20.2929 362.278 22.2312 362.278 24.6223C362.278 27.0134 364.216 28.9517 366.608 28.9517ZM366.608 28.3332C368.657 28.3332 370.318 26.6718 370.318 24.6223C370.318 22.5728 368.657 20.9114 366.608 20.9114C364.558 20.9114 362.897 22.5728 362.897 24.6223C362.897 26.6718 364.558 28.3332 366.608 28.3332Z" fill="#666666"/>
 </g>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="8.65878" letter-spacing="0em"><tspan x="374.761" y="27.0322">07:30 &#x2013; 16:30</tspan></text>
-<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="11.2564" font-weight="bold" letter-spacing="0em"><tspan x="27.1834" y="27.5939">Usage frequency</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.65878" letter-spacing="0em"><tspan x="374.761" y="27.0322">07:30 &#x2013; 16:30</tspan></text>
+<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2564" font-weight="bold" letter-spacing="0em"><tspan x="27.1834" y="27.5939">Usage frequency</tspan></text>
 <rect width="437.268" height="155.858" transform="translate(9.86588 42.3669)" fill="url(#paint0_linear_5779_89173)"/>
 <rect x="155.333" y="42.3668" width="0.865878" height="155.858" fill="black" fill-opacity="0.1"/>
 <rect x="300.801" y="42.3668" width="0.865878" height="155.858" fill="black" fill-opacity="0.1"/>
@@ -115,12 +115,12 @@
 <rect x="9.86588" y="41.501" width="437.268" height="0.865878" fill="black" fill-opacity="0.1"/>
 <rect x="165" y="42.3668" width="0.87" height="157.59" fill="#FF4400" fill-opacity="0.7"/>
 <rect x="346.628" y="42.3668" width="0.87" height="157.59" fill="#FF4400" fill-opacity="0.7"/>
-<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="8.65878" letter-spacing="0em"><tspan x="22.854" y="217.924">0:00</tspan></text>
-<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="8.65878" letter-spacing="0em"><tspan x="98.1854" y="217.924">4:00</tspan></text>
-<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="8.65878" letter-spacing="0em"><tspan x="173.517" y="217.924">8:00</tspan></text>
-<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="8.65878" letter-spacing="0em"><tspan x="248.848" y="217.924">12:00</tspan></text>
-<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="8.65878" letter-spacing="0em"><tspan x="329.375" y="217.924">16:00</tspan></text>
-<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="8.65878" letter-spacing="0em"><tspan x="409.901" y="217.924">20:00</tspan></text>
+<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace" font-size="8.65878" letter-spacing="0em"><tspan x="22.854" y="217.924">0:00</tspan></text>
+<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace" font-size="8.65878" letter-spacing="0em"><tspan x="98.1854" y="217.924">4:00</tspan></text>
+<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace" font-size="8.65878" letter-spacing="0em"><tspan x="173.517" y="217.924">8:00</tspan></text>
+<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace" font-size="8.65878" letter-spacing="0em"><tspan x="248.848" y="217.924">12:00</tspan></text>
+<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace" font-size="8.65878" letter-spacing="0em"><tspan x="329.375" y="217.924">16:00</tspan></text>
+<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace" font-size="8.65878" letter-spacing="0em"><tspan x="409.901" y="217.924">20:00</tspan></text>
 <g filter="url(#filter1_d_5779_89173)">
 <circle cx="164.793" cy="199.957" r="6.92702" fill="white"/>
 <circle cx="164.793" cy="199.957" r="6.92702" stroke="black" stroke-opacity="0.1" stroke-width="0.865878"/>

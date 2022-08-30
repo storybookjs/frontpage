@@ -165,7 +165,7 @@ export const HeroDemo = ({ ...props }: HeroDemoProps) => {
         x: '-730%',
         y: '-498%',
         transition: {
-          delay: 1,
+          delay: 2,
           duration: 1,
         },
       });

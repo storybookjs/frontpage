@@ -23,6 +23,8 @@ interface SidebarProps extends MotionProps {
 }
 
 export const Sidebar = ({ activeStory, type = 'rangeSlider', ...props }: SidebarProps) => {
+  const modifyingControls = ['start-time', 'end-time'].includes(activeStory);
+
   return (
     <SidebarWrapper {...props}>
       {type === 'rangeSlider' && (
@@ -33,15 +35,13 @@ export const Sidebar = ({ activeStory, type = 'rangeSlider', ...props }: Sidebar
       {type === 'timeFrame' && (
         <AnimatePresence initial={false}>
           <Instance
-            key={activeStory}
-            src={`images/develop/sidebar-tf-${
-              ['start-time', 'end-time'].includes(activeStory) ? 'all-day' : activeStory
-            }.svg`}
+            key={modifyingControls ? 'all-day' : activeStory}
+            src={`images/develop/sidebar-tf-${modifyingControls ? 'all-day' : activeStory}.svg`}
             alt=""
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: ['start-time', 'end-time'].includes(activeStory) ? 0 : 0.1 }}
+            transition={{ duration: 0.1 }}
           />
         </AnimatePresence>
       )}

@@ -37,17 +37,36 @@ const variants = {
   },
 };
 
+const Overview = styled(motion.img)`
+  display: block;
+  position: absolute;
+  top: 5.8%;
+  left: 22.8%;
+  width: 73.8%;
+  border-radius: 4px;
+`;
+
 export const TimeFrame = ({ activeStory, ...props }: TimeFrameProps) => {
-  return (
+  const modifyingControls = ['start-time', 'end-time'].includes(activeStory);
+
+  return activeStory === 'overview' ? (
+    <Overview
+      src="images/develop/time-frame-overview.svg"
+      alt=""
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.1 }}
+    />
+  ) : (
     <TimeFrameWrapper {...props}>
-      <AnimatePresence initial={false} custom={['start-time', 'end-time'].includes(activeStory)}>
+      <AnimatePresence initial={false} custom={modifyingControls}>
         <TimeFrameVariant
           key={activeStory}
           src={`images/develop/time-frame-${activeStory}.svg`}
           alt=""
           width="370"
           height="303"
-          custom={['start-time', 'end-time'].includes(activeStory)}
+          custom={modifyingControls}
           initial="initial"
           animate="animate"
           variants={variants}
