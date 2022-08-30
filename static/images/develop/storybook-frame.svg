@@ -16,11 +16,7 @@
 <circle cx="94" cy="36" r="5" fill="#66BF3C"/>
 <rect x="41" y="51" width="1199" height="1" fill="#E1E5E8"/>
 <rect x="543.5" y="26" width="194" height="20" rx="5" fill="black" fill-opacity="0.1"/>
-<g clip-path="url(#clip4_5668_83409)">
-<path d="M599.214 36.717C599.214 36.9814 599.071 37.2122 598.857 37.3357V38.5027C598.857 38.6999 598.697 38.8598 598.5 38.8598C598.303 38.8598 598.143 38.6999 598.143 38.5027V37.3357C597.929 37.2122 597.786 36.9814 597.786 36.717C597.786 36.3225 598.106 36.0027 598.5 36.0027C598.895 36.0027 599.214 36.3225 599.214 36.717Z" fill="#333333"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M595.643 33.8598C595.643 32.2819 596.922 31.0027 598.5 31.0027C600.078 31.0027 601.357 32.2819 601.357 33.8598V34.5741H602.429C602.626 34.5741 602.786 34.734 602.786 34.9313V40.6455C602.786 40.8428 602.626 41.0027 602.429 41.0027H594.571C594.374 41.0027 594.214 40.8428 594.214 40.6455V34.9313C594.214 34.734 594.374 34.5741 594.571 34.5741H595.643V33.8598ZM600.643 34.5741V33.8598C600.643 32.6764 599.684 31.717 598.5 31.717C597.317 31.717 596.357 32.6764 596.357 33.8598V34.5741H600.643ZM602.071 35.2884H594.929V40.2884H602.071V35.2884Z" fill="#333333"/>
-</g>
-<text fill="black" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" letter-spacing="0em"><tspan x="609.5" y="39.948">chromatic.com</tspan></text>
+<text fill="black" xml:space="preserve" style="white-space: pre" font-family="-apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'helvetica neue', helvetica, ubuntu, roboto, noto, 'segoe ui', arial, sans-serif" font-size="12" letter-spacing="0em"><tspan x="600.5" y="39.948">localhost:6006</tspan></text>
 <g clip-path="url(#clip5_5668_83409)">
 <rect width="1200" height="800" transform="translate(41 52)" fill="#F6F9FC"/>
 <g filter="url(#filter1_d_5668_83409)">
@@ -134,9 +130,6 @@
 </clipPath>
 <clipPath id="clip3_5668_83409">
 <rect width="12" height="12" fill="white" transform="translate(163 30)"/>
-</clipPath>
-<clipPath id="clip4_5668_83409">
-<rect width="10" height="10" fill="white" transform="translate(593.5 31)"/>
 </clipPath>
 <clipPath id="clip5_5668_83409">
 <rect width="1200" height="800" fill="white" transform="translate(41 52)"/>

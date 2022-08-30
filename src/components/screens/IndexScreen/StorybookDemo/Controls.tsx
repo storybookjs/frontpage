@@ -46,7 +46,8 @@ const charVariants = {
   visible: (i) => ({
     opacity: 1,
     transition: {
-      delay: 1.4 + i * 0.1,
+      duration: 0,
+      delay: 1.4 + i * 0.15,
     },
   }),
 };

@@ -90,6 +90,7 @@ export const HeroDemo = ({ ...props }: HeroDemoProps) => {
         setActiveStory('last-hour');
       });
       await pointerControls.start({
+        x: '-700%',
         y: '-434%',
         transition: {
           delay: 1,
@@ -126,7 +127,7 @@ export const HeroDemo = ({ ...props }: HeroDemoProps) => {
       // Update endTime control
       await pointerControls.start({
         opacity: 1,
-        x: '520%',
+        x: '580%',
         y: '-220%',
         transition: { delay: 1, duration: 1, opacity: { duration: 0.2 } },
       });
@@ -152,7 +153,7 @@ export const HeroDemo = ({ ...props }: HeroDemoProps) => {
       // Show docs
       await pointerControls.start({
         opacity: 1,
-        x: '-730%',
+        x: '-710%',
         y: '-532%',
         transition: { delay: 1, duration: 1, opacity: { duration: 0.2 } },
       });
