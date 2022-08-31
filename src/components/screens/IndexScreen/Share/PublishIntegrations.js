@@ -92,7 +92,9 @@ export const PublishIntegrations = React.forwardRef(({ isInView, disableScrollAn
       viewport={{ once: true }}
     >
       <Storybook />
-      {isInView && <TimeFramePicker {...layoutAnimProps} width="458" height="244" />}
+      {isInView && (
+        <TimeFramePicker initial={false} {...layoutAnimProps} width="458" height="244" />
+      )}
       <PointerHand variants={symbolVariants} transition={{ duration: 0.4, delay: 0.8 }} />
       <Player type="blue" x="6%" y="-12%" delay={1} count={2} />
       <Arrow variants={symbolVariants} transition={{ duration: 0.4, delay: 1.6 }} />

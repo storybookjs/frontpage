@@ -1,7 +1,7 @@
 import React from 'react';
 import { styled } from '@storybook/theming';
 import { styles, IntegrationsCarousel, AspectRatio } from '@storybook/components-marketing';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const { breakpoints } = styles;
 
@@ -11,9 +11,6 @@ const EmbedPane = styled.img`
   height: auto;
 `;
 
-const EmbedIntegrationsCarousel = styled(IntegrationsCarousel)`
-  display: table-cell;
-`;
 const TimeFramePicker = styled(motion.img)`
   display: block;
   width: 56%;
@@ -40,22 +37,69 @@ TimeFramePicker.defaultProps = {
   alt: '',
 };
 
-const Connector = styled(motion.img)`
+const SVG = styled(motion.svg)`
   display: block;
-  width: 28%;
-  max-width: 262px;
+  width: 24%;
   height: auto;
   position: absolute;
-  top: 45%;
-  left: 5%;
-
-  @media (min-width: ${breakpoints[3]}px) {
-    left: 4%;
-  }
 `;
-Connector.defaultProps = {
-  src: 'images/embed/connector.svg',
-  alt: '',
+
+const Connector = ({ name, ...props }) => {
+  return (
+    <AnimatePresence initial>
+      <SVG
+        width="263"
+        height="145"
+        viewBox="0 0 263 145"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        initial="initial"
+        whileInView="animate"
+        variants={{
+          initial: { opacity: 0 },
+          animate: { opacity: 1 },
+        }}
+        transition={{ duration: 0.4, delay: 0.8, when: 'beforeChildren' }}
+        {...props}
+      >
+        <motion.circle
+          cx="256"
+          cy="140"
+          r="5"
+          fill="#1EA7FD"
+          variants={{
+            initial: { scale: 0 },
+            animate: { scale: 1 },
+          }}
+          transition={{ duration: 0.2, delay: 0.6 }}
+        />
+        <path
+          mask={`url(#${name}-connector-mask)`}
+          d="M252.5 134.5C195.5 53.001 98.4998 0.999337 10.0003 0.999647"
+          stroke="#1EA7FD"
+          strokeWidth="2"
+          strokeDasharray="6 4"
+        />
+        <defs>
+          <mask id={`${name}-connector-mask`} maskUnits="userSpaceOnUse">
+            <motion.path
+              d="M10.0003,0.999647C98.4998,0.999337 195.5,53.001 252.5,134.5"
+              stroke="#fff"
+              strokeWidth="4"
+              strokeDasharray="0 1"
+              variants={{
+                initial: { pathLength: 0 },
+                animate: { pathLength: 1 },
+              }}
+              // initial={{ pathLength: 0 }}
+              // animate={{ pathLength: 1 }}
+              transition={{ duration: 0.8 }}
+            />
+          </mask>
+        </defs>
+      </SVG>
+    </AnimatePresence>
+  );
 };
 
 const embedIntegrations = [
@@ -64,11 +108,13 @@ const embedIntegrations = [
     image: '/images/home/next-js.svg',
     color: '#000',
     media: (
-      <AspectRatio ratio={`${1202} / ${910}`}>
+      // transform is to prevent the slight jump before the animation starts
+      <AspectRatio ratio={`${1202} / ${910}`} style={{ transform: 'translate(0, 0)' }}>
         <EmbedPane
           src="/images/embed/next.svg"
           alt="Embed stories using iframes in your NextJS sites"
         />
+        <Connector name="NextJS" style={{ top: '51%', left: '37%' }} />
       </AspectRatio>
     ),
   },
@@ -82,6 +128,7 @@ const embedIntegrations = [
           src="/images/embed/figma.svg"
           alt="Use the Storybook Connect plugin to embed stories in a Figma file"
         />
+        <Connector name="Figma" style={{ top: '52%', left: '1%' }} transition={{ duration: 0.4 }} />
       </AspectRatio>
     ),
   },
@@ -94,6 +141,11 @@ const embedIntegrations = [
         <EmbedPane
           src="/images/embed/notion.svg"
           alt="Embed stories in Notion documents using the oEmbed support"
+        />
+        <Connector
+          name="Notion"
+          style={{ top: '55%', left: '7%' }}
+          transition={{ duration: 0.4 }}
         />
       </AspectRatio>
     ),
@@ -108,6 +160,11 @@ const embedIntegrations = [
           src="/images/embed/medium.svg"
           alt="Embed stories in Medium articles using the oEmbed support"
         />
+        <Connector
+          name="Medium"
+          style={{ top: '53%', left: '28%' }}
+          transition={{ duration: 0.4 }}
+        />
       </AspectRatio>
     ),
   },
@@ -116,7 +173,6 @@ const embedIntegrations = [
 const EmbedIntegrationsWrapper = styled.div`
   width: 100%;
   position: relative;
-  display: table;
   max-width: 800px;
   margin-left: 30px;
 
@@ -142,11 +198,7 @@ export const EmbedIntegrations = React.forwardRef(({ isInView, disableScrollAnim
       };
   return (
     <EmbedIntegrationsWrapper ref={ref}>
-      <EmbedIntegrationsCarousel integrations={embedIntegrations} overflowLabel="+ and more" />
-      <Connector
-        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.4, delay: 1 }}
-      />
+      <IntegrationsCarousel integrations={embedIntegrations} overflowLabel="+ and more" />
       {(isInView || disableScrollAnimation) && (
         <TimeFramePicker {...layoutAnimProps} width="458" height="244" />
       )}

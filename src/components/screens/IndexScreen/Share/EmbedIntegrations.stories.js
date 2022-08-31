@@ -8,7 +8,7 @@ export default {
 
 export const Default = () => (
   <div style={{ maxWidth: 800, padding: 32 }}>
-    <EmbedIntegrations />
+    <EmbedIntegrations isInView />
   </div>
 );
 Default.storyName = 'EmbedIntegrations';
