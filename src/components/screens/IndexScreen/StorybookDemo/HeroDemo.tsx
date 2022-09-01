@@ -27,9 +27,12 @@ const Wrapper = styled(motion.div)`
   position: relative;
   width: 100%;
   height: 0;
-  padding-bottom: 71.81889149%;
+  padding-bottom: 69.10907577%;
   z-index: 999;
   overflow: hidden;
+
+  filter: drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.1)) drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.1))
+    drop-shadow(0px 20px 40px rgba(0, 0, 0, 0.05)) drop-shadow(0px 40px 30px rgba(0, 0, 0, 0.05));
 
   @media (min-width: ${breakpoints[1]}px) {
     margin-top: -12.625rem;
@@ -79,7 +82,7 @@ export const HeroDemo = ({ ...props }: HeroDemoProps) => {
       await pointerControls.start({
         opacity: [0, 1],
         x: '-730%',
-        y: '-466%',
+        y: '-402%',
         transition: {
           delay: 1,
           duration: 1,
@@ -91,7 +94,7 @@ export const HeroDemo = ({ ...props }: HeroDemoProps) => {
       });
       await pointerControls.start({
         x: '-700%',
-        y: '-434%',
+        y: '-368%',
         transition: {
           delay: 1,
           duration: 0.4,
@@ -102,8 +105,8 @@ export const HeroDemo = ({ ...props }: HeroDemoProps) => {
       });
       // Update startTime control
       await pointerControls.start({
-        x: '520%',
-        y: '-294%',
+        x: '560%',
+        y: '-214%',
         transition: { delay: 1, duration: 1 },
       });
       await Promise.all([
@@ -128,7 +131,7 @@ export const HeroDemo = ({ ...props }: HeroDemoProps) => {
       await pointerControls.start({
         opacity: 1,
         x: '580%',
-        y: '-220%',
+        y: '-150%',
         transition: { delay: 1, duration: 1, opacity: { duration: 0.2 } },
       });
       await Promise.all([
@@ -153,8 +156,8 @@ export const HeroDemo = ({ ...props }: HeroDemoProps) => {
       // Show docs
       await pointerControls.start({
         opacity: 1,
-        x: '-710%',
-        y: '-532%',
+        x: '-720%',
+        y: '-470%',
         transition: { delay: 1, duration: 1, opacity: { duration: 0.2 } },
       });
       await click(pointerControls, () => {
@@ -164,7 +167,7 @@ export const HeroDemo = ({ ...props }: HeroDemoProps) => {
       // Reset state
       await pointerControls.start({
         x: '-730%',
-        y: '-498%',
+        y: '-436%',
         transition: {
           delay: 2,
           duration: 1,
@@ -206,10 +209,6 @@ export const HeroDemo = ({ ...props }: HeroDemoProps) => {
     } else {
       stop();
     }
-
-    return async () => {
-      await stop();
-    };
   }, [pointerControls, startTimeControls, endTimeControls, inView]);
 
   return (

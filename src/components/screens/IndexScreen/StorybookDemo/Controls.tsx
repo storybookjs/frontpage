@@ -15,24 +15,24 @@ const Instance = styled(motion.img)`
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
+  width: 100%;
 `;
 
 const StartTime = styled(motion.svg)`
   position: absolute;
   font-size: 11px;
-  top: 74%;
-  left: 79.6%;
-  width: 13%;
+  top: 79.7%;
+  left: 81.7%;
+  width: 13.6%;
   height: auto;
 `;
 
 const EndTime = styled(motion.svg)`
   position: absolute;
   font-size: 11px;
-  top: 80.3%;
-  left: 79.6%;
-  width: 13%;
+  top: 86.7%;
+  left: 81.7%;
+  width: 13.6%;
   height: auto;
 `;
 

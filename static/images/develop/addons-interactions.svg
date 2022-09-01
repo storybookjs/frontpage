@@ -1,117 +1,117 @@
-<svg width="1281" height="920" viewBox="0 0 1281 920" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="1201" height="830" viewBox="0 0 1201 830" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_5704_91450)">
 <g clip-path="url(#clip1_5704_91450)">
-<mask id="path-3-outside-2_5704_91450" maskUnits="userSpaceOnUse" x="292" y="489" width="948" height="360" fill="black">
-<rect fill="white" x="292" y="489" width="948" height="360"/>
-<path d="M292 490H1240V841C1240 845.418 1236.42 849 1232 849H300C295.582 849 292 845.418 292 841V490Z"/>
+<mask id="path-3-outside-2_5704_91450" maskUnits="userSpaceOnUse" x="252" y="469" width="948" height="360" fill="black">
+<rect fill="white" x="252" y="469" width="948" height="360"/>
+<path d="M252 470H1200V821C1200 825.418 1196.42 829 1192 829H260C255.582 829 252 825.418 252 821V470Z"/>
 </mask>
-<path d="M292 490H1240V841C1240 845.418 1236.42 849 1232 849H300C295.582 849 292 845.418 292 841V490Z" fill="white"/>
+<path d="M252 470H1200V821C1200 825.418 1196.42 829 1192 829H260C255.582 829 252 825.418 252 821V470Z" fill="white"/>
 <mask id="path-5-inside-3_5704_91450" fill="white">
-<path d="M292 490H1240V531H292V490Z"/>
+<path d="M252 470H1200V511H252V470Z"/>
 </mask>
-<path d="M292 490H1240V531H292V490Z" fill="white"/>
-<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="307" y="514.606">Controls</tspan></text>
-<text fill="#1EA7FD" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="392" y="514.606">Interactions</tspan></text>
-<rect x="377" y="527" width="107" height="3" fill="#1EA7FD"/>
-<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="499" y="514.606">Design</tspan></text>
-<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="575" y="514.606">Accessibility</tspan></text>
-<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="686" y="514.606">Actions</tspan></text>
-<path d="M1186.5 507.504C1186.5 507.228 1186.72 507.004 1187 507.004H1188C1188.28 507.004 1188.5 507.228 1188.5 507.504C1188.5 507.78 1188.28 508.004 1188 508.004H1187C1186.72 508.004 1186.5 507.78 1186.5 507.504Z" fill="#7A858E"/>
-<path d="M1187 509.004C1186.72 509.004 1186.5 509.228 1186.5 509.504C1186.5 509.78 1186.72 510.004 1187 510.004H1188C1188.28 510.004 1188.5 509.78 1188.5 509.504C1188.5 509.228 1188.28 509.004 1188 509.004H1187Z" fill="#7A858E"/>
-<path d="M1186.5 511.504C1186.5 511.228 1186.72 511.004 1187 511.004H1188C1188.28 511.004 1188.5 511.228 1188.5 511.504C1188.5 511.78 1188.28 512.004 1188 512.004H1187C1186.72 512.004 1186.5 511.78 1186.5 511.504Z" fill="#7A858E"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M1178.5 516.004C1178.22 516.004 1178 515.78 1178 515.504V504.504C1178 504.228 1178.22 504.004 1178.5 504.004H1189.5C1189.78 504.004 1190 504.228 1190 504.504V515.504C1190 515.78 1189.78 516.004 1189.5 516.004H1178.5ZM1179 515.004V505.004H1185V515.004H1179ZM1186 505.004H1189V515.004H1186V505.004Z" fill="#7A858E"/>
+<path d="M252 470H1200V511H252V470Z" fill="white"/>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="267" y="494.606">Controls</tspan></text>
+<text fill="#1EA7FD" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="352" y="494.606">Interactions</tspan></text>
+<rect x="337" y="507" width="107" height="3" fill="#1EA7FD"/>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="459" y="494.606">Design</tspan></text>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="535" y="494.606">Accessibility</tspan></text>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="646" y="494.606">Actions</tspan></text>
+<path d="M1146.5 487.504C1146.5 487.228 1146.72 487.004 1147 487.004H1148C1148.28 487.004 1148.5 487.228 1148.5 487.504C1148.5 487.78 1148.28 488.004 1148 488.004H1147C1146.72 488.004 1146.5 487.78 1146.5 487.504Z" fill="#7A858E"/>
+<path d="M1147 489.004C1146.72 489.004 1146.5 489.228 1146.5 489.504C1146.5 489.78 1146.72 490.004 1147 490.004H1148C1148.28 490.004 1148.5 489.78 1148.5 489.504C1148.5 489.228 1148.28 489.004 1148 489.004H1147Z" fill="#7A858E"/>
+<path d="M1146.5 491.504C1146.5 491.228 1146.72 491.004 1147 491.004H1148C1148.28 491.004 1148.5 491.228 1148.5 491.504C1148.5 491.78 1148.28 492.004 1148 492.004H1147C1146.72 492.004 1146.5 491.78 1146.5 491.504Z" fill="#7A858E"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M1138.5 496.004C1138.22 496.004 1138 495.78 1138 495.504V484.504C1138 484.228 1138.22 484.004 1138.5 484.004H1149.5C1149.78 484.004 1150 484.228 1150 484.504V495.504C1150 495.78 1149.78 496.004 1149.5 496.004H1138.5ZM1139 495.004V485.004H1145V495.004H1139ZM1146 485.004H1149V495.004H1146V485.004Z" fill="#7A858E"/>
 <g clip-path="url(#clip2_5704_91450)">
-<path d="M1218.85 507.146C1219.05 507.342 1219.05 507.658 1218.85 507.854L1216.71 510L1218.85 512.146C1219.05 512.342 1219.05 512.658 1218.85 512.854C1218.66 513.049 1218.34 513.049 1218.15 512.854L1216 510.707L1213.85 512.854C1213.66 513.049 1213.34 513.049 1213.15 512.854C1212.95 512.658 1212.95 512.342 1213.15 512.146L1215.29 510L1213.15 507.854C1212.95 507.658 1212.95 507.342 1213.15 507.146C1213.34 506.951 1213.66 506.951 1213.85 507.146L1216 509.293L1218.15 507.146C1218.34 506.951 1218.66 506.951 1218.85 507.146Z" fill="#7A858E"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M1216 517C1219.87 517 1223 513.866 1223 510C1223 506.134 1219.87 503 1216 503C1212.13 503 1209 506.134 1209 510C1209 513.866 1212.13 517 1216 517ZM1216 516C1219.31 516 1222 513.314 1222 510C1222 506.686 1219.31 504 1216 504C1212.69 504 1210 506.686 1210 510C1210 513.314 1212.69 516 1216 516Z" fill="#7A858E"/>
+<path d="M1178.85 487.146C1179.05 487.342 1179.05 487.658 1178.85 487.854L1176.71 490L1178.85 492.146C1179.05 492.342 1179.05 492.658 1178.85 492.854C1178.66 493.049 1178.34 493.049 1178.15 492.854L1176 490.707L1173.85 492.854C1173.66 493.049 1173.34 493.049 1173.15 492.854C1172.95 492.658 1172.95 492.342 1173.15 492.146L1175.29 490L1173.15 487.854C1172.95 487.658 1172.95 487.342 1173.15 487.146C1173.34 486.951 1173.66 486.951 1173.85 487.146L1176 489.293L1178.15 487.146C1178.34 486.951 1178.66 486.951 1178.85 487.146Z" fill="#7A858E"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M1176 497C1179.87 497 1183 493.866 1183 490C1183 486.134 1179.87 483 1176 483C1172.13 483 1169 486.134 1169 490C1169 493.866 1172.13 497 1176 497ZM1176 496C1179.31 496 1182 493.314 1182 490C1182 486.686 1179.31 484 1176 484C1172.69 484 1170 486.686 1170 490C1170 493.314 1172.69 496 1176 496Z" fill="#7A858E"/>
 </g>
-<path d="M1240 530H292V532H1240V530Z" fill="#E1E5E8" mask="url(#path-5-inside-3_5704_91450)"/>
-<rect width="948" height="40" transform="translate(292 531)" fill="#F6F9FC"/>
-<rect x="292" y="570" width="948" height="1" fill="#DDDDDD"/>
-<rect x="307" y="539" width="65" height="24" rx="5" fill="#66BF3C"/>
-<text fill="white" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="800" letter-spacing="0.4em"><tspan x="318.398" y="554.619">PASS</tspan></text>
+<path d="M1200 510H252V512H1200V510Z" fill="#E1E5E8" mask="url(#path-5-inside-3_5704_91450)"/>
+<rect width="948" height="40" transform="translate(252 511)" fill="#F6F9FC"/>
+<rect x="252" y="550" width="948" height="1" fill="#DDDDDD"/>
+<rect x="267" y="519" width="65" height="24" rx="5" fill="#66BF3C"/>
+<text fill="white" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="11" font-weight="800" letter-spacing="0.4em"><tspan x="278.398" y="534.619">PASS</tspan></text>
 <g opacity="0.5">
-<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="387" y="555.277">Scroll to end</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="347" y="535.277">Scroll to end</tspan></text>
 </g>
-<rect x="479" y="539" width="1" height="24" fill="black" fill-opacity="0.1"/>
+<rect x="439" y="519" width="1" height="24" fill="black" fill-opacity="0.1"/>
 <g opacity="0.4">
-<path d="M509 546.419V548.735L513.228 545.999C513.561 545.784 514 546.023 514 546.419V555.581C514 555.977 513.561 556.216 513.228 556L509 553.264V555.581C509 555.977 508.561 556.216 508.228 556.001L501.5 551.647V555.25C501.5 555.664 501.164 556 500.75 556C500.336 556 500 555.664 500 555.25V546.75C500 546.336 500.336 546 500.75 546C501.164 546 501.5 546.336 501.5 546.75V550.353L508.228 545.999C508.561 545.784 509 546.023 509 546.419Z" fill="#999999"/>
+<path d="M469 526.419V528.735L473.228 525.999C473.561 525.784 474 526.023 474 526.419V535.581C474 535.977 473.561 536.216 473.228 536L469 533.264V535.581C469 535.977 468.561 536.216 468.228 536.001L461.5 531.647V535.25C461.5 535.664 461.164 536 460.75 536C460.336 536 460 535.664 460 535.25V526.75C460 526.336 460.336 526 460.75 526C461.164 526 461.5 526.336 461.5 526.75V530.353L468.228 525.999C468.561 525.784 469 526.023 469 526.419Z" fill="#999999"/>
 </g>
 <g opacity="0.4">
-<path d="M540.239 556.035L532.698 551.427C532.605 551.369 532.539 551.289 532.5 551.2V555.25C532.5 555.664 532.164 556 531.75 556C531.336 556 531 555.664 531 555.25V546.75C531 546.336 531.336 546 531.75 546C532.164 546 532.5 546.336 532.5 546.75L532.5 550.8C532.539 550.71 532.605 550.63 532.698 550.573L540.239 545.965C540.572 545.761 541 546.001 541 546.391V555.608C541 555.999 540.572 556.239 540.239 556.035Z" fill="#999999"/>
+<path d="M500.239 536.035L492.698 531.427C492.605 531.369 492.539 531.289 492.5 531.2V535.25C492.5 535.664 492.164 536 491.75 536C491.336 536 491 535.664 491 535.25V526.75C491 526.336 491.336 526 491.75 526C492.164 526 492.5 526.336 492.5 526.75L492.5 530.8C492.539 530.71 492.605 530.63 492.698 530.573L500.239 525.965C500.572 525.761 501 526.001 501 526.391V535.608C501 535.999 500.572 536.239 500.239 536.035Z" fill="#999999"/>
 </g>
 <g opacity="0.5">
-<path d="M560.761 556.035L568.302 551.427C568.395 551.369 568.461 551.289 568.5 551.2V555.25C568.5 555.664 568.836 556 569.25 556C569.664 556 570 555.664 570 555.25V546.75C570 546.336 569.664 546 569.25 546C568.836 546 568.5 546.336 568.5 546.75V550.8C568.461 550.71 568.395 550.63 568.302 550.573L560.761 545.965C560.428 545.761 560 546.001 560 546.391V555.608C560 555.999 560.428 556.239 560.761 556.035Z" fill="#999999"/>
+<path d="M520.761 536.035L528.302 531.427C528.395 531.369 528.461 531.289 528.5 531.2V535.25C528.5 535.664 528.836 536 529.25 536C529.664 536 530 535.664 530 535.25V526.75C530 526.336 529.664 526 529.25 526C528.836 526 528.5 526.336 528.5 526.75V530.8C528.461 530.71 528.395 530.63 528.302 530.573L520.761 525.965C520.428 525.761 520 526.001 520 526.391V535.608C520 535.999 520.428 536.239 520.761 536.035Z" fill="#999999"/>
 </g>
 <g opacity="0.5">
-<path d="M592 546.419V548.735L587.772 545.999C587.439 545.784 587 546.023 587 546.419V555.581C587 555.977 587.439 556.216 587.772 556L592 553.264V555.581C592 555.977 592.439 556.216 592.772 556.001L599.5 551.647V555.25C599.5 555.664 599.836 556 600.25 556C600.664 556 601 555.664 601 555.25V546.75C601 546.336 600.664 546 600.25 546C599.836 546 599.5 546.336 599.5 546.75V550.353L592.772 545.999C592.439 545.784 592 546.023 592 546.419Z" fill="#999999"/>
+<path d="M552 526.419V528.735L547.772 525.999C547.439 525.784 547 526.023 547 526.419V535.581C547 535.977 547.439 536.216 547.772 536L552 533.264V535.581C552 535.977 552.439 536.216 552.772 536.001L559.5 531.647V535.25C559.5 535.664 559.836 536 560.25 536C560.664 536 561 535.664 561 535.25V526.75C561 526.336 560.664 526 560.25 526C559.836 526 559.5 526.336 559.5 526.75V530.353L552.772 525.999C552.439 525.784 552 526.023 552 526.419Z" fill="#999999"/>
 </g>
-<path d="M509 546.419V548.735L513.228 545.999C513.561 545.784 514 546.023 514 546.419V555.581C514 555.977 513.561 556.216 513.228 556L509 553.264V555.581C509 555.977 508.561 556.216 508.228 556.001L501.5 551.647V555.25C501.5 555.664 501.164 556 500.75 556C500.336 556 500 555.664 500 555.25V546.75C500 546.336 500.336 546 500.75 546C501.164 546 501.5 546.336 501.5 546.75V550.353L508.228 545.999C508.561 545.784 509 546.023 509 546.419Z" fill="#999999"/>
-<path d="M540.239 556.035L532.698 551.427C532.605 551.369 532.539 551.289 532.5 551.2V555.25C532.5 555.664 532.164 556 531.75 556C531.336 556 531 555.664 531 555.25V546.75C531 546.336 531.336 546 531.75 546C532.164 546 532.5 546.336 532.5 546.75L532.5 550.8C532.539 550.71 532.605 550.63 532.698 550.573L540.239 545.965C540.572 545.761 541 546.001 541 546.391V555.608C541 555.999 540.572 556.239 540.239 556.035Z" fill="#999999"/>
-<path d="M560.761 556.035L568.302 551.427C568.395 551.369 568.461 551.289 568.5 551.2V555.25C568.5 555.664 568.836 556 569.25 556C569.664 556 570 555.664 570 555.25V546.75C570 546.336 569.664 546 569.25 546C568.836 546 568.5 546.336 568.5 546.75V550.8C568.461 550.71 568.395 550.63 568.302 550.573L560.761 545.965C560.428 545.761 560 546.001 560 546.391V555.608C560 555.999 560.428 556.239 560.761 556.035Z" fill="#999999"/>
-<path d="M592 546.419V548.735L587.772 545.999C587.439 545.784 587 546.023 587 546.419V555.581C587 555.977 587.439 556.216 587.772 556L592 553.264V555.581C592 555.977 592.439 556.216 592.772 556.001L599.5 551.647V555.25C599.5 555.664 599.836 556 600.25 556C600.664 556 601 555.664 601 555.25V546.75C601 546.336 600.664 546 600.25 546C599.836 546 599.5 546.336 599.5 546.75V550.353L592.772 545.999C592.439 545.784 592 546.023 592 546.419Z" fill="#999999"/>
+<path d="M469 526.419V528.735L473.228 525.999C473.561 525.784 474 526.023 474 526.419V535.581C474 535.977 473.561 536.216 473.228 536L469 533.264V535.581C469 535.977 468.561 536.216 468.228 536.001L461.5 531.647V535.25C461.5 535.664 461.164 536 460.75 536C460.336 536 460 535.664 460 535.25V526.75C460 526.336 460.336 526 460.75 526C461.164 526 461.5 526.336 461.5 526.75V530.353L468.228 525.999C468.561 525.784 469 526.023 469 526.419Z" fill="#999999"/>
+<path d="M500.239 536.035L492.698 531.427C492.605 531.369 492.539 531.289 492.5 531.2V535.25C492.5 535.664 492.164 536 491.75 536C491.336 536 491 535.664 491 535.25V526.75C491 526.336 491.336 526 491.75 526C492.164 526 492.5 526.336 492.5 526.75L492.5 530.8C492.539 530.71 492.605 530.63 492.698 530.573L500.239 525.965C500.572 525.761 501 526.001 501 526.391V535.608C501 535.999 500.572 536.239 500.239 536.035Z" fill="#999999"/>
+<path d="M520.761 536.035L528.302 531.427C528.395 531.369 528.461 531.289 528.5 531.2V535.25C528.5 535.664 528.836 536 529.25 536C529.664 536 530 535.664 530 535.25V526.75C530 526.336 529.664 526 529.25 526C528.836 526 528.5 526.336 528.5 526.75V530.8C528.461 530.71 528.395 530.63 528.302 530.573L520.761 525.965C520.428 525.761 520 526.001 520 526.391V535.608C520 535.999 520.428 536.239 520.761 536.035Z" fill="#999999"/>
+<path d="M552 526.419V528.735L547.772 525.999C547.439 525.784 547 526.023 547 526.419V535.581C547 535.977 547.439 536.216 547.772 536L552 533.264V535.581C552 535.977 552.439 536.216 552.772 536.001L559.5 531.647V535.25C559.5 535.664 559.836 536 560.25 536C560.664 536 561 535.664 561 535.25V526.75C561 526.336 560.664 526 560.25 526C559.836 526 559.5 526.336 559.5 526.75V530.353L552.772 525.999C552.439 525.784 552 526.023 552 526.419Z" fill="#999999"/>
 <g clip-path="url(#clip3_5704_91450)">
-<path d="M621.5 545C621.5 544.724 621.276 544.5 621 544.5H618C617.724 544.5 617.5 544.724 617.5 545C617.5 545.276 617.724 545.5 618 545.5H619.535C617.712 546.651 616.5 548.684 616.5 551C616.5 554.221 618.843 556.894 621.917 557.41C622.19 557.456 622.447 557.272 622.493 557C622.539 556.727 622.355 556.47 622.083 556.424C619.482 555.988 617.5 553.725 617.5 551C617.5 548.863 618.719 547.01 620.5 546.1V548C620.5 548.276 620.724 548.5 621 548.5C621.276 548.5 621.5 548.276 621.5 548V545.353C621.5 545.345 621.5 545.338 621.5 545.33V545Z" fill="#999999"/>
-<path d="M623.507 545C623.553 544.728 623.81 544.544 624.083 544.59C627.157 545.106 629.5 547.779 629.5 551C629.5 553.316 628.288 555.349 626.466 556.5H628C628.276 556.5 628.5 556.724 628.5 557C628.5 557.276 628.276 557.5 628 557.5H625C624.724 557.5 624.5 557.276 624.5 557V554C624.5 553.724 624.724 553.5 625 553.5C625.276 553.5 625.5 553.724 625.5 554V555.9C627.281 554.99 628.5 553.137 628.5 551C628.5 548.275 626.518 546.012 623.917 545.576C623.645 545.53 623.461 545.273 623.507 545Z" fill="#999999"/>
+<path d="M581.5 525C581.5 524.724 581.276 524.5 581 524.5H578C577.724 524.5 577.5 524.724 577.5 525C577.5 525.276 577.724 525.5 578 525.5H579.535C577.712 526.651 576.5 528.684 576.5 531C576.5 534.221 578.843 536.894 581.917 537.41C582.19 537.456 582.447 537.272 582.493 537C582.539 536.727 582.355 536.47 582.083 536.424C579.482 535.988 577.5 533.725 577.5 531C577.5 528.863 578.719 527.01 580.5 526.1V528C580.5 528.276 580.724 528.5 581 528.5C581.276 528.5 581.5 528.276 581.5 528V525.353C581.5 525.345 581.5 525.338 581.5 525.33V525Z" fill="#999999"/>
+<path d="M583.507 525C583.553 524.728 583.81 524.544 584.083 524.59C587.157 525.106 589.5 527.779 589.5 531C589.5 533.316 588.288 535.349 586.466 536.5H588C588.276 536.5 588.5 536.724 588.5 537C588.5 537.276 588.276 537.5 588 537.5H585C584.724 537.5 584.5 537.276 584.5 537V534C584.5 533.724 584.724 533.5 585 533.5C585.276 533.5 585.5 533.724 585.5 534V535.9C587.281 534.99 588.5 533.137 588.5 531C588.5 528.275 586.518 526.012 583.917 525.576C583.645 525.53 583.461 525.273 583.507 525Z" fill="#999999"/>
 </g>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="1093.17" y="555.277">RangeSlider.stories.tsx</tspan></text>
-<circle cx="313" cy="591" r="3" fill="#CCCCCC"/>
-<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="325" y="595.277">Raise the minimum value by dragging the slider thumb</tspan></text>
-<rect x="291.5" y="570.5" width="949" height="41" stroke="#EEEEEE"/>
-<rect x="291.5" y="570.5" width="949" height="41" fill="white"/>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" letter-spacing="0em"><tspan x="1053.17" y="535.277">RangeSlider.stories.tsx</tspan></text>
+<circle cx="273" cy="571" r="3" fill="#CCCCCC"/>
+<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" letter-spacing="0em"><tspan x="285" y="575.277">Raise the minimum value by dragging the slider thumb</tspan></text>
+<rect x="251.5" y="550.5" width="949" height="41" stroke="#EEEEEE"/>
+<rect x="251.5" y="550.5" width="949" height="41" fill="white"/>
 <g clip-path="url(#clip4_5704_91450)">
-<path d="M318.874 587.875C319.042 587.707 319.042 587.436 318.874 587.269C318.707 587.101 318.436 587.101 318.268 587.269L311.286 594.251L307.732 590.697C307.564 590.53 307.293 590.53 307.126 590.697C306.958 590.865 306.958 591.136 307.126 591.303L310.983 595.16C311.15 595.328 311.421 595.328 311.589 595.16L318.874 587.875Z" fill="#66BF3C"/>
+<path d="M278.874 567.875C279.042 567.707 279.042 567.436 278.874 567.269C278.707 567.101 278.436 567.101 278.268 567.269L271.286 574.251L267.732 570.697C267.564 570.53 267.293 570.53 267.126 570.697C266.958 570.865 266.958 571.136 267.126 571.303L270.983 575.16C271.15 575.328 271.421 575.328 271.589 575.16L278.874 567.875Z" fill="#66BF3C"/>
 </g>
-<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="325" y="595.277">Raise the minimum value by dragging the slider thumb</tspan></text>
-<rect x="291.5" y="570.5" width="949" height="41" stroke="#EEEEEE"/>
-<circle cx="313" cy="632" r="3" fill="#CCCCCC"/>
-<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="325" y="636.277">Lower the maximum value by dragging the slider thumb</tspan></text>
-<rect x="291.5" y="611.5" width="949" height="41" stroke="#EEEEEE"/>
-<rect x="291.5" y="611.5" width="949" height="41" fill="white"/>
+<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" letter-spacing="0em"><tspan x="285" y="575.277">Raise the minimum value by dragging the slider thumb</tspan></text>
+<rect x="251.5" y="550.5" width="949" height="41" stroke="#EEEEEE"/>
+<circle cx="273" cy="612" r="3" fill="#CCCCCC"/>
+<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" letter-spacing="0em"><tspan x="285" y="616.277">Lower the maximum value by dragging the slider thumb</tspan></text>
+<rect x="251.5" y="591.5" width="949" height="41" stroke="#EEEEEE"/>
+<rect x="251.5" y="591.5" width="949" height="41" fill="white"/>
 <g clip-path="url(#clip5_5704_91450)">
-<path d="M318.874 628.875C319.042 628.707 319.042 628.436 318.874 628.269C318.707 628.101 318.436 628.101 318.268 628.269L311.286 635.251L307.732 631.697C307.564 631.53 307.293 631.53 307.126 631.697C306.958 631.865 306.958 632.136 307.126 632.303L310.983 636.16C311.15 636.328 311.421 636.328 311.589 636.16L318.874 628.875Z" fill="#66BF3C"/>
+<path d="M278.874 608.875C279.042 608.707 279.042 608.436 278.874 608.269C278.707 608.101 278.436 608.101 278.268 608.269L271.286 615.251L267.732 611.697C267.564 611.53 267.293 611.53 267.126 611.697C266.958 611.865 266.958 612.136 267.126 612.303L270.983 616.16C271.15 616.328 271.421 616.328 271.589 616.16L278.874 608.875Z" fill="#66BF3C"/>
 </g>
-<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="325" y="636.277">Lower the maximum value by dragging the slider thumb</tspan></text>
-<rect x="291.5" y="611.5" width="949" height="41" stroke="#EEEEEE"/>
-<circle cx="313" cy="673" r="3" fill="#CCCCCC"/>
-<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="325" y="677.277">Average price should update</tspan></text>
-<rect x="291.5" y="652.5" width="949" height="41" stroke="#EEEEEE"/>
-<rect x="291.5" y="652.5" width="949" height="41" fill="white"/>
+<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" letter-spacing="0em"><tspan x="285" y="616.277">Lower the maximum value by dragging the slider thumb</tspan></text>
+<rect x="251.5" y="591.5" width="949" height="41" stroke="#EEEEEE"/>
+<circle cx="273" cy="653" r="3" fill="#CCCCCC"/>
+<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" letter-spacing="0em"><tspan x="285" y="657.277">Average price should update</tspan></text>
+<rect x="251.5" y="632.5" width="949" height="41" stroke="#EEEEEE"/>
+<rect x="251.5" y="632.5" width="949" height="41" fill="white"/>
 <g clip-path="url(#clip6_5704_91450)">
-<path d="M318.874 669.875C319.042 669.707 319.042 669.436 318.874 669.269C318.707 669.101 318.436 669.101 318.268 669.269L311.286 676.251L307.732 672.697C307.564 672.53 307.293 672.53 307.126 672.697C306.958 672.865 306.958 673.136 307.126 673.303L310.983 677.16C311.15 677.328 311.421 677.328 311.589 677.16L318.874 669.875Z" fill="#66BF3C"/>
+<path d="M278.874 649.875C279.042 649.707 279.042 649.436 278.874 649.269C278.707 649.101 278.436 649.101 278.268 649.269L271.286 656.251L267.732 652.697C267.564 652.53 267.293 652.53 267.126 652.697C266.958 652.865 266.958 653.136 267.126 653.303L270.983 657.16C271.15 657.328 271.421 657.328 271.589 657.16L278.874 649.875Z" fill="#66BF3C"/>
 </g>
-<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="325" y="677.277">Average price should update</tspan></text>
-<rect x="291.5" y="652.5" width="949" height="41" stroke="#EEEEEE"/>
-<rect width="948" height="1" transform="translate(292 652)" fill="#E69D00"/>
-<path d="M292 648L298.5 652.5L292 657V648Z" fill="#E69D00"/>
-<rect width="948" height="1" transform="translate(292 611)" fill="#E69D00"/>
-<path d="M292 607L298.5 611.5L292 616V607Z" fill="#E69D00"/>
-<rect width="948" height="1" transform="translate(292 570)" fill="#E69D00"/>
-<path d="M292 566L298.5 570.5L292 575V566Z" fill="#E69D00"/>
+<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" letter-spacing="0em"><tspan x="285" y="657.277">Average price should update</tspan></text>
+<rect x="251.5" y="632.5" width="949" height="41" stroke="#EEEEEE"/>
+<rect width="948" height="1" transform="translate(252 632)" fill="#E69D00"/>
+<path d="M252 628L258.5 632.5L252 637V628Z" fill="#E69D00"/>
+<rect width="948" height="1" transform="translate(252 591)" fill="#E69D00"/>
+<path d="M252 587L258.5 591.5L252 596V587Z" fill="#E69D00"/>
+<rect width="948" height="1" transform="translate(252 550)" fill="#E69D00"/>
+<path d="M252 546L258.5 550.5L252 555V546Z" fill="#E69D00"/>
 </g>
-<path d="M292 489H1240V491H292V489ZM1240 849H292H1240ZM292 849V490V849ZM1240 490V849V490Z" fill="#E1E5E8" mask="url(#path-3-outside-2_5704_91450)"/>
+<path d="M252 469H1200V471H252V469ZM1200 829H252H1200ZM252 829V470V829ZM1200 470V829V470Z" fill="#E1E5E8" mask="url(#path-3-outside-2_5704_91450)"/>
 </g>
-<path d="M292 489H1240V491H292V489ZM1240 849H292H1240ZM292 849V490V849ZM1240 490V849V490Z" fill="#E1E5E8" mask="url(#path-1-inside-1_5704_91450)"/>
+<path d="M252 469H1200V471H252V469ZM1200 829H252H1200ZM252 829V470V829ZM1200 470V829V470Z" fill="#E1E5E8" mask="url(#path-1-inside-1_5704_91450)"/>
 <defs>
 <clipPath id="clip0_5704_91450">
-<path d="M292 490H1240V841C1240 845.418 1236.42 849 1232 849H300C295.582 849 292 845.418 292 841V490Z" fill="white"/>
+<path d="M252 470H1200V821C1200 825.418 1196.42 829 1192 829H260C255.582 829 252 825.418 252 821V470Z" fill="white"/>
 </clipPath>
 <clipPath id="clip1_5704_91450">
-<path d="M292 490H1240V841C1240 845.418 1236.42 849 1232 849H300C295.582 849 292 845.418 292 841V490Z" fill="white"/>
+<path d="M252 470H1200V821C1200 825.418 1196.42 829 1192 829H260C255.582 829 252 825.418 252 821V470Z" fill="white"/>
 </clipPath>
 <clipPath id="clip2_5704_91450">
-<rect width="14" height="14" fill="white" transform="translate(1209 503)"/>
+<rect width="14" height="14" fill="white" transform="translate(1169 483)"/>
 </clipPath>
 <clipPath id="clip3_5704_91450">
-<rect width="14" height="14" fill="white" transform="translate(616 544)"/>
+<rect width="14" height="14" fill="white" transform="translate(576 524)"/>
 </clipPath>
 <clipPath id="clip4_5704_91450">
-<rect width="12" height="12" fill="white" transform="translate(307 585)"/>
+<rect width="12" height="12" fill="white" transform="translate(267 565)"/>
 </clipPath>
 <clipPath id="clip5_5704_91450">
-<rect width="12" height="12" fill="white" transform="translate(307 626)"/>
+<rect width="12" height="12" fill="white" transform="translate(267 606)"/>
 </clipPath>
 <clipPath id="clip6_5704_91450">
-<rect width="12" height="12" fill="white" transform="translate(307 667)"/>
+<rect width="12" height="12" fill="white" transform="translate(267 647)"/>
 </clipPath>
 </defs>
 </svg>
