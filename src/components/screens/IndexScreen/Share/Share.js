@@ -27,11 +27,6 @@ const Wrapper = styled.section`
 
 const ValueProp = styled(ValuePropCopy)`
   grid-column: 1 / -1;
-  /* TODO! */
-  h3 {
-    font-size: 20px;
-    line-height: 1.2;
-  }
 
   &:first-of-type {
     padding-top: 0;

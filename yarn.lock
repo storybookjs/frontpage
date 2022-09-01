@@ -1389,7 +1389,7 @@
   resolved "https://registry.yarnpkg.com/@docsearch/css/-/css-3.0.0.tgz#fe57b474802ffd706d3246eab25d52fac8aa3698"
   integrity sha512-1kkV7tkAsiuEd0shunYRByKJe3xQDG2q7wYg24SOw1nV9/2lwEd4WrUYRJC/ukGTl2/kHeFxsaUvtiOy0y6fFA==
 
-"@docsearch/css@3.2.0", "@docsearch/css@^3.1.0":
+"@docsearch/css@3.2.0":
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/@docsearch/css/-/css-3.2.0.tgz#9f0f7ccb315cfe2db4565264569e1cb4b26dc26d"
   integrity sha512-jnNrO2JVYYhj2pP2FomlHIy6220n6mrLn2t9v2/qc+rM7M/fbIcKMgk9ky4RN+L/maUEmteckzg6/PIYoAAXJg==
@@ -4155,12 +4155,11 @@
     core-js "^3.8.2"
     global "^4.4.0"
 
-"@storybook/components-marketing@^2.0.6":
-  version "2.0.6"
-  resolved "https://registry.yarnpkg.com/@storybook/components-marketing/-/components-marketing-2.0.6.tgz#247e50f5f08239eabdd2ab9b152193f08e61b4f3"
-  integrity sha512-Kdxg6YcKm4yek0M1CuBZ3oPcX2fqG2IS46zrSqoq/ejwEMyC6s5i00aTQPvgyChImGl3Q/KtJw62aZVUb1LLsA==
+"@storybook/components-marketing@^2.0.9":
+  version "2.0.9"
+  resolved "https://registry.yarnpkg.com/@storybook/components-marketing/-/components-marketing-2.0.9.tgz#cdd1167fd24a7624443d44a0081b562da72cdd9e"
+  integrity sha512-IA9A/xPThlFz2Abz4sZOLZzcSgEtLxWicbdwUgc+xAi/s9iSCt8jRXhA/DTi678dp1CEs8XbrzE8duz57Ty3og==
   dependencies:
-    "@docsearch/css" "^3.1.0"
     "@docsearch/react" "^3.1.0"
     "@emotion/weak-memoize" "^0.2.5"
     "@floating-ui/react-dom-interactions" "^0.6.5"
@@ -4169,7 +4168,7 @@
     "@storybook/theming" "^6.5.9"
     formik "^2.1.5"
     human-format "^0.11.0"
-    react-merge-refs "^2.0.0"
+    react-merge-refs "^1.1.0"
 
 "@storybook/components@6.5.8":
   version "6.5.8"
@@ -18991,10 +18990,10 @@ react-lifecycles-compat@^3.0.0, react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
-react-merge-refs@^2.0.0:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/react-merge-refs/-/react-merge-refs-2.0.1.tgz#a1f8c2dadefa635333e9b91ec59f30b65228b006"
-  integrity sha512-pywF6oouJWuqL26xV3OruRSIqai31R9SdJX/I3gP2q8jLxUnA1IwXcLW8werUHLZOrp4N7YOeQNZrh/BKrHI4A==
+react-merge-refs@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-merge-refs/-/react-merge-refs-1.1.0.tgz#73d88b892c6c68cbb7a66e0800faa374f4c38b06"
+  integrity sha512-alTKsjEL0dKH/ru1Iyn7vliS2QRcBp9zZPGoWxUOvRGWPUYgjo+V01is7p04It6KhgrzhJGnIj9GgX8W4bZoCQ==
 
 react-modal@^3.11.2:
   version "3.11.2"

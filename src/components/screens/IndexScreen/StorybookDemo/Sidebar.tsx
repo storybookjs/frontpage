@@ -22,29 +22,35 @@ interface SidebarProps extends MotionProps {
   activeStory: string;
 }
 
+const rangeSliderStories = ['default', 'input-range', 'no-selection'];
+const timeFrameStories = ['all-day', 'last-hour', 'no-selection', 'overview'];
+
 export const Sidebar = ({ activeStory, type = 'rangeSlider', ...props }: SidebarProps) => {
   const modifyingControls = ['start-time', 'end-time'].includes(activeStory);
+  const storyID = modifyingControls ? 'all-day' : activeStory;
 
   return (
     <SidebarWrapper {...props}>
-      {type === 'rangeSlider' && (
-        <AnimatePresence initial={false}>
-          <Instance key={activeStory} src={`images/develop/sidebar-rs-${activeStory}.svg`} alt="" />
-        </AnimatePresence>
-      )}
-      {type === 'timeFrame' && (
-        <AnimatePresence initial={false}>
+      {type === 'rangeSlider' &&
+        rangeSliderStories.map((id) => (
           <Instance
-            key={modifyingControls ? 'all-day' : activeStory}
-            src={`images/develop/sidebar-tf-${modifyingControls ? 'all-day' : activeStory}.svg`}
+            key={id}
+            src={`images/develop/sidebar-rs-${id}.svg`}
             alt=""
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            animate={{ opacity: storyID === id ? 1 : 0 }}
             transition={{ duration: 0.1 }}
           />
-        </AnimatePresence>
-      )}
+        ))}
+      {type === 'timeFrame' &&
+        timeFrameStories.map((id) => (
+          <Instance
+            key={id}
+            src={`images/develop/sidebar-tf-${id}.svg`}
+            alt=""
+            animate={{ opacity: storyID === id ? 1 : 0 }}
+            transition={{ duration: 0.1 }}
+          />
+        ))}
     </SidebarWrapper>
   );
 };

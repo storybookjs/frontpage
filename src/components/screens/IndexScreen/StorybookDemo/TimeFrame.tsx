@@ -46,33 +46,36 @@ const Overview = styled(motion.img)`
   border-radius: 4px;
 `;
 
+const stories = ['no-selection', 'all-day', 'last-hour', 'start-time', 'end-time'];
+
 export const TimeFrame = ({ activeStory, ...props }: TimeFrameProps) => {
   const modifyingControls = ['start-time', 'end-time'].includes(activeStory);
 
-  return activeStory === 'overview' ? (
-    <Overview
-      src="images/develop/time-frame-overview.svg"
-      alt=""
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.1 }}
-    />
-  ) : (
-    <TimeFrameWrapper {...props}>
-      <AnimatePresence initial={false} custom={modifyingControls}>
-        <TimeFrameVariant
-          key={activeStory}
-          src={`images/develop/time-frame-${activeStory}.svg`}
-          alt=""
-          width="370"
-          height="303"
-          custom={modifyingControls}
-          initial="initial"
-          animate="animate"
-          variants={variants}
-          transition={{ duration: 0.4 }}
-        />
-      </AnimatePresence>
-    </TimeFrameWrapper>
+  return (
+    <>
+      <TimeFrameWrapper>
+        {stories.map((id) => (
+          <TimeFrameVariant
+            key={id}
+            src={`images/develop/time-frame-${id}.svg`}
+            alt=""
+            width="370"
+            height="303"
+            // custom={modifyingControls}
+            initial={false}
+            animate={{ opacity: activeStory === id ? 1 : 0 }}
+            // variants={variants}
+            transition={{ duration: 0.1 }}
+          />
+        ))}
+      </TimeFrameWrapper>
+      <Overview
+        src="images/develop/time-frame-overview.svg"
+        alt=""
+        initial={false}
+        animate={{ opacity: activeStory === 'overview' ? 1 : 0 }}
+        transition={{ duration: 0.1 }}
+      />
+    </>
   );
 };

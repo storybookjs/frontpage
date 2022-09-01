@@ -23,19 +23,28 @@ interface AddonsProps extends MotionProps {
   scrollProgress: MotionValue;
 }
 
+// addons-a11y.svg
+// addons-controls.svg
+// addons-design.svg
+// addons-interactions.svg
+
+const panels = ['a11y', 'controls', 'design', 'interactions'];
+
 export const AddonsPanel = ({ scrollProgress, activePanel, ...props }: AddonsProps) => {
   const y = useTransform(scrollProgress, [0, 0.15], ['100%', '0%'], { clamp: true });
 
   return (
     <AddonsWrapper {...props}>
-      <AnimatePresence initial={false}>
+      {panels.map((id) => (
         <Instance
-          key={activePanel}
-          src={`images/develop/addons-${activePanel}.svg`}
+          key={id}
+          src={`images/develop/addons-${id}.svg`}
           alt=""
+          animate={{ opacity: id === activePanel ? 1 : 0 }}
           style={{ y }}
+          transition={{ duration: 0.1 }}
         />
-      </AnimatePresence>
+      ))}
     </AddonsWrapper>
   );
 };

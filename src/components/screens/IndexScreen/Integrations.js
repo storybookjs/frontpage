@@ -83,7 +83,7 @@ const IntegrationGrid = styled.div`
   justify-content: center;
 
   @media (min-width: ${breakpoints[2]}px) {
-    gap: 30px;
+    gap: 20px;
   }
 
   @media (min-width: 1400px) {

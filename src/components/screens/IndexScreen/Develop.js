@@ -72,7 +72,6 @@ const ValueProp = styled(ValuePropCopy)`
 
   @media (min-width: ${breakpoints[2]}px) {
     bottom: unset;
-    /* top: 4rem; */
 
     top: 50vh;
     transform: translateY(-50%);
@@ -100,6 +99,22 @@ const Content = styled.div`
   }
 `;
 
+const IntegrationsContent = styled.div`
+  ${pageMargins};
+  padding-top: 12rem;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  gap: 6rem;
+  grid-auto-flow: dense;
+
+  @media (min-width: ${breakpoints[2]}px) {
+    justify-items: flex-start;
+    grid-template-columns: minmax(max-content, 320px) 1fr;
+  }
+`;
+
 const StorybookDemoWrapper = styled.figure`
   position: sticky;
   top: 4rem;
@@ -117,7 +132,6 @@ const StorybookDemoWrapper = styled.figure`
     width: 150%;
     max-width: 800px;
     grid-column: 2 / 3;
-    /* top: 4rem; */
     top: 50vh;
     transform: translateY(-50%);
   }
@@ -265,7 +279,7 @@ export function Develop({ docs, startOpen, ...props }) {
           <BottomSpacer />
         </StickTextWrapper>
       </Content>
-      <Content>
+      <IntegrationsContent>
         <ValuePropIntegrations
           inverse
           heading="Integrate with the tools you already use"
@@ -283,7 +297,7 @@ export function Develop({ docs, startOpen, ...props }) {
           }
         />
         <IntegrationsGrid docs={docs} />
-      </Content>
+      </IntegrationsContent>
       <Testimonial
         inverse
         text={

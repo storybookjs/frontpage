@@ -111,7 +111,7 @@ const embedIntegrations = [
       // transform is to prevent the slight jump before the animation starts
       <AspectRatio ratio={`${1202} / ${910}`} style={{ transform: 'translate(0, 0)' }}>
         <EmbedPane
-          src="/images/embed/next.svg"
+          src="/images/embed/next.png"
           alt="Embed stories using iframes in your NextJS sites"
         />
         <Connector name="NextJS" style={{ top: '51%', left: '37%' }} />
@@ -125,7 +125,7 @@ const embedIntegrations = [
     media: (
       <AspectRatio ratio={`${1202} / ${910}`}>
         <EmbedPane
-          src="/images/embed/figma.svg"
+          src="/images/embed/figma.png"
           alt="Use the Storybook Connect plugin to embed stories in a Figma file"
         />
         <Connector name="Figma" style={{ top: '52%', left: '1%' }} transition={{ duration: 0.4 }} />
@@ -139,7 +139,7 @@ const embedIntegrations = [
     media: (
       <AspectRatio ratio={`${1202} / ${910}`}>
         <EmbedPane
-          src="/images/embed/notion.svg"
+          src="/images/embed/notion.png"
           alt="Embed stories in Notion documents using the oEmbed support"
         />
         <Connector
@@ -157,7 +157,7 @@ const embedIntegrations = [
     media: (
       <AspectRatio ratio={`${1202} / ${910}`}>
         <EmbedPane
-          src="/images/embed/medium.svg"
+          src="/images/embed/medium.png"
           alt="Embed stories in Medium articles using the oEmbed support"
         />
         <Connector
