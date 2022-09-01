@@ -38,6 +38,8 @@ interface RangeSliderProps {
   scrollProgress: MotionValue;
 }
 
+const stories = ['default', 'input-range', 'no-selection'];
+
 export const RangeSlider = ({ scrollProgress, activeStory, ...props }: RangeSliderProps) => {
   const x = useTransform(scrollProgress, [0, 1], ['0%', '-91%'], { clamp: true });
   const y = useTransform(scrollProgress, [0, 1], ['0%', '31%'], { clamp: true });
@@ -55,18 +57,17 @@ export const RangeSlider = ({ scrollProgress, activeStory, ...props }: RangeSlid
       style={{ x, y }}
       {...props}
     >
-      <AnimatePresence initial={false} exitBeforeEnter>
+      {stories.map((id) => (
         <RangeSliderVariant
-          key={activeStory}
-          src={`images/develop/range-slider-${activeStory}.svg`}
+          key={id}
+          src={`images/develop/range-slider-${id}.svg`}
           alt=""
           width="370"
           height="303"
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.4 }}
+          animate={{ opacity: activeStory === id ? 1 : 0 }}
+          transition={{ duration: 0.1 }}
         />
-      </AnimatePresence>
+      ))}
       <Check
         src="images/home/automate/ci-check-green.svg"
         alt=""

@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion, AnimatePresence, MotionProps, MotionValue, useTransform } from 'framer-motion';
+import { motion, MotionProps, MotionValue, useTransform } from 'framer-motion';
 import { styled } from '@storybook/theming';
 
 const AddonsWrapper = styled(motion.div)`
@@ -8,7 +8,7 @@ const AddonsWrapper = styled(motion.div)`
   left: 0;
   bottom: 0;
   width: 100%;
-  clip-path: polygon(20% 50%, 100% 50%, 100% 92%, 20% 92%);
+  clip-path: polygon(20% 50%, 100% 50%, 100% 100%, 20% 100%);
 `;
 
 const Instance = styled(motion.img)`
@@ -22,11 +22,6 @@ interface AddonsProps extends MotionProps {
   activePanel: string;
   scrollProgress: MotionValue;
 }
-
-// addons-a11y.svg
-// addons-controls.svg
-// addons-design.svg
-// addons-interactions.svg
 
 const panels = ['a11y', 'controls', 'design', 'interactions'];
 

@@ -25,7 +25,7 @@ const Wrapper = styled(motion.div)`
   position: relative;
   width: 100%;
   height: 0;
-  padding-bottom: 71.81889149%;
+  padding-bottom: 69.10907577%;
   z-index: 999;
 `;
 

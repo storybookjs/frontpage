@@ -133,7 +133,7 @@ const StorybookDemoWrapper = styled.figure`
     max-width: 800px;
     grid-column: 2 / 3;
     top: 50vh;
-    transform: translateY(-50%);
+    transform: translateY(calc(-50% + 36px));
   }
 `;
 
