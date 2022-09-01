@@ -12,7 +12,7 @@ const ALGOLIA_API_KEY = process.env.GATSBY_ALGOLIA_API_KEY;
 
 interface DocsSearchProps {
   framework: string;
-  version: number;
+  version: string;
   /** Only used for Storybook */
   visible?: boolean;
 }

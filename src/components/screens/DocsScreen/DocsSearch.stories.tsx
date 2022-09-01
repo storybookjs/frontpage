@@ -41,6 +41,7 @@ const Template = (args) => <DocsSearch {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   framework: coreFrameworks[0],
+  version: '6.4',
   visible: true,
 };
 Default.decorators = [(storyFn) => <Wrapper>{storyFn()}</Wrapper>];
