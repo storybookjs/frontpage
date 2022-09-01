@@ -4,6 +4,7 @@ import { styled } from '@storybook/theming';
 import Helmet from 'react-helmet';
 import { Nav, LinksContextProvider, Eyebrow, Footer } from '@storybook/components-marketing';
 import { Link as GatsbyLinkWrapper, useStaticQuery, graphql } from 'gatsby';
+import '@docsearch/css';
 
 import DocsLayout from './DocsLayout';
 

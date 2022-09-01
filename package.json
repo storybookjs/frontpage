@@ -10,7 +10,7 @@
     "sharp": "^0.29.0"
   },
   "dependencies": {
-    "@docsearch/css": "^3.0.0",
+    "@docsearch/css": "^3.2.1",
     "@docsearch/react": "^3.0.0",
     "@emotion/server": "^11.4.0",
     "@google-cloud/bigquery": "^5.2.0",
