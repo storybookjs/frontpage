@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@storybook/theming';
-import { Button, Icon, WithModal, Cardinal } from '@storybook/design-system';
+import { Button, Icon, WithModal } from '@storybook/design-system';
 import { styles, SectionLede } from '@storybook/components-marketing';
 import SocialProof from '../../layout/SocialProof';
-import mockUI from './storybook-mock-ui.svg';
 import { NpmDownloadCount } from '../../layout/NpmDownloadCount';
 import { Stat } from '../../basics/Stat';
 import useSiteMetadata from '../../lib/useSiteMetadata';
@@ -51,8 +50,8 @@ const PageLedeContainer = styled.div`
   padding-top: 3rem;
 
   @media (min-width: ${breakpoints[1]}px) {
-    padding-top: 5.625rem;
-    padding-bottom: 17.625rem;
+    padding-top: 6rem;
+    padding-bottom: 13rem;
   }
 `;
 

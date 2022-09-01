@@ -180,8 +180,8 @@ export const HeroDemo = ({ ...props }: HeroDemoProps) => {
           opacity: 0,
           transition: { delay: 1, duration: 1, opacity: { duration: 0.4 } },
         }),
-        endTimeControls.start('initial'),
-        startTimeControls.start('initial'),
+        endTimeControls.set('initial'),
+        startTimeControls.set('initial'),
       ]);
 
       if (inView) {

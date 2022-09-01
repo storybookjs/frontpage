@@ -11,6 +11,7 @@ import { Document } from './Document';
 import { Share } from './Share/Share';
 import { Automate } from './Automate/Automate';
 import { SocialValidation } from './SocialValidation';
+import { StickyNav } from './StickyNav';
 
 const globalStyles = css`
   body {
@@ -32,6 +33,7 @@ export function PureIndexScreen({ projects, storybooks, npmDownloads }) {
         image={ogImage}
       />
       <Hero npmDownloads={npmDownloads} />
+      <StickyNav />
       <Develop docs={docs} />
       <Test docs={docs} />
       <Document docs={docs} />

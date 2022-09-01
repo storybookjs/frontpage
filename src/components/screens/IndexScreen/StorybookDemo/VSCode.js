@@ -1,23 +1,38 @@
 import React from 'react';
 import { styled } from '@storybook/theming';
+import { styles } from '@storybook/components-marketing';
 import { motion, useTransform } from 'framer-motion';
+
+const { breakpoints } = styles;
 
 const Img = styled(motion.img)`
   display: block;
-  width: 101%;
   height: auto;
   position: absolute;
-  top: -5%;
+  width: 91.5%;
+  top: 0%;
   left: 50%;
+
+  @media (min-width: ${breakpoints[2]}px) {
+    width: 101%;
+    top: -5%;
+  }
 `;
 
 const Clip = styled(motion.div)`
   background: #232a35;
   position: absolute;
-  top: 6%;
-  left: 79%;
+  top: 10%;
+  left: 76%;
   width: 50%;
-  height: 91%;
+  height: 82.6%;
+
+  @media (min-width: ${breakpoints[2]}px) {
+    top: 6%;
+    left: 79%;
+    width: 50%;
+    height: 91%;
+  }
 `;
 
 export const VSCode = ({ scrollProgress }) => {

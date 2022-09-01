@@ -96,9 +96,9 @@ export const ScrollDemo = ({
 
   const [stacked] = useMediaQuery(`(min-width: ${breakpoints[2]}px)`);
 
-  const scale = useTransform(zoom, [0, 1], [1, stacked ? 1.5 : 1.25], { clamp: true });
-  const x = useTransform(zoom, [0, 1], ['0%', stacked ? '25%' : '12.5%'], { clamp: true });
-  const y = useTransform(zoom, [0, 1], ['0%', stacked ? '25.5%' : '12.5%'], { clamp: true });
+  const scale = useTransform(zoom, [0, 1], [1, stacked ? 1.25 : 1], { clamp: true });
+  const x = useTransform(zoom, [0, 1], ['0%', stacked ? '12.5%' : '0%'], { clamp: true });
+  const y = useTransform(zoom, [0, 1], ['0%', stacked ? '12.5%' : '0%'], { clamp: true });
   const scrimY = useTransform(zoom, [0, 1], ['0%', '-5%'], { clamp: true });
 
   const frameScale = useTransform(dropInProgress, [0, 1], [1, 0], { clamp: true });
@@ -107,7 +107,7 @@ export const ScrollDemo = ({
   const connectorProgress = useTransform(dropInProgress, [0.75, 1], [0, 1], { clamp: true });
 
   return (
-    <Wrapper style={{ scale, x, y }} transition={{ delay: 0.4 }} {...props}>
+    <Wrapper style={{ scale, x }} transition={{ delay: 0.4 }} {...props}>
       <Scrim style={{ y: scrimY }} />
       <Frame
         src="images/develop/storybook-frame.svg"

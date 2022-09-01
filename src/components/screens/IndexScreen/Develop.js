@@ -72,7 +72,10 @@ const ValueProp = styled(ValuePropCopy)`
 
   @media (min-width: ${breakpoints[2]}px) {
     bottom: unset;
-    top: 4rem;
+    /* top: 4rem; */
+
+    top: 50vh;
+    transform: translateY(-50%);
   }
 `;
 
@@ -82,7 +85,7 @@ const ValuePropIntegrations = styled(ValuePropCopy)`
 
 const Content = styled.div`
   ${pageMargins};
-  padding-top: 16rem;
+  padding-top: 12rem;
 
   display: grid;
   grid-template-columns: 1fr;
@@ -91,6 +94,7 @@ const Content = styled.div`
   grid-auto-flow: dense;
 
   @media (min-width: ${breakpoints[2]}px) {
+    padding-top: 27rem;
     justify-items: flex-start;
     grid-template-columns: minmax(max-content, 320px) 1fr;
   }
@@ -113,7 +117,9 @@ const StorybookDemoWrapper = styled.figure`
     width: 150%;
     max-width: 800px;
     grid-column: 2 / 3;
-    top: 4rem;
+    /* top: 4rem; */
+    top: 50vh;
+    transform: translateY(-50%);
   }
 `;
 
