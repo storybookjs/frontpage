@@ -131,7 +131,7 @@ export const HeroDemo = ({ ...props }: HeroDemoProps) => {
       await pointerControls.start({
         opacity: 1,
         x: '580%',
-        y: '-150%',
+        y: '-148%',
         transition: { delay: 1, duration: 1, opacity: { duration: 0.2 } },
       });
       await Promise.all([

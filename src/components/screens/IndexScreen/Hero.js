@@ -55,7 +55,7 @@ const PageLedeContainer = styled.div`
   }
 `;
 
-const StorybookDemo = styled.div`
+const StorybookDemo = styled.figure`
   ${pageMargins};
   padding-top: 3rem;
 `;

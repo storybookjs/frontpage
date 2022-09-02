@@ -1,9 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
-import PropTypes from 'prop-types';
 import { styled } from '@storybook/theming';
 import { Link, Button, Icon, WithModal } from '@storybook/design-system';
-import { styles, NavItem } from '@storybook/components-marketing';
-import { motion, useInView, useScroll } from 'framer-motion';
+import { styles, NavItem, Menu } from '@storybook/components-marketing';
+import { motion, useScroll } from 'framer-motion';
 
 const { color, breakpoints, pageMargins } = styles;
 
@@ -17,17 +16,57 @@ const Wrapper = styled(motion.div)`
 
 const Content = styled.section`
   ${pageMargins};
-  display: flex;
-  align-items: center;
-  gap: 9px;
   height: 40px;
+  display: flex;
+  justify-content: space-between;
 
   @media (min-width: ${breakpoints[2]}px) {
     height: 72px;
   }
 `;
 
-export const StickyNav = ({ ...props }) => {
+const JumpLink = styled(NavItem)`
+  display: none;
+  svg {
+    width: 12px;
+    height: 12px;
+    margin-right: 6px;
+  }
+
+  @media (min-width: ${breakpoints[2]}px) {
+    display: inline-flex;
+  }
+`;
+
+const LeftLinks = styled.div`
+  display: none;
+  align-items: center;
+  gap: 9px;
+
+  @media (min-width: ${breakpoints[2]}px) {
+    display: flex;
+  }
+`;
+const RightLinks = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 20px;
+`;
+
+const MobileMenu = styled(Menu)`
+  color: ${color.lightest};
+
+  @media (min-width: ${breakpoints[2]}px) {
+    display: none;
+  }
+`;
+
+interface StickyNavProps {
+  docs: string;
+  animationDisabled?: boolean;
+}
+
+export const StickyNav = ({ docs, animationDisabled = false, ...props }: StickyNavProps) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -49,27 +88,51 @@ export const StickyNav = ({ ...props }) => {
     };
   }, []);
 
+  const opacity = stickyNavVisible ? 1 : 0;
+
   return (
-    <Wrapper ref={ref} animate={{ opacity: stickyNavVisible ? 1 : 0 }} {...props}>
+    <Wrapper ref={ref} animate={{ opacity: animationDisabled ? 1 : opacity }} {...props}>
       <Content>
-        <Link inverse href="#id">
-          Develop
-        </Link>
-        <Link inverse href="#id">
-          Test
-        </Link>
-        <Link inverse href="#id">
-          Document
-        </Link>
-        <Link inverse href="#id">
-          Share
-        </Link>
-        <Link inverse href="#id">
-          Automate
-        </Link>
-        <Link inverse href="#id">
-          Who's it for
-        </Link>
+        <MobileMenu
+          items={[
+            { label: 'Develop', link: { url: '#develop' } },
+            { label: 'Test', link: { url: '#test' } },
+            { label: 'Document', link: { url: '#document' } },
+            { label: 'Share', link: { url: '#share' } },
+            { label: 'Automate', link: { url: '#automate' } },
+            { label: "Who's it for", link: { url: '#who' } },
+          ]}
+          label="Develop"
+        />
+        <LeftLinks>
+          <NavItem variant="inverse" href="#develop">
+            Develop
+          </NavItem>
+          <NavItem variant="inverse" href="#test">
+            Test
+          </NavItem>
+          <NavItem variant="inverse" href="#document">
+            Document
+          </NavItem>
+          <NavItem variant="inverse" href="#share">
+            Share
+          </NavItem>
+          <NavItem variant="inverse" href="#automate">
+            Automate
+          </NavItem>
+          <NavItem variant="inverse" href="#who">
+            Who's it for
+          </NavItem>
+        </LeftLinks>
+        <RightLinks>
+          <JumpLink variant="inverse" href="#page-header">
+            <Icon icon="arrowupalt" />
+            Jump to top
+          </JumpLink>
+          <Button appearance="secondary" isLink size="small" href={docs}>
+            Get started
+          </Button>
+        </RightLinks>
       </Content>
     </Wrapper>
   );

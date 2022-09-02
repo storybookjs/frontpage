@@ -9,8 +9,8 @@ const Img = styled(motion.img)`
   display: block;
   height: auto;
   position: absolute;
-  width: 91.5%;
-  top: 0%;
+  width: 97.2%;
+  top: -2.2%;
   left: 50%;
 
   @media (min-width: ${breakpoints[2]}px) {

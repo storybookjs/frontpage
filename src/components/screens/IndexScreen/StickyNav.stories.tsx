@@ -10,7 +10,7 @@ export default {
   },
 };
 
-export const Default = () => <StickyNav />;
+export const Default = () => <StickyNav docs="/docs" animationDisabled />;
 Default.parameters = {
   backgrounds: { default: 'dark' },
 };

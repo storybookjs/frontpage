@@ -14,6 +14,9 @@ import { SocialValidation } from './SocialValidation';
 import { StickyNav } from './StickyNav';
 
 const globalStyles = css`
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     background-color: ${styles.color.midnight};
   }
@@ -33,7 +36,7 @@ export function PureIndexScreen({ projects, storybooks, npmDownloads }) {
         image={ogImage}
       />
       <Hero npmDownloads={npmDownloads} />
-      <StickyNav />
+      <StickyNav docs={docs} />
       <Develop docs={docs} />
       <Test docs={docs} />
       <Document docs={docs} />
