@@ -9,12 +9,12 @@
 <path d="M252 470H1200V511H252V470Z"/>
 </mask>
 <path d="M252 470H1200V511H252V470Z" fill="white"/>
-<text fill="#1EA7FD" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="267" y="494.606">Controls</tspan></text>
+<text fill="#1EA7FD" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="267" y="494.606">Controls</tspan></text>
 <rect x="252" y="507" width="85" height="3" fill="#1EA7FD"/>
-<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="352" y="494.606">Interactions</tspan></text>
-<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="459" y="494.606">Design</tspan></text>
-<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="535" y="494.606">Accessibility</tspan></text>
-<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="646" y="494.606">Actions</tspan></text>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="352" y="494.606">Interactions</tspan></text>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="459" y="494.606">Design</tspan></text>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="535" y="494.606">Accessibility</tspan></text>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="646" y="494.606">Actions</tspan></text>
 <path d="M1146.5 487.504C1146.5 487.228 1146.72 487.004 1147 487.004H1148C1148.28 487.004 1148.5 487.228 1148.5 487.504C1148.5 487.78 1148.28 488.004 1148 488.004H1147C1146.72 488.004 1146.5 487.78 1146.5 487.504Z" fill="#7A858E"/>
 <path d="M1147 489.004C1146.72 489.004 1146.5 489.228 1146.5 489.504C1146.5 489.78 1146.72 490.004 1147 490.004H1148C1148.28 490.004 1148.5 489.78 1148.5 489.504C1148.5 489.228 1148.28 489.004 1148 489.004H1147Z" fill="#7A858E"/>
 <path d="M1146.5 491.504C1146.5 491.228 1146.72 491.004 1147 491.004H1148C1148.28 491.004 1148.5 491.228 1148.5 491.504C1148.5 491.78 1148.28 492.004 1148 492.004H1147C1146.72 492.004 1146.5 491.78 1146.5 491.504Z" fill="#7A858E"/>
@@ -26,67 +26,67 @@
 <path d="M1200 510H252V512H1200V510Z" fill="#E1E5E8" mask="url(#path-5-inside-3_5704_90610)"/>
 <rect width="948" height="40" transform="translate(252 511)" fill="white"/>
 <rect x="252" y="550" width="948" height="1" fill="#DDDDDD"/>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="272" y="535.277">Name</tspan></text>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="494" y="535.277">Description</tspan></text>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="736" y="535.277">Default</tspan></text>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="978" y="535.277">Controls</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="272" y="535.277">Name</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="494" y="535.277">Description</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="736" y="535.277">Default</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="978" y="535.277">Controls</tspan></text>
 <g clip-path="url(#clip2_5704_90610)">
 <path d="M1174.5 525C1174.5 524.724 1174.28 524.5 1174 524.5H1171C1170.72 524.5 1170.5 524.724 1170.5 525C1170.5 525.276 1170.72 525.5 1171 525.5H1172.53C1170.71 526.651 1169.5 528.684 1169.5 531C1169.5 534.221 1171.84 536.894 1174.92 537.41C1175.19 537.456 1175.45 537.272 1175.49 537C1175.54 536.727 1175.36 536.47 1175.08 536.424C1172.48 535.988 1170.5 533.725 1170.5 531C1170.5 528.863 1171.72 527.01 1173.5 526.1V528C1173.5 528.276 1173.72 528.5 1174 528.5C1174.28 528.5 1174.5 528.276 1174.5 528V525.353C1174.5 525.345 1174.5 525.338 1174.5 525.33V525Z" fill="#7A858E"/>
 <path d="M1176.51 525C1176.55 524.728 1176.81 524.544 1177.08 524.59C1180.16 525.106 1182.5 527.779 1182.5 531C1182.5 533.316 1181.29 535.349 1179.47 536.5H1181C1181.28 536.5 1181.5 536.724 1181.5 537C1181.5 537.276 1181.28 537.5 1181 537.5H1178C1177.72 537.5 1177.5 537.276 1177.5 537V534C1177.5 533.724 1177.72 533.5 1178 533.5C1178.28 533.5 1178.5 533.724 1178.5 534V535.9C1180.28 534.99 1181.5 533.137 1181.5 531C1181.5 528.275 1179.52 526.012 1176.92 525.576C1176.64 525.53 1176.46 525.273 1176.51 525Z" fill="#7A858E"/>
 </g>
 <rect width="948" height="40" transform="translate(252 551)" fill="#F6F9FC"/>
 <rect x="252" y="590" width="948" height="1" fill="#DDDDDD"/>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="11" font-weight="800" letter-spacing="0.38em"><tspan x="263" y="574.119">PROPS</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="800" letter-spacing="0.38em"><tspan x="263" y="574.119">PROPS</tspan></text>
 <mask id="path-26-inside-4_5704_90610" fill="white">
 <path d="M252 591H1200V649H252V591Z"/>
 </mask>
 <path d="M252 591H1200V649H252V591Z" fill="white"/>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="272" y="614.277">label</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="272" y="614.277">label</tspan></text>
 <rect x="494" y="601" width="56" height="16" rx="2" fill="#F3F3F3"/>
-<text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="Menlo" font-size="12" letter-spacing="0em"><tspan x="500" y="613.154">String</tspan></text>
+<text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace" font-size="12" letter-spacing="0em"><tspan x="500" y="613.154">String</tspan></text>
 <rect x="494.5" y="601.5" width="55" height="15" rx="1.5" stroke="black" stroke-opacity="0.1"/>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" letter-spacing="0em"><tspan x="736" y="614.277">-</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="736" y="614.277">-</tspan></text>
 <rect x="978.5" y="601.5" width="201" height="31" rx="3.5" fill="white"/>
-<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="12" letter-spacing="0em"><tspan x="990" y="621.948">Average nightly price:</tspan></text>
+<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" letter-spacing="0em"><tspan x="990" y="621.948">Average nightly price:</tspan></text>
 <rect x="978.5" y="601.5" width="201" height="31" rx="3.5" stroke="#E1E5E8"/>
 <path d="M1200 648H252V650H1200V648Z" fill="#E1E5E8" mask="url(#path-26-inside-4_5704_90610)"/>
 <mask id="path-35-inside-5_5704_90610" fill="white">
 <path d="M252 649H1200V707H252V649Z"/>
 </mask>
 <path d="M252 649H1200V707H252V649Z" fill="white"/>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="272" y="672.277">mininumPrice</tspan></text>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" letter-spacing="0em"><tspan x="494" y="672.277">Minimum price</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="272" y="672.277">mininumPrice</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="494" y="672.277">Minimum price</tspan></text>
 <rect x="494" y="679" width="56" height="16" rx="2" fill="#F3F3F3"/>
-<text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="Menlo" font-size="12" letter-spacing="0em"><tspan x="500" y="691.154">Number</tspan></text>
+<text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace" font-size="12" letter-spacing="0em"><tspan x="500" y="691.154">Number</tspan></text>
 <rect x="494.5" y="679.5" width="55" height="15" rx="1.5" stroke="black" stroke-opacity="0.1"/>
 <rect x="736" y="659" width="20" height="16" rx="2" fill="#F3F3F3"/>
-<text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="Menlo" font-size="12" letter-spacing="0em"><tspan x="742" y="671.154">0</tspan></text>
+<text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace" font-size="12" letter-spacing="0em"><tspan x="742" y="671.154">0</tspan></text>
 <rect x="736.5" y="659.5" width="19" height="15" rx="1.5" stroke="black" stroke-opacity="0.1"/>
 <rect x="978.5" y="659.5" width="201" height="31" rx="3.5" fill="white"/>
-<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="12" letter-spacing="0em"><tspan x="990" y="679.948">Edit number...</tspan></text>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" letter-spacing="0em"><tspan x="990" y="679.948">Edit number...</tspan></text>
 <rect x="978.5" y="659.5" width="201" height="31" rx="3.5" stroke="#E1E5E8"/>
 <path d="M1200 706H252V708H1200V706Z" fill="#E1E5E8" mask="url(#path-35-inside-5_5704_90610)"/>
 <mask id="path-47-inside-6_5704_90610" fill="white">
 <path d="M252 707H1200V765H252V707Z"/>
 </mask>
 <path d="M252 707H1200V765H252V707Z" fill="white"/>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="272" y="730.277">maximumPrice</tspan></text>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" letter-spacing="0em"><tspan x="494" y="730.277">Maximum price</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="272" y="730.277">maximumPrice</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="494" y="730.277">Maximum price</tspan></text>
 <rect x="494" y="737" width="56" height="16" rx="2" fill="#F3F3F3"/>
-<text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="Menlo" font-size="12" letter-spacing="0em"><tspan x="500" y="749.154">Number</tspan></text>
+<text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace" font-size="12" letter-spacing="0em"><tspan x="500" y="749.154">Number</tspan></text>
 <rect x="494.5" y="737.5" width="55" height="15" rx="1.5" stroke="black" stroke-opacity="0.1"/>
 <rect x="736" y="717" width="20" height="16" rx="2" fill="#F3F3F3"/>
-<text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="Menlo" font-size="12" letter-spacing="0em"><tspan x="742" y="729.154">0</tspan></text>
+<text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace" font-size="12" letter-spacing="0em"><tspan x="742" y="729.154">0</tspan></text>
 <rect x="736.5" y="717.5" width="19" height="15" rx="1.5" stroke="black" stroke-opacity="0.1"/>
 <rect x="978.5" y="717.5" width="201" height="31" rx="3.5" fill="white"/>
-<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="12" letter-spacing="0em"><tspan x="990" y="737.948">87</tspan></text>
+<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" letter-spacing="0em"><tspan x="990" y="737.948">87</tspan></text>
 <rect x="978.5" y="717.5" width="201" height="31" rx="3.5" stroke="#E1E5E8"/>
 <path d="M1200 764H252V766H1200V764Z" fill="#E1E5E8" mask="url(#path-47-inside-6_5704_90610)"/>
 <rect width="948" height="58" transform="translate(252 765)" fill="white"/>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="272" y="788.277">availableStays</tspan></text>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" letter-spacing="0em"><tspan x="494" y="788.277">TBD</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="272" y="788.277">availableStays</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="494" y="788.277">TBD</tspan></text>
 <rect x="494" y="795" width="69" height="18" rx="3" fill="#F8F8F8"/>
-<text fill="#1EA7FD" xml:space="preserve" style="white-space: pre" font-family="Monaco" font-size="12" letter-spacing="0px"><tspan x="499" y="808.5">object</tspan></text>
+<text fill="#1EA7FD" xml:space="preserve" style="white-space: pre" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace" font-size="12" letter-spacing="0px"><tspan x="499" y="808.5">object</tspan></text>
 <path fill-rule="evenodd" clip-rule="evenodd" d="M552.693 807.195L548.96 803.139C548.791 802.955 548.791 802.656 548.96 802.472C549.129 802.288 549.404 802.288 549.574 802.472L552.999 806.195L556.426 802.472C556.595 802.287 556.87 802.287 557.039 802.472C557.209 802.656 557.209 802.954 557.039 803.138L553.306 807.195C553.221 807.287 553.11 807.333 552.999 807.333C552.888 807.333 552.777 807.287 552.693 807.195Z" fill="#666666"/>
 <mask id="mask0_5704_90610" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="548" y="802" width="10" height="6">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M552.693 807.195L548.96 803.139C548.791 802.955 548.791 802.656 548.96 802.472C549.129 802.288 549.404 802.288 549.574 802.472L552.999 806.195L556.426 802.472C556.595 802.287 556.87 802.287 557.039 802.472C557.209 802.656 557.209 802.954 557.039 803.138L553.306 807.195C553.221 807.287 553.11 807.333 552.999 807.333C552.888 807.333 552.777 807.287 552.693 807.195Z" fill="white"/>
@@ -94,9 +94,9 @@
 <g mask="url(#mask0_5704_90610)">
 <rect x="548" y="799" width="10" height="10" fill="#1EA7FD"/>
 </g>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" letter-spacing="0em"><tspan x="736" y="788.277">-</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="736" y="788.277">-</tspan></text>
 <rect x="978.5" y="775.5" width="79" height="31" rx="3.5" fill="#F0F9FF"/>
-<text fill="#304756" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="990" y="794.948">Set object</tspan></text>
+<text fill="#304756" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="990" y="794.948">Set object</tspan></text>
 <rect x="978.5" y="775.5" width="79" height="31" rx="3.5" stroke="#CBE1EE"/>
 <path d="M252 469H1200V471H252V469ZM1200 829H252H1200ZM252 829V470V829ZM1200 470V829V470Z" fill="#E1E5E8" mask="url(#path-3-outside-2_5704_90610)"/>
 </g>

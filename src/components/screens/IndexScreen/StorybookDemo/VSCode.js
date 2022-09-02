@@ -22,16 +22,16 @@ const Img = styled(motion.img)`
 const Clip = styled(motion.div)`
   background: #232a35;
   position: absolute;
-  top: 10%;
-  left: 76%;
+  top: 9%;
+  left: 75%;
   width: 50%;
-  height: 82.6%;
+  height: 89.9%;
 
   @media (min-width: ${breakpoints[2]}px) {
-    top: 6%;
-    left: 79%;
-    width: 50%;
-    height: 91%;
+    top: 5%;
+    left: 76%;
+    width: 60%;
+    height: 96.1%;
   }
 `;
 

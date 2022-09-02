@@ -10,12 +10,12 @@
 <path d="M252 470H1200V511H252V470Z"/>
 </mask>
 <path d="M252 470H1200V511H252V470Z" fill="white"/>
-<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="267" y="494.606">Controls</tspan></text>
-<text fill="#1EA7FD" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="352" y="494.606">Interactions</tspan></text>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="267" y="494.606">Controls</tspan></text>
+<text fill="#1EA7FD" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="352" y="494.606">Interactions</tspan></text>
 <rect x="337" y="507" width="107" height="3" fill="#1EA7FD"/>
-<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="459" y="494.606">Design</tspan></text>
-<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="535" y="494.606">Accessibility</tspan></text>
-<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="646" y="494.606">Actions</tspan></text>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="459" y="494.606">Design</tspan></text>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="535" y="494.606">Accessibility</tspan></text>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="646" y="494.606">Actions</tspan></text>
 <path d="M1146.5 487.504C1146.5 487.228 1146.72 487.004 1147 487.004H1148C1148.28 487.004 1148.5 487.228 1148.5 487.504C1148.5 487.78 1148.28 488.004 1148 488.004H1147C1146.72 488.004 1146.5 487.78 1146.5 487.504Z" fill="#7A858E"/>
 <path d="M1147 489.004C1146.72 489.004 1146.5 489.228 1146.5 489.504C1146.5 489.78 1146.72 490.004 1147 490.004H1148C1148.28 490.004 1148.5 489.78 1148.5 489.504C1148.5 489.228 1148.28 489.004 1148 489.004H1147Z" fill="#7A858E"/>
 <path d="M1146.5 491.504C1146.5 491.228 1146.72 491.004 1147 491.004H1148C1148.28 491.004 1148.5 491.228 1148.5 491.504C1148.5 491.78 1148.28 492.004 1148 492.004H1147C1146.72 492.004 1146.5 491.78 1146.5 491.504Z" fill="#7A858E"/>
@@ -28,9 +28,9 @@
 <rect width="948" height="40" transform="translate(252 511)" fill="#F6F9FC"/>
 <rect x="252" y="550" width="948" height="1" fill="#DDDDDD"/>
 <rect x="267" y="519" width="65" height="24" rx="5" fill="#66BF3C"/>
-<text fill="white" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="11" font-weight="800" letter-spacing="0.4em"><tspan x="278.398" y="534.619">PASS</tspan></text>
+<text fill="white" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="800" letter-spacing="0.4em"><tspan x="278.398" y="534.619">PASS</tspan></text>
 <g opacity="0.5">
-<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="347" y="535.277">Scroll to end</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="347" y="535.277">Scroll to end</tspan></text>
 </g>
 <rect x="439" y="519" width="1" height="24" fill="black" fill-opacity="0.1"/>
 <g opacity="0.4">
@@ -53,33 +53,33 @@
 <path d="M581.5 525C581.5 524.724 581.276 524.5 581 524.5H578C577.724 524.5 577.5 524.724 577.5 525C577.5 525.276 577.724 525.5 578 525.5H579.535C577.712 526.651 576.5 528.684 576.5 531C576.5 534.221 578.843 536.894 581.917 537.41C582.19 537.456 582.447 537.272 582.493 537C582.539 536.727 582.355 536.47 582.083 536.424C579.482 535.988 577.5 533.725 577.5 531C577.5 528.863 578.719 527.01 580.5 526.1V528C580.5 528.276 580.724 528.5 581 528.5C581.276 528.5 581.5 528.276 581.5 528V525.353C581.5 525.345 581.5 525.338 581.5 525.33V525Z" fill="#999999"/>
 <path d="M583.507 525C583.553 524.728 583.81 524.544 584.083 524.59C587.157 525.106 589.5 527.779 589.5 531C589.5 533.316 588.288 535.349 586.466 536.5H588C588.276 536.5 588.5 536.724 588.5 537C588.5 537.276 588.276 537.5 588 537.5H585C584.724 537.5 584.5 537.276 584.5 537V534C584.5 533.724 584.724 533.5 585 533.5C585.276 533.5 585.5 533.724 585.5 534V535.9C587.281 534.99 588.5 533.137 588.5 531C588.5 528.275 586.518 526.012 583.917 525.576C583.645 525.53 583.461 525.273 583.507 525Z" fill="#999999"/>
 </g>
-<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" letter-spacing="0em"><tspan x="1053.17" y="535.277">RangeSlider.stories.tsx</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="1053.17" y="535.277">RangeSlider.stories.tsx</tspan></text>
 <circle cx="273" cy="571" r="3" fill="#CCCCCC"/>
-<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" letter-spacing="0em"><tspan x="285" y="575.277">Raise the minimum value by dragging the slider thumb</tspan></text>
+<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="285" y="575.277">Raise the minimum value by dragging the slider thumb</tspan></text>
 <rect x="251.5" y="550.5" width="949" height="41" stroke="#EEEEEE"/>
 <rect x="251.5" y="550.5" width="949" height="41" fill="white"/>
 <g clip-path="url(#clip4_5704_91450)">
 <path d="M278.874 567.875C279.042 567.707 279.042 567.436 278.874 567.269C278.707 567.101 278.436 567.101 278.268 567.269L271.286 574.251L267.732 570.697C267.564 570.53 267.293 570.53 267.126 570.697C266.958 570.865 266.958 571.136 267.126 571.303L270.983 575.16C271.15 575.328 271.421 575.328 271.589 575.16L278.874 567.875Z" fill="#66BF3C"/>
 </g>
-<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" letter-spacing="0em"><tspan x="285" y="575.277">Raise the minimum value by dragging the slider thumb</tspan></text>
+<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="285" y="575.277">Raise the minimum value by dragging the slider thumb</tspan></text>
 <rect x="251.5" y="550.5" width="949" height="41" stroke="#EEEEEE"/>
 <circle cx="273" cy="612" r="3" fill="#CCCCCC"/>
-<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" letter-spacing="0em"><tspan x="285" y="616.277">Lower the maximum value by dragging the slider thumb</tspan></text>
+<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="285" y="616.277">Lower the maximum value by dragging the slider thumb</tspan></text>
 <rect x="251.5" y="591.5" width="949" height="41" stroke="#EEEEEE"/>
 <rect x="251.5" y="591.5" width="949" height="41" fill="white"/>
 <g clip-path="url(#clip5_5704_91450)">
 <path d="M278.874 608.875C279.042 608.707 279.042 608.436 278.874 608.269C278.707 608.101 278.436 608.101 278.268 608.269L271.286 615.251L267.732 611.697C267.564 611.53 267.293 611.53 267.126 611.697C266.958 611.865 266.958 612.136 267.126 612.303L270.983 616.16C271.15 616.328 271.421 616.328 271.589 616.16L278.874 608.875Z" fill="#66BF3C"/>
 </g>
-<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" letter-spacing="0em"><tspan x="285" y="616.277">Lower the maximum value by dragging the slider thumb</tspan></text>
+<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="285" y="616.277">Lower the maximum value by dragging the slider thumb</tspan></text>
 <rect x="251.5" y="591.5" width="949" height="41" stroke="#EEEEEE"/>
 <circle cx="273" cy="653" r="3" fill="#CCCCCC"/>
-<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" letter-spacing="0em"><tspan x="285" y="657.277">Average price should update</tspan></text>
+<text fill="#999999" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="285" y="657.277">Average price should update</tspan></text>
 <rect x="251.5" y="632.5" width="949" height="41" stroke="#EEEEEE"/>
 <rect x="251.5" y="632.5" width="949" height="41" fill="white"/>
 <g clip-path="url(#clip6_5704_91450)">
 <path d="M278.874 649.875C279.042 649.707 279.042 649.436 278.874 649.269C278.707 649.101 278.436 649.101 278.268 649.269L271.286 656.251L267.732 652.697C267.564 652.53 267.293 652.53 267.126 652.697C266.958 652.865 266.958 653.136 267.126 653.303L270.983 657.16C271.15 657.328 271.421 657.328 271.589 657.16L278.874 649.875Z" fill="#66BF3C"/>
 </g>
-<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="Nunito Sans" font-size="13" letter-spacing="0em"><tspan x="285" y="657.277">Average price should update</tspan></text>
+<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="285" y="657.277">Average price should update</tspan></text>
 <rect x="251.5" y="632.5" width="949" height="41" stroke="#EEEEEE"/>
 <rect width="948" height="1" transform="translate(252 632)" fill="#E69D00"/>
 <path d="M252 628L258.5 632.5L252 637V628Z" fill="#E69D00"/>
