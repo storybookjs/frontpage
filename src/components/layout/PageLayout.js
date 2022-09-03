@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { styled } from '@storybook/theming';
 import Helmet from 'react-helmet';
 import { Nav, LinksContextProvider, Eyebrow, Footer } from '@storybook/components-marketing';
-import { Link as GatsbyLinkWrapper, useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby';
+import GatsbyLinkWrapper from '../basics/GatsbyLinkWrapper';
 import '@docsearch/css';
 
 import DocsLayout from './DocsLayout';
