@@ -8,6 +8,8 @@ const SidebarWrapper = styled(motion.div)`
   left: 0;
   bottom: 0;
   width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
 `;
 
 const Instance = styled(motion.img)`

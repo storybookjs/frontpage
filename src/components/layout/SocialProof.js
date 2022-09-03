@@ -19,9 +19,19 @@ const Logos = styled.div`
   align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
+  --ideal-area: 1500;
+
+  @media (min-width: ${breakpoints[1]}px) {
+    --ideal-area: 2500;
+  }
 
   @media (min-width: ${breakpoints[2]}px) {
     gap: 2.75rem;
+    --ideal-area: 5000;
+  }
+
+  @media (min-width: ${breakpoints[3]}px) {
+    --ideal-area: 10000;
   }
 `;
 
@@ -82,8 +92,6 @@ const brands = [
 ];
 
 export default function SocialProof(props) {
-  const [greaterThanBreakpoint2] = useMediaQuery(`(min-width: ${breakpoints[2]}px)`);
-
   return (
     <Wrapper {...props}>
       <Logos>
@@ -92,7 +100,7 @@ export default function SocialProof(props) {
             key={brand.name}
             width={brand.width}
             height={brand.height}
-            idealArea={greaterThanBreakpoint2 ? 5000 : 1500}
+            idealArea={5000}
           >
             <Logo src={brand.image} alt={brand.name} />
           </NormalizeArea>
