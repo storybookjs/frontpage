@@ -57,7 +57,15 @@ const PageLedeContainer = styled.div`
 
 const StorybookDemo = styled.figure`
   ${pageMargins};
+
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
   padding-top: 3rem;
+
+  @media (min-width: ${breakpoints[1]}px) {
+    width: auto;
+  }
 `;
 
 const Modal = () => (
