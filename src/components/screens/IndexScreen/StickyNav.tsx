@@ -125,7 +125,7 @@ export const StickyNav = ({ docs, animationDisabled = false, ...props }: StickyN
           </NavItem>
         </LeftLinks>
         <RightLinks>
-          <JumpLink variant="inverse" href="#page-header">
+          <JumpLink variant="inverse" href="#page-hero">
             <Icon icon="arrowupalt" />
             Jump to top
           </JumpLink>

@@ -35,14 +35,14 @@ export function PureIndexScreen({ projects, storybooks, npmDownloads }) {
         url={home}
         image={ogImage}
       />
-      <Hero npmDownloads={npmDownloads} />
+      <Hero npmDownloads={npmDownloads} id="page-hero" />
       <StickyNav docs={docs} />
-      <Develop docs={docs} />
-      <Test docs={docs} />
-      <Document docs={docs} />
-      <Share docs={docs} />
-      <Automate docs={docs} />
-      <SocialValidation docs={docs} projects={projects} storybooks={storybooks} />
+      <Develop docs={docs} id="develop" />
+      <Test docs={docs} id="test" />
+      <Document docs={docs} id="document" />
+      <Share docs={docs} id="share" />
+      <Automate docs={docs} id="automate" />
+      <SocialValidation docs={docs} projects={projects} storybooks={storybooks} id="who" />
     </>
   );
 }

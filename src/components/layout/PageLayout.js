@@ -17,11 +17,8 @@ const Layout = styled.div``;
 const navLinks = {
   home: { url: '/', linkWrapper: GatsbyLinkWrapper },
   whyStorybook: { url: '/why', linkWrapper: GatsbyLinkWrapper },
-  useCases: { url: '/use-cases', linkWrapper: GatsbyLinkWrapper },
-  caseStudies: { url: '/case-studies', linkWrapper: GatsbyLinkWrapper },
   componentDriven: { url: 'https://componentdriven.org' },
-  getStarted: { url: '/docs', linkWrapper: GatsbyLinkWrapper },
-  guides: { url: '/docs/guides', linkWrapper: GatsbyLinkWrapper },
+  guides: { url: '/docs', linkWrapper: GatsbyLinkWrapper },
   tutorials: { url: 'https://storybook.js.org/tutorials' },
   api: { url: '/docs/api', linkWrapper: GatsbyLinkWrapper },
   changelog: { url: '/changelog', linkWrapper: GatsbyLinkWrapper },
