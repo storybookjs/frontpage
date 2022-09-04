@@ -21,7 +21,6 @@ const navLinks = {
   componentDriven: { url: 'https://componentdriven.org' },
   guides: { url: '/docs', linkWrapper: GatsbyLinkWrapper },
   tutorials: { url: 'https://storybook.js.org/tutorials' },
-  api: { url: '/docs/api', linkWrapper: GatsbyLinkWrapper },
   changelog: { url: '/changelog', linkWrapper: GatsbyLinkWrapper },
   telemetry: { url: '/telemetry', linkWrapper: GatsbyLinkWrapper },
   showcase: { url: 'https://storybook.js.org/showcase' },
@@ -41,6 +40,7 @@ export default function PageLayout({ children, pageContext, ...props }) {
     query DXQuery {
       dxData {
         subscriberCount
+        githubStars
         latestPost {
           title
           url
@@ -84,6 +84,7 @@ export default function PageLayout({ children, pageContext, ...props }) {
               label={dxData.latestPost.title}
               link={dxData.latestPost.url}
               inverse={isHomePage}
+              githubStarCount={dxData.githubStars}
             />
             <Nav inverse={isHomePage} />
           </>
