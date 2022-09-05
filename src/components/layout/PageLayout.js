@@ -15,26 +15,37 @@ import { SocialGraph } from '../basics';
 
 const Layout = styled.div``;
 
+const ALGOLIA_API_KEY = process.env.GATSBY_ALGOLIA_API_KEY;
+
 const navLinks = {
   home: { url: '/', linkWrapper: GatsbyLinkWrapper },
-  whyStorybook: { url: '/why', linkWrapper: GatsbyLinkWrapper },
+  whyStorybook: { url: '/docs/react/why', linkWrapper: GatsbyLinkWrapper },
   componentDriven: { url: 'https://componentdriven.org' },
   guides: { url: '/docs', linkWrapper: GatsbyLinkWrapper },
   tutorials: { url: 'https://storybook.js.org/tutorials' },
   changelog: { url: '/changelog', linkWrapper: GatsbyLinkWrapper },
-  telemetry: { url: '/telemetry', linkWrapper: GatsbyLinkWrapper },
+  telemetry: { url: '/telemetry/', linkWrapper: GatsbyLinkWrapper },
   showcase: { url: 'https://storybook.js.org/showcase' },
   projects: { url: 'https://storybook.js.org/showcase/projects' },
   componentGlossary: { url: 'https://storybook.js.org/showcase/glossary' },
-  integrations: { url: '/integrations', linkWrapper: GatsbyLinkWrapper },
-  getInvolved: { url: '/get-involved', linkWrapper: GatsbyLinkWrapper },
+  integrations: { url: '/addons/', linkWrapper: GatsbyLinkWrapper },
+  getInvolved: { url: '/community/', linkWrapper: GatsbyLinkWrapper },
   blog: { url: 'https://storybook.js.org/blog' },
   hiring: { url: 'https://www.chromatic.com/company/jobs' },
 };
 
 export default function PageLayout({ children, pageContext, ...props }) {
-  const { urls = {}, title, description, ogImage, googleSiteVerification } = useSiteMetadata();
+  const {
+    urls = {},
+    title,
+    description,
+    ogImage,
+    googleSiteVerification,
+    versionString,
+  } = useSiteMetadata();
   const isHomePage = props.location.pathname === '/';
+
+  const { framework } = pageContext;
 
   const { dxData } = useStaticQuery(graphql`
     query DXQuery {
@@ -86,7 +97,12 @@ export default function PageLayout({ children, pageContext, ...props }) {
               inverse={isHomePage}
               githubStarCount={dxData.githubStars}
             />
-            <Nav inverse={isHomePage} />
+            <Nav
+              inverse={isHomePage}
+              framework={framework || 'react'}
+              version={versionString}
+              apiKey={ALGOLIA_API_KEY}
+            />
           </>
         )}
         {pageContext && pageContext.layout === 'docs' ? (

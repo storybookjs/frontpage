@@ -35,7 +35,7 @@ const featuredFrameworks = ['react', 'vue', 'angular', 'web-components', 'html']
 const frameworkIntegrations = featuredFrameworks.map((framework) => ({
   name: framework,
   image: `/frameworks/logo-${framework}.svg`,
-  href: `/docs/${framework}`,
+  href: `/docs/${framework}/get-started/introduction`,
   ButtonWrapper: GatsbyLinkWrapper,
 }));
 
