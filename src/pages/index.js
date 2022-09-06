@@ -8,11 +8,9 @@ const { GlobalStyle } = global;
 
 const HomePage = ({ data }) => {
   const {
-    latestBlogPosts: { edges },
     storybookProjects,
-    dxData: { npmDownloads },
+    dxData: { npmDownloads, latestPost },
   } = data;
-  const latestBlogPost = edges[0]?.node;
 
   const projects = useMemo(
     () =>
@@ -29,11 +27,7 @@ const HomePage = ({ data }) => {
   return (
     <Fragment>
       <GlobalStyle />
-      <IndexScreen
-        latestBlogPost={latestBlogPost}
-        projects={projects}
-        npmDownloads={npmDownloads}
-      />
+      <IndexScreen latestBlogPost={latestPost} projects={projects} npmDownloads={npmDownloads} />
     </Fragment>
   );
 };
@@ -70,21 +64,12 @@ export const query = graphql`
       }
     }
 
-    latestBlogPosts: allGhostPost(
-      filter: { tags: { elemMatch: { slug: { nin: ["data-schema", "hash-preview"] } } } }
-      sort: { order: DESC, fields: [published_at] }
-      limit: 1
-    ) {
-      edges {
-        node {
-          slug
-          title
-        }
-      }
-    }
-
     dxData {
       npmDownloads
+      latestPost {
+        title
+        url
+      }
     }
   }
 `;
