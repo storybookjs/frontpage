@@ -1,10 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Badge, OutlineCTA } from '@storybook/design-system';
 import { startCase } from 'lodash';
 import GatsbyLink from '../../basics/GatsbyLink';
 import buildPathWithFramework from '../../../util/build-path-with-framework';
-import { VersionSelector } from './VersionSelector';
+import { Versions } from './VersionSelector';
+
+interface VersionCTAProps {
+  framework: string;
+  latestVersion: number;
+  latestVersionString: string;
+  slug: string;
+  version: number;
+  versions: Versions;
+}
 
 export function VersionCTA({
   framework,
@@ -14,7 +22,7 @@ export function VersionCTA({
   slug,
   versions,
   ...rest
-}) {
+}: VersionCTAProps) {
   let message = `You're viewing older docs for version ${version.toFixed(1)}.`;
   let badge = <Badge status="positive">New</Badge>;
 
@@ -48,11 +56,3 @@ export function VersionCTA({
     </OutlineCTA>
   );
 }
-
-VersionCTA.propTypes = {
-  framework: PropTypes.string.isRequired,
-  latestVersion: PropTypes.number.isRequired,
-  slug: PropTypes.string.isRequired,
-  version: PropTypes.number.isRequired,
-  versions: VersionSelector.propTypes.versions,
-};

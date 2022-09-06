@@ -16,13 +16,11 @@ import {
   SubNavMenus,
   SubNavRight,
   SubNavLinkList,
-  Menu,
   styles,
 } from '@storybook/components-marketing';
 import GatsbyLinkWrapper from '../basics/GatsbyLinkWrapper';
 import useSiteMetadata from '../lib/useSiteMetadata';
 import buildPathWithFramework from '../../util/build-path-with-framework';
-import { DocsSearch, classNames as docsSearchClassNames } from '../screens/DocsScreen/DocsSearch';
 import { FrameworkSelector } from '../screens/DocsScreen/FrameworkSelector';
 import { VersionSelector } from '../screens/DocsScreen/VersionSelector';
 import { VersionCTA } from '../screens/DocsScreen/VersionCTA';
@@ -133,82 +131,7 @@ const docsItems = [
   { key: '0', label: 'Guides', href: '/docs', isActive: true },
   { key: '1', label: 'Tutorials', href: 'https://storybook.js.org/tutorials/' },
 ];
-const ImgIcon = ({ src }) => <img src={src} alt="" style={{ width: 12, height: 12 }} />;
-const frameworkOptions = [
-  {
-    label: 'Core',
-    items: [
-      {
-        label: 'React',
-        icon: <ImgIcon src="/frameworks/logo-react.svg" />,
-        link: { url: '/react' },
-      },
-      {
-        label: 'Vue',
-        icon: <ImgIcon src="/frameworks/logo-vue.svg" />,
-        link: { url: '/vue' },
-      },
-      {
-        label: 'Angular',
-        icon: <ImgIcon src="/frameworks/logo-angular.svg" />,
-        link: { url: '/angular' },
-      },
-      {
-        label: 'Web Components',
-        icon: <ImgIcon src="/frameworks/logo-web-components.svg" />,
-        link: { url: '/web-components' },
-      },
-    ],
-  },
-  {
-    label: 'Community',
-    items: [
-      {
-        label: 'Ember',
-        icon: <ImgIcon src="/frameworks/logo-ember.svg" />,
-        link: { url: '/ember' },
-      },
-      {
-        label: 'HTML',
-        icon: <ImgIcon src="/frameworks/logo-html.svg" />,
-        link: { url: '/html' },
-      },
-      {
-        label: 'Svelte',
-        icon: <ImgIcon src="/frameworks/logo-svelte.svg" />,
-        link: { url: '/svelte' },
-      },
-      {
-        label: 'Preact',
-        icon: <ImgIcon src="/frameworks/logo-preact.svg" />,
-        link: { url: '/preact' },
-      },
-    ],
-  },
-];
-const versionOptions = [
-  {
-    label: 'stable',
-    items: [
-      { label: '6.5', link: { url: '/6-5' } },
-      { label: '6.4', link: { url: '/6-4' } },
-      { label: '6.3', link: { url: '/6-3' } },
-      { label: '6.2', link: { url: '/6-2' } },
-      { label: '6.1', link: { url: '/6-1' } },
-      { label: '6.0', link: { url: '/6-0' } },
-    ],
-  },
-  {
-    label: 'pre-release',
-    items: [{ label: '7.0 (future)', link: { url: '/7-0' } }],
-  },
-];
-const FrameworkSelect = () => (
-  <Menu label={frameworkOptions[0].items[0].label} items={frameworkOptions} primary />
-);
-const VersionSelect = () => (
-  <Menu label={versionOptions[0].items[0].label} items={versionOptions} primary />
-);
+
 const supportItems = [
   {
     icon: 'github',
@@ -227,7 +150,7 @@ const supportItems = [
   },
 ];
 
-function DocsLayout({ children, isLatest: isLatestProp, pageContext, ...props }) {
+function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
   const {
     algoliaDocSearchConfig,
     coreFrameworks,
@@ -288,8 +211,18 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext, ...props })
         <SubNavTabs label="Docs nav" items={docsItems} />
         <SubNavDivider />
         <SubNavMenus>
-          <FrameworkSelect />
-          <VersionSelect />
+          <FrameworkSelector
+            framework={framework}
+            coreFrameworks={coreFrameworks}
+            communityFrameworks={communityFrameworks}
+            slug={slug}
+          />
+          <VersionSelector
+            version={version}
+            versions={versions}
+            framework={framework}
+            slug={slug}
+          />
         </SubNavMenus>
         <SubNavRight>
           <SubNavLinkList label="Get support:" items={supportItems} />

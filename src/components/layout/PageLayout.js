@@ -42,6 +42,7 @@ export default function PageLayout({ children, pageContext, ...props }) {
     ogImage,
     googleSiteVerification,
     versionString,
+    latestVersionString,
   } = useSiteMetadata();
   const isHomePage = props.location.pathname === '/';
 
@@ -100,7 +101,7 @@ export default function PageLayout({ children, pageContext, ...props }) {
             <Nav
               inverse={isHomePage}
               framework={framework || 'react'}
-              version={versionString}
+              version={versionString || latestVersionString}
               apiKey={ALGOLIA_API_KEY}
             />
           </>
