@@ -188,7 +188,7 @@ export function SocialValidation({ docs, projects, storybooks, ...props }) {
           description="Get support and chat with 13,000+ frontend developers."
           link={{
             label: 'Join Discord server',
-            href: 'https://github.com/storybookjs/',
+            href: 'https://discord.gg/storybook',
           }}
           stat={{
             count: '13,000+',
@@ -201,7 +201,7 @@ export function SocialValidation({ docs, projects, storybooks, ...props }) {
           description="Get the latest news and updates from Storybook maintainers."
           link={{
             label: 'Follow on Twitter',
-            href: 'https://github.com/storybookjs/',
+            href: 'https://twitter.com/storybookjs',
           }}
           stat={{
             count: '16,300+',
@@ -218,7 +218,7 @@ export function SocialValidation({ docs, projects, storybooks, ...props }) {
           description="Watch tutorials, feature previews, and interviews."
           link={{
             label: 'Watch on YouTube',
-            href: 'https://github.com/storybookjs/',
+            href: 'https://www.youtube.com/channel/UCr7Quur3eIyA_oe8FNYexfg',
           }}
           stat={{
             count: '1,830+',

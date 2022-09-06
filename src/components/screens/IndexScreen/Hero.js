@@ -9,6 +9,7 @@ import { Stat } from '../../basics/Stat';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import PlaceholderAspectRatio from '../../layout/PlaceholderAspectRatio';
 import { HeroDemo } from './StorybookDemo/HeroDemo';
+import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 
 const { color, breakpoints, pageMargins } = styles;
 
@@ -104,7 +105,7 @@ export function Hero({ npmDownloads, startOpen, ...props }) {
           copy="Storybook is a frontend workshop for building UI components and pages in isolation. Thousands of teams use it for UI development, testing, and documentation. It’s open source and free."
           actions={
             <>
-              <Button appearance="secondary" isLink href={docs}>
+              <Button appearance="secondary" isLink href={docs} ButtonWrapper={GatsbyLinkWrapper}>
                 Get started
               </Button>
               <WithModal startOpen={startOpen} modal={Modal}>

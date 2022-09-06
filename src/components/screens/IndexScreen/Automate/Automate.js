@@ -7,6 +7,7 @@ import { Publish } from './Publish';
 import { UITests } from './UITests';
 import { UIReview } from './UIReview';
 import { MergeAndShip } from './MergeAndShip';
+import GatsbyLinkWrapper from '../../../basics/GatsbyLinkWrapper';
 
 const MergeIcon = styled(StepIcon)`
   background: linear-gradient(180deg, #cf60ff 0%, #af44ff 100%);
@@ -87,7 +88,12 @@ export function Automate({ docs, ...props }) {
           title="Publish Storybook"
           description="Publish Storybook online to collaborate on UI implementation with developers, designers, and PMs. No need to touch a dev environment."
           link={
-            <Link containsIcon withArrow href="/why-storybook">
+            <Link
+              containsIcon
+              withArrow
+              href="/docs/react/sharing/publish-storybook/"
+              LinkWrapper={GatsbyLinkWrapper}
+            >
               Publish Storybook for your team
             </Link>
           }
@@ -98,7 +104,12 @@ export function Automate({ docs, ...props }) {
           title="UI Tests"
           description="Test every facet of your UI: interaction, visual, accessibility, and snapshot, in CI to detect UI bugs down to the component."
           link={
-            <Link containsIcon withArrow href="/why-storybook">
+            <Link
+              containsIcon
+              withArrow
+              href="/docs/react/writing-tests/test-runner"
+              LinkWrapper={GatsbyLinkWrapper}
+            >
               Auto-detect UI bugs
             </Link>
           }
@@ -109,7 +120,12 @@ export function Automate({ docs, ...props }) {
           title="UI Review"
           description="Request feedback from teammates to verify the UI implementation. Discuss UI changes together then assign reviewers for final sign off."
           link={
-            <Link containsIcon withArrow href="/why-storybook">
+            <Link
+              containsIcon
+              withArrow
+              href="/docs/react/sharing/publish-storybook#review-with-your-team"
+              LinkWrapper={GatsbyLinkWrapper}
+            >
               Review with your team
             </Link>
           }
@@ -121,7 +137,11 @@ export function Automate({ docs, ...props }) {
           title="Merge and ship"
           description="Each stage of the UI development lifecycle gets a pull request check. Pass all checks to get certainty that your work is ready for production."
           link={
-            <Link containsIcon withArrow href="/why-storybook">
+            <Link
+              containsIcon
+              withArrow
+              href="/docs/react/sharing/publish-storybook#setup-ci-to-publish-automatically"
+            >
               Integrate with Git version control
             </Link>
           }

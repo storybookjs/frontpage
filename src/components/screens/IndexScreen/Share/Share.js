@@ -9,6 +9,7 @@ import { useMediaQuery } from '../../../lib/useMediaQuery';
 import { PublishIntegrations } from './PublishIntegrations';
 import { TestIntegrations } from './TestIntegrations';
 import { EmbedIntegrations } from './EmbedIntegrations';
+import GatsbyLinkWrapper from '../../../basics/GatsbyLinkWrapper';
 
 const { typography, breakpoints, pageMargins, spacing, breakpoint, pageMargin } = styles;
 
@@ -107,7 +108,12 @@ export function Share({ docs, ...props }) {
           heading="Publish Storybook to get sign off from teammates"
           description="Publish Storybook as a website for stakeholders to reference. Your team can check that the UI looks right without touching code."
           links={
-            <Link containsIcon withArrow href="/why-storybook">
+            <Link
+              containsIcon
+              withArrow
+              href="/docs/react/sharing/publish-storybook"
+              LinkWrapper={GatsbyLinkWrapper}
+            >
               Publish Storybook
             </Link>
           }
@@ -123,7 +129,12 @@ export function Share({ docs, ...props }) {
           heading="Embed stories in wikis, Markdown, and Figma"
           description="Embed stories to showcase your work to teammates and the developer community. Works with the oEmbed standard."
           links={
-            <Link containsIcon withArrow href="/why-storybook">
+            <Link
+              containsIcon
+              withArrow
+              href="/docs/react/sharing/embed"
+              LinkWrapper={GatsbyLinkWrapper}
+            >
               Embed stories
             </Link>
           }
@@ -143,7 +154,12 @@ export function Share({ docs, ...props }) {
           }
           description="Stories are a portable standard based on ES6 modules. Write stories once and import them into any JavaScript library."
           links={
-            <Link containsIcon withArrow href="/why-storybook">
+            <Link
+              containsIcon
+              withArrow
+              href="/docs/react/writing-tests/importing-stories-in-tests"
+              LinkWrapper={GatsbyLinkWrapper}
+            >
               Reuse stories in tests and libraries
             </Link>
           }

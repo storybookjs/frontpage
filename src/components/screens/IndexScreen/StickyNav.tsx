@@ -54,10 +54,12 @@ const RightLinks = styled.div`
 `;
 
 const MobileMenu = styled(Menu)`
-  color: ${color.lightest};
+  && {
+    color: ${color.lightest};
 
-  @media (min-width: ${breakpoints[2]}px) {
-    display: none;
+    @media (min-width: ${breakpoints[2]}px) {
+      display: none;
+    }
   }
 `;
 

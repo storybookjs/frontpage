@@ -224,14 +224,9 @@ export function Develop({ docs, startOpen, ...props }) {
             heading="Build UI components and pages in isolation"
             description="Implement components and pages without needing to fuss with data, APIs, or business logic."
             links={
-              <>
-                <Link containsIcon withArrow href="/why-storybook">
-                  Why build UIs in isolation?
-                </Link>
-                <Link containsIcon withArrow href="/integrations">
-                  How does this fit in my tech stack?
-                </Link>
-              </>
+              <Link containsIcon withArrow href="/docs/react/why" LinkWrapper={GatsbyLinkWrapper}>
+                Why build UIs in isolation?
+              </Link>
             }
           />
           <BottomSpacer />
@@ -243,7 +238,12 @@ export function Develop({ docs, startOpen, ...props }) {
             heading="Mock hard-to-reach edge cases as stories"
             description="Render components in key states that are tricky to reproduce in an app. Then save those states as stories to revisit during development, testing, and QA."
             links={
-              <Link containsIcon withArrow href="/why-storybook">
+              <Link
+                containsIcon
+                withArrow
+                href={`${docs}react/get-started/whats-a-story`}
+                LinkWrapper={GatsbyLinkWrapper}
+              >
                 How to write a story
               </Link>
             }
@@ -257,7 +257,12 @@ export function Develop({ docs, startOpen, ...props }) {
             heading="Supercharge your workflow with addons"
             description="Addons extend and customize your UI development workflow. There are hundreds of addons that help you build UI faster, document component libraries, and integrate with other tools."
             links={
-              <Link containsIcon withArrow href="/why-storybook">
+              <Link
+                containsIcon
+                withArrow
+                href={`${docs}react/addons/introduction`}
+                LinkWrapper={GatsbyLinkWrapper}
+              >
                 Learn about addons
               </Link>
             }
@@ -271,7 +276,7 @@ export function Develop({ docs, startOpen, ...props }) {
             heading="Drop the finished UI components into your app"
             description="Once you finish developing UI components in isolation, drop them into your app. You’ll have confidence that the components are hardened to support every possible edge case."
             links={
-              <Link containsIcon withArrow href="/why-storybook">
+              <Link containsIcon withArrow href="/docs/react/why" LinkWrapper={GatsbyLinkWrapper}>
                 Why build UIs in isolation?
               </Link>
             }
@@ -285,7 +290,7 @@ export function Develop({ docs, startOpen, ...props }) {
           heading="Integrate with the tools you already use"
           description="Storybook is incrementally adoptable and integrates with industry-standard tools. That means your team doesn’t have to change their workflow."
           links={
-            <Link containsIcon withArrow href="/why-storybook">
+            <Link containsIcon withArrow href="/addons" LinkWrapper={GatsbyLinkWrapper}>
               Browse integrations
             </Link>
           }
