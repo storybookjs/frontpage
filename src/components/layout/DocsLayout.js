@@ -25,7 +25,7 @@ import { FrameworkSelector } from '../screens/DocsScreen/FrameworkSelector';
 import { VersionSelector } from '../screens/DocsScreen/VersionSelector';
 import { VersionCTA } from '../screens/DocsScreen/VersionCTA';
 
-const { breakpoints, breakpoint, color, pageMargins } = styles;
+const { breakpoint, pageMargins } = styles;
 const { GlobalStyle } = global;
 
 const Sidebar = styled.div`

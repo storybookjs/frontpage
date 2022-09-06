@@ -2,7 +2,7 @@ import React from 'react';
 import useSiteMetadata from '../lib/useSiteMetadata';
 import { Stat } from '../basics/Stat';
 
-export const NpmDownloadCount = ({ downloads, props }) => {
+export const NpmDownloadCount = ({ downloads, ...props }) => {
   const { urls = {} } = useSiteMetadata();
   const { npm } = urls;
 

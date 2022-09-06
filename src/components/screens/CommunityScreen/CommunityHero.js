@@ -1,9 +1,9 @@
 import React from 'react';
 
 import { styled } from '@storybook/theming';
-import GitHubButton from 'react-github-button';
 
 import { styles, Cardinal } from '@storybook/design-system';
+import { GithubButton } from '@storybook/components-marketing';
 
 import ConfirmedMailingList from '../../layout/ConfirmedMailingList';
 import { NpmDownloadCount } from '../../layout/NpmDownloadCount';
@@ -161,7 +161,7 @@ const MailingListWrapper = styled.div`
   }
 `;
 
-export default function CommunityHero(props) {
+export default function CommunityHero({ npmDownloads, githubStarCount, ...props }) {
   const { urls = {}, contributorCount } = useSiteMetadata();
   const { gitHub = {} } = urls;
   return (
@@ -177,7 +177,7 @@ export default function CommunityHero(props) {
           <MailingListForm />
         </MailingListWrapper>
         <Stats>
-          <NpmDownloadStat className="chromatic-ignore" status="primary" />
+          <NpmDownloadStat className="chromatic-ignore" status="primary" downloads={npmDownloads} />
           <Stat
             size="small"
             count={`${contributorCount}+`}
@@ -187,7 +187,7 @@ export default function CommunityHero(props) {
             countLink={gitHub.contributors}
           />
           <GitHubWrapper className="chromatic-ignore">
-            <GitHubButton type="stargazers" namespace="storybookjs" repo="storybook" />
+            <GithubButton starCount={githubStarCount} />
           </GitHubWrapper>
         </Stats>
       </Meta>
