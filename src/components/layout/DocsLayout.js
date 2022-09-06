@@ -7,9 +7,18 @@ import {
   TooltipNote,
   WithTooltip,
   global,
-  styles,
 } from '@storybook/design-system';
 import Helmet from 'react-helmet';
+import {
+  SubNav,
+  SubNavTabs,
+  SubNavDivider,
+  SubNavMenus,
+  SubNavRight,
+  SubNavLinkList,
+  Menu,
+  styles,
+} from '@storybook/components-marketing';
 import GatsbyLinkWrapper from '../basics/GatsbyLinkWrapper';
 import useSiteMetadata from '../lib/useSiteMetadata';
 import buildPathWithFramework from '../../util/build-path-with-framework';
@@ -18,82 +27,42 @@ import { FrameworkSelector } from '../screens/DocsScreen/FrameworkSelector';
 import { VersionSelector } from '../screens/DocsScreen/VersionSelector';
 import { VersionCTA } from '../screens/DocsScreen/VersionCTA';
 
-const { breakpoint, color, pageMargins } = styles;
+const { breakpoints, breakpoint, color, pageMargins } = styles;
 const { GlobalStyle } = global;
 
 const Sidebar = styled.div`
-  flex: 1;
-  margin: 1rem 0 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid ${color.border};
+  display: none;
+  position: relative;
+
   @media (min-width: ${breakpoint * 1.333}px) {
+    display: block;
     flex: 0 0 240px;
     margin: 0;
     padding-bottom: 0;
     padding-right: 20px;
     margin-right: 20px;
-    border-bottom: none;
   }
 `;
 
 const ExpandButton = styled(Button)`
-  height: 36px;
-  width: 36px;
+  height: 28px;
+  width: 28px;
 `;
 
 const SidebarControls = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: row-reverse;
-  flex-wrap: wrap-reverse;
-  @media (min-width: ${breakpoint * 1.333}px) {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-  ${docsSearchClassNames.BUTTON} {
-    flex: 1;
-    @media (min-width: ${breakpoint * 1.333}px) {
-      margin-right: 10px;
-    }
-  }
-  /* button */
-  > *:nth-child(2) {
-    display: none;
-    @media (min-width: ${breakpoint * 1.333}px) {
-      display: inline-block;
-      flex: none;
-    }
-  }
-  /* version picker */
-  > *:nth-child(3) {
-    order: 3;
-    @media (min-width: ${breakpoint * 1.333}px) {
-      flex: 0 0 100%;
-      order: initial;
-      margin-bottom: 0.5rem;
-      margin-top: 1.5rem;
-    }
-  }
-  /* framework picker */
-  > *:nth-child(4) {
-    margin-left: 10px;
-    margin-right: 10px;
-    order: 2;
-    @media (min-width: ${breakpoint * 1.333}px) {
-      flex: 0 0 100%;
-      order: initial;
-      margin-left: 0;
-      margin-right: 0;
-    }
-  }
+  position: absolute;
+  left: -62px;
 `;
 
 const Content = styled.div`
   flex: 1;
   min-width: 0; /* do not remove  https://weblog.west-wind.com/posts/2016/feb/15/flexbox-containers-pre-tags-and-managing-overflow */
   max-width: 800px;
-  margin: 0px auto;
+  margin: 1rem auto 0 auto;
+
+  @media (min-width: ${breakpoint * 1.333}px) {
+    margin-top: 0;
+  }
 `;
 
 const StyledVersionCTA = styled(VersionCTA)`
@@ -117,7 +86,6 @@ const StyledTableOfContents = styled(TableOfContents)`
 
   @media (min-width: ${breakpoint * 1.333}px) {
     display: block;
-    margin-top: 1.5rem;
     /* So that the expandable arrows are rendered outside of the sidebar dimensions */
     margin-left: -20px;
   }
@@ -160,6 +128,104 @@ const getTocSectionTitles = (toc, path) => {
 
   return title.join(' » ');
 };
+
+const docsItems = [
+  { key: '0', label: 'Guides', href: '/docs', isActive: true },
+  { key: '1', label: 'Tutorials', href: 'https://storybook.js.org/tutorials/' },
+];
+const ImgIcon = ({ src }) => <img src={src} alt="" style={{ width: 12, height: 12 }} />;
+const frameworkOptions = [
+  {
+    label: 'Core',
+    items: [
+      {
+        label: 'React',
+        icon: <ImgIcon src="/frameworks/logo-react.svg" />,
+        link: { url: '/react' },
+      },
+      {
+        label: 'Vue',
+        icon: <ImgIcon src="/frameworks/logo-vue.svg" />,
+        link: { url: '/vue' },
+      },
+      {
+        label: 'Angular',
+        icon: <ImgIcon src="/frameworks/logo-angular.svg" />,
+        link: { url: '/angular' },
+      },
+      {
+        label: 'Web Components',
+        icon: <ImgIcon src="/frameworks/logo-web-components.svg" />,
+        link: { url: '/web-components' },
+      },
+    ],
+  },
+  {
+    label: 'Community',
+    items: [
+      {
+        label: 'Ember',
+        icon: <ImgIcon src="/frameworks/logo-ember.svg" />,
+        link: { url: '/ember' },
+      },
+      {
+        label: 'HTML',
+        icon: <ImgIcon src="/frameworks/logo-html.svg" />,
+        link: { url: '/html' },
+      },
+      {
+        label: 'Svelte',
+        icon: <ImgIcon src="/frameworks/logo-svelte.svg" />,
+        link: { url: '/svelte' },
+      },
+      {
+        label: 'Preact',
+        icon: <ImgIcon src="/frameworks/logo-preact.svg" />,
+        link: { url: '/preact' },
+      },
+    ],
+  },
+];
+const versionOptions = [
+  {
+    label: 'stable',
+    items: [
+      { label: '6.5', link: { url: '/6-5' } },
+      { label: '6.4', link: { url: '/6-4' } },
+      { label: '6.3', link: { url: '/6-3' } },
+      { label: '6.2', link: { url: '/6-2' } },
+      { label: '6.1', link: { url: '/6-1' } },
+      { label: '6.0', link: { url: '/6-0' } },
+    ],
+  },
+  {
+    label: 'pre-release',
+    items: [{ label: '7.0 (future)', link: { url: '/7-0' } }],
+  },
+];
+const FrameworkSelect = () => (
+  <Menu label={frameworkOptions[0].items[0].label} items={frameworkOptions} primary />
+);
+const VersionSelect = () => (
+  <Menu label={versionOptions[0].items[0].label} items={versionOptions} primary />
+);
+const supportItems = [
+  {
+    icon: 'github',
+    href: 'https://github.com/storybookjs/storybook/issues',
+    label: 'Github',
+  },
+  {
+    icon: 'discord',
+    href: 'https://discord.gg/storybook',
+    label: 'Discord',
+  },
+  {
+    icon: 'youtube',
+    href: 'https://www.youtube.com/channel/UCr7Quur3eIyA_oe8FNYexfg',
+    label: 'Youtube',
+  },
+];
 
 function DocsLayout({ children, isLatest: isLatestProp, pageContext, ...props }) {
   const {
@@ -218,6 +284,17 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext, ...props })
           crossOrigin
         />
       </Helmet>
+      <SubNav>
+        <SubNavTabs label="Docs nav" items={docsItems} />
+        <SubNavDivider />
+        <SubNavMenus>
+          <FrameworkSelect />
+          <VersionSelect />
+        </SubNavMenus>
+        <SubNavRight>
+          <SubNavLinkList label="Get support:" items={supportItems} />
+        </SubNavRight>
+      </SubNav>
       <Wrapper>
         <Sidebar className="sidebar">
           <StyledTableOfContents
@@ -228,8 +305,6 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext, ...props })
             {({ menu, allTopLevelMenusAreOpen, toggleAllOpen, toggleAllClosed }) => (
               <>
                 <SidebarControls>
-                  <DocsSearch framework={framework} version={versionString} />
-
                   {allTopLevelMenusAreOpen ? (
                     <WithTooltip
                       {...withTooltipProps}
@@ -253,20 +328,6 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext, ...props })
                       </ExpandButton>
                     </WithTooltip>
                   )}
-
-                  <VersionSelector
-                    version={version}
-                    versions={versions}
-                    framework={framework}
-                    slug={slug}
-                  />
-
-                  <FrameworkSelector
-                    framework={framework}
-                    coreFrameworks={coreFrameworks}
-                    communityFrameworks={communityFrameworks}
-                    slug={slug}
-                  />
                 </SidebarControls>
 
                 {menu}

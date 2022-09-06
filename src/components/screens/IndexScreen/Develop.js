@@ -34,7 +34,9 @@ const Wrapper = styled.section`
 const featuredFrameworks = ['react', 'vue', 'angular', 'web-components', 'html'];
 const frameworkIntegrations = featuredFrameworks.map((framework) => ({
   name: framework,
-  image: `/frameworks/logo-${framework}.svg`,
+  image: `/frameworks/logo-${
+    framework === 'web-components' ? 'web-components-alt' : framework
+  }.svg`,
   href: `/docs/${framework}/get-started/introduction`,
   ButtonWrapper: GatsbyLinkWrapper,
 }));

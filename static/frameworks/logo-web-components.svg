@@ -1,18 +1,1 @@
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M23.5413 12.1618L21.0325 16.392L17.5146 12.104L21.0319 7.93164L23.5413 12.1618Z" fill="#166DA5"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M20.7573 17.1146L16.9378 12.5371L14.6455 16.3776L18.2068 21.5897L20.7573 17.1146Z" fill="#8FDB69"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M20.7141 7.18079L16.9362 11.772L14.6445 7.9315L18.2058 2.77783L20.7141 7.18079Z" fill="#166DA5"/>
-<path opacity="0.95" fill-rule="evenodd" clip-rule="evenodd" d="M9.19531 7.18079H20.7156L18.1776 2.74805H11.7321L9.19531 7.18079ZM16.9378 11.7863H23.3095L21.0173 7.91661H14.6306" fill="url(#paint0_linear_1350_40335)"/>
-<path opacity="0.95" fill-rule="evenodd" clip-rule="evenodd" d="M20.7571 17.129H9.17969L11.7171 21.5319H18.2048L20.7571 17.129ZM16.9364 12.5234H23.3082L21.0171 16.392H14.6293" fill="url(#paint1_linear_1350_40335)"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M11.718 21.5323L6.29692 12.1472L11.79 2.76221H5.85012L0.443359 12.1472L5.85012 21.5323H11.718Z" fill="white"/>
-<defs>
-<linearGradient id="paint0_linear_1350_40335" x1="9.19531" y1="11.7863" x2="23.3095" y2="11.7863" gradientUnits="userSpaceOnUse">
-<stop stop-color="#2A3B8F"/>
-<stop offset="1" stop-color="#29ABE2"/>
-</linearGradient>
-<linearGradient id="paint1_linear_1350_40335" x1="23.3082" y1="12.5234" x2="9.17969" y2="12.5234" gradientUnits="userSpaceOnUse">
-<stop stop-color="#B4D44E"/>
-<stop offset="1" stop-color="#E7F716"/>
-</linearGradient>
-</defs>
-</svg>
+<svg width="161" height="132" viewBox="0 0 161 132" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient x1="0%" y1="50%" y2="50%" id="a"><stop stop-color="#2A3B8F" offset="0%"/><stop stop-color="#29ABE2" offset="100%"/></linearGradient><linearGradient x1="100%" y1="50%" x2="0%" y2="50%" id="c"><stop stop-color="#B4D44E" offset="0%"/><stop stop-color="#E7F716" offset="100%"/></linearGradient></defs><g fill="none" fill-rule="evenodd"><path fill="#166DA5" d="M160.6 65.9l-17.4 29.3-24.4-29.7 24.4-28.9z"/><path fill="#8FDB69" d="M141.3 100.2l-26.5-31.7-15.9 26.6 24.7 36.1z"/><path fill="#166DA5" d="M141 31.4l-26.2 31.8-15.9-26.6L123.6.9z"/><path fill="url(#a)" opacity=".95" d="M61.1 31.4H141L123.4.7H78.7z M114.8 63.3H159l-15.9-26.8H98.8"/><path fill="url(#c)" opacity=".95" d="M141.3 100.3H61l17.6 30.5h45z M114.8 68.4H159l-15.9 26.8H98.8"/><path fill="#010101" d="M78.6 130.8L41 65.8 79.1.8H37.9L.4 65.8l37.5 65z"/></g></svg>

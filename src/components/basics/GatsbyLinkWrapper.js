@@ -1,18 +1,12 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { Link as GatsbyLink } from 'gatsby';
 
-const GatsbyLinkWrapper = ({
-  href,
-  appearance,
-  containsIcon,
-  disabled,
-  inverse,
-  isLoading,
-  ...props
-}) => {
-  return <GatsbyLink to={href} {...props} />;
-};
+const GatsbyLinkWrapper = forwardRef(
+  ({ href, appearance, containsIcon, disabled, inverse, isLoading, ...props }, ref) => {
+    return <GatsbyLink to={href} ref={ref} {...props} />;
+  }
+);
 
 GatsbyLinkWrapper.propTypes = {
   href: PropTypes.string.isRequired,
