@@ -217,6 +217,8 @@ export const CodeExample: FC<CodeExampleProps> = ({ language, fileName, children
       <Control type="maximize" />
       {fileName && <FileName>{fileName}</FileName>}
     </ToolBar>
-    <StyledHighlight language={language}>{children}</StyledHighlight>
+    <StyledHighlight key={fileName} language={language}>
+      {children}
+    </StyledHighlight>
   </CodePane>
 );
