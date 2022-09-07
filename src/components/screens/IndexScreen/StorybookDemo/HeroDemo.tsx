@@ -28,7 +28,6 @@ const Wrapper = styled(motion.div)`
   width: 100%;
   height: 0;
   padding-bottom: 69.10907577%;
-  z-index: 999;
   overflow: hidden;
 
   filter: drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.1)) drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.1))

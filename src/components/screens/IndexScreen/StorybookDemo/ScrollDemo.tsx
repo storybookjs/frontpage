@@ -26,7 +26,6 @@ const Wrapper = styled(motion.div)`
   width: 100%;
   height: 0;
   padding-bottom: 69.10907577%;
-  z-index: 999;
 `;
 
 const Scrim = styled(motion.div)`
