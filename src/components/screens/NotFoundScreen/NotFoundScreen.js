@@ -2,27 +2,20 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { styled } from '@storybook/theming';
 
-import { Link } from '@storybook/design-system';
-import { styles } from '@storybook/components-marketing';
-import Feature from '../../layout/Feature';
-import FeaturesLayout from '../../layout/FeaturesLayout';
+import { Link, Icon } from '@storybook/design-system';
+import { styles, Search } from '@storybook/components-marketing';
 
 import useSiteMetadata from '../../lib/useSiteMetadata';
-import GitHubSVG from '../../../images/logos/social/github.svg';
-import DiscordSVG from '../../../images/logos/social/discord.svg';
 import { PuzzlePieces } from './PuzzlePieces';
+import { SupportFeature } from './SupportFeature';
 
-const { breakpoint, marketing, text, color } = styles;
+const { breakpoints, marketing, text, color, spacing, pageMargins } = styles;
 
-const Features = styled(FeaturesLayout)`
-  @media (min-width: ${breakpoint * 1}px) {
-    margin-bottom: 5rem;
-  }
-`;
+const ALGOLIA_API_KEY = process.env.GATSBY_ALGOLIA_API_KEY;
 
 const Hero = styled.div`
   max-width: 460px;
-  margin: 5rem auto;
+  margin: 0 auto 5rem auto;
   position: relative;
 `;
 const Copy = styled.div`
@@ -38,7 +31,6 @@ const Copy = styled.div`
   justify-content: center;
   pointer-events: none;
 `;
-
 const Title = styled.h1`
   ${marketing.hero1};
   color: ${color.midnight};
@@ -50,8 +42,37 @@ const Description = styled.p`
   color: ${color.darker};
 `;
 
+const Content = styled.main`
+  ${pageMargins};
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+`;
+
+const SupportOptions = styled.div`
+  display: grid;
+  gap: 30px;
+  grid-template-columns: 1fr;
+  max-width: 800px;
+  margin: 0 auto;
+
+  @media (min-width: ${breakpoints[2]}px) {
+    grid-template-columns: 1fr 1fr;
+  }
+`;
+
+const SearchFeature = styled(SupportFeature)`
+  @media (min-width: ${breakpoints[2]}px) {
+    grid-column: 1 / span 2;
+  }
+`;
+const StyledSearch = styled(Search)`
+  button {
+    border-radius: ${spacing.borderRadius.small}px;
+  }
+`;
+
 export function PureNotFoundScreen({ ...props }) {
-  const { urls = {} } = useSiteMetadata();
+  const { urls = {}, latestVersionString } = useSiteMetadata();
   const { gitHub = {}, chat } = urls;
   return (
     <>
@@ -59,37 +80,51 @@ export function PureNotFoundScreen({ ...props }) {
         <meta name="robots" content="noindex" />
       </Helmet>
 
-      <Hero>
-        <PuzzlePieces />
-        <Copy>
-          <Title>404</Title>
-          <Description>
-            The page you were looking for couldn’t be found. It may have moved. Try double-checking
-            the link or going back.
-          </Description>
-        </Copy>
-      </Hero>
+      <Content>
+        <Hero>
+          <PuzzlePieces />
+          <Copy>
+            <Title>404</Title>
+            <Description>
+              The page you were looking for couldn’t be found. It may have moved. Try
+              double-checking the link or going back.
+            </Description>
+          </Copy>
+        </Hero>
 
-      <Features columns={2}>
-        <Feature
-          image={<img src={GitHubSVG} alt="GitHub" />}
-          title="Report an issue on GitHub"
-          desc="If you encounter an issue with this site, do us a favor and report it."
-        >
-          <Link withArrow href={gitHub.frontpage}>
-            Report an issue
-          </Link>
-        </Feature>
-        <Feature
-          image={<img src={DiscordSVG} alt="Discord" />}
-          title="Not finding something?"
-          desc="Ask community members in chat. A maintainer is usually online."
-        >
-          <Link withArrow href={chat}>
-            Chat now
-          </Link>
-        </Feature>
-      </Features>
+        <SupportOptions>
+          <SearchFeature
+            image={<Icon icon="search" alt="search" style={{ color: '#FFC445' }} />}
+            title="Search the docs"
+            desc="There’s probably an article for your issue already."
+            layout="horizontal"
+          >
+            <StyledSearch
+              framework="react"
+              version={latestVersionString}
+              apiKey={ALGOLIA_API_KEY}
+            />
+          </SearchFeature>
+          <SupportFeature
+            image={<Icon icon="discord" alt="Discord" style={{ color: '#5A65EA' }} />}
+            title="Ask a question in #support chat"
+            desc="Resolve issues with community help. A maintainer is usually online."
+          >
+            <Link withArrow href={chat}>
+              Chat now
+            </Link>
+          </SupportFeature>
+          <SupportFeature
+            image={<Icon icon="github" alt="Github" style={{ color: '#333333' }} />}
+            title="File an issue on GitHub"
+            desc="Please report issues, someone else may have the same issue."
+          >
+            <Link withArrow href={gitHub.frontpage}>
+              View GitHub issues
+            </Link>
+          </SupportFeature>
+        </SupportOptions>
+      </Content>
     </>
   );
 }
