@@ -18,7 +18,9 @@ VerifiedBadgeIcon.propTypes = {
 };
 
 const BadgeWrapper = styled(WithTooltip)`
-  margin-left: ${spacing.padding.small}px;
+  && {
+    margin-left: ${spacing.padding.small}px;
+  }
 `;
 
 export const VerifiedBadge = ({ trigger, creator, appearance }) => (

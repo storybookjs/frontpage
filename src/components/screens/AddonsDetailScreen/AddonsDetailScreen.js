@@ -12,8 +12,9 @@ import {
   Avatar,
   Icon,
 } from '@storybook/design-system';
+import { SubNav, SubNavBreadcrumb } from '@storybook/components-marketing';
 import useSiteMetadata from '../../lib/useSiteMetadata';
-import { SocialGraph, Breadcrumb } from '../../basics';
+import { SocialGraph } from '../../basics';
 import { AddonsAside, AddonsAsideContainer } from '../../layout/addons/AddonsAsideLayout';
 import { AddonsSubheading } from '../../layout/addons/AddonsSubheading';
 import { AddonItemDetail } from '../../layout/addons/AddonItemDetail';
@@ -25,7 +26,9 @@ import { orderCompatibility } from '../../../util/order-compatibility';
 const { color, typography, spacing } = styles;
 
 const StyledTagsList = styled(TagList)`
-  margin-bottom: 30px;
+  && {
+    margin-bottom: 30px;
+  }
 `;
 
 const ReadMe = styled.section`
@@ -34,10 +37,12 @@ const ReadMe = styled.section`
 `;
 
 const ReadMeContent = styled.div`
-  ${mdFormatting}
+  && {
+    ${mdFormatting}
 
-  table {
-    display: block;
+    table {
+      display: block;
+    }
   }
 `;
 
@@ -65,12 +70,14 @@ const AuthorName = styled.div`
 `;
 
 const Author = styled(Link)`
-  display: block;
-  margin-bottom: 16px;
+  && {
+    display: block;
+    margin-bottom: 16px;
 
-  span {
-    display: flex;
-    align-items: center;
+    span {
+      display: flex;
+      align-items: center;
+    }
   }
 `;
 
@@ -168,8 +175,13 @@ export const AddonsDetailScreen = ({ path, location, pageContext }) => {
         url={`${home}${path}`}
         image={ogImageAddons}
       />
+      <SubNav>
+        <SubNavBreadcrumb tertiary to={breadcrumb.link} LinkWrapper={GatsbyLink}>
+          <Icon icon="arrowleft" />
+          {breadcrumb.title}
+        </SubNavBreadcrumb>
+      </SubNav>
       <AddonsLayout hideSidebar>
-        <Breadcrumb to={breadcrumb.link}>{breadcrumb.title}</Breadcrumb>
         <AddonItemDetail {...addon} />
         <AddonsAsideContainer>
           <ReadMe>
