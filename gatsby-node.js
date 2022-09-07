@@ -192,7 +192,7 @@ exports.createPages = ({ actions, graphql }) => {
                           nextTocItem.type === 'bullet-link' && {
                             nextTocItem,
                           }),
-                        isFirstTocItem: docsPagesSlugs.length === 0,
+                        isIntroPage: slug === '/docs/get-started/introduction',
                       },
                     });
                   });
