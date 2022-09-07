@@ -79,7 +79,7 @@ it('Should empty the search field', () => {
 });
 `;
 
-export const jasmine = `import { render, screen, fireEvent } from 'testing-library/angular';
+export const jasmine = `import { render, screen, fireEvent } from '@testing-library/angular';
 import { composeStory, createMountableStoryComponent } from '@storybook/testing-angular';
 
 import Meta, {
@@ -94,7 +94,7 @@ describe('Delete Customer Dialog', () => {
     const {
       component,
       ngModule,
-    } = createMountableStoryComponent(Default({}));
+    } = createMountableStoryComponent(Default({}, {} as any));
 
     // Render the story
     await render(component, { imports: [ngModule] });
@@ -105,7 +105,7 @@ describe('Delete Customer Dialog', () => {
     );
     expect(
       await screen.findByText('Are you sure?')
-    ).not.toBeNull();
+    ).toBeInTheDocument();
   });
 });
 `;
