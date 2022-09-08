@@ -10,7 +10,7 @@ export default {
   },
 };
 
-export const Default = () => <NpmDownloadCount className="chromatic-ignore" />;
+export const Default = () => <NpmDownloadCount downloads={16737033} className="chromatic-ignore" />;
 Default.parameters = {
   backgrounds: { default: 'dark' },
 };
