@@ -48,6 +48,10 @@ const Storybooks = styled(HorizontalScroll)`
     }
   }
 `;
+const StorybookLink = styled.a`
+  display: block;
+  text-decoration: none;
+`;
 
 const Projects = styled(HorizontalScroll)`
   padding: 0 30px;
@@ -159,7 +163,14 @@ export function SocialValidation({ docs, projects, storybooks, ...props }) {
       />
       <Storybooks gap="30px" scrollPadding="0 30px">
         {storybooks.map((storybookProject) => (
-          <StorybookProject key={storybookProject.name} {...storybookProject} />
+          <StorybookLink
+            href={storybookProject.url}
+            key={storybookProject.name}
+            target="_blank"
+            rel="noopener nofollow noreferrer"
+          >
+            <StorybookProject {...storybookProject} />
+          </StorybookLink>
         ))}
       </Storybooks>
       <Projects gap="30px" scrollPadding="0 30px">

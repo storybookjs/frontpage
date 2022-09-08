@@ -1,10 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { styled } from '@storybook/theming';
 import { NormalizeArea, styles } from '@storybook/components-marketing';
-import { useMediaQuery } from '../lib/useMediaQuery';
 
-const { color, spacing, typography, pageMargins, breakpoints } = styles;
+const { pageMargins, breakpoints } = styles;
 
 const Logo = styled.img`
   display: block;
