@@ -1,34 +1,50 @@
 import React from 'react';
 
-import PageLayout from './PageLayout';
+import { PurePageLayout } from './PageLayout';
 
 import { pageContext as docsPageContext } from './DocsLayout.stories';
 
 export default {
   title: 'Frontpage|layout/PageLayout',
-  component: PageLayout,
+  component: PurePageLayout,
+};
+
+const dxData = {
+  subscriberCount: 5726,
+  latestPost: {
+    title: 'Why Storybook in 2022?',
+    url: 'https://storybook.js.org/blog/why-storybook-in-2022',
+  },
+  npmDownloads: 16737033,
+  githubStars: 73811,
+  latestVersion: '6.5',
 };
 
 export const Base = () => (
-  <PageLayout pageContext={{}} location={{ pathname: '/' }}>
+  <PurePageLayout dxData={dxData} pageContext={{}} location={{ pathname: '/' }}>
     <div style={{ height: 600, border: '1px solid #ccc', color: '#fff' }}>children</div>
-  </PageLayout>
+  </PurePageLayout>
 );
 Base.parameters = {
   backgrounds: { default: 'dark' },
 };
 
 export const DocsLayout = () => (
-  <PageLayout
+  <PurePageLayout
+    dxData={dxData}
     pageContext={{ ...docsPageContext, layout: 'docs' }}
     location={{ pathname: '/docs/' }}
   >
     <div style={{ height: 600, border: '1px solid #ccc' }}>children</div>
-  </PageLayout>
+  </PurePageLayout>
 );
 
 export const IframeLayout = () => (
-  <PageLayout pageContext={{ layout: 'iframe' }} location={{ pathname: '/releases/' }}>
+  <PurePageLayout
+    dxData={dxData}
+    pageContext={{ layout: 'iframe' }}
+    location={{ pathname: '/releases/' }}
+  >
     <div style={{ height: 600, border: '1px solid #ccc' }}>children</div>
-  </PageLayout>
+  </PurePageLayout>
 );

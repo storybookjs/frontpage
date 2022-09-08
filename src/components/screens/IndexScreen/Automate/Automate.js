@@ -136,15 +136,6 @@ export function Automate({ docs, ...props }) {
           icon={<MergeIcon icon="merge" />}
           title="Merge and ship"
           description="Each stage of the UI development lifecycle gets a pull request check. Pass all checks to get certainty that your work is ready for production."
-          link={
-            <Link
-              containsIcon
-              withArrow
-              href="/docs/react/sharing/publish-storybook#setup-ci-to-publish-automatically"
-            >
-              Integrate with Git version control
-            </Link>
-          }
         />
         <MergeAndShip />
       </Content>

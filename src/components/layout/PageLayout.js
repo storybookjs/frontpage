@@ -34,7 +34,7 @@ const navLinks = {
   hiring: { url: 'https://www.chromatic.com/company/jobs' },
 };
 
-export default function PageLayout({ children, pageContext, ...props }) {
+export function PurePageLayout({ dxData, children, pageContext, ...props }) {
   const {
     urls = {},
     title,
@@ -47,19 +47,6 @@ export default function PageLayout({ children, pageContext, ...props }) {
   const isHomePage = props.location.pathname === '/';
 
   const { framework } = pageContext;
-
-  const { dxData } = useStaticQuery(graphql`
-    query DXQuery {
-      dxData {
-        subscriberCount
-        githubStars
-        latestPost {
-          title
-          url
-        }
-      }
-    }
-  `);
 
   return (
     <LinksContextProvider value={navLinks}>
@@ -123,6 +110,23 @@ export default function PageLayout({ children, pageContext, ...props }) {
       </Layout>
     </LinksContextProvider>
   );
+}
+
+export default function PageLayout(props) {
+  const { dxData } = useStaticQuery(graphql`
+    query DXQuery {
+      dxData {
+        subscriberCount
+        githubStars
+        latestPost {
+          title
+          url
+        }
+      }
+    }
+  `);
+
+  return <PurePageLayout dxData={dxData} {...props} />;
 }
 
 PageLayout.propTypes = {

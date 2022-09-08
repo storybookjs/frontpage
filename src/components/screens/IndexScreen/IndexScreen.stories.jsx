@@ -6,7 +6,7 @@ export default {
   title: 'Screens/IndexScreen/IndexScreen',
   component: PureIndexScreen,
   parameters: {
-    chromatic: { viewports: [440, 600, 900, 1200] },
+    chromatic: { disableSnapshot: true },
     layout: 'fullscreen',
   },
 };
