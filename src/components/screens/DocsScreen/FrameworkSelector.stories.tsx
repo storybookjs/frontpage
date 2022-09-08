@@ -1,5 +1,6 @@
 import React from 'react';
 import { styled } from '@storybook/theming';
+import { within, userEvent } from '@storybook/testing-library';
 import { FrameworkSelector } from './FrameworkSelector';
 import useSiteMetadata from '../../../../.storybook/useSiteMetadata';
 
@@ -27,5 +28,10 @@ Base.args = {
   coreFrameworks,
   communityFrameworks,
   slug: '/docs/get-started/introduction',
-  tooltipProps: { startOpen: true },
+};
+Base.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const menuButton = canvas.getByRole('button', { name: /React/i });
+  await userEvent.click(menuButton);
+  await userEvent.keyboard('{arrowdown}');
 };
