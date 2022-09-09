@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useMemo, useRef } from 'react';
 import { Global, css } from '@storybook/theming';
 import { styles } from '@storybook/components-marketing';
+import { useInView } from 'framer-motion';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import { SocialGraph } from '../../basics';
 import { Hero } from './Hero';
@@ -25,6 +26,34 @@ const globalStyles = css`
 export function PureIndexScreen({ projects, storybooks, npmDownloads }) {
   const { ogImage, urls = {} } = useSiteMetadata();
   const { home, docs = {} } = urls;
+
+  const developRef = useRef(null);
+  const developInView = useInView(developRef);
+
+  const testRef = useRef(null);
+  const testInView = useInView(testRef);
+
+  const documentRef = useRef(null);
+  const documentInView = useInView(documentRef);
+
+  const shareRef = useRef(null);
+  const shareInView = useInView(shareRef);
+
+  const automateRef = useRef(null);
+  const automateInView = useInView(automateRef);
+
+  const whoRef = useRef(null);
+  const whoInView = useInView(whoRef);
+
+  const activeSection = useMemo(() => {
+    if (whoInView) return 'who';
+    if (automateInView) return 'automate';
+    if (shareInView) return 'share';
+    if (documentInView) return 'document';
+    if (testInView) return 'test';
+    return 'develop';
+  }, [testInView, documentInView, shareInView, automateInView, whoInView]);
+
   return (
     <>
       <Global styles={globalStyles} />
@@ -36,13 +65,25 @@ export function PureIndexScreen({ projects, storybooks, npmDownloads }) {
         image={ogImage}
       />
       <Hero npmDownloads={npmDownloads} id="page-hero" />
-      <StickyNav docs={docs} />
-      <Develop docs={docs} id="develop" />
-      <Test docs={docs} id="test" />
-      <Document docs={docs} id="document" />
-      <Share docs={docs} id="share" />
-      <Automate docs={docs} id="automate" />
-      <SocialValidation docs={docs} projects={projects} storybooks={storybooks} id="who" />
+      <StickyNav docs={docs} activeSection={activeSection} />
+      <div ref={developRef}>
+        <Develop docs={docs} id="develop" />
+      </div>
+      <div ref={testRef}>
+        <Test docs={docs} id="test" />
+      </div>
+      <div ref={documentRef}>
+        <Document docs={docs} id="document" />
+      </div>
+      <div ref={shareRef}>
+        <Share docs={docs} id="share" />
+      </div>
+      <div ref={automateRef}>
+        <Automate docs={docs} id="automate" />
+      </div>
+      <div ref={whoRef}>
+        <SocialValidation docs={docs} projects={projects} storybooks={storybooks} id="who" />
+      </div>
     </>
   );
 }

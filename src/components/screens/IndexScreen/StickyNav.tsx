@@ -66,9 +66,15 @@ const MobileMenu = styled(Menu)`
 interface StickyNavProps {
   docs: string;
   animationDisabled?: boolean;
+  activeSection: 'who' | 'automate' | 'share' | 'document' | 'test' | 'develop';
 }
 
-export const StickyNav = ({ docs, animationDisabled = false, ...props }: StickyNavProps) => {
+export const StickyNav = ({
+  docs,
+  animationDisabled = false,
+  activeSection,
+  ...props
+}: StickyNavProps) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -107,22 +113,22 @@ export const StickyNav = ({ docs, animationDisabled = false, ...props }: StickyN
           label="Develop"
         />
         <LeftLinks>
-          <NavItem variant="inverse" href="#develop">
+          <NavItem variant="inverse" href="#develop" active={activeSection === 'develop'}>
             Develop
           </NavItem>
-          <NavItem variant="inverse" href="#test">
+          <NavItem variant="inverse" href="#test" active={activeSection === 'test'}>
             Test
           </NavItem>
-          <NavItem variant="inverse" href="#document">
+          <NavItem variant="inverse" href="#document" active={activeSection === 'document'}>
             Document
           </NavItem>
-          <NavItem variant="inverse" href="#share">
+          <NavItem variant="inverse" href="#share" active={activeSection === 'share'}>
             Share
           </NavItem>
-          <NavItem variant="inverse" href="#automate">
+          <NavItem variant="inverse" href="#automate" active={activeSection === 'automate'}>
             Automate
           </NavItem>
-          <NavItem variant="inverse" href="#who">
+          <NavItem variant="inverse" href="#who" active={activeSection === 'who'}>
             Who's it for
           </NavItem>
         </LeftLinks>
