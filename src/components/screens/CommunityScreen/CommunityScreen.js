@@ -1,17 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { styled } from '@storybook/theming';
 import { rgba } from 'polished';
 
 import { Button, Icon, styles } from '@storybook/design-system';
-import {
-  SubNav,
-  SubNavTabs,
-  SubNavDivider,
-  SubNavMenus,
-  SubNavRight,
-  SubNavLinkList,
-} from '@storybook/components-marketing';
+import { SubNav, SubNavTabs, SubNavRight, SubNavLinkList } from '@storybook/components-marketing';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 
 import { LazyLoad, SocialGraph } from '../../basics';
@@ -214,7 +206,7 @@ export function PureCommunityScreen({ npmDownloads, githubStarCount, ...props })
       <SubNav>
         <SubNavTabs label="Docs nav" items={communityItems} />
         <SubNavRight>
-          <SubNavLinkList label="Get support:" items={joinCommunityItems} />
+          <SubNavLinkList label="Join the community:" items={joinCommunityItems} />
         </SubNavRight>
       </SubNav>
 
