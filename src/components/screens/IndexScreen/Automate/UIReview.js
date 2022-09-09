@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { styled } from '@storybook/theming';
-import { motion, AnimatePresence, useInView } from 'framer-motion';
 import { styles } from '@storybook/components-marketing';
 
 const { breakpoints, pageMargins } = styles;
@@ -22,18 +21,18 @@ const Content = styled.div`
   }
 `;
 
-const CalendarComponent = styled(motion.img)`
+const CalendarComponent = styled.img`
   display: block;
   width: 55%;
 `;
 
-const comments = [
-  'images/home/automate/comment-1.svg',
-  'images/home/automate/comment-2.svg',
-  'images/home/automate/comment-3.svg',
+const reviewComments = [
+  { id: 0, image: 'images/home/automate/comment-1.svg' },
+  { id: 1, image: 'images/home/automate/comment-2.svg' },
+  { id: 2, image: 'images/home/automate/comment-3.svg' },
 ];
 
-const Comments = styled(motion.div)`
+const Comments = styled.div`
   flex: none;
   width: 52%;
   height: 132%;
@@ -47,7 +46,7 @@ const Comments = styled(motion.div)`
   gap: 2.5%;
 `;
 
-const Comment = styled(motion.img)`
+const Comment = styled.img`
   display: block;
   height: 32%;
   width: auto;
@@ -55,43 +54,14 @@ const Comment = styled(motion.img)`
 `;
 
 export function UIReview({ docs, ...props }) {
-  const [reviewComments, setReviewComments] = useState([]);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 'all' });
-
-  useEffect(() => {
-    const addComment = (id) => {
-      setReviewComments((c) => [...c, { id, image: comments[id] }]);
-    };
-
-    if (isInView) {
-      addComment(0);
-      setTimeout(() => addComment(1), 2500);
-      setTimeout(() => addComment(2), 4000);
-    }
-  }, [isInView]);
-
   return (
     <Figure>
       <Content {...props}>
-        <CalendarComponent
-          ref={ref}
-          src="images/home/automate/datepicker-compact-week.svg"
-          alt=""
-        />
+        <CalendarComponent src="images/home/automate/datepicker-compact-week.svg" alt="" />
         <Comments>
-          <AnimatePresence initial={false}>
-            {reviewComments.map(({ id, image }) => (
-              <Comment
-                key={id}
-                layout
-                initial={{ opacity: 0, y: 100 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                src={image}
-              />
-            ))}
-          </AnimatePresence>
+          {reviewComments.map(({ id, image }) => (
+            <Comment key={id} src={image} />
+          ))}
         </Comments>
       </Content>
     </Figure>

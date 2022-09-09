@@ -98,9 +98,9 @@
 <rect x="978.5" y="775.5" width="79" height="31" rx="3.5" fill="#F0F9FF"/>
 <text fill="#304756" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="990" y="794.948">Set object</tspan></text>
 <rect x="978.5" y="775.5" width="79" height="31" rx="3.5" stroke="#CBE1EE"/>
-<path d="M252 469H1200V471H252V469ZM1200 829H252H1200ZM252 829V470V829ZM1200 470V829V470Z" fill="#E1E5E8" mask="url(#path-3-outside-2_5704_90610)"/>
+<path d="M252 469H1200V470H252V469ZM1200 829H252H1200ZM252 829V470V829ZM1200 470V829V470Z" fill="#E1E5E8" mask="url(#path-3-outside-2_5704_90610)"/>
 </g>
-<path d="M252 469H1200V471H252V469ZM1200 829H252H1200ZM252 829V470V829ZM1200 470V829V470Z" fill="#E1E5E8" mask="url(#path-1-inside-1_5704_90610)"/>
+<path d="M252 469H1200V470H252V469ZM1200 829H252H1200ZM252 829V470V829ZM1200 470V829V470Z" fill="#E1E5E8" mask="url(#path-1-inside-1_5704_90610)"/>
 <defs>
 <clipPath id="clip0_5704_90610">
 <path d="M252 470H1200V821C1200 825.418 1196.42 829 1192 829H260C255.582 829 252 825.418 252 821V470Z" fill="white"/>

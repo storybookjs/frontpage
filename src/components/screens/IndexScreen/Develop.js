@@ -127,7 +127,7 @@ const StorybookDemoWrapper = styled.figure`
   align-self: flex-start;
 
   @media (min-width: ${breakpoints[1]}px) {
-    top: 3rem;
+    top: 5rem;
   }
 
   @media (min-width: ${breakpoints[2]}px) {

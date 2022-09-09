@@ -32,7 +32,8 @@ const Wrapper = styled.section`
 const Storybooks = styled(HorizontalScroll)`
   padding: 0 30px;
   margin-top: 5rem;
-  margin-bottom: 5rem;
+  margin-bottom: 4rem;
+  padding-bottom: 1rem;
 
   & * {
     color: ${color.lightest} !important;
@@ -98,6 +99,7 @@ const Contributors = styled.div`
   min-width: 0;
   display: flex;
   align-items: center;
+  flex-direction: row-reverse;
 
   img {
     display: block;
@@ -106,7 +108,7 @@ const Contributors = styled.div`
     border-radius: 100%;
   }
 
-  img:not(:first-of-type) {
+  img:not(:last-of-type) {
     margin-left: -5px;
   }
 
@@ -128,12 +130,12 @@ const CommunityCTA = styled.div`
 `;
 
 const contributors = [
-  'images/community/contributor1.jpg',
-  'images/community/contributor2.jpg',
-  'images/community/contributor3.jpg',
-  'images/community/contributor4.jpg',
-  'images/community/contributor5.jpg',
   'images/community/contributor6.jpg',
+  'images/community/contributor5.jpg',
+  'images/community/contributor4.jpg',
+  'images/community/contributor3.jpg',
+  'images/community/contributor2.jpg',
+  'images/community/contributor1.jpg',
 ];
 
 export function SocialValidation({ docs, projects, storybooks, ...props }) {
@@ -186,7 +188,7 @@ export function SocialValidation({ docs, projects, storybooks, ...props }) {
           description="Join 1440+ contributors building the future of UI development."
           link={{
             label: 'Star on GitHub',
-            href: 'https://github.com/storybookjs/',
+            href: 'https://github.com/storybookjs/storybook',
           }}
           stat={{
             count: '1440+',

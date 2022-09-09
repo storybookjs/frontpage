@@ -91,9 +91,9 @@
 <text fill="black" xml:space="preserve" style="white-space: pre" font-family="-apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'helvetica neue', helvetica, ubuntu, roboto, noto, 'segoe ui', arial, sans-serif" font-size="11" font-weight="bold" letter-spacing="0em"><tspan x="291" y="809.41">RangeSlider </tspan></text>
 <text fill="black" xml:space="preserve" style="white-space: pre" font-family="-apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'helvetica neue', helvetica, ubuntu, roboto, noto, 'segoe ui', arial, sans-serif" font-size="11" letter-spacing="0em"><tspan x="360.964" y="809.41">Edited 2 weeks ago</tspan></text>
 </g>
-<path d="M252 469H1200V471H252V469ZM1200 829H252H1200ZM252 829V470V829ZM1200 470V829V470Z" fill="#E1E5E8" mask="url(#path-3-outside-2_5704_92120)"/>
+<path d="M252 469H1200V470H252V469ZM1200 829H252H1200ZM252 829V470V829ZM1200 470V829V470Z" fill="#E1E5E8" mask="url(#path-3-outside-2_5704_92120)"/>
 </g>
-<path d="M252 469H1200V471H252V469ZM1200 829H252H1200ZM252 829V470V829ZM1200 470V829V470Z" fill="#E1E5E8" mask="url(#path-1-inside-1_5704_92120)"/>
+<path d="M252 469H1200V470H252V469ZM1200 829H252H1200ZM252 829V470V829ZM1200 470V829V470Z" fill="#E1E5E8" mask="url(#path-1-inside-1_5704_92120)"/>
 <defs>
 <filter id="filter0_dd_5704_92120" x="291.832" y="556.883" width="226.337" height="185.352" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>

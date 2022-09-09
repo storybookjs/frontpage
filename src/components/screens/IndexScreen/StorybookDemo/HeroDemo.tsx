@@ -57,7 +57,7 @@ const Pointer = styled(motion.img)`
 
 const click = async (controls: AnimationControls, callback: () => void) => {
   return Promise.all([
-    new Promise((res) => setTimeout(res, 525)).then(callback),
+    new Promise((res) => setTimeout(res, 440)).then(callback),
     controls.start({
       scale: [1, 0.9, 1],
       transition: { type: 'spring', stiffness: 700, damping: 80, duration: 0.3, delay: 0.4 },
@@ -180,7 +180,7 @@ export const HeroDemo = ({ ...props }: HeroDemoProps) => {
           x: '0%',
           y: '0%',
           opacity: 0,
-          transition: { delay: 1, duration: 1, opacity: { duration: 0.4 } },
+          transition: { delay: 1, duration: 1 },
         }),
         endTimeControls.set('initial'),
         startTimeControls.set('initial'),

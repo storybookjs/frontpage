@@ -11,11 +11,7 @@ export default {
 };
 
 // animation only triggers when the element scrolls into view
-export const Default = () => (
-  <div style={{ marginTop: 1200, marginBottom: 300 }}>
-    <UIReview docs="/" />
-  </div>
-);
+export const Default = () => <UIReview docs="/" />;
 Default.parameters = {
   backgrounds: { default: 'dark' },
 };

@@ -32,7 +32,7 @@ const Overview = styled(motion.img)`
   display: block;
   position: absolute;
   top: 4%;
-  left: 20.9%;
+  left: 21%;
   width: 78.9%;
   border-radius: 4px;
 `;

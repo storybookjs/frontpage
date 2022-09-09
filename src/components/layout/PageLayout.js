@@ -50,7 +50,7 @@ export function PurePageLayout({ dxData, children, pageContext, ...props }) {
 
   return (
     <LinksContextProvider value={navLinks}>
-      <Layout {...props}>
+      <Layout>
         <SocialGraph
           // this is default social graph styling, it will be overridden by page-specific oggraph
           title={title}
