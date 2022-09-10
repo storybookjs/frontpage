@@ -60,7 +60,7 @@ const TopSpacer = styled.div`
   }
 `;
 const BottomSpacer = styled.div`
-  height: 64rem;
+  height: ${(props) => (props.small ? 64 : 56)}rem;
   display: none;
 
   @media (min-width: ${breakpoints[2]}px) {
@@ -158,7 +158,7 @@ export function Develop({ docs, startOpen, ...props }) {
   const isolationRef = useRef(null);
   const { scrollYProgress: isolationProgress } = useScroll({
     target: isolationRef,
-    offset: ['end end', 'end start'],
+    offset: ['0 0.5', '1 0.5'],
   });
   const smoothIsolationProgress = useSpring(isolationProgress, {
     stiffness: 1000,
@@ -169,7 +169,7 @@ export function Develop({ docs, startOpen, ...props }) {
   const storiesRef = useRef(null);
   const { scrollYProgress: storiesProgress } = useScroll({
     target: storiesRef,
-    offset: ['start start', 'end start'],
+    offset: ['0 0.5', '.75 1'],
   });
   const activeStory = useTransform(storiesProgress, (value) => Math.floor(value * 3));
 
@@ -177,7 +177,7 @@ export function Develop({ docs, startOpen, ...props }) {
   const addonsRef = useRef(null);
   const { scrollYProgress: addonsProgress } = useScroll({
     target: addonsRef,
-    offset: ['start .2', 'end start'],
+    offset: ['0 0.5', '.75 1'],
   });
   const activePanel = useTransform(addonsProgress, (value) => Math.floor(value * 4));
   const smoothAddonsProgress = useSpring(addonsProgress, {
@@ -231,7 +231,7 @@ export function Develop({ docs, startOpen, ...props }) {
               </Link>
             }
           />
-          <BottomSpacer />
+          <BottomSpacer small />
         </StickTextWrapper>
         <StickTextWrapper ref={storiesRef}>
           <TopSpacer />
