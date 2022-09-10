@@ -65,7 +65,7 @@ export function PureIndexScreen({ projects, storybooks, npmDownloads }) {
         url={home}
         image={ogImage}
       />
-      <Hero npmDownloads={npmDownloads} id="page-hero" />
+      <Hero npmDownloads={npmDownloads} />
       <StickyNav isVisible={!!activeSection} docs={docs} activeSection={activeSection} />
       <div ref={developRef}>
         <Develop docs={docs} id="develop" />

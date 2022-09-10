@@ -105,7 +105,7 @@ export const StickyNav = ({
           ))}
         </LeftLinks>
         <RightLinks>
-          <JumpLink variant="inverse" href="#page-hero">
+          <JumpLink variant="inverse" href="#page-top">
             <Icon icon="arrowupalt" />
             Jump to top
           </JumpLink>
