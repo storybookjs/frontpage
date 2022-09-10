@@ -28,7 +28,7 @@ export function PureIndexScreen({ projects, storybooks, npmDownloads }) {
   const { home, docs = {} } = urls;
 
   const developRef = useRef(null);
-  const developInView = useInView(developRef);
+  const developInView = useInView(developRef, { margin: '0px 0px -90% 0px' });
 
   const testRef = useRef(null);
   const testInView = useInView(testRef);
@@ -51,8 +51,9 @@ export function PureIndexScreen({ projects, storybooks, npmDownloads }) {
     if (shareInView) return 'share';
     if (documentInView) return 'document';
     if (testInView) return 'test';
-    return 'develop';
-  }, [testInView, documentInView, shareInView, automateInView, whoInView]);
+    if (developInView) return 'develop';
+    return null;
+  }, [developInView, testInView, documentInView, shareInView, automateInView, whoInView]);
 
   return (
     <>
@@ -65,7 +66,7 @@ export function PureIndexScreen({ projects, storybooks, npmDownloads }) {
         image={ogImage}
       />
       <Hero npmDownloads={npmDownloads} id="page-hero" />
-      <StickyNav docs={docs} activeSection={activeSection} />
+      <StickyNav isVisible={!!activeSection} docs={docs} activeSection={activeSection} />
       <div ref={developRef}>
         <Develop docs={docs} id="develop" />
       </div>

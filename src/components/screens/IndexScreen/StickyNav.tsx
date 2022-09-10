@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { styled } from '@storybook/theming';
-import { Link, Button, Icon, WithModal } from '@storybook/design-system';
+import { Button, Icon } from '@storybook/design-system';
 import { styles, NavItem, Menu } from '@storybook/components-marketing';
-import { motion, useScroll } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const { color, breakpoints, pageMargins } = styles;
 
@@ -65,72 +65,44 @@ const MobileMenu = styled(Menu)`
 
 interface StickyNavProps {
   docs: string;
+  isVisible?: boolean;
   animationDisabled?: boolean;
   activeSection: 'who' | 'automate' | 'share' | 'document' | 'test' | 'develop';
 }
 
+const items = [
+  { id: 'develop', label: 'Develop', link: { url: '#develop' } },
+  { id: 'test', label: 'Test', link: { url: '#test' } },
+  { id: 'document', label: 'Document', link: { url: '#document' } },
+  { id: 'share', label: 'Share', link: { url: '#share' } },
+  { id: 'automate', label: 'Automate', link: { url: '#automate' } },
+  { id: 'who', label: "Who's it for", link: { url: '#who' } },
+];
+
 export const StickyNav = ({
   docs,
+  isVisible,
   animationDisabled = false,
   activeSection,
   ...props
 }: StickyNavProps) => {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['end end', 'start start'],
-  });
-  const [stickyNavVisible, setStickyNavVisible] = useState(false);
-
-  useEffect(() => {
-    const unsubscribe = scrollYProgress.onChange((latest) => {
-      if (latest === 1) {
-        setStickyNavVisible(true);
-      } else if (latest === 0) {
-        setStickyNavVisible(false);
-      }
-    });
-
-    return () => {
-      unsubscribe();
-    };
-  }, []);
-
-  const opacity = stickyNavVisible ? 1 : 0;
+  const activeItem = items.find((item) => item.id === activeSection);
 
   return (
-    <Wrapper ref={ref} animate={{ opacity: animationDisabled ? 1 : opacity }} {...props}>
+    <Wrapper animate={{ opacity: isVisible ? 1 : 0 }} {...props}>
       <Content>
-        <MobileMenu
-          items={[
-            { label: 'Develop', link: { url: '#develop' } },
-            { label: 'Test', link: { url: '#test' } },
-            { label: 'Document', link: { url: '#document' } },
-            { label: 'Share', link: { url: '#share' } },
-            { label: 'Automate', link: { url: '#automate' } },
-            { label: "Who's it for", link: { url: '#who' } },
-          ]}
-          label="Develop"
-        />
+        <MobileMenu items={items} label={activeItem?.label || items[0].label} />
         <LeftLinks>
-          <NavItem variant="inverse" href="#develop" active={activeSection === 'develop'}>
-            Develop
-          </NavItem>
-          <NavItem variant="inverse" href="#test" active={activeSection === 'test'}>
-            Test
-          </NavItem>
-          <NavItem variant="inverse" href="#document" active={activeSection === 'document'}>
-            Document
-          </NavItem>
-          <NavItem variant="inverse" href="#share" active={activeSection === 'share'}>
-            Share
-          </NavItem>
-          <NavItem variant="inverse" href="#automate" active={activeSection === 'automate'}>
-            Automate
-          </NavItem>
-          <NavItem variant="inverse" href="#who" active={activeSection === 'who'}>
-            Who's it for
-          </NavItem>
+          {items.map((item) => (
+            <NavItem
+              key={item.id}
+              variant="inverse"
+              href={item.link.url}
+              active={activeSection === item.id}
+            >
+              {item.label}
+            </NavItem>
+          ))}
         </LeftLinks>
         <RightLinks>
           <JumpLink variant="inverse" href="#page-hero">
