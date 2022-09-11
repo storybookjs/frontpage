@@ -28,7 +28,7 @@ export function PureIndexScreen({ projects, storybooks, npmDownloads }) {
   const { home, docs = {} } = urls;
 
   const developRef = useRef(null);
-  const developInView = useInView(developRef, { margin: '0px 0px -90% 0px' });
+  const developInView = useInView(developRef, { margin: '0px 0px -100% 0px' });
 
   const testRef = useRef(null);
   const testInView = useInView(testRef);

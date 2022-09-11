@@ -189,7 +189,7 @@ export function Develop({ docs, startOpen, ...props }) {
   const dropInRef = useRef(null);
   const { scrollYProgress: dropInProgress } = useScroll({
     target: dropInRef,
-    offset: ['start .25', 'start start'],
+    offset: ['0 .75', 'start start'],
   });
   const smoothDropInProgress = useSpring(dropInProgress, {
     stiffness: 1000,

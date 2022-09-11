@@ -91,8 +91,6 @@ const Connector = ({ name, ...props }) => {
                 initial: { pathLength: 0 },
                 animate: { pathLength: 1 },
               }}
-              // initial={{ pathLength: 0 }}
-              // animate={{ pathLength: 1 }}
               transition={{ duration: 0.8 }}
             />
           </mask>
