@@ -72,22 +72,24 @@ const Wrapper = styled.div`
   position: relative;
   align-items: center;
   text-align: center;
+  width: 100%;
 `;
 
 const IntegrationGrid = styled.div`
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(10, 1fr);
   grid-auto-rows: max-content;
   grid-auto-flow: row dense;
   gap: 10px;
   justify-content: center;
 
-  @media (min-width: ${breakpoints[2]}px) {
+  @media (min-width: ${breakpoints[1]}px) {
     gap: 20px;
   }
 
-  @media (min-width: 1400px) {
-    gap: 30px;
+  @media (min-width: ${breakpoints[2]}px) {
+    grid-template-columns: repeat(6, 1fr);
   }
 `;
 
