@@ -112,7 +112,7 @@ const embedIntegrations = [
           src="/images/embed/next.png"
           alt="Embed stories using iframes in your NextJS sites"
         />
-        <Connector name="NextJS" style={{ top: '51%', left: '37%' }} />
+        <Connector key="nextjs" name="NextJS" style={{ top: '51%', left: '37%' }} />
       </AspectRatio>
     ),
   },
@@ -121,12 +121,17 @@ const embedIntegrations = [
     image: '/images/home/figma.svg',
     color: '#000',
     media: (
-      <AspectRatio ratio={`${1202} / ${910}`}>
+      <AspectRatio ratio={`${1202} / ${910}`} style={{ transform: 'translate(0, 0)' }}>
         <EmbedPane
           src="/images/embed/figma.png"
           alt="Use the Storybook Connect plugin to embed stories in a Figma file"
         />
-        <Connector name="Figma" style={{ top: '52%', left: '1%' }} transition={{ duration: 0.4 }} />
+        <Connector
+          key="figma"
+          name="Figma"
+          style={{ top: '52%', left: '1%' }}
+          transition={{ duration: 0.4 }}
+        />
       </AspectRatio>
     ),
   },
@@ -135,12 +140,13 @@ const embedIntegrations = [
     image: '/images/home/notion.svg',
     color: '#fff',
     media: (
-      <AspectRatio ratio={`${1202} / ${910}`}>
+      <AspectRatio ratio={`${1202} / ${910}`} style={{ transform: 'translate(0, 0)' }}>
         <EmbedPane
           src="/images/embed/notion.png"
           alt="Embed stories in Notion documents using the oEmbed support"
         />
         <Connector
+          key="notion"
           name="Notion"
           style={{ top: '55%', left: '7%' }}
           transition={{ duration: 0.4 }}
@@ -153,7 +159,7 @@ const embedIntegrations = [
     image: '/images/home/medium.svg',
     color: '#F5C347',
     media: (
-      <AspectRatio ratio={`${1202} / ${910}`}>
+      <AspectRatio ratio={`${1202} / ${910}`} style={{ transform: 'translate(0, 0)' }}>
         <EmbedPane
           src="/images/embed/medium.png"
           alt="Embed stories in Medium articles using the oEmbed support"
@@ -196,7 +202,9 @@ export const EmbedIntegrations = React.forwardRef(({ isInView, disableScrollAnim
       };
   return (
     <EmbedIntegrationsWrapper ref={ref}>
-      <IntegrationsCarousel integrations={embedIntegrations} overflowLabel="+ and more" />
+      <AnimatePresence initial={false} exitBeforeEnter>
+        <IntegrationsCarousel integrations={embedIntegrations} overflowLabel="+ and more" />
+      </AnimatePresence>
       {(isInView || disableScrollAnimation) && (
         <TimeFramePicker {...layoutAnimProps} width="458" height="244" />
       )}
