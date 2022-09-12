@@ -16,7 +16,7 @@ interface Stable {
 interface PreRelease {
   version: number;
   string: string;
-  label: 'alpha' | 'beta' | 'rc';
+  label: 'alpha' | 'beta' | 'rc' | 'future';
 }
 
 export interface Versions {
