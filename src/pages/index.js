@@ -9,7 +9,14 @@ const { GlobalStyle } = global;
 const HomePage = ({ data }) => {
   const {
     storybookProjects,
-    dxData: { npmDownloads, latestPost },
+    dxData: {
+      npmDownloads,
+      latestPost,
+      twitterFollowerCount,
+      discordMemberCount,
+      githubContributorCount,
+      youTubeSubscriberCount,
+    },
   } = data;
 
   const projects = useMemo(
@@ -27,7 +34,15 @@ const HomePage = ({ data }) => {
   return (
     <Fragment>
       <GlobalStyle />
-      <IndexScreen latestBlogPost={latestPost} projects={projects} npmDownloads={npmDownloads} />
+      <IndexScreen
+        latestBlogPost={latestPost}
+        projects={projects}
+        npmDownloads={npmDownloads}
+        twitterFollowerCount={twitterFollowerCount}
+        discordMemberCount={discordMemberCount}
+        githubContributorCount={githubContributorCount}
+        youTubeSubscriberCount={youTubeSubscriberCount}
+      />
     </Fragment>
   );
 };
@@ -66,6 +81,12 @@ export const query = graphql`
 
     dxData {
       npmDownloads
+      twitterFollowerCount
+      discordMemberCount
+      twitterFollowerCount
+      discordMemberCount
+      githubContributorCount
+      youTubeSubscriberCount
       latestPost {
         title
         url

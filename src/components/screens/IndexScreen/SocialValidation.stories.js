@@ -124,7 +124,15 @@ export const storybooks = [
 ];
 
 export const Default = () => (
-  <SocialValidation docs="/" projects={projects} storybooks={storybooks} />
+  <SocialValidation
+    docs="/"
+    projects={projects}
+    storybooks={storybooks}
+    twitterFollowerCount={18351}
+    discordMemberCount={14930}
+    githubContributorCount={1814}
+    youTubeSubscriberCount={2650}
+  />
 );
 Default.parameters = {
   backgrounds: { default: 'dark' },

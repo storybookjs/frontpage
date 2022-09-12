@@ -1,23 +1,26 @@
 import React from 'react';
-import { PureIndexScreen } from './IndexScreen';
-import { projects, storybooks } from './SocialValidation.stories';
+import IndexScreen from './IndexScreen';
+import { projects } from './SocialValidation.stories';
 
 export default {
   title: 'Screens/IndexScreen/IndexScreen',
-  component: PureIndexScreen,
+  component: IndexScreen,
   parameters: {
     chromatic: { disableSnapshot: true },
     layout: 'fullscreen',
   },
 };
 
-const Template = (args) => <PureIndexScreen {...args} />;
+const Template = (args) => <IndexScreen {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
   projects,
-  storybooks,
   npmDownloads: 16094826,
+  twitterFollowerCount: 18351,
+  discordMemberCount: 14930,
+  githubContributorCount: 1814,
+  youTubeSubscriberCount: 2650,
 };
 Default.parameters = {
   backgrounds: { default: 'dark' },

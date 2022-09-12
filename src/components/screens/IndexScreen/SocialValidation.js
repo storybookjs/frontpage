@@ -138,7 +138,16 @@ const contributors = [
   'images/community/contributor1.jpg',
 ];
 
-export function SocialValidation({ docs, projects, storybooks, ...props }) {
+export function SocialValidation({
+  docs,
+  projects,
+  storybooks,
+  twitterFollowerCount,
+  discordMemberCount,
+  githubContributorCount,
+  youTubeSubscriberCount,
+  ...props
+}) {
   return (
     <Wrapper {...props}>
       <SectionLede
@@ -191,7 +200,7 @@ export function SocialValidation({ docs, projects, storybooks, ...props }) {
             href: 'https://github.com/storybookjs/storybook',
           }}
           stat={{
-            count: '1440+',
+            count: `${githubContributorCount.toLocaleString()}+`,
             label: 'Contributors',
           }}
         />
@@ -204,7 +213,7 @@ export function SocialValidation({ docs, projects, storybooks, ...props }) {
             href: 'https://discord.gg/storybook',
           }}
           stat={{
-            count: '13,000+',
+            count: `${discordMemberCount.toLocaleString()}+`,
             label: 'Server members',
           }}
         />
@@ -217,7 +226,7 @@ export function SocialValidation({ docs, projects, storybooks, ...props }) {
             href: 'https://twitter.com/storybookjs',
           }}
           stat={{
-            count: '16,300+',
+            count: `${twitterFollowerCount.toLocaleString()}+`,
             label: 'Followers',
           }}
         />
@@ -234,7 +243,7 @@ export function SocialValidation({ docs, projects, storybooks, ...props }) {
             href: 'https://www.youtube.com/channel/UCr7Quur3eIyA_oe8FNYexfg',
           }}
           stat={{
-            count: '1,830+',
+            count: `${youTubeSubscriberCount.toLocaleString()}+`,
             label: 'Subscribers',
           }}
         />
@@ -245,4 +254,8 @@ export function SocialValidation({ docs, projects, storybooks, ...props }) {
 
 SocialValidation.propTypes = {
   docs: PropTypes.string.isRequired,
+  twitterFollowerCount: PropTypes.number.isRequired,
+  discordMemberCount: PropTypes.number.isRequired,
+  githubContributorCount: PropTypes.number.isRequired,
+  youTubeSubscriberCount: PropTypes.number.isRequired,
 };
