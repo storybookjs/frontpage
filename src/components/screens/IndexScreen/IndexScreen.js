@@ -15,9 +15,6 @@ import { SocialValidation } from './SocialValidation';
 import { StickyNav } from './StickyNav';
 
 const globalStyles = css`
-  html {
-    scroll-behavior: smooth;
-  }
   body {
     background-color: ${styles.color.midnight};
   }

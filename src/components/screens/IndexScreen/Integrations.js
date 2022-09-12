@@ -89,19 +89,32 @@ const IntegrationGrid = styled.div`
   }
 
   @media (min-width: ${breakpoints[2]}px) {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(6, minmax(auto, 80px));
+  }
+
+  @media (min-width: ${breakpoints[3]}px) {
+    gap: 30px;
+  }
+
+  @media (min-width: ${1400}px) {
+    grid-template-columns: repeat(10, minmax(auto, 80px));
+    gap: 20px;
   }
 `;
 
 const Scrim = styled.div`
   position: absolute;
-  height: 50%;
+  height: 75%;
   bottom: -2.5rem;
   left: 0;
   right: 0;
   pointer-events: none;
 
   background: linear-gradient(180deg, rgba(23, 28, 35, 0) 0%, #171c23 86.87%);
+
+  @media (min-width: ${breakpoints[2]}px) {
+    height: 50%;
+  }
 `;
 
 export function Integrations({ docs, ...props }) {

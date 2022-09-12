@@ -108,6 +108,7 @@ const IntegrationsContent = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
+  align-items: center;
   gap: 6rem;
   grid-auto-flow: dense;
 
@@ -189,7 +190,7 @@ export function Develop({ docs, startOpen, ...props }) {
   const dropInRef = useRef(null);
   const { scrollYProgress: dropInProgress } = useScroll({
     target: dropInRef,
-    offset: ['0 .75', 'start start'],
+    offset: ['0 1', '0 0.5'],
   });
   const smoothDropInProgress = useSpring(dropInProgress, {
     stiffness: 1000,

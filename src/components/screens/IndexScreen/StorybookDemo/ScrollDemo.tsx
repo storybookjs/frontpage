@@ -54,7 +54,7 @@ const StyledConnector = styled(Connector)`
   width: 24%;
   height: auto;
   position: absolute;
-  top: 25%;
+  top: 20%;
   left: 17.8%;
   transform: rotate(-56deg);
 `;
