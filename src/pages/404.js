@@ -12,7 +12,6 @@ const Page404 = ({ data }) => (
     <GlobalStyle />
     <NotFoundScreen
       repoUrl="https://github.com/storybookjs/frontpage/"
-      // eslint-disable-next-line react/prop-types
       latestVersionString={data.dxData.latestVersion}
       apiKey={ALGOLIA_API_KEY}
     />
