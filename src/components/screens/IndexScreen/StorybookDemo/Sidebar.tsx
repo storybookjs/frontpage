@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion, AnimatePresence, MotionProps } from 'framer-motion';
+import { motion, MotionProps } from 'framer-motion';
 import { styled } from '@storybook/theming';
 
 const SidebarWrapper = styled(motion.div)`
@@ -27,7 +27,11 @@ interface SidebarProps extends MotionProps {
 const rangeSliderStories = ['default', 'input-range', 'no-selection'];
 const timeFrameStories = ['all-day', 'last-hour', 'no-selection', 'overview'];
 
-export const Sidebar = ({ activeStory, type = 'rangeSlider', ...props }: SidebarProps) => {
+export const Sidebar = ({
+  activeStory,
+  type = 'rangeSlider',
+  ...props
+}: SidebarProps & MotionProps) => {
   const modifyingControls = ['start-time', 'end-time'].includes(activeStory);
   const storyID = modifyingControls ? 'all-day' : activeStory;
 
