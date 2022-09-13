@@ -20,6 +20,8 @@ const MergeIcon = styled(StepIcon)`
 const { color, marketing, breakpoints, pageMargins } = styles;
 
 const Wrapper = styled.section`
+  width: 100%;
+  overflow-x: clip;
   padding-top: 3rem;
   padding-bottom: 3rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
