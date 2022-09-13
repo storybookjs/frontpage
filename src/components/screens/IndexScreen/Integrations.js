@@ -96,7 +96,7 @@ const IntegrationGrid = styled.div`
     gap: 30px;
   }
 
-  @media (min-width: ${1400}px) {
+  @media (min-width: ${1600}px) {
     grid-template-columns: repeat(10, minmax(auto, 80px));
     gap: 20px;
   }

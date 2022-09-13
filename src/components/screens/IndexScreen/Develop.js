@@ -62,7 +62,11 @@ const TopSpacer = styled.div`
   }
 `;
 const BottomSpacer = styled.div`
-  height: ${(props) => (props.small ? 64 : 56)}rem;
+  height: ${(props) => {
+    if (props.large) return 96;
+    else if (props.small) return 64;
+    return 56;
+  }}rem;
   display: none;
 
   @media (min-width: ${breakpoints[2]}px) {
@@ -258,7 +262,7 @@ export function Develop({ docs, startOpen, ...props }) {
               </Link>
             }
           />
-          <BottomSpacer />
+          <BottomSpacer large />
         </StickTextWrapper>
         <StickTextWrapper ref={addonsRef}>
           <TopSpacer />
@@ -277,7 +281,7 @@ export function Develop({ docs, startOpen, ...props }) {
               </Link>
             }
           />
-          <BottomSpacer />
+          <BottomSpacer large />
         </StickTextWrapper>
         <StickTextWrapper ref={dropInRef}>
           <TopSpacer />
