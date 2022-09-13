@@ -9,6 +9,7 @@ const { breakpoints } = styles;
 const AvatarWrapper = styled(motion(AspectRatio))`
   width: 28%;
   position: absolute;
+  z-index: 1;
   left: ${(props) => props.x};
   top: ${(props) => props.y};
 

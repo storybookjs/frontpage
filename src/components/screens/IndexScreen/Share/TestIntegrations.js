@@ -100,21 +100,11 @@ const TestIntegrationsWrapper = styled.div`
   }
 `;
 
-export const TestIntegrations = React.forwardRef(({ isInView, disableScrollAnimation }, ref) => {
-  const layoutAnimProps = disableScrollAnimation
-    ? {}
-    : {
-        layoutId: 'TimeFramePicker',
-        initial: { opacity: 1, scale: 1 },
-        animate: { opacity: 0, scale: 0 },
-        transition: { duration: 0.8 },
-      };
+export const TestIntegrations = React.forwardRef(({}, ref) => {
   return (
-    <TestIntegrationsWrapper ref={ref}>
+    <TestIntegrationsWrapper>
       <TestIntegrationsCarousel integrations={testIntegrations} overflowLabel="+ and more" />
-      {isInView && !disableScrollAnimation && (
-        <TimeFramePicker {...layoutAnimProps} width="458" height="244" />
-      )}
+      <TimeFramePicker ref={ref} width="458" height="244" style={{ opacity: 0 }} />
     </TestIntegrationsWrapper>
   );
 });

@@ -1,9 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect, useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@storybook/theming';
 import { Link } from '@storybook/design-system';
 import { styles, SectionLede, ValuePropCopy, Testimonial } from '@storybook/components-marketing';
-import { useInView } from 'framer-motion';
+import { useInView, useScroll, useSpring, useTransform } from 'framer-motion';
 import CloudbeesLogoSVG from '../../../../images/logos/user/logo-cloudbees.svg';
 import { useMediaQuery } from '../../../lib/useMediaQuery';
 import { PublishIntegrations } from './PublishIntegrations';
@@ -11,7 +11,7 @@ import { TestIntegrations } from './TestIntegrations';
 import { EmbedIntegrations } from './EmbedIntegrations';
 import GatsbyLinkWrapper from '../../../basics/GatsbyLinkWrapper';
 
-const { typography, breakpoints, pageMargins, spacing, breakpoint, pageMargin } = styles;
+const { typography, breakpoints, pageMargins } = styles;
 
 const Wrapper = styled.section`
   padding-top: 3rem;
@@ -74,26 +74,72 @@ const Code = styled.span`
   line-height: 1;
 `;
 
+const isBrowser = typeof window !== 'undefined';
+
 export function Share({ docs, ...props }) {
   const publishRef = useRef(null);
   const embedRef = useRef(null);
   const testRef = useRef(null);
-  const [step, setStep] = React.useState(0);
-  const [greaterThanBreakpoint2] = useMediaQuery(`(min-width: ${breakpoints[2]}px)`);
 
-  const publishInView = useInView(publishRef, { amount: 'full' });
-  const embedInView = useInView(embedRef, { amount: 0.5 });
-  const testInView = useInView(testRef, { amount: 0.5 });
+  const { scrollYProgress: publishYProgress } = useScroll({
+    target: embedRef,
+    offset: ['0.25 1', '0 0.5'],
+  });
+  const smoothPublishProgress = useSpring(publishYProgress, {
+    stiffness: 1000,
+    damping: 100,
+  });
 
-  React.useEffect(() => {
-    if (testInView) {
-      setStep(2);
-    } else if (embedInView) {
-      setStep(1);
-    } else if (publishInView) {
-      setStep(0);
+  const { scrollYProgress: testYProgress } = useScroll({
+    target: testRef,
+    offset: ['1 1', '0 0.5'],
+  });
+  const smoothTestProgress = useSpring(testYProgress, {
+    stiffness: 1000,
+    damping: 100,
+  });
+
+  const [delta, setDelta] = useState({
+    x: '0px',
+    y: '0px',
+    scale: 1,
+  });
+
+  useEffect(() => {
+    if (!isBrowser || !publishRef.current || !embedRef.current) {
+      return () => {};
     }
-  }, [publishInView, embedInView, testInView]);
+
+    function handleResize() {
+      const embed = embedRef.current.getBoundingClientRect();
+      const publish = publishRef.current.getBoundingClientRect();
+      const test = testRef.current.getBoundingClientRect();
+
+      const deltaX1 = embed.left - publish.left;
+      const deltaX2 = test.left - publish.left;
+      const deltaY1 = embed.top - publish.top;
+      const deltaY2 = test.top - publish.top;
+      const scale1 = embed.width / publish.width;
+      const scale2 = test.width / publish.width;
+
+      setDelta({ x: [deltaX1, deltaX2], y: [deltaY1, deltaY2], scale: [scale1, scale2] });
+    }
+
+    global.window.addEventListener('resize', handleResize);
+
+    window.setTimeout(handleResize, 1000);
+    return () => global.window.removeEventListener('resize', handleResize);
+  }, [publishRef, embedRef]);
+
+  const scrollProgress = useTransform(
+    [smoothPublishProgress, smoothTestProgress],
+    ([latestPublishProgress, latestTestProgress]) => latestPublishProgress + latestTestProgress
+  );
+
+  const x = useTransform(scrollProgress, [0, 1, 2], ['0%', `${delta.x[0]}px`, `${delta.x[1]}px`]);
+  const y = useTransform(scrollProgress, [0, 1, 2], ['0%', `${delta.y[0]}px`, `${delta.y[1]}px`]);
+  const scale = useTransform(scrollProgress, [0, 1, 2], [1, delta.scale[0], delta.scale[1]]);
+  const opacity = useTransform(scrollProgress, [0, 1, 2], [1, 1, 0]);
 
   return (
     <Wrapper {...props}>
@@ -120,8 +166,7 @@ export function Share({ docs, ...props }) {
         />
         <PublishIntegrations
           ref={publishRef}
-          isInView={step === 0}
-          disableScrollAnimation={!greaterThanBreakpoint2}
+          timeFrameStyles={{ x, y, scale, opacity, transformOrigin: 'top left' }}
         />
 
         <ValueProp
@@ -141,8 +186,7 @@ export function Share({ docs, ...props }) {
         />
         <EmbedIntegrations
           ref={embedRef}
-          isInView={step === 1}
-          disableScrollAnimation={!greaterThanBreakpoint2}
+          // connectorOpacity={connectorOpacity}
         />
 
         <ValueProp
@@ -164,11 +208,7 @@ export function Share({ docs, ...props }) {
             </Link>
           }
         />
-        <TestIntegrations
-          ref={testRef}
-          isInView={step === 2}
-          disableScrollAnimation={!greaterThanBreakpoint2}
-        />
+        <TestIntegrations ref={testRef} />
       </Content>
       <Testimonial
         inverse

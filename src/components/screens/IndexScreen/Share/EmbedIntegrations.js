@@ -46,7 +46,7 @@ const SVG = styled(motion.svg)`
 
 const Connector = ({ name, ...props }) => {
   return (
-    <AnimatePresence initial>
+    <AnimatePresence>
       <SVG
         width="263"
         height="145"
@@ -55,11 +55,12 @@ const Connector = ({ name, ...props }) => {
         xmlns="http://www.w3.org/2000/svg"
         initial="initial"
         whileInView="animate"
+        viewport={{ amount: 'all' }}
         variants={{
           initial: { opacity: 0 },
           animate: { opacity: 1 },
         }}
-        transition={{ duration: 0.4, delay: 0.8, when: 'beforeChildren' }}
+        transition={{ duration: 0.4, when: 'beforeChildren' }}
         {...props}
       >
         <motion.circle
@@ -193,21 +194,11 @@ const EmbedIntegrationsWrapper = styled.div`
   }
 `;
 
-export const EmbedIntegrations = React.forwardRef(({ isInView, disableScrollAnimation }, ref) => {
-  const layoutAnimProps = disableScrollAnimation
-    ? {}
-    : {
-        layoutId: 'TimeFramePicker',
-        transition: { duration: 0.8 },
-      };
+export const EmbedIntegrations = React.forwardRef(({}, ref) => {
   return (
-    <EmbedIntegrationsWrapper ref={ref}>
-      <AnimatePresence initial={false} exitBeforeEnter>
-        <IntegrationsCarousel integrations={embedIntegrations} overflowLabel="+ and more" />
-      </AnimatePresence>
-      {(isInView || disableScrollAnimation) && (
-        <TimeFramePicker {...layoutAnimProps} width="458" height="244" />
-      )}
+    <EmbedIntegrationsWrapper>
+      <IntegrationsCarousel integrations={embedIntegrations} overflowLabel="+ and more" />
+      <TimeFramePicker ref={ref} width="458" height="244" style={{ opacity: 0 }} />
     </EmbedIntegrationsWrapper>
   );
 });

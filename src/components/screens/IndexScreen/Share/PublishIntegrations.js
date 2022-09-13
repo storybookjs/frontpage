@@ -12,6 +12,7 @@ const TimeFramePicker = styled(motion.img)`
   max-width: 440px;
   height: auto;
   position: absolute;
+  z-index: 1;
   top: 18%;
   left: 37%;
 
@@ -80,21 +81,12 @@ const symbolVariants = {
   animate: { y: 0, opacity: 1 },
 };
 
-export const PublishIntegrations = React.forwardRef(({ isInView, disableScrollAnimation }, ref) => {
-  const layoutAnimProps = disableScrollAnimation
-    ? {}
-    : { layoutId: 'TimeFramePicker', transition: { duration: 0.8 } };
+export const PublishIntegrations = React.forwardRef(({ timeFrameStyles }, ref) => {
   return (
-    <PublishIntegrationsWrapper
-      ref={ref}
-      whileInView="animate"
-      initial="initial"
-      viewport={{ once: true }}
-    >
+    <PublishIntegrationsWrapper whileInView="animate" initial="initial" viewport={{ once: true }}>
       <Storybook />
-      {isInView && (
-        <TimeFramePicker initial={false} {...layoutAnimProps} width="458" height="244" />
-      )}
+      <TimeFramePicker initial={false} style={timeFrameStyles} width="458" height="244" />
+      <TimeFramePicker ref={ref} width="458" height="244" style={{ opacity: 0 }} />
       <PointerHand variants={symbolVariants} transition={{ duration: 0.4, delay: 0.8 }} />
       <Player type="blue" x="6%" y="-12%" delay={1} count={2} />
       <Arrow variants={symbolVariants} transition={{ duration: 0.4, delay: 1.6 }} />
