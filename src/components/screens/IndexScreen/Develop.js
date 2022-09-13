@@ -90,7 +90,7 @@ const ValuePropIntegrations = styled(ValuePropCopy)`
 
 const Content = styled.div`
   ${pageMargins};
-  padding-top: 12rem;
+  padding-top: 7rem;
 
   display: grid;
   grid-template-columns: 1fr;
@@ -107,18 +107,19 @@ const Content = styled.div`
 
 const IntegrationsContent = styled.div`
   ${pageMargins};
-  padding-top: 12rem;
+  padding-top: 7rem;
 
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
   align-items: center;
-  gap: 6rem;
+  gap: 3rem;
   grid-auto-flow: dense;
 
   @media (min-width: ${breakpoints[2]}px) {
     justify-items: flex-start;
     grid-template-columns: minmax(max-content, 320px) 1fr;
+    gap: 6rem;
   }
 `;
 

@@ -51,8 +51,13 @@ const PageLedeContainer = styled.div`
   padding-top: 3rem;
 
   @media (min-width: ${breakpoints[1]}px) {
-    padding-top: 6rem;
+    padding-top: 4rem;
     padding-bottom: 13rem;
+  }
+
+  @media (min-width: ${breakpoints[2]}px) {
+    padding-top: 6rem;
+    padding-bottom: 15rem;
   }
 `;
 
@@ -62,6 +67,8 @@ const StorybookDemo = styled.figure`
   width: 100%;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 0; //reset user agent figure
+  margin-bottom: 0; //reset user agent figure
   padding-top: 3rem;
 
   @media (min-width: ${breakpoints[1]}px) {

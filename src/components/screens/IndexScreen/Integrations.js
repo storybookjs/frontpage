@@ -78,42 +78,41 @@ const Wrapper = styled.div`
 const IntegrationGrid = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
+  //grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(6, minmax(auto, 80px));
   grid-auto-rows: max-content;
   grid-auto-flow: row dense;
-  gap: 10px;
+  gap: 20px;
   justify-content: center;
 
   @media (min-width: ${breakpoints[1]}px) {
-    gap: 20px;
+    grid-template-columns: repeat(10, minmax(auto, 80px));
   }
 
   @media (min-width: ${breakpoints[2]}px) {
     grid-template-columns: repeat(6, minmax(auto, 80px));
   }
 
-  @media (min-width: ${breakpoints[3]}px) {
-    gap: 30px;
-  }
-
   @media (min-width: ${1600}px) {
-    grid-template-columns: repeat(10, minmax(auto, 80px));
-    gap: 20px;
+    gap: 30px;
   }
 `;
 
 const Scrim = styled.div`
-  position: absolute;
-  height: 75%;
-  bottom: -2.5rem;
-  left: 0;
-  right: 0;
-  pointer-events: none;
-
-  background: linear-gradient(180deg, rgba(23, 28, 35, 0) 0%, #171c23 86.87%);
+  display: none;
 
   @media (min-width: ${breakpoints[2]}px) {
+    // only show on desktop when side-by-side with description
+    display: block;
+
+    position: absolute;
     height: 50%;
+    bottom: -2.5rem;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+
+    background: linear-gradient(180deg, rgba(23, 28, 35, 0) 0%, #171c23 86.87%);
   }
 `;
 
