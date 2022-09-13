@@ -1,7 +1,7 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { styled } from '@storybook/theming';
-import { styles, IntegrationsCarousel, AspectRatio } from '@storybook/components-marketing';
-import { motion, useInView, AnimatePresence } from 'framer-motion';
+import { styles } from '@storybook/components-marketing';
+import { motion } from 'framer-motion';
 import { Player } from './Player';
 
 const { breakpoints } = styles;
@@ -15,6 +15,8 @@ const TimeFramePicker = styled(motion.img)`
   z-index: 1;
   top: 18%;
   left: 37%;
+  user-select: none;
+  pointer-events: none;
 
   @media (min-width: ${breakpoints[2]}px) {
     top: 15%;

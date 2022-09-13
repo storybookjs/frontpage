@@ -7,6 +7,7 @@ const SidebarWrapper = styled(motion.div)`
   top: 0;
   left: 0;
   bottom: 0;
+  z-index: 1;
   width: 100%;
   border-radius: 12px;
   overflow: hidden;

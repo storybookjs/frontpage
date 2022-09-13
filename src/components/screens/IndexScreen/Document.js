@@ -80,6 +80,9 @@ const features = [
 export function Document({ docs, ...props }) {
   return (
     <Wrapper {...props}>
+      {features.map((feature, index) => (
+        <link key={feature.title} rel="preload" as="video" href={feature.media} />
+      ))}
       <SectionLede
         inverse
         heading="Document UI for your team to reuse"

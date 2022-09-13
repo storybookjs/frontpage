@@ -11,7 +11,7 @@ const EmbedPane = styled.img`
   height: auto;
 `;
 
-const TimeFramePicker = styled(motion.img)`
+const TimeFramePicker = styled.img`
   display: block;
   width: 56%;
   max-width: 440px;
@@ -19,6 +19,9 @@ const TimeFramePicker = styled(motion.img)`
   position: absolute;
   top: 22%;
   left: -30px;
+  opacity: 0;
+  user-select: none;
+  pointer-events: none;
 
   @media (min-width: ${breakpoints[1]}px) {
     left: -60px;

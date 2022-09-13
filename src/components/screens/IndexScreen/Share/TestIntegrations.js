@@ -85,6 +85,8 @@ const TimeFramePicker = styled(motion.img)`
   top: 0;
   left: 0;
   width: 100%;
+  user-select: none;
+  pointer-events: none;
 `;
 TimeFramePicker.defaultProps = {
   src: 'images/embed/time-frame-picker.svg',

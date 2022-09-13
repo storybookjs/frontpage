@@ -104,6 +104,9 @@ const features = [
 export function Test({ docs, ...props }) {
   return (
     <Wrapper {...props}>
+      {features.map((feature, index) => (
+        <link key={feature.title} rel="preload" as="video" href={feature.media} />
+      ))}
       <SectionLede
         inverse
         heading="Test UIs with less effort and no flake"

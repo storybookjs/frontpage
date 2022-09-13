@@ -184,10 +184,7 @@ export function Share({ docs, ...props }) {
             </Link>
           }
         />
-        <EmbedIntegrations
-          ref={embedRef}
-          // connectorOpacity={connectorOpacity}
-        />
+        <EmbedIntegrations ref={embedRef} />
 
         <ValueProp
           inverse
