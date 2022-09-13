@@ -22,7 +22,7 @@ afterEach(() => {
 it('renders a fallback profile image', () => {
   // Render the story
   act(() => {
-    render(<MissingProfileImage />, container);
+    render(&lt;MissingProfileImage /&gt;, container);
   });
 
   // Verify the DOM structure
@@ -42,7 +42,7 @@ const { DefaultTimeFrame } = composeStories(stories);
 
 it('can adjust time range using sliders', async () => {
   // Render the story
-  render(<DefaultTimeFrame />);
+  render(&lt;DefaultTimeFrame /&gt;);
 
   // Execute the drag action
   const [
@@ -69,7 +69,7 @@ const { Primary } = composeStories(stories);
 
 it('Should empty the search field', () => {
   // Render the story
-  mount(<Primary />);
+  mount(&lt;Primary /&gt;);
 
   // Run the test
   cy.get('.clear').click();
