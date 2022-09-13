@@ -19,7 +19,7 @@ const ALGOLIA_API_KEY = process.env.GATSBY_ALGOLIA_API_KEY;
 
 const navLinks = {
   home: { url: '/', linkWrapper: GatsbyLinkWrapper },
-  whyStorybook: { url: '/docs/react/why', linkWrapper: GatsbyLinkWrapper },
+  whyStorybook: { url: '/docs/react/why-storybook', linkWrapper: GatsbyLinkWrapper },
   componentDriven: { url: 'https://componentdriven.org' },
   guides: { url: '/docs', linkWrapper: GatsbyLinkWrapper },
   tutorials: { url: 'https://storybook.js.org/tutorials' },

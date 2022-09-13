@@ -227,7 +227,12 @@ export function Develop({ docs, startOpen, ...props }) {
             heading="Build UI components and pages in isolation"
             description="Implement components and pages without needing to fuss with data, APIs, or business logic."
             links={
-              <Link containsIcon withArrow href="/docs/react/why" LinkWrapper={GatsbyLinkWrapper}>
+              <Link
+                containsIcon
+                withArrow
+                href="/docs/react/why-storybook#the-solution"
+                LinkWrapper={GatsbyLinkWrapper}
+              >
                 Why build UIs in isolation?
               </Link>
             }
@@ -279,7 +284,12 @@ export function Develop({ docs, startOpen, ...props }) {
             heading="Drop the finished UI components into your app"
             description="Once you finish developing UI components in isolation, drop them into your app. You’ll have confidence that the components are hardened to support every possible edge case."
             links={
-              <Link containsIcon withArrow href="/docs/react/why" LinkWrapper={GatsbyLinkWrapper}>
+              <Link
+                containsIcon
+                withArrow
+                href="/docs/react/why-storybook#the-solution"
+                LinkWrapper={GatsbyLinkWrapper}
+              >
                 Why build UIs in isolation?
               </Link>
             }
