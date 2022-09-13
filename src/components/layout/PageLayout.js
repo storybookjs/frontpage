@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { styled } from '@storybook/theming';
+import { color, styled } from '@storybook/theming';
 import Helmet from 'react-helmet';
 import { Nav, LinksContextProvider, Eyebrow, Footer } from '@storybook/components-marketing';
 import { useStaticQuery, graphql } from 'gatsby';
@@ -64,6 +64,10 @@ export function PurePageLayout({ dxData, children, pageContext, ...props }) {
               name: 'keywords',
               content:
                 'UI, components, design systems, library, styleguide, catalog, React, Vue, Angular',
+            },
+            {
+              name: 'theme-color',
+              content: isHomePage ? color.midnight : color.lightest,
             },
           ]}
         >
