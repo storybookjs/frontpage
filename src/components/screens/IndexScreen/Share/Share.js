@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { styled } from '@storybook/theming';
 import { Link } from '@storybook/design-system';
 import { styles, SectionLede, ValuePropCopy, Testimonial } from '@storybook/components-marketing';
-import { useInView, useScroll, useSpring, useTransform } from 'framer-motion';
+import { useScroll, useSpring, useTransform } from 'framer-motion';
+import { useDebouncedCallback } from 'use-debounce';
 import CloudbeesLogoSVG from '../../../../images/logos/user/logo-cloudbees.svg';
-import { useMediaQuery } from '../../../lib/useMediaQuery';
 import { PublishIntegrations } from './PublishIntegrations';
 import { TestIntegrations } from './TestIntegrations';
 import { EmbedIntegrations } from './EmbedIntegrations';
@@ -105,24 +105,24 @@ export function Share({ docs, ...props }) {
     scale: 1,
   });
 
+  const handleResize = useDebouncedCallback(function handleResize() {
+    const embed = embedRef.current.getBoundingClientRect();
+    const publish = publishRef.current.getBoundingClientRect();
+    const test = testRef.current.getBoundingClientRect();
+
+    const deltaX1 = embed.left - publish.left;
+    const deltaX2 = test.left - publish.left;
+    const deltaY1 = embed.top - publish.top;
+    const deltaY2 = test.top - publish.top;
+    const scale1 = embed.width / publish.width;
+    const scale2 = test.width / publish.width;
+
+    setDelta({ x: [deltaX1, deltaX2], y: [deltaY1, deltaY2], scale: [scale1, scale2] });
+  }, 200);
+
   useEffect(() => {
     if (!isBrowser || !publishRef.current || !embedRef.current) {
       return () => {};
-    }
-
-    function handleResize() {
-      const embed = embedRef.current.getBoundingClientRect();
-      const publish = publishRef.current.getBoundingClientRect();
-      const test = testRef.current.getBoundingClientRect();
-
-      const deltaX1 = embed.left - publish.left;
-      const deltaX2 = test.left - publish.left;
-      const deltaY1 = embed.top - publish.top;
-      const deltaY2 = test.top - publish.top;
-      const scale1 = embed.width / publish.width;
-      const scale2 = test.width / publish.width;
-
-      setDelta({ x: [deltaX1, deltaX2], y: [deltaY1, deltaY2], scale: [scale1, scale2] });
     }
 
     global.window.addEventListener('resize', handleResize);

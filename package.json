@@ -73,6 +73,7 @@
     "request": "^2.88.2",
     "semver": "^7.3.2",
     "unist-util-visit": "^2.0.3",
+    "use-debounce": "^8.0.4",
     "validatorjs": "^3.15.1"
   },
   "keywords": [
