@@ -194,7 +194,7 @@ const EmbedIntegrationsWrapper = styled.div`
   }
 `;
 
-export const EmbedIntegrations = React.forwardRef(({}, ref) => {
+export const EmbedIntegrations = React.forwardRef((props, ref) => {
   return (
     <EmbedIntegrationsWrapper>
       <IntegrationsCarousel integrations={embedIntegrations} overflowLabel="+ and more" />

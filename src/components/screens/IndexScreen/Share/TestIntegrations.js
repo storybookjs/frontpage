@@ -100,7 +100,7 @@ const TestIntegrationsWrapper = styled.div`
   }
 `;
 
-export const TestIntegrations = React.forwardRef(({}, ref) => {
+export const TestIntegrations = React.forwardRef((props, ref) => {
   return (
     <TestIntegrationsWrapper>
       <TestIntegrationsCarousel integrations={testIntegrations} overflowLabel="+ and more" />

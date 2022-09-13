@@ -127,7 +127,7 @@ export function Share({ docs, ...props }) {
 
     global.window.addEventListener('resize', handleResize);
 
-    window.setTimeout(handleResize, 1000);
+    global.window.setTimeout(handleResize, 1000);
     return () => global.window.removeEventListener('resize', handleResize);
   }, [publishRef, embedRef]);
 
