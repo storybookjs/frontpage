@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 const TimeFrameWrapper = styled(motion.div)`
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   width: 41.415%;
   height: 0;
   padding-bottom: 22.1121663%;
