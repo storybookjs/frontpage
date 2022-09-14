@@ -57,7 +57,7 @@ const features = [
     description: 'Every story is a use case that you can reuse.',
     link: {
       label: 'Learn about reuse',
-      href: '/docs/react/writing-stories/introduction#workflow',
+      href: '/docs/react/get-started/browse-stories#use-stories-to-build-uis',
       LinkWrapper: GatsbyLinkWrapper,
     },
     media: 'videos/document/homepage-reuse-components-across-apps-lg.mp4',

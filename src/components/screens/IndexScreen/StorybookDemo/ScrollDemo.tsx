@@ -30,6 +30,7 @@ const Wrapper = styled(motion.div)`
 
 const Scrim = styled(motion.div)`
   position: absolute;
+  outline: 1px solid red;
   height: 75vh;
   top: -35vh;
   left: 0;

@@ -133,7 +133,7 @@ const StorybookDemoWrapper = styled(motion.figure)`
   margin: 0;
   align-self: flex-start;
 
-  top: 38.89570552%;
+  top: 34%;
   transform: translateY(var(--mobile-y));
 
   @media (min-width: ${breakpoints[2]}px) {
