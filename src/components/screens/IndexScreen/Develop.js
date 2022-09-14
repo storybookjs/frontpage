@@ -9,7 +9,7 @@ import {
   ValuePropCopy,
   Testimonial,
 } from '@storybook/components-marketing';
-import { useScroll, useTransform, useSpring } from 'framer-motion';
+import { useScroll, useTransform, useSpring, motion } from 'framer-motion';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import { Stat } from '../../basics/Stat';
 import AtomicDesignLogoSVG from '../../../images/logos/user/logo-atomicdesign.svg';
@@ -19,15 +19,16 @@ import { ScrollDemo } from './StorybookDemo/ScrollDemo';
 const { subheading, breakpoints, pageMargins } = styles;
 
 const Wrapper = styled.section`
-  padding-top: 3rem;
+  /* padding minus the sticky nav height */
+  padding-top: calc(3rem - 40px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
   @media (min-width: ${breakpoints[1]}px) {
-    padding-top: 5rem;
+    padding-top: calc(5rem - 72px);
   }
 
   @media (min-width: ${breakpoints[2]}px) {
-    padding-top: 7rem;
+    padding-top: calc(7rem - 72px);
   }
 `;
 
@@ -50,6 +51,7 @@ const MadeFor = styled.section`
 
 const StickTextWrapper = styled.div`
   grid-column: 1 / 2;
+  width: 100%;
 `;
 
 const TopSpacer = styled.div`
@@ -123,18 +125,16 @@ const IntegrationsContent = styled.div`
   }
 `;
 
-const StorybookDemoWrapper = styled.figure`
+const StorybookDemoWrapper = styled(motion.figure)`
   position: sticky;
-  top: 4rem;
   width: 100%;
   order: -1;
   z-index: 999;
   margin: 0;
   align-self: flex-start;
 
-  @media (min-width: ${breakpoints[1]}px) {
-    top: 5rem;
-  }
+  top: 38.89570552%;
+  transform: translateY(var(--mobile-y));
 
   @media (min-width: ${breakpoints[2]}px) {
     width: 150%;
@@ -212,6 +212,8 @@ export function Develop({ docs, startOpen, ...props }) {
     damping: 100,
   });
 
+  const y = useTransform(smoothAppearProgress, [0, 1], ['calc(0% + 36px)', 'calc(-50% + 36px)']);
+
   return (
     <Wrapper {...props}>
       <SectionLede
@@ -226,7 +228,7 @@ export function Develop({ docs, startOpen, ...props }) {
         }
       />
       <Content>
-        <StorybookDemoWrapper>
+        <StorybookDemoWrapper style={{ '--mobile-y': y }}>
           <ScrollDemo
             storyIndex={activeStory}
             panelIndex={activePanel}

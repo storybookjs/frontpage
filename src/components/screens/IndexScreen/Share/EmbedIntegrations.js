@@ -58,10 +58,12 @@ const Connector = ({ name, ...props }) => {
         xmlns="http://www.w3.org/2000/svg"
         initial="initial"
         whileInView="animate"
-        viewport={{ amount: 'all' }}
         variants={{
           initial: { opacity: 0 },
           animate: { opacity: 1 },
+        }}
+        viewport={{
+          margin: '-25% 0px -25% 0px',
         }}
         transition={{ duration: 0.4, when: 'beforeChildren' }}
         {...props}

@@ -26,7 +26,7 @@ interface SidebarProps extends MotionProps {
 }
 
 const rangeSliderStories = ['default', 'input-range', 'no-selection'];
-const timeFrameStories = ['all-day', 'last-hour', 'no-selection', 'overview'];
+const timeFrameStories = ['overview', 'all-day', 'last-hour', 'no-selection'];
 
 export const Sidebar = ({
   activeStory,
