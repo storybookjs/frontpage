@@ -20,6 +20,12 @@ const Content = styled.section`
   display: flex;
   justify-content: space-between;
 
+  /* control the height for the mobile menu trigger */
+  button {
+    height: 32px;
+    margin: auto 0;
+  }
+
   @media (min-width: ${breakpoints[2]}px) {
     height: 72px;
   }
