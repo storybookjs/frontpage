@@ -75,7 +75,7 @@ const Clip = styled.div`
   contain: paint;
 `;
 
-export default function IndexScreen({
+export function IndexScreen({
   projects,
   npmDownloads,
   twitterFollowerCount,

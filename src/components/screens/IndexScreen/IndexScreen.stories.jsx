@@ -1,5 +1,5 @@
 import React from 'react';
-import IndexScreen from './IndexScreen';
+import { IndexScreen } from './IndexScreen';
 import { projects } from './SocialValidation.stories';
 
 export default {
