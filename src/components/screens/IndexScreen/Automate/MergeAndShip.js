@@ -18,7 +18,7 @@ const Content = styled.div`
   max-width: 400px;
 
   @media (min-width: ${breakpoints[1]}px) {
-    margin-top: 5rem;
+    margin-top: 4rem;
   }
 `;
 

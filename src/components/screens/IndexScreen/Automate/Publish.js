@@ -17,7 +17,7 @@ const Content = styled.div`
   max-width: 400px;
 
   @media (min-width: ${breakpoints[1]}px) {
-    margin-top: 5rem;
+    margin-top: 4rem;
   }
 `;
 
@@ -61,18 +61,18 @@ const PublishedImg = styled.img`
 
 const Arrow = styled(motion.img)`
   position: absolute;
-  width: 10%;
+  width: 8%;
   height: auto;
-  left: -9%;
-  bottom: -4%;
+  top: 73%;
+  right: 15%;
   z-index: 2;
 `;
 const PointerHand = styled(motion.img)`
   position: absolute;
   width: 10%;
   height: auto;
-  top: 44%;
-  right: 12%;
+  left: 14%;
+  bottom: 50%;
   z-index: 2;
 `;
 

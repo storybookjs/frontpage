@@ -78,15 +78,15 @@ export function Automate({ docs, ...props }) {
       <SectionHeader>
         <SectionHeading>Automate UI workflows</SectionHeading>
         <LedeParagraph>
-          Add Storybook as a CI step to automate the UI development workflow. That helps you ship
-          faster with less manual work.
+          Add Storybook as a CI step to automate the UI development workflow. That helps you and
+          your team ship faster with less manual work.
         </LedeParagraph>
       </SectionHeader>
       <Content>
         <FeatureStep
           inverse
           title="Publish Storybook"
-          description="Publish Storybook online to collaborate on UI implementation with developers, designers, and PMs. No need to touch a dev environment."
+          description="Publish Storybook online to collaborate on UI implementation with developers, designers, and PMs. Your teammates can see the work without touching a dev environment."
           link={
             <Link
               containsIcon
@@ -118,7 +118,7 @@ export function Automate({ docs, ...props }) {
         <FeatureStep
           inverse
           title="UI Review"
-          description="Request feedback from teammates to verify the UI implementation. Discuss UI changes together then assign reviewers for final sign off."
+          description="Request feedback from teammates to verify UI implementation. Discuss UI changes together then assign reviewers for sign off."
           link={
             <Link
               containsIcon
@@ -135,7 +135,7 @@ export function Automate({ docs, ...props }) {
           inverse
           icon={<MergeIcon icon="merge" />}
           title="Merge and ship"
-          description="Each stage of the UI development lifecycle gets a pull request check. Pass all checks to get certainty that your work is ready for production."
+          description="Each stage of the UI development lifecycle is tracked by a pull request check. Pass all checks to get certainty that your work is ready for production."
           link={
             <Link
               containsIcon
