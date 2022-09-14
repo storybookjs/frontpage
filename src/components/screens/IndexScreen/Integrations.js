@@ -78,7 +78,6 @@ const Wrapper = styled.div`
 const IntegrationGrid = styled.div`
   width: 100%;
   display: grid;
-  //grid-template-columns: repeat(6, 1fr);
   grid-template-columns: repeat(6, minmax(auto, 80px));
   grid-auto-rows: max-content;
   grid-auto-flow: row dense;
@@ -90,11 +89,12 @@ const IntegrationGrid = styled.div`
   }
 
   @media (min-width: ${breakpoints[2]}px) {
-    grid-template-columns: repeat(6, minmax(auto, 80px));
+    grid-template-columns: repeat(6, minmax(auto, 90px));
+    justify-content: end;
   }
 
   @media (min-width: ${1600}px) {
-    gap: 30px;
+    gap: 40px;
   }
 `;
 
