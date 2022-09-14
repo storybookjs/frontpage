@@ -1,10 +1,12 @@
 import React from 'react';
-
-import Integrations from './Integrations';
+import { Integrations } from './Integrations';
 
 export default {
-  title: 'Frontpage|screens/IndexScreen/Integrations',
-  decorators: [(storyFn) => <div style={{ padding: '60px 0' }}>{storyFn()}</div>],
+  title: 'Screens/IndexScreen/Integrations',
+  component: Integrations,
 };
 
-export const Default = () => <Integrations />;
+export const Default = () => <Integrations docs="/" />;
+Default.parameters = {
+  backgrounds: { default: 'dark' },
+};

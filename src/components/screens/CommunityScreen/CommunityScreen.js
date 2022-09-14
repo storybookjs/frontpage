@@ -1,9 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { styled } from '@storybook/theming';
 import { rgba } from 'polished';
 
 import { Button, Icon, styles } from '@storybook/design-system';
+import { SubNav, SubNavTabs, SubNavRight, SubNavLinkList } from '@storybook/components-marketing';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 
 import { LazyLoad, SocialGraph } from '../../basics';
@@ -152,7 +152,35 @@ const CommunityLayout = styled.div`
   }
 `;
 
-export function PureCommunityScreen({ ...props }) {
+const communityItems = [
+  { key: '0', label: 'Get Involved', href: '/community', isActive: true },
+  { key: '1', label: 'Blog', href: 'https://storybook.js.org/blog' },
+];
+
+const joinCommunityItems = [
+  {
+    icon: 'github',
+    href: 'https://github.com/storybookjs',
+    label: 'Github',
+  },
+  {
+    icon: 'discord',
+    href: 'https://discord.gg/storybook',
+    label: 'Discord',
+  },
+  {
+    icon: 'twitter',
+    href: 'https://twitter.com/storybookjs',
+    label: 'Twitter',
+  },
+  {
+    icon: 'youtube',
+    href: 'https://www.youtube.com/channel/UCr7Quur3eIyA_oe8FNYexfg',
+    label: 'Youtube',
+  },
+];
+
+export function PureCommunityScreen({ npmDownloads, githubStarCount, ...props }) {
   const { title, ogImage, urls = {} } = useSiteMetadata();
   const {
     home,
@@ -175,7 +203,14 @@ export function PureCommunityScreen({ ...props }) {
         image={ogImage}
       />
 
-      <CommunityHero />
+      <SubNav>
+        <SubNavTabs label="Docs nav" items={communityItems} />
+        <SubNavRight>
+          <SubNavLinkList label="Join the community:" items={joinCommunityItems} />
+        </SubNavRight>
+      </SubNav>
+
+      <CommunityHero npmDownloads={npmDownloads} githubStarCount={githubStarCount} />
 
       <CommunitySocial />
 
@@ -376,10 +411,6 @@ export function PureCommunityScreen({ ...props }) {
     </>
   );
 }
-
-PureCommunityScreen.propTypes = {
-  data: PropTypes.any.isRequired, // eslint-disable-line react/forbid-prop-types
-};
 
 export default function CommunityScreen(props) {
   return <PureCommunityScreen {...props} />;

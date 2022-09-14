@@ -10,6 +10,7 @@ const buildPathWithFramework = require('./src/util/build-path-with-framework');
 const createAddonsPages = require('./src/util/create-addons-pages');
 const getReleaseBranchUrl = require('./src/util/get-release-branch-url');
 const { versionString, latestVersionString, isLatest } = require('./src/util/version-data');
+const sourceDXData = require('./src/util/source-dx-data');
 const { versions } = require('./src/util/versions');
 
 const docsTocWithPaths = addStateToToc(docsToc);
@@ -17,7 +18,7 @@ const docsTocWithPaths = addStateToToc(docsToc);
 const nextVersionString = versions.preRelease[0].string;
 
 let frameworks;
-let firstDocsPageSlug;
+const FIRST_DOCS_PAGE_SLUG = '/docs/get-started/introduction';
 
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
@@ -27,6 +28,10 @@ exports.onCreateWebpackConfig = ({ actions }) => {
       },
     },
   });
+};
+
+exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }) => {
+  await sourceDXData({ actions, createNodeId, createContentDigest });
 };
 
 exports.onCreateNode = ({ actions, getNode, node }) => {
@@ -187,7 +192,7 @@ exports.createPages = ({ actions, graphql }) => {
                           nextTocItem.type === 'bullet-link' && {
                             nextTocItem,
                           }),
-                        isFirstTocItem: docsPagesSlugs.length === 0,
+                        isIntroPage: slug === FIRST_DOCS_PAGE_SLUG,
                       },
                     });
                   });
@@ -206,7 +211,6 @@ exports.createPages = ({ actions, graphql }) => {
           };
 
           createDocsPages(docsTocWithPaths);
-          [firstDocsPageSlug] = docsPagesSlugs;
         }
       )
       .then(() => {
@@ -267,16 +271,14 @@ function updateRedirectsFile() {
       const versionBranch = isLatestLocal ? '' : getReleaseBranchUrl(versionStringLocal);
       const redirectCode = isLatestLocal ? 301 : 200;
 
-      if (firstDocsPageSlug) {
-        acc.push(
-          // prettier-ignore
-          `/docs${versionSlug} ${versionBranch}${buildPathWithFramework(firstDocsPageSlug, frameworks[0], versionStringLocal)} ${redirectCode}`
-        );
-        frameworks.forEach((f) =>
-          // prettier-ignore
-          acc.push(`/docs${versionSlug}/${f} ${versionBranch}${buildPathWithFramework(firstDocsPageSlug, f, versionStringLocal)} ${redirectCode}`)
-        );
-      }
+      acc.push(
+        // prettier-ignore
+        `/docs${versionSlug} ${versionBranch}${buildPathWithFramework(FIRST_DOCS_PAGE_SLUG, frameworks[0], versionStringLocal)} ${redirectCode}`
+      );
+      frameworks.forEach((f) =>
+        // prettier-ignore
+        acc.push(`/docs${versionSlug}/${f} ${versionBranch}${buildPathWithFramework(FIRST_DOCS_PAGE_SLUG, f, versionStringLocal)} ${redirectCode}`)
+      );
 
       if (!isLatestLocal) {
         acc.push(`/docs/${string}/* ${versionBranch}/docs/${versionStringLocal}/:splat 200`);

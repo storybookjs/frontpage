@@ -1,13 +1,12 @@
 import React from 'react';
 
 import { styled } from '@storybook/theming';
-import GitHubButton from 'react-github-button';
 
-import { styles } from '@storybook/design-system';
-import { Cardinal } from '../../basics';
+import { styles, Cardinal } from '@storybook/design-system';
+import { GithubButton } from '@storybook/components-marketing';
 
 import ConfirmedMailingList from '../../layout/ConfirmedMailingList';
-import NpmDownloadCount from '../../layout/NpmDownloadCount';
+import { NpmDownloadCount } from '../../layout/NpmDownloadCount';
 import { Heading, Title, Desc } from '../../layout/PageTitle';
 
 import useSiteMetadata from '../../lib/useSiteMetadata';
@@ -113,6 +112,11 @@ const GitHubWrapper = styled.div`
 const Stat = styled(Cardinal)`
   padding: 0;
   display: block;
+  a,
+  a:hover,
+  a:active {
+    color: ${styles.color.green};
+  }
 `;
 
 const NpmDownloadStat = styled(NpmDownloadCount)`
@@ -157,7 +161,7 @@ const MailingListWrapper = styled.div`
   }
 `;
 
-export default function CommunityHero(props) {
+export default function CommunityHero({ npmDownloads, githubStarCount, ...props }) {
   const { urls = {}, contributorCount } = useSiteMetadata();
   const { gitHub = {} } = urls;
   return (
@@ -173,17 +177,17 @@ export default function CommunityHero(props) {
           <MailingListForm />
         </MailingListWrapper>
         <Stats>
-          <NpmDownloadStat className="chromatic-ignore" />
+          <NpmDownloadStat className="chromatic-ignore" status="primary" downloads={npmDownloads} />
           <Stat
             size="small"
             count={`${contributorCount}+`}
             text="Contributors"
             noPlural
-            status="tertiary"
+            status="positive"
             countLink={gitHub.contributors}
           />
           <GitHubWrapper className="chromatic-ignore">
-            <GitHubButton type="stargazers" namespace="storybookjs" repo="storybook" />
+            <GithubButton starCount={githubStarCount} />
           </GitHubWrapper>
         </Stats>
       </Meta>

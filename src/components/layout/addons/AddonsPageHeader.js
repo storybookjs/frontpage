@@ -8,7 +8,7 @@ const { color, typography, spacing } = styles;
 const Title = styled.h2`
   font-size: ${typography.size.m2}px;
   line-height: ${typography.size.l2}px;
-  font-weight: ${typography.weight.black};
+  font-weight: ${typography.weight.bold};
   color: ${color.darkest};
 `;
 

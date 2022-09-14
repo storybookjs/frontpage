@@ -11,9 +11,14 @@ module.exports = {
   webpack: async (config) => {
     config.module.rules[0].exclude = [/node_modules\/(?!(gatsby)\/)/];
 
-    config.module.rules[0].use[0].options.plugins.push(
-      require.resolve('babel-plugin-remove-graphql-queries')
-    );
+    // use babel-plugin-remove-graphql-queries to remove static queries from components when rendering in storybook
+    config.module.rules[0].use[0].options.plugins.push([
+      require.resolve('babel-plugin-remove-graphql-queries'),
+      {
+        stage: config.mode === `development` ? 'develop-html' : 'build-html',
+        staticQueryDir: 'page-data/sq/d',
+      },
+    ]);
 
     // TODO: Figure out why Gatsby is throwing this error:
     // 'The result of this StaticQuery could not be fetched' & remove this alias.

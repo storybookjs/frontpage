@@ -23,7 +23,7 @@ const versions = {
 export const pageContext = {
   framework: 'react',
   docsToc: docsTocWithPathsAndFramework,
-  tocItem: { ...docsTocWithPaths[0].children[0], githubUrl: undefined },
+  tocItem: { ...docsTocWithPaths[1].children[0], githubUrl: undefined },
   fullPath: '/docs/react/get-started/introduction',
   slug: '/docs/get-started/introduction',
   versions,

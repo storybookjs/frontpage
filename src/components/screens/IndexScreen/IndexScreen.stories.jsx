@@ -1,24 +1,27 @@
 import React from 'react';
-
-import { PureIndexScreen } from './IndexScreen';
+import IndexScreen from './IndexScreen';
+import { projects } from './SocialValidation.stories';
 
 export default {
-  title: 'Frontpage|screens/IndexScreen/IndexScreen',
-  component: PureIndexScreen,
+  title: 'Screens/IndexScreen/IndexScreen',
+  component: IndexScreen,
   parameters: {
-    chromatic: { viewports: [320, 1200] },
+    chromatic: { disableSnapshot: true },
+    layout: 'fullscreen',
   },
 };
 
-const Template = (args) => <PureIndexScreen {...args} />;
+const Template = (args) => <IndexScreen {...args} />;
 
 export const Default = Template.bind({});
-Default.storyName = 'default';
-
-export const WithLatestBlogPost = Template.bind({});
-WithLatestBlogPost.args = {
-  latestBlogPost: {
-    slug: '#',
-    title: 'Latest blog post title is a bit long to test layout',
-  },
+Default.args = {
+  projects,
+  npmDownloads: 16094826,
+  twitterFollowerCount: 18351,
+  discordMemberCount: 14930,
+  githubContributorCount: 1814,
+  youTubeSubscriberCount: 2650,
+};
+Default.parameters = {
+  backgrounds: { default: 'dark' },
 };

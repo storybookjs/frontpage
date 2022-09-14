@@ -1,0 +1,158 @@
+<svg width="1201" height="830" viewBox="0 0 1201 830" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_5704_92790)">
+<g clip-path="url(#clip1_5704_92790)">
+<mask id="path-3-outside-2_5704_92790" maskUnits="userSpaceOnUse" x="252" y="469" width="948" height="360" fill="black">
+<rect fill="white" x="252" y="469" width="948" height="360"/>
+<path d="M252 470H1200V821C1200 825.418 1196.42 829 1192 829H260C255.582 829 252 825.418 252 821V470Z"/>
+</mask>
+<path d="M252 470H1200V821C1200 825.418 1196.42 829 1192 829H260C255.582 829 252 825.418 252 821V470Z" fill="white"/>
+<mask id="path-5-inside-3_5704_92790" fill="white">
+<path d="M252 470H1200V511H252V470Z"/>
+</mask>
+<path d="M252 470H1200V511H252V470Z" fill="white"/>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="267" y="494.606">Controls</tspan></text>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="352" y="494.606">Interactions</tspan></text>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="459" y="494.606">Design</tspan></text>
+<text fill="#1EA7FD" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="535" y="494.606">Accessibility</tspan></text>
+<rect x="520" y="507" width="111" height="3" fill="#1EA7FD"/>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="646" y="494.606">Actions</tspan></text>
+<path d="M1146.5 487.504C1146.5 487.228 1146.72 487.004 1147 487.004H1148C1148.28 487.004 1148.5 487.228 1148.5 487.504C1148.5 487.78 1148.28 488.004 1148 488.004H1147C1146.72 488.004 1146.5 487.78 1146.5 487.504Z" fill="#7A858E"/>
+<path d="M1147 489.004C1146.72 489.004 1146.5 489.228 1146.5 489.504C1146.5 489.78 1146.72 490.004 1147 490.004H1148C1148.28 490.004 1148.5 489.78 1148.5 489.504C1148.5 489.228 1148.28 489.004 1148 489.004H1147Z" fill="#7A858E"/>
+<path d="M1146.5 491.504C1146.5 491.228 1146.72 491.004 1147 491.004H1148C1148.28 491.004 1148.5 491.228 1148.5 491.504C1148.5 491.78 1148.28 492.004 1148 492.004H1147C1146.72 492.004 1146.5 491.78 1146.5 491.504Z" fill="#7A858E"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M1138.5 496.004C1138.22 496.004 1138 495.78 1138 495.504V484.504C1138 484.228 1138.22 484.004 1138.5 484.004H1149.5C1149.78 484.004 1150 484.228 1150 484.504V495.504C1150 495.78 1149.78 496.004 1149.5 496.004H1138.5ZM1139 495.004V485.004H1145V495.004H1139ZM1146 485.004H1149V495.004H1146V485.004Z" fill="#7A858E"/>
+<g clip-path="url(#clip2_5704_92790)">
+<path d="M1178.85 487.146C1179.05 487.342 1179.05 487.658 1178.85 487.854L1176.71 490L1178.85 492.146C1179.05 492.342 1179.05 492.658 1178.85 492.854C1178.66 493.049 1178.34 493.049 1178.15 492.854L1176 490.707L1173.85 492.854C1173.66 493.049 1173.34 493.049 1173.15 492.854C1172.95 492.658 1172.95 492.342 1173.15 492.146L1175.29 490L1173.15 487.854C1172.95 487.658 1172.95 487.342 1173.15 487.146C1173.34 486.951 1173.66 486.951 1173.85 487.146L1176 489.293L1178.15 487.146C1178.34 486.951 1178.66 486.951 1178.85 487.146Z" fill="#7A858E"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M1176 497C1179.87 497 1183 493.866 1183 490C1183 486.134 1179.87 483 1176 483C1172.13 483 1169 486.134 1169 490C1169 493.866 1172.13 497 1176 497ZM1176 496C1179.31 496 1182 493.314 1182 490C1182 486.686 1179.31 484 1176 484C1172.69 484 1170 486.686 1170 490C1170 493.314 1172.69 496 1176 496Z" fill="#7A858E"/>
+</g>
+<path d="M1200 510H252V512H1200V510Z" fill="#E1E5E8" mask="url(#path-5-inside-3_5704_92790)"/>
+<g clip-path="url(#clip3_5704_92790)">
+<rect width="948" height="40" transform="translate(252 511)" fill="#F6F9FC"/>
+<rect x="252" y="550" width="948" height="1" fill="#DDDDDD"/>
+<text fill="#D53900" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="267" y="535.277">Failed</tspan></text>
+<rect x="309" y="521" width="20" height="20" rx="10" fill="#FEDED2"/>
+<text fill="#D43900" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="315" y="534.948">2</tspan></text>
+<rect x="309.5" y="521.5" width="19" height="19" rx="9.5" stroke="#D43900" stroke-opacity="0.1"/>
+<rect x="252" y="548" width="92" height="3" fill="#FF4400"/>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="359" y="535.277">Inconclusive</tspan></text>
+<rect x="439" y="521" width="20" height="20" rx="10" fill="#EEEEEE"/>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="445" y="534.948">1</tspan></text>
+<rect x="439.5" y="521.5" width="19" height="19" rx="9.5" stroke="#666666" stroke-opacity="0.1"/>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="489" y="535.277">Passed</tspan></text>
+<rect x="538" y="521" width="27" height="20" rx="10" fill="#EEEEEE"/>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="544" y="534.948">11</tspan></text>
+<rect x="538.5" y="521.5" width="26" height="19" rx="9.5" stroke="#666666" stroke-opacity="0.1"/>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="1074.03" y="535.277">Show highlights</tspan></text>
+<path d="M1180 533.143C1181.18 533.143 1182.14 532.184 1182.14 531C1182.14 529.817 1181.18 528.857 1180 528.857C1178.82 528.857 1177.86 529.817 1177.86 531C1177.86 532.184 1178.82 533.143 1180 533.143Z" fill="#7A858E"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M1186 531L1185.82 531.251C1185.72 531.398 1183.2 534.857 1180 534.857C1176.8 534.857 1174.28 531.398 1174.18 531.251L1174 531L1174.18 530.749C1174.28 530.602 1176.8 527.143 1180 527.143C1183.2 527.143 1185.72 530.602 1185.82 530.749L1186 531ZM1176.48 529.545C1175.82 530.109 1175.32 530.683 1175.07 531C1175.32 531.317 1175.82 531.891 1176.48 532.456C1177.46 533.289 1178.7 534 1180 534C1181.3 534 1182.54 533.289 1183.52 532.456C1184.18 531.891 1184.68 531.317 1184.93 531C1184.68 530.683 1184.18 530.109 1183.52 529.545C1182.54 528.712 1181.3 528 1180 528C1178.7 528 1177.46 528.712 1176.48 529.545Z" fill="#7A858E"/>
+</g>
+<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="267" y="574.277">Insufficient color contrast</tspan></text>
+<rect x="1092" y="560" width="66" height="20" rx="10" fill="#FEDED2"/>
+<text fill="#D43900" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="1104" y="573.948">Serious</tspan></text>
+<rect x="1092.5" y="560.5" width="65" height="19" rx="9.5" stroke="#D43900" stroke-opacity="0.1"/>
+<path d="M1179.35 563.146L1183.35 567.146C1183.55 567.342 1183.55 567.658 1183.35 567.854C1183.16 568.049 1182.84 568.049 1182.65 567.854L1179 564.207L1175.35 567.854C1175.16 568.049 1174.84 568.049 1174.65 567.854C1174.45 567.658 1174.45 567.342 1174.65 567.146L1178.65 563.146C1178.84 562.951 1179.16 562.951 1179.35 563.146Z" fill="#7A858E"/>
+<path d="M1183.35 572.146C1183.55 572.342 1183.55 572.658 1183.35 572.854L1179.35 576.854C1179.16 577.049 1178.84 577.049 1178.65 576.854L1174.65 572.854C1174.45 572.658 1174.45 572.342 1174.65 572.146C1174.84 571.951 1175.16 571.951 1175.35 572.146L1179 575.793L1182.65 572.146C1182.84 571.951 1183.16 571.951 1183.35 572.146Z" fill="#7A858E"/>
+<rect x="251.5" y="550.5" width="949" height="39" stroke="#EEEEEE"/>
+<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="267" y="613.277">Incorrect tab order</tspan></text>
+<rect x="1092" y="599" width="66" height="20" rx="10" fill="#FEDED2"/>
+<text fill="#D43900" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="1104" y="612.948">Serious</tspan></text>
+<rect x="1092.5" y="599.5" width="65" height="19" rx="9.5" stroke="#D43900" stroke-opacity="0.1"/>
+<path d="M1179.35 602.146L1183.35 606.146C1183.55 606.342 1183.55 606.658 1183.35 606.854C1183.16 607.049 1182.84 607.049 1182.65 606.854L1179 603.207L1175.35 606.854C1175.16 607.049 1174.84 607.049 1174.65 606.854C1174.45 606.658 1174.45 606.342 1174.65 606.146L1178.65 602.146C1178.84 601.951 1179.16 601.951 1179.35 602.146Z" fill="#7A858E"/>
+<path d="M1183.35 611.146C1183.55 611.342 1183.55 611.658 1183.35 611.854L1179.35 615.854C1179.16 616.049 1178.84 616.049 1178.65 615.854L1174.65 611.854C1174.45 611.658 1174.45 611.342 1174.65 611.146C1174.84 610.951 1175.16 610.951 1175.35 611.146L1179 614.793L1182.65 611.146C1182.84 610.951 1183.16 610.951 1183.35 611.146Z" fill="#7A858E"/>
+<rect x="251.5" y="589.5" width="949" height="39" stroke="#EEEEEE"/>
+<g clip-path="url(#clip4_5704_92790)">
+<rect x="252" y="551" width="948" height="201" fill="white"/>
+<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="267" y="574.277">Insufficient color contrast</tspan></text>
+<rect x="1092" y="560" width="66" height="20" rx="10" fill="#FEDED2"/>
+<text fill="#D43900" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="1104" y="573.948">Serious</tspan></text>
+<rect x="1092.5" y="560.5" width="65" height="19" rx="9.5" stroke="#D43900" stroke-opacity="0.1"/>
+<path d="M1175.35 563.146C1175.16 562.951 1174.84 562.951 1174.65 563.146C1174.45 563.342 1174.45 563.658 1174.65 563.854L1178.65 567.854C1178.84 568.049 1179.16 568.049 1179.35 567.854L1183.35 563.854C1183.55 563.658 1183.55 563.342 1183.35 563.146C1183.16 562.951 1182.84 562.951 1182.65 563.146L1179 566.793L1175.35 563.146Z" fill="#7A858E"/>
+<path d="M1178.65 572.146C1178.84 571.951 1179.16 571.951 1179.35 572.146L1183.35 576.146C1183.55 576.342 1183.55 576.658 1183.35 576.854C1183.16 577.049 1182.84 577.049 1182.65 576.854L1179 573.207L1175.35 576.854C1175.16 577.049 1174.84 577.049 1174.65 576.854C1174.45 576.658 1174.45 576.342 1174.65 576.146L1178.65 572.146Z" fill="#7A858E"/>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="267" y="630.277">Text color contrast ratio does not meet WCAG 2 AA guidelines.</tspan></text>
+<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="267" y="612.277">What&#x2019;s wrong?</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="267" y="681.277">Improve contrast ratio to 4.5:1</tspan></text>
+<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="267" y="663.277">How to fix</tspan></text>
+<text fill="#1EA7FD" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="267" y="714.277">Color contrast checker</tspan></text>
+<g clip-path="url(#clip5_5704_92790)">
+<path d="M403.715 703.86C403.241 703.86 402.857 704.244 402.857 704.717V713.289C402.857 713.762 403.241 714.146 403.715 714.146H412.286C412.759 714.146 413.143 713.762 413.143 713.289V709.432C413.143 709.195 412.951 709.003 412.715 709.003C412.478 709.003 412.286 709.195 412.286 709.432V713.289H403.715V704.717L407.572 704.717C407.808 704.717 408 704.526 408 704.289C408 704.052 407.808 703.86 407.572 703.86H403.715Z" fill="#1EA7FD"/>
+<path d="M408.303 709.306L412.286 705.324V706.86C412.286 707.097 412.478 707.289 412.715 707.289C412.951 707.289 413.143 707.097 413.143 706.86V704.289C413.143 704.052 412.951 703.86 412.715 703.86H410.143C409.906 703.86 409.715 704.052 409.715 704.289C409.715 704.526 409.906 704.717 410.143 704.717H411.68L407.697 708.7C407.53 708.868 407.53 709.139 407.697 709.306C407.865 709.474 408.136 709.474 408.303 709.306Z" fill="#1EA7FD"/>
+</g>
+<text fill="#1EA7FD" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="267" y="732.277">WCAG 2 AA Guidelines</tspan></text>
+<g clip-path="url(#clip6_5704_92790)">
+<path d="M413.715 721.86C413.241 721.86 412.857 722.244 412.857 722.717V731.289C412.857 731.762 413.241 732.146 413.715 732.146H422.286C422.759 732.146 423.143 731.762 423.143 731.289V727.432C423.143 727.195 422.951 727.003 422.715 727.003C422.478 727.003 422.286 727.195 422.286 727.432V731.289H413.715V722.717L417.572 722.717C417.808 722.717 418 722.526 418 722.289C418 722.052 417.808 721.86 417.572 721.86H413.715Z" fill="#1EA7FD"/>
+<path d="M418.303 727.306L422.286 723.324V724.86C422.286 725.097 422.478 725.289 422.715 725.289C422.951 725.289 423.143 725.097 423.143 724.86V722.289C423.143 722.052 422.951 721.86 422.715 721.86H420.143C419.906 721.86 419.715 722.052 419.715 722.289C419.715 722.526 419.906 722.717 420.143 722.717H421.68L417.697 726.7C417.53 726.868 417.53 727.139 417.697 727.306C417.865 727.474 418.136 727.474 418.303 727.306Z" fill="#1EA7FD"/>
+</g>
+<rect x="713" y="594" width="1" height="143" fill="black" fill-opacity="0.05"/>
+<g clip-path="url(#clip7_5704_92790)">
+<path d="M1175.59 602.982C1175.42 602.815 1175.15 602.815 1174.98 602.982C1174.82 603.15 1174.82 603.421 1174.98 603.589L1184.41 613.017C1184.58 613.184 1184.85 613.184 1185.02 613.017C1185.18 612.85 1185.18 612.578 1185.02 612.411L1175.59 602.982Z" fill="#7A858E"/>
+<path d="M1183.52 609.455C1183.37 609.584 1183.21 609.71 1183.04 609.831L1183.66 610.444C1184.94 609.469 1185.76 608.334 1185.82 608.251L1186 608L1185.82 607.749C1185.72 607.602 1183.2 604.143 1180 604.143C1179.24 604.143 1178.51 604.339 1177.85 604.64L1178.51 605.294C1178.99 605.11 1179.49 605 1180 605C1181.3 605 1182.54 605.711 1183.52 606.544C1184.18 607.109 1184.68 607.682 1184.93 608C1184.68 608.317 1184.18 608.891 1183.52 609.455Z" fill="#7A858E"/>
+<path d="M1174.18 607.749C1174.24 607.666 1175.06 606.531 1176.34 605.556L1176.96 606.168C1176.79 606.289 1176.63 606.415 1176.48 606.544C1175.82 607.109 1175.32 607.682 1175.07 608C1175.32 608.317 1175.82 608.891 1176.48 609.455C1177.46 610.288 1178.7 611 1180 611C1180.51 611 1181.01 610.89 1181.49 610.705L1182.15 611.36C1181.49 611.661 1180.76 611.857 1180 611.857C1176.8 611.857 1174.28 608.398 1174.18 608.251L1174 608L1174.18 607.749Z" fill="#7A858E"/>
+<path d="M1177.86 608C1177.86 607.723 1177.91 607.459 1178 607.217L1180.78 609.995C1180.54 610.09 1180.28 610.143 1180 610.143C1178.82 610.143 1177.86 609.183 1177.86 608Z" fill="#7A858E"/>
+<path d="M1182 608.783L1179.22 606.005C1179.46 605.909 1179.72 605.857 1180 605.857C1181.18 605.857 1182.14 606.816 1182.14 608C1182.14 608.276 1182.09 608.54 1182 608.783Z" fill="#7A858E"/>
+</g>
+<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="735" y="612.277">Selectors</tspan></text>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="1080.22" y="612.277">Hide highlights</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="735.98" y="640.777">1.</tspan></text>
+<rect x="752" y="627" width="92" height="16" rx="2" fill="#F3F3F3"/>
+<text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace" font-size="12" letter-spacing="0em"><tspan x="758" y="639.154">span.uexA_u</tspan></text>
+<rect x="752.5" y="627.5" width="91" height="15" rx="1.5" stroke="black" stroke-opacity="0.1"/>
+<path d="M1180 638.143C1181.18 638.143 1182.14 637.184 1182.14 636C1182.14 634.817 1181.18 633.857 1180 633.857C1178.82 633.857 1177.86 634.817 1177.86 636C1177.86 637.184 1178.82 638.143 1180 638.143Z" fill="#1EA7FD"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M1186 636L1185.82 636.251C1185.72 636.398 1183.2 639.857 1180 639.857C1176.8 639.857 1174.28 636.398 1174.18 636.251L1174 636L1174.18 635.749C1174.28 635.602 1176.8 632.143 1180 632.143C1183.2 632.143 1185.72 635.602 1185.82 635.749L1186 636ZM1176.48 634.545C1175.82 635.109 1175.32 635.683 1175.07 636C1175.32 636.317 1175.82 636.891 1176.48 637.456C1177.46 638.289 1178.7 639 1180 639C1181.3 639 1182.54 638.289 1183.52 637.456C1184.18 636.891 1184.68 636.317 1184.93 636C1184.68 635.683 1184.18 635.109 1183.52 634.545C1182.54 633.712 1181.3 633 1180 633C1178.7 633 1177.46 633.712 1176.48 634.545Z" fill="#1EA7FD"/>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="735.968" y="668.777">2.</tspan></text>
+<rect x="752" y="655" width="106" height="16" rx="2" fill="#F3F3F3"/>
+<text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace" font-size="12" letter-spacing="0em"><tspan x="758" y="667.154">button.feA_uL</tspan></text>
+<rect x="752.5" y="655.5" width="105" height="15" rx="1.5" stroke="black" stroke-opacity="0.1"/>
+<path d="M1180 666.143C1181.18 666.143 1182.14 665.184 1182.14 664C1182.14 662.817 1181.18 661.857 1180 661.857C1178.82 661.857 1177.86 662.817 1177.86 664C1177.86 665.184 1178.82 666.143 1180 666.143Z" fill="#1EA7FD"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M1186 664L1185.82 664.251C1185.72 664.398 1183.2 667.857 1180 667.857C1176.8 667.857 1174.28 664.398 1174.18 664.251L1174 664L1174.18 663.749C1174.28 663.602 1176.8 660.143 1180 660.143C1183.2 660.143 1185.72 663.602 1185.82 663.749L1186 664ZM1176.48 662.545C1175.82 663.109 1175.32 663.683 1175.07 664C1175.32 664.317 1175.82 664.891 1176.48 665.456C1177.46 666.289 1178.7 667 1180 667C1181.3 667 1182.54 666.289 1183.52 665.456C1184.18 664.891 1184.68 664.317 1184.93 664C1184.68 663.683 1184.18 663.109 1183.52 662.545C1182.54 661.712 1181.3 661 1180 661C1178.7 661 1177.46 661.712 1176.48 662.545Z" fill="#1EA7FD"/>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="735.98" y="696.777">3.</tspan></text>
+<rect x="752" y="683" width="157" height="16" rx="2" fill="#F3F3F3"/>
+<text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace" font-size="12" letter-spacing="0em"><tspan x="758" y="695.154">button.feA_uL.hYaIqu</tspan></text>
+<rect x="752.5" y="683.5" width="156" height="15" rx="1.5" stroke="black" stroke-opacity="0.1"/>
+<path d="M1180 694.143C1181.18 694.143 1182.14 693.184 1182.14 692C1182.14 690.817 1181.18 689.857 1180 689.857C1178.82 689.857 1177.86 690.817 1177.86 692C1177.86 693.184 1178.82 694.143 1180 694.143Z" fill="#1EA7FD"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M1186 692L1185.82 692.251C1185.72 692.398 1183.2 695.857 1180 695.857C1176.8 695.857 1174.28 692.398 1174.18 692.251L1174 692L1174.18 691.749C1174.28 691.602 1176.8 688.143 1180 688.143C1183.2 688.143 1185.72 691.602 1185.82 691.749L1186 692ZM1176.48 690.545C1175.82 691.109 1175.32 691.683 1175.07 692C1175.32 692.317 1175.82 692.891 1176.48 693.456C1177.46 694.289 1178.7 695 1180 695C1181.3 695 1182.54 694.289 1183.52 693.456C1184.18 692.891 1184.68 692.317 1184.93 692C1184.68 691.683 1184.18 691.109 1183.52 690.545C1182.54 689.712 1181.3 689 1180 689C1178.7 689 1177.46 689.712 1176.48 690.545Z" fill="#1EA7FD"/>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="735.98" y="724.777">4.</tspan></text>
+<rect x="752" y="711" width="70" height="16" rx="2" fill="#F3F3F3"/>
+<text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace" font-size="12" letter-spacing="0em"><tspan x="758" y="723.154">a.eNIcSW</tspan></text>
+<rect x="752.5" y="711.5" width="69" height="15" rx="1.5" stroke="black" stroke-opacity="0.1"/>
+<path d="M1180 722.143C1181.18 722.143 1182.14 721.184 1182.14 720C1182.14 718.817 1181.18 717.857 1180 717.857C1178.82 717.857 1177.86 718.817 1177.86 720C1177.86 721.184 1178.82 722.143 1180 722.143Z" fill="#1EA7FD"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M1186 720L1185.82 720.251C1185.72 720.398 1183.2 723.857 1180 723.857C1176.8 723.857 1174.28 720.398 1174.18 720.251L1174 720L1174.18 719.749C1174.28 719.602 1176.8 716.143 1180 716.143C1183.2 716.143 1185.72 719.602 1185.82 719.749L1186 720ZM1176.48 718.545C1175.82 719.109 1175.32 719.683 1175.07 720C1175.32 720.317 1175.82 720.891 1176.48 721.456C1177.46 722.289 1178.7 723 1180 723C1181.3 723 1182.54 722.289 1183.52 721.456C1184.18 720.891 1184.68 720.317 1184.93 720C1184.68 719.683 1184.18 719.109 1183.52 718.545C1182.54 717.712 1181.3 717 1180 717C1178.7 717 1177.46 717.712 1176.48 718.545Z" fill="#1EA7FD"/>
+</g>
+<rect x="251.5" y="550.5" width="949" height="202" stroke="#EEEEEE"/>
+<rect x="251.5" y="752.5" width="949" height="39" fill="white"/>
+<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="267" y="776.277">Incorrect tab order</tspan></text>
+<rect x="1092" y="762" width="66" height="20" rx="10" fill="#FEDED2"/>
+<text fill="#D43900" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" letter-spacing="0em"><tspan x="1104" y="775.948">Serious</tspan></text>
+<rect x="1092.5" y="762.5" width="65" height="19" rx="9.5" stroke="#D43900" stroke-opacity="0.1"/>
+<path d="M1179.35 765.146L1183.35 769.146C1183.55 769.342 1183.55 769.658 1183.35 769.854C1183.16 770.049 1182.84 770.049 1182.65 769.854L1179 766.207L1175.35 769.854C1175.16 770.049 1174.84 770.049 1174.65 769.854C1174.45 769.658 1174.45 769.342 1174.65 769.146L1178.65 765.146C1178.84 764.951 1179.16 764.951 1179.35 765.146Z" fill="#7A858E"/>
+<path d="M1183.35 774.146C1183.55 774.342 1183.55 774.658 1183.35 774.854L1179.35 778.854C1179.16 779.049 1178.84 779.049 1178.65 778.854L1174.65 774.854C1174.45 774.658 1174.45 774.342 1174.65 774.146C1174.84 773.951 1175.16 773.951 1175.35 774.146L1179 777.793L1182.65 774.146C1182.84 773.951 1183.16 773.951 1183.35 774.146Z" fill="#7A858E"/>
+<rect x="251.5" y="752.5" width="949" height="39" stroke="#EEEEEE"/>
+</g>
+<path d="M252 469H1200V470H252V469ZM1200 829H252H1200ZM252 829V470V829ZM1200 470V829V470Z" fill="#E1E5E8" mask="url(#path-3-outside-2_5704_92790)"/>
+</g>
+<path d="M252 469H1200V470H252V469ZM1200 829H252H1200ZM252 829V470V829ZM1200 470V829V470Z" fill="#E1E5E8" mask="url(#path-1-inside-1_5704_92790)"/>
+<defs>
+<clipPath id="clip0_5704_92790">
+<path d="M252 470H1200V821C1200 825.418 1196.42 829 1192 829H260C255.582 829 252 825.418 252 821V470Z" fill="white"/>
+</clipPath>
+<clipPath id="clip1_5704_92790">
+<path d="M252 470H1200V821C1200 825.418 1196.42 829 1192 829H260C255.582 829 252 825.418 252 821V470Z" fill="white"/>
+</clipPath>
+<clipPath id="clip2_5704_92790">
+<rect width="14" height="14" fill="white" transform="translate(1169 483)"/>
+</clipPath>
+<clipPath id="clip3_5704_92790">
+<rect width="948" height="40" fill="white" transform="translate(252 511)"/>
+</clipPath>
+<clipPath id="clip4_5704_92790">
+<rect x="252" y="551" width="948" height="201" fill="white"/>
+</clipPath>
+<clipPath id="clip5_5704_92790">
+<rect width="12" height="12" fill="white" transform="translate(402 703)"/>
+</clipPath>
+<clipPath id="clip6_5704_92790">
+<rect width="12" height="12" fill="white" transform="translate(412 721)"/>
+</clipPath>
+<clipPath id="clip7_5704_92790">
+<rect width="12" height="12" fill="white" transform="translate(1174 602)"/>
+</clipPath>
+</defs>
+</svg>

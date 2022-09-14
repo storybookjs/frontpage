@@ -1,10 +1,12 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
+import { Hero } from './Hero';
 
-import Hero from './Hero';
+export default {
+  title: 'Screens/IndexScreen/Hero',
+  component: Hero,
+};
 
-storiesOf('Frontpage|screens/IndexScreen/Hero', module).add('default', () => (
-  <div style={{ padding: '3rem 0' }}>
-    <Hero />
-  </div>
-));
+export const Default = () => <Hero npmDownloads={16094826} />;
+Default.parameters = {
+  backgrounds: { default: 'dark' },
+};

@@ -1,12 +1,16 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 
 import { PureCommunityScreen } from './CommunityScreen';
 
-storiesOf('Frontpage|screens/CommunityScreen/CommunityScreen', module).add(
-  'default',
-  () => <PureCommunityScreen />,
-  {
+export default {
+  title: 'screens/CommunityScreen',
+  component: PureCommunityScreen,
+  parameters: {
     chromatic: { viewports: [320, 1200] },
-  }
+  },
+};
+
+export const Default = () => (
+  <PureCommunityScreen npmDownloads={16084504} githubStarCount={73778} />
 );
+Default.storyName = 'CommunityScreen';

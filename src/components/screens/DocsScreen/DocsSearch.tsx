@@ -4,7 +4,6 @@ import { css, Global, styled } from '@storybook/theming';
 import { global, styles } from '@storybook/design-system';
 import { DocSearch } from '@docsearch/react';
 import useSiteMetadata from '../../lib/useSiteMetadata';
-import '@docsearch/css';
 
 const { GlobalStyle } = global;
 

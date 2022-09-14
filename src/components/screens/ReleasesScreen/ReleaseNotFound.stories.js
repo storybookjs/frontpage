@@ -1,8 +1,11 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 
 import ReleaseNotFound from './ReleaseNotFound';
 
-storiesOf('Frontpage|screens/ReleasesScreen/ReleaseNotFound', module).add('default', () => (
-  <ReleaseNotFound version="1.0" />
-));
+export default {
+  title: 'screens/ReleasesScreen/ReleaseNotFound',
+  component: ReleaseNotFound,
+};
+
+export const Default = () => <ReleaseNotFound version="1.0" />;
+Default.storyName = 'ReleaseNotFound';

@@ -32,7 +32,7 @@ const data = {
 };
 
 export default {
-  title: 'Frontpage|screens/ReleasesScreen/ReleasesScreen',
+  title: 'screens/ReleasesScreen/ReleasesScreen',
   component: ReleasesScreen,
   parameters: {
     chromatic: { viewports: [320, 1200] },
@@ -41,3 +41,4 @@ export default {
 };
 
 export const Base = () => <ReleasesScreen data={data} />;
+Base.storyName = 'ReleasesScreen';

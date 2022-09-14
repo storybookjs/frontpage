@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import { global, styles } from '@storybook/design-system';
+import { global, styles, TableOfContents } from '@storybook/design-system';
 import { styled } from '@storybook/theming';
 
 import useSiteMetadata from '../../lib/useSiteMetadata';
 
 import Release from './Release';
-import TableOfContents from './TableOfContents';
 import { SocialGraph } from '../../basics';
 
 const { GlobalStyle } = global;
@@ -42,10 +41,12 @@ const StyledRelease = styled(Release)`
 `;
 
 const TOCHeader = styled.div`
-  color: ${color.dark};
-  font-size: ${typography.size.s3}px;
-  font-weight: ${typography.weight.bold};
-  line-height: 20px;
+  color: ${color.mediumdark};
+  font-size: 13px;
+  line-height: 24px;
+  font-weight: ${typography.weight.extrabold};
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
   margin-bottom: 12px;
 `;
 
@@ -61,8 +62,9 @@ function ReleasesScreen({ data, ...props }) {
     },
   } = data;
   const tocEntries = edges.map(({ node }) => ({
-    slug: node.fields.slug,
+    path: node.fields.slug,
     title: node.fields.version,
+    type: 'bullet-link',
   }));
 
   return (
@@ -77,8 +79,8 @@ function ReleasesScreen({ data, ...props }) {
         />
         <Content>
           <Sidebar className="sidebar">
-            <TOCHeader>Versions</TOCHeader>
-            <TableOfContents currentPageSlug={currentPageSlug} entries={tocEntries} />
+            <TOCHeader>Changelog</TOCHeader>
+            <TableOfContents currentPath={currentPageSlug} items={tocEntries} />
           </Sidebar>
 
           <StyledRelease title={title} body={body} />

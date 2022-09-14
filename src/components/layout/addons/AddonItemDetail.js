@@ -17,7 +17,6 @@ const AddonItemWrapper = styled.div`
   padding: 16px 0 24px 0;
   text-decoration: none;
   position: relative;
-  border-top: 1px solid ${color.border};
   border-bottom: 1px solid ${color.border};
   margin-bottom: 40px;
 
@@ -26,7 +25,6 @@ const AddonItemWrapper = styled.div`
     padding-bottom: 40px;
     flex-direction: row;
     align-items: flex-start;
-    border-top: 0;
   }
 `;
 
@@ -135,14 +133,16 @@ const Meta = styled.div`
 `;
 
 const Stats = styled(Cardinal)`
-  padding-left: 0;
-  padding-right: 0;
-  padding-bottom: 0;
-  margin-bottom: 16px;
-  display: none;
+  && {
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    margin-bottom: 16px;
+    display: none;
 
-  @media (min-width: ${1.5 * breakpoint}px) {
-    display: block;
+    @media (min-width: ${1.5 * breakpoint}px) {
+      display: block;
+    }
   }
 `;
 

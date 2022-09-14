@@ -37,14 +37,17 @@ module.exports = {
         fieldName: `addons`,
         url: `https://boring-heisenberg-43a6ed.netlify.app/`,
         typeName: `ADDON`,
-        // refetchInterval: 60,
       },
     },
     {
-      resolve: 'gatsby-source-ghost',
+      resolve: 'gatsby-source-graphql',
       options: {
-        apiUrl: 'https://storybookblog.ghost.io',
-        contentApiKey: process.env.GHOST_STORYBOOK_API_KEY,
+        fieldName: `storybookProjects`,
+        url: `https://api-us-west-2.hygraph.com/v2/ckyko33ox031l01xo8a944g1b/master`,
+        typeName: `STORYBOOK_PROJECTS`,
+        headers: {
+          Authorization: `Bearer ${process.env.GRAPHCMS_PAT}`,
+        },
       },
     },
     'gatsby-transformer-sharp',

@@ -3,6 +3,9 @@ import { storiesOf } from '@storybook/react';
 
 import CommunityHero from './CommunityHero';
 
-storiesOf('Frontpage|screens/CommunityScreen/CommunityHero', module).add('default', () => (
-  <CommunityHero />
-));
+export default {
+  title: 'Frontpage|screens/CommunityScreen/CommunityHero',
+  component: CommunityHero,
+};
+
+export const Default = () => <CommunityHero npmDownloads={16094826} githubStarCount={73809} />;

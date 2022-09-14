@@ -1,5 +1,6 @@
 import React from 'react';
 import { styled } from '@storybook/theming';
+import { within, userEvent } from '@storybook/testing-library';
 import { VersionSelector } from './VersionSelector';
 import { pageContext } from '../../layout/DocsLayout.stories';
 
@@ -28,13 +29,24 @@ Base.args = {
   versions,
   framework: coreFrameworks[0],
   slug: '/docs/get-started/introduction',
-  tooltipProps: { startOpen: true },
+};
+Base.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const menuButton = canvas.getByRole('button', { name: /6.3/i });
+  await userEvent.click(menuButton);
+  await userEvent.keyboard('{arrowdown}');
 };
 
 export const NonLatestSelected = Template.bind({});
 NonLatestSelected.args = {
   ...Base.args,
   version: versions.stable[1].version,
+};
+NonLatestSelected.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const menuButton = canvas.getByRole('button', { name: /6.2/i });
+  await userEvent.click(menuButton);
+  await userEvent.keyboard('{arrowdown}');
 };
 
 export const NoPreReleases = Template.bind({});
@@ -45,3 +57,4 @@ NoPreReleases.args = {
     preRelease: [],
   },
 };
+NoPreReleases.play = Base.play;

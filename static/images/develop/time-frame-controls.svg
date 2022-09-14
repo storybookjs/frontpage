@@ -1,0 +1,118 @@
+<svg width="1201" height="830" viewBox="0 0 1201 830" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="path-1-outside-1_5745_88617" maskUnits="userSpaceOnUse" x="252" y="469" width="948" height="360" fill="black">
+<rect fill="white" x="252" y="469" width="948" height="360"/>
+<path d="M252 470H1200V829H252V470Z"/>
+</mask>
+<path d="M252 470H1200V829H252V470Z" fill="white"/>
+<mask id="path-3-inside-2_5745_88617" fill="white">
+<path d="M252 470H1200V511H252V470Z"/>
+</mask>
+<path d="M252 470H1200V511H252V470Z" fill="white"/>
+<text fill="#1EA7FD" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="267" y="494.606">Controls</tspan></text>
+<rect x="252" y="507" width="85" height="3" fill="#1EA7FD"/>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="352" y="494.606">Interactions</tspan></text>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="459" y="494.606">Design</tspan></text>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="535" y="494.606">Accessibility</tspan></text>
+<text fill="#7A858E" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="646" y="494.606">Actions</tspan></text>
+<path d="M1146.5 487.504C1146.5 487.228 1146.72 487.004 1147 487.004H1148C1148.28 487.004 1148.5 487.228 1148.5 487.504C1148.5 487.78 1148.28 488.004 1148 488.004H1147C1146.72 488.004 1146.5 487.78 1146.5 487.504Z" fill="#7A858E"/>
+<path d="M1147 489.004C1146.72 489.004 1146.5 489.228 1146.5 489.504C1146.5 489.78 1146.72 490.004 1147 490.004H1148C1148.28 490.004 1148.5 489.78 1148.5 489.504C1148.5 489.228 1148.28 489.004 1148 489.004H1147Z" fill="#7A858E"/>
+<path d="M1146.5 491.504C1146.5 491.228 1146.72 491.004 1147 491.004H1148C1148.28 491.004 1148.5 491.228 1148.5 491.504C1148.5 491.78 1148.28 492.004 1148 492.004H1147C1146.72 492.004 1146.5 491.78 1146.5 491.504Z" fill="#7A858E"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M1138.5 496.004C1138.22 496.004 1138 495.78 1138 495.504V484.504C1138 484.228 1138.22 484.004 1138.5 484.004H1149.5C1149.78 484.004 1150 484.228 1150 484.504V495.504C1150 495.78 1149.78 496.004 1149.5 496.004H1138.5ZM1139 495.004V485.004H1145V495.004H1139ZM1146 485.004H1149V495.004H1146V485.004Z" fill="#7A858E"/>
+<g clip-path="url(#clip0_5745_88617)">
+<path d="M1178.85 487.146C1179.05 487.342 1179.05 487.658 1178.85 487.854L1176.71 490L1178.85 492.146C1179.05 492.342 1179.05 492.658 1178.85 492.854C1178.66 493.049 1178.34 493.049 1178.15 492.854L1176 490.707L1173.85 492.854C1173.66 493.049 1173.34 493.049 1173.15 492.854C1172.95 492.658 1172.95 492.342 1173.15 492.146L1175.29 490L1173.15 487.854C1172.95 487.658 1172.95 487.342 1173.15 487.146C1173.34 486.951 1173.66 486.951 1173.85 487.146L1176 489.293L1178.15 487.146C1178.34 486.951 1178.66 486.951 1178.85 487.146Z" fill="#7A858E"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M1176 497C1179.87 497 1183 493.866 1183 490C1183 486.134 1179.87 483 1176 483C1172.13 483 1169 486.134 1169 490C1169 493.866 1172.13 497 1176 497ZM1176 496C1179.31 496 1182 493.314 1182 490C1182 486.686 1179.31 484 1176 484C1172.69 484 1170 486.686 1170 490C1170 493.314 1172.69 496 1176 496Z" fill="#7A858E"/>
+</g>
+<path d="M1200 510H252V512H1200V510Z" fill="#E1E5E8" mask="url(#path-3-inside-2_5745_88617)"/>
+<rect width="948" height="40" transform="translate(252 511)" fill="white"/>
+<rect x="252" y="550" width="948" height="1" fill="#DDDDDD"/>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="272" y="535.277">Name</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="494" y="535.277">Description</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="736" y="535.277">Default</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="978" y="535.277">Controls</tspan></text>
+<g clip-path="url(#clip1_5745_88617)">
+<path d="M1174.5 525C1174.5 524.724 1174.28 524.5 1174 524.5H1171C1170.72 524.5 1170.5 524.724 1170.5 525C1170.5 525.276 1170.72 525.5 1171 525.5H1172.53C1170.71 526.651 1169.5 528.684 1169.5 531C1169.5 534.221 1171.84 536.894 1174.92 537.41C1175.19 537.456 1175.45 537.272 1175.49 537C1175.54 536.727 1175.36 536.47 1175.08 536.424C1172.48 535.988 1170.5 533.725 1170.5 531C1170.5 528.863 1171.72 527.01 1173.5 526.1V528C1173.5 528.276 1173.72 528.5 1174 528.5C1174.28 528.5 1174.5 528.276 1174.5 528V525.353C1174.5 525.345 1174.5 525.338 1174.5 525.33V525Z" fill="#7A858E"/>
+<path d="M1176.51 525C1176.55 524.728 1176.81 524.544 1177.08 524.59C1180.16 525.106 1182.5 527.779 1182.5 531C1182.5 533.316 1181.29 535.349 1179.47 536.5H1181C1181.28 536.5 1181.5 536.724 1181.5 537C1181.5 537.276 1181.28 537.5 1181 537.5H1178C1177.72 537.5 1177.5 537.276 1177.5 537V534C1177.5 533.724 1177.72 533.5 1178 533.5C1178.28 533.5 1178.5 533.724 1178.5 534V535.9C1180.28 534.99 1181.5 533.137 1181.5 531C1181.5 528.275 1179.52 526.012 1176.92 525.576C1176.64 525.53 1176.46 525.273 1176.51 525Z" fill="#7A858E"/>
+</g>
+<rect width="948" height="40" transform="translate(252 551)" fill="#F6F9FC"/>
+<rect x="252" y="590" width="948" height="1" fill="#DDDDDD"/>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="800" letter-spacing="0.38em"><tspan x="263" y="574.119">PROPS</tspan></text>
+<mask id="path-24-inside-3_5745_88617" fill="white">
+<path d="M252 591H1200V649H252V591Z"/>
+</mask>
+<path d="M252 591H1200V649H252V591Z" fill="white"/>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="272" y="614.277">label</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="494" y="614.277">Label of component</tspan></text>
+<rect x="494" y="621" width="56" height="16" rx="2" fill="#F3F3F3"/>
+<text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace" font-size="12" letter-spacing="0em"><tspan x="500" y="633.154">String</tspan></text>
+<rect x="494.5" y="621.5" width="55" height="15" rx="1.5" stroke="black" stroke-opacity="0.1"/>
+<rect x="736" y="601" width="135" height="16" rx="2" fill="#F3F3F3"/>
+<text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace" font-size="12" letter-spacing="0em"><tspan x="742" y="613.154">Choose time frame</tspan></text>
+<rect x="736.5" y="601.5" width="134" height="15" rx="1.5" stroke="black" stroke-opacity="0.1"/>
+<rect x="978.5" y="601.5" width="201" height="31" rx="3.5" fill="white"/>
+<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="990" y="621.277">Usage frequency</tspan></text>
+<rect x="978.5" y="601.5" width="201" height="31" rx="3.5" stroke="#E1E5E8"/>
+<path d="M1200 648H252V650H1200V648Z" fill="#E1E5E8" mask="url(#path-24-inside-3_5745_88617)"/>
+<mask id="path-36-inside-4_5745_88617" fill="white">
+<path d="M252 649H1200V707H252V649Z"/>
+</mask>
+<path d="M252 649H1200V707H252V649Z" fill="white"/>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="272" y="672.277">startTime</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="494" y="672.277">Start time in 24h notation</tspan></text>
+<rect x="494" y="679" width="56" height="16" rx="2" fill="#F3F3F3"/>
+<text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace" font-size="12" letter-spacing="0em"><tspan x="500" y="691.154">string</tspan></text>
+<rect x="494.5" y="679.5" width="55" height="15" rx="1.5" stroke="black" stroke-opacity="0.1"/>
+<rect x="736" y="659" width="78" height="16" rx="2" fill="#F3F3F3"/>
+<text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace" font-size="12" letter-spacing="0em"><tspan x="742" y="671.154">undefined</tspan></text>
+<rect x="736.5" y="659.5" width="77" height="15" rx="1.5" stroke="black" stroke-opacity="0.1"/>
+<rect x="978.5" y="659.5" width="201" height="31" rx="3.5" fill="white"/>
+<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="990" y="680.277">13:30</tspan></text>
+<rect x="978.5" y="659.5" width="201" height="31" rx="3.5" stroke="#E1E5E8"/>
+<path d="M1200 706H252V708H1200V706Z" fill="#E1E5E8" mask="url(#path-36-inside-4_5745_88617)"/>
+<mask id="path-48-inside-5_5745_88617" fill="white">
+<path d="M252 707H1200V765H252V707Z"/>
+</mask>
+<path d="M252 707H1200V765H252V707Z" fill="white"/>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="272" y="730.277">endTime</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="494" y="730.277">End time in 24h notation</tspan></text>
+<rect x="494" y="737" width="56" height="16" rx="2" fill="#F3F3F3"/>
+<text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace" font-size="12" letter-spacing="0em"><tspan x="500" y="749.154">string</tspan></text>
+<rect x="494.5" y="737.5" width="55" height="15" rx="1.5" stroke="black" stroke-opacity="0.1"/>
+<rect x="736" y="717" width="78" height="16" rx="2" fill="#F3F3F3"/>
+<text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace" font-size="12" letter-spacing="0em"><tspan x="742" y="729.154">undefined</tspan></text>
+<rect x="736.5" y="717.5" width="77" height="15" rx="1.5" stroke="black" stroke-opacity="0.1"/>
+<rect x="978.5" y="717.5" width="201" height="31" rx="3.5" fill="white"/>
+<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="990" y="738.277">14:30</tspan></text>
+<rect x="978.5" y="717.5" width="201" height="31" rx="3.5" stroke="#E1E5E8"/>
+<path d="M1200 764H252V766H1200V764Z" fill="#E1E5E8" mask="url(#path-48-inside-5_5745_88617)"/>
+<mask id="path-60-inside-6_5745_88617" fill="white">
+<path d="M252 765H1200V823H252V765Z"/>
+</mask>
+<path d="M252 765H1200V823H252V765Z" fill="white"/>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" letter-spacing="0em"><tspan x="272" y="788.277">accentColor</tspan></text>
+<text fill="#666666" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="494" y="788.277">Color of selected time frame</tspan></text>
+<rect x="736" y="775" width="56" height="16" rx="2" fill="#F3F3F3"/>
+<text fill="#444444" xml:space="preserve" style="white-space: pre" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace" font-size="12" letter-spacing="0em"><tspan x="742" y="787.154">FA8961</tspan></text>
+<rect x="736.5" y="775.5" width="55" height="15" rx="1.5" stroke="black" stroke-opacity="0.1"/>
+<g clip-path="url(#clip2_5745_88617)">
+<path d="M1165.7 786.398C1165.76 786.17 1165.63 785.934 1165.4 785.872C1165.17 785.81 1164.93 785.944 1164.87 786.173L1162.3 795.601C1162.24 795.83 1162.37 796.065 1162.6 796.128C1162.83 796.19 1163.07 796.055 1163.13 795.827L1165.7 786.398Z" fill="#7A858E"/>
+<path d="M1160.85 788.099C1161.03 788.251 1161.05 788.521 1160.9 788.703L1158.99 791L1160.9 793.297C1161.05 793.479 1161.03 793.749 1160.85 793.9C1160.66 794.052 1160.39 794.027 1160.24 793.846L1158.1 791.274C1157.97 791.115 1157.97 790.884 1158.1 790.725L1160.24 788.154C1160.39 787.972 1160.66 787.948 1160.85 788.099Z" fill="#7A858E"/>
+<path d="M1167.15 788.099C1166.97 788.251 1166.95 788.521 1167.1 788.703L1169.01 791L1167.1 793.297C1166.95 793.479 1166.97 793.749 1167.15 793.9C1167.34 794.052 1167.61 794.027 1167.76 793.846L1169.9 791.274C1170.03 791.115 1170.03 790.884 1169.9 790.725L1167.76 788.154C1167.61 787.972 1167.34 787.948 1167.15 788.099Z" fill="#7A858E"/>
+</g>
+<text fill="#333333" xml:space="preserve" style="white-space: pre" font-family="'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="0em"><tspan x="1010" y="795.277">#37D5D3</tspan></text>
+<rect x="988" y="783" width="16" height="16" rx="4" fill="#37D5D3"/>
+<rect x="988.5" y="783.5" width="15" height="15" rx="3.5" stroke="black" stroke-opacity="0.1"/>
+<rect x="978.5" y="775.5" width="201" height="31" rx="3.5" stroke="#E1E5E8"/>
+<path d="M1200 822H252V824H1200V822Z" fill="#E1E5E8" mask="url(#path-60-inside-6_5745_88617)"/>
+<path d="M252 471H1200V469H252V471Z" fill="#E1E5E8" mask="url(#path-1-outside-1_5745_88617)"/>
+<defs>
+<clipPath id="clip0_5745_88617">
+<rect width="14" height="14" fill="white" transform="translate(1169 483)"/>
+</clipPath>
+<clipPath id="clip1_5745_88617">
+<rect width="14" height="14" fill="white" transform="translate(1169 524)"/>
+</clipPath>
+<clipPath id="clip2_5745_88617">
+<rect width="12" height="12" fill="white" transform="translate(1158 785)"/>
+</clipPath>
+</defs>
+</svg>

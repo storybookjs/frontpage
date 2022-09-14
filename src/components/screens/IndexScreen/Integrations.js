@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { styles, Subheading } from '@storybook/design-system';
+import { styles } from '@storybook/components-marketing';
 import { css, styled } from '@storybook/theming';
 import { Link as GatsbyLinkWrapper } from 'gatsby';
 import AdobeXD from '../../../images/integrations/adobexd.svg';
@@ -10,46 +10,47 @@ import Chromatic from '../../../images/integrations/chromatic.svg';
 import Cypress from '../../../images/integrations/cypress.svg';
 import Emotion from '../../../images/integrations/emotion.svg';
 import Figma from '../../../images/integrations/figma.svg';
+import Gatsby from '../../../images/integrations/gatsby.svg';
+import GraphQL from '../../../images/integrations/graphql.svg';
 import Invision from '../../../images/integrations/invision.svg';
-import Jasmine from '../../../images/integrations/jasmine.svg';
 import Jest from '../../../images/integrations/jest.svg';
+import MSW from '../../../images/integrations/msw.svg';
 import Nextjs from '../../../images/integrations/nextjs.svg';
 import Notion from '../../../images/integrations/notion.svg';
+import Nuxt from '../../../images/integrations/nuxt.svg';
+import Nx from '../../../images/integrations/nx.svg';
 import Playwright from '../../../images/integrations/playwright.svg';
-import Puppeteer from '../../../images/integrations/puppeteer.svg';
+import RedwoodJS from '../../../images/integrations/redwoodjs.svg';
 import Sass from '../../../images/integrations/sass.svg';
-import Sketch from '../../../images/integrations/sketch.svg';
+import SWC from '../../../images/integrations/swc.svg';
 import Tailwind from '../../../images/integrations/tailwind.svg';
 import TestingLib from '../../../images/integrations/testing-lib.svg';
+import UXpin from '../../../images/integrations/uxpin.svg';
 import Vite from '../../../images/integrations/vite.svg';
+import Webpack from '../../../images/integrations/webpack.svg';
 import Zeplin from '../../../images/integrations/zeplin.svg';
 import Zeroheight from '../../../images/integrations/zeroheight.svg';
+import Ionic from '../../../images/integrations/ionic.svg';
+import Launchdarkly from '../../../images/integrations/launchdarkly.svg';
+import Supernova from '../../../images/integrations/supernova.svg';
 
-const { color, spacing, pageMargin, breakpoint } = styles;
-
-const Title = styled(Subheading)`
-  display: block;
-  margin-bottom: 1.5rem;
-  color: ${color.dark};
-  @media (min-width: ${breakpoint * 1}px) {
-    margin-bottom: 2rem;
-  }
-`;
+const { color, breakpoints } = styles;
 
 const IntegrationItem = styled.a`
-  width: 48px;
-  height: 48px;
-
-  @media (min-width: ${breakpoint * 1.333}px) {
-    width: 60px;
-    height: 60px;
-  }
+  width: 100%;
+  height: auto;
 
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 10px;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.05), 0 5px 15px 0 rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+  user-select: none;
+
+  @media (min-width: ${breakpoints[2]}px) {
+    pointer-events: initial;
+  }
 
   img {
     width: 100%;
@@ -67,148 +68,235 @@ const IntegrationItem = styled.a`
     `}
 `;
 
-const IntegrationList = styled.div`
-  margin: 0 auto 16px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px 30px;
-  justify-content: center;
-  max-width: 516px;
-  align-items: start;
-  @media (min-width: ${breakpoint * 1.333}px) {
-    margin: 0 auto 30px;
-    gap: 30px 40px;
-    max-width: 660px;
-  }
-
-  &:last-child {
-    margin-bottom: 0 !important;
-  }
-`;
-
-const IntegrationsWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  flex: 1;
-`;
-
-const Inner = styled.div`
+const Wrapper = styled.div`
+  position: relative;
   align-items: center;
   text-align: center;
+  width: 100%;
+`;
 
-  padding: 3rem ${spacing.padding.medium}px;
-  @media (min-width: ${breakpoint * 1}px) {
-    /* margin: 0 ${pageMargin * 3}%; */
-    padding-bottom: 5rem;
+const IntegrationGrid = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(auto, 80px));
+  grid-auto-rows: max-content;
+  grid-auto-flow: row dense;
+  gap: 20px;
+  justify-content: center;
+
+  @media (min-width: ${breakpoints[1]}px) {
+    grid-template-columns: repeat(10, minmax(auto, 80px));
   }
-  @media (min-width: ${breakpoint * 2}px) {
-    /* margin: 0 ${pageMargin * 4}%; */
+
+  @media (min-width: ${breakpoints[2]}px) {
+    grid-template-columns: repeat(6, minmax(auto, 90px));
+    justify-content: end;
+  }
+
+  @media (min-width: ${1600}px) {
+    gap: 40px;
   }
 `;
 
-const Wrapper = styled.div``;
+const Scrim = styled.div`
+  display: none;
 
-export default function Integrations({ docs, ...props }) {
+  @media (min-width: ${breakpoints[2]}px) {
+    // only show on desktop when side-by-side with description
+    display: block;
+
+    position: absolute;
+    height: 50%;
+    bottom: -2.5rem;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+
+    background: linear-gradient(180deg, rgba(23, 28, 35, 0) 0%, #171c23 86.87%);
+  }
+`;
+
+export function Integrations({ docs, ...props }) {
+  const integrations = [
+    { href: 'https://storybook.js.org/blog/storybook-for-vite/', image: Vite, name: 'Vite' },
+    {
+      target: '_blank',
+      href: 'https://www.chromatic.com/',
+      image: Chromatic,
+      name: 'Chromatic',
+    },
+    {
+      as: GatsbyLinkWrapper,
+      to: `${docs}react/sharing/embed#embed-stories-on-other-platforms`,
+      image: Notion,
+      name: 'Notion',
+    },
+    {
+      as: GatsbyLinkWrapper,
+      to: `${docs}react/writing-tests/importing-stories-in-tests`,
+      image: TestingLib,
+      name: 'TestingLib',
+    },
+    {
+      as: GatsbyLinkWrapper,
+      to: '/addons/@react-theming/storybook-addon',
+      image: Emotion,
+      name: 'Emotion',
+    },
+    {
+      target: '_blank',
+      rel: 'noopener nofollow noreferrer',
+      href: 'https://medium.com/storybookjs/building-a-front-end-project-with-react-tailwindcss-and-storybook-742bdb1417da',
+      image: Tailwind,
+      name: 'Tailwind',
+    },
+    {
+      image: Jest,
+      name: 'Jest',
+      as: GatsbyLinkWrapper,
+      to: '/addons/@storybook/addon-jest',
+    },
+    { as: GatsbyLinkWrapper, to: '/addons/storybook-addon-next', image: Nextjs, name: 'Nextjs' },
+    {
+      as: GatsbyLinkWrapper,
+      to: `${docs}/react/builders/webpack#gatsby-focus-wrapper`,
+      image: Webpack,
+      name: 'Webpack',
+    },
+    {
+      as: GatsbyLinkWrapper,
+      to: `${docs}/react/sharing/design-integrations#figma`,
+      image: Figma,
+      name: 'Figma',
+    },
+    {
+      href: 'https://zeroheight.com/3xlwst8/p/507ba7-storybook',
+      target: '_blank',
+      rel: 'noopener nofollow noreferrer',
+      image: Zeroheight,
+      name: 'Zeroheight',
+    },
+    {
+      href: 'https://nx.dev/storybook/overview-react',
+      target: '_blank',
+      rel: 'noopener nofollow noreferrer',
+      image: Nx,
+      name: 'Nx',
+    },
+    {
+      as: GatsbyLinkWrapper,
+      to: '/addons/storybook-addon-apollo-client',
+      image: Apollo,
+      name: 'Apollo',
+    },
+    {
+      as: GatsbyLinkWrapper,
+      to: `${docs}react/writing-tests/importing-stories-in-tests`,
+      image: Playwright,
+      name: 'Playwright',
+    },
+    { as: GatsbyLinkWrapper, to: '/addons/@storybook/addon-a11y', image: Axe, name: 'Axe' },
+    {
+      href: 'https://redwoodjs.com/docs/storybook',
+      target: '_blank',
+      rel: 'noopener nofollow noreferrer',
+      image: RedwoodJS,
+      name: 'RedwoodJS',
+    },
+    {
+      as: GatsbyLinkWrapper,
+      to: '/addons/mswjs/msw-storybook-addon',
+      image: MSW,
+      name: 'MSW',
+    },
+    { as: GatsbyLinkWrapper, to: '/addons/storybook-zeplin', image: Zeplin, name: 'Zeplin' },
+    {
+      as: GatsbyLinkWrapper,
+      to: '/addons/tag/graphql',
+      image: GraphQL,
+      name: 'GraphQL',
+    },
+    {
+      as: GatsbyLinkWrapper,
+      to: '/addons/storybook-addon-gatsby/',
+      image: Gatsby,
+      name: 'Gatsby',
+    },
+    {
+      as: GatsbyLinkWrapper,
+      to: '/addons/storybook-addon-launchdarkly/',
+      image: Launchdarkly,
+      name: 'Launchdarkly',
+    },
+    {
+      href: 'https://github.com/storybookjs/presets/tree/master/packages/preset-scss',
+      image: Sass,
+      name: 'Sass',
+    },
+    {
+      as: GatsbyLinkWrapper,
+      to: '/addons/storybook-addon-swc/',
+      image: SWC,
+      name: 'SWC',
+    },
+    {
+      href: 'https://www.uxpin.com/merge/storybook-integration',
+      target: '_blank',
+      rel: 'noopener nofollow noreferrer',
+      image: UXpin,
+      name: 'UXpin',
+    },
+    {
+      href: 'https://ionicframework.com/blog/how-to-use-storybook-with-stencil/',
+      target: '_blank',
+      rel: 'noopener nofollow noreferrer',
+      image: Ionic,
+      name: 'Ionic',
+    },
+    {
+      as: GatsbyLinkWrapper,
+      to: '/addons/storybook-addon-xd-designs',
+      image: AdobeXD,
+      name: 'AdobeXD',
+    },
+    {
+      target: '_blank',
+      rel: 'noopener nofollow noreferrer',
+      href: 'https://support.invisionapp.com/hc/en-us/articles/360051565792',
+      image: Invision,
+      name: 'Invision',
+    },
+    {
+      as: GatsbyLinkWrapper,
+      to: '/addons/@storybook/testing-angular',
+      image: Supernova,
+      name: 'Supernova',
+    },
+    {
+      as: GatsbyLinkWrapper,
+      to: `${docs}react/writing-tests/importing-stories-in-tests`,
+      image: Cypress,
+      name: 'Cypress',
+    },
+    {
+      target: '_blank',
+      rel: 'noopener nofollow noreferrer',
+      href: 'https://storybook.nuxtjs.org/',
+      image: Nuxt,
+      name: 'Nuxt',
+    },
+  ];
+
   return (
     <Wrapper {...props}>
-      <Inner>
-        <Title>Integrations</Title>
-        <IntegrationsWrapper>
-          <IntegrationList>
-            <IntegrationItem as={GatsbyLinkWrapper} to="/addons/@storybook/addon-jest">
-              <img src={Jest} title="Jest" alt="Jest" />
-            </IntegrationItem>
-            <IntegrationItem href="https://storybook.js.org/blog/figma-plugin-sneak-peek">
-              <img src={Figma} title="Figma" alt="Figma" />
-            </IntegrationItem>
-            <IntegrationItem target="_blank" href="https://www.chromatic.com/">
-              <img src={Chromatic} title="Chromatic" alt="Chromatic" />
-            </IntegrationItem>
-            <IntegrationItem as={GatsbyLinkWrapper} to="/addons/storybook-zeplin">
-              <img src={Zeplin} title="Zeplin" alt="Zeplin" />
-            </IntegrationItem>
-            <IntegrationItem as={GatsbyLinkWrapper} to="/addons/@storybook/addon-a11y">
-              <img src={Axe} title="Axe" alt="Axe" />
-            </IntegrationItem>
-            <IntegrationItem href="https://github.com/storybookjs/presets/tree/master/packages/preset-scss">
-              <img src={Sass} title="Sass" alt="Sass" />
-            </IntegrationItem>
-            <IntegrationItem as={GatsbyLinkWrapper} to="/addons/storybook-addon-next">
-              <img src={Nextjs} title="Nextjs" alt="Nextjs" />
-            </IntegrationItem>
-            <IntegrationItem
-              as={GatsbyLinkWrapper}
-              to={`${docs}react/writing-tests/importing-stories-in-tests`}
-            >
-              <img src={TestingLib} title="TestingLib" alt="TestingLib" />
-            </IntegrationItem>
-            <IntegrationItem as={GatsbyLinkWrapper} to="/addons/storybook-addon-sketch">
-              <img src={Sketch} title="Sketch" alt="Sketch" />
-            </IntegrationItem>
-            <IntegrationItem
-              as={GatsbyLinkWrapper}
-              to={`${docs}react/writing-tests/importing-stories-in-tests`}
-            >
-              <img src={Puppeteer} title="Puppeteer" alt="Puppeteer" />
-            </IntegrationItem>
-            <IntegrationItem
-              href="https://zeroheight.com/3xlwst8/p/507ba7-storybook"
-              target="_blank"
-              rel="noopener nofollow noreferrer"
-            >
-              <img src={Zeroheight} title="Zeroheight" alt="Zeroheight" />
-            </IntegrationItem>
-            <IntegrationItem as={GatsbyLinkWrapper} to="/addons/storybook-addon-apollo-client">
-              <img src={Apollo} title="Apollo" alt="Apollo" />
-            </IntegrationItem>
-            <IntegrationItem
-              target="_blank"
-              rel="noopener nofollow noreferrer"
-              href="https://medium.com/storybookjs/building-a-front-end-project-with-react-tailwindcss-and-storybook-742bdb1417da"
-            >
-              <img src={Tailwind} title="Tailwind" alt="Tailwind" />
-            </IntegrationItem>
-            <IntegrationItem href="https://storybook.js.org/blog/storybook-for-vite/">
-              <img src={Vite} title="Vite" alt="Vite" />
-            </IntegrationItem>
-            <IntegrationItem
-              as={GatsbyLinkWrapper}
-              to={`${docs}react/writing-tests/importing-stories-in-tests`}
-            >
-              <img src={Playwright} title="Playwright" alt="Playwright" />
-            </IntegrationItem>
-            <IntegrationItem as={GatsbyLinkWrapper} to="/addons/storybook-addon-xd-designs">
-              <img src={AdobeXD} title="AdobeXD" alt="AdobeXD" />
-            </IntegrationItem>
-            <IntegrationItem
-              as={GatsbyLinkWrapper}
-              to={`${docs}react/writing-tests/importing-stories-in-tests`}
-            >
-              <img src={Cypress} title="Cypress" alt="Cypress" />
-            </IntegrationItem>
-            <IntegrationItem
-              target="_blank"
-              rel="noopener nofollow noreferrer"
-              href="https://support.invisionapp.com/hc/en-us/articles/360051565792"
-            >
-              <img src={Invision} title="Invision" alt="Invision" />
-            </IntegrationItem>
-            <IntegrationItem as={GatsbyLinkWrapper} to="/addons/@storybook/testing-angular">
-              <img src={Jasmine} title="Jasmine" alt="Jasmine" />
-            </IntegrationItem>
-            <IntegrationItem as={GatsbyLinkWrapper} to="/addons/@react-theming/storybook-addon">
-              <img src={Emotion} title="Emotion" alt="Emotion" />
-            </IntegrationItem>
-            <IntegrationItem
-              as={GatsbyLinkWrapper}
-              to={`${docs}react/sharing/embed#embed-stories-on-other-platforms`}
-            >
-              <img src={Notion} title="Notion" alt="Notion" />
-            </IntegrationItem>
-          </IntegrationList>
-        </IntegrationsWrapper>
-      </Inner>
+      <IntegrationGrid>
+        {integrations.map(({ image, name, ...integration }) => (
+          <IntegrationItem key={name} {...integration}>
+            <img loading="lazy" src={image} alt={name} width="80" height="80" />
+          </IntegrationItem>
+        ))}
+      </IntegrationGrid>
+      <Scrim />
     </Wrapper>
   );
 }
