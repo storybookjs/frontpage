@@ -32,7 +32,7 @@ interface TimeFrameProps {
 const Overview = styled(motion.img)`
   display: block;
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   top: 4%;
   left: 21%;
   width: 78.9%;
