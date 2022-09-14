@@ -13,9 +13,9 @@ const Logo = styled.img`
 
 const Logos = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-  gap: 1rem;
+  gap: 20px;
   flex-wrap: wrap;
   --ideal-area: 1500;
 
@@ -24,12 +24,14 @@ const Logos = styled.div`
   }
 
   @media (min-width: ${breakpoints[2]}px) {
-    gap: 2.75rem;
+    justify-content: center;
+    gap: 40px;
     --ideal-area: 5000;
   }
 
   @media (min-width: ${breakpoints[3]}px) {
-    --ideal-area: 10000;
+    gap: 60px;
+    --ideal-area: 7500;
   }
 `;
 
@@ -40,7 +42,7 @@ const Wrapper = styled.div`
 
   @media (min-width: ${breakpoints[2]}px) {
     padding-top: 3rem;
-    padding-bottom: 4rem;
+    padding-bottom: 3rem;
   }
 `;
 

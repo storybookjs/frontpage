@@ -31,9 +31,8 @@ const Wrapper = styled.section`
 
 const Storybooks = styled(HorizontalScroll)`
   padding: 0 30px;
-  margin-top: 5rem;
-  margin-bottom: 4rem;
   padding-bottom: 1rem;
+  margin-top: 3rem;
 
   & * {
     color: ${color.lightest} !important;
@@ -44,9 +43,15 @@ const Storybooks = styled(HorizontalScroll)`
   }
 
   @media (min-width: ${breakpoints[1]}px) {
+    margin-top: 5rem;
+    margin-bottom: calc(5rem -1rem); // accounts for horiz scroll bar
     & > * {
       width: 480px;
     }
+  }
+
+  @media (min-width: ${breakpoints[2]}px) {
+    margin-top: 7rem;
   }
 `;
 const StorybookLink = styled.a`
@@ -56,8 +61,14 @@ const StorybookLink = styled.a`
 
 const Projects = styled(HorizontalScroll)`
   padding: 0 30px;
-  margin-top: 5rem;
-  margin-bottom: 5rem;
+
+  margin-top: calc(3rem - 1rem);
+  margin-bottom: 3rem;
+
+  @media (min-width: ${breakpoints[2]}px) {
+    margin-top: calc(5rem - 1rem);
+    margin-bottom: 5rem;
+  }
 
   & > * {
     width: 240px;

@@ -26,6 +26,21 @@ const Wrapper = styled.section`
   }
 `;
 
+const StyledIllustratedFeatureList = styled(IllustratedFeatureList)`
+  && {
+    padding-bottom: 0;
+    padding-top: 3rem;
+
+    @media (min-width: ${breakpoints[1]}px) {
+      padding-top: 5rem;
+    }
+
+    @media (min-width: ${breakpoints[2]}px) {
+      padding-top: 7rem;
+    }
+  }
+`;
+
 const features = [
   {
     icon: <ColoredIcons.Eye />,
@@ -112,7 +127,7 @@ export function Test({ docs, ...props }) {
         heading="Test UIs with less effort and no flake"
         copy="Stories capture the “known good” states of UI components. They’re a pragmatic, reproducible way to keep track of UI edge cases. Reuse stories to power automated tests."
       />
-      <IllustratedFeatureList inverse features={features} bgColor="#FDDD9C" />
+      <StyledIllustratedFeatureList inverse features={features} bgColor="#FDDD9C" />
       <Testimonial
         inverse
         text={

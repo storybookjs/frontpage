@@ -35,8 +35,8 @@ const Wrapper = styled.div`
   grid-auto-rows: 280px;
   gap: 30px;
 
-  padding-top: 3rem;
-  padding-bottom: 7rem;
+  padding-top: 0rem;
+  padding-bottom: 3rem;
 
   @media (min-width: ${breakpoints[1]}px) {
     padding-bottom: 5rem;

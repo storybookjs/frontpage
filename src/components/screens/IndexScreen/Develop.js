@@ -24,7 +24,7 @@ const Wrapper = styled.section`
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
   @media (min-width: ${breakpoints[1]}px) {
-    padding-top: calc(5rem - 72px);
+    padding-top: calc(5rem - 40px);
   }
 
   @media (min-width: ${breakpoints[2]}px) {
