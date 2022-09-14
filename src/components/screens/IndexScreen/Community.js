@@ -126,7 +126,7 @@ function useAnimationState(totalCount, animate) {
   const [animateNext, setAnimateNext] = useState('videoB');
 
   useEffect(() => {
-    if (!animate) return;
+    if (!animate) return () => {};
 
     const id = setInterval(() => {
       const nextIndex =
