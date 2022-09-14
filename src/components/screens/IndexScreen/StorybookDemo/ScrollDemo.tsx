@@ -38,6 +38,7 @@ const Scrim = styled(motion.div)`
 `;
 
 interface ScrollDemoProps {
+  appearProgress: MotionValue;
   isolationProgress: MotionValue;
   addonsProgress: MotionValue;
   dropInProgress: MotionValue;
@@ -57,9 +58,11 @@ const StyledConnector = styled(Connector)`
   top: 20%;
   left: 17.8%;
   transform: rotate(-56deg);
+  z-index: 2;
 `;
 
 export const ScrollDemo = ({
+  appearProgress,
   isolationProgress,
   addonsProgress,
   dropInProgress,
@@ -134,8 +137,12 @@ export const ScrollDemo = ({
       />
       <App scrollProgress={dropInProgress} />
       <StyledConnector name="rs-to-app" progress={connectorProgress} />
-      <RangeSlider activeStory={activeStory} scrollProgress={dropInProgress} />
-      <VSCode scrollProgress={isolationProgress} />
+      <RangeSlider
+        activeStory={activeStory}
+        scrollProgress={dropInProgress}
+        appearProgress={appearProgress}
+      />
+      <VSCode appearProgress={appearProgress} scrollProgress={isolationProgress} />
     </Wrapper>
   );
 };

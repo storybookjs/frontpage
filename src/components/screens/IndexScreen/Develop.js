@@ -162,6 +162,16 @@ const Stats = styled.div`
 export function Develop({ docs, startOpen, ...props }) {
   // Step 1
   const isolationRef = useRef(null);
+  const { scrollYProgress: appearProgress } = useScroll({
+    target: isolationRef,
+    offset: ['0 1', '0 0.75'],
+  });
+  const smoothAppearProgress = useSpring(appearProgress, {
+    stiffness: 1000,
+    damping: 100,
+  });
+
+  // Step 1
   const { scrollYProgress: isolationProgress } = useScroll({
     target: isolationRef,
     offset: ['0 0.5', '1 0.5'],
@@ -183,7 +193,7 @@ export function Develop({ docs, startOpen, ...props }) {
   const addonsRef = useRef(null);
   const { scrollYProgress: addonsProgress } = useScroll({
     target: addonsRef,
-    offset: ['0 0.5', '.75 1'],
+    offset: ['0 0.4', '.75 1'],
   });
   const activePanel = useTransform(addonsProgress, (value) => Math.floor(value * 4));
   const smoothAddonsProgress = useSpring(addonsProgress, {
@@ -195,7 +205,7 @@ export function Develop({ docs, startOpen, ...props }) {
   const dropInRef = useRef(null);
   const { scrollYProgress: dropInProgress } = useScroll({
     target: dropInRef,
-    offset: ['0 1', '0 0.5'],
+    offset: ['0 0.5', '0 0.25'],
   });
   const smoothDropInProgress = useSpring(dropInProgress, {
     stiffness: 1000,
@@ -220,6 +230,7 @@ export function Develop({ docs, startOpen, ...props }) {
           <ScrollDemo
             storyIndex={activeStory}
             panelIndex={activePanel}
+            appearProgress={smoothAppearProgress}
             isolationProgress={smoothIsolationProgress}
             addonsProgress={smoothAddonsProgress}
             dropInProgress={smoothDropInProgress}

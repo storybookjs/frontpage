@@ -7,6 +7,7 @@ const Img = styled(motion.img)`
   width: 84%;
   height: auto;
   position: absolute;
+  z-index: 2;
   top: -2%;
   left: 100%;
 `;

@@ -35,20 +35,15 @@ const Clip = styled(motion.div)`
   }
 `;
 
-export const VSCode = ({ scrollProgress }) => {
+export const VSCode = ({ scrollProgress, appearProgress }) => {
   const x = useTransform(scrollProgress, [0, 1], ['0%', '40%']);
   const opacity = useTransform(scrollProgress, [0, 0.5, 1], [1, 1, 0]);
+  const scaleY = useTransform(appearProgress, [0, 1], [1, 0]);
 
   return (
     <>
       <Img src="images/develop/vscode.svg" width="1280" height="993" style={{ x, opacity }} />
-      <Clip
-        style={{ transformOrigin: 'center bottom', x, opacity }}
-        initial={{ scaleY: 1 }}
-        whileInView={{ scaleY: 0 }}
-        viewport={{ amount: 'some' }}
-        transition={{ duration: 0.5, delay: 1 }}
-      />
+      <Clip style={{ transformOrigin: 'center bottom', x, opacity, scaleY }} />
     </>
   );
 };
