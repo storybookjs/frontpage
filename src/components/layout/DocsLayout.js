@@ -211,16 +211,16 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
         <SubNavTabs label="Docs nav" items={docsItems} />
         <SubNavDivider />
         <SubNavMenus>
-          <FrameworkSelector
-            framework={framework}
-            coreFrameworks={coreFrameworks}
-            communityFrameworks={communityFrameworks}
-            slug={slug}
-          />
           <VersionSelector
             version={version}
             versions={versions}
             framework={framework}
+            slug={slug}
+          />
+          <FrameworkSelector
+            framework={framework}
+            coreFrameworks={coreFrameworks}
+            communityFrameworks={communityFrameworks}
             slug={slug}
           />
         </SubNavMenus>
