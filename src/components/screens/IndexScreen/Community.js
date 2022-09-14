@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { styled } from '@storybook/theming';
 import { styles } from '@storybook/components-marketing';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
 
 const { breakpoints, pageMargins } = styles;
 
@@ -121,11 +121,13 @@ function nextOption() {
   return options[index];
 }
 
-function useAnimationState(totalCount) {
+function useAnimationState(totalCount, animate) {
   const [activeIndex, setActiveIndex] = useState({ img: 0, videoA: 0, videoB: 0 });
   const [animateNext, setAnimateNext] = useState('videoB');
 
   useEffect(() => {
+    if (!animate) return;
+
     const id = setInterval(() => {
       const nextIndex =
         activeIndex[animateNext] === totalCount - 1 ? 0 : activeIndex[animateNext] + 1;
@@ -136,13 +138,15 @@ function useAnimationState(totalCount) {
     return () => {
       clearInterval(id);
     };
-  }, [activeIndex, animateNext, totalCount]);
+  }, [activeIndex, animateNext, totalCount, animate]);
 
   return activeIndex;
 }
 
 export function Community(props) {
-  const activeIndex = useAnimationState(3);
+  const sectionRef = useRef(null);
+  const animate = useInView(sectionRef);
+  const activeIndex = useAnimationState(3, animate);
   const videoBRef = useRef(null);
   const [pauseVideoB, setPauseVideoB] = useState(false);
 
@@ -161,7 +165,7 @@ export function Community(props) {
   }, [videoBRef, pauseVideoB]);
 
   return (
-    <Wrapper {...props}>
+    <Wrapper ref={sectionRef} {...props}>
       <ImageCardWrapper>
         <AnimatePresence initial={false}>
           <ImageCard
