@@ -41,7 +41,7 @@ const JumpLink = styled(NavItem)`
 const LeftLinks = styled.div`
   display: none;
   align-items: center;
-  gap: 9px;
+  gap: 10px;
 
   @media (min-width: ${breakpoints[2]}px) {
     display: flex;

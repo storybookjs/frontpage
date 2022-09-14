@@ -86,7 +86,7 @@ export function Automate({ docs, ...props }) {
         <FeatureStep
           inverse
           title="Publish Storybook"
-          description="Publish Storybook online to collaborate on UI implementation with developers, designers, and PMs. Your teammates can see the work without touching a dev environment."
+          description="Publish Storybook online to collaborate on UI implementation with developers, designers, and PMs. Your teammates can see work without needing to spin up a dev environment."
           link={
             <Link
               containsIcon
