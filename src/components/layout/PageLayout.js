@@ -23,7 +23,7 @@ const navLinks = {
   componentDriven: { url: 'https://componentdriven.org' },
   guides: { url: '/docs', linkWrapper: GatsbyLinkWrapper },
   tutorials: { url: 'https://storybook.js.org/tutorials' },
-  changelog: { url: '/changelog', linkWrapper: GatsbyLinkWrapper },
+  changelog: { url: '/releases', linkWrapper: GatsbyLinkWrapper },
   telemetry: { url: '/telemetry/', linkWrapper: GatsbyLinkWrapper },
   showcase: { url: 'https://storybook.js.org/showcase' },
   projects: { url: 'https://storybook.js.org/showcase/projects' },
