@@ -35,6 +35,8 @@ const Scrim = styled(motion.div)`
   left: 0;
   right: 0;
   background: linear-gradient(0deg, rgba(23, 28, 35, 0%) 0%, rgba(23, 28, 35, 100%) 10%);
+  pointer-events: none;
+  user-select: none;
 `;
 
 interface ScrollDemoProps {
