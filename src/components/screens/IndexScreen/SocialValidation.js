@@ -42,6 +42,12 @@ const Storybooks = styled(HorizontalScroll)`
     width: 240px;
   }
 
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
   @media (min-width: ${breakpoints[1]}px) {
     margin-top: 5rem;
     margin-bottom: calc(5rem -1rem); // accounts for horiz scroll bar
@@ -68,6 +74,12 @@ const Projects = styled(HorizontalScroll)`
   @media (min-width: ${breakpoints[2]}px) {
     margin-top: calc(5rem - 1rem);
     margin-bottom: 5rem;
+  }
+
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
   }
 
   & > * {

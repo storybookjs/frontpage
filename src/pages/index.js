@@ -2,7 +2,7 @@ import React, { Fragment, useMemo } from 'react';
 import { graphql } from 'gatsby';
 import { global } from '@storybook/design-system';
 
-import IndexScreen from '../components/screens/IndexScreen/IndexScreen';
+import { IndexScreen } from '../components/screens/IndexScreen/IndexScreen';
 
 const { GlobalStyle } = global;
 
