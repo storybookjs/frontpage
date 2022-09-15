@@ -1,7 +1,7 @@
-import React from 'react';
-import { CacheProvider, createCache } from '@storybook/theming';
+// import React from 'react';
+// import { CacheProvider, createCache } from '@storybook/theming';
 
-const EMOTION_KEY = 'chr';
+// const EMOTION_KEY = 'chr';
 
 /* eslint-env browser */
 export const onRouteUpdate = ({ location, prevLocation }) => {
@@ -20,9 +20,23 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
   window.analytics.page();
 };
 
-const cache = createCache({ key: EMOTION_KEY });
-cache.compat = true;
+/**
+ * What's happening here?
+ * Emotion comes with zero-config SSR. However, if you're using nth child or
+ * similar selectors then you need an advanced setup (https://emotion.sh/docs/ssr#advanced-approach)
+ *
+ * https://github.com/Andarist set this up for us here: https://github.com/storybookjs/frontpage/pull/321
+ *
+ * However, it's now causing issues with React Helmet. Many of our pages no
+ * longer have meta tags in SSR. That breaks OG images and descriptions.
+ *
+ * We've removed most of those nth child selectors and therefore going back to
+ * the zero-config emotion SSR setup.
+ */
 
-export const wrapRootElement = ({ element }) => (
-  <CacheProvider value={cache}>{element}</CacheProvider>
-);
+// const cache = createCache({ key: EMOTION_KEY });
+// cache.compat = true;
+
+// export const wrapRootElement = ({ element }) => (
+//   <CacheProvider value={cache}>{element}</CacheProvider>
+// );
