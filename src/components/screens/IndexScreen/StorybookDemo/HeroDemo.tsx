@@ -31,8 +31,9 @@ const Wrapper = styled(motion.div)`
   padding-bottom: 69.10907577%;
   overflow: hidden;
 
-  filter: drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.1)) drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.1))
-    drop-shadow(0px 20px 40px rgba(0, 0, 0, 0.05)) drop-shadow(0px 40px 30px rgba(0, 0, 0, 0.05));
+  border-radius: 10px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 10px 20px rgba(0, 0, 0, 0.1),
+    0px 20px 40px rgba(0, 0, 0, 0.05), 0px 40px 30px rgba(0, 0, 0, 0.05);
 
   @media (min-width: ${breakpoints[1]}px) {
     margin-top: -12.625rem;
