@@ -36,6 +36,7 @@ export const CommunityBrand = ({
   return (
     <Wrapper>
       <CommunitySectionHeader
+        id="brand-resources"
         title="Use brand & presentation resources"
         description="The easiest way to get involved is to share Storybook with fellow developers, colleagues, and friends."
       />

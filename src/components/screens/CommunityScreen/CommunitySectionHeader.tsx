@@ -15,13 +15,14 @@ const Description = styled.h2`
 `;
 
 interface CommunitySectionHeaderProps {
+  id: string;
   title: string;
   description: string;
 }
 
-export const CommunitySectionHeader = ({ title, description }: CommunitySectionHeaderProps) => (
+export const CommunitySectionHeader = ({ title, description, id }: CommunitySectionHeaderProps) => (
   <div>
-    <Title>{title}</Title>
+    <Title id={id}>{title}</Title>
     <Description>{description}</Description>
   </div>
 );

@@ -6,26 +6,26 @@ import { motion, AnimatePresence, useInView } from 'framer-motion';
 const { breakpoints, pageMargins } = styles;
 
 const images = [
-  'images/community/community-michele.webp',
-  'images/community/community-gert.webp',
-  'images/community/community-yann.webp',
+  '/images/community/community-michele.webp',
+  '/images/community/community-gert.webp',
+  '/images/community/community-yann.webp',
 ];
 
 const videosA = [
-  { src: 'videos/community/brad.mp4', link: 'https://www.youtube.com/watch?v=jR0Gefa4lpg' },
-  { src: 'videos/community/esther.mp4', link: 'https://www.youtube.com/watch?v=U7lW6qAsvrg' },
+  { src: '/videos/community/brad.mp4', link: 'https://www.youtube.com/watch?v=jR0Gefa4lpg' },
+  { src: '/videos/community/esther.mp4', link: 'https://www.youtube.com/watch?v=U7lW6qAsvrg' },
   {
-    src: 'videos/community/jackherrington.mp4',
+    src: '/videos/community/jackherrington.mp4',
     link: 'https://www.youtube.com/watch?v=NgkYH97Z3nk',
   },
 ];
 const videosB = [
   {
-    src: 'videos/community/jackpritchard.mp4',
+    src: '/videos/community/jackpritchard.mp4',
     link: 'https://www.youtube.com/watch?v=8GxTENqNjYI',
   },
-  { src: 'videos/community/katerina.mp4', link: 'https://www.youtube.com/watch?v=VgxrR2Ypbuc' },
-  { src: 'videos/community/jarrod.mp4', link: 'https://www.youtube.com/watch?v=L4F5dSu0FcQ' },
+  { src: '/videos/community/katerina.mp4', link: 'https://www.youtube.com/watch?v=VgxrR2Ypbuc' },
+  { src: '/videos/community/jarrod.mp4', link: 'https://www.youtube.com/watch?v=L4F5dSu0FcQ' },
 ];
 
 const Wrapper = styled.div`

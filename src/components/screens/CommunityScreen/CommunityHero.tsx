@@ -27,8 +27,9 @@ const StyledCommunity = styled(Community)`
 
 const Stats = styled.div`
   ${pageMargins}
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1rem;
 `;
 
 const DividerWrapper = styled.div`

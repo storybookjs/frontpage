@@ -32,6 +32,7 @@ export const CommunityEvents = ({ youTubeUrl, twitterUrl, chatUrl }: CommunityEv
   return (
     <Wrapper>
       <CommunitySectionHeader
+        id="events-streams"
         title="Join live events & streams"
         description="Storybook’s thriving community can help answer your questions. Developers of all skill levels welcome."
       />

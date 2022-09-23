@@ -38,6 +38,7 @@ export const CommunitySupport = ({ repoUrl, chatUrl, version, apiKey }: Communit
   return (
     <Wrapper>
       <CommunitySectionHeader
+        id="support"
         title="Sponsor the community"
         description="Donations help the community keep going. They are used for web hosting, continuous integration, contributor swag, learning materials, and event production."
       />

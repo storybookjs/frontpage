@@ -57,6 +57,7 @@ export const CommunitySponsors = ({ openCollectiveUrl, sponsors }: CommunitySpon
   return (
     <Wrapper>
       <CommunitySectionHeader
+        id="sponsor"
         title="Sponsor the community"
         description="Donations help the community keep going. They are used for web hosting, continuous integration, contributor swag, learning materials, and event production."
       />

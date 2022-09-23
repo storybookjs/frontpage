@@ -167,6 +167,7 @@ export const CommunityMaintainers = ({
   return (
     <Wrapper>
       <CommunitySectionHeader
+        id="maintainer-team"
         title="Maintainer team"
         description="Storybook is maintained by thousands of contributors worldwide and guided by a steering committee of top maintainers."
       />

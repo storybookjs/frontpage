@@ -40,6 +40,7 @@ export const CommunityContribute = ({
   return (
     <Wrapper>
       <CommunitySectionHeader
+        id="contribute"
         title="Contribute to Storybook"
         description={`Join ${contributorCount.toLocaleString()}+ open source contributors building Storybook, the industry-standard frontend workshop.`}
       />

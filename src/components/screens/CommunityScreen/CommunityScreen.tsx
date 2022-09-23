@@ -95,7 +95,7 @@ export default function CommunityScreen({
       />
 
       <SubNav>
-        <SubNavTabs label="Docs nav" items={communityItems} />
+        <SubNavTabs label="Community nav" items={communityItems} />
         <SubNavRight>
           <SubNavLinkList label="Join the community:" items={joinCommunityItems} />
         </SubNavRight>

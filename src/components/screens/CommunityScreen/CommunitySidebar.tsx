@@ -25,7 +25,7 @@ const sections = [
   },
   {
     title: '🌎  Maintainer team',
-    path: '/data-maintainer-team',
+    path: '#maintainer-team',
     type: 'link' as any,
   },
   {
@@ -43,6 +43,11 @@ const sections = [
 const Wrapper = styled.div`
   max-width: 200px;
   flex: none;
+`;
+
+const Sticky = styled.div`
+  position: sticky;
+  top: 2rem;
 `;
 
 const StorybookBadge = styled.img`
@@ -110,13 +115,15 @@ interface CommunitySidebarProps {
 export function CommunitySidebar({ badgeUrl, activeSection, ...props }: CommunitySidebarProps) {
   return (
     <Wrapper {...props}>
-      <Title>Community</Title>
-      <TableOfContents items={sections} currentPath={activeSection} />
-      <Divider />
-      <Text>Get a badge for your readme</Text>
-      <StorybookBadgeOuter href={badgeUrl}>
-        <StorybookBadge src={StorybookBadgeSVG} alt="Storybook badge" />
-      </StorybookBadgeOuter>
+      <Sticky>
+        <Title>Community</Title>
+        <TableOfContents items={sections} currentPath={activeSection} />
+        <Divider />
+        <Text>Get a badge for your readme</Text>
+        <StorybookBadgeOuter href={badgeUrl}>
+          <StorybookBadge src={StorybookBadgeSVG} alt="Storybook badge" />
+        </StorybookBadgeOuter>
+      </Sticky>
     </Wrapper>
   );
 }
