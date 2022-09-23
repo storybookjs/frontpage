@@ -1,16 +1,16 @@
 import React from 'react';
 
-import { PureCommunityScreen } from './CommunityScreen';
+import CommunityScreen from './CommunityScreen';
 
 export default {
   title: 'screens/CommunityScreen',
-  component: PureCommunityScreen,
+  component: CommunityScreen,
   parameters: {
     chromatic: { viewports: [320, 1200] },
   },
 };
 
-export const Default = (args) => <PureCommunityScreen {...args} />;
+export const Default = (args) => <CommunityScreen {...args} />;
 Default.args = {
   npmDownloads: 16094826,
   twitterFollowerCount: 18351,
@@ -18,5 +18,6 @@ Default.args = {
   githubContributorCount: 1814,
   youTubeSubscriberCount: 2650,
   githubStars: 73811,
+  apiKey: 'api_key',
 };
 Default.storyName = 'CommunityScreen';

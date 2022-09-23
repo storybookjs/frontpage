@@ -29,7 +29,14 @@ const Stats = styled.div`
   ${pageMargins}
   display: flex;
   justify-content: space-between;
-  padding-bottom: 3rem;
+`;
+
+const DividerWrapper = styled.div`
+  ${pageMargins};
+`;
+const Divider = styled.hr`
+  margin-top: 3rem;
+  border: 0;
   border-bottom: 1px solid ${color.border};
 `;
 
@@ -95,6 +102,9 @@ export function CommunityHero({
           noPlural
         />
       </Stats>
+      <DividerWrapper>
+        <Divider />
+      </DividerWrapper>
     </Wrapper>
   );
 }
