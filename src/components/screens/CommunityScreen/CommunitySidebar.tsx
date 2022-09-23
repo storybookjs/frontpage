@@ -42,6 +42,7 @@ const sections = [
 
 const Wrapper = styled.div`
   max-width: 200px;
+  flex: none;
 `;
 
 const StorybookBadge = styled.img`
