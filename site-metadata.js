@@ -10,6 +10,7 @@ const gitHubOrg = `https://github.com/storybookjs`;
 const npmApiBase = `https://api.npmjs.org/downloads/point/last-month`;
 const docsUrl = `${homepageUrl}/docs`;
 const essentialsBase = '/docs/react/essentials';
+const contributeUrl = `${docsUrl}/react/contribute/how-to-contribute`;
 
 const siteMetadata = {
   title: 'Storybook',
@@ -30,6 +31,7 @@ const siteMetadata = {
     gitHubOrg,
     homepageUrl,
     docsUrl,
+    contributeUrl,
     npmApiBase,
     gitHub: {
       repo: `${gitHubOrg}/storybook`,

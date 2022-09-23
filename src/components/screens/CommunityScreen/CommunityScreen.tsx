@@ -17,6 +17,7 @@ import { CommunitySidebar } from './CommunitySidebar';
 import { CommunitySupport } from './CommunitySupport';
 import { CommunityEvents } from './CommunityEvents';
 import { CommunityBrand } from './CommunityBrand';
+import { CommunityContribute } from './CommunityContribute';
 
 const { pageMargins } = styles;
 
@@ -79,6 +80,8 @@ export default function CommunityScreen({
     presentation,
     designSystem,
     gitHub = {},
+    docsUrl,
+    contributeUrl,
     openCollective,
   } = urls;
   return (
@@ -120,6 +123,13 @@ export default function CommunityScreen({
             brandUrl={brand}
             presentationUrl={presentation}
             designSystemUrl={designSystem}
+          />
+          <CommunityContribute
+            contributorCount={githubContributorCount}
+            docsUrl={docsUrl}
+            issuesUrl={gitHub.issues}
+            contributeUrl={contributeUrl}
+            chatUrl={chat}
           />
         </Content>
       </CommunityLayout>
