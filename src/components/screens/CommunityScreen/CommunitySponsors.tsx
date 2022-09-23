@@ -1,10 +1,10 @@
 import React from 'react';
 import { styled } from '@storybook/theming';
-import { SupportFeatureGrid, styles } from '@storybook/components-marketing';
-import { Avatar, Link, Icon, Button } from '@storybook/design-system';
+import { SupportFeatureGrid, NormalizeArea, styles } from '@storybook/components-marketing';
+import { Avatar, Button } from '@storybook/design-system';
 import { CommunitySectionHeader } from './CommunitySectionHeader';
 
-const { breakpoints, subheading, color, typography } = styles;
+const { breakpoints } = styles;
 
 const Wrapper = styled.section`
   display: flex;
@@ -27,6 +27,7 @@ const Donate = styled.div`
 
 const Sponsors = styled.ul`
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   gap: 1.25rem;
   padding: 0;
@@ -39,19 +40,20 @@ const Sponsor = styled.a`
 
   img {
     display: block;
-    max-width: 100px;
-    max-height: 45px;
-    object-fit: contain;
-    margin-left: auto;
-    margin-right: auto;
+    border-radius: 4px;
   }
 `;
 
 interface CommunitySponsorsProps {
   openCollectiveUrl: string;
+  sponsors: {
+    name: string;
+    image: string;
+    url: string;
+  }[];
 }
 
-export const CommunitySponsors = ({ openCollectiveUrl }: CommunitySponsorsProps) => {
+export const CommunitySponsors = ({ openCollectiveUrl, sponsors }: CommunitySponsorsProps) => {
   return (
     <Wrapper>
       <CommunitySectionHeader
@@ -65,74 +67,13 @@ export const CommunitySponsors = ({ openCollectiveUrl }: CommunitySponsorsProps)
       </Donate>
       <Sponsors>
         {sponsors.map(({ name, url, image }) => (
-          <Sponsor key={name} href={url}>
-            <img src={image} alt={name} />
+          <Sponsor key={name} href={url} target="_blank" rel="noopener nofollow noreferrer">
+            <NormalizeArea width={400} height={400} idealArea={10000}>
+              <img src={image} alt={name} />
+            </NormalizeArea>
           </Sponsor>
         ))}
       </Sponsors>
     </Wrapper>
   );
 };
-
-const sponsors = [
-  {
-    name: 'Appli Tools',
-    url: 'https://opencollective.com/storybook/sponsor/0/website',
-    image: 'https://opencollective.com/storybook/sponsor/0/avatar.svg',
-  },
-  {
-    name: 'Frontend Masters',
-    url: 'https://opencollective.com/storybook/sponsor/1/website',
-    image: 'https://opencollective.com/storybook/sponsor/1/avatar.svg',
-  },
-  {
-    name: 'Chromatic',
-    url: 'https://opencollective.com/storybook/sponsor/2/website',
-    image: 'https://opencollective.com/storybook/sponsor/2/avatar.svg',
-  },
-  {
-    name: 'Nx',
-    url: 'https://opencollective.com/storybook/sponsor/3/website',
-    image: 'https://opencollective.com/storybook/sponsor/3/avatar.svg',
-  },
-  {
-    name: 'Retool',
-    url: 'https://opencollective.com/storybook/sponsor/4/website',
-    image: 'https://opencollective.com/storybook/sponsor/4/avatar.svg',
-  },
-  {
-    name: 'Git Guardian',
-    url: 'https://opencollective.com/storybook/sponsor/5/website',
-    image: 'https://opencollective.com/storybook/sponsor/5/avatar.svg',
-  },
-  {
-    name: 'Viswiz',
-    url: 'https://opencollective.com/storybook/sponsor/6/website',
-    image: 'https://opencollective.com/storybook/sponsor/6/avatar.svg',
-  },
-  {
-    name: 'Algolia',
-    url: 'https://opencollective.com/storybook/sponsor/7/website',
-    image: 'https://opencollective.com/storybook/sponsor/7/avatar.svg',
-  },
-  {
-    name: 'Principal',
-    url: 'https://opencollective.com/storybook/sponsor/8/website',
-    image: 'https://opencollective.com/storybook/sponsor/8/avatar.svg',
-  },
-  {
-    name: 'Gitbook',
-    url: 'https://opencollective.com/storybook/sponsor/9/website',
-    image: 'https://opencollective.com/storybook/sponsor/9/avatar.svg',
-  },
-  {
-    name: 'Intuit',
-    url: 'https://opencollective.com/storybook/sponsor/10/website',
-    image: 'https://opencollective.com/storybook/sponsor/10/avatar.svg',
-  },
-  {
-    name: 'Skyscanner',
-    url: 'https://opencollective.com/storybook/sponsor/11/website',
-    image: 'https://opencollective.com/storybook/sponsor/11/avatar.svg',
-  },
-];

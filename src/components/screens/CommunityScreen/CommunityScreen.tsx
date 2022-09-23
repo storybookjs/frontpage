@@ -68,6 +68,7 @@ export default function CommunityScreen({
   githubStars,
   apiKey,
   contributors,
+  sponsors,
 }) {
   const { title, ogImage, urls = {}, latestVersionString } = useSiteMetadata();
   const {
@@ -132,7 +133,7 @@ export default function CommunityScreen({
             contributeUrl={contributeUrl}
             chatUrl={chat}
           />
-          <CommunitySponsors openCollectiveUrl={openCollective} />
+          <CommunitySponsors openCollectiveUrl={openCollective} sponsors={sponsors} />
         </Content>
       </CommunityLayout>
     </>

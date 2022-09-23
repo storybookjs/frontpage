@@ -1,6 +1,7 @@
 import React from 'react';
 import CommunityScreen from './CommunityScreen';
 import { Default as CommunityMaintainersDefault } from './CommunityMaintainers.stories';
+import { Default as CommunitySponsorsDefault } from './CommunitySponsors.stories';
 
 export default {
   title: 'screens/CommunityScreen',
@@ -20,5 +21,6 @@ Default.args = {
   githubStars: 73811,
   apiKey: 'api_key',
   contributors: CommunityMaintainersDefault.args.contributors,
+  sponsors: CommunitySponsorsDefault.args.sponsors,
 };
 Default.storyName = 'CommunityScreen';

@@ -155,8 +155,8 @@ interface CommunityMaintainersProps {
   contributorsUrl: string;
   contributors: {
     name: string;
-    avatarUrl: string;
-    githubUrl: string;
+    avatar: string;
+    url: string;
   }[];
 }
 
@@ -181,9 +181,9 @@ export const CommunityMaintainers = ({
       <div>
         <SubHeading>Contributors</SubHeading>
         <ContributorsWrapper>
-          {contributors.map(({ name, avatarUrl, githubUrl }) => (
-            <a key={name} href={githubUrl} target="_blank" rel="noopener nofollow noreferrer">
-              <Contributor size="large" username={name} src={avatarUrl} />
+          {contributors.map(({ name, avatar, url }) => (
+            <a key={name} href={url} target="_blank" rel="noopener nofollow noreferrer">
+              <Contributor size="large" username={name} src={avatar} />
             </a>
           ))}
         </ContributorsWrapper>
@@ -247,10 +247,3 @@ const steeringCommittee = [
     twitterUrl: 'https://twitter.com/tmeasday',
   },
 ];
-
-// https://api.github.com/repos/storybookjs/storybook/contributors?q=contributions&order=desc&per_page=52
-// ndelangen
-// Hypnosphi
-// shilman
-// igor-dv
-// tmeasday
