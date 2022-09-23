@@ -4120,10 +4120,10 @@
     core-js "^3.8.2"
     global "^4.4.0"
 
-"@storybook/components-marketing@^2.0.32":
-  version "2.0.32"
-  resolved "https://registry.yarnpkg.com/@storybook/components-marketing/-/components-marketing-2.0.32.tgz#56ae43b5caec4df49c6ba90fbce7215955d2ec66"
-  integrity sha512-X+6wwecLKVp4DQvoJ83J6tnxIwPbpfLuTtvovpfbQId9lVV9VUkqtq9eXdqFpLkMwRBZKLDWer7/1d1jNAvTpw==
+"@storybook/components-marketing@^2.0.33":
+  version "2.0.33"
+  resolved "https://registry.yarnpkg.com/@storybook/components-marketing/-/components-marketing-2.0.33.tgz#ad571fef761e40060dff68b60e1dd70daf418aee"
+  integrity sha512-t3THo9c9sOR7WODR8XUZTC+FmFk5CC830EzUyAwPm4jVwYoWeepOxavlsx5dNMe3NInl/9Zh8F59+inSnwhNsA==
   dependencies:
     "@docsearch/react" "^3.1.0"
     "@emotion/weak-memoize" "^0.2.5"

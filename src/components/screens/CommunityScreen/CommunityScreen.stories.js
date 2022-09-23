@@ -10,7 +10,13 @@ export default {
   },
 };
 
-export const Default = () => (
-  <PureCommunityScreen npmDownloads={16084504} githubStarCount={73778} />
-);
+export const Default = (args) => <PureCommunityScreen {...args} />;
+Default.args = {
+  npmDownloads: 16094826,
+  twitterFollowerCount: 18351,
+  discordMemberCount: 14930,
+  githubContributorCount: 1814,
+  youTubeSubscriberCount: 2650,
+  githubStars: 73811,
+};
 Default.storyName = 'CommunityScreen';

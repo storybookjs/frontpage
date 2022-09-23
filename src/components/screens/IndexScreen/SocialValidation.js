@@ -12,7 +12,7 @@ import {
   ColoredIcon,
 } from '@storybook/components-marketing';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
-import { Community } from './Community';
+import { Community } from '../../layout/Community';
 
 const { color, breakpoints, pageMargins } = styles;
 
