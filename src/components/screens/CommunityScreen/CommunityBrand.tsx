@@ -2,7 +2,7 @@ import React from 'react';
 import { styled } from '@storybook/theming';
 import { SupportFeature, SupportFeatureGrid, styles } from '@storybook/components-marketing';
 import { Link, ColoredIcons } from '@storybook/design-system';
-import { StorybookIcon, TwitterIcon } from './CommunityIcons';
+import { StorybookIcon } from './CommunityIcons';
 import { CommunitySectionHeader } from './CommunitySectionHeader';
 
 const { breakpoints } = styles;

@@ -1,6 +1,6 @@
 import React from 'react';
-
 import CommunityScreen from './CommunityScreen';
+import { Default as CommunityMaintainersDefault } from './CommunityMaintainers.stories';
 
 export default {
   title: 'screens/CommunityScreen',
@@ -19,5 +19,6 @@ Default.args = {
   youTubeSubscriberCount: 2650,
   githubStars: 73811,
   apiKey: 'api_key',
+  contributors: CommunityMaintainersDefault.args.contributors,
 };
 Default.storyName = 'CommunityScreen';

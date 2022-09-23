@@ -18,6 +18,7 @@ import { CommunitySupport } from './CommunitySupport';
 import { CommunityEvents } from './CommunityEvents';
 import { CommunityBrand } from './CommunityBrand';
 import { CommunityContribute } from './CommunityContribute';
+import { CommunityMaintainers } from './CommunityMaintainers';
 
 const { pageMargins } = styles;
 
@@ -68,6 +69,7 @@ export default function CommunityScreen({
   youTubeSubscriberCount,
   githubStars,
   apiKey,
+  contributors,
 }) {
   const { title, ogImage, urls = {}, latestVersionString } = useSiteMetadata();
   const {
@@ -124,6 +126,7 @@ export default function CommunityScreen({
             presentationUrl={presentation}
             designSystemUrl={designSystem}
           />
+          <CommunityMaintainers contributors={contributors} contributorsUrl={gitHub.contributors} />
           <CommunityContribute
             contributorCount={githubContributorCount}
             docsUrl={docsUrl}
