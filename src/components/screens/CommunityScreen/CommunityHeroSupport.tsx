@@ -29,11 +29,17 @@ const Wrapper = styled.section`
 
 interface CommunityHeroSupportProps {
   repoUrl: string;
+  chatUrl: string;
   version: string;
   apiKey: string;
 }
 
-export const CommunityHeroSupport = ({ repoUrl, version, apiKey }: CommunityHeroSupportProps) => {
+export const CommunityHeroSupport = ({
+  repoUrl,
+  chatUrl,
+  version,
+  apiKey,
+}: CommunityHeroSupportProps) => {
   return (
     <Wrapper>
       <CommunitySectionHeader
@@ -47,7 +53,7 @@ export const CommunityHeroSupport = ({ repoUrl, version, apiKey }: CommunityHero
           title="Ask a question in #support chat"
           desc="Resolve issues with community help. A maintainer is usually online."
         >
-          <Link withArrow href="https://discord.gg/storybook">
+          <Link withArrow href={chatUrl}>
             Chat now
           </Link>
         </SupportFeature>

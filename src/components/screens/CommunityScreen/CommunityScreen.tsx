@@ -17,6 +17,7 @@ import { CommunityHero } from './CommunityHero';
 import { CommunitySidebar } from './CommunitySidebar';
 import { CommunityHeroSupport } from './CommunityHeroSupport';
 import { DiscordIcon, GithubIcon } from './CommunityIcons';
+import { CommunityHeroEvents } from './CommunityHeroEvents';
 
 const { pageMargins } = styles;
 
@@ -73,7 +74,9 @@ export default function CommunityScreen({
     home,
     badge,
     brand,
+    twitter,
     chat,
+    youtube,
     blog,
     presentation,
     designSystem,
@@ -111,9 +114,11 @@ export default function CommunityScreen({
         <Content>
           <CommunityHeroSupport
             repoUrl={gitHub.repo}
+            chatUrl={chat}
             version={latestVersionString}
             apiKey={apiKey}
           />
+          <CommunityHeroEvents youTubeUrl={youtube} twitterUrl={twitter} chatUrl={chat} />
         </Content>
       </CommunityLayout>
     </>

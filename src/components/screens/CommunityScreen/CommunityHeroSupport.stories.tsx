@@ -9,6 +9,7 @@ export default {
 export const Default = (args) => <CommunityHeroSupport {...args} />;
 Default.args = {
   repoUrl: 'github.com/storybookjs/storybook',
+  chatUrl: '/discord',
   version: '6.5',
   apiKey: 'API_KEY',
 };
