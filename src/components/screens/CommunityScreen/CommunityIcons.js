@@ -49,3 +49,11 @@ export const YouTubeIcon = () => (
     <Icon icon="youtube" aria-label="YouTube" />
   </YouTubeIconWrapper>
 );
+
+export const StorybookIcon = styled(Icon)`
+  color: #ff4785;
+`;
+StorybookIcon.defaultProps = {
+  icon: 'storybook',
+  'aria-label': 'Storybook',
+};

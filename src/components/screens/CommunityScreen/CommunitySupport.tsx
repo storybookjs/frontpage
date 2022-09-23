@@ -27,19 +27,14 @@ const Wrapper = styled.section`
   }
 `;
 
-interface CommunityHeroSupportProps {
+interface CommunitySupportProps {
   repoUrl: string;
   chatUrl: string;
   version: string;
   apiKey: string;
 }
 
-export const CommunityHeroSupport = ({
-  repoUrl,
-  chatUrl,
-  version,
-  apiKey,
-}: CommunityHeroSupportProps) => {
+export const CommunitySupport = ({ repoUrl, chatUrl, version, apiKey }: CommunitySupportProps) => {
   return (
     <Wrapper>
       <CommunitySectionHeader

@@ -10,14 +10,13 @@ import {
   SupportFeature,
   SupportFeatureGrid,
 } from '@storybook/components-marketing';
-import { Link } from '@storybook/design-system';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import { SocialGraph } from '../../basics';
 import { CommunityHero } from './CommunityHero';
 import { CommunitySidebar } from './CommunitySidebar';
-import { CommunityHeroSupport } from './CommunityHeroSupport';
-import { DiscordIcon, GithubIcon } from './CommunityIcons';
-import { CommunityHeroEvents } from './CommunityHeroEvents';
+import { CommunitySupport } from './CommunitySupport';
+import { CommunityEvents } from './CommunityEvents';
+import { CommunityBrand } from './CommunityBrand';
 
 const { pageMargins } = styles;
 
@@ -77,11 +76,9 @@ export default function CommunityScreen({
     twitter,
     chat,
     youtube,
-    blog,
     presentation,
     designSystem,
     gitHub = {},
-    docs = {},
     openCollective,
   } = urls;
   return (
@@ -112,13 +109,18 @@ export default function CommunityScreen({
       <CommunityLayout>
         <CommunitySidebar badgeUrl={badge} activeSection="#support" />
         <Content>
-          <CommunityHeroSupport
+          <CommunitySupport
             repoUrl={gitHub.repo}
             chatUrl={chat}
             version={latestVersionString}
             apiKey={apiKey}
           />
-          <CommunityHeroEvents youTubeUrl={youtube} twitterUrl={twitter} chatUrl={chat} />
+          <CommunityEvents youTubeUrl={youtube} twitterUrl={twitter} chatUrl={chat} />
+          <CommunityBrand
+            brandUrl={brand}
+            presentationUrl={presentation}
+            designSystemUrl={designSystem}
+          />
         </Content>
       </CommunityLayout>
     </>

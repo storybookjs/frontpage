@@ -1,11 +1,6 @@
 import React from 'react';
 import { styled } from '@storybook/theming';
-import {
-  SearchBlock,
-  SupportFeature,
-  SupportFeatureGrid,
-  styles,
-} from '@storybook/components-marketing';
+import { SupportFeature, SupportFeatureGrid, styles } from '@storybook/components-marketing';
 import { Link } from '@storybook/design-system';
 import { DiscordIcon, YouTubeIcon, TwitterIcon } from './CommunityIcons';
 import { CommunitySectionHeader } from './CommunitySectionHeader';
@@ -27,17 +22,13 @@ const Wrapper = styled.section`
   }
 `;
 
-interface CommunityHeroEventsProps {
+interface CommunityEventsProps {
   youTubeUrl: string;
   twitterUrl: string;
   chatUrl: string;
 }
 
-export const CommunityHeroEvents = ({
-  youTubeUrl,
-  twitterUrl,
-  chatUrl,
-}: CommunityHeroEventsProps) => {
+export const CommunityEvents = ({ youTubeUrl, twitterUrl, chatUrl }: CommunityEventsProps) => {
   return (
     <Wrapper>
       <CommunitySectionHeader
