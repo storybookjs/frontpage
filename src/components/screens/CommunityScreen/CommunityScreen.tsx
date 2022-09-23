@@ -6,9 +6,6 @@ import {
   SubNavRight,
   SubNavLinkList,
   styles,
-  SearchBlock,
-  SupportFeature,
-  SupportFeatureGrid,
 } from '@storybook/components-marketing';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import { SocialGraph } from '../../basics';
@@ -19,6 +16,7 @@ import { CommunityEvents } from './CommunityEvents';
 import { CommunityBrand } from './CommunityBrand';
 import { CommunityContribute } from './CommunityContribute';
 import { CommunityMaintainers } from './CommunityMaintainers';
+import { CommunitySponsors } from './CommunitySponsors';
 
 const { pageMargins } = styles;
 
@@ -134,6 +132,7 @@ export default function CommunityScreen({
             contributeUrl={contributeUrl}
             chatUrl={chat}
           />
+          <CommunitySponsors openCollectiveUrl={openCollective} />
         </Content>
       </CommunityLayout>
     </>
