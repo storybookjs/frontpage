@@ -89,12 +89,24 @@ export const PublishIntegrations = React.forwardRef(({ timeFrameStyles }, ref) =
       <Storybook />
       <TimeFramePicker initial={false} style={timeFrameStyles} width="458" height="244" />
       <TimeFramePicker ref={ref} width="458" height="244" style={{ opacity: 0 }} />
-      <PointerHand variants={symbolVariants} transition={{ duration: 0.4, delay: 0.8 }} />
+      <PointerHand
+        data-chromatic="ignore"
+        variants={symbolVariants}
+        transition={{ duration: 0.4, delay: 0.8 }}
+      />
       <Player type="blue" x="6%" y="-12%" delay={1} count={2} />
-      <Arrow variants={symbolVariants} transition={{ duration: 0.4, delay: 1.6 }} />
+      <Arrow
+        data-chromatic="ignore"
+        variants={symbolVariants}
+        transition={{ duration: 0.4, delay: 1.6 }}
+      />
       <Player type="red" x="-7%" y="45%" delay={1.8} count={4} />
       <Player type="yellow" x="30%" y="56%" delay={3} count={2} />
-      <Caret variants={symbolVariants} transition={{ duration: 0.4, delay: 3.6 }} />
+      <Caret
+        data-chromatic="ignore"
+        variants={symbolVariants}
+        transition={{ duration: 0.4, delay: 3.6 }}
+      />
       <Player type="purple" x="65%" y="9%" delay={3.8} count={1} />
     </PublishIntegrationsWrapper>
   );

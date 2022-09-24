@@ -227,7 +227,12 @@ export const HeroDemo = ({ ...props }: HeroDemoProps) => {
       <Sidebar type="timeFrame" activeStory={activeStory} />
       <Controls startTimeControls={startTimeControls} endTimeControls={endTimeControls} />
       <TimeFrame activeStory={activeStory} />
-      <Pointer animate={pointerControls} src="images/develop/pointer.svg" alt="" />
+      <Pointer
+        data-chromatic="ignore"
+        animate={pointerControls}
+        src="images/develop/pointer.svg"
+        alt=""
+      />
     </Wrapper>
   );
 };
