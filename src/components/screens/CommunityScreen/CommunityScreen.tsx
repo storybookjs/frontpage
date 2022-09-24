@@ -67,10 +67,10 @@ const joinCommunityItems = [
 
 function useActiveSection(): [string, { [key: string]: React.MutableRefObject<HTMLDivElement> }] {
   const supportRef = useRef<HTMLDivElement>(null);
-  const supportInView = useInView(supportRef);
+  const supportInView = useInView(supportRef, { margin: '0px 0px -90% 0px' });
 
   const eventsRef = useRef<HTMLDivElement>(null);
-  const eventsInView = useInView(eventsRef);
+  const eventsInView = useInView(eventsRef, { margin: '0px 0px -25% 0px' });
 
   const brandRef = useRef<HTMLDivElement>(null);
   const brandInView = useInView(brandRef);

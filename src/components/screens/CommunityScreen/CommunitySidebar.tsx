@@ -2,7 +2,8 @@ import React from 'react';
 import { rgba } from 'polished';
 import { styled } from '@storybook/theming';
 import { styles, NavItem, Menu } from '@storybook/components-marketing';
-import { TableOfContents } from '@storybook/design-system';
+import { TableOfContents, Icon } from '@storybook/design-system';
+import { motion } from 'framer-motion';
 import StorybookBadgeSVG from '../../../images/community/storybook-badge.svg';
 
 const { color, text, subheading, breakpoints } = styles;
@@ -11,36 +12,42 @@ const sections = [
   {
     id: 'support',
     title: '⭐  Support',
+    shortTitle: '⭐  Support',
     path: '#support',
     type: 'link' as any,
   },
   {
     id: 'events',
     title: '🎪  Events & streams',
+    shortTitle: '🎪  Events',
     path: '#events-streams',
     type: 'link' as any,
   },
   {
     id: 'brand',
     title: '⚡️  Brand & resources',
+    shortTitle: '⚡️  Brand',
     path: '#brand-resources',
     type: 'link' as any,
   },
   {
     id: 'maintainers',
     title: '🌎  Maintainer team',
+    shortTitle: '🌎  Maintainers',
     path: '#maintainer-team',
     type: 'link' as any,
   },
   {
     id: 'contribute',
     title: '🛠  Contribute',
+    shortTitle: '🛠  Contribute',
     path: '#contribute',
     type: 'link' as any,
   },
   {
     id: 'sponsors',
     title: '💅  Sponsor',
+    shortTitle: '💅  Sponsor',
     path: '#sponsor',
     type: 'link' as any,
   },
@@ -62,7 +69,7 @@ const DesktopWrapper = styled.div`
   }
 `;
 
-const StickyWrapper = styled.div`
+const StickyWrapper = styled(motion.div)`
   position: sticky;
   top: 0;
   background: rgba(255, 255, 255, 0.85);
@@ -71,12 +78,11 @@ const StickyWrapper = styled.div`
 
   padding-top: 4px;
   padding-bottom: 4px;
-  display: block;
+  display: flex;
 
   @media (min-width: ${breakpoints[2]}px) {
     padding-top: 19px;
     padding-bottom: 19px;
-    margin-bottom: 3rem;
   }
 
   @media (min-width: ${breakpoints[3]}px) {
@@ -196,6 +202,16 @@ const SmallScreenTitle = styled(Title)`
   }
 `;
 
+const JumpLink = styled(NavItem)`
+  margin-left: auto;
+
+  svg {
+    width: 12px;
+    height: 12px;
+    margin-right: 6px;
+  }
+`;
+
 interface CommunitySidebarProps {
   badgeUrl: string;
   activeSectionId: string;
@@ -203,19 +219,24 @@ interface CommunitySidebarProps {
 
 export function CommunitySidebar({ badgeUrl, activeSectionId, ...props }: CommunitySidebarProps) {
   const activeSection = sections.find((item) => item.id === activeSectionId);
+  const isVisible = !!activeSection;
 
   return (
     <>
       <SmallScreenTitle>Community</SmallScreenTitle>
-      <StickyWrapper>
+      <StickyWrapper animate={{ opacity: isVisible ? 1 : 0 }} transition={{ duration: 0.4 }}>
         <MobileMenu items={mobileItems} label={activeSection?.title} />
         <TabletMenu>
           {sections.map((item) => (
             <NavItem key={item.path} href={item.path} active={item.id === activeSection?.id}>
-              {item.title}
+              {item.shortTitle}
             </NavItem>
           ))}
         </TabletMenu>
+        <JumpLink href="#page-top">
+          <Icon icon="arrowupalt" />
+          Jump to top
+        </JumpLink>
       </StickyWrapper>
 
       <DesktopWrapper {...props}>
