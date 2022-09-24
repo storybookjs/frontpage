@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { styled } from '@storybook/theming';
 import { SupportFeatureGrid, styles } from '@storybook/components-marketing';
 import { Avatar, Link, Icon, Button } from '@storybook/design-system';
@@ -160,41 +160,40 @@ interface CommunityMaintainersProps {
   }[];
 }
 
-export const CommunityMaintainers = ({
-  contributorsUrl,
-  contributors,
-}: CommunityMaintainersProps) => {
-  return (
-    <Wrapper>
-      <CommunitySectionHeader
-        id="maintainer-team"
-        title="Maintainer team"
-        description="Storybook is maintained by thousands of contributors worldwide and guided by a steering committee of top maintainers."
-      />
-      <SteeringCommittee>
-        <SubHeading>Steering committee</SubHeading>
-        <SteeringCommitteeMembers>
-          {steeringCommittee.map((member) => (
-            <SteeringCommitteeMember key={member.name} {...member} />
-          ))}
-        </SteeringCommitteeMembers>
-      </SteeringCommittee>
-      <div>
-        <SubHeading>Contributors</SubHeading>
-        <ContributorsWrapper>
-          {contributors.map(({ name, avatar, url }) => (
-            <a key={name} href={url} target="_blank" rel="noopener nofollow noreferrer">
-              <Contributor size="large" username={name} src={avatar} />
-            </a>
-          ))}
-        </ContributorsWrapper>
-        <Button isLink size="medium" appearance="tertiary" href={contributorsUrl}>
-          View all contributors on GitHub
-        </Button>
-      </div>
-    </Wrapper>
-  );
-};
+export const CommunityMaintainers = forwardRef<HTMLDivElement, CommunityMaintainersProps>(
+  ({ contributorsUrl, contributors }, ref) => {
+    return (
+      <Wrapper ref={ref}>
+        <CommunitySectionHeader
+          id="maintainer-team"
+          title="Maintainer team"
+          description="Storybook is maintained by thousands of contributors worldwide and guided by a steering committee of top maintainers."
+        />
+        <SteeringCommittee>
+          <SubHeading>Steering committee</SubHeading>
+          <SteeringCommitteeMembers>
+            {steeringCommittee.map((member) => (
+              <SteeringCommitteeMember key={member.name} {...member} />
+            ))}
+          </SteeringCommitteeMembers>
+        </SteeringCommittee>
+        <div>
+          <SubHeading>Contributors</SubHeading>
+          <ContributorsWrapper>
+            {contributors.map(({ name, avatar, url }) => (
+              <a key={name} href={url} target="_blank" rel="noopener nofollow noreferrer">
+                <Contributor size="large" username={name} src={avatar} />
+              </a>
+            ))}
+          </ContributorsWrapper>
+          <Button isLink size="medium" appearance="tertiary" href={contributorsUrl}>
+            View all contributors on GitHub
+          </Button>
+        </div>
+      </Wrapper>
+    );
+  }
+);
 
 const steeringCommittee = [
   {

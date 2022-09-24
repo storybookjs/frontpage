@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { styled } from '@storybook/theming';
 import { SupportFeatureGrid, NormalizeArea, styles } from '@storybook/components-marketing';
 import { Avatar, Button } from '@storybook/design-system';
@@ -53,28 +53,30 @@ interface CommunitySponsorsProps {
   }[];
 }
 
-export const CommunitySponsors = ({ openCollectiveUrl, sponsors }: CommunitySponsorsProps) => {
-  return (
-    <Wrapper>
-      <CommunitySectionHeader
-        id="sponsor"
-        title="Sponsor the community"
-        description="Donations help the community keep going. They are used for web hosting, continuous integration, contributor swag, learning materials, and event production."
-      />
-      <Donate>
-        <Button size="medium" appearance="secondaryOutline" isLink href={openCollectiveUrl}>
-          Donate on Open Collective
-        </Button>
-      </Donate>
-      <Sponsors>
-        {sponsors.map(({ name, url, image }) => (
-          <Sponsor key={name} href={url} target="_blank" rel="noopener nofollow noreferrer">
-            <NormalizeArea width={400} height={400} idealArea={10000}>
-              <img src={image} alt={name} />
-            </NormalizeArea>
-          </Sponsor>
-        ))}
-      </Sponsors>
-    </Wrapper>
-  );
-};
+export const CommunitySponsors = forwardRef<HTMLDivElement, CommunitySponsorsProps>(
+  ({ openCollectiveUrl, sponsors }, ref) => {
+    return (
+      <Wrapper ref={ref}>
+        <CommunitySectionHeader
+          id="sponsor"
+          title="Sponsor the community"
+          description="Donations help the community keep going. They are used for web hosting, continuous integration, contributor swag, learning materials, and event production."
+        />
+        <Donate>
+          <Button size="medium" appearance="secondaryOutline" isLink href={openCollectiveUrl}>
+            Donate on Open Collective
+          </Button>
+        </Donate>
+        <Sponsors>
+          {sponsors.map(({ name, url, image }) => (
+            <Sponsor key={name} href={url} target="_blank" rel="noopener nofollow noreferrer">
+              <NormalizeArea width={400} height={400} idealArea={10000}>
+                <img src={image} alt={name} />
+              </NormalizeArea>
+            </Sponsor>
+          ))}
+        </Sponsors>
+      </Wrapper>
+    );
+  }
+);

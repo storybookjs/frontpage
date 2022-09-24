@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { styled } from '@storybook/theming';
 import {
   SearchBlock,
@@ -34,35 +34,38 @@ interface CommunitySupportProps {
   apiKey: string;
 }
 
-export const CommunitySupport = ({ repoUrl, chatUrl, version, apiKey }: CommunitySupportProps) => {
-  return (
-    <Wrapper>
-      <CommunitySectionHeader
-        id="support"
-        title="Sponsor the community"
-        description="Donations help the community keep going. They are used for web hosting, continuous integration, contributor swag, learning materials, and event production."
-      />
-      <SearchBlock version={version} apiKey={apiKey} />
-      <SupportFeatureGrid>
-        <SupportFeature
-          image={<DiscordIcon />}
-          title="Ask a question in #support chat"
-          desc="Resolve issues with community help. A maintainer is usually online."
-        >
-          <Link withArrow href={chatUrl}>
-            Chat now
-          </Link>
-        </SupportFeature>
-        <SupportFeature
-          image={<GithubIcon />}
-          title="File an issue on GitHub"
-          desc="Please report issues, someone else may have the same issue."
-        >
-          <Link withArrow href={repoUrl}>
-            View GitHub issues
-          </Link>
-        </SupportFeature>
-      </SupportFeatureGrid>
-    </Wrapper>
-  );
-};
+export const CommunitySupport = forwardRef<HTMLDivElement, CommunitySupportProps>(
+  ({ repoUrl, chatUrl, version, apiKey }, ref) => {
+    return (
+      <Wrapper ref={ref}>
+        <CommunitySectionHeader
+          id="support"
+          title="Get support from the community"
+          description="Storybook’s thriving community can help answer your questions. Developers of all skill levels welcome."
+        />
+        <SearchBlock version={version} apiKey={apiKey} />
+        <SupportFeatureGrid>
+          <SupportFeature
+            image={<DiscordIcon />}
+            title="Ask a question in #support chat"
+            desc="Resolve issues with community help. A maintainer is usually online."
+          >
+            <Link withArrow href={chatUrl}>
+              Chat now
+            </Link>
+          </SupportFeature>
+          <SupportFeature
+            image={<GithubIcon />}
+            title="File an issue on GitHub"
+            desc="Please report issues, someone else may have the same issue."
+          >
+            <Link withArrow href={repoUrl}>
+              View GitHub issues
+            </Link>
+          </SupportFeature>
+        </SupportFeatureGrid>
+      </Wrapper>
+    );
+  }
+);
+CommunitySupport.displayName = 'CommunitySupport';

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useMemo } from 'react';
 import { styled } from '@storybook/theming';
 import {
   SubNav,
@@ -7,6 +7,7 @@ import {
   SubNavLinkList,
   styles,
 } from '@storybook/components-marketing';
+import { useInView } from 'framer-motion';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import { SocialGraph } from '../../basics';
 import { CommunityHero } from './CommunityHero';
@@ -18,7 +19,7 @@ import { CommunityContribute } from './CommunityContribute';
 import { CommunityMaintainers } from './CommunityMaintainers';
 import { CommunitySponsors } from './CommunitySponsors';
 
-const { pageMargins } = styles;
+const { pageMargins, breakpoints } = styles;
 
 const Content = styled.main`
   flex: 1 1 auto;
@@ -28,7 +29,12 @@ const Content = styled.main`
 const CommunityLayout = styled.div`
   ${pageMargins};
   display: flex;
-  gap: 50px;
+  flex-direction: column;
+
+  @media (min-width: ${breakpoints[3]}px) {
+    flex-direction: row;
+    gap: 3rem;
+  }
 `;
 
 const communityItems = [
@@ -59,6 +65,41 @@ const joinCommunityItems = [
   },
 ];
 
+function useActiveSection(): [string, { [key: string]: React.MutableRefObject<HTMLDivElement> }] {
+  const supportRef = useRef<HTMLDivElement>(null);
+  const supportInView = useInView(supportRef);
+
+  const eventsRef = useRef<HTMLDivElement>(null);
+  const eventsInView = useInView(eventsRef);
+
+  const brandRef = useRef<HTMLDivElement>(null);
+  const brandInView = useInView(brandRef);
+
+  const maintainersRef = useRef<HTMLDivElement>(null);
+  const maintainersView = useInView(maintainersRef);
+
+  const contributeRef = useRef<HTMLDivElement>(null);
+  const contributeInView = useInView(contributeRef);
+
+  const sponsorsRef = useRef<HTMLDivElement>(null);
+  const sponsorsInView = useInView(sponsorsRef);
+
+  const activeSection = useMemo(() => {
+    if (supportInView) return 'support';
+    if (eventsInView) return 'events';
+    if (brandInView) return 'brand';
+    if (maintainersView) return 'maintainers';
+    if (contributeInView) return 'contribute';
+    if (sponsorsInView) return 'sponsors';
+    return null;
+  }, [supportInView, eventsInView, brandInView, maintainersView, contributeInView, sponsorsInView]);
+
+  return [
+    activeSection,
+    { supportRef, eventsRef, brandRef, maintainersRef, contributeRef, sponsorsRef },
+  ];
+}
+
 export default function CommunityScreen({
   npmDownloads,
   twitterFollowerCount,
@@ -85,6 +126,11 @@ export default function CommunityScreen({
     contributeUrl,
     openCollective,
   } = urls;
+  const [
+    activeSection,
+    { supportRef, eventsRef, brandRef, maintainersRef, contributeRef, sponsorsRef },
+  ] = useActiveSection();
+
   return (
     <>
       <SocialGraph
@@ -111,29 +157,45 @@ export default function CommunityScreen({
       />
 
       <CommunityLayout>
-        <CommunitySidebar badgeUrl={badge} activeSection="#support" />
+        <CommunitySidebar badgeUrl={badge} activeSectionId={activeSection} />
         <Content>
           <CommunitySupport
+            ref={supportRef}
             repoUrl={gitHub.repo}
             chatUrl={chat}
             version={latestVersionString}
             apiKey={apiKey}
           />
-          <CommunityEvents youTubeUrl={youtube} twitterUrl={twitter} chatUrl={chat} />
+          <CommunityEvents
+            ref={eventsRef}
+            youTubeUrl={youtube}
+            twitterUrl={twitter}
+            chatUrl={chat}
+          />
           <CommunityBrand
+            ref={brandRef}
             brandUrl={brand}
             presentationUrl={presentation}
             designSystemUrl={designSystem}
           />
-          <CommunityMaintainers contributors={contributors} contributorsUrl={gitHub.contributors} />
+          <CommunityMaintainers
+            ref={maintainersRef}
+            contributors={contributors}
+            contributorsUrl={gitHub.contributors}
+          />
           <CommunityContribute
+            ref={contributeRef}
             contributorCount={githubContributorCount}
             docsUrl={docsUrl}
             issuesUrl={gitHub.issues}
             contributeUrl={contributeUrl}
             chatUrl={chat}
           />
-          <CommunitySponsors openCollectiveUrl={openCollective} sponsors={sponsors} />
+          <CommunitySponsors
+            ref={sponsorsRef}
+            openCollectiveUrl={openCollective}
+            sponsors={sponsors}
+          />
         </Content>
       </CommunityLayout>
     </>
