@@ -42,7 +42,7 @@ const Testimonials = styled.div`
   ${pageMargins};
   display: grid;
   gap: 80px;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   padding-top: 4rem;
   padding-bottom: 4rem;
   border-top: 1px solid ${color.border};
