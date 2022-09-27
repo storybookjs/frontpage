@@ -13,8 +13,8 @@ const essentialsBase = '/docs/react/essentials';
 const contributeUrl = `${docsUrl}/react/contribute/how-to-contribute`;
 
 const siteMetadata = {
-  title: 'Storybook',
-  description: `Storybook is an open source tool for developing UI components in isolation for React, Vue, and Angular`,
+  title: 'Storybook: Frontend workshop for UI development',
+  description: `Storybook is a frontend workshop for building UI components and pages in isolation. Thousands of teams use it for UI development, testing, and documentation. It’s open source and free.`,
   ogImage: '/images/social/open-graph.png',
   ogImageAddons: '/images/social/og-addons.png',
   siteUrl: homepageUrl, // Used for gatsby-plugin-sitemap

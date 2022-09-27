@@ -5,9 +5,7 @@ import { Avatar } from '@storybook/design-system';
 
 const { typography, color, marketing } = styles;
 
-const TestimonialWrapper = styled.div`
-  /* max-width: 300px; */
-`;
+const TestimonialWrapper = styled.div``;
 const Quote = styled.blockquote`
   ${marketing.textLarge};
   color: ${color.darkest};

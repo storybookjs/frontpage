@@ -118,13 +118,12 @@ export function IndexScreen({
     <>
       <Global styles={globalStyles} />
       <SocialGraph
-        title="Storybook: UI component explorer for frontend developers"
-        desc="Storybook is an open source tool for building UI components and pages in isolation. It
-          streamlines UI development, testing, and documentation."
+        title="Storybook: Frontend workshop for UI development"
+        desc="Storybook is a frontend workshop for building UI components and pages in isolation. Thousands of teams use it for UI development, testing, and documentation. It’s open source and free."
         url={home}
         image={ogImage}
       />
-      <Hero npmDownloads={npmDownloads} />
+      <Hero npmDownloads={npmDownloads} contributorCount={githubContributorCount} />
       <StickyNav isVisible={!!activeSection} docs={docs} activeSection={activeSection} />
       <Clip ref={developRef}>
         <Develop docs={docs} id="develop" />

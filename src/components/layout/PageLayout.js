@@ -34,6 +34,23 @@ const navLinks = {
   hiring: { url: 'https://www.chromatic.com/company/jobs' },
 };
 
+function activeRouteSection(pathname) {
+  if (pathname.includes('/why-storybook')) {
+    return 'why';
+  }
+  if (pathname.startsWith('/docs')) {
+    return 'docs';
+  }
+  if (pathname.startsWith('/addons')) {
+    return 'integrations';
+  }
+  if (pathname.startsWith('/community')) {
+    return 'community';
+  }
+
+  return 'home';
+}
+
 export function PurePageLayout({ dxData, children, pageContext, ...props }) {
   const {
     urls = {},
@@ -47,6 +64,7 @@ export function PurePageLayout({ dxData, children, pageContext, ...props }) {
   const isHomePage = props.location.pathname === '/';
 
   const { framework } = pageContext;
+  const activeSection = activeRouteSection(props.location.pathname);
 
   return (
     <LinksContextProvider value={navLinks}>
@@ -94,6 +112,7 @@ export function PurePageLayout({ dxData, children, pageContext, ...props }) {
               framework={framework || 'react'}
               version={versionString || latestVersionString}
               apiKey={ALGOLIA_API_KEY}
+              activeSection={activeSection}
             />
           </>
         )}

@@ -98,8 +98,8 @@ const Stats = styled.div`
   gap: 40px;
 `;
 
-export function Hero({ npmDownloads, startOpen, ...props }) {
-  const { latestVersion, urls = {}, contributorCount } = useSiteMetadata();
+export function Hero({ contributorCount, npmDownloads, startOpen, ...props }) {
+  const { latestVersion, urls = {} } = useSiteMetadata();
   const { docs = {}, gitHub = {} } = urls;
 
   return (
@@ -134,7 +134,7 @@ export function Hero({ npmDownloads, startOpen, ...props }) {
               />
               <NpmDownloadCount downloads={npmDownloads} />
               <Stat
-                count={`${contributorCount}+`}
+                count={`${contributorCount.toLocaleString()}+`}
                 text="Contributors"
                 countLink={gitHub.contributors}
                 noPlural
