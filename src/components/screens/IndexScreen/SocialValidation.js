@@ -89,13 +89,14 @@ const Projects = styled(HorizontalScroll)`
 
 const SocialCTAs = styled.div`
   ${pageMargins};
-  padding-bottom: 7rem;
+  padding-bottom: 3rem;
   display: grid;
   grid-template-columns: 1fr;
   gap: 35px;
 
   @media (min-width: ${breakpoints[1]}px) {
     grid-template-columns: repeat(2, 1fr);
+    padding-bottom: 7rem;
   }
 
   @media (min-width: ${breakpoints[2]}px) {
@@ -217,7 +218,7 @@ export function SocialValidation({
         <SocialCard
           inverse
           icon={<ColoredIcon icon="github" aria-label="Github" color="#fff" />}
-          description="Join 1440+ contributors building the future of UI development."
+          description={`Join ${githubContributorCount.toLocaleString()}+ contributors building the future of UI development.`}
           link={{
             label: 'Star on GitHub',
             href: 'https://github.com/storybookjs/storybook',
@@ -230,7 +231,7 @@ export function SocialValidation({
         <SocialCard
           inverse
           icon={<ColoredIcon icon="discord" aria-label="Discord" color="#5A65EA" />}
-          description="Get support and chat with 13,000+ frontend developers."
+          description={`Get support and chat with ${discordMemberCount.toLocaleString()}+ frontend developers.`}
           link={{
             label: 'Join Discord server',
             href: 'https://discord.gg/storybook',
