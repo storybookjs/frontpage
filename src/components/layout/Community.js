@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { styled } from '@storybook/theming';
+import { color, styled } from '@storybook/theming';
 import { styles } from '@storybook/components-marketing';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 
@@ -50,6 +50,8 @@ const Wrapper = styled.div`
 const ImageCardWrapper = styled.div`
   position: relative;
   grid-column: 1 / -1;
+  border-radius: 10px;
+  background: ${(props) => (props.inverse ? 'rgba(255, 255, 255, 0.1)' : color.border)};
 
   @media (min-width: ${breakpoints[1]}px) {
     grid-column: 1 / 3;
@@ -58,6 +60,8 @@ const ImageCardWrapper = styled.div`
 const VideoCardALink = styled.a`
   position: relative;
   grid-column: 1 / 3;
+  border-radius: 10px;
+  background: ${(props) => (props.inverse ? 'rgba(255, 255, 255, 0.1)' : color.border)};
 
   @media (min-width: ${breakpoints[1]}px) {
     grid-column: 3 / 4;
@@ -66,6 +70,8 @@ const VideoCardALink = styled.a`
 const VideoCardBLink = styled.a`
   position: relative;
   grid-column: 3 / 5;
+  border-radius: 10px;
+  background: ${(props) => (props.inverse ? 'rgba(255, 255, 255, 0.1)' : color.border)};
 
   @media (min-width: ${breakpoints[1]}px) {
     grid-column: 4 / 5;
@@ -143,7 +149,7 @@ function useAnimationState(totalCount, animate) {
   return activeIndex;
 }
 
-export function Community(props) {
+export function Community({ inverse, ...props }) {
   const sectionRef = useRef(null);
   const animate = useInView(sectionRef);
   const activeIndex = useAnimationState(3, animate);
@@ -166,7 +172,7 @@ export function Community(props) {
 
   return (
     <Wrapper ref={sectionRef} {...props}>
-      <ImageCardWrapper>
+      <ImageCardWrapper inverse={inverse}>
         <AnimatePresence initial={false}>
           <ImageCard
             key={activeIndex.img}
@@ -182,6 +188,7 @@ export function Community(props) {
         </AnimatePresence>
       </ImageCardWrapper>
       <VideoCardALink
+        inverse={inverse}
         href={videosA[activeIndex.videoA].link}
         target="_blank"
         rel="noopener nofollow noreferrer"
@@ -203,6 +210,7 @@ export function Community(props) {
         </AnimatePresence>
       </VideoCardALink>
       <VideoCardBLink
+        inverse={inverse}
         href={videosB[activeIndex.videoB].link}
         target="_blank"
         rel="noopener nofollow noreferrer"

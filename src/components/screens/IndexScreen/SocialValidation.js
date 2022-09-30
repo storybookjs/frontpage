@@ -213,7 +213,7 @@ export function SocialValidation({
           <ProjectCard key={project.logoAlt} {...project} />
         ))}
       </Projects>
-      <Community />
+      <Community inverse />
       <SocialCTAs>
         <SocialCard
           inverse
