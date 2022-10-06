@@ -8,7 +8,24 @@ const { GlobalStyle } = global;
 
 const ALGOLIA_API_KEY = process.env.GATSBY_ALGOLIA_API_KEY;
 
-// In theory we could pass in props that we'd fetched via Gatsby's GraphQL
+function shuffle(array) {
+  let currentIndex = array.length;
+  let randomIndex;
+
+  // While there remain elements to shuffle.
+  while (currentIndex !== 0) {
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    // eslint-disable-next-line no-param-reassign
+    [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+  }
+
+  return array;
+}
+
 const CommunityPage = ({ data }) => {
   const {
     dxData: {
@@ -30,7 +47,7 @@ const CommunityPage = ({ data }) => {
     githubContributorCount,
     youTubeSubscriberCount,
     githubStars,
-    contributors,
+    contributors: shuffle(contributors),
     sponsors,
   };
 

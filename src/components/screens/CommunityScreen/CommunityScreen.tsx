@@ -34,18 +34,26 @@ const CommunityLayout = styled.div`
 
   @media (min-width: ${breakpoints[3]}px) {
     flex-direction: row;
-    gap: 3rem;
+    gap: 70px;
   }
 `;
 
 const Testimonials = styled.div`
   ${pageMargins};
+`;
+
+const TestimonialsInner = styled.div`
   display: grid;
-  gap: 80px;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   padding-top: 4rem;
   padding-bottom: 4rem;
   border-top: 1px solid ${color.border};
+
+  @media (min-width: ${breakpoints[3]}px) {
+    gap: 80px;
+    justify-content: space-between;
+  }
 `;
 
 const communityItems = [
@@ -210,24 +218,26 @@ export default function CommunityScreen({
         </Content>
       </CommunityLayout>
       <Testimonials>
-        <SmallTestimonial
-          quote="Storybook is a powerful frontend workshop environment tool that allows teams to design, build, and organize UI components (and even full screens!) without getting tripped up over business logic and plumbing."
-          name="Brad Frost"
-          title="Author of Atomic Design"
-          avatarUrl="https://avatars3.githubusercontent.com/u/383701?s=460&v=4"
-        />
-        <SmallTestimonial
-          quote="Storybook was one of our best decisions for writing React components across web and native. It blows our old practices out of the water."
-          name="Orta Therox"
-          title="Frontend infrastructure"
-          avatarUrl="https://avatars1.githubusercontent.com/u/49038?s=100&v=4"
-        />
-        <SmallTestimonial
-          quote="Storybook has made developing components more streamlined by allowing us to easily include technical documentation within our design system!"
-          name="Taurie Davis"
-          title="Author of Building Design Systems"
-          avatarUrl="https://avatars0.githubusercontent.com/u/3028593?s=460&v=4"
-        />
+        <TestimonialsInner>
+          <SmallTestimonial
+            quote="Storybook is a powerful frontend workshop environment tool that allows teams to design, build, and organize UI components (and even full screens!) without getting tripped up over business logic and plumbing."
+            name="Brad Frost"
+            title="Author of Atomic Design"
+            avatarUrl="https://avatars3.githubusercontent.com/u/383701?s=460&v=4"
+          />
+          <SmallTestimonial
+            quote="Storybook was one of our best decisions for writing React components across web and native. It blows our old practices out of the water."
+            name="Orta Therox"
+            title="Frontend infrastructure"
+            avatarUrl="https://avatars1.githubusercontent.com/u/49038?s=100&v=4"
+          />
+          <SmallTestimonial
+            quote="Storybook has made developing components more streamlined by allowing us to easily include technical documentation within our design system!"
+            name="Taurie Davis"
+            title="Author of Building Design Systems"
+            avatarUrl="https://avatars0.githubusercontent.com/u/3028593?s=460&v=4"
+          />
+        </TestimonialsInner>
       </Testimonials>
     </>
   );

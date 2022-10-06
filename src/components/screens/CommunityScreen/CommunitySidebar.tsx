@@ -69,12 +69,14 @@ const DesktopWrapper = styled.div`
   }
 `;
 
-const StickyWrapper = styled(motion.div)`
+const StickyWrapper = styled.div`
   position: sticky;
   top: 0;
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(10px);
   z-index: 9999;
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
 
   padding-top: 4px;
   padding-bottom: 4px;
@@ -224,7 +226,7 @@ export function CommunitySidebar({ badgeUrl, activeSectionId, ...props }: Commun
   return (
     <>
       <SmallScreenTitle>Community</SmallScreenTitle>
-      <StickyWrapper animate={{ opacity: isVisible ? 1 : 0 }} transition={{ duration: 0.4 }}>
+      <StickyWrapper>
         <MobileMenu items={mobileItems} label={activeSection?.title} />
         <TabletMenu>
           {sections.map((item) => (

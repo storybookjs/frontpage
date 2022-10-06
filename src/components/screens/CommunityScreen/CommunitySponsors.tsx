@@ -9,7 +9,7 @@ const { breakpoints } = styles;
 const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 
   ${SupportFeatureGrid} {
     width: 100%;
