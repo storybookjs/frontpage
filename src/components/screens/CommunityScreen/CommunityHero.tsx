@@ -10,6 +10,10 @@ const { pageMargins, breakpoints, color } = styles;
 const Wrapper = styled.header`
   margin-top: 4rem;
   margin-bottom: 3rem;
+
+  @media (min-width: ${breakpoints[2]}px) {
+    padding-bottom: 4rem;
+  }
 `;
 
 const StyledCommunity = styled(Community)`
@@ -28,8 +32,9 @@ const StyledCommunity = styled(Community)`
 const Stats = styled.div`
   ${pageMargins}
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 30px;
+  justify-content: space-between;
 `;
 
 const DividerWrapper = styled.div`

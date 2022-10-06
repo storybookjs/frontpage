@@ -49,7 +49,7 @@ const Testimonials = styled.div`
 `;
 
 const communityItems = [
-  { key: '0', label: 'Get Involved', href: '/community', isActive: true },
+  { key: '0', label: 'Get involved', href: '/community', isActive: true },
   { key: '1', label: 'Blog', href: 'https://storybook.js.org/blog' },
 ];
 
@@ -102,7 +102,7 @@ function useActiveSection(): [string, { [key: string]: React.MutableRefObject<HT
     if (maintainersView) return 'maintainers';
     if (contributeInView) return 'contribute';
     if (sponsorsInView) return 'sponsors';
-    return null;
+    return 'support';
   }, [supportInView, eventsInView, brandInView, maintainersView, contributeInView, sponsorsInView]);
 
   return [
