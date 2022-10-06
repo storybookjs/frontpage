@@ -76,7 +76,7 @@ Image.propTypes = {
 };
 
 const Title = styled.div`
-  font-weight: ${typography.weight.black};
+  font-weight: ${typography.weight.bold};
   font-size: ${typography.size.s3}px;
   line-height: ${typography.size.m2}px;
   color: ${color.darker};

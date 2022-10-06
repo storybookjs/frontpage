@@ -20,7 +20,7 @@ const Wrapper = styled.main`
 const Title = styled.h1`
   color: ${color.darkest};
   font-size: ${typography.size.l1}px;
-  font-weight: ${typography.weight.black};
+  font-weight: ${typography.weight.bold};
   letter-spacing: -0.33px;
   line-height: 40px;
   margin-bottom: 9px;
@@ -35,7 +35,7 @@ const EmailWrapper = styled.div`
 `;
 
 const Heading = styled.div`
-  font-weight: ${typography.weight.black};
+  font-weight: ${typography.weight.bold};
 `;
 
 const Message = styled.div`

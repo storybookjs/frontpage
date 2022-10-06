@@ -14,7 +14,7 @@ const SearchResultsContainer = styled(AddonsAsideContainer)`
 `;
 
 const SearchSummaryCopy = styled.div`
-  font-size: ${typography.weight.black};
+  font-size: ${typography.weight.bold};
   line-height: 28px;
   color: ${color.darkest};
   margin-left: ${spacing.padding.medium}px;
@@ -57,7 +57,7 @@ const NoAddonsFoundInner = styled.div`
   h3 {
     font-size: ${typography.size.s2}px;
     line-height: ${typography.size.m1}px;
-    font-weight: ${typography.weight.black};
+    font-weight: ${typography.weight.bold};
   }
 `;
 
