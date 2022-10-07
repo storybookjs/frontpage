@@ -15,7 +15,7 @@ const { breakpoints } = styles;
 const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 30px;
   margin-bottom: 3rem;
 
   ${SupportFeatureGrid} {
