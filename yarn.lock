@@ -4382,7 +4382,28 @@
   dependencies:
     lodash "^4.17.15"
 
-"@storybook/design-system@7.8.6", "@storybook/design-system@^7.8.6":
+"@storybook/design-system@7.9.0":
+  version "7.9.0"
+  resolved "https://registry.yarnpkg.com/@storybook/design-system/-/design-system-7.9.0.tgz#1c797f2766f838a26095cd9fd0acde0392513b90"
+  integrity sha512-tHZfcLkpxzzWVf8ixdRP6XwQ19e1tsk89IU2B+8ar/ytzW4SnKz9cfbwQQCCstlst67ubgODVNTWKq57uQWVdQ==
+  dependencies:
+    "@emotion/weak-memoize" "^0.2.5"
+    "@storybook/theming" "^6.5.9"
+    "@types/pluralize" "^0.0.29"
+    "@types/prismjs" "^1.16.6"
+    "@types/react-modal" "^3.12.1"
+    "@types/uuid" "^8.3.1"
+    copy-to-clipboard "^3.3.1"
+    human-format "^0.11.0"
+    pluralize "^8.0.0"
+    polished "^3.6.4"
+    prismjs "1.25.0"
+    react-github-button "^0.1.11"
+    react-modal "^3.11.2"
+    react-popper-tooltip "^2.11.1"
+    uuid "^3.3.3"
+
+"@storybook/design-system@^7.8.6":
   version "7.8.6"
   resolved "https://registry.yarnpkg.com/@storybook/design-system/-/design-system-7.8.6.tgz#3a4e699b069a7f5dca30493440b91f5a8f1b270d"
   integrity sha512-/mnIDD3A4wxUn1R5VL4HAmXpGUT/PXDAI4o9+emX2DshZmx+PeWx/mbP2IzZp3yQulPVgPtLkecU4TlOaKkxvA==
