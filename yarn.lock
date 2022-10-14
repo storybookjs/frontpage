@@ -4120,16 +4120,16 @@
     core-js "^3.8.2"
     global "^4.4.0"
 
-"@storybook/components-marketing@^2.0.37":
-  version "2.0.37"
-  resolved "https://registry.yarnpkg.com/@storybook/components-marketing/-/components-marketing-2.0.37.tgz#68bd5f3abd8d233be9646afb700c080c5c514ae5"
-  integrity sha512-uaA8YXzFNcoMIf9rBrMPjppS+9xPrFeSVueRQn+6oOJSzcoUylDluacYu97LpUm5VN7Ls0Ubz/AgDru6MotM6w==
+"@storybook/components-marketing@^2.0.38":
+  version "2.0.38"
+  resolved "https://registry.yarnpkg.com/@storybook/components-marketing/-/components-marketing-2.0.38.tgz#e9b3eb25917e93bacf2126e7676238e05ae2d6fe"
+  integrity sha512-Ro/hoMTcN0Eg0rZ7D7SvJxCGgyZo0T/xp4qbwKuX3BNogrQ3OhDHRK5Y1w54yiGJPHry1Cmlpf5cdhfbEasJ2A==
   dependencies:
     "@docsearch/react" "^3.1.0"
     "@emotion/weak-memoize" "^0.2.5"
     "@floating-ui/react-dom-interactions" "^0.6.5"
     "@storybook/api" "^6.5.9"
-    "@storybook/design-system" "^7.8.6"
+    "@storybook/design-system" "^7.9.0"
     "@storybook/theming" "^6.5.9"
     formik "^2.1.5"
     human-format "^0.11.0"
@@ -4382,31 +4382,10 @@
   dependencies:
     lodash "^4.17.15"
 
-"@storybook/design-system@7.9.0":
+"@storybook/design-system@7.9.0", "@storybook/design-system@^7.9.0":
   version "7.9.0"
   resolved "https://registry.yarnpkg.com/@storybook/design-system/-/design-system-7.9.0.tgz#1c797f2766f838a26095cd9fd0acde0392513b90"
   integrity sha512-tHZfcLkpxzzWVf8ixdRP6XwQ19e1tsk89IU2B+8ar/ytzW4SnKz9cfbwQQCCstlst67ubgODVNTWKq57uQWVdQ==
-  dependencies:
-    "@emotion/weak-memoize" "^0.2.5"
-    "@storybook/theming" "^6.5.9"
-    "@types/pluralize" "^0.0.29"
-    "@types/prismjs" "^1.16.6"
-    "@types/react-modal" "^3.12.1"
-    "@types/uuid" "^8.3.1"
-    copy-to-clipboard "^3.3.1"
-    human-format "^0.11.0"
-    pluralize "^8.0.0"
-    polished "^3.6.4"
-    prismjs "1.25.0"
-    react-github-button "^0.1.11"
-    react-modal "^3.11.2"
-    react-popper-tooltip "^2.11.1"
-    uuid "^3.3.3"
-
-"@storybook/design-system@^7.8.6":
-  version "7.8.6"
-  resolved "https://registry.yarnpkg.com/@storybook/design-system/-/design-system-7.8.6.tgz#3a4e699b069a7f5dca30493440b91f5a8f1b270d"
-  integrity sha512-/mnIDD3A4wxUn1R5VL4HAmXpGUT/PXDAI4o9+emX2DshZmx+PeWx/mbP2IzZp3yQulPVgPtLkecU4TlOaKkxvA==
   dependencies:
     "@emotion/weak-memoize" "^0.2.5"
     "@storybook/theming" "^6.5.9"
