@@ -2,7 +2,7 @@
 
 Storybook is the most popular UI component explorer! This is the website for https://storybook.js.org/.
 
-**Note**: This is not the docs, those are located [here](https://github.com/storybooks/storybook/tree/next/docs).
+**Note**: These are not the docs, those are located [here](https://github.com/storybooks/storybook/tree/next/docs).
 
 ## 🛠 Contributing
 
