@@ -85,7 +85,12 @@ const symbolVariants = {
 
 export const PublishIntegrations = React.forwardRef(({ timeFrameStyles }, ref) => {
   return (
-    <PublishIntegrationsWrapper whileInView="animate" initial="initial" viewport={{ once: true }}>
+    <PublishIntegrationsWrapper
+      data-chromatic="ignore"
+      whileInView="animate"
+      initial="initial"
+      viewport={{ once: true }}
+    >
       <Storybook />
       <TimeFramePicker initial={false} style={timeFrameStyles} width="458" height="244" />
       <TimeFramePicker ref={ref} width="458" height="244" style={{ opacity: 0 }} />

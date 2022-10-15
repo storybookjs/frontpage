@@ -92,7 +92,7 @@ const decorationVariants = {
 
 export function Publish({ docs, ...props }) {
   return (
-    <Figure {...props}>
+    <Figure data-chromatic="ignore" {...props}>
       <Content>
         <Arrow
           variants={decorationVariants}
