@@ -79,8 +79,15 @@ it('Should empty the search field', () => {
 });
 `;
 
-export const jasmine = `import { render, screen, fireEvent } from '@testing-library/angular';
-import { composeStory, createMountableStoryComponent } from '@storybook/testing-angular';
+export const jasmine = `import {
+  render,
+  screen,
+  fireEvent,
+} from '@testing-library/angular';
+import {
+  composeStory,
+  createMountableStoryComponent,
+} from '@storybook/testing-angular';
 
 import Meta, {
   Default as DefaultStory,
@@ -91,10 +98,9 @@ const Default = composeStory(DefaultStory, Meta);
 
 describe('Delete Customer Dialog', () => {
   it('should open a dialog', async () => {
-    const {
-      component,
-      ngModule,
-    } = createMountableStoryComponent(Default({}, {} as any));
+    const { component, ngModule } = createMountableStoryComponent(
+      Default({}, {} as any)
+    );
 
     // Render the story
     await render(component, { imports: [ngModule] });

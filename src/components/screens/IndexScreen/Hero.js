@@ -16,7 +16,6 @@ const { color, breakpoints, pageMargins } = styles;
 const ModalVideo = styled.iframe`
   width: 100%;
   height: 100%;
-  object-fit: contain;
 `;
 
 const ModalVideoWrapper = styled.div`
@@ -24,6 +23,11 @@ const ModalVideoWrapper = styled.div`
   border-radius: 10px;
   overflow: hidden;
   background: ${color.lightest};
+  /**
+   * This z-index moves the wrapper to a new stacking context, which Safari
+   * needs in order to render the rounded corners appropriately.
+   */
+  z-index: 1;
 `;
 
 const AspectRatio = styled(PlaceholderAspectRatio)`
@@ -98,8 +102,8 @@ const Stats = styled.div`
   gap: 40px;
 `;
 
-export function Hero({ npmDownloads, startOpen, ...props }) {
-  const { latestVersion, urls = {}, contributorCount } = useSiteMetadata();
+export function Hero({ contributorCount, npmDownloads, startOpen, ...props }) {
+  const { latestVersion, urls = {} } = useSiteMetadata();
   const { docs = {}, gitHub = {} } = urls;
 
   return (
@@ -115,7 +119,11 @@ export function Hero({ npmDownloads, startOpen, ...props }) {
               <Button appearance="secondary" isLink href={docs} ButtonWrapper={GatsbyLinkWrapper}>
                 Get started
               </Button>
-              <WithModal startOpen={startOpen} modal={Modal}>
+              <WithModal
+                startOpen={startOpen}
+                modal={Modal}
+                overlayStyles={{ backdropFilter: 'blur(10px)' }}
+              >
                 {({ onOpen }) => (
                   <Button appearance="inverseOutline" onClick={onOpen}>
                     <Icon icon="play" aria-hidden /> Watch video
@@ -134,7 +142,7 @@ export function Hero({ npmDownloads, startOpen, ...props }) {
               />
               <NpmDownloadCount downloads={npmDownloads} />
               <Stat
-                count={`${contributorCount}+`}
+                count={`${contributorCount.toLocaleString()}+`}
                 text="Contributors"
                 countLink={gitHub.contributors}
                 noPlural

@@ -43,7 +43,7 @@ export const mdFormatting = css`
 
   h1 {
     font-size: ${typography.size.l1}px;
-    font-weight: ${typography.weight.black};
+    font-weight: ${typography.weight.bold};
 
     line-height: 36px;
     margin-bottom: 1.5rem;
@@ -51,7 +51,7 @@ export const mdFormatting = css`
 
   h2 {
     font-size: ${typography.size.m2}px;
-    font-weight: ${typography.weight.extrabold};
+    font-weight: ${typography.weight.bold};
     line-height: ${typography.size.m3}px;
     margin-bottom: 0.5em;
   }
@@ -62,14 +62,14 @@ export const mdFormatting = css`
 
   h3 {
     font-size: ${typography.size.m1}px;
-    font-weight: ${typography.weight.extrabold};
+    font-weight: ${typography.weight.bold};
     line-height: 28px;
     margin: 2.5rem 0 0.5rem;
   }
 
   h4 {
     font-size: ${typography.size.s3}px;
-    font-weight: ${typography.weight.extrabold};
+    font-weight: ${typography.weight.bold};
     margin: 2rem 0 0.5rem;
   }
 

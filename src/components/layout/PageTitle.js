@@ -36,7 +36,7 @@ export const Heading = styled(Subheading)`
 
 export const Title = styled.h1`
   font-size: ${typography.size.m3}px;
-  font-weight: ${typography.weight.black};
+  font-weight: ${typography.weight.bold};
   line-height: 24px;
   margin-bottom: 0.5rem;
 

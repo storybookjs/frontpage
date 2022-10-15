@@ -51,6 +51,7 @@ const Connector = ({ name, ...props }) => {
   return (
     <AnimatePresence>
       <SVG
+        data-chromatic="ignore"
         width="263"
         height="145"
         viewBox="0 0 263 145"

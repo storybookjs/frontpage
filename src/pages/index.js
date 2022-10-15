@@ -62,6 +62,7 @@ export const query = graphql`
             "bbc-psammead"
             "audi-ui-react"
             "wordpress-gutenberg"
+            "nasa-jpl-explorer-1"
           ]
         }
       ) {

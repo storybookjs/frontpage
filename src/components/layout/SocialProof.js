@@ -15,11 +15,12 @@ const Logos = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
   flex-wrap: wrap;
-  --ideal-area: 1500;
+  --ideal-area: 1000;
 
   @media (min-width: ${breakpoints[1]}px) {
+    gap: 20px;
     --ideal-area: 2500;
   }
 

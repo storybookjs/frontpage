@@ -81,6 +81,8 @@ const WorkflowWrapper = styled.div`
 `;
 
 const Workflow = styled.div`
+  width: 100%;
+  height: 100%;
   border-radius: 5px;
   transition: transform 350ms ${easing}, box-shadow 350ms ${easing};
   transform: ${(props) =>
