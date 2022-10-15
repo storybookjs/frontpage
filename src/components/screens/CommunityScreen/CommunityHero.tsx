@@ -8,19 +8,21 @@ import { NpmDownloadCount } from '../../layout/NpmDownloadCount';
 const { pageMargins, breakpoints, color } = styles;
 
 const Wrapper = styled.header`
-  margin-top: 4rem;
-  margin-bottom: 3rem;
-
+  padding-top: 3rem;
+  @media (min-width: ${breakpoints[1]}px) {
+    padding-top: 4rem;
+  }
   @media (min-width: ${breakpoints[2]}px) {
-    padding-bottom: 4rem;
+    padding-top: 6rem;
   }
 `;
 
 const StyledCommunity = styled(Community)`
-  padding-top: 4rem;
+  padding-top: 3rem;
   padding-bottom: 3rem;
 
   @media (min-width: ${breakpoints[1]}px) {
+    padding-top: 4rem;
     padding-bottom: 3rem;
   }
 
@@ -40,8 +42,18 @@ const Stats = styled.div`
 const DividerWrapper = styled.div`
   ${pageMargins};
 `;
+
 const Divider = styled.hr`
   margin-top: 3rem;
+  margin-bottom: 3rem;
+  @media (min-width: ${breakpoints[2]}px) {
+    margin-top: 3rem;
+    margin-bottom: 1.25rem;
+  }
+  @media (min-width: ${breakpoints[3]}px) {
+    margin-top: 3rem;
+    margin-bottom: 4rem;
+  }
   border: 0;
   border-bottom: 1px solid ${color.border};
 `;
@@ -69,7 +81,7 @@ export function CommunityHero({
       <SectionLede
         heading="Meet world-class frontend devs"
         headingWrapper="h1"
-        copy="Storybook is the one of the fastest growing frontend communities.  Join thousands fellow developers leveling up their skills together."
+        copy="Storybook is one of the fastest growing frontend communities. Join thousands fellow developers leveling up their skills together."
         actions={<MailingListSignup onSubscribe={() => {}} />}
       />
       <StyledCommunity />

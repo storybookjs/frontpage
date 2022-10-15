@@ -32,7 +32,7 @@ const Sponsors = styled.ul`
   gap: 1.25rem;
   padding: 0;
   margin-top: 0;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
 `;
 const Sponsor = styled.a`
   display: inline-block;

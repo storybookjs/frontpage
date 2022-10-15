@@ -45,10 +45,20 @@ const Testimonials = styled.div`
 const TestimonialsInner = styled.div`
   display: grid;
   gap: 3rem;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+  grid-template-columns: 1fr;
   border-top: 1px solid ${color.border};
+
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+
+  @media (min-width: ${breakpoints[1]}px) {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  @media (min-width: ${breakpoints[2]}px) {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
 
   @media (min-width: ${breakpoints[3]}px) {
     gap: 80px;

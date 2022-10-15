@@ -4,6 +4,7 @@ import { styled } from '@storybook/theming';
 import { styles, NavItem, Menu } from '@storybook/components-marketing';
 import { TableOfContents, Icon } from '@storybook/design-system';
 import { motion } from 'framer-motion';
+import { pageMargins } from '@storybook/design-system/dist/components/shared/styles';
 import StorybookBadgeSVG from '../../../images/community/storybook-badge.svg';
 
 const { color, text, subheading, breakpoints } = styles;
@@ -65,9 +66,11 @@ const DesktopWrapper = styled.div`
   @media (min-width: ${breakpoints[3]}px) {
     display: block;
     padding-bottom: 4rem;
-    max-width: 200px;
+    width: 200px;
   }
 `;
+
+const PageMarginWrapper = styled.div``;
 
 const StickyWrapper = styled.div`
   position: sticky;
@@ -75,16 +78,23 @@ const StickyWrapper = styled.div`
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(10px);
   z-index: 9999;
-  margin-top: -0.5rem;
-  margin-bottom: 1rem;
 
+  width: 100vw;
+  margin-left: calc((100vw - 100%) / -2);
+  margin-bottom: 2rem;
   padding-top: 4px;
   padding-bottom: 4px;
-  display: flex;
+
+  ${PageMarginWrapper} {
+    ${pageMargins};
+
+    display: flex;
+  }
 
   @media (min-width: ${breakpoints[2]}px) {
-    padding-top: 19px;
-    padding-bottom: 19px;
+    margin-bottom: 1rem;
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 
   @media (min-width: ${breakpoints[3]}px) {
@@ -97,7 +107,7 @@ const Inner = styled.div`
   flex-direction: row;
   align-items: flex-start;
 
-  @media (min-width: ${breakpoints[3]}px) {
+  @media (min-width: ${breakpoints[2]}px) {
     flex-direction: column;
     position: sticky;
     top: 2rem;
@@ -107,6 +117,7 @@ const Inner = styled.div`
 const StorybookBadge = styled.img`
   display: block;
 `;
+
 const StorybookBadgeOuter = styled.a`
   background: ${rgba(color.purple, 0.1)};
   border: 1px dashed ${rgba(color.purple, 0.3)};
@@ -143,7 +154,7 @@ const StorybookBadgeOuter = styled.a`
 `;
 const Divider = styled.div`
   border-top: 1px solid ${color.border};
-  margin-top: 20px;
+  margin-top: 30px;
   margin-bottom: 30px;
   width: 100%;
   max-width: 150px;
@@ -164,7 +175,7 @@ const Title = styled.div`
   ${subheading.regular};
   text-transform: uppercase;
   color: ${color.mediumdark};
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 `;
 
 const BadgeContainer = styled.div`
@@ -196,14 +207,6 @@ const TabletMenu = styled.div`
   }
 `;
 
-const SmallScreenTitle = styled(Title)`
-  display: block;
-
-  @media (min-width: ${breakpoints[3]}px) {
-    display: none;
-  }
-`;
-
 const JumpLink = styled(NavItem)`
   margin-left: auto;
 
@@ -225,20 +228,21 @@ export function CommunitySidebar({ badgeUrl, activeSectionId, ...props }: Commun
 
   return (
     <>
-      <SmallScreenTitle>Community</SmallScreenTitle>
       <StickyWrapper>
-        <MobileMenu items={mobileItems} label={activeSection?.title} />
-        <TabletMenu>
-          {sections.map((item) => (
-            <NavItem key={item.path} href={item.path} active={item.id === activeSection?.id}>
-              {item.shortTitle}
-            </NavItem>
-          ))}
-        </TabletMenu>
-        <JumpLink href="#page-top">
-          <Icon icon="arrowupalt" />
-          Jump to top
-        </JumpLink>
+        <PageMarginWrapper>
+          <MobileMenu items={mobileItems} label={activeSection?.title} />
+          <TabletMenu>
+            {sections.map((item) => (
+              <NavItem key={item.path} href={item.path} active={item.id === activeSection?.id}>
+                {item.shortTitle}
+              </NavItem>
+            ))}
+          </TabletMenu>
+          <JumpLink href="#page-top">
+            <Icon icon="arrowupalt" />
+            Jump to top
+          </JumpLink>
+        </PageMarginWrapper>
       </StickyWrapper>
 
       <DesktopWrapper {...props}>
@@ -247,7 +251,7 @@ export function CommunitySidebar({ badgeUrl, activeSectionId, ...props }: Commun
           <TableOfContents items={sections} currentPath={activeSection?.path} />
           <Divider />
           <BadgeContainer>
-            <Text>Get a badge for your readme</Text>
+            <Text>Get a README badge</Text>
             <StorybookBadgeOuter href={badgeUrl}>
               <StorybookBadge src={StorybookBadgeSVG} alt="Storybook badge" />
             </StorybookBadgeOuter>

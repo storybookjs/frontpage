@@ -40,7 +40,7 @@ export const CommunitySupport = forwardRef<HTMLDivElement, CommunitySupportProps
       <Wrapper ref={ref}>
         <CommunitySectionHeader
           id="support"
-          title="Get support from the community"
+          title="Get support"
           description="Storybook’s thriving community can help answer your questions. Developers of all skill levels welcome."
         />
         <SearchBlock version={version} apiKey={apiKey} />
