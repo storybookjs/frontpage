@@ -295,12 +295,24 @@ function updateRedirectsFile() {
   fs.writeFileSync('./public/_redirects', `${originalContents}\n\n${redirectsWithFramework}\n\n${versionRedirects}`);
 }
 
-const otherSitemaps = ['blog/sitemap.xml', 'showcase/sitemap-0.xml', 'tutorials/sitemap.xml'];
+const otherSitemaps = [
+  'blog/sitemap/sitemap-0.xml',
+  'showcase/sitemap-0.xml',
+  'tutorials/sitemap/sitemap-0.xml',
+];
+
+function getSitemapId(sitemap) {
+  return sitemap.split('/')[0];
+}
+
+const sitemapFilename = 'sitemap.xml';
 
 /* eslint-disable no-restricted-syntax, no-await-in-loop */
 async function copyOtherSitemaps() {
   for (const sitemap of otherSitemaps) {
-    const directory = `./public/sitemap/${sitemap.split('/')[0]}`;
+    const sitemapId = getSitemapId(sitemap);
+
+    const directory = `./public/sitemap/${sitemapId}`;
     if (!fs.existsSync(directory)) {
       fs.mkdirSync(directory);
     }
@@ -308,7 +320,7 @@ async function copyOtherSitemaps() {
     try {
       const response = await fetch(`https://storybook.js.org/${sitemap}`);
       const content = await response.text();
-      fs.writeFileSync(`./public/sitemap/${sitemap}`, content);
+      fs.writeFileSync(`./public/sitemap/${sitemapId}/${sitemapFilename}`, content);
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error(error);
@@ -322,7 +334,11 @@ async function updateSitemapIndex() {
   const originalContents = data.toString();
 
   const newLocations = otherSitemaps
-    .map((sitemap) => `<sitemap><loc>https://storybook.js.org/sitemap/${sitemap}</loc></sitemap>`)
+    .map(
+      (sitemap) =>
+        // prettier-ignore
+        `<sitemap><loc>https://storybook.js.org/sitemap/${getSitemapId(sitemap)}/${sitemapFilename}</loc></sitemap>`
+    )
     .join('');
 
   const newContent = originalContents.replace(/(<sitemap>.*<\/sitemap>)/, `$1${newLocations}`);
