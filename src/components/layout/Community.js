@@ -206,6 +206,7 @@ export function Community({ inverse, ...props }) {
             src={videosA[activeIndex.videoA].src}
             autoPlay
             playsInline
+            muted
           />
         </AnimatePresence>
       </VideoCardALink>
@@ -229,6 +230,7 @@ export function Community({ inverse, ...props }) {
             src={videosB[activeIndex.videoB].src}
             autoPlay
             playsInline
+            muted
           />
         </AnimatePresence>
       </VideoCardBLink>
