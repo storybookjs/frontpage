@@ -12,6 +12,8 @@ const cache = new LRU({
   length: (n, key) => n.length,
 });
 
+const SEP_REGEX = /([\.:])/;
+
 // const logger = console;
 const logger = { log: () => {} };
 
@@ -28,8 +30,10 @@ const md5 = (host) => {
 };
 
 const truncate = (host) => {
-  const prefix = host.slice(0, host.lastIndexOf('.'));
-  return `${prefix}.0`;
+  const match = SEP_REGEX.exec(host);
+  const sep = match ? match[0] : '.'
+  const prefix = host.slice(0, host.lastIndexOf(sep));
+  return `${prefix}${sep}0`;
 };
 
 const splitVersion = (version) => {
