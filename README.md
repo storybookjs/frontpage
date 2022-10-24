@@ -84,7 +84,7 @@ The site is crawled every 24 hours so any updates will be reflected in that amou
 
 #### Blog posts
 
-The latest blog post is fetched from [Ghost](https://ghost.org). You will need to add In order for this to work, an environment variable is required:
+The latest blog post is fetched from [Ghost](https://ghost.org). You will need to add in order for this to work, an environment variable is required:
 
 `GHOST_STORYBOOK_API_KEY`
 
