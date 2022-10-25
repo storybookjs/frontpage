@@ -211,7 +211,7 @@ export const AddonsLayout = ({ children, data, hideSidebar, currentPath, ...prop
               hideLabel
               icon="search"
               appearance="pill"
-              placeholder="Search addons"
+              placeholder="Search integrations"
               value={query}
               onChange={(e) => {
                 setQuery(e.target.value);

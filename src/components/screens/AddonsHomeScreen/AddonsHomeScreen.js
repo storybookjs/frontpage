@@ -52,9 +52,9 @@ export const AddonsHomeScreen = ({
             />
           }
         />
-        {popularRecipes.length && (
+        {popularRecipes.length > 0 ? (
           <PopularRecipes title="Popular recipes" recipeItems={popularRecipes} />
-        )}
+        ) : null}
         <AddonsGrid title="Trending addons" addonItems={trendingAddons} />
       </AddonsLayout>
     </>
