@@ -31,16 +31,16 @@ export const AddonsTagScreen = ({ path, pageContext, ...props }) => {
   return (
     <>
       <SocialGraph
-        title={`${tag.displayName || tag.name} Addons | ${title}`}
-        desc="Addons enable advanced functionality and unlock new workflows. Contributed by core maintainers and the amazing developer community."
+        title={`${tag.displayName || tag.name} Integrations | ${title}`}
+        desc="Integrations enable advanced functionality and unlock new workflows. Contributed by core maintainers and the amazing developer community."
         url={`${home}${path}`}
         image={ogImageAddons}
       />
-      <AddonsLayout hideSidebar>
+      <AddonsLayout hideSidebar currentPath={`${path}/`}>
         <Breadcrumb to={breadcrumb.link}>{breadcrumb.title}</Breadcrumb>
         <AddonsPageHeader
           title={`${tag.displayName || tag.name} tag`}
-          kicker={`${tag.addons.length} tagged ${pluralize('addons', tag.addons.length)}`}
+          kicker={`${tag.addons.length} tagged ${pluralize('Integrations', tag.addons.length)}`}
         />
         <AddonsAsideContainer>
           <StyledAddonsList

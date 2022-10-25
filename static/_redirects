@@ -27,7 +27,6 @@
 /examples/*                                 /docs/examples/:splat                                                                               301
 /logos/*                                    /docs/logos/:splat                                                                                  301
 /testing/*                                  /docs/testing/:splat                                                                                301
-/addons/addon-gallery/                      /addons/                                                                                            301
 
 # Pre 6.0 URLs
 /docs/basics/introduction/                  /docs/react/get-started/introduction/                                                               301
@@ -108,6 +107,11 @@
 /docs/riot/get-started/examples             /showcase                                                                                           301
 /docs/preact/get-started/examples           /showcase                                                                                           301
 /docs/rax/get-started/examples              /showcase                                                                                           301
+
+# Integration Catalog redirects
+/addons/addon-gallery/                      /integrations/                                                                                      301
+/addons/                                    /integrations/                                                                                      301
+/addons/tag/*                               /integrations/tag/:splat                                                                            301
 
 /design-system                              https://master--5ccbc373887ca40020446347.chromatic.com                                              301
 

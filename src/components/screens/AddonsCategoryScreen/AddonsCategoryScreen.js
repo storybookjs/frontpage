@@ -19,10 +19,10 @@ export const AddonsCategoryScreen = ({ path, pageContext }) => {
   return (
     <>
       <SocialGraph
-        title={`Addons | ${category} | ${title}`}
+        title={`Integrations | ${category} | ${title}`}
         desc={
           description ||
-          'Addons enable advanced functionality and unlock new workflows. Contributed by core maintainers and the amazing developer community.'
+          'Integrations enable advanced functionality and unlock new workflows. Contributed by core maintainers and the amazing developer community.'
         }
         url={`${home}${path}`}
         image={ogImageAddons}

@@ -5,7 +5,7 @@ export function generateBreadcrumb(locationState) {
         title: `Back to ${locationState.from.title}`,
       }
     : {
-        link: '/addons/',
+        link: '/integrations/',
         title: 'View full catalog',
       };
 }

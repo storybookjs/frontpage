@@ -30,12 +30,12 @@ export const AddonsHomeScreen = ({
   return (
     <>
       <SocialGraph
-        title={`Addons | ${title}`}
-        desc="Addons enable advanced functionality and unlock new workflows. Contributed by core maintainers and the amazing developer community."
-        url={`${home}/addons`}
+        title={`Integrations | ${title}`}
+        desc="Integrations enable advanced functionality and unlock new workflows. Contributed by core maintainers and the amazing developer community."
+        url={`${home}/integrations`}
         image={ogImageAddons}
       />
-      <AddonsLayout currentPath="/addons/">
+      <AddonsLayout currentPath="/integrations/">
         <PopularAddons
           title="Popular addons"
           addonItems={popularAddonsForTimePeriod}

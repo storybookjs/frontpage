@@ -28,7 +28,7 @@ const navLinks = {
   showcase: { url: 'https://storybook.js.org/showcase' },
   projects: { url: 'https://storybook.js.org/showcase/projects' },
   componentGlossary: { url: 'https://storybook.js.org/showcase/glossary' },
-  integrations: { url: '/addons/', linkWrapper: GatsbyLinkWrapper },
+  integrations: { url: '/integrations/', linkWrapper: GatsbyLinkWrapper },
   getInvolved: { url: '/community/', linkWrapper: GatsbyLinkWrapper },
   blog: { url: 'https://storybook.js.org/blog' },
   hiring: { url: 'https://www.chromatic.com/company/jobs' },
