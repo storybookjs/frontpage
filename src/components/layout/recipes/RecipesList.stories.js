@@ -9,7 +9,7 @@ export const recipeItemsData = [
     id: '0',
     displayName: 'Next.js',
     icon: NextJsSVG,
-    name: '@vercel/next',
+    name: 'next',
     description: 'A low config way to get your Next.js UI working in Storybook',
     views: 17143,
   },

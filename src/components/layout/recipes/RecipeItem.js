@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { css, styled } from '@storybook/theming';
 import humanFormat from 'human-format';
 import { Link as GatsbyLinkWrapper } from 'gatsby';
-import { styles, animation, Cardinal, AvatarList } from '@storybook/design-system';
+import { styles, animation, Cardinal } from '@storybook/design-system';
 import customSVG from '../../../images/addon-catalog/custom.svg';
 
 const { hoverEffect, spacing, color, typography, breakpoint } = styles;
@@ -184,7 +184,7 @@ export const RecipeItem = ({
 }) => (
   <RecipeItemWrapper orientation={orientation} {...props}>
     {!isLoading && (
-      <ClickIntercept state={{ from }} as={GatsbyLinkWrapper} to={`/addons/${name}/`} />
+      <ClickIntercept state={{ from }} as={GatsbyLinkWrapper} to={`/recipe/${name}/`} />
     )}
     <RecipeInfo orientation={orientation}>
       <Image
@@ -197,7 +197,7 @@ export const RecipeItem = ({
           <span>{isLoading ? 'loading' : displayName || name}</span>
         </Title>
         <Description isLoading={isLoading}>
-          <span>{isLoading ? 'loading description of addon' : description}</span>
+          <span>{isLoading ? 'loading description of recipe' : description}</span>
         </Description>
       </div>
     </RecipeInfo>
