@@ -1,54 +1,36 @@
 import React from 'react';
 import { RecipesList } from './RecipesList';
-import ControlsSVG from '../../../images/addon-catalog/controls.svg';
-import ViewportSVG from '../../../images/addon-catalog/viewports.svg';
-import ContrastPNG from '../../../images/addon-catalog/contrast.png';
-import AccessibilitySVG from '../../../images/addon-catalog/accessibility.svg';
-import ActionsSVG from '../../../images/addon-catalog/actions.svg';
-import BackgroundsSVG from '../../../images/addon-catalog/backgrounds.svg';
-import ConsoleSVG from '../../../images/addon-catalog/console.svg';
-import CustomSVG from '../../../images/addon-catalog/custom.svg';
-import DocsSVG from '../../../images/addon-catalog/docs.svg';
-import LinksSVG from '../../../images/addon-catalog/links.svg';
-import OutlineSVG from '../../../images/addon-catalog/outline.svg';
-import SourceSVG from '../../../images/addon-catalog/source.svg';
-import StoryshotsSVG from '../../../images/addon-catalog/storyshots.svg';
-import ToolbarsSVG from '../../../images/addon-catalog/toolbars.svg';
+import NextJsSVG from '../../../images/integrations/nextjs.svg';
+import MuiSVG from '../../../images/integrations/mui.svg';
+import I18nextSVG from '../../../images/integrations/i18next.svg';
 
 export const recipeItemsData = [
   {
     id: '0',
-    appearance: 'official',
-    icon: ControlsSVG,
-    displayName: 'Controls',
-    name: '@storybook/addon-controls',
-    description: 'Interact with component inputs dynamically in the Storybook UI',
+    displayName: 'Next.js',
+    icon: NextJsSVG,
+    name: '@vercel/next',
+    description: 'A low config way to get your Next.js UI working in Storybook',
     views: 17143,
   },
   {
     id: '1',
-    icon: ViewportSVG,
-    appearance: 'community',
-    displayName: 'Mobile UX Hints',
-    name: 'storybook-mobile',
-    description:
-      'Suggestions on how to tweak the HTML and CSS of your components to be more mobile-friendly.',
+    displayName: 'Material UI',
+    icon: MuiSVG,
+    name: '@mui/material',
+    description: 'Get the most out of Material UI in your Storybook',
     views: 12253,
   },
   {
     id: '2',
-    appearance: 'integrators',
-    verifiedCreator: 'Contrast',
-    icon: ContrastPNG,
-    displayName: 'Contrast',
-    name: 'storybook-contrast',
-    description: 'Embed Contrast handoff tool in a storybook panel',
+    displayName: 'React i18next',
+    icon: I18nextSVG,
+    name: 'react-i18next',
+    description: 'Internationalization support for Storybook with toolbar locale toggle',
     views: 3892,
   },
   {
     id: '3',
-    appearance: 'official',
-    icon: AccessibilitySVG,
     displayName: 'Accessibility',
     name: '@storybook/addon-a11y',
     description: 'Test component compliance with web accessibility standards',
@@ -56,8 +38,6 @@ export const recipeItemsData = [
   },
   {
     id: '4',
-    appearance: 'official',
-    icon: ActionsSVG,
     displayName: 'Actions',
     name: '@storybook/addon-actions',
     description: 'Get UI feedback when an action is performed on an interactive element',
@@ -65,8 +45,6 @@ export const recipeItemsData = [
   },
   {
     id: '5',
-    appearance: 'official',
-    icon: BackgroundsSVG,
     displayName: 'Backgrounds',
     name: '@storybook/addon-backgrounds',
     description: 'Switch backgrounds to view components in different settings',
@@ -74,8 +52,6 @@ export const recipeItemsData = [
   },
   {
     id: '6',
-    appearance: 'official',
-    icon: ConsoleSVG,
     displayName: 'Console',
     name: '@storybook/addon-console',
     description: 'Show console output like logs, errors, and warnings in the Storybook',
@@ -83,7 +59,6 @@ export const recipeItemsData = [
   },
   {
     id: '7',
-    icon: CustomSVG,
     displayName: 'Controls',
     name: '@storybook/addon-controls',
     description: 'Interact with component inputs dynamically in the Storybook UI',
@@ -91,16 +66,12 @@ export const recipeItemsData = [
   },
   {
     id: '8',
-    appearance: 'integrators',
-    verifiedCreator: 'InVision',
-    icon: DocsSVG,
     displayName: 'Docs',
     description: 'Document component usage and properties in Markdown',
     views: 72936,
   },
   {
     id: '9',
-    icon: LinksSVG,
     displayName: 'Links',
     name: '@storybook/addon-links',
     description: 'Link stories together to build demos and prototypes with your UI components',
@@ -108,7 +79,6 @@ export const recipeItemsData = [
   },
   {
     id: '10',
-    icon: OutlineSVG,
     displayName: 'Outline',
     name: 'storybook-addon-outline',
     description: 'Outline all elements with CSS to help with layout placement and alignment',
@@ -116,7 +86,6 @@ export const recipeItemsData = [
   },
   {
     id: '11',
-    icon: SourceSVG,
     displayName: 'Source',
     name: '@storybook/addon-storysource',
     description: 'View a story’s source code to see how it works and paste into your app.',
@@ -124,9 +93,6 @@ export const recipeItemsData = [
   },
   {
     id: '12',
-    appearance: 'integrators',
-    verifiedCreator: 'Someone',
-    icon: StoryshotsSVG,
     displayName: 'Storyshots',
     name: '@storybook/addon-storyshots',
     description: 'Take a code snapshot of every story automatically with Jest',
@@ -134,8 +100,6 @@ export const recipeItemsData = [
   },
   {
     id: '13',
-    appearance: 'official',
-    icon: ToolbarsSVG,
     displayName: 'Toolbars',
     name: '@storybook/addon-toolbars',
     description: 'Create your own toolbar items that control story rendering',

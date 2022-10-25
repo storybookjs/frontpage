@@ -1,7 +1,7 @@
 import React from 'react';
 import { styled } from '@storybook/theming';
 import { RecipeItem } from './RecipeItem';
-import ControlsSVG from '../../../images/addon-catalog/controls.svg';
+import NextJsSVG from '../../../images/integrations/nextjs.svg';
 
 export default {
   title: 'Frontpage|layout/Recipes/RecipeItem',
@@ -35,7 +35,7 @@ const Template = (args) => (
 
 export const WithImage = Template.bind({});
 WithImage.args = {
-  icon: ControlsSVG,
+  icon: NextJsSVG,
   displayName: 'Next.js',
   description: 'A low config way to get your Next.js UI working in Storybook',
   views: 17143,

@@ -12,17 +12,55 @@ import { useAddonsSearch } from '../../../hooks/use-addons-search';
 const { breakpoint, spacing, color, pageMargins, typography } = styles;
 const { GlobalStyle } = global;
 
+const Heading = styled.h1`
+  font-size: ${typography.size.l2}px;
+  line-height: ${typography.size.l2}px;
+  font-weight: ${typography.weight.bold};
+  letter-spacing: -0.29px;
+  margin-bottom: 4px;
+  color: ${color.darkest};
+
+  @media (min-width: ${breakpoint * 1}px) {
+    font-size: ${typography.size.l2}px;
+    margin-bottom: 8px;
+    letter-spacing: -0.37px;
+  }
+`;
+
+const Subheading = styled.p`
+  font-size: ${typography.size.s3}px;
+  line-height: ${typography.size.m2}px;
+  letter-spacing: -0.33px;
+  margin-bottom: 24px;
+  color: ${color.darker};
+
+  @media (min-width: ${breakpoint * 1}px) {
+    font-size: ${typography.size.s3}px;
+    line-height: ${typography.size.l1}px;
+    letter-spacing: -0.42px;
+  }
+`;
+
 const Content = styled.main`
   flex: 1 1 auto;
   min-width: 0; /* do not remove  https://weblog.west-wind.com/posts/2016/feb/15/flexbox-containers-pre-tags-and-managing-overflow */
 `;
 
-const Wrapper = styled.div`
+const PageHeader = styled.header`
   ${pageMargins}
-  padding-bottom: 3rem;
+  padding-bottom: ${spacing.padding.medium}px;
 
   @media (min-width: ${breakpoint * 1.333}px) {
     padding-top: 4rem;
+  }
+`;
+
+const Wrapper = styled.div`
+  ${pageMargins}
+  padding-top: ${spacing.padding.medium}px;
+  padding-bottom: 3rem;
+
+  @media (min-width: ${breakpoint * 1.333}px) {
     padding-bottom: 4rem;
     display: ${(props) => (props.searchLayout ? 'block' : 'flex')};
   }
@@ -68,7 +106,6 @@ const ToCContent = styled.div`
       : `
           @media (min-width: ${breakpoint * 1.333}px) {
             display: block;
-            margin-top: 1.5rem;
           }
         `}
 `;
@@ -144,7 +181,7 @@ const Searchbar = styled.div`
 `;
 
 const CategoriesHeading = styled(AddonsSubheading)`
-  margin-top: ${spacing.padding.medium}px;
+  margin-top: 0px;
   margin-bottom: ${spacing.padding.medium}px;
 `;
 
@@ -159,39 +196,45 @@ export const AddonsLayout = ({ children, data, hideSidebar, currentPath, ...prop
   return (
     <>
       <GlobalStyle />
+      <PageHeader>
+        <Heading>Integrations</Heading>
+        <Subheading>
+          Integrate your tools with Storybook to connect workflows and unlock advanced features.
+        </Subheading>
+        <Searchbar>
+          <SearchInputContainer searchLayout={isSearching}>
+            <SearchInput
+              id={SEARCH_INPUT_ID}
+              ref={inputRef}
+              type="search"
+              label="Search"
+              hideLabel
+              icon="search"
+              appearance="pill"
+              placeholder="Search addons"
+              value={query}
+              onChange={(e) => {
+                setQuery(e.target.value);
+              }}
+            />
+            {query !== '' && (
+              <ClearButton
+                onClick={() => {
+                  setQuery('');
+                  inputRef.current.focus();
+                }}
+              >
+                <Icon icon="closeAlt" aria-label="clear" />
+              </ClearButton>
+            )}
+          </SearchInputContainer>
+          {isSearching && results.search && (
+            <AddonsSearchSummary isLoading={isSearchLoading} count={results.search.length} />
+          )}
+        </Searchbar>
+      </PageHeader>
       <Wrapper searchLayout={isSearching}>
         <Sidebar hideSidebar={hideSidebar} searchLayout={isSearching}>
-          <Searchbar>
-            <SearchInputContainer searchLayout={isSearching}>
-              <SearchInput
-                id={SEARCH_INPUT_ID}
-                ref={inputRef}
-                type="search"
-                label="Search"
-                hideLabel
-                icon="search"
-                appearance="pill"
-                placeholder="Search addons"
-                value={query}
-                onChange={(e) => {
-                  setQuery(e.target.value);
-                }}
-              />
-              {query !== '' && (
-                <ClearButton
-                  onClick={() => {
-                    setQuery('');
-                    inputRef.current.focus();
-                  }}
-                >
-                  <Icon icon="closeAlt" aria-label="clear" />
-                </ClearButton>
-              )}
-            </SearchInputContainer>
-            {isSearching && results.search && (
-              <AddonsSearchSummary isLoading={isSearchLoading} count={results.search.length} />
-            )}
-          </Searchbar>
           <TableOfContents currentPath={currentPath} items={sidebarItems}>
             {({ menu }) => (
               <ToCContent hideToC={isSearching}>
