@@ -25,9 +25,9 @@ export const AddonsAsideContainer = styled.div`
   }
 `;
 
-export const AddonsAside = ({ children, ...props }) => (
+export const AddonsAside = ({ children, hideLearn, ...props }) => (
   <Aside {...props}>
     {children}
-    <AddonsLearn />
+    {!hideLearn ? <AddonsLearn /> : null}
   </Aside>
 );
