@@ -1,6 +1,7 @@
 import React from 'react';
 import { AddonsCategoryScreen } from './AddonsCategoryScreen';
 import { addonItemsData } from '../../layout/addons/AddonsGrid.stories';
+import { recipeItemsData } from '../../layout/recipes/RecipesList.stories';
 
 export default {
   title: 'Integrations Catalog/Screens/Category',
@@ -22,6 +23,7 @@ export const WithDesc = () => (
       category: 'Essentials',
       description: 'Pre-installed addons that power the core Storybook experience',
       addons: addonItemsData,
+      recipes: recipeItemsData,
     }}
   />
 );

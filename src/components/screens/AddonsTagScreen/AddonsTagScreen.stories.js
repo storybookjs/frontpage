@@ -1,6 +1,7 @@
 import React from 'react';
 import { AddonsTagScreen } from './AddonsTagScreen';
 import { addonItemsData } from '../../layout/addons/AddonsGrid.stories';
+import { recipeItemsData } from '../../layout/recipes/RecipesList.stories';
 
 export default {
   title: 'Integrations Catalog/Screens/Tag',
@@ -15,6 +16,7 @@ export const Tag = () => (
         displayName: 'Notes',
         icon: '🗒️',
         addons: addonItemsData,
+        recipes: recipeItemsData.slice(0, 3),
         relatedTags: [
           {
             link: '/notes',
