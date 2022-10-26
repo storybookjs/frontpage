@@ -1,9 +1,10 @@
 const remark = require('remark');
 const remarkHTML = require('remark-html');
+const absoluteLinks = require('../../util/absolute-links');
 
 const markdown = require('./react-i18next.md');
 
-const processor = remark().use(remarkHTML);
+const processor = remark().use(absoluteLinks).use(remarkHTML);
 
 const readme = processor.processSync(markdown).toString();
 
