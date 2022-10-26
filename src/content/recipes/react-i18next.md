@@ -1,3 +1,4 @@
+<h2 id="recipe-section">How to use React i18next with Storybook recipe</h2>
 Most developers use [`i18next`](https://www.i18next.com/), a popular JavaScript library that lets apps define separate files for each supported locale. It detects a user’s language preferences and region, and only loads the detected locale.
 
 Instead of being passed to components as inputs, the locale is shared globally through context. Let’s use i18next to extend Storybook with a locale switcher in the toolbar to choose which locale is shared with your components.

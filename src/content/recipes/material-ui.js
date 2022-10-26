@@ -62,6 +62,5 @@ module.exports = {
       ],
     },
   ],
-  readme: `<h2 id="recipe-section">How to use Material UI with Storybook recipe</h2>
-  ${readme}`,
+  readme,
 };

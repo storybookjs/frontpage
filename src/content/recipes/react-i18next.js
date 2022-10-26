@@ -51,7 +51,5 @@ module.exports = {
       ],
     },
   ],
-  readme: `<h2 id="recipe-section">How to use React i18next with Storybook recipe</h2>
-    ${readme}
-  `,
+  readme,
 };
