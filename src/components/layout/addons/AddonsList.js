@@ -4,7 +4,21 @@ import { styled } from '@storybook/theming';
 import { styles, Button } from '@storybook/design-system';
 import { AddonItem } from './AddonItem';
 
-const { spacing } = styles;
+const { spacing, typography, color } = styles;
+
+const Title = styled.h3`
+  font-weight: ${typography.weight.bold};
+  font-size: ${typography.size.m2}px;
+  line-height: ${typography.size.m3}px;
+  color: ${color.darkest};
+`;
+
+const SectionHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: ${spacing.padding.medium}px;
+`;
 
 const ListWrapper = styled.div`
   > *:not(:last-child) {
@@ -21,7 +35,7 @@ const loadingItems = [
   { id: '6', isLoading: true },
 ];
 
-export const AddonsList = ({ addonItems, isLoading, from, ...props }) => {
+export const AddonsList = ({ title, addonItems, isLoading, from, ...props }) => {
   const [visibleCount, setVisibleCount] = useState(6);
   const items = useMemo(() => addonItems.slice(0, visibleCount), [visibleCount, addonItems]);
 
@@ -30,26 +44,34 @@ export const AddonsList = ({ addonItems, isLoading, from, ...props }) => {
   };
 
   return (
-    <ListWrapper
-      role="feed"
-      aria-live={isLoading ? 'polite' : 'off'}
-      aria-busy={!!isLoading}
-      {...props}
-    >
-      {(isLoading ? loadingItems : items).map((addon) => (
-        <AddonItem key={addon.id} from={from} orientation="horizontal" {...addon} />
-      ))}
-      {addonItems.length > 6 && visibleCount < addonItems.length && (
-        <Button tertiary onClick={loadMore}>
-          Load more addons
-        </Button>
-      )}
-    </ListWrapper>
+    <section>
+      {title ? (
+        <SectionHeader>
+          <Title>{title}</Title>
+        </SectionHeader>
+      ) : null}
+      <ListWrapper
+        role="feed"
+        aria-live={isLoading ? 'polite' : 'off'}
+        aria-busy={!!isLoading}
+        {...props}
+      >
+        {(isLoading ? loadingItems : items).map((addon) => (
+          <AddonItem key={addon.id} from={from} orientation="horizontal" {...addon} />
+        ))}
+        {addonItems.length > 6 && visibleCount < addonItems.length && (
+          <Button tertiary onClick={loadMore}>
+            Load more addons
+          </Button>
+        )}
+      </ListWrapper>
+    </section>
   );
 };
 
 /* eslint-disable react/require-default-props */
 AddonsList.propTypes = {
+  title: PropTypes.string,
   addonItems: PropTypes.arrayOf(
     PropTypes.shape({ id: PropTypes.string.isRequired, ...AddonItem.propTypes })
   ),
