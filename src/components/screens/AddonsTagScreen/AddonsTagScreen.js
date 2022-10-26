@@ -7,14 +7,24 @@ import useSiteMetadata from '../../lib/useSiteMetadata';
 import { SocialGraph, Breadcrumb } from '../../basics';
 import { AddonsPageHeader } from '../../layout/addons/AddonsPageHeader';
 import { AddonsList } from '../../layout/addons/AddonsList';
+import { RecipesList } from '../../layout/recipes/RecipesList';
 import { AddonsLayout } from '../../layout/addons/AddonsLayout';
 import { AddonsAside, AddonsAsideContainer } from '../../layout/addons/AddonsAsideLayout';
 import { AddonsSubheading } from '../../layout/addons/AddonsSubheading';
 import { generateBreadcrumb } from '../../../util/generate-breadcrumb';
 import buildTagLinks from '../../../util/build-tag-links';
 
-const StyledAddonsList = styled(AddonsList)`
+import { recipeItemsData } from '../../layout/recipes/RecipesList.stories';
+
+// TODO: Remove mock recipe items
+const MOCK_RECIPES = recipeItemsData.slice(0, 2);
+
+const IntegrationsContainer = styled.div`
   flex: 1 1 auto;
+`;
+
+const StyledAddonsList = styled(AddonsList)`
+  margin-bottom: 48px;
 `;
 
 const RelatedTagsList = styled(TagList)`
@@ -28,6 +38,10 @@ export const AddonsTagScreen = ({ path, pageContext, ...props }) => {
   const relatedTags = buildTagLinks(tag.relatedTags || []);
   const breadcrumb = generateBreadcrumb();
 
+  const { addons = [], recipes = MOCK_RECIPES } = tag;
+
+  const integrationCount = addons.length + recipes.length;
+
   return (
     <>
       <SocialGraph
@@ -40,13 +54,21 @@ export const AddonsTagScreen = ({ path, pageContext, ...props }) => {
         <Breadcrumb to={breadcrumb.link}>{breadcrumb.title}</Breadcrumb>
         <AddonsPageHeader
           title={`${tag.displayName || tag.name} tag`}
-          kicker={`${tag.addons.length} tagged ${pluralize('Integrations', tag.addons.length)}`}
+          kicker={`${integrationCount} tagged ${pluralize('Integrations', tag.addons.length)}`}
         />
         <AddonsAsideContainer>
-          <StyledAddonsList
-            addonItems={tag.addons}
-            from={{ title: tag.displayName || tag.name, link: path }}
-          />
+          <IntegrationsContainer>
+            <StyledAddonsList
+              title="Addons"
+              addonItems={addons}
+              from={{ title: tag.displayName || tag.name, link: path }}
+            />
+            <RecipesList
+              title="Recipes"
+              recipeItems={recipes}
+              from={{ title: tag.displayName || tag.name, link: path }}
+            />
+          </IntegrationsContainer>
           <AddonsAside>
             <AddonsSubheading>Related tags</AddonsSubheading>
             <RelatedTagsList
