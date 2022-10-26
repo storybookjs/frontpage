@@ -1,10 +1,12 @@
 const remark = require('remark');
 const remarkHTML = require('remark-html');
-const absoluteLinks = require('../../util/absolute-links');
 
-const markdown = require('./material-ui.md');
+const fs = require('fs');
+const path = require('path');
 
-const processor = remark().use(absoluteLinks).use(remarkHTML);
+const markdown = fs.readFileSync(path.resolve(__dirname, 'material-ui.md'), 'utf8');
+
+const processor = remark().use().use(remarkHTML);
 
 const readme = processor.processSync(markdown).toString();
 
