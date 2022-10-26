@@ -8,6 +8,46 @@ import { AddonsGrid } from '../../layout/addons/AddonsGrid';
 import { RecipesList } from '../../layout/recipes/RecipesList';
 import { AddonsLayout } from '../../layout/addons/AddonsLayout';
 
+const { breakpoint, spacing, color, pageMargins, typography } = styles;
+
+const PageHeader = styled.header`
+  ${pageMargins}
+  padding-bottom: ${spacing.padding.medium}px;
+
+  @media (min-width: ${breakpoint * 1.333}px) {
+    padding-top: 4rem;
+  }
+`;
+
+const Heading = styled.h1`
+  font-size: ${typography.size.l2}px;
+  line-height: ${typography.size.l2}px;
+  font-weight: ${typography.weight.bold};
+  letter-spacing: -0.29px;
+  margin-bottom: 4px;
+  color: ${color.darkest};
+
+  @media (min-width: ${breakpoint * 1}px) {
+    font-size: ${typography.size.l2}px;
+    margin-bottom: 8px;
+    letter-spacing: -0.37px;
+  }
+`;
+
+const Subheading = styled.p`
+  font-size: ${typography.size.s3}px;
+  line-height: ${typography.size.m2}px;
+  letter-spacing: -0.33px;
+  margin-bottom: ${spacing.padding.medium}px;
+  color: ${color.darker};
+
+  @media (min-width: ${breakpoint * 1}px) {
+    font-size: ${typography.size.s3}px;
+    line-height: ${typography.size.l1}px;
+    letter-spacing: -0.42px;
+  }
+`;
+
 const PopularAddons = styled(AddonsGrid)`
   margin-bottom: 48px;
 `;
@@ -35,6 +75,12 @@ export const AddonsHomeScreen = ({
         url={`${home}/integrations`}
         image={ogImageAddons}
       />
+      <PageHeader>
+        <Heading>Integrations</Heading>
+        <Subheading>
+          Integrate your tools with Storybook to connect workflows and unlock advanced features.
+        </Subheading>
+      </PageHeader>
       <AddonsLayout currentPath="/integrations/">
         <PopularAddons
           title="Popular addons"

@@ -12,47 +12,9 @@ import { useAddonsSearch } from '../../../hooks/use-addons-search';
 const { breakpoint, spacing, color, pageMargins, typography } = styles;
 const { GlobalStyle } = global;
 
-const Heading = styled.h1`
-  font-size: ${typography.size.l2}px;
-  line-height: ${typography.size.l2}px;
-  font-weight: ${typography.weight.bold};
-  letter-spacing: -0.29px;
-  margin-bottom: 4px;
-  color: ${color.darkest};
-
-  @media (min-width: ${breakpoint * 1}px) {
-    font-size: ${typography.size.l2}px;
-    margin-bottom: 8px;
-    letter-spacing: -0.37px;
-  }
-`;
-
-const Subheading = styled.p`
-  font-size: ${typography.size.s3}px;
-  line-height: ${typography.size.m2}px;
-  letter-spacing: -0.33px;
-  margin-bottom: 24px;
-  color: ${color.darker};
-
-  @media (min-width: ${breakpoint * 1}px) {
-    font-size: ${typography.size.s3}px;
-    line-height: ${typography.size.l1}px;
-    letter-spacing: -0.42px;
-  }
-`;
-
 const Content = styled.main`
   flex: 1 1 auto;
   min-width: 0; /* do not remove  https://weblog.west-wind.com/posts/2016/feb/15/flexbox-containers-pre-tags-and-managing-overflow */
-`;
-
-const PageHeader = styled.header`
-  ${pageMargins}
-  padding-bottom: ${spacing.padding.medium}px;
-
-  @media (min-width: ${breakpoint * 1.333}px) {
-    padding-top: 4rem;
-  }
 `;
 
 const Wrapper = styled.div`
@@ -176,8 +138,10 @@ const SearchInput = styled(Input)`
 `;
 
 const Searchbar = styled.div`
+  ${pageMargins}
   display: flex;
   align-items: center;
+  padding-bottom: ${spacing.padding.medium}px;
 `;
 
 const CategoriesHeading = styled(AddonsSubheading)`
@@ -196,11 +160,7 @@ export const AddonsLayout = ({ children, data, hideSidebar, currentPath, ...prop
   return (
     <>
       <GlobalStyle />
-      <PageHeader>
-        <Heading>Integrations</Heading>
-        <Subheading>
-          Integrate your tools with Storybook to connect workflows and unlock advanced features.
-        </Subheading>
+      {!hideSidebar ? (
         <Searchbar>
           <SearchInputContainer searchLayout={isSearching}>
             <SearchInput
@@ -232,7 +192,7 @@ export const AddonsLayout = ({ children, data, hideSidebar, currentPath, ...prop
             <AddonsSearchSummary isLoading={isSearchLoading} count={results.search.length} />
           )}
         </Searchbar>
-      </PageHeader>
+      ) : null}
       <Wrapper searchLayout={isSearching}>
         <Sidebar hideSidebar={hideSidebar} searchLayout={isSearching}>
           <TableOfContents currentPath={currentPath} items={sidebarItems}>
