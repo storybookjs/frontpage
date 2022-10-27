@@ -6,6 +6,12 @@ import { styles, TagList, TagLink } from '@storybook/design-system';
 import { AddonsList } from './AddonsList';
 import { AddonsAside, AddonsAsideContainer } from './AddonsAsideLayout';
 import { AddonsSubheading } from './AddonsSubheading';
+import { ListHeadingContainer, ListSubheading } from '../../basics';
+import { RecipesList } from '../recipes/RecipesList';
+import { recipeItemsData } from '../recipes/RecipesList.stories';
+
+// TODO: Remove mock recipe items
+const MOCK_RECIPES = recipeItemsData.slice(0, 2);
 
 const { breakpoint, spacing, color, typography } = styles;
 
@@ -27,6 +33,7 @@ const SearchSummaryCopy = styled.div`
 const StyledAddonsList = styled(AddonsList)`
   flex: 1 1 auto;
   width: 100%;
+  margin-bottom: 48px;
 `;
 
 const RelatedTagsList = styled(TagList)`
@@ -36,7 +43,7 @@ const RelatedTagsList = styled(TagList)`
 export const AddonsSearchSummary = ({ isLoading, count }) => {
   return isLoading ? null : (
     <SearchSummaryCopy>
-      {count === 0 ? 'No addons' : pluralize('addons', count, true)}
+      {count === 0 ? 'No integrations' : pluralize('integrations', count, true)}
     </SearchSummaryCopy>
   );
 };
@@ -82,7 +89,20 @@ export const AddonsSearchResults = ({ isLoading, results, relatedTags, ...props 
     {!isLoading && results.length === 0 ? (
       <NoAddonsFound />
     ) : (
-      <StyledAddonsList isLoading={isLoading} addonItems={results} />
+      <>
+        <section>
+          <ListHeadingContainer>
+            <ListSubheading>Addons</ListSubheading>
+          </ListHeadingContainer>
+          <StyledAddonsList isLoading={isLoading} addonItems={results} />
+        </section>
+        <section>
+          <ListHeadingContainer>
+            <ListSubheading>Recipes</ListSubheading>
+          </ListHeadingContainer>
+          <RecipesList isLoading={isLoading} addonItems={MOCK_RECIPES} />
+        </section>
+      </>
     )}
     <AddonsAside>
       {!isLoading && results.length > 0 && (

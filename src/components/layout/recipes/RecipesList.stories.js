@@ -7,14 +7,6 @@ import I18nextSVG from '../../../images/integrations/i18next.svg';
 export const recipeItemsData = [
   {
     id: '0',
-    displayName: 'Next.js',
-    icon: NextJsSVG,
-    name: 'next',
-    description: 'A low config way to get your Next.js UI working in Storybook',
-    views: 17143,
-  },
-  {
-    id: '1',
     displayName: 'Material UI',
     icon: MuiSVG,
     name: '@mui/material',
@@ -22,12 +14,20 @@ export const recipeItemsData = [
     views: 12253,
   },
   {
-    id: '2',
+    id: '1',
     displayName: 'React i18next',
     icon: I18nextSVG,
     name: 'react-i18next',
     description: 'Internationalization support for Storybook with toolbar locale toggle',
     views: 3892,
+  },
+  {
+    id: '2',
+    displayName: 'Next.js',
+    icon: NextJsSVG,
+    name: 'next',
+    description: 'A low config way to get your Next.js UI working in Storybook',
+    views: 17143,
   },
   {
     id: '3',

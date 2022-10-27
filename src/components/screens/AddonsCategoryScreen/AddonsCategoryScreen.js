@@ -4,7 +4,7 @@ import pluralize from 'pluralize';
 import { styled } from '@storybook/theming';
 
 import useSiteMetadata from '../../lib/useSiteMetadata';
-import { SocialGraph } from '../../basics';
+import { ListHeadingContainer, ListSubheading, SocialGraph } from '../../basics';
 import { AddonsPageHeader } from '../../layout/addons/AddonsPageHeader';
 import { AddonsList } from '../../layout/addons/AddonsList';
 import { AddonsLayout } from '../../layout/addons/AddonsLayout';
@@ -50,17 +50,24 @@ export const AddonsCategoryScreen = ({ path, pageContext }) => {
           subtitle={description}
           kicker={pluralize('Integrations', integrationCount, true)}
         />
-        <SortedAddonsList
-          title="Addons"
-          from={{ title: category, link: path }}
-          addonItems={sortedAddons}
-        />
+        <section>
+          <ListHeadingContainer>
+            <ListSubheading>Addons</ListSubheading>
+          </ListHeadingContainer>
+          <SortedAddonsList from={{ title: category, link: path }} addonItems={sortedAddons} />
+        </section>
+
         {sortedRecipes.length > 0 ? (
-          <RecipesList
-            title="Recipes"
-            from={{ title: category, link: path }}
-            recipeItems={sortedRecipes}
-          />
+          <section>
+            <ListHeadingContainer>
+              <ListSubheading>Recipes</ListSubheading>
+            </ListHeadingContainer>
+            <RecipesList
+              title="Recipes"
+              from={{ title: category, link: path }}
+              recipeItems={sortedRecipes}
+            />
+          </section>
         ) : null}
       </AddonsLayout>
     </>

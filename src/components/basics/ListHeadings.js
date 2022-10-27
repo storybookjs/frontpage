@@ -22,6 +22,5 @@ export const ListSubheading = styled(Subheading)`
   line-height: ${typography.size.m1}px;
   letter-spacing: 5.57px;
   color: ${color.dark};
-  margin-bottom: 12px;
   display: block;
 `;

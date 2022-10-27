@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import pluralize from 'pluralize';
 import { TagList, TagLink } from '@storybook/design-system';
 import useSiteMetadata from '../../lib/useSiteMetadata';
-import { SocialGraph, Breadcrumb } from '../../basics';
+import { SocialGraph, Breadcrumb, ListHeadingContainer, ListSubheading } from '../../basics';
 import { AddonsPageHeader } from '../../layout/addons/AddonsPageHeader';
 import { AddonsList } from '../../layout/addons/AddonsList';
 import { RecipesList } from '../../layout/recipes/RecipesList';
@@ -58,16 +58,25 @@ export const AddonsTagScreen = ({ path, pageContext, ...props }) => {
         />
         <AddonsAsideContainer>
           <IntegrationsContainer>
-            <StyledAddonsList
-              title="Addons"
-              addonItems={addons}
-              from={{ title: tag.displayName || tag.name, link: path }}
-            />
-            <RecipesList
-              title="Recipes"
-              recipeItems={recipes}
-              from={{ title: tag.displayName || tag.name, link: path }}
-            />
+            <section>
+              <ListHeadingContainer>
+                <ListSubheading>Addons</ListSubheading>
+              </ListHeadingContainer>
+              <StyledAddonsList
+                addonItems={addons}
+                from={{ title: tag.displayName || tag.name, link: path }}
+              />
+            </section>
+
+            <section>
+              <ListHeadingContainer>
+                <ListSubheading>Recipes</ListSubheading>
+              </ListHeadingContainer>
+              <RecipesList
+                recipeItems={recipes}
+                from={{ title: tag.displayName || tag.name, link: path }}
+              />
+            </section>
           </IntegrationsContainer>
           <AddonsAside>
             <AddonsSubheading>Related tags</AddonsSubheading>
