@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { styled } from '@storybook/theming';
 import { ButtonToggle, styles } from '@storybook/design-system';
 import useSiteMetadata from '../../lib/useSiteMetadata';
-import { SocialGraph } from '../../basics';
+import { SocialGraph, ListHeadingContainer, ListHeading } from '../../basics';
 import { AddonsGrid } from '../../layout/addons/AddonsGrid';
 import { RecipesList } from '../../layout/recipes/RecipesList';
 import { AddonsLayout } from '../../layout/addons/AddonsLayout';
@@ -19,7 +19,7 @@ const PageHeader = styled.header`
   }
 `;
 
-const Heading = styled.h1`
+const PageHeading = styled.h1`
   font-size: ${typography.size.l2}px;
   line-height: ${typography.size.l2}px;
   font-weight: ${typography.weight.bold};
@@ -34,7 +34,7 @@ const Heading = styled.h1`
   }
 `;
 
-const Subheading = styled.p`
+const PageSubheading = styled.p`
   font-size: ${typography.size.s3}px;
   line-height: ${typography.size.m2}px;
   letter-spacing: -0.33px;
@@ -76,10 +76,10 @@ export const AddonsHomeScreen = ({
         image={ogImageAddons}
       />
       <PageHeader>
-        <Heading>Integrations</Heading>
-        <Subheading>
+        <PageHeading>Integrations</PageHeading>
+        <PageSubheading>
           Integrate your tools with Storybook to connect workflows and unlock advanced features.
-        </Subheading>
+        </PageSubheading>
       </PageHeader>
       <AddonsLayout currentPath="/integrations/">
         <PopularAddons
@@ -98,9 +98,16 @@ export const AddonsHomeScreen = ({
             />
           }
         />
+
         {popularRecipes.length > 0 ? (
-          <PopularRecipes title="Popular recipes" recipeItems={popularRecipes} />
+          <section>
+            <ListHeadingContainer>
+              <ListHeading>Popular recipes</ListHeading>
+            </ListHeadingContainer>
+            <PopularRecipes recipeItems={popularRecipes} />
+          </section>
         ) : null}
+
         <AddonsGrid title="Trending addons" addonItems={trendingAddons} />
       </AddonsLayout>
     </>

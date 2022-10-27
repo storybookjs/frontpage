@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { styled } from '@storybook/theming';
 import { styles, Button } from '@storybook/design-system';
 import { AddonItem } from './AddonItem';
+import { AddonsSubheading } from './AddonsSubheading';
 
 const { spacing, typography, color } = styles;
 
@@ -35,7 +36,7 @@ const loadingItems = [
   { id: '6', isLoading: true },
 ];
 
-export const AddonsList = ({ title, addonItems, isLoading, from, ...props }) => {
+export const AddonsList = ({ addonItems, isLoading, from, ...props }) => {
   const [visibleCount, setVisibleCount] = useState(6);
   const items = useMemo(() => addonItems.slice(0, visibleCount), [visibleCount, addonItems]);
 
@@ -44,34 +45,26 @@ export const AddonsList = ({ title, addonItems, isLoading, from, ...props }) => 
   };
 
   return (
-    <section>
-      {title ? (
-        <SectionHeader>
-          <Title>{title}</Title>
-        </SectionHeader>
-      ) : null}
-      <ListWrapper
-        role="feed"
-        aria-live={isLoading ? 'polite' : 'off'}
-        aria-busy={!!isLoading}
-        {...props}
-      >
-        {(isLoading ? loadingItems : items).map((addon) => (
-          <AddonItem key={addon.id} from={from} orientation="horizontal" {...addon} />
-        ))}
-        {addonItems.length > 6 && visibleCount < addonItems.length && (
-          <Button tertiary onClick={loadMore}>
-            Load more addons
-          </Button>
-        )}
-      </ListWrapper>
-    </section>
+    <ListWrapper
+      role="feed"
+      aria-live={isLoading ? 'polite' : 'off'}
+      aria-busy={!!isLoading}
+      {...props}
+    >
+      {(isLoading ? loadingItems : items).map((addon) => (
+        <AddonItem key={addon.id} from={from} orientation="horizontal" {...addon} />
+      ))}
+      {addonItems.length > 6 && visibleCount < addonItems.length && (
+        <Button tertiary onClick={loadMore}>
+          Load more addons
+        </Button>
+      )}
+    </ListWrapper>
   );
 };
 
 /* eslint-disable react/require-default-props */
 AddonsList.propTypes = {
-  title: PropTypes.string,
   addonItems: PropTypes.arrayOf(
     PropTypes.shape({ id: PropTypes.string.isRequired, ...AddonItem.propTypes })
   ),

@@ -117,18 +117,15 @@ const Template = (args) => <RecipesList {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  title: 'Popular recipes',
   recipeItems: recipeItemsData.slice(0, 5),
 };
 
 export const LoadMore = Template.bind({});
 LoadMore.args = {
-  title: 'Popular recipes',
   recipeItems: recipeItemsData,
 };
 
 export const Loading = Template.bind({});
 Loading.args = {
-  title: 'Popular recipes',
   isLoading: true,
 };
