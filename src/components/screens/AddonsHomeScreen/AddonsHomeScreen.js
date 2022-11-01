@@ -67,6 +67,11 @@ export const AddonsHomeScreen = ({
     [popularAddons, timePeriod]
   );
 
+  const popularRecipesForTimePeriod = useMemo(
+    () => popularRecipes[timePeriod],
+    [popularRecipes, timePeriod]
+  );
+
   return (
     <>
       <SocialGraph
@@ -99,14 +104,12 @@ export const AddonsHomeScreen = ({
           }
         />
 
-        {popularRecipes.length > 0 ? (
-          <section>
-            <ListHeadingContainer>
-              <ListHeading>Popular recipes</ListHeading>
-            </ListHeadingContainer>
-            <PopularRecipes recipeItems={popularRecipes} />
-          </section>
-        ) : null}
+        <section>
+          <ListHeadingContainer>
+            <ListHeading>Popular recipes</ListHeading>
+          </ListHeadingContainer>
+          <PopularRecipes recipeItems={popularRecipesForTimePeriod} />
+        </section>
 
         <AddonsGrid title="Trending addons" addonItems={trendingAddons} />
       </AddonsLayout>

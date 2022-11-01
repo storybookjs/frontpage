@@ -47,27 +47,42 @@ export function useAddonsSearch() {
 }
 
 function searchAddons(query) {
-  return fetch('https://boring-heisenberg-43a6ed.netlify.app/', {
+  return fetch('https://deploy-preview-20--boring-heisenberg-43a6ed.netlify.app/', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       query: `
       query {
-        partialSearch(query: "${query}") {
-          id: name
-          name
-          displayName
-          description
-          icon
-          authors {
-            id: username
-            avatarUrl: gravatarUrl
-            name: username
+        partialSearchIntegrations(query: "${query}") {
+          addons {
+            id: name
+            name
+            displayName
+            description
+            icon
+            authors {
+              id: username
+              avatarUrl: gravatarUrl
+              name: username
+            }
+            weeklyDownloads
+            repositoryUrl
+            appearance: verified
+            verifiedCreator
           }
-          weeklyDownloads
-          repositoryUrl
-          appearance: verified
-          verifiedCreator
+          recipes {
+            id: name
+            name
+            displayName
+            description
+            icon
+            authors {
+              id: username
+              avatarUrl: gravatarUrl
+              name: username
+            }
+            weeklyViews
+          }
         }
         relatedTags(query: "${query}") {
           name
