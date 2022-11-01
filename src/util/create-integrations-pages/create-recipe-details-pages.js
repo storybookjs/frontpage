@@ -1,6 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 
+const buildTagLinks = require('../build-tag-links');
 const { wait, validateResponse, createMarkdownProcessor } = require('./helpers');
 const { RECIPE_FRAGMENT, ADDON_FRAGMENT } = require('./constants');
 
@@ -22,17 +23,7 @@ function fetchRecipesDetailPages(createPage, graphql, skip = 0) {
           {
             integrations {
               recipePages: recipes(limit: 30, skip: ${skip}) {
-                id: name
-                name
-                displayName
-                description
-                icon
-                authors {
-                  id: username
-                  avatarUrl: gravatarUrl
-                  name: username
-                }
-                weeklyViews
+                ${RECIPE_FRAGMENT}
 
                 tags {
                   name
@@ -41,19 +32,7 @@ function fetchRecipesDetailPages(createPage, graphql, skip = 0) {
                   icon
                 }
                 addons {
-                  id: name
-                  name
-                  displayName
-                  description
-                  icon
-                  authors {
-                    id: username
-                    avatarUrl: gravatarUrl
-                    name: username
-                  }
-                  weeklyDownloads
-                  appearance: verified
-                  verifiedCreator
+                  ${ADDON_FRAGMENT}
                 }
                 status
               }
@@ -86,6 +65,7 @@ function generateRecipesDetailPages(createPage, recipePages) {
       component: PAGE_COMPONENT_PATH,
       context: {
         ...recipe,
+        tags: buildTagLinks(recipe.tags),
         readme: markdownProcessor.processSync(rawMarkdown).toString(),
       },
     });

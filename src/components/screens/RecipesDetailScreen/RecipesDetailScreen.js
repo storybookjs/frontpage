@@ -214,10 +214,10 @@ export const RecipesDetailScreen = ({ path, location, pageContext }) => {
           <AddonsAside hideLearn>
             <AddonsSubheading>On this page</AddonsSubheading>
             <SectionLinksContainer>
-              <SectionLink tertiary LinkWrapper={GatsbyLink} to="/#addon-section">
+              <SectionLink tertiary LinkWrapper={GatsbyLink} to="#addon-section">
                 Addons
               </SectionLink>
-              <SectionLink tertiary LinkWrapper={GatsbyLink} to="/#recipe-section">
+              <SectionLink tertiary LinkWrapper={GatsbyLink} to="#recipe-section">
                 Recipe
               </SectionLink>
             </SectionLinksContainer>
