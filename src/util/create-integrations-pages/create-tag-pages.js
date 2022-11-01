@@ -1,7 +1,7 @@
 const path = require('path');
 
 const { wait, validateResponse } = require('./helpers');
-const { ADDON_FRAGMENT } = require('./constants');
+const { ADDON_FRAGMENT, RECIPE_FRAGMENT } = require('./constants');
 
 const PAGE_COMPONENT_PATH = path.resolve(
   `./src/components/screens/AddonsTagScreen/AddonsTagScreen.js`
@@ -13,20 +13,29 @@ function fetchTagPages(createPage, graphql, skip = 0) {
       graphql(
         `{
           integrations {
-          tagPages: tags(isCategory: false, limit: 30, skip: ${skip}) {
-            name
-            displayName
-            description
-            icon
-            relatedTags {
+            tagPages: tags(isCategory: false, limit: 30, skip: ${skip}) {
               name
               displayName
+              description
               icon
+              relatedTags {
+                name
+                displayName
+                icon
+              }
+              integrations: topIntegrations(sort: monthlyDownloads) {
+                addons {
+                  ${ADDON_FRAGMENT}
+                }
+  
+                recipes {
+                  ${RECIPE_FRAGMENT}
+                  addons {
+                    ${ADDON_FRAGMENT}
+                  }
+                }
+              }
             }
-            addons: top(sort: monthlyDownloads) {
-              ${ADDON_FRAGMENT}
-            }
-          }
         }
       }`
       )

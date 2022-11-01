@@ -1,6 +1,6 @@
 const path = require('path');
 const { validateResponse } = require('./helpers');
-const { ADDON_FRAGMENT } = require('./constants');
+const { ADDON_FRAGMENT, RECIPE_FRAGMENT } = require('./constants');
 
 const PAGE_COMPONENT_PATH = path.resolve(
   `./src/components/screens/AddonsCategoryScreen/AddonsCategoryScreen.js`
@@ -16,8 +16,17 @@ function fetchCategoryPages(createPage, graphql) {
             displayName
             description
             icon
-            addons: top(sort: monthlyDownloads) {
-              ${ADDON_FRAGMENT}
+            integrations: topIntegrations(sort: monthlyDownloads) {
+              addons {
+                ${ADDON_FRAGMENT}
+              }
+
+              recipes {
+                ${RECIPE_FRAGMENT}
+                addons {
+                  ${ADDON_FRAGMENT}
+                }
+              }
             }
           }
         }
@@ -38,7 +47,7 @@ function generateCategoryPages(createPage, categoryPages) {
       context: {
         category: category.displayName,
         description: category.description,
-        addons: category.addons,
+        integrations: category.integrations,
       },
     });
     console.log(` ✅ ${pagePath}`);

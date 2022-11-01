@@ -24,12 +24,13 @@ export const AddonsCategoryScreen = ({ path, pageContext }) => {
   const { title, ogImageAddons, urls = {} } = useSiteMetadata();
   const { home } = urls;
 
-  const { category, description, addons, recipes } = pageContext;
+  const { category, description, integrations } = pageContext;
+  const { addons = [], recipes = [] } = integrations;
 
   const sortedAddons = useMemo(() => sortAddons(addons), [addons]);
 
   // TODO: Replace with real recipes
-  const sortedRecipes = useMemo(() => recipes || MOCK_RECIPES, [recipes]);
+  const sortedRecipes = useMemo(() => recipes, [recipes]);
 
   const integrationCount = sortedAddons.length + sortedRecipes.length;
 

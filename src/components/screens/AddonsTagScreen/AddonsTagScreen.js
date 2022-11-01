@@ -38,7 +38,7 @@ export const AddonsTagScreen = ({ path, pageContext, ...props }) => {
   const relatedTags = buildTagLinks(tag.relatedTags || []);
   const breadcrumb = generateBreadcrumb();
 
-  const { addons = [], recipes = MOCK_RECIPES } = tag;
+  const { addons = [], recipes = [] } = tag.integrations;
 
   const integrationCount = addons.length + recipes.length;
 
@@ -54,7 +54,7 @@ export const AddonsTagScreen = ({ path, pageContext, ...props }) => {
         <Breadcrumb to={breadcrumb.link}>{breadcrumb.title}</Breadcrumb>
         <AddonsPageHeader
           title={`${tag.displayName || tag.name} tag`}
-          kicker={`${integrationCount} tagged ${pluralize('Integrations', tag.addons.length)}`}
+          kicker={`${integrationCount} tagged ${pluralize('Integrations', integrationCount)}`}
         />
         <AddonsAsideContainer>
           <IntegrationsContainer>
