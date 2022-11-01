@@ -12,6 +12,7 @@ const cache = new LRU({
   length: (n, key) => n.length,
 });
 
+// eslint-disable-next-line no-useless-escape
 const SEP_REGEX = /([\.:])/;
 
 // const logger = console;
@@ -31,7 +32,7 @@ const md5 = (host) => {
 
 const truncate = (host) => {
   const match = SEP_REGEX.exec(host);
-  const sep = match ? match[0] : '.'
+  const sep = match ? match[0] : '.';
   const prefix = host.slice(0, host.lastIndexOf(sep));
   return `${prefix}${sep}0`;
 };
