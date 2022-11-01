@@ -36,6 +36,12 @@ const StyledAddonsList = styled(AddonsList)`
   margin-bottom: 48px;
 `;
 
+const StyledRecipesList = styled(RecipesList)`
+  flex: 1 1 auto;
+  width: 100%;
+  margin-bottom: 48px;
+`;
+
 const RelatedTagsList = styled(TagList)`
   margin-bottom: 48px;
 `;
@@ -100,7 +106,7 @@ export const AddonsSearchResults = ({ isLoading, results, relatedTags, ...props 
           <ListHeadingContainer>
             <ListSubheading>Recipes</ListSubheading>
           </ListHeadingContainer>
-          <RecipesList isLoading={isLoading} addonItems={MOCK_RECIPES} />
+          <StyledRecipesList isLoading={isLoading} addonItems={MOCK_RECIPES} />
         </section>
       </>
     )}
