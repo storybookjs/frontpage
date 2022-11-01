@@ -30,15 +30,16 @@ const SearchSummaryCopy = styled.div`
   }
 `;
 
-const StyledAddonsList = styled(AddonsList)`
+const ResultsContainer = styled.div`
   flex: 1 1 auto;
   width: 100%;
+`;
+
+const StyledAddonsList = styled(AddonsList)`
   margin-bottom: 48px;
 `;
 
 const StyledRecipesList = styled(RecipesList)`
-  flex: 1 1 auto;
-  width: 100%;
   margin-bottom: 48px;
 `;
 
@@ -90,44 +91,49 @@ AddonsSearchSummary.defaultProps = {
   isLoading: false,
 };
 
-export const AddonsSearchResults = ({ isLoading, results, relatedTags, ...props }) => (
-  <SearchResultsContainer {...props}>
-    {!isLoading && results.length === 0 ? (
-      <NoAddonsFound />
-    ) : (
-      <>
-        <section>
-          <ListHeadingContainer>
-            <ListSubheading>Addons</ListSubheading>
-          </ListHeadingContainer>
-          <StyledAddonsList isLoading={isLoading} addonItems={results} />
-        </section>
-        <section>
-          <ListHeadingContainer>
-            <ListSubheading>Recipes</ListSubheading>
-          </ListHeadingContainer>
-          <StyledRecipesList isLoading={isLoading} addonItems={MOCK_RECIPES} />
-        </section>
-      </>
-    )}
-    <AddonsAside>
-      {!isLoading && results.length > 0 && (
-        <>
-          <AddonsSubheading>Related tags</AddonsSubheading>
-          <RelatedTagsList
-            limit={6}
-            tags={relatedTags.map((tag) => (
-              <TagLink key={tag.link} href={tag.link}>
-                {tag.name}
-              </TagLink>
-            ))}
-            isLoading={relatedTags?.length === 0}
-          />
-        </>
+export const AddonsSearchResults = ({ isLoading, integrations, relatedTags, ...props }) => {
+  const { addons = [], recipes = [] } = integrations;
+  const integrationCount = addons.length + recipes.length;
+
+  return (
+    <SearchResultsContainer {...props}>
+      {!isLoading && integrationCount === 0 ? (
+        <NoAddonsFound />
+      ) : (
+        <ResultsContainer>
+          <section>
+            <ListHeadingContainer>
+              <ListSubheading>Addons</ListSubheading>
+            </ListHeadingContainer>
+            <StyledAddonsList isLoading={isLoading} addonItems={integrations.addons} />
+          </section>
+          <section>
+            <ListHeadingContainer>
+              <ListSubheading>Recipes</ListSubheading>
+            </ListHeadingContainer>
+            <StyledRecipesList isLoading={isLoading} recipeItems={integrations.recipes} />
+          </section>
+        </ResultsContainer>
       )}
-    </AddonsAside>
-  </SearchResultsContainer>
-);
+      <AddonsAside>
+        {!isLoading && integrationCount > 0 && (
+          <>
+            <AddonsSubheading>Related tags</AddonsSubheading>
+            <RelatedTagsList
+              limit={6}
+              tags={relatedTags.map((tag) => (
+                <TagLink key={tag.link} href={tag.link}>
+                  {tag.name}
+                </TagLink>
+              ))}
+              isLoading={relatedTags?.length === 0}
+            />
+          </>
+        )}
+      </AddonsAside>
+    </SearchResultsContainer>
+  );
+};
 
 AddonsSearchResults.propTypes = {
   isLoading: PropTypes.bool,

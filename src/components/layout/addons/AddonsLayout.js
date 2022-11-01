@@ -210,7 +210,7 @@ export const AddonsLayout = ({ children, data, hideSidebar, currentPath, ...prop
         {isSearching ? (
           <AddonsSearchResults
             isLoading={isSearchLoading}
-            results={results.search}
+            integrations={results.integrations}
             relatedTags={results.relatedTags}
             {...props}
           />

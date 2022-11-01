@@ -2,7 +2,13 @@
 import { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import buildTagLinks from '../util/build-tag-links';
 
-const initalValue = { search: [], relatedTags: [] };
+const initalValue = {
+  integrations: {
+    addons: [],
+    recipes: [],
+  },
+  relatedTags: [],
+};
 const minQueryLength = 2;
 
 export function useAddonsSearch() {
@@ -53,7 +59,7 @@ function searchAddons(query) {
     body: JSON.stringify({
       query: `
       query {
-        partialSearchIntegrations(query: "${query}") {
+        partialSearch: partialSearchIntegrations(query: "${query}") {
           addons {
             id: name
             name
@@ -94,7 +100,10 @@ function searchAddons(query) {
   })
     .then((res) => res.json())
     .then((res) => ({
-      search: res.data.partialSearch,
+      integrations: {
+        addons: res.data.partialSearch.addons,
+        recipes: res.data.partialSearch.recipes,
+      },
       relatedTags: buildTagLinks(res.data.relatedTags),
     }))
     .catch(() => {
