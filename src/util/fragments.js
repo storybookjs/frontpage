@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby';
 
 export const addonItem = graphql`
-  fragment AddonItem on ADDON_Addon {
+  fragment AddonItem on INTEGRATION_Addon {
     id: name
     name
     displayName
@@ -23,5 +23,27 @@ export const addonItem = graphql`
     npmUrl
     appearance: verified
     verifiedCreator
+  }
+`;
+
+export const recipeItem = graphql`
+  fragment RecipeItem on INTEGRATION_Recipe {
+    id: name
+    name
+    displayName
+    description
+    icon
+    authors {
+      id: username
+      avatarUrl: gravatarUrl
+      name: username
+    }
+    weeklyViews
+    tags {
+      name
+      displayName
+      description
+      icon
+    }
   }
 `;

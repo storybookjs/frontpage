@@ -10,7 +10,7 @@ function fetchCategoryPages(createPage, graphql) {
   return graphql(
     `
       {
-        addons {
+        integrations {
           categoryPages: tags(isCategory: true) {
             name
             displayName
@@ -24,14 +24,14 @@ function fetchCategoryPages(createPage, graphql) {
       }
     `
   )
-    .then(validateResponse((data) => data.addons.categoryPages))
-    .then(({ data }) => data.addons.categoryPages)
+    .then(validateResponse((data) => data.integrations.categoryPages))
+    .then(({ data }) => data.integrations.categoryPages)
     .then((categoryPages) => generateCategoryPages(createPage, categoryPages));
 }
 
 function generateCategoryPages(createPage, categoryPages) {
   categoryPages.forEach((category) => {
-    const pagePath = `/addons/tag/${category.name}/`;
+    const pagePath = `/integrations/tag/${category.name}/`;
     createPage({
       path: pagePath,
       component: PAGE_COMPONENT_PATH,

@@ -12,27 +12,27 @@ function fetchTagPages(createPage, graphql, skip = 0) {
     .then(() =>
       graphql(
         `{
-      addons {
-        tagPages: tags(isCategory: false, limit: 30, skip: ${skip}) {
-          name
-          displayName
-          description
-          icon
-          relatedTags {
+          integrations {
+          tagPages: tags(isCategory: false, limit: 30, skip: ${skip}) {
             name
             displayName
+            description
             icon
-          }
-          addons: top(sort: monthlyDownloads) {
-            ${ADDON_FRAGMENT}
+            relatedTags {
+              name
+              displayName
+              icon
+            }
+            addons: top(sort: monthlyDownloads) {
+              ${ADDON_FRAGMENT}
+            }
           }
         }
-      }
-    }`
+      }`
       )
     )
-    .then(validateResponse((data) => data.addons.tagPages))
-    .then(({ data }) => data.addons.tagPages)
+    .then(validateResponse((data) => data.integrations.tagPages))
+    .then(({ data }) => data.integrations.tagPages)
     .then((tagPages) => {
       if (tagPages.length > 0) {
         generateTagPages(createPage, tagPages);
@@ -45,7 +45,7 @@ function fetchTagPages(createPage, graphql, skip = 0) {
 
 function generateTagPages(createPage, tagPages) {
   tagPages.forEach((tag) => {
-    const pagePath = `/addons/tag/${tag.name}/`;
+    const pagePath = `/integrations/tag/${tag.name}/`;
     createPage({
       path: pagePath,
       component: PAGE_COMPONENT_PATH,
