@@ -100,7 +100,7 @@ This project uses these tools to make our job easier.
 
 ### 💫 Deploys by [Netlify](https://netlify.com)
 
-Master and branches are automatically deployed by Netlify every commit.
+Main and branches are automatically deployed by Netlify every commit.
 
 ### 🖼 Visual testing by [Chromatic](https://www.chromatic.com/library?appId=5be26744d2f6250024a9117d)
 
