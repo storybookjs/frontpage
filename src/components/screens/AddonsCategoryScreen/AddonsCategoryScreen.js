@@ -9,14 +9,15 @@ import { AddonsPageHeader } from '../../layout/addons/AddonsPageHeader';
 import { AddonsList } from '../../layout/addons/AddonsList';
 import { AddonsLayout } from '../../layout/addons/AddonsLayout';
 import { RecipesList } from '../../layout/recipes/RecipesList';
+
 import { sortAddons } from '../../../util/sort-addons';
-
-import { recipeItemsData } from '../../layout/recipes/RecipesList.stories';
-
-// TODO: Remove mock recipe items
-const MOCK_RECIPES = recipeItemsData.slice(0, 9);
+import { sortRecipes } from '../../../util/sort-recipes';
 
 const SortedAddonsList = styled(AddonsList)`
+  margin-bottom: 48px;
+`;
+
+const SortedRecipesList = styled(RecipesList)`
   margin-bottom: 48px;
 `;
 
@@ -28,10 +29,7 @@ export const AddonsCategoryScreen = ({ path, pageContext }) => {
   const { addons = [], recipes = [] } = integrations;
 
   const sortedAddons = useMemo(() => sortAddons(addons), [addons]);
-
-  // TODO: Replace with real recipes
-  const sortedRecipes = useMemo(() => recipes, [recipes]);
-
+  const sortedRecipes = useMemo(() => sortRecipes(recipes), [recipes]);
   const integrationCount = sortedAddons.length + sortedRecipes.length;
 
   return (
@@ -63,7 +61,7 @@ export const AddonsCategoryScreen = ({ path, pageContext }) => {
             <ListHeadingContainer>
               <ListSubheading>Recipes</ListSubheading>
             </ListHeadingContainer>
-            <RecipesList
+            <SortedRecipesList
               title="Recipes"
               from={{ title: category, link: path }}
               recipeItems={sortedRecipes}
