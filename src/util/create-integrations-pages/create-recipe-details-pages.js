@@ -24,7 +24,8 @@ function fetchRecipesDetailPages(createPage, graphql, skip = 0) {
             integrations {
               recipePages: recipes(limit: 30, skip: ${skip}) {
                 ${RECIPE_FRAGMENT}
-
+                status
+                publishedAt
                 tags {
                   name
                   displayName
@@ -34,7 +35,6 @@ function fetchRecipesDetailPages(createPage, graphql, skip = 0) {
                 addons {
                   ${ADDON_FRAGMENT}
                 }
-                status
               }
             }
           }

@@ -13,6 +13,8 @@ import {
   Icon,
 } from '@storybook/design-system';
 import { SubNav, SubNavBreadcrumb } from '@storybook/components-marketing';
+import formatDistanceToNow from 'date-fns/formatDistanceToNow';
+
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import { SocialGraph } from '../../basics';
 import { AddonsAside, AddonsAsideContainer } from '../../layout/addons/AddonsAsideLayout';
@@ -55,6 +57,11 @@ const SectionTitle = styled.h2`
   font-size: ${typography.size.m2}px;
   line-height: ${typography.size.m3}px;
   color: ${color.darkest};
+  margin-bottom: ${spacing.padding.small}px;
+`;
+
+const SectionParagraph = styled.p`
+  margin-top: 0;
 `;
 
 const RelatedAddonsList = styled(AddonsList)`
@@ -167,8 +174,21 @@ const NoReadmeFound = ({ repositoryUrl }) => (
 );
 
 export const RecipesDetailScreen = ({ path, location, pageContext }) => {
-  const { homepageUrl, repositoryUrl, readme, compatibility, tags, authors, addons, ...recipe } =
-    pageContext;
+  const {
+    homepageUrl,
+    repositoryUrl,
+    readme,
+    compatibility,
+    tags,
+    authors,
+    addons,
+    publishedAt,
+    ...recipe
+  } = pageContext;
+
+  const hasAddons = addons?.length > 0;
+  const hasTags = tags?.length > 0;
+
   const { title, ogImageAddons, urls = {} } = useSiteMetadata();
   const { home } = urls;
 
@@ -192,36 +212,43 @@ export const RecipesDetailScreen = ({ path, location, pageContext }) => {
         <RecipeItemDetail {...recipe} />
         <AddonsAsideContainer>
           <ReadMe>
-            <SectionTitle id="addon-section">
-              {recipe.displayName} addons for Storybook
-            </SectionTitle>
-            <p>
-              The quickest way to integrate Storybook and {recipe.displayName} is to use an addon.
-              Addons are reusable packages that automatically configure integrations. Check out the{' '}
-              {recipe.displayName} addons below. If you’re looking to integrate {recipe.displayName}{' '}
-              manually, jump to the recipe.
-            </p>
-            <RelatedAddonsList addonItems={addons} />
-            <Spacer />
+            {hasAddons && (
+              <>
+                <SectionTitle id="addon-section">Do it for me</SectionTitle>
+                <p>
+                  The quickest way to integrate Storybook and {recipe.displayName} is to use an
+                  addon. Addons are reusable packages that automatically configure integrations.
+                  Check out the {recipe.displayName} addons below. If you’re looking to integrate{' '}
+                  {recipe.displayName} manually, jump to the recipe.
+                </p>
+                <RelatedAddonsList addonItems={addons} />
+                <Spacer />
+              </>
+            )}
+
             <Highlight withHTMLChildren={false}>
-              {readme ? (
-                <ReadMeContent dangerouslySetInnerHTML={{ __html: readme }} />
-              ) : (
-                <NoReadmeFound repositoryUrl={repositoryUrl || homepageUrl || recipe.npmUrl} />
-              )}
+              <SectionTitle id="recipe-section">Do it yourself</SectionTitle>
+              <ReadMeContent dangerouslySetInnerHTML={{ __html: readme }} />
             </Highlight>
           </ReadMe>
           <AddonsAside hideLearn>
             <AddonsSubheading>On this page</AddonsSubheading>
             <SectionLinksContainer>
-              <SectionLink tertiary LinkWrapper={GatsbyLink} to="#addon-section">
-                Addons
-              </SectionLink>
+              {hasAddons && (
+                <SectionLink tertiary LinkWrapper={GatsbyLink} to="#addon-section">
+                  Do it for me
+                </SectionLink>
+              )}
+
               <SectionLink tertiary LinkWrapper={GatsbyLink} to="#recipe-section">
-                Recipe
+                Do it yourself
               </SectionLink>
             </SectionLinksContainer>
-            {tags?.length > 0 && (
+
+            <AddonsSubheading>Contributors</AddonsSubheading>
+            <AuthorList authors={authors || []} />
+
+            {hasTags && (
               <>
                 <AddonsSubheading>Tags</AddonsSubheading>
                 <StyledTagsList
@@ -234,8 +261,9 @@ export const RecipesDetailScreen = ({ path, location, pageContext }) => {
                 />
               </>
             )}
-            <AddonsSubheading>Contributors</AddonsSubheading>
-            <AuthorList authors={authors || []} />
+
+            <AddonsSubheading>Last updated</AddonsSubheading>
+            {formatDistanceToNow(new Date(publishedAt), { addSuffix: true })}
           </AddonsAside>
         </AddonsAsideContainer>
       </AddonsLayout>
