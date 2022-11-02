@@ -15,8 +15,10 @@ export const Tag = () => (
         name: 'notes',
         displayName: 'Notes',
         icon: '🗒️',
-        addons: addonItemsData,
-        recipes: recipeItemsData.slice(0, 3),
+        integrations: {
+          addons: addonItemsData,
+          recipes: recipeItemsData.slice(0, 3),
+        },
         relatedTags: [
           {
             link: '/notes',

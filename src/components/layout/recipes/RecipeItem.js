@@ -169,6 +169,7 @@ const Meta = styled.div`
 const Stats = styled(Cardinal)`
   padding: 0;
   margin-right: ${spacing.padding.large}px;
+  min-width: 100px;
 `;
 
 export const RecipeItem = ({

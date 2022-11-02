@@ -1,11 +1,25 @@
 import React from 'react';
 import { RecipesDetailScreen } from './RecipesDetailScreen';
-import muiRecipe from '../../../content/recipes/material-ui';
-import i18nextRecipe from '../../../content/recipes/react-i18next';
 
 export default {
   title: 'Frontpage|screens/RecipesDetailScreen',
   component: RecipesDetailScreen,
+};
+
+const muiRecipe = {
+  icon: 'https://raw.githubusercontent.com/react-theming/storybook-addon-material-ui/master/docs/logos/material-ui.png',
+  displayName: 'Material UI',
+  name: '@mui/material',
+  description:
+    "Material UI is component library styled based on Google's Material Design spec. This recipe shows you how to get the most out of Material UI in Storybook.",
+  authors: [
+    {
+      id: '0',
+      name: 'Shaun Lloyd',
+      avatarUrl: 'https://avatars.githubusercontent.com/u/18172605',
+    },
+  ],
+  readme: '',
 };
 
 const extraAuthors = [
@@ -62,10 +76,8 @@ const Template = ({ recipe, ...args }) => (
       name: 'storybook-mobile',
       displayName: 'Mobile UX lint',
       description: 'Interact with component inputs dynamically in the Storybook UI',
-      weeklyDownloads: 17143,
+      weeklyViews: 17143,
       publishedAt: 1604552400000,
-      repositoryUrl: 'http://github.com/',
-      homepageUrl: 'http://github.com/',
       tags,
       ...recipe,
     }}
@@ -82,8 +94,8 @@ Default.args = {
 export const MoreThanFiveAuthors = Template.bind({});
 MoreThanFiveAuthors.args = {
   recipe: {
-    ...i18nextRecipe,
-    authors: [...i18nextRecipe.authors, ...extraAuthors],
+    ...muiRecipe,
+    authors: [...muiRecipe.authors, ...extraAuthors],
   },
 };
 

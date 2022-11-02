@@ -10,7 +10,8 @@ export const recipeItemsData = [
     displayName: 'Material UI',
     icon: MuiSVG,
     name: '@mui/material',
-    description: 'Get the most out of Material UI in your Storybook',
+    description:
+      "Material UI is component library styled based on Google's Material Design spec. This recipe shows you how to get the most out of Material UI in Storybook.",
     views: 12253,
   },
   {

@@ -8,8 +8,13 @@ export default {
   component: AddonsCategoryScreen,
 };
 
+const integrations = {
+  addons: addonItemsData,
+  recipes: recipeItemsData,
+};
+
 export const Default = () => (
-  <AddonsCategoryScreen pageContext={{ category: 'Data and state', addons: addonItemsData }} />
+  <AddonsCategoryScreen pageContext={{ category: 'Data and state', integrations }} />
 );
 
 Default.parameters = {
@@ -22,8 +27,7 @@ export const WithDesc = () => (
     pageContext={{
       category: 'Essentials',
       description: 'Pre-installed addons that power the core Storybook experience',
-      addons: addonItemsData,
-      recipes: recipeItemsData,
+      integrations,
     }}
   />
 );
