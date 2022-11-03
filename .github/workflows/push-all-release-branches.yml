@@ -3,7 +3,7 @@ name: Push all release branches
 on:
   push:
     branches:
-      - master
+      - main
   workflow_dispatch:
 
 jobs:
