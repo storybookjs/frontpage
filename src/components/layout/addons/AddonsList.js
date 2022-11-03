@@ -1,25 +1,10 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@storybook/theming';
 import { styles, Button } from '@storybook/design-system';
 import { AddonItem } from './AddonItem';
-import { AddonsSubheading } from './AddonsSubheading';
 
-const { spacing, typography, color } = styles;
-
-const Title = styled.h3`
-  font-weight: ${typography.weight.bold};
-  font-size: ${typography.size.m2}px;
-  line-height: ${typography.size.m3}px;
-  color: ${color.darkest};
-`;
-
-const SectionHeader = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: ${spacing.padding.medium}px;
-`;
+const { spacing } = styles;
 
 const ListWrapper = styled.div`
   > *:not(:last-child) {
@@ -40,9 +25,9 @@ export const AddonsList = ({ addonItems, isLoading, from, ...props }) => {
   const [visibleCount, setVisibleCount] = useState(6);
   const items = useMemo(() => addonItems.slice(0, visibleCount), [visibleCount, addonItems]);
 
-  const loadMore = () => {
+  const loadMore = useCallback(() => {
     setVisibleCount(Math.min(visibleCount + 6, addonItems.length));
-  };
+  }, [visibleCount, setVisibleCount, addonItems]);
 
   return (
     <ListWrapper
@@ -54,6 +39,7 @@ export const AddonsList = ({ addonItems, isLoading, from, ...props }) => {
       {(isLoading ? loadingItems : items).map((addon) => (
         <AddonItem key={addon.id} from={from} orientation="horizontal" {...addon} />
       ))}
+
       {addonItems.length > 6 && visibleCount < addonItems.length && (
         <Button tertiary onClick={loadMore}>
           Load more addons

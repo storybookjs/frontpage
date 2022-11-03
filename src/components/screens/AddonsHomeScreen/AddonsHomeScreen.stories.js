@@ -11,7 +11,7 @@ export default {
 export const Home = () => (
   <AddonsHomeScreenComponent
     pageContext={{
-      popularAddons: { MONTH: addonItemsData.slice(0, 9), YEAR: addonItemsData.slice(-9) },
+      popularAddons: { MONTH: addonItemsData.slice(0, 6), YEAR: addonItemsData.slice(-9) },
       popularRecipes: { MONTH: recipeItemsData.slice(0, 3), YEAR: recipeItemsData.slice(0, 6) },
       trendingAddons: addonItemsData.slice(-9),
     }}
