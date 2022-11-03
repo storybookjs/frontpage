@@ -7,7 +7,7 @@ import { styles, animation, Cardinal, AvatarList } from '@storybook/design-syste
 import customSVG from '../../../images/addon-catalog/custom.svg';
 import { VerifiedBadge } from './VerifiedBadge';
 
-const { hoverEffect, spacing, color, typography, breakpoint } = styles;
+const { hoverEffect, spacing, color, background, typography, breakpoint } = styles;
 const { inlineGlow } = animation;
 
 const AddonItemWrapper = styled.div`
@@ -17,6 +17,7 @@ const AddonItemWrapper = styled.div`
   padding: ${spacing.padding.medium}px ${spacing.padding.medium}px 0;
   text-decoration: none;
   position: relative;
+  background: white;
 
   @media (min-width: ${breakpoint * 1.5}px) {
     padding: ${spacing.padding.medium}px;

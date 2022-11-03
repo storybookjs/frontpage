@@ -2,21 +2,11 @@ import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@storybook/theming';
 import { Link as GatsbyLink } from 'gatsby';
-import {
-  styles,
-  Link,
-  TagList,
-  TagLink,
-  TagItem,
-  Highlight,
-  Avatar,
-  Icon,
-} from '@storybook/design-system';
+import { styles, Link, TagList, TagLink, Highlight, Avatar, Icon } from '@storybook/design-system';
 import { SubNav, SubNavBreadcrumb } from '@storybook/components-marketing';
-import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 
 import useSiteMetadata from '../../lib/useSiteMetadata';
-import { SocialGraph } from '../../basics';
+import { SocialGraph, ContentWell } from '../../basics';
 import { AddonsAside, AddonsAsideContainer } from '../../layout/addons/AddonsAsideLayout';
 import { AddonsSubheading } from '../../layout/addons/AddonsSubheading';
 import { RecipeItemDetail } from '../../layout/recipes/RecipeItemDetail';
@@ -25,7 +15,7 @@ import { mdFormatting } from '../../../styles/formatting';
 import { generateBreadcrumb } from '../../../util/generate-breadcrumb';
 import { AddonsList } from '../../layout/addons/AddonsList';
 
-const { color, typography, spacing, breakpoint } = styles;
+const { color, typography, spacing } = styles;
 
 const SectionLinksContainer = styled.div`
   margin-bottom: 30px;
@@ -52,21 +42,29 @@ const ReadMe = styled.section`
   min-width: 0;
 `;
 
+const AddonsWell = styled(ContentWell)`
+  margin-bottom: 40px;
+`;
+
+const WellTitle = styled.h2`
+  font-family: ${typography.type};
+  font-weight: ${typography.weight.bold};
+  font-size: ${typography.size.s3}px;
+  line-height: ${typography.size.m3}px;
+`;
+
+const WellBody = styled.p`
+  font-family: ${typography.type};
+  font-size: ${typography.size.s3}px;
+  line-height: ${typography.size.m3}px;
+`;
+
 const SectionTitle = styled.h2`
   font-weight: ${typography.weight.bold};
   font-size: ${typography.size.m2}px;
   line-height: ${typography.size.m3}px;
   color: ${color.darkest};
   margin-bottom: ${spacing.padding.small}px;
-`;
-
-const SectionParagraph = styled.p`
-  margin-top: 0;
-`;
-
-const RelatedAddonsList = styled(AddonsList)`
-  padding-bottom: 48px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 `;
 
 const ReadMeContent = styled.div`
@@ -131,49 +129,16 @@ const AuthorList = ({ authors }) => {
   );
 };
 
-const Spacer = styled.div`
-  padding-top: 0;
-
-  @media (min-width: ${1.5 * breakpoint}px) {
-    padding-top: ${spacing.padding.large}px;
-    flex: 1 1 auto;
-    min-width: 0;
-  }
-`;
-
-const MissingInfo = styled.div`
-  flex: 1 1 auto;
-  border: 1px dashed ${color.border};
-  border-radius: 5px;
-  padding: 32px;
-  text-align: center;
-  width: 100%;
-
+const LastUpdated = styled.span`
   font-size: ${typography.size.s2}px;
   line-height: ${typography.size.m1}px;
-  color: ${color.dark};
-  text-align: center;
-
-  h3 {
-    font-size: ${typography.size.s2}px;
-    line-height: ${typography.size.m1}px;
-    font-weight: ${typography.weight.bold};
-  }
+  color: ${color.darker};
 `;
 
-const NoReadmeFound = ({ repositoryUrl }) => (
-  <MissingInfo>
-    <h3>Readme not available</h3>
-    <div>
-      Check back later or{' '}
-      <Link href={repositoryUrl} target="_blank" rel="noopener nofollow noreferrer">
-        view the readme on GitHub
-      </Link>
-    </div>
-  </MissingInfo>
-);
-
 export const RecipesDetailScreen = ({ path, location, pageContext }) => {
+  const { title, ogImageAddons, urls = {} } = useSiteMetadata();
+  const { home } = urls;
+
   const {
     homepageUrl,
     repositoryUrl,
@@ -188,16 +153,14 @@ export const RecipesDetailScreen = ({ path, location, pageContext }) => {
 
   const hasAddons = addons?.length > 0;
   const hasTags = tags?.length > 0;
-
-  const { title, ogImageAddons, urls = {} } = useSiteMetadata();
-  const { home } = urls;
+  const displayName = recipe.displayName || recipe.name;
 
   const breadcrumb = generateBreadcrumb(location.state);
 
   return (
     <>
       <SocialGraph
-        title={`${recipe.displayName || recipe.name} Recipe | ${title}`}
+        title={`${displayName} Recipe | ${title}`}
         desc={recipe.description || ''}
         url={`${home}${path}`}
         image={ogImageAddons}
@@ -213,21 +176,24 @@ export const RecipesDetailScreen = ({ path, location, pageContext }) => {
         <AddonsAsideContainer>
           <ReadMe>
             {hasAddons && (
-              <>
-                <SectionTitle id="addon-section">Do it for me</SectionTitle>
-                <p>
-                  The quickest way to integrate Storybook and {recipe.displayName} is to use an
-                  addon. Addons are reusable packages that automatically configure integrations.
-                  Check out the {recipe.displayName} addons below. If you’re looking to integrate{' '}
-                  {recipe.displayName} manually, jump to the recipe.
-                </p>
-                <RelatedAddonsList addonItems={addons} />
-                <Spacer />
-              </>
+              <section>
+                <AddonsWell variant="positive">
+                  <WellTitle id="addon-section">Do it for me automatically</WellTitle>
+                  <WellBody>
+                    The quickest way to integrate Storybook and {displayName} is to use an addon.
+                    Addons are reusable packages that automatically configure integrations. Check
+                    out the {displayName} addons below. If you’re looking to integrate {displayName}{' '}
+                    manually, jump to the recipe.
+                  </WellBody>
+                  <AddonsList addonItems={addons} />
+                </AddonsWell>
+              </section>
             )}
 
             <Highlight withHTMLChildren={false}>
-              <SectionTitle id="recipe-section">Do it yourself</SectionTitle>
+              <SectionTitle id="recipe-section">
+                How to setup {displayName} and Storybook
+              </SectionTitle>
               <ReadMeContent dangerouslySetInnerHTML={{ __html: readme }} />
             </Highlight>
           </ReadMe>
@@ -236,17 +202,14 @@ export const RecipesDetailScreen = ({ path, location, pageContext }) => {
             <SectionLinksContainer>
               {hasAddons && (
                 <SectionLink tertiary LinkWrapper={GatsbyLink} to="#addon-section">
-                  Do it for me
+                  Addons
                 </SectionLink>
               )}
 
               <SectionLink tertiary LinkWrapper={GatsbyLink} to="#recipe-section">
-                Do it yourself
+                Recipe
               </SectionLink>
             </SectionLinksContainer>
-
-            <AddonsSubheading>Contributors</AddonsSubheading>
-            <AuthorList authors={authors || []} />
 
             {hasTags && (
               <>
@@ -262,8 +225,10 @@ export const RecipesDetailScreen = ({ path, location, pageContext }) => {
               </>
             )}
 
-            <AddonsSubheading>Last updated</AddonsSubheading>
-            {formatDistanceToNow(new Date(publishedAt), { addSuffix: true })}
+            <AddonsSubheading>Contributors</AddonsSubheading>
+            <AuthorList authors={authors || []} />
+
+            <LastUpdated>Last updated {new Date(publishedAt).toDateString()}</LastUpdated>
           </AddonsAside>
         </AddonsAsideContainer>
       </AddonsLayout>
