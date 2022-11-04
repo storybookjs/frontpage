@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import MuiSVG from '../src/images/integrations/mui.svg';
 
 let search = { query: '', isSearching: false, isSearchLoading: false, noResults: false };
 

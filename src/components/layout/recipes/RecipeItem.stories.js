@@ -71,8 +71,8 @@ export const StatVariations = (args) => (
 );
 StatVariations.args = {
   orientation: 'horizontal',
-  icon: ControlsSVG,
-  name: '@storybook/addon-controls',
-  displayName: 'Controls',
-  description: 'Interact with component inputs dynamically in the Storybook UI',
+  icon: NextJsSVG,
+  name: 'next',
+  displayName: 'Next.js',
+  description: 'How to hook up your Next.js app in Storybook',
 };
