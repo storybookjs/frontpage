@@ -6,7 +6,7 @@ import ViewportSVG from '../../../images/addon-catalog/viewports.svg';
 import ContrastPNG from '../../../images/addon-catalog/contrast.png';
 
 export default {
-  title: 'Frontpage|layout/addons/AddonItem',
+  title: 'Integrations Catalog/Layout/Addons/AddonItem',
   component: AddonItem,
   chromatic: { viewports: [320, 900] },
 };
@@ -58,8 +58,8 @@ const Template = (args) => (
   </Wrapper>
 );
 
-export const OfficialStorybook = Template.bind({});
-OfficialStorybook.args = {
+export const OfficialStorybookAddon = Template.bind({});
+OfficialStorybookAddon.args = {
   appearance: 'official',
   icon: ControlsSVG,
   displayName: 'Controls',
@@ -67,8 +67,8 @@ OfficialStorybook.args = {
   weeklyDownloads: 17143,
 };
 
-export const OfficialIntegrator = Template.bind({});
-OfficialIntegrator.args = {
+export const OfficialIntegratorAddon = Template.bind({});
+OfficialIntegratorAddon.args = {
   appearance: 'integrators',
   icon: ContrastPNG,
   displayName: 'Contrast',
@@ -77,8 +77,8 @@ OfficialIntegrator.args = {
   verifiedCreator: 'Contrast',
 };
 
-export const Community = Template.bind({});
-Community.args = {
+export const CommunityMadeAddon = Template.bind({});
+CommunityMadeAddon.args = {
   icon: ViewportSVG,
   appearance: 'community',
   displayName: 'Mobile UX Hints',
@@ -102,8 +102,8 @@ WithoutDisplayName.args = {
   weeklyDownloads: 238,
 };
 
-export const Loading = Template.bind({});
-Loading.args = {
+export const LoadingState = Template.bind({});
+LoadingState.args = {
   isLoading: true,
 };
 

@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 
 import Cardinal from './Cardinal';
 
-storiesOf('Frontpage|basics/Cardinal', module)
+storiesOf('Basics/Cardinal', module)
   .add('all cardinals', () => (
     <div style={{ background: 'white' }}>
       <Cardinal loading size="small" />

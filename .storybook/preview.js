@@ -33,6 +33,12 @@ export const decorators = [
 ];
 
 export const parameters = {
+  options: {
+    storySort: {
+      method: 'alphabetical',
+      order: ['Basics', 'Layout', 'Screens', 'Integrations Catalog'],
+    },
+  },
   backgrounds: {
     default: 'light',
     values: [

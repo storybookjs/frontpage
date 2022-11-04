@@ -26,7 +26,7 @@ const Wrapper = styled.div`
 `;
 
 export default {
-  title: 'Frontpage|screens/DocsScreen/DocsScreen',
+  title: 'Screens/DocsScreen/DocsScreen',
   component: DocsScreen,
   decorators: [(storyFn) => <Wrapper>{storyFn()}</Wrapper>],
 };

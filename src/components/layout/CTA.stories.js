@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 import { Button } from '@storybook/design-system';
 import CTA from './CTA';
 
-storiesOf('Frontpage|layout/CTA', module)
+storiesOf('Layout/CTA', module)
   .addDecorator((storyFn) => <div style={{ padding: '60px 0' }}>{storyFn()}</div>)
   .add('default', () => (
     <CTA

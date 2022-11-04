@@ -1,13 +1,13 @@
 import React from 'react';
-import { Breadcrumb } from './Breadcrumb';
+import { Breadcrumb as BreadcrumbComponent } from './Breadcrumb';
 
 export default {
-  title: 'Frontpage|basics/Breadcrumb',
-  component: Breadcrumb,
+  title: 'Basics/Breadcrumb',
+  component: BreadcrumbComponent,
 };
 
-export const Default = () => (
+export const Breadcrumb = () => (
   <div style={{ paddingTop: '2rem' }}>
-    <Breadcrumb to="/">View full catalog</Breadcrumb>
+    <BreadcrumbComponent to="/">View full catalog</BreadcrumbComponent>
   </div>
 );

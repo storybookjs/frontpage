@@ -2,7 +2,7 @@ import React from 'react';
 import { VerifiedBadge } from './VerifiedBadge';
 
 export default {
-  title: 'Frontpage|layout/addons/VerifiedBadge',
+  title: 'Integrations Catalog/Layout/Addons/VerifiedBadge',
   component: VerifiedBadge,
 };
 

@@ -30,7 +30,7 @@ export const pageContext = {
 };
 
 export default {
-  title: 'Frontpage|layout/DocsLayout',
+  title: 'Layout/DocsLayout',
   component: DocsLayout,
   excludeStories: ['pageContext'],
 };

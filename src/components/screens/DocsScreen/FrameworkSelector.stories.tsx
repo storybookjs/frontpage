@@ -12,7 +12,7 @@ const Wrapper = styled.span`
 `;
 
 export default {
-  title: 'Frontpage|screens/DocsScreen/FrameworkSelector',
+  title: 'Screens/DocsScreen/FrameworkSelector',
   component: FrameworkSelector,
   decorators: [(storyFn) => <Wrapper>{storyFn()}</Wrapper>],
 };

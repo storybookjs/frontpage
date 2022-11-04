@@ -3,7 +3,7 @@ import { AddonsList } from './AddonsList';
 import { addonItemsData } from './AddonsGrid.stories';
 
 export default {
-  title: 'Frontpage|layout/addons/AddonsList',
+  title: 'Integrations Catalog/Layout/Addons/AddonsList',
   component: AddonsList,
   excludeStories: /.*Data$/,
 };

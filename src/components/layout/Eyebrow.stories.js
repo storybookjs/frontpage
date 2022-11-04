@@ -4,7 +4,7 @@ import { Link } from '@storybook/design-system';
 
 import Eyebrow from './Eyebrow';
 
-storiesOf('Frontpage|layout/Eyebrow', module).add('default', () => (
+storiesOf('Layout/Eyebrow', module).add('Eyebrow', () => (
   <div>
     <Eyebrow>
       Default eyebrow lorem ipsum dolor{' '}

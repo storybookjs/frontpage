@@ -1,16 +1,16 @@
 import React from 'react';
-import { Community } from './Community';
+import { Community as CommunityComponent } from './Community';
 
 export default {
   title: 'Screens/IndexScreen/Community',
-  component: Community,
+  component: CommunityComponent,
   parameters: {
     chromatic: { viewports: [320, 1200] },
     layout: 'fullscreen',
   },
 };
 
-export const Default = () => <Community />;
-Default.parameters = {
+export const Community = () => <CommunityComponent />;
+Community.parameters = {
   backgrounds: { default: 'dark' },
 };

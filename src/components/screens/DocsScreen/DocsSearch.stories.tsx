@@ -29,7 +29,7 @@ const OpenWrapper = styled(Wrapper)`
 `;
 
 export default {
-  title: 'Frontpage|screens/DocsScreen/DocsSearch',
+  title: 'Screens/DocsScreen/DocsSearch',
   component: DocsSearch,
   argTypes: {
     visible: { control: false },

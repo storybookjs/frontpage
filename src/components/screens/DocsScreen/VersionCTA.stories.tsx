@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 `;
 
 export default {
-  title: 'Frontpage|screens/DocsScreen/VersionCTA',
+  title: 'Screens/DocsScreen/VersionCTA',
   component: VersionCTA,
   decorators: [(storyFn) => <Wrapper>{storyFn()}</Wrapper>],
 };

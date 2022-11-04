@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 
 import SocialProof from './SocialProof';
 
-storiesOf('Frontpage|layout/SocialProof', module)
+storiesOf('Layout/SocialProof', module)
   .add('heading', () => (
     <SocialProof
       heading="Trusted by"

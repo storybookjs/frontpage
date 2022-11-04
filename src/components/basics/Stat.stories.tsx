@@ -1,19 +1,19 @@
 import React from 'react';
-import { Stat } from './Stat';
+import { Stat as StatComponent } from './Stat';
 
 export default {
-  title: 'Frontpage|basics/Stat',
-  component: Stat,
+  title: 'Basics/Stat',
+  component: StatComponent,
 };
 
-const Template = (args) => <Stat {...args} />;
+const Template = (args) => <StatComponent {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
+export const Stat = Template.bind({});
+Stat.args = {
   count: '1480+',
   text: 'Contributors',
   noPlural: true,
 };
-Default.parameters = {
+Stat.parameters = {
   backgrounds: { default: 'dark' },
 };

@@ -4,7 +4,7 @@ import ControlsSVG from '../../../images/addon-catalog/controls.svg';
 import ViewportSVG from '../../../images/addon-catalog/viewports.svg';
 
 export default {
-  title: 'Frontpage|screens/AddonsDetailScreen',
+  title: 'Integrations Catalog/Screens/Addons Detail',
   component: AddonsDetailScreen,
 };
 

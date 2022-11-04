@@ -9,8 +9,8 @@ const VideoWrapper = styled('div')`
   margin: 0px auto;
 `;
 
-storiesOf('Frontpage|basics/Video', module).add(
-  'video',
+storiesOf('Basics/Video', module).add(
+  'Video',
   () => (
     <VideoWrapper>
       <Video

@@ -1,14 +1,13 @@
 import React from 'react';
-import { AddonsPageHeader } from './AddonsPageHeader';
-import { addonItemsData } from './AddonsGrid.stories';
+import { AddonsPageHeader as AddonsPageHeaderComponent } from './AddonsPageHeader';
 
 export default {
-  title: 'Frontpage|layout/addons/AddonsPageHeader',
-  component: AddonsPageHeader,
+  title: 'Integrations Catalog/Layout/Addons/AddonsPageHeader',
+  component: AddonsPageHeaderComponent,
 };
 
-export const Default = () => (
-  <AddonsPageHeader
+export const AddonsPageHeader = () => (
+  <AddonsPageHeaderComponent
     title="Essentials"
     kicker="6 addons"
     subtitle="Pre-installed addons that power the core Storybook experience"

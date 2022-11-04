@@ -17,7 +17,7 @@ import StoryshotsSVG from '../../../images/addon-catalog/storyshots.svg';
 import ToolbarsSVG from '../../../images/addon-catalog/toolbars.svg';
 
 export default {
-  title: 'Frontpage|layout/addons/AddonsGrid',
+  title: 'Integrations Catalog/Layout/Addons/AddonsGrid',
   component: AddonsGrid,
   excludeStories: /.*Data$/,
 };

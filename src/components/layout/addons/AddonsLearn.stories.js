@@ -1,12 +1,12 @@
 import React from 'react';
-import { AddonsLearn } from './AddonsLearn';
+import { AddonsLearn as AddonsLearnComponent } from './AddonsLearn';
 
 export default {
-  title: 'Frontpage|layout/addons/AddonsLearn',
-  component: AddonsLearn,
+  title: 'Integrations Catalog/Layout/Addons/AddonsLearn',
+  component: AddonsLearnComponent,
 };
 
-const Template = (args) => <AddonsLearn {...args} />;
+const Template = (args) => <AddonsLearnComponent {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {};
+export const AddonsLearn = Template.bind({});
+AddonsLearn.args = {};
