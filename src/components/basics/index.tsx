@@ -7,5 +7,5 @@ export { default as SocialGraph } from './SocialGraph';
 export { default as Video } from './Video';
 
 export * from './Breadcrumb';
-export * from './ContentWell';
+export * from './Callout';
 export * from './ListHeadings';

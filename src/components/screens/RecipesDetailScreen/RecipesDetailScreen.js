@@ -6,7 +6,7 @@ import { styles, Link, TagList, TagLink, Highlight, Avatar, Icon } from '@storyb
 import { SubNav, SubNavBreadcrumb } from '@storybook/components-marketing';
 
 import useSiteMetadata from '../../lib/useSiteMetadata';
-import { SocialGraph, ContentWell } from '../../basics';
+import { SocialGraph, Callout } from '../../basics';
 import { AddonsAside, AddonsAsideContainer } from '../../layout/addons/AddonsAsideLayout';
 import { AddonsSubheading } from '../../layout/addons/AddonsSubheading';
 import { RecipeItemDetail } from '../../layout/recipes/RecipeItemDetail';
@@ -42,7 +42,7 @@ const ReadMe = styled.section`
   min-width: 0;
 `;
 
-const AddonsWell = styled(ContentWell)`
+const AddonsCallout = styled(Callout)`
   margin-bottom: 40px;
 `;
 
@@ -177,7 +177,7 @@ export const RecipesDetailScreen = ({ path, location, pageContext }) => {
           <ReadMe>
             {hasAddons && (
               <section>
-                <AddonsWell variant="positive">
+                <AddonsCallout variant="positive">
                   <WellTitle id="addon-section">Do it for me automatically</WellTitle>
                   <WellBody>
                     The quickest way to integrate Storybook and {displayName} is to use an addon.
@@ -186,7 +186,7 @@ export const RecipesDetailScreen = ({ path, location, pageContext }) => {
                     manually, jump to the recipe.
                   </WellBody>
                   <AddonsList addonItems={addons} />
-                </AddonsWell>
+                </AddonsCallout>
               </section>
             )}
 

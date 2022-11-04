@@ -13,10 +13,10 @@ const VARIANT_COLORS: Record<Variant, { background: string; border: string }> = 
   selected: { background: background.calmBlue, border: rgba(color.selected, 0.1) },
 };
 
-export interface ContentWellProps {
+export interface CalloutProps {
   variant: Variant;
 }
-export const ContentWell = styled.div<ContentWellProps>`
+export const Callout = styled.div<CalloutProps>`
   padding: ${spacing.padding.medium}px;
   border-radius: ${spacing.borderRadius.small}px;
 
