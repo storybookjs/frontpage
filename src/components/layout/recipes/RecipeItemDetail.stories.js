@@ -5,7 +5,9 @@ import MuiSVG from '../../../images/integrations/mui.svg';
 export default {
   title: 'Frontpage|layout/recipes/RecipeItemDetail',
   component: RecipeItemDetail,
-  chromatic: { viewports: [320, 900] },
+  parameters: {
+    chromatic: { viewports: [320, 900] },
+  },
 };
 
 const Template = (args) => <RecipeItemDetail {...args} />;

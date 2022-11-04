@@ -4,7 +4,19 @@ import { styles } from '@storybook/design-system';
 
 import { Callout } from './Callout';
 
-const { typography } = styles;
+export default {
+  title: 'Frontpage|basics/Callout',
+  component: Callout,
+  parameters: {
+    chromatic: { viewports: [320, 900] },
+  },
+};
+
+const { typography, spacing } = styles;
+
+const StoryWrapper = styled.div`
+  padding: ${spacing.padding.medium}px;
+`;
 
 const Title = styled.h1`
   font-family: ${typography.type};
@@ -19,13 +31,23 @@ const BodyText = styled.p`
   line-height: ${typography.size.m3}px;
 `;
 
-export default {
-  title: 'Frontpage|basics/Callout',
-  component: Callout,
-};
+const Template = (args) => (
+  <StoryWrapper>
+    <Callout {...args}>
+      <Title>👋 Hello there, I'm a Callout</Title>
+      <BodyText>
+        I'm here to bring attention to some important information that you might be interested in.
+        <br />
+        You can play with the way I look using the prop controls below 👇
+      </BodyText>
+    </Callout>
+  </StoryWrapper>
+);
+
+export const Default = Template.bind({});
 
 export const Variants = () => (
-  <>
+  <StoryWrapper>
     <Callout variant="neutral">
       <Title>I'm a neutral Callout</Title>
       <BodyText>
@@ -46,5 +68,5 @@ export const Variants = () => (
         I'm here to bring attention to some important information that you might be interested in
       </BodyText>
     </Callout>
-  </>
+  </StoryWrapper>
 );

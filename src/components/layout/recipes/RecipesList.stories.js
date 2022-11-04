@@ -112,6 +112,9 @@ export default {
   title: 'Frontpage|layout/Recipes/RecipesList',
   component: RecipesList,
   excludeStories: /.*Data$/,
+  parameters: {
+    chromatic: { viewports: [320, 900] },
+  },
 };
 
 const Template = (args) => <RecipesList {...args} />;

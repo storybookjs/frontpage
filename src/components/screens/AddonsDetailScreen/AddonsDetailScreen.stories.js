@@ -6,6 +6,10 @@ import ViewportSVG from '../../../images/addon-catalog/viewports.svg';
 export default {
   title: 'Integrations Catalog/Screens/Addons Detail',
   component: AddonsDetailScreen,
+  parameters: {
+    chromatic: { viewports: [320, 1200] },
+    layout: 'fullscreen',
+  },
 };
 
 const readme = `<h1 id="-storybook-mobile">📱storybook-mobile</h1>

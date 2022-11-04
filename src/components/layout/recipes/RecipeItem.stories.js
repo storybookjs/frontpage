@@ -6,7 +6,9 @@ import NextJsSVG from '../../../images/integrations/nextjs.svg';
 export default {
   title: 'Frontpage|layout/Recipes/RecipeItem',
   component: RecipeItem,
-  chromatic: { viewports: [320, 900] },
+  parameters: {
+    chromatic: { viewports: [320, 900] },
+  },
 };
 
 const Wrapper = styled.div`

@@ -6,6 +6,10 @@ import { recipeItemsData } from '../../layout/recipes/RecipesList.stories';
 export default {
   title: 'Integrations Catalog/Screens/Tag',
   component: AddonsTagScreen,
+  parameters: {
+    chromatic: { viewports: [320, 1200] },
+    layout: 'fullscreen',
+  },
 };
 
 export const Tag = () => (

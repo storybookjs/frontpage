@@ -25,3 +25,7 @@ export const Callout = styled.div<CalloutProps>`
     box-shadow: ${VARIANT_COLORS[variant].border} 0 0 0 1px inset;
   `}
 `;
+
+Callout.defaultProps = {
+  variant: 'neutral',
+};
