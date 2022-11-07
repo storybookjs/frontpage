@@ -19,7 +19,22 @@ echo "Extracting $LABEL version info..."
 
 mkdir -p "$VERSIONS_DIR/$LABEL"
 
-curl $MONOREPO_CODELOAD_URL/$BRANCH_ARG | tar -zxvC $VERSIONS_DIR "$TAR_NAME/package.json" "$TAR_NAME/docs/toc.js"
-mv "$VERSIONS_DIR/$TAR_NAME/package.json" "$VERSIONS_DIR/$LABEL/package.json"
+PACKAGE_JSON_PATH="package.json"
+
+# LABEL is a semantic version 
+if egrep '^[0-9]+\.[0-9]+' <<<"$LABEL" ; then
+
+  # LABEL is >= 7.0
+  if awk "BEGIN {exit !($LABEL >= 7.0)}"; then
+    PACKAGE_JSON_PATH="code/package.json"
+  fi
+fi
+
+
+
+
+
+curl $MONOREPO_CODELOAD_URL/$BRANCH_ARG | tar -zxvC $VERSIONS_DIR "$TAR_NAME/$PACKAGE_JSON_PATH" "$TAR_NAME/docs/toc.js"
+mv "$VERSIONS_DIR/$TAR_NAME/$PACKAGE_JSON_PATH" "$VERSIONS_DIR/$LABEL/package.json"
 mv "$VERSIONS_DIR/$TAR_NAME/docs/toc.js" "$VERSIONS_DIR/$LABEL/toc.js"
 rm -r "$VERSIONS_DIR/$TAR_NAME"
