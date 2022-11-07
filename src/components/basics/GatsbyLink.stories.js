@@ -1,7 +1,9 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-import GatsbyLink from './GatsbyLink';
+import GatsbyLinkComponent from './GatsbyLink';
 
-storiesOf('Basics/GatsbyLink', module).add('GatsbyLink', () => (
-  <GatsbyLink to="/">Link</GatsbyLink>
-));
+export default {
+  title: 'Basics/GatsbyLink',
+  component: GatsbyLinkComponent,
+};
+
+export const GatsbyLink = () => <GatsbyLinkComponent to="/">Link</GatsbyLinkComponent>;

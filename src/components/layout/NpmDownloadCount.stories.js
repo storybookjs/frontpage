@@ -16,3 +16,4 @@ export const NpmDownloadCount = () => (
 NpmDownloadCount.parameters = {
   backgrounds: { default: 'dark' },
 };
+NpmDownloadCount.storyName = 'NpmDownloadCount';

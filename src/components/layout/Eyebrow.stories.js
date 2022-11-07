@@ -1,28 +1,32 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 import { Link } from '@storybook/design-system';
 
-import Eyebrow from './Eyebrow';
+import EyebrowComponent from './Eyebrow';
 
-storiesOf('Layout/Eyebrow', module).add('Eyebrow', () => (
+export default {
+  title: 'Layout/Eyebrow',
+  component: EyebrowComponent,
+};
+
+export const Eyebrow = () => (
   <div>
-    <Eyebrow>
+    <EyebrowComponent>
       Default eyebrow lorem ipsum dolor{' '}
       <Link href="https://google.com" inverse>
         <b>Link</b>
       </Link>
-    </Eyebrow>
-    <Eyebrow warning>
+    </EyebrowComponent>
+    <EyebrowComponent warning>
       Warning eyebrow lorem ipsum dolor{' '}
       <Link href="https://google.com" secondary>
         <b>Link</b>
       </Link>
-    </Eyebrow>
-    <Eyebrow positive>
+    </EyebrowComponent>
+    <EyebrowComponent positive>
       Positive eyebrow lorem ipsum dolor{' '}
       <Link href="https://google.com" secondary>
         <b>Link</b>
       </Link>
-    </Eyebrow>
+    </EyebrowComponent>
   </div>
-));
+);

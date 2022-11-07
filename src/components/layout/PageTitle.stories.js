@@ -1,20 +1,24 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-import PageTitle from './PageTitle';
+import PageTitleComponent from './PageTitle';
 
-storiesOf('Layout/PageTitle', module).add('all', () => (
+export default {
+  title: 'Layout/PageTitle',
+  component: PageTitleComponent,
+};
+
+export const PageTitle = () => (
   <div>
-    <PageTitle
+    <PageTitleComponent
       heading="Addons"
       title="Supercharge Storybook"
       desc="Storybook addons enable advanced functionality and unlock new workflows. Contributed by core maintainers and the amazing developer community."
       color="gold"
     />
-    <PageTitle
+    <PageTitleComponent
       heading="Addons"
       title="Supercharge Storybook"
       desc="Storybook addons enable advanced functionality and unlock new workflows. Contributed by core maintainers and the amazing developer community."
       color="purple"
     />
   </div>
-));
+);
