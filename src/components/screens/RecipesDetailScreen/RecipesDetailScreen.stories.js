@@ -4,7 +4,7 @@ import { RecipesDetailScreen } from './RecipesDetailScreen';
 import { addonItemsData } from '../../layout/addons/AddonsGrid.stories';
 
 export default {
-  title: 'Frontpage|screens/RecipesDetailScreen',
+  title: 'Integrations Catalog/Screens/RecipesDetailScreen',
   component: RecipesDetailScreen,
   parameters: {
     chromatic: { viewports: [320, 1200] },
