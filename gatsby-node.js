@@ -7,11 +7,11 @@ const { createFilePath } = require(`gatsby-source-filesystem`);
 const { toc: docsToc } = require('./src/content/docs/toc');
 const addStateToToc = require('./src/util/add-state-to-toc');
 const buildPathWithFramework = require('./src/util/build-path-with-framework');
-const createAddonsPages = require('./src/util/create-addons-pages');
 const getReleaseBranchUrl = require('./src/util/get-release-branch-url');
 const { versionString, latestVersionString, isLatest } = require('./src/util/version-data');
 const sourceDXData = require('./src/util/source-dx-data');
 const { versions } = require('./src/util/versions');
+const createIntegrationsPages = require('./src/util/create-integrations-pages');
 
 const docsTocWithPaths = addStateToToc(docsToc);
 
@@ -216,7 +216,7 @@ exports.createPages = ({ actions, graphql }) => {
       .then(() => {
         return process.env.GATSBY_SKIP_ADDON_PAGES || !isLatest
           ? Promise.resolve()
-          : createAddonsPages({ actions, graphql });
+          : createIntegrationsPages({ actions, graphql });
       })
       .then(() => {
         resolve();

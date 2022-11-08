@@ -42,7 +42,7 @@ const PopularAddons = styled(AddonsGrid)`
   margin-bottom: 48px;
 `;
 
-export const AddonsHomeScreen = ({ popularAddons, trendingAddons }) => {
+export const AddonsHomeScreen = ({ pageContext: { popularAddons, trendingAddons } }) => {
   const { title, ogImageAddons, urls = {} } = useSiteMetadata();
   const { home } = urls;
   const [timePeriod, setTimePeriod] = useState('MONTH');
@@ -85,9 +85,13 @@ export const AddonsHomeScreen = ({ popularAddons, trendingAddons }) => {
 };
 
 AddonsHomeScreen.propTypes = {
-  popularAddons: PropTypes.shape({
-    MONTH: AddonsGrid.propTypes.addonItems,
-    YEAR: AddonsGrid.propTypes.addonItems,
+  pageContext: PropTypes.shape({
+    popularAddons: PropTypes.shape({
+      MONTH: AddonsGrid.propTypes.addonItems,
+      YEAR: AddonsGrid.propTypes.addonItems,
+    }).isRequired,
+    trendingAddons: AddonsGrid.propTypes.addonItems.isRequired,
   }).isRequired,
-  trendingAddons: AddonsGrid.propTypes.addonItems.isRequired,
 };
+
+export default AddonsHomeScreen;
