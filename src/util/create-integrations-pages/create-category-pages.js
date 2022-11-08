@@ -6,7 +6,7 @@ const PAGE_COMPONENT_PATH = path.resolve(
   `./src/components/screens/AddonsCategoryScreen/AddonsCategoryScreen.js`
 );
 
-function fetchAddonsDetailPages(graphql) {
+function fetchCategoryPages(createPage, graphql) {
   return graphql(
     `
       {
@@ -25,7 +25,8 @@ function fetchAddonsDetailPages(graphql) {
     `
   )
     .then(validateResponse((data) => data.addons.categoryPages))
-    .then(({ data }) => data.addons.categoryPages);
+    .then(({ data }) => data.addons.categoryPages)
+    .then((categoryPages) => generateCategoryPages(createPage, categoryPages));
 }
 
 function generateCategoryPages(createPage, categoryPages) {
@@ -49,7 +50,5 @@ module.exports = function createCategoryPages(createPage, graphql) {
 🗂️ Creating category pages
 `);
 
-  return fetchAddonsDetailPages(graphql).then((categoryPages) =>
-    generateCategoryPages(createPage, categoryPages)
-  );
+  return fetchCategoryPages(createPage, graphql);
 };
