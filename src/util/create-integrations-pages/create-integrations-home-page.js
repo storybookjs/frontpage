@@ -7,7 +7,7 @@ const PAGE_COMPONENT_PATH = path.resolve(
   `./src/components/screens/AddonsHomeScreen/AddonsHomeScreen.js`
 );
 
-function fetchIntegrationsHomePage(createPage, graphql, skip = 0) {
+function fetchIntegrationsHomePage(createPage, graphql) {
   return wait()
     .then(() =>
       graphql(
