@@ -27,7 +27,7 @@ const featureGroups = [
 ];
 
 export default {
-  title: 'Frontpage|screens/DocsScreen/FrameworkSupportTable',
+  title: 'Screens/DocsScreen/FrameworkSupportTable',
   component: FrameworkSupportTable,
 };
 

@@ -1,20 +1,20 @@
 import { useMotionValue } from 'framer-motion';
 import React from 'react';
-import { ScrollDemo } from './ScrollDemo';
+import { ScrollDemo as ScrollDemoComponent } from './ScrollDemo';
 
 export default {
-  title: 'StorybookDemo/ScrollDemo',
-  component: ScrollDemo,
+  title: 'Storybook Demos/ScrollDemo',
+  component: ScrollDemoComponent,
   parameters: {
     layout: 'centered',
     chromatic: { disableSnapshot: true },
   },
 };
 
-export const Default = () => {
+export const ScrollDemo = () => {
   const value = useMotionValue(0);
   return (
-    <ScrollDemo
+    <ScrollDemoComponent
       style={{ width: 800 }}
       isolationProgress={value}
       addonsProgress={value}
@@ -24,7 +24,7 @@ export const Default = () => {
     />
   );
 };
-Default.storyName = 'ScrollDemo';
-Default.parameters = {
+ScrollDemo.storyName = 'ScrollDemo';
+ScrollDemo.parameters = {
   backgrounds: { default: 'dark' },
 };

@@ -3,7 +3,7 @@ import { AddonsAside, AddonsAsideContainer } from './AddonsAsideLayout';
 import { AddonsSubheading } from './AddonsSubheading';
 
 export default {
-  title: 'Frontpage|layout/addons/AddonsAsideLayout',
+  title: 'Integrations Catalog/Layout/Addons/AddonsAsideLayout',
   component: AddonsAside,
 };
 

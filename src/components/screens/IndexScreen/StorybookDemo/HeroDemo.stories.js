@@ -1,20 +1,20 @@
 import { useMotionValue } from 'framer-motion';
 import React from 'react';
-import { HeroDemo } from './HeroDemo';
+import { HeroDemo as HeroDemoComponent } from './HeroDemo';
 
 export default {
-  title: 'StorybookDemo/HeroDemo',
-  component: HeroDemo,
+  title: 'Storybook Demos/HeroDemo',
+  component: HeroDemoComponent,
   parameters: {
     layout: 'centered',
     chromatic: { disableSnapshot: true },
   },
 };
 
-export const Default = () => {
+export const HeroDemo = () => {
   const value = useMotionValue(0);
   return (
-    <HeroDemo
+    <HeroDemoComponent
       style={{ width: 800 }}
       type="rangeSlider"
       isolationProgress={value}
@@ -25,7 +25,7 @@ export const Default = () => {
     />
   );
 };
-Default.storyName = 'HeroDemo';
-Default.parameters = {
+HeroDemo.storyName = 'HeroDemo';
+HeroDemo.parameters = {
   backgrounds: { default: 'dark' },
 };

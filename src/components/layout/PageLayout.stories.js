@@ -5,7 +5,7 @@ import { PurePageLayout } from './PageLayout';
 import { pageContext as docsPageContext } from './DocsLayout.stories';
 
 export default {
-  title: 'Frontpage|layout/PageLayout',
+  title: 'Layout/PageLayout',
   component: PurePageLayout,
 };
 

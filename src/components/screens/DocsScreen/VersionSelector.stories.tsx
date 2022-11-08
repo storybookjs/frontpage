@@ -16,7 +16,7 @@ const Wrapper = styled.span`
 `;
 
 export default {
-  title: 'Frontpage|screens/DocsScreen/VersionSelector',
+  title: 'Screens/DocsScreen/VersionSelector',
   component: VersionSelector,
   decorators: [(storyFn) => <Wrapper>{storyFn()}</Wrapper>],
 };

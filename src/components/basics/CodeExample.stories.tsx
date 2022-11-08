@@ -1,13 +1,13 @@
 import React from 'react';
 import { styled } from '@storybook/theming';
-import { CodeExample } from './CodeExample';
+import { CodeExample as CodeExampleComponent } from './CodeExample';
 
 export default {
-  title: 'Frontpage|basics/CodeExample',
-  component: CodeExample,
+  title: 'Basics/CodeExample',
+  component: CodeExampleComponent,
 };
 
-const StyledCodeExample = styled(CodeExample)`
+const StyledCodeExample = styled(CodeExampleComponent)`
   width: 800px;
   height: 600px;
   margin: 20px;
@@ -46,11 +46,12 @@ it('renders a fallback profile image', () => {
   );
 });`;
 
-export const Default = () => (
+export const CodeExample = () => (
   <StyledCodeExample language="jsx" fileName="UserCard.test.js">
     {codeSnippet}
   </StyledCodeExample>
 );
-Default.parameters = {
+CodeExample.storyName = 'CodeExample';
+CodeExample.parameters = {
   backgrounds: { default: 'dark' },
 };

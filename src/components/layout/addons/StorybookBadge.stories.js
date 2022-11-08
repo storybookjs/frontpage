@@ -1,9 +1,9 @@
 import React from 'react';
-import { StorybookBadge } from './StorybookBadge';
+import { StorybookBadge as StorybookBadgeComponent } from './StorybookBadge';
 
 export default {
-  title: 'Frontpage|layout/addons/StorybookBadge',
-  component: StorybookBadge,
+  title: 'Integrations Catalog/Layout/Addons/StorybookBadge',
+  component: StorybookBadgeComponent,
 };
 
-export const Default = () => <StorybookBadge />;
+export const StorybookBadge = () => <StorybookBadgeComponent />;

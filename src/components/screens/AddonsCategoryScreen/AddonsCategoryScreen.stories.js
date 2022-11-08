@@ -3,7 +3,7 @@ import { AddonsCategoryScreen } from './AddonsCategoryScreen';
 import { addonItemsData } from '../../layout/addons/AddonsGrid.stories';
 
 export default {
-  title: 'Frontpage|screens/AddonsCategoryScreen',
+  title: 'Integrations Catalog/Screens/Category',
   component: AddonsCategoryScreen,
 };
 

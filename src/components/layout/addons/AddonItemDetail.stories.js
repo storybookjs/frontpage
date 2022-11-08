@@ -5,7 +5,7 @@ import ViewportSVG from '../../../images/addon-catalog/viewports.svg';
 import ContrastPNG from '../../../images/addon-catalog/contrast.png';
 
 export default {
-  title: 'Frontpage|layout/addons/AddonItemDetail',
+  title: 'Integrations Catalog/Layout/Addons/AddonItemDetail',
   component: AddonItemDetail,
   chromatic: { viewports: [320, 900] },
 };

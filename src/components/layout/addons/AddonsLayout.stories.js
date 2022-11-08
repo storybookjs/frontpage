@@ -6,7 +6,7 @@ import { UseAddonsSearchDecorator } from '../../../../.storybook/use-addons-sear
 seedrandom('chromatic testing', { global: true });
 
 export default {
-  title: 'Frontpage|layout/addons/AddonsLayout',
+  title: 'Integrations Catalog/Layout/Addons/AddonsLayout',
   component: AddonsLayout,
   excludeStories: ['data'],
   decorators: [UseAddonsSearchDecorator],

@@ -9,7 +9,7 @@ const Wrapper = styled.div`
 `;
 
 export default {
-  title: 'Frontpage|basics/Pre',
+  title: 'Basics/Pre',
   component: Pre,
   decorators: [(storyFn) => <Wrapper>{storyFn()}</Wrapper>],
 };

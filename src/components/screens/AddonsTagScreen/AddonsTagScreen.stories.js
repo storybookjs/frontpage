@@ -3,11 +3,11 @@ import { AddonsTagScreen } from './AddonsTagScreen';
 import { addonItemsData } from '../../layout/addons/AddonsGrid.stories';
 
 export default {
-  title: 'Frontpage|screens/AddonsTagScreen',
+  title: 'Integrations Catalog/Screens/Tag',
   component: AddonsTagScreen,
 };
 
-export const Default = () => (
+export const Tag = () => (
   <AddonsTagScreen
     pageContext={{
       tag: {

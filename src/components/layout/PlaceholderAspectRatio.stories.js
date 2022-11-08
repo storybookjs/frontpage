@@ -1,15 +1,21 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 import { styled } from '@storybook/theming';
 
-import PlaceholderAspectRatio from './PlaceholderAspectRatio';
+import PlaceholderAspectRatioComponent from './PlaceholderAspectRatio';
 
-const Placeholder = styled(PlaceholderAspectRatio)`
+const Placeholder = styled(PlaceholderAspectRatioComponent)`
   background: green;
 `;
 
-storiesOf('Frontpage|layout/PlaceholderAspectRatio', module)
-  .addDecorator((storyFn) => (
-    <div style={{ background: 'papayawhip', width: '400px', height: '400px' }}>{storyFn()}</div>
-  ))
-  .add('default', () => <Placeholder ratio={0.75} />);
+export default {
+  title: 'Layout/PlaceholderAspectRatio',
+  component: PlaceholderAspectRatioComponent,
+  decorators: [
+    (storyFn) => (
+      <div style={{ background: 'papayawhip', width: '400px', height: '400px' }}>{storyFn()}</div>
+    ),
+  ],
+};
+
+export const PlaceholderAspectRatio = () => <Placeholder ratio={0.75} />;
+PlaceholderAspectRatio.storyName = 'PlaceholderAspectRatio';

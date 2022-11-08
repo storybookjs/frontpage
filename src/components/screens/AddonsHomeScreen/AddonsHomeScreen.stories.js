@@ -1,14 +1,14 @@
 import React from 'react';
-import { AddonsHomeScreen } from './AddonsHomeScreen';
+import { AddonsHomeScreen as AddonsHomeScreenComponent } from './AddonsHomeScreen';
 import { addonItemsData } from '../../layout/addons/AddonsGrid.stories';
 
 export default {
-  title: 'Frontpage|screens/AddonsHomeScreen',
-  component: AddonsHomeScreen,
+  title: 'Integrations Catalog/Screens/Home',
+  component: AddonsHomeScreenComponent,
 };
 
-export const Default = () => (
-  <AddonsHomeScreen
+export const Home = () => (
+  <AddonsHomeScreenComponent
     popularAddons={{ MONTH: addonItemsData.slice(0, 9), YEAR: addonItemsData.slice(-9) }}
     trendingAddons={addonItemsData.slice(-9)}
   />

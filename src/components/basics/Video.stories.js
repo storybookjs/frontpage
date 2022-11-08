@@ -1,26 +1,29 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 import { styled } from '@storybook/theming';
 
-import Video from './Video';
+import VideoComponent from './Video';
+
+export default {
+  title: 'Basics/Video',
+  component: VideoComponent,
+  parameters: {
+    chromatic: {
+      disable: true,
+    },
+  },
+};
 
 const VideoWrapper = styled('div')`
   width: 45%
   margin: 0px auto;
 `;
 
-storiesOf('Frontpage|basics/Video', module).add(
-  'video',
-  () => (
-    <VideoWrapper>
-      <Video
-        src="/videos/storybook-workflow-build-optimized-lg.mp4"
-        alt="storybook example video"
-        shouldChangeSize
-      />
-    </VideoWrapper>
-  ),
-  {
-    chromatic: { disable: true },
-  }
+export const Video = () => (
+  <VideoWrapper>
+    <VideoComponent
+      src="/videos/storybook-workflow-build-optimized-lg.mp4"
+      alt="storybook example video"
+      shouldChangeSize
+    />
+  </VideoWrapper>
 );

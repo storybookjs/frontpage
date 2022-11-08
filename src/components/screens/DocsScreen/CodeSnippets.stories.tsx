@@ -76,7 +76,7 @@ const Wrapper = styled.div`
 `;
 
 export default {
-  title: 'Frontpage|screens/DocsScreen/CodeSnippets',
+  title: 'Screens/DocsScreen/CodeSnippets',
   component: PureCodeSnippets,
   decorators: [(storyFn) => <Wrapper>{storyFn()}</Wrapper>],
 };

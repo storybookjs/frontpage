@@ -1,16 +1,19 @@
 import React from 'react';
-import { NpmDownloadCount } from './NpmDownloadCount';
+import { NpmDownloadCount as NpmDownloadCountComponent } from './NpmDownloadCount';
 
 export default {
-  title: 'Frontpage|layout/NpmDownloadCount',
-  component: NpmDownloadCount,
+  title: 'Layout/NpmDownloadCount',
+  component: NpmDownloadCountComponent,
   parameters: {
     chromatic: { viewports: [320, 1200] },
     layout: 'fullscreen',
   },
 };
 
-export const Default = () => <NpmDownloadCount downloads={16737033} className="chromatic-ignore" />;
-Default.parameters = {
+export const NpmDownloadCount = () => (
+  <NpmDownloadCountComponent downloads={16737033} className="chromatic-ignore" />
+);
+NpmDownloadCount.parameters = {
   backgrounds: { default: 'dark' },
 };
+NpmDownloadCount.storyName = 'NpmDownloadCount';
