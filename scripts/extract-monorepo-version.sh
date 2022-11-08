@@ -27,7 +27,7 @@ PACKAGE_JSON_PATH="package.json"
 # If a code/package.json exists
 if [[ -f "$VERSIONS_DIR/$TAR_NAME/code/package.json" ]]; then
   PACKAGE_JSON_PATH="code/package.json"
-else 
+fi
 
 mv "$VERSIONS_DIR/$TAR_NAME/$PACKAGE_JSON_PATH" "$VERSIONS_DIR/$LABEL/package.json"
 mv "$VERSIONS_DIR/$TAR_NAME/docs/toc.js" "$VERSIONS_DIR/$LABEL/toc.js"
