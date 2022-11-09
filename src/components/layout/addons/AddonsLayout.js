@@ -1,7 +1,15 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@storybook/theming';
-import { Input, Icon, TableOfContents, global, styles } from '@storybook/design-system';
+import {
+  Input,
+  Icon,
+  TableOfContents,
+  global,
+  styles,
+  TagList,
+  TagLink,
+} from '@storybook/design-system';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import { AddonsLearn } from './AddonsLearn';
 import { AddonsSubheading } from './AddonsSubheading';
@@ -77,7 +85,7 @@ ToCContent.propTypes = {
 };
 
 const SearchInputContainer = styled.div`
-  flex: 1 1 auto;
+  flex: 1 0 auto;
   position: relative;
 
   @media (min-width: ${breakpoint * 1.333}px) {
@@ -144,6 +152,10 @@ const Searchbar = styled.div`
   padding-bottom: ${spacing.padding.medium}px;
 `;
 
+const PopularTagsList = styled(TagList)`
+  margin-left: ${spacing.padding.small}px;
+`;
+
 const CategoriesHeading = styled(AddonsSubheading)`
   margin-top: 0px;
   margin-bottom: ${spacing.padding.medium}px;
@@ -153,7 +165,7 @@ export const SEARCH_INPUT_ID = 'addons-search';
 
 const sidebarItems = addonsToc.map((item) => ({ ...item, LinkWrapper: GatsbyLinkWrapper }));
 
-export const AddonsLayout = ({ children, data, hideSidebar, currentPath, ...props }) => {
+export const AddonsLayout = ({ children, data, hideSidebar, currentPath, tags = [], ...props }) => {
   const { query, setQuery, isSearching, isSearchLoading, results } = useAddonsSearch();
   const inputRef = useRef(null);
 
@@ -188,6 +200,16 @@ export const AddonsLayout = ({ children, data, hideSidebar, currentPath, ...prop
               </ClearButton>
             )}
           </SearchInputContainer>
+          {tags.length > 0 && (
+            <PopularTagsList
+              limit={6}
+              tags={tags.map(({ link, name }) => (
+                <TagLink key={link} href={link}>
+                  {name}
+                </TagLink>
+              ))}
+            />
+          )}
         </Searchbar>
       ) : null}
       <Wrapper searchLayout={isSearching}>

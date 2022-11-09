@@ -100,6 +100,12 @@ function fetchIntegrationsHomePage(createPage, graphql) {
 }
 
 function generateIntegrationHomePage(createPage, { popularMonthly, popularYearly, trending }) {
+  const trendingTags = trending.addons
+    .reduce((allTags, { tags }) => [...allTags, ...tags], [])
+    .map((tag) => [tag.name, tag]);
+
+  const uniqueTags = [...new Map(trendingTags).values()];
+
   createPage({
     path: '/integrations/',
     component: PAGE_COMPONENT_PATH,
@@ -113,6 +119,7 @@ function generateIntegrationHomePage(createPage, { popularMonthly, popularYearly
         YEAR: popularYearly.recipes,
       },
       trendingAddons: trending.addons,
+      trendingTags: uniqueTags,
     },
   });
   console.log(` ✅ /integrations/`);

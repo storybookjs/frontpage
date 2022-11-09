@@ -7,6 +7,7 @@ import { SocialGraph, ListHeadingContainer, ListHeading } from '../../basics';
 import { AddonsGrid } from '../../layout/addons/AddonsGrid';
 import { RecipesList } from '../../layout/recipes/RecipesList';
 import { AddonsLayout } from '../../layout/addons/AddonsLayout';
+import buildTagLinks from '../../../util/build-tag-links';
 
 const { breakpoint, spacing, color, pageMargins, typography } = styles;
 
@@ -57,7 +58,7 @@ const PopularRecipes = styled(RecipesList)`
 `;
 
 export const AddonsHomeScreen = ({
-  pageContext: { popularAddons, popularRecipes, trendingAddons },
+  pageContext: { popularAddons, popularRecipes, trendingAddons, trendingTags = [] },
 }) => {
   const { title, ogImageAddons, urls = {} } = useSiteMetadata();
   const { home } = urls;
@@ -66,11 +67,11 @@ export const AddonsHomeScreen = ({
     () => popularAddons[timePeriod],
     [popularAddons, timePeriod]
   );
-
   const popularRecipesForTimePeriod = useMemo(
     () => popularRecipes[timePeriod],
     [popularRecipes, timePeriod]
   );
+  const tagLinks = useMemo(() => buildTagLinks(trendingTags), [trendingTags]);
 
   return (
     <>
@@ -86,7 +87,7 @@ export const AddonsHomeScreen = ({
           Integrate your tools with Storybook to connect workflows and unlock advanced features.
         </PageSubheading>
       </PageHeader>
-      <AddonsLayout currentPath="/integrations/">
+      <AddonsLayout currentPath="/integrations/" tags={tagLinks}>
         <PopularAddons
           title="Popular addons"
           addonItems={popularAddonsForTimePeriod}
