@@ -2,7 +2,7 @@ import React from 'react';
 import { styled } from '@storybook/theming';
 import PropTypes from 'prop-types';
 import pluralize from 'pluralize';
-import { TagList, TagLink } from '@storybook/design-system';
+import { TagList, TagLink, Icon } from '@storybook/design-system';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import { SocialGraph, Breadcrumb, ListHeadingContainer, ListSubheading } from '../../basics';
 import { AddonsPageHeader } from '../../layout/addons/AddonsPageHeader';
@@ -15,9 +15,8 @@ import { generateBreadcrumb } from '../../../util/generate-breadcrumb';
 import buildTagLinks from '../../../util/build-tag-links';
 
 import { recipeItemsData } from '../../layout/recipes/RecipesList.stories';
-
-// TODO: Remove mock recipe items
-const MOCK_RECIPES = recipeItemsData.slice(0, 2);
+import { SubNav, SubNavBreadcrumb } from '@storybook/components-marketing';
+import GatsbyLink from '../../basics/GatsbyLink';
 
 const IntegrationsContainer = styled.div`
   flex: 1 1 auto;
@@ -50,8 +49,13 @@ export const AddonsTagScreen = ({ path, pageContext, ...props }) => {
         url={`${home}${path}`}
         image={ogImageAddons}
       />
+      <SubNav>
+        <SubNavBreadcrumb tertiary to="/integrations/" LinkWrapper={GatsbyLink}>
+          <Icon icon="arrowleft" />
+          Back to integrations
+        </SubNavBreadcrumb>
+      </SubNav>
       <AddonsLayout hideSidebar currentPath={`${path}/`}>
-        <Breadcrumb to={breadcrumb.link}>{breadcrumb.title}</Breadcrumb>
         <AddonsPageHeader
           title={`${tag.displayName || tag.name} tag`}
           kicker={`${integrationCount} tagged ${pluralize('Integrations', integrationCount)}`}

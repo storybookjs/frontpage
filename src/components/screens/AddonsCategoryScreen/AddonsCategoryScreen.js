@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import pluralize from 'pluralize';
 import { styled } from '@storybook/theming';
+import { SubNav, SubNavBreadcrumb } from '@storybook/components-marketing';
 
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import { ListHeadingContainer, ListSubheading, SocialGraph } from '../../basics';
@@ -12,6 +13,8 @@ import { RecipesList } from '../../layout/recipes/RecipesList';
 
 import { sortAddons } from '../../../util/sort-addons';
 import { sortRecipes } from '../../../util/sort-recipes';
+import GatsbyLink from '../../basics/GatsbyLink';
+import { Icon } from '@storybook/design-system';
 
 const SortedAddonsList = styled(AddonsList)`
   margin-bottom: 48px;
@@ -43,6 +46,12 @@ export const AddonsCategoryScreen = ({ path, pageContext }) => {
         url={`${home}${path}`}
         image={ogImageAddons}
       />
+      <SubNav>
+        <SubNavBreadcrumb tertiary to="/integrations/" LinkWrapper={GatsbyLink}>
+          <Icon icon="arrowleft" />
+          Back to integrations
+        </SubNavBreadcrumb>
+      </SubNav>
       <AddonsLayout currentPath={`${path}/`}>
         <AddonsPageHeader
           title={category}
