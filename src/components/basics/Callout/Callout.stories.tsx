@@ -5,7 +5,7 @@ import { styles } from '@storybook/design-system';
 import { Callout } from './Callout';
 
 export default {
-  title: 'Frontpage|basics/Callout',
+  title: 'Basics/Callout',
   component: Callout,
   parameters: {
     chromatic: { viewports: [320, 900] },

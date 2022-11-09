@@ -109,7 +109,7 @@ export const recipeItemsData = [
 ];
 
 export default {
-  title: 'Frontpage|layout/Recipes/RecipesList',
+  title: 'Integrations Catalog/Layout/Recipes/RecipesList',
   component: RecipesList,
   excludeStories: /.*Data$/,
   parameters: {

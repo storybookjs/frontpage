@@ -4,7 +4,7 @@ import { RecipeItem } from './RecipeItem';
 import NextJsSVG from '../../../images/integrations/nextjs.svg';
 
 export default {
-  title: 'Frontpage|layout/Recipes/RecipeItem',
+  title: 'Integrations Catalog/Layout/Recipes/RecipeItem',
   component: RecipeItem,
   parameters: {
     chromatic: { viewports: [320, 900] },

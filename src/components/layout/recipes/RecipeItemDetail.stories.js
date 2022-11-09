@@ -3,7 +3,7 @@ import { RecipeItemDetail } from './RecipeItemDetail';
 import MuiSVG from '../../../images/integrations/mui.svg';
 
 export default {
-  title: 'Frontpage|layout/recipes/RecipeItemDetail',
+  title: 'Integrations Catalog/Layout/recipes/RecipeItemDetail',
   component: RecipeItemDetail,
   parameters: {
     chromatic: { viewports: [320, 900] },
