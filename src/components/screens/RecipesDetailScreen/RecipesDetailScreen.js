@@ -148,7 +148,7 @@ export const RecipesDetailScreen = ({ path, location, pageContext }) => {
     tags,
     authors,
     addons,
-    publishedAt,
+    updatedAt,
     ...recipe
   } = pageContext;
 
@@ -229,7 +229,7 @@ export const RecipesDetailScreen = ({ path, location, pageContext }) => {
             <AddonsSubheading>Contributors</AddonsSubheading>
             <AuthorList authors={authors || []} />
 
-            <LastUpdated>Last updated {format(new Date(publishedAt), 'MMMM yyyy')}</LastUpdated>
+            <LastUpdated>Last updated {format(new Date(updatedAt), 'MMMM yyyy')}</LastUpdated>
           </AddonsAside>
         </AddonsAsideContainer>
       </AddonsLayout>

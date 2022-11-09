@@ -45,5 +45,6 @@ export const recipeItem = graphql`
       description
       icon
     }
+    updatedAt
   }
 `;

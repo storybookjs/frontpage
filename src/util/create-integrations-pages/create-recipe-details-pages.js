@@ -26,6 +26,7 @@ function fetchRecipesDetailPages(createPage, graphql, skip = 0) {
                 ${RECIPE_FRAGMENT}
                 status
                 publishedAt
+                updatedAt
                 tags {
                   name
                   displayName
