@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
+import { format } from 'date-fns';
 import { styled } from '@storybook/theming';
 import { Link as GatsbyLink } from 'gatsby';
 import { styles, Link, TagList, TagLink, Highlight, Avatar, Icon } from '@storybook/design-system';
@@ -228,7 +229,7 @@ export const RecipesDetailScreen = ({ path, location, pageContext }) => {
             <AddonsSubheading>Contributors</AddonsSubheading>
             <AuthorList authors={authors || []} />
 
-            <LastUpdated>Last updated {new Date(publishedAt).toDateString()}</LastUpdated>
+            <LastUpdated>Last updated {format(new Date(publishedAt), 'MMMM yyyy')}</LastUpdated>
           </AddonsAside>
         </AddonsAsideContainer>
       </AddonsLayout>
