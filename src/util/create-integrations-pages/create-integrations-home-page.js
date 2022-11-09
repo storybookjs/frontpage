@@ -1,5 +1,5 @@
 const path = require('path');
-const { ADDON_FRAGMENT } = require('./constants');
+const { ADDON_FRAGMENT, RECIPE_FRAGMENT } = require('./constants');
 
 const { wait, validateResponse } = require('./helpers');
 
@@ -13,39 +13,72 @@ function fetchIntegrationsHomePage(createPage, graphql) {
       graphql(
         `
           {
-            addons {
-              popularMonthly: top(sort: featuredMonthly, limit: 12) {
-                ${ADDON_FRAGMENT}
-                tags {
-                  name
-                  displayName
-                  description
-                  icon
+            integrations {
+              popularMonthly: topIntegrations(sort: featuredMonthly, limit: 6) {
+                addons {
+                  ${ADDON_FRAGMENT}
+                  tags {
+                    name
+                    displayName
+                    description
+                    icon
+                  }
+                  repositoryUrl
+                  npmUrl
                 }
-                repositoryUrl
-                npmUrl
+                recipes {
+                  ${RECIPE_FRAGMENT}
+                  tags {
+                    name
+                    displayName
+                    description
+                    icon
+                  }
+                }
               }
-              popularYearly: top(sort: featuredYearly, limit: 12) {
-                ${ADDON_FRAGMENT}
-                tags {
-                  name
-                  displayName
-                  description
-                  icon
+              popularYearly: topIntegrations(sort: featuredYearly, limit: 6) {
+                addons {
+                  ${ADDON_FRAGMENT}
+                  tags {
+                    name
+                    displayName
+                    description
+                    icon
+                  }
+                  repositoryUrl
+                  npmUrl
                 }
-                repositoryUrl
-                npmUrl
+                recipes {
+                  ${RECIPE_FRAGMENT}
+                  tags {
+                    name
+                    displayName
+                    description
+                    icon
+                  }
+                }
               }
-              trending: top(sort: trending, limit: 12) {
-                ${ADDON_FRAGMENT}
-                tags {
-                  name
-                  displayName
-                  description
-                  icon
+              trending: topIntegrations(sort: trending, limit: 12) {
+                addons {
+                  ${ADDON_FRAGMENT}
+                  tags {
+                    name
+                    displayName
+                    description
+                    icon
+                  }
+                  repositoryUrl
+                  npmUrl
                 }
-                repositoryUrl
-                npmUrl
+                recipes {
+                  ${RECIPE_FRAGMENT}
+                  tags {
+                    name
+                    displayName
+                    description
+                    icon
+                  }
+                }
               }
             }
           }
@@ -54,10 +87,13 @@ function fetchIntegrationsHomePage(createPage, graphql) {
     )
     .then(
       validateResponse(
-        (data) => data.addons.popularMonthly && data.addons.popularYearly && data.addons.trending
+        (data) =>
+          data.integrations.popularMonthly &&
+          data.integrations.popularYearly &&
+          data.integrations.trending
       )
     )
-    .then(({ data }) => data.addons)
+    .then(({ data }) => data.integrations)
     .then((integrationsData) => {
       generateIntegrationHomePage(createPage, integrationsData);
     });
@@ -65,17 +101,21 @@ function fetchIntegrationsHomePage(createPage, graphql) {
 
 function generateIntegrationHomePage(createPage, { popularMonthly, popularYearly, trending }) {
   createPage({
-    path: '/addons/',
+    path: '/integrations/',
     component: PAGE_COMPONENT_PATH,
     context: {
       popularAddons: {
-        MONTH: popularMonthly,
-        YEAR: popularYearly,
+        MONTH: popularMonthly.addons,
+        YEAR: popularYearly.addons,
       },
-      trendingAddons: trending,
+      popularRecipes: {
+        MONTH: popularMonthly.recipes,
+        YEAR: popularYearly.recipes,
+      },
+      trendingAddons: trending.addons,
     },
   });
-  console.log(` ✅ /addons/`);
+  console.log(` ✅ /integrations/`);
 }
 
 module.exports = function createIntegrationsHomePage(createPage, graphql) {
