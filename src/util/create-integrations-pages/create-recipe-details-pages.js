@@ -26,7 +26,7 @@ function fetchRecipesDetailPages(createPage, graphql, skip = 0) {
                 ${RECIPE_FRAGMENT}
                 status
                 publishedAt
-                updatedAt
+                lastUpdatedAt: updatedAt
                 tags {
                   name
                   displayName
@@ -66,6 +66,7 @@ function generateRecipesDetailPages(createPage, recipePages) {
       component: PAGE_COMPONENT_PATH,
       context: {
         ...recipe,
+        lastUpdatedAt: recipe.lastUpdatedAt,
         tags: buildTagLinks(recipe.tags),
         readme: markdownProcessor.processSync(rawMarkdown).toString(),
       },

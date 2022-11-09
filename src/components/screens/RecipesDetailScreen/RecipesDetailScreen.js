@@ -148,13 +148,14 @@ export const RecipesDetailScreen = ({ path, location, pageContext }) => {
     tags,
     authors,
     addons,
-    updatedAt,
+    lastUpdatedAt,
     ...recipe
   } = pageContext;
 
   const hasAddons = addons?.length > 0;
   const hasTags = tags?.length > 0;
   const displayName = recipe.displayName || recipe.name;
+  const lastUpdated = useMemo(() => new Date(lastUpdatedAt), [lastUpdatedAt]);
 
   const breadcrumb = generateBreadcrumb(location.state);
 
@@ -229,7 +230,7 @@ export const RecipesDetailScreen = ({ path, location, pageContext }) => {
             <AddonsSubheading>Contributors</AddonsSubheading>
             <AuthorList authors={authors || []} />
 
-            <LastUpdated>Last updated {format(new Date(updatedAt), 'MMMM yyyy')}</LastUpdated>
+            <LastUpdated>Last updated {format(lastUpdated, 'MMMM yyyy')}</LastUpdated>
           </AddonsAside>
         </AddonsAsideContainer>
       </AddonsLayout>
