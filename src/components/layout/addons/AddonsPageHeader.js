@@ -16,6 +16,7 @@ const Subtitle = styled.div`
   font-size: ${typography.size.s3}px;
   line-height: ${typography.size.m1}px;
   color: ${color.darkest};
+  margin-top: ${spacing.padding.small}px;
 `;
 
 const Kicker = styled.div`
@@ -32,7 +33,7 @@ const TitleWrapper = styled.div`
 `;
 
 const Header = styled.header`
-  margin-bottom: ${spacing.padding.medium}px;
+  margin-bottom: 26px;
 `;
 
 export const AddonsPageHeader = ({ title, subtitle, kicker, ...props }) => (

@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import pluralize from 'pluralize';
 import { styled } from '@storybook/theming';
+import { Icon } from '@storybook/design-system';
 import { SubNav, SubNavBreadcrumb } from '@storybook/components-marketing';
 
 import useSiteMetadata from '../../lib/useSiteMetadata';
@@ -10,11 +11,9 @@ import { AddonsPageHeader } from '../../layout/addons/AddonsPageHeader';
 import { AddonsList } from '../../layout/addons/AddonsList';
 import { AddonsLayout } from '../../layout/addons/AddonsLayout';
 import { RecipesList } from '../../layout/recipes/RecipesList';
-
 import { sortAddons } from '../../../util/sort-addons';
 import { sortRecipes } from '../../../util/sort-recipes';
 import GatsbyLink from '../../basics/GatsbyLink';
-import { Icon } from '@storybook/design-system';
 
 const SortedAddonsList = styled(AddonsList)`
   margin-bottom: 48px;
@@ -22,6 +21,10 @@ const SortedAddonsList = styled(AddonsList)`
 
 const SortedRecipesList = styled(RecipesList)`
   margin-bottom: 48px;
+`;
+
+const HeaderSpacer = styled.div`
+  height: 48px;
 `;
 
 export const AddonsCategoryScreen = ({ path, pageContext }) => {
@@ -52,12 +55,9 @@ export const AddonsCategoryScreen = ({ path, pageContext }) => {
           Back to integrations
         </SubNavBreadcrumb>
       </SubNav>
+      <HeaderSpacer />
       <AddonsLayout currentPath={`${path}/`}>
-        <AddonsPageHeader
-          title={category}
-          subtitle={description}
-          kicker={pluralize('Integrations', integrationCount, true)}
-        />
+        <AddonsPageHeader title={`${category} integrations`} subtitle={description} />
         <section>
           <ListHeadingContainer>
             <ListSubheading>Addons</ListSubheading>

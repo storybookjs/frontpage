@@ -5,7 +5,7 @@ import { Input, Icon, TableOfContents, global, styles } from '@storybook/design-
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import { AddonsLearn } from './AddonsLearn';
 import { AddonsSubheading } from './AddonsSubheading';
-import { AddonsSearchSummary, AddonsSearchResults } from './AddonsSearchResults';
+import { AddonsSearchResults } from './AddonsSearchResults';
 import { toc as addonsToc } from '../../../content/addons/categories';
 import { useAddonsSearch } from '../../../hooks/use-addons-search';
 
@@ -188,9 +188,6 @@ export const AddonsLayout = ({ children, data, hideSidebar, currentPath, ...prop
               </ClearButton>
             )}
           </SearchInputContainer>
-          {isSearching && results.search && (
-            <AddonsSearchSummary isLoading={isSearchLoading} count={results.search.length} />
-          )}
         </Searchbar>
       ) : null}
       <Wrapper searchLayout={isSearching}>
@@ -210,6 +207,7 @@ export const AddonsLayout = ({ children, data, hideSidebar, currentPath, ...prop
         {isSearching ? (
           <AddonsSearchResults
             isLoading={isSearchLoading}
+            searchString={query}
             integrations={results.integrations}
             relatedTags={results.relatedTags}
             {...props}

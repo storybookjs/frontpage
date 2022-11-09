@@ -1,33 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { styled } from '@storybook/theming';
+import { css, styled } from '@storybook/theming';
 import pluralize from 'pluralize';
-import { styles, TagList, TagLink } from '@storybook/design-system';
+import { animation, styles, TagList, TagLink } from '@storybook/design-system';
 import { AddonsList } from './AddonsList';
 import { AddonsAside, AddonsAsideContainer } from './AddonsAsideLayout';
 import { AddonsSubheading } from './AddonsSubheading';
 import { ListHeadingContainer, ListSubheading } from '../../basics';
 import { RecipesList } from '../recipes/RecipesList';
-import { recipeItemsData } from '../recipes/RecipesList.stories';
+import { AddonsPageHeader } from './AddonsPageHeader';
 
-// TODO: Remove mock recipe items
-const MOCK_RECIPES = recipeItemsData.slice(0, 2);
-
-const { breakpoint, spacing, color, typography } = styles;
+const { color, typography } = styles;
+const { inlineGlow } = animation;
 
 const SearchResultsContainer = styled(AddonsAsideContainer)`
   align-items: flex-start;
 `;
 
-const SearchSummaryCopy = styled.div`
-  font-size: ${typography.weight.bold};
-  line-height: 28px;
-  color: ${color.darkest};
-  margin-left: ${spacing.padding.medium}px;
+const SearchResultsHeader = styled(AddonsPageHeader)`
+  ${({ isLoading }) =>
+    isLoading &&
+    css`
+      ${inlineGlow}
 
-  @media (min-width: ${breakpoint * 1.333}px) {
-    margin-left: 0;
-  }
+      * {
+        color: transparent;
+      }
+    `}
 `;
 
 const ResultsContainer = styled.div`
@@ -46,14 +45,6 @@ const StyledRecipesList = styled(RecipesList)`
 const RelatedTagsList = styled(TagList)`
   margin-bottom: 48px;
 `;
-
-export const AddonsSearchSummary = ({ isLoading, count }) => {
-  return isLoading ? null : (
-    <SearchSummaryCopy>
-      {count === 0 ? 'No integrations' : pluralize('integrations', count, true)}
-    </SearchSummaryCopy>
-  );
-};
 
 const NoAddonsFoundInner = styled.div`
   flex: 1 1 auto;
@@ -82,16 +73,13 @@ const NoAddonsFound = () => (
   </NoAddonsFoundInner>
 );
 
-AddonsSearchSummary.propTypes = {
-  count: PropTypes.number.isRequired,
-  isLoading: PropTypes.bool,
-};
-
-AddonsSearchSummary.defaultProps = {
-  isLoading: false,
-};
-
-export const AddonsSearchResults = ({ isLoading, integrations, relatedTags, ...props }) => {
+export const AddonsSearchResults = ({
+  isLoading,
+  searchString,
+  integrations,
+  relatedTags,
+  ...props
+}) => {
   const { addons = [], recipes = [] } = integrations;
   const integrationCount = addons.length + recipes.length;
 
@@ -101,6 +89,10 @@ export const AddonsSearchResults = ({ isLoading, integrations, relatedTags, ...p
         <NoAddonsFound />
       ) : (
         <ResultsContainer>
+          <SearchResultsHeader
+            isLoading={isLoading}
+            title={`${pluralize('integrations', integrationCount, true)} for "${searchString}"`}
+          />
           <section>
             <ListHeadingContainer>
               <ListSubheading>Addons</ListSubheading>
@@ -137,6 +129,7 @@ export const AddonsSearchResults = ({ isLoading, integrations, relatedTags, ...p
 
 AddonsSearchResults.propTypes = {
   isLoading: PropTypes.bool,
+  searchString: PropTypes.string.isRequired,
   results: AddonsList.propTypes.addonItems,
   relatedTags: PropTypes.arrayOf(
     PropTypes.shape({

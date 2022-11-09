@@ -1,10 +1,12 @@
 import React from 'react';
 import { styled } from '@storybook/theming';
+import { SubNav, SubNavBreadcrumb } from '@storybook/components-marketing';
+import { TagList, TagLink, Icon } from '@storybook/design-system';
 import PropTypes from 'prop-types';
 import pluralize from 'pluralize';
-import { TagList, TagLink, Icon } from '@storybook/design-system';
+
 import useSiteMetadata from '../../lib/useSiteMetadata';
-import { SocialGraph, Breadcrumb, ListHeadingContainer, ListSubheading } from '../../basics';
+import { SocialGraph, ListHeadingContainer, ListSubheading } from '../../basics';
 import { AddonsPageHeader } from '../../layout/addons/AddonsPageHeader';
 import { AddonsList } from '../../layout/addons/AddonsList';
 import { RecipesList } from '../../layout/recipes/RecipesList';
@@ -14,9 +16,11 @@ import { AddonsSubheading } from '../../layout/addons/AddonsSubheading';
 import { generateBreadcrumb } from '../../../util/generate-breadcrumb';
 import buildTagLinks from '../../../util/build-tag-links';
 
-import { recipeItemsData } from '../../layout/recipes/RecipesList.stories';
-import { SubNav, SubNavBreadcrumb } from '@storybook/components-marketing';
 import GatsbyLink from '../../basics/GatsbyLink';
+
+const HeaderSpacer = styled.div`
+  height: 28px;
+`;
 
 const IntegrationsContainer = styled.div`
   flex: 1 1 auto;
@@ -55,10 +59,11 @@ export const AddonsTagScreen = ({ path, pageContext, ...props }) => {
           Back to integrations
         </SubNavBreadcrumb>
       </SubNav>
+      <HeaderSpacer />
       <AddonsLayout hideSidebar currentPath={`${path}/`}>
         <AddonsPageHeader
-          title={`${tag.displayName || tag.name} tag`}
-          kicker={`${integrationCount} tagged ${pluralize('Integrations', integrationCount)}`}
+          title={`${tag.displayName || tag.name} integrations`}
+          subtitle={`${integrationCount} ${pluralize('Integrations', integrationCount)}`}
         />
         <AddonsAsideContainer>
           <IntegrationsContainer>
