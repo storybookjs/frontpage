@@ -85,6 +85,7 @@ const Template = ({ recipe, ...args }) => (
       description: 'Interact with component inputs dynamically in the Storybook UI',
       weeklyViews: 17143,
       publishedAt: 1604552400000,
+      lastUpdatedAt: 1604552400000,
       tags,
       ...recipe,
     }}

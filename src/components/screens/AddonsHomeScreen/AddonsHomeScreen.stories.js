@@ -18,6 +18,38 @@ export const Home = () => (
       popularAddons: { MONTH: addonItemsData.slice(0, 6), YEAR: addonItemsData.slice(-9) },
       popularRecipes: { MONTH: recipeItemsData.slice(0, 3), YEAR: recipeItemsData.slice(0, 6) },
       trendingAddons: addonItemsData.slice(-9),
+      trendingTags: [
+        {
+          link: '/notes',
+          displayName: 'Notes',
+          icon: '🗒',
+        },
+        {
+          link: '/storybook',
+          displayName: 'Storybook',
+          icon: '📕',
+        },
+        {
+          link: '/qa',
+          displayName: 'QA',
+          icon: '🕵️‍♀️',
+        },
+        {
+          link: '/prototype',
+          displayName: 'Prototype',
+          icon: '✨',
+        },
+        {
+          link: '/testing',
+          displayName: 'Testing',
+          icon: '✅',
+        },
+        {
+          link: '/deploy',
+          displayName: 'Deploy',
+          icon: '☁️',
+        },
+      ],
     }}
   />
 );
