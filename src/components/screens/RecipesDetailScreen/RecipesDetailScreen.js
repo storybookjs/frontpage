@@ -4,7 +4,7 @@ import { format } from 'date-fns';
 import { styled } from '@storybook/theming';
 import { Link as GatsbyLink } from 'gatsby';
 import { styles, Link, TagList, TagLink, Highlight, Avatar, Icon } from '@storybook/design-system';
-import { SubNav, SubNavBreadcrumb } from '@storybook/components-marketing';
+import { SubNav, SubNavBreadcrumb, SubNavCTA, SubNavRight } from '@storybook/components-marketing';
 
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import { SocialGraph, Callout } from '../../basics';
@@ -173,6 +173,12 @@ export const RecipesDetailScreen = ({ path, location, pageContext }) => {
           <Icon icon="arrowleft" />
           {breadcrumb.title}
         </SubNavBreadcrumb>
+        <SubNavRight>
+          <SubNavCTA href="/docs/react/addons/addon-catalog/">
+            <Icon icon="add" />
+            Add your integration
+          </SubNavCTA>
+        </SubNavRight>
       </SubNav>
       <AddonsLayout hideSidebar>
         <RecipeItemDetail {...recipe} />

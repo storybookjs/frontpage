@@ -1,6 +1,6 @@
 import React from 'react';
 import { styled } from '@storybook/theming';
-import { SubNav, SubNavBreadcrumb } from '@storybook/components-marketing';
+import { SubNav, SubNavBreadcrumb, SubNavCTA, SubNavRight } from '@storybook/components-marketing';
 import { TagList, TagLink, Icon } from '@storybook/design-system';
 import PropTypes from 'prop-types';
 import pluralize from 'pluralize';
@@ -58,6 +58,12 @@ export const AddonsTagScreen = ({ path, pageContext, ...props }) => {
           <Icon icon="arrowleft" />
           Back to integrations
         </SubNavBreadcrumb>
+        <SubNavRight>
+          <SubNavCTA href="/docs/react/addons/addon-catalog/">
+            <Icon icon="add" />
+            Add your integration
+          </SubNavCTA>
+        </SubNavRight>
       </SubNav>
       <HeaderSpacer />
       <AddonsLayout hideSidebar currentPath={`${path}/`}>

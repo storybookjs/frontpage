@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import pluralize from 'pluralize';
 import { styled } from '@storybook/theming';
 import { Icon } from '@storybook/design-system';
-import { SubNav, SubNavBreadcrumb } from '@storybook/components-marketing';
+import { SubNav, SubNavBreadcrumb, SubNavCTA, SubNavRight } from '@storybook/components-marketing';
 
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import { ListHeadingContainer, ListSubheading, SocialGraph } from '../../basics';
@@ -54,6 +54,12 @@ export const AddonsCategoryScreen = ({ path, pageContext }) => {
           <Icon icon="arrowleft" />
           Back to integrations
         </SubNavBreadcrumb>
+        <SubNavRight>
+          <SubNavCTA href="/docs/react/addons/addon-catalog/">
+            <Icon icon="add" />
+            Add your integration
+          </SubNavCTA>
+        </SubNavRight>
       </SubNav>
       <HeaderSpacer />
       <AddonsLayout currentPath={`${path}/`}>

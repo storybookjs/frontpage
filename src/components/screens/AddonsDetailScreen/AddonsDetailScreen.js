@@ -12,7 +12,7 @@ import {
   Avatar,
   Icon,
 } from '@storybook/design-system';
-import { SubNav, SubNavBreadcrumb } from '@storybook/components-marketing';
+import { SubNav, SubNavBreadcrumb, SubNavCTA, SubNavRight } from '@storybook/components-marketing';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import { SocialGraph } from '../../basics';
 import { AddonsAside, AddonsAsideContainer } from '../../layout/addons/AddonsAsideLayout';
@@ -180,6 +180,12 @@ export const AddonsDetailScreen = ({ path, location, pageContext }) => {
           <Icon icon="arrowleft" />
           {breadcrumb.title}
         </SubNavBreadcrumb>
+        <SubNavRight>
+          <SubNavCTA href="/docs/react/addons/addon-catalog/">
+            <Icon icon="add" />
+            Add your integration
+          </SubNavCTA>
+        </SubNavRight>
       </SubNav>
       <AddonsLayout hideSidebar>
         <AddonItemDetail {...addon} />
