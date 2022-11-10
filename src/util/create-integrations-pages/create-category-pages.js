@@ -50,11 +50,13 @@ function generateCategoryPages(createPage, categoryPages) {
         integrations: category.integrations,
       },
     });
+    // eslint-disable-next-line
     console.log(` ✅ ${pagePath}`);
   });
 }
 
 module.exports = function createCategoryPages(createPage, graphql) {
+  // eslint-disable-next-line
   console.log(`
 🗂️ Creating category pages
 `);

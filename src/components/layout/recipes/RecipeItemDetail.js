@@ -84,12 +84,11 @@ const Description = styled.div`
   text-align: center;
   color: ${color.darkest};
   position: relative;
+  max-width: 600px;
 
-  @media (min-width: ${1.5 * breakpoint}px) {
-    margin-bottom: ${spacing.padding.medium}px;
-    padding-left: 100px;
-    padding-right: 100px;
-  }
+  // @media (min-width: ${1.5 * breakpoint}px) {
+  //   margin-bottom: ${spacing.padding.medium}px;
+  // }
 
   span {
     width: 100%;
@@ -114,9 +113,10 @@ const AddonInfo = styled.div`
 
 const Spacer = styled.div`
   margin-top: 0;
+  background: red;
 
   @media (min-width: ${1.5 * breakpoint}px) {
-    margin-top: ${spacing.padding.large}px;
+    margin-top: ${spacing.padding.medium}px;
     flex: 1 1 auto;
     min-width: 0;
   }

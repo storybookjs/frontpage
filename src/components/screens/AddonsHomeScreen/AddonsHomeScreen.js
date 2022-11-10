@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@storybook/theming';
-import { ButtonToggle, styles } from '@storybook/design-system';
+import { ButtonToggle, styles, TagLink, TagList } from '@storybook/design-system';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import { SocialGraph, ListHeadingContainer, ListHeading } from '../../basics';
 import { AddonsGrid } from '../../layout/addons/AddonsGrid';
@@ -49,6 +49,10 @@ const PageSubheading = styled.p`
   }
 `;
 
+const PopularTagsList = styled(TagList)`
+  margin-bottom: ${spacing.padding.medium}px;
+`;
+
 const PopularAddons = styled(AddonsGrid)`
   margin-bottom: 48px;
 `;
@@ -87,7 +91,15 @@ export const AddonsHomeScreen = ({
           Integrate your tools with Storybook to connect workflows and unlock advanced features.
         </PageSubheading>
       </PageHeader>
-      <AddonsLayout currentPath="/integrations/" tags={tagLinks}>
+      <AddonsLayout currentPath="/integrations/">
+        <PopularTagsList
+          limit={6}
+          tags={tagLinks.map(({ link, name }) => (
+            <TagLink key={link} href={link}>
+              {name}
+            </TagLink>
+          ))}
+        />
         <PopularAddons
           title="Popular addons"
           addonItems={popularAddonsForTimePeriod}

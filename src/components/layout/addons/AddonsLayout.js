@@ -85,7 +85,7 @@ ToCContent.propTypes = {
 };
 
 const SearchInputContainer = styled.div`
-  flex: 1 0 auto;
+  flex: 1 1 auto;
   position: relative;
 
   @media (min-width: ${breakpoint * 1.333}px) {
@@ -146,18 +146,12 @@ const SearchInput = styled(Input)`
 `;
 
 const Searchbar = styled.div`
-  ${pageMargins}
   display: flex;
   align-items: center;
-  padding-bottom: ${spacing.padding.medium}px;
-`;
-
-const PopularTagsList = styled(TagList)`
-  margin-left: ${spacing.padding.small}px;
 `;
 
 const CategoriesHeading = styled(AddonsSubheading)`
-  margin-top: 0px;
+  margin-top: ${spacing.padding.medium}px;
   margin-bottom: ${spacing.padding.medium}px;
 `;
 
@@ -165,55 +159,43 @@ export const SEARCH_INPUT_ID = 'addons-search';
 
 const sidebarItems = addonsToc.map((item) => ({ ...item, LinkWrapper: GatsbyLinkWrapper }));
 
-export const AddonsLayout = ({ children, data, hideSidebar, currentPath, tags = [], ...props }) => {
+export const AddonsLayout = ({ children, data, hideSidebar, currentPath, ...props }) => {
   const { query, setQuery, isSearching, isSearchLoading, results } = useAddonsSearch();
   const inputRef = useRef(null);
 
   return (
     <>
       <GlobalStyle />
-      {!hideSidebar ? (
-        <Searchbar>
-          <SearchInputContainer searchLayout={isSearching}>
-            <SearchInput
-              id={SEARCH_INPUT_ID}
-              ref={inputRef}
-              type="search"
-              label="Search"
-              hideLabel
-              icon="search"
-              appearance="pill"
-              placeholder="Search integrations"
-              value={query}
-              onChange={(e) => {
-                setQuery(e.target.value);
-              }}
-            />
-            {query !== '' && (
-              <ClearButton
-                onClick={() => {
-                  setQuery('');
-                  inputRef.current.focus();
-                }}
-              >
-                <Icon icon="closeAlt" aria-label="clear" />
-              </ClearButton>
-            )}
-          </SearchInputContainer>
-          {tags.length > 0 && (
-            <PopularTagsList
-              limit={6}
-              tags={tags.map(({ link, name }) => (
-                <TagLink key={link} href={link}>
-                  {name}
-                </TagLink>
-              ))}
-            />
-          )}
-        </Searchbar>
-      ) : null}
       <Wrapper searchLayout={isSearching}>
         <Sidebar hideSidebar={hideSidebar} searchLayout={isSearching}>
+          <Searchbar>
+            <SearchInputContainer searchLayout={isSearching}>
+              <SearchInput
+                id={SEARCH_INPUT_ID}
+                ref={inputRef}
+                type="search"
+                label="Search"
+                hideLabel
+                icon="search"
+                appearance="pill"
+                placeholder="Search integrations"
+                value={query}
+                onChange={(e) => {
+                  setQuery(e.target.value);
+                }}
+              />
+              {query !== '' && (
+                <ClearButton
+                  onClick={() => {
+                    setQuery('');
+                    inputRef.current.focus();
+                  }}
+                >
+                  <Icon icon="closeAlt" aria-label="clear" />
+                </ClearButton>
+              )}
+            </SearchInputContainer>
+          </Searchbar>
           <TableOfContents currentPath={currentPath} items={sidebarItems}>
             {({ menu }) => (
               <ToCContent hideToC={isSearching}>

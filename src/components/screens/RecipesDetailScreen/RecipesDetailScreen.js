@@ -58,6 +58,7 @@ const WellBody = styled.p`
   font-family: ${typography.type};
   font-size: ${typography.size.s3}px;
   line-height: ${typography.size.m3}px;
+  margin-top: 4px;
 `;
 
 const SectionTitle = styled.h2`

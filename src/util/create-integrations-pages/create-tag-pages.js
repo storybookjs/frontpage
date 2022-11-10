@@ -62,11 +62,13 @@ function generateTagPages(createPage, tagPages) {
         tag,
       },
     });
+    // eslint-disable-next-line
     console.log(` ✅ ${pagePath}`);
   });
 }
 
 module.exports = function createTagPages(createPage, graphql) {
+  // eslint-disable-next-line
   console.log(`
 🏷️ Creating tag pages
 `);

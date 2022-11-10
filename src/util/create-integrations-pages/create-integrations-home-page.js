@@ -14,7 +14,7 @@ function fetchIntegrationsHomePage(createPage, graphql) {
         `
           {
             integrations {
-              popularMonthly: topIntegrations(sort: featuredMonthly, limit: 6) {
+              popularMonthly: topIntegrations(sort: featuredMonthly, limit: 9) {
                 addons {
                   ${ADDON_FRAGMENT}
                   tags {
@@ -36,7 +36,7 @@ function fetchIntegrationsHomePage(createPage, graphql) {
                   }
                 }
               }
-              popularYearly: topIntegrations(sort: featuredYearly, limit: 6) {
+              popularYearly: topIntegrations(sort: featuredYearly, limit: 9) {
                 addons {
                   ${ADDON_FRAGMENT}
                   tags {
@@ -122,10 +122,12 @@ function generateIntegrationHomePage(createPage, { popularMonthly, popularYearly
       trendingTags: uniqueTags,
     },
   });
+  // eslint-disable-next-line
   console.log(` ✅ /integrations/`);
 }
 
 module.exports = function createIntegrationsHomePage(createPage, graphql) {
+  // eslint-disable-next-line
   console.log(`
 🧩 Creating Integrations home page
 `);

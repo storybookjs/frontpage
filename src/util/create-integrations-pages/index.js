@@ -18,6 +18,7 @@ module.exports = function createIntegrationPages({ actions, graphql }) {
     .then(() => createAddonDetailsPages(createPage, graphql))
     .then(() => createRecipeDetailsPages(createPage, graphql))
     .then(() =>
+      // eslint-disable-next-line
       console.log(`
 
 ✨   Integration Catalog complete   ✨ 

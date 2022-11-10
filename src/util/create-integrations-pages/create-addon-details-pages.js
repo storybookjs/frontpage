@@ -71,11 +71,13 @@ function generateAddonsDetailPages(createPage, addonPages) {
         readme: processor.processSync(addon.readme).toString(),
       },
     });
+    // eslint-disable-next-line
     console.log(` ✅ ${pagePath}`);
   });
 }
 
 module.exports = function createAddonDetailsPages(createPage, graphql) {
+  // eslint-disable-next-line
   console.log(`
 🧩 Creating addon details pages
 `);
