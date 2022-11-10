@@ -99,12 +99,31 @@ function fetchIntegrationsHomePage(createPage, graphql) {
     });
 }
 
-function generateIntegrationHomePage(createPage, { popularMonthly, popularYearly, trending }) {
-  const trendingTags = trending.addons
+function createTagOccurrenceHash(...addons) {
+  return addons
     .reduce((allTags, { tags }) => [...allTags, ...tags], [])
-    .map((tag) => [tag.name, tag]);
+    .filter(({ icon }) => icon === null)
+    .reduce(
+      (hash, tag) => ({
+        ...hash,
+        [tag.name]: hash[tag.name]
+          ? { ...tag, occurrence: hash[tag.name].occurrence + 1 }
+          : { ...tag, occurrence: 1 },
+      }),
+      {}
+    );
+}
 
-  const uniqueTags = [...new Map(trendingTags).values()];
+function getNRandomTags(tags, numberOfTags) {
+  return Object.values(tags)
+    .map((tag) => ({ ...tag, occurrence: tag.occurrence * Math.random() }))
+    .sort((a, b) => b.occurrence - a.occurrence)
+    .slice(0, numberOfTags)
+    .map(({ occurrence, ...tag }) => tag);
+}
+
+function generateIntegrationHomePage(createPage, { popularMonthly, popularYearly, trending }) {
+  const tagOccurrences = createTagOccurrenceHash(...trending.addons, ...popularMonthly.addons);
 
   createPage({
     path: '/integrations/',
@@ -119,7 +138,7 @@ function generateIntegrationHomePage(createPage, { popularMonthly, popularYearly
         YEAR: popularYearly.recipes,
       },
       trendingAddons: trending.addons,
-      trendingTags: uniqueTags,
+      trendingTags: getNRandomTags(tagOccurrences, 20),
     },
   });
   // eslint-disable-next-line
