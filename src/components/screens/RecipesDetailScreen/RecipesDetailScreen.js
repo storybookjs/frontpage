@@ -3,7 +3,16 @@ import PropTypes from 'prop-types';
 import { format } from 'date-fns';
 import { styled } from '@storybook/theming';
 import { Link as GatsbyLink } from 'gatsby';
-import { styles, Link, TagList, TagLink, Highlight, Avatar, Icon } from '@storybook/design-system';
+import {
+  styles,
+  Link,
+  TagList,
+  TagLink,
+  Highlight,
+  Avatar,
+  Icon,
+  Button,
+} from '@storybook/design-system';
 import { SubNav, SubNavBreadcrumb, SubNavCTA, SubNavRight } from '@storybook/components-marketing';
 
 import useSiteMetadata from '../../lib/useSiteMetadata';
@@ -15,6 +24,7 @@ import { AddonsLayout } from '../../layout/addons/AddonsLayout';
 import { mdFormatting } from '../../../styles/formatting';
 import { generateBreadcrumb } from '../../../util/generate-breadcrumb';
 import { AddonsList } from '../../layout/addons/AddonsList';
+import { generateRecipeGithubIssueLink } from './helpers';
 
 const { color, typography, spacing } = styles;
 
@@ -137,6 +147,23 @@ const LastUpdated = styled.span`
   color: ${color.darker};
 `;
 
+const ReportIssueButton = styled(Button)`
+  margin-top: 12px;
+`;
+
+const LastUpdatedAt = ({ recipeName, updatedAt }) => {
+  const createIssueLink = useMemo(() => generateRecipeGithubIssueLink(recipeName), [recipeName]);
+
+  return (
+    <>
+      <LastUpdated>{format(updatedAt, 'MMMM yyyy')}</LastUpdated>
+      <ReportIssueButton isLink size="small" href={createIssueLink}>
+        <Icon icon="github" /> Report an issue
+      </ReportIssueButton>
+    </>
+  );
+};
+
 export const RecipesDetailScreen = ({ path, location, pageContext }) => {
   const { title, ogImageAddons, urls = {} } = useSiteMetadata();
   const { home } = urls;
@@ -237,7 +264,7 @@ export const RecipesDetailScreen = ({ path, location, pageContext }) => {
             <AddonsSubheading>Contributors</AddonsSubheading>
             <AuthorList authors={authors || []} />
 
-            <LastUpdated>Last updated {format(lastUpdated, 'MMMM yyyy')}</LastUpdated>
+            <LastUpdatedAt recipeName={recipe.name} updatedAt={lastUpdated} />
           </AddonsAside>
         </AddonsAsideContainer>
       </AddonsLayout>
