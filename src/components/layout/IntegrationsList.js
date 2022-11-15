@@ -4,6 +4,7 @@ import { styled } from '@storybook/theming';
 import { styles, Button } from '@storybook/design-system';
 import { AddonItem } from './addons/AddonItem';
 import { RecipeItem } from './recipes/RecipeItem';
+import { IntegrationItem } from '../../util/integrations';
 
 const { spacing } = styles;
 
@@ -21,8 +22,6 @@ const loadingItems = [
   { id: '5', isLoading: true },
   { id: '6', isLoading: true },
 ];
-
-const isAddon = (integration) => integration.type === 'Addon';
 
 export const IntegrationsList = ({ integrationItems = [], isLoading, from, ...props }) => {
   const [visibleCount, setVisibleCount] = useState(6);
@@ -44,7 +43,7 @@ export const IntegrationsList = ({ integrationItems = [], isLoading, from, ...pr
       {...props}
     >
       {(isLoading ? loadingItems : items).map((integration) =>
-        isAddon(integration) ? (
+        IntegrationItem.isAddon(integration) ? (
           <AddonItem key={integration.id} from={from} orientation="horizontal" {...integration} />
         ) : (
           <RecipeItem key={integration.id} from={from} orientation="horizontal" {...integration} />

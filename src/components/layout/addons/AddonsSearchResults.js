@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { css, styled } from '@storybook/theming';
 import pluralize from 'pluralize';
@@ -9,6 +9,7 @@ import { AddonsSubheading } from './AddonsSubheading';
 import { ListHeadingContainer, ListSubheading } from '../../basics';
 import { RecipesList } from '../recipes/RecipesList';
 import { AddonsPageHeader } from './AddonsPageHeader';
+import { IntegrationsList } from '../IntegrationsList';
 
 const { color, typography } = styles;
 const { inlineGlow } = animation;
@@ -34,11 +35,7 @@ const ResultsContainer = styled.div`
   width: 100%;
 `;
 
-const StyledAddonsList = styled(AddonsList)`
-  margin-bottom: 48px;
-`;
-
-const StyledRecipesList = styled(RecipesList)`
+const StyledIntegrationsList = styled(IntegrationsList)`
   margin-bottom: 48px;
 `;
 
@@ -81,7 +78,9 @@ export const AddonsSearchResults = ({
   ...props
 }) => {
   const { addons = [], recipes = [] } = integrations;
-  const integrationCount = addons.length + recipes.length;
+
+  const integrationItems = useMemo(() => [...addons, ...recipes], [addons, recipes]);
+  const integrationCount = useMemo(() => addons.length + recipes.length, [addons, recipes]);
 
   return (
     <SearchResultsContainer {...props}>
@@ -94,16 +93,7 @@ export const AddonsSearchResults = ({
             title={`${pluralize('integrations', integrationCount, true)} for "${searchString}"`}
           />
           <section>
-            <ListHeadingContainer>
-              <ListSubheading>Addons</ListSubheading>
-            </ListHeadingContainer>
-            <StyledAddonsList isLoading={isLoading} addonItems={integrations.addons} />
-          </section>
-          <section>
-            <ListHeadingContainer>
-              <ListSubheading>Recipes</ListSubheading>
-            </ListHeadingContainer>
-            <StyledRecipesList isLoading={isLoading} recipeItems={integrations.recipes} />
+            <StyledIntegrationsList isLoading={isLoading} integrationItems={integrationItems} />
           </section>
         </ResultsContainer>
       )}
