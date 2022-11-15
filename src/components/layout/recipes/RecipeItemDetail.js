@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css, styled } from '@storybook/theming';
-import { styles, animation, Cardinal, ClipboardCode, Link, Badge } from '@storybook/design-system';
+import { styles, animation } from '@storybook/design-system';
 import emptySVG from '../../../images/integrations/recipe-empty.svg';
 
 const { spacing, color, typography, breakpoint } = styles;
@@ -12,23 +12,25 @@ const AddonItemWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 16px 0 24px 0;
   text-decoration: none;
   position: relative;
   border-bottom: 1px solid ${color.border};
-  margin-top: 40px;
-  margin-bottom: 40px;
+
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+  margin-bottom: 3rem;
 
   @media (min-width: ${1.5 * breakpoint}px) {
-    padding-top: 0px;
-    padding-bottom: 40px;
+    padding-top: calc(4rem - 20px);
+    padding-bottom: 4rem;
+    margin-bottom: 40px;
   }
 `;
 
 const Image = styled.div`
   flex: none;
-  width: 80px;
-  height: 80px;
+  width: 64px;
+  height: 64px;
   background-image: url(${(props) => props.src});
   background-size: contain;
   background-position: center;
@@ -47,14 +49,15 @@ Image.propTypes = {
 
 const Title = styled.div`
   font-weight: ${typography.weight.bold};
-  font-size: ${typography.size.m2}px;
+  font-size: ${typography.size.l1}px;
   line-height: ${typography.size.l2}px;
   text-align: center;
   color: ${color.darkest};
   display: flex;
   align-items: center;
   position: relative;
-  margin-top: 12px;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
 
   @media (min-width: ${1.5 * breakpoint}px) {
     margin-top: 24px;
@@ -80,7 +83,7 @@ Title.propTypes = {
 
 const Description = styled.div`
   font-size: ${typography.size.s3}px;
-  line-height: ${typography.size.m2}px;
+  line-height: 28px;
   text-align: center;
   color: ${color.darkest};
   position: relative;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { RecipesDetailScreen } from './RecipesDetailScreen';
+import MuiSVG from '../../../images/integrations/mui.svg';
 
 import { addonItemsData } from '../../layout/addons/AddonsGrid.stories';
 
@@ -13,7 +14,7 @@ export default {
 };
 
 const muiRecipe = {
-  icon: 'https://raw.githubusercontent.com/react-theming/storybook-addon-material-ui/master/docs/logos/material-ui.png',
+  icon: MuiSVG,
   displayName: 'Material UI',
   name: '@mui/material',
   description:
