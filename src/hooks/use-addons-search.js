@@ -61,6 +61,7 @@ function searchAddons(query) {
       query {
         partialSearch: partialSearchIntegrations(query: "${query}") {
           addons {
+            type: __typename
             id: name
             name
             displayName
@@ -77,6 +78,7 @@ function searchAddons(query) {
             verifiedCreator
           }
           recipes {
+            type: __typename
             id: name
             name
             displayName
