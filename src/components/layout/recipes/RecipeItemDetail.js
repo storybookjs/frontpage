@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css, styled } from '@storybook/theming';
 import { styles, animation, Cardinal, ClipboardCode, Link, Badge } from '@storybook/design-system';
-import customSVG from '../../../images/addon-catalog/custom.svg';
+import emptySVG from '../../../images/integrations/recipe-empty.svg';
 
 const { spacing, color, typography, breakpoint } = styles;
 const { inlineGlow } = animation;
@@ -138,7 +138,7 @@ export const RecipeItemDetail = ({
 }) => (
   <AddonItemWrapper {...props}>
     <AddonInfo>
-      <Image isLoading={isLoading} src={icon || customSVG} />
+      <Image isLoading={isLoading} src={icon || emptySVG} />
       <div>
         <Title isLoading={isLoading}>
           <span>{isLoading ? 'loading' : `Integrate Storybook and ${displayName || name}`}</span>

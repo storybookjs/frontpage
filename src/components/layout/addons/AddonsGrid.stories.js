@@ -8,7 +8,7 @@ import AccessibilitySVG from '../../../images/addon-catalog/accessibility.svg';
 import ActionsSVG from '../../../images/addon-catalog/actions.svg';
 import BackgroundsSVG from '../../../images/addon-catalog/backgrounds.svg';
 import ConsoleSVG from '../../../images/addon-catalog/console.svg';
-import CustomSVG from '../../../images/addon-catalog/custom.svg';
+import emptySVG from '../../../images/integrations/addon-empty.svg';
 import DocsSVG from '../../../images/addon-catalog/docs.svg';
 import LinksSVG from '../../../images/addon-catalog/links.svg';
 import OutlineSVG from '../../../images/addon-catalog/outline.svg';
@@ -128,7 +128,7 @@ export const addonItemsData = [
   {
     type: 'Addon',
     id: '7',
-    icon: CustomSVG,
+    icon: emptySVG,
     displayName: 'Controls',
     name: '@storybook/addon-controls',
     description: 'Interact with component inputs dynamically in the Storybook UI',

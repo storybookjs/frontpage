@@ -4,7 +4,7 @@ import { css, styled } from '@storybook/theming';
 import humanFormat from 'human-format';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import { styles, animation, Cardinal, ClipboardCode, Link, Badge } from '@storybook/design-system';
-import customSVG from '../../../images/addon-catalog/custom.svg';
+import emptySVG from '../../../images/integrations/addon-empty.svg';
 import { VerifiedBadge } from './VerifiedBadge';
 import { StorybookBadge } from './StorybookBadge';
 
@@ -210,7 +210,7 @@ export const AddonItemDetail = ({
 }) => (
   <AddonItemWrapper {...props}>
     <AddonInfo>
-      <Image isLoading={isLoading} src={icon || customSVG} />
+      <Image isLoading={isLoading} src={icon || emptySVG} />
       <div>
         <Title isLoading={isLoading}>
           <span>{isLoading ? 'loading' : displayName || name}</span>

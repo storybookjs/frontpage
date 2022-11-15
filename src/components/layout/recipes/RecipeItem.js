@@ -4,7 +4,7 @@ import { css, styled } from '@storybook/theming';
 import humanFormat from 'human-format';
 import { Link as GatsbyLinkWrapper } from 'gatsby';
 import { styles, animation, Cardinal, AvatarList } from '@storybook/design-system';
-import customSVG from '../../../images/addon-catalog/custom.svg';
+import emptySVG from '../../../images/integrations/recipe-empty.svg';
 
 const { hoverEffect, spacing, color, typography, breakpoint } = styles;
 const { inlineGlow } = animation;
@@ -196,7 +196,7 @@ export const RecipeItem = ({
       <Image
         orientation={orientation}
         isLoading={isLoading}
-        src={icon && icon !== '' ? icon : customSVG}
+        src={icon && icon !== '' ? icon : emptySVG}
       />
       <div>
         <Title isLoading={isLoading}>
