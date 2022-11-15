@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { css, styled } from '@storybook/theming';
 import humanFormat from 'human-format';
 import { Link as GatsbyLinkWrapper } from 'gatsby';
-import { styles, animation, Cardinal } from '@storybook/design-system';
+import { styles, animation, Cardinal, AvatarList } from '@storybook/design-system';
 import customSVG from '../../../images/addon-catalog/custom.svg';
 
 const { hoverEffect, spacing, color, typography, breakpoint } = styles;
@@ -169,7 +169,11 @@ const Meta = styled.div`
 const Stats = styled(Cardinal)`
   padding: 0;
   margin-right: ${spacing.padding.large}px;
-  min-width: 100px;
+  min-width: 72px;
+`;
+
+const Authors = styled(AvatarList)`
+  min-width: 95.5px;
 `;
 
 export const RecipeItem = ({
@@ -181,6 +185,7 @@ export const RecipeItem = ({
   orientation,
   isLoading,
   from,
+  authors,
   ...props
 }) => (
   <RecipeItemWrapper orientation={orientation} {...props}>
@@ -195,7 +200,7 @@ export const RecipeItem = ({
       />
       <div>
         <Title isLoading={isLoading}>
-          <span>{isLoading ? 'loading' : displayName || name}</span>
+          <span>{isLoading ? 'loading' : `How to setup ${displayName || name} and Storybook`}</span>
         </Title>
         <Description isLoading={isLoading}>
           <span>{isLoading ? 'loading description of recipe' : description}</span>
@@ -218,6 +223,7 @@ export const RecipeItem = ({
         noPlural
         isLoading={isLoading}
       />
+      <Authors users={isLoading ? undefined : authors || []} isLoading={isLoading} />
     </Meta>
   </RecipeItemWrapper>
 );

@@ -13,8 +13,8 @@ export default {
 };
 
 const integrations = {
-  addons: addonItemsData,
-  recipes: recipeItemsData,
+  addons: addonItemsData.slice(0, 4),
+  recipes: recipeItemsData.slice(0, 6),
 };
 
 export const Default = () => (

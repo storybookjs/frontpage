@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { styled } from '@storybook/theming';
 import { SubNav, SubNavBreadcrumb, SubNavCTA, SubNavRight } from '@storybook/components-marketing';
 import { TagList, TagLink, Icon } from '@storybook/design-system';
@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import pluralize from 'pluralize';
 
 import useSiteMetadata from '../../lib/useSiteMetadata';
-import { SocialGraph, ListHeadingContainer, ListSubheading } from '../../basics';
+import { SocialGraph } from '../../basics';
 import { AddonsPageHeader } from '../../layout/addons/AddonsPageHeader';
 import { AddonsList } from '../../layout/addons/AddonsList';
 import { RecipesList } from '../../layout/recipes/RecipesList';
@@ -17,6 +17,7 @@ import { generateBreadcrumb } from '../../../util/generate-breadcrumb';
 import buildTagLinks from '../../../util/build-tag-links';
 
 import GatsbyLink from '../../basics/GatsbyLink';
+import { IntegrationsList } from '../../layout/IntegrationsList';
 
 const HeaderSpacer = styled.div`
   height: 28px;
@@ -26,7 +27,7 @@ const IntegrationsContainer = styled.div`
   flex: 1 1 auto;
 `;
 
-const StyledAddonsList = styled(AddonsList)`
+const StyledIntegrationsList = styled(IntegrationsList)`
   margin-bottom: 48px;
 `;
 
@@ -43,7 +44,8 @@ export const AddonsTagScreen = ({ path, pageContext, ...props }) => {
 
   const { addons = [], recipes = [] } = tag.integrations;
 
-  const integrationCount = addons.length + recipes.length;
+  const integrationItems = useMemo(() => [...addons, ...recipes], [addons, recipes]);
+  const integrationCount = useMemo(() => addons.length + recipes.length, [addons, recipes]);
 
   return (
     <>
@@ -54,7 +56,7 @@ export const AddonsTagScreen = ({ path, pageContext, ...props }) => {
         image={ogImageAddons}
       />
       <SubNav>
-        <SubNavBreadcrumb tertiary to="/integrations/" LinkWrapper={GatsbyLink}>
+        <SubNavBreadcrumb tertiary to={breadcrumb.link} LinkWrapper={GatsbyLink}>
           <Icon icon="arrowleft" />
           Back to integrations
         </SubNavBreadcrumb>
@@ -74,21 +76,8 @@ export const AddonsTagScreen = ({ path, pageContext, ...props }) => {
         <AddonsAsideContainer>
           <IntegrationsContainer>
             <section>
-              <ListHeadingContainer>
-                <ListSubheading>Addons</ListSubheading>
-              </ListHeadingContainer>
-              <StyledAddonsList
-                addonItems={addons}
-                from={{ title: tag.displayName || tag.name, link: path }}
-              />
-            </section>
-
-            <section>
-              <ListHeadingContainer>
-                <ListSubheading>Recipes</ListSubheading>
-              </ListHeadingContainer>
-              <RecipesList
-                recipeItems={recipes}
+              <StyledIntegrationsList
+                integrationItems={integrationItems}
                 from={{ title: tag.displayName || tag.name, link: path }}
               />
             </section>

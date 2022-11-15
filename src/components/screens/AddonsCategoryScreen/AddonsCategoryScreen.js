@@ -8,18 +8,14 @@ import { SubNav, SubNavBreadcrumb, SubNavCTA, SubNavRight } from '@storybook/com
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import { ListHeadingContainer, ListSubheading, SocialGraph } from '../../basics';
 import { AddonsPageHeader } from '../../layout/addons/AddonsPageHeader';
-import { AddonsList } from '../../layout/addons/AddonsList';
+import { IntegrationsList } from '../../layout/IntegrationsList';
 import { AddonsLayout } from '../../layout/addons/AddonsLayout';
 import { RecipesList } from '../../layout/recipes/RecipesList';
 import { sortAddons } from '../../../util/sort-addons';
 import { sortRecipes } from '../../../util/sort-recipes';
 import GatsbyLink from '../../basics/GatsbyLink';
 
-const SortedAddonsList = styled(AddonsList)`
-  margin-bottom: 48px;
-`;
-
-const SortedRecipesList = styled(RecipesList)`
+const SortedIntegrationsList = styled(IntegrationsList)`
   margin-bottom: 48px;
 `;
 
@@ -34,9 +30,10 @@ export const AddonsCategoryScreen = ({ path, pageContext }) => {
   const { category, description, integrations } = pageContext;
   const { addons = [], recipes = [] } = integrations;
 
-  const sortedAddons = useMemo(() => sortAddons(addons), [addons]);
-  const sortedRecipes = useMemo(() => sortRecipes(recipes), [recipes]);
-  const integrationCount = sortedAddons.length + sortedRecipes.length;
+  const sortedIntegrations = useMemo(
+    () => [...sortAddons(addons), ...sortRecipes(recipes)],
+    [addons, recipes]
+  );
 
   return (
     <>
@@ -65,24 +62,11 @@ export const AddonsCategoryScreen = ({ path, pageContext }) => {
       <AddonsLayout currentPath={`${path}/`}>
         <AddonsPageHeader title={`${category} integrations`} subtitle={description} />
         <section>
-          <ListHeadingContainer>
-            <ListSubheading>Addons</ListSubheading>
-          </ListHeadingContainer>
-          <SortedAddonsList from={{ title: category, link: path }} addonItems={sortedAddons} />
+          <SortedIntegrationsList
+            from={{ title: category, link: path }}
+            integrationItems={sortedIntegrations}
+          />
         </section>
-
-        {sortedRecipes.length > 0 ? (
-          <section>
-            <ListHeadingContainer>
-              <ListSubheading>Recipes</ListSubheading>
-            </ListHeadingContainer>
-            <SortedRecipesList
-              title="Recipes"
-              from={{ title: category, link: path }}
-              recipeItems={sortedRecipes}
-            />
-          </section>
-        ) : null}
       </AddonsLayout>
     </>
   );
@@ -93,7 +77,10 @@ AddonsCategoryScreen.propTypes = {
   pageContext: PropTypes.shape({
     category: PropTypes.string.isRequired,
     description: PropTypes.string,
-    addons: AddonsList.propTypes.addonItems,
+    Integrations: PropTypes.shape({
+      addons: IntegrationsList.propTypes.integrationItems,
+      recipes: IntegrationsList.propTypes.integrationItems,
+    }),
   }),
 };
 

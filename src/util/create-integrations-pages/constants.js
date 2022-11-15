@@ -1,4 +1,5 @@
 const ADDON_FRAGMENT = `
+  type: __typename
   id: name
   name
   displayName
@@ -14,6 +15,7 @@ const ADDON_FRAGMENT = `
   verifiedCreator`;
 
 const RECIPE_FRAGMENT = `
+  type: __typename
   id: name
   name
   displayName

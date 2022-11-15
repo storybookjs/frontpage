@@ -47,6 +47,7 @@ const authors = [
 
 export const addonItemsData = [
   {
+    type: 'Addon',
     id: '0',
     appearance: 'official',
     icon: ControlsSVG,
@@ -57,6 +58,7 @@ export const addonItemsData = [
     authors,
   },
   {
+    type: 'Addon',
     id: '1',
     icon: ViewportSVG,
     appearance: 'community',
@@ -68,6 +70,7 @@ export const addonItemsData = [
     authors,
   },
   {
+    type: 'Addon',
     id: '2',
     appearance: 'integrators',
     verifiedCreator: 'Contrast',
@@ -79,6 +82,7 @@ export const addonItemsData = [
     authors,
   },
   {
+    type: 'Addon',
     id: '3',
     appearance: 'official',
     icon: AccessibilitySVG,
@@ -89,6 +93,7 @@ export const addonItemsData = [
     authors: authors.slice(2, 3),
   },
   {
+    type: 'Addon',
     id: '4',
     appearance: 'official',
     icon: ActionsSVG,
@@ -99,6 +104,7 @@ export const addonItemsData = [
     authors: authors.slice(0, 1),
   },
   {
+    type: 'Addon',
     id: '5',
     appearance: 'official',
     icon: BackgroundsSVG,
@@ -109,6 +115,7 @@ export const addonItemsData = [
     authors: authors.slice(0, 2),
   },
   {
+    type: 'Addon',
     id: '6',
     appearance: 'official',
     icon: ConsoleSVG,
@@ -119,6 +126,7 @@ export const addonItemsData = [
     authors: authors.slice(1, 2),
   },
   {
+    type: 'Addon',
     id: '7',
     icon: CustomSVG,
     displayName: 'Controls',
@@ -128,6 +136,7 @@ export const addonItemsData = [
     authors: authors.slice(1, 2),
   },
   {
+    type: 'Addon',
     id: '8',
     appearance: 'integrators',
     verifiedCreator: 'InVision',
@@ -138,6 +147,7 @@ export const addonItemsData = [
     authors: authors.slice(1, 3),
   },
   {
+    type: 'Addon',
     id: '9',
     icon: LinksSVG,
     displayName: 'Links',
@@ -147,6 +157,7 @@ export const addonItemsData = [
     authors,
   },
   {
+    type: 'Addon',
     id: '10',
     icon: OutlineSVG,
     displayName: 'Outline',
@@ -156,6 +167,7 @@ export const addonItemsData = [
     authors: authors.slice(0, 1),
   },
   {
+    type: 'Addon',
     id: '11',
     icon: SourceSVG,
     displayName: 'Source',
@@ -165,6 +177,7 @@ export const addonItemsData = [
     authors,
   },
   {
+    type: 'Addon',
     id: '12',
     appearance: 'integrators',
     verifiedCreator: 'Someone',
@@ -176,6 +189,7 @@ export const addonItemsData = [
     authors,
   },
   {
+    type: 'Addon',
     id: '13',
     appearance: 'official',
     icon: ToolbarsSVG,
