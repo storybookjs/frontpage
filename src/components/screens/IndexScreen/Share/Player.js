@@ -113,6 +113,7 @@ const transition = (delay, count = 4) => ({
 
 export const Player = ({ x, y, type, delay, count }) => (
   <AvatarWrapper
+    data-chromatic="ignore"
     ratio={`${1} / ${1}`}
     x={x}
     y={y}
