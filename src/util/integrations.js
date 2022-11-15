@@ -5,8 +5,8 @@ export const INTEGRATION_TYPES = {
 
 const cleanIntegrationType = (type) => type.replace('INTEGRATION_', '').toLowerCase();
 
-const isAddon = ({ type }) => cleanIntegrationType(type) === INTEGRATION_TYPES.ADDON;
-const isRecipe = ({ type }) => cleanIntegrationType(type) === INTEGRATION_TYPES.RECIPE;
+const isAddon = ({ type = '' }) => cleanIntegrationType(type) === INTEGRATION_TYPES.ADDON;
+const isRecipe = ({ type = '' }) => cleanIntegrationType(type) === INTEGRATION_TYPES.RECIPE;
 
 export const IntegrationItem = {
   isAddon,
