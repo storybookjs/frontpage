@@ -234,18 +234,19 @@ export const RecipesDetailScreen = ({ path, location, pageContext }) => {
             </Highlight>
           </ReadMe>
           <AddonsAside hideLearn>
-            <AddonsSubheading>On this page</AddonsSubheading>
-            <SectionLinksContainer>
-              {hasAddons && (
-                <SectionLink tertiary LinkWrapper={GatsbyLink} to="#addon-section">
-                  Addons
-                </SectionLink>
-              )}
-
-              <SectionLink tertiary LinkWrapper={GatsbyLink} to="#recipe-section">
-                Recipe
-              </SectionLink>
-            </SectionLinksContainer>
+            {hasAddons && (
+              <>
+                <AddonsSubheading>On this page</AddonsSubheading>
+                <SectionLinksContainer>
+                  <SectionLink tertiary LinkWrapper={GatsbyLink} to="#addon-section">
+                    Addons
+                  </SectionLink>
+                  <SectionLink tertiary LinkWrapper={GatsbyLink} to="#recipe-section">
+                    Recipe
+                  </SectionLink>
+                </SectionLinksContainer>
+              </>
+            )}
 
             {hasTags && (
               <>
