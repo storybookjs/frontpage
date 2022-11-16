@@ -190,7 +190,7 @@ export const RecipesDetailScreen = ({ path, location, pageContext }) => {
   return (
     <>
       <SocialGraph
-        title={`${displayName} Recipe | ${title}`}
+        title={`Integrate ${displayName} with Storybook | Storybook`}
         desc={recipe.description || ''}
         url={`${home}${path}`}
         image={ogImageAddons}

@@ -9,7 +9,7 @@ export default {
   component: PurePageLayout,
 };
 
-const dxData = {
+export const dxData = {
   subscriberCount: 5726,
   latestPost: {
     title: 'Why Storybook in 2022?',

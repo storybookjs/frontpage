@@ -3,6 +3,9 @@ import { RecipesDetailScreen } from './RecipesDetailScreen';
 import MuiSVG from '../../../images/integrations/mui.svg';
 
 import { addonItemsData } from '../../layout/addons/AddonsGrid.stories';
+import { PurePageLayout } from '../../layout/PageLayout';
+
+import { dxData } from '../../layout/PageLayout.stories';
 
 export default {
   title: 'Integrations Catalog/Screens/RecipesDetailScreen',
@@ -79,20 +82,22 @@ const tags = [
 ];
 
 const Template = ({ recipe, ...args }) => (
-  <RecipesDetailScreen
-    pageContext={{
-      name: 'storybook-mobile',
-      displayName: 'Mobile UX lint',
-      description: 'Interact with component inputs dynamically in the Storybook UI',
-      weeklyViews: 17143,
-      publishedAt: 1604552400000,
-      lastUpdatedAt: 1604552400000,
-      tags,
-      ...recipe,
-    }}
-    location={{}}
-    {...args}
-  />
+  <PurePageLayout dxData={dxData} pageContext={{}} location={{ pathname: '/recipe/' }}>
+    <RecipesDetailScreen
+      pageContext={{
+        name: 'storybook-mobile',
+        displayName: 'Mobile UX lint',
+        description: 'Interact with component inputs dynamically in the Storybook UI',
+        weeklyViews: 17143,
+        publishedAt: 1604552400000,
+        lastUpdatedAt: 1604552400000,
+        tags,
+        ...recipe,
+      }}
+      location={{}}
+      {...args}
+    />
+  </PurePageLayout>
 );
 
 export const Default = Template.bind({});

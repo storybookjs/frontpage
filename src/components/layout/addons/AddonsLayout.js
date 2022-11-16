@@ -1,15 +1,7 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@storybook/theming';
-import {
-  Input,
-  Icon,
-  TableOfContents,
-  global,
-  styles,
-  TagList,
-  TagLink,
-} from '@storybook/design-system';
+import { Input, Icon, TableOfContents, global, styles } from '@storybook/design-system';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import { AddonsLearn } from './AddonsLearn';
 import { AddonsSubheading } from './AddonsSubheading';

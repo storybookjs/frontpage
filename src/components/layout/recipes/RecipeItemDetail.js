@@ -144,7 +144,7 @@ export const RecipeItemDetail = ({
       <Image isLoading={isLoading} src={icon || emptySVG} />
       <div>
         <Title isLoading={isLoading}>
-          <span>{isLoading ? 'loading' : `Integrate Storybook and ${displayName || name}`}</span>
+          <span>{isLoading ? 'loading' : `Integrate ${displayName || name} and Storybook`}</span>
         </Title>
         <Description isLoading={isLoading}>
           <span>{isLoading ? 'loading description of addon' : description}</span>
