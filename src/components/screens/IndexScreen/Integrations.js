@@ -4,6 +4,7 @@ import { styles } from '@storybook/components-marketing';
 import { css, styled } from '@storybook/theming';
 import { Link as GatsbyLinkWrapper } from 'gatsby';
 
+import Abstract from '../../../images/integrations/abstract.svg';
 import Apollo from '../../../images/integrations/apollo.svg';
 import Axe from '../../../images/integrations/axe.svg';
 import Chromatic from '../../../images/integrations/chromatic.svg';
@@ -255,9 +256,9 @@ export function Integrations({ docs, ...props }) {
     },
     {
       as: GatsbyLinkWrapper,
-      to: '/addons/storybook-addon-xd-designs',
-      image: AdobeXD,
-      name: 'AdobeXD',
+      to: '/addons/storybook-addons-abstract',
+      image: Abstract,
+      name: 'Abstract',
     },
     {
       target: '_blank',
