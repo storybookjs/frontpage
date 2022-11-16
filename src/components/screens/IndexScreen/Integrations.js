@@ -4,7 +4,6 @@ import { styles } from '@storybook/components-marketing';
 import { css, styled } from '@storybook/theming';
 import { Link as GatsbyLinkWrapper } from 'gatsby';
 
-import Abstract from '../../../images/integrations/abstract.svg';
 import Apollo from '../../../images/integrations/apollo.svg';
 import Axe from '../../../images/integrations/axe.svg';
 import Chromatic from '../../../images/integrations/chromatic.svg';
@@ -23,6 +22,7 @@ import Nx from '../../../images/integrations/nx.svg';
 import Playwright from '../../../images/integrations/playwright.svg';
 import RedwoodJS from '../../../images/integrations/redwoodjs.svg';
 import Sass from '../../../images/integrations/sass.svg';
+import Sketch from '../../../images/integrations/sketch.svg';
 import SWC from '../../../images/integrations/swc.png';
 import Tailwind from '../../../images/integrations/tailwind.svg';
 import TestingLib from '../../../images/integrations/testing-lib.png';
@@ -256,9 +256,9 @@ export function Integrations({ docs, ...props }) {
     },
     {
       as: GatsbyLinkWrapper,
-      to: '/addons/storybook-addons-abstract',
-      image: Abstract,
-      name: 'Abstract',
+      to: `${docs}/react/sharing/design-integrations`,
+      image: Sketch,
+      name: 'Sketch',
     },
     {
       target: '_blank',
