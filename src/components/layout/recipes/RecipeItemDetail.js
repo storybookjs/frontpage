@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css, styled } from '@storybook/theming';
 import { styles, animation } from '@storybook/design-system';
+import { IntegrationImage } from './IntegrationImage';
 import emptySVG from '../../../images/integrations/recipe-empty.svg';
 
 const { spacing, color, typography, breakpoint } = styles;
@@ -126,7 +127,7 @@ const Spacer = styled.div`
 `;
 
 export const RecipeItemDetail = ({
-  icon,
+  icon = emptySVG,
   name,
   displayName,
   description,
@@ -137,11 +138,12 @@ export const RecipeItemDetail = ({
   verifiedCreator,
   publishedAt,
   npmUrl,
+  accentColor = '#ca8fff',
   ...props
 }) => (
   <AddonItemWrapper {...props}>
     <AddonInfo>
-      <Image isLoading={isLoading} src={icon || emptySVG} />
+      <IntegrationImage icon={icon} accent={accentColor} withConnector />
       <div>
         <Title isLoading={isLoading}>
           <span>{isLoading ? 'loading' : `Integrate ${displayName || name} and Storybook`}</span>

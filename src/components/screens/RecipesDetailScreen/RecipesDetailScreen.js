@@ -165,7 +165,7 @@ const LastUpdatedAt = ({ recipeName, updatedAt }) => {
 };
 
 export const RecipesDetailScreen = ({ path, location, pageContext }) => {
-  const { title, ogImageAddons, urls = {} } = useSiteMetadata();
+  const { ogImageAddons, urls = {} } = useSiteMetadata();
   const { home } = urls;
 
   const {
