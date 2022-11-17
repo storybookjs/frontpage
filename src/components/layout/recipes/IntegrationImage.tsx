@@ -50,7 +50,6 @@ const Circle = styled.div`
 `;
 
 const Container = styled.figure`
-  height: 64px;
   display: flex;
   align-items: center;
   margin: 0;
