@@ -7,6 +7,7 @@ import { pageContext as docsPageContext } from './DocsLayout.stories';
 export default {
   title: 'Layout/PageLayout',
   component: PurePageLayout,
+  excludeStories: /.*Data$/,
 };
 
 export const dxData = {
