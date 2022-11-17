@@ -6,8 +6,6 @@ import { animation, styles, TagList, TagLink } from '@storybook/design-system';
 import { AddonsList } from './AddonsList';
 import { AddonsAside, AddonsAsideContainer } from './AddonsAsideLayout';
 import { AddonsSubheading } from './AddonsSubheading';
-import { ListHeadingContainer, ListSubheading } from '../../basics';
-import { RecipesList } from '../recipes/RecipesList';
 import { AddonsPageHeader } from './AddonsPageHeader';
 import { IntegrationsList } from '../IntegrationsList';
 
@@ -25,7 +23,7 @@ const SearchResultsHeader = styled(AddonsPageHeader)`
       ${inlineGlow}
 
       * {
-        color: transparent;
+        color: transparent !important;
       }
     `}
 `;
@@ -65,7 +63,7 @@ const NoAddonsFoundInner = styled.div`
 
 const NoAddonsFound = () => (
   <NoAddonsFoundInner>
-    <h3>No addons found</h3>
+    <h3>No integrations found</h3>
     <div>Perhaps it was a typo?</div>
   </NoAddonsFoundInner>
 );

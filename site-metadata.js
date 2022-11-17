@@ -140,7 +140,6 @@ siteMetadata.urls.addonsLearnLinks = [
     icon: 'edit',
     to: siteMetadata.urls.officialAddons.create,
   },
-  { title: 'Add to the catalog', icon: 'add', to: siteMetadata.urls.officialAddons.publish },
 ];
 
 module.exports = siteMetadata;

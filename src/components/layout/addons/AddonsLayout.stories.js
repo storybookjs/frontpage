@@ -10,6 +10,11 @@ export default {
   component: AddonsLayout,
   excludeStories: ['data'],
   decorators: [UseAddonsSearchDecorator],
+  parameters: {
+    pageLayout: {
+      path: '/integrations',
+    },
+  },
 };
 
 export const Base = () => <AddonsLayout currentPath="/addons/essentials/">children</AddonsLayout>;
@@ -23,7 +28,6 @@ export const HideTableOfContents = () => (
 export const SearchLoading = () => (
   <AddonsLayout currentPath="/addons/essentials/">children</AddonsLayout>
 );
-
 SearchLoading.parameters = {
   isSearching: true,
   isSearchLoading: true,
@@ -32,7 +36,6 @@ SearchLoading.parameters = {
 export const SearchResults = () => (
   <AddonsLayout currentPath="/addons/essentials/">children</AddonsLayout>
 );
-
 SearchResults.parameters = {
   isSearching: true,
   isSearchLoading: false,

@@ -10,6 +10,9 @@ export default {
     chromatic: { viewports: [320, 1200] },
     layout: 'fullscreen',
   },
+  pageLayout: {
+    path: '/integrations',
+  },
 };
 
 export const Tag = () => (

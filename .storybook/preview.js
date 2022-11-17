@@ -8,6 +8,7 @@ import { action } from '@storybook/addon-actions';
 import { css, Global } from '@storybook/theming';
 
 import LazyLoad from '../src/components/basics/LazyLoad';
+import { withPageLayout } from './with-page-layout';
 
 const { GlobalStyle } = designSystemGlobal;
 const noBodyPadding = css`
@@ -30,6 +31,7 @@ export const decorators = [
       {story()}
     </Fragment>
   ),
+  withPageLayout,
 ];
 
 export const parameters = {
