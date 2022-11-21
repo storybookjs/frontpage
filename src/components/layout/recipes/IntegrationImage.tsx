@@ -65,17 +65,17 @@ const IntegrationIcon = styled.div<{ image: string }>`
   background-size: contain;
 `;
 
-const Integration = styled(AspectRatio)<{ accent: string; icon: string }>`
+const Integration = styled(AspectRatio)<{ accent: string; icon: string; hideDropShadow: boolean }>`
   width: 40px;
   height: 40px;
-  background-color: ${(props) => props.accent};
+  background-color: ${({ accent }) => accent};
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: visible;
-  box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.12);
+  ${({ hideDropShadow }) => !hideDropShadow && `box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.12);`}
 
   img,
   svg,
@@ -108,21 +108,28 @@ interface IntegrationImageProps {
   accent: string;
   icon: string;
   withConnector?: boolean;
+  hideDropShadow?: boolean;
 }
 
-export const IntegrationImage = ({ name, accent, icon, withConnector }: IntegrationImageProps) => {
+export const IntegrationImage = ({
+  name,
+  accent,
+  icon,
+  withConnector,
+  hideDropShadow,
+}: IntegrationImageProps) => {
   return (
     <Container>
       {withConnector && (
         <>
-          <Integration ratio="1/1" accent="#FF4785" icon={icon}>
+          <Integration ratio="1/1" accent="#FF4785" icon={icon} hideDropShadow={hideDropShadow}>
             <Icon icon="storybook" />
             <Circle />
           </Integration>
           <Connector />
         </>
       )}
-      <Integration ratio="1/1" accent={accent} icon={icon}>
+      <Integration ratio="1/1" accent={accent} icon={icon} hideDropShadow={hideDropShadow}>
         <IntegrationIcon image={icon} />
       </Integration>
       <Title>{name}</Title>

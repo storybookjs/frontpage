@@ -4,6 +4,7 @@ import { css, styled } from '@storybook/theming';
 import humanFormat from 'human-format';
 import { Link as GatsbyLinkWrapper } from 'gatsby';
 import { styles, animation, Cardinal, AvatarList } from '@storybook/design-system';
+import { IntegrationImage } from './IntegrationImage';
 import emptySVG from '../../../images/integrations/recipe-empty.svg';
 
 const { hoverEffect, spacing, color, typography, breakpoint } = styles;
@@ -41,15 +42,10 @@ const ClickIntercept = styled.a`
   z-index: 1;
 `;
 
-const Image = styled.div`
+const Image = styled(IntegrationImage)`
   flex: none;
   width: 48px;
   height: 48px;
-  margin-right: ${spacing.padding.medium}px;
-  background-image: url(${(props) => props.src});
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
 
   ${(props) =>
     props.isLoading &&
@@ -61,18 +57,26 @@ const Image = styled.div`
     width: 64px;
     height: 64px;
 
-    ${(props) =>
-      props.orientation === 'vertical' &&
-      `
-        margin-bottom: 16px;
-      `}
+    ${(props) => props.orientation === 'vertical' && `margin-bottom: 16px;`}
   }
 `;
+
 Image.propTypes = {
   orientation: PropTypes.oneOf(['vertical', 'horizontal']).isRequired,
   isLoading: PropTypes.bool.isRequired,
   src: PropTypes.string.isRequired,
 };
+
+const TextContainer = styled.div`
+  margin-left: ${spacing.padding.medium}px;
+
+  ${(props) =>
+    props.orientation === 'vertical' &&
+    `
+  margin-top: 16px;
+  margin-left: 0px;
+  `}
+`;
 
 const Title = styled.div`
   font-weight: ${typography.weight.bold};
@@ -177,7 +181,8 @@ const Authors = styled(AvatarList)`
 `;
 
 export const RecipeItem = ({
-  icon,
+  icon = emptySVG,
+  accentColor = '#ca8fff',
   name,
   displayName,
   description,
@@ -196,16 +201,18 @@ export const RecipeItem = ({
       <Image
         orientation={orientation}
         isLoading={isLoading}
-        src={icon && icon !== '' ? icon : emptySVG}
+        icon={icon && icon !== '' ? icon : emptySVG}
+        hideDropShadow
+        accent={accentColor}
       />
-      <div>
+      <TextContainer orientation={orientation}>
         <Title isLoading={isLoading}>
           <span>{isLoading ? 'loading' : `How to setup ${displayName || name} and Storybook`}</span>
         </Title>
         <Description isLoading={isLoading}>
           <span>{isLoading ? 'loading description of recipe' : description}</span>
         </Description>
-      </div>
+      </TextContainer>
     </RecipeInfo>
     <Spacer />
     <Meta>

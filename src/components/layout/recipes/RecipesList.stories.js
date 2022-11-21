@@ -1,8 +1,8 @@
 import React from 'react';
 import { RecipesList } from './RecipesList';
-import NextJsSVG from '../../../images/integrations/nextjs.svg';
-import MuiSVG from '../../../images/integrations/mui.svg';
-import I18nextSVG from '../../../images/integrations/i18next.svg';
+import MuiSVG from '../../../images/addon-catalog/recipes/@mui/material.svg';
+import I18nextSVG from '../../../images/addon-catalog/recipes/react-i18next.svg';
+import NextJsSVG from '../../../images/addon-catalog/recipes/nextjs.svg';
 
 const authors = [
   {
@@ -33,6 +33,7 @@ export const recipeItemsData = [
     id: '0',
     displayName: 'Material UI',
     icon: MuiSVG,
+    accentColor: '#000',
     name: '@mui/material',
     description:
       "Material UI is component library styled based on Google's Material Design spec. This recipe shows you how to get the most out of Material UI in Storybook.",
@@ -44,6 +45,7 @@ export const recipeItemsData = [
     id: '1',
     displayName: 'React i18next',
     icon: I18nextSVG,
+    accentColor: '#80cac3',
     name: 'react-i18next',
     description: 'Internationalization support for Storybook with toolbar locale toggle',
     views: 3892,
@@ -54,6 +56,7 @@ export const recipeItemsData = [
     id: '2',
     displayName: 'Next.js',
     icon: NextJsSVG,
+    accentColor: '#000',
     name: 'next',
     description: 'A low config way to get your Next.js UI working in Storybook',
     views: 17143,
