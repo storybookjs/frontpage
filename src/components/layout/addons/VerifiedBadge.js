@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { styled } from '@storybook/theming';
 import { styles, Icon, TooltipMessage, WithTooltip } from '@storybook/design-system';
 
-const { spacing, color } = styles;
+const { color } = styles;
 
 const VerifiedBadgeIcon = styled(Icon)`
   color: ${(props) => (props.appearance === 'official' ? color.secondary : color.green)};
   width: 14px;
   height: 14px;
-  margin-bottom: 2px;
+  margin-bottom: 0.25em;
   z-index: 2;
   position: relative;
 `;
@@ -19,7 +19,7 @@ VerifiedBadgeIcon.propTypes = {
 
 const BadgeWrapper = styled(WithTooltip)`
   && {
-    margin-left: ${spacing.padding.small}px;
+    margin-left: 6px;
   }
 `;
 
