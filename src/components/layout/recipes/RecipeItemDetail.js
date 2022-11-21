@@ -17,12 +17,12 @@ const AddonItemWrapper = styled.div`
   position: relative;
   border-bottom: 1px solid ${color.border};
 
-  padding-top: 2rem;
+  padding-top: 3rem;
   padding-bottom: 3rem;
   margin-bottom: 3rem;
 
   @media (min-width: ${1.5 * breakpoint}px) {
-    padding-top: calc(4rem - 20px);
+    padding-top: 4rem;
     padding-bottom: 4rem;
     margin-bottom: 40px;
   }
@@ -90,10 +90,6 @@ const Description = styled.div`
   position: relative;
   max-width: 600px;
 
-  // @media (min-width: ${1.5 * breakpoint}px) {
-  //   margin-bottom: ${spacing.padding.medium}px;
-  // }
-
   span {
     width: 100%;
   }
@@ -113,17 +109,6 @@ const AddonInfo = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-`;
-
-const Spacer = styled.div`
-  margin-top: 0;
-  background: red;
-
-  @media (min-width: ${1.5 * breakpoint}px) {
-    margin-top: ${spacing.padding.medium}px;
-    flex: 1 1 auto;
-    min-width: 0;
-  }
 `;
 
 export const RecipeItemDetail = ({
@@ -153,7 +138,6 @@ export const RecipeItemDetail = ({
         </Description>
       </div>
     </AddonInfo>
-    <Spacer />
   </AddonItemWrapper>
 );
 

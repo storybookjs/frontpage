@@ -95,21 +95,17 @@ export const AddonsSearchResults = ({
           </section>
         </ResultsContainer>
       )}
-      <AddonsAside>
-        {!isLoading && integrationCount > 0 && (
-          <>
-            <AddonsSubheading>Related tags</AddonsSubheading>
-            <RelatedTagsList
-              limit={6}
-              tags={relatedTags.map((tag) => (
-                <TagLink key={tag.link} href={tag.link}>
-                  {tag.name}
-                </TagLink>
-              ))}
-              isLoading={relatedTags?.length === 0}
-            />
-          </>
-        )}
+      <AddonsAside hideLearn={isLoading || integrationCount === 0}>
+        <AddonsSubheading>Related tags</AddonsSubheading>
+        <RelatedTagsList
+          limit={6}
+          tags={relatedTags.map((tag) => (
+            <TagLink key={tag.link} href={tag.link}>
+              {tag.name}
+            </TagLink>
+          ))}
+          isLoading={isLoading}
+        />
       </AddonsAside>
     </SearchResultsContainer>
   );

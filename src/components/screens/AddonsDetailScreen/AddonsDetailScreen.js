@@ -25,6 +25,10 @@ import { orderCompatibility } from '../../../util/order-compatibility';
 
 const { color, typography, spacing } = styles;
 
+const AddonDetailsLayout = styled(AddonsLayout)`
+  padding-top: 0px;
+`;
+
 const StyledTagsList = styled(TagList)`
   && {
     margin-bottom: 30px;
@@ -187,7 +191,7 @@ export const AddonsDetailScreen = ({ path, location, pageContext }) => {
           </SubNavCTA>
         </SubNavRight>
       </SubNav>
-      <AddonsLayout hideSidebar>
+      <AddonDetailsLayout hideSidebar>
         <AddonItemDetail {...addon} />
         <AddonsAsideContainer>
           <ReadMe>
@@ -241,7 +245,7 @@ export const AddonsDetailScreen = ({ path, location, pageContext }) => {
             )}
           </AddonsAside>
         </AddonsAsideContainer>
-      </AddonsLayout>
+      </AddonDetailsLayout>
     </>
   );
 };

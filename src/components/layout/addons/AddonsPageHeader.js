@@ -6,7 +6,7 @@ import { styles } from '@storybook/design-system';
 const { color, typography, spacing } = styles;
 
 const Title = styled.h2`
-  font-size: ${typography.size.m2}px;
+  font-size: ${typography.size.l1}px;
   line-height: ${typography.size.l2}px;
   font-weight: ${typography.weight.bold};
   color: ${color.darkest};

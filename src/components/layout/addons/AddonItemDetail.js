@@ -18,7 +18,7 @@ const AddonItemWrapper = styled.div`
   text-decoration: none;
   position: relative;
   border-bottom: 1px solid ${color.border};
-  margin-top: 28px;
+  margin-top: 48px;
   margin-bottom: 40px;
 
   @media (min-width: ${1.5 * breakpoint}px) {

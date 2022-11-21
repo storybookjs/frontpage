@@ -19,7 +19,6 @@ const Content = styled.main`
 
 const Wrapper = styled.div`
   ${pageMargins}
-  padding-top: ${spacing.padding.medium}px;
   padding-bottom: 3rem;
 
   @media (min-width: ${breakpoint * 1.333}px) {
@@ -143,7 +142,7 @@ const Searchbar = styled.div`
 `;
 
 const CategoriesHeading = styled(AddonsSubheading)`
-  margin-top: ${spacing.padding.medium}px;
+  margin-top: ${spacing.padding.large}px;
   margin-bottom: ${spacing.padding.medium}px;
 `;
 
