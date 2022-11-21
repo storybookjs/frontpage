@@ -5,7 +5,7 @@ import humanFormat from 'human-format';
 import { Link as GatsbyLinkWrapper } from 'gatsby';
 import { styles, animation, Cardinal, AvatarList } from '@storybook/design-system';
 import { IntegrationImage } from './IntegrationImage';
-import emptySVG from '../../../images/integrations/recipe-empty.svg';
+import emptySVG from '../../../images/addon-catalog/recipes/recipe-empty.svg';
 
 const { hoverEffect, spacing, color, typography, breakpoint } = styles;
 const { inlineGlow } = animation;
@@ -66,6 +66,24 @@ Image.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   src: PropTypes.string.isRequired,
 };
+
+const ImageLoading = styled.div`
+  flex: none;
+  width: 48px;
+  height: 48px;
+  margin-right: ${spacing.padding.medium}px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  ${inlineGlow}
+
+  @media (min-width: ${breakpoint * 1.5}px) {
+    width: 64px;
+    height: 64px;
+
+    ${(props) => props.orientation === 'vertical' && `margin-bottom: 16px;`}
+  }
+`;
 
 const TextContainer = styled.div`
   margin-left: ${spacing.padding.medium}px;
@@ -198,13 +216,18 @@ export const RecipeItem = ({
       <ClickIntercept state={{ from }} as={GatsbyLinkWrapper} to={`/recipe/${name}/`} />
     )}
     <RecipeInfo orientation={orientation}>
-      <Image
-        orientation={orientation}
-        isLoading={isLoading}
-        icon={icon && icon !== '' ? icon : emptySVG}
-        hideDropShadow
-        accent={accentColor}
-      />
+      {isLoading ? (
+        <ImageLoading orientation={orientation} />
+      ) : (
+        <Image
+          orientation={orientation}
+          isLoading={isLoading}
+          icon={icon && icon !== '' ? icon : emptySVG}
+          hideDropShadow
+          accent={accentColor}
+        />
+      )}
+
       <TextContainer orientation={orientation}>
         <Title isLoading={isLoading}>
           <span>{isLoading ? 'loading' : `How to setup ${displayName || name} and Storybook`}</span>
