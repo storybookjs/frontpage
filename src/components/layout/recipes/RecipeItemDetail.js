@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { css, styled } from '@storybook/theming';
 import { styles, animation } from '@storybook/design-system';
 import { IntegrationImage } from './IntegrationImage';
-import emptySVG from '../../../images/integrations/recipe-empty.svg';
+import emptySVG from '../../../images/addon-catalog/recipes/recipe-empty.svg';
 
 const { spacing, color, typography, breakpoint } = styles;
 const { inlineGlow } = animation;
