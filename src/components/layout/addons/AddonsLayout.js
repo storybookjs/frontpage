@@ -203,9 +203,7 @@ export const AddonsLayout = ({ children, data, hideSidebar, currentPath, ...prop
                     { title: 'Recipes', value: 'recipes' },
                   ]}
                   value={searchFilter}
-                  onChange={(value) => {
-                    setSearchFilter(value);
-                  }}
+                  onChange={setSearchFilter}
                 />
               )}
           </Searchbar>
