@@ -35,12 +35,12 @@ const RelatedTagsList = styled(TagList)`
   margin-bottom: 48px;
 `;
 
-export const AddonsTagScreen = ({ path, pageContext, ...props }) => {
+export const AddonsTagScreen = ({ path, location, pageContext, ...props }) => {
   const { title, ogImageAddons, urls = {} } = useSiteMetadata();
   const { home } = urls;
   const { tag } = pageContext;
   const relatedTags = buildTagLinks(tag.relatedTags || []);
-  const breadcrumb = generateBreadcrumb();
+  const breadcrumb = generateBreadcrumb(location.state);
 
   const { addons = [], recipes = [] } = tag.integrations;
 
@@ -58,7 +58,7 @@ export const AddonsTagScreen = ({ path, pageContext, ...props }) => {
       <SubNav>
         <SubNavBreadcrumb tertiary to={breadcrumb.link} LinkWrapper={GatsbyLink}>
           <Icon icon="arrowleft" />
-          Back to integrations
+          {breadcrumb.title}
         </SubNavBreadcrumb>
         <SubNavRight>
           <SubNavCTA href="/docs/react/addons/addon-catalog/">

@@ -13,6 +13,7 @@ import { AddonsLayout } from '../../layout/addons/AddonsLayout';
 import { sortAddons } from '../../../util/sort-addons';
 import { sortRecipes } from '../../../util/sort-recipes';
 import GatsbyLink from '../../basics/GatsbyLink';
+import { generateBreadcrumb } from '../../../util/generate-breadcrumb';
 
 const Spacer = styled.div`
   height: 3rem;
@@ -23,7 +24,7 @@ const SortedIntegrationsList = styled(IntegrationsList)`
   margin-bottom: 48px;
 `;
 
-export const AddonsCategoryScreen = ({ path, pageContext }) => {
+export const AddonsCategoryScreen = ({ path, location, pageContext }) => {
   const { title, ogImageAddons, urls = {} } = useSiteMetadata();
   const { home } = urls;
 
@@ -34,6 +35,8 @@ export const AddonsCategoryScreen = ({ path, pageContext }) => {
     () => [...sortAddons(addons), ...sortRecipes(recipes)],
     [addons, recipes]
   );
+
+  const breadcrumb = generateBreadcrumb(location.state);
 
   return (
     <>
@@ -47,9 +50,9 @@ export const AddonsCategoryScreen = ({ path, pageContext }) => {
         image={ogImageAddons}
       />
       <SubNav>
-        <SubNavBreadcrumb tertiary to="/integrations/" LinkWrapper={GatsbyLink}>
+        <SubNavBreadcrumb tertiary to={breadcrumb.link} LinkWrapper={GatsbyLink}>
           <Icon icon="arrowleft" />
-          Back to integrations
+          {breadcrumb.title}
         </SubNavBreadcrumb>
         <SubNavRight>
           <SubNavCTA href="/docs/react/addons/addon-catalog/">
