@@ -37,6 +37,7 @@ export const AddonsCategoryScreen = ({ path, location, pageContext }) => {
   );
 
   const breadcrumb = generateBreadcrumb(location.state);
+  const pageFrom = { title: category, link: path };
 
   return (
     <>
@@ -65,10 +66,7 @@ export const AddonsCategoryScreen = ({ path, location, pageContext }) => {
       <AddonsLayout currentPath={`${path}/`}>
         <AddonsPageHeader title={`${category} integrations`} subtitle={description} />
         <section>
-          <SortedIntegrationsList
-            from={{ title: category, link: path }}
-            integrationItems={sortedIntegrations}
-          />
+          <SortedIntegrationsList from={pageFrom} integrationItems={sortedIntegrations} />
         </section>
       </AddonsLayout>
     </>

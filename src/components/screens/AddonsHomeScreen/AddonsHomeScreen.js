@@ -8,6 +8,7 @@ import { AddonsGrid } from '../../layout/addons/AddonsGrid';
 import { RecipesList } from '../../layout/recipes/RecipesList';
 import { AddonsLayout } from '../../layout/addons/AddonsLayout';
 import buildTagLinks from '../../../util/build-tag-links';
+import GatsbyLink from '../../basics/GatsbyLink';
 
 const { breakpoint, spacing, color, pageMargins, typography } = styles;
 
@@ -95,7 +96,7 @@ export const AddonsHomeScreen = ({
         <PopularTagsList
           limit={6}
           tags={tagLinks.map(({ link, name }) => (
-            <TagLink key={link} href={link}>
+            <TagLink LinkWrapper={GatsbyLink} key={link} to={link}>
               {name}
             </TagLink>
           ))}

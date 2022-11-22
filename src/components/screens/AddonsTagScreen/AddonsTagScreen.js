@@ -47,6 +47,11 @@ export const AddonsTagScreen = ({ path, location, pageContext, ...props }) => {
   const integrationItems = useMemo(() => [...addons, ...recipes], [addons, recipes]);
   const integrationCount = useMemo(() => addons.length + recipes.length, [addons, recipes]);
 
+  const pageFrom = {
+    title: tag.displayName || tag.name,
+    link: path,
+  };
+
   return (
     <>
       <SocialGraph
@@ -76,10 +81,7 @@ export const AddonsTagScreen = ({ path, location, pageContext, ...props }) => {
         <AddonsAsideContainer>
           <IntegrationsContainer>
             <section>
-              <StyledIntegrationsList
-                integrationItems={integrationItems}
-                from={{ title: tag.displayName || tag.name, link: path }}
-              />
+              <StyledIntegrationsList integrationItems={integrationItems} from={pageFrom} />
             </section>
           </IntegrationsContainer>
           <AddonsAside>
@@ -88,7 +90,12 @@ export const AddonsTagScreen = ({ path, location, pageContext, ...props }) => {
               isLoading={relatedTags?.length === 0}
               limit={6}
               tags={relatedTags.map((relatedTag) => (
-                <TagLink key={relatedTag.link} href={relatedTag.link}>
+                <TagLink
+                  LinkWrapper={GatsbyLink}
+                  key={relatedTag.link}
+                  to={relatedTag.link}
+                  from={pageFrom}
+                >
                   {relatedTag.name}
                 </TagLink>
               ))}
