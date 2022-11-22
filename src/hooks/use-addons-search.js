@@ -84,6 +84,7 @@ function searchAddons(query) {
             displayName
             description
             icon
+            accentColor
             authors {
               id: username
               avatarUrl: gravatarUrl
