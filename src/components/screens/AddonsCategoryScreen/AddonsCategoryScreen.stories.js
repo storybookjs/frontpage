@@ -36,5 +36,6 @@ export const WithDesc = () => (
       description: 'Pre-installed addons that power the core Storybook experience',
       integrations,
     }}
+    location={{}}
   />
 );
