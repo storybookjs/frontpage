@@ -94,7 +94,7 @@ export const AddonsTagScreen = ({ path, location, pageContext, ...props }) => {
                   LinkWrapper={GatsbyLink}
                   key={relatedTag.link}
                   to={relatedTag.link}
-                  from={pageFrom}
+                  state={{ from: pageFrom }}
                 >
                   {relatedTag.name}
                 </TagLink>
