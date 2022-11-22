@@ -2,6 +2,7 @@ import React from 'react';
 import seedrandom from 'seedrandom';
 import { AddonsLayout } from './AddonsLayout';
 import { UseAddonsSearchDecorator } from '../../../../.storybook/use-addons-search.mock';
+import { styled } from '@storybook/theming';
 
 seedrandom('chromatic testing', { global: true });
 
@@ -17,6 +18,10 @@ export default {
   },
 };
 
+const Spacer = styled.div`
+  margin-top: 30px;
+`;
+
 export const Base = () => <AddonsLayout currentPath="/addons/essentials/">children</AddonsLayout>;
 
 export const HideTableOfContents = () => (
@@ -26,7 +31,10 @@ export const HideTableOfContents = () => (
 );
 
 export const SearchLoading = () => (
-  <AddonsLayout currentPath="/addons/essentials/">children</AddonsLayout>
+  <>
+    <Spacer />
+    <AddonsLayout currentPath="/addons/essentials/">children</AddonsLayout>
+  </>
 );
 SearchLoading.parameters = {
   isSearching: true,
@@ -34,7 +42,10 @@ SearchLoading.parameters = {
 };
 
 export const SearchResults = () => (
-  <AddonsLayout currentPath="/addons/essentials/">children</AddonsLayout>
+  <>
+    <Spacer />
+    <AddonsLayout currentPath="/addons/essentials/">children</AddonsLayout>
+  </>
 );
 SearchResults.parameters = {
   isSearching: true,
@@ -42,7 +53,10 @@ SearchResults.parameters = {
 };
 
 export const SearchNoResults = () => (
-  <AddonsLayout currentPath="/addons/essentials/">children</AddonsLayout>
+  <>
+    <Spacer />
+    <AddonsLayout currentPath="/addons/essentials/">children</AddonsLayout>
+  </>
 );
 
 SearchNoResults.parameters = {
