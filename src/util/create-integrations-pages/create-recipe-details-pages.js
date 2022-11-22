@@ -1,78 +1,103 @@
 const path = require('path');
-const fs = require('fs');
 
 const buildTagLinks = require('../build-tag-links');
-const { wait, validateResponse, createMarkdownProcessor } = require('./helpers');
+const { wait, validateResponse } = require('./helpers');
 const { RECIPE_FRAGMENT, ADDON_FRAGMENT } = require('./constants');
 
 const PAGE_COMPONENT_PATH = path.resolve(
   `./src/components/screens/RecipesDetailScreen/RecipesDetailScreen.js`
 );
 
-const RECIPE_MARKDOWN_FOLDER = path.resolve(__dirname, '../../', 'content/recipes');
+function parseRecipeFiles({ data }) {
+  return data.markdown.edges.reduce((hash, next) => {
+    const name = next.node.fields.slug.replace('/recipes/', '');
 
-function readRecipeMarkdown(recipeName) {
-  return fs.readFileSync(path.resolve(RECIPE_MARKDOWN_FOLDER, `${recipeName}.md`), 'utf8');
+    return {
+      ...hash,
+      [name]: {
+        readme: next.node.readme,
+        accentColor: next.node.frontmatter.accentColor,
+      },
+    };
+  }, {});
 }
 
-function fetchRecipesDetailPages(createPage, graphql, skip = 0) {
+function fetchRecipeMetadata(graphql, name) {
+  return graphql(
+    `
+      {
+        integrations {
+          metadata: recipe(name: "${name}") {
+            ${RECIPE_FRAGMENT}
+            status
+            publishedAt
+            lastUpdatedAt: updatedAt
+            tags {
+              name
+              displayName
+              description
+              icon
+            }
+            addons {
+              ${ADDON_FRAGMENT}
+            }
+          }
+        }
+      }
+    `
+  )
+    .then(validateResponse((data) => data.integrations.metadata))
+    .then(({ data }) => data.integrations.metadata);
+}
+
+function fetchRecipesDetailPages(createPage, graphql) {
   return wait()
     .then(() =>
-      graphql(
-        `
-          {
-            integrations {
-              recipePages: recipes(limit: 30, skip: ${skip}) {
-                ${RECIPE_FRAGMENT}
-                status
-                publishedAt
-                lastUpdatedAt: updatedAt
-                tags {
-                  name
-                  displayName
-                  description
-                  icon
+      graphql(`
+        {
+          markdown: allMdx(filter: { fields: { pageType: { eq: "recipes" } } }) {
+            edges {
+              node {
+                fields {
+                  slug
                 }
-                addons {
-                  ${ADDON_FRAGMENT}
+                readme: body
+                frontmatter {
+                  accentColor
                 }
               }
             }
           }
-        `
-      )
+        }
+      `)
     )
-    .then(validateResponse((data) => data.integrations.recipePages))
-    .then(({ data }) => data.integrations.recipePages)
-    .then((recipePages) => {
-      if (recipePages.length > 0) {
-        generateRecipesDetailPages(createPage, recipePages);
-        return fetchRecipesDetailPages(createPage, graphql, skip + recipePages.length);
-      }
+    .then(validateResponse((data) => data.markdown))
+    .then(parseRecipeFiles)
+    .then((hash) => {
+      const promises = Object.entries(hash).map(([name, recipe]) =>
+        fetchRecipeMetadata(graphql, name).then((metadata) => {
+          generateRecipesDetailPage(createPage, recipe, metadata);
+        })
+      );
 
-      return null;
+      return Promise.all(promises);
     });
 }
 
-function generateRecipesDetailPages(createPage, recipePages) {
-  const markdownProcessor = createMarkdownProcessor();
+function generateRecipesDetailPage(createPage, recipe, metadata) {
+  const pagePath = `recipe/${metadata.name}`;
 
-  recipePages.forEach((recipe) => {
-    const pagePath = `recipe/${recipe.name}`;
-    const rawMarkdown = readRecipeMarkdown(recipe.name);
-
-    createPage({
-      path: pagePath,
-      component: PAGE_COMPONENT_PATH,
-      context: {
-        ...recipe,
-        lastUpdatedAt: recipe.lastUpdatedAt,
-        tags: buildTagLinks(recipe.tags),
-        readme: markdownProcessor.processSync(rawMarkdown).toString(),
-      },
-    });
-    console.log(` ✅ ${pagePath}`);
+  createPage({
+    path: pagePath,
+    component: PAGE_COMPONENT_PATH,
+    context: {
+      ...metadata,
+      lastUpdatedAt: metadata.lastUpdatedAt,
+      tags: buildTagLinks(metadata.tags),
+      ...recipe,
+    },
   });
+  console.log(` ✅ ${pagePath}`);
 }
 
 module.exports = function createRecipeDetailsPages(createPage, graphql) {

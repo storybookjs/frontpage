@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { format } from 'date-fns';
 import { styled } from '@storybook/theming';
 import { Link as GatsbyLink } from 'gatsby';
+import { MDXProvider } from '@mdx-js/react';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 import {
   styles,
   Link,
@@ -16,7 +18,7 @@ import {
 import { SubNav, SubNavBreadcrumb, SubNavCTA, SubNavRight } from '@storybook/components-marketing';
 
 import useSiteMetadata from '../../lib/useSiteMetadata';
-import { SocialGraph, Callout } from '../../basics';
+import { SocialGraph, Callout, Pre } from '../../basics';
 import { AddonsAside, AddonsAsideContainer } from '../../layout/addons/AddonsAsideLayout';
 import { AddonsSubheading } from '../../layout/addons/AddonsSubheading';
 import { RecipeItemDetail } from '../../layout/recipes/RecipeItemDetail';
@@ -77,6 +79,14 @@ const SectionTitle = styled.h2`
   line-height: ${typography.size.m3}px;
   color: ${color.darkest};
   margin-bottom: ${spacing.padding.small}px;
+`;
+
+const StyledHighlight = styled(Highlight)`
+  -webkit-text-size-adjust: none;
+
+  > * > *:last-child {
+    margin-bottom: 0;
+  }
 `;
 
 const ReadMeContent = styled.div`
@@ -225,13 +235,20 @@ export const RecipesDetailScreen = ({ path, location, pageContext }) => {
                 </AddonsCallout>
               </section>
             )}
-
-            <Highlight withHTMLChildren={false}>
-              <SectionTitle id="recipe-section">
-                How to setup {displayName} and Storybook
-              </SectionTitle>
-              <ReadMeContent dangerouslySetInnerHTML={{ __html: readme }} />
-            </Highlight>
+            <SectionTitle id="recipe-section">
+              How to setup {displayName} and Storybook
+            </SectionTitle>
+            <ReadMeContent>
+              <MDXProvider
+                components={{
+                  pre: Pre,
+                }}
+              >
+                <StyledHighlight withHTMLChildren={false}>
+                  <MDXRenderer>{readme}</MDXRenderer>
+                </StyledHighlight>
+              </MDXProvider>
+            </ReadMeContent>
           </ReadMe>
           <AddonsAside hideLearn>
             {hasAddons && (

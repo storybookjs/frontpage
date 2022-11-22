@@ -1,3 +1,7 @@
+---
+accentColor: '#000'
+---
+
 This recipe assumes that you already have a React app using the `@mui/material` package set up with Storybook 6.0 or newer. If you don’t have a project ready, clone my [example repository](https://github.com/ShaunLloyd/storybook-mui-example) to follow along.
 
 ## Bundle fonts and icons for better perf
