@@ -21,6 +21,7 @@ const RECIPE_FRAGMENT = `
   displayName
   description
   icon
+  accentColor
   authors {
     id: username
     avatarUrl: gravatarUrl

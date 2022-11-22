@@ -16,7 +16,6 @@ function parseRecipeFiles({ data }) {
       ...hash,
       [name]: {
         readme: next.node.readme,
-        accentColor: next.node.frontmatter.accentColor,
       },
     };
   }, {});
@@ -62,9 +61,6 @@ function fetchRecipesDetailPages(createPage, graphql) {
                   slug
                 }
                 readme: body
-                frontmatter {
-                  accentColor
-                }
               }
             }
           }
