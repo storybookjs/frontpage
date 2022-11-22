@@ -27,7 +27,7 @@ const RECIPE_FRAGMENT = `
     avatarUrl: gravatarUrl
     name: username
   }
-  weeklyViews
+  views: weeklyViews
 `;
 
 module.exports = {

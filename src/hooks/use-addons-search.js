@@ -90,7 +90,7 @@ function searchAddons(query) {
               avatarUrl: gravatarUrl
               name: username
             }
-            weeklyViews
+            views: weeklyViews
           }
         }
         relatedTags(query: "${query}") {
