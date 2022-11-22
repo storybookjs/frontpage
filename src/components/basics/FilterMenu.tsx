@@ -59,11 +59,11 @@ export const FilterMenu: React.VFC<FilterMenuProps> = ({
   disabled,
   items: itemsProp,
   label,
-  multiple = true,
+  multiple = false,
   onChange,
   TriggerButton: TriggerButtonProp = ToggleButton,
   value: valueProp,
-  includeClearButton = true,
+  includeClearButton = false,
   ...props
 }) => {
   const hasValue = valueProp.length > 0;

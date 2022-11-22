@@ -56,6 +56,13 @@ const mockResults = {
         description:
           "Material UI is component library styled based on Google's Material Design spec. This recipe shows you how to get the most out of Material UI in Storybook.",
         views: 12253,
+        authors: [
+          {
+            id: 'ShaunLloyd',
+            avatarUrl: 'https://avatars.githubusercontent.com/u/18172605',
+            name: 'ShaunLloyd',
+          },
+        ],
       },
     ],
   },

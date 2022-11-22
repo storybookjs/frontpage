@@ -40,6 +40,7 @@ export const WithSingleValue: ComponentStoryObj<typeof FilterMenu> = {
 
 export const WithMultipleValues: ComponentStoryObj<typeof FilterMenu> = {
   args: {
+    multiple: true,
     startOpen: true,
     value: ['one', 'two'],
   },
@@ -76,6 +77,9 @@ export const SelectAnItem: ComponentStoryObj<typeof FilterMenu> = {
 };
 
 export const SelectMultipleItems: ComponentStoryObj<typeof FilterMenu> = {
+  args: {
+    multiple: true,
+  },
   render: (args) => <Stateful {...args} />,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -92,6 +96,9 @@ export const SelectMultipleItems: ComponentStoryObj<typeof FilterMenu> = {
 };
 
 export const ClearFilter: ComponentStoryObj<typeof FilterMenu> = {
+  args: {
+    includeClearButton: true,
+  },
   render: (args) => <Stateful {...args} />,
   play: async (context) => {
     const { canvasElement } = context;
