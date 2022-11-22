@@ -213,7 +213,7 @@ export const RecipeItem = ({
 }) => (
   <RecipeItemWrapper orientation={orientation} {...props}>
     {!isLoading && (
-      <ClickIntercept state={{ from }} as={GatsbyLinkWrapper} to={`/recipe/${name}/`} />
+      <ClickIntercept state={{ from }} as={GatsbyLinkWrapper} to={`/recipes/${name}/`} />
     )}
     <RecipeInfo orientation={orientation}>
       {isLoading ? (

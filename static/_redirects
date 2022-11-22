@@ -111,6 +111,7 @@
 # Integration Catalog redirects
 /addons/addon-gallery/                      /integrations/                                                                                      301
 /addons/                                    /integrations/                                                                                      301
+/recipes/                                   /integrations/                                                                                      301
 /addons/tag/*                               /integrations/tag/:splat                                                                            301
 
 /design-system                              https://master--5ccbc373887ca40020446347.chromatic.com                                              301

@@ -27,6 +27,7 @@ export type FilterMenuProps = Omit<
   multiple?: boolean;
   onChange: (value: Value) => void;
   TriggerButton?: React.ComponentType<React.ComponentProps<typeof Button> & { active: boolean }>;
+  useActiveStyles: boolean;
   value: Value;
 };
 
@@ -64,6 +65,7 @@ export const FilterMenu: React.VFC<FilterMenuProps> = ({
   TriggerButton: TriggerButtonProp = ToggleButton,
   value: valueProp,
   includeClearButton = false,
+  useActiveStyles = false,
   ...props
 }) => {
   const hasValue = valueProp.length > 0;
@@ -131,7 +133,11 @@ export const FilterMenu: React.VFC<FilterMenuProps> = ({
       trigger="click"
       {...props}
     >
-      <Trigger active={hasValue} disabled={disabled} Component={TriggerButtonProp}>
+      <Trigger
+        active={useActiveStyles && hasValue}
+        disabled={disabled}
+        Component={TriggerButtonProp}
+      >
         {hasValue
           ? // TODO: Limit length?
             items

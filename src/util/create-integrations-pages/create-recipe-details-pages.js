@@ -81,7 +81,7 @@ function fetchRecipesDetailPages(createPage, graphql) {
 }
 
 function generateRecipesDetailPage(createPage, recipe, metadata) {
-  const pagePath = `recipe/${metadata.name}`;
+  const pagePath = `recipes/${metadata.name}`;
 
   createPage({
     path: pagePath,
