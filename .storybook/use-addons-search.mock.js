@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import MuiSVG from '../src/images/integrations/mui.svg';
+import MuiSVG from '../src/images/addon-catalog/recipes/@mui/material.svg';
 
 let search = { query: '', isSearching: false, isSearchLoading: false, noResults: false };
 
@@ -26,6 +26,7 @@ const mockResults = {
   integrations: {
     addons: [
       {
+        type: 'Addon',
         id: 'storybook-addon-outline',
         name: 'storybook-addon-outline',
         displayName: 'Outline',
@@ -46,9 +47,11 @@ const mockResults = {
     ],
     recipes: [
       {
+        type: 'Recipe',
         id: '0',
         displayName: 'Material UI',
         icon: MuiSVG,
+        accentColor: '#000',
         name: '@mui/material',
         description:
           "Material UI is component library styled based on Google's Material Design spec. This recipe shows you how to get the most out of Material UI in Storybook.",

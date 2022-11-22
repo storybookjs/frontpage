@@ -1,11 +1,13 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@storybook/theming';
 import { Input, Icon, TableOfContents, global, styles } from '@storybook/design-system';
+
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
+import { FilterMenu } from '../../basics';
 import { AddonsLearn } from './AddonsLearn';
 import { AddonsSubheading } from './AddonsSubheading';
-import { AddonsSearchResults } from './AddonsSearchResults';
+import { AddonsSearchResults, FILTER_OPTIONS } from './AddonsSearchResults';
 import { toc as addonsToc } from '../../../content/addons/categories';
 import { useAddonsSearch } from '../../../hooks/use-addons-search';
 
@@ -154,6 +156,8 @@ export const AddonsLayout = ({ children, data, hideSidebar, currentPath, ...prop
   const { query, setQuery, isSearching, isSearchLoading, results } = useAddonsSearch();
   const inputRef = useRef(null);
 
+  const [searchFilter, setSearchFilter] = useState([FILTER_OPTIONS.ALL]);
+
   return (
     <>
       <GlobalStyle />
@@ -186,6 +190,24 @@ export const AddonsLayout = ({ children, data, hideSidebar, currentPath, ...prop
                 </ClearButton>
               )}
             </SearchInputContainer>
+
+            {isSearching &&
+              !isSearchLoading &&
+              (results.integrations.addons.length > 0 ||
+                results.integrations.recipes.length > 0) && (
+                <FilterMenu
+                  multiple={false}
+                  items={[
+                    { title: 'All Integrations', value: 'all' },
+                    { title: 'Addons', value: 'addons' },
+                    { title: 'Recipes', value: 'recipes' },
+                  ]}
+                  value={searchFilter}
+                  onChange={(value) => {
+                    setSearchFilter(value);
+                  }}
+                />
+              )}
           </Searchbar>
           <TableOfContents currentPath={currentPath} items={sidebarItems}>
             {({ menu }) => (
@@ -205,6 +227,7 @@ export const AddonsLayout = ({ children, data, hideSidebar, currentPath, ...prop
             searchString={query}
             integrations={results.integrations}
             relatedTags={results.relatedTags}
+            filterResults={searchFilter[0]}
             {...props}
           />
         ) : (

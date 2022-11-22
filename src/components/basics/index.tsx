@@ -8,5 +8,6 @@ export { default as Video } from './Video';
 
 export * from './Breadcrumb';
 export * from './Callout';
+export * from './FilterMenu';
 export * from './ListHeadings';
 export * from './Pre';

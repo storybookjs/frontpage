@@ -68,17 +68,43 @@ const NoAddonsFound = () => (
   </NoAddonsFoundInner>
 );
 
+export const FILTER_OPTIONS = {
+  ALL: 'all',
+  ADDONS: 'addons',
+  RECIPES: 'recipes',
+};
+
+const RESULT_LABEL = {
+  all: 'integrations',
+  addons: 'addons',
+  recipes: 'recipes',
+};
+
 export const AddonsSearchResults = ({
   isLoading,
   searchString,
   integrations,
   relatedTags,
+  filterResults,
   ...props
 }) => {
   const { addons = [], recipes = [] } = integrations;
 
-  const integrationItems = useMemo(() => [...addons, ...recipes], [addons, recipes]);
-  const integrationCount = useMemo(() => addons.length + recipes.length, [addons, recipes]);
+  const integrationItems = useMemo(() => {
+    switch (filterResults) {
+      case FILTER_OPTIONS.ADDONS: {
+        return addons;
+      }
+      case FILTER_OPTIONS.RECIPES: {
+        return recipes;
+      }
+      default: {
+        return [...addons, ...recipes];
+      }
+    }
+  }, [addons, recipes, filterResults]);
+
+  const integrationCount = useMemo(() => integrationItems.length, [integrationItems]);
 
   return (
     <SearchResultsContainer {...props}>
@@ -88,7 +114,11 @@ export const AddonsSearchResults = ({
         <ResultsContainer>
           <SearchResultsHeader
             isLoading={isLoading}
-            title={`${pluralize('integrations', integrationCount, true)} for "${searchString}"`}
+            title={`${pluralize(
+              RESULT_LABEL[filterResults],
+              integrationCount,
+              true
+            )} for "${searchString}"`}
           />
           <section>
             <StyledIntegrationsList isLoading={isLoading} integrationItems={integrationItems} />

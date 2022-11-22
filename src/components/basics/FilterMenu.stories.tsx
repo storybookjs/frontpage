@@ -1,0 +1,108 @@
+import * as React from 'react';
+import { ComponentStoryObj, ComponentMeta } from '@storybook/react';
+import { userEvent, within } from '@storybook/testing-library';
+
+import { FilterMenu, Value } from './FilterMenu';
+
+export default {
+  title: 'Components/FilterMenu',
+  component: FilterMenu,
+  args: {
+    items: [
+      { title: 'One', value: 'one' },
+      { title: 'Two', value: 'two' },
+      { title: 'Three', value: 'three' },
+    ],
+    label: 'Label',
+    value: [],
+  },
+  decorators: [
+    (Story) => (
+      <div style={{ height: '300px' }}>
+        <Story />
+      </div>
+    ),
+  ],
+  parameters: {
+    controls: { disable: true },
+  },
+} as ComponentMeta<typeof FilterMenu>;
+
+export const Default: ComponentStoryObj<typeof FilterMenu> = {};
+
+export const WithSingleValue: ComponentStoryObj<typeof FilterMenu> = {
+  args: {
+    multiple: false,
+    startOpen: true,
+    value: ['one'],
+  },
+};
+
+export const WithMultipleValues: ComponentStoryObj<typeof FilterMenu> = {
+  args: {
+    startOpen: true,
+    value: ['one', 'two'],
+  },
+};
+
+const Stateful = ({ ...args }: React.ComponentProps<typeof FilterMenu>) => {
+  const [value, setValue] = React.useState<Value>([]);
+
+  return (
+    <FilterMenu
+      {...args}
+      value={value}
+      onChange={(v) => {
+        setValue(v);
+      }}
+    />
+  );
+};
+
+export const SelectAnItem: ComponentStoryObj<typeof FilterMenu> = {
+  args: {
+    multiple: false,
+  },
+  render: (args) => <Stateful {...args} />,
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const menuButton = await canvas.findByRole('button', { name: 'Label' });
+    await userEvent.click(menuButton);
+
+    const menuItem = await canvas.findByText('One');
+    await userEvent.click(menuItem);
+  },
+};
+
+export const SelectMultipleItems: ComponentStoryObj<typeof FilterMenu> = {
+  render: (args) => <Stateful {...args} />,
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const menuButton = await canvas.findByRole('button', { name: 'Label' });
+    await userEvent.click(menuButton);
+
+    const menuItem1 = await canvas.findByText('One');
+    await userEvent.click(menuItem1);
+
+    const menuItem2 = await canvas.findByText('Two');
+    await userEvent.click(menuItem2);
+  },
+};
+
+export const ClearFilter: ComponentStoryObj<typeof FilterMenu> = {
+  render: (args) => <Stateful {...args} />,
+  play: async (context) => {
+    const { canvasElement } = context;
+
+    await SelectMultipleItems.play(context);
+
+    const canvas = within(canvasElement);
+
+    const clearButton = await canvas.findByRole('button', {
+      name: 'Clear filter',
+    });
+    await userEvent.click(clearButton);
+  },
+};
