@@ -1,1 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="140" height="140" version="1.1" viewBox="0 0 140 140"><title>addons/backgrounds</title><g id="addons/backgrounds" fill="none" fill-opacity=".8" fill-rule="evenodd" stroke="none" stroke-width="1"><g id="Group-2" fill="#FF4785" stroke="#FF4785" transform="translate(6.000000, 6.000000)"><rect id="Rectangle" width="39" height="39" x=".5" y=".5" opacity=".9" rx="2"/><rect id="Rectangle-Copy-14" width="39" height="39" x=".5" y="44.5" opacity=".7" rx="2"/><rect id="Rectangle-Copy-21" width="39" height="39" x=".5" y="88.5" opacity=".5" rx="2"/><rect id="Rectangle-Copy-6" width="39" height="39" x="44.5" y=".5" opacity=".7" rx="2"/><rect id="Rectangle-Copy-18" width="39" height="39" x="44.5" y="44.5" opacity=".5" rx="2"/><rect id="Rectangle-Copy-22" width="39" height="39" x="44.5" y="88.5" opacity=".3" rx="2"/><rect id="Rectangle-Copy-12" width="39" height="39" x="88.5" y=".5" opacity=".5" rx="2"/><rect id="Rectangle-Copy-19" width="39" height="39" x="88.5" y="44.5" opacity=".3" rx="2"/><rect id="Rectangle-Copy-23" width="39" height="39" x="88.5" y="88.5" opacity=".2" rx="2"/></g></g></svg>
+<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_2014_25709)">
+<rect width="160" height="160" rx="20" fill="white"/>
+<path opacity="0.9" d="M20 0.625H47.5C48.5355 0.625 49.375 1.46447 49.375 2.5V47.5C49.375 48.5355 48.5355 49.375 47.5 49.375H2.5C1.46447 49.375 0.625 48.5355 0.625 47.5V20C0.625 9.29948 9.29948 0.625 20 0.625Z" fill="#FF4785" fill-opacity="0.8" stroke="#FF4785" stroke-width="1.25"/>
+<rect opacity="0.7" x="0.625" y="55.625" width="48.75" height="48.75" rx="1.875" fill="#FF4785" fill-opacity="0.8" stroke="#FF4785" stroke-width="1.25"/>
+<path opacity="0.5" d="M2.5 110.625H47.5C48.5355 110.625 49.375 111.464 49.375 112.5V157.5C49.375 158.536 48.5355 159.375 47.5 159.375H20C9.29948 159.375 0.625 150.701 0.625 140V112.5C0.625 111.464 1.46447 110.625 2.5 110.625Z" fill="#FF4785" fill-opacity="0.8" stroke="#FF4785" stroke-width="1.25"/>
+<rect opacity="0.7" x="55.625" y="0.625" width="48.75" height="48.75" rx="1.875" fill="#FF4785" fill-opacity="0.8" stroke="#FF4785" stroke-width="1.25"/>
+<rect opacity="0.5" x="55.625" y="55.625" width="48.75" height="48.75" rx="1.875" fill="#FF4785" fill-opacity="0.8" stroke="#FF4785" stroke-width="1.25"/>
+<rect opacity="0.3" x="55.625" y="110.625" width="48.75" height="48.75" rx="1.875" fill="#FF4785" fill-opacity="0.8" stroke="#FF4785" stroke-width="1.25"/>
+<path opacity="0.5" d="M112.5 0.625H140C150.701 0.625 159.375 9.29948 159.375 20V47.5C159.375 48.5355 158.536 49.375 157.5 49.375H112.5C111.464 49.375 110.625 48.5355 110.625 47.5V2.5C110.625 1.46447 111.464 0.625 112.5 0.625Z" fill="#FF4785" fill-opacity="0.8" stroke="#FF4785" stroke-width="1.25"/>
+<rect opacity="0.3" x="110.625" y="55.625" width="48.75" height="48.75" rx="1.875" fill="#FF4785" fill-opacity="0.8" stroke="#FF4785" stroke-width="1.25"/>
+<path opacity="0.2" d="M112.5 110.625H157.5C158.536 110.625 159.375 111.464 159.375 112.5V140C159.375 150.701 150.701 159.375 140 159.375H112.5C111.464 159.375 110.625 158.536 110.625 157.5V112.5C110.625 111.464 111.464 110.625 112.5 110.625Z" fill="#FF4785" fill-opacity="0.8" stroke="#FF4785" stroke-width="1.25"/>
+</g>
+<defs>
+<clipPath id="clip0_2014_25709">
+<rect width="160" height="160" rx="20" fill="white"/>
+</clipPath>
+</defs>
+</svg>

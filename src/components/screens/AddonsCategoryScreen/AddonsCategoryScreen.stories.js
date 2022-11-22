@@ -21,7 +21,7 @@ const integrations = {
 };
 
 export const Default = () => (
-  <AddonsCategoryScreen pageContext={{ category: 'Data and state', integrations }} />
+  <AddonsCategoryScreen pageContext={{ category: 'Data and state', integrations }} location={{}} />
 );
 
 Default.parameters = {
