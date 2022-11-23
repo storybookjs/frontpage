@@ -17,7 +17,7 @@ export default {
   },
 };
 
-export const Home = () => (
+export const Default = () => (
   <AddonsHomeScreenComponent
     pageContext={{
       popularAddons: { MONTH: addonItemsData.slice(0, 6), YEAR: addonItemsData.slice(-9) },

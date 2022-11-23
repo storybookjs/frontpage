@@ -171,7 +171,7 @@ WithFromBreadcrumb.args = {
     state: {
       from: {
         link: '/addons/data-state',
-        title: 'Data & State',
+        title: 'data and state',
       },
     },
   },
