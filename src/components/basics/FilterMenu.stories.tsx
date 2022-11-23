@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { ComponentStoryObj, ComponentMeta } from '@storybook/react';
 import { userEvent, within } from '@storybook/testing-library';
 
 import { FilterMenu, Value } from './FilterMenu';
@@ -26,11 +25,11 @@ export default {
   parameters: {
     controls: { disable: true },
   },
-} as ComponentMeta<typeof FilterMenu>;
+};
 
-export const Default: ComponentStoryObj<typeof FilterMenu> = {};
+export const Default = {};
 
-export const WithSingleValue: ComponentStoryObj<typeof FilterMenu> = {
+export const WithSingleValue = {
   args: {
     multiple: false,
     startOpen: true,
@@ -38,7 +37,7 @@ export const WithSingleValue: ComponentStoryObj<typeof FilterMenu> = {
   },
 };
 
-export const WithMultipleValues: ComponentStoryObj<typeof FilterMenu> = {
+export const WithMultipleValues = {
   args: {
     multiple: true,
     startOpen: true,
@@ -46,8 +45,8 @@ export const WithMultipleValues: ComponentStoryObj<typeof FilterMenu> = {
   },
 };
 
-const Stateful = ({ ...args }: React.ComponentProps<typeof FilterMenu>) => {
-  const [value, setValue] = React.useState<Value>([]);
+const Stateful = ({ ...args }) => {
+  const [value, setValue] = React.useState([]);
 
   return (
     <FilterMenu
@@ -60,7 +59,7 @@ const Stateful = ({ ...args }: React.ComponentProps<typeof FilterMenu>) => {
   );
 };
 
-export const SelectAnItem: ComponentStoryObj<typeof FilterMenu> = {
+export const SelectAnItem = {
   args: {
     multiple: false,
   },
@@ -76,7 +75,7 @@ export const SelectAnItem: ComponentStoryObj<typeof FilterMenu> = {
   },
 };
 
-export const SelectMultipleItems: ComponentStoryObj<typeof FilterMenu> = {
+export const SelectMultipleItems = {
   args: {
     multiple: true,
   },
@@ -95,7 +94,7 @@ export const SelectMultipleItems: ComponentStoryObj<typeof FilterMenu> = {
   },
 };
 
-export const ClearFilter: ComponentStoryObj<typeof FilterMenu> = {
+export const ClearFilter = {
   args: {
     includeClearButton: true,
   },

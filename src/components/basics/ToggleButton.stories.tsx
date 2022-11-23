@@ -1,5 +1,3 @@
-import { ComponentStoryObj, ComponentMeta } from '@storybook/react';
-
 import { ToggleButton } from './ToggleButton';
 
 export default {
@@ -8,23 +6,23 @@ export default {
   args: {
     children: 'Label',
   },
-} as ComponentMeta<typeof ToggleButton>;
+};
 
-export const Default: ComponentStoryObj<typeof ToggleButton> = {};
+export const Default = {};
 
-export const Active: ComponentStoryObj<typeof ToggleButton> = {
+export const Active = {
   args: {
     active: true,
   },
 };
 
-export const Disabled: ComponentStoryObj<typeof ToggleButton> = {
+export const Disabled = {
   args: {
     disabled: true,
   },
 };
 
-export const ActiveAndDisabled: ComponentStoryObj<typeof ToggleButton> = {
+export const ActiveAndDisabled = {
   args: {
     active: true,
     disabled: true,
