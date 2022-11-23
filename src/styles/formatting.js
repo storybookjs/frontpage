@@ -1,6 +1,6 @@
 import { styles } from '@storybook/design-system';
 import { css } from '@storybook/theming';
-import { darken } from 'polished';
+import { darken, rgba } from 'polished';
 
 import { CODE_SNIPPET_CLASSNAME } from '../constants/code-snippets';
 
@@ -30,6 +30,14 @@ export const mdFormatting = css`
     &:hover .remark-header-link svg {
       opacity: 1;
       transition: opacity 250ms ease-out;
+    }
+
+    &:target {
+      background: linear-gradient(
+        90deg,
+        ${rgba(color.secondary, 0.1)} 0%,
+        ${rgba(color.secondary, 0.0)} 70%
+      );
     }
   }
 
@@ -309,6 +317,14 @@ export const mdFormatting = css`
 
     &:not([open]) + details {
       margin-top: -1em;
+    }
+
+    &:target {
+      background: linear-gradient(
+        90deg,
+        ${rgba(color.secondary, 0.1)} 0%,
+        ${rgba(color.secondary, 0.0)} 70%
+      );
     }
   }
 
