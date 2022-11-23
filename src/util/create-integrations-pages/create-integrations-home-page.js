@@ -14,7 +14,7 @@ function fetchIntegrationsHomePage(createPage, graphql) {
         `
           {
             integrations {
-              popularMonthly: topIntegrations(sort: featuredMonthly, limit: 9) {
+              popular: topIntegrations(sort: featuredMonthly, limit: 9) {
                 addons {
                   ${ADDON_FRAGMENT}
                   tags {
@@ -36,29 +36,7 @@ function fetchIntegrationsHomePage(createPage, graphql) {
                   }
                 }
               }
-              popularYearly: topIntegrations(sort: featuredYearly, limit: 9) {
-                addons {
-                  ${ADDON_FRAGMENT}
-                  tags {
-                    name
-                    displayName
-                    description
-                    icon
-                  }
-                  repositoryUrl
-                  npmUrl
-                }
-                recipes {
-                  ${RECIPE_FRAGMENT}
-                  tags {
-                    name
-                    displayName
-                    description
-                    icon
-                  }
-                }
-              }
-              trending: topIntegrations(sort: trending, limit: 12) {
+              trending: topIntegrations(sort: trending, limit: 9) {
                 addons {
                   ${ADDON_FRAGMENT}
                   tags {
@@ -85,14 +63,7 @@ function fetchIntegrationsHomePage(createPage, graphql) {
         `
       )
     )
-    .then(
-      validateResponse(
-        (data) =>
-          data.integrations.popularMonthly &&
-          data.integrations.popularYearly &&
-          data.integrations.trending
-      )
-    )
+    .then(validateResponse((data) => data.integrations.popular && data.integrations.trending))
     .then(({ data }) => data.integrations)
     .then((integrationsData) => {
       generateIntegrationHomePage(createPage, integrationsData);
@@ -122,21 +93,15 @@ function getNRandomTags(tags, numberOfTags) {
     .map(({ occurrence, ...tag }) => tag);
 }
 
-function generateIntegrationHomePage(createPage, { popularMonthly, popularYearly, trending }) {
-  const tagOccurrences = createTagOccurrenceHash(...trending.addons, ...popularMonthly.addons);
+function generateIntegrationHomePage(createPage, { popular, trending }) {
+  const tagOccurrences = createTagOccurrenceHash(...trending.addons, ...popular.addons);
 
   createPage({
     path: '/integrations/',
     component: PAGE_COMPONENT_PATH,
     context: {
-      popularAddons: {
-        MONTH: popularMonthly.addons,
-        YEAR: popularYearly.addons,
-      },
-      popularRecipes: {
-        MONTH: popularMonthly.recipes,
-        YEAR: popularYearly.recipes,
-      },
+      popularAddons: popular.addons,
+      popularRecipes: popular.recipes,
       trendingAddons: trending.addons,
       trendingTags: getNRandomTags(tagOccurrences, 20),
     },

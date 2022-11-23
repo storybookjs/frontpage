@@ -64,19 +64,11 @@ const PopularRecipes = styled(RecipesList)`
 `;
 
 export const AddonsHomeScreen = ({
-  pageContext: { popularAddons, popularRecipes, trendingAddons, trendingTags = [] },
+  pageContext: { popularAddons = [], popularRecipes = [], trendingAddons = [], trendingTags = [] },
 }) => {
   const { title, ogImageAddons, urls = {} } = useSiteMetadata();
   const { home } = urls;
-  const [timePeriod, setTimePeriod] = useState('MONTH');
-  const popularAddonsForTimePeriod = useMemo(
-    () => popularAddons[timePeriod],
-    [popularAddons, timePeriod]
-  );
-  const popularRecipesForTimePeriod = useMemo(
-    () => popularRecipes[timePeriod],
-    [popularRecipes, timePeriod]
-  );
+
   const tagLinks = useMemo(() => buildTagLinks(trendingTags), [trendingTags]);
 
   return (
@@ -102,28 +94,13 @@ export const AddonsHomeScreen = ({
             </TagLink>
           ))}
         />
-        <PopularAddons
-          title="Popular addons"
-          addonItems={popularAddonsForTimePeriod}
-          actions={
-            <ButtonToggle
-              selectedIndex={timePeriod === 'MONTH' ? 0 : 1}
-              onSelectIndex={() => {
-                setTimePeriod(timePeriod === 'MONTH' ? 'YEAR' : 'MONTH');
-              }}
-              titles={[
-                { title: 'Month', tooltip: 'Month' },
-                { title: 'Year', tooltip: 'Year' },
-              ]}
-            />
-          }
-        />
+        <PopularAddons title="Popular addons" addonItems={popularAddons} />
 
         <section>
           <ListHeadingContainer>
             <ListHeading>Popular recipes</ListHeading>
           </ListHeadingContainer>
-          <PopularRecipes recipeItems={popularRecipesForTimePeriod} />
+          <PopularRecipes recipeItems={popularRecipes} />
         </section>
 
         <AddonsGrid title="Trending addons" addonItems={trendingAddons} />
@@ -134,10 +111,8 @@ export const AddonsHomeScreen = ({
 
 AddonsHomeScreen.propTypes = {
   pageContext: PropTypes.shape({
-    popularAddons: PropTypes.shape({
-      MONTH: AddonsGrid.propTypes.addonItems,
-      YEAR: AddonsGrid.propTypes.addonItems,
-    }).isRequired,
+    popularAddons: AddonsGrid.propTypes.addonItems.isRequired,
+    popularRecipes: RecipesList.propTypes.recipeItems.isRequired,
     trendingAddons: AddonsGrid.propTypes.addonItems.isRequired,
   }).isRequired,
 };
