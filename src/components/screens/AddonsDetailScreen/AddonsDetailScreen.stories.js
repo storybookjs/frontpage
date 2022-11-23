@@ -2,15 +2,17 @@ import React from 'react';
 import { AddonsDetailScreen } from './AddonsDetailScreen';
 import ControlsSVG from '../../../images/addon-catalog/controls.svg';
 import ViewportSVG from '../../../images/addon-catalog/viewports.svg';
+import { UseAddonsSearchDecorator } from '../../../../.storybook/use-addons-search.mock';
 
 export default {
   title: 'Integrations Catalog/Screens/Addons Detail',
   component: AddonsDetailScreen,
+  decorators: [UseAddonsSearchDecorator],
   parameters: {
     chromatic: { viewports: [320, 1200] },
     layout: 'fullscreen',
     pageLayout: {
-      path: '/integrations',
+      pathname: '/integrations',
     },
   },
 };

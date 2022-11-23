@@ -41,7 +41,11 @@ function activeRouteSection(pathname) {
   if (pathname.startsWith('/docs')) {
     return 'docs';
   }
-  if (pathname.startsWith('/addons')) {
+  if (
+    pathname.startsWith('/addons') ||
+    pathname.startsWith('/recipes') ||
+    pathname.startsWith('/integrations')
+  ) {
     return 'integrations';
   }
   if (pathname.startsWith('/community')) {

@@ -12,7 +12,7 @@ export default {
     chromatic: { viewports: [320, 1200] },
     layout: 'fullscreen',
     pageLayout: {
-      path: '/integrations',
+      pathname: '/integrations',
     },
   },
 };
@@ -22,8 +22,7 @@ const muiRecipe = {
   accentColor: '#000',
   displayName: 'Material UI',
   name: '@mui/material',
-  description:
-    "Material UI is component library styled based on Google's Material Design spec. This recipe shows you how to get the most out of Material UI in Storybook.",
+  description: "Material UI is component library styled based on Google's Material Design spec.",
   authors: [
     {
       id: '0',
