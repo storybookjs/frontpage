@@ -52,18 +52,31 @@ function fetchTagPages(createPage, graphql, skip = 0) {
     });
 }
 
+function hasIntegrations({ integrations = {} }) {
+  const { addons = [], recipes = [] } = integrations;
+
+  return addons.length || recipes.length;
+}
+
 function generateTagPages(createPage, tagPages) {
   tagPages.forEach((tag) => {
     const pagePath = `/integrations/tag/${tag.name}/`;
-    createPage({
-      path: pagePath,
-      component: PAGE_COMPONENT_PATH,
-      context: {
-        tag,
-      },
-    });
-    // eslint-disable-next-line
-    console.log(` ✅ ${pagePath}`);
+
+    if (hasIntegrations(tag)) {
+      createPage({
+        path: pagePath,
+        component: PAGE_COMPONENT_PATH,
+        context: {
+          tag,
+        },
+      });
+
+      // eslint-disable-next-line
+      console.log(` ✅ ${pagePath}`);
+    } else {
+      // eslint-disable-next-line
+      console.log(` ⚠️ SKIPPED: ${pagePath} (No integrations)`);
+    }
   });
 }
 
