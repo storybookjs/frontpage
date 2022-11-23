@@ -2,10 +2,12 @@ import React from 'react';
 import { AddonsHomeScreen as AddonsHomeScreenComponent } from './AddonsHomeScreen';
 import { addonItemsData } from '../../layout/addons/AddonsGrid.stories';
 import { recipeItemsData } from '../../layout/recipes/RecipesList.stories';
+import { UseAddonsSearchDecorator } from '../../../../.storybook/use-addons-search.mock';
 
 export default {
   title: 'Integrations Catalog/Screens/Home',
   component: AddonsHomeScreenComponent,
+  decorators: [UseAddonsSearchDecorator],
   parameters: {
     chromatic: { viewports: [320, 1200] },
     layout: 'fullscreen',

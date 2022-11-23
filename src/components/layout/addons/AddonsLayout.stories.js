@@ -1,8 +1,9 @@
 import React from 'react';
 import seedrandom from 'seedrandom';
+import { styled } from '@storybook/theming';
+
 import { AddonsLayout } from './AddonsLayout';
 import { UseAddonsSearchDecorator } from '../../../../.storybook/use-addons-search.mock';
-import { styled } from '@storybook/theming';
 
 seedrandom('chromatic testing', { global: true });
 

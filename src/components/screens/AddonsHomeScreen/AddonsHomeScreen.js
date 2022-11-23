@@ -14,6 +14,7 @@ const { breakpoint, spacing, color, pageMargins, typography } = styles;
 
 const PageHeader = styled.header`
   ${pageMargins}
+  padding-top: 3rem;
   padding-bottom: ${spacing.padding.medium}px;
 
   @media (min-width: ${breakpoint * 1.333}px) {
