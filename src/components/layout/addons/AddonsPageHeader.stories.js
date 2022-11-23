@@ -9,7 +9,8 @@ export default {
 export const Default = () => (
   <AddonsPageHeaderComponent
     title="Essentials"
-    kicker="6 addons"
-    subtitle="Pre-installed addons that power the core Storybook experience"
+    subtitle="Pre-installed integrations that power the core Storybook experience"
   />
 );
+
+export const Tag = () => <AddonsPageHeaderComponent title="Essentials" subtitle="7 integrations" />;
