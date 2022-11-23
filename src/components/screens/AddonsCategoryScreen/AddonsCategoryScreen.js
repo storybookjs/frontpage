@@ -66,10 +66,7 @@ export const AddonsCategoryScreen = ({ path, location, pageContext }) => {
       <AddonsLayout currentPath={`${path}/`}>
         <AddonsPageHeader title={`${category} integrations`} subtitle={description} />
         <section>
-          <SortedIntegrationsList
-            state={{ from: pageFrom }}
-            integrationItems={sortedIntegrations}
-          />
+          <SortedIntegrationsList from={pageFrom} integrationItems={sortedIntegrations} />
         </section>
       </AddonsLayout>
     </>
