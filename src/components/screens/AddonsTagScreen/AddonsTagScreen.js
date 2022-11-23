@@ -55,7 +55,7 @@ export const AddonsTagScreen = ({ path, location, pageContext, ...props }) => {
   return (
     <>
       <SocialGraph
-        title={`${tag.displayName || tag.name} Integrations | ${title}`}
+        title={`${tag.displayName || tag.name} integrations | ${title}`}
         desc="Integrations enable advanced functionality and unlock new workflows. Contributed by core maintainers and the amazing developer community."
         url={`${home}${path}`}
         image={ogImageAddons}
@@ -76,7 +76,7 @@ export const AddonsTagScreen = ({ path, location, pageContext, ...props }) => {
       <AddonsLayout hideSidebar currentPath={`${path}/`}>
         <AddonsPageHeader
           title={`${tag.displayName || tag.name} integrations`}
-          subtitle={`${integrationCount} ${pluralize('Integrations', integrationCount)}`}
+          subtitle={`${integrationCount} ${pluralize('integrations', integrationCount)}`}
         />
         <AddonsAsideContainer>
           <IntegrationsContainer>
