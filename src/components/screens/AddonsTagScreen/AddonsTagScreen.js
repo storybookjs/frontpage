@@ -20,7 +20,7 @@ import GatsbyLink from '../../basics/GatsbyLink';
 import { IntegrationsList } from '../../layout/IntegrationsList';
 
 const HeaderSpacer = styled.div`
-  height: 28px;
+  height: 3rem;
 `;
 
 const IntegrationsContainer = styled.div`
