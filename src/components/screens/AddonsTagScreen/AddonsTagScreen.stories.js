@@ -5,7 +5,7 @@ import { recipeItemsData } from '../../layout/recipes/RecipesList.stories';
 import { UseAddonsSearchDecorator } from '../../../../.storybook/use-addons-search.mock';
 
 export default {
-  title: 'Integrations Catalog/Screens/Tag',
+  title: 'Integrations Catalog/Screens/TagScreen',
   component: AddonsTagScreen,
   decorators: [UseAddonsSearchDecorator],
   parameters: {
@@ -17,7 +17,7 @@ export default {
   },
 };
 
-export const Tag = () => (
+export const Default = () => (
   <AddonsTagScreen
     pageContext={{
       tag: {

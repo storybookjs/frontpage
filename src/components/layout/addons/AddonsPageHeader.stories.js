@@ -6,7 +6,7 @@ export default {
   component: AddonsPageHeaderComponent,
 };
 
-export const AddonsPageHeader = () => (
+export const Default = () => (
   <AddonsPageHeaderComponent
     title="Essentials"
     kicker="6 addons"

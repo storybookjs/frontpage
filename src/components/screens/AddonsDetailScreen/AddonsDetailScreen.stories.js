@@ -5,7 +5,7 @@ import ViewportSVG from '../../../images/addon-catalog/viewports.svg';
 import { UseAddonsSearchDecorator } from '../../../../.storybook/use-addons-search.mock';
 
 export default {
-  title: 'Integrations Catalog/Screens/Addons Detail',
+  title: 'Integrations Catalog/Screens/AddonsDetail',
   component: AddonsDetailScreen,
   decorators: [UseAddonsSearchDecorator],
   parameters: {

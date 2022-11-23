@@ -6,4 +6,4 @@ export default {
   component: StorybookBadgeComponent,
 };
 
-export const StorybookBadge = () => <StorybookBadgeComponent />;
+export const Default = () => <StorybookBadgeComponent />;

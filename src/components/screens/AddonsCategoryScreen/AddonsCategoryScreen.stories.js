@@ -5,7 +5,7 @@ import { recipeItemsData } from '../../layout/recipes/RecipesList.stories';
 import { UseAddonsSearchDecorator } from '../../../../.storybook/use-addons-search.mock';
 
 export default {
-  title: 'Integrations Catalog/Screens/Category',
+  title: 'Integrations Catalog/Screens/CategoryScreen',
   component: AddonsCategoryScreen,
   decorators: [UseAddonsSearchDecorator],
   parameters: {
