@@ -35,7 +35,7 @@ export const WithDesc = () => (
   <AddonsCategoryScreen
     pageContext={{
       category: 'Essentials',
-      description: 'Pre-installed addons that power the core Storybook experience',
+      description: 'Pre-installed integrations that power the core Storybook experience',
       integrations,
     }}
     location={{}}

@@ -3,7 +3,7 @@ const categories = {
     tocTitle: '🧩  Essentials',
     name: 'Essentials',
     id: 'essentials',
-    description: 'Pre-installed addons that power the core Storybook experience',
+    description: 'Pre-installed integrations that power the core Storybook experience',
     path: '/integrations/tag/essentials/',
   },
   code: {
