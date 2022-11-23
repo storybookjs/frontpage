@@ -42,7 +42,7 @@ export const AddonsList = ({ addonItems, isLoading, from, ...props }) => {
 
       {addonItems.length > 6 && visibleCount < addonItems.length && (
         <Button tertiary onClick={loadMore}>
-          Load more addons
+          Load more integrations
         </Button>
       )}
     </ListWrapper>

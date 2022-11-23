@@ -52,7 +52,7 @@ export const IntegrationsList = ({ integrationItems = [], isLoading, from, ...pr
 
       {integrationCount > 6 && visibleCount < integrationCount && (
         <Button tertiary onClick={loadMore}>
-          Load more addons
+          Load more integrations
         </Button>
       )}
     </ListWrapper>
