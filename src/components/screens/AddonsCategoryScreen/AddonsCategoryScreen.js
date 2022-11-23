@@ -42,7 +42,7 @@ export const AddonsCategoryScreen = ({ path, location, pageContext }) => {
   return (
     <>
       <SocialGraph
-        title={`Integrations | ${category} | ${title}`}
+        title={`${category} integrations | ${title}`}
         desc={
           description ||
           'Integrations enable advanced functionality and unlock new workflows. Contributed by core maintainers and the amazing developer community.'
