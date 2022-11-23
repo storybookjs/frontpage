@@ -52,7 +52,7 @@ const PageSubheading = styled.p`
 `;
 
 const PopularTagsList = styled(TagList)`
-  margin-bottom: ${spacing.padding.medium}px;
+  margin-bottom: 28px;
 `;
 
 const PopularAddons = styled(AddonsGrid)`

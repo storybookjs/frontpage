@@ -80,10 +80,10 @@ ToCContent.propTypes = {
 const SearchInputContainer = styled.div`
   flex: 1 1 auto;
   position: relative;
+  margin-right: ${(props) => (props.searchLayout ? 15 : 0)}px;
 
   @media (min-width: ${breakpoint * 1.333}px) {
     max-width: 220px;
-    margin-right: ${(props) => (props.searchLayout ? 20 : 0)}px;
   }
 `;
 
@@ -137,10 +137,6 @@ const SearchInput = styled(Input)`
     left: 14px;
     font-size: ${typography.size.s2}px;
   }
-`;
-
-const StyledFilterMenu = styled(FilterMenu)`
-  margin-left: 20px;
 `;
 
 const Searchbar = styled.div`
@@ -202,7 +198,7 @@ export const AddonsLayout = ({ children, data, hideSidebar, currentPath, ...prop
             </SearchInputContainer>
 
             {isSearching && !isSearchLoading && (foundAddonsCount > 0 || foundRecipesCount > 0) && (
-              <StyledFilterMenu
+              <FilterMenu
                 items={[
                   {
                     title: `All Integrations (${foundAddonsCount + foundRecipesCount})`,
