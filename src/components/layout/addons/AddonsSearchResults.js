@@ -6,39 +6,45 @@ import { animation, styles, TagList, TagLink } from '@storybook/design-system';
 import { AddonsList } from './AddonsList';
 import { AddonsAside, AddonsAsideContainer } from './AddonsAsideLayout';
 import { AddonsSubheading } from './AddonsSubheading';
-import { AddonsPageHeader } from './AddonsPageHeader';
 import { IntegrationsList } from '../IntegrationsList';
 
-const { color, typography } = styles;
+const { color, typography, breakpoint } = styles;
 const { inlineGlow } = animation;
 
 const SearchResultsContainer = styled(AddonsAsideContainer)`
   align-items: flex-start;
 `;
 
-const SearchResultsHeader = styled(AddonsPageHeader)`
+const SearchResultsHeader = styled.h1`
+  font-size: ${typography.size.m2}px;
+  line-height: ${typography.size.m3}px;
+  font-weight: ${typography.weight.bold};
+  margin-bottom: 30px;
+
   ${({ isLoading }) =>
     isLoading &&
     css`
-      ${inlineGlow}
+      > span {
+        ${inlineGlow}
 
-      * {
-        color: transparent !important;
+        * {
+          color: transparent !important;
+        }
       }
     `}
 `;
 
-const ResultsContainer = styled.div`
+const StyledIntegrationsList = styled(IntegrationsList)`
   flex: 1 1 auto;
   width: 100%;
-`;
-
-const StyledIntegrationsList = styled(IntegrationsList)`
   margin-bottom: 48px;
 `;
 
 const RelatedTagsList = styled(TagList)`
-  margin-bottom: 48px;
+  margin-bottom: 1.5rem;
+  @media (min-width: ${breakpoint * 1.5}px) {
+    margin-bottom: 3rem;
+  }
 `;
 
 const NoAddonsFoundInner = styled.div`
@@ -48,6 +54,7 @@ const NoAddonsFoundInner = styled.div`
   padding: 32px;
   text-align: center;
   width: 100%;
+  margin-bottom: 3rem;
 
   font-size: ${typography.size.s2}px;
   line-height: ${typography.size.m1}px;
@@ -107,37 +114,33 @@ export const AddonsSearchResults = ({
   const integrationCount = useMemo(() => integrationItems.length, [integrationItems]);
 
   return (
-    <SearchResultsContainer {...props}>
-      {!isLoading && integrationCount === 0 ? (
-        <NoAddonsFound />
-      ) : (
-        <ResultsContainer>
-          <SearchResultsHeader
+    <>
+      <SearchResultsHeader isLoading={isLoading}>
+        <span>{`${pluralize(RESULT_LABEL[filterResults], integrationCount, true)}`}</span>{' '}
+        <span>for</span> <span>“{searchString}”</span>
+      </SearchResultsHeader>
+      <SearchResultsContainer {...props}>
+        {!isLoading && integrationCount === 0 ? (
+          <NoAddonsFound />
+        ) : (
+          <StyledIntegrationsList isLoading={isLoading} integrationItems={integrationItems} />
+        )}
+        <AddonsAside hideLearn={isLoading || integrationCount === 0}>
+          <AddonsSubheading>
+            {!isLoading && integrationCount === 0 ? 'Popular' : 'Related'} tags
+          </AddonsSubheading>
+          <RelatedTagsList
+            limit={6}
+            tags={relatedTags.map((tag) => (
+              <TagLink key={tag.link} href={tag.link}>
+                {tag.name}
+              </TagLink>
+            ))}
             isLoading={isLoading}
-            title={`${pluralize(
-              RESULT_LABEL[filterResults],
-              integrationCount,
-              true
-            )} for "${searchString}"`}
           />
-          <section>
-            <StyledIntegrationsList isLoading={isLoading} integrationItems={integrationItems} />
-          </section>
-        </ResultsContainer>
-      )}
-      <AddonsAside hideLearn={isLoading || integrationCount === 0}>
-        <AddonsSubheading>Related tags</AddonsSubheading>
-        <RelatedTagsList
-          limit={6}
-          tags={relatedTags.map((tag) => (
-            <TagLink key={tag.link} href={tag.link}>
-              {tag.name}
-            </TagLink>
-          ))}
-          isLoading={isLoading}
-        />
-      </AddonsAside>
-    </SearchResultsContainer>
+        </AddonsAside>
+      </SearchResultsContainer>
+    </>
   );
 };
 

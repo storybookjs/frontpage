@@ -3,12 +3,18 @@ import { styled } from '@storybook/theming';
 import { styles } from '@storybook/design-system';
 import { AddonsLearn } from './AddonsLearn';
 
-const { breakpoint } = styles;
+const { color, breakpoint } = styles;
 
 const Aside = styled.aside`
-  margin-top: 80px;
+  padding-top: 3rem;
+  border-top: 1px solid ${color.border};
+  width: 100%;
 
   @media (min-width: ${breakpoint * 1.5}px) {
+    //reset
+    padding-top: 0;
+    border-top: none;
+
     flex: none;
     width: 210px;
     margin-left: 40px;

@@ -98,8 +98,8 @@ const ClearButton = styled.button`
   font-size: 10px;
   line-height: 1;
   position: absolute;
-  top: 9px;
-  right: 10px;
+  top: 11px;
+  right: 12px;
   padding: 4px;
 
   &:focus {
@@ -137,6 +137,10 @@ const SearchInput = styled(Input)`
     left: 14px;
     font-size: ${typography.size.s2}px;
   }
+`;
+
+const StyledFilterMenu = styled(FilterMenu)`
+  margin-left: 20px;
 `;
 
 const Searchbar = styled.div`
@@ -198,7 +202,7 @@ export const AddonsLayout = ({ children, data, hideSidebar, currentPath, ...prop
             </SearchInputContainer>
 
             {isSearching && !isSearchLoading && (foundAddonsCount > 0 || foundRecipesCount > 0) && (
-              <FilterMenu
+              <StyledFilterMenu
                 items={[
                   {
                     title: `All Integrations (${foundAddonsCount + foundRecipesCount})`,
