@@ -5,10 +5,10 @@ import { styles, animation } from '@storybook/design-system';
 import { IntegrationImage } from './IntegrationImage';
 import emptySVG from '../../../images/addon-catalog/recipes/recipe-empty.svg';
 
-const { spacing, color, typography, breakpoint } = styles;
+const { color, typography, breakpoint } = styles;
 const { inlineGlow } = animation;
 
-const AddonItemWrapper = styled.div`
+const RecipeItemWrapper = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -104,7 +104,7 @@ const Description = styled.div`
     `};
 `;
 
-const AddonInfo = styled.div`
+const RecipeInfo = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -125,21 +125,26 @@ export const RecipeItemDetail = ({
   npmUrl,
   accentColor = '#ca8fff',
   ...props
-}) => (
-  <AddonItemWrapper {...props}>
-    <AddonInfo>
-      <IntegrationImage icon={icon} accent={accentColor} withConnector />
-      <div>
-        <Title isLoading={isLoading}>
-          <span>{isLoading ? 'loading' : `Integrate ${displayName || name} and Storybook`}</span>
-        </Title>
-        <Description isLoading={isLoading}>
-          <span>{isLoading ? 'loading description of addon' : description}</span>
-        </Description>
-      </div>
-    </AddonInfo>
-  </AddonItemWrapper>
-);
+}) => {
+  const formattedName = displayName || name;
+  const formattedDescription = `${description} This recipe shows you how to get the most out of ${formattedName} in Storybook.`;
+
+  return (
+    <RecipeItemWrapper {...props}>
+      <RecipeInfo>
+        <IntegrationImage icon={icon} accent={accentColor} withConnector />
+        <div>
+          <Title isLoading={isLoading}>
+            <span>{isLoading ? 'loading' : `Integrate ${formattedName} and Storybook`}</span>
+          </Title>
+          <Description isLoading={isLoading}>
+            <span>{isLoading ? 'loading description of addon' : formattedDescription}</span>
+          </Description>
+        </div>
+      </RecipeInfo>
+    </RecipeItemWrapper>
+  );
+};
 
 /* eslint-disable react/require-default-props */
 RecipeItemDetail.propTypes = {
