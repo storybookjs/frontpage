@@ -15,7 +15,7 @@ export const UseAddonsSearchDecorator = (story, context) => {
     isSearching: context.parameters.isSearching || false,
     isSearchLoading: context.parameters.isSearchLoading || false,
     results: context.parameters.noResults
-      ? { integrations: { addons: [], recipes: [] }, relatedTags: [] }
+      ? { integrations: { addons: [], recipes: [] }, relatedTags: mockResults.relatedTags }
       : mockResults,
   };
 
