@@ -120,6 +120,7 @@ const SearchInput = styled(Input)`
 
   #addons-search {
     font-size: ${typography.size.s2}px;
+    line-height: 20px;
     padding-left: 36px;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -141,10 +142,10 @@ const SearchInput = styled(Input)`
 const Searchbar = styled.div`
   display: flex;
   align-items: center;
+  margin-bottom: ${spacing.padding.large}px;
 `;
 
 const CategoriesHeading = styled(AddonsSubheading)`
-  margin-top: ${spacing.padding.large}px;
   margin-bottom: ${spacing.padding.medium}px;
 `;
 
