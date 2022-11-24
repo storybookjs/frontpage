@@ -179,19 +179,24 @@ export const AddonsDetailScreen = ({ path, location, pageContext }) => {
         url={`${home}${path}`}
         image={ogImageAddons}
       />
-      <SubNav>
-        <SubNavBreadcrumb tertiary to={breadcrumb.link} LinkWrapper={GatsbyLink}>
-          <Icon icon="arrowleft" />
-          {breadcrumb.title}
-        </SubNavBreadcrumb>
-        <SubNavRight>
-          <SubNavCTA href="/docs/react/addons/addon-catalog/">
-            <Icon icon="add" />
-            Add your integration
-          </SubNavCTA>
-        </SubNavRight>
-      </SubNav>
-      <AddonDetailsLayout hideSidebar>
+
+      <AddonDetailsLayout
+        hideSidebar
+        RenderHeader={() => (
+          <SubNav>
+            <SubNavBreadcrumb tertiary to={breadcrumb.link} LinkWrapper={GatsbyLink}>
+              <Icon icon="arrowleft" />
+              {breadcrumb.title}
+            </SubNavBreadcrumb>
+            <SubNavRight>
+              <SubNavCTA href="/docs/react/addons/addon-catalog/">
+                <Icon icon="add" />
+                Add your integration
+              </SubNavCTA>
+            </SubNavRight>
+          </SubNav>
+        )}
+      >
         <AddonItemDetail {...addon} />
         <AddonsAsideContainer>
           <ReadMe>

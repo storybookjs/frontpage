@@ -166,7 +166,7 @@ const LastUpdatedAt = ({ recipeName, updatedAt }) => {
 
   return (
     <>
-      <LastUpdated>{format(updatedAt, 'MMMM yyyy')}</LastUpdated>
+      <LastUpdated>Last updated {format(updatedAt, 'MMMM yyyy')}</LastUpdated>
       <ReportIssueButton isLink size="small" href={createIssueLink}>
         <Icon icon="github" /> Report an issue
       </ReportIssueButton>
@@ -205,19 +205,24 @@ export const RecipesDetailScreen = ({ path, location, pageContext }) => {
         url={`${home}${path}`}
         image={ogImageAddons}
       />
-      <SubNav>
-        <SubNavBreadcrumb tertiary to={breadcrumb.link} LinkWrapper={GatsbyLink}>
-          <Icon icon="arrowleft" />
-          {breadcrumb.title}
-        </SubNavBreadcrumb>
-        <SubNavRight>
-          <SubNavCTA href="/docs/react/addons/addon-catalog/">
-            <Icon icon="add" />
-            Add your integration
-          </SubNavCTA>
-        </SubNavRight>
-      </SubNav>
-      <AddonsLayout hideSidebar>
+
+      <AddonsLayout
+        hideSidebar
+        RenderHeader={() => (
+          <SubNav>
+            <SubNavBreadcrumb tertiary to={breadcrumb.link} LinkWrapper={GatsbyLink}>
+              <Icon icon="arrowleft" />
+              {breadcrumb.title}
+            </SubNavBreadcrumb>
+            <SubNavRight>
+              <SubNavCTA href="/docs/react/addons/addon-catalog/">
+                <Icon icon="add" />
+                Add your integration
+              </SubNavCTA>
+            </SubNavRight>
+          </SubNav>
+        )}
+      >
         <RecipeItemDetail {...recipe} />
         <AddonsAsideContainer>
           <ReadMe>

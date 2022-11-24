@@ -19,10 +19,6 @@ import buildTagLinks from '../../../util/build-tag-links';
 import GatsbyLink from '../../basics/GatsbyLink';
 import { IntegrationsList } from '../../layout/IntegrationsList';
 
-const HeaderSpacer = styled.div`
-  height: 3rem;
-`;
-
 const IntegrationsContainer = styled.div`
   flex: 1 1 auto;
 `;
@@ -72,7 +68,6 @@ export const AddonsTagScreen = ({ path, location, pageContext, ...props }) => {
           </SubNavCTA>
         </SubNavRight>
       </SubNav>
-      <HeaderSpacer />
       <AddonsLayout hideSidebar currentPath={`${path}/`}>
         <AddonsPageHeader
           title={`${tag.displayName || tag.name} integrations`}

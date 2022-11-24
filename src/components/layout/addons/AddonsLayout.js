@@ -14,6 +14,11 @@ import { useAddonsSearch } from '../../../hooks/use-addons-search';
 const { breakpoint, spacing, color, pageMargins, typography } = styles;
 const { GlobalStyle } = global;
 
+const Spacer = styled.div`
+  height: 3rem;
+  width: 100%;
+`;
+
 const Content = styled.main`
   flex: 1 1 auto;
   min-width: 0; /* do not remove  https://weblog.west-wind.com/posts/2016/feb/15/flexbox-containers-pre-tags-and-managing-overflow */
@@ -153,7 +158,14 @@ export const SEARCH_INPUT_ID = 'addons-search';
 
 const sidebarItems = addonsToc.map((item) => ({ ...item, LinkWrapper: GatsbyLinkWrapper }));
 
-export const AddonsLayout = ({ children, data, hideSidebar, currentPath, ...props }) => {
+export const AddonsLayout = ({
+  children,
+  data,
+  hideSidebar,
+  RenderHeader,
+  currentPath,
+  ...props
+}) => {
   const { query, setQuery, isSearching, isSearchLoading, results } = useAddonsSearch();
   const inputRef = useRef(null);
 
@@ -167,6 +179,7 @@ export const AddonsLayout = ({ children, data, hideSidebar, currentPath, ...prop
   return (
     <>
       <GlobalStyle />
+      {!isSearching && RenderHeader ? <RenderHeader /> : <Spacer />}
       <Wrapper searchLayout={isSearching}>
         <Sidebar hideSidebar={hideSidebar} searchLayout={isSearching}>
           <Searchbar>

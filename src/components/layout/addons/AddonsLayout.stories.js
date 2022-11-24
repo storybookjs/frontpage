@@ -19,10 +19,6 @@ export default {
   },
 };
 
-const Spacer = styled.div`
-  margin-top: 30px;
-`;
-
 export const Base = () => <AddonsLayout currentPath="/addons/essentials/">children</AddonsLayout>;
 
 export const HideTableOfContents = () => (
@@ -30,38 +26,3 @@ export const HideTableOfContents = () => (
     children
   </AddonsLayout>
 );
-
-export const SearchLoading = () => (
-  <>
-    <Spacer />
-    <AddonsLayout currentPath="/addons/essentials/">children</AddonsLayout>
-  </>
-);
-SearchLoading.parameters = {
-  isSearching: true,
-  isSearchLoading: true,
-};
-
-export const SearchResults = () => (
-  <>
-    <Spacer />
-    <AddonsLayout currentPath="/addons/essentials/">children</AddonsLayout>
-  </>
-);
-SearchResults.parameters = {
-  isSearching: true,
-  isSearchLoading: false,
-};
-
-export const SearchNoResults = () => (
-  <>
-    <Spacer />
-    <AddonsLayout currentPath="/addons/essentials/">children</AddonsLayout>
-  </>
-);
-
-SearchNoResults.parameters = {
-  isSearching: true,
-  isSearchLoading: false,
-  noResults: true,
-};

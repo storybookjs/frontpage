@@ -12,7 +12,7 @@ import GatsbyLink from '../../basics/GatsbyLink';
 
 const { breakpoint, spacing, color, pageMargins, typography } = styles;
 
-const PageHeader = styled.header`
+const PageHeaderContainer = styled.header`
   ${pageMargins}
   padding-top: 3rem;
   padding-bottom: ${spacing.padding.medium}px;
@@ -51,6 +51,15 @@ const PageSubheading = styled.p`
   }
 `;
 
+const PageHeader = () => (
+  <PageHeaderContainer>
+    <PageHeading>Integrations</PageHeading>
+    <PageSubheading>
+      Integrate your tools with Storybook to connect workflows and unlock advanced features.
+    </PageSubheading>
+  </PageHeaderContainer>
+);
+
 const PopularTagsList = styled(TagList)`
   margin-bottom: 28px;
 `;
@@ -79,13 +88,7 @@ export const AddonsHomeScreen = ({
         url={`${home}/integrations`}
         image={ogImageAddons}
       />
-      <PageHeader>
-        <PageHeading>Integrations</PageHeading>
-        <PageSubheading>
-          Integrate your tools with Storybook to connect workflows and unlock advanced features.
-        </PageSubheading>
-      </PageHeader>
-      <AddonsLayout currentPath="/integrations/">
+      <AddonsLayout currentPath="/integrations/" RenderHeader={PageHeader}>
         <PopularTagsList
           limit={6}
           tags={tagLinks.map(({ link, name }) => (

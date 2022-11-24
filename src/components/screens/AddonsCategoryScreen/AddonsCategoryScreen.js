@@ -15,11 +15,6 @@ import { sortRecipes } from '../../../util/sort-recipes';
 import GatsbyLink from '../../basics/GatsbyLink';
 import { generateBreadcrumb } from '../../../util/generate-breadcrumb';
 
-const Spacer = styled.div`
-  height: 3rem;
-  width: 100%;
-`;
-
 const SortedIntegrationsList = styled(IntegrationsList)`
   margin-bottom: 48px;
 `;
@@ -62,7 +57,6 @@ export const AddonsCategoryScreen = ({ path, location, pageContext }) => {
           </SubNavCTA>
         </SubNavRight>
       </SubNav>
-      <Spacer />
       <AddonsLayout currentPath={`${path}/`}>
         <AddonsPageHeader title={`${category} integrations`} subtitle={description} />
         <section>

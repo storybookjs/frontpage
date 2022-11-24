@@ -17,7 +17,7 @@ export default {
   },
 };
 
-export const Default = () => (
+const Template = () => (
   <AddonsTagScreen
     pageContext={{
       tag: {
@@ -65,3 +65,5 @@ export const Default = () => (
     location={{}}
   />
 );
+
+export const Default = Template.bind({});

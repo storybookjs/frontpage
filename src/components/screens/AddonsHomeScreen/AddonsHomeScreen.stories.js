@@ -17,7 +17,7 @@ export default {
   },
 };
 
-export const Default = () => (
+const Template = ({ recipe, ...args }) => (
   <AddonsHomeScreenComponent
     pageContext={{
       popularAddons: addonItemsData.slice(0, 6),
@@ -58,3 +58,24 @@ export const Default = () => (
     }}
   />
 );
+
+export const Default = Template.bind({});
+
+export const SearchLoading = Template.bind({});
+SearchLoading.parameters = {
+  isSearching: true,
+  isSearchLoading: true,
+};
+
+export const SearchResults = Template.bind({});
+SearchResults.parameters = {
+  isSearching: true,
+  isSearchLoading: false,
+};
+
+export const SearchNoResults = Template.bind({});
+SearchNoResults.parameters = {
+  isSearching: true,
+  isSearchLoading: false,
+  noResults: true,
+};
