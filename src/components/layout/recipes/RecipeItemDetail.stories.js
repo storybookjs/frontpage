@@ -19,14 +19,12 @@ WithLibraryIcon.args = {
   accentColor: '#000',
   name: '@mui/material',
   displayName: 'Material UI',
-  description:
-    "Material UI is component library styled based on Google's Material Design spec. This recipe shows you how to get the most out of Material UI in Storybook.",
+  description: "Material UI is component library styled based on Google's Material Design spec.",
 };
 
 export const WithoutLibraryIcon = Template.bind({});
 WithoutLibraryIcon.args = {
   name: 'react-native',
   displayName: 'React Native',
-  description:
-    'React Native is a React framework for building multi-platform mobile applications. This recipe shows you how to build your React Native components in isolation with Storybook.',
+  description: 'React Native is a React framework for building multi-platform mobile applications.',
 };

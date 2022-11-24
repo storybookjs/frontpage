@@ -24,7 +24,7 @@ const muiRecipe = {
   accentColor: '#000',
   displayName: 'Material UI',
   name: '@mui/material',
-  description: "Material UI is component library styled based on Google's Material Design spec",
+  description: "Material UI is component library styled based on Google's Material Design spec.",
   authors: [
     {
       id: '0',
@@ -88,7 +88,7 @@ const Template = ({ recipe, ...args }) => (
     pageContext={{
       name: 'storybook-mobile',
       displayName: 'Mobile UX lint',
-      description: 'Interact with component inputs dynamically in the Storybook UI',
+      description: 'Interact with component inputs dynamically in the Storybook UI.',
       weeklyViews: 17143,
       publishedAt: 1604552400000,
       lastUpdatedAt: 1604552400000,
