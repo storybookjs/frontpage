@@ -15,40 +15,33 @@ const { breakpoint, spacing, color, pageMargins, typography } = styles;
 const PageHeaderContainer = styled.header`
   ${pageMargins}
   padding-top: 3rem;
-  padding-bottom: ${spacing.padding.medium}px;
+  padding-bottom: 20px;
 
   @media (min-width: ${breakpoint * 1.333}px) {
+    padding-bottom: 40px;
     padding-top: 4rem;
   }
 `;
 
 const PageHeading = styled.h1`
-  font-size: ${typography.size.l2}px;
+  font-size: ${typography.size.l1}px;
   line-height: ${typography.size.l2}px;
   font-weight: ${typography.weight.bold};
-  letter-spacing: -0.29px;
-  margin-bottom: 4px;
+  margin-bottom: 1.25rem;
   color: ${color.darkest};
 
   @media (min-width: ${breakpoint * 1}px) {
     font-size: ${typography.size.l2}px;
-    margin-bottom: 8px;
-    letter-spacing: -0.37px;
+    line-height: ${typography.size.l3}px;
+    margin-bottom: 0.75rem;
   }
 `;
 
 const PageSubheading = styled.p`
+  margin: 0; //reset
   font-size: ${typography.size.s3}px;
-  line-height: ${typography.size.m2}px;
-  letter-spacing: -0.33px;
-  margin-bottom: ${spacing.padding.medium}px;
+  line-height: 28px;
   color: ${color.darker};
-
-  @media (min-width: ${breakpoint * 1}px) {
-    font-size: ${typography.size.s3}px;
-    line-height: ${typography.size.l1}px;
-    letter-spacing: -0.42px;
-  }
 `;
 
 const PageHeader = () => (
@@ -61,15 +54,15 @@ const PageHeader = () => (
 );
 
 const PopularTagsList = styled(TagList)`
-  margin-bottom: 28px;
+  margin-bottom: calc(70px - 32px - 10px);
 `;
 
 const PopularAddons = styled(AddonsGrid)`
-  margin-bottom: 48px;
+  margin-bottom: 3rem;
 `;
 
 const PopularRecipes = styled(RecipesList)`
-  margin-bottom: 48px;
+  margin-bottom: 3rem;
 `;
 
 export const AddonsHomeScreen = ({

@@ -14,9 +14,9 @@ const Title = styled.h2`
 
 const Subtitle = styled.div`
   font-size: ${typography.size.s3}px;
-  line-height: ${typography.size.m1}px;
+  line-height: 28px;
   color: ${color.darkest};
-  margin-top: ${spacing.padding.small}px;
+  margin-top: 0.75rem;
 `;
 
 const TitleWrapper = styled.div`
@@ -25,7 +25,7 @@ const TitleWrapper = styled.div`
 `;
 
 const Header = styled.header`
-  margin-bottom: 26px;
+  margin-bottom: 30px;
 `;
 
 export const AddonsPageHeader = ({ title, subtitle, ...props }) => (

@@ -14,8 +14,17 @@ import { useAddonsSearch } from '../../../hooks/use-addons-search';
 const { breakpoint, spacing, color, pageMargins, typography } = styles;
 const { GlobalStyle } = global;
 
-const Spacer = styled.div`
-  height: 3rem;
+const CategorySpacer = styled.div`
+  height: 30px;
+  width: 100%;
+
+  @media (min-width: ${breakpoint * 1.333}px) {
+    height: 3rem;
+  }
+`;
+
+const SearchSpacer = styled.div`
+  height: 30px;
   width: 100%;
 `;
 
@@ -42,7 +51,7 @@ const Divider = styled.div`
 
 const Sidebar = styled.div`
   flex: 1;
-  margin: 1rem 0 2rem;
+  //margin: 1rem 0 2rem;
   display: ${(props) => (props.hideSidebar ? 'none' : 'block')};
   margin-bottom: 24px;
 
@@ -179,7 +188,12 @@ export const AddonsLayout = ({
   return (
     <>
       <GlobalStyle />
-      {!isSearching && RenderHeader ? <RenderHeader /> : <Spacer />}
+      {/* TODO optimize this logic. It works but it also fails linting */}
+      {RenderHeader ? (
+        <>{!isSearching ? <RenderHeader /> : <SearchSpacer />} </>
+      ) : (
+        <>{isSearching ? <SearchSpacer /> : <CategorySpacer />}</>
+      )}
       <Wrapper searchLayout={isSearching}>
         <Sidebar hideSidebar={hideSidebar} searchLayout={isSearching}>
           <Searchbar>
