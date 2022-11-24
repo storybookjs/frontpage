@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   Button,
   Checkbox,
+  Radio,
   Icon,
   Link,
   ListItem,
@@ -88,7 +89,7 @@ export const FilterMenu: React.VFC<FilterMenuProps> = ({
 
   const items: Items = itemsProp.map(({ value, ...item }) => ({
     appearance: 'secondary',
-    left: multiple && (
+    left: multiple ? (
       <Checkbox
         appearance="secondary"
         checked={valueProp.includes(value)}
@@ -99,6 +100,19 @@ export const FilterMenu: React.VFC<FilterMenuProps> = ({
           event?.stopPropagation();
         }}
         readOnly
+      />
+    ) : (
+      <Radio
+        appearance="secondary"
+        checked={valueProp.includes(value)}
+        hideLabel
+        id={value}
+        label={value}
+        onClick={(event) => {
+          event?.stopPropagation();
+        }}
+        readOnly
+        radioColor=""
       />
     ),
     onClick: () => {

@@ -171,7 +171,7 @@ export const AddonsLayout = ({
   children,
   data,
   hideSidebar,
-  RenderHeader,
+  RenderHeader = CategorySpacer,
   currentPath,
   ...props
 }) => {
@@ -188,12 +188,7 @@ export const AddonsLayout = ({
   return (
     <>
       <GlobalStyle />
-      {/* TODO optimize this logic. It works but it also fails linting */}
-      {RenderHeader ? (
-        <>{!isSearching ? <RenderHeader /> : <SearchSpacer />} </>
-      ) : (
-        <>{isSearching ? <SearchSpacer /> : <CategorySpacer />}</>
-      )}
+      {isSearching ? <SearchSpacer /> : <RenderHeader />}
       <Wrapper searchLayout={isSearching}>
         <Sidebar hideSidebar={hideSidebar} searchLayout={isSearching}>
           <Searchbar>
@@ -228,7 +223,7 @@ export const AddonsLayout = ({
               <FilterMenu
                 items={[
                   {
-                    title: `All Integrations (${foundAddonsCount + foundRecipesCount})`,
+                    title: `All integrations`,
                     value: 'all',
                   },
                   { title: `Addons (${foundAddonsCount})`, value: 'addons' },

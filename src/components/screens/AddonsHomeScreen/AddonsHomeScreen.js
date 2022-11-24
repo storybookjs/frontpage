@@ -58,7 +58,6 @@ const PageSubheading = styled.p`
 
 const PageHeadingRight = styled.div`
   display: none;
-  flex: 0 1 auto;
   font-size: ${typography.size.s2}px;
   line-height: ${typography.size.m1}px;
   font-weight: ${typography.weight.bold};
