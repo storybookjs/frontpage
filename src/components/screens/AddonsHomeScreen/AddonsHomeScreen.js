@@ -27,7 +27,7 @@ const PageHeaderContainer = styled.header`
 
   @media (min-width: ${breakpoint * 1.5}px) {
     flex-direction: row;
-    padding-bottom: ${spacing.padding.medium}px;
+    padding-bottom: 30px;
   }
 `;
 

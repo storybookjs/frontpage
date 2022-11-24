@@ -21,7 +21,7 @@ const RecipeItemWrapper = styled.div`
   padding-bottom: 3rem;
   margin-bottom: 3rem;
 
-  @media (min-width: ${1.5 * breakpoint}px) {
+  @media (min-width: ${1 * breakpoint}px) {
     padding-top: 4rem;
     padding-bottom: 4rem;
     margin-bottom: 40px;
@@ -57,11 +57,11 @@ const Title = styled.div`
   display: flex;
   align-items: center;
   position: relative;
-  margin-top: 0.75rem;
+  margin-top: 1rem;
   margin-bottom: 0.75rem;
 
-  @media (min-width: ${1.5 * breakpoint}px) {
-    margin-top: 24px;
+  @media (min-width: ${1 * breakpoint}px) {
+    margin-top: 1.5rem;
   }
 
   span {

@@ -14,16 +14,17 @@ const { inlineGlow } = animation;
 const AddonItemWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 16px 0 24px 0;
+  padding: 30px 0 30px 0;
+  margin-bottom: 30px;
   text-decoration: none;
   position: relative;
   border-bottom: 1px solid ${color.border};
-  margin-top: 48px;
-  margin-bottom: 40px;
 
   @media (min-width: ${1.5 * breakpoint}px) {
     padding-top: 0px;
     padding-bottom: 40px;
+    margin-top: 48px;
+    margin-bottom: 40px;
     flex-direction: row;
     align-items: flex-start;
   }
