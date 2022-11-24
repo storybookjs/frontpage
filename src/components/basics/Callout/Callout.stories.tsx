@@ -29,6 +29,7 @@ const BodyText = styled.p`
   font-family: ${typography.type};
   font-size: ${typography.size.s3}px;
   line-height: ${typography.size.m3}px;
+  margin: 0;
 `;
 
 const Template = (args) => (
