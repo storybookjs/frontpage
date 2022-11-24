@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@storybook/theming';
-import { ButtonToggle, styles, TagLink, TagList } from '@storybook/design-system';
+import { ButtonToggle, Icon, Link, styles, TagLink, TagList } from '@storybook/design-system';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import { SocialGraph, ListHeadingContainer, ListHeading } from '../../basics';
 import { AddonsGrid } from '../../layout/addons/AddonsGrid';
@@ -15,11 +15,22 @@ const { breakpoint, spacing, color, pageMargins, typography } = styles;
 const PageHeaderContainer = styled.header`
   ${pageMargins}
   padding-top: 3rem;
-  padding-bottom: ${spacing.padding.medium}px;
+  display: flex;
+  flex-direction: column;
 
   @media (min-width: ${breakpoint * 1.333}px) {
     padding-top: 4rem;
+    padding-bottom: ${spacing.padding.medium}px;
   }
+
+  @media (min-width: ${breakpoint * 1.5}px) {
+    flex-direction: row;
+    padding-bottom: ${spacing.padding.medium}px;
+  }
+`;
+
+const PageHeadingLeft = styled.div`
+  flex: 1 1 auto;
 `;
 
 const PageHeading = styled.h1`
@@ -51,12 +62,34 @@ const PageSubheading = styled.p`
   }
 `;
 
+const PageHeadingRight = styled.div`
+  display: none;
+  flex: 0 1 auto;
+  font-size: ${typography.size.s2}px;
+  line-height: ${typography.size.m1}px;
+  font-weight: ${typography.weight.bold};
+
+  @media (min-width: ${breakpoint * 1.5}px) {
+    display: block;
+    align-self: flex-start;
+    justify-self: flex-end;
+  }
+`;
+
 const PageHeader = () => (
   <PageHeaderContainer>
-    <PageHeading>Integrations</PageHeading>
-    <PageSubheading>
-      Integrate your tools with Storybook to connect workflows and unlock advanced features.
-    </PageSubheading>
+    <PageHeadingLeft>
+      <PageHeading>Integrations</PageHeading>
+      <PageSubheading>
+        Integrate your tools with Storybook to connect workflows and unlock advanced features.
+      </PageSubheading>
+    </PageHeadingLeft>
+    <PageHeadingRight>
+      <GatsbyLink to="/docs/react/addons/addon-catalog/">
+        <Icon icon="add" />
+        Add your integration
+      </GatsbyLink>
+    </PageHeadingRight>
   </PageHeaderContainer>
 );
 
