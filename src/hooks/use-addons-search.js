@@ -53,7 +53,7 @@ export function useAddonsSearch() {
 }
 
 function searchAddons(query) {
-  return fetch('https://deploy-preview-20--boring-heisenberg-43a6ed.netlify.app/', {
+  return fetch('https://boring-heisenberg-43a6ed.netlify.app/', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
