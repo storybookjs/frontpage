@@ -88,12 +88,14 @@ const ImageLoading = styled.div`
 const TextContainer = styled.div`
   margin-left: ${spacing.padding.medium}px;
 
-  ${(props) =>
-    props.orientation === 'vertical' &&
-    `
-  margin-top: 16px;
-  margin-left: 0px;
-  `}
+  @media (min-width: ${breakpoint * 1.5}px) {
+    ${({ orientation }) =>
+      orientation === 'vertical' &&
+      css`
+        margin-top: 16px;
+        margin-left: 0px;
+      `}
+  }
 `;
 
 const Title = styled.div`
