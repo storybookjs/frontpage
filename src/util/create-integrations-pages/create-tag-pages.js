@@ -4,7 +4,7 @@ const { wait, validateResponse } = require('./helpers');
 const { ADDON_FRAGMENT, RECIPE_FRAGMENT } = require('./constants');
 
 const PAGE_COMPONENT_PATH = path.resolve(
-  `./src/components/screens/AddonsTagScreen/AddonsTagScreen.js`
+  `./src/components/screens/IntegrationsCatalog/IntegrationsTagScreen/IntegrationsTagScreen.js`
 );
 
 function fetchTagPages(createPage, graphql, skip = 0) {

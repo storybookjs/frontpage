@@ -6,7 +6,7 @@ const { ADDON_FRAGMENT } = require('./constants');
 const buildTagLinks = require('../build-tag-links');
 
 const PAGE_COMPONENT_PATH = path.resolve(
-  `./src/components/screens/AddonsDetailScreen/AddonsDetailScreen.js`
+  `./src/components/screens/IntegrationsCatalog/AddonsDetailScreen/AddonsDetailScreen.js`
 );
 
 function createAddonBaseLink(addon) {
