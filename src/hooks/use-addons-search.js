@@ -2,7 +2,13 @@
 import { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import buildTagLinks from '../util/build-tag-links';
 
-const initalValue = { search: [], relatedTags: [] };
+const initalValue = {
+  integrations: {
+    addons: [],
+    recipes: [],
+  },
+  relatedTags: [],
+};
 const minQueryLength = 2;
 
 export function useAddonsSearch() {
@@ -53,21 +59,39 @@ function searchAddons(query) {
     body: JSON.stringify({
       query: `
       query {
-        partialSearch(query: "${query}") {
-          id: name
-          name
-          displayName
-          description
-          icon
-          authors {
-            id: username
-            avatarUrl: gravatarUrl
-            name: username
+        partialSearch: partialSearchIntegrations(query: "${query}") {
+          addons {
+            type: __typename
+            id: name
+            name
+            displayName
+            description
+            icon
+            authors {
+              id: username
+              avatarUrl: gravatarUrl
+              name: username
+            }
+            weeklyDownloads
+            repositoryUrl
+            appearance: verified
+            verifiedCreator
           }
-          weeklyDownloads
-          repositoryUrl
-          appearance: verified
-          verifiedCreator
+          recipes {
+            type: __typename
+            id: name
+            name
+            displayName
+            description
+            icon
+            accentColor
+            authors {
+              id: username
+              avatarUrl: gravatarUrl
+              name: username
+            }
+            views: weeklyViews
+          }
         }
         relatedTags(query: "${query}") {
           name
@@ -79,7 +103,10 @@ function searchAddons(query) {
   })
     .then((res) => res.json())
     .then((res) => ({
-      search: res.data.partialSearch,
+      integrations: {
+        addons: res.data.partialSearch.addons,
+        recipes: res.data.partialSearch.recipes,
+      },
       relatedTags: buildTagLinks(res.data.relatedTags),
     }))
     .catch(() => {

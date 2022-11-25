@@ -6,7 +6,7 @@ import { styles } from '@storybook/design-system';
 const { color, typography, spacing } = styles;
 
 const Title = styled.h2`
-  font-size: ${typography.size.m2}px;
+  font-size: ${typography.size.l1}px;
   line-height: ${typography.size.l2}px;
   font-weight: ${typography.weight.bold};
   color: ${color.darkest};
@@ -14,16 +14,9 @@ const Title = styled.h2`
 
 const Subtitle = styled.div`
   font-size: ${typography.size.s3}px;
-  line-height: ${typography.size.m1}px;
+  line-height: 28px;
   color: ${color.darkest};
-`;
-
-const Kicker = styled.div`
-  font-size: ${typography.size.s3}px;
-  line-height: 1;
-  font-weight: ${typography.weight.regular};
-  color: ${color.dark};
-  margin-left: ${spacing.padding.medium}px;
+  margin-top: 0.75rem;
 `;
 
 const TitleWrapper = styled.div`
@@ -32,14 +25,13 @@ const TitleWrapper = styled.div`
 `;
 
 const Header = styled.header`
-  margin-bottom: ${spacing.padding.medium}px;
+  margin-bottom: 30px;
 `;
 
-export const AddonsPageHeader = ({ title, subtitle, kicker, ...props }) => (
+export const AddonsPageHeader = ({ title, subtitle, ...props }) => (
   <Header {...props}>
     <TitleWrapper>
       <Title>{title}</Title>
-      {kicker && <Kicker>{kicker}</Kicker>}
     </TitleWrapper>
     {subtitle && <Subtitle>{subtitle}</Subtitle>}
   </Header>
@@ -49,5 +41,4 @@ export const AddonsPageHeader = ({ title, subtitle, kicker, ...props }) => (
 AddonsPageHeader.propTypes = {
   title: PropTypes.string,
   subtitle: PropTypes.string,
-  kicker: PropTypes.string,
 };

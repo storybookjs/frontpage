@@ -57,6 +57,7 @@
     "mobx": "^5.15.1",
     "mobx-react": "^6.1.4",
     "mobx-react-form": "^2.0.8",
+    "new-github-issue-url": "^1.0.0",
     "node-fetch": "^2.6.1",
     "pluralize": "^8.0.0",
     "polished": "^3.4.2",

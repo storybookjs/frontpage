@@ -4,7 +4,7 @@ import { css, styled } from '@storybook/theming';
 import humanFormat from 'human-format';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import { styles, animation, Cardinal, ClipboardCode, Link, Badge } from '@storybook/design-system';
-import customSVG from '../../../images/addon-catalog/custom.svg';
+import emptySVG from '../../../images/integrations/addon-empty.svg';
 import { VerifiedBadge } from './VerifiedBadge';
 import { StorybookBadge } from './StorybookBadge';
 
@@ -14,15 +14,17 @@ const { inlineGlow } = animation;
 const AddonItemWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 16px 0 24px 0;
+  padding: 30px 0 30px 0;
+  margin-bottom: 30px;
   text-decoration: none;
   position: relative;
   border-bottom: 1px solid ${color.border};
-  margin-bottom: 40px;
 
   @media (min-width: ${1.5 * breakpoint}px) {
     padding-top: 0px;
     padding-bottom: 40px;
+    margin-top: 48px;
+    margin-bottom: 40px;
     flex-direction: row;
     align-items: flex-start;
   }
@@ -209,7 +211,7 @@ export const AddonItemDetail = ({
 }) => (
   <AddonItemWrapper {...props}>
     <AddonInfo>
-      <Image isLoading={isLoading} src={icon || customSVG} />
+      <Image isLoading={isLoading} src={icon || emptySVG} />
       <div>
         <Title isLoading={isLoading}>
           <span>{isLoading ? 'loading' : displayName || name}</span>

@@ -4,10 +4,10 @@ import { css, styled } from '@storybook/theming';
 import humanFormat from 'human-format';
 import { Link as GatsbyLinkWrapper } from 'gatsby';
 import { styles, animation, Cardinal, AvatarList } from '@storybook/design-system';
-import customSVG from '../../../images/addon-catalog/custom.svg';
+import emptySVG from '../../../images/integrations/addon-empty.svg';
 import { VerifiedBadge } from './VerifiedBadge';
 
-const { hoverEffect, spacing, color, typography, breakpoint } = styles;
+const { hoverEffect, spacing, color, background, typography, breakpoint } = styles;
 const { inlineGlow } = animation;
 
 const AddonItemWrapper = styled.div`
@@ -17,6 +17,7 @@ const AddonItemWrapper = styled.div`
   padding: ${spacing.padding.medium}px ${spacing.padding.medium}px 0;
   text-decoration: none;
   position: relative;
+  background: white;
 
   @media (min-width: ${breakpoint * 1.5}px) {
     padding: ${spacing.padding.medium}px;
@@ -198,7 +199,7 @@ export const AddonItem = ({
       <Image
         orientation={orientation}
         isLoading={isLoading}
-        src={icon && icon !== '' ? icon : customSVG}
+        src={icon && icon !== '' ? icon : emptySVG}
       />
       <div>
         <Title isLoading={isLoading}>

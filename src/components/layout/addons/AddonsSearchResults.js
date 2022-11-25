@@ -1,45 +1,51 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { styled } from '@storybook/theming';
+import { css, styled } from '@storybook/theming';
 import pluralize from 'pluralize';
-import { styles, TagList, TagLink } from '@storybook/design-system';
+import { animation, styles, TagList, TagLink } from '@storybook/design-system';
 import { AddonsList } from './AddonsList';
 import { AddonsAside, AddonsAsideContainer } from './AddonsAsideLayout';
 import { AddonsSubheading } from './AddonsSubheading';
+import { IntegrationsList } from '../IntegrationsList';
 
-const { breakpoint, spacing, color, typography } = styles;
+const { color, typography, breakpoint } = styles;
+const { inlineGlow } = animation;
 
 const SearchResultsContainer = styled(AddonsAsideContainer)`
   align-items: flex-start;
 `;
 
-const SearchSummaryCopy = styled.div`
-  font-size: ${typography.weight.bold};
-  line-height: 28px;
-  color: ${color.darkest};
-  margin-left: ${spacing.padding.medium}px;
+const SearchResultsHeader = styled.h1`
+  font-size: ${typography.size.m2}px;
+  line-height: ${typography.size.m3}px;
+  font-weight: ${typography.weight.bold};
+  margin-bottom: 30px;
 
-  @media (min-width: ${breakpoint * 1.333}px) {
-    margin-left: 0;
-  }
+  ${({ isLoading }) =>
+    isLoading &&
+    css`
+      > span {
+        ${inlineGlow}
+
+        * {
+          color: transparent !important;
+        }
+      }
+    `}
 `;
 
-const StyledAddonsList = styled(AddonsList)`
+const StyledIntegrationsList = styled(IntegrationsList)`
   flex: 1 1 auto;
   width: 100%;
-`;
-
-const RelatedTagsList = styled(TagList)`
   margin-bottom: 48px;
 `;
 
-export const AddonsSearchSummary = ({ isLoading, count }) => {
-  return isLoading ? null : (
-    <SearchSummaryCopy>
-      {count === 0 ? 'No addons' : pluralize('addons', count, true)}
-    </SearchSummaryCopy>
-  );
-};
+const RelatedTagsList = styled(TagList)`
+  margin-bottom: 1.5rem;
+  @media (min-width: ${breakpoint * 1.5}px) {
+    margin-bottom: 3rem;
+  }
+`;
 
 const NoAddonsFoundInner = styled.div`
   flex: 1 1 auto;
@@ -48,6 +54,7 @@ const NoAddonsFoundInner = styled.div`
   padding: 32px;
   text-align: center;
   width: 100%;
+  margin-bottom: 3rem;
 
   font-size: ${typography.size.s2}px;
   line-height: ${typography.size.m1}px;
@@ -63,31 +70,65 @@ const NoAddonsFoundInner = styled.div`
 
 const NoAddonsFound = () => (
   <NoAddonsFoundInner>
-    <h3>No addons found</h3>
+    <h3>No integrations found</h3>
     <div>Perhaps it was a typo?</div>
   </NoAddonsFoundInner>
 );
 
-AddonsSearchSummary.propTypes = {
-  count: PropTypes.number.isRequired,
-  isLoading: PropTypes.bool,
+export const FILTER_OPTIONS = {
+  ALL: 'all',
+  ADDONS: 'addons',
+  RECIPES: 'recipes',
 };
 
-AddonsSearchSummary.defaultProps = {
-  isLoading: false,
+const RESULT_LABEL = {
+  all: 'integrations',
+  addons: 'addons',
+  recipes: 'recipes',
 };
 
-export const AddonsSearchResults = ({ isLoading, results, relatedTags, ...props }) => (
-  <SearchResultsContainer {...props}>
-    {!isLoading && results.length === 0 ? (
-      <NoAddonsFound />
-    ) : (
-      <StyledAddonsList isLoading={isLoading} addonItems={results} />
-    )}
-    <AddonsAside>
-      {!isLoading && results.length > 0 && (
-        <>
-          <AddonsSubheading>Related tags</AddonsSubheading>
+export const AddonsSearchResults = ({
+  isLoading,
+  searchString,
+  integrations,
+  relatedTags,
+  filterResults,
+  ...props
+}) => {
+  const { addons = [], recipes = [] } = integrations;
+
+  const integrationItems = useMemo(() => {
+    switch (filterResults) {
+      case FILTER_OPTIONS.ADDONS: {
+        return addons;
+      }
+      case FILTER_OPTIONS.RECIPES: {
+        return recipes;
+      }
+      default: {
+        return [...addons, ...recipes];
+      }
+    }
+  }, [addons, recipes, filterResults]);
+
+  const integrationCount = useMemo(() => integrationItems.length, [integrationItems]);
+
+  return (
+    <>
+      <SearchResultsHeader isLoading={isLoading}>
+        <span>{`${pluralize(RESULT_LABEL[filterResults], integrationCount, true)}`}</span>{' '}
+        <span>for</span> <span>“{searchString}”</span>
+      </SearchResultsHeader>
+      <SearchResultsContainer {...props}>
+        {!isLoading && integrationCount === 0 ? (
+          <NoAddonsFound />
+        ) : (
+          <StyledIntegrationsList isLoading={isLoading} integrationItems={integrationItems} />
+        )}
+        <AddonsAside hideLearn={isLoading || integrationCount === 0}>
+          <AddonsSubheading>
+            {!isLoading && integrationCount === 0 ? 'Popular' : 'Related'} tags
+          </AddonsSubheading>
           <RelatedTagsList
             limit={6}
             tags={relatedTags.map((tag) => (
@@ -95,16 +136,17 @@ export const AddonsSearchResults = ({ isLoading, results, relatedTags, ...props 
                 {tag.name}
               </TagLink>
             ))}
-            isLoading={relatedTags?.length === 0}
+            isLoading={isLoading}
           />
-        </>
-      )}
-    </AddonsAside>
-  </SearchResultsContainer>
-);
+        </AddonsAside>
+      </SearchResultsContainer>
+    </>
+  );
+};
 
 AddonsSearchResults.propTypes = {
   isLoading: PropTypes.bool,
+  searchString: PropTypes.string.isRequired,
   results: AddonsList.propTypes.addonItems,
   relatedTags: PropTypes.arrayOf(
     PropTypes.shape({

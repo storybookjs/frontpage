@@ -3,12 +3,12 @@ import React from 'react';
 import { styles } from '@storybook/components-marketing';
 import { css, styled } from '@storybook/theming';
 import { Link as GatsbyLinkWrapper } from 'gatsby';
-import AdobeXD from '../../../images/integrations/adobexd.svg';
+
 import Apollo from '../../../images/integrations/apollo.svg';
 import Axe from '../../../images/integrations/axe.svg';
 import Chromatic from '../../../images/integrations/chromatic.svg';
 import Cypress from '../../../images/integrations/cypress.svg';
-import Emotion from '../../../images/integrations/emotion.svg';
+import Emotion from '../../../images/integrations/emotion.png';
 import Figma from '../../../images/integrations/figma.svg';
 import Gatsby from '../../../images/integrations/gatsby.svg';
 import GraphQL from '../../../images/integrations/graphql.svg';
@@ -22,9 +22,10 @@ import Nx from '../../../images/integrations/nx.svg';
 import Playwright from '../../../images/integrations/playwright.svg';
 import RedwoodJS from '../../../images/integrations/redwoodjs.svg';
 import Sass from '../../../images/integrations/sass.svg';
-import SWC from '../../../images/integrations/swc.svg';
+import Sketch from '../../../images/integrations/sketch.svg';
+import SWC from '../../../images/integrations/swc.png';
 import Tailwind from '../../../images/integrations/tailwind.svg';
-import TestingLib from '../../../images/integrations/testing-lib.svg';
+import TestingLib from '../../../images/integrations/testing-lib.png';
 import UXpin from '../../../images/integrations/uxpin.svg';
 import Vite from '../../../images/integrations/vite.svg';
 import Webpack from '../../../images/integrations/webpack.svg';
@@ -255,9 +256,9 @@ export function Integrations({ docs, ...props }) {
     },
     {
       as: GatsbyLinkWrapper,
-      to: '/addons/storybook-addon-xd-designs',
-      image: AdobeXD,
-      name: 'AdobeXD',
+      to: `${docs}/react/sharing/design-integrations`,
+      image: Sketch,
+      name: 'Sketch',
     },
     {
       target: '_blank',

@@ -64,7 +64,9 @@ const siteMetadata = {
     showcase: `https://storybook.js.org/showcase/`,
     docs: '/docs/',
     tutorials: `https://storybook.js.org/tutorials/`,
+    integrations: `/integrations/`,
     addons: `/addons/`,
+    recipes: `/recipes/`,
     community: `/community/`,
     useCases: `/use-cases/`,
     releases: '/releases/',
@@ -123,7 +125,7 @@ siteMetadata.urls.navLinks = [
   { title: 'Showcase', href: siteMetadata.urls.showcase, isGatsby: false },
   { title: 'Docs', href: siteMetadata.urls.docsUrl, isGatsby: false },
   { title: 'Tutorials', href: siteMetadata.urls.tutorials, isGatsby: false },
-  { title: 'Addons', href: siteMetadata.urls.addons, isGatsby: true },
+  { title: 'Integrations', href: siteMetadata.urls.integrations, isGatsby: true },
   ...siteMetadata.urls.navCommunityLinks,
 ];
 
@@ -138,7 +140,6 @@ siteMetadata.urls.addonsLearnLinks = [
     icon: 'edit',
     to: siteMetadata.urls.officialAddons.create,
   },
-  { title: 'Add to the catalog', icon: 'add', to: siteMetadata.urls.officialAddons.publish },
 ];
 
 module.exports = siteMetadata;

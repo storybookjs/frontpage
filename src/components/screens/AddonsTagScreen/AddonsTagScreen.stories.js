@@ -1,20 +1,33 @@
 import React from 'react';
 import { AddonsTagScreen } from './AddonsTagScreen';
 import { addonItemsData } from '../../layout/addons/AddonsGrid.stories';
+import { recipeItemsData } from '../../layout/recipes/RecipesList.stories';
+import { UseAddonsSearchDecorator } from '../../../../.storybook/use-addons-search.mock';
 
 export default {
-  title: 'Integrations Catalog/Screens/Tag',
+  title: 'Integrations Catalog/Screens/TagScreen',
   component: AddonsTagScreen,
+  decorators: [UseAddonsSearchDecorator],
+  parameters: {
+    chromatic: { viewports: [320, 1200] },
+    layout: 'fullscreen',
+    pageLayout: {
+      pathname: '/integrations',
+    },
+  },
 };
 
-export const Tag = () => (
+const Template = () => (
   <AddonsTagScreen
     pageContext={{
       tag: {
         name: 'notes',
         displayName: 'Notes',
         icon: '🗒️',
-        addons: addonItemsData,
+        integrations: {
+          addons: addonItemsData.slice(0, 4),
+          recipes: recipeItemsData.slice(0, 3),
+        },
         relatedTags: [
           {
             link: '/notes',
@@ -49,5 +62,8 @@ export const Tag = () => (
         ],
       },
     }}
+    location={{}}
   />
 );
+
+export const Default = Template.bind({});

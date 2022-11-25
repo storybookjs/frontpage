@@ -2,10 +2,19 @@ import React from 'react';
 import { AddonsDetailScreen } from './AddonsDetailScreen';
 import ControlsSVG from '../../../images/addon-catalog/controls.svg';
 import ViewportSVG from '../../../images/addon-catalog/viewports.svg';
+import { UseAddonsSearchDecorator } from '../../../../.storybook/use-addons-search.mock';
 
 export default {
-  title: 'Integrations Catalog/Screens/Addons Detail',
+  title: 'Integrations Catalog/Screens/AddonsDetail',
   component: AddonsDetailScreen,
+  decorators: [UseAddonsSearchDecorator],
+  parameters: {
+    chromatic: { viewports: [320, 1200] },
+    layout: 'fullscreen',
+    pageLayout: {
+      pathname: '/integrations',
+    },
+  },
 };
 
 const readme = `<h1 id="-storybook-mobile">📱storybook-mobile</h1>
@@ -162,7 +171,7 @@ WithFromBreadcrumb.args = {
     state: {
       from: {
         link: '/addons/data-state',
-        title: 'Data & State',
+        title: 'data and state',
       },
     },
   },

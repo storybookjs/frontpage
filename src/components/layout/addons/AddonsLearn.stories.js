@@ -8,5 +8,5 @@ export default {
 
 const Template = (args) => <AddonsLearnComponent {...args} />;
 
-export const AddonsLearn = Template.bind({});
-AddonsLearn.args = {};
+export const Default = Template.bind({});
+Default.args = {};

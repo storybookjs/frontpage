@@ -18,7 +18,7 @@ function fetchAddonsDetailPages(createPage, graphql, skip = 0) {
     .then(() =>
       graphql(
         `{
-          addons {
+          integrations {
               addonPages: addons(limit: 30, skip: ${skip}) {
                 ${ADDON_FRAGMENT}
                 tags {
@@ -43,8 +43,8 @@ function fetchAddonsDetailPages(createPage, graphql, skip = 0) {
           }`
       )
     )
-    .then(validateResponse((data) => data.addons.addonPages))
-    .then(({ data }) => data.addons.addonPages)
+    .then(validateResponse((data) => data.integrations.addonPages))
+    .then(({ data }) => data.integrations.addonPages)
     .then((addons) => {
       if (addons.length > 0) {
         generateAddonsDetailPages(createPage, addons);
@@ -71,11 +71,13 @@ function generateAddonsDetailPages(createPage, addonPages) {
         readme: processor.processSync(addon.readme).toString(),
       },
     });
+    // eslint-disable-next-line
     console.log(` ✅ ${pagePath}`);
   });
 }
 
 module.exports = function createAddonDetailsPages(createPage, graphql) {
+  // eslint-disable-next-line
   console.log(`
 🧩 Creating addon details pages
 `);

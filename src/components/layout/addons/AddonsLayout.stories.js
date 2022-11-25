@@ -1,5 +1,7 @@
 import React from 'react';
 import seedrandom from 'seedrandom';
+import { styled } from '@storybook/theming';
+
 import { AddonsLayout } from './AddonsLayout';
 import { UseAddonsSearchDecorator } from '../../../../.storybook/use-addons-search.mock';
 
@@ -10,6 +12,11 @@ export default {
   component: AddonsLayout,
   excludeStories: ['data'],
   decorators: [UseAddonsSearchDecorator],
+  parameters: {
+    pageLayout: {
+      path: '/integrations',
+    },
+  },
 };
 
 export const Base = () => <AddonsLayout currentPath="/addons/essentials/">children</AddonsLayout>;
@@ -19,31 +26,3 @@ export const HideTableOfContents = () => (
     children
   </AddonsLayout>
 );
-
-export const SearchLoading = () => (
-  <AddonsLayout currentPath="/addons/essentials/">children</AddonsLayout>
-);
-
-SearchLoading.parameters = {
-  isSearching: true,
-  isSearchLoading: true,
-};
-
-export const SearchResults = () => (
-  <AddonsLayout currentPath="/addons/essentials/">children</AddonsLayout>
-);
-
-SearchResults.parameters = {
-  isSearching: true,
-  isSearchLoading: false,
-};
-
-export const SearchNoResults = () => (
-  <AddonsLayout currentPath="/addons/essentials/">children</AddonsLayout>
-);
-
-SearchNoResults.parameters = {
-  isSearching: true,
-  isSearchLoading: false,
-  noResults: true,
-};

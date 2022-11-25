@@ -12,6 +12,7 @@ storybook-static
 .DS_Store
 .idea
 monorepo
+build-storybook.log
 
 # Pulled from monorepo
 src/content/docs
