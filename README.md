@@ -36,6 +36,8 @@ Gatsby is used for basic routing and static site generation.
 
 2. `yarn start:skip-addons` to skip building the addon catalog
 
+3. `yarn start:docs-only` to mock the home page and build the docs pages
+
 #### Docs content
 
 The content for the documentation section is in the `docs/` subdirectory of the Storybook monorepo: https://github.com/storybookjs/storybook/tree/next/docs.

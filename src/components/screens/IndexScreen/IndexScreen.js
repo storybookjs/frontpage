@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useMemo, useRef } from 'react';
 import { Global, css, styled } from '@storybook/theming';
 import { styles } from '@storybook/components-marketing';
+import { global } from '@storybook/design-system';
 import { useInView } from 'framer-motion';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import { SocialGraph } from '../../basics';
@@ -75,14 +76,18 @@ const Clip = styled.div`
   contain: paint;
 `;
 
-export function IndexScreen({
-  projects,
-  npmDownloads,
-  twitterFollowerCount,
-  discordMemberCount,
-  githubContributorCount,
-  youTubeSubscriberCount,
-}) {
+const { GlobalStyle } = global;
+
+export function IndexScreen({ pageContext }) {
+  const {
+    projects,
+    npmDownloads,
+    twitterFollowerCount,
+    discordMemberCount,
+    githubContributorCount,
+    youTubeSubscriberCount,
+  } = pageContext;
+
   const { ogImage, urls = {} } = useSiteMetadata();
   const { home, docs = {} } = urls;
 
@@ -116,6 +121,7 @@ export function IndexScreen({
 
   return (
     <>
+      <GlobalStyle />
       <Global styles={globalStyles} />
       <SocialGraph
         title="Storybook: Frontend workshop for UI development"
@@ -157,11 +163,15 @@ export function IndexScreen({
 }
 
 IndexScreen.propTypes = {
-  npmDownloads: PropTypes.number.isRequired,
-  twitterFollowerCount: PropTypes.number.isRequired,
-  discordMemberCount: PropTypes.number.isRequired,
-  githubContributorCount: PropTypes.number.isRequired,
-  youTubeSubscriberCount: PropTypes.number.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  projects: PropTypes.array.isRequired,
+  pageContext: PropTypes.shape({
+    npmDownloads: PropTypes.number.isRequired,
+    twitterFollowerCount: PropTypes.number.isRequired,
+    discordMemberCount: PropTypes.number.isRequired,
+    githubContributorCount: PropTypes.number.isRequired,
+    youTubeSubscriberCount: PropTypes.number.isRequired,
+    // eslint-disable-next-line react/forbid-prop-types
+    projects: PropTypes.array.isRequired,
+  }).isRequired,
 };
+
+export default IndexScreen;

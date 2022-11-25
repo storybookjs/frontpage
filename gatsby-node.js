@@ -12,6 +12,7 @@ const { versionString, latestVersionString, isLatest } = require('./src/util/ver
 const sourceDXData = require('./src/util/source-dx-data');
 const { versions } = require('./src/util/versions');
 const createIntegrationsPages = require('./src/util/create-integrations-pages');
+const createHomePage = require('./src/util/create-home-page');
 
 const docsTocWithPaths = addStateToToc(docsToc);
 
@@ -213,8 +214,9 @@ exports.createPages = ({ actions, graphql }) => {
           createDocsPages(docsTocWithPaths);
         }
       )
+      .then(() => createHomePage(actions, graphql, process.env.GATSBY_DOCS_ONLY))
       .then(() => {
-        return process.env.GATSBY_SKIP_ADDON_PAGES || !isLatest
+        return process.env.GATSBY_SKIP_ADDON_PAGES || process.env.GATSBY_DOCS_ONLY || !isLatest
           ? Promise.resolve()
           : createIntegrationsPages({ actions, graphql });
       })
