@@ -4,7 +4,7 @@ const { ADDON_FRAGMENT, RECIPE_FRAGMENT } = require('./constants');
 const { wait, validateResponse } = require('./helpers');
 
 const PAGE_COMPONENT_PATH = path.resolve(
-  `./src/components/screens/AddonsHomeScreen/AddonsHomeScreen.js`
+  `./src/components/screens/IntegrationsCatalog/IntegrationsCatalogHomeScreen/IntegrationsCatalogHomeScreen.js`
 );
 
 function fetchIntegrationsHomePage(createPage, graphql) {

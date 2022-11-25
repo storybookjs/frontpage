@@ -5,7 +5,7 @@ const { wait, validateResponse } = require('./helpers');
 const { RECIPE_FRAGMENT, ADDON_FRAGMENT } = require('./constants');
 
 const PAGE_COMPONENT_PATH = path.resolve(
-  `./src/components/screens/RecipesDetailScreen/RecipesDetailScreen.js`
+  `./src/components/screens/IntegrationsCatalog/RecipesDetailScreen/RecipesDetailScreen.js`
 );
 
 function parseRecipeFiles({ data }) {
@@ -93,10 +93,12 @@ function generateRecipesDetailPage(createPage, recipe, metadata) {
       ...recipe,
     },
   });
+  // eslint-disable-next-line
   console.log(` ✅ ${pagePath}`);
 }
 
 module.exports = function createRecipeDetailsPages(createPage, graphql) {
+  // eslint-disable-next-line
   console.log(`
 🥘 Creating recipe details pages
 `);

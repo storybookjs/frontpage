@@ -3,7 +3,7 @@ const { validateResponse } = require('./helpers');
 const { ADDON_FRAGMENT, RECIPE_FRAGMENT } = require('./constants');
 
 const PAGE_COMPONENT_PATH = path.resolve(
-  `./src/components/screens/AddonsCategoryScreen/AddonsCategoryScreen.js`
+  `./src/components/screens/IntegrationsCatalog/IntegrationsCategoryScreen/IntegrationsCategoryScreen.js`
 );
 
 function fetchCategoryPages(createPage, graphql) {
