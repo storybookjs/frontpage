@@ -10,12 +10,23 @@ interface YouTubeCalloutProps {
   title: string;
 }
 
+const { color, typography, spacing } = styles;
+
 // `.yt-lite` styles from: https://github.com/ibrahimcesar/react-lite-youtube-embed#option-1
 // `.lty-playbtn` styles emulate YouTube's thumbnail play button
 const Details = styled.details`
-  border-radius: 4px;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 5px 15px rgba(0, 0, 0, 0.05);
+  border-radius: ${spacing.borderRadius.small}px;
+  box-shadow: 0 2px 5px 0 ${color.border};
   overflow: hidden;
+  cursor: pointer;
+
+  // hover states
+  transition: all 150ms ease-out;
+  transform: translate3d(0, 0, 0);
+
+  &:hover&:not([open]) {
+    transform: translate3d(0, -1px, 0);
+  }
 
   &[open] {
     &::before {
@@ -101,11 +112,10 @@ const Details = styled.details`
 
 const Summary = styled.summary`
   align-items: center;
-  color: ${styles.color.secondary} !important;
+  color: ${color.secondary} !important;
   display: flex !important;
-  font-size: ${styles.typography.size.s2}px;
-  font-weight: ${styles.typography.weight.bold};
-  gap: 6px;
+  font-size: ${typography.size.s2}px;
+  font-weight: ${typography.weight.bold};
   line-height: 20px;
   list-style: none;
   padding: 10px 20px 10px 15px;
@@ -116,12 +126,17 @@ const Summary = styled.summary`
 
   & > svg:first-child {
     color: #f00;
+    flex: none;
+    margin-right: 10px;
   }
 `;
 
 const Arrow = styled((props) => <Icon icon="arrowdown" {...props} />)`
   position: relative;
-  top: -1px;
+  height: 0.85em;
+  width: 0.85em;
+  margin-right: 0px;
+  margin-left: 0.25em;
 
   details[open] & {
     transform: rotate(180deg);
