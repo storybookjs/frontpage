@@ -4120,10 +4120,10 @@
     core-js "^3.8.2"
     global "^4.4.0"
 
-"@storybook/components-marketing@^2.0.40":
-  version "2.0.40"
-  resolved "https://registry.yarnpkg.com/@storybook/components-marketing/-/components-marketing-2.0.40.tgz#72accef69d52ff2ccf6d97f9732ac4c4690ebd25"
-  integrity sha512-iUoQMgxo1PsOt7GlzVfyRPzUoT17pYc85Zyv31ZxyXZZMpuqgg9IFcIc/Vzp1XcI68UR6iu48efHXK7OemZiKw==
+"@storybook/components-marketing@^2.0.41":
+  version "2.0.41"
+  resolved "https://registry.npmjs.org/@storybook/components-marketing/-/components-marketing-2.0.41.tgz#a82f4f5c353ac8a5d08b2e31bc8991fd91116a99"
+  integrity sha512-MqappKiNbk1zrzOep5fL8wbqBOfb7J4rqvZ0EIvAP16SLonUZMn9oJFAL/yb4n0vakrdS8JTPJs/xcu8NKHRwA==
   dependencies:
     "@docsearch/react" "^3.1.0"
     "@emotion/weak-memoize" "^0.2.5"
@@ -18901,6 +18901,11 @@ react-lifecycles-compat@^3.0.0, react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
+
+react-lite-youtube-embed@^2.3.52:
+  version "2.3.52"
+  resolved "https://registry.npmjs.org/react-lite-youtube-embed/-/react-lite-youtube-embed-2.3.52.tgz#7f8125a03e7a940745b63d11abd6821ffe1babe5"
+  integrity sha512-G010PvCavA4EqL8mZ/Sv9XXiHnjMfONW+lmNeCRnSEPluPdptv2lZ0cNlngrj7K9j7luc8pbpyrmNpKbD9VMmw==
 
 react-merge-refs@^1.1.0:
   version "1.1.0"
