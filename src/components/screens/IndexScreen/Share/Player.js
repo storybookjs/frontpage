@@ -127,6 +127,7 @@ export const Player = ({ x, y, type, delay, count }) => (
     transition={{ type: 'pop', delay, duration: 0.4 }}
   >
     <Wave
+      data-chromatic="ignore"
       color={type}
       size="big"
       style={{ x: '-50%', y: '-50%' }}
@@ -137,6 +138,7 @@ export const Player = ({ x, y, type, delay, count }) => (
       transition={transition(delay, count)}
     />
     <Wave
+      data-chromatic="ignore"
       color={type}
       size="medium"
       style={{ x: '-50%', y: '-50%' }}
@@ -147,6 +149,7 @@ export const Player = ({ x, y, type, delay, count }) => (
       transition={transition(delay, count)}
     />
     <Wave
+      data-chromatic="ignore"
       color={type}
       size="small"
       style={{ x: '-50%', y: '-50%' }}
