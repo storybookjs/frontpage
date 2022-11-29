@@ -65,7 +65,6 @@ const Image = styled(IntegrationImage)`
 Image.propTypes = {
   orientation: PropTypes.oneOf(['vertical', 'horizontal']).isRequired,
   isLoading: PropTypes.bool.isRequired,
-  src: PropTypes.string.isRequired,
 };
 
 const ImageLoading = styled.div`

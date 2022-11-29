@@ -48,7 +48,7 @@ const authors = [
 export const addonItemsData = [
   {
     type: 'Addon',
-    id: '0',
+    id: 'addon_0',
     appearance: 'official',
     icon: ControlsSVG,
     displayName: 'Controls',
@@ -59,7 +59,7 @@ export const addonItemsData = [
   },
   {
     type: 'Addon',
-    id: '1',
+    id: 'addon_1',
     icon: ViewportSVG,
     appearance: 'community',
     displayName: 'Mobile UX Hints',
@@ -71,7 +71,7 @@ export const addonItemsData = [
   },
   {
     type: 'Addon',
-    id: '2',
+    id: 'addon_2',
     appearance: 'integrators',
     verifiedCreator: 'Contrast',
     icon: ContrastPNG,
@@ -83,7 +83,7 @@ export const addonItemsData = [
   },
   {
     type: 'Addon',
-    id: '3',
+    id: 'addon_3',
     appearance: 'official',
     icon: AccessibilitySVG,
     displayName: 'Accessibility',
@@ -94,7 +94,7 @@ export const addonItemsData = [
   },
   {
     type: 'Addon',
-    id: '4',
+    id: 'addon_4',
     appearance: 'official',
     icon: ActionsSVG,
     displayName: 'Actions',
@@ -105,7 +105,7 @@ export const addonItemsData = [
   },
   {
     type: 'Addon',
-    id: '5',
+    id: 'addon_5',
     appearance: 'official',
     icon: BackgroundsSVG,
     displayName: 'Backgrounds',
@@ -116,7 +116,7 @@ export const addonItemsData = [
   },
   {
     type: 'Addon',
-    id: '6',
+    id: 'addon_6',
     appearance: 'official',
     icon: ConsoleSVG,
     displayName: 'Console',
@@ -127,7 +127,7 @@ export const addonItemsData = [
   },
   {
     type: 'Addon',
-    id: '7',
+    id: 'addon_7',
     icon: emptySVG,
     displayName: 'Controls',
     name: '@storybook/addon-controls',
@@ -137,7 +137,7 @@ export const addonItemsData = [
   },
   {
     type: 'Addon',
-    id: '8',
+    id: 'addon_8',
     appearance: 'integrators',
     verifiedCreator: 'InVision',
     icon: DocsSVG,
@@ -148,7 +148,7 @@ export const addonItemsData = [
   },
   {
     type: 'Addon',
-    id: '9',
+    id: 'addon_9',
     icon: LinksSVG,
     displayName: 'Links',
     name: '@storybook/addon-links',
@@ -158,7 +158,7 @@ export const addonItemsData = [
   },
   {
     type: 'Addon',
-    id: '10',
+    id: 'addon_10',
     icon: OutlineSVG,
     displayName: 'Outline',
     name: 'storybook-addon-outline',
@@ -168,7 +168,7 @@ export const addonItemsData = [
   },
   {
     type: 'Addon',
-    id: '11',
+    id: 'addon_11',
     icon: SourceSVG,
     displayName: 'Source',
     name: '@storybook/addon-storysource',
@@ -178,7 +178,7 @@ export const addonItemsData = [
   },
   {
     type: 'Addon',
-    id: '12',
+    id: 'addon_12',
     appearance: 'integrators',
     verifiedCreator: 'Someone',
     icon: StoryshotsSVG,
@@ -190,7 +190,7 @@ export const addonItemsData = [
   },
   {
     type: 'Addon',
-    id: '13',
+    id: 'addon_13',
     appearance: 'official',
     icon: ToolbarsSVG,
     displayName: 'Toolbars',
