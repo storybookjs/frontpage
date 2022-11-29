@@ -23,6 +23,7 @@ import relativeToRootLinks from '../../../util/relative-to-root-links';
 import stylizeFramework from '../../../util/stylize-framework';
 import { FeatureSnippets } from './FeatureSnippets';
 import { Pre } from '../../basics/Pre';
+import { YouTubeCallout } from './YouTubeCallout';
 
 const { color, spacing, typography } = styles;
 
@@ -152,6 +153,7 @@ function DocsScreen({ data, pageContext, location }) {
             CodeSnippets: CodeSnippetsWithCurrentFramework,
             FeatureSnippets: FeatureSnippetsWithCurrentFramework,
             FrameworkSupportTable: FrameworkSupportTableWithFeaturesAndCurrentFramework,
+            YouTubeCallout,
             a: LinksWithPrefix,
           }}
         >
