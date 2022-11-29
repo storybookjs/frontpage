@@ -226,8 +226,16 @@ export const IntegrationsLayout = ({
                     title: `All integrations`,
                     value: 'all',
                   },
-                  { title: `Addons (${foundAddonsCount})`, value: 'addons' },
-                  { title: `Recipes (${foundRecipesCount})`, value: 'recipes' },
+                  {
+                    title: 'Addons',
+                    value: 'addons',
+                    right: `${foundAddonsCount}`,
+                  },
+                  {
+                    title: 'Recipes',
+                    value: 'recipes',
+                    right: `${foundRecipesCount}`,
+                  },
                 ]}
                 value={searchFilter}
                 onChange={setSearchFilter}
