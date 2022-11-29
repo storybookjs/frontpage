@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { rgba } from 'polished';
 import { styled } from '@storybook/theming';
-
 import {
   Badge,
   CodeSnippets as DesignSystemCodeSnippets,
@@ -12,7 +12,19 @@ import {
 import { CODE_SNIPPET_CLASSNAME } from '../../../constants/code-snippets';
 import stylizeFramework from '../../../util/stylize-framework';
 
-const { color, typography } = styles;
+const { color, spacing, typography } = styles;
+
+const StyledCodeSnippets = styled(DesignSystemCodeSnippets)`
+  &:target {
+    background: linear-gradient(
+      90deg,
+      ${rgba(color.secondary, 0.1)} 0%,
+      ${rgba(color.secondary, 0.0)} 70%
+    );
+    margin: -${spacing.padding.small}px;
+    padding: ${spacing.padding.small}px;
+  }
+`;
 
 const CodeSnippetFramework = styled.span`
   text-transform: capitalize;
@@ -57,7 +69,7 @@ TabLabel.propTypes = {
 };
 
 export function PureCodeSnippets(props) {
-  return <DesignSystemCodeSnippets className={CODE_SNIPPET_CLASSNAME} {...props} />;
+  return <StyledCodeSnippets className={CODE_SNIPPET_CLASSNAME} {...props} />;
 }
 
 const MissingMessagingWrapper = styled.div`
@@ -95,6 +107,12 @@ export function CodeSnippets({ paths, currentFramework, ...rest }) {
   if (!activeFrameworkPaths.length) {
     defaultFrameworkPaths = paths.filter((path) => path.split('/')[0] === 'react');
   }
+
+  /**
+   * For a path like `web-components/button-story-click-handler-args.js.mdx`,
+   * capture the group `button-story-click-handler-args`
+   */
+  const id = `snippet-${paths[0].match(/^(?:\w+-*)+\/((?:\w+-*)+)/)[1]}`;
 
   useEffect(() => {
     async function fetchModuleComponents() {
@@ -134,7 +152,7 @@ export function CodeSnippets({ paths, currentFramework, ...rest }) {
 
   if (!snippets.length) return null;
 
-  return <PureCodeSnippets snippets={snippets} {...rest} />;
+  return <PureCodeSnippets snippets={snippets} id={id} {...rest} />;
 }
 
 CodeSnippets.propTypes = {
