@@ -72,6 +72,11 @@ Sidebar.propTypes = {
 };
 
 const ToCContent = styled.div`
+  // space the ToC emoji and text
+  ul > li > a::first-letter {
+    margin-right: 4px;
+  }
+
   /* Hide ToC on mobile, the primary navigation is search */
   display: none;
 
