@@ -2,9 +2,8 @@ import React from 'react';
 import { styled } from '@storybook/theming';
 import { Highlight } from '@storybook/design-system';
 
-import { PureCodeSnippets, MissingMessage, TabLabel } from './CodeSnippets';
+import { PureCodeSnippets, CsfMessage, MissingMessage, TabLabel } from './CodeSnippets';
 import { mdFormatting } from '../../../styles/formatting';
-import compiledMDX from '../../../../.storybook/compiled-mdx';
 
 const jsCode = `
 // Button.stories.js
@@ -66,6 +65,18 @@ const snippetsWithMissingMessaging = snippets.map((snippet, index) => ({
   Snippet: TSModuleComponent,
 }));
 
+const snippetsWithCsfMessaging = snippets.map((snippet, index) => ({
+  ...snippet,
+  PreSnippet: () => <CsfMessage currentFramework="angular" />,
+  Snippet: TSModuleComponent,
+}));
+
+const snippetsWithCsfMessagingWithExample = snippets.map((snippet, index) => ({
+  ...snippet,
+  PreSnippet: () => <CsfMessage csf2Path="page/path#snippet-anchor" currentFramework="angular" />,
+  Snippet: TSModuleComponent,
+}));
+
 const Wrapper = styled.div`
   ${mdFormatting}
   padding: 10px;
@@ -87,10 +98,25 @@ export const Missing = () => (
   <PureCodeSnippets currentFramework="angular" snippets={[snippetsWithMissingMessaging[0]]} />
 );
 
+export const Csf2 = () => (
+  <PureCodeSnippets currentFramework="angular" snippets={[snippetsWithCsfMessaging[0]]} />
+);
+
+export const Csf2WithExample = () => (
+  <PureCodeSnippets
+    currentFramework="angular"
+    snippets={[snippetsWithCsfMessagingWithExample[0]]}
+  />
+);
+
 export const Multiple = () => <PureCodeSnippets currentFramework="react" snippets={snippets} />;
 
 export const MultipleMissing = () => (
   <PureCodeSnippets currentFramework="angular" snippets={snippetsWithMissingMessaging} />
+);
+
+export const MultipleCsf2 = () => (
+  <PureCodeSnippets currentFramework="angular" snippets={snippetsWithCsfMessaging} />
 );
 
 export const MultipleWithoutBadges = () => (

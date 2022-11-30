@@ -14,6 +14,8 @@ import stylizeFramework from '../../../util/stylize-framework';
 
 const { color, spacing, typography } = styles;
 
+const CSF2_TO_3_UPGRADE_GUIDE_PATH = 'api/csf#upgrading-from-csf-2-to-csf-3';
+
 const StyledCodeSnippets = styled(DesignSystemCodeSnippets)`
   &:target {
     background: linear-gradient(
@@ -72,8 +74,8 @@ export function PureCodeSnippets(props) {
   return <StyledCodeSnippets className={CODE_SNIPPET_CLASSNAME} {...props} />;
 }
 
-const MissingMessagingWrapper = styled.div`
-  background-color: #fdf5d3;
+const MessagingWrapper = styled.div<{ type?: 'missing' }>`
+  background-color: ${(props) => (props.type === 'missing' ? '#fdf5d3' : color.blueLight)};
   padding: 10px 16px;
   border-bottom: 1px solid ${color.border};
   font-size: ${typography.size.s2}px;
@@ -82,7 +84,7 @@ const MissingMessagingWrapper = styled.div`
 
 export function MissingMessage({ currentFramework }) {
   return (
-    <MissingMessagingWrapper>
+    <MessagingWrapper type="missing">
       This snippet doesnt exist for {stylizeFramework(currentFramework)} yet.{' '}
       <Link
         href="https://github.com/storybookjs/storybook/tree/next/docs"
@@ -92,11 +94,42 @@ export function MissingMessage({ currentFramework }) {
         Contribute it in a PR now
       </Link>
       . In the meantime, here’s the {stylizeFramework(DEFAULT_FRAMEWORK)} snippet.
-    </MissingMessagingWrapper>
+    </MessagingWrapper>
   );
 }
 
-export function CodeSnippets({ paths, currentFramework, ...rest }) {
+export function CsfMessage({
+  csf2Path,
+  currentFramework,
+}: {
+  csf2Path?: string;
+  currentFramework: string;
+}) {
+  return (
+    <MessagingWrapper>
+      This example uses Component Story Format 3. Learn how to{' '}
+      <Link
+        href={`/docs/${currentFramework}/${CSF2_TO_3_UPGRADE_GUIDE_PATH}`}
+        target="_blank"
+        rel="noopener"
+      >
+        upgrade now
+      </Link>
+      {csf2Path ? (
+        <>
+          {' '}
+          or view the old CSF2{' '}
+          <Link href={`/docs/6.5/${currentFramework}/${csf2Path}`} target="_blank" rel="noopener">
+            example
+          </Link>
+        </>
+      ) : null}
+      .
+    </MessagingWrapper>
+  );
+}
+
+export function CodeSnippets({ csf2Path, currentFramework, paths, usesCsf3, ...rest }) {
   const [snippets, setSnippets] = React.useState([]);
   const activeFrameworkPaths = paths.filter((path) => {
     const [framework] = path.split('/');
@@ -129,11 +162,18 @@ export function CodeSnippets({ paths, currentFramework, ...rest }) {
             `../../../content/docs/snippets/${path}`
           );
 
+          let PreSnippet;
+          if (defaultFrameworkPaths) {
+            PreSnippet = () => <MissingMessage currentFramework={currentFramework} />;
+          } else if (usesCsf3) {
+            PreSnippet = () => (
+              <CsfMessage csf2Path={csf2Path} currentFramework={currentFramework} />
+            );
+          }
+
           return {
             id: `${framework}-${syntax}`,
-            PreSnippet: defaultFrameworkPaths
-              ? () => <MissingMessage currentFramework={currentFramework} />
-              : undefined,
+            PreSnippet,
             Snippet: ModuleComponent,
             framework,
             syntax,
@@ -156,6 +196,9 @@ export function CodeSnippets({ paths, currentFramework, ...rest }) {
 }
 
 CodeSnippets.propTypes = {
-  paths: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   currentFramework: PropTypes.string.isRequired,
+  currentPath: PropTypes.string.isRequired,
+  csf2Path: PropTypes.string,
+  paths: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  usesCsf3: PropTypes.bool,
 };
