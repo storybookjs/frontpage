@@ -18,15 +18,9 @@ const CodeSnippetFramework = styled.span`
   text-transform: capitalize;
 `;
 
-const StyledBadge = styled(Badge)<{ isActive?: boolean }>`
+const StyledBadge = styled(Badge)`
   margin-left: 5px;
   padding: 4px 7px;
-  ${(props) =>
-    props.isActive &&
-    `
-    color: ${color.secondary};
-    background: #E3F3FF;
-  `}
 `;
 
 const syntaxNameMap = {
@@ -49,7 +43,7 @@ export function TabLabel({ isActive, framework, syntax }) {
   return isFrameworkSpecific ? (
     <>
       <CodeSnippetFramework>{framework}</CodeSnippetFramework>
-      <StyledBadge isActive={isActive}>{prettifiedSyntax}</StyledBadge>
+      <StyledBadge status={isActive ? 'selected' : 'neutral'}>{prettifiedSyntax}</StyledBadge>
     </>
   ) : (
     <span>{prettifiedSyntax}</span>
