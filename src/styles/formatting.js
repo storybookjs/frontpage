@@ -64,7 +64,7 @@ export const mdFormatting = css`
     margin-bottom: 0.5em;
   }
 
-  h2:not(:first-of-type) {
+  h2:not(:first-child) {
     margin-top: 2.5rem;
   }
 
@@ -232,7 +232,7 @@ export const mdFormatting = css`
     margin: 0;
     padding: 0;
   }
-  table tr:nth-of-type(2n) {
+  table tr:nth-child(2n) {
     background-color: ${color.lighter};
   }
   table tr th {
@@ -250,8 +250,8 @@ export const mdFormatting = css`
     padding: 0.5em 1em;
   }
 
-  table tr th :first-of-type,
-  table tr td:first-of-type {
+  table tr th :first-child,
+  table tr td:first-child {
     margin-top: 0;
   }
 
