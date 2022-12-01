@@ -43,7 +43,7 @@ const AspectRatio = styled(PlaceholderAspectRatio)`
 const Wrapper = styled.div``;
 
 const Content = styled.section`
-  background-image: url('images/home/gradient-backdrop.svg');
+  background-image: url('/images/home/gradient-backdrop.svg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
