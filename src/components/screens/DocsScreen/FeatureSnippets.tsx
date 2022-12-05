@@ -29,8 +29,7 @@ export function FeatureSnippets({ currentFramework, paths }) {
           // See comment in CodeSnippets
           const { default: ModuleComponent } = await import(`../../../content/docs/${path}`);
 
-          const parts = basename(path, '.mdx').split('-');
-          const framework = parts[parts.length - 1];
+          const framework = basename(path, '.mdx');
           return [framework, ModuleComponent];
         })
       );

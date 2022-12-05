@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { rgba } from 'polished';
 import { styled } from '@storybook/theming';
-
 import {
   Badge,
   CodeSnippets as DesignSystemCodeSnippets,
@@ -12,21 +12,29 @@ import {
 import { CODE_SNIPPET_CLASSNAME } from '../../../constants/code-snippets';
 import stylizeFramework from '../../../util/stylize-framework';
 
-const { color, typography } = styles;
+const { color, spacing, typography } = styles;
+
+const CSF2_TO_3_UPGRADE_GUIDE_PATH = 'api/csf#upgrading-from-csf-2-to-csf-3';
+
+const StyledCodeSnippets = styled(DesignSystemCodeSnippets)`
+  &:target {
+    background: linear-gradient(
+      90deg,
+      ${rgba(color.secondary, 0.1)} 0%,
+      ${rgba(color.secondary, 0.0)} 70%
+    );
+    margin: -${spacing.padding.small}px;
+    padding: ${spacing.padding.small}px;
+  }
+`;
 
 const CodeSnippetFramework = styled.span`
   text-transform: capitalize;
 `;
 
-const StyledBadge = styled(Badge)<{ isActive?: boolean }>`
+const StyledBadge = styled(Badge)`
   margin-left: 5px;
   padding: 4px 7px;
-  ${(props) =>
-    props.isActive &&
-    `
-    color: ${color.secondary};
-    background: #E3F3FF;
-  `}
 `;
 
 const syntaxNameMap = {
@@ -49,7 +57,7 @@ export function TabLabel({ isActive, framework, syntax }) {
   return isFrameworkSpecific ? (
     <>
       <CodeSnippetFramework>{framework}</CodeSnippetFramework>
-      <StyledBadge isActive={isActive}>{prettifiedSyntax}</StyledBadge>
+      <StyledBadge status={isActive ? 'selected' : 'neutral'}>{prettifiedSyntax}</StyledBadge>
     </>
   ) : (
     <span>{prettifiedSyntax}</span>
@@ -63,11 +71,11 @@ TabLabel.propTypes = {
 };
 
 export function PureCodeSnippets(props) {
-  return <DesignSystemCodeSnippets className={CODE_SNIPPET_CLASSNAME} {...props} />;
+  return <StyledCodeSnippets className={CODE_SNIPPET_CLASSNAME} {...props} />;
 }
 
-const MissingMessagingWrapper = styled.div`
-  background-color: #fdf5d3;
+const MessagingWrapper = styled.div<{ type?: 'missing' }>`
+  background-color: ${(props) => (props.type === 'missing' ? '#fdf5d3' : color.blueLight)};
   padding: 10px 16px;
   border-bottom: 1px solid ${color.border};
   font-size: ${typography.size.s2}px;
@@ -76,7 +84,7 @@ const MissingMessagingWrapper = styled.div`
 
 export function MissingMessage({ currentFramework }) {
   return (
-    <MissingMessagingWrapper>
+    <MessagingWrapper type="missing">
       This snippet doesnt exist for {stylizeFramework(currentFramework)} yet.{' '}
       <Link
         href="https://github.com/storybookjs/storybook/tree/next/docs"
@@ -86,11 +94,42 @@ export function MissingMessage({ currentFramework }) {
         Contribute it in a PR now
       </Link>
       . In the meantime, here’s the {stylizeFramework(DEFAULT_FRAMEWORK)} snippet.
-    </MissingMessagingWrapper>
+    </MessagingWrapper>
   );
 }
 
-export function CodeSnippets({ paths, currentFramework, ...rest }) {
+export function CsfMessage({
+  csf2Path,
+  currentFramework,
+}: {
+  csf2Path?: string;
+  currentFramework: string;
+}) {
+  return (
+    <MessagingWrapper>
+      This example uses Component Story Format 3. Learn how to{' '}
+      <Link
+        href={`/docs/${currentFramework}/${CSF2_TO_3_UPGRADE_GUIDE_PATH}`}
+        target="_blank"
+        rel="noopener"
+      >
+        upgrade now
+      </Link>
+      {csf2Path ? (
+        <>
+          {' '}
+          or view the old CSF2{' '}
+          <Link href={`/docs/6.5/${currentFramework}/${csf2Path}`} target="_blank" rel="noopener">
+            example
+          </Link>
+        </>
+      ) : null}
+      .
+    </MessagingWrapper>
+  );
+}
+
+export function CodeSnippets({ csf2Path, currentFramework, paths, usesCsf3, ...rest }) {
   const [snippets, setSnippets] = React.useState([]);
   const activeFrameworkPaths = paths.filter((path) => {
     const [framework] = path.split('/');
@@ -101,6 +140,12 @@ export function CodeSnippets({ paths, currentFramework, ...rest }) {
   if (!activeFrameworkPaths.length) {
     defaultFrameworkPaths = paths.filter((path) => path.split('/')[0] === 'react');
   }
+
+  /**
+   * For a path like `web-components/button-story-click-handler-args.js.mdx`,
+   * capture the group `button-story-click-handler-args`
+   */
+  const id = `snippet-${paths[0].match(/^(?:\w+-*)+\/((?:\w+-*)+)/)[1]}`;
 
   useEffect(() => {
     async function fetchModuleComponents() {
@@ -117,11 +162,18 @@ export function CodeSnippets({ paths, currentFramework, ...rest }) {
             `../../../content/docs/snippets/${path}`
           );
 
+          let PreSnippet;
+          if (defaultFrameworkPaths) {
+            PreSnippet = () => <MissingMessage currentFramework={currentFramework} />;
+          } else if (usesCsf3) {
+            PreSnippet = () => (
+              <CsfMessage csf2Path={csf2Path} currentFramework={currentFramework} />
+            );
+          }
+
           return {
             id: `${framework}-${syntax}`,
-            PreSnippet: defaultFrameworkPaths
-              ? () => <MissingMessage currentFramework={currentFramework} />
-              : undefined,
+            PreSnippet,
             Snippet: ModuleComponent,
             framework,
             syntax,
@@ -140,10 +192,13 @@ export function CodeSnippets({ paths, currentFramework, ...rest }) {
 
   if (!snippets.length) return null;
 
-  return <PureCodeSnippets snippets={snippets} {...rest} />;
+  return <PureCodeSnippets snippets={snippets} id={id} {...rest} />;
 }
 
 CodeSnippets.propTypes = {
-  paths: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   currentFramework: PropTypes.string.isRequired,
+  currentPath: PropTypes.string.isRequired,
+  csf2Path: PropTypes.string,
+  paths: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  usesCsf3: PropTypes.bool,
 };
