@@ -79,6 +79,12 @@ const Wrapper = styled.div`
 `;
 
 const StyledTableOfContents = styled(TableOfContents)`
+  // space the ToC emoji and text
+  li > a svg + span::first-letter,
+  li > button svg + span::first-letter {
+    margin-right: 4px;
+  }
+
   /* Hide ToC on mobile, the primary navigation is search */
   display: none;
 

@@ -1,10 +1,12 @@
 import React from 'react';
-import { Badge, OutlineCTA } from '@storybook/design-system';
+import { styled } from '@storybook/theming';
+import { Badge, OutlineCTA, styles } from '@storybook/design-system';
 import { startCase } from 'lodash';
 import GatsbyLink from '../../basics/GatsbyLink';
 import buildPathWithFramework from '../../../util/build-path-with-framework';
 import { Versions } from './VersionSelector';
 
+const { breakpoint } = styles;
 interface VersionCTAProps {
   framework: string;
   latestVersion: number;
@@ -14,6 +16,18 @@ interface VersionCTAProps {
   versions: Versions;
 }
 
+const StyledOutlineCTA = styled(OutlineCTA)`
+  //override styles from design system
+  @media (min-width: ${breakpoint}px) {
+    padding-left: 15px;
+    padding-right: 10px;
+  }
+
+  ${Badge} {
+    // with inline spacing this yields about 10px between badge and text
+    margin-right: 2px;
+  }
+`;
 export function VersionCTA({
   framework,
   version,
@@ -43,7 +57,7 @@ export function VersionCTA({
   }
 
   return (
-    <OutlineCTA
+    <StyledOutlineCTA
       action={
         <GatsbyLink to={buildPathWithFramework(slug, framework, latestVersionString)} withArrow>
           View latest docs
@@ -53,6 +67,6 @@ export function VersionCTA({
       {...rest}
     >
       {message}
-    </OutlineCTA>
+    </StyledOutlineCTA>
   );
 }

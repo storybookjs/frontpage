@@ -207,6 +207,13 @@ const TabletMenu = styled.div`
   }
 `;
 
+const StyledTableOfContents = styled(TableOfContents)`
+  // space the ToC emoji and text
+  li > a::first-letter {
+    margin-right: 4px;
+  }
+`;
+
 const JumpLink = styled(NavItem)`
   margin-left: auto;
 
@@ -248,7 +255,7 @@ export function CommunitySidebar({ badgeUrl, activeSectionId, ...props }: Commun
       <DesktopWrapper {...props}>
         <Inner>
           <Title>Community</Title>
-          <TableOfContents items={sections} currentPath={activeSection?.path} />
+          <StyledTableOfContents items={sections} currentPath={activeSection?.path} />
           <Divider />
           <BadgeContainer>
             <Text>Get a README badge</Text>
