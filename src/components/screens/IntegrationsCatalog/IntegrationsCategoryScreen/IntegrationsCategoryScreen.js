@@ -52,7 +52,7 @@ export const IntegrationsCategoryScreen = ({ path, location, pageContext }) => {
           {breadcrumb.title}
         </SubNavBreadcrumb>
         <SubNavRight>
-          <SubNavCTA href="/docs/react/addons/addon-catalog/">
+          <SubNavCTA href="/docs/react/integrations/integration-catalog/">
             <Icon icon="add" />
             Add your integration
           </SubNavCTA>
