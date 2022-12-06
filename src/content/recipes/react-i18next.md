@@ -2,15 +2,15 @@ Most developers use [`i18next`](https://www.i18next.com/), a popular JavaScript 
 
 Instead of being passed to components as inputs, the locale is shared globally through context. Let’s use i18next to extend Storybook with a locale switcher in the toolbar to choose which locale is shared with your components.
 
-Follow along using the [code examples](https://github.com/i18next/react-i18next/tree/master/example/storybook) in the i18next-react GitHub repository.
+Follow along using the [code examples](https://github.com/i18next/react-i18next/tree/master/example/storybook) in the react-i18next GitHub repository.
 
 ![Switching locale between English, German, and Arabic in Storybook](https://storybookblog.ghost.io/content/images/2022/09/finished-switcher.gif)
 
 ### Prerequisites
 
-Before we begin, ensure that you have a working React app using [`i18next-react`](https://github.com/i18next/react-i18next) which is set up with Storybook 6.0 or newer. If you need resources to set these up, I’ve included some recommendations below:
+Before we begin, ensure that you have a working React app using [`react-i18next`](https://github.com/i18next/react-i18next) which is set up with Storybook 6.0 or newer. If you need resources to set these up, I’ve included some recommendations below:
 
-- [Setting up i18next-react](https://react.i18next.com/getting-started)
+- [Setting up react-i18next](https://react.i18next.com/getting-started)
 - [Configure i18next language detector](https://react.i18next.com/latest/using-with-hooks)
 - [Getting started with Storybook](https://storybook.js.org/tutorials/intro-to-storybook/)
 
@@ -138,7 +138,7 @@ const withI18next = (Story, context) => {
 };
 ```
 
-Voila— a fully functioning locale switcher for your stories powered by i18next-react!
+Voila— a fully functioning locale switcher for your stories powered by react-i18next!
 
 ![Switching between English and German using the locale switcher](https://storybookblog.ghost.io/content/images/2022/09/en-to-de.gif)
 

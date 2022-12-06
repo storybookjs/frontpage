@@ -107,7 +107,7 @@ const AuthorList = ({ authors }) => {
     <AuthorListInner>
       {authorsSubset.map((author) => (
         <Author
-          key={author.id}
+          key={`author_${author.id}`}
           href={`https://www.npmjs.com/~${author.name}`}
           target="_blank"
           rel="noopener nofollow noreferrer"

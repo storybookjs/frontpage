@@ -30,7 +30,7 @@ export const FrameworkSupportTable = ({ currentFramework, frameworks, featureGro
         <tr>
           <th aria-label="frameworks" />
           {frameworks.map((framework) => (
-            <th key={framework}>
+            <th key={`framework_${framework}`}>
               <GatsbyLink to={`/docs/${framework}`}>{stylizeFramework(framework)}</GatsbyLink>
             </th>
           ))}
@@ -38,23 +38,23 @@ export const FrameworkSupportTable = ({ currentFramework, frameworks, featureGro
       </thead>
       <tbody>
         {featureGroups.map(({ name: groupName, features }) => (
-          <>
+          <React.Fragment key={`group_${groupName}`}>
             <tr>
               <th colSpan={frameworks.length + 1}>{groupName}</th>
             </tr>
             {features.map((feature) => (
-              <tr key={feature.name}>
+              <tr key={`${groupName}_${feature.name}`}>
                 <th>
                   <GatsbyLink to={pathForFeature(feature)}>{feature.name}</GatsbyLink>
                 </th>
                 {frameworks.map((framework) => (
-                  <td key={`${framework}-${feature.name}`}>
+                  <td key={`${groupName}-${framework}-${feature.name}`}>
                     {frameworkSupportsFeature(framework, feature) ? '✅' : ''}
                   </td>
                 ))}
               </tr>
             ))}
-          </>
+          </React.Fragment>
         ))}
       </tbody>
     </table>

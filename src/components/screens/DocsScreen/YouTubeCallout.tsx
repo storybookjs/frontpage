@@ -125,7 +125,7 @@ const Summary = styled.summary`
     display: none;
   }
 
-  & > svg:first-child {
+  & > svg:first-of-type {
     color: #f00;
     flex: none;
     margin-right: 10px;

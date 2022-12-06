@@ -38,27 +38,27 @@ const muiRecipe = {
 
 const extraAuthors = [
   {
-    id: '0',
+    id: '10',
     name: 'Shaun Lloyd',
     avatarUrl: 'https://avatars.githubusercontent.com/u/18172605',
   },
   {
-    id: '1',
+    id: '11',
     name: 'Dominic Nguyen',
     avatarUrl: 'https://avatars2.githubusercontent.com/u/263385',
   },
   {
-    id: '2',
+    id: '12',
     name: 'Tom Coleman',
     avatarUrl: 'https://avatars2.githubusercontent.com/u/132554',
   },
   {
-    id: '3',
+    id: '13',
     name: 'Zoltan Olah',
     avatarUrl: 'https://avatars0.githubusercontent.com/u/81672',
   },
   {
-    id: '4',
+    id: '14',
     name: 'Tim Hingston',
     avatarUrl: 'https://avatars3.githubusercontent.com/u/1831709',
   },

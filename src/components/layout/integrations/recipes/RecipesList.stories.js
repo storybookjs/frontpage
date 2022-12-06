@@ -30,7 +30,7 @@ const authors = [
 export const recipeItemsData = [
   {
     type: 'Recipe',
-    id: '0',
+    id: 'recipe_0',
     displayName: 'Material UI',
     icon: MuiSVG,
     accentColor: '#000',
@@ -41,7 +41,7 @@ export const recipeItemsData = [
   },
   {
     type: 'Recipe',
-    id: '1',
+    id: 'recipe_1',
     displayName: 'React i18next',
     icon: I18nextSVG,
     accentColor: '#80cac3',
@@ -52,7 +52,7 @@ export const recipeItemsData = [
   },
   {
     type: 'Recipe',
-    id: '2',
+    id: 'recipe_2',
     displayName: 'Next.js',
     icon: NextJsSVG,
     accentColor: '#000',
@@ -63,7 +63,7 @@ export const recipeItemsData = [
   },
   {
     type: 'Recipe',
-    id: '3',
+    id: 'recipe_3',
     displayName: 'Accessibility',
     name: '@storybook/addon-a11y',
     description: 'Test component compliance with web accessibility standards',
@@ -72,7 +72,7 @@ export const recipeItemsData = [
   },
   {
     type: 'Recipe',
-    id: '4',
+    id: 'recipe_4',
     displayName: 'Actions',
     name: '@storybook/addon-actions',
     description: 'Get UI feedback when an action is performed on an interactive element',
@@ -81,7 +81,7 @@ export const recipeItemsData = [
   },
   {
     type: 'Recipe',
-    id: '5',
+    id: 'recipe_5',
     displayName: 'Backgrounds',
     name: '@storybook/addon-backgrounds',
     description: 'Switch backgrounds to view components in different settings',
@@ -90,7 +90,7 @@ export const recipeItemsData = [
   },
   {
     type: 'Recipe',
-    id: '6',
+    id: 'recipe_6',
     displayName: 'Console',
     name: '@storybook/addon-console',
     description: 'Show console output like logs, errors, and warnings in the Storybook',
@@ -99,7 +99,7 @@ export const recipeItemsData = [
   },
   {
     type: 'Recipe',
-    id: '7',
+    id: 'recipe_7',
     displayName: 'Controls',
     name: '@storybook/addon-controls',
     description: 'Interact with component inputs dynamically in the Storybook UI',
@@ -108,7 +108,7 @@ export const recipeItemsData = [
   },
   {
     type: 'Recipe',
-    id: '8',
+    id: 'recipe_8',
     displayName: 'Docs',
     description: 'Document component usage and properties in Markdown',
     views: 72936,
@@ -116,7 +116,7 @@ export const recipeItemsData = [
   },
   {
     type: 'Recipe',
-    id: '9',
+    id: 'recipe_9',
     displayName: 'Links',
     name: '@storybook/addon-links',
     description: 'Link stories together to build demos and prototypes with your UI components',
@@ -125,7 +125,7 @@ export const recipeItemsData = [
   },
   {
     type: 'Recipe',
-    id: '10',
+    id: 'recipe_10',
     displayName: 'Outline',
     name: 'storybook-addon-outline',
     description: 'Outline all elements with CSS to help with layout placement and alignment',
@@ -134,7 +134,7 @@ export const recipeItemsData = [
   },
   {
     type: 'Recipe',
-    id: '11',
+    id: 'recipe_11',
     displayName: 'Source',
     name: '@storybook/addon-storysource',
     description: 'View a story’s source code to see how it works and paste into your app.',
@@ -143,7 +143,7 @@ export const recipeItemsData = [
   },
   {
     type: 'Recipe',
-    id: '12',
+    id: 'recipe_12',
     displayName: 'Storyshots',
     name: '@storybook/addon-storyshots',
     description: 'Take a code snapshot of every story automatically with Jest',
@@ -152,7 +152,7 @@ export const recipeItemsData = [
   },
   {
     type: 'Recipe',
-    id: '13',
+    id: 'recipe_13',
     displayName: 'Toolbars',
     name: '@storybook/addon-toolbars',
     description: 'Create your own toolbar items that control story rendering',

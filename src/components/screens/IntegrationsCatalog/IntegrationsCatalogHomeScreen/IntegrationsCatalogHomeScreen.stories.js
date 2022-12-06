@@ -26,31 +26,37 @@ const Template = () => (
       trendingTags: [
         {
           link: '/notes',
+          name: 'notes',
           displayName: 'Notes',
           icon: '🗒',
         },
         {
           link: '/storybook',
+          name: 'storybook',
           displayName: 'Storybook',
           icon: '📕',
         },
         {
           link: '/qa',
+          name: 'qa',
           displayName: 'QA',
           icon: '🕵️‍♀️',
         },
         {
           link: '/prototype',
+          name: 'prototype',
           displayName: 'Prototype',
           icon: '✨',
         },
         {
           link: '/testing',
+          name: 'testing',
           displayName: 'Testing',
           icon: '✅',
         },
         {
           link: '/deploy',
+          name: 'deploy',
           displayName: 'Deploy',
           icon: '☁️',
         },
