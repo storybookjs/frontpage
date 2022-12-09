@@ -21,7 +21,7 @@ export const FrameworkSupportTable = ({ currentFramework, frameworks, featureGro
       return `${monorepoUrlBase}/${repoPath}`;
     }
     // Default is it is an addon (moved into the community or actively maintained)
-    return communityAddons[name] || `${monorepoUrlBase}/addons/${name}`;
+    return communityAddons[name] || `${monorepoUrlBase}/code/addons/${name}`;
   }
 
   return (
@@ -30,7 +30,7 @@ export const FrameworkSupportTable = ({ currentFramework, frameworks, featureGro
         <tr>
           <th aria-label="frameworks" />
           {frameworks.map((framework) => (
-            <th key={`framework_${framework}`}>
+            <th key={framework}>
               <GatsbyLink to={`/docs/${framework}`}>{stylizeFramework(framework)}</GatsbyLink>
             </th>
           ))}
@@ -38,23 +38,23 @@ export const FrameworkSupportTable = ({ currentFramework, frameworks, featureGro
       </thead>
       <tbody>
         {featureGroups.map(({ name: groupName, features }) => (
-          <React.Fragment key={`group_${groupName}`}>
+          <>
             <tr>
               <th colSpan={frameworks.length + 1}>{groupName}</th>
             </tr>
             {features.map((feature) => (
-              <tr key={`${groupName}_${feature.name}`}>
+              <tr key={feature.name}>
                 <th>
                   <GatsbyLink to={pathForFeature(feature)}>{feature.name}</GatsbyLink>
                 </th>
                 {frameworks.map((framework) => (
-                  <td key={`${groupName}-${framework}-${feature.name}`}>
+                  <td key={`${framework}-${feature.name}`}>
                     {frameworkSupportsFeature(framework, feature) ? '✅' : ''}
                   </td>
                 ))}
               </tr>
             ))}
-          </React.Fragment>
+          </>
         ))}
       </tbody>
     </table>
