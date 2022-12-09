@@ -78,7 +78,7 @@ const PageHeader = () => (
       </PageSubheading>
     </PageHeadingLeft>
     <PageHeadingRight>
-      <GatsbyLink to="/docs/react/integrations/integration-catalog/">
+      <GatsbyLink to="/docs/react/addons/integration-catalog/">
         <Icon icon="add" />
         Add your integration
       </GatsbyLink>
