@@ -21,7 +21,7 @@ export const FrameworkSupportTable = ({ currentFramework, frameworks, featureGro
       return `${monorepoUrlBase}/${repoPath}`;
     }
     // Default is it is an addon (moved into the community or actively maintained)
-    return communityAddons[name] || `${monorepoUrlBase}/addons/${name}`;
+    return communityAddons[name] || `${monorepoUrlBase}/code/addons/${name}`;
   }
 
   return (
