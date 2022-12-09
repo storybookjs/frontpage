@@ -94,7 +94,7 @@ const siteMetadata = {
       docs: '/docs/react/addons/introduction/',
       install: '/docs/react/addons/install-addons/',
       create: '/docs/react/addons/writing-addons/',
-      publish: '/docs/react/integrations/integration-catalog/',
+      publish: '/docs/react/addons/integration-catalog/',
       controls: `${essentialsBase}/controls`,
       actions: `${essentialsBase}/actions`,
       viewport: `${essentialsBase}/viewport`,
