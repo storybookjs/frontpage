@@ -70,11 +70,42 @@ function fetchRecipesDetailPages(createPage, graphql) {
     .then(validateResponse((data) => data.markdown))
     .then(parseRecipeFiles)
     .then((hash) => {
-      const promises = Object.entries(hash).map(([name, recipe]) =>
-        fetchRecipeMetadata(graphql, name).then((metadata) => {
+      const promises = Object.entries(hash).map(([name, recipe]) => {
+        if (name === 'vuetify') {
+          generateRecipesDetailPage(createPage, recipe, {
+            type: 'Recipe',
+            id: name,
+            name,
+            icon: 'https://avatars.githubusercontent.com/u/22138497?s=200&v=4',
+            accentColor: '#FFFFFF',
+            displayName: 'Vuetify',
+            description:
+              "Vuetify is a Vue based component library based on Google's material design spec.",
+            authors: [
+              {
+                id: 'ShaunLloyd',
+                avatarUrl: 'https://avatars.githubusercontent.com/u/18172605',
+                name: 'Shaun Evening',
+              },
+            ],
+            views: 103259,
+            tags: [
+              {
+                icon: '💅',
+                displayName: 'Style',
+                name: 'style',
+              },
+            ],
+            lastUpdatedAt: Date.now(),
+          });
+
+          return Promise.resolve();
+        }
+
+        return fetchRecipeMetadata(graphql, name).then((metadata) => {
           generateRecipesDetailPage(createPage, recipe, metadata);
-        })
-      );
+        });
+      });
 
       return Promise.all(promises);
     });

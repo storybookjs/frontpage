@@ -24,6 +24,10 @@ export const Callout = styled.div<CalloutProps>`
     background: ${VARIANT_COLORS[variant].background};
     box-shadow: ${VARIANT_COLORS[variant].border} 0 0 0 1px inset;
   `}
+
+  && *:last-child {
+    margin-bottom: 0px;
+  }
 `;
 
 Callout.defaultProps = {
