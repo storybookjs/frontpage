@@ -6,10 +6,12 @@ module.exports = {
   addons: ['@storybook/addon-essentials'],
   core: {},
   webpack: async (config) => {
-    config.module.rules[0].exclude = [/node_modules\/(?!(gatsby)\/)/];
+    config.module.rules[2].exclude = [/node_modules\/(?!(gatsby)\/)/];
+
+    console.log('config.module.rules', JSON.stringify(config.module.rules, null, 2));
 
     // use babel-plugin-remove-graphql-queries to remove static queries from components when rendering in storybook
-    config.module.rules[0].use[0].options.plugins.push([
+    config.module.rules[2].use[0].options.plugins.push([
       require.resolve('babel-plugin-remove-graphql-queries'),
       {
         stage: config.mode === `development` ? 'develop-html' : 'build-html',
