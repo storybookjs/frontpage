@@ -1,4 +1,22 @@
+<div class="aside aside__no-top">
+
 This recipe assumes that you already have a React app using the `@mui/material` package set up with Storybook 6.0 or newer. If you don’t have a project ready, clone my [example repository](https://github.com/ShaunLloyd/storybook-mui-example) to follow along.
+
+</div>
+
+<RecipeHeader>
+
+How to setup Material UI and Storybook
+
+</RecipeHeader>
+
+Material UI offers a set of themeable components that devs can use to start building UIs right away. It’s based on Material Design language from Google.
+
+Storybook is a frontend workbench for building UIs in isolation. By combining Storybook and Material UI, you can build UIs faster without all the grunt work. This recipe shows you how to configure Storybook to load Material UI components and dynamically interact with their API.
+
+📦 Bundle your fonts for fast and consistent rendering
+🎨 Load your custom theme and add a theme switcher
+♻️ Reuse Material UI types to auto-generate story controls
 
 ## Bundle fonts and icons for better perf
 

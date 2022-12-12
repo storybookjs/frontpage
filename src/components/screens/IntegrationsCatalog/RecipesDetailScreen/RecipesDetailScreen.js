@@ -84,6 +84,8 @@ const SectionTitle = styled.h2`
   margin-bottom: ${spacing.padding.small}px;
 `;
 
+const RecipeHeader = (props) => <SectionTitle id="recipe-section" {...props} />;
+
 const StyledHighlight = styled(Highlight)`
   -webkit-text-size-adjust: none;
 
@@ -98,6 +100,16 @@ const ReadMeContent = styled.div`
 
     table {
       display: block;
+    }
+
+    .aside.aside__no-top {
+      margin-top: 0px;
+
+      // Stops code snippet font being 87.5% of
+      // .aside font which is 87.5% of parent
+      code {
+        font-size: inherit;
+      }
     }
   }
 `;
@@ -243,13 +255,11 @@ export const RecipesDetailScreen = ({ path, location, pageContext }) => {
                 </AddonsCallout>
               </section>
             )}
-            <SectionTitle id="recipe-section">
-              How to setup {displayName} and Storybook
-            </SectionTitle>
             <ReadMeContent>
               <MDXProvider
                 components={{
                   pre: Pre,
+                  RecipeHeader,
                 }}
               >
                 <StyledHighlight withHTMLChildren={false}>
