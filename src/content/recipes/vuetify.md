@@ -22,7 +22,7 @@ In this post, we will explain how to
 
 If you’d like to see the example code of this recipe, check out the [example repository](https://github.com/Integrayshaun/vue3-vuetify-storybook-recipe-example) on GitHub. Let's get started!
 
-IMAGE HERE
+![Completed Vuetify example with theme switcher](https://user-images.githubusercontent.com/18172605/207120625-bedb53ec-eac4-4690-a06a-5d0579cb9809.gif)
 
 ## Register Vuetify in Storybook
 
@@ -47,7 +47,7 @@ Here `registerPlugins` loads Vuetify’s fonts and registers all of its componen
 
 Let’s update some of our example components to use Vuetify instead. We’ll use the Button component in `./src/stories/button.vue`.
 
-IMAGE HERE
+![Unchanged example button component from Storybook init](https://user-images.githubusercontent.com/18172605/207120859-0383d01a-6448-4327-94c9-dcb1ec86f868.png)
 
 Currently, it’s not looking very Vuetiful so let’s make some changes. Replace the contents of `./src/stories/Button.vue` with the following code
 
@@ -101,13 +101,13 @@ export default {
 
 Now if we look back at our Storybook, our button is now the Vuetify button. It even changed in our page-level stories.
 
-AMAZING GIF HERE
+![Converting the example button into a Vuetify button](https://user-images.githubusercontent.com/18172605/207120996-cdd40459-97f7-4e40-9782-719c45c38d11.gif)
 
 ## Add a theme switcher tool using globalTypes
 
 Vuetify comes out of the box with a light and dark theme but you can override them and add more. To get the most out of your stories, you should have a way to toggle between all of your themes.
 
-AMAZING GIF OF SWITCHER HERE
+![Switching to Vuetify's dark theme in Storybook](https://user-images.githubusercontent.com/18172605/207120996-cdd40459-97f7-4e40-9782-719c45c38d11.gif)
 
 To add our switcher, we can declare a global variable named `theme` in `.storybook/preview.js` and give it a list of supported themes to choose from.
 
