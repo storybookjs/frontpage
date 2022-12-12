@@ -77,7 +77,7 @@ function fetchRecipesDetailPages(createPage, graphql) {
             id: name,
             name,
             icon: 'https://avatars.githubusercontent.com/u/22138497?s=200&v=4',
-            accentColor: '#FFFFFF',
+            accentColor: '#212121',
             displayName: 'Vuetify',
             description:
               "Vuetify is a Vue based component library based on Google's material design spec.",
