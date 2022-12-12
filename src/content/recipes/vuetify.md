@@ -107,7 +107,7 @@ Now if we look back at our Storybook, our button is now the Vuetify button. It e
 
 Vuetify comes out of the box with a light and dark theme but you can override them and add more. To get the most out of your stories, you should have a way to toggle between all of your themes.
 
-![Switching to Vuetify's dark theme in Storybook](https://user-images.githubusercontent.com/18172605/207120996-cdd40459-97f7-4e40-9782-719c45c38d11.gif)
+![Switching to Vuetify's dark theme in Storybook](https://user-images.githubusercontent.com/18172605/207121142-dbc27018-02d1-438d-b3d1-1d45e265e16a.gif)
 
 To add our switcher, we can declare a global variable named `theme` in `.storybook/preview.js` and give it a list of supported themes to choose from.
 
