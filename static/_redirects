@@ -115,5 +115,6 @@
 /addons/tag/*                               /integrations/tag/:splat                                                                            301
 
 /design-system                              https://master--5ccbc373887ca40020446347.chromatic.com                                              301
+/migration-guides/7.0                       https://chromatic-ui.notion.site/Storybook-7-migration-guide-dbf41fa347304eb2a5e9c69b34503937       301
 
 # Rest of this file is generated (see gatsby-node.js > updateRedirectsFile)
