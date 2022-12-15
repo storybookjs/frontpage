@@ -102,10 +102,24 @@ function DocsScreen({ data, pageContext, location }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [framework]);
   const LinksWithPrefix = useMemo(() => {
-    return ({ href, ...props }) => {
+    return ({ children, href, ...props }) => {
       const url = relativeToRootLinks(href, framework, location.pathname);
-      // eslint-disable-next-line
-      return <a href={url} {...props} />;
+      return (
+        <a href={url} {...props}>
+          {children}
+        </a>
+      );
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [framework]);
+  const LinkWithVersion = useMemo(() => {
+    return ({ children, href, version, ...props }) => {
+      const url = relativeToRootLinks(href, framework, location.pathname, version);
+      return (
+        <a href={url} {...props}>
+          {children}
+        </a>
+      );
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [framework]);
@@ -155,6 +169,7 @@ function DocsScreen({ data, pageContext, location }) {
             FrameworkSupportTable: FrameworkSupportTableWithFeaturesAndCurrentFramework,
             YouTubeCallout,
             a: LinksWithPrefix,
+            LinkWithVersion,
           }}
         >
           <StyledHighlight withHTMLChildren={false}>

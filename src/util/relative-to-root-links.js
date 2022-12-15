@@ -9,7 +9,7 @@ const buildPathWithFramework = require('./build-path-with-framework');
  * ../../app/ember/README remain untouched (these are converted to github links elsewhere)
  * /addons remains untouched
  */
-function relativeToRootLinks(href, framework, path = '') {
+function relativeToRootLinks(href, framework, path = '', version) {
   const relativeUrlRegex = /^(?!\.\.\/\.\.\/)(\.\/)(.*)$/;
   const multiLevelRelativeUrlRegex = /^(?!\.\.\/\.\.\/)(\.\.\/)(.*)$/;
 
@@ -22,7 +22,11 @@ function relativeToRootLinks(href, framework, path = '') {
     url = `/${slugParts.join('/')}`;
   } else if (multiLevelRelativeUrlRegex.test(href)) {
     // rewrite ../some_path style urls to /docs/version/framework/some_path
-    url = buildPathWithFramework(href.replace(multiLevelRelativeUrlRegex, '/docs/$2'), framework);
+    url = buildPathWithFramework(
+      href.replace(multiLevelRelativeUrlRegex, '/docs/$2'),
+      framework,
+      version
+    );
   }
 
   return url;
