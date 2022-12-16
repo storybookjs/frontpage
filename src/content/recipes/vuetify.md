@@ -113,7 +113,7 @@ Vuetify comes out of the box with a light and dark theme that you can override o
 
 ![Switching to Vuetify's dark theme in Storybook](https://user-images.githubusercontent.com/18172605/207121142-dbc27018-02d1-438d-b3d1-1d45e265e16a.gif)
 
-To add our switcher, declare a [global variable](https://storybook.js.org/docs/vue/essentials/toolbars-and-globals) named `theme` in `.storybook/preview.js` and give it a list of supported themes to choose from.
+To add our switcher, declare a [global variable](/docs/vue/essentials/toolbars-and-globals) named `theme` in `.storybook/preview.js` and give it a list of supported themes to choose from.
 
 ```js
 // .storybook/preview.js
@@ -141,7 +141,7 @@ This code will create a new toolbar menu to select your desired theme for your s
 ## Add a `withVuetifyTheme` decorator
 
 There needs to be a way to tell Vuetify to use the theme selected in the toolbar.
-This can be done using a [decorator](https://storybook.js.org/docs/vue/writing-stories/decorators).
+This can be done using a [decorator](/docs/vue/writing-stories/decorators).
 
 Below I created a new file in `.storybook` called `withVuetifyTheme.decorator.js` that will take our global theme value and update Vuetify’s current theme.
 
@@ -193,4 +193,4 @@ export const decorators = [withVuetifyTheme];
 
 Now you're ready to use Vuetify with Storybook. 🎉 Check out the [example repo](https://github.com/Integrayshaun/vue3-vuetify-storybook-recipe-example) for a quick start.
 
-If you use Vuetify at work, we'd love your help making an addon that automatically applies the configuration above. Join the maintainers in [Discord](https://discord.gg/storybook) to get involved, or jump into [addon docs](https://storybook.js.org/docs/vue/addons/introduction).
+If you use Vuetify at work, we'd love your help making an addon that automatically applies the configuration above. Join the maintainers in [Discord](https://discord.gg/storybook) to get involved, or jump into [addon docs](/docs/vue/addons/introduction).
