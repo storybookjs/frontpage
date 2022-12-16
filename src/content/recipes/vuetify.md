@@ -1,10 +1,10 @@
 <div class="aside aside__no-top">
 
-This recipe assumes that you have a Vue 3 app using Vuetify v3 and have just set up Storybook 7.0 using the [getting started guide](https://storybook.js.org/docs/7.0/vue/get-started/install). Don’t have this? Follow Vuetify’s [installation instructions](https://next.vuetifyjs.com/en/getting-started/installation/#installation) then run:
+This recipe assumes that you have a Vue 3 app using Vuetify v3 and have just set up Storybook 7.0 using the [getting started guide](/docs/7.0/vue/get-started/install). Don’t have this? Follow Vuetify’s [installation instructions](https://next.vuetifyjs.com/en/getting-started/installation/#installation) then run:
 
 ```shell
 # Add Storybook:
-npx sb@next init --prerelease
+npx sb@next init
 ```
 
 </div>
@@ -20,9 +20,9 @@ This post will show you how to integrate these two tools to create a powerful an
 
 This post will explain how to:
 
-- 🔌 Setup Vuetify with Storybook
-- 🧱 Use Vuetify in your components
-- 🎨 Switch Vuetify themes in a click
+1. 🔌 Setup Vuetify with Storybook
+2. 🧱 Use Vuetify in your components
+3. 🎨 Switch Vuetify themes in a click
 
 If you’d like to see the example code of this recipe, check out the [example repository](https://github.com/Integrayshaun/vue3-vuetify-storybook-recipe-example) on GitHub. Let's get started!
 
@@ -107,13 +107,13 @@ Now looking back at Storybook, the Vuetify button is being used. It even changed
 
 ![Converting the example button into a Vuetify button](https://user-images.githubusercontent.com/18172605/207120996-cdd40459-97f7-4e40-9782-719c45c38d11.gif)
 
-## Add a theme switcher tool using globalTypes
+## Add a theme switcher tool using `globalTypes`
 
 Vuetify comes out of the box with a light and dark theme that you can override or add to. To get the most out of your stories, you should have a way to toggle between all of your themes.
 
 ![Switching to Vuetify's dark theme in Storybook](https://user-images.githubusercontent.com/18172605/207121142-dbc27018-02d1-438d-b3d1-1d45e265e16a.gif)
 
-To add our switcher, declare a global variable named `theme` in `.storybook/preview.js` and give it a list of supported themes to choose from.
+To add our switcher, declare a [global variable](https://storybook.js.org/docs/vue/essentials/toolbars-and-globals) named `theme` in `.storybook/preview.js` and give it a list of supported themes to choose from.
 
 ```js
 // .storybook/preview.js
@@ -124,7 +124,7 @@ export const globalTypes = {
     description: 'Global theme for components',
     toolbar: {
       icon: 'paintbrush',
-      // Array of plain string values or MenuItem shape (see below)
+      // Array of plain string values or MenuItem shape
       items: [
         { value: 'light', title: 'Light', left: '🌞' },
         { value: 'dark', title: 'Dark', left: '🌛' },
@@ -136,12 +136,12 @@ export const globalTypes = {
 };
 ```
 
-This code will create a new toolbar dropdown to select your desired theme for your stories.
+This code will create a new toolbar menu to select your desired theme for your stories.
 
 ## Add a `withVuetifyTheme` decorator
 
 There needs to be a way to tell Vuetify to use the theme selected in the toolbar.
-This can be done using a decorator.
+This can be done using a [decorator](https://storybook.js.org/docs/vue/writing-stories/decorators).
 
 Below I created a new file in `.storybook` called `withVuetifyTheme.decorator.js` that will take our global theme value and update Vuetify’s current theme.
 
@@ -193,4 +193,4 @@ export const decorators = [withVuetifyTheme];
 
 Now you're ready to use Vuetify with Storybook. 🎉 Check out the [example repo](https://github.com/Integrayshaun/vue3-vuetify-storybook-recipe-example) for a quick start.
 
-If you use Vuetify at work, we'd love your help making an addon that automatically applies the configuration above. Join the maintainers in Discord to get involved, or jump into addon docs.
+If you use Vuetify at work, we'd love your help making an addon that automatically applies the configuration above. Join the maintainers in [Discord](https://discord.gg/storybook) to get involved, or jump into [addon docs](https://storybook.js.org/docs/vue/addons/introduction).
