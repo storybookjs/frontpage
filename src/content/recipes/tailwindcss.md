@@ -183,6 +183,6 @@ export const decorators = [withTailwindTheme];
 
 ## Get involved
 
-Now you're ready to use Tailwind with Storybook. 🎉 Check out the [example repo]() for a quick start.
+Now you're ready to use Tailwind with Storybook. 🎉 Check out the [example repo](https://github.com/Integrayshaun/storybook-tailwind-recipe-example) for a quick start.
 
 If you use Tailwind at work, we'd love your help making an addon that automatically applies the configuration above. Join the maintainers in Discord to get involved, or jump into addon docs.

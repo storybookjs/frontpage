@@ -18,6 +18,12 @@ const StyledCodeSnippets = styled(DesignSystemCodeSnippets)`
     margin: -${spacing.padding.small}px;
     padding: ${spacing.padding.small}px;
   }
+
+  ul {
+    margin-top: 0px !important;
+    margin-bottom: -4px !important;
+    padding-left: 0px !important;
+  }
 `;
 
 export function TabLabel({ name }) {
@@ -45,21 +51,19 @@ export function CodeSnippets({ paths, ...rest }) {
     async function fetchModuleComponents() {
       const fetchedSnippets = await Promise.all(
         paths.map(async (path, index) => {
-          const [recipe, framework, fileName] = path.split('/');
-          // eslint-disable-next-line @typescript-eslint/naming-convention
-          const [_, syntax] = fileName.split('.');
+          const [recipe, fileName] = path.split('/');
+          const prettyName = fileName.replace('.mdx', '');
+
           // Important: this base path has to be present at the beginning of the import
           // (it cannot be a variable) because Webpack needs to know about it to make
           // sure that the MDX files are available to import.
           // See: https://github.com/webpack/webpack/issues/6680#issuecomment-370800037
-          const { default: ModuleComponent } = await import(
-            `../../../../content/recipes/snippets/${path}`
-          );
+          const { default: ModuleComponent } = await import(`../../../../content/snippets/${path}`);
 
           return {
-            id: `${recipe}-${fileName}`,
+            id: `${recipe}-${prettyName}`,
             Snippet: ModuleComponent,
-            renderTabLabel: ({ isActive }) => <TabLabel name={fileName} />,
+            renderTabLabel: ({ isActive }) => <TabLabel name={prettyName} />,
           };
         })
       );
