@@ -8,6 +8,61 @@ const PAGE_COMPONENT_PATH = path.resolve(
   `./src/components/screens/IntegrationsCatalog/RecipesDetailScreen/RecipesDetailScreen.js`
 );
 
+const TEMP_RECIPE_METADATA = {
+  vuetify: (name) => ({
+    type: 'Recipe',
+    id: name,
+    name,
+    icon: 'https://avatars.githubusercontent.com/u/22138497?s=200&v=4',
+    accentColor: '#212121',
+    displayName: 'Vuetify',
+    description:
+      "Vuetify is a Vue-based component library designed with Google's Material Design spec.",
+    authors: [
+      {
+        id: 'ShaunLloyd',
+        avatarUrl: 'https://avatars.githubusercontent.com/u/18172605',
+        name: 'Shaun Evening',
+      },
+    ],
+    views: 0,
+    tags: [
+      {
+        icon: '💅',
+        displayName: 'Style',
+        name: 'style',
+      },
+    ],
+    lastUpdatedAt: Date.now(),
+  }),
+  tailwindcss: (name) => ({
+    type: 'Recipe',
+    id: name,
+    name,
+    icon: 'https://avatars.githubusercontent.com/u/67109815',
+    accentColor: '#212121',
+    displayName: 'Tailwind CSS',
+    description:
+      'Tailwind CSS is a utility-first CSS framework packed with classes to build any design, directly in your markup.',
+    authors: [
+      {
+        id: 'ShaunLloyd',
+        avatarUrl: 'https://avatars.githubusercontent.com/u/18172605',
+        name: 'Shaun Evening',
+      },
+    ],
+    views: 0,
+    tags: [
+      {
+        icon: '💅',
+        displayName: 'Style',
+        name: 'style',
+      },
+    ],
+    lastUpdatedAt: Date.now(),
+  }),
+};
+
 function parseRecipeFiles({ data }) {
   return data.markdown.edges.reduce((hash, next) => {
     const name = next.node.fields.slug.replace('/recipes/', '');
@@ -71,33 +126,9 @@ function fetchRecipesDetailPages(createPage, graphql) {
     .then(parseRecipeFiles)
     .then((hash) => {
       const promises = Object.entries(hash).map(([name, recipe]) => {
-        if (name === 'vuetify') {
-          generateRecipesDetailPage(createPage, recipe, {
-            type: 'Recipe',
-            id: name,
-            name,
-            icon: 'https://avatars.githubusercontent.com/u/22138497?s=200&v=4',
-            accentColor: '#212121',
-            displayName: 'Vuetify',
-            description:
-              "Vuetify is a Vue based component library based on Google's material design spec.",
-            authors: [
-              {
-                id: 'ShaunLloyd',
-                avatarUrl: 'https://avatars.githubusercontent.com/u/18172605',
-                name: 'Shaun Evening',
-              },
-            ],
-            views: 103259,
-            tags: [
-              {
-                icon: '💅',
-                displayName: 'Style',
-                name: 'style',
-              },
-            ],
-            lastUpdatedAt: Date.now(),
-          });
+        if (name in TEMP_RECIPE_METADATA) {
+          const getMetadata = TEMP_RECIPE_METADATA[name];
+          generateRecipesDetailPage(createPage, recipe, getMetadata(name));
 
           return Promise.resolve();
         }

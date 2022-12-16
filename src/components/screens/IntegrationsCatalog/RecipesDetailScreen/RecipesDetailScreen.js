@@ -30,6 +30,7 @@ import { RecipeItemDetail } from '../../../layout/integrations/recipes/RecipeIte
 import { mdFormatting } from '../../../../styles/formatting';
 import { generateBreadcrumb } from '../../../../util/generate-breadcrumb';
 import { generateRecipeGithubIssueLink } from './helpers';
+import { CodeSnippets } from './CodeSnippets';
 
 const { color, typography, spacing } = styles;
 
@@ -260,6 +261,7 @@ export const RecipesDetailScreen = ({ path, location, pageContext }) => {
                 components={{
                   pre: Pre,
                   RecipeHeader,
+                  CodeSnippets,
                 }}
               >
                 <StyledHighlight withHTMLChildren={false}>
