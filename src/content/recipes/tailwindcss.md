@@ -4,7 +4,7 @@ This recipe assumes that you have a React app using Tailwindcss and have just se
 
 ```shell
 # Add Storybook:
-npx sb@next init
+npx sb init
 ```
 
 </div>
@@ -19,10 +19,10 @@ Storybook.js is a fantastic tool for developing and showcasing UI components in 
 
 In this post, we'll go over:
 
-🏗️ Build Tailwind next to Storybook
-🎁 Provide Tailwind to stories
-🧱 Use Tailwind in your components
-🎨 Switch Tailwind themes in a click
+1. 🏗️ Build Tailwind next to Storybook
+2. 🎁 Provide Tailwind to stories
+3. 🧱 Use Tailwind in your components
+4. 🎨 Switch Tailwind themes in a click
 
 ![Finished example of Tailwind CSS in Storybook with a theme switcher](https://user-images.githubusercontent.com/18172605/208201389-1f448dbb-978c-442e-9d6b-7bf3fea63e64.gif)
 
