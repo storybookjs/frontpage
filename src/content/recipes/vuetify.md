@@ -113,7 +113,7 @@ Vuetify comes out of the box with a light and dark theme that you can override o
 
 ![Switching to Vuetify's dark theme in Storybook](https://user-images.githubusercontent.com/18172605/207121142-dbc27018-02d1-438d-b3d1-1d45e265e16a.gif)
 
-To add our switcher, declare a [global variable](/docs/vue/essentials/toolbars-and-globals) named `theme` in `.storybook/preview.js` and give it a list of supported themes to choose from.
+To add our switcher, declare a [global type](/docs/vue/essentials/toolbars-and-globals) named `theme` in `.storybook/preview.js` and give it a list of supported themes to choose from.
 
 ```js
 // .storybook/preview.js

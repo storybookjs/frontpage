@@ -69,7 +69,7 @@ const TEMP_RECIPE_METADATA = {
     accentColor: '#333333',
     displayName: 'Styled Components',
     description:
-      'Styled Components is a css-in-js framework to build fast and functional components',
+      'Styled Components is a css-in-js framework to build fast and functional components.',
     authors: [
       {
         id: 'ShaunLloyd',
@@ -94,7 +94,7 @@ const TEMP_RECIPE_METADATA = {
     icon: 'https://avatars.githubusercontent.com/u/31557565?s=200&v=4',
     accentColor: '#333333',
     displayName: 'Emotion',
-    description: 'Emotion is a css-in-js framework to build fast and functional components',
+    description: 'Emotion is a css-in-js framework to build fast and functional components.',
     authors: [
       {
         id: 'ShaunLloyd',

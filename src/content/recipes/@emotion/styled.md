@@ -15,14 +15,14 @@ How to setup Emotion and Storybook
 
 </RecipeHeader>
 
-Emotion is a popular UI framework for building React components with css-in-js, while Storybook is a tool for creating and testing UI components in isolation.
-This post will show you how to integrate these two tools to create a powerful and flexible development environment for building user interfaces with Styled Components.
+Emotion is a popular library for building UI components with css-in-js, while Storybook is a tool for creating and testing UI components in isolation.
+This post will show you how to integrate these two tools to create a powerful and flexible development environment for building user interfaces with Emotion.
 
 This post will explain how to:
 
-2. 🧱 Use Emotion in your components
-3. 💅 Use a theme in your Stories
-4. 🎨 Switch betweens themes in a click
+1. 🧱 Use Emotion in your components
+2. 💅 Use a theme in your Stories
+3. 🎨 Switch betweens themes in a click
 
 If you’d like to see the example code of this recipe, check out the [example repository](https://github.com/Integrayshaun/emotion-recipe) on GitHub. Let's get started!
 
@@ -205,12 +205,12 @@ export const withTheme = (Story) => (
 );
 ```
 
-All that is left to do is give this decorator to Storybook. Add the decorator to the decorator array in `.storybook/preview.js`:
+All that is left to do is give this decorator to Storybook. Add the decorator to the `decorators` array in `.storybook/preview.js`:
 
 ```js
 // .storybook/preview.js
 
-import { withTheme } from 'styled-components';
+import { withTheme } from './withTheme.decorator';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -271,7 +271,7 @@ Now, to get the most out of your stories, there should be a way to toggle betwee
 
 ![Completed Emotion example with theme switcher](https://user-images.githubusercontent.com/18172605/208312563-875ca3b0-e7bc-4401-a445-4553b48068ed.gif)
 
-To add the switcher, declare a [global variable](/docs/react/essentials/toolbars-and-globals) named `theme` in `.storybook/preview.js` and give it a list of supported themes to choose from.
+To add the switcher, declare a [global type](/docs/react/essentials/toolbars-and-globals) named `theme` in `.storybook/preview.js` and give it a list of supported themes to choose from.
 
 ```js
 // .storybook/preview.js

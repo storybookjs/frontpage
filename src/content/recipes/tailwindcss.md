@@ -1,6 +1,6 @@
 <div class="aside aside__no-top">
 
-This recipe assumes that you have a React app using Tailwindcss and have just set up Storybook >=6.0 using the [getting started guide](/docs/react/get-started/install). Don’t have this? Follow Tailwind's [setup instructions](https://tailwindcss.com/docs/installation) then run:
+This recipe assumes that you have a React app using Tailwind CSS and have just set up Storybook >=6.0 using the [getting started guide](/docs/react/get-started/install). Don’t have this? Follow Tailwind's [setup instructions](https://tailwindcss.com/docs/installation) then run:
 
 ```shell
 # Add Storybook:
@@ -15,9 +15,9 @@ How to setup Tailwind CSS and Storybook
 
 </RecipeHeader>
 
-Storybook.js is a fantastic tool for developing and showcasing UI components in isolation. One of the great things about it is that you can use any CSS framework you like, including tailwind CSS.
+Storybook.js is a fantastic tool for developing and showcasing UI components in isolation. One of the great things about it is that you can use any CSS framework you like, including Tailwind CSS.
 
-In this post, we'll go over:
+In this post, we will:
 
 1. 🏗️ Build Tailwind next to Storybook
 2. 🎁 Provide Tailwind to stories
@@ -28,7 +28,7 @@ In this post, we'll go over:
 
 ## Build Tailwind next to Storybook
 
-To develop your tailwind alongside your stories, you’ll need a development environment that runs two independent but coordinated processes using `concurrently`
+To develop with Tailwind alongside your stories, you’ll need a development environment that runs two independent but coordinated processes using `concurrently`
 
 ```shell
 # install concurrently:
@@ -49,9 +49,9 @@ Then add these updated scripts to your `package.json`
  },
 ```
 
-## Import the tailwind.css file into Storybook
+## Provide Tailwind to stories
 
-Now you can import the tailwind.css file into your .storybook/preview-head.html file. This will make Tailwind’s style classes available to all of your stories.
+Now you can import the `tailwind.css` file into your `.storybook/preview-head.html` file. This will make Tailwind’s style classes available to all of your stories.
 
 ```html
 <!-- ./storybook/preview-head.html -->
@@ -82,18 +82,18 @@ To make use of Tailwind, replace the contents of each component file with the fo
 
 ## Add a theme switcher tool using `globalTypes`
 
-Tailwind comes out of the box with a light and dark theme that you can override them and add more. To get the most out of your stories, you should have a way to toggle between all of your themes.
+Tailwind comes out of the box with a light and dark theme. You can override those themes and add more. To get the most out of your stories, you should have a way to toggle between all of your themes.
 
 ![Finished example of Tailwind CSS in Storybook with a theme switcher](https://user-images.githubusercontent.com/18172605/208201389-1f448dbb-978c-442e-9d6b-7bf3fea63e64.gif)
 
-First of all, update your `tailwind.config.js` file to get change themes based on a class or data-attribute.
+First of all, update your `tailwind.config.js` file to [change themes based on a class or data-attribute](https://tailwindcss.com/docs/dark-mode#customizing-the-class-name). This example uses a data-attribute.
 
 ```js
 // tailwind.config.js
 
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
-  // Toggle dark-mode based on class or data-mode=”dark”
+  // Toggle dark-mode based on data-mode="dark"
   darkMode: ['class', '[data-mode="dark"]'],
   theme: {
     extend: {},
@@ -102,7 +102,7 @@ module.exports = {
 };
 ```
 
-To add the switcher, declare a global variable named theme in `.storybook/preview.js` and give it a list of supported themes to choose from.
+To add the switcher, declare a [global type](/docs/react/essentials/toolbars-and-globals) named "theme" in `.storybook/preview.js` and give it a list of supported themes to choose from.
 
 ```js
 // .storybook/preview.js
@@ -112,7 +112,7 @@ export const globalTypes = {
     description: 'Global theme for components',
     toolbar: {
       icon: 'paintbrush',
-      // Array of plain string values or MenuItem shape (see below)
+      // Array of plain string values or MenuItem shape
       items: [
         { value: 'light', title: 'Light', left: '🌞' },
         { value: 'dark', title: 'Dark', left: '🌛' },
@@ -153,30 +153,12 @@ export const withTailwindTheme = (Story, context) => {
 };
 ```
 
-Now all we have to do is give this decorator to Storybook to wrap our stories in. Add the decorator to the decorator array in .storybook/preview.js:
+Now all we have to do is give this decorator to Storybook to wrap our stories in. Add the decorator to the `decorators` array in `.storybook/preview.js`:
 
 ```js
 import { DEFAULT_THEME, withTailwindTheme } from './withTailwindTheme.decorator';
 
 /* snipped for brevity */
-
-export const globalTypes = {
-  theme: {
-    name: 'Theme',
-    description: 'Global theme for components',
-    defaultValue: DEFAULT_THEME,
-    toolbar: {
-      icon: 'paintbrush',
-      // Array of plain string values or MenuItem shape (see below)
-      items: [
-        { value: 'light', title: 'Light', left: '🌞' },
-        { value: 'dark', title: 'Dark', left: '🌛' },
-      ],
-      // Change title based on selected value
-      dynamicTitle: true,
-    },
-  },
-};
 
 export const decorators = [withTailwindTheme];
 ```
@@ -185,4 +167,4 @@ export const decorators = [withTailwindTheme];
 
 Now you're ready to use Tailwind with Storybook. 🎉 Check out the [example repo](https://github.com/Integrayshaun/storybook-tailwind-recipe-example) for a quick start.
 
-If you use Tailwind at work, we'd love your help making an addon that automatically applies the configuration above. Join the maintainers in Discord to get involved, or jump into addon docs.
+If you use Tailwind at work, we'd love your help making an addon that automatically applies the configuration above. Join the maintainers in [Discord](https://discord.gg/storybook) to get involved, or jump into [addon docs](/docs/react/addons/introduction).
