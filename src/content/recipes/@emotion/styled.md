@@ -1,6 +1,6 @@
 <div class="aside aside__no-top">
 
-This recipe assumes that you have a React app using Emotion and have just set up Storybook >=6.0 using the [getting started guide](/docs/react/get-started/install). Don’t have this? Follow Emotion's [installation instructions]() then run:
+This recipe assumes that you have a React app using Emotion and have just set up Storybook >=6.0 using the [getting started guide](/docs/react/get-started/install). Don’t have this? Follow Emotion's [installation instructions](https://emotion.sh/docs/introduction#react) then run:
 
 ```shell
 # Add Storybook:
@@ -24,7 +24,7 @@ This post will explain how to:
 3. 💅 Use a theme in your Stories
 4. 🎨 Switch betweens themes in a click
 
-If you’d like to see the example code of this recipe, check out the [example repository]() on GitHub. Let's get started!
+If you’d like to see the example code of this recipe, check out the [example repository](https://github.com/Integrayshaun/emotion-recipe) on GitHub. Let's get started!
 
 ![Completed Emotion example with theme switcher](https://user-images.githubusercontent.com/18172605/208312563-875ca3b0-e7bc-4401-a445-4553b48068ed.gif)
 
@@ -342,6 +342,6 @@ export const withTheme = (Story, context) => {
 
 ## Get involved
 
-Now you're ready to use Emotion with Storybook. 🎉 Check out the [example repo]() for a quick start.
+Now you're ready to use Emotion with Storybook. 🎉 Check out the [example repo](https://github.com/Integrayshaun/emotion-recipe) for a quick start.
 
 If you use Emotion at work, we'd love your help making an addon that automatically applies the configuration above. Join the maintainers in [Discord](https://discord.gg/storybook) to get involved, or jump into [addon docs](/docs/react/addons/introduction).
