@@ -269,7 +269,7 @@ export const darkTheme = {
 
 Now, to get the most out of your stories, there should be a way to toggle between themes in a click.
 
-![Switching to dark theme in Storybook](https://user-images.githubusercontent.com/18172605/207121142-dbc27018-02d1-438d-b3d1-1d45e265e16a.gif)
+![Completed Emotion example with theme switcher](https://user-images.githubusercontent.com/18172605/208312563-875ca3b0-e7bc-4401-a445-4553b48068ed.gif)
 
 To add the switcher, declare a [global variable](/docs/react/essentials/toolbars-and-globals) named `theme` in `.storybook/preview.js` and give it a list of supported themes to choose from.
 
