@@ -87,6 +87,31 @@ const TEMP_RECIPE_METADATA = {
     ],
     lastUpdatedAt: Date.now(),
   }),
+  '@emotion/styled': (name) => ({
+    type: 'Recipe',
+    id: name,
+    name,
+    icon: 'https://avatars.githubusercontent.com/u/31557565?s=200&v=4',
+    accentColor: '#333333',
+    displayName: 'Emotion',
+    description: 'Emotion is a css-in-js framework to build fast and functional components',
+    authors: [
+      {
+        id: 'ShaunLloyd',
+        avatarUrl: 'https://avatars.githubusercontent.com/u/18172605',
+        name: 'Shaun Evening',
+      },
+    ],
+    views: 0,
+    tags: [
+      {
+        icon: '💅',
+        displayName: 'Style',
+        name: 'style',
+      },
+    ],
+    lastUpdatedAt: Date.now(),
+  }),
 };
 
 function parseRecipeFiles({ data }) {
