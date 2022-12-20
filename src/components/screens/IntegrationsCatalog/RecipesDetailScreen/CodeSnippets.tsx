@@ -38,20 +38,33 @@ export function PureCodeSnippets(props) {
   return <StyledCodeSnippets className={CODE_SNIPPET_CLASSNAME} {...props} />;
 }
 
+const transformPathToRecipeAndFileName = (path) => {
+  const split = path.split('/');
+
+  // Package name is namespaced. EG: @mui/material
+  if (/^@/.test(split[0])) {
+    const [namespace, packageName, ...fileName] = split;
+
+    return [`${namespace}/${packageName}`, fileName.join('/')];
+  }
+
+  const [packageName, ...fileName] = split;
+
+  return [packageName, fileName.join('/')];
+};
+
 export function CodeSnippets({ paths, ...rest }) {
   const [snippets, setSnippets] = React.useState([]);
 
-  /**
-   * For a path like `web-components/button-story-click-handler-args.js.mdx`,
-   * capture the group `button-story-click-handler-args`
-   */
-  const id = `snippet-${paths[0].match(/^(?:\w+-*)+\/((?:\w+-*)+)/)[1]}`;
+  const [recipe, file] = transformPathToRecipeAndFileName(paths[0]);
+
+  const id = `snippet-${file.match(/^((?:\w+-*)+)/)[1]}`;
 
   useEffect(() => {
     async function fetchModuleComponents() {
       const fetchedSnippets = await Promise.all(
         paths.map(async (path, index) => {
-          const [recipe, fileName] = path.split('/');
+          const [recipeName, fileName] = transformPathToRecipeAndFileName(path);
           const prettyName = fileName.replace('.mdx', '');
 
           // Important: this base path has to be present at the beginning of the import
@@ -61,7 +74,7 @@ export function CodeSnippets({ paths, ...rest }) {
           const { default: ModuleComponent } = await import(`../../../../content/snippets/${path}`);
 
           return {
-            id: `${recipe}-${prettyName}`,
+            id: `${recipeName}-${prettyName}`,
             Snippet: ModuleComponent,
             renderTabLabel: ({ isActive }) => <TabLabel name={prettyName} />,
           };
