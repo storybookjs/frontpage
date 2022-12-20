@@ -16,9 +16,14 @@ function relativeToRootLinks(href, framework, path = '', version) {
   let url = href;
 
   if (relativeUrlRegex.test(href)) {
-    // rewrite ./some_path style urls to /docs/framework/parent/some_path
+    // rewrite ./some_path style urls to /docs/version/framework/parent/some_path
     const slugParts = path.split('/').filter((p) => !!p);
     slugParts.splice(-1, 1, href.replace(relativeUrlRegex, '$2'));
+
+    if (version) {
+      slugParts.splice(1, 0, version);
+    }
+
     url = `/${slugParts.join('/')}`;
   } else if (multiLevelRelativeUrlRegex.test(href)) {
     // rewrite ../some_path style urls to /docs/version/framework/some_path
