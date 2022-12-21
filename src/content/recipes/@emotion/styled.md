@@ -15,7 +15,7 @@ How to setup Emotion and Storybook
 
 </RecipeHeader>
 
-Emotion is a popular library for building UI components with css-in-js, while Storybook is a tool for creating and testing UI components in isolation.
+Emotion is a popular library for building UI components with CSS-in-JS, while Storybook is a tool for creating and testing UI components in isolation.
 This post will show you how to integrate these two tools to create a powerful and flexible development environment for building user interfaces with Emotion.
 
 This post will explain how to:

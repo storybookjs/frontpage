@@ -1,6 +1,6 @@
 <div class="aside aside__no-top">
 
-This recipe assumes that you have a React app using Styled Components and have just set up Storybook >=6.0 using the [getting started guide](/docs/react/get-started/install). Don’t have this? Follow Tailwind's [installation instructions](https://styled-components.com/docs/basics#installation) then run:
+This recipe assumes that you have a React app using styled-components and have just set up Storybook >=6.0 using the [getting started guide](/docs/react/get-started/install). Don’t have this? Follow styled-components' [installation instructions](https://styled-components.com/docs/basics#installation) then run:
 
 ```shell
 # Add Storybook:
@@ -11,26 +11,26 @@ npx sb init
 
 <RecipeHeader>
 
-How to setup Styled Components and Storybook
+How to setup styled-components and Storybook
 
 </RecipeHeader>
 
-Styled Components is a popular library for building UI components with css-in-js, while Storybook is a tool for creating and testing UI components in isolation.
-This post will show you how to integrate these two tools to create a powerful and flexible development environment for building user interfaces with Styled Components.
+styled-components is a popular library for building UI components with CSS-in-JS, while Storybook is a tool for creating and testing UI components in isolation.
+This post will show you how to integrate these two tools to create a powerful and flexible development environment for building user interfaces with styled-components.
 
 This post will explain how to:
 
-1. 🧱 Use Styled Components in your components
+1. 🧱 Use styled-components in your components
 2. 💅 Use a theme in your Stories
 3. 🎨 Switch betweens themes in a click
 
 If you’d like to see the example code of this recipe, check out the [example repository](https://github.com/Integrayshaun/styled-components-recipe) on GitHub. Let's get started!
 
-![Completed Styled Components example with theme switcher](https://user-images.githubusercontent.com/18172605/208312563-875ca3b0-e7bc-4401-a445-4553b48068ed.gif)
+![Completed styled-components example with theme switcher](https://user-images.githubusercontent.com/18172605/208312563-875ca3b0-e7bc-4401-a445-4553b48068ed.gif)
 
-## Using Styled Components
+## Using styled-components
 
-Let’s update some of our example components to use Styled Components instead. Open up the Button component in `./src/stories/button.js.` and replace it with the following code:
+Let’s update some of our example components to use styled-components instead. Open up the Button component in `./src/stories/button.js.` and replace it with the following code:
 
 ```js
 // ./src/stories/button.js
@@ -128,13 +128,13 @@ Button.defaultProps = {
 };
 ```
 
-Now the `Button` component is made with Styled Components. In Storybook, you won't notice a difference at all.
+Now the `Button` component is made with styled-components. In Storybook, you won't notice a difference at all.
 
-## Provide a theme for Styled Components in Storybook
+## Provide a theme for styled-components in Storybook
 
-![Switching over to using a theme for styled components in storybook](https://user-images.githubusercontent.com/18172605/208312571-431a182d-fe2b-40e7-a21f-aaadf55c899e.gif)
+![Switching over to using a theme for styled-components in storybook](https://user-images.githubusercontent.com/18172605/208312571-431a182d-fe2b-40e7-a21f-aaadf55c899e.gif)
 
-One of the benefits of Styled Components is that you can provide a theme to help you style all of your components in a consistent way. Let's create a new `./src/theme.js` and add the following light theme:
+One of the benefits of styled-components is that you can provide a theme to help you style all of your components in a consistent way. Let's create a new `./src/theme.js` and add the following light theme:
 
 ```js
 // ./src/theme.js
@@ -223,7 +223,7 @@ export const parameters = {
 export const decorators = [withTheme];
 ```
 
-Now, components made with Styled Components will get the theme through the `theme` prop. Let's update the example components to use the theme.
+Now, components made with styled-components will get the theme through the `theme` prop. Let's update the example components to use the theme.
 
 <!-- prettier-ignore-start -->
 
@@ -241,7 +241,7 @@ Now, components made with Styled Components will get the theme through the `them
 
 Dark mode has become an increasingly popular offering on the web. This can be achieved quickly using themes.
 
-![Completed Styled Components example with theme switcher](https://user-images.githubusercontent.com/18172605/208312563-875ca3b0-e7bc-4401-a445-4553b48068ed.gif)
+![Completed styled-components example with theme switcher](https://user-images.githubusercontent.com/18172605/208312563-875ca3b0-e7bc-4401-a445-4553b48068ed.gif)
 
 Let's add the following dark theme to `theme.js`
 
@@ -267,7 +267,7 @@ export const darkTheme = {
 
 Now, to get the most out of your stories, there should be a way to toggle between themes in a click.
 
-![Completed Styled Components example with theme switcher](https://user-images.githubusercontent.com/18172605/208312563-875ca3b0-e7bc-4401-a445-4553b48068ed.gif)
+![Completed styled-components example with theme switcher](https://user-images.githubusercontent.com/18172605/208312563-875ca3b0-e7bc-4401-a445-4553b48068ed.gif)
 
 To add the switcher, declare a [global type](/docs/react/essentials/toolbars-and-globals) named `theme` in `.storybook/preview.js` and give it a list of supported themes to choose from.
 
@@ -331,6 +331,6 @@ export const withTheme = (Story, context) => {
 
 ## Get involved
 
-Now you're ready to use Styled components with Storybook. 🎉 Check out the [example repo](https://github.com/Integrayshaun/styled-components-recipe) for a quick start.
+Now you're ready to use styled-components with Storybook. 🎉 Check out the [example repo](https://github.com/Integrayshaun/styled-components-recipe) for a quick start.
 
-If you use Styled components at work, we'd love your help making an addon that automatically applies the configuration above. Join the maintainers in [Discord](https://discord.gg/storybook) to get involved, or jump into [addon docs](/docs/react/addons/introduction).
+If you use styled-components at work, we'd love your help making an addon that automatically applies the configuration above. Join the maintainers in [Discord](https://discord.gg/storybook) to get involved, or jump into [addon docs](/docs/react/addons/introduction).
