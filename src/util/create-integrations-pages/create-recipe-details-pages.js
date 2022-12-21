@@ -8,109 +8,15 @@ const PAGE_COMPONENT_PATH = path.resolve(
   `./src/components/screens/IntegrationsCatalog/RecipesDetailScreen/RecipesDetailScreen.js`
 );
 
+/*
+
+  Used to mock recipe metadata while writing a recipe.
+  Nothing should be mocked when being merged into main
+
+*/
 const TEMP_RECIPE_METADATA = {
-  vuetify: (name) => ({
-    type: 'Recipe',
-    id: name,
-    name,
-    icon: 'https://avatars.githubusercontent.com/u/22138497?s=200&v=4',
-    accentColor: '#212121',
-    displayName: 'Vuetify',
-    description:
-      "Vuetify is a Vue-based component library designed with Google's Material Design spec.",
-    authors: [
-      {
-        id: 'ShaunLloyd',
-        avatarUrl: 'https://avatars.githubusercontent.com/u/18172605',
-        name: 'Shaun Evening',
-      },
-    ],
-    views: 0,
-    tags: [
-      {
-        icon: '💅',
-        displayName: 'Style',
-        name: 'style',
-      },
-    ],
-    lastUpdatedAt: Date.now(),
-  }),
-  tailwindcss: (name) => ({
-    type: 'Recipe',
-    id: name,
-    name,
-    icon: 'https://avatars.githubusercontent.com/u/67109815',
-    accentColor: '#1c264a',
-    displayName: 'Tailwind CSS',
-    description:
-      'Tailwind CSS is a utility-first CSS framework packed with classes to build any design, directly in your markup.',
-    authors: [
-      {
-        id: 'ShaunLloyd',
-        avatarUrl: 'https://avatars.githubusercontent.com/u/18172605',
-        name: 'Shaun Evening',
-      },
-    ],
-    views: 0,
-    tags: [
-      {
-        icon: '💅',
-        displayName: 'Style',
-        name: 'style',
-      },
-    ],
-    lastUpdatedAt: Date.now(),
-  }),
-  'styled-components': (name) => ({
-    type: 'Recipe',
-    id: name,
-    name,
-    icon: 'https://avatars.githubusercontent.com/u/20658825?s=200&v=4',
-    accentColor: '#333333',
-    displayName: 'Styled Components',
-    description:
-      'Styled Components is a css-in-js framework to build fast and functional components.',
-    authors: [
-      {
-        id: 'ShaunLloyd',
-        avatarUrl: 'https://avatars.githubusercontent.com/u/18172605',
-        name: 'Shaun Evening',
-      },
-    ],
-    views: 0,
-    tags: [
-      {
-        icon: '💅',
-        displayName: 'Style',
-        name: 'style',
-      },
-    ],
-    lastUpdatedAt: Date.now(),
-  }),
-  '@emotion/styled': (name) => ({
-    type: 'Recipe',
-    id: name,
-    name,
-    icon: 'https://avatars.githubusercontent.com/u/31557565?s=200&v=4',
-    accentColor: '#333333',
-    displayName: 'Emotion',
-    description: 'Emotion is a css-in-js framework to build fast and functional components.',
-    authors: [
-      {
-        id: 'ShaunLloyd',
-        avatarUrl: 'https://avatars.githubusercontent.com/u/18172605',
-        name: 'Shaun Evening',
-      },
-    ],
-    views: 0,
-    tags: [
-      {
-        icon: '💅',
-        displayName: 'Style',
-        name: 'style',
-      },
-    ],
-    lastUpdatedAt: Date.now(),
+  example: (name) => ({
+    // Mock recipe metadata goes here
   }),
 };
 
