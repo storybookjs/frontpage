@@ -15,18 +15,51 @@ How to setup styled-components and Storybook
 
 </RecipeHeader>
 
-styled-components is a popular library for building UI components with CSS-in-JS, while Storybook is a tool for creating and testing UI components in isolation.
-This post will show you how to integrate these two tools to create a powerful and flexible development environment for building user interfaces with styled-components.
+styled-components is a popular library for building UI components with CSS-in-JS, while Storybook is a tool for creating and testing UI components in isolation. This post will show you how to integrate these two tools to create a powerful and flexible development environment for building user interfaces with styled-components.
 
 This post will explain how to:
 
-1. 🧱 Use styled-components in your components
-2. 💅 Use a theme in your Stories
-3. 🎨 Switch betweens themes in a click
+1. 🔌 Setup `GlobalStyle`
+2. 🧱 Use styled-components in your components
+3. 💅 Use a theme in your stories
+4. 🎨 Switch betweens themes in a click
 
 If you’d like to see the example code of this recipe, check out the [example repository](https://github.com/Integrayshaun/styled-components-recipe) on GitHub. Let's get started!
 
 ![Completed styled-components example with theme switcher](https://user-images.githubusercontent.com/18172605/208312563-875ca3b0-e7bc-4401-a445-4553b48068ed.gif)
+
+## How to setup `GlobalStyle`
+
+UIs often have a set of global styles that are applied to every component like CSS resets, `font-size`, `font-family`, and colors.
+
+In styled-components, use the [`createGlobalStyle`](https://styled-components.com/docs/api#createglobalstyle) API to scope styles globally instead of locally (which is the library's default behavior).
+
+Open `.storybook/previews.js` and create a `GlobalStyle` that includes a `font-family`. Then apply it to all stories via a [decorator](/docs/react/writing-stories/decorators).
+
+```js
+// .storybook/preview.js
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+`;
+
+const withGlobalStyle = (Story) => (
+  <>
+    <GlobalStyle />
+    <Story />
+  </>
+);
+
+export const decorators = [withGlobalStyle];
+```
+
+<div class="aside">
+
+If you already have `GlobalStyle` in your app, you can import it into `.storybook/previews.js` instead of creating it anew.
+
+</div>
 
 ## Using styled-components
 
@@ -128,7 +161,7 @@ Button.defaultProps = {
 };
 ```
 
-Now the `Button` component is made with styled-components. In Storybook, you won't notice a difference at all.
+Now the `Button` component is made with styled-components. In Storybook, you won't notice a visual difference. But if you inspect the DOM, you'll see hashed CSS-in-JS classnames.
 
 ## Provide a theme for styled-components in Storybook
 
@@ -189,7 +222,7 @@ export const lightTheme = {
 
 To share this theme with the components in Storybook, you'll need a [decorator](/docs/react/writing-stories/decorators).
 
-Below I created a new file in `.storybook` called `withTheme.decorator.js` that will wrap your stories with Styled Component's `ThemeProvider`.
+Below I created a new file in `.storybook` called `withTheme.decorator.js` that will wrap your stories with styled-component's `ThemeProvider`.
 
 ```js
 // .storybook/withTheme.decorator.js
@@ -210,6 +243,19 @@ All that is left to do is give this decorator to Storybook. Add the decorator to
 
 import { withTheme } from './withTheme.decorator';
 
+const GlobalStyle = createGlobalStyle`
+  body {
+    font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+`;
+
+const withGlobalStyle = (Story) => (
+  <>
+    <GlobalStyle />
+    <Story />
+  </>
+);
+
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
@@ -220,7 +266,7 @@ export const parameters = {
   },
 };
 
-export const decorators = [withTheme];
+export const decorators = [withGlobalStyle, withTheme];
 ```
 
 Now, components made with styled-components will get the theme through the `theme` prop. Let's update the example components to use the theme.
