@@ -8,6 +8,18 @@ const PAGE_COMPONENT_PATH = path.resolve(
   `./src/components/screens/IntegrationsCatalog/RecipesDetailScreen/RecipesDetailScreen.js`
 );
 
+/*
+
+  Used to mock recipe metadata while writing a recipe.
+  Nothing should be mocked when being merged into main
+
+*/
+const TEMP_RECIPE_METADATA = {
+  example: (name) => ({
+    // Mock recipe metadata goes here
+  }),
+};
+
 function parseRecipeFiles({ data }) {
   return data.markdown.edges.reduce((hash, next) => {
     const name = next.node.fields.slug.replace('/recipes/', '');
@@ -70,11 +82,18 @@ function fetchRecipesDetailPages(createPage, graphql) {
     .then(validateResponse((data) => data.markdown))
     .then(parseRecipeFiles)
     .then((hash) => {
-      const promises = Object.entries(hash).map(([name, recipe]) =>
-        fetchRecipeMetadata(graphql, name).then((metadata) => {
+      const promises = Object.entries(hash).map(([name, recipe]) => {
+        if (name in TEMP_RECIPE_METADATA) {
+          const getMetadata = TEMP_RECIPE_METADATA[name];
+          generateRecipesDetailPage(createPage, recipe, getMetadata(name));
+
+          return Promise.resolve();
+        }
+
+        return fetchRecipeMetadata(graphql, name).then((metadata) => {
           generateRecipesDetailPage(createPage, recipe, metadata);
-        })
-      );
+        });
+      });
 
       return Promise.all(promises);
     });
