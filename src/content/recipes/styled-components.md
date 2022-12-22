@@ -269,7 +269,7 @@ export const parameters = {
 export const decorators = [withGlobalStyle, withTheme];
 ```
 
-Now, components made with styled-components will get the theme through the `theme` prop. Let's update the example components to use the theme.
+Now, components made with styled-components will get the theme through the `theme` prop along with the styles inherited from `GlobalStyle`. Let's update the example components to use the theme.
 
 <!-- prettier-ignore-start -->
 
