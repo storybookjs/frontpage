@@ -57,7 +57,7 @@ export const decorators = [withGlobalStyle];
 
 <div class="aside">
 
-If you already have `GlobalStyle` in your app, you can import it into `.storybook/previews.js` instead of creating it anew.
+If you already have `GlobalStyle` in your app, you can import it into `.storybook/preview.js` instead of creating it anew.
 
 </div>
 
