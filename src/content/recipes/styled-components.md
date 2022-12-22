@@ -39,6 +39,8 @@ Open `.storybook/preview.js` and create a `GlobalStyle` component which includes
 ```js
 // .storybook/preview.js
 
+import { createGlobalStyle } from 'styled-components';
+
 const GlobalStyle = createGlobalStyle`
   body {
     font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -61,7 +63,7 @@ If you already have `GlobalStyle` in your app, you can import it into `.storyboo
 
 </div>
 
-## Using styled-components
+## Use styled-components in components
 
 Let’s update some of our example components to use styled-components instead. Open up the Button component in `./src/stories/button.js.` and replace it with the following code:
 
@@ -228,6 +230,7 @@ Below I created a new file in `.storybook` called `withTheme.decorator.js` that 
 // .storybook/withTheme.decorator.js
 
 import { ThemeProvider } from 'styled-components';
+import { lightTheme } from '../src/theme';
 
 export const withTheme = (Story) => (
   <ThemeProvider theme={lightTheme}>
@@ -241,6 +244,7 @@ All that is left to do is give this decorator to Storybook. Add the decorator to
 ```js
 // .storybook/preview.js
 
+import { createGlobalStyle } from 'styled-components';
 import { withTheme } from './withTheme.decorator';
 
 const GlobalStyle = createGlobalStyle`
@@ -266,7 +270,7 @@ export const parameters = {
   },
 };
 
-export const decorators = [withTheme, withGlobalStyle];
+export const decorators = [withGlobalStyle, withTheme];
 ```
 
 Now, components made with styled-components will get the theme through the `theme` prop along with the styles inherited from `GlobalStyle`. Let's update the example components to use the theme.
@@ -320,6 +324,8 @@ To add the switcher, declare a [global type](/docs/react/essentials/toolbars-and
 ```js
 // .storybook/preview.js
 
+/* snipped for brevity */
+
 export const globalTypes = {
   theme: {
     name: 'Theme',
@@ -355,7 +361,7 @@ const THEMES = {
   dark: darkTheme,
 };
 
-// Sets the background based on theme
+// Sets the background based on theme by creating another global style definition
 const GlobalStyles = createGlobalStyle`
   html, body {
     background-color: ${({ theme }) => theme.colors.background};
