@@ -1,8 +1,8 @@
-const { versionString, latestVersionString } = require('./version-data');
+const { isLatest, versionString } = require('./version-data');
 
 module.exports = function buildPathWithFramework(slug, framework, overrideVersion) {
-  const version = overrideVersion || versionString;
+  const version = overrideVersion || (isLatest ? null : versionString);
   const parts = slug.split('/');
-  parts.splice(2, 0, version === latestVersionString ? framework : `${version}/${framework}`);
+  parts.splice(2, 0, version ? `${version}/${framework}` : framework);
   return parts.join('/');
 };
