@@ -9,28 +9,27 @@ const buildPathWithFramework = require('./build-path-with-framework');
  * ../../app/ember/README remain untouched (these are converted to github links elsewhere)
  * /addons remains untouched
  */
-function relativeToRootLinks(href, framework, path = '', version) {
+function relativeToRootLinks(href, framework, path = '', overrideVersion) {
   const relativeUrlRegex = /^(?!\.\.\/\.\.\/)(\.\/)(.*)$/;
   const multiLevelRelativeUrlRegex = /^(?!\.\.\/\.\.\/)(\.\.\/)(.*)$/;
 
   let url = href;
 
   if (relativeUrlRegex.test(href)) {
-    // rewrite ./some_path style urls to /docs/version/framework/parent/some_path
+    // rewrite ./some_path style urls to /docs/version?/framework/parent/some_path
     const slugParts = path.split('/').filter((p) => !!p);
     slugParts.splice(-1, 1, href.replace(relativeUrlRegex, '$2'));
-
-    if (version) {
-      slugParts.splice(1, 0, version);
-    }
-
     url = `/${slugParts.join('/')}`;
+
+    if (overrideVersion) {
+      url = url.replace(/\/docs\/(?:\d\.\d\/)?/, `/docs/${overrideVersion}/`);
+    }
   } else if (multiLevelRelativeUrlRegex.test(href)) {
-    // rewrite ../some_path style urls to /docs/version/framework/some_path
+    // rewrite ../parent/some_path style urls to /docs/version?/framework/parent/some_path
     url = buildPathWithFramework(
       href.replace(multiLevelRelativeUrlRegex, '/docs/$2'),
       framework,
-      version
+      overrideVersion
     );
   }
 
