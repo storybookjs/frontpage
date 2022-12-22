@@ -21,9 +21,9 @@ This post will show you how to integrate these two tools to create a powerful an
 This post will explain how to:
 
 1. 🔌 Setup `Global` styles
-1. 🧱 Use Emotion in your components
-1. 💅 Use a theme in your stories
-1. 🎨 Switch betweens themes in a click
+2. 🧱 Use Emotion in your components
+3. 💅 Use a theme in your stories
+4. 🎨 Switch betweens themes in a click
 
 If you’d like to see the example code of this recipe, check out the [example repository](https://github.com/Integrayshaun/emotion-recipe) on GitHub. Let's get started!
 
