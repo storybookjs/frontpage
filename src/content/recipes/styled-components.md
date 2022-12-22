@@ -30,9 +30,7 @@ If you’d like to see the example code of this recipe, check out the [example r
 
 ## How to setup `GlobalStyle`
 
-UIs often have a set of global styles that are applied to every component like CSS resets, `font-size`, `font-family`, and colors.
-
-In styled-components, use the [`createGlobalStyle`](https://styled-components.com/docs/api#createglobalstyle) API to scope styles globally instead of locally (which is the library's default behavior).
+UIs often have a set of global styles that are applied to every component like CSS resets, `font-size`, `font-family`, and colors. In styled-components, use the [`createGlobalStyle`](https://styled-components.com/docs/api#createglobalstyle) API to scope styles globally instead of locally (which is the library's default behavior).
 
 Open `.storybook/preview.js` and create a `GlobalStyle` component which includes a `font-family`. Then apply it to all stories via a [decorator](/docs/react/writing-stories/decorators).
 
