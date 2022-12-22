@@ -20,15 +20,51 @@ This post will show you how to integrate these two tools to create a powerful an
 
 This post will explain how to:
 
+1. 🔌 Setup `Global` styles
 1. 🧱 Use Emotion in your components
-2. 💅 Use a theme in your Stories
-3. 🎨 Switch betweens themes in a click
+1. 💅 Use a theme in your stories
+1. 🎨 Switch betweens themes in a click
 
 If you’d like to see the example code of this recipe, check out the [example repository](https://github.com/Integrayshaun/emotion-recipe) on GitHub. Let's get started!
 
 ![Completed Emotion example with theme switcher](https://user-images.githubusercontent.com/18172605/208312563-875ca3b0-e7bc-4401-a445-4553b48068ed.gif)
 
-## Using Emotion
+## How to setup `Global` styles
+
+UIs often have a set of global styles that are applied to every component like CSS resets, `font-size`, `font-family`, and colors.
+
+In Emotion, use the [`Global`](https://emotion.sh/docs/globals) to scope styles globally instead of locally (which is the library's default behavior).
+
+Open `.storybook/preview.js` and create a `Global` component which includes a `font-family`. Then apply it to all stories via a [decorator](/docs/react/writing-stories/decorators).
+
+```js
+// .storybook/preview.js
+
+import { Global, css } from '@emotion/react';
+
+const withGlobalStyle = (Story) => (
+  <>
+    <Global
+      styles={css`
+        body {
+          font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+      `}
+    />
+    <Story />
+  </>
+);
+
+export const decorators = [withGlobalStyle];
+```
+
+<div class="aside">
+
+If you already have `Global` in your app, you can import it into `.storybook/preview.js` instead of creating it anew.
+
+</div>
+
+## Using Emotion in components
 
 Let’s update some of our example components to use Emotion instead. Open up the Button component in `./src/stories/button.js.` and replace it with the following code:
 
@@ -129,7 +165,7 @@ Button.defaultProps = {
 };
 ```
 
-Now the `Button` component is made with Emotion. In Storybook, you won't notice a difference at all.
+Now the `Button` component is made with Emotion. In Storybook, you won't notice a visual difference. But if you inspect the DOM, you'll see hashed CSS-in-JS classnames.
 
 ## Provide a theme for Emotion in Storybook
 
@@ -190,7 +226,7 @@ export const lightTheme = {
 
 To share this theme with the components in Storybook, you'll need a [decorator](/docs/react/writing-stories/decorators).
 
-Below I created a new file in `.storybook` called `withTheme.decorator.js` that will wrap your stories with Styled Component's `ThemeProvider`.
+Below I created a new file in `.storybook` called `withTheme.decorator.js` that will wrap your stories with Emotion's `ThemeProvider`.
 
 ```js
 // .storybook/withTheme.decorator.js
@@ -210,7 +246,21 @@ All that is left to do is give this decorator to Storybook. Add the decorator to
 ```js
 // .storybook/preview.js
 
+import { Global, css } from '@emotion/react';
 import { withTheme } from './withTheme.decorator';
+
+const withGlobalStyle = (Story) => (
+  <>
+    <Global
+      styles={css`
+        body {
+          font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+      `}
+    />
+    <Story />
+  </>
+);
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -222,10 +272,10 @@ export const parameters = {
   },
 };
 
-export const decorators = [withTheme];
+export const decorators = [withGlobalStyle, withTheme];
 ```
 
-Now, components made with Emotion will get the theme through the `theme` prop. Let's update the example components to use the theme.
+Now, components made with Emotion will get the theme through the `theme` prop along with the styles inherited from `Global`. Let's update the example components to use the theme.
 
 <!-- prettier-ignore-start -->
 
@@ -276,6 +326,8 @@ To add the switcher, declare a [global type](/docs/react/essentials/toolbars-and
 ```js
 // .storybook/preview.js
 
+/* snipped for brevity */
+
 export const globalTypes = {
   theme: {
     name: 'Theme',
@@ -311,7 +363,7 @@ const THEMES = {
   dark: darkTheme,
 };
 
-// Sets the background based on theme
+// Sets the background based on theme by creating another global style definition
 const GlobalStyles = () => {
   const theme = useTheme();
 
