@@ -5,7 +5,7 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' cdn.segment.io www.google-analytics.com www.googletagmanager.com *.netlify.app data: platform.twitter.com hcaptcha.com *.hcaptcha.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com hcaptcha.com *.hcaptcha.com; img-src * data:; font-src 'self' fonts.gstatic.com; connect-src 'self' *.segment.io www.google-analytics.com *.netlify.app *.algolia.net api.github.com webmention.io hcaptcha.com *.hcaptcha.com; frame-src app.netlify.com *.youtube.com *.youtube-nocookie.com platform.twitter.com upscri.be hcaptcha.com *.hcaptcha.com; media-src * data:;"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' cdn.segment.io www.google-analytics.com www.googletagmanager.com *.netlify.app data: platform.twitter.com hcaptcha.com *.hcaptcha.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com hcaptcha.com *.hcaptcha.com; img-src * data:; font-src 'self' fonts.gstatic.com; connect-src 'self' *.segment.io www.google-analytics.com *.netlify.app *.algolia.net api.github.com webmention.io hcaptcha.com *.hcaptcha.com; frame-src app.netlify.com *.youtube.com *.youtube-nocookie.com platform.twitter.com upscri.be hcaptcha.com *.hcaptcha.com *.chromatic.com; media-src * data:;"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = ""
     X-Content-Type-Options = "nosniff"
