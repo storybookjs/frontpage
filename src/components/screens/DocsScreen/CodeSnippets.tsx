@@ -136,62 +136,88 @@ function filterPathsByFramework(paths: string[], framework: string) {
   });
 }
 
-export function CodeSnippets({ csf2Path, currentFramework, paths, usesCsf3, ...rest }) {
+export function CodeSnippets({ csf2Path, currentFramework, paths: pathsProp, usesCsf3, ...rest }) {
   const [snippets, setSnippets] = React.useState([]);
-  let activeFrameworkPaths = filterPathsByFramework(paths, currentFramework);
+  const pathsByLanguage = pathsProp.reduce((acc, path) => {
+    const language = path.match(/\.((?:\w|-)+)\.mdx$/)?.[1];
+    if (!language) {
+      throw new Error(
+        `Malformed CodeSnippets path, \`${path}\`. Paths must end with \`*.<language>.mdx\`, where \`<language>\` is \`js\`, \`ts\`, etc.`
+      );
+    }
+    acc[language] = acc[language] || { paths: [] };
+    acc[language].paths.push(path);
+    return acc;
+  }, {});
 
-  if (!activeFrameworkPaths.length) {
-    activeFrameworkPaths = filterPathsByFramework(paths, COMMON);
-  }
+  Object.keys(pathsByLanguage).forEach((language) => {
+    const { paths } = pathsByLanguage[language];
 
-  let defaultFrameworkPaths;
-  if (!activeFrameworkPaths.length) {
-    defaultFrameworkPaths = filterPathsByFramework(paths, 'react');
-  }
+    let activeFrameworkPaths = filterPathsByFramework(paths, currentFramework);
+
+    if (!activeFrameworkPaths.length) {
+      activeFrameworkPaths = filterPathsByFramework(paths, COMMON);
+    }
+
+    let defaultFrameworkPaths;
+    if (!activeFrameworkPaths.length) {
+      defaultFrameworkPaths = filterPathsByFramework(paths, 'react');
+    }
+
+    pathsByLanguage[language].activeFrameworkPaths = activeFrameworkPaths;
+    pathsByLanguage[language].defaultFrameworkPaths = defaultFrameworkPaths;
+  });
 
   /**
    * For a path like `web-components/button-story-click-handler-args.js.mdx`,
    * capture the group `button-story-click-handler-args`
    */
-  const id = `snippet-${paths[0].match(/^(?:\w+-*)+\/((?:\w+-*)+)/)[1]}`;
+  const id = `snippet-${pathsProp[0].match(/^(?:\w+-*)+\/((?:\w+-*)+)/)[1]}`;
 
   useEffect(() => {
     async function fetchModuleComponents() {
-      const fetchedSnippets = await Promise.all(
-        (defaultFrameworkPaths || activeFrameworkPaths).map(async (path, index) => {
-          const [framework, fileName] = path.split('/');
-          // eslint-disable-next-line @typescript-eslint/naming-convention
-          const [_, syntax] = fileName.split('.');
-          // Important: this base path has to be present at the beginning of the import
-          // (it cannot be a variable) because Webpack needs to know about it to make
-          // sure that the MDX files are available to import.
-          // See: https://github.com/webpack/webpack/issues/6680#issuecomment-370800037
-          const { default: ModuleComponent } = await import(
-            `../../../content/docs/snippets/${path}`
+      let fetchedSnippets = [];
+      Object.values(pathsByLanguage).forEach(
+        async ({ activeFrameworkPaths, defaultFrameworkPaths }) => {
+          const newFetchedSnippets = await Promise.all(
+            (defaultFrameworkPaths || activeFrameworkPaths).map(async (path, index) => {
+              const [framework, fileName] = path.split('/');
+              // eslint-disable-next-line @typescript-eslint/naming-convention
+              const [_, syntax] = fileName.split('.');
+              // Important: this base path has to be present at the beginning of the import
+              // (it cannot be a variable) because Webpack needs to know about it to make
+              // sure that the MDX files are available to import.
+              // See: https://github.com/webpack/webpack/issues/6680#issuecomment-370800037
+              const { default: ModuleComponent } = await import(
+                `../../../content/docs/snippets/${path}`
+              );
+
+              let PreSnippet;
+              if (defaultFrameworkPaths) {
+                PreSnippet = () => <MissingMessage currentFramework={currentFramework} />;
+              } else if (usesCsf3) {
+                PreSnippet = () => (
+                  <CsfMessage csf2Path={csf2Path} currentFramework={currentFramework} />
+                );
+              }
+
+              return {
+                id: `${framework}-${syntax}`,
+                PreSnippet,
+                Snippet: ModuleComponent,
+                framework,
+                syntax,
+                renderTabLabel: ({ isActive }) => (
+                  <TabLabel framework={framework} isActive={isActive} syntax={syntax} />
+                ),
+              };
+            })
           );
 
-          let PreSnippet;
-          if (defaultFrameworkPaths) {
-            PreSnippet = () => <MissingMessage currentFramework={currentFramework} />;
-          } else if (usesCsf3) {
-            PreSnippet = () => (
-              <CsfMessage csf2Path={csf2Path} currentFramework={currentFramework} />
-            );
-          }
-
-          return {
-            id: `${framework}-${syntax}`,
-            PreSnippet,
-            Snippet: ModuleComponent,
-            framework,
-            syntax,
-            renderTabLabel: ({ isActive }) => (
-              <TabLabel framework={framework} isActive={isActive} syntax={syntax} />
-            ),
-          };
-        })
+          fetchedSnippets = [...fetchedSnippets, ...newFetchedSnippets];
+          setSnippets(fetchedSnippets);
+        }
       );
-      setSnippets(fetchedSnippets);
     }
 
     fetchModuleComponents();
