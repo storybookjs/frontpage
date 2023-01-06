@@ -129,16 +129,24 @@ export function CsfMessage({
   );
 }
 
+function filterPathsByFramework(paths: string[], framework: string) {
+  return paths.filter((path) => {
+    const [pathFramework] = path.split('/');
+    return pathFramework === framework;
+  });
+}
+
 export function CodeSnippets({ csf2Path, currentFramework, paths, usesCsf3, ...rest }) {
   const [snippets, setSnippets] = React.useState([]);
-  const activeFrameworkPaths = paths.filter((path) => {
-    const [framework] = path.split('/');
-    return framework === currentFramework || framework === COMMON;
-  });
+  let activeFrameworkPaths = filterPathsByFramework(paths, currentFramework);
+
+  if (!activeFrameworkPaths.length) {
+    activeFrameworkPaths = filterPathsByFramework(paths, COMMON);
+  }
 
   let defaultFrameworkPaths;
   if (!activeFrameworkPaths.length) {
-    defaultFrameworkPaths = paths.filter((path) => path.split('/')[0] === 'react');
+    defaultFrameworkPaths = filterPathsByFramework(paths, 'react');
   }
 
   /**
