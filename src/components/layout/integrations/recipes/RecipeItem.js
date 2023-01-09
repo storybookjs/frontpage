@@ -7,6 +7,7 @@ import { Link as GatsbyLinkWrapper } from 'gatsby';
 
 import { IntegrationImage } from '../IntegrationImage';
 import emptySVG from '../../../../images/addon-catalog/recipes/recipe-empty.svg';
+import { VerifiedBadge } from '../VerifiedBadge';
 
 const { hoverEffect, spacing, color, typography, breakpoint } = styles;
 const { inlineGlow } = animation;
@@ -232,7 +233,10 @@ export const RecipeItem = ({
 
       <TextContainer orientation={orientation}>
         <Title isLoading={isLoading}>
-          <span>{isLoading ? 'loading' : `How to setup ${displayName || name} and Storybook`}</span>
+          <span>
+            {isLoading ? 'loading' : `How to setup ${displayName || name} and Storybook`}
+            {!isLoading && <VerifiedBadge appearance="official" />}
+          </span>
         </Title>
         <Description isLoading={isLoading}>
           <span>{isLoading ? 'loading description of recipe' : description}</span>

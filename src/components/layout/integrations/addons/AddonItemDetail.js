@@ -5,7 +5,7 @@ import humanFormat from 'human-format';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import { styles, animation, Cardinal, ClipboardCode, Link, Badge } from '@storybook/design-system';
 import emptySVG from '../../../../images/integrations/addon-empty.svg';
-import { VerifiedBadge } from './VerifiedBadge';
+import { VerifiedBadge } from '../VerifiedBadge';
 import { StorybookBadge } from './StorybookBadge';
 
 const { spacing, color, typography, breakpoint } = styles;
