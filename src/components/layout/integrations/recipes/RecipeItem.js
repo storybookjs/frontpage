@@ -234,7 +234,7 @@ export const RecipeItem = ({
       <TextContainer orientation={orientation}>
         <Title isLoading={isLoading}>
           <span>
-            {isLoading ? 'loading' : `How to setup ${displayName || name} and Storybook`}
+            {isLoading ? 'loading' : `How to setup ${displayName || name}`}
             {!isLoading && <VerifiedBadge appearance="official" />}
           </span>
         </Title>
