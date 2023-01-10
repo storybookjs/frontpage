@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css, styled } from '@storybook/theming';
-import { styles, animation } from '@storybook/design-system';
+import { styled } from '@storybook/theming';
+import { styles } from '@storybook/design-system';
 
 import { IntegrationImage } from '../IntegrationImage';
 import emptySVG from '../../../../images/addon-catalog/recipes/recipe-empty.svg';
@@ -104,12 +104,8 @@ export const RecipeItemDetail = ({
       <RecipeInfo>
         <IntegrationImage icon={icon} accent={accentColor} withConnector />
         <div>
-          <Title>
-            <span>{`Integrate ${formattedName} and Storybook`}</span>
-          </Title>
-          <Description>
-            <span>{formattedDescription}</span>
-          </Description>
+          <Title>{`Integrate ${formattedName} and Storybook`}</Title>
+          <Description>{formattedDescription}</Description>
         </div>
       </RecipeInfo>
     </RecipeItemWrapper>
