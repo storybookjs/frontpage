@@ -278,7 +278,7 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
         <Content>
           {tocSectionTitles && (
             <span hidden id="toc-section-titles">
-              {tocSectionTitles}
+              {`Docs > ${tocSectionTitles}`}
             </span>
           )}
           {(isLatestProp === false || !isLatest) && (
