@@ -256,7 +256,7 @@ export const RecipesDetailScreen = ({ path, location, pageContext }) => {
                 </AddonsCallout>
               </section>
             )}
-            <ReadMeContent>
+            <ReadMeContent id="recipe-content-body">
               <MDXProvider
                 components={{
                   pre: Pre,
