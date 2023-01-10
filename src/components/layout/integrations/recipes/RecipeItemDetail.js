@@ -7,7 +7,6 @@ import { IntegrationImage } from '../IntegrationImage';
 import emptySVG from '../../../../images/addon-catalog/recipes/recipe-empty.svg';
 
 const { color, typography, breakpoint } = styles;
-const { inlineGlow } = animation;
 
 const RecipeItemWrapper = styled.div`
   flex: 1;
@@ -37,15 +36,8 @@ const Image = styled.div`
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-
-  ${(props) =>
-    props.isLoading &&
-    css`
-      ${inlineGlow}
-    `}
 `;
 Image.propTypes = {
-  isLoading: PropTypes.bool.isRequired,
   src: PropTypes.string.isRequired,
 };
 
@@ -68,20 +60,7 @@ const Title = styled.h1`
   span {
     width: 100%;
   }
-
-  ${(props) =>
-    props.isLoading &&
-    css`
-      line-height: ${typography.size.l1}px;
-      span {
-        ${inlineGlow}
-        margin-bottom: 8px;
-      }
-    `}
 `;
-Title.propTypes = {
-  isLoading: PropTypes.bool.isRequired,
-};
 
 const Description = styled.div`
   font-size: ${typography.size.s3}px;
@@ -94,15 +73,6 @@ const Description = styled.div`
   span {
     width: 100%;
   }
-
-  ${(props) =>
-    props.isLoading &&
-    css`
-      line-height: ${typography.size.s3}px;
-      span {
-        ${inlineGlow}
-      }
-    `};
 `;
 
 const RecipeInfo = styled.div`
@@ -120,7 +90,6 @@ export const RecipeItemDetail = ({
   weeklyDownloads,
   appearance,
   status,
-  isLoading,
   verifiedCreator,
   publishedAt,
   npmUrl,
@@ -135,11 +104,11 @@ export const RecipeItemDetail = ({
       <RecipeInfo>
         <IntegrationImage icon={icon} accent={accentColor} withConnector />
         <div>
-          <Title isLoading={isLoading}>
-            <span>{isLoading ? 'loading' : `Integrate ${formattedName} and Storybook`}</span>
+          <Title>
+            <span>{`Integrate ${formattedName} and Storybook`}</span>
           </Title>
-          <Description isLoading={isLoading}>
-            <span>{isLoading ? 'loading description of addon' : formattedDescription}</span>
+          <Description>
+            <span>{formattedDescription}</span>
           </Description>
         </div>
       </RecipeInfo>
@@ -156,7 +125,6 @@ RecipeItemDetail.propTypes = {
   displayName: PropTypes.string,
   description: PropTypes.string,
   weeklyDownloads: PropTypes.number,
-  isLoading: PropTypes.bool,
   verifiedCreator: PropTypes.string,
   publishedAt: PropTypes.number,
   npmUrl: PropTypes.string,
@@ -166,7 +134,6 @@ RecipeItemDetail.defaultProps = {
   appearance: 'community',
   status: 'default',
   weeklyDownloads: 0,
-  isLoading: false,
   name: '',
   description: '',
   verifiedCreator: '',
