@@ -41,14 +41,15 @@ Image.propTypes = {
   src: PropTypes.string.isRequired,
 };
 
+const TextContainer = styled.div`
+  text-align: center;
+`;
+
 const Title = styled.h1`
   font-weight: ${typography.weight.bold};
   font-size: ${typography.size.l1}px;
   line-height: ${typography.size.l2}px;
-  text-align: center;
   color: ${color.darkest};
-  display: flex;
-  align-items: center;
   position: relative;
   margin-top: 1rem;
   margin-bottom: 0.75rem;
@@ -56,16 +57,11 @@ const Title = styled.h1`
   @media (min-width: ${1 * breakpoint}px) {
     margin-top: 1.5rem;
   }
-
-  span {
-    width: 100%;
-  }
 `;
 
-const Description = styled.div`
+const Description = styled.p`
   font-size: ${typography.size.s3}px;
   line-height: 28px;
-  text-align: center;
   color: ${color.darkest};
   position: relative;
   max-width: 600px;
@@ -103,10 +99,10 @@ export const RecipeItemDetail = ({
     <RecipeItemWrapper {...props}>
       <RecipeInfo>
         <IntegrationImage icon={icon} accent={accentColor} withConnector />
-        <div>
+        <TextContainer>
           <Title>{`Integrate ${formattedName} and Storybook`}</Title>
           <Description>{formattedDescription}</Description>
-        </div>
+        </TextContainer>
       </RecipeInfo>
     </RecipeItemWrapper>
   );
