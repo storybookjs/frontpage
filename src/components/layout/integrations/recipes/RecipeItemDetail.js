@@ -65,10 +65,7 @@ const Description = styled.p`
   color: ${color.darkest};
   position: relative;
   max-width: 600px;
-
-  span {
-    width: 100%;
-  }
+  margin: 0;
 `;
 
 const RecipeInfo = styled.div`
