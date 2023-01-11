@@ -2,7 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { color, styled } from '@storybook/theming';
 import Helmet from 'react-helmet';
-import { Nav, LinksContextProvider, Eyebrow, Footer } from '@storybook/components-marketing';
+import {
+  Nav,
+  LinksContextProvider,
+  Eyebrow,
+  Footer,
+  defaultLinks,
+} from '@storybook/components-marketing';
 import { useStaticQuery, graphql } from 'gatsby';
 import GatsbyLinkWrapper from '../basics/GatsbyLinkWrapper';
 import '@docsearch/css';
@@ -18,20 +24,14 @@ const Layout = styled.div``;
 const ALGOLIA_API_KEY = process.env.GATSBY_ALGOLIA_API_KEY;
 
 const navLinks = {
+  ...defaultLinks,
   home: { url: '/', linkWrapper: GatsbyLinkWrapper },
   whyStorybook: { url: '/docs/react/why-storybook', linkWrapper: GatsbyLinkWrapper },
-  componentDriven: { url: 'https://componentdriven.org' },
   guides: { url: '/docs', linkWrapper: GatsbyLinkWrapper },
-  tutorials: { url: 'https://storybook.js.org/tutorials' },
   changelog: { url: '/releases', linkWrapper: GatsbyLinkWrapper },
   telemetry: { url: '/telemetry/', linkWrapper: GatsbyLinkWrapper },
-  showcase: { url: 'https://storybook.js.org/showcase' },
-  projects: { url: 'https://storybook.js.org/showcase/projects' },
-  componentGlossary: { url: 'https://storybook.js.org/showcase/glossary' },
   integrations: { url: '/integrations/', linkWrapper: GatsbyLinkWrapper },
   getInvolved: { url: '/community/', linkWrapper: GatsbyLinkWrapper },
-  blog: { url: 'https://storybook.js.org/blog' },
-  hiring: { url: 'https://www.chromatic.com/company/jobs' },
 };
 
 function activeRouteSection(pathname) {
