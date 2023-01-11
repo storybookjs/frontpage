@@ -142,9 +142,9 @@ export function DocsSearch({ framework, version, visible }: DocsSearchProps) {
             searchParameters={{
               // prettier-ignore
               facetFilters: [
-              'tags:docs',
-              `framework:${framework}`,
-              `version:${version}`
+              ['tags:docs', 'tags:recipes'],
+              [`framework:${framework}`, 'framework:agnostic'],
+              [`version:${version}`, 'version:agnostic'],
             ],
             }}
             translations={{
