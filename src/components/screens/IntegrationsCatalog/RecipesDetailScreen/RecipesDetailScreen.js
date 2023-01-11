@@ -256,7 +256,7 @@ export const RecipesDetailScreen = ({ path, location, pageContext }) => {
                 </AddonsCallout>
               </section>
             )}
-            <ReadMeContent>
+            <ReadMeContent id="recipe-content-body">
               <MDXProvider
                 components={{
                   pre: Pre,
@@ -270,7 +270,7 @@ export const RecipesDetailScreen = ({ path, location, pageContext }) => {
               </MDXProvider>
             </ReadMeContent>
           </ReadMe>
-          <IntegrationsAside hideLearn>
+          <IntegrationsAside id="recipe-sidebar" hideLearn>
             {hasAddons && (
               <>
                 <IntegrationsSubheading>On this page</IntegrationsSubheading>

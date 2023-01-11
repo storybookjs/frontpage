@@ -215,7 +215,7 @@ module.exports = {
             // Generate a sitemap for all pages, all versions, all frameworks
             resolve: `gatsby-plugin-sitemap`,
             options: {
-              output: '/sitemap-all.xml',
+              output: '/sitemap-all',
               query: `
                 {
                   site {

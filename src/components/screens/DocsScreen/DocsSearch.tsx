@@ -142,9 +142,12 @@ export function DocsSearch({ framework, version, visible }: DocsSearchProps) {
             searchParameters={{
               // prettier-ignore
               facetFilters: [
-              'tags:docs',
-              `framework:${framework}`,
-              `version:${version}`
+              // To include recipes in the global doc search
+              // we need to allow for the recipes tag as well
+              // as indexes without a framework or version tied to them
+              ['tags:docs', 'tags:recipes'],
+              [`framework:${framework}`, 'framework:agnostic'],
+              [`version:${version}`, 'version:agnostic'],
             ],
             }}
             translations={{
