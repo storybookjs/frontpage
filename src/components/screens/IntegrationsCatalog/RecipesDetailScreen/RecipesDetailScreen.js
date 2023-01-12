@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { format } from 'date-fns';
-import { Helmet } from 'react-helmet';
 import { styled } from '@storybook/theming';
 import { Link as GatsbyLink } from 'gatsby';
 import { MDXProvider } from '@mdx-js/react';
@@ -243,6 +242,9 @@ export const RecipesDetailScreen = ({ path, location, pageContext }) => {
         <RecipeItemDetail {...recipe} />
         <IntegrationsAsideContainer>
           <ReadMe>
+            <span hidden id="recipe-index-title">
+              {`Recipes » How to setup ${displayName}`}
+            </span>
             {hasAddons && (
               <section>
                 <AddonsCallout variant="positive">
