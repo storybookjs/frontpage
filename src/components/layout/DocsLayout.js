@@ -158,7 +158,6 @@ const supportItems = [
 
 function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
   const {
-    algoliaDocSearchConfig,
     coreFrameworks,
     communityFrameworks,
     urls: { homepageUrl },
@@ -205,13 +204,8 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
             )}/`}
           />
         )}
-        <meta name="docsearch:framework" content={framework} />
-        <meta name="docsearch:version" content={versionString} />
-        <link
-          rel="preconnect"
-          href={`https://${algoliaDocSearchConfig.appId}-dsn.algolia.net`}
-          crossOrigin
-        />
+        <meta key="docsearch:framework" name="docsearch:framework" content={framework} />
+        <meta key="docsearch:version" name="docsearch:version" content={versionString} />
       </Helmet>
       <SubNav>
         <SubNavTabs label="Docs nav" items={docsItems} />

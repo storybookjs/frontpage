@@ -192,7 +192,7 @@ const LastUpdatedAt = ({ recipeName, updatedAt }) => {
 };
 
 export const RecipesDetailScreen = ({ path, location, pageContext }) => {
-  const { ogImageAddons, urls = {}, algoliaDocSearchConfig } = useSiteMetadata();
+  const { ogImageAddons, urls = {} } = useSiteMetadata();
   const { home } = urls;
 
   const {
@@ -222,20 +222,6 @@ export const RecipesDetailScreen = ({ path, location, pageContext }) => {
         url={`${home}${path}`}
         image={ogImageAddons}
       />
-
-      {/* 
-          Set the docsearch index facets so that recipe pages
-          can show up in the global docs search
-      */}
-      <Helmet>
-        <meta name="docsearch:framework" content="agnostic" />
-        <meta name="docsearch:version" content="agnostic" />
-        <link
-          rel="preconnect"
-          href={`https://${algoliaDocSearchConfig.appId}-dsn.algolia.net`}
-          crossOrigin
-        />
-      </Helmet>
 
       <IntegrationsLayout
         hideSidebar
