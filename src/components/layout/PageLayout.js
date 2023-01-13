@@ -57,13 +57,14 @@ function activeRouteSection(pathname) {
 
 export function PurePageLayout({ dxData, children, pageContext, ...props }) {
   const {
-    urls = {},
-    title,
+    algoliaDocSearchConfig,
     description,
-    ogImage,
     googleSiteVerification,
-    versionString,
     latestVersionString,
+    ogImage,
+    title,
+    urls = {},
+    versionString,
   } = useSiteMetadata();
   const isHomePage = props.location.pathname === '/';
 
@@ -102,6 +103,17 @@ export function PurePageLayout({ dxData, children, pageContext, ...props }) {
           />
 
           <meta name="google-site-verification" content={googleSiteVerification} />
+
+          {/* 
+            Set the docsearch index facets defaults
+          */}
+          <meta key="docsearch:framework" name="docsearch:framework" content="agnostic" />
+          <meta key="docsearch:version" name="docsearch:version" content="agnostic" />
+          <link
+            rel="preconnect"
+            href={`https://${algoliaDocSearchConfig.appId}-dsn.algolia.net`}
+            crossOrigin
+          />
         </Helmet>
         {pageContext && pageContext.layout !== 'iframe' && (
           <>

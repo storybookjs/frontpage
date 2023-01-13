@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { format } from 'date-fns';
-import { Helmet } from 'react-helmet';
 import { styled } from '@storybook/theming';
 import { Link as GatsbyLink } from 'gatsby';
 import { MDXProvider } from '@mdx-js/react';
@@ -192,7 +191,7 @@ const LastUpdatedAt = ({ recipeName, updatedAt }) => {
 };
 
 export const RecipesDetailScreen = ({ path, location, pageContext }) => {
-  const { ogImageAddons, urls = {}, algoliaDocSearchConfig } = useSiteMetadata();
+  const { ogImageAddons, urls = {} } = useSiteMetadata();
   const { home } = urls;
 
   const {
@@ -223,20 +222,6 @@ export const RecipesDetailScreen = ({ path, location, pageContext }) => {
         image={ogImageAddons}
       />
 
-      {/* 
-          Set the docsearch index facets so that recipe pages
-          can show up in the global docs search
-      */}
-      <Helmet>
-        <meta name="docsearch:framework" content="agnostic" />
-        <meta name="docsearch:version" content="agnostic" />
-        <link
-          rel="preconnect"
-          href={`https://${algoliaDocSearchConfig.appId}-dsn.algolia.net`}
-          crossOrigin
-        />
-      </Helmet>
-
       <IntegrationsLayout
         hideSidebar
         RenderHeader={() => (
@@ -257,6 +242,9 @@ export const RecipesDetailScreen = ({ path, location, pageContext }) => {
         <RecipeItemDetail {...recipe} />
         <IntegrationsAsideContainer>
           <ReadMe>
+            <span hidden id="recipe-index-title">
+              {`Recipes » How to setup ${displayName}`}
+            </span>
             {hasAddons && (
               <section>
                 <AddonsCallout variant="positive">
