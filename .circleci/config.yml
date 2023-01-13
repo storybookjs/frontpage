@@ -23,8 +23,7 @@ jobs:
       - run: yarn lint
 
       - run: GATSBY_CPU_COUNT=1 GATSBY_SKIP_ADDON_PAGES=true yarn build
-      - run: yarn build-storybook
-      - run: yarn chromatic --storybook-build-dir storybook-static --exit-zero-on-changes
+      - run: yarn chromatic --exit-zero-on-changes
 
 workflows:
   version: 2
@@ -33,4 +32,4 @@ workflows:
       - build:
           filters:
             branches:
-              ignore: \^release-[0-9]+-[0-9]+$\
+              ignore: /^release-[0-9]+-[0-9]+$/
