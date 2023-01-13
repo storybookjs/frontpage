@@ -5,7 +5,7 @@ import humanFormat from 'human-format';
 import { Link as GatsbyLinkWrapper } from 'gatsby';
 import { styles, animation, Cardinal, AvatarList } from '@storybook/design-system';
 import emptySVG from '../../../../images/integrations/addon-empty.svg';
-import { VerifiedBadge } from './VerifiedBadge';
+import { VerifiedBadge } from '../VerifiedBadge';
 
 const { hoverEffect, spacing, color, typography, breakpoint } = styles;
 const { inlineGlow } = animation;

@@ -31,8 +31,8 @@ export const VerifiedBadge = ({ trigger, creator, appearance }) => (
       <TooltipMessage
         desc={
           appearance === 'official'
-            ? 'This addon is maintained and recommended by the Storybook team.'
-            : `This addon is maintained by ${creator}.`
+            ? 'This integration is maintained and recommended by the Storybook team.'
+            : `This integration is maintained by ${creator}.`
         }
       />
     }
