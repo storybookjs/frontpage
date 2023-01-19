@@ -17,7 +17,7 @@
     "@mdx-js/mdx": "^1.6.16",
     "@mdx-js/react": "^1.6.16",
     "@storybook/api": "^6.5.9",
-    "@storybook/components-marketing": "^2.0.43",
+    "@storybook/components-marketing": "^2.0.44",
     "@storybook/design-system": "7.9.0",
     "@storybook/theming": "^6.5.9",
     "core-js": "^3.22.8",
