@@ -9,9 +9,6 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
-// https://docs.netlify.com/configure-builds/file-based-configuration/#deploy-contexts
-const isProduction = process.env.CONTEXT === 'production';
-
 module.exports = {
   siteMetadata: {
     ...siteMetadata,
@@ -84,16 +81,12 @@ module.exports = {
         manualLoad: true,
       },
     },
-    ...(process.env.GOOGLE_TAG_TRACKING_ID && isProduction
-      ? [
-          {
-            resolve: `gatsby-plugin-google-gtag`,
-            options: {
-              trackingIds: [process.env.GOOGLE_TAG_TRACKING_ID],
-            },
-          },
-        ]
-      : []),
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: [process.env.GOOGLE_TAG_TRACKING_ID],
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
