@@ -88,7 +88,7 @@ export function IndexScreen({ pageContext }) {
     youTubeSubscriberCount,
   } = pageContext;
 
-  const { ogImage, urls = {} } = useSiteMetadata();
+  const { ogImageHome, urls = {} } = useSiteMetadata();
   const { home, docs = {} } = urls;
 
   const developRef = useRef(null);
@@ -127,7 +127,7 @@ export function IndexScreen({ pageContext }) {
         title="Storybook: Frontend workshop for UI development"
         desc="Storybook is a frontend workshop for building UI components and pages in isolation. Thousands of teams use it for UI development, testing, and documentation. It’s open source and free."
         url={home}
-        image={ogImage}
+        image={ogImageHome}
       />
       <Hero npmDownloads={npmDownloads} contributorCount={githubContributorCount} />
       <StickyNav isVisible={!!activeSection} docs={docs} activeSection={activeSection} />

@@ -15,8 +15,9 @@ const contributeUrl = `${docsUrl}/react/contribute/how-to-contribute`;
 const siteMetadata = {
   title: 'Storybook: Frontend workshop for UI development',
   description: `Storybook is a frontend workshop for building UI components and pages in isolation. Thousands of teams use it for UI development, testing, and documentation. It’s open source and free.`,
-  ogImage: '/images/social/open-graph.png',
-  ogImageAddons: '/images/social/og-addons.png',
+  ogImage: '/images/social/open-graph.jpg',
+  ogImageAddons: '/images/social/og-addons.jpg',
+  ogImageHome: '/images/social/og-home.jpg',
   siteUrl: homepageUrl, // Used for gatsby-plugin-sitemap
   googleSiteVerification: '_OxxMv1o0aRcxPfieLW0BRsMxxIzkpA9Vv6O0AB5xg0',
   contributorCount: 1440,
