@@ -119,6 +119,8 @@ export function IndexScreen({ pageContext }) {
     return null;
   }, [developInView, testInView, documentInView, shareInView, automateInView, whoInView]);
 
+  console.log(ogImageHome);
+
   return (
     <>
       <GlobalStyle />

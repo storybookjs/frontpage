@@ -9,6 +9,7 @@ const useSiteMetadata = () => {
           description
           siteUrl
           ogImage
+          ogImageHome
           ogImageAddons
           googleSiteVerification
           version
