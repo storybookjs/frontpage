@@ -39,6 +39,7 @@ const StyledBadge = styled(Badge)`
 
 const syntaxNameMap = {
   'stories-of': 'StoriesOf()',
+  'ts-4-9': 'TS 4.9',
 };
 
 const prettifySyntax = (syntax) => {
@@ -149,8 +150,12 @@ export function CodeSnippets({ csf2Path, currentFramework, paths, usesCsf3, ...r
 
   useEffect(() => {
     async function fetchModuleComponents() {
+      const resolvedPaths = (defaultFrameworkPaths || activeFrameworkPaths).flatMap((path) =>
+        // add TS 4.9 snippets
+        path.includes('.ts') ? [path, path.replace('.ts', '.ts-4-9')] : [path]
+      );
       const fetchedSnippets = await Promise.all(
-        (defaultFrameworkPaths || activeFrameworkPaths).map(async (path, index) => {
+        resolvedPaths.map(async (path) => {
           const [framework, fileName] = path.split('/');
           // eslint-disable-next-line @typescript-eslint/naming-convention
           const [_, syntax] = fileName.split('.');
@@ -158,9 +163,14 @@ export function CodeSnippets({ csf2Path, currentFramework, paths, usesCsf3, ...r
           // (it cannot be a variable) because Webpack needs to know about it to make
           // sure that the MDX files are available to import.
           // See: https://github.com/webpack/webpack/issues/6680#issuecomment-370800037
-          const { default: ModuleComponent } = await import(
-            `../../../content/docs/snippets/${path}`
-          );
+
+          let ModuleComponent;
+          try {
+            ModuleComponent = (await import(`../../../content/docs/snippets/${path}`)).default;
+          } catch {
+            // If path doesn't exist, don't show the snippet
+            return null;
+          }
 
           let PreSnippet;
           if (defaultFrameworkPaths) {
@@ -183,7 +193,7 @@ export function CodeSnippets({ csf2Path, currentFramework, paths, usesCsf3, ...r
           };
         })
       );
-      setSnippets(fetchedSnippets);
+      setSnippets(fetchedSnippets.filter((snippet) => snippet != null));
     }
 
     fetchModuleComponents();
