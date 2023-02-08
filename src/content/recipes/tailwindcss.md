@@ -28,34 +28,64 @@ In this post, we will:
 
 ## Build Tailwind next to Storybook
 
-To develop with Tailwind alongside your stories, you’ll need a development environment that runs two independent but coordinated processes using `concurrently`
+<div class="aside aside__no-top">
 
-```shell
-# install concurrently:
-yarn add --dev concurrently
+As of storybook 7, as long as your project is already configured to use postCSS, you can skip this step.
+
+</div>
+
+To develop with Tailwind alongside your stories, storybook will need to know how to handle Tailwind's custom `@tailwind` css directive. We can do this with PostCSS.
+
+To do this we'll need to install a few extra dependencies.
+
+```sh
+yarn add -D postcss autoprefixer @storybook/addon-postcss
+
 ```
 
-Then add these updated scripts to your `package.json`
+Create a `postcss.config.js` file like so:
 
-```json
-"scripts": {
-   "//": "New scripts to run and build Storybook with Tailwind",
-   "storybook": "concurrently \"yarn:watch:*\"",
-   "build-storybook": "concurrently \"yarn:build:*\"",
-   "build:css": "npx tailwindcss -i ./src/tailwind.css -o ./public/tailwind.css",
-   "build:storybook": "storybook build",
-   "watch:css": "npx tailwindcss -i ./src/tailwind.css -o ./public/tailwind.css --watch",
-   "watch:storybook": "storybook dev -p 6006"
- },
+```js
+// postcss.config.js
+
+module.exports = {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+};
+```
+
+Then add the `@storybook/addon-postcss` to your `.storybook/main.js` file.
+
+```diff
+module.exports = {
+  addons: [
+    "@storybook/addon-links",
+    "@storybook/addon-essentials",
+    "@storybook/preset-create-react-app",
+    "@storybook/addon-interactions"
++   {
++     name: '@storybook/addon-postcss',
++     options: {
++       postcssLoaderOptions: {
++         implementation: require('postcss'),
++       },
++     },
++   },
+  ],
+  // Snipped for brevity
+}
 ```
 
 ## Provide Tailwind to stories
 
-Now you can import the `tailwind.css` file into your `.storybook/preview-head.html` file. This will make Tailwind’s style classes available to all of your stories.
+Now you can import the `tailwind.css` file into your `.storybook/preview.js` file. This will make Tailwind’s style classes available to all of your stories.
 
-```html
-<!-- ./storybook/preview-head.html -->
-<link href="/tailwind.css" rel="stylesheet" />
+```js
+// .storybook/preview.js
+
+import '../src/tailwind.js'; // replace with the name of your tailwind css file
 ```
 
 ## Use Tailwind in components
