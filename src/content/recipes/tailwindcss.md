@@ -39,7 +39,7 @@ To develop with Tailwind alongside your stories, storybook will need to know how
 To do this we'll need to install a few extra dependencies.
 
 ```sh
-yarn add -D postcss autoprefixer @storybook/addon-postcss
+yarn add -D postcss autoprefixer postcss-loader
 
 ```
 
@@ -56,7 +56,7 @@ module.exports = {
 };
 ```
 
-Then add the `@storybook/addon-postcss` to your `.storybook/main.js` file.
+Then add the `postcss-loader` to storybook using the `webpackFinal` option your `.storybook/main.js` file.
 
 ```diff
 module.exports = {
@@ -65,16 +65,24 @@ module.exports = {
     "@storybook/addon-essentials",
     "@storybook/preset-create-react-app",
     "@storybook/addon-interactions"
-+   {
-+     name: '@storybook/addon-postcss',
-+     options: {
-+       postcssLoaderOptions: {
-+         implementation: require('postcss'),
-+       },
-+     },
-+   },
   ],
+
   // Snipped for brevity
+
++ webpackFinal: async (config) => {
++   config.module.rules.push({
++     test: /\.css$/i,
++     use: [
++       {
++         loader: "postcss-loader",
++         options: { implementation: require.resolve("postcss") },
++       },
++     ],
++     include: path.resolve(__dirname, "../"),
++   });
++   // Return the altered config
++   return config;
++ },
 }
 ```
 
