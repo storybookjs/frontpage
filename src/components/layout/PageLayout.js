@@ -121,7 +121,7 @@ export function PurePageLayout({ dxData, children, pageContext, ...props }) {
           <meta
             key={GLOBAL_SEARCH_META_KEYS.IMPORTANCE}
             name={GLOBAL_SEARCH_META_KEYS.IMPORTANCE}
-            content={GLOBAL_SEARCH_IMPORTANCE.RECIPE}
+            content={GLOBAL_SEARCH_IMPORTANCE.AGNOSTIC}
           />
           <link
             rel="preconnect"

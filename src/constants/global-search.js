@@ -6,5 +6,5 @@ export const GLOBAL_SEARCH_META_KEYS = {
 
 export const GLOBAL_SEARCH_IMPORTANCE = {
   DOCS: 0,
-  RECIPE: 1,
+  AGNOSTIC: 1,
 };
