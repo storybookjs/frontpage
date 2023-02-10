@@ -39,18 +39,21 @@ Open `.storybook/preview.js` and create a `Global` component which includes a `f
 
 ```js
 // .storybook/preview.js
-
 import { Global, css } from '@emotion/react';
+
+const GlobalStyle = () => (
+  <Global
+    styles={css`
+      body {
+        font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      }
+    `}
+  />
+);
 
 const withGlobalStyle = (Story) => (
   <>
-    <Global
-      styles={css`
-        body {
-          font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        }
-      `}
-    />
+    <GlobalStyle />
     <Story />
   </>
 );
@@ -226,40 +229,36 @@ export const lightTheme = {
 
 To share this theme with the components in Storybook, you'll need a [decorator](/docs/react/writing-stories/decorators).
 
-Below I created a new file in `.storybook` called `withTheme.decorator.js` that will wrap your stories with Emotion's `ThemeProvider`.
+Our [`@storybook/addon-styling`](https://github.com/storybookjs/addon-styling) addon comes with a decorator to do just that.
 
-```js
-// .storybook/withTheme.decorator.js
-
-import { ThemeProvider } from '@emotion/react';
-import { lightTheme } from '../src/theme';
-
-export const withTheme = (Story) => (
-  <ThemeProvider theme={lightTheme}>
-    <Story />
-  </ThemeProvider>
-);
+```shell
+yarn add -D @storybook/addon-styling
 ```
 
-All that is left to do is give this decorator to Storybook. Add the decorator to the `decorators` array in `.storybook/preview.js`:
+Register the addon in `.storybook/main.js`
+
+```js
+module.exports = {
+  stories: ['../stories/**/*.stories.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
+  addons: ['@storybook/addon-essentials', '@storybook/addon-styling'],
+};
+```
+
+All that is left to do is give this decorator to Storybook. Add the [`withThemeFromJSXProvider`](https://github.com/storybookjs/addon-styling/blob/main/docs/api.md#withthemefromjsxprovider) to the `decorators` array in `.storybook/preview.js`:
 
 ```js
 // .storybook/preview.js
+import { Global, css, ThemeProvider } from '@emotion/react';
+import { lightTheme } from '../src/themes';
 
-import { Global, css } from '@emotion/react';
-import { withTheme } from './withTheme.decorator';
-
-const withGlobalStyle = (Story) => (
-  <>
-    <Global
-      styles={css`
-        body {
-          font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        }
-      `}
-    />
-    <Story />
-  </>
+const GlobalStyle = () => (
+  <Global
+    styles={css`
+      body {
+        font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      }
+    `}
+  />
 );
 
 export const parameters = {
@@ -272,7 +271,17 @@ export const parameters = {
   },
 };
 
-export const decorators = [withGlobalStyle, withTheme];
+// withThemeFromJSXProvider can also provide your GlobalStyle so
+// you can remove your withGlobalStyle decorator
+export const decorators = [
+  withThemeFromJSXProvider({
+  themes: {
+    light: lightTheme,
+  }
+  defaultTheme: 'light',
+  Provider: ThemeProvider,
+  GlobalStyles: GlobalStyle,
+})];
 ```
 
 Now, components made with Emotion will get the theme through the `theme` prop along with the styles inherited from `Global`. Let's update the example components to use the theme.
@@ -289,7 +298,7 @@ Now, components made with Emotion will get the theme through the `theme` prop al
 
 <!-- prettier-ignore-end -->
 
-## Add a theme switcher tool using `globalTypes`
+## Add a theme switcher tool using `@storybook/addon-styling`
 
 Dark mode has become an increasingly popular offering on the web. This can be achieved quickly using themes.
 
@@ -321,76 +330,28 @@ Now, to get the most out of your stories, there should be a way to toggle betwee
 
 ![Completed Emotion example with theme switcher](https://user-images.githubusercontent.com/18172605/208312563-875ca3b0-e7bc-4401-a445-4553b48068ed.gif)
 
-To add the switcher, declare a [global type](/docs/react/essentials/toolbars-and-globals) named `theme` in `.storybook/preview.js` and give it a list of supported themes to choose from.
+To add the switcher, add your `darkTheme` object into the the `withThemeFromJSXProvider` decorator themes object
 
 ```js
 // .storybook/preview.js
+import { Global, css, ThemeProvider } from '@emotion/react';
+import { lightTheme, darkTheme } from '../src/themes';
 
 /* snipped for brevity */
 
-export const globalTypes = {
-  theme: {
-    name: 'Theme',
-    description: 'Global theme for components',
-    toolbar: {
-      icon: 'paintbrush',
-      // Array of plain string values or MenuItem shape
-      items: [
-        { value: 'light', title: 'Light', left: '🌞' },
-        { value: 'dark', title: 'Dark', left: '🌛' },
-      ],
-      // Change title based on selected value
-      dynamicTitle: true,
-    },
-  },
-};
+export const decorators = [
+  withThemeFromJSXProvider({
+  themes: {
+    light: lightTheme,
+    dark: darkTheme,
+  }
+  defaultTheme: 'light',
+  Provider: ThemeProvider,
+  GlobalStyles: GlobalStyle,
+})];
 ```
 
-This code will create a new toolbar menu to select your desired theme for your stories.
-
-## Update `withTheme` to change themes
-
-The last step to switch between themes is to update the `withTheme` decorator to change the theme based on the selected value of the `theme` global variable.
-
-```js
-// .storybook/withTheme.decorator.js
-
-import { css, Global, ThemeProvider, useTheme } from '@emotion/react';
-import { lightTheme, darkTheme } from '../src/theme';
-
-const THEMES = {
-  light: lightTheme,
-  dark: darkTheme,
-};
-
-// Sets the background based on theme by creating another global style definition
-const GlobalStyles = () => {
-  const theme = useTheme();
-
-  return (
-    <Global
-      styles={css`
-        html,
-        body {
-          background-color: ${theme.colors.background};
-          color: ${theme.colors.text};
-        }
-      `}
-    />
-  );
-};
-
-export const withTheme = (Story, context) => {
-  const { theme } = context.globals;
-
-  return (
-    <ThemeProvider theme={THEMES[theme] || THEMES['light']}>
-      <GlobalStyles />
-      <Story />
-    </ThemeProvider>
-  );
-};
-```
+Adding a second theme will create a new toolbar menu to select your desired theme for your stories.
 
 ## Get involved
 
