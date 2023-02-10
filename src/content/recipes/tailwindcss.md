@@ -36,14 +36,13 @@ As of storybook 7, as long as your project is already configured to use postCSS,
 
 To develop with Tailwind alongside your stories, storybook will need to know how to handle Tailwind's custom `@tailwind` css directive. We can do this with PostCSS.
 
-To do this we'll need to install a few extra dependencies.
+First of all, install a few extra dependencies.
 
-```sh
+```shell
 yarn add -D postcss autoprefixer postcss-loader
-
 ```
 
-Create a `postcss.config.js` file like so:
+Now create a `postcss.config.js` file in the root of your project.
 
 ```js
 // postcss.config.js
