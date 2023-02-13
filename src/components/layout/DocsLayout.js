@@ -24,6 +24,7 @@ import buildPathWithFramework from '../../util/build-path-with-framework';
 import { FrameworkSelector } from '../screens/DocsScreen/FrameworkSelector';
 import { VersionSelector } from '../screens/DocsScreen/VersionSelector';
 import { VersionCTA } from '../screens/DocsScreen/VersionCTA';
+import { GLOBAL_SEARCH_IMPORTANCE, GLOBAL_SEARCH_META_KEYS } from '../../constants/global-search';
 
 const { breakpoint, pageMargins } = styles;
 const { GlobalStyle } = global;
@@ -204,8 +205,21 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
             )}/`}
           />
         )}
-        <meta key="docsearch:framework" name="docsearch:framework" content={framework} />
-        <meta key="docsearch:version" name="docsearch:version" content={versionString} />
+        <meta
+          key={GLOBAL_SEARCH_META_KEYS.FRAMEWORK}
+          name={GLOBAL_SEARCH_META_KEYS.FRAMEWORK}
+          content={framework}
+        />
+        <meta
+          key={GLOBAL_SEARCH_META_KEYS.VERSION}
+          name={GLOBAL_SEARCH_META_KEYS.VERSION}
+          content={versionString}
+        />
+        <meta
+          key={GLOBAL_SEARCH_META_KEYS.IMPORTANCE}
+          name={GLOBAL_SEARCH_META_KEYS.IMPORTANCE}
+          content={GLOBAL_SEARCH_IMPORTANCE.DOCS}
+        />
       </Helmet>
       <SubNav>
         <SubNavTabs label="Docs nav" items={docsItems} />

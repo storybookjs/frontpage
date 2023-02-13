@@ -18,6 +18,7 @@ import DocsLayout from './DocsLayout';
 import useSiteMetadata from '../lib/useSiteMetadata';
 
 import { SocialGraph } from '../basics';
+import { GLOBAL_SEARCH_IMPORTANCE, GLOBAL_SEARCH_META_KEYS } from '../../constants/global-search';
 
 const Layout = styled.div``;
 
@@ -107,8 +108,21 @@ export function PurePageLayout({ dxData, children, pageContext, ...props }) {
           {/* 
             Set the docsearch index facets defaults
           */}
-          <meta key="docsearch:framework" name="docsearch:framework" content="agnostic" />
-          <meta key="docsearch:version" name="docsearch:version" content="agnostic" />
+          <meta
+            key={GLOBAL_SEARCH_META_KEYS.FRAMEWORK}
+            name={GLOBAL_SEARCH_META_KEYS.FRAMEWORK}
+            content="agnostic"
+          />
+          <meta
+            key={GLOBAL_SEARCH_META_KEYS.VERSION}
+            name={GLOBAL_SEARCH_META_KEYS.VERSION}
+            content="agnostic"
+          />
+          <meta
+            key={GLOBAL_SEARCH_META_KEYS.IMPORTANCE}
+            name={GLOBAL_SEARCH_META_KEYS.IMPORTANCE}
+            content={GLOBAL_SEARCH_IMPORTANCE.AGNOSTIC}
+          />
           <link
             rel="preconnect"
             href={`https://${algoliaDocSearchConfig.appId}-dsn.algolia.net`}
