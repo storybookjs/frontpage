@@ -28,17 +28,34 @@ If you’d like to see the example code of this recipe, check out the [example r
 
 ![Completed styled-components example with theme switcher](https://user-images.githubusercontent.com/18172605/208312563-875ca3b0-e7bc-4401-a445-4553b48068ed.gif)
 
+## Install `@storybook/addon-styling`
+
+Add the `@storybook/addon-styling` package to your DevDependencies
+
+```shell
+yarn add -D @storybook/addon-styling
+```
+
+Then register with Storybook in `.storybook/main.js`.
+
+```js
+module.exports = {
+  stories: ['../stories/**/*.stories.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
+  addons: ['@storybook/addon-essentials', '@storybook/addon-styling'],
+};
+```
+
 ## How to setup `GlobalStyle`
 
 UIs often have a set of global styles that are applied to every component like CSS resets, `font-size`, `font-family`, and colors.
 
 In styled-components, use the [`createGlobalStyle`](https://styled-components.com/docs/api#createglobalstyle) API to scope styles globally instead of locally (which is the library's default behavior).
 
-Open `.storybook/preview.js` and create a `GlobalStyle` component which includes a `font-family`. Then apply it to all stories via a [decorator](/docs/react/writing-stories/decorators).
+Open `.storybook/preview.js` and create a `GlobalStyle` component which includes a `font-family`. Then apply it to your stories with the [`withThemeFromJSXProvider`](https://github.com/storybookjs/addon-styling/blob/main/docs/api.md#withthemefromjsxprovider) decorator by adding it to the `decorators` array.
 
 ```js
 // .storybook/preview.js
-
+import { withThemeFromJSXProvider } from '@storybook/addon-styling';
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
@@ -47,14 +64,11 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const withGlobalStyle = (Story) => (
-  <>
-    <GlobalStyle />
-    <Story />
-  </>
-);
-
-export const decorators = [withGlobalStyle];
+export const decorators = [
+  withThemeFromJSXProvider({
+    GlobalStyles: GlobalStyle, // Adds your GlobalStyle component to all stories
+  }),
+];
 ```
 
 <div class="aside">
@@ -222,29 +236,12 @@ export const lightTheme = {
 };
 ```
 
-To share this theme with the components in Storybook, you'll need a [decorator](/docs/react/writing-stories/decorators).
-
-Our [`@storybook/addon-styling`](https://github.com/storybookjs/addon-styling) addon comes with a decorator to do just that.
-
-```shell
-yarn add -D @storybook/addon-styling
-```
-
-Register the addon in `.storybook/main.js`
-
-```js
-module.exports = {
-  stories: ['../stories/**/*.stories.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
-  addons: ['@storybook/addon-essentials', '@storybook/addon-styling'],
-};
-```
-
-All that is left to do is give this decorator to Storybook. Add the [`withThemeFromJSXProvider`](https://github.com/storybookjs/addon-styling/blob/main/docs/api.md#withthemefromjsxprovider) to the `decorators` array in `.storybook/preview.js`:
+To share this theme with the components in Storybook, you'll need to provide to the `withThemeFromJSXProvider` decorator along with `styled-components` ThemeProvider component.
 
 ```js
 // .storybook/preview.js
-import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { withThemeFromJSXProvider } from '@storybook/addon-styling';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
 import { lightTheme } from '../src/themes';
 
@@ -254,18 +251,6 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export const parameters = {
-  actions: { argTypesRegex: '^on[A-Z].*' },
-  controls: {
-    matchers: {
-      color: /(background|color)$/i,
-      date: /Date$/,
-    },
-  },
-};
-
-// withThemeFromJSXProvider can also provide your GlobalStyle so
-// you can remove your withGlobalStyle decorator
 export const decorators = [
   withThemeFromJSXProvider({
   themes: {
