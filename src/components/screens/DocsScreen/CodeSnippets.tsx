@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { rgba } from 'polished';
+import { basename } from 'path';
 import { styled } from '@storybook/theming';
 import {
   Badge,
@@ -11,6 +12,7 @@ import {
 
 import { CODE_SNIPPET_CLASSNAME } from '../../../constants/code-snippets';
 import stylizeFramework from '../../../util/stylize-framework';
+import { logSnippetInteraction } from '../../../util/custom-events';
 
 const { color, spacing, typography } = styles;
 
@@ -202,7 +204,14 @@ export function CodeSnippets({ csf2Path, currentFramework, paths, usesCsf3, ...r
 
   if (!snippets.length) return null;
 
-  return <PureCodeSnippets snippets={snippets} id={id} {...rest} />;
+  const snippetType = basename(paths[0], '.mdx');
+
+  return (
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+    <div onClick={() => logSnippetInteraction(currentFramework, snippetType)}>
+      <PureCodeSnippets snippets={snippets} id={id} {...rest} />
+    </div>
+  );
 }
 
 CodeSnippets.propTypes = {

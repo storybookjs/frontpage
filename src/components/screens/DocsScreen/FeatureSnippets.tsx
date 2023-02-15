@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { basename } from 'path';
+import { basename, parse } from 'path';
+import { logSnippetInteraction } from '../../../util/custom-events';
 
 const FALLBACK = 'fallback';
 
@@ -13,14 +14,12 @@ export function PureFeatureSnippets({ framework, snippetsByFramework }) {
     }
   }
 
-  return (
-    <div className="aside">
-      <Snippet />
-    </div>
-  );
+  return <Snippet />;
 }
 
 export function FeatureSnippets({ currentFramework, paths }) {
+  const snippetType = parse(paths[0]).dir;
+
   const [snippetsByFramework, setSnippetsByFramework] = useState({});
   useEffect(() => {
     const fetchSnippetsByFramework = async () => {
@@ -41,6 +40,9 @@ export function FeatureSnippets({ currentFramework, paths }) {
   }, []);
 
   return (
-    <PureFeatureSnippets framework={currentFramework} snippetsByFramework={snippetsByFramework} />
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+    <div className="aside" onClick={() => logSnippetInteraction(currentFramework, snippetType)}>
+      <PureFeatureSnippets framework={currentFramework} snippetsByFramework={snippetsByFramework} />
+    </div>
   );
 }
