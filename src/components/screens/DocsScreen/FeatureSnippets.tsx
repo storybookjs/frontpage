@@ -1,16 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { basename } from 'path';
+import { basename, parse } from 'path';
+import { logSnippetInteraction } from '../../../util/custom-events';
 
 const FALLBACK = 'fallback';
-const INSTALL_PATH = 'get-started/installation-command-section';
 
-function logInstall(framework) {
-  if (typeof window !== 'undefined' && (window as any).gtag) {
-    (window as any).gtag('event', 'install_storybook', { framework });
-  }
-}
-
-export function PureFeatureSnippets({ framework, snippetsByFramework, isInstallSnippet }) {
+export function PureFeatureSnippets({ framework, snippetsByFramework }) {
   let Snippet = snippetsByFramework[framework];
   if (!Snippet) {
     Snippet = snippetsByFramework[FALLBACK];
@@ -20,20 +14,11 @@ export function PureFeatureSnippets({ framework, snippetsByFramework, isInstallS
     }
   }
 
-  return isInstallSnippet ? (
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
-    <div className="aside" onClick={() => logInstall(framework)}>
-      <Snippet />
-    </div>
-  ) : (
-    <div className="aside">
-      <Snippet />
-    </div>
-  );
+  return <Snippet />;
 }
 
 export function FeatureSnippets({ currentFramework, paths }) {
-  const isInstallSnippet = paths[0].includes(INSTALL_PATH);
+  const snippetType = parse(paths[0]).dir;
 
   const [snippetsByFramework, setSnippetsByFramework] = useState({});
   useEffect(() => {
@@ -55,10 +40,9 @@ export function FeatureSnippets({ currentFramework, paths }) {
   }, []);
 
   return (
-    <PureFeatureSnippets
-      framework={currentFramework}
-      snippetsByFramework={snippetsByFramework}
-      isInstallSnippet={isInstallSnippet}
-    />
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+    <div className="aside" onClick={() => logSnippetInteraction(currentFramework, snippetType)}>
+      <PureFeatureSnippets framework={currentFramework} snippetsByFramework={snippetsByFramework} />
+    </div>
   );
 }
