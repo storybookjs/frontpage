@@ -236,7 +236,7 @@ export const lightTheme = {
 };
 ```
 
-To share this theme with the components in Storybook, you'll need to provide to the `withThemeFromJSXProvider` decorator along with `styled-components` ThemeProvider component.
+To share this theme with the components in Storybook, you'll need to provide it to the `withThemeFromJSXProvider` decorator along with `styled-components` ThemeProvider component.
 
 ```js
 // .storybook/preview.js
