@@ -137,6 +137,10 @@ export const mdFormatting = css`
     &:active {
       transform: translate3d(0, 0, 0);
     }
+
+    code {
+      color: inherit;
+    }
   }
 
   .remark-header-link {
