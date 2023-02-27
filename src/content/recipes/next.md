@@ -49,7 +49,7 @@ Install the framework:
 yarn add --dev @storybook/nextjs@next
 ```
 
-Update your main.js to change the framework property:
+Update your `main.js` to change the framework property:
 
 ```js
 // .storybook/main.js
@@ -82,7 +82,7 @@ export default {
 
 Next.js 13 introduced the experimental app directory with new features and conventions. It brings support for nested routes and layouts.
 
-If your story uses components in the app directory and they are importing modules from next/navigation, you have to tell Storybook to use the correct mocked router context by setting the nextjs.appDirectory parameter to true:
+If your story uses components in the app directory and they are importing modules from `next/navigation`, you have to tell Storybook to use the correct mocked router context by setting the `nextjs.appDirectory` parameter to `true`:
 
 ```js
 export const Example = {
@@ -94,7 +94,7 @@ export const Example = {
 };
 ```
 
-The Navigation provider is configured with some defaults. You can override those defaults by setting the parameter for nextjs.navigation:
+The Navigation provider is configured with some defaults. You can override those defaults by setting the parameter for `nextjs.navigation`:
 
 ```js
 export const Example = {
@@ -116,7 +116,7 @@ Take a look at the [AppRouterProvider](https://github.com/storybookjs/storybook/
 
 ## Configuring next/router
 
-Within the pages directory, you should continue to use imports from next/router for routing purposes. If you want to configure the Router provider, you can do so by setting the nextjs.router parameter:
+Within the pages directory, you should continue to use imports from `next/router` for routing purposes. If you want to configure the Router provider, you can do so by setting the `nextjs.router` parameter:
 
 ```js
 export const Example = {
