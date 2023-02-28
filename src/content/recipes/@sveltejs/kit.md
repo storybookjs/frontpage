@@ -4,6 +4,12 @@ This recipe assumes that you are using SvelteKit >= 1.0 as well as Storybook >= 
 
 </div>
 
+<RecipeHeader>
+
+How to setup SvelteKit and Storybook
+
+</RecipeHeader>
+
 Svelte is quickly becoming a major framework in the front-end ecosystem, offering lots of fantastic features for web developers. With SvelteKit, it also provides a powerful meta-framework for applications. At Storybook, we're investing in the Svelte ecosystem to create a seamless and enjoyable experience for users of Svelte and Storybook.
 
 Fortunately, there is now an easier way to develop isolated components with the new `@storybook/sveltekit` framework package. As an industry-standard for component development, Storybook is proud to offer SvelteKit 1.0 features in a seamless integration. With our package, Storybook automatically mirrors the project settings of both SvelteKit. Here's what you'll get
@@ -12,12 +18,6 @@ Fortunately, there is now an easier way to develop isolated components with the 
 - 👓 Components can read current environment information from `$app/environment`
 - 🖼️ `$app/paths` is supported so you can safely get paths for assets
 - 🛒 Stores in `$app/stores` are supported out of the box
-
-<RecipeHeader>
-
-How to setup SvelteKit and Storybook
-
-</RecipeHeader>
 
 ## In a project without Storybook
 
