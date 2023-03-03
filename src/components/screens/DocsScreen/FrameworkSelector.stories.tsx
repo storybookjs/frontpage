@@ -27,7 +27,7 @@ Base.args = {
   framework: coreFrameworks[0],
   coreFrameworks,
   communityFrameworks,
-  slug: '/docs/get-started/introduction',
+  slug: '/docs/get-started/install',
 };
 Base.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
