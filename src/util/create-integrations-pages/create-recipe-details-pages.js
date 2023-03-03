@@ -25,6 +25,8 @@ const TEMP_RECIPE_METADATA = {
     description:
       'Sass/scss is a popular CSS preprocessor that allows developers to write more maintainable and reusable stylesheets',
     views: 1423,
+    tags: [],
+    authors: [],
   }),
 };
 

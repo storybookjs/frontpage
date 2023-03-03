@@ -4262,10 +4262,10 @@
   dependencies:
     lodash "^4.17.15"
 
-"@storybook/design-system@7.11.1":
-  version "7.11.1"
-  resolved "https://registry.yarnpkg.com/@storybook/design-system/-/design-system-7.11.1.tgz#ce1f5eddf7433d1b45a0f98e88e6c7caeb086f1c"
-  integrity sha512-joupZvOBcMUYVi63FUCZfy/gYjB/dpVNgJV1rxkoqZQtUsoutk2WSJQQIfHiYq6lsq2PgJwvYrY+NBQ07N1sZA==
+"@storybook/design-system@7.13.1":
+  version "7.13.1"
+  resolved "https://registry.yarnpkg.com/@storybook/design-system/-/design-system-7.13.1.tgz#e1b60c1c64c161d068713e61f586cd438d085d09"
+  integrity sha512-buHd0PXB7hyhIYF9ce4xhcg6cs4aHkFEZOpA6MLB8yoXkbpNFWK0PDVMqJUNbKEXkg1wHr6WraT3iEtMCduZ7w==
   dependencies:
     "@emotion/weak-memoize" "^0.2.5"
     "@storybook/theming" "^6.5.9"
