@@ -21,10 +21,12 @@ const TEMP_RECIPE_METADATA = {
   sass: (name) => ({
     type: 'Recipe',
     name,
-    displayName: 'SASS/SCSS',
+    displayName: 'Sass',
     description:
-      'Sass/scss is a popular CSS preprocessor that allows developers to write more maintainable and reusable stylesheets',
+      'Sass is a popular CSS preprocessor that allows developers to write more maintainable and reusable stylesheets',
     views: 1423,
+    icon: 'https://avatars.githubusercontent.com/u/317889',
+    accentColor: '#cc6799',
     tags: [],
     authors: [],
     createdAt: Date.now(),
