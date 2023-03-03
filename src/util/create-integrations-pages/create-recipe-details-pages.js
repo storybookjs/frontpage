@@ -27,6 +27,9 @@ const TEMP_RECIPE_METADATA = {
     views: 1423,
     tags: [],
     authors: [],
+    createdAt: Date.now(),
+    publishedAt: Date.now(),
+    lastUpdatedAt: Date.now(),
   }),
 };
 
