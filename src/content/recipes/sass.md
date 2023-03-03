@@ -1,6 +1,6 @@
 <div class="aside aside__no-top">
 
-Some configurations of Storybook already come pre-configured to support sass/scss. If your project meets the following, you're likely ready to go.
+Some configurations of Storybook already come pre-configured to support sass. If your project meets the following, you're likely ready to go.
 
 1. Storybook >= 7.x with the `vite` builder.
 2. Storybook >= 7.x with the `@storybook/nextjs` framework.
