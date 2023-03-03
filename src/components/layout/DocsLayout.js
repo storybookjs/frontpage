@@ -33,6 +33,13 @@ import {
 const { breakpoint, color, pageMargins, typography } = styles;
 const { GlobalStyle } = global;
 
+const SubNavWrapper = styled.div`
+  background: ${color.lightest};
+  position: sticky;
+  top: 0;
+  z-index: 2;
+`;
+
 const Sidebar = styled.div`
   display: none;
   position: relative;
@@ -261,27 +268,29 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
           content={GLOBAL_SEARCH_IMPORTANCE.DOCS}
         />
       </Helmet>
-      <SubNav>
-        <SubNavTabs label="Docs nav" items={docsItems} />
-        <SubNavDivider />
-        <SubNavMenus>
-          <VersionSelector
-            version={version}
-            versions={versions}
-            framework={framework}
-            slug={slug}
-          />
-          <FrameworkSelector
-            framework={framework}
-            coreFrameworks={coreFrameworks}
-            communityFrameworks={communityFrameworks}
-            slug={slug}
-          />
-        </SubNavMenus>
-        <SubNavRight>
-          <SubNavLinkList label="Get support:" items={supportItems} />
-        </SubNavRight>
-      </SubNav>
+      <SubNavWrapper>
+        <SubNav>
+          <SubNavTabs label="Docs nav" items={docsItems} />
+          <SubNavDivider />
+          <SubNavMenus>
+            <VersionSelector
+              version={version}
+              versions={versions}
+              framework={framework}
+              slug={slug}
+            />
+            <FrameworkSelector
+              framework={framework}
+              coreFrameworks={coreFrameworks}
+              communityFrameworks={communityFrameworks}
+              slug={slug}
+            />
+          </SubNavMenus>
+          <SubNavRight>
+            <SubNavLinkList label="Get support:" items={supportItems} />
+          </SubNavRight>
+        </SubNav>
+      </SubNavWrapper>
       <Wrapper>
         <Sidebar className="sidebar">
           <StyledTableOfContents
