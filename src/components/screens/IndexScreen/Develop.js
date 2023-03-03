@@ -254,7 +254,7 @@ export function Develop({ docs, startOpen, ...props }) {
               <Link
                 containsIcon
                 withArrow
-                href="/docs/react/why-storybook"
+                href="/docs/react/get-started/why-storybook"
                 LinkWrapper={GatsbyLinkWrapper}
               >
                 Why build UIs in isolation?
@@ -311,7 +311,7 @@ export function Develop({ docs, startOpen, ...props }) {
               <Link
                 containsIcon
                 withArrow
-                href="/docs/react/why-storybook"
+                href="/docs/react/get-started/why-storybook"
                 LinkWrapper={GatsbyLinkWrapper}
               >
                 Why build UIs in isolation?

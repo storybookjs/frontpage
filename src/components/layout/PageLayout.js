@@ -31,7 +31,7 @@ const ALGOLIA_API_KEY = process.env.GATSBY_ALGOLIA_API_KEY;
 const navLinks = {
   ...defaultLinks,
   home: { url: '/', linkWrapper: GatsbyLinkWrapper },
-  whyStorybook: { url: '/docs/react/why-storybook', linkWrapper: GatsbyLinkWrapper },
+  whyStorybook: { url: '/docs/react/get-started/why-storybook', linkWrapper: GatsbyLinkWrapper },
   guides: { url: '/docs', linkWrapper: GatsbyLinkWrapper },
   changelog: { url: '/releases', linkWrapper: GatsbyLinkWrapper },
   telemetry: { url: '/telemetry/', linkWrapper: GatsbyLinkWrapper },

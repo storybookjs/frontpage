@@ -1,3 +1,4 @@
+/docs/why-storybook/                             /docs/get-started/why-storybook                                                301
 /docs/get-started/introduction                   /docs/get-started/install                                                      301
 /docs/workflows/testing-with-storybook/          /docs/writing-tests/introduction/                                              301
 /docs/workflows/unit-testing/                    /docs/writing-tests/importing-stories-in-tests/                                301
