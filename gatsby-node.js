@@ -13,13 +13,17 @@ const sourceDXData = require('./src/util/source-dx-data');
 const { versions } = require('./src/util/versions');
 const createIntegrationsPages = require('./src/util/create-integrations-pages');
 const createHomePage = require('./src/util/create-home-page');
+const siteMetadata = require('./site-metadata');
+
+const {
+  urls: { firstDocsPageSlug },
+} = siteMetadata;
 
 const docsTocWithPaths = addStateToToc(docsToc);
 
 const nextVersionString = versions.preRelease[0].string;
 
 let frameworks;
-const FIRST_DOCS_PAGE_SLUG = '/docs/get-started/introduction';
 
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
@@ -193,7 +197,7 @@ exports.createPages = ({ actions, graphql }) => {
                           nextTocItem.type === 'bullet-link' && {
                             nextTocItem,
                           }),
-                        isIntroPage: slug === FIRST_DOCS_PAGE_SLUG,
+                        isFirstPage: slug === firstDocsPageSlug,
                       },
                     });
                   });
@@ -276,11 +280,11 @@ function updateRedirectsFile() {
 
       acc.push(
         // prettier-ignore
-        `/docs${versionSlug} ${versionBranch}${buildPathWithFramework(FIRST_DOCS_PAGE_SLUG, frameworks[0], versionStringLocal)} ${redirectCode}`
+        `/docs${versionSlug} ${versionBranch}${buildPathWithFramework(firstDocsPageSlug, frameworks[0], versionStringLocal)} ${redirectCode}`
       );
       frameworks.forEach((f) =>
         // prettier-ignore
-        acc.push(`/docs${versionSlug}/${f} ${versionBranch}${buildPathWithFramework(FIRST_DOCS_PAGE_SLUG, f, versionStringLocal)} ${redirectCode}`)
+        acc.push(`/docs${versionSlug}/${f} ${versionBranch}${buildPathWithFramework(firstDocsPageSlug, f, versionStringLocal)} ${redirectCode}`)
       );
 
       if (!isLatestLocal) {

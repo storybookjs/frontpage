@@ -211,9 +211,9 @@ module.exports = {
                 })),
               serialize: ({ url }) => ({ url }),
               // Exclude all doc pages not for React
-              // except the get-started/introduction page for all frameworks
+              // except the first docs page for all frameworks
               excludes: [
-                '{/docs/!(react)/!(get-started)/**,/docs/!(react)/get-started/!(introduction)}',
+                '{/docs/!(react)/!(get-started)/**,/docs/!(react)/get-started/!(install)}',
               ],
             },
           },

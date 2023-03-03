@@ -198,7 +198,7 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
     latestVersionString,
     isLatest,
   } = useSiteMetadata();
-  const { docsToc, framework, fullPath, slug, versions } = pageContext;
+  const { docsToc, framework, fullPath, slug, versions, isFirstPage } = pageContext;
 
   const tocSectionTitles = getTocSectionTitles(docsToc, slug.split('/docs/')[1]);
 
@@ -218,8 +218,8 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
   };
 
   // The React specific docs are treated as canonical except for the
-  // docs home page for all other frameworks.
-  const canonicalFramework = slug === '/docs/get-started/introduction' ? framework : 'react';
+  // first docs page for all other frameworks.
+  const canonicalFramework = isFirstPage ? framework : 'react';
 
   return (
     <>

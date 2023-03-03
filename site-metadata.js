@@ -75,6 +75,8 @@ const siteMetadata = {
     telemetry: `/telemetry/`,
     team: `/team/`,
     addonsApi: '/docs/react/addons/addons-api/',
+    // This slug is also used to exclude some pages from the sitemap in gatsby-config.js
+    firstDocsPageSlug: '/docs/get-started/install/',
 
     // Social
     blog: `https://storybook.js.org/blog`,
