@@ -18,6 +18,14 @@ const TEMP_RECIPE_METADATA = {
   example: (name) => ({
     // Mock recipe metadata goes here
   }),
+  sass: (name) => ({
+    type: 'Recipe',
+    name,
+    displayName: 'SASS/SCSS',
+    description:
+      'Sass/scss is a popular CSS preprocessor that allows developers to write more maintainable and reusable stylesheets',
+    views: 1423,
+  }),
 };
 
 function parseRecipeFiles({ data }) {
