@@ -1,6 +1,6 @@
 <div class="aside aside__no-top">
 
-Some configurations of Storybook already come pre-configured to support sass. If your project meets the following, you're likely ready to go.
+Some configurations of Storybook already come pre-configured to support Sass. If your project meets the following, you're likely ready to go.
 
 1. Storybook >= 7.x with the `vite` builder.
 2. Storybook >= 7.x with the `@storybook/nextjs` framework.
@@ -14,7 +14,7 @@ How to setup Sass and Storybook
 
 </RecipeHeader>
 
-Sass is a popular CSS preprocessor that allows developers to write more maintainable and reusable stylesheets. Storybook is an industry-standard tool for developing and testing UI components in isolation. With the help of the `@storybook/addon-styling` package, developers can easily incorporate sass stylesheets into their Storybook components.
+Sass is a popular CSS preprocessor that allows developers to write more maintainable and reusable stylesheets. Storybook is an industry-standard tool for developing and testing UI components in isolation. With the help of the `@storybook/addon-styling` package, developers can easily incorporate Sass stylesheets into their Storybook components.
 
 ## Adding `@storybook/addon-styling`
 
@@ -35,7 +35,7 @@ module.exports = {
       name: '@storybook/addon-styling',
       options: {
         sass: {
-          // Require your sass preprocessor here
+          // Require your Sass preprocessor here
           implementation: require('sass'),
         },
       },
@@ -55,6 +55,6 @@ import '../src/index.scss';
 
 ## Get involved
 
-Now you're ready to use sass with Storybook. 🎉 If you use sass at work, we'd love your feedback on the sass + Storybook experience.
+Now you're ready to use Sass with Storybook. 🎉 If you use Sass at work, we'd love your feedback on the Sass + Storybook experience.
 
 Join the maintainers and our thriving community in [Discord](https://discord.gg/storybook).
