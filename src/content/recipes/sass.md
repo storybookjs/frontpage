@@ -14,7 +14,7 @@ How to setup Sass and Storybook
 
 </RecipeHeader>
 
-Sass (also known as scss) is a popular CSS preprocessor that allows developers to write more maintainable and reusable stylesheets. Storybook is an industry-standard tool for developing and testing UI components in isolation. With the help of the `@storybook/addon-styling` package, developers can easily incorporate sass stylesheets into their Storybook components.
+Sass is a popular CSS preprocessor that allows developers to write more maintainable and reusable stylesheets. Storybook is an industry-standard tool for developing and testing UI components in isolation. With the help of the `@storybook/addon-styling` package, developers can easily incorporate sass stylesheets into their Storybook components.
 
 ## Adding `@storybook/addon-styling`
 

@@ -17,21 +17,18 @@ const PAGE_COMPONENT_PATH = path.resolve(
 const TEMP_RECIPE_METADATA = {
   example: (name) => ({
     // Mock recipe metadata goes here
-  }),
-  sass: (name) => ({
-    type: 'Recipe',
-    name,
-    displayName: 'Sass',
-    description:
-      'Sass is a popular CSS preprocessor that allows developers to write more maintainable and reusable stylesheets',
-    views: 1423,
-    icon: 'https://avatars.githubusercontent.com/u/317889',
-    accentColor: '#cc6799',
-    tags: [],
-    authors: [],
-    createdAt: Date.now(),
-    publishedAt: Date.now(),
-    lastUpdatedAt: Date.now(),
+    // type: 'Recipe',
+    // name,
+    // displayName: '',
+    // description: '',
+    // views: 1423,
+    // icon: '',
+    // accentColor: '#333333',
+    // tags: [],
+    // authors: [],
+    // createdAt: Date.now(),
+    // publishedAt: Date.now(),
+    // lastUpdatedAt: Date.now(),
   }),
 };
 
