@@ -26,7 +26,7 @@ import { VersionSelector } from '../screens/DocsScreen/VersionSelector';
 import { VersionCTA } from '../screens/DocsScreen/VersionCTA';
 import { GLOBAL_SEARCH_IMPORTANCE, GLOBAL_SEARCH_META_KEYS } from '../../constants/global-search';
 
-const { breakpoint, pageMargins } = styles;
+const { breakpoint, color, pageMargins, typography } = styles;
 const { GlobalStyle } = global;
 
 const Sidebar = styled.div`
@@ -95,6 +95,36 @@ const StyledTableOfContents = styled(TableOfContents)`
     margin-left: -20px;
   }
 `;
+
+const Divider = styled.div`
+  border-top: 1px solid ${color.border};
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 100%;
+  max-width: 150px;
+`;
+
+const SurveyGraf = styled.p`
+  font-size: ${typography.size.s2}px;
+  color: ${color.dark};
+  max-width: 180px;
+`;
+
+const surveyCTA = (
+  <>
+    <Divider />
+    <SurveyGraf>Take our 2023 survey to guide Storybook's future</SurveyGraf>
+    <Button
+      isLink
+      href="https://storybook.js.org/survey"
+      size="small"
+      appearance="secondaryOutline"
+    >
+      <Icon icon="star" />
+      Take survey (4 min)
+    </Button>
+  </>
+);
 
 const getTocSectionTitles = (toc, path) => {
   const pathParts = path.split('/');
@@ -281,6 +311,7 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
               </>
             )}
           </StyledTableOfContents>
+          {surveyCTA}
         </Sidebar>
 
         <Content>
