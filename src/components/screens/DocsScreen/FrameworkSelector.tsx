@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@storybook/theming';
 import { Menu } from '@storybook/components-marketing';
 
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
+import { LS_SELECTED_FRAMEWORK_KEY } from '../../../constants/local-storage';
+import { useLocalStorage } from '../../../hooks/use-local-storage';
 import buildPathWithFramework from '../../../util/build-path-with-framework';
 import stylizeFramework from '../../../util/stylize-framework';
 
@@ -24,18 +26,54 @@ interface FrameworkSelectorProps {
   slug: string;
 }
 
+type LinkWrapperProps = {
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+};
+
 export function FrameworkSelector({
-  framework,
+  framework: initialFramework,
   coreFrameworks,
   communityFrameworks,
   slug,
 }: FrameworkSelectorProps) {
-  const links = [...coreFrameworks, ...communityFrameworks].map((f) => ({
-    link: { linkWrapper: GatsbyLinkWrapper, url: buildPathWithFramework(slug, f) },
+  // TODO: useMemo causes type of `frameworks` to be `readonnly string[]` instead of `readonly ["react", "vue", ...]`
+  const frameworks = React.useMemo(
+    () => [...coreFrameworks, ...communityFrameworks] as const,
+    [coreFrameworks, communityFrameworks]
+  );
+
+  const [framework, setFramework] = useLocalStorage<typeof frameworks[number]>(
+    LS_SELECTED_FRAMEWORK_KEY,
+    initialFramework,
+    true
+  );
+
+  React.useLayoutEffect(() => {
+    if (!frameworks.includes(framework)) {
+      // Invalid framework in localStorage
+      setFramework(initialFramework);
+    }
+  }, [framework, frameworks, setFramework, initialFramework]);
+
+  const links = frameworks.map((f) => ({
+    link: {
+      linkWrapper: forwardRef<HTMLAnchorElement, LinkWrapperProps>(({ onClick, ...props }, ref) => (
+        <GatsbyLinkWrapper
+          onClick={(event) => {
+            setFramework(f);
+            onClick?.(event);
+          }}
+          ref={ref}
+          {...props}
+        />
+      )),
+      url: buildPathWithFramework(slug, f),
+    },
     framework: f,
     icon: <FrameworkLogo src={getFrameworkLogo(f)} alt="" />,
     label: stylizeFramework(f),
   }));
+
   const coreLinks = links.filter(({ framework: f }) => coreFrameworks.includes(f));
   const communityLinks = links.filter(({ framework: f }) => !coreFrameworks.includes(f));
 

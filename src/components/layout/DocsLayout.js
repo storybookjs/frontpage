@@ -280,6 +280,7 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
               slug={slug}
             />
             <FrameworkSelector
+              key={framework}
               framework={framework}
               coreFrameworks={coreFrameworks}
               communityFrameworks={communityFrameworks}
