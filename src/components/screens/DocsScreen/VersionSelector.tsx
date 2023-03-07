@@ -1,7 +1,6 @@
 import React from 'react';
 import { Menu } from '@storybook/components-marketing';
 
-import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import buildPathWithFramework from '../../../util/build-path-with-framework';
 
 const stylizeVersion = ({ label, string }: { label?: string; string: string }) =>
@@ -34,7 +33,7 @@ interface VersionSelectorProps {
 export function VersionSelector({ framework, version, versions, slug }: VersionSelectorProps) {
   const getVersionLink = ({ label, string }: { label?: string; string: string }) => ({
     label: stylizeVersion({ label, string }),
-    link: { url: buildPathWithFramework(slug, framework, string), LinkWrapper: GatsbyLinkWrapper },
+    link: { url: buildPathWithFramework(slug, framework, string) },
   });
 
   const stableLinks = versions.stable.map(getVersionLink);

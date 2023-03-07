@@ -31,7 +31,7 @@ export function FrameworkSelector({
   slug,
 }: FrameworkSelectorProps) {
   const links = [...coreFrameworks, ...communityFrameworks].map((f) => ({
-    link: { LinkWrapper: GatsbyLinkWrapper, url: buildPathWithFramework(slug, f) },
+    link: { linkWrapper: GatsbyLinkWrapper, url: buildPathWithFramework(slug, f) },
     framework: f,
     icon: <FrameworkLogo src={getFrameworkLogo(f)} alt="" />,
     label: stylizeFramework(f),
