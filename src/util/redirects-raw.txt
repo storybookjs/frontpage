@@ -1,4 +1,3 @@
-/docs/writing-docs/doc-block-argstable           /docs/writing-docs/doc-blocks/                                                 301
 /docs/workflows/testing-with-storybook/          /docs/writing-tests/introduction/                                              301
 /docs/workflows/unit-testing/                    /docs/writing-tests/importing-stories-in-tests/                                301
 /docs/workflows/visual-testing/                  /docs/writing-tests/visual-testing/                                            301
