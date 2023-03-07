@@ -29,7 +29,7 @@
 /testing/*                                  /docs/testing/:splat                                                                                301
 
 # Pre 6.0 URLs
-/docs/basics/introduction/                  /docs/react/get-started/introduction/                                                               301
+/docs/basics/introduction/                  /docs/react/get-started/install/                                                               301
 /docs/basics/writing-stories/               /docs/react/get-started/whats-a-story/                                                              301
 /docs/basics/exporting-storybook/           /docs/react/workflows/publish-storybook/                                                            301
 /docs/basics/faq/                           /docs/react/workflows/faq/                                                                          301

@@ -26,7 +26,7 @@ OldVersion.args = {
   latestVersion: versions.stable[0].version,
   latestVersionString: versions.stable[0].string,
   versions,
-  slug: '/docs/get-started/introduction',
+  slug: '/docs/get-started/install',
 };
 
 export const PreReleaseVersion = Template.bind({});

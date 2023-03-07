@@ -24,7 +24,11 @@ import buildPathWithFramework from '../../util/build-path-with-framework';
 import { FrameworkSelector } from '../screens/DocsScreen/FrameworkSelector';
 import { VersionSelector } from '../screens/DocsScreen/VersionSelector';
 import { VersionCTA } from '../screens/DocsScreen/VersionCTA';
-import { GLOBAL_SEARCH_IMPORTANCE, GLOBAL_SEARCH_META_KEYS } from '../../constants/global-search';
+import {
+  GLOBAL_SEARCH_AGNOSTIC,
+  GLOBAL_SEARCH_IMPORTANCE,
+  GLOBAL_SEARCH_META_KEYS,
+} from '../../constants/global-search';
 
 const { breakpoint, color, pageMargins, typography } = styles;
 const { GlobalStyle } = global;
@@ -198,7 +202,7 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
     latestVersionString,
     isLatest,
   } = useSiteMetadata();
-  const { docsToc, framework, fullPath, slug, versions } = pageContext;
+  const { docsToc, framework, fullPath, slug, versions, isInstallPage } = pageContext;
 
   const tocSectionTitles = getTocSectionTitles(docsToc, slug.split('/docs/')[1]);
 
@@ -218,8 +222,8 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
   };
 
   // The React specific docs are treated as canonical except for the
-  // docs home page for all other frameworks.
-  const canonicalFramework = slug === '/docs/get-started/introduction' ? framework : 'react';
+  // first docs page for all other frameworks.
+  const canonicalFramework = isInstallPage ? framework : 'react';
 
   return (
     <>
@@ -238,7 +242,13 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
         <meta
           key={GLOBAL_SEARCH_META_KEYS.FRAMEWORK}
           name={GLOBAL_SEARCH_META_KEYS.FRAMEWORK}
-          content={framework}
+          /*
+           * Using `GLOBAL_SEARCH_AGNOSTIC` as the framework value for the first page of the docs
+           * to ensure it shows in search results regardless of current framework
+           * https://github.com/storybookjs/components-marketing/blob/e71de9ccc807aee144beff83b947f32996184780/src/components/Search.tsx#L170
+           *
+           */
+          content={isInstallPage ? GLOBAL_SEARCH_AGNOSTIC : framework}
         />
         <meta
           key={GLOBAL_SEARCH_META_KEYS.VERSION}

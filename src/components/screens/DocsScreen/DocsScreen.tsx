@@ -84,7 +84,7 @@ function DocsScreen({ data, pageContext, location }) {
     featureGroups,
     urls: { homepageUrl },
   } = useSiteMetadata();
-  const { framework, docsToc, fullPath, slug, tocItem, nextTocItem, isIntroPage } = pageContext;
+  const { framework, docsToc, fullPath, slug, tocItem, nextTocItem, isInstallPage } = pageContext;
   const CodeSnippetsWithCurrentFramework = useMemo(() => {
     return (props) => <CodeSnippets currentFramework={framework} {...props} />;
   }, [framework]);
@@ -146,7 +146,7 @@ function DocsScreen({ data, pageContext, location }) {
       <SocialGraph url={`${homepageUrl}${fullPath}/`} title={title} desc={description} />
 
       <MDWrapper>
-        <Title>{isIntroPage ? `${title} for ${stylizeFramework(framework)}` : title}</Title>
+        <Title>{isInstallPage ? `${title} for ${stylizeFramework(framework)}` : title}</Title>
         {unsupported && (
           <UnsupportedBanner>
             This feature is not supported in {stylizeFramework(framework)} yet. Help the open source
