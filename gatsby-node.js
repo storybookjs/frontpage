@@ -256,6 +256,7 @@ function updateRedirectsFile() {
   const redirectsWithFramework = rawRedirects
     .split(/\n/)
     .map((line) => line.split(/\s+/))
+    .filter(([from, to, code]) => from && to && code)
     .reduce((acc, [from, to, code]) => {
       frameworks.forEach((f) =>
         // prettier-ignore
