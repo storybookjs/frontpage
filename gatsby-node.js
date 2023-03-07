@@ -16,7 +16,7 @@ const createHomePage = require('./src/util/create-home-page');
 const siteMetadata = require('./site-metadata');
 
 const {
-  urls: { firstDocsPageSlug },
+  urls: { installDocsPageSlug },
 } = siteMetadata;
 
 const docsTocWithPaths = addStateToToc(docsToc);
@@ -197,7 +197,7 @@ exports.createPages = ({ actions, graphql }) => {
                           nextTocItem.type === 'bullet-link' && {
                             nextTocItem,
                           }),
-                        isFirstPage: slug === firstDocsPageSlug,
+                        isInstallPage: slug === installDocsPageSlug,
                       },
                     });
                   });
@@ -280,11 +280,11 @@ function updateRedirectsFile() {
 
       acc.push(
         // prettier-ignore
-        `/docs${versionSlug} ${versionBranch}${buildPathWithFramework(firstDocsPageSlug, frameworks[0], versionStringLocal)} ${redirectCode}`
+        `/docs${versionSlug} ${versionBranch}${buildPathWithFramework(installDocsPageSlug, frameworks[0], versionStringLocal)} ${redirectCode}`
       );
       frameworks.forEach((f) =>
         // prettier-ignore
-        acc.push(`/docs${versionSlug}/${f} ${versionBranch}${buildPathWithFramework(firstDocsPageSlug, f, versionStringLocal)} ${redirectCode}`)
+        acc.push(`/docs${versionSlug}/${f} ${versionBranch}${buildPathWithFramework(installDocsPageSlug, f, versionStringLocal)} ${redirectCode}`)
       );
 
       if (!isLatestLocal) {

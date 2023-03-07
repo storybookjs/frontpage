@@ -19,7 +19,7 @@ import { ScrollDemo } from './StorybookDemo/ScrollDemo';
 import buildPathWithFramework from '../../../util/build-path-with-framework';
 
 const {
-  urls: { firstDocsPageSlug },
+  urls: { installDocsPageSlug },
 } = siteMetadata;
 
 const { subheading, breakpoints, pageMargins } = styles;
@@ -44,7 +44,7 @@ const frameworkIntegrations = featuredFrameworks.map((framework) => ({
   image: `/frameworks/logo-${
     framework === 'web-components' ? 'web-components-alt' : framework
   }.svg`,
-  href: buildPathWithFramework(firstDocsPageSlug, framework),
+  href: buildPathWithFramework(installDocsPageSlug, framework),
   ButtonWrapper: GatsbyLinkWrapper,
 }));
 

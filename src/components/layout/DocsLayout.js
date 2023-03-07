@@ -202,7 +202,7 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
     latestVersionString,
     isLatest,
   } = useSiteMetadata();
-  const { docsToc, framework, fullPath, slug, versions, isFirstPage } = pageContext;
+  const { docsToc, framework, fullPath, slug, versions, isInstallPage } = pageContext;
 
   const tocSectionTitles = getTocSectionTitles(docsToc, slug.split('/docs/')[1]);
 
@@ -223,7 +223,7 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
 
   // The React specific docs are treated as canonical except for the
   // first docs page for all other frameworks.
-  const canonicalFramework = isFirstPage ? framework : 'react';
+  const canonicalFramework = isInstallPage ? framework : 'react';
 
   return (
     <>
@@ -248,7 +248,7 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
            * https://github.com/storybookjs/components-marketing/blob/e71de9ccc807aee144beff83b947f32996184780/src/components/Search.tsx#L170
            *
            */
-          content={isFirstPage ? GLOBAL_SEARCH_AGNOSTIC : framework}
+          content={isInstallPage ? GLOBAL_SEARCH_AGNOSTIC : framework}
         />
         <meta
           key={GLOBAL_SEARCH_META_KEYS.VERSION}
