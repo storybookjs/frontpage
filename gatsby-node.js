@@ -248,9 +248,6 @@ function generateVersionsFile() {
   fs.writeFileSync('./public/versions-raw.json', JSON.stringify(data));
 }
 
-const buildLatestPathWithFramework = (slug, framework) =>
-  buildPathWithFramework(slug, framework, latestVersionString);
-
 function updateRedirectsFile() {
   const originalContents = fs.readFileSync('./static/_redirects');
 
@@ -264,7 +261,7 @@ function updateRedirectsFile() {
     .reduce((acc, [from, to, code]) => {
       frameworks.forEach((f) =>
         // prettier-ignore
-        acc.push(`${buildLatestPathWithFramework(from, f)} ${buildLatestPathWithFramework(to, f)} ${code}`)
+        acc.push(`${buildPathWithFramework(from, f)} ${buildPathWithFramework(to, f)} ${code}`)
       );
       return acc;
     }, [])
