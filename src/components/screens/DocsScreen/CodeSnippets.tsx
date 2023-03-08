@@ -78,7 +78,7 @@ export function PureCodeSnippets(props) {
 }
 
 const MessagingWrapper = styled.div<{ type?: 'missing' }>`
-  background-color: ${(props) => (props.type === 'missing' ? '#fdf5d3' : color.blueLight)};
+  background-color: ${(props) => (props.type === 'missing' ? '#fdf5d3' : color.bluelight)};
   padding: 10px 16px;
   border-bottom: 1px solid ${color.border};
   font-size: ${typography.size.s2}px;
@@ -132,8 +132,7 @@ export function CsfMessage({
   );
 }
 
-export function CodeSnippets({ csf2Path, currentFramework, paths, usesCsf3, ...rest }) {
-  const [snippets, setSnippets] = React.useState([]);
+export const getResolvedPaths = (paths, currentFramework) => {
   const activeFrameworkPaths = paths.filter((path) => {
     const [framework] = path.split('/');
     return framework === currentFramework || framework === COMMON;
@@ -144,6 +143,18 @@ export function CodeSnippets({ csf2Path, currentFramework, paths, usesCsf3, ...r
     defaultFrameworkPaths = paths.filter((path) => path.split('/')[0] === 'react');
   }
 
+  const resolvedPaths = (defaultFrameworkPaths || activeFrameworkPaths).flatMap((path) =>
+    // add TS 4.9 snippets
+    path.includes('.ts') ? [path, path.replace('.ts', '.ts-4-9')] : [path]
+  );
+
+  return [resolvedPaths, defaultFrameworkPaths];
+};
+
+export function CodeSnippets({ csf2Path, currentFramework, paths, usesCsf3, ...rest }) {
+  const [snippets, setSnippets] = React.useState([]);
+
+  const [resolvedPaths, defaultFrameworkPaths] = getResolvedPaths(paths, currentFramework);
   /**
    * For a path like `web-components/button-story-click-handler-args.js.mdx`,
    * capture the group `button-story-click-handler-args`
@@ -152,10 +163,6 @@ export function CodeSnippets({ csf2Path, currentFramework, paths, usesCsf3, ...r
 
   useEffect(() => {
     async function fetchModuleComponents() {
-      const resolvedPaths = (defaultFrameworkPaths || activeFrameworkPaths).flatMap((path) =>
-        // add TS 4.9 snippets
-        path.includes('.ts') ? [path, path.replace('.ts', '.ts-4-9')] : [path]
-      );
       const fetchedSnippets = await Promise.all(
         resolvedPaths.map(async (path) => {
           const [framework, fileName] = path.split('/');
