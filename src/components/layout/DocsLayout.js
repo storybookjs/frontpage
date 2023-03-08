@@ -21,6 +21,7 @@ import {
 import GatsbyLinkWrapper from '../basics/GatsbyLinkWrapper';
 import useSiteMetadata from '../lib/useSiteMetadata';
 import buildPathWithFramework from '../../util/build-path-with-framework';
+import { CodeLanguageSelector } from '../screens/DocsScreen/CodeLanguageSelector';
 import { FrameworkSelector } from '../screens/DocsScreen/FrameworkSelector';
 import { VersionSelector } from '../screens/DocsScreen/VersionSelector';
 import { VersionCTA } from '../screens/DocsScreen/VersionCTA';
@@ -286,6 +287,7 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
               communityFrameworks={communityFrameworks}
               slug={slug}
             />
+            <CodeLanguageSelector />
           </SubNavMenus>
           <SubNavRight>
             <SubNavLinkList label="Get support:" items={supportItems} />

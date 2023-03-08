@@ -16,7 +16,9 @@ import { frameworkSupportsFeature, FrameworkSupportTable } from './FrameworkSupp
 import { SocialGraph } from '../../basics';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import useSiteMetadata from '../../lib/useSiteMetadata';
-
+import { DEFAULT_CODE_LANGUAGE, CODE_LANGUAGES } from '../../../constants/code-languages';
+import { LS_SELECTED_CODE_LANGUAGE_KEY } from '../../../constants/local-storage';
+import { useLocalStorage } from '../../../hooks/use-local-storage';
 import { mdFormatting } from '../../../styles/formatting';
 import buildPathWithFramework from '../../../util/build-path-with-framework';
 import relativeToRootLinks from '../../../util/relative-to-root-links';
@@ -85,9 +87,24 @@ function DocsScreen({ data, pageContext, location }) {
     urls: { homepageUrl },
   } = useSiteMetadata();
   const { framework, docsToc, fullPath, slug, tocItem, nextTocItem, isInstallPage } = pageContext;
-  const CodeSnippetsWithCurrentFramework = useMemo(() => {
-    return (props) => <CodeSnippets currentFramework={framework} {...props} />;
-  }, [framework]);
+
+  const [codeLanguage, setCodeLanguage] = useLocalStorage<keyof typeof CODE_LANGUAGES>(
+    LS_SELECTED_CODE_LANGUAGE_KEY,
+    DEFAULT_CODE_LANGUAGE
+  );
+
+  React.useLayoutEffect(() => {
+    if (!Object.keys(CODE_LANGUAGES).includes(codeLanguage)) {
+      // Invalid code language in local storage, reset to default
+      setCodeLanguage(DEFAULT_CODE_LANGUAGE);
+    }
+  }, [codeLanguage, setCodeLanguage]);
+
+  const CodeSnippetsWithCurrentFrameworkAndCodeLanguage = useMemo(() => {
+    return (props) => (
+      <CodeSnippets currentFramework={framework} currentCodeLanguage={codeLanguage} {...props} />
+    );
+  }, [framework, codeLanguage]);
   const FeatureSnippetsWithCurrentFramework = useMemo(() => {
     return (props) => <FeatureSnippets currentFramework={framework} {...props} />;
   }, [framework]);
@@ -164,7 +181,7 @@ function DocsScreen({ data, pageContext, location }) {
         <MDXProvider
           components={{
             pre: Pre,
-            CodeSnippets: CodeSnippetsWithCurrentFramework,
+            CodeSnippets: CodeSnippetsWithCurrentFrameworkAndCodeLanguage,
             FeatureSnippets: FeatureSnippetsWithCurrentFramework,
             FrameworkSupportTable: FrameworkSupportTableWithFeaturesAndCurrentFramework,
             YouTubeCallout,
