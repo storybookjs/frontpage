@@ -50,7 +50,8 @@ it('Selects from available frameworks and languages, TS selected', () => {
   `);
 });
 
-it('Selects from available frameworks and languages, TS 4.9 selected', () => {
+// Un-skip once v7 is "latest"
+it.skip('Selects from available frameworks and languages, TS 4.9 selected', () => {
   const result = getResolvedPaths(
     [
       'common/example.js.mdx',

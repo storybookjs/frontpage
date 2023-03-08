@@ -16,6 +16,7 @@ import stylizeFramework from '../../../util/stylize-framework';
 import { logSnippetInteraction } from '../../../util/custom-events';
 
 const siteMetadata = require('../../../../site-metadata');
+const { version } = require('../../../util/version-data');
 
 const { defaultFramework } = siteMetadata;
 
@@ -175,7 +176,7 @@ export const getResolvedPaths = (paths, currentFramework, currentCodeLanguage) =
   );
 
   let completePaths = paths;
-  if (!isPackageManagerSnippet) {
+  if (version >= 7 && !isPackageManagerSnippet) {
     // add TS 4.9 snippets
     completePaths = paths.flatMap((path) =>
       path.includes('.ts.') ? [path, path.replace('.ts.', '.ts-4-9.')] : [path]
