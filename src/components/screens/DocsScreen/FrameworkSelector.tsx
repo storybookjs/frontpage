@@ -2,12 +2,11 @@ import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@storybook/theming';
 import { Menu } from '@storybook/components-marketing';
-
-import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import { LS_SELECTED_FRAMEWORK_KEY } from '../../../constants/local-storage';
 import { useLocalStorage } from '../../../hooks/use-local-storage';
 import buildPathWithFramework from '../../../util/build-path-with-framework';
 import stylizeFramework from '../../../util/stylize-framework';
+import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 
 const getFrameworkLogo = (framework) => {
   if (framework === 'rax') return '/frameworks/logo-rax.png';
@@ -45,7 +44,7 @@ export function FrameworkSelector({
   const [framework, setFramework] = useLocalStorage<typeof frameworks[number]>(
     LS_SELECTED_FRAMEWORK_KEY,
     initialFramework,
-    true
+    true // Force initial value to be used initially instead of value in localStorage
   );
 
   React.useLayoutEffect(() => {
