@@ -22,9 +22,9 @@ This post will explain how to:
 1. 🔌 Setup Bootstrap in Storybook using CSS or Sass
 2. 🎨 Switch betweens themes in a click
 
-If you’d like to see the example code of this recipe, check out the [example repository]() on GitHub. Let's get started!
+If you’d like to see the example code of this recipe, check out the [example repository](https://github.com/Integrayshaun/bootstrap-storybook-example) on GitHub. Let's get started!
 
-![Completed styled-components example with theme switcher]()
+![Completed styled-components example with theme switcher](https://raw.githubusercontent.com/Integrayshaun/bootstrap-storybook-example/main/.storybook/demo-recording.gif)
 
 ## How to setup `Bootstrap`
 
@@ -73,7 +73,7 @@ export const parameters = {
 Start by installing some dependencies.
 
 ```shell
-yarn add -D @storybook/addon-styling sass sass-loader
+yarn add -D @storybook/addon-styling sass sass-loader resolve-url-loader
 ```
 
 Now register the addon styling in your `.storybook/main.js`
@@ -155,10 +155,6 @@ export const decorators = [
 
 ## Get involved
 
-Now you're ready to use Bootstrap with Storybook. 🎉 Check out the [example repo]() for a quick start.
+Now you're ready to use Bootstrap with Storybook. 🎉 Check out the [example repo](https://github.com/Integrayshaun/bootstrap-storybook-example) for a quick start.
 
 If you use Bootstrap at work, we'd love your feedback on the Bootstrap + Storybook experience. Join the maintainers in [Discord](https://discord.gg/storybook) to get involved, or jump into [addon docs](/docs/react/addons/introduction).
-
-```
-
-```
