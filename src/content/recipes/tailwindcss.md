@@ -39,7 +39,7 @@ To develop with Tailwind alongside your stories, storybook will need to know how
 First of all, install a few extra dependencies.
 
 ```shell
-yarn add -D postcss autoprefixer postcss-loader
+yarn add -D @storybook/addon-styling postcss autoprefixer postcss-loader
 ```
 
 Now create a `postcss.config.js` file in the root of your project.
@@ -55,35 +55,28 @@ module.exports = {
 };
 ```
 
-Then add the `postcss-loader` to storybook using the `webpackFinal` option your `.storybook/main.js` file.
+Then add the `@storybook/addon-styling` to your `.storybook/main.js` file with the `postCss` option set to true.
 
-```diff
+```js
 module.exports = {
   addons: [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/preset-create-react-app",
-    "@storybook/addon-interactions"
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@storybook/addon-interactions',
+    {
+      name: '@storybook/addon-styling',
+      options: {
+        // Check out https://github.com/storybookjs/addon-styling/blob/main/docs/api.md
+        // For more details on this addon's options.
+        postCss: true,
+      },
+    },
   ],
-
-  // Snipped for brevity
-
-+ webpackFinal: async (config) => {
-+   config.module.rules.push({
-+     test: /\.css$/i,
-+     use: [
-+       {
-+         loader: "postcss-loader",
-+         options: { implementation: require.resolve("postcss") },
-+       },
-+     ],
-+     include: path.resolve(__dirname, "../"),
-+   });
-+   // Return the altered config
-+   return config;
-+ },
-}
+  // snipped for brevity
+};
 ```
+
+**Note**: Using Vite, `@storybook/nextjs`, or `@storybook/preset-create-react-app` with `react-scripts@2.0.0` and up? You don't need to set `postCss` to true.
 
 ## Provide Tailwind to stories
 
@@ -117,7 +110,7 @@ To make use of Tailwind, replace the contents of each component file with the fo
 
 ![Storybook after adding tailwind CSS to the example components](https://user-images.githubusercontent.com/18172605/208201423-c7ea9392-1851-4fc3-9968-6d05399c2e91.gif)
 
-## Add a theme switcher tool using [`@storybook/addon-styling`](https://github.com/storybookjs/addon-styling)
+## Add a theme switcher tool
 
 Tailwind comes out of the box with a light and dark theme. You can override those themes and add more. To get the most out of your stories, you should have a way to toggle between all of your themes.
 
@@ -139,24 +132,7 @@ module.exports = {
 };
 ```
 
-To add the switcher, add the `@storybook/addon-styling` addon.
-
-```shell
-yarn add -D @storybook/addon-styling
-```
-
-Register it in `.storybook/main.js`
-
-```js
-// .storybook/main.js
-
-module.exports = {
-  stories: ['../stories/**/*.stories.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
-  addons: ['@storybook/addon-essentials', '@storybook/addon-styling'],
-};
-```
-
-Add the [`withThemeFromDataAttribute`](https://github.com/storybookjs/addon-styling/blob/main/docs/api.md#withthemebydataattribute) decorator to your storybook from `@storybook/addon-styling`
+To add the switcher, add the [`withThemeFromDataAttribute`](https://github.com/storybookjs/addon-styling/blob/main/docs/api.md#withthemebydataattribute) decorator to your storybook from `@storybook/addon-styling`
 
 ```js
 // .storybook/preview.js
