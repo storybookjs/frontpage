@@ -30,26 +30,6 @@ const TEMP_RECIPE_METADATA = {
     // publishedAt: Date.now(),
     // lastUpdatedAt: Date.now(),
   }),
-  bootstrap: (name) => ({
-    type: 'Recipe',
-    name,
-    displayName: 'Bootstrap',
-    description: 'Bootstrap is a powerful, extensible, and feature-packed frontend toolkit.',
-    views: 1423,
-    icon: 'https://camo.githubusercontent.com/2512b49c89512f2ff3718f7257f48ed5c46a4e331abbd890b6c5e8c0e458434f/68747470733a2f2f676574626f6f7473747261702e636f6d2f646f63732f352e322f6173736574732f6272616e642f626f6f7473747261702d6c6f676f2d736861646f772e706e67',
-    accentColor: '#333333',
-    tags: [],
-    authors: [
-      {
-        id: 'ShaunEvening',
-        avatarUrl: 'https://avatars.githubusercontent.com/u/18172605?v=4',
-        name: 'ShaunEvening',
-      },
-    ],
-    createdAt: Date.now(),
-    publishedAt: Date.now(),
-    lastUpdatedAt: Date.now(),
-  }),
 };
 
 function parseRecipeFiles({ data }) {
