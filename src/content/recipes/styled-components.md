@@ -19,7 +19,7 @@ styled-components is a popular library for building UI components with CSS-in-JS
 
 This post will explain how to:
 
-1. 🔌 Setup `GlobalStyle`
+1. 🔌 Setup `GlobalStyles`
 2. 🧱 Use styled-components in your components
 3. 💅 Use a theme in your stories
 4. 🎨 Switch betweens themes in a click
@@ -45,20 +45,20 @@ module.exports = {
 };
 ```
 
-## How to setup `GlobalStyle`
+## How to setup `GlobalStyles`
 
 UIs often have a set of global styles that are applied to every component like CSS resets, `font-size`, `font-family`, and colors.
 
 In styled-components, use the [`createGlobalStyle`](https://styled-components.com/docs/api#createglobalstyle) API to scope styles globally instead of locally (which is the library's default behavior).
 
-Open `.storybook/preview.js` and create a `GlobalStyle` component which includes a `font-family`. Then apply it to your stories with the [`withThemeFromJSXProvider`](https://github.com/storybookjs/addon-styling/blob/main/docs/api.md#withthemefromjsxprovider) decorator by adding it to the `decorators` array.
+Open `.storybook/preview.js` and create a `GlobalStyles` component which includes a `font-family`. Then apply it to your stories with the [`withThemeFromJSXProvider`](https://github.com/storybookjs/addon-styling/blob/main/docs/api.md#withthemefromjsxprovider) decorator by adding it to the `decorators` array.
 
 ```js
 // .storybook/preview.js
 import { withThemeFromJSXProvider } from '@storybook/addon-styling';
 import { createGlobalStyle } from 'styled-components';
 
-const GlobalStyle = createGlobalStyle`
+const GlobalStyles = createGlobalStyle`
   body {
     font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
@@ -66,14 +66,14 @@ const GlobalStyle = createGlobalStyle`
 
 export const decorators = [
   withThemeFromJSXProvider({
-    GlobalStyles: GlobalStyle, // Adds your GlobalStyle component to all stories
+    GlobalStyles, // Adds your GlobalStyle component to all stories
   }),
 ];
 ```
 
 <div class="aside">
 
-If you already have `GlobalStyle` in your app, you can import it into `.storybook/preview.js` instead of creating it anew.
+If you already have `GlobalStyles` in your app, you can import it into `.storybook/preview.js` instead of creating it anew.
 
 </div>
 
@@ -245,7 +245,7 @@ import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
 import { lightTheme } from '../src/themes';
 
-const GlobalStyle = createGlobalStyle`
+const GlobalStyles = createGlobalStyle`
   body {
     font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
@@ -258,11 +258,11 @@ export const decorators = [
   }
   defaultTheme: 'light',
   Provider: ThemeProvider,
-  GlobalStyles: GlobalStyle,
+  GlobalStyles,
 })];
 ```
 
-Now, components made with styled-components will get the theme through the `theme` prop along with the styles inherited from `GlobalStyle`. Let's update the example components to use the theme.
+Now, components made with styled-components will get the theme through the `theme` prop along with the styles inherited from `GlobalStyles`. Let's update the example components to use the theme.
 
 <!-- prettier-ignore-start -->
 
@@ -327,7 +327,7 @@ export const decorators = [
   }
   defaultTheme: 'light',
   Provider: ThemeProvider,
-  GlobalStyles: GlobalStyle,
+  GlobalStyles,
 })];
 ```
 

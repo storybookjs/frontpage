@@ -46,20 +46,20 @@ module.exports = {
 };
 ```
 
-## How to setup `Global` styles
+## How to setup `GlobalStyles`
 
 UIs often have a set of global styles that are applied to every component like CSS resets, `font-size`, `font-family`, and colors.
 
 In Emotion, use the [`Global`](https://emotion.sh/docs/globals) component to scope styles globally instead of locally (which is the library's default behavior).
 
-Open `.storybook/preview.js` and create a `GlobalStyle` component which includes a `font-family`. Then apply it to your stories with the [`withThemeFromJSXProvider`](https://github.com/storybookjs/addon-styling/blob/main/docs/api.md#withthemefromjsxprovider) decorator by adding it to the `decorators` array.
+Open `.storybook/preview.js` and create a `GlobalStyles` component which includes a `font-family`. Then apply it to your stories with the [`withThemeFromJSXProvider`](https://github.com/storybookjs/addon-styling/blob/main/docs/api.md#withthemefromjsxprovider) decorator by adding it to the `decorators` array.
 
 ```js
 // .storybook/preview.js
 import { withThemeFromJSXProvider } from '@storybook/addon-styling';
 import { Global, css } from '@emotion/react';
 
-const GlobalStyle = () => (
+const GlobalStyles = () => (
   <Global
     styles={css`
       body {
@@ -71,7 +71,7 @@ const GlobalStyle = () => (
 
 export const decorators = [
   withThemeFromJSXProvider({
-    GlobalStyles: GlobalStyle, // Adds your GlobalStyle component to all stories
+    GlobalStyles, // Adds your GlobalStyles component to all stories
   }),
 ];
 ```
@@ -251,7 +251,7 @@ import { Global, css, ThemeProvider } from '@emotion/react';
 
 import { lightTheme } from '../src/themes';
 
-const GlobalStyle = () => (
+const GlobalStyles = () => (
   <Global
     styles={css`
       body {
@@ -268,7 +268,7 @@ export const decorators = [
   }
   defaultTheme: 'light',
   Provider: ThemeProvider,
-  GlobalStyles: GlobalStyle,
+  GlobalStyles,
 })];
 ```
 
@@ -335,7 +335,7 @@ export const decorators = [
   }
   defaultTheme: 'light',
   Provider: ThemeProvider,
-  GlobalStyles: GlobalStyle,
+  GlobalStyles,
 })];
 ```
 

@@ -102,7 +102,7 @@ module.exports = {
 };
 ```
 
-And finally apply the custom themes to our stories, we’ll need to wrap them in Material UI’s `ThemeProvider` using the `withThemeFromJSXProvider` decorator.
+And finally apply the custom themes to our stories. We’ll need to wrap them in Material UI’s `ThemeProvider` using the `withThemeFromJSXProvider` decorator.
 
 ```js
 // .storybook/preview.js
