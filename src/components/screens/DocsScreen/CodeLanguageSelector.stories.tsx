@@ -1,5 +1,6 @@
 import React from 'react';
 import { styled } from '@storybook/theming';
+import { expect } from '@storybook/jest';
 import { within, userEvent } from '@storybook/testing-library';
 import { CodeLanguageSelector } from './CodeLanguageSelector';
 import { DocsContextProvider } from './DocsContext';
@@ -35,4 +36,19 @@ Base.play = async ({ canvasElement }) => {
   const menuButton = canvas.getByRole('button', { name: /TypeScript/i });
   await userEvent.click(menuButton);
   await userEvent.keyboard('{arrowdown}');
+};
+
+// Note: Until 7.0 is stable, this snapshot will render nothing (as expected)
+export const Angular = Template.bind({});
+Angular.args = {
+  framework: 'angular',
+};
+Angular.parameters = {
+  chromatic: { disableSnapshot: true },
+};
+Angular.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const menuButton = canvas.getByRole('button', { name: /TypeScript/i });
+  // @ts-expect-error - SB's jest types don't include jest-dom
+  await expect(menuButton).not.toBeInTheDocument();
 };

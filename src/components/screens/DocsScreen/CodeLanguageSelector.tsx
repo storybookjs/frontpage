@@ -21,7 +21,7 @@ type LinkWrapperProps = {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
-export function CodeLanguageSelector() {
+export function CodeLanguageSelector({ framework }) {
   const {
     codeLanguage: [language, setLanguage],
   } = useDocsContext();
@@ -29,7 +29,17 @@ export function CodeLanguageSelector() {
   const [wide] = useMediaQuery(`(min-width: ${breakpoint * 1.5}px)`);
   const label = wide ? CODE_LANGUAGES_FULL[language] : CODE_LANGUAGES[language];
 
-  const items = Object.entries(CODE_LANGUAGES_FULL).map(([key, itemLabel]) => ({
+  let languages = Object.entries(CODE_LANGUAGES_FULL);
+  if (framework === 'angular') {
+    // Angular snippets are not available in JS, so we hide the option
+    languages = languages.filter(([key]) => key !== 'js');
+  }
+
+  if (languages.length < 2) {
+    return null;
+  }
+
+  const items = languages.map(([key, itemLabel]) => ({
     label: itemLabel,
     link: {
       linkWrapper: React.forwardRef<HTMLButtonElement, LinkWrapperProps>(

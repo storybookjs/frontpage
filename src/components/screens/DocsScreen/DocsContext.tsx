@@ -58,7 +58,11 @@ export function DocsContextProvider({ children, framework }) {
   return (
     <DocsContext.Provider
       value={{
-        codeLanguage: [codeLanguage, setCodeLanguage],
+        codeLanguage: [
+          // Angular snippets are not available in JS, so we want to swap JS to TS
+          framework === 'angular' && codeLanguage === 'js' ? 'ts' : codeLanguage,
+          setCodeLanguage,
+        ],
         framework: [framework, setFramework],
       }}
     >

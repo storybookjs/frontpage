@@ -289,7 +289,7 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
                 communityFrameworks={communityFrameworks}
                 slug={slug}
               />
-              <CodeLanguageSelector />
+              <CodeLanguageSelector framework={framework} />
             </SubNavMenus>
             <SubNavRight>
               <SubNavLinkList label="Get support:" items={supportItems} />
