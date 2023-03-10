@@ -1,5 +1,6 @@
 import React from 'react';
 import { Menu } from '@storybook/components-marketing';
+import { styles } from '@storybook/design-system';
 import { styled } from '@storybook/theming';
 import {
   DEFAULT_CODE_LANGUAGE,
@@ -8,6 +9,9 @@ import {
 } from '../../../constants/code-languages';
 import { LS_SELECTED_CODE_LANGUAGE_KEY } from '../../../constants/local-storage';
 import { useLocalStorage } from '../../../hooks/use-local-storage';
+import { useMediaQuery } from '../../lib/useMediaQuery';
+
+const { breakpoint } = styles;
 
 type Language = keyof typeof CODE_LANGUAGES;
 
@@ -37,8 +41,11 @@ export function CodeLanguageSelector() {
     }
   }, [language, setLanguage]);
 
-  const items = Object.entries(CODE_LANGUAGES_FULL).map(([key, label]) => ({
-    label,
+  const [wide] = useMediaQuery(`(min-width: ${breakpoint * 1.5}px)`);
+  const label = wide ? CODE_LANGUAGES_FULL[language] : CODE_LANGUAGES[language];
+
+  const items = Object.entries(CODE_LANGUAGES_FULL).map(([key, itemLabel]) => ({
+    label: itemLabel,
     link: {
       linkWrapper: React.forwardRef<HTMLButtonElement, LinkWrapperProps>(
         ({ onClick, ...props }, ref) => {
@@ -58,5 +65,5 @@ export function CodeLanguageSelector() {
     },
   }));
 
-  return <Menu label={CODE_LANGUAGES[language]} items={items} primary />;
+  return <Menu label={label} items={items} primary />;
 }

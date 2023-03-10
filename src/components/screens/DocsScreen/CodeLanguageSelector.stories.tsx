@@ -22,7 +22,7 @@ export const Base = Template.bind({});
 Base.args = {};
 Base.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
-  const menuButton = canvas.getByRole('button', { name: /TS/i });
+  const menuButton = canvas.getByRole('button', { name: /TypeScript/i });
   await userEvent.click(menuButton);
   await userEvent.keyboard('{arrowdown}');
 };
