@@ -2,18 +2,11 @@ import React from 'react';
 import { Menu } from '@storybook/components-marketing';
 import { styles } from '@storybook/design-system';
 import { styled } from '@storybook/theming';
-import {
-  DEFAULT_CODE_LANGUAGE,
-  CODE_LANGUAGES,
-  CODE_LANGUAGES_FULL,
-} from '../../../constants/code-languages';
-import { LS_SELECTED_CODE_LANGUAGE_KEY } from '../../../constants/local-storage';
-import { useLocalStorage } from '../../../hooks/use-local-storage';
+import { CODE_LANGUAGES, CODE_LANGUAGES_FULL } from '../../../constants/code-languages';
 import { useMediaQuery } from '../../lib/useMediaQuery';
+import { useDocsContext } from './DocsContext';
 
 const { breakpoint } = styles;
-
-type Language = keyof typeof CODE_LANGUAGES;
 
 const MenuButton = styled.button`
   appearance: none;
@@ -29,17 +22,9 @@ type LinkWrapperProps = {
 };
 
 export function CodeLanguageSelector() {
-  const [language, setLanguage] = useLocalStorage<Language>(
-    LS_SELECTED_CODE_LANGUAGE_KEY,
-    DEFAULT_CODE_LANGUAGE
-  );
-
-  React.useLayoutEffect(() => {
-    if (!Object.keys(CODE_LANGUAGES).includes(language)) {
-      // Invalid language in localStorage
-      setLanguage(DEFAULT_CODE_LANGUAGE);
-    }
-  }, [language, setLanguage]);
+  const {
+    codeLanguage: [language, setLanguage],
+  } = useDocsContext();
 
   const [wide] = useMediaQuery(`(min-width: ${breakpoint * 1.5}px)`);
   const label = wide ? CODE_LANGUAGES_FULL[language] : CODE_LANGUAGES[language];

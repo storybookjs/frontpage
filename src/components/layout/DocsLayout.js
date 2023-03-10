@@ -22,6 +22,7 @@ import GatsbyLinkWrapper from '../basics/GatsbyLinkWrapper';
 import useSiteMetadata from '../lib/useSiteMetadata';
 import buildPathWithFramework from '../../util/build-path-with-framework';
 import { CodeLanguageSelector } from '../screens/DocsScreen/CodeLanguageSelector';
+import { DocsContextProvider } from '../screens/DocsScreen/DocsContext';
 import { FrameworkSelector } from '../screens/DocsScreen/FrameworkSelector';
 import { VersionSelector } from '../screens/DocsScreen/VersionSelector';
 import { VersionCTA } from '../screens/DocsScreen/VersionCTA';
@@ -269,92 +270,94 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
           content={GLOBAL_SEARCH_IMPORTANCE.DOCS}
         />
       </Helmet>
-      <SubNavWrapper>
-        <SubNav>
-          <SubNavTabs label="Docs nav" items={docsItems} />
-          <SubNavDivider />
-          <SubNavMenus>
-            <VersionSelector
-              version={version}
-              versions={versions}
-              framework={framework}
-              slug={slug}
-            />
-            <FrameworkSelector
+      <DocsContextProvider framework={framework}>
+        <SubNavWrapper>
+          <SubNav>
+            <SubNavTabs label="Docs nav" items={docsItems} />
+            <SubNavDivider />
+            <SubNavMenus>
+              <VersionSelector
+                version={version}
+                versions={versions}
+                framework={framework}
+                slug={slug}
+              />
+              <FrameworkSelector
+                key={framework}
+                framework={framework}
+                coreFrameworks={coreFrameworks}
+                communityFrameworks={communityFrameworks}
+                slug={slug}
+              />
+              <CodeLanguageSelector />
+            </SubNavMenus>
+            <SubNavRight>
+              <SubNavLinkList label="Get support:" items={supportItems} />
+            </SubNavRight>
+          </SubNav>
+        </SubNavWrapper>
+        <Wrapper>
+          <Sidebar className="sidebar">
+            <StyledTableOfContents
               key={framework}
-              framework={framework}
-              coreFrameworks={coreFrameworks}
-              communityFrameworks={communityFrameworks}
-              slug={slug}
-            />
-            <CodeLanguageSelector />
-          </SubNavMenus>
-          <SubNavRight>
-            <SubNavLinkList label="Get support:" items={supportItems} />
-          </SubNavRight>
-        </SubNav>
-      </SubNavWrapper>
-      <Wrapper>
-        <Sidebar className="sidebar">
-          <StyledTableOfContents
-            key={framework}
-            currentPath={fullPath}
-            items={docsTocWithLinkWrappers}
-          >
-            {({ menu, allTopLevelMenusAreOpen, toggleAllOpen, toggleAllClosed }) => (
-              <>
-                <SidebarControls>
-                  {allTopLevelMenusAreOpen ? (
-                    <WithTooltip
-                      {...withTooltipProps}
-                      tooltip={<TooltipNote note="Collapse all" />}
-                      onClick={toggleAllClosed}
-                      tabIndex="-1"
-                    >
-                      <ExpandButton containsIcon appearance="outline" size="small">
-                        <Icon icon="collapse" aria-label="Collapse sidebar" />
-                      </ExpandButton>
-                    </WithTooltip>
-                  ) : (
-                    <WithTooltip
-                      {...withTooltipProps}
-                      tooltip={<TooltipNote note="Expand all" />}
-                      onClick={toggleAllOpen}
-                      tabIndex="-1"
-                    >
-                      <ExpandButton containsIcon appearance="outline" size="small">
-                        <Icon icon="expandalt" aria-label="Expand sidebar" />
-                      </ExpandButton>
-                    </WithTooltip>
-                  )}
-                </SidebarControls>
+              currentPath={fullPath}
+              items={docsTocWithLinkWrappers}
+            >
+              {({ menu, allTopLevelMenusAreOpen, toggleAllOpen, toggleAllClosed }) => (
+                <>
+                  <SidebarControls>
+                    {allTopLevelMenusAreOpen ? (
+                      <WithTooltip
+                        {...withTooltipProps}
+                        tooltip={<TooltipNote note="Collapse all" />}
+                        onClick={toggleAllClosed}
+                        tabIndex="-1"
+                      >
+                        <ExpandButton containsIcon appearance="outline" size="small">
+                          <Icon icon="collapse" aria-label="Collapse sidebar" />
+                        </ExpandButton>
+                      </WithTooltip>
+                    ) : (
+                      <WithTooltip
+                        {...withTooltipProps}
+                        tooltip={<TooltipNote note="Expand all" />}
+                        onClick={toggleAllOpen}
+                        tabIndex="-1"
+                      >
+                        <ExpandButton containsIcon appearance="outline" size="small">
+                          <Icon icon="expandalt" aria-label="Expand sidebar" />
+                        </ExpandButton>
+                      </WithTooltip>
+                    )}
+                  </SidebarControls>
 
-                {menu}
-              </>
+                  {menu}
+                </>
+              )}
+            </StyledTableOfContents>
+            {surveyCTA}
+          </Sidebar>
+
+          <Content>
+            {tocSectionTitles && (
+              <span hidden id="toc-section-titles">
+                {`Docs » ${tocSectionTitles}`}
+              </span>
             )}
-          </StyledTableOfContents>
-          {surveyCTA}
-        </Sidebar>
-
-        <Content>
-          {tocSectionTitles && (
-            <span hidden id="toc-section-titles">
-              {`Docs » ${tocSectionTitles}`}
-            </span>
-          )}
-          {(isLatestProp === false || !isLatest) && (
-            <StyledVersionCTA
-              framework={framework}
-              version={version}
-              latestVersion={latestVersion}
-              latestVersionString={latestVersionString}
-              versions={versions}
-              slug={slug}
-            />
-          )}
-          {children}
-        </Content>
-      </Wrapper>
+            {(isLatestProp === false || !isLatest) && (
+              <StyledVersionCTA
+                framework={framework}
+                version={version}
+                latestVersion={latestVersion}
+                latestVersionString={latestVersionString}
+                versions={versions}
+                slug={slug}
+              />
+            )}
+            {children}
+          </Content>
+        </Wrapper>
+      </DocsContextProvider>
     </>
   );
 }

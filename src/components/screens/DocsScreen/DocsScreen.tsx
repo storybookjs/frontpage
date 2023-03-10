@@ -14,17 +14,15 @@ import { graphql } from 'gatsby';
 import { CodeSnippets } from './CodeSnippets';
 import { frameworkSupportsFeature, FrameworkSupportTable } from './FrameworkSupportTable';
 import { SocialGraph } from '../../basics';
+import { Pre } from '../../basics/Pre';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import useSiteMetadata from '../../lib/useSiteMetadata';
-import { DEFAULT_CODE_LANGUAGE, CODE_LANGUAGES } from '../../../constants/code-languages';
-import { LS_SELECTED_CODE_LANGUAGE_KEY } from '../../../constants/local-storage';
-import { useLocalStorage } from '../../../hooks/use-local-storage';
 import { mdFormatting } from '../../../styles/formatting';
 import buildPathWithFramework from '../../../util/build-path-with-framework';
 import relativeToRootLinks from '../../../util/relative-to-root-links';
 import stylizeFramework from '../../../util/stylize-framework';
+import { useDocsContext } from './DocsContext';
 import { FeatureSnippets } from './FeatureSnippets';
-import { Pre } from '../../basics/Pre';
 import { YouTubeCallout } from './YouTubeCallout';
 
 const { color, spacing, typography } = styles;
@@ -88,17 +86,9 @@ function DocsScreen({ data, pageContext, location }) {
   } = useSiteMetadata();
   const { framework, docsToc, fullPath, slug, tocItem, nextTocItem, isInstallPage } = pageContext;
 
-  const [codeLanguage, setCodeLanguage] = useLocalStorage<keyof typeof CODE_LANGUAGES>(
-    LS_SELECTED_CODE_LANGUAGE_KEY,
-    DEFAULT_CODE_LANGUAGE
-  );
-
-  React.useLayoutEffect(() => {
-    if (!Object.keys(CODE_LANGUAGES).includes(codeLanguage)) {
-      // Invalid code language in local storage, reset to default
-      setCodeLanguage(DEFAULT_CODE_LANGUAGE);
-    }
-  }, [codeLanguage, setCodeLanguage]);
+  const {
+    codeLanguage: [codeLanguage],
+  } = useDocsContext();
 
   const CodeSnippetsWithCurrentFrameworkAndCodeLanguage = useMemo(() => {
     return (props) => (
