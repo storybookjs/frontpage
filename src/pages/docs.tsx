@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { navigate } from 'gatsby';
 import { useLocalStorage } from 'usehooks-ts';
+import { PureDocsLayout } from '../components/layout/DocsLayout';
 import { LS_SELECTED_FRAMEWORK_KEY } from '../components/screens/DocsScreen/DocsContext';
 import buildPathWithFramework from '../util/build-path-with-framework';
 
@@ -19,8 +20,7 @@ const DocsPage = () => {
     navigate(path, { replace: true });
   }
 
-  // TODO: Render a "pure" DocsLayout to minimize flash between this route & redirect
-  return null;
+  return <PureDocsLayout isLoading framework={framework} slug={installDocsPageSlug} />;
 };
 
 export default DocsPage;

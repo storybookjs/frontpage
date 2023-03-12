@@ -1,5 +1,5 @@
 import React from 'react';
-import DocsLayout from './DocsLayout';
+import DocsLayout, { PureDocsLayout } from './DocsLayout';
 
 const { toc: docsToc } = require('../../content/docs/toc');
 const addStateToToc = require('../../util/add-state-to-toc');
@@ -47,4 +47,12 @@ export const NonLatestVersion = Template.bind({});
 NonLatestVersion.args = {
   ...Base.args,
   isLatest: false,
+};
+
+export const Loading = (args) => <PureDocsLayout {...args} />;
+Loading.args = {
+  isLoading: true,
+  framework: pageContext.framework,
+  slug: pageContext.slug,
+  versions,
 };
