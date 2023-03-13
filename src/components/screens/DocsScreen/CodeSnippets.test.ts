@@ -407,3 +407,41 @@ it('Handles MDX and JS snippets, JS selected', () => {
     ]
   `);
 });
+
+it('Falls back to non-JS/TS, JS selected', () => {
+  const result = getResolvedPaths(
+    [
+      'react/example.js.mdx',
+      'react/example.ts.mdx',
+      'react/example.mdx.mdx',
+      'vue/example.2.js.mdx',
+      'vue/example.mdx-2.mdx.mdx',
+      'vue/example.3.js.mdx',
+      'vue/example.mdx-3.mdx.mdx',
+      'svelte/example.native-format.mdx',
+    ],
+    'svelte',
+    'js'
+  );
+  expect(result).toMatchInlineSnapshot(`
+    [
+      [
+        "svelte/example.native-format.mdx",
+      ],
+      undefined,
+    ]
+  `);
+});
+
+it('Throws if no snippets available', () => {
+  expect(() => {
+    getResolvedPaths(
+      // prettier-ignore
+      [
+        'svelte/example.ts.mdx',
+      ],
+      'vue',
+      'js'
+    );
+  }).toThrow();
+});

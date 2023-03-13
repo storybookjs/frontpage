@@ -204,6 +204,10 @@ export const getResolvedPaths = (paths, currentFramework, currentCodeLanguage) =
     message = <MissingFrameworkMessage currentFramework={currentFramework} />;
   }
 
+  if (!pathsForCurrentFramework) {
+    throw new Error(`No snippets found for ${currentFramework} in ${paths.join(', ')}`);
+  }
+
   let resolvedPaths = getPathsForLanguage(pathsForCurrentFramework, currentCodeLanguage);
 
   // TS selected, but no TS snippet, fallback to JS
@@ -233,6 +237,18 @@ export const getResolvedPaths = (paths, currentFramework, currentCodeLanguage) =
         />
       );
     }
+  }
+
+  // JS or TS selected, but no JS or TS snippet, fallback to anything available
+  if (resolvedPaths.length === 0) {
+    resolvedPaths = pathsForCurrentFramework;
+    message = undefined;
+  }
+
+  if (resolvedPaths.length === 0) {
+    throw new Error(
+      `No snippets found for ${currentFramework} and ${currentCodeLanguage} in ${paths.join(', ')}`
+    );
   }
 
   return [resolvedPaths, message];
