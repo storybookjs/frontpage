@@ -14,15 +14,15 @@ import { graphql } from 'gatsby';
 import { CodeSnippets } from './CodeSnippets';
 import { frameworkSupportsFeature, FrameworkSupportTable } from './FrameworkSupportTable';
 import { SocialGraph } from '../../basics';
+import { Pre } from '../../basics/Pre';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import useSiteMetadata from '../../lib/useSiteMetadata';
-
 import { mdFormatting } from '../../../styles/formatting';
 import buildPathWithFramework from '../../../util/build-path-with-framework';
 import relativeToRootLinks from '../../../util/relative-to-root-links';
 import stylizeFramework from '../../../util/stylize-framework';
+import { useDocsContext } from './DocsContext';
 import { FeatureSnippets } from './FeatureSnippets';
-import { Pre } from '../../basics/Pre';
 import { YouTubeCallout } from './YouTubeCallout';
 
 const { color, spacing, typography } = styles;
@@ -85,9 +85,16 @@ function DocsScreen({ data, pageContext, location }) {
     urls: { homepageUrl },
   } = useSiteMetadata();
   const { framework, docsToc, fullPath, slug, tocItem, nextTocItem, isInstallPage } = pageContext;
-  const CodeSnippetsWithCurrentFramework = useMemo(() => {
-    return (props) => <CodeSnippets currentFramework={framework} {...props} />;
-  }, [framework]);
+
+  const {
+    codeLanguage: [codeLanguage],
+  } = useDocsContext();
+
+  const CodeSnippetsWithCurrentFrameworkAndCodeLanguage = useMemo(() => {
+    return (props) => (
+      <CodeSnippets currentFramework={framework} currentCodeLanguage={codeLanguage} {...props} />
+    );
+  }, [framework, codeLanguage]);
   const FeatureSnippetsWithCurrentFramework = useMemo(() => {
     return (props) => <FeatureSnippets currentFramework={framework} {...props} />;
   }, [framework]);
@@ -164,7 +171,7 @@ function DocsScreen({ data, pageContext, location }) {
         <MDXProvider
           components={{
             pre: Pre,
-            CodeSnippets: CodeSnippetsWithCurrentFramework,
+            CodeSnippets: CodeSnippetsWithCurrentFrameworkAndCodeLanguage,
             FeatureSnippets: FeatureSnippetsWithCurrentFramework,
             FrameworkSupportTable: FrameworkSupportTableWithFeaturesAndCurrentFramework,
             YouTubeCallout,

@@ -27,6 +27,7 @@ const siteMetadata = {
   },
   coreFrameworks,
   communityFrameworks,
+  defaultFramework: 'react',
   featureGroups,
   urls: {
     gitHubOrg,
