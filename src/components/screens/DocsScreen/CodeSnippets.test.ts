@@ -311,10 +311,7 @@ it('Handles only common JS snippets, TS selected', () => {
       [
         "common/example.js.mdx",
       ],
-      <MissingCodeLanguageMessage
-        currentCodeLanguage="ts"
-        currentFramework="react"
-      />,
+      undefined,
     ]
   `);
 });
@@ -336,7 +333,6 @@ it('Handles only common TS snippets, JS selected', () => {
       <MissingCodeLanguageMessage
         currentCodeLanguage="js"
         currentFramework="react"
-        fallbackLanguage="ts"
       />,
     ]
   `);

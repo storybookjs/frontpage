@@ -157,7 +157,7 @@ export function CsfMessage({
   );
 }
 
-function getPathsForLanguage(paths, forLanguage) {
+function getPathsForLanguage(paths, forLanguage, { matchMDX = true } = {}) {
   return paths.filter((path) => {
     /**
      * For a path like `web-components/button-story-click-handler-args.js.mdx`,
@@ -165,8 +165,8 @@ function getPathsForLanguage(paths, forLanguage) {
      */
     const language = path.match(/\.((?:\w+-*)+)\.mdx$/)[1];
 
-    // Also match any mdx language snippet paths
-    return language.startsWith(forLanguage) || language.startsWith('mdx');
+    // Also optionally match any mdx language snippet paths
+    return language.startsWith(forLanguage) || (matchMDX && language.startsWith('mdx'));
   });
 }
 
@@ -209,24 +209,30 @@ export const getResolvedPaths = (paths, currentFramework, currentCodeLanguage) =
   // TS selected, but no TS snippet, fallback to JS
   if (resolvedPaths.length === 0) {
     resolvedPaths = getPathsForLanguage(pathsForCurrentFramework, 'js');
-    message = (
-      <MissingCodeLanguageMessage
-        currentCodeLanguage={currentCodeLanguage}
-        currentFramework={currentFramework}
-      />
-    );
+    // If there are any TS snippets for other frameworks, show a message
+    if (getPathsForLanguage(paths, 'ts', { matchMDX: false }).length > 0) {
+      message = (
+        <MissingCodeLanguageMessage
+          currentCodeLanguage={currentCodeLanguage}
+          currentFramework={currentFramework}
+        />
+      );
+    }
   }
 
   // JS selected, but no JS snippet, fallback to TS
   if (resolvedPaths.length === 0) {
     resolvedPaths = getPathsForLanguage(pathsForCurrentFramework, DEFAULT_CODE_LANGUAGE);
-    message = (
-      <MissingCodeLanguageMessage
-        currentCodeLanguage={currentCodeLanguage}
-        currentFramework={currentFramework}
-        fallbackLanguage="ts"
-      />
-    );
+    // If there are any JS snippets for other frameworks, show a message
+    if (getPathsForLanguage(paths, 'js', { matchMDX: false }).length > 0) {
+      message = (
+        <MissingCodeLanguageMessage
+          currentCodeLanguage={currentCodeLanguage}
+          currentFramework={currentFramework}
+          fallbackLanguage="ts"
+        />
+      );
+    }
   }
 
   return [resolvedPaths, message];
