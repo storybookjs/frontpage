@@ -177,15 +177,15 @@ export function PureDocsLayout({
   slug,
   versions: versionsProp,
 }) {
-  const { coreFrameworks, communityFrameworks, latestVersion, latestVersionString, version } =
+  const { coreFrameworks, communityFrameworks, isLatest, version, versionString } =
     useSiteMetadata();
 
   const versions = versionsProp || {
     // prettier-ignore
     stable: [{
-      version: latestVersion,
-      string: latestVersionString,
-      label: 'Latest',
+      version,
+      string: versionString,
+      label: isLatest ? 'Latest' : undefined,
     }],
     preRelease: [],
   };
