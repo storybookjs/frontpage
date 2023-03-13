@@ -165,8 +165,21 @@ function getPathsForLanguage(paths, forLanguage, { matchMDX = true } = {}) {
      */
     const language = path.match(/\.((?:\w+-*)+)\.mdx$/)[1];
 
-    // Also optionally match any mdx language snippet paths
-    return language.startsWith(forLanguage) || (matchMDX && language.startsWith('mdx'));
+    return (
+      /**
+       * The language can be, among others:
+       * - `js` for general JS
+       * - `ts` for general TS
+       * - `ts-2` or `ts-3` for Vue 2/3 TS
+       * - `ts-4-9` for TS 4.9
+       * - `mdx` for MDX
+       * - `mdx-2` or `mdx-3` for Vue 2/3 MDX
+       * This check is formulated so that `ts-4-9` does not match `ts`, but, e.g., `ts-2` does
+       */
+      (language === 'ts-4-9' ? language === forLanguage : language.startsWith(forLanguage)) ||
+      // Also optionally match any mdx language snippet paths
+      (matchMDX && language.startsWith('mdx'))
+    );
   });
 }
 

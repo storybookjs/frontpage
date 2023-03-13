@@ -51,22 +51,23 @@ it('Selects from available frameworks and languages, TS selected', () => {
 });
 
 // Un-skip once v7 is "latest"
-it.skip('Selects from available frameworks and languages, TS 4.9 selected', () => {
-  const result = getResolvedPaths(
-    [
-      'common/example.js.mdx',
-      'common/example.ts.mdx',
-      'react/example.js.mdx',
-      'react/example.ts.mdx',
-      'vue/example.ts-2.js.mdx',
-      'vue/example.ts-2.ts.mdx',
-      'vue/example.ts-3.js.mdx',
-      'vue/example.ts-3.ts.mdx',
-    ],
-    'react',
-    'ts-4-9'
-  );
-  expect(result).toMatchInlineSnapshot(`
+describe.skip('v7+', () => {
+  it('Selects from available frameworks and languages, TS 4.9 selected', () => {
+    const result = getResolvedPaths(
+      [
+        'common/example.js.mdx',
+        'common/example.ts.mdx',
+        'react/example.js.mdx',
+        'react/example.ts.mdx',
+        'vue/example.ts-2.js.mdx',
+        'vue/example.ts-2.ts.mdx',
+        'vue/example.ts-3.js.mdx',
+        'vue/example.ts-3.ts.mdx',
+      ],
+      'react',
+      'ts-4-9'
+    );
+    expect(result).toMatchInlineSnapshot(`
     [
       [
         "react/example.ts-4-9.mdx",
@@ -74,6 +75,32 @@ it.skip('Selects from available frameworks and languages, TS 4.9 selected', () =
       undefined,
     ]
   `);
+  });
+
+  it('Does not select TS 4.9 paths when TS is selected', () => {
+    const result = getResolvedPaths(
+      [
+        'common/example.js.mdx',
+        'common/example.ts.mdx',
+        'react/example.js.mdx',
+        'react/example.ts.mdx',
+        'vue/example.ts-2.js.mdx',
+        'vue/example.ts-2.ts.mdx',
+        'vue/example.ts-3.js.mdx',
+        'vue/example.ts-3.ts.mdx',
+      ],
+      'react',
+      'ts'
+    );
+    expect(result).toMatchInlineSnapshot(`
+    [
+      [
+        "react/example.ts.mdx",
+      ],
+      undefined,
+    ]
+  `);
+  });
 });
 
 it('Falls back to JS, if TS is unavailable', () => {
