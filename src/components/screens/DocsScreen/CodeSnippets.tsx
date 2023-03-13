@@ -16,7 +16,7 @@ import stylizeFramework from '../../../util/stylize-framework';
 import { logSnippetInteraction } from '../../../util/custom-events';
 
 const siteMetadata = require('../../../../site-metadata');
-const { isLatest, version } = require('../../../util/version-data');
+const { version, latestVersion } = require('../../../util/version-data');
 
 const { defaultFramework } = siteMetadata;
 
@@ -204,8 +204,11 @@ export const getResolvedPaths = (paths, currentFramework, currentCodeLanguage) =
     message = <MissingFrameworkMessage currentFramework={currentFramework} />;
   }
 
-  if (isLatest && !pathsForCurrentFramework) {
-    throw new Error(`No snippets found for ${currentFramework} in ${paths.join(', ')}`);
+  if (!pathsForCurrentFramework) {
+    if (version >= latestVersion) {
+      throw new Error(`No snippets found for ${currentFramework} in ${paths.join(', ')}`);
+    }
+    return [[], message];
   }
 
   let resolvedPaths = getPathsForLanguage(pathsForCurrentFramework, currentCodeLanguage);
@@ -245,10 +248,14 @@ export const getResolvedPaths = (paths, currentFramework, currentCodeLanguage) =
     message = undefined;
   }
 
-  if (isLatest && resolvedPaths.length === 0) {
-    throw new Error(
-      `No snippets found for ${currentFramework} and ${currentCodeLanguage} in ${paths.join(', ')}`
-    );
+  if (resolvedPaths.length === 0) {
+    if (version >= latestVersion) {
+      throw new Error(
+        // prettier-ignore
+        `No snippets found for ${currentFramework} and ${currentCodeLanguage} in ${paths.join(', ')}`
+      );
+    }
+    return [[], message];
   }
 
   return [resolvedPaths, message];
