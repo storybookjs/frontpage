@@ -164,7 +164,9 @@ function getPathsForLanguage(paths, forLanguage) {
      * capture the group `js`
      */
     const language = path.match(/\.((?:\w+-*)+)\.mdx$/)[1];
-    return language === forLanguage;
+
+    // Also match any mdx language snippet paths
+    return language.startsWith(forLanguage) || language.startsWith('mdx');
   });
 }
 

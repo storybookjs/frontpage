@@ -341,3 +341,73 @@ it('Handles only common TS snippets, JS selected', () => {
     ]
   `);
 });
+
+it('Handles only MDX snippets, JS selected', () => {
+  const result = getResolvedPaths(
+    [
+      'react/example.mdx.mdx',
+      'angular/example.mdx.mdx',
+      'vue/example.mdx-2.mdx',
+      'vue/example.mdx-3.mdx',
+      'svelte/example.mdx.mdx',
+    ],
+    'react',
+    'js'
+  );
+  expect(result).toMatchInlineSnapshot(`
+    [
+      [
+        "react/example.mdx.mdx",
+      ],
+      undefined,
+    ]
+  `);
+});
+
+it('Handles only MDX Vue 2/3 snippets, JS selected', () => {
+  const result = getResolvedPaths(
+    [
+      'react/example.mdx.mdx',
+      'angular/example.mdx.mdx',
+      'vue/example.mdx-2.mdx',
+      'vue/example.mdx-3.mdx',
+      'svelte/example.mdx.mdx',
+    ],
+    'vue',
+    'js'
+  );
+  expect(result).toMatchInlineSnapshot(`
+    [
+      [
+        "vue/example.mdx-2.mdx",
+        "vue/example.mdx-3.mdx",
+      ],
+      undefined,
+    ]
+  `);
+});
+
+it('Handles MDX and JS snippets, JS selected', () => {
+  const result = getResolvedPaths(
+    [
+      'react/example.js.mdx',
+      'react/example.ts.mdx',
+      'react/example.mdx.mdx',
+      'vue/example.2.js.mdx',
+      'vue/example.mdx-2.mdx.mdx',
+      'vue/example.3.js.mdx',
+      'vue/example.mdx-3.mdx.mdx',
+    ],
+    'react',
+    'js'
+  );
+  expect(result).toMatchInlineSnapshot(`
+    [
+      [
+        "react/example.js.mdx",
+        "react/example.mdx.mdx",
+      ],
+      undefined,
+    ]
+  `);
+});
