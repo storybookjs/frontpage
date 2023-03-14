@@ -7,10 +7,10 @@ it('Selects from available frameworks and languages, JS selected', () => {
       'common/example.ts.mdx',
       'react/example.js.mdx',
       'react/example.ts.mdx',
-      'vue/example.ts-2.js.mdx',
-      'vue/example.ts-2.ts.mdx',
-      'vue/example.ts-3.js.mdx',
-      'vue/example.ts-3.ts.mdx',
+      'vue/example.2.js.mdx',
+      'vue/example.2.ts.mdx',
+      'vue/example.3.js.mdx',
+      'vue/example.3.ts.mdx',
     ],
     'react',
     'js'
@@ -32,10 +32,10 @@ it('Selects from available frameworks and languages, TS selected', () => {
       'common/example.ts.mdx',
       'react/example.js.mdx',
       'react/example.ts.mdx',
-      'vue/example.ts-2.js.mdx',
-      'vue/example.ts-2.ts.mdx',
-      'vue/example.ts-3.js.mdx',
-      'vue/example.ts-3.ts.mdx',
+      'vue/example.2.js.mdx',
+      'vue/example.2.ts.mdx',
+      'vue/example.3.js.mdx',
+      'vue/example.3.ts.mdx',
     ],
     'react',
     'ts'
@@ -59,10 +59,10 @@ describe.skip('v7+', () => {
         'common/example.ts.mdx',
         'react/example.js.mdx',
         'react/example.ts.mdx',
-        'vue/example.ts-2.js.mdx',
-        'vue/example.ts-2.ts.mdx',
-        'vue/example.ts-3.js.mdx',
-        'vue/example.ts-3.ts.mdx',
+        'vue/example.2.js.mdx',
+        'vue/example.2.ts.mdx',
+        'vue/example.3.js.mdx',
+        'vue/example.3.ts.mdx',
       ],
       'react',
       'ts-4-9'
@@ -84,10 +84,10 @@ describe.skip('v7+', () => {
         'common/example.ts.mdx',
         'react/example.js.mdx',
         'react/example.ts.mdx',
-        'vue/example.ts-2.js.mdx',
-        'vue/example.ts-2.ts.mdx',
-        'vue/example.ts-3.js.mdx',
-        'vue/example.ts-3.ts.mdx',
+        'vue/example.2.js.mdx',
+        'vue/example.2.ts.mdx',
+        'vue/example.3.js.mdx',
+        'vue/example.3.ts.mdx',
       ],
       'react',
       'ts'
@@ -109,10 +109,10 @@ it('Falls back to JS, if TS is unavailable', () => {
       'common/example.js.mdx',
       'common/example.ts.mdx',
       'react/example.js.mdx',
-      'vue/example.ts-2.js.mdx',
-      'vue/example.ts-2.ts.mdx',
-      'vue/example.ts-3.js.mdx',
-      'vue/example.ts-3.ts.mdx',
+      'vue/example.2.js.mdx',
+      'vue/example.2.ts.mdx',
+      'vue/example.3.js.mdx',
+      'vue/example.3.ts.mdx',
     ],
     'react',
     'ts'
@@ -136,10 +136,10 @@ it('Falls back to TS, if JS is unavailable', () => {
       'common/example.js.mdx',
       'common/example.ts.mdx',
       'react/example.ts.mdx',
-      'vue/example.ts-2.js.mdx',
-      'vue/example.ts-2.ts.mdx',
-      'vue/example.ts-3.js.mdx',
-      'vue/example.ts-3.ts.mdx',
+      'vue/example.2.js.mdx',
+      'vue/example.2.ts.mdx',
+      'vue/example.3.js.mdx',
+      'vue/example.3.ts.mdx',
     ],
     'react',
     'js'
@@ -165,10 +165,10 @@ it('Falls back to common, if available', () => {
       'common/example.ts.mdx',
       'react/example.js.mdx',
       'react/example.ts.mdx',
-      'vue/example.ts-2.js.mdx',
-      'vue/example.ts-2.ts.mdx',
-      'vue/example.ts-3.js.mdx',
-      'vue/example.ts-3.ts.mdx',
+      'vue/example.2.js.mdx',
+      'vue/example.2.ts.mdx',
+      'vue/example.3.js.mdx',
+      'vue/example.3.ts.mdx',
     ],
     'angular',
     'js'
@@ -189,10 +189,10 @@ it('Falls back to JS common, if TS common is unavailable', () => {
       'common/example.js.mdx',
       'react/example.js.mdx',
       'react/example.ts.mdx',
-      'vue/example.ts-2.js.mdx',
-      'vue/example.ts-2.ts.mdx',
-      'vue/example.ts-3.js.mdx',
-      'vue/example.ts-3.ts.mdx',
+      'vue/example.2.js.mdx',
+      'vue/example.2.ts.mdx',
+      'vue/example.3.js.mdx',
+      'vue/example.3.ts.mdx',
     ],
     'angular',
     'ts'
@@ -215,10 +215,10 @@ it('Falls back to default language, if common is unavailable', () => {
     [
       'react/example.js.mdx',
       'react/example.ts.mdx',
-      'vue/example.ts-2.js.mdx',
-      'vue/example.ts-2.ts.mdx',
-      'vue/example.ts-3.js.mdx',
-      'vue/example.ts-3.ts.mdx',
+      'vue/example.2.js.mdx',
+      'vue/example.2.ts.mdx',
+      'vue/example.3.js.mdx',
+      'vue/example.3.ts.mdx',
     ],
     'angular',
     'js'
@@ -239,10 +239,10 @@ it('Falls back to JS default language, if TS default language is unavailable', (
   const result = getResolvedPaths(
     [
       'react/example.js.mdx',
-      'vue/example.ts-2.js.mdx',
-      'vue/example.ts-2.ts.mdx',
-      'vue/example.ts-3.js.mdx',
-      'vue/example.ts-3.ts.mdx',
+      'vue/example.2.js.mdx',
+      'vue/example.2.ts.mdx',
+      'vue/example.3.js.mdx',
+      'vue/example.3.ts.mdx',
     ],
     'angular',
     'ts'
@@ -263,10 +263,10 @@ it('Falls back to JS default language, if TS default language is unavailable', (
 it('Show framework package manager snippets, if available', () => {
   const result = getResolvedPaths(
     [
-      'angular/storybook-run-dev.with-builder.js.mdx',
-      'common/storybook-run-dev.npm.js.mdx',
-      'common/storybook-run-dev.yarn.js.mdx',
-      'common/storybook-run-dev.pnpm.js.mdx',
+      'angular/example.with-builder.js.mdx',
+      'common/example.npm.js.mdx',
+      'common/example.yarn.js.mdx',
+      'common/example.pnpm.js.mdx',
     ],
     'angular',
     'ts'
@@ -274,7 +274,7 @@ it('Show framework package manager snippets, if available', () => {
   expect(result).toMatchInlineSnapshot(`
     [
       [
-        "angular/storybook-run-dev.with-builder.js.mdx",
+        "angular/example.with-builder.js.mdx",
       ],
       undefined,
     ]
@@ -284,10 +284,10 @@ it('Show framework package manager snippets, if available', () => {
 it('Fallback to common package manager snippets', () => {
   const result = getResolvedPaths(
     [
-      'angular/storybook-run-dev.with-builder.js.mdx',
-      'common/storybook-run-dev.npm.js.mdx',
-      'common/storybook-run-dev.yarn.js.mdx',
-      'common/storybook-run-dev.pnpm.js.mdx',
+      'angular/example.with-builder.js.mdx',
+      'common/example.npm.js.mdx',
+      'common/example.yarn.js.mdx',
+      'common/example.pnpm.js.mdx',
     ],
     'react',
     'ts'
@@ -295,9 +295,9 @@ it('Fallback to common package manager snippets', () => {
   expect(result).toMatchInlineSnapshot(`
     [
       [
-        "common/storybook-run-dev.npm.js.mdx",
-        "common/storybook-run-dev.yarn.js.mdx",
-        "common/storybook-run-dev.pnpm.js.mdx",
+        "common/example.npm.js.mdx",
+        "common/example.yarn.js.mdx",
+        "common/example.pnpm.js.mdx",
       ],
       undefined,
     ]

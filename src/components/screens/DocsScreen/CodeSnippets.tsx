@@ -305,14 +305,41 @@ export function CodeSnippets({
           // See: https://github.com/webpack/webpack/issues/6680#issuecomment-370800037
 
           let ModuleComponent;
+          let preSnippet = message;
           try {
             ModuleComponent = (await import(`../../../content/docs/snippets/${path}`)).default;
           } catch {
+            // If path is a TS 4.9 snippet and errors, try to load the TS snippet
+            if (path.includes('.ts-4-9.')) {
+              try {
+                ModuleComponent = (
+                  await import(`../../../content/docs/snippets/${path.replace('.ts-4-9.', '.ts.')}`)
+                ).default;
+
+                return {
+                  id: `${framework}-${syntax}}`,
+                  PreSnippet: () => (
+                    <MissingCodeLanguageMessage
+                      currentCodeLanguage={currentCodeLanguage}
+                      currentFramework={currentFramework}
+                      fallbackLanguage="ts"
+                    />
+                  ),
+                  Snippet: ModuleComponent,
+                  framework,
+                  syntax: 'ts',
+                  renderTabLabel: ({ isActive }) => (
+                    <TabLabel framework={framework} isActive={isActive} syntax={syntax} />
+                  ),
+                };
+              } catch {
+                return null;
+              }
+            }
             // If path doesn't exist, don't show the snippet
             return null;
           }
 
-          let preSnippet = message;
           if (!preSnippet && usesCsf3) {
             preSnippet = <CsfMessage csf2Path={csf2Path} currentFramework={currentFramework} />;
           }
