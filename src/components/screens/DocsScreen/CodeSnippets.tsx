@@ -377,7 +377,6 @@ export function CodeSnippets({
 
 CodeSnippets.propTypes = {
   currentFramework: PropTypes.string.isRequired,
-  currentPath: PropTypes.string.isRequired,
   csf2Path: PropTypes.string,
   paths: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   usesCsf3: PropTypes.bool,
