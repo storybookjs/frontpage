@@ -70,6 +70,29 @@ const UnsupportedBanner = styled.div`
   padding: 20px;
 `;
 
+/*
+ * Checks for an element at a given interval and runs callback, if found.
+ * If not found by given timeout, runs callback anyway.
+ */
+function waitForElementToDisplay(selector, callback, checkFrequencyInMs, timeoutInMs) {
+  const startTimeInMs = Date.now();
+  (function loopSearch(shouldContinue = true) {
+    if (!shouldContinue) return;
+    if (document.querySelector(selector) != null) {
+      callback();
+    } else {
+      setTimeout(() => {
+        if (timeoutInMs && Date.now() - startTimeInMs > timeoutInMs) {
+          callback();
+          loopSearch(false);
+          return;
+        }
+        loopSearch();
+      }, checkFrequencyInMs);
+    }
+  })();
+}
+
 function DocsScreen({ data, pageContext, location }) {
   const {
     currentPage: {
@@ -147,6 +170,22 @@ function DocsScreen({ data, pageContext, location }) {
       }
     });
   findFeatureSupportTocItem(docsToc);
+
+  const { href, hash } = location;
+  React.useEffect(() => {
+    if (hash) {
+      // Wait for whichever happens first: the first snippet on the page to render or 500ms
+      waitForElementToDisplay(
+        '[id^=snippet]',
+        () => {
+          const element = document.querySelector(hash);
+          element?.scrollIntoView();
+        },
+        50,
+        500
+      );
+    }
+  }, [href, hash]);
 
   return (
     <>
