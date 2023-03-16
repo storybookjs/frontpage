@@ -71,14 +71,23 @@ const UnsupportedBanner = styled.div`
 `;
 
 /*
- * Checks for an element at a given interval and runs callback, if found.
+ * Checks for a given number of elements at a given interval and runs callback, if all found.
  * If not found by given timeout, runs callback anyway.
  */
-function waitForElementToDisplay(selector, callback, checkFrequencyInMs, timeoutInMs) {
+function waitForElementsToDisplay(
+  selector,
+  numElements,
+  callback,
+  checkFrequencyInMs,
+  timeoutInMs
+) {
   const startTimeInMs = Date.now();
   (function loopSearch(shouldContinue = true) {
     if (!shouldContinue) return;
-    if (document.querySelector(selector) != null) {
+    if (
+      document.querySelectorAll(selector) != null &&
+      document.querySelectorAll(selector).length === numElements
+    ) {
       callback();
     } else {
       setTimeout(() => {
@@ -172,11 +181,23 @@ function DocsScreen({ data, pageContext, location }) {
   findFeatureSupportTocItem(docsToc);
 
   const { href, hash } = location;
+  const numCodeSnippets = React.useMemo(
+    () => body.match(/mdx\(CodeSnippets/g)?.length || 0,
+    /*
+     * The actual dependency is `body`, but that could be a huge string, so an
+     * identity check could be expensive. Instead, we check on the pathname,
+     * which is 1:1 to the body, unless editing a page's content, which only
+     * happens at dev time.
+     */
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [location.pathname]
+  );
   React.useEffect(() => {
-    if (hash) {
-      // Wait for whichever happens first: the first snippet on the page to render or 500ms
-      waitForElementToDisplay(
+    if (numCodeSnippets > 0 && hash) {
+      // Wait for whichever happens first: all snippets on the page to render or 500ms
+      waitForElementsToDisplay(
         '[id^=snippet]',
+        numCodeSnippets,
         () => {
           const element = document.querySelector(hash);
           element?.scrollIntoView();
@@ -185,7 +206,7 @@ function DocsScreen({ data, pageContext, location }) {
         500
       );
     }
-  }, [href, hash]);
+  }, [href, hash, numCodeSnippets]);
 
   return (
     <>
