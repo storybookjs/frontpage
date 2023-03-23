@@ -132,7 +132,7 @@ module.exports = {
 };
 ```
 
-To add the switcher, add the [`withThemeFromDataAttribute`](https://github.com/storybookjs/addon-styling/blob/main/docs/api.md#withthemebydataattribute) decorator to your storybook from `@storybook/addon-styling`
+To add the switcher, add the [`withThemeByDataAttribute`](https://github.com/storybookjs/addon-styling/blob/main/docs/api.md#withthemebydataattribute) decorator to your storybook from `@storybook/addon-styling`
 
 ```js
 // .storybook/preview.js
@@ -141,7 +141,7 @@ import { withThemeByDataAttribute } from '@storybook/addon-styling';
 /* snipped for brevity */
 
 export const decorators = [
-  withThemeFromDataAttribute({
+  withThemeByDataAttribute({
     themes: {
       light: 'light',
       dark: 'dark',
