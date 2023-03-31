@@ -215,7 +215,7 @@ export const AddonItemDetail = ({
       <div>
         <Title isLoading={isLoading}>
           <span>{isLoading ? 'loading' : displayName || name}</span>
-          {['official', 'integrators'].includes(appearance) && (
+          {['official', 'integrators'].includes(appearance) && status !== 'deprecated' && (
             <VerifiedBadge appearance={appearance} creator={verifiedCreator} />
           )}
           {status === 'deprecated' && (

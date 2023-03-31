@@ -189,6 +189,7 @@ export const AddonItem = ({
   isLoading,
   verifiedCreator,
   from,
+  status,
   ...props
 }) => (
   <AddonItemWrapper orientation={orientation} {...props}>
@@ -204,7 +205,7 @@ export const AddonItem = ({
       <div>
         <Title isLoading={isLoading}>
           <span>{isLoading ? 'loading' : displayName || name}</span>
-          {['official', 'integrators'].includes(appearance) && (
+          {['official', 'integrators'].includes(appearance) && status !== 'deprecated' && (
             <VerifiedBadge appearance={appearance} creator={verifiedCreator} />
           )}
         </Title>
@@ -240,6 +241,7 @@ AddonItem.propTypes = {
   appearance: PropTypes.oneOf(['official', 'integrators', 'community']),
   icon: PropTypes.string,
   name: PropTypes.string,
+  status: PropTypes.oneOf(['default', 'essential', 'deprecated']),
   displayName: PropTypes.string,
   description: PropTypes.string,
   weeklyDownloads: PropTypes.number,
@@ -259,6 +261,7 @@ AddonItem.propTypes = {
 };
 
 AddonItem.defaultProps = {
+  status: 'default',
   orientation: 'horizontal',
   appearance: 'community',
   weeklyDownloads: 0,

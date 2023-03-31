@@ -67,6 +67,16 @@ OfficialStorybookAddon.args = {
   weeklyDownloads: 17143,
 };
 
+export const Deprecated = Template.bind({});
+Deprecated.args = {
+  status: 'deprecated',
+  appearance: 'official',
+  icon: ControlsSVG,
+  displayName: 'Controls',
+  description: 'Interact with component inputs dynamically in the Storybook UI',
+  weeklyDownloads: 17143,
+};
+
 export const OfficialIntegratorAddon = Template.bind({});
 OfficialIntegratorAddon.args = {
   appearance: 'integrators',
