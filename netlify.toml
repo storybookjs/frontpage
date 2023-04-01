@@ -15,7 +15,3 @@
   for = "/releases/iframe/*"
   [headers.values]
     Content-Security-Policy = "frame-ancestors *"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Permissions-Policy = ""
-    X-Content-Type-Options = "nosniff"
-    X-XSS-Protection = "1; mode=block"
