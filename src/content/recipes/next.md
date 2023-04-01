@@ -102,7 +102,7 @@ export const Example = {
     nextjs: {
       appDirectory: true,
       navigation: {
-        pathname: '/profile,
+        pathname: '/profile',
         query: {
           user: 'santa',
         },
