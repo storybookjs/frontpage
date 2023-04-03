@@ -35,7 +35,7 @@ module.exports = {
       resolve: 'gatsby-source-graphql',
       options: {
         fieldName: `integrations`,
-        url: `https://deploy-preview-20--boring-heisenberg-43a6ed.netlify.app/`,
+        url: `https://boring-heisenberg-43a6ed.netlify.app/`,
         typeName: `INTEGRATION`,
       },
     },
