@@ -44,11 +44,13 @@ export function VersionSelector({ framework, version, versions, slug }: VersionS
       label: 'stable',
       items: stableLinks,
     },
-    {
+  ];
+  if (preReleaseLinks.length > 0) {
+    versionOptions.push({
       label: 'pre-release',
       items: preReleaseLinks,
-    },
-  ];
+    });
+  }
 
   const activeVersion = stylizeVersion(
     [...versions.stable, ...versions.preRelease].find(({ version: v }) => v === version)
