@@ -21,7 +21,7 @@ const {
 
 const docsTocWithPaths = addStateToToc(docsToc);
 
-const nextVersionString = versions.preRelease[0].string;
+const nextVersionString = versions.preRelease[0]?.string;
 
 let frameworks;
 
@@ -270,7 +270,8 @@ function updateRedirectsFile() {
   const versionRedirects = [...versions.stable, ...versions.preRelease, { string: 'next' }]
     .reduce((acc, { string }) => {
       const isLatestLocal = string === latestVersionString;
-      const versionStringLocal = string === 'next' ? nextVersionString : string;
+      const versionStringLocal =
+        string === 'next' ? nextVersionString || latestVersionString : string;
       const versionSlug = isLatestLocal ? '' : `/${string}`;
       const versionBranch = isLatestLocal ? '' : getReleaseBranchUrl(versionStringLocal);
       const redirectCode = isLatestLocal ? 301 : 200;
