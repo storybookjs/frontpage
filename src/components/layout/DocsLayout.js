@@ -33,7 +33,7 @@ import {
   GLOBAL_SEARCH_META_KEYS,
 } from '../../constants/global-search';
 
-const { breakpoint, color, pageMargins, spacing, typography } = styles;
+const { breakpoint, color, pageMargins, spacing } = styles;
 const { GlobalStyle } = global;
 
 const SubNavWrapper = styled.div`
@@ -116,20 +116,6 @@ const StyledTableOfContents = styled(TableOfContents)`
     /* So that the expandable arrows are rendered outside of the sidebar dimensions */
     margin-left: -20px;
   }
-`;
-
-const Divider = styled.div`
-  border-top: 1px solid ${color.border};
-  margin-top: 30px;
-  margin-bottom: 30px;
-  width: 100%;
-  max-width: 150px;
-`;
-
-const SurveyGraf = styled.p`
-  font-size: ${typography.size.s2}px;
-  color: ${color.dark};
-  max-width: 180px;
 `;
 
 const docsItems = [
@@ -238,22 +224,6 @@ export function PureDocsLayout({
     </>
   );
 }
-
-const surveyCTA = (
-  <>
-    <Divider />
-    <SurveyGraf>Take our 2023 survey to guide Storybook's future</SurveyGraf>
-    <Button
-      isLink
-      href="https://storybook.js.org/survey"
-      size="small"
-      appearance="secondaryOutline"
-    >
-      <Icon icon="star" />
-      Take survey (4 min)
-    </Button>
-  </>
-);
 
 const getTocSectionTitles = (toc, path) => {
   const pathParts = path.split('/');
@@ -364,45 +334,42 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
         framework={framework}
         slug={slug}
         sidebar={
-          <>
-            <StyledTableOfContents
-              key={framework}
-              currentPath={fullPath}
-              items={docsTocWithLinkWrappers}
-            >
-              {({ menu, allTopLevelMenusAreOpen, toggleAllOpen, toggleAllClosed }) => (
-                <>
-                  <SidebarControls>
-                    {allTopLevelMenusAreOpen ? (
-                      <WithTooltip
-                        {...withTooltipProps}
-                        tooltip={<TooltipNote note="Collapse all" />}
-                        onClick={toggleAllClosed}
-                        tabIndex="-1"
-                      >
-                        <ExpandButton containsIcon appearance="outline" size="small">
-                          <Icon icon="collapse" aria-label="Collapse sidebar" />
-                        </ExpandButton>
-                      </WithTooltip>
-                    ) : (
-                      <WithTooltip
-                        {...withTooltipProps}
-                        tooltip={<TooltipNote note="Expand all" />}
-                        onClick={toggleAllOpen}
-                        tabIndex="-1"
-                      >
-                        <ExpandButton containsIcon appearance="outline" size="small">
-                          <Icon icon="expandalt" aria-label="Expand sidebar" />
-                        </ExpandButton>
-                      </WithTooltip>
-                    )}
-                  </SidebarControls>
-                  {menu}
-                </>
-              )}
-            </StyledTableOfContents>
-            {surveyCTA}
-          </>
+          <StyledTableOfContents
+            key={framework}
+            currentPath={fullPath}
+            items={docsTocWithLinkWrappers}
+          >
+            {({ menu, allTopLevelMenusAreOpen, toggleAllOpen, toggleAllClosed }) => (
+              <>
+                <SidebarControls>
+                  {allTopLevelMenusAreOpen ? (
+                    <WithTooltip
+                      {...withTooltipProps}
+                      tooltip={<TooltipNote note="Collapse all" />}
+                      onClick={toggleAllClosed}
+                      tabIndex="-1"
+                    >
+                      <ExpandButton containsIcon appearance="outline" size="small">
+                        <Icon icon="collapse" aria-label="Collapse sidebar" />
+                      </ExpandButton>
+                    </WithTooltip>
+                  ) : (
+                    <WithTooltip
+                      {...withTooltipProps}
+                      tooltip={<TooltipNote note="Expand all" />}
+                      onClick={toggleAllOpen}
+                      tabIndex="-1"
+                    >
+                      <ExpandButton containsIcon appearance="outline" size="small">
+                        <Icon icon="expandalt" aria-label="Expand sidebar" />
+                      </ExpandButton>
+                    </WithTooltip>
+                  )}
+                </SidebarControls>
+                {menu}
+              </>
+            )}
+          </StyledTableOfContents>
         }
         versions={versions}
       >

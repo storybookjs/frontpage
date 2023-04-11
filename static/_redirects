@@ -119,7 +119,4 @@
 /design-system                              https://master--5ccbc373887ca40020446347.chromatic.com                                              301
 /migration-guides/7.0                       https://storybook.js.org/docs/7.0/react/migration-guide#page-top                                    301
 
-# Temporary
-/survey                                     https://forms.gle/ZheMgwuUNesst5MQ6                                                                 301
-
 # Rest of this file is generated (see gatsby-node.js > updateRedirectsFile)
