@@ -39,7 +39,7 @@
     "gatsby-plugin-react-helmet": "^5.16.0",
     "gatsby-plugin-remove-trailing-slashes": "^4.16.0",
     "gatsby-plugin-segment-js": "^3.7.1",
-    "gatsby-plugin-sharp": "^4.16.1",
+    "gatsby-plugin-sharp": "^4.25.1",
     "gatsby-plugin-sitemap": "^5.16.0",
     "gatsby-plugin-typescript": "^4.16.0",
     "gatsby-plugin-web-font-loader": "^1.0.4",
