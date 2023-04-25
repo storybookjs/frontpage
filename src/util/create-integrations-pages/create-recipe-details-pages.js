@@ -30,6 +30,22 @@ const TEMP_RECIPE_METADATA = {
     // publishedAt: Date.now(),
     // lastUpdatedAt: Date.now(),
   }),
+  less: (name) => ({
+    // Mock recipe metadata goes here
+    type: 'Recipe',
+    name,
+    displayName: 'Less',
+    description:
+      'Less is a popular CSS preprocessor that helps you write smaller, reusable styles.',
+    views: 1423,
+    icon: 'https://camo.githubusercontent.com/12c79be4b05f972b742c079fd5d0c1085729ea21a0d9263300cd6e9fa3ee9366/687474703a2f2f6c6573736373732e6f72672f7075626c69632f696d672f6c6573735f6c6f676f2e706e67',
+    accentColor: '#172d50',
+    tags: [],
+    authors: [],
+    createdAt: Date.now(),
+    publishedAt: Date.now(),
+    lastUpdatedAt: Date.now(),
+  }),
 };
 
 function parseRecipeFiles({ data }) {
