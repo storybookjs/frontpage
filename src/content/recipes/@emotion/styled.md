@@ -1,10 +1,10 @@
 <div class="aside aside__no-top">
 
-This recipe assumes that you have a React app using Emotion and have just set up Storybook >=6.0 using the [getting started guide](/docs/react/get-started/install). Don’t have this? Follow Emotion's [installation instructions](https://emotion.sh/docs/introduction#react) then run:
+This recipe assumes that you have a React app using Emotion and have just set up Storybook >=7.0 using the [getting started guide](/docs/react/get-started/install). Don’t have this? Follow Emotion's [installation instructions](https://emotion.sh/docs/introduction#react) then run:
 
 ```shell
 # Add Storybook:
-npx sb init
+npx storybook@latest init
 ```
 
 </div>
@@ -41,7 +41,7 @@ Then register with Storybook in `.storybook/main.js`.
 
 ```js
 module.exports = {
-  stories: ['../stories/**/*.stories.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
+  stories: ['../stories/**/*.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: ['@storybook/addon-essentials', '@storybook/addon-styling'],
 };
 ```

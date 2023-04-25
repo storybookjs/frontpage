@@ -4,7 +4,7 @@ This recipe assumes that you have a Vue 3 app using Vuetify v3 and have just set
 
 ```shell
 # Add Storybook:
-npx sb@next init
+npx storybook@latest init
 ```
 
 </div>

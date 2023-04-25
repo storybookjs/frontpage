@@ -21,14 +21,14 @@ Sass is a popular CSS preprocessor that allows developers to write more maintain
 First of all, install the required dependencies:
 
 ```shell
-yarn add -D @storybook/addon-styling sass sass-loader
+yarn add -D @storybook/addon-styling sass
 ```
 
 Then add register `@storybook/addon-styling` in your `main.js` like so:
 
 ```js
 module.exports = {
-  stories: ['../stories/**/*.stories.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
+  stories: ['../stories/**/*.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
     '@storybook/addon-essentials',
     {

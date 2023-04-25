@@ -26,7 +26,7 @@ Fortunately, there is now an easier way to develop isolated components with the 
 Follow the prompts after running this command in your Next.js project's root directory:
 
 ```shell
-npx storybook@next init
+npx storybook@latest init
 ```
 
 ## In a project with Storybook
@@ -34,7 +34,7 @@ npx storybook@next init
 This framework is designed to work with Storybook 7. If you’re not already using v7, upgrade with this command:
 
 ```shell
-npx storybook@next upgrade --prerelease
+npx storybook@latest upgrade
 ```
 
 ### Automatic migration
@@ -46,7 +46,7 @@ When running the upgrade command above, you should get a prompt asking you to mi
 Install the framework:
 
 ```shell
-yarn add --dev @storybook/nextjs@next
+yarn add -D @storybook/nextjs
 ```
 
 Update your `main.js` to change the framework property:
