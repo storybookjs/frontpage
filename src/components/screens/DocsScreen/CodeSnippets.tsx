@@ -93,7 +93,7 @@ const MessagingWrapper = styled.div<{ type?: 'missing' }>`
 export function MissingFrameworkMessage({ currentFramework }) {
   return (
     <MessagingWrapper type="missing">
-      This snippet doesnt exist for {stylizeFramework(currentFramework)} yet.{' '}
+      This snippet doesn’t exist for {stylizeFramework(currentFramework)} yet.{' '}
       <Link
         href={`https://storybook.js.org/docs/${currentFramework}/contribute/new-snippets`}
         target="_blank"
