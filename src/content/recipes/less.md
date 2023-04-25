@@ -30,7 +30,7 @@ First of all, install the required dependencies:
 yarn add -D @storybook/addon-styling less
 ```
 
-Then add register `@storybook/addon-styling` in your `main.js` like so:
+Then register `@storybook/addon-styling` in your `main.js` like so:
 
 ```js
 module.exports = {
@@ -41,7 +41,7 @@ module.exports = {
       name: '@storybook/addon-styling',
       options: {
         less: {
-          // Require your Sass preprocessor here
+          // Require your Less preprocessor here
           implementation: require('less'),
         },
       },
