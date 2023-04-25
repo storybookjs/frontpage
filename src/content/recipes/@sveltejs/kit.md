@@ -24,7 +24,7 @@ Fortunately, there is now an easier way to develop isolated components with the 
 Run the following command in your SvelteKit project's root directory, and follow the prompts:
 
 ```shell
-npx storybook@next init
+npx storybook@latest init
 ```
 
 Storybook will automatically detect your SvelteKit project and install the necessary packages and configurations.
@@ -34,7 +34,7 @@ Storybook will automatically detect your SvelteKit project and install the neces
 If you’re already using Storybook prior to version 7 in a project, upgrade Storybook with this command, and follow the prompts:
 
 ```shell
-npx storybook@next upgrade --prerelease
+npx storybook@latest upgrade
 ```
 
 If your existing project is configured with the Vite builder, it will prompt you to migrate your Storybook configuration and dependencies to the new `@storybook/sveltekit` package automatically.

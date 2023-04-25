@@ -1,10 +1,10 @@
 <div class="aside aside__no-top">
 
-This recipe assumes that you have a React app using Tailwind CSS and have just set up Storybook >=6.0 using the [getting started guide](/docs/react/get-started/install). Don’t have this? Follow Tailwind's [setup instructions](https://tailwindcss.com/docs/installation) then run:
+This recipe assumes that you have a React app using Tailwind CSS and have just set up Storybook >=7.0 using the [getting started guide](/docs/react/get-started/install). Don’t have this? Follow Tailwind's [setup instructions](https://tailwindcss.com/docs/installation) then run:
 
 ```shell
 # Add Storybook:
-npx sb init
+npx storybook@latest init
 ```
 
 </div>
@@ -39,7 +39,7 @@ To develop with Tailwind alongside your stories, storybook will need to know how
 First of all, install a few extra dependencies.
 
 ```shell
-yarn add -D @storybook/addon-styling postcss autoprefixer postcss-loader
+yarn add -D @storybook/addon-styling postcss autoprefixer
 ```
 
 Now create a `postcss.config.js` file in the root of your project.
