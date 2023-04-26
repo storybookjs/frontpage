@@ -21,7 +21,6 @@ const Frame = styled(motion.img)`
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 2;
 `;
 
 const Wrapper = styled(motion.div)`
@@ -61,7 +60,6 @@ const Pointer = styled(motion.img)`
   width: 5.66%;
   height: auto;
   position: absolute;
-  z-index: 2;
   top: 100%;
   left: 50%;
 `;
