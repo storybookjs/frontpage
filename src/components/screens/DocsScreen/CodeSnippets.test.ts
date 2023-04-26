@@ -50,8 +50,7 @@ it('Selects from available frameworks and languages, TS selected', () => {
   `);
 });
 
-// Un-skip once v7 is "latest"
-describe.skip('v7+', () => {
+describe('v7+', () => {
   it('Selects from available frameworks and languages, TS 4.9 selected', () => {
     const result = getResolvedPaths(
       [
