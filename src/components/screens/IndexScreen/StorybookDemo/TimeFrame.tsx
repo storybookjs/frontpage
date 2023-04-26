@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 
 const TimeFrameWrapper = styled(motion.div)`
   position: absolute;
-  z-index: 2;
   width: 41.415%;
   height: 0;
   padding-bottom: 22.1121663%;
@@ -32,7 +31,6 @@ interface TimeFrameProps {
 const Overview = styled(motion.img)`
   display: block;
   position: absolute;
-  z-index: 2;
   top: 4%;
   left: 21%;
   width: 78.9%;
