@@ -113,7 +113,7 @@ export function MissingCodeLanguageMessage({
 }) {
   return (
     <MessagingWrapper type="missing">
-      This snippet doesnt exist for {CODE_LANGUAGES_FULL[currentCodeLanguage]} yet.{' '}
+      This snippet doesn’t exist for {CODE_LANGUAGES_FULL[currentCodeLanguage]} yet.{' '}
       <Link
         href={`https://storybook.js.org/docs/${currentFramework}/contribute/new-snippets`}
         target="_blank"
