@@ -10,11 +10,17 @@ import {
   Testimonial,
 } from '@storybook/components-marketing';
 import { useScroll, useTransform, useSpring, motion } from 'framer-motion';
+import siteMetadata from '../../../../site-metadata';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import { Stat } from '../../basics/Stat';
 import AtomicDesignLogoSVG from '../../../images/logos/user/logo-atomicdesign.svg';
 import { Integrations } from './Integrations';
 import { ScrollDemo } from './StorybookDemo/ScrollDemo';
+import buildPathWithFramework from '../../../util/build-path-with-framework';
+
+const {
+  urls: { installDocsPageSlug },
+} = siteMetadata;
 
 const { subheading, breakpoints, pageMargins } = styles;
 
@@ -38,7 +44,7 @@ const frameworkIntegrations = featuredFrameworks.map((framework) => ({
   image: `/frameworks/logo-${
     framework === 'web-components' ? 'web-components-alt' : framework
   }.svg`,
-  href: `/docs/${framework}/get-started/introduction`,
+  href: buildPathWithFramework(installDocsPageSlug, framework),
   ButtonWrapper: GatsbyLinkWrapper,
 }));
 
@@ -248,7 +254,7 @@ export function Develop({ docs, startOpen, ...props }) {
               <Link
                 containsIcon
                 withArrow
-                href="/docs/react/why-storybook"
+                href="/docs/react/get-started/why-storybook"
                 LinkWrapper={GatsbyLinkWrapper}
               >
                 Why build UIs in isolation?
@@ -305,7 +311,7 @@ export function Develop({ docs, startOpen, ...props }) {
               <Link
                 containsIcon
                 withArrow
-                href="/docs/react/why-storybook"
+                href="/docs/react/get-started/why-storybook"
                 LinkWrapper={GatsbyLinkWrapper}
               >
                 Why build UIs in isolation?

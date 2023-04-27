@@ -4,7 +4,7 @@ This recipe assumes that you have a Vue 3 app using Vuetify v3 and have just set
 
 ```shell
 # Add Storybook:
-npx sb@next init
+npx storybook@latest init
 ```
 
 </div>
@@ -46,6 +46,65 @@ setup((app) => {
 ```
 
 Here `registerPlugins` loads Vuetify’s fonts and registers all of its components with Storybook’s Vue app.
+
+Next you will need to wrap your stories in Vuetify's `v-app` component in order to use some of it's larger layout components like `v-app-bar`.
+
+To do this, create a component in `.storybook/` called `StoryWrapper.vue`
+
+```vue
+<template>
+  <v-app>
+    <v-main>
+      <slot name="story"></slot>
+    </v-main>
+  </v-app>
+</template>
+
+<script></script>
+```
+
+Now create a storybook [decorator](/docs/vue/writing-stories/decorators) to wrap your stories in your StoryWrapper component.
+
+Below I created a new file in `.storybook` called `withVuetifyTheme.decorator.js`.
+
+```js
+// .storybook/withVeutifyTheme.decorator.js
+import { h } from 'vue';
+import StoryWrapper from './StoryWrapper.vue';
+
+export const withVuetifyTheme = (storyFn, context) => {
+  const story = storyFn();
+
+  return () => {
+    return h(
+      StoryWrapper,
+      {}, // Props for StoryWrapper
+      {
+        // Puts your story into StoryWrapper's "story" slot with your story args
+        story: () => h(story, { ...context.args }),
+      }
+    );
+  };
+};
+```
+
+Finally, give this decorator to Storybook in your `preview.js` file.
+
+```js
+// .storybook/preview.js
+
+import { setup } from '@storybook/vue3';
+import { registerPlugins } from '../src/plugins';
+import { withVuetifyTheme } from './withVuetifyTheme.decorator';
+
+setup((app) => {
+  registerPlugins(app);
+});
+
+/* snipped for brevity */
+
+export const decorators = [withVuetifyTheme];
+```
 
 ## Using Vuetify Components
 
@@ -141,52 +200,53 @@ This code will create a new toolbar menu to select your desired theme for your s
 ## Add a `withVuetifyTheme` decorator
 
 There needs to be a way to tell Vuetify to use the theme selected in the toolbar.
-This can be done using a [decorator](/docs/vue/writing-stories/decorators).
+This can be done by updating our `StoryWrapper` component and `withVuetifyTheme` decorator
 
-Below I created a new file in `.storybook` called `withVuetifyTheme.decorator.js` that will take our global theme value and update Vuetify’s current theme.
+Firstly, give `StoryWrapper` a `themeName` prop that it can give to `v-app`
+
+```vue
+<template>
+  <v-app :theme="themeName">
+    <v-main>
+      <slot name="story"></slot>
+    </v-main>
+  </v-app>
+</template>
+
+<script>
+export default {
+  props: {
+    themeName: String,
+  },
+};
+</script>
+```
+
+Now pass our global `theme` variable to our `StoryWrapper` component as a prop with our decorator
 
 ```js
 // .storybook/withVeutifyTheme.decorator.js
-
-import { useTheme } from 'vuetify';
+import { h } from 'vue';
+import StoryWrapper from './StoryWrapper.vue';
 
 export const DEFAULT_THEME = 'light';
 
-export const withVuetifyTheme = (story, context) => {
-  const globalTheme = context.globals.theme || DEFAULT_THEME;
+export const withVuetifyTheme = (storyFn, context) => {
+  // Pull our global theme variable, fallback to DEFAULT_THEME
+  const themeName = context.globals.theme || DEFAULT_THEME;
+  const story = storyFn();
 
-  return {
-    components: { story },
-    setup() {
-      const theme = useTheme();
-
-      theme.global.name.value = globalTheme;
-
-      return {
-        theme,
-      };
-    },
-    template: `<story />`,
+  return () => {
+    return h(
+      StoryWrapper,
+      // give themeName to StoryWrapper as a prop
+      { themeName },
+      {
+        story: () => h(story, { ...context.args }),
+      }
+    );
   };
 };
-```
-
-All that is left to do is give this decorator to Storybook to wrap our stories in. Add the decorator to the decorator array in `.storybook/preview.js`:
-
-```js
-// .storybook/preview.js
-
-import { setup } from '@storybook/vue3';
-import { registerPlugins } from '../src/plugins';
-import { withVuetifyTheme } from './withVuetifyTheme.decorator';
-
-setup((app) => {
-  registerPlugins(app);
-});
-
-/* snipped for brevity */
-
-export const decorators = [withVuetifyTheme];
 ```
 
 ## Get involved

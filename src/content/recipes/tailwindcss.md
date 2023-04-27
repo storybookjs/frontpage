@@ -1,10 +1,10 @@
 <div class="aside aside__no-top">
 
-This recipe assumes that you have a React app using Tailwind CSS and have just set up Storybook >=6.0 using the [getting started guide](/docs/react/get-started/install). Don’t have this? Follow Tailwind's [setup instructions](https://tailwindcss.com/docs/installation) then run:
+This recipe assumes that you have a React app using Tailwind CSS and have just set up Storybook >=7.0 using the [getting started guide](/docs/react/get-started/install). Don’t have this? Follow Tailwind's [setup instructions](https://tailwindcss.com/docs/installation) then run:
 
 ```shell
 # Add Storybook:
-npx sb init
+npx storybook@latest init
 ```
 
 </div>
@@ -39,7 +39,7 @@ To develop with Tailwind alongside your stories, storybook will need to know how
 First of all, install a few extra dependencies.
 
 ```shell
-yarn add -D postcss autoprefixer postcss-loader
+yarn add -D @storybook/addon-styling postcss autoprefixer
 ```
 
 Now create a `postcss.config.js` file in the root of your project.
@@ -55,35 +55,28 @@ module.exports = {
 };
 ```
 
-Then add the `postcss-loader` to storybook using the `webpackFinal` option your `.storybook/main.js` file.
+Then add the `@storybook/addon-styling` to your `.storybook/main.js` file with the `postCss` option set to true.
 
-```diff
+```js
 module.exports = {
   addons: [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/preset-create-react-app",
-    "@storybook/addon-interactions"
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@storybook/addon-interactions',
+    {
+      name: '@storybook/addon-styling',
+      options: {
+        // Check out https://github.com/storybookjs/addon-styling/blob/main/docs/api.md
+        // For more details on this addon's options.
+        postCss: true,
+      },
+    },
   ],
-
-  // Snipped for brevity
-
-+ webpackFinal: async (config) => {
-+   config.module.rules.push({
-+     test: /\.css$/i,
-+     use: [
-+       {
-+         loader: "postcss-loader",
-+         options: { implementation: require.resolve("postcss") },
-+       },
-+     ],
-+     include: path.resolve(__dirname, "../"),
-+   });
-+   // Return the altered config
-+   return config;
-+ },
-}
+  // snipped for brevity
+};
 ```
+
+**Note**: Using Vite, `@storybook/nextjs`, or `@storybook/preset-create-react-app` with `react-scripts@2.0.0` and up? You don't need to set `postCss` to true.
 
 ## Provide Tailwind to stories
 
@@ -92,7 +85,7 @@ Now you can import the `tailwind.css` file into your `.storybook/preview.js` fil
 ```js
 // .storybook/preview.js
 
-import '../src/tailwind.js'; // replace with the name of your tailwind css file
+import '../src/tailwind.css'; // replace with the name of your tailwind css file
 ```
 
 ## Use Tailwind in components
@@ -117,7 +110,7 @@ To make use of Tailwind, replace the contents of each component file with the fo
 
 ![Storybook after adding tailwind CSS to the example components](https://user-images.githubusercontent.com/18172605/208201423-c7ea9392-1851-4fc3-9968-6d05399c2e91.gif)
 
-## Add a theme switcher tool using `globalTypes`
+## Add a theme switcher tool
 
 Tailwind comes out of the box with a light and dark theme. You can override those themes and add more. To get the most out of your stories, you should have a way to toggle between all of your themes.
 
@@ -139,66 +132,27 @@ module.exports = {
 };
 ```
 
-To add the switcher, declare a [global type](/docs/react/essentials/toolbars-and-globals) named "theme" in `.storybook/preview.js` and give it a list of supported themes to choose from.
+To add the switcher, add the [`withThemeByDataAttribute`](https://github.com/storybookjs/addon-styling/blob/main/docs/api.md#withthemebydataattribute) decorator to your storybook from `@storybook/addon-styling`
 
 ```js
 // .storybook/preview.js
-export const globalTypes = {
-  theme: {
-    name: 'Theme',
-    description: 'Global theme for components',
-    toolbar: {
-      icon: 'paintbrush',
-      // Array of plain string values or MenuItem shape
-      items: [
-        { value: 'light', title: 'Light', left: '🌞' },
-        { value: 'dark', title: 'Dark', left: '🌛' },
-      ],
-      // Change title based on selected value
-      dynamicTitle: true,
-    },
-  },
-};
-```
-
-This code will create a new toolbar menu to select your desired theme for your stories.
-
-### Add a `withTailwindTheme` decorator
-
-There needs to be a way to tell Tailwind to use the theme that is selected in the toolbar. To do that, This can be done using a [decorator](/docs/vue/writing-stories/decorators).
-
-Below I created a new file in `.storybook` called `withTailwindTheme.decorator.js` that will take the global theme value and update the current theme.
-
-```js
-// .storybook/withTailwindTheme.decorator.js
-
-import { useEffect } from 'react';
-
-export const DEFAULT_THEME = 'light';
-
-export const withTailwindTheme = (Story, context) => {
-  const { theme } = context.globals;
-
-  useEffect(() => {
-    const htmlTag = document.documentElement;
-
-    // Set the "data-mode" attribute on the iFrame html tag
-    htmlTag.setAttribute('data-mode', theme || DEFAULT_THEME);
-  }, [theme]);
-
-  return <Story />;
-};
-```
-
-Now all we have to do is give this decorator to Storybook to wrap our stories in. Add the decorator to the `decorators` array in `.storybook/preview.js`:
-
-```js
-import { DEFAULT_THEME, withTailwindTheme } from './withTailwindTheme.decorator';
+import { withThemeByDataAttribute } from '@storybook/addon-styling';
 
 /* snipped for brevity */
 
-export const decorators = [withTailwindTheme];
+export const decorators = [
+  withThemeByDataAttribute({
+    themes: {
+      light: 'light',
+      dark: 'dark',
+    },
+    defaultTheme: 'light',
+    attributeName: 'data-mode',
+  }),
+];
 ```
+
+This code will create a new toolbar menu to select your desired theme for your stories.
 
 ## Get involved
 

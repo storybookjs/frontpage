@@ -35,7 +35,7 @@ module.exports = {
       resolve: 'gatsby-source-graphql',
       options: {
         fieldName: `integrations`,
-        url: `https://deploy-preview-20--boring-heisenberg-43a6ed.netlify.app/`,
+        url: `https://boring-heisenberg-43a6ed.netlify.app/`,
         typeName: `INTEGRATION`,
       },
     },
@@ -211,9 +211,9 @@ module.exports = {
                 })),
               serialize: ({ url }) => ({ url }),
               // Exclude all doc pages not for React
-              // except the get-started/introduction page for all frameworks
+              // except the first docs page for all frameworks
               excludes: [
-                '{/docs/!(react)/!(get-started)/**,/docs/!(react)/get-started/!(introduction)}',
+                '{/docs/!(react)/!(get-started)/**,/docs/!(react)/get-started/!(install)}',
               ],
             },
           },

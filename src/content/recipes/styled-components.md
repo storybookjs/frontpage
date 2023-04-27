@@ -1,10 +1,10 @@
 <div class="aside aside__no-top">
 
-This recipe assumes that you have a React app using styled-components and have just set up Storybook >=6.0 using the [getting started guide](/docs/react/get-started/install). Don’t have this? Follow styled-components' [installation instructions](https://styled-components.com/docs/basics#installation) then run:
+This recipe assumes that you have a React app using styled-components and have just set up Storybook >=7.0 using the [getting started guide](/docs/react/get-started/install). Don’t have this? Follow styled-components' [installation instructions](https://styled-components.com/docs/basics#installation) then run:
 
 ```shell
 # Add Storybook:
-npx sb init
+npx storybook@latest init
 ```
 
 </div>
@@ -19,7 +19,7 @@ styled-components is a popular library for building UI components with CSS-in-JS
 
 This post will explain how to:
 
-1. 🔌 Setup `GlobalStyle`
+1. 🔌 Setup `GlobalStyles`
 2. 🧱 Use styled-components in your components
 3. 💅 Use a theme in your stories
 4. 🎨 Switch betweens themes in a click
@@ -28,38 +28,52 @@ If you’d like to see the example code of this recipe, check out the [example r
 
 ![Completed styled-components example with theme switcher](https://user-images.githubusercontent.com/18172605/208312563-875ca3b0-e7bc-4401-a445-4553b48068ed.gif)
 
-## How to setup `GlobalStyle`
+## Install `@storybook/addon-styling`
+
+Add the `@storybook/addon-styling` package to your DevDependencies
+
+```shell
+yarn add -D @storybook/addon-styling
+```
+
+Then register with Storybook in `.storybook/main.js`.
+
+```js
+module.exports = {
+  stories: ['../stories/**/*.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
+  addons: ['@storybook/addon-essentials', '@storybook/addon-styling'],
+};
+```
+
+## How to setup `GlobalStyles`
 
 UIs often have a set of global styles that are applied to every component like CSS resets, `font-size`, `font-family`, and colors.
 
 In styled-components, use the [`createGlobalStyle`](https://styled-components.com/docs/api#createglobalstyle) API to scope styles globally instead of locally (which is the library's default behavior).
 
-Open `.storybook/preview.js` and create a `GlobalStyle` component which includes a `font-family`. Then apply it to all stories via a [decorator](/docs/react/writing-stories/decorators).
+Open `.storybook/preview.js` and create a `GlobalStyles` component which includes a `font-family`. Then apply it to your stories with the [`withThemeFromJSXProvider`](https://github.com/storybookjs/addon-styling/blob/main/docs/api.md#withthemefromjsxprovider) decorator by adding it to the `decorators` array.
 
 ```js
 // .storybook/preview.js
-
+import { withThemeFromJSXProvider } from '@storybook/addon-styling';
 import { createGlobalStyle } from 'styled-components';
 
-const GlobalStyle = createGlobalStyle`
+const GlobalStyles = createGlobalStyle`
   body {
     font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
 `;
 
-const withGlobalStyle = (Story) => (
-  <>
-    <GlobalStyle />
-    <Story />
-  </>
-);
-
-export const decorators = [withGlobalStyle];
+export const decorators = [
+  withThemeFromJSXProvider({
+    GlobalStyles, // Adds your GlobalStyle component to all stories
+  }),
+];
 ```
 
 <div class="aside">
 
-If you already have `GlobalStyle` in your app, you can import it into `.storybook/preview.js` instead of creating it anew.
+If you already have `GlobalStyles` in your app, you can import it into `.storybook/preview.js` instead of creating it anew.
 
 </div>
 
@@ -222,58 +236,33 @@ export const lightTheme = {
 };
 ```
 
-To share this theme with the components in Storybook, you'll need a [decorator](/docs/react/writing-stories/decorators).
-
-Below I created a new file in `.storybook` called `withTheme.decorator.js` that will wrap your stories with styled-component's `ThemeProvider`.
-
-```js
-// .storybook/withTheme.decorator.js
-
-import { ThemeProvider } from 'styled-components';
-import { lightTheme } from '../src/theme';
-
-export const withTheme = (Story) => (
-  <ThemeProvider theme={lightTheme}>
-    <Story />
-  </ThemeProvider>
-);
-```
-
-All that is left to do is give this decorator to Storybook. Add the decorator to the `decorators` array in `.storybook/preview.js`:
+To share this theme with the components in Storybook, you'll need to provide it to the `withThemeFromJSXProvider` decorator along with `styled-components` ThemeProvider component.
 
 ```js
 // .storybook/preview.js
+import { withThemeFromJSXProvider } from '@storybook/addon-styling';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
-import { createGlobalStyle } from 'styled-components';
-import { withTheme } from './withTheme.decorator';
+import { lightTheme } from '../src/themes';
 
-const GlobalStyle = createGlobalStyle`
+const GlobalStyles = createGlobalStyle`
   body {
     font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
 `;
 
-const withGlobalStyle = (Story) => (
-  <>
-    <GlobalStyle />
-    <Story />
-  </>
-);
-
-export const parameters = {
-  actions: { argTypesRegex: '^on[A-Z].*' },
-  controls: {
-    matchers: {
-      color: /(background|color)$/i,
-      date: /Date$/,
-    },
-  },
-};
-
-export const decorators = [withGlobalStyle, withTheme];
+export const decorators = [
+  withThemeFromJSXProvider({
+  themes: {
+    light: lightTheme,
+  }
+  defaultTheme: 'light',
+  Provider: ThemeProvider,
+  GlobalStyles,
+})];
 ```
 
-Now, components made with styled-components will get the theme through the `theme` prop along with the styles inherited from `GlobalStyle`. Let's update the example components to use the theme.
+Now, components made with styled-components will get the theme through the `theme` prop along with the styles inherited from `GlobalStyles`. Let's update the example components to use the theme.
 
 <!-- prettier-ignore-start -->
 
@@ -287,7 +276,7 @@ Now, components made with styled-components will get the theme through the `them
 
 <!-- prettier-ignore-end -->
 
-## Add a theme switcher tool using `globalTypes`
+## Add a theme switcher tool using `@storybook/addon-styling`
 
 Dark mode has become an increasingly popular offering on the web. This can be achieved quickly using themes.
 
@@ -319,67 +308,30 @@ Now, to get the most out of your stories, there should be a way to toggle betwee
 
 ![Completed styled-components example with theme switcher](https://user-images.githubusercontent.com/18172605/208312563-875ca3b0-e7bc-4401-a445-4553b48068ed.gif)
 
-To add the switcher, declare a [global type](/docs/react/essentials/toolbars-and-globals) named `theme` in `.storybook/preview.js` and give it a list of supported themes to choose from.
+To add the switcher, add your `darkTheme` object into the the `withThemeFromJSXProvider` decorator themes object
 
 ```js
 // .storybook/preview.js
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { withThemeFromJSXProvider } from '@storybook/addon-styling';
+
+import { lightTheme, darkTheme } from '../src/themes';
 
 /* snipped for brevity */
 
-export const globalTypes = {
-  theme: {
-    name: 'Theme',
-    description: 'Global theme for components',
-    toolbar: {
-      icon: 'paintbrush',
-      // Array of plain string values or MenuItem shape
-      items: [
-        { value: 'light', title: 'Light', left: '🌞' },
-        { value: 'dark', title: 'Dark', left: '🌛' },
-      ],
-      // Change title based on selected value
-      dynamicTitle: true,
-    },
-  },
-};
-```
-
-This code will create a new toolbar menu to select your desired theme for your stories.
-
-## Update `withTheme` to change themes
-
-The last step to switch between themes is to update the `withTheme` decorator to change the theme based on the selected value of the `theme` global variable.
-
-```js
-// .storybook/withTheme.decorator.js
-
-import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
-import { lightTheme, darkTheme } from '../src/theme';
-
-const THEMES = {
-  light: lightTheme,
-  dark: darkTheme,
-};
-
-// Sets the background based on theme by creating another global style definition
-const GlobalStyles = createGlobalStyle`
-  html, body {
-    background-color: ${({ theme }) => theme.colors.background};
-    color: ${({ theme }) => theme.colors.text};
+export const decorators = [
+  withThemeFromJSXProvider({
+  themes: {
+    light: lightTheme,
+    dark: darkTheme,
   }
-`;
-
-export const withTheme = (Story, context) => {
-  const { theme } = context.globals;
-
-  return (
-    <ThemeProvider theme={THEMES[theme] || THEMES['light']}>
-      <GlobalStyles />
-      <Story />
-    </ThemeProvider>
-  );
-};
+  defaultTheme: 'light',
+  Provider: ThemeProvider,
+  GlobalStyles,
+})];
 ```
+
+Adding a second theme will create a new toolbar menu to select your desired theme for your stories.
 
 ## Get involved
 

@@ -1,6 +1,6 @@
 <div class="aside aside__no-top">
 
-This recipe assumes that you already have a React app using the `@mui/material` package set up with Storybook 6.0 or newer. If you don’t have a project ready, clone my [example repository](https://github.com/ShaunLloyd/storybook-mui-example) to follow along.
+This recipe assumes that you already have a React app using the `@mui/material` package set up with Storybook 7.0 or newer. If you don’t have a project ready, clone my [example repository](https://github.com/ShaunLloyd/storybook-mui-example) to follow along.
 
 </div>
 
@@ -48,15 +48,27 @@ import '@fontsource/material-icons';
 
 Material UI comes with a default theme out of the box, but you can also create and provide your own themes. Given the popularity of dark mode, you'll likely end with more than one custom theme. Let's look at how you can load custom themes and switch between them with just a click.
 
-![Storybook changing to the provided dark theme](https://lh3.googleusercontent.com/O5NeQidj2tK5hbgw6oT_25HZLm4VUkpUgLUcIsFEahslc0Y8mweYVR6gAflPidqEwTUWedVXC_Xt58OEqbzJc4xWvFnjWyQmWCGbcLSa_RWK41G5_iZ8-LvkWcemfg5TV6tF_VFXj6GHNFIK92z_WvEKspVDBUqX6a1EirtwMIprFhPY8sHDudwpWQ)
+![Switching between light and dark mode using a theme switcher in the Storybook toolbar](https://lh3.googleusercontent.com/iqsY5lIKADg0xiIxGe7a9qS40R_HP-yNi50PGqO5VuPKVTFoio98LRdM8VvIE40kENxw6nHpu9P5DqkUQNLRJDtGCg9aw-hf4hW8dCtnRdqgxjCLJHOol-04dKjN-cEi-7pBzgy-s8Z8X_ojXMLGXdy04CsttlQevGeAiu6nyGHxzb7VW9FsTnmYQw)
 
-For example, take this custom dark mode theme.
+For example, take these custom light and dark mode themes.
 
-```jsx
-// src/themes/dark.theme.js
+```js
+// src/themes.js
 
 import { createTheme } from '@mui/material';
 import { blueGrey, cyan, pink } from '@mui/material/colors';
+
+export const lightTheme = createTheme({
+  palette: {
+    mode: 'light',
+    primary: {
+      main: cyan['A200'],
+    },
+    secondary: {
+      main: pink['A400'],
+    },
+  },
+});
 
 export const darkTheme = createTheme({
   palette: {
@@ -75,90 +87,44 @@ export const darkTheme = createTheme({
 });
 ```
 
-To apply the custom theme to our stories, we’ll need to wrap them in Material UI’s `ThemeProvider` using a decorator.
+First of all, install our [`@storybook/addon-styling`](https://github.com/storybookjs/addon-styling) addon.
 
-```jsx
+```shell
+yarn add -D @storybook/addon-styling
+```
+
+Then register it with Storybook in `.storybook/main.js`
+
+```js
+module.exports = {
+  stories: ['../stories/**/*.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
+  addons: ['@storybook/addon-essentials', '@storybook/addon-styling'],
+};
+```
+
+And finally apply the custom themes to our stories. We’ll need to wrap them in Material UI’s `ThemeProvider` using the `withThemeFromJSXProvider` decorator.
+
+```js
 // .storybook/preview.js
-
 import { CssBaseline, ThemeProvider } from '@mui/material';
-import { darkTheme } from '../src/themes/dark.theme';
+import { withThemeFromJSXProvider } from '@storybook/addon-styling';
+import { lightTheme, darkTheme } from '../src/themes.js';
 
 /* snipped for brevity */
 
-export const withMuiTheme = (Story) => (
-  <ThemeProvider theme={darkTheme}>
-    <CssBaseline />
-    <Story />
-  </ThemeProvider>
-);
-
-export const decorators = [withMuiTheme];
+export const decorators = [
+  withThemeFromJSXProvider({
+  themes: {
+    light: lightTheme,
+    dark: darkTheme,
+  }
+  defaultTheme: 'light',
+  Provider: ThemeProvider,
+  GlobalStyles: CssBaseline,
+})];
 ```
 
-Awesome! Now when Storybook is reloaded, you'll see that our `withMuiTheme` decorator is providing our custom dark theme.
-
-### Use globalTypes to add a theme switcher
-
-To take this decorator a step further, let’s add a way to toggle between multiple themes.
-
-![Switching between light and dark mode using a theme switcher in the Storybook toolbar](https://lh3.googleusercontent.com/iqsY5lIKADg0xiIxGe7a9qS40R_HP-yNi50PGqO5VuPKVTFoio98LRdM8VvIE40kENxw6nHpu9P5DqkUQNLRJDtGCg9aw-hf4hW8dCtnRdqgxjCLJHOol-04dKjN-cEi-7pBzgy-s8Z8X_ojXMLGXdy04CsttlQevGeAiu6nyGHxzb7VW9FsTnmYQw)
-
-To do this, we can declare a global variable named theme in `.storybook/preview.js` and give it a list of supported themes to choose from.
-
-```jsx
-// .storybook/preview.js
-
-export const globalTypes = {
-  theme: {
-    name: 'Theme',
-    title: 'Theme',
-    description: 'Theme for your components',
-    defaultValue: 'light',
-    toolbar: {
-      icon: 'paintbrush',
-      dynamicTitle: true,
-      items: [
-        { value: 'light', left: '☀️', title: 'Light mode' },
-        { value: 'dark', left: '🌙', title: 'Dark mode' },
-      ],
-    },
-  },
-};
-```
-
-Now we can update our decorator to provide the theme selected in our new dropdown.
-
-```jsx
-// .storybook/preview.js
-
-import { useMemo } from 'react';
-
-/* Snipped for brevity */
-
-// Add your theme configurations to an object that you can
-// pull your desired theme from.
-const THEMES = {
-  light: lightTheme,
-  dark: darkTheme,
-};
-
-export const withMuiTheme = (Story, context) => {
-  // The theme global we just declared
-  const { theme: themeKey } = context.globals;
-
-  // only recompute the theme if the themeKey changes
-  const theme = useMemo(() => THEMES[themeKey] || THEMES['light'], [themeKey]);
-
-  return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Story />
-    </ThemeProvider>
-  );
-};
-```
-
-Now we have a fully functioning theme switcher for our MaterialUI Storybook. If you want to learn more about switchers, check out **Yann Braga’s** article on [adding a theme switcher](https://storybook.js.org/blog/how-to-add-a-theme-switcher-to-storybook/).
+Awesome! Now when Storybook is reloaded, you'll see that our `withThemeFromJSXProvider` decorator is providing our custom light theme by default.
 
 ## Use Material UI prop types for better controls and docs
 
@@ -193,7 +159,7 @@ This is because Storybook only adds props to the controls table that are explici
 // .storybook/main.ts
 
 module.exports = {
-  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',

@@ -76,6 +76,7 @@ function searchAddons(query) {
             repositoryUrl
             appearance: verified
             verifiedCreator
+            status
           }
           recipes {
             type: __typename

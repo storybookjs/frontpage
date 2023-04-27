@@ -8,7 +8,7 @@ import semver from 'semver';
 const CACHE_KEY = 'versions';
 const cache = new LRU({
   max: 64 * 1024, // 64kb
-  maxAge: 20 * 60 * 60 * 1000, // 30 mins
+  maxAge: 10 * 60 * 60 * 1000, // 10 mins
   length: (n, key) => n.length,
 });
 

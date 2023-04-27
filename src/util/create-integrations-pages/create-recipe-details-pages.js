@@ -17,6 +17,18 @@ const PAGE_COMPONENT_PATH = path.resolve(
 const TEMP_RECIPE_METADATA = {
   example: (name) => ({
     // Mock recipe metadata goes here
+    // type: 'Recipe',
+    // name,
+    // displayName: '',
+    // description: '',
+    // views: 1423,
+    // icon: '',
+    // accentColor: '#333333',
+    // tags: [],
+    // authors: [],
+    // createdAt: Date.now(),
+    // publishedAt: Date.now(),
+    // lastUpdatedAt: Date.now(),
   }),
 };
 

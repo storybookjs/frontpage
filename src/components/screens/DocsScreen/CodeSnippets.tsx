@@ -11,8 +11,14 @@ import {
 } from '@storybook/design-system';
 
 import { CODE_SNIPPET_CLASSNAME } from '../../../constants/code-snippets';
+import { DEFAULT_CODE_LANGUAGE, CODE_LANGUAGES_FULL } from '../../../constants/code-languages';
 import stylizeFramework from '../../../util/stylize-framework';
 import { logSnippetInteraction } from '../../../util/custom-events';
+
+const siteMetadata = require('../../../../site-metadata');
+const { version, latestVersion } = require('../../../util/version-data');
+
+const { defaultFramework } = siteMetadata;
 
 const { color, spacing, typography } = styles;
 
@@ -51,7 +57,6 @@ const prettifySyntax = (syntax) => {
 };
 
 const COMMON = 'common';
-const DEFAULT_FRAMEWORK = 'react';
 
 export function TabLabel({ isActive, framework, syntax }) {
   const isFrameworkSpecific = framework !== COMMON;
@@ -78,25 +83,45 @@ export function PureCodeSnippets(props) {
 }
 
 const MessagingWrapper = styled.div<{ type?: 'missing' }>`
-  background-color: ${(props) => (props.type === 'missing' ? '#fdf5d3' : color.blueLight)};
+  background-color: ${(props) => (props.type === 'missing' ? '#fdf5d3' : color.bluelight)};
   padding: 10px 16px;
   border-bottom: 1px solid ${color.border};
   font-size: ${typography.size.s2}px;
   line-height: 20px;
 `;
 
-export function MissingMessage({ currentFramework }) {
+export function MissingFrameworkMessage({ currentFramework }) {
   return (
     <MessagingWrapper type="missing">
-      This snippet doesnt exist for {stylizeFramework(currentFramework)} yet.{' '}
+      This snippet doesn’t exist for {stylizeFramework(currentFramework)} yet.{' '}
       <Link
-        href="https://github.com/storybookjs/storybook/tree/next/docs"
+        href={`https://storybook.js.org/docs/${currentFramework}/contribute/new-snippets`}
         target="_blank"
         rel="noopener"
       >
         Contribute it in a PR now
       </Link>
-      . In the meantime, here’s the {stylizeFramework(DEFAULT_FRAMEWORK)} snippet.
+      . In the meantime, here’s the {stylizeFramework(defaultFramework)} snippet.
+    </MessagingWrapper>
+  );
+}
+
+export function MissingCodeLanguageMessage({
+  currentCodeLanguage,
+  currentFramework,
+  fallbackLanguage = 'js',
+}) {
+  return (
+    <MessagingWrapper type="missing">
+      This snippet doesn’t exist for {CODE_LANGUAGES_FULL[currentCodeLanguage]} yet.{' '}
+      <Link
+        href={`https://storybook.js.org/docs/${currentFramework}/contribute/new-snippets`}
+        target="_blank"
+        rel="noopener"
+      >
+        Contribute it in a PR now
+      </Link>
+      . In the meantime, here’s the {CODE_LANGUAGES_FULL[fallbackLanguage]} snippet.
     </MessagingWrapper>
   );
 }
@@ -132,17 +157,134 @@ export function CsfMessage({
   );
 }
 
-export function CodeSnippets({ csf2Path, currentFramework, paths, usesCsf3, ...rest }) {
-  const [snippets, setSnippets] = React.useState([]);
-  const activeFrameworkPaths = paths.filter((path) => {
-    const [framework] = path.split('/');
-    return framework === currentFramework || framework === COMMON;
-  });
+function getPathsForLanguage(paths, forLanguage, { matchMDX = true } = {}) {
+  return paths.filter((path) => {
+    /**
+     * For a path like `web-components/button-story-click-handler-args.js.mdx`,
+     * capture the group `js`
+     */
+    const language = path.match(/\.((?:\w+-*)+)\.mdx$/)[1];
 
-  let defaultFrameworkPaths;
-  if (!activeFrameworkPaths.length) {
-    defaultFrameworkPaths = paths.filter((path) => path.split('/')[0] === 'react');
+    return (
+      /**
+       * The language can be, among others:
+       * - `js` for general JS
+       * - `ts` for general TS
+       * - `ts-2` or `ts-3` for Vue 2/3 TS
+       * - `ts-4-9` for TS 4.9
+       * - `mdx` for MDX
+       * - `mdx-2` or `mdx-3` for Vue 2/3 MDX
+       * This check is formulated so that `ts-4-9` does not match `ts`, but, e.g., `ts-2` does
+       */
+      (language === 'ts-4-9' ? language === forLanguage : language.startsWith(forLanguage)) ||
+      // Also optionally match any mdx language snippet paths
+      (matchMDX && language.startsWith('mdx'))
+    );
+  });
+}
+
+export const getResolvedPaths = (paths, currentFramework, currentCodeLanguage) => {
+  let message;
+
+  const isPackageManagerSnippet = paths.some(
+    (path) => path.includes('.npm.') || path.includes('.yarn.')
+  );
+
+  let completePaths = paths;
+  if (version >= 7 && !isPackageManagerSnippet) {
+    // add TS 4.9 snippets
+    completePaths = paths.flatMap((path) =>
+      path.includes('.ts.') ? [path, path.replace('.ts.', '.ts-4-9.')] : [path]
+    );
   }
+
+  const pathsByFramework = completePaths.reduce((acc, path) => {
+    const [framework] = path.split('/');
+    if (!acc[framework]) acc[framework] = [];
+    acc[framework].push(path);
+    return acc;
+  }, {} as Record<string, string[]>);
+
+  let pathsForCurrentFramework =
+    pathsByFramework[currentFramework] || pathsByFramework[COMMON] || [];
+
+  if (isPackageManagerSnippet) {
+    return [pathsForCurrentFramework, message];
+  }
+
+  if (pathsForCurrentFramework.length === 0) {
+    pathsForCurrentFramework = pathsByFramework[defaultFramework];
+    message = <MissingFrameworkMessage currentFramework={currentFramework} />;
+  }
+
+  if (!pathsForCurrentFramework) {
+    if (version >= latestVersion) {
+      throw new Error(`No snippets found for ${currentFramework} in ${paths.join(', ')}`);
+    }
+    return [[], message];
+  }
+
+  let resolvedPaths = getPathsForLanguage(pathsForCurrentFramework, currentCodeLanguage);
+
+  // TS selected, but no TS snippet, fallback to JS
+  if (resolvedPaths.length === 0) {
+    resolvedPaths = getPathsForLanguage(pathsForCurrentFramework, 'js');
+    // If there are any TS snippets for other frameworks, show a message
+    if (getPathsForLanguage(paths, 'ts', { matchMDX: false }).length > 0) {
+      message = (
+        <MissingCodeLanguageMessage
+          currentCodeLanguage={currentCodeLanguage}
+          currentFramework={currentFramework}
+        />
+      );
+    }
+  }
+
+  // JS selected, but no JS snippet, fallback to TS
+  if (resolvedPaths.length === 0) {
+    resolvedPaths = getPathsForLanguage(pathsForCurrentFramework, DEFAULT_CODE_LANGUAGE);
+    // If there are any JS snippets for other frameworks, show a message
+    if (getPathsForLanguage(paths, 'js', { matchMDX: false }).length > 0) {
+      message = (
+        <MissingCodeLanguageMessage
+          currentCodeLanguage={currentCodeLanguage}
+          currentFramework={currentFramework}
+          fallbackLanguage="ts"
+        />
+      );
+    }
+  }
+
+  // JS or TS selected, but no JS or TS snippet, fallback to anything available
+  if (resolvedPaths.length === 0) {
+    resolvedPaths = pathsForCurrentFramework;
+    message = undefined;
+  }
+
+  if (resolvedPaths.length === 0) {
+    if (version >= latestVersion) {
+      throw new Error(
+        // prettier-ignore
+        `No snippets found for ${currentFramework} and ${currentCodeLanguage} in ${paths.join(', ')}`
+      );
+    }
+    return [[], message];
+  }
+
+  return [resolvedPaths, message];
+};
+
+export function CodeSnippets({
+  csf2Path,
+  currentCodeLanguage,
+  currentFramework,
+  paths,
+  usesCsf3,
+  ...rest
+}) {
+  const [snippets, setSnippets] = React.useState([]);
+
+  const [resolvedPaths, message] = getResolvedPaths(paths, currentFramework, currentCodeLanguage);
 
   /**
    * For a path like `web-components/button-story-click-handler-args.js.mdx`,
@@ -152,10 +294,6 @@ export function CodeSnippets({ csf2Path, currentFramework, paths, usesCsf3, ...r
 
   useEffect(() => {
     async function fetchModuleComponents() {
-      const resolvedPaths = (defaultFrameworkPaths || activeFrameworkPaths).flatMap((path) =>
-        // add TS 4.9 snippets
-        path.includes('.ts') ? [path, path.replace('.ts', '.ts-4-9')] : [path]
-      );
       const fetchedSnippets = await Promise.all(
         resolvedPaths.map(async (path) => {
           const [framework, fileName] = path.split('/');
@@ -167,25 +305,48 @@ export function CodeSnippets({ csf2Path, currentFramework, paths, usesCsf3, ...r
           // See: https://github.com/webpack/webpack/issues/6680#issuecomment-370800037
 
           let ModuleComponent;
+          let preSnippet = message;
           try {
             ModuleComponent = (await import(`../../../content/docs/snippets/${path}`)).default;
           } catch {
+            // If path is a TS 4.9 snippet and errors, try to load the TS snippet
+            if (path.includes('.ts-4-9.')) {
+              try {
+                ModuleComponent = (
+                  await import(`../../../content/docs/snippets/${path.replace('.ts-4-9.', '.ts.')}`)
+                ).default;
+
+                return {
+                  id: `${framework}-${syntax}}`,
+                  PreSnippet: () => (
+                    <MissingCodeLanguageMessage
+                      currentCodeLanguage={currentCodeLanguage}
+                      currentFramework={currentFramework}
+                      fallbackLanguage="ts"
+                    />
+                  ),
+                  Snippet: ModuleComponent,
+                  framework,
+                  syntax: 'ts',
+                  renderTabLabel: ({ isActive }) => (
+                    <TabLabel framework={framework} isActive={isActive} syntax={syntax} />
+                  ),
+                };
+              } catch {
+                return null;
+              }
+            }
             // If path doesn't exist, don't show the snippet
             return null;
           }
 
-          let PreSnippet;
-          if (defaultFrameworkPaths) {
-            PreSnippet = () => <MissingMessage currentFramework={currentFramework} />;
-          } else if (usesCsf3) {
-            PreSnippet = () => (
-              <CsfMessage csf2Path={csf2Path} currentFramework={currentFramework} />
-            );
+          if (!preSnippet && usesCsf3) {
+            preSnippet = <CsfMessage csf2Path={csf2Path} currentFramework={currentFramework} />;
           }
 
           return {
             id: `${framework}-${syntax}`,
-            PreSnippet,
+            PreSnippet: preSnippet ? () => preSnippet : undefined,
             Snippet: ModuleComponent,
             framework,
             syntax,
@@ -216,7 +377,6 @@ export function CodeSnippets({ csf2Path, currentFramework, paths, usesCsf3, ...r
 
 CodeSnippets.propTypes = {
   currentFramework: PropTypes.string.isRequired,
-  currentPath: PropTypes.string.isRequired,
   csf2Path: PropTypes.string,
   paths: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   usesCsf3: PropTypes.bool,

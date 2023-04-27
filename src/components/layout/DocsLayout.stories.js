@@ -1,5 +1,5 @@
 import React from 'react';
-import DocsLayout from './DocsLayout';
+import DocsLayout, { PureDocsLayout } from './DocsLayout';
 
 const { toc: docsToc } = require('../../content/docs/toc');
 const addStateToToc = require('../../util/add-state-to-toc');
@@ -24,8 +24,8 @@ export const pageContext = {
   framework: 'react',
   docsToc: docsTocWithPathsAndFramework,
   tocItem: { ...docsTocWithPaths[1].children[0], githubUrl: undefined },
-  fullPath: '/docs/react/get-started/introduction',
-  slug: '/docs/get-started/introduction',
+  fullPath: '/docs/react/get-started/install',
+  slug: '/docs/get-started/install',
   versions,
 };
 
@@ -47,4 +47,12 @@ export const NonLatestVersion = Template.bind({});
 NonLatestVersion.args = {
   ...Base.args,
   isLatest: false,
+};
+
+export const Loading = (args) => <PureDocsLayout {...args} />;
+Loading.args = {
+  isLoading: true,
+  framework: pageContext.framework,
+  slug: pageContext.slug,
+  versions,
 };

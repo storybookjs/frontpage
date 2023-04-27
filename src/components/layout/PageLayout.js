@@ -18,7 +18,11 @@ import DocsLayout from './DocsLayout';
 import useSiteMetadata from '../lib/useSiteMetadata';
 
 import { SocialGraph } from '../basics';
-import { GLOBAL_SEARCH_IMPORTANCE, GLOBAL_SEARCH_META_KEYS } from '../../constants/global-search';
+import {
+  GLOBAL_SEARCH_AGNOSTIC,
+  GLOBAL_SEARCH_IMPORTANCE,
+  GLOBAL_SEARCH_META_KEYS,
+} from '../../constants/global-search';
 
 const Layout = styled.div``;
 
@@ -27,7 +31,7 @@ const ALGOLIA_API_KEY = process.env.GATSBY_ALGOLIA_API_KEY;
 const navLinks = {
   ...defaultLinks,
   home: { url: '/', linkWrapper: GatsbyLinkWrapper },
-  whyStorybook: { url: '/docs/react/why-storybook', linkWrapper: GatsbyLinkWrapper },
+  whyStorybook: { url: '/docs/react/get-started/why-storybook', linkWrapper: GatsbyLinkWrapper },
   guides: { url: '/docs', linkWrapper: GatsbyLinkWrapper },
   changelog: { url: '/releases', linkWrapper: GatsbyLinkWrapper },
   telemetry: { url: '/telemetry/', linkWrapper: GatsbyLinkWrapper },
@@ -111,12 +115,12 @@ export function PurePageLayout({ dxData, children, pageContext, ...props }) {
           <meta
             key={GLOBAL_SEARCH_META_KEYS.FRAMEWORK}
             name={GLOBAL_SEARCH_META_KEYS.FRAMEWORK}
-            content="agnostic"
+            content={GLOBAL_SEARCH_AGNOSTIC}
           />
           <meta
             key={GLOBAL_SEARCH_META_KEYS.VERSION}
             name={GLOBAL_SEARCH_META_KEYS.VERSION}
-            content="agnostic"
+            content={GLOBAL_SEARCH_AGNOSTIC}
           />
           <meta
             key={GLOBAL_SEARCH_META_KEYS.IMPORTANCE}

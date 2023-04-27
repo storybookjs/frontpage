@@ -14,15 +14,15 @@ import { graphql } from 'gatsby';
 import { CodeSnippets } from './CodeSnippets';
 import { frameworkSupportsFeature, FrameworkSupportTable } from './FrameworkSupportTable';
 import { SocialGraph } from '../../basics';
+import { Pre } from '../../basics/Pre';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import useSiteMetadata from '../../lib/useSiteMetadata';
-
 import { mdFormatting } from '../../../styles/formatting';
 import buildPathWithFramework from '../../../util/build-path-with-framework';
 import relativeToRootLinks from '../../../util/relative-to-root-links';
 import stylizeFramework from '../../../util/stylize-framework';
+import { useDocsContext } from './DocsContext';
 import { FeatureSnippets } from './FeatureSnippets';
-import { Pre } from '../../basics/Pre';
 import { YouTubeCallout } from './YouTubeCallout';
 
 const { color, spacing, typography } = styles;
@@ -70,6 +70,38 @@ const UnsupportedBanner = styled.div`
   padding: 20px;
 `;
 
+/*
+ * Checks for a given number of elements at a given interval and runs callback, if all found.
+ * If not found by given timeout, runs callback anyway.
+ */
+function waitForElementsToDisplay(
+  selector,
+  numElements,
+  callback,
+  checkFrequencyInMs,
+  timeoutInMs
+) {
+  const startTimeInMs = Date.now();
+  (function loopSearch(shouldContinue = true) {
+    if (!shouldContinue) return;
+    if (
+      document.querySelectorAll(selector) != null &&
+      document.querySelectorAll(selector).length === numElements
+    ) {
+      callback();
+    } else {
+      setTimeout(() => {
+        if (timeoutInMs && Date.now() - startTimeInMs > timeoutInMs) {
+          callback();
+          loopSearch(false);
+          return;
+        }
+        loopSearch();
+      }, checkFrequencyInMs);
+    }
+  })();
+}
+
 function DocsScreen({ data, pageContext, location }) {
   const {
     currentPage: {
@@ -84,10 +116,17 @@ function DocsScreen({ data, pageContext, location }) {
     featureGroups,
     urls: { homepageUrl },
   } = useSiteMetadata();
-  const { framework, docsToc, fullPath, slug, tocItem, nextTocItem, isIntroPage } = pageContext;
-  const CodeSnippetsWithCurrentFramework = useMemo(() => {
-    return (props) => <CodeSnippets currentFramework={framework} {...props} />;
-  }, [framework]);
+  const { framework, docsToc, fullPath, slug, tocItem, nextTocItem, isInstallPage } = pageContext;
+
+  const {
+    codeLanguage: [codeLanguage],
+  } = useDocsContext();
+
+  const CodeSnippetsWithCurrentFrameworkAndCodeLanguage = useMemo(() => {
+    return (props) => (
+      <CodeSnippets currentFramework={framework} currentCodeLanguage={codeLanguage} {...props} />
+    );
+  }, [framework, codeLanguage]);
   const FeatureSnippetsWithCurrentFramework = useMemo(() => {
     return (props) => <FeatureSnippets currentFramework={framework} {...props} />;
   }, [framework]);
@@ -141,12 +180,40 @@ function DocsScreen({ data, pageContext, location }) {
     });
   findFeatureSupportTocItem(docsToc);
 
+  const { href, hash } = location;
+  const numCodeSnippets = React.useMemo(
+    () => body.match(/mdx\(CodeSnippets/g)?.length || 0,
+    /*
+     * The actual dependency is `body`, but that could be a huge string, so an
+     * identity check could be expensive. Instead, we check on the pathname,
+     * which is 1:1 to the body, unless editing a page's content, which only
+     * happens at dev time.
+     */
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [location.pathname]
+  );
+  React.useEffect(() => {
+    if (numCodeSnippets > 0 && hash) {
+      // Wait for whichever happens first: all snippets on the page to render or 500ms
+      waitForElementsToDisplay(
+        '[id^=snippet]',
+        numCodeSnippets,
+        () => {
+          const element = document.querySelector(hash);
+          element?.scrollIntoView();
+        },
+        50,
+        500
+      );
+    }
+  }, [href, hash, numCodeSnippets]);
+
   return (
     <>
       <SocialGraph url={`${homepageUrl}${fullPath}/`} title={title} desc={description} />
 
       <MDWrapper>
-        <Title>{isIntroPage ? `${title} for ${stylizeFramework(framework)}` : title}</Title>
+        <Title>{isInstallPage ? `${title} for ${stylizeFramework(framework)}` : title}</Title>
         {unsupported && (
           <UnsupportedBanner>
             This feature is not supported in {stylizeFramework(framework)} yet. Help the open source
@@ -164,7 +231,7 @@ function DocsScreen({ data, pageContext, location }) {
         <MDXProvider
           components={{
             pre: Pre,
-            CodeSnippets: CodeSnippetsWithCurrentFramework,
+            CodeSnippets: CodeSnippetsWithCurrentFrameworkAndCodeLanguage,
             FeatureSnippets: FeatureSnippetsWithCurrentFramework,
             FrameworkSupportTable: FrameworkSupportTableWithFeaturesAndCurrentFramework,
             YouTubeCallout,

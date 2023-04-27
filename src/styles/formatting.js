@@ -10,6 +10,10 @@ export const mdFormatting = css`
   line-height: 28px;
   font-size: ${typography.size.s3}px;
 
+  *:target {
+    scroll-margin-top: 48px; /* height of SubNav + 8px gap */
+  }
+
   h1,
   h2,
   h3,
@@ -136,6 +140,10 @@ export const mdFormatting = css`
 
     &:active {
       transform: translate3d(0, 0, 0);
+    }
+
+    code {
+      color: inherit;
     }
   }
 

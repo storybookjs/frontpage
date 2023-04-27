@@ -2,7 +2,7 @@ import React from 'react';
 import { styled } from '@storybook/theming';
 import { Highlight } from '@storybook/design-system';
 
-import { PureCodeSnippets, CsfMessage, MissingMessage, TabLabel } from './CodeSnippets';
+import { PureCodeSnippets, CsfMessage, MissingFrameworkMessage, TabLabel } from './CodeSnippets';
 import { mdFormatting } from '../../../styles/formatting';
 
 const jsCode = `
@@ -61,7 +61,7 @@ const snippetsWithoutBadges = snippets.map((snippet, index) => ({
 
 const snippetsWithMissingMessaging = snippets.map((snippet, index) => ({
   ...snippet,
-  PreSnippet: () => <MissingMessage currentFramework="angular" />,
+  PreSnippet: () => <MissingFrameworkMessage currentFramework="angular" />,
   Snippet: TSModuleComponent,
 }));
 
@@ -92,14 +92,24 @@ export default {
   decorators: [(storyFn) => <Wrapper>{storyFn()}</Wrapper>],
 };
 
-export const Base = () => <PureCodeSnippets currentFramework="react" snippets={[snippets[0]]} />;
+export const Base = () => (
+  <PureCodeSnippets currentFramework="react" currentCodeLanguage="js" snippets={[snippets[0]]} />
+);
 
 export const Missing = () => (
-  <PureCodeSnippets currentFramework="angular" snippets={[snippetsWithMissingMessaging[0]]} />
+  <PureCodeSnippets
+    currentFramework="angular"
+    currentCodeLanguage="js"
+    snippets={[snippetsWithMissingMessaging[0]]}
+  />
 );
 
 export const Csf2 = () => (
-  <PureCodeSnippets currentFramework="angular" snippets={[snippetsWithCsfMessaging[0]]} />
+  <PureCodeSnippets
+    currentFramework="angular"
+    currentCodeLanguage="js"
+    snippets={[snippetsWithCsfMessaging[0]]}
+  />
 );
 
 export const Csf2WithExample = () => (
@@ -109,16 +119,30 @@ export const Csf2WithExample = () => (
   />
 );
 
-export const Multiple = () => <PureCodeSnippets currentFramework="react" snippets={snippets} />;
+export const Multiple = () => (
+  <PureCodeSnippets currentFramework="react" currentCodeLanguage="js" snippets={snippets} />
+);
 
 export const MultipleMissing = () => (
-  <PureCodeSnippets currentFramework="angular" snippets={snippetsWithMissingMessaging} />
+  <PureCodeSnippets
+    currentFramework="angular"
+    currentCodeLanguage="js"
+    snippets={snippetsWithMissingMessaging}
+  />
 );
 
 export const MultipleCsf2 = () => (
-  <PureCodeSnippets currentFramework="angular" snippets={snippetsWithCsfMessaging} />
+  <PureCodeSnippets
+    currentFramework="angular"
+    currentCodeLanguage="js"
+    snippets={snippetsWithCsfMessaging}
+  />
 );
 
 export const MultipleWithoutBadges = () => (
-  <PureCodeSnippets currentFramework="react" snippets={snippetsWithoutBadges} />
+  <PureCodeSnippets
+    currentFramework="react"
+    currentCodeLanguage="js"
+    snippets={snippetsWithoutBadges}
+  />
 );

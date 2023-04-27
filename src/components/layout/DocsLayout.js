@@ -1,5 +1,5 @@
 import React from 'react';
-import { styled } from '@storybook/theming';
+import { styled, css } from '@storybook/theming';
 import {
   Icon,
   Button,
@@ -7,6 +7,7 @@ import {
   TooltipNote,
   WithTooltip,
   global,
+  animation,
 } from '@storybook/design-system';
 import Helmet from 'react-helmet';
 import {
@@ -21,13 +22,26 @@ import {
 import GatsbyLinkWrapper from '../basics/GatsbyLinkWrapper';
 import useSiteMetadata from '../lib/useSiteMetadata';
 import buildPathWithFramework from '../../util/build-path-with-framework';
+import { CodeLanguageSelector } from '../screens/DocsScreen/CodeLanguageSelector';
+import { DocsContextProvider } from '../screens/DocsScreen/DocsContext';
 import { FrameworkSelector } from '../screens/DocsScreen/FrameworkSelector';
 import { VersionSelector } from '../screens/DocsScreen/VersionSelector';
 import { VersionCTA } from '../screens/DocsScreen/VersionCTA';
-import { GLOBAL_SEARCH_IMPORTANCE, GLOBAL_SEARCH_META_KEYS } from '../../constants/global-search';
+import {
+  GLOBAL_SEARCH_AGNOSTIC,
+  GLOBAL_SEARCH_IMPORTANCE,
+  GLOBAL_SEARCH_META_KEYS,
+} from '../../constants/global-search';
 
-const { breakpoint, pageMargins } = styles;
+const { breakpoint, color, pageMargins, spacing } = styles;
 const { GlobalStyle } = global;
+
+const SubNavWrapper = styled.div`
+  background: ${color.lightest};
+  position: sticky;
+  top: 0;
+  z-index: 2;
+`;
 
 const Sidebar = styled.div`
   display: none;
@@ -41,6 +55,14 @@ const Sidebar = styled.div`
     padding-right: 20px;
     margin-right: 20px;
   }
+
+  ${(props) =>
+    props.isLoading &&
+    css`
+      height: 80vh;
+      border-radius: ${spacing.borderRadius.small}px;
+      ${animation.inlineGlow}
+    `}
 `;
 
 const ExpandButton = styled(Button)`
@@ -96,6 +118,113 @@ const StyledTableOfContents = styled(TableOfContents)`
   }
 `;
 
+const docsItems = [
+  { key: '0', label: 'Guides', href: '/docs', isActive: true },
+  { key: '1', label: 'Tutorials', href: 'https://storybook.js.org/tutorials/' },
+];
+
+const supportItems = [
+  {
+    icon: 'github',
+    href: 'https://github.com/storybookjs/storybook/issues',
+    label: 'Github',
+  },
+  {
+    icon: 'discord',
+    href: 'https://discord.gg/storybook',
+    label: 'Discord',
+  },
+  {
+    icon: 'youtube',
+    href: 'https://www.youtube.com/channel/UCr7Quur3eIyA_oe8FNYexfg',
+    label: 'Youtube',
+  },
+];
+
+const SkeletonTitle = styled.div`
+  height: 36px;
+  margin-bottom: 1.5rem;
+  width: 75%;
+  border-radius: ${spacing.borderRadius.small}px;
+  ${animation.inlineGlow}
+`;
+
+const SkeletonBody = styled.div`
+  height: calc(80vh - 36px - 1.5rem);
+  border-radius: ${spacing.borderRadius.small}px;
+  ${animation.inlineGlow}
+`;
+
+export function PureDocsLayout({
+  children,
+  framework,
+  isLoading,
+  sidebar,
+  slug,
+  versions: versionsProp,
+}) {
+  const { coreFrameworks, communityFrameworks, isLatest, version, versionString } =
+    useSiteMetadata();
+
+  const versions = versionsProp || {
+    // prettier-ignore
+    stable: [{
+      version,
+      string: versionString,
+      label: isLatest ? 'Latest' : undefined,
+    }],
+    preRelease: [],
+  };
+
+  return (
+    <>
+      <GlobalStyle />
+      <DocsContextProvider framework={framework}>
+        <SubNavWrapper>
+          <SubNav>
+            <SubNavTabs label="Docs nav" items={docsItems} />
+            <SubNavDivider />
+            <SubNavMenus>
+              <VersionSelector
+                version={version}
+                versions={versions}
+                framework={framework}
+                slug={slug}
+              />
+              <FrameworkSelector
+                key={framework}
+                framework={framework}
+                coreFrameworks={coreFrameworks}
+                communityFrameworks={communityFrameworks}
+                slug={slug}
+              />
+              <CodeLanguageSelector framework={framework} />
+            </SubNavMenus>
+            <SubNavRight>
+              <SubNavLinkList label="Get support:" items={supportItems} />
+            </SubNavRight>
+          </SubNav>
+        </SubNavWrapper>
+        <Wrapper>
+          <Sidebar className="sidebar" isLoading={isLoading}>
+            {sidebar}
+          </Sidebar>
+          <Content>
+            {isLoading ? (
+              <>
+                <SkeletonTitle />
+                <SkeletonBody />
+              </>
+            ) : (
+              children
+            )}
+          </Content>
+        </Wrapper>
+      </DocsContextProvider>
+    </>
+  );
+}
+
 const getTocSectionTitles = (toc, path) => {
   const pathParts = path.split('/');
   const title = [];
@@ -134,33 +263,8 @@ const getTocSectionTitles = (toc, path) => {
   return title.join(' » ');
 };
 
-const docsItems = [
-  { key: '0', label: 'Guides', href: '/docs', isActive: true },
-  { key: '1', label: 'Tutorials', href: 'https://storybook.js.org/tutorials/' },
-];
-
-const supportItems = [
-  {
-    icon: 'github',
-    href: 'https://github.com/storybookjs/storybook/issues',
-    label: 'Github',
-  },
-  {
-    icon: 'discord',
-    href: 'https://discord.gg/storybook',
-    label: 'Discord',
-  },
-  {
-    icon: 'youtube',
-    href: 'https://www.youtube.com/channel/UCr7Quur3eIyA_oe8FNYexfg',
-    label: 'Youtube',
-  },
-];
-
 function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
   const {
-    coreFrameworks,
-    communityFrameworks,
     urls: { homepageUrl },
     version,
     versionString,
@@ -168,7 +272,7 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
     latestVersionString,
     isLatest,
   } = useSiteMetadata();
-  const { docsToc, framework, fullPath, slug, versions } = pageContext;
+  const { docsToc, framework, fullPath, slug, versions, isInstallPage } = pageContext;
 
   const tocSectionTitles = getTocSectionTitles(docsToc, slug.split('/docs/')[1]);
 
@@ -188,14 +292,13 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
   };
 
   // The React specific docs are treated as canonical except for the
-  // docs home page for all other frameworks.
-  const canonicalFramework = slug === '/docs/get-started/introduction' ? framework : 'react';
+  // first docs page for all other frameworks.
+  const canonicalFramework = isInstallPage ? framework : 'react';
 
   return (
     <>
-      <GlobalStyle />
       <Helmet>
-        {version === latestVersion && (
+        {isLatest && (
           <link
             rel="canonical"
             href={`${homepageUrl}${buildPathWithFramework(
@@ -208,7 +311,13 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
         <meta
           key={GLOBAL_SEARCH_META_KEYS.FRAMEWORK}
           name={GLOBAL_SEARCH_META_KEYS.FRAMEWORK}
-          content={framework}
+          /*
+           * Using `GLOBAL_SEARCH_AGNOSTIC` as the framework value for the first page of the docs
+           * to ensure it shows in search results regardless of current framework
+           * https://github.com/storybookjs/components-marketing/blob/e71de9ccc807aee144beff83b947f32996184780/src/components/Search.tsx#L170
+           *
+           */
+          content={isInstallPage ? GLOBAL_SEARCH_AGNOSTIC : framework}
         />
         <meta
           key={GLOBAL_SEARCH_META_KEYS.VERSION}
@@ -221,29 +330,10 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
           content={GLOBAL_SEARCH_IMPORTANCE.DOCS}
         />
       </Helmet>
-      <SubNav>
-        <SubNavTabs label="Docs nav" items={docsItems} />
-        <SubNavDivider />
-        <SubNavMenus>
-          <VersionSelector
-            version={version}
-            versions={versions}
-            framework={framework}
-            slug={slug}
-          />
-          <FrameworkSelector
-            framework={framework}
-            coreFrameworks={coreFrameworks}
-            communityFrameworks={communityFrameworks}
-            slug={slug}
-          />
-        </SubNavMenus>
-        <SubNavRight>
-          <SubNavLinkList label="Get support:" items={supportItems} />
-        </SubNavRight>
-      </SubNav>
-      <Wrapper>
-        <Sidebar className="sidebar">
+      <PureDocsLayout
+        framework={framework}
+        slug={slug}
+        sidebar={
           <StyledTableOfContents
             key={framework}
             currentPath={fullPath}
@@ -276,32 +366,30 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
                     </WithTooltip>
                   )}
                 </SidebarControls>
-
                 {menu}
               </>
             )}
           </StyledTableOfContents>
-        </Sidebar>
-
-        <Content>
-          {tocSectionTitles && (
-            <span hidden id="toc-section-titles">
-              {`Docs » ${tocSectionTitles}`}
-            </span>
-          )}
-          {(isLatestProp === false || !isLatest) && (
-            <StyledVersionCTA
-              framework={framework}
-              version={version}
-              latestVersion={latestVersion}
-              latestVersionString={latestVersionString}
-              versions={versions}
-              slug={slug}
-            />
-          )}
-          {children}
-        </Content>
-      </Wrapper>
+        }
+        versions={versions}
+      >
+        {tocSectionTitles && (
+          <span hidden id="toc-section-titles">
+            {`Docs » ${tocSectionTitles}`}
+          </span>
+        )}
+        {(isLatestProp === false || !isLatest) && (
+          <StyledVersionCTA
+            framework={framework}
+            version={version}
+            latestVersion={latestVersion}
+            latestVersionString={latestVersionString}
+            versions={versions}
+            slug={slug}
+          />
+        )}
+        {children}
+      </PureDocsLayout>
     </>
   );
 }

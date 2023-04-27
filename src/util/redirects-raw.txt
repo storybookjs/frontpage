@@ -1,4 +1,14 @@
-/docs/writing-docs/doc-blocks/                   /docs/writing-docs/doc-block-argstable                                         301
+/docs/why-storybook/                             /docs/get-started/why-storybook                                                301
+/docs/get-started/introduction                   /docs/get-started/install                                                      301
+/docs/writing-docs/docs-page                     /docs/writing-docs/autodocs                                                    301
+/docs/writing-docs/doc-block-argstable           /docs/api/doc-block-controls                                                   301
+/docs/writing-docs/doc-block-canvas              /docs/api/doc-block-canvas                                                     301
+/docs/writing-docs/doc-block-colorpalette        /docs/api/doc-block-colorpalette                                               301
+/docs/writing-docs/doc-block-description         /docs/api/doc-block-description                                                301
+/docs/writing-docs/doc-block-icongallery         /docs/api/doc-block-icongallery                                                301
+/docs/writing-docs/doc-block-source              /docs/api/doc-block-source                                                     301
+/docs/writing-docs/doc-block-story               /docs/api/doc-block-story                                                      301
+/docs/writing-docs/doc-block-typeset             /docs/api/doc-block-typeset                                                    301
 /docs/workflows/testing-with-storybook/          /docs/writing-tests/introduction/                                              301
 /docs/workflows/unit-testing/                    /docs/writing-tests/importing-stories-in-tests/                                301
 /docs/workflows/visual-testing/                  /docs/writing-tests/visual-testing/                                            301
@@ -16,3 +26,4 @@
 /docs/api/addons-api                             /docs/addons/addons-api                                                        301
 /docs/api/mdx                                    /docs/writing-docs/mdx                                                         301
 /docs/api/presets                                /docs/addons/writing-presets                                                   301
+/docs/api/frameworks-feature-support             /docs/configure/frameworks-feature-support                                     301

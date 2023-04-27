@@ -3,6 +3,10 @@ import { styled } from '@storybook/theming';
 import { within, userEvent } from '@storybook/testing-library';
 import { FrameworkSelector } from './FrameworkSelector';
 import useSiteMetadata from '../../../../.storybook/useSiteMetadata';
+import { DocsContextProvider } from './DocsContext';
+
+// eslint-disable-next-line react-hooks/rules-of-hooks
+const { coreFrameworks, communityFrameworks } = useSiteMetadata();
 
 // The Wrapper helps capture the tooltip contents in the snapshot
 const Wrapper = styled.span`
@@ -14,20 +18,22 @@ const Wrapper = styled.span`
 export default {
   title: 'Screens/DocsScreen/FrameworkSelector',
   component: FrameworkSelector,
-  decorators: [(storyFn) => <Wrapper>{storyFn()}</Wrapper>],
+  decorators: [
+    (storyFn) => (
+      <DocsContextProvider framework={coreFrameworks[0]}>
+        <Wrapper>{storyFn()}</Wrapper>
+      </DocsContextProvider>
+    ),
+  ],
 };
-
-// eslint-disable-next-line react-hooks/rules-of-hooks
-const { coreFrameworks, communityFrameworks } = useSiteMetadata();
 
 const Template = (args) => <FrameworkSelector {...args} />;
 
 export const Base = Template.bind({});
 Base.args = {
-  framework: coreFrameworks[0],
   coreFrameworks,
   communityFrameworks,
-  slug: '/docs/get-started/introduction',
+  slug: '/docs/get-started/install',
 };
 Base.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
