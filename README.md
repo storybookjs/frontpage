@@ -44,43 +44,23 @@ The content for the documentation section is in the `docs/` subdirectory of the 
 
 To run this app while editing those files, checkout both this repository and the monorepo, then:
 
-### Inside the `frontpage` repository:
+#### Inside the `storybook` monorepo:
 
-Run the following command to extract the monorepo docs (replace `$branch` with the name of the branch you need to work with).
+1. Run the `yarn task` command and then select the `Synchronize documentation (sync-docs)` option.
 
-```
-yarn extract-monorepo-docs $branch
-```
+2. Provide the path to the `frontpage` project.
 
-To start the docs run:
+With this, the folders `storybook/docs` and `frontpage/src/content/docs` will be synchronized, ensuring that any changes made to the documentation in the Storybook monorepo will be reflected in the Storybook website docs.
+
+#### Inside the `frontpage` repository:
+
+To run the website documentation, use the following command:
 
 ```
 yarn start:docs-only
 ```
 
 The project will be visualized in the browser at `http://localhost:8000`
-
-### Inside the `storybook` monorepo:
-
-Change your current directory path to the docs folder.
-
-```
-cd docs
-```
-
-Synchronize documentation file changes with the `frontpage` repository by running the script `sync.js`.
-
-```
-node sync.js
-```
-
-Provide the absolute path to `frontpage` project:
-
-```
-/absolute/path/to/frontpage
-```
-
-Now you will see the changes in the browser when a file inside `docs` folder is modified.
 
 ### Release notes
 
