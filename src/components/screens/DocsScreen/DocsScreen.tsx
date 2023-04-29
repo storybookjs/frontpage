@@ -23,6 +23,7 @@ import relativeToRootLinks from '../../../util/relative-to-root-links';
 import stylizeFramework from '../../../util/stylize-framework';
 import { useDocsContext } from './DocsContext';
 import { FeatureSnippets } from './FeatureSnippets';
+import { Feedback } from './Feedback';
 import { YouTubeCallout } from './YouTubeCallout';
 
 const { color, spacing, typography } = styles;
@@ -53,11 +54,6 @@ const NextNavigation = styled.div`
   margin-top: 3rem;
 `;
 
-const GithubLinkWrapper = styled.div`
-  margin-top: 3rem;
-  text-align: center;
-`;
-
 const GithubLinkItem = styled(Link)`
   font-weight: ${typography.weight.bold};
   font-size: ${typography.size.s2}px;
@@ -68,6 +64,15 @@ const UnsupportedBanner = styled.div`
   border-radius: ${spacing.borderRadius.small}px;
   background-color: #fff5cf;
   padding: 20px;
+`;
+
+const Contribute = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: ${spacing.padding.large}px;
+  margin-top: 3rem;
 `;
 
 /*
@@ -115,6 +120,7 @@ function DocsScreen({ data, pageContext, location }) {
     description,
     featureGroups,
     urls: { homepageUrl },
+    versionString,
   } = useSiteMetadata();
   const { framework, docsToc, fullPath, slug, tocItem, nextTocItem, isInstallPage } = pageContext;
 
@@ -264,16 +270,25 @@ function DocsScreen({ data, pageContext, location }) {
         </NextNavigation>
       )}
 
-      {tocItem && tocItem.githubUrl && (
-        <GithubLinkWrapper>
+      <Contribute>
+        {tocItem && (
+          <Feedback
+            key={fullPath}
+            path={fullPath}
+            version={versionString}
+            framework={framework}
+            codeLanguage={codeLanguage}
+          />
+        )}
+        {tocItem && tocItem.githubUrl && (
           <GithubLinkItem tertiary href={tocItem.githubUrl} target="_blank" rel="noopener">
             <span role="img" aria-label="write">
               ✍️
             </span>{' '}
             Edit on GitHub – PRs welcome!
           </GithubLinkItem>
-        </GithubLinkWrapper>
-      )}
+        )}
+      </Contribute>
     </>
   );
 }
