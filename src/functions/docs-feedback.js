@@ -113,6 +113,7 @@ async function getDiscussion(title) {
               title
               id
               number
+              closed
             }
             pageInfo {
               hasNextPage
@@ -191,6 +192,34 @@ async function updateDiscussion({ number, id, rating }) {
     }
   );
   console.info('... done!', 'Updated body:\n', updatedBody);
+}
+
+async function reOpenDiscussion({ id }) {
+  console.info('Re-opening discussion...');
+  const {
+    reopenDiscussion: {
+      discussion: { closed },
+    },
+  } = await queryGitHub(
+    dedent(`
+      mutation ReopenDiscussion($discussionId: ID!) {
+        reopenDiscussion(input: {
+          discussionId: $discussionId
+        }) {
+          discussion {
+            closed
+          }
+        }
+      }
+    `),
+    {
+      variables: {
+        discussionId: id,
+        closed: false,
+      },
+    }
+  );
+  console.info('... done!');
 }
 
 async function addDiscussionComment({ id, received, rating, comment }) {
@@ -282,6 +311,11 @@ exports.handler = async (event) => {
       await updateDiscussion({ ...currentDiscussion, rating });
 
       if (comment) {
+        if (currentDiscussion.closed) {
+          console.info('Discussion is closed');
+          await reOpenDiscussion(currentDiscussion);
+        }
+
         url = await addDiscussionComment({ ...currentDiscussion, received, rating, comment });
       }
     } else {
