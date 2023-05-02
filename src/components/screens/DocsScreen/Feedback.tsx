@@ -1,10 +1,12 @@
 import React from 'react';
-import { styled, css } from '@storybook/theming';
-import { Button, Link, styles } from '@storybook/design-system';
+import { styled } from '@storybook/theming';
+import { Button, Link, OutlineCTA, styles } from '@storybook/design-system';
 
 const { code, color, spacing, typography } = styles;
 
 const DOCS_FEEDBACK_URL = '/.netlify/functions/docs-feedback';
+const DISCUSSIONS_URL =
+  'https://github.com/storybookjs/storybook/discussions/categories/documentation-feedback';
 
 const heightTransitionTime = 100; // ms
 
@@ -65,7 +67,7 @@ const CommentForm = styled('form', {
 
   overflow: hidden;
   transition: height ${heightTransitionTime}ms ease-out;
-  height: ${(props) => (props.isExpanded ? `${250 / 16}rem` : 0)};
+  height: ${(props) => (props.isExpanded ? `${260 / 16}rem` : 0)};
 `;
 
 const Label = styled.label`
@@ -79,6 +81,7 @@ const HelpText = styled.p`
 
   code {
     ${code.small}
+    color: ${color.dark};
     font-size: inherit;
   }
 `;
@@ -158,22 +161,25 @@ export const Feedback = ({
   const form = (
     <CommentForm ref={formRef} isExpanded={rating || resultUrl} onSubmit={handleSubmit}>
       {resultUrl ? (
-        <>
-          <Prompt>Thanks for your feedback!</Prompt>
-          {resultUrl && (
-            <p>
-              <Link href={resultUrl} target="_blank">
-                View your comment on GitHub
-              </Link>
-            </p>
-          )}
-        </>
+        <OutlineCTA
+          action={
+            <Link href={resultUrl} target="_blank" withArrow>
+              View your comment on GitHub
+            </Link>
+          }
+        >
+          Thanks for your feedback!
+        </OutlineCTA>
       ) : (
         <>
           <Label htmlFor="feedback-comment">Optional feedback</Label>
           <HelpText>
             Markdown accepted (<code>[link text](url)</code>, <code>_italic_</code>,{' '}
-            <code>**bold**</code>, etc)
+            <code>**bold**</code>, etc). Your anonymous feedback will be posted publicly{' '}
+            <Link href={DISCUSSIONS_URL} target="_blank">
+              on GitHub
+            </Link>
+            .
           </HelpText>
           <Textarea
             id="feedback-comment"
