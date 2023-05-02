@@ -35,7 +35,7 @@ const TEMP_RECIPE_METADATA = {
     type: 'Recipe',
     name,
     displayName: 'Vanilla Extract',
-    description: 'Get Zero-runtime Stylesheets in TypeScript.',
+    description: 'Get zero-runtime stylesheets in TypeScript.',
     views: 1423,
     icon: 'https://avatars.githubusercontent.com/u/112610040?s=200&v=4',
     accentColor: '#18181b',
