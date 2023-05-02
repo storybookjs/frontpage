@@ -1,5 +1,5 @@
 import React from 'react';
-import { styled } from '@storybook/theming';
+import { css, styled } from '@storybook/theming';
 import { Button, Link, OutlineCTA, styles } from '@storybook/design-system';
 
 const { code, color, spacing, typography } = styles;
@@ -109,6 +109,26 @@ const Textarea = styled.textarea`
   }
 `;
 
+const inaccessiblyVisuallyHidden = css`
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+`;
+
+const SpuriousLabel = styled.label`
+  ${inaccessiblyVisuallyHidden}
+`;
+
+const SpuriousTextarea = styled((props) => (
+  <Textarea {...props} aria-hidden="true" tabIndex={-1} />
+))`
+  ${inaccessiblyVisuallyHidden}
+`;
+
 export const Feedback = ({
   path,
   version,
@@ -121,10 +141,13 @@ export const Feedback = ({
 }: FeedbackProps) => {
   const [rating, setRating] = React.useState<'up' | 'down' | null>(forceRating);
   const [comment, setComment] = React.useState('');
+  const [spuriousComment, setSpuriousComment] = React.useState('');
   const [resultUrl, setResultUrl] = React.useState(forceResultUrl);
 
   const formRef = React.useRef<HTMLFormElement | null>(null);
   const textareaRef = React.useRef<HTMLTextAreaElement | null>(null);
+
+  const commentFieldId = React.useMemo(() => Math.random().toString(36).substring(2, 15), []);
 
   const handleRatingClick = (whichRating) => () => {
     setRating(whichRating);
@@ -148,6 +171,7 @@ export const Feedback = ({
         codeLanguage,
         rating,
         comment,
+        spuriousComment,
       }),
     });
     if (response.ok) {
@@ -172,7 +196,7 @@ export const Feedback = ({
         </OutlineCTA>
       ) : (
         <>
-          <Label htmlFor="feedback-comment">Optional feedback</Label>
+          <Label htmlFor={commentFieldId}>Optional feedback</Label>
           <HelpText>
             Markdown accepted (<code>[link text](url)</code>, <code>_italic_</code>,{' '}
             <code>**bold**</code>, etc). Your anonymous feedback will be posted publicly{' '}
@@ -182,11 +206,18 @@ export const Feedback = ({
             .
           </HelpText>
           <Textarea
-            id="feedback-comment"
-            value={comment}
+            id={commentFieldId}
             ref={textareaRef}
+            value={comment}
             onChange={(event) => setComment(event.target.value)}
             placeholder={`What ${rating === 'up' ? 'was' : 'wasn’t'} helpful?`}
+          />
+          <SpuriousLabel htmlFor="comment" />
+          <SpuriousTextarea
+            id="comment"
+            value={spuriousComment}
+            onChange={(event) => setSpuriousComment(event.target.value)}
+            placeholder="Your comment"
           />
           <Button appearance="secondary" size="small">
             Submit feedback

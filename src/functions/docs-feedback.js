@@ -295,7 +295,15 @@ exports.handler = async (event) => {
     const { body } = event;
     const received = JSON.parse(body);
     console.info('Received:', JSON.stringify(received, null, 2));
-    const { rating, comment } = received;
+    const { rating, comment, spuriousComment } = received;
+
+    if (spuriousComment) {
+      console.info('Spurious comment, ignoring');
+      return {
+        statusCode: 200,
+        body: JSON.stringify({}),
+      };
+    }
 
     // TODO: This could contain a version?
     const path = `/${received.path.split('/').slice(-2).join('/')}`;
