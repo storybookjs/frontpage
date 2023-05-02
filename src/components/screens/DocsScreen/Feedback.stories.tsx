@@ -35,10 +35,9 @@ export const Rated = Template.bind({});
 Rated.args = {
   forceRating: 'up',
 };
-Rated.parameters = { height: '320px' };
 
 export const Done = Template.bind({});
 Done.args = {
-  forceResultUrl: 'https://example.com',
+  forceResultUrl:
+    'https://github.com/storybookjs/storybook/discussions/categories/documentation-feedback',
 };
-Done.parameters = { height: '150px' };

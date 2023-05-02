@@ -70,8 +70,7 @@ const Contribute = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
-  gap: ${spacing.padding.large}px;
+  align-items: baseline;
   margin-top: 3rem;
 `;
 

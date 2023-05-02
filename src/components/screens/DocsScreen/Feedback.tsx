@@ -1,10 +1,12 @@
 import React from 'react';
-import { styled } from '@storybook/theming';
-import { Button, Link, WithTooltip as DSWithToolip, styles } from '@storybook/design-system';
+import { styled, css } from '@storybook/theming';
+import { Button, Link, styles } from '@storybook/design-system';
 
 const { code, color, spacing, typography } = styles;
 
 const DOCS_FEEDBACK_URL = '/.netlify/functions/docs-feedback';
+
+const heightTransitionTime = 100; // ms
 
 interface FeedbackProps {
   path: string;
@@ -15,27 +17,28 @@ interface FeedbackProps {
 
 const Wrapper = styled.div`
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: ${spacing.padding.small}px;
+  width: 100%;
+  min-width: 280px;
+  max-width: 400px;
 `;
 
 const ButtonGroup = styled.div`
   display: flex;
 
-  > :first-child button {
+  > :first-child {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
 
-  > :last-child button {
+  > :last-child {
     margin-left: -1px;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
 `;
-
-// TODO: Double focus outline
-const WithTooltip = (props) => <DSWithToolip trigger="click" tagName="span" {...props} />;
 
 const RatingButton = ({ selected, ...props }) => (
   <Button appearance={selected ? 'secondaryOutline' : 'outline'} size="small" {...props} />
@@ -48,15 +51,21 @@ const Prompt = styled.p`
   margin: 0;
 `;
 
-const StyledCommentForm = styled.form`
+const CommentForm = styled('form', {
+  shouldForwardProp: (prop) => prop !== 'isExpanded',
+})<{ isExpanded?: boolean }>`
+  flex: 1 0 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: ${spacing.padding.small}px;
-  padding: ${spacing.padding.small}px ${spacing.padding.medium}px;
-  min-width: 420px;
-  max-width: 100vw;
+  margin: ${spacing.padding.small}px 0 ${spacing.padding.large}px;
+  padding: 0 1px;
   font-size: ${typography.size.s2}px;
+
+  overflow: hidden;
+  transition: height ${heightTransitionTime}ms ease-out;
+  height: ${(props) => (props.isExpanded ? `${250 / 16}rem` : 0)};
 `;
 
 const Label = styled.label`
@@ -97,26 +106,6 @@ const Textarea = styled.textarea`
   }
 `;
 
-const CommentForm = ({ closeTooltip, ...props }) => {
-  const formRef = React.useRef<HTMLFormElement>(null);
-
-  React.useEffect(() => {
-    function handleKeydown(event) {
-      if (event.key === 'Escape') {
-        closeTooltip();
-      }
-    }
-
-    document.addEventListener('keydown', handleKeydown);
-
-    return () => {
-      document.removeEventListener('keydown', handleKeydown);
-    };
-  });
-
-  return <StyledCommentForm ref={formRef} {...props} />;
-};
-
 export const Feedback = ({
   path,
   version,
@@ -129,26 +118,17 @@ export const Feedback = ({
 }: FeedbackProps) => {
   const [rating, setRating] = React.useState<'up' | 'down' | null>(forceRating);
   const [comment, setComment] = React.useState('');
-  const [isDone, setIsDone] = React.useState(Boolean(forceResultUrl));
   const [resultUrl, setResultUrl] = React.useState(forceResultUrl);
 
-  const wrapperRef = React.useRef<HTMLDivElement>(null);
-  React.useEffect(() => {
-    function handleClickOutside(event) {
-      if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
-        setRating(null);
-      }
-    }
+  const formRef = React.useRef<HTMLFormElement | null>(null);
+  const textareaRef = React.useRef<HTMLTextAreaElement | null>(null);
 
-    document.addEventListener('mousedown', handleClickOutside);
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  });
-
-  const handleClick = (whichRating) => () => {
+  const handleRatingClick = (whichRating) => () => {
     setRating(whichRating);
+    textareaRef.current?.focus();
+    setTimeout(() => {
+      formRef.current?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    }, heightTransitionTime);
   };
 
   const handleSubmit = async (event) => {
@@ -168,23 +148,16 @@ export const Feedback = ({
       }),
     });
     if (response.ok) {
-      setIsDone(true);
-      setRating(null);
-      setComment('');
       const { url } = await response.json();
       setResultUrl(url);
+      setRating(null);
+      setComment('');
     }
   };
 
-  const tooltip = ({ onHide: closeTooltip }) => (
-    <CommentForm
-      onSubmit={handleSubmit}
-      closeTooltip={() => {
-        closeTooltip();
-        setRating(null);
-      }}
-    >
-      {isDone ? (
+  const form = (
+    <CommentForm ref={formRef} isExpanded={rating || resultUrl} onSubmit={handleSubmit}>
+      {resultUrl ? (
         <>
           <Prompt>Thanks for your feedback!</Prompt>
           {resultUrl && (
@@ -205,7 +178,7 @@ export const Feedback = ({
           <Textarea
             id="feedback-comment"
             value={comment}
-            autoFocus
+            ref={textareaRef}
             onChange={(event) => setComment(event.target.value)}
             placeholder={`What ${rating === 'up' ? 'was' : 'wasn’t'} helpful?`}
           />
@@ -218,20 +191,25 @@ export const Feedback = ({
   );
 
   return (
-    <Wrapper ref={wrapperRef}>
+    <Wrapper>
       <ButtonGroup>
-        <WithTooltip startOpen={forceRating || forceResultUrl} tooltip={tooltip}>
-          <RatingButton selected={rating === 'up'} onClick={handleClick('up')}>
-            👍
-          </RatingButton>
-        </WithTooltip>
-        <WithTooltip startOpen={forceRating || forceResultUrl} tooltip={tooltip}>
-          <RatingButton selected={rating === 'down'} onClick={handleClick('down')}>
-            👎
-          </RatingButton>
-        </WithTooltip>
+        <RatingButton
+          disabled={resultUrl}
+          onClick={handleRatingClick('up')}
+          selected={rating === 'up'}
+        >
+          👍
+        </RatingButton>
+        <RatingButton
+          disabled={resultUrl}
+          onClick={handleRatingClick('down')}
+          selected={rating === 'down'}
+        >
+          👎
+        </RatingButton>
       </ButtonGroup>
       <Prompt>Was this page helpful?</Prompt>
+      {form}
     </Wrapper>
   );
 };
