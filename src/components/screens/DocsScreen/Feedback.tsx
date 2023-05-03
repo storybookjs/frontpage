@@ -63,7 +63,7 @@ const Expandable = styled('div', {
 
   overflow: hidden;
   transition: height ${heightTransitionTime}ms ease-out;
-  height: ${(props) => (props.isExpanded ? `${260 / 16}rem` : 0)};
+  height: ${(props) => (props.isExpanded ? `${290 / 16}rem` : 0)};
 `;
 
 const Form = styled.form`
