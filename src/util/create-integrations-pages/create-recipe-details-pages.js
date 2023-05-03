@@ -30,30 +30,6 @@ const TEMP_RECIPE_METADATA = {
     // publishedAt: Date.now(),
     // lastUpdatedAt: Date.now(),
   }),
-  '@vanilla-extract/css': (name) => ({
-    // Mock recipe metadata goes here
-    type: 'Recipe',
-    name,
-    displayName: 'Vanilla Extract',
-    description: 'Get zero-runtime stylesheets in TypeScript.',
-    views: 1423,
-    icon: 'https://avatars.githubusercontent.com/u/112610040?s=200&v=4',
-    accentColor: '#18181b',
-    tags: [
-      { name: 'css', displayName: 'CSS' },
-      { name: 'typescript', displayName: 'TypeScript' },
-    ],
-    authors: [
-      {
-        id: 'ShaunEvening',
-        avatarUrl: 'https://www.gravatar.com/avatar/2464af3a3838ef88905cc902a226aa75?s=200',
-        name: 'ShaunEvening',
-      },
-    ],
-    createdAt: Date.now(),
-    publishedAt: Date.now(),
-    lastUpdatedAt: Date.now(),
-  }),
 };
 
 function parseRecipeFiles({ data }) {
