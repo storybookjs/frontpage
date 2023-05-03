@@ -147,6 +147,8 @@ export const Feedback = ({
   const [error, setError] = React.useState(forceError);
   const [resultUrl, setResultUrl] = React.useState(forceResultUrl);
 
+  const expanded = rating || resultUrl || error;
+
   const formRef = React.useRef<HTMLFormElement | null>(null);
   const textareaRef = React.useRef<HTMLTextAreaElement | null>(null);
 
@@ -155,9 +157,9 @@ export const Feedback = ({
   const handleRatingClick = (whichRating) => () => {
     setError('');
     setRating(whichRating);
-    textareaRef.current?.focus();
     setTimeout(() => {
       formRef.current?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      textareaRef.current?.focus();
     }, heightTransitionTime);
   };
 
@@ -202,7 +204,7 @@ export const Feedback = ({
   };
 
   const form = (
-    <CommentForm ref={formRef} isExpanded={error || resultUrl || rating} onSubmit={handleSubmit}>
+    <CommentForm ref={formRef} isExpanded={expanded} onSubmit={handleSubmit}>
       {/* eslint-disable-next-line no-nested-ternary */}
       {error ? (
         <OutlineCTA badge={<Badge status="error">Error</Badge>} action={<></>}>
@@ -224,7 +226,7 @@ export const Feedback = ({
           <HelpText>
             Markdown accepted (<code>[link text](url)</code>, <code>_italic_</code>,{' '}
             <code>**bold**</code>, etc). Your anonymous feedback will be posted publicly{' '}
-            <Link href={DISCUSSIONS_URL} target="_blank">
+            <Link href={DISCUSSIONS_URL} target="_blank" tabIndex={!expanded ? -1 : undefined}>
               on GitHub
             </Link>
             .
@@ -235,6 +237,7 @@ export const Feedback = ({
             value={comment}
             onChange={(event) => setComment(event.target.value)}
             placeholder={`What ${rating === 'up' ? 'was' : 'wasn’t'} helpful?`}
+            disabled={!expanded}
           />
           <SpuriousLabel htmlFor="comment" />
           <SpuriousTextarea
@@ -243,7 +246,7 @@ export const Feedback = ({
             onChange={(event) => setSpuriousComment(event.target.value)}
             placeholder="Your comment"
           />
-          <Button appearance="secondary" size="small">
+          <Button appearance="secondary" size="small" disabled={!expanded}>
             Submit feedback
           </Button>
         </>
