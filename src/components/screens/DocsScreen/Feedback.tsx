@@ -53,14 +53,10 @@ const Prompt = styled.p`
   margin: 0;
 `;
 
-const CommentForm = styled('form', {
+const Expandable = styled('div', {
   shouldForwardProp: (prop) => prop !== 'isExpanded',
 })<{ isExpanded?: boolean }>`
   flex: 1 0 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: ${spacing.padding.small}px;
   margin: ${spacing.padding.small}px 0 ${spacing.padding.large}px;
   padding: 0 1px;
   font-size: ${typography.size.s2}px;
@@ -68,6 +64,13 @@ const CommentForm = styled('form', {
   overflow: hidden;
   transition: height ${heightTransitionTime}ms ease-out;
   height: ${(props) => (props.isExpanded ? `${260 / 16}rem` : 0)};
+`;
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: ${spacing.padding.small}px;
 `;
 
 const Label = styled.label`
@@ -198,56 +201,59 @@ export const Feedback = ({
     setComment('');
   };
 
-  const form = (
-    <CommentForm ref={formRef} isExpanded={expanded} onSubmit={handleSubmit}>
-      {/* eslint-disable-next-line no-nested-ternary */}
-      {error ? (
-        <OutlineCTA badge={<Badge status="error">Error</Badge>} action={<></>}>
-          Something went wrong. Please try again.
-        </OutlineCTA>
-      ) : resultUrl ? (
-        <OutlineCTA
-          action={
-            <Link href={resultUrl} target="_blank" withArrow>
-              View your comment on GitHub
-            </Link>
-          }
-        >
-          Thanks for your feedback!
-        </OutlineCTA>
-      ) : (
-        <>
-          <Label htmlFor={commentFieldId}>Optional feedback</Label>
-          <HelpText>
-            Markdown accepted (<code>[link text](url)</code>, <code>_italic_</code>,{' '}
-            <code>**bold**</code>, etc). Your anonymous feedback will be posted publicly{' '}
-            <Link href={DISCUSSIONS_URL} target="_blank" tabIndex={!expanded ? -1 : undefined}>
-              on GitHub
-            </Link>
-            .
-          </HelpText>
-          <Textarea
-            id={commentFieldId}
-            ref={textareaRef}
-            value={comment}
-            onChange={(event) => setComment(event.target.value)}
-            placeholder={`What ${rating === 'up' ? 'was' : 'wasn’t'} helpful?`}
-            disabled={!expanded}
-          />
-          <SpuriousLabel htmlFor="comment" />
-          <SpuriousTextarea
-            id="comment"
-            value={spuriousComment}
-            onChange={(event) => setSpuriousComment(event.target.value)}
-            placeholder="Your comment"
-          />
-          <Button appearance="secondary" size="small" disabled={!expanded}>
-            Submit feedback
-          </Button>
-        </>
-      )}
-    </CommentForm>
+  let expandedContent = (
+    <Form ref={formRef} onSubmit={handleSubmit}>
+      <Label htmlFor={commentFieldId}>Optional feedback</Label>
+      <HelpText>
+        Markdown accepted (<code>[link text](url)</code>, <code>_italic_</code>,{' '}
+        <code>**bold**</code>, etc). Your anonymous feedback will be posted publicly{' '}
+        <Link href={DISCUSSIONS_URL} target="_blank" tabIndex={!expanded ? -1 : undefined}>
+          on GitHub
+        </Link>
+        .
+      </HelpText>
+      <Textarea
+        id={commentFieldId}
+        ref={textareaRef}
+        value={comment}
+        onChange={(event) => setComment(event.target.value)}
+        placeholder={`What ${rating === 'up' ? 'was' : 'wasn’t'} helpful?`}
+        disabled={!expanded}
+      />
+      <SpuriousLabel htmlFor="comment" />
+      <SpuriousTextarea
+        id="comment"
+        value={spuriousComment}
+        onChange={(event) => setSpuriousComment(event.target.value)}
+        placeholder="Your comment"
+      />
+      <Button appearance="secondary" size="small" disabled={!expanded}>
+        Submit feedback
+      </Button>
+    </Form>
   );
+
+  if (error) {
+    expandedContent = (
+      <OutlineCTA badge={<Badge status="error">Error</Badge>} action={<></>}>
+        Something went wrong. Please try again.
+      </OutlineCTA>
+    );
+  }
+
+  if (resultUrl) {
+    expandedContent = (
+      <OutlineCTA
+        action={
+          <Link href={resultUrl} target="_blank" withArrow>
+            View your comment on GitHub
+          </Link>
+        }
+      >
+        Thanks for your feedback!
+      </OutlineCTA>
+    );
+  }
 
   return (
     <Wrapper>
@@ -268,7 +274,7 @@ export const Feedback = ({
         </RatingButton>
       </ButtonGroup>
       <Prompt>Was this page helpful?</Prompt>
-      {form}
+      <Expandable isExpanded={expanded}>{expandedContent}</Expandable>
     </Wrapper>
   );
 };
