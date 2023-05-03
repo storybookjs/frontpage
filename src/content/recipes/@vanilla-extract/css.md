@@ -16,7 +16,13 @@ How to setup Vanilla Extract and Storybook
 
 Vanilla Extract Uses TypeScript as your CSS preprocessor. Allowing you to write type‑safe, locally scoped classes, variables and themes, then generate static CSS files at build time. Storybook is an industry-standard tool for developing and testing UI components in isolation.
 
-## Adding Vanilla Extract to Storybook's build
+## Configure your Storybook builder
+
+<div class="aside aside__no-top">
+
+If you're already using Vanilla Extract in your project, you may already have these dependencies installed.
+
+</div>
 
 First of all, install the required dependencies:
 
@@ -30,7 +36,7 @@ yarn add -D @vanilla-extract/webpack-plugin mini-css-extract-plugin
 
 ### Vite
 
-For Vite users, Storybook uses your project's `vite.config.js` for it's build configuration. This means, if your project is using Vanilla Extract, it's already configured for your Storybook as well. 🎉
+For Vite users, Storybook uses your project's `vite.config.js` for it's build configuration. This means, if your project is using Vanilla Extract, it's already configured for your Storybook as well. 🎉 You can view a full example on [Stackblitz](https://stackblitz.com/edit/github-cytqag?file=.storybook/main.ts).
 
 Check out [Vanilla Extract's setup guide for vite](https://vanilla-extract.style/documentation/integrations/vite/) for more information.
 
@@ -92,6 +98,8 @@ const config: StorybookConfig = {
 
 export default config;
 ```
+
+You can view a full example on [Stackblitz](https://stackblitz.com/edit/sb-vanilla-extract-webpack?file=.storybook/main.ts).
 
 ## Get involved
 
