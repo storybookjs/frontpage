@@ -290,12 +290,24 @@ async function createDiscussion({ received, path, rating, comment, title }) {
   return url;
 }
 
+const requestsCache = {};
+
 exports.handler = async (event) => {
+  const now = Date.now();
   try {
     const { body } = event;
     const received = JSON.parse(body);
     console.info('Received:', JSON.stringify(received, null, 2));
-    const { rating, comment, spuriousComment } = received;
+    const { rating, comment, spuriousComment, ip } = received;
+
+    if (requestsCache[ip] && now - requestsCache[ip] < 1000) {
+      console.info(`Too many requests from ${ip}, ignoring`);
+      return {
+        statusCode: 200,
+        body: JSON.stringify({}),
+      };
+    }
+    requestsCache[ip] = now;
 
     if (spuriousComment) {
       console.info('Spurious comment, ignoring');

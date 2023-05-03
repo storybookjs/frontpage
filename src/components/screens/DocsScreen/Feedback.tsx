@@ -1,6 +1,6 @@
 import React from 'react';
 import { css, styled } from '@storybook/theming';
-import { Button, Link, OutlineCTA, styles } from '@storybook/design-system';
+import { Badge, Button, Link, OutlineCTA, styles } from '@storybook/design-system';
 
 const { code, color, spacing, typography } = styles;
 
@@ -138,10 +138,13 @@ export const Feedback = ({
   forceRating = null,
   // @ts-expect-error - For Storybook only
   forceResultUrl = '',
+  // @ts-expect-error - For Storybook only
+  forceError = '',
 }: FeedbackProps) => {
   const [rating, setRating] = React.useState<'up' | 'down' | null>(forceRating);
   const [comment, setComment] = React.useState('');
   const [spuriousComment, setSpuriousComment] = React.useState('');
+  const [error, setError] = React.useState(forceError);
   const [resultUrl, setResultUrl] = React.useState(forceResultUrl);
 
   const formRef = React.useRef<HTMLFormElement | null>(null);
@@ -150,6 +153,7 @@ export const Feedback = ({
   const commentFieldId = React.useMemo(() => Math.random().toString(36).substring(2, 15), []);
 
   const handleRatingClick = (whichRating) => () => {
+    setError('');
     setRating(whichRating);
     textareaRef.current?.focus();
     setTimeout(() => {
@@ -159,32 +163,52 @@ export const Feedback = ({
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await fetch(DOCS_FEEDBACK_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        path,
-        version,
-        framework,
-        codeLanguage,
-        rating,
-        comment,
-        spuriousComment,
-      }),
-    });
-    if (response.ok) {
-      const { url } = await response.json();
-      setResultUrl(url);
-      setRating(null);
-      setComment('');
+
+    try {
+      const ipDataResponse = await fetch('https://www.cloudflare.com/cdn-cgi/trace');
+      const ipData = await ipDataResponse.text();
+      const ip = ipData.match(/ip=((?:\d+\.){3}\d+)/)?.[1];
+
+      const response = await fetch(DOCS_FEEDBACK_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          path,
+          version,
+          framework,
+          codeLanguage,
+          rating,
+          comment,
+          spuriousComment,
+          ip,
+        }),
+      });
+      if (response.ok) {
+        const { url } = await response.json();
+        setResultUrl(url);
+      } else {
+        throw new Error();
+      }
+    } catch (e) {
+      setError(e);
+      // eslint-disable-next-line no-console
+      console.error(e);
     }
+
+    setRating(null);
+    setComment('');
   };
 
   const form = (
-    <CommentForm ref={formRef} isExpanded={rating || resultUrl} onSubmit={handleSubmit}>
-      {resultUrl ? (
+    <CommentForm ref={formRef} isExpanded={error || resultUrl || rating} onSubmit={handleSubmit}>
+      {/* eslint-disable-next-line no-nested-ternary */}
+      {error ? (
+        <OutlineCTA badge={<Badge status="error">Error</Badge>} action={<></>}>
+          Something went wrong. Please try again.
+        </OutlineCTA>
+      ) : resultUrl ? (
         <OutlineCTA
           action={
             <Link href={resultUrl} target="_blank" withArrow>

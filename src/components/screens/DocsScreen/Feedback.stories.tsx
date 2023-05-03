@@ -5,6 +5,7 @@ import { Feedback } from './Feedback';
 type FeedbackProps = React.ComponentProps<typeof Feedback> & {
   forceRating?: 'up' | 'down';
   forceResultUrl?: string;
+  forceError?: string;
 };
 
 // To ensure Chromatic can snapshot correctly
@@ -40,4 +41,9 @@ export const Done = Template.bind({});
 Done.args = {
   forceResultUrl:
     'https://github.com/storybookjs/storybook/discussions/categories/documentation-feedback',
+};
+
+export const Error = Template.bind({});
+Error.args = {
+  forceError: 'Forced error',
 };
