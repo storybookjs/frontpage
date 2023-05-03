@@ -16,6 +16,7 @@ const DocsPage = () => {
   const [framework] = useLocalStorage(LS_SELECTED_FRAMEWORK_KEY, defaultFramework);
 
   if (typeof window !== 'undefined') {
+    // TODO: Make this work with all /docs pages that don't include a framework?
     const path = buildPathWithFramework(installDocsPageSlug, framework);
     navigate(path, { replace: true });
   }
