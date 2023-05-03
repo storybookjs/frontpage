@@ -167,10 +167,6 @@ export const Feedback = ({
     event.preventDefault();
 
     try {
-      const ipDataResponse = await fetch('https://www.cloudflare.com/cdn-cgi/trace');
-      const ipData = await ipDataResponse.text();
-      const ip = ipData.match(/ip=((?:\d+\.){3}\d+)/)?.[1];
-
       const response = await fetch(DOCS_FEEDBACK_URL, {
         method: 'POST',
         headers: {
@@ -184,7 +180,6 @@ export const Feedback = ({
           rating,
           comment,
           spuriousComment,
-          ip,
         }),
       });
       if (response.ok) {

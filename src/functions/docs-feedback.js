@@ -295,19 +295,21 @@ const requestsCache = {};
 exports.handler = async (event) => {
   const now = Date.now();
   try {
-    const { body } = event;
-    const received = JSON.parse(body);
-    console.info('Received:', JSON.stringify(received, null, 2));
-    const { rating, comment, spuriousComment, ip } = received;
+    const { body, headers } = event;
 
+    const ip = headers['client-ip'];
     if (requestsCache[ip] && now - requestsCache[ip] < 1000) {
       console.info(`Too many requests from ${ip}, ignoring`);
       return {
-        statusCode: 200,
+        statusCode: 429,
         body: JSON.stringify({}),
       };
     }
     requestsCache[ip] = now;
+
+    const received = JSON.parse(body);
+    console.info('Received:', JSON.stringify(received, null, 2));
+    const { rating, comment, spuriousComment } = received;
 
     if (spuriousComment) {
       console.info('Spurious comment, ignoring');
