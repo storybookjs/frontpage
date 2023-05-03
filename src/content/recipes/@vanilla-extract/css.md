@@ -53,19 +53,10 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
-  addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
-  ],
-  framework: {
-    // Replace with your framework
-    name: '@storybook/react-webpack5',
-    options: {},
-  },
-  docs: {
-    autodocs: 'tag',
-  },
+  addons: ['@storybook/addon-essentials'],
+  framework: '@storybook/react-webpack5', // Replace with your framework
+
+  // 👇 Add this for Vanilla Extract
   webpackFinal(config, options) {
     // Add Vanilla-Extract and MiniCssExtract Plugins
     config.plugins?.push(new VanillaExtractPlugin(), new MiniCssExtractPlugin());
