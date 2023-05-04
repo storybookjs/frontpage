@@ -45,8 +45,7 @@ You can view a full example on [Stackblitz](https://stackblitz.com/edit/github-c
 For Webpack users, add a `webpackFinal` function to your `main.ts` file like so:
 
 ```ts
-// Replace with your framework
-import type { StorybookConfig } from '@storybook/react-webpack5';
+import type { StorybookConfig } from '@storybook/your-framework';
 
 import { VanillaExtractPlugin } from '@vanilla-extract/webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
@@ -54,7 +53,10 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: ['@storybook/addon-essentials'],
-  framework: '@storybook/react-webpack5', // Replace with your framework
+  framework: {
+    name: '@storybook/your-framework',
+    options: {},
+  },
 
   // 👇 Add this for Vanilla Extract
   webpackFinal(config, options) {
