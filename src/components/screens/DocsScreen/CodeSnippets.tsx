@@ -365,11 +365,9 @@ export function CodeSnippets({
 
   if (!snippets.length) return null;
 
-  const snippetType = basename(paths[0], '.mdx');
-
   return (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
-    <div onClick={() => logSnippetInteraction(currentFramework, snippetType)}>
+    <div onClick={() => logSnippetInteraction(currentFramework, paths[0])}>
       <PureCodeSnippets snippets={snippets} id={id} {...rest} />
     </div>
   );
