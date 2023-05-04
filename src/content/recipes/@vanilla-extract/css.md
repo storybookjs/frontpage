@@ -36,7 +36,7 @@ yarn add -D @vanilla-extract/webpack-plugin mini-css-extract-plugin
 
 ### Vite
 
-For Vite users, Storybook uses your project's `vite.config.js` for it's build configuration. This means, if your project is using Vanilla Extract, it's already configured for your Storybook as well. 🎉
+For Vite users, Storybook uses your project's `vite.config.js` for its build configuration. This means if your project uses Vanilla Extract, it's also already configured for your Storybook. 🎉
 
 You can view a full example on [Stackblitz](https://stackblitz.com/edit/github-cytqag?file=.storybook/main.ts).
 
@@ -57,7 +57,6 @@ const config: StorybookConfig = {
     name: '@storybook/your-framework',
     options: {},
   },
-
   // 👇 Add this for Vanilla Extract
   webpackFinal(config, options) {
     // Add Vanilla-Extract and MiniCssExtract Plugins
