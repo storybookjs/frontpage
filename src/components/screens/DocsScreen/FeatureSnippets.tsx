@@ -18,8 +18,6 @@ export function PureFeatureSnippets({ framework, snippetsByFramework }) {
 }
 
 export function FeatureSnippets({ currentFramework, paths }) {
-  const snippetType = parse(paths[0]).dir;
-
   const [snippetsByFramework, setSnippetsByFramework] = useState({});
   useEffect(() => {
     const fetchSnippetsByFramework = async () => {
@@ -41,7 +39,7 @@ export function FeatureSnippets({ currentFramework, paths }) {
 
   return (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
-    <div className="aside" onClick={() => logSnippetInteraction(currentFramework, snippetType)}>
+    <div className="aside" onClick={() => logSnippetInteraction(currentFramework, paths[0])}>
       <PureFeatureSnippets framework={currentFramework} snippetsByFramework={snippetsByFramework} />
     </div>
   );
