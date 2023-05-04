@@ -27,7 +27,16 @@ const ratingSymbols = {
   down: '👎',
 };
 
-function createBody({ isFirst, path, version, framework, codeLanguage, rating, comment }) {
+function createDiscussionBody(rating) {
+  return [
+    `| ${ratingSymbols['up']} | ${ratingSymbols['down']} |`,
+    '| :-: | :-: |',
+    // prettier-ignore
+    `| ${createRating('up', rating === 'up' ? 1 : 0)} | ${createRating('down', rating === 'down' ? 1 : 0)} |`,
+  ].join('\r\n');
+}
+
+function createCommentBody({ path, version, framework, codeLanguage, rating, comment }) {
   const link = `**[${path}](https://storybook.js.org${path})**`;
 
   // prettier-ignore
@@ -36,17 +45,7 @@ function createBody({ isFirst, path, version, framework, codeLanguage, rating, c
     '| - | - | - | - |',
   ].join('\r\n');
 
-  let cumulativeRating;
-  if (isFirst) {
-    cumulativeRating = [
-      `| ${ratingSymbols['up']} | ${ratingSymbols['down']} |`,
-      '| :-: | :-: |',
-      // prettier-ignore
-      `| ${createRating('up', rating === 'up' ? 1 : 0)} | ${createRating('down', rating === 'down' ? 1 : 0)} |`,
-    ].join('\r\n');
-  }
-
-  return [link, meta, comment, cumulativeRating].filter((block) => Boolean(block)).join('\r\n\r\n');
+  return [link, meta, comment].filter((block) => Boolean(block)).join('\r\n\r\n');
 }
 
 function updateRating(body, rating) {
@@ -245,7 +244,7 @@ async function addDiscussionComment({ id, received, rating, comment }) {
     {
       variables: {
         discussionId: id,
-        body: createBody({ ...received, rating, comment }),
+        body: createCommentBody({ ...received, rating, comment }),
       },
     }
   );
@@ -253,11 +252,11 @@ async function addDiscussionComment({ id, received, rating, comment }) {
   return url;
 }
 
-async function createDiscussion({ received, path, rating, comment, title }) {
+async function createDiscussion({ path, rating, title }) {
   console.info(`Creating new discussion for ${path}...`);
   const {
     createDiscussion: {
-      discussion: { title: addedTitle, body: addedBody, url },
+      discussion: { title: addedTitle, id, number, closed, body: addedBody, url },
     },
   } = await queryGitHub(
     dedent(`
@@ -270,6 +269,9 @@ async function createDiscussion({ received, path, rating, comment, title }) {
         }) {
           discussion {
             title
+            id
+            number
+            closed
             body
             url
           }
@@ -281,13 +283,18 @@ async function createDiscussion({ received, path, rating, comment, title }) {
         repositoryId,
         categoryId,
         title,
-        body: createBody({ isFirst: true, ...received, rating, comment }),
+        body: createDiscussionBody(rating),
       },
     }
   );
   console.info('... done!, Added discussion:', '\n', url, '\n', addedTitle, '\n', addedBody);
 
-  return url;
+  return {
+    title,
+    id,
+    number,
+    closed,
+  };
 }
 
 const requestsCache = {};
@@ -324,26 +331,23 @@ exports.handler = async (event) => {
 
     const title = createTitle(path);
 
-    let url;
-
-    const currentDiscussion = await getDiscussion(title);
+    let currentDiscussion = await getDiscussion(title);
 
     if (currentDiscussion) {
       console.info(`Found discussion for ${path}`);
+
       await updateDiscussion({ ...currentDiscussion, rating });
-
-      if (comment) {
-        if (currentDiscussion.closed) {
-          console.info('Discussion is closed');
-          await reOpenDiscussion(currentDiscussion);
-        }
-
-        url = await addDiscussionComment({ ...currentDiscussion, received, rating, comment });
-      }
     } else {
-      url = await createDiscussion({ received, path, rating, comment, title });
+      currentDiscussion = await createDiscussion({ path, rating, title });
     }
-    // TODO: Return the new discussion/comment URL
+
+    if (comment && currentDiscussion.closed) {
+      console.info('Discussion is closed');
+      await reOpenDiscussion(currentDiscussion);
+    }
+
+    const url = await addDiscussionComment({ ...currentDiscussion, received, rating, comment });
+
     return {
       statusCode: 200,
       body: JSON.stringify({ url }),
