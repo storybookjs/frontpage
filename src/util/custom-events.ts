@@ -1,9 +1,9 @@
 /**
  * In: get-started/installation-command-section/angular.mdx
- * Out: get-started/installation-command-section
+ * Out: installation-command-section
  *
  * In: common/init-command.npx.js.mdx
- * Out: common/init-command
+ * Out: init-command
  *
  * In: malformed-snippet.mdx
  * Out: null
