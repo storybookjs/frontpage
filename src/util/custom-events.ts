@@ -8,10 +8,10 @@
  * In: malformed-snippet.mdx
  * Out: null
  */
-const SNIPPET_TYPE_REGEX = /(?:\w+-?)+\/(?:\w+-?)+/;
+const SNIPPET_TYPE_REGEX = /(?<=\/)[^/.]+/;
 
 export function logSnippetInteraction(framework, snippetPath) {
-  const snippetType = snippetPath.match(SNIPPET_TYPE_REGEX)?.[1];
+  const snippetType = snippetPath.match(SNIPPET_TYPE_REGEX)?.[0];
 
   if (typeof window !== 'undefined' && (window as any).gtag && snippetType) {
     (window as any).gtag('event', 'click_snippet', { framework, snippet_type: snippetType });
