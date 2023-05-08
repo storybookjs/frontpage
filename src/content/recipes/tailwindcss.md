@@ -28,12 +28,6 @@ In this post, we will:
 
 ## Build Tailwind next to Storybook
 
-<div class="aside aside__no-top">
-
-As of storybook 7, as long as your project is already configured to use postCSS, you can skip this step.
-
-</div>
-
 To develop with Tailwind alongside your stories, storybook will need to know how to handle Tailwind's custom `@tailwind` css directive. We can do this with PostCSS.
 
 First of all, install a few extra dependencies.
