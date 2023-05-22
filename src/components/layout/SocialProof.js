@@ -55,12 +55,6 @@ const brands = [
     height: 34,
   },
   {
-    name: 'GovUK',
-    image: 'images/logos/user/logo-govuk.svg',
-    width: 134,
-    height: 22,
-  },
-  {
     name: 'EU',
     image: 'images/logos/user/logo-eu.svg',
     width: 48,

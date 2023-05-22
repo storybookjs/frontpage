@@ -158,7 +158,7 @@ export function Hero({ contributorCount, npmDownloads, startOpen, ...props }) {
 
         <SocialProof
           path="images/logos/user"
-          brands={['vscode', 'govuk', 'eu', 'github', 'airbnb', 'mozilla', 'bbc']}
+          brands={['vscode', 'eu', 'github', 'airbnb', 'mozilla', 'bbc']}
           monochrome
         />
       </Content>
