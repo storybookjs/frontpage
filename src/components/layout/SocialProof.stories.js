@@ -33,7 +33,7 @@ export const Grid = () => (
       'lyft',
       'mozilla',
       'microsoft',
-      'govuk',
+      'monday',
       'auth0',
       'atlassian',
       'priceline',

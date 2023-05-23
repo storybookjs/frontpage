@@ -55,12 +55,6 @@ const brands = [
     height: 34,
   },
   {
-    name: 'GovUK',
-    image: 'images/logos/user/logo-govuk.svg',
-    width: 134,
-    height: 22,
-  },
-  {
     name: 'EU',
     image: 'images/logos/user/logo-eu.svg',
     width: 48,
@@ -83,6 +77,12 @@ const brands = [
     image: 'images/logos/user/logo-mozilla.svg',
     width: 360,
     height: 103,
+  },
+  {
+    name: 'monday.com',
+    image: 'images/logos/user/logo-monday.svg',
+    width: 132,
+    height: 24,
   },
   {
     name: 'BBC',
