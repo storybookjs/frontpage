@@ -1,3 +1,13 @@
+export function extractSnippetPath(snippetPath: string) {
+  const [, snippetType] = snippetPath.split('/');
+  if (!snippetType) {
+    return null;
+  }
+  const snippetTypeWithoutExtension = snippetType.replace(/\..+$/, '');
+
+  return snippetTypeWithoutExtension;
+}
+
 /**
  * In: get-started/installation-command-section/angular.mdx
  * Out: installation-command-section
@@ -8,10 +18,8 @@
  * In: malformed-snippet.mdx
  * Out: null
  */
-const SNIPPET_TYPE_REGEX = /(?<=\/)[^/.]+/;
-
 export function logSnippetInteraction(framework, snippetPath) {
-  const snippetType = snippetPath.match(SNIPPET_TYPE_REGEX)?.[0];
+  const snippetType = extractSnippetPath(snippetPath);
 
   if (typeof window !== 'undefined' && (window as any).gtag && snippetType) {
     (window as any).gtag('event', 'click_snippet', { framework, snippet_type: snippetType });

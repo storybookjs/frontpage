@@ -23,6 +23,7 @@ jobs:
       - run: yarn lint
 
       - run: GATSBY_CPU_COUNT=1 GATSBY_SKIP_ADDON_PAGES=true yarn build
+      - run: yarn test
       - run: yarn chromatic --exit-zero-on-changes
 
 workflows:
