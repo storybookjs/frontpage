@@ -21,9 +21,9 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run: yarn lint
-      - run: yarn test
 
       - run: GATSBY_CPU_COUNT=1 GATSBY_SKIP_ADDON_PAGES=true yarn build
+      - run: yarn test
       - run: yarn chromatic --exit-zero-on-changes
 
 workflows:
