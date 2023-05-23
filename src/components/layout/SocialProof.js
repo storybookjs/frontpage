@@ -79,6 +79,12 @@ const brands = [
     height: 103,
   },
   {
+    name: 'monday.com',
+    image: 'images/logos/user/logo-monday.svg',
+    width: 132,
+    height: 24,
+  },
+  {
     name: 'BBC',
     image: 'images/logos/user/logo-bbc.svg',
     width: 120,
