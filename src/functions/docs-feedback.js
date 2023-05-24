@@ -10,6 +10,7 @@ import buildPathWithFramework from '../util/build-path-with-framework';
 const { frameworks, slugs, versions } = docsMetadata;
 
 const pat = process.env.GITHUB_STORYBOOK_BOT_PAT;
+const trickyHeader = process.env.GATSBY_DOCS_FEEDBACK_TRICKY_HEADER;
 
 if (!pat) {
   throw new Error('GITHUB_STORYBOOK_BOT_PAT not found in environment');
@@ -320,11 +321,19 @@ exports.handler = async (event) => {
   try {
     const { body, headers } = event;
 
+    if (!headers[trickyHeader]) {
+      console.info('Missing tricky header, ignoring');
+      return {
+        statusCode: 401,
+        body: JSON.stringify({}),
+      };
+    }
+
     const ip = headers['client-ip'];
     if (requestsCache[ip] && now - requestsCache[ip] < 1000) {
       console.info(`Too many requests from ${ip}, ignoring`);
       return {
-        statusCode: 429,
+        statusCode: 401,
         body: JSON.stringify({}),
       };
     }
@@ -337,7 +346,7 @@ exports.handler = async (event) => {
     if (spuriousComment) {
       console.info('Spurious comment, ignoring');
       return {
-        statusCode: 200,
+        statusCode: 401,
         body: JSON.stringify({}),
       };
     }
@@ -350,7 +359,7 @@ exports.handler = async (event) => {
     ) {
       console.info('Invalid data, ignoring');
       return {
-        statusCode: 200,
+        statusCode: 401,
         body: JSON.stringify({}),
       };
     }

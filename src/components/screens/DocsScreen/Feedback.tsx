@@ -4,6 +4,8 @@ import { Badge, Button, Link, OutlineCTA, styles } from '@storybook/design-syste
 
 const { code, color, spacing, typography } = styles;
 
+const trickyHeader = process.env.GATSBY_DOCS_FEEDBACK_TRICKY_HEADER;
+
 const DOCS_FEEDBACK_URL = '/.netlify/functions/docs-feedback';
 const DISCUSSIONS_URL =
   'https://github.com/storybookjs/storybook/discussions/categories/documentation-feedback';
@@ -174,6 +176,7 @@ export const Feedback = ({
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          [trickyHeader]: trickyHeader,
         },
         body: JSON.stringify({
           slug,
