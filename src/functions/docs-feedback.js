@@ -2,7 +2,12 @@
 import dedent from 'dedent';
 import fetch from 'node-fetch';
 
+// This file is generated at build time, so linting before building fails
+// eslint-disable-next-line import/no-unresolved, import/extensions
+import docsMetadata from '../generated/docs-metadata.json';
 import buildPathWithFramework from '../util/build-path-with-framework';
+
+const { frameworks, slugs, versions } = docsMetadata;
 
 const pat = process.env.GITHUB_STORYBOOK_BOT_PAT;
 
@@ -224,7 +229,15 @@ async function reOpenDiscussion({ id }) {
   console.info('... done!');
 }
 
-async function addDiscussionComment({ id, received, rating, comment }) {
+async function addDiscussionComment({
+  id,
+  slug,
+  version,
+  framework,
+  codeLanguage,
+  rating,
+  comment,
+}) {
   console.info('Adding comment to discussion...');
   const {
     addDiscussionComment: {
@@ -247,7 +260,7 @@ async function addDiscussionComment({ id, received, rating, comment }) {
     {
       variables: {
         discussionId: id,
-        body: createCommentBody({ ...received, rating, comment }),
+        body: createCommentBody({ slug, version, framework, codeLanguage, rating, comment }),
       },
     }
   );
@@ -319,7 +332,7 @@ exports.handler = async (event) => {
 
     const received = JSON.parse(body);
     console.info('Received:', JSON.stringify(received, null, 2));
-    const { rating, comment, spuriousComment } = received;
+    const { slug, version, framework, codeLanguage, rating, comment, spuriousComment } = received;
 
     if (spuriousComment) {
       console.info('Spurious comment, ignoring');
@@ -329,7 +342,20 @@ exports.handler = async (event) => {
       };
     }
 
-    const path = received.slug.replace('/docs', '');
+    if (
+      !frameworks.includes(framework) ||
+      !slugs.includes(slug) ||
+      !versions.includes(version) ||
+      !Object.keys(ratingSymbols).includes(rating)
+    ) {
+      console.info('Invalid data, ignoring');
+      return {
+        statusCode: 200,
+        body: JSON.stringify({}),
+      };
+    }
+
+    const path = slug.replace('/docs', '');
 
     const title = createTitle(path);
 
@@ -348,7 +374,15 @@ exports.handler = async (event) => {
       await reOpenDiscussion(currentDiscussion);
     }
 
-    const url = await addDiscussionComment({ ...currentDiscussion, received, rating, comment });
+    const url = await addDiscussionComment({
+      ...currentDiscussion,
+      slug,
+      version,
+      framework,
+      codeLanguage,
+      rating,
+      comment,
+    });
 
     return {
       statusCode: 200,
