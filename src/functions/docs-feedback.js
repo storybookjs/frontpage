@@ -2,6 +2,8 @@
 import dedent from 'dedent';
 import fetch from 'node-fetch';
 
+import buildPathWithFramework from '../util/build-path-with-framework';
+
 const pat = process.env.GITHUB_STORYBOOK_BOT_PAT;
 
 if (!pat) {
@@ -36,7 +38,8 @@ function createDiscussionBody(rating) {
   ].join('\r\n');
 }
 
-function createCommentBody({ path, version, framework, codeLanguage, rating, comment }) {
+function createCommentBody({ slug, version, framework, codeLanguage, rating, comment }) {
+  const path = buildPathWithFramework(slug, framework, version);
   const link = `**[${path}](https://storybook.js.org${path})**`;
 
   // prettier-ignore
@@ -326,8 +329,7 @@ exports.handler = async (event) => {
       };
     }
 
-    // TODO: This could contain a version?
-    const path = `/${received.path.split('/').slice(-2).join('/')}`;
+    const path = received.slug.replace('/docs', '');
 
     const title = createTitle(path);
 

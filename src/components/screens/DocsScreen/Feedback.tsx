@@ -11,7 +11,7 @@ const DISCUSSIONS_URL =
 const heightTransitionTime = 100; // ms
 
 interface FeedbackProps {
-  path: string;
+  slug: string;
   version: string;
   framework: string;
   codeLanguage: string;
@@ -133,7 +133,7 @@ const SpuriousTextarea = styled((props) => (
 `;
 
 export const Feedback = ({
-  path,
+  slug,
   version,
   framework,
   codeLanguage,
@@ -176,7 +176,7 @@ export const Feedback = ({
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          path,
+          slug,
           version,
           framework,
           codeLanguage,

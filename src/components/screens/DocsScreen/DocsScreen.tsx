@@ -273,7 +273,7 @@ function DocsScreen({ data, pageContext, location }) {
         {tocItem && (
           <Feedback
             key={fullPath}
-            path={fullPath}
+            slug={slug}
             version={versionString}
             framework={framework}
             codeLanguage={codeLanguage}
