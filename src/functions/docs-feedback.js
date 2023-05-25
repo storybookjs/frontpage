@@ -2,11 +2,15 @@
 import dedent from 'dedent';
 import fetch from 'node-fetch';
 
+import siteMetadata from '../../site-metadata';
 // This file is generated at build time, so linting before building fails
 // eslint-disable-next-line import/no-unresolved, import/extensions
 import docsMetadata from '../generated/docs-metadata.json';
 import buildPathWithFramework from '../util/build-path-with-framework';
 
+const {
+  urls: { homepageUrl },
+} = siteMetadata;
 const { frameworks, slugs, versions } = docsMetadata;
 
 const pat = process.env.GITHUB_STORYBOOK_BOT_PAT;
@@ -321,14 +325,6 @@ exports.handler = async (event) => {
   try {
     const { body, headers } = event;
 
-    if (!headers[trickyHeader]) {
-      console.info('Missing tricky header, ignoring');
-      return {
-        statusCode: 401,
-        body: JSON.stringify({}),
-      };
-    }
-
     const ip = headers['x-nf-client-connection-ip'];
     if (requestsCache[ip] && now - requestsCache[ip] < 1000) {
       console.info(`Too many requests from ${ip}, ignoring`);
@@ -342,6 +338,20 @@ exports.handler = async (event) => {
     const received = JSON.parse(body);
     console.info('Received:', JSON.stringify(received, null, 2));
     const { slug, version, framework, codeLanguage, rating, comment, spuriousComment } = received;
+
+    const path = slug.replace('/docs', '');
+
+    if (
+      !headers[trickyHeader] ||
+      headers['origin'] !== homepageUrl ||
+      headers['referer'].endsWith(path)
+    ) {
+      console.info('Invalid header, ignoring');
+      return {
+        statusCode: 401,
+        body: JSON.stringify({}),
+      };
+    }
 
     if (spuriousComment) {
       console.info('Spurious comment, ignoring');
@@ -363,8 +373,6 @@ exports.handler = async (event) => {
         body: JSON.stringify({}),
       };
     }
-
-    const path = slug.replace('/docs', '');
 
     const title = createTitle(path);
 
