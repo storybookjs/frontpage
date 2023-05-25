@@ -4,7 +4,12 @@ import { Badge, Button, Link, OutlineCTA, styles } from '@storybook/design-syste
 
 const { code, color, spacing, typography } = styles;
 
-const trickyHeader = process.env.GATSBY_DOCS_FEEDBACK_TRICKY_HEADER;
+const [, trickyHeaderKey, trickyHeaderValue] =
+  process.env.GATSBY_DOCS_FEEDBACK_TRICKY_HEADER?.match(/^key-(.+)-value-(.+)$/) || [
+    null,
+    'dev',
+    'value-for-local-dev',
+  ];
 
 const DOCS_FEEDBACK_URL = '/.netlify/functions/docs-feedback';
 const DISCUSSIONS_URL =
@@ -176,7 +181,7 @@ export const Feedback = ({
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          [trickyHeader]: trickyHeader,
+          [trickyHeaderKey]: trickyHeaderValue,
         },
         body: JSON.stringify({
           slug,

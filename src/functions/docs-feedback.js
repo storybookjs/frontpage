@@ -11,18 +11,25 @@ import buildPathWithFramework from '../util/build-path-with-framework';
 const { frameworks, slugs, versions } = docsMetadata;
 
 const siteUrl = process.env.URL;
+
 const pat = process.env.GITHUB_STORYBOOK_BOT_PAT;
+if (!pat) {
+  throw new Error('GITHUB_STORYBOOK_BOT_PAT not found in environment');
+}
+
 const trickyHeader = process.env.GATSBY_DOCS_FEEDBACK_TRICKY_HEADER;
+if (!trickyHeader) {
+  throw new Error('GATSBY_DOCS_FEEDBACK_TRICKY_HEADER not found in environment');
+}
+
 /**
  * Netlify doesn't provide a way to determine the deploy context, but we can
  * adjust the value of a custom env var per-context, so we infer the context
  * from that.
  */
-const isProduction = trickyHeader.endsWith('-prod');
+const isProduction = !trickyHeader.endsWith('-not-prod');
 
-if (!pat) {
-  throw new Error('GITHUB_STORYBOOK_BOT_PAT not found in environment');
-}
+const [, trickyHeaderKey, trickyHeaderValue] = trickyHeader.match(/^key-(.+)-value-(.+)$/);
 
 const repositoryOwner = 'storybookjs';
 const repositoryName = 'storybook';
@@ -345,9 +352,9 @@ exports.handler = async (event) => {
 
     const path = slug.replace('/docs', '');
 
-    const hasValidTrickyHeader = headers[trickyHeader] === trickyHeader;
+    const hasValidTrickyHeader = headers[trickyHeaderKey] === trickyHeaderValue;
     const hasValidOrigin = isProduction ? headers['origin'] === siteUrl : true;
-    const hasValidReferer = headers['referer'].endsWith(path);
+    const hasValidReferer = headers['referer']?.endsWith(path);
 
     if (!hasValidTrickyHeader || !hasValidOrigin || !hasValidReferer) {
       console.info('Invalid headers, ignoring');
