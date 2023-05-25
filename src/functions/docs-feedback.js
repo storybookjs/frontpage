@@ -329,7 +329,7 @@ exports.handler = async (event) => {
       };
     }
 
-    const ip = headers['client-ip'];
+    const ip = headers['x-nf-client-connection-ip'];
     if (requestsCache[ip] && now - requestsCache[ip] < 1000) {
       console.info(`Too many requests from ${ip}, ignoring`);
       return {
