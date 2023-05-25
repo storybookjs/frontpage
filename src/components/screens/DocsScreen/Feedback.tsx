@@ -4,6 +4,13 @@ import { Badge, Button, Link, OutlineCTA, styles } from '@storybook/design-syste
 
 const { code, color, spacing, typography } = styles;
 
+const [, trickyHeaderKey, trickyHeaderValue] =
+  process.env.GATSBY_DOCS_FEEDBACK_TRICKY_HEADER?.match(/^key-(.+)-value-(.+)$/) || [
+    null,
+    'dev',
+    'value-for-local-dev',
+  ];
+
 const DOCS_FEEDBACK_URL = '/.netlify/functions/docs-feedback';
 const DISCUSSIONS_URL =
   'https://github.com/storybookjs/storybook/discussions/categories/documentation-feedback';
@@ -11,7 +18,7 @@ const DISCUSSIONS_URL =
 const heightTransitionTime = 100; // ms
 
 interface FeedbackProps {
-  path: string;
+  slug: string;
   version: string;
   framework: string;
   codeLanguage: string;
@@ -133,7 +140,7 @@ const SpuriousTextarea = styled((props) => (
 `;
 
 export const Feedback = ({
-  path,
+  slug,
   version,
   framework,
   codeLanguage,
@@ -174,9 +181,10 @@ export const Feedback = ({
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          [trickyHeaderKey]: trickyHeaderValue,
         },
         body: JSON.stringify({
-          path,
+          slug,
           version,
           framework,
           codeLanguage,

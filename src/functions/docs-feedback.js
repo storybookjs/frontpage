@@ -2,11 +2,34 @@
 import dedent from 'dedent';
 import fetch from 'node-fetch';
 
-const pat = process.env.GITHUB_STORYBOOK_BOT_PAT;
+import siteMetadata from '../../site-metadata';
+// This file is generated at build time, so linting before building fails
+// eslint-disable-next-line import/no-unresolved, import/extensions
+import docsMetadata from '../generated/docs-metadata.json';
+import buildPathWithFramework from '../util/build-path-with-framework';
 
+const { frameworks, slugs, versions } = docsMetadata;
+
+const siteUrl = process.env.URL;
+
+const pat = process.env.GITHUB_STORYBOOK_BOT_PAT;
 if (!pat) {
   throw new Error('GITHUB_STORYBOOK_BOT_PAT not found in environment');
 }
+
+const trickyHeader = process.env.GATSBY_DOCS_FEEDBACK_TRICKY_HEADER;
+if (!trickyHeader) {
+  throw new Error('GATSBY_DOCS_FEEDBACK_TRICKY_HEADER not found in environment');
+}
+
+/**
+ * Netlify doesn't provide a way to determine the deploy context, but we can
+ * adjust the value of a custom env var per-context, so we infer the context
+ * from that.
+ */
+const isProduction = !trickyHeader.endsWith('-not-prod');
+
+const [, trickyHeaderKey, trickyHeaderValue] = trickyHeader.match(/^key-(.+)-value-(.+)$/);
 
 const repositoryOwner = 'storybookjs';
 const repositoryName = 'storybook';
@@ -36,7 +59,8 @@ function createDiscussionBody(rating) {
   ].join('\r\n');
 }
 
-function createCommentBody({ path, version, framework, codeLanguage, rating, comment }) {
+function createCommentBody({ slug, version, framework, codeLanguage, rating, comment }) {
+  const path = buildPathWithFramework(slug, framework, version);
   const link = `**[${path}](https://storybook.js.org${path})**`;
 
   // prettier-ignore
@@ -221,7 +245,15 @@ async function reOpenDiscussion({ id }) {
   console.info('... done!');
 }
 
-async function addDiscussionComment({ id, received, rating, comment }) {
+async function addDiscussionComment({
+  id,
+  slug,
+  version,
+  framework,
+  codeLanguage,
+  rating,
+  comment,
+}) {
   console.info('Adding comment to discussion...');
   const {
     addDiscussionComment: {
@@ -244,7 +276,7 @@ async function addDiscussionComment({ id, received, rating, comment }) {
     {
       variables: {
         discussionId: id,
-        body: createCommentBody({ ...received, rating, comment }),
+        body: createCommentBody({ slug, version, framework, codeLanguage, rating, comment }),
       },
     }
   );
@@ -304,11 +336,11 @@ exports.handler = async (event) => {
   try {
     const { body, headers } = event;
 
-    const ip = headers['client-ip'];
+    const ip = headers['x-nf-client-connection-ip'];
     if (requestsCache[ip] && now - requestsCache[ip] < 1000) {
       console.info(`Too many requests from ${ip}, ignoring`);
       return {
-        statusCode: 429,
+        statusCode: 401,
         body: JSON.stringify({}),
       };
     }
@@ -316,18 +348,65 @@ exports.handler = async (event) => {
 
     const received = JSON.parse(body);
     console.info('Received:', JSON.stringify(received, null, 2));
-    const { rating, comment, spuriousComment } = received;
+    const { slug, version, framework, codeLanguage, rating, comment, spuriousComment } = received;
 
-    if (spuriousComment) {
-      console.info('Spurious comment, ignoring');
+    const path = slug.replace('/docs', '');
+
+    const hasValidTrickyHeader = headers[trickyHeaderKey] === trickyHeaderValue;
+    const hasValidOrigin = isProduction ? headers['origin'] === siteUrl : true;
+    const hasValidReferer = headers['referer']?.endsWith(path);
+
+    if (!hasValidTrickyHeader || !hasValidOrigin || !hasValidReferer) {
+      console.info('Invalid headers, ignoring');
+      console.info(
+        JSON.stringify(
+          { hasValidTrickyHeader, hasValidOrigin, siteUrl, hasValidReferer, path, headers },
+          null,
+          2
+        )
+      );
       return {
-        statusCode: 200,
+        statusCode: 401,
         body: JSON.stringify({}),
       };
     }
 
-    // TODO: This could contain a version?
-    const path = `/${received.path.split('/').slice(-2).join('/')}`;
+    if (spuriousComment) {
+      console.info('Spurious comment, ignoring');
+      return {
+        statusCode: 401,
+        body: JSON.stringify({}),
+      };
+    }
+
+    const hasValidFramework = frameworks.includes(framework);
+    const hasValidSlug = slugs.includes(slug);
+    const hasValidVersion = versions.includes(version);
+    const hasValidRating = Object.keys(ratingSymbols).includes(rating);
+
+    if (!hasValidFramework || !hasValidVersion || !hasValidRating) {
+      console.info('Invalid data, ignoring');
+      console.info(
+        JSON.stringify(
+          {
+            hasValidFramework,
+            framework,
+            hasValidSlug,
+            slug,
+            hasValidVersion,
+            version,
+            hasValidRating,
+            rating,
+          },
+          null,
+          2
+        )
+      );
+      return {
+        statusCode: 401,
+        body: JSON.stringify({}),
+      };
+    }
 
     const title = createTitle(path);
 
@@ -346,7 +425,15 @@ exports.handler = async (event) => {
       await reOpenDiscussion(currentDiscussion);
     }
 
-    const url = await addDiscussionComment({ ...currentDiscussion, received, rating, comment });
+    const url = await addDiscussionComment({
+      ...currentDiscussion,
+      slug,
+      version,
+      framework,
+      codeLanguage,
+      rating,
+      comment,
+    });
 
     return {
       statusCode: 200,

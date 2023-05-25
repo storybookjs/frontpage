@@ -10,7 +10,7 @@ const buildPathWithFramework = require('./src/util/build-path-with-framework');
 const getReleaseBranchUrl = require('./src/util/get-release-branch-url');
 const { versionString, latestVersionString, isLatest } = require('./src/util/version-data');
 const sourceDXData = require('./src/util/source-dx-data');
-const { versions } = require('./src/util/versions');
+const { versions, versionsWithToc } = require('./src/util/versions');
 const createIntegrationsPages = require('./src/util/create-integrations-pages');
 const createHomePage = require('./src/util/create-home-page');
 const siteMetadata = require('./site-metadata');
@@ -20,6 +20,7 @@ const {
 } = siteMetadata;
 
 const docsTocWithPaths = addStateToToc(docsToc);
+const docsPagesSlugs = [];
 
 const nextVersionString = versions.preRelease[0]?.string;
 
@@ -155,7 +156,6 @@ exports.createPages = ({ actions, graphql }) => {
           });
 
           frameworks = [...coreFrameworks, ...communityFrameworks];
-          const docsPagesSlugs = [];
           const docsPagesEdgesBySlug = Object.fromEntries(
             docsPagesEdges.map((edge) => [edge.node.fields.slug, edge])
           );
@@ -246,6 +246,15 @@ function generateVersionsFile() {
   const next = getVersionData('next');
   const data = { ...latest, ...next };
   fs.writeFileSync('./public/versions-raw.json', JSON.stringify(data));
+}
+
+function generateDocsMetadataFile() {
+  const metadata = {
+    frameworks,
+    slugs: docsPagesSlugs,
+    versions: [latestVersionString, ...versionsWithToc.map(({ string }) => string)],
+  };
+  fs.writeFileSync('./src/generated/docs-metadata.json', JSON.stringify(metadata));
 }
 
 function updateRedirectsFile() {
@@ -356,6 +365,7 @@ exports.onPostBuild = async () => {
     await copyOtherSitemaps();
     await updateSitemapIndex();
     generateVersionsFile();
+    generateDocsMetadataFile();
     updateRedirectsFile();
   }
 };
