@@ -8,11 +8,17 @@ import siteMetadata from '../../site-metadata';
 import docsMetadata from '../generated/docs-metadata.json';
 import buildPathWithFramework from '../util/build-path-with-framework';
 
-const { siteUrl } = siteMetadata;
 const { frameworks, slugs, versions } = docsMetadata;
 
+const siteUrl = process.env.URL;
 const pat = process.env.GITHUB_STORYBOOK_BOT_PAT;
 const trickyHeader = process.env.GATSBY_DOCS_FEEDBACK_TRICKY_HEADER;
+/**
+ * Netlify doesn't provide a way to determine the deploy context, but we can
+ * adjust the value of a custom env var per-context, so we infer the context
+ * from that.
+ */
+const isProduction = trickyHeader.endsWith('-prod');
 
 if (!pat) {
   throw new Error('GITHUB_STORYBOOK_BOT_PAT not found in environment');
@@ -340,7 +346,7 @@ exports.handler = async (event) => {
     const path = slug.replace('/docs', '');
 
     const hasValidTrickyHeader = headers[trickyHeader] === trickyHeader;
-    const hasValidOrigin = headers['origin'] === siteUrl;
+    const hasValidOrigin = isProduction ? headers['origin'] === siteUrl : true;
     const hasValidReferer = headers['referer'].endsWith(path);
 
     if (!hasValidTrickyHeader || !hasValidOrigin || !hasValidReferer) {
