@@ -8,9 +8,7 @@ import siteMetadata from '../../site-metadata';
 import docsMetadata from '../generated/docs-metadata.json';
 import buildPathWithFramework from '../util/build-path-with-framework';
 
-const {
-  urls: { homepageUrl },
-} = siteMetadata;
+const { siteUrl } = siteMetadata;
 const { frameworks, slugs, versions } = docsMetadata;
 
 const pat = process.env.GITHUB_STORYBOOK_BOT_PAT;
@@ -341,12 +339,19 @@ exports.handler = async (event) => {
 
     const path = slug.replace('/docs', '');
 
-    if (
-      !headers[trickyHeader] ||
-      headers['origin'] !== homepageUrl ||
-      headers['referer'].endsWith(path)
-    ) {
-      console.info('Invalid header, ignoring');
+    const hasValidTrickyHeader = headers[trickyHeader] === trickyHeader;
+    const hasValidOrigin = headers['origin'] === siteUrl;
+    const hasValidReferer = headers['referer'].endsWith(path);
+
+    if (!hasValidTrickyHeader || !hasValidOrigin || !hasValidReferer) {
+      console.info('Invalid headers, ignoring');
+      console.info(
+        JSON.stringify(
+          { hasValidTrickyHeader, hasValidOrigin, siteUrl, hasValidReferer, path, headers },
+          null,
+          2
+        )
+      );
       return {
         statusCode: 401,
         body: JSON.stringify({}),
@@ -361,13 +366,29 @@ exports.handler = async (event) => {
       };
     }
 
-    if (
-      !frameworks.includes(framework) ||
-      !slugs.includes(slug) ||
-      !versions.includes(version) ||
-      !Object.keys(ratingSymbols).includes(rating)
-    ) {
+    const hasValidFramework = frameworks.includes(framework);
+    const hasValidSlug = slugs.includes(slug);
+    const hasValidVersion = versions.includes(version);
+    const hasValidRating = Object.keys(ratingSymbols).includes(rating);
+
+    if (!hasValidFramework || !hasValidVersion || !hasValidRating) {
       console.info('Invalid data, ignoring');
+      console.info(
+        JSON.stringify(
+          {
+            hasValidFramework,
+            framework,
+            hasValidSlug,
+            slug,
+            hasValidVersion,
+            version,
+            hasValidRating,
+            rating,
+          },
+          null,
+          2
+        )
+      );
       return {
         statusCode: 401,
         body: JSON.stringify({}),
