@@ -361,6 +361,8 @@ async function updateSitemapIndex() {
 }
 
 exports.onPostBuild = async () => {
+  generateDocsMetadataFile();
+
   if (isLatest) {
     await copyOtherSitemaps();
     await updateSitemapIndex();
