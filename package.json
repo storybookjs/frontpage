@@ -100,6 +100,8 @@
     "test:e2e": "playwright test",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
+    "archive-storybook": "archive-storybook",
+    "build-archive-storybook": "build-archive-storybook",
     "chromatic": "chromatic --project-token dd2oqshntir",
     "generate-types": "graphql-codegen --config graphql-types-codegen.yml",
     "build:functions": "netlify-lambda build src/functions",
@@ -112,6 +114,8 @@
   "devDependencies": {
     "@babel/core": "^7.18.2",
     "@babel/eslint-parser": "^7.18.2",
+    "@chromaui/archive-storybook": "^0.0.6",
+    "@chromaui/test-archiver": "^0.0.11",
     "@emotion/babel-plugin": "^11.9.2",
     "@graphql-codegen/cli": "^1.9.1",
     "@graphql-codegen/introspection": "1.16.3",

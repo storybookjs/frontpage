@@ -16,6 +16,7 @@ monorepo
 yarn-error.log
 build-storybook.log
 test-results
+test-archives
 
 # Pulled from monorepo
 src/content/docs
