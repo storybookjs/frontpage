@@ -48,4 +48,13 @@ module.exports = {
     ],
     'max-classes-per-file': 'off',
   },
+  overrides: [
+    {
+      files: ['**/*.spec.*'],
+      rules: {
+        'import/no-extraneous-dependencies': 'off',
+        'jest/no-done-callback': 'off',
+      },
+    },
+  ],
 };

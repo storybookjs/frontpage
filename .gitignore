@@ -1,7 +1,6 @@
 # Project dependencies
 .cache
 node_modules
-yarn-error.log
 
 # We use yarn.lock
 package-lock.json
@@ -12,7 +11,11 @@ storybook-static
 .DS_Store
 .idea
 monorepo
+
+# Reports and logs
+yarn-error.log
 build-storybook.log
+test-results
 
 # Pulled from monorepo
 src/content/docs
