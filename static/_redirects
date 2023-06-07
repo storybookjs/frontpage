@@ -29,7 +29,7 @@
 /testing/*                                  /docs/testing/:splat                                                                                301
 
 # Pre 6.0 URLs
-/docs/basics/introduction/                  /docs/react/get-started/install/                                                               301
+/docs/basics/introduction/                  /docs/react/get-started/install/                                                                    301
 /docs/basics/writing-stories/               /docs/react/get-started/whats-a-story/                                                              301
 /docs/basics/exporting-storybook/           /docs/react/workflows/publish-storybook/                                                            301
 /docs/basics/faq/                           /docs/react/workflows/faq/                                                                          301
@@ -94,7 +94,7 @@
 /day/*                                      https://storybook-day-2023.netlify.app/day/:splat                                                   200
 /status/*                                   https://storybook-status.netlify.app/status/:splat                                                  200
 
-/telemetry                                  /docs/6.5/react/configure/telemetry                                                                 301
+/telemetry                                  /docs/react/configure/telemetry                                                                     301
 
 # We can't use updateRedirectsFile for these because it adds the framework to the destination
 /docs/react/get-started/examples            /showcase                                                                                           301
@@ -117,6 +117,6 @@
 /addons/tag/*                               /integrations/tag/:splat                                                                            301
 
 /design-system                              https://master--5ccbc373887ca40020446347.chromatic.com                                              301
-/migration-guides/7.0                       https://storybook.js.org/docs/7.0/react/migration-guide#page-top                                    301
+/migration-guides/7.0                       https://storybook.js.org/docs/7.0/react/migration-guide                                             301
 
 # Rest of this file is generated (see gatsby-node.js > updateRedirectsFile)
