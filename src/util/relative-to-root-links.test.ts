@@ -6,7 +6,7 @@ it('transforms sibling-level links', () => {
     'react',
     '/docs/react/writing-stories/introduction'
   );
-  expect(rootUrl).toEqual('/docs/react/writing-stories/args.md');
+  expect(rootUrl).toEqual('/docs/react/writing-stories/args');
 });
 
 it('transforms parent-level links', () => {
@@ -15,7 +15,7 @@ it('transforms parent-level links', () => {
     'react',
     '/docs/react/writing-stories/introduction'
   );
-  expect(rootUrl).toEqual('/docs/react/writing-docs/introduction.md');
+  expect(rootUrl).toEqual('/docs/react/writing-docs/introduction');
 });
 
 it('transforms specific-version links', () => {
@@ -24,7 +24,7 @@ it('transforms specific-version links', () => {
     'react',
     '/docs/react/configure/babel'
   );
-  expect(rootUrl).toEqual('/docs/6.5/react/api/csf.md');
+  expect(rootUrl).toEqual('/docs/6.5/react/api/csf');
 });
 
 it('does not transform non-versioned upper-level links', () => {
