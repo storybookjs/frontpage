@@ -27,3 +27,4 @@
 /docs/api/mdx                                    /docs/writing-docs/mdx                                                         301
 /docs/api/presets                                /docs/addons/writing-presets                                                   301
 /docs/api/frameworks-feature-support             /docs/configure/frameworks-feature-support                                     301
+/docs/api/argtypes                               /docs/api/arg-types                                                            301
