@@ -14,17 +14,16 @@ function removeMdExtension(path) {
  * ../../app/ember/README.md remains untouched (these are converted to github links elsewhere)
  * /addons remains untouched
  */
-function relativeToRootLinks(href, framework, path = '', overrideVersionIn) {
+function relativeToRootLinks(href, framework, path = '') {
   const relativeUrlRegex = /^(?!\.\.\/\.\.\/)(\.\/)(.*)$/;
   const multiLevelRelativeUrlRegex = /^(?!\.\.\/\.\.\/)(\.\.\/)(.*)$/;
 
   let url = href;
 
-  let overrideVersion = overrideVersionIn;
   const versionedUrl = url.match(/\/release-(\d+-\d+)\//);
   if (versionedUrl) {
     // rewrite ../../../release-#-#/docs/parent/some-path style urls to /docs/version/framework/parent/some-path
-    overrideVersion = versionedUrl[1].split('-').join('.');
+    const overrideVersion = versionedUrl[1].split('-').join('.');
     url = buildPathWithFramework(
       href.replace(/.*\/docs\/(.*)/, '/docs/$1'),
       framework,
@@ -38,21 +37,12 @@ function relativeToRootLinks(href, framework, path = '', overrideVersionIn) {
     const slugParts = path.split('/').filter((p) => !!p);
     slugParts.splice(-1, 1, href.replace(relativeUrlRegex, '$2'));
     url = `/${slugParts.join('/')}`;
-
-    if (overrideVersion) {
-      url = url.replace(/\/docs\/(?:\d\.\d\/)?/, `/docs/${overrideVersion}/`);
-    }
-
     return removeMdExtension(url);
   }
 
   if (multiLevelRelativeUrlRegex.test(href)) {
     // rewrite ../parent/some-path style urls to /docs/version?/framework/parent/some-path
-    url = buildPathWithFramework(
-      href.replace(multiLevelRelativeUrlRegex, '/docs/$2'),
-      framework,
-      overrideVersion
-    );
+    url = buildPathWithFramework(href.replace(multiLevelRelativeUrlRegex, '/docs/$2'), framework);
     return removeMdExtension(url);
   }
 

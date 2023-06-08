@@ -156,17 +156,6 @@ function DocsScreen({ data, pageContext, location }) {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [framework]);
-  const LinkWithVersion = useMemo(() => {
-    return ({ children, href, version, ...props }) => {
-      const url = relativeToRootLinks(href, framework, location.pathname, version);
-      return (
-        <a href={url} {...props}>
-          {children}
-        </a>
-      );
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [framework]);
 
   const features = featureGroups.flatMap((group) => group.features);
   const feature = features.find((fs) => `/docs${fs.path}/` === slug);
@@ -241,7 +230,6 @@ function DocsScreen({ data, pageContext, location }) {
             FrameworkSupportTable: FrameworkSupportTableWithFeaturesAndCurrentFramework,
             YouTubeCallout,
             a: LinksWithPrefix,
-            LinkWithVersion,
           }}
         >
           <StyledHighlight withHTMLChildren={false}>
