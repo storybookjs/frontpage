@@ -18,7 +18,39 @@ Storybook is a frontend workbench for building UIs in isolation. By combining St
 - 🎨 Load your custom theme and add a theme switcher
 - ♻️ Reuse Material UI types to auto-generate story controls
 
-## Bundle fonts and icons for better perf
+## Install `@storybook/addon-styling`
+
+Add the `@storybook/addon-styling` package to your DevDependencies
+
+```shell
+yarn add -D @storybook/addon-styling
+```
+
+Then register with Storybook in `.storybook/main.js`.
+
+```js
+module.exports = {
+  stories: ['../stories/**/*.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
+  addons: ['@storybook/addon-essentials', '@storybook/addon-styling'],
+};
+```
+
+## Auto-config
+
+As of version 1.1, `@storybook/addon-styling` offers a codemod for to automatically configure your storybook with Material UI.
+
+To try it out, run the following script:
+
+```shell
+# Run the postinstall script from the root of your project
+node node_modules/@storybook/addon-styling/bin/postinstall.js
+```
+
+If the codemod didn't work, please let us know in [this GitHub issue](https://github.com/storybookjs/addon-styling/issues/49#issue-1746365130) so we can continue to make the codemod even better. In the meantime, the instructions below will get you up and running in no time.
+
+## Manual
+
+### Bundle fonts and icons for better perf
 
 Material UI depends on two fonts to render as intended, Google’s [`Roboto`](https://fonts.google.com/specimen/Roboto) and [`Material Icons`](https://fonts.google.com/icons?query=Christian+Robertson&icon.style=Outlined&icon.set=Material+Icons). While you can load these fonts directly from the Google Fonts CDN, bundling fonts with Storybook is better for performance.
 
@@ -44,7 +76,7 @@ import '@fontsource/roboto/700.css';
 import '@fontsource/material-icons';
 ```
 
-## Load custom themes and add a theme switcher
+### Load custom themes and add a theme switcher
 
 Material UI comes with a default theme out of the box, but you can also create and provide your own themes. Given the popularity of dark mode, you'll likely end with more than one custom theme. Let's look at how you can load custom themes and switch between them with just a click.
 
@@ -87,22 +119,7 @@ export const darkTheme = createTheme({
 });
 ```
 
-First of all, install our [`@storybook/addon-styling`](https://github.com/storybookjs/addon-styling) addon.
-
-```shell
-yarn add -D @storybook/addon-styling
-```
-
-Then register it with Storybook in `.storybook/main.js`
-
-```js
-module.exports = {
-  stories: ['../stories/**/*.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
-  addons: ['@storybook/addon-essentials', '@storybook/addon-styling'],
-};
-```
-
-And finally apply the custom themes to our stories. We’ll need to wrap them in Material UI’s `ThemeProvider` using the `withThemeFromJSXProvider` decorator.
+Then apply the custom themes to our stories. We’ll need to wrap them in Material UI’s `ThemeProvider` using the `withThemeFromJSXProvider` decorator.
 
 ```js
 // .storybook/preview.js

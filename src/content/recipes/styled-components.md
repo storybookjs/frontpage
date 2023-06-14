@@ -45,7 +45,22 @@ module.exports = {
 };
 ```
 
-## How to setup `GlobalStyles`
+## Auto-config
+
+As of version 1.1, `@storybook/addon-styling` offers a codemod for to automatically configure your storybook with styled-components.
+
+To try it out, run the following script:
+
+```shell
+# Run the postinstall script from the root of your project
+node node_modules/@storybook/addon-styling/bin/postinstall.js
+```
+
+If the codemod didn't work, please let us know in [this GitHub issue](https://github.com/storybookjs/addon-styling/issues/49#issue-1746365130) so we can continue to make the codemod even better. In the meantime, the instructions below will get you up and running in no time.
+
+## Manual
+
+### How to setup `GlobalStyles`
 
 UIs often have a set of global styles that are applied to every component like CSS resets, `font-size`, `font-family`, and colors.
 
@@ -77,7 +92,7 @@ If you already have `GlobalStyles` in your app, you can import it into `.storybo
 
 </div>
 
-## Use styled-components in components
+### Use styled-components in components
 
 Let’s update some of our example components to use styled-components instead. Open up the Button component in `./src/stories/button.js.` and replace it with the following code:
 
@@ -179,7 +194,7 @@ Button.defaultProps = {
 
 Now the `Button` component is made with styled-components. In Storybook, you won't notice a visual difference. But if you inspect the DOM, you'll see hashed CSS-in-JS classnames.
 
-## Provide a theme for styled-components in Storybook
+### Provide a theme for styled-components in Storybook
 
 ![Switching over to using a theme for styled-components in storybook](https://user-images.githubusercontent.com/18172605/208312571-431a182d-fe2b-40e7-a21f-aaadf55c899e.gif)
 
@@ -276,7 +291,7 @@ Now, components made with styled-components will get the theme through the `them
 
 <!-- prettier-ignore-end -->
 
-## Add a theme switcher tool using `@storybook/addon-styling`
+### Add a theme switcher tool using `@storybook/addon-styling`
 
 Dark mode has become an increasingly popular offering on the web. This can be achieved quickly using themes.
 

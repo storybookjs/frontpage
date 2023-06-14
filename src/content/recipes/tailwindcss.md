@@ -26,7 +26,39 @@ In this post, we will:
 
 ![Finished example of Tailwind CSS in Storybook with a theme switcher](https://user-images.githubusercontent.com/18172605/208201389-1f448dbb-978c-442e-9d6b-7bf3fea63e64.gif)
 
-## Build Tailwind next to Storybook
+## Install `@storybook/addon-styling`
+
+Add the `@storybook/addon-styling` package to your DevDependencies
+
+```shell
+yarn add -D @storybook/addon-styling
+```
+
+Then register with Storybook in `.storybook/main.js`.
+
+```js
+module.exports = {
+  stories: ['../stories/**/*.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
+  addons: ['@storybook/addon-essentials', '@storybook/addon-styling'],
+};
+```
+
+## Auto-config
+
+As of version 1.1, `@storybook/addon-styling` offers a codemod for to automatically configure your storybook with Tailwind.
+
+To try it out, run the following script:
+
+```shell
+# Run the postinstall script from the root of your project
+node node_modules/@storybook/addon-styling/bin/postinstall.js
+```
+
+If the codemod didn't work, please let us know in [this GitHub issue](https://github.com/storybookjs/addon-styling/issues/49#issue-1746365130) so we can continue to make the codemod even better. In the meantime, the instructions below will get you up and running in no time.
+
+## Manual
+
+### Build Tailwind next to Storybook
 
 To develop with Tailwind alongside your stories, storybook will need to know how to handle Tailwind's custom `@tailwind` css directive. We can do this with PostCSS.
 
@@ -72,7 +104,7 @@ module.exports = {
 
 **Note**: Using Vite, `@storybook/nextjs`, or `@storybook/preset-create-react-app` with `react-scripts@2.0.0` and up? You don't need to set `postCss` to true.
 
-## Provide Tailwind to stories
+### Provide Tailwind to stories
 
 Now you can import the `tailwind.css` file into your `.storybook/preview.js` file. This will make Tailwind’s style classes available to all of your stories.
 
@@ -104,7 +136,7 @@ To make use of Tailwind, replace the contents of each component file with the fo
 
 ![Storybook after adding tailwind CSS to the example components](https://user-images.githubusercontent.com/18172605/208201423-c7ea9392-1851-4fc3-9968-6d05399c2e91.gif)
 
-## Add a theme switcher tool
+### Add a theme switcher tool
 
 Tailwind comes out of the box with a light and dark theme. You can override those themes and add more. To get the most out of your stories, you should have a way to toggle between all of your themes.
 
