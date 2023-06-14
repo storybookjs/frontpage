@@ -20,7 +20,7 @@ If you want to look at a full example, look at this [awesome repo](https://githu
 
 ## Initialize pinia
 
-Inside of `preview.ts`, import and initialize pinia.
+Inside of `.storybook/preview.ts`, import and initialize pinia.
 
 ```ts
 import  { type Preview }  from '@storybook/vue3';
