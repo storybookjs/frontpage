@@ -23,6 +23,7 @@ If you want to look at a full example, look at this [awesome repo](https://githu
 Inside of `.storybook/preview.ts`, import and initialize pinia.
 
 ```ts
+// .storybook/preview.ts
 import  { type Preview }  from '@storybook/vue3';
 
 import { createPinia } from 'pinia';
