@@ -26,16 +26,30 @@ In this post, we will:
 
 ![Finished example of Tailwind CSS in Storybook with a theme switcher](https://user-images.githubusercontent.com/18172605/208201389-1f448dbb-978c-442e-9d6b-7bf3fea63e64.gif)
 
+## Install `@storybook/addon-styling`
+
+Add the `@storybook/addon-styling` package to your DevDependencies
+
+```shell
+yarn add -D @storybook/addon-styling
+```
+
+Then register with Storybook in `.storybook/main.js`.
+
+```js
+module.exports = {
+  stories: ['../stories/**/*.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
+  addons: ['@storybook/addon-essentials', '@storybook/addon-styling'],
+};
+```
+
 ## Auto-config
 
 As of version 1.1, `@storybook/addon-styling` offers a codemod for to automatically configure your storybook with Tailwind.
 
-To try it out, run the following commands:
+To try it out, run the following script:
 
 ```shell
-# Install the addon
-yarn add -D @storybook/addon-styling
-
 # Run the postinstall script from the root of your project
 node node_modules/@storybook/addon-styling/bin/postinstall.js
 ```

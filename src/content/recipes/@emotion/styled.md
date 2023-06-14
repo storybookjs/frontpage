@@ -29,25 +29,7 @@ If you’d like to see the example code of this recipe, check out the [example r
 
 ![Completed Emotion example with theme switcher](https://user-images.githubusercontent.com/18172605/208312563-875ca3b0-e7bc-4401-a445-4553b48068ed.gif)
 
-## Auto-config
-
-As of version 1.1, `@storybook/addon-styling` offers a codemod for to automatically configure your storybook with Emotion.
-
-To try it out, run the following commands:
-
-```shell
-# Install the addon
-yarn add -D @storybook/addon-styling
-
-# Run the postinstall script from the root of your project
-node node_modules/@storybook/addon-styling/bin/postinstall.js
-```
-
-If the codemod didn't work, please let us know in [this GitHub issue](https://github.com/storybookjs/addon-styling/issues/49#issue-1746365130) so we can continue to make the codemod even better. In the meantime, the instructions below will get you up and running in no time.
-
-## Manual
-
-### Install `@storybook/addon-styling`
+## Install `@storybook/addon-styling`
 
 Add the `@storybook/addon-styling` package to your DevDependencies
 
@@ -63,6 +45,21 @@ module.exports = {
   addons: ['@storybook/addon-essentials', '@storybook/addon-styling'],
 };
 ```
+
+## Auto-config
+
+As of version 1.1, `@storybook/addon-styling` offers a codemod for to automatically configure your storybook with Emotion.
+
+To try it out, run the following script:
+
+```shell
+# Run the postinstall script from the root of your project
+node node_modules/@storybook/addon-styling/bin/postinstall.js
+```
+
+If the codemod didn't work, please let us know in [this GitHub issue](https://github.com/storybookjs/addon-styling/issues/49#issue-1746365130) so we can continue to make the codemod even better. In the meantime, the instructions below will get you up and running in no time.
+
+## Manual
 
 ### How to setup `GlobalStyles`
 

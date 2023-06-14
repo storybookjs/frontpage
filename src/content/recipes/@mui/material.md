@@ -18,16 +18,30 @@ Storybook is a frontend workbench for building UIs in isolation. By combining St
 - 🎨 Load your custom theme and add a theme switcher
 - ♻️ Reuse Material UI types to auto-generate story controls
 
+## Install `@storybook/addon-styling`
+
+Add the `@storybook/addon-styling` package to your DevDependencies
+
+```shell
+yarn add -D @storybook/addon-styling
+```
+
+Then register with Storybook in `.storybook/main.js`.
+
+```js
+module.exports = {
+  stories: ['../stories/**/*.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
+  addons: ['@storybook/addon-essentials', '@storybook/addon-styling'],
+};
+```
+
 ## Auto-config
 
 As of version 1.1, `@storybook/addon-styling` offers a codemod for to automatically configure your storybook with Material UI.
 
-To try it out, run the following commands:
+To try it out, run the following script:
 
 ```shell
-# Install the addon
-yarn add -D @storybook/addon-styling
-
 # Run the postinstall script from the root of your project
 node node_modules/@storybook/addon-styling/bin/postinstall.js
 ```
@@ -105,22 +119,7 @@ export const darkTheme = createTheme({
 });
 ```
 
-First of all, install our [`@storybook/addon-styling`](https://github.com/storybookjs/addon-styling) addon.
-
-```shell
-yarn add -D @storybook/addon-styling
-```
-
-Then register it with Storybook in `.storybook/main.js`
-
-```js
-module.exports = {
-  stories: ['../stories/**/*.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
-  addons: ['@storybook/addon-essentials', '@storybook/addon-styling'],
-};
-```
-
-And finally apply the custom themes to our stories. We’ll need to wrap them in Material UI’s `ThemeProvider` using the `withThemeFromJSXProvider` decorator.
+Then apply the custom themes to our stories. We’ll need to wrap them in Material UI’s `ThemeProvider` using the `withThemeFromJSXProvider` decorator.
 
 ```js
 // .storybook/preview.js
