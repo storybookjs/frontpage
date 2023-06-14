@@ -52,6 +52,7 @@ const preview: Preview = {
 Import Storybook's setup function that lets you register tools with Storybook's Vue app instance.
 
 ```ts
+// .storybook/preview.ts
 import { type Preview, setup }  from '@storybook/vue3';
 import { type App } from 'vue';
 
