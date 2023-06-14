@@ -14,7 +14,7 @@ How to setup Pinia and Storybook
 
 </RecipeHeader>
 
-Pinia is the recommended standard for state management in Vue. It gives you a lightweight and type-safe way to handle global state for your applications. This recipe will show you how to integrate Pinia into Storybook so that you can test your state connected components.
+Pinia is the recommended standard for state management in Vue. It gives you a lightweight and type-safe way to handle global state for your applications. This recipe will show you how to integrate [Pinia](https://pinia.vuejs.org/) into Storybook so that you can test your state connected components.
 
 If you want to look at a full example, look at this [awesome repo](https://github.com/chakAs3/vue3-pinia-storybook/tree/main) built by [Chakir Qatab (ChakAs3)](https://github.com/chakAs3).
 
