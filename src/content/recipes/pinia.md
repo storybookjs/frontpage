@@ -18,9 +18,9 @@ Pinia is the recommended standard for state management in Vue. It gives you a li
 
 If you want to look at a full example, look at this [awesome repo](https://github.com/chakAs3/vue3-pinia-storybook/tree/main) built by [Chakir Qatab (ChakAs3)](https://github.com/chakAs3).
 
-## Initialize pinia
+## Initialize Pinia
 
-Inside of `.storybook/preview.ts`, import and initialize pinia.
+Inside of `.storybook/preview.ts`, import and initialize Pinia.
 
 ```ts
 // .storybook/preview.ts
@@ -47,7 +47,7 @@ const preview: Preview = {
 };
 ```
 
-## Register pinia
+## Register Pinia
 
 Import Storybook's setup function that lets you register tools with Storybook's Vue app instance.
 
