@@ -15,3 +15,8 @@
   for = "/releases/iframe/*"
   [headers.values]
     Content-Security-Policy = "frame-ancestors *"
+
+[[headers]]
+  for = "/blog/*"
+  [headers.values]
+    Content-Security-Policy = "frame-ancestors *"
