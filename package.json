@@ -74,7 +74,7 @@
     "rehype-urls": "^1.1.1",
     "remark-html": "^13.0.1",
     "request": "^2.88.2",
-    "semver": "^7.3.2",
+    "semver": "^7.5.2",
     "unist-util-visit": "^2.0.3",
     "use-debounce": "^8.0.4",
     "usehooks-ts": "^2.9.1",
