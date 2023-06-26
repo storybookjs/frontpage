@@ -189,26 +189,6 @@ export const mdFormatting = css`
     display: block;
     padding: 0;
     max-width: 100%;
-    position: relative;
-    margin: 0 auto;
-
-    &.alignright {
-      float: right;
-      margin-right: 0;
-    }
-
-    &.alignleft {
-      float: left;
-      margin-left: 0;
-    }
-
-    &.aligncenter {
-      display: block;
-      margin-bottom: 1em;
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 1em;
-    }
   }
 
   .aside {
