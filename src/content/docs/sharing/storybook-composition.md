@@ -114,12 +114,12 @@ When you compose a Storybook featuring this flag, it will use the information re
 If you're working with an outdated Storybook version or have a project-specific requirement that prevents you from enabling the `buildStoriesJson` feature flag. In that case, you can use Storybook's CLI to automatically generate the `stories.json` file when you deploy your Storybook. For example:
 
 ```shell
-npx storybook extract
+npx storybook@next extract
 ```
 
 <div class="aside">
 
-💡 `storybook extract` uses [Puppeteer](https://www.npmjs.com/package/puppeteer), which downloads and installs Chromium. Set the environment `SB_CHROMIUM_PATH` to configure your local Chromium installation.
+💡 `storybook@next extract` uses [Puppeteer](https://www.npmjs.com/package/puppeteer), which downloads and installs Chromium. Set the environment `SB_CHROMIUM_PATH` to configure your local Chromium installation.
 
 </div>
 
@@ -140,7 +140,7 @@ Linking to a Storybook deployed using this approach will yield all the stories a
 If you need, you can also add additional arguments to this command. For instance, if you want to generate the stories.json file into a custom directory, you can use the following:
 
 ```shell
-npx storybook extract my-built-storybook-directory my-other-directory/stories.json
+npx storybook@next extract my-built-storybook-directory my-other-directory/stories.json
 ```
 
 When executed, it will look up a built Storybook in the `my-built-storybook-directory` and create the `stories.json` file in the `my-other-directory` with all the necessary information.

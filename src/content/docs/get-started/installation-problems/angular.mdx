@@ -1,19 +1,19 @@
 - Add the `--type angular` flag to the installation command to set up Storybook manually:
 
   ```shell
-  npx storybook@latest init --type angular
+  npx storybook@next init --type angular
   ```
 
 - Storybook's CLI provides support for [Yarn](https://yarnpkg.com/), [npm](https://www.npmjs.com/), and [pnpm](https://pnpm.io/) package managers. If you have Yarn installed in your environment but prefer to use another as your default package manager add the `--package-manager` flag to your installation command. For example:
 
   ```shell
-  npx storybook@latest init --package-manager=npm
+  npx storybook@next init --package-manager=npm
   ```
 
 - Storybook supports Webpack 5 out of the box. If you're upgrading from a previous version, run the following command to enable it:
 
   ```shell
-  npx storybook@latest automigrate
+  npx storybook@next automigrate
   ```
 
   Check the [Migration Guide](https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#automigrate) for more information on how to set up Webpack 5.

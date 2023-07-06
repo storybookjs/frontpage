@@ -9,7 +9,7 @@ Storybook Vite builder bundles your components and stories with [Vite](https://v
 
 ## Setup
 
-If you ran `npx storybook@latest init` to include Storybook in your Vite application, the builder is already installed and configured for you. If you want, you can also opt into it manually.
+If you ran `npx storybook@next init` to include Storybook in your Vite application, the builder is already installed and configured for you. If you want, you can also opt into it manually.
 
 Run the following command to install the builder.
 

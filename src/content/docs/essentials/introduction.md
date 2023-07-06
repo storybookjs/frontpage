@@ -15,7 +15,7 @@ A major strength of Storybook are [addons](https://storybook.js.org/addons) that
 
 ### Installation
 
-If you ran `npx storybook@latest init` to include Storybook in your project, the latest version of the Essentials addon ([`@storybook/addon-essentials`](https://storybook.js.org/addons/tag/essentials)) is already installed and configured for you. You can go ahead and skip the rest of this section.
+If you ran `npx storybook@next init` to include Storybook in your project, the latest version of the Essentials addon ([`@storybook/addon-essentials`](https://storybook.js.org/addons/tag/essentials)) is already installed and configured for you. You can go ahead and skip the rest of this section.
 
 However, if you intend to install the Essentials addon manually into an existing Storybook instance, you can do so by running the following command in your terminal:
 

@@ -41,7 +41,7 @@ Storybook upgrades are not the only thing to consider: changes in the ecosystem 
 npx storybook@latest automigrate
 ```
 
-It runs a set of standard configuration checks, explains what is potentially out-of-date, and offers to fix it for you automatically. It also points to the relevant documentation so you can learn more. It runs automatically as part of [`storybook upgrade`](#upgrade-script) command, but it's also available on its own if you don't want to upgrade Storybook.
+It runs a set of standard configuration checks, explains what is potentially out-of-date, and offers to fix it for you automatically. It also points to the relevant documentation so you can learn more. It runs automatically as part of [`storybook@next upgrade`](#upgrade-script) command, but it's also available on its own if you don't want to upgrade Storybook.
 
 ## Prereleases
 

@@ -8,12 +8,12 @@ Storybook, at its core, is powered by builders such as Webpack and Vite. These b
 
 ## CLI basics
 
-Before diving into setting up Storybook's builders, let's look at how the CLI configures them. When you initialize Storybook (via `npx storybook@latest init`), the CLI automatically detects which builder to use based on your application. For example, if you're working with Vite, it will install the Vite builder. If you're working with Webpack, it installs the Webpack 5 builder by default.
+Before diving into setting up Storybook's builders, let's look at how the CLI configures them. When you initialize Storybook (via `npx storybook@next init`), the CLI automatically detects which builder to use based on your application. For example, if you're working with Vite, it will install the Vite builder. If you're working with Webpack, it installs the Webpack 5 builder by default.
 
 Additionally, you can also provide a flag to Storybook's CLI and specify the builder you want to use:
 
 ```shell
-npx storybook@latest init --builder <webpack5 | vite>
+npx storybook@next init --builder <webpack5 | vite>
 ```
 
 ## Manual setup

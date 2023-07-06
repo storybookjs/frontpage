@@ -27,7 +27,7 @@ For detailed instructions on migrating from `V6` mode, please see [MIGRATION.md]
 If your app does not include a babelrc file, and you need one, you can create it by running the following command in your project directory:
 
 ```sh
-npx storybook@latest babelrc
+npx storybook@next babelrc
 ```
 
 Once the command completes, you should have a `.babelrc.json` file created in the root directory of your project, similar to the following example:
@@ -110,7 +110,7 @@ Babel has two different configuration modes: babelrc and Babel config. As explai
 - **babelrc** configures Babel for files in the same folder (or descendant folders) of the location of the babelrc
 - **Babel config** configures Babel globally
 
-Babel recommends to use babelrc, and it's what Storybook generates when you run `npx storybook babelrc`. If your stories are located in the current project directory (e.g., `stories: ['../src/**/*.stories.js']`) this approach will work well.
+Babel recommends to use babelrc, and it's what Storybook generates when you run `npx storybook@next babelrc`. If your stories are located in the current project directory (e.g., `stories: ['../src/**/*.stories.js']`) this approach will work well.
 However, when your Storybook refers to files outside of the current project directory (e.g., `stories: ['../../some-other-directory/**/*.stories.js']`), the babelrc will not apply to those files. However, a Babel config will, and is the recommended approach in that situation.
 
 ## Troubleshooting
