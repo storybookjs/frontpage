@@ -1,129 +1,222 @@
-const { appendPackageTagsInSnippets } = require('./append-package-tags-in-snippets');
+const { updateFile, updateSnippet } = require('./append-package-tags-in-snippets');
 
-function makeFileContents(str) {
-  return `
-\`\`\`shell
-${str}
+describe('updateFile', () => {
+  it('matches block shell snippets and appropriate inline snippets', () => {
+    expect(
+      updateFile(
+        `
+<!-- Block shell command snippet; should update -->
+\`\`\`sh
+npx storybook init
 \`\`\`
-`;
-}
 
-describe('appendPackageTagsInSnippets', () => {
-  it('matches desired patterns', () => {
-    expect(appendPackageTagsInSnippets(makeFileContents('npx storybook init')))
-      .toMatchInlineSnapshot(`
-      "
-      \`\`\`shell
-      npx storybook@latest init
-      \`\`\`
-      "
-    `);
-    expect(appendPackageTagsInSnippets(makeFileContents('npx storybook upgrade')))
-      .toMatchInlineSnapshot(`
-      "
-      \`\`\`shell
-      npx storybook@latest upgrade
-      \`\`\`
-      "
-    `);
-    expect(appendPackageTagsInSnippets(makeFileContents('yarn add -D @storybook/testing-library')))
-      .toMatchInlineSnapshot(`
-      "
-      \`\`\`shell
-      yarn add -D @storybook/testing-library@latest
-      \`\`\`
-      "
-    `);
-  });
-  it('handles multiple matches', () => {
-    expect(
-      appendPackageTagsInSnippets(
-        makeFileContents(
-          'yarn add -D @storybook/testing-library @storybook/jest @storybook/addon-interactions'
-        )
-      )
-    ).toMatchInlineSnapshot(`
-      "
-      \`\`\`shell
-      yarn add -D @storybook/testing-library@latest @storybook/jest@latest @storybook/addon-interactions@latest
-      \`\`\`
-      "
-    `);
-  });
-  it('does not match `npm run storybook` or `yarn storybook`', () => {
-    expect(appendPackageTagsInSnippets(makeFileContents('npm run storybook')))
-      .toMatchInlineSnapshot(`
-      "
-      \`\`\`shell
-      npm run storybook
-      \`\`\`
-      "
-    `);
-    expect(appendPackageTagsInSnippets(makeFileContents('yarn storybook'))).toMatchInlineSnapshot(`
-      "
-      \`\`\`shell
-      yarn storybook
-      \`\`\`
-      "
-    `);
-  });
-  it('does nothing for `storybook upgrade --prerelease`', () => {
-    expect(appendPackageTagsInSnippets(makeFileContents('npx storybook@next upgrade --prerelease')))
-      .toMatchInlineSnapshot(`
-      "
-      \`\`\`shell
-      npx storybook@next upgrade --prerelease
-      \`\`\`
-      "
-    `);
-  });
-  it('appends the correct tag', () => {
-    expect(appendPackageTagsInSnippets(makeFileContents('npx storybook init'), true))
-      .toMatchInlineSnapshot(`
-      "
-      \`\`\`shell
-      npx storybook@next init
-      \`\`\`
-      "
-    `);
-  });
-  it('Removes existing tags', () => {
-    expect(appendPackageTagsInSnippets(makeFileContents('npx storybook@latest init'), true))
-      .toMatchInlineSnapshot(`
-      "
-      \`\`\`shell
-      npx storybook@next init
-      \`\`\`
-      "
-    `);
-    expect(appendPackageTagsInSnippets(makeFileContents('npx storybook@next init')))
-      .toMatchInlineSnapshot(`
-      "
-      \`\`\`shell
-      npx storybook@latest init
-      \`\`\`
-      "
-    `);
-    expect(
-      appendPackageTagsInSnippets(
-        makeFileContents('yarn add -D @storybook/testing-library@latest'),
+<!-- Block shell command snippet; should update -->
+\`\`\`shell
+npx storybook init
+\`\`\`
+
+<!-- Block shell command snippet; should update -->
+\`\`\`bash
+npx storybook init
+\`\`\`
+
+<!-- Block shell install snippet; should update -->
+\`\`\`sh
+yarn add -D @storybook/testing-library
+\`\`\`
+
+  <!-- Indented block shell command snippet; should update -->
+  \`\`\`sh
+  npx storybook init
+  \`\`\`
+
+<!-- Block shell command snippet with comment; should update -->
+\`\`\`sh
+# With comment
+npx storybook init
+\`\`\`
+
+<!-- Inline command snippet; should update -->
+\`npx storybook init\`
+
+<!-- Block non-shell snippet; should remain -->
+\`\`\`tsx
+npx storybook init
+\`\`\`
+
+<!-- Inline install snippet; should remain -->
+\`@storybook/testing-library\`
+    `,
         true
       )
     ).toMatchInlineSnapshot(`
       "
+      <!-- Block shell command snippet; should update -->
+      \`\`\`sh
+      npx storybook@next init
+      \`\`\`
+
+      <!-- Block shell command snippet; should update -->
       \`\`\`shell
+      npx storybook@next init
+      \`\`\`
+
+      <!-- Block shell command snippet; should update -->
+      \`\`\`bash
+      npx storybook@next init
+      \`\`\`
+
+      <!-- Block shell install snippet; should update -->
+      \`\`\`sh
       yarn add -D @storybook/testing-library@next
       \`\`\`
-      "
-    `);
-    expect(
-      appendPackageTagsInSnippets(makeFileContents('yarn add -D @storybook/testing-library@next'))
-    ).toMatchInlineSnapshot(`
-      "
-      \`\`\`shell
-      yarn add -D @storybook/testing-library@latest
+
+        <!-- Indented block shell command snippet; should update -->
+        \`\`\`sh
+        npx storybook@next init
+        \`\`\`
+
+      <!-- Block shell command snippet with comment; should update -->
+      \`\`\`sh
+      # With comment
+      npx storybook@next init
       \`\`\`
-      "
+
+      <!-- Inline command snippet; should update -->
+      \`npx storybook@next init\`
+
+      <!-- Block non-shell snippet; should remain -->
+      \`\`\`tsx
+      npx storybook init
+      \`\`\`
+
+      <!-- Inline install snippet; should remain -->
+      \`@storybook/testing-library\`
+          "
     `);
+  });
+});
+
+describe('updateSnippet', () => {
+  it('updates desired inline snippets', () => {
+    expect(updateSnippet('npx storybook automigrate')).toMatchInlineSnapshot(
+      `"npx storybook@latest automigrate"`
+    );
+    expect(updateSnippet('npx storybook babelrc')).toMatchInlineSnapshot(
+      `"npx storybook@latest babelrc"`
+    );
+    expect(updateSnippet('npx storybook extract')).toMatchInlineSnapshot(
+      `"npx storybook@latest extract"`
+    );
+    expect(updateSnippet('npx storybook init')).toMatchInlineSnapshot(
+      `"npx storybook@latest init"`
+    );
+    expect(updateSnippet('npx storybook migrate')).toMatchInlineSnapshot(
+      `"npx storybook@latest migrate"`
+    );
+    expect(updateSnippet('npx storybook upgrade')).toMatchInlineSnapshot(
+      `"npx storybook@latest upgrade"`
+    );
+  });
+  it('does not update undesired inline snippets', () => {
+    // Must use preRelease here to test non-effect (non-preRelease should not append tag)
+    expect(updateSnippet('@storybook/testing-library', false, true)).toMatchInlineSnapshot(
+      `"@storybook/testing-library"`
+    );
+  });
+  it('updates desired block snippets', () => {
+    expect(updateSnippet('npx storybook automigrate', true)).toMatchInlineSnapshot(
+      `"npx storybook@latest automigrate"`
+    );
+    expect(updateSnippet('npx storybook babelrc', true)).toMatchInlineSnapshot(
+      `"npx storybook@latest babelrc"`
+    );
+    expect(updateSnippet('npx storybook extract', true)).toMatchInlineSnapshot(
+      `"npx storybook@latest extract"`
+    );
+    expect(updateSnippet('npx storybook init', true)).toMatchInlineSnapshot(
+      `"npx storybook@latest init"`
+    );
+    expect(updateSnippet('npx storybook migrate', true)).toMatchInlineSnapshot(
+      `"npx storybook@latest migrate"`
+    );
+    expect(updateSnippet('npx storybook upgrade', true)).toMatchInlineSnapshot(
+      `"npx storybook@latest upgrade"`
+    );
+    // Must use preRelease here to test effect (non-preRelease should not append tag)
+    expect(
+      updateSnippet('yarn add -D @storybook/testing-library', true, true)
+    ).toMatchInlineSnapshot(`"yarn add -D @storybook/testing-library@next"`);
+  });
+  it('handles multiple matches', () => {
+    // Must use preRelease here to test effect (non-preRelease should not append tag)
+    expect(
+      updateSnippet(
+        'yarn add -D @storybook/testing-library @storybook/jest @storybook/addon-interactions',
+        true,
+        true
+      )
+    ).toMatchInlineSnapshot(
+      `"yarn add -D @storybook/testing-library@next @storybook/jest@next @storybook/addon-interactions@next"`
+    );
+  });
+  it('appends the correct tag', () => {
+    expect(updateSnippet('npx storybook init')).toMatchInlineSnapshot(
+      `"npx storybook@latest init"`
+    );
+    expect(updateSnippet('npx storybook init', false, true)).toMatchInlineSnapshot(
+      `"npx storybook@next init"`
+    );
+    // Must use block here to test effect (inline should not append tag)
+    // When not prerelease, we do NOT append the tag to installed packages
+    expect(updateSnippet('yarn add -D @storybook/testing-library', true)).toMatchInlineSnapshot(
+      `"yarn add -D @storybook/testing-library"`
+    );
+    // Must use block here to test effect (inline should not append tag)
+    expect(
+      updateSnippet('yarn add -D @storybook/testing-library', true, true)
+    ).toMatchInlineSnapshot(`"yarn add -D @storybook/testing-library@next"`);
+  });
+  it('removes existing tags', () => {
+    expect(updateSnippet('npx storybook@latest init', false, true)).toMatchInlineSnapshot(
+      `"npx storybook@next init"`
+    );
+    expect(updateSnippet('npx storybook@next init')).toMatchInlineSnapshot(
+      `"npx storybook@latest init"`
+    );
+    // Must use block here to test effect (inline should not append tag)
+    expect(
+      updateSnippet('yarn add -D @storybook/testing-library@latest', true, true)
+    ).toMatchInlineSnapshot(`"yarn add -D @storybook/testing-library@next"`);
+
+    // Must use block here to test effect (inline should not append tag)
+    // When not prerelease, we do NOT append the tag to installed packages
+    expect(
+      updateSnippet('yarn add -D @storybook/testing-library@next', true)
+    ).toMatchInlineSnapshot(`"yarn add -D @storybook/testing-library"`);
+  });
+  it('handles CLI command flags and subcommands', () => {
+    expect(updateSnippet('npx storybook init --builder <webpack5 | vite>')).toMatchInlineSnapshot(
+      `"npx storybook@latest init --builder <webpack5 | vite>"`
+    );
+    expect(
+      updateSnippet('npx storybook migrate storiesof-to-csf --glob="src/**/*.stories.tsx"')
+    ).toMatchInlineSnapshot(
+      `"npx storybook@latest migrate storiesof-to-csf --glob=\\"src/**/*.stories.tsx\\""`
+    );
+    expect(
+      // Must use block here to test effect (inline should not append tag)
+      // Must use preRelease here to test effect (non-preRelease should not append tag)
+      updateSnippet('npm install @storybook/addon-a11y --save-dev', true, true)
+    ).toMatchInlineSnapshot(`"npm install @storybook/addon-a11y@next --save-dev"`);
+  });
+  it('does not match `npm run storybook` or `yarn storybook`', () => {
+    expect(updateSnippet('npm run storybook')).toMatchInlineSnapshot(`"npm run storybook"`);
+    expect(updateSnippet('yarn storybook')).toMatchInlineSnapshot(`"yarn storybook"`);
+  });
+  it('does nothing for `storybook@next upgrade --prerelease`', () => {
+    expect(updateSnippet('npx storybook@next upgrade --prerelease')).toMatchInlineSnapshot(
+      `"npx storybook@next upgrade --prerelease"`
+    );
   });
 });
