@@ -1,0 +1,18 @@
+```js
+// Example.stories.js|jsx
+
+import { Example } from './Example';
+
+export default {
+  component: Example,
+  argTypes: {
+    label: {
+      options: ['Normal', 'Bold', 'Italic'],
+      mapping: {
+        Bold: <b>Bold</b>,
+        Italic: <i>Italic</i>,
+      },
+    },
+  },
+};
+```

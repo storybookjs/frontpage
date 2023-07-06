@@ -1,0 +1,20 @@
+```js
+// MyComponent.stories.js
+
+import MyComponent from './MyComponent.svelte';
+
+export default {
+  component: MyComponent,
+};
+
+// Assume image.png is located in the "public" directory.
+export const WithAnImage = {
+  render: () => ({
+    Component: MyComponent,
+    props: {
+      src: '/image.png',
+      alt: 'my image',
+    },
+  }),
+};
+```

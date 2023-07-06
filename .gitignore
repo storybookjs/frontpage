@@ -15,7 +15,6 @@ monorepo
 build-storybook.log
 
 # Pulled from monorepo
-src/content/docs
 src/generated/versions
 src/generated/docs-metadata.json
 

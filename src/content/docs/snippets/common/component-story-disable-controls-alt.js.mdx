@@ -1,0 +1,15 @@
+```js
+// YourComponent.stories.js|jsx
+
+import { YourComponent } from './YourComponent';
+
+export default {
+  component: YourComponent,
+  argTypes: {
+    // foo is the property we want to remove from the UI
+    foo: {
+      control: false,
+    },
+  },
+};
+```
