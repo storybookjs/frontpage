@@ -15,4 +15,5 @@ module.exports = {
   latestVersion,
   latestVersionString,
   isLatest: version === latestVersion,
+  isPreRelease: version > latestVersion,
 };
