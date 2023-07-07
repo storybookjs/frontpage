@@ -1,0 +1,19 @@
+```js
+// Button.stories.js|jsx
+
+import { Button } from './Button';
+
+export default {
+  component: Button,
+};
+
+export const Primary = {
+  decorators: [
+    (Story) => (
+      <div style={{ margin: '3em' }}>
+        <Story />
+      </div>
+    ),
+  ],
+};
+```

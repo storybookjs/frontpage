@@ -1,0 +1,15 @@
+```js
+// MyComponent.stories.js
+
+import MyComponent from './MyComponent.vue';
+
+export default {
+  component: MyComponent,
+};
+
+export const ExampleStory = {
+  args: {
+    propertyA: process.env.STORYBOOK_DATA_KEY,
+  },
+};
+```

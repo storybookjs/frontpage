@@ -1,0 +1,20 @@
+```tsx
+// YourComponent.stories.ts|tsx
+
+import type { Meta } from 'storybook-solidjs';
+
+import { YourComponent } from './YourComponent';
+
+const meta: Meta<typeof YourComponent> = {
+  component: YourComponent,
+  decorators: [
+    (Story) => (
+      <div style={{ margin: '3em' }}>
+        <Story />
+      </div>
+    ),
+  ],
+};
+
+export default meta;
+```
