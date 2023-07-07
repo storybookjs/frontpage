@@ -24,6 +24,7 @@ import stylizeFramework from '../../../util/stylize-framework';
 import { useDocsContext } from './DocsContext';
 import { FeatureSnippets } from './FeatureSnippets';
 import { Feedback } from './Feedback';
+import { IfRenderer } from './IfRenderer';
 import { YouTubeCallout } from './YouTubeCallout';
 
 const { color, spacing, typography } = styles;
@@ -156,6 +157,9 @@ function DocsScreen({ data, pageContext, location }) {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [framework]);
+  const IfRendererWithCurrentFramework = useMemo(() => {
+    return (props) => <IfRenderer currentRenderer={framework} {...props} />;
+  }, [framework]);
 
   const features = featureGroups.flatMap((group) => group.features);
   const feature = features.find((fs) => `/docs${fs.path}/` === slug);
@@ -228,6 +232,7 @@ function DocsScreen({ data, pageContext, location }) {
             CodeSnippets: CodeSnippetsWithCurrentFrameworkAndCodeLanguage,
             FeatureSnippets: FeatureSnippetsWithCurrentFramework,
             FrameworkSupportTable: FrameworkSupportTableWithFeaturesAndCurrentFramework,
+            IfRenderer: IfRendererWithCurrentFramework,
             YouTubeCallout,
             a: LinksWithPrefix,
           }}
