@@ -80,6 +80,8 @@ Use the _named_ exports of a CSF file to define your component’s stories. We r
 
 <!-- prettier-ignore-end -->
 
+<IfRenderer renderer="react">
+
 #### Working with React Hooks
 
 [React Hooks](https://reactjs.org/docs/hooks-intro.html) are convenient helper methods to create components using a more streamlined approach. You can use them while creating your component's stories if you need them, although you should treat them as an advanced use case. We **recommend** [args](./args.md) as much as possible when writing your own stories. As an example, here’s a story that uses React Hooks to change the button's state :
@@ -97,9 +99,7 @@ Use the _named_ exports of a CSF file to define your component’s stories. We r
 
 <!-- prettier-ignore-end -->
 
-<div class="aside">
-💡 The recommendation mentioned above also applies to other frameworks, not only React.
-</div>
+</IfRenderer>
 
 ### Rename stories
 
