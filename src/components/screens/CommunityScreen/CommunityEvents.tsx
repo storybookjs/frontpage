@@ -4,6 +4,7 @@ import { SupportFeature, SupportFeatureGrid, styles } from '@storybook/component
 import { Link } from '@storybook/design-system';
 import { DiscordIcon, YouTubeIcon, TwitterIcon } from './CommunityIcons';
 import { CommunitySectionHeader } from './CommunitySectionHeader';
+import { StorybookSessions } from './StorybookSessions';
 
 const { breakpoints } = styles;
 
@@ -66,6 +67,7 @@ export const CommunityEvents = forwardRef<HTMLDivElement, CommunityEventsProps>(
             </Link>
           </SupportFeature>
         </SupportFeatureGrid>
+        <StorybookSessions />
       </Wrapper>
     );
   }
