@@ -4,7 +4,6 @@ module.exports = {
   stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
   staticDirs: ['../static'],
   addons: ['@storybook/addon-essentials'],
-  core: {},
   webpack: async (config) => {
     config.module.rules[2].exclude = [/node_modules\/(?!(gatsby)\/)/];
 
@@ -37,8 +36,11 @@ module.exports = {
     );
     return config;
   },
-  framework: {
-    name: '@storybook/react-webpack5',
-    options: {},
+  docs: {
+    autodocs: 'false',
   },
+  features: {
+    legacyMdx1: true,
+  },
+  framework: '@storybook/react-webpack5',
 };
