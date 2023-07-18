@@ -78,7 +78,7 @@ module.exports = {
 };
 ```
 
-Then add the `@storybook/addon-styling` to your `.storybook/main.js` file an pass it `postcss` in `options.postCss.implementation`.
+Then add the `@storybook/addon-styling` to your `.storybook/main.js` file and pass it `postcss` in `options.postCss.implementation`.
 
 ```js
 module.exports = {
