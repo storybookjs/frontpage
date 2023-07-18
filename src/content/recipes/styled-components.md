@@ -36,7 +36,30 @@ Add the `@storybook/addon-styling` package to your DevDependencies
 yarn add -D @storybook/addon-styling
 ```
 
-Then register with Storybook in `.storybook/main.js`.
+## Auto-config
+
+<div class="aside">
+
+<span aria-hidden="true">📣</span> Before running this codemod, please ensure that you have no other changes in your git branch.
+
+</div>
+
+As of version 1.3, `@storybook/addon-styling` offers a codemod for to automatically configure your storybook with styled-components.
+
+To try it out, run the following script:
+
+```shell
+# Run the postinstall script from the root of your project
+yarn addon-styling-setup
+```
+
+If the codemod didn't work, please let us know in [this GitHub issue](https://github.com/storybookjs/addon-styling/issues/49#issue-1746365130) so we can continue to make the codemod even better. In the meantime, the instructions below will get you up and running in no time.
+
+## Manual
+
+### Register the addon
+
+Register the addon with Storybook in `.storybook/main.js`.
 
 ```js
 module.exports = {
@@ -44,21 +67,6 @@ module.exports = {
   addons: ['@storybook/addon-essentials', '@storybook/addon-styling'],
 };
 ```
-
-## Auto-config
-
-As of version 1.1, `@storybook/addon-styling` offers a codemod for to automatically configure your storybook with styled-components.
-
-To try it out, run the following script:
-
-```shell
-# Run the postinstall script from the root of your project
-node node_modules/@storybook/addon-styling/bin/postinstall.js
-```
-
-If the codemod didn't work, please let us know in [this GitHub issue](https://github.com/storybookjs/addon-styling/issues/49#issue-1746365130) so we can continue to make the codemod even better. In the meantime, the instructions below will get you up and running in no time.
-
-## Manual
 
 ### How to setup `GlobalStyles`
 
