@@ -34,24 +34,21 @@ Add the `@storybook/addon-styling` package to your DevDependencies
 yarn add -D @storybook/addon-styling
 ```
 
-Then register with Storybook in `.storybook/main.js`.
-
-```js
-module.exports = {
-  stories: ['../stories/**/*.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
-  addons: ['@storybook/addon-essentials', '@storybook/addon-styling'],
-};
-```
-
 ## Auto-config
 
-As of version 1.1, `@storybook/addon-styling` offers a codemod for to automatically configure your storybook with Tailwind.
+<div class="aside">
+
+<span aria-hidden="true">📣</span> Before running this codemod, please ensure that you have no other changes in your git branch.
+
+</div>
+
+As of version 1.3, `@storybook/addon-styling` offers a codemod for to automatically configure your storybook with Tailwind.
 
 To try it out, run the following script:
 
 ```shell
 # Run the postinstall script from the root of your project
-node node_modules/@storybook/addon-styling/bin/postinstall.js
+yarn addon-styling-setup
 ```
 
 If the codemod didn't work, please let us know in [this GitHub issue](https://github.com/storybookjs/addon-styling/issues/49#issue-1746365130) so we can continue to make the codemod even better. In the meantime, the instructions below will get you up and running in no time.
@@ -81,7 +78,7 @@ module.exports = {
 };
 ```
 
-Then add the `@storybook/addon-styling` to your `.storybook/main.js` file with the `postCss` option set to true.
+Then add the `@storybook/addon-styling` to your `.storybook/main.js` file an pass it `postcss` in `options.postCss.implementation`.
 
 ```js
 module.exports = {
@@ -94,7 +91,9 @@ module.exports = {
       options: {
         // Check out https://github.com/storybookjs/addon-styling/blob/main/docs/api.md
         // For more details on this addon's options.
-        postCss: true,
+        postCss: {
+          implementation: require.resolve('postcss'),
+        },
       },
     },
   ],
@@ -102,7 +101,11 @@ module.exports = {
 };
 ```
 
-**Note**: Using Vite, `@storybook/nextjs`, or `@storybook/preset-create-react-app` with `react-scripts@2.0.0` and up? You don't need to set `postCss` to true.
+<div class="aside">
+
+<span aria-hidden="true">📣</span> If you are using Vite, `@storybook/nextjs`, `@storybook/angular`, or `@storybook/preset-create-react-app` with `react-scripts@2.0.0`, then leave the options object empty.
+
+</div>
 
 ### Provide Tailwind to stories
 
