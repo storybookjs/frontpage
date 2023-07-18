@@ -103,7 +103,7 @@ module.exports = {
 
 <div class="aside">
 
-<span aria-hidden="true">📣</span> If you are using Vite, `@storybook/nextjs`, `@storybook/angular`, or `@storybook/preset-create-react-app` with `react-scripts@2.0.0`, then leave the options object empty.
+📣 If you are using Vite, `@storybook/nextjs`, `@storybook/angular`, or `@storybook/preset-create-react-app` with `react-scripts@2.0.0`, then leave the options object empty.
 
 </div>
 
