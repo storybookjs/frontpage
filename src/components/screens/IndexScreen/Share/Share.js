@@ -198,7 +198,7 @@ export function Share({ docs, ...props }) {
             <Link
               containsIcon
               withArrow
-              href="/docs/react/writing-tests/importing-stories-in-tests"
+              href="/docs/react/writing-tests/stories-in-unit-tests"
               LinkWrapper={GatsbyLinkWrapper}
             >
               Reuse stories in tests and libraries

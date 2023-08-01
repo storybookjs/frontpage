@@ -10,7 +10,8 @@
 /docs/writing-docs/doc-block-story               /docs/api/doc-block-story                                                      301
 /docs/writing-docs/doc-block-typeset             /docs/api/doc-block-typeset                                                    301
 /docs/workflows/testing-with-storybook/          /docs/writing-tests/introduction/                                              301
-/docs/workflows/unit-testing/                    /docs/writing-tests/importing-stories-in-tests/                                301
+/docs/workflows/unit-testing/                    /docs/writing-tests/stories-in-unit-tests/                                     301
+/docs/writing-tests/importing-stories-in-tests/  /docs/writing-tests/stories-in-unit-tests/                                     301
 /docs/workflows/visual-testing/                  /docs/writing-tests/visual-testing/                                            301
 /docs/workflows/interaction-testing/             /docs/writing-tests/interaction-testing/                                       301
 /docs/workflows/snapshot-testing/                /docs/writing-tests/snapshot-testing/                                          301
