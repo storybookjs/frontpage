@@ -134,7 +134,7 @@ export function Integrations({ docs, ...props }) {
     },
     {
       as: GatsbyLinkWrapper,
-      to: `${docs}react/writing-tests/importing-stories-in-tests`,
+      to: `${docs}react/writing-tests/unit-testing`,
       image: TestingLib,
       name: 'TestingLib',
     },
@@ -192,7 +192,7 @@ export function Integrations({ docs, ...props }) {
     },
     {
       as: GatsbyLinkWrapper,
-      to: `${docs}react/writing-tests/importing-stories-in-tests`,
+      to: `${docs}react/writing-tests/end-to-end-testing`,
       image: Playwright,
       name: 'Playwright',
     },
@@ -275,7 +275,7 @@ export function Integrations({ docs, ...props }) {
     },
     {
       as: GatsbyLinkWrapper,
-      to: `${docs}react/writing-tests/importing-stories-in-tests`,
+      to: `${docs}react/writing-tests/end-to-end-testing`,
       image: Cypress,
       name: 'Cypress',
     },

@@ -93,7 +93,7 @@ const features = [
     description: 'Write stories once to reuse across your test suite.',
     link: {
       label: 'Learn about importing stories in tests',
-      href: '/docs/react/writing-tests/importing-stories-in-tests',
+      href: '/docs/react/writing-tests/unit-testing',
       LinkWrapper: GatsbyLinkWrapper,
     },
     media: 'videos/test/homepage-reuse-testing-lg.mp4',
