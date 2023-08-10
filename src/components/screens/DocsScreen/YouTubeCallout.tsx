@@ -8,6 +8,7 @@ interface YouTubeCalloutProps {
   open?: boolean;
   summary?: string;
   title: string;
+  params?: string;
 }
 
 const { color, typography, spacing } = styles;
@@ -149,6 +150,7 @@ export const YouTubeCallout = ({
   open,
   summary = 'Watch a video tutorial on the Storybook channel',
   title,
+  params,
 }: YouTubeCalloutProps) => (
   <Details open={open}>
     <Summary>
@@ -156,6 +158,6 @@ export const YouTubeCallout = ({
       {summary}
       <Arrow />
     </Summary>
-    <LiteYouTubeEmbed id={id} title={title} />
+    <LiteYouTubeEmbed id={id} title={title} params={params} />
   </Details>
 );
