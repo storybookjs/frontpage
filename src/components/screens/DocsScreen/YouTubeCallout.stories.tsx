@@ -39,3 +39,9 @@ InsideMdWrapper.decorators = [(storyFn) => <MDWrapper>{storyFn()}</MDWrapper>];
 export const InsideMdWrapperOpen = Template.bind({});
 InsideMdWrapperOpen.args = Open.args;
 InsideMdWrapperOpen.decorators = InsideMdWrapper.decorators;
+
+export const WithTimeStamp = Template.bind({});
+WithTimeStamp.args = {
+  ...Open.args,
+  params: 'start=84',
+};
