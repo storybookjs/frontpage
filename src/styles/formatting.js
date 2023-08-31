@@ -85,6 +85,12 @@ export const mdFormatting = css`
     margin: 2rem 0 0.5rem;
   }
 
+  h5 {
+    font-size: ${typography.size.s2}px;
+    font-weight: ${typography.weight.bold};
+    margin: 2rem 0 0.5rem;
+  }
+
   p {
     margin: 1.5em 0;
     position: relative;
