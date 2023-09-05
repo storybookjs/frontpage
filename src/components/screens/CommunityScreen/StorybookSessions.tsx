@@ -24,6 +24,7 @@ interface Session {
   registrationLink: string;
 }
 
+// All times in PT
 const sessionsData: Session[] = [
   {
     id: 0,
@@ -39,9 +40,9 @@ const sessionsData: Session[] = [
   },
   {
     id: 2,
-    date: 'Sept 18, 2023 4:00 PM',
+    date: 'Oct 12, 2023 8:30 AM',
     registrationLink:
-      'https://docs.google.com/forms/d/e/1FAIpQLSeLAB8aoLNRiW5M5Jpn78qxVnnCETDJYpTAph5732tRFXoFDw/viewform?usp=pp_url&entry.146778204=Sept+18,+2023',
+      'https://docs.google.com/forms/d/e/1FAIpQLSeLAB8aoLNRiW5M5Jpn78qxVnnCETDJYpTAph5732tRFXoFDw/viewform?usp=pp_url&entry.146778204=Oct+12,+2023',
   },
   {
     id: 3,
