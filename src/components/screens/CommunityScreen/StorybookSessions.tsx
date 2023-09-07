@@ -12,13 +12,14 @@ const rezoneDate = (date: Date) => zonedTimeToUtc(date, 'America/Los_Angeles');
 const formatDate = (date: Date) => {
   // https://github.com/date-fns/date-fns/issues/946
   return {
-    date: format(date, 'd LLLL, y — h:mmaaa (zzzz)'),
-    dateShort: format(date, 'd LLL, y — haaa (zzz)'),
+    date: format(date, 'd LLLL, y, h:mmaaa (zzzz)'),
+    dateShort: format(date, 'd LLL, y, haaa (zzz)'),
   };
 };
 
 interface Session {
   id: number;
+  title: string;
   date: string;
   dateShort?: string;
   registrationLink: string;
@@ -28,24 +29,28 @@ interface Session {
 const sessionsData: Session[] = [
   {
     id: 0,
+    title: 'Storybook for Developers',
     date: 'July 20, 2023 8:30 AM',
     registrationLink:
       'https://docs.google.com/forms/d/e/1FAIpQLSeLAB8aoLNRiW5M5Jpn78qxVnnCETDJYpTAph5732tRFXoFDw/viewform?usp=pp_url&entry.146778204=July+20,+2023',
   },
   {
     id: 1,
+    title: 'Storybook for Developers',
     date: 'Aug 29, 2023 7:00 AM',
     registrationLink:
       'https://docs.google.com/forms/d/e/1FAIpQLSeLAB8aoLNRiW5M5Jpn78qxVnnCETDJYpTAph5732tRFXoFDw/viewform?usp=pp_url&entry.146778204=Aug+29,+2023',
   },
   {
     id: 2,
+    title: 'Chromatic & Storybook for Designers',
     date: 'Oct 12, 2023 8:30 AM',
     registrationLink:
       'https://docs.google.com/forms/d/e/1FAIpQLSeLAB8aoLNRiW5M5Jpn78qxVnnCETDJYpTAph5732tRFXoFDw/viewform?usp=pp_url&entry.146778204=Oct+12,+2023',
   },
   {
     id: 3,
+    title: 'Storybook for Developers',
     date: 'Nov 7, 2023 9:00 AM',
     registrationLink:
       'https://docs.google.com/forms/d/e/1FAIpQLSeLAB8aoLNRiW5M5Jpn78qxVnnCETDJYpTAph5732tRFXoFDw/viewform?usp=pp_url&entry.146778204=Nov+7,+2023',
@@ -102,29 +107,6 @@ const SessionItem = styled.li`
   }
 `;
 
-const Info = styled.div`
-  display: flex;
-  align-items: center;
-  svg {
-    flex: none;
-  }
-`;
-
-const DateLong = styled.div`
-  display: none;
-
-  @media (min-width: ${breakpoints[2]}px) {
-    display: block;
-  }
-`;
-const DateShort = styled.div`
-  display: block;
-
-  @media (min-width: ${breakpoints[2]}px) {
-    display: none;
-  }
-`;
-
 const Bullet = styled(Icon)`
   color: ${color.dark};
   margin-right: 10px;
@@ -137,13 +119,23 @@ const NoSessionsPlanned = styled.div`
   border: 1px dashed ${color.border};
 `;
 
-const SessionTiming = ({ session }: { session: Session }) => (
-  <Info>
-    <Bullet icon="calendar" />
-    <DateLong>{session.date}</DateLong>
-    <DateShort>{session.dateShort}</DateShort>
-  </Info>
-);
+const SessionInfo = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  svg {
+    flex: none;
+  }
+`;
+
+const SessionTitle = styled.div`
+  display: none;
+
+  @media (min-width: ${breakpoints[1] * 1.25}px) {
+    display: block;
+  }
+`;
 
 const UpcomingSessions = ({ sessions }: { sessions: Session[] }) => (
   <>
@@ -152,7 +144,13 @@ const UpcomingSessions = ({ sessions }: { sessions: Session[] }) => (
       <SessionsList>
         {sessions.map((session) => (
           <SessionItem key={session.id}>
-            <SessionTiming session={session} />
+            <SessionInfo>
+              <Bullet icon="calendar" />
+              <SessionTitle>
+                <b>{session.title}</b> —
+              </SessionTitle>
+              {session.dateShort}
+            </SessionInfo>
             <Link
               href={session.registrationLink}
               withArrow
@@ -179,7 +177,13 @@ const PastSessions = ({ sessions }: { sessions: Session[] }) => (
     <SessionsList>
       {sessions.map((session) => (
         <SessionItem key={session.id}>
-          <SessionTiming session={session} />
+          <SessionInfo>
+            <Bullet icon="calendar" />
+            <SessionTitle>
+              <b>{session.title}</b> —
+            </SessionTitle>
+            {session.dateShort}
+          </SessionInfo>
         </SessionItem>
       ))}
     </SessionsList>
