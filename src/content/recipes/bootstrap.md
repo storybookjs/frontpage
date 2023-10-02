@@ -30,22 +30,7 @@ If you’d like to see the example code of this recipe, check out the [example r
 
 ### CSS
 
-Start by installing some dependencies.
-
-```shell
-yarn add -D @storybook/addon-styling
-```
-
-Now register the addon styling in your `.storybook/main.js`.
-
-```js
-module.exports = {
-  stories: ['../stories/**/*.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
-  addons: ['@storybook/addon-essentials', '@storybook/addon-styling'],
-};
-```
-
-Finally, import the Bootstrap files in your `.storybook/preview.js` file.
+import the Bootstrap files in your `.storybook/preview.js` file.
 
 ```js
 // .storybook/preview.js
@@ -70,74 +55,32 @@ export const parameters = {
 
 ### Sass
 
-Start by installing some dependencies.
+If you're using Sass in a Webpack based Storybook (Other than Next or Angular), you'll need to install the [`@storybook/addon-styling-webpack`](https://storybook.js.org/addons/@storybook/addon-styling-webpack) addon.
+
+Run the following script to install and register the addon:
 
 ```shell
-yarn add -D @storybook/addon-styling sass
+npx storybook@latest add @storybook/addon-styling-webpack
 ```
 
-Now register the addon styling in your `.storybook/main.js`
-
-```js
-module.exports = {
-  stories: ['../stories/**/*.stories.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
-  addons: [
-    '@storybook/addon-essentials',
-    {
-      name: '@storybook/addon-styling',
-      options: {
-        sass: {
-          // Require your Sass preprocessor here
-          implementation: require('sass'),
-        },
-      },
-    },
-  ],
-};
-```
-
-Finally, import your `index.scss` file in your `.storybook/preview.js` file.
-
-```scss
-// ./src/index.scss
-
-// Include any default variable overrides here (though functions won't be available)
-
-@import '../node_modules/bootstrap/scss/bootstrap';
-
-// Then add additional custom code here
-```
-
-```js
-// .storybook/preview.js
-
-import '../src/index.scss';
-
-// Only import this if you want to use Bootstrap's
-// JQuery helpers
-import 'bootstrap/dist/js/bootstrap.bundle';
-
-export const parameters = {
-  actions: { argTypesRegex: '^on[A-Z].*' },
-  controls: {
-    expanded: true,
-    hideNoControlsWarning: true,
-    matchers: {
-      color: /(background|color)$/i,
-      date: /Date$/,
-    },
-  },
-};
-```
+This will run a configuration script that will walk you through setting up the addon. If prompted, select `Sass` in the configuration options.
 
 ## Add a theme switcher
 
 Bootstrap now ships with a dark mode that you can activate by adding a `[data-bs-theme]` data attribute to a parent element.
 
-To enable switching between these modes in a click for your stories, use our `withThemeByDataAttribute` decorator by adding the following code to your `.storybook/preview.js` file.
+You can use [@storybook/addon-themes](https://storybook.js.org/addons/@storybook/addon-themes/) to add a theme switcher to your stories.
+
+Run the following script to install and register the addon:
+
+```shell
+npx storybook@latest add @storybook/addon-themes
+```
+
+Then, to enable switching between these modes in a click for your stories, use our `withThemeByDataAttribute` decorator by adding the following code to your `.storybook/preview.js` file.
 
 ```js
-import { withThemeByDataAttribute } from '@storybook/addon-styling';
+import { withThemeByDataAttribute } from '@storybook/addon-themes';
 
 // snipped for brevity
 
