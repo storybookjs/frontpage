@@ -5,6 +5,7 @@ Some configurations of Storybook already come pre-configured to support Sass. If
 1. Storybook >= 7.x with the `vite` builder.
 2. Storybook >= 7.x with the `@storybook/nextjs` framework.
 3. Storybook >= 6.x with the `@storybook/preset-create-react-app` and `react-scripts@2.x.x` or higher.
+4. Storybook >= 6.x with the `@storybook/angular` framework. Inject your global stylesheets into storybook through your `angular.json` file.
 
 </div>
 
@@ -14,35 +15,17 @@ How to setup Sass and Storybook
 
 </RecipeHeader>
 
-Sass is a popular CSS preprocessor that allows developers to write more maintainable and reusable stylesheets. Storybook is an industry-standard tool for developing and testing UI components in isolation. With the help of the `@storybook/addon-styling` package, developers can easily incorporate Sass stylesheets into their Storybook components.
+Sass is a popular CSS preprocessor that allows developers to write more maintainable and reusable stylesheets. Storybook is an industry-standard tool for developing and testing UI components in isolation. With the help of the `@storybook/addon-styling-webpack` package, developers can easily incorporate Sass stylesheets into their Storybook components.
 
-## Adding `@storybook/addon-styling`
+## Adding `@storybook/addon-styling-webpack`
 
-First of all, install the required dependencies:
+Run the following script to install and register the addon:
 
 ```shell
-yarn add -D @storybook/addon-styling sass
+npx storybook@latest add @storybook/addon-styling-webpack
 ```
 
-Then add register `@storybook/addon-styling` in your `main.js` like so:
-
-```js
-module.exports = {
-  stories: ['../stories/**/*.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
-  addons: [
-    '@storybook/addon-essentials',
-    {
-      name: '@storybook/addon-styling',
-      options: {
-        sass: {
-          // Require your Sass preprocessor here
-          implementation: require('sass'),
-        },
-      },
-    },
-  ],
-};
-```
+This will run a configuration script that will walk you through setting up the addon. When prompted, select `Sass` from the configuration options.
 
 ## Import global styles
 
