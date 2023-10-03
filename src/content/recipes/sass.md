@@ -5,7 +5,7 @@ Some configurations of Storybook already come pre-configured to support Sass. If
 1. Storybook >= 7.x with the `vite` builder.
 2. Storybook >= 7.x with the `@storybook/nextjs` framework.
 3. Storybook >= 6.x with the `@storybook/preset-create-react-app` and `react-scripts@2.x.x` or higher.
-4. Storybook >= 6.x with the `@storybook/angular` framework. Inject your global stylesheets into storybook through your `angular.json` file.
+4. Storybook >= 6.x with the `@storybook/angular` framework. Inject your global stylesheets into Storybook through your `angular.json` file.
 
 </div>
 

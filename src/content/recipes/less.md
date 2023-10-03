@@ -18,11 +18,11 @@ Less is a popular CSS preprocessor that allows developers to write more maintain
 
 ## Before you begin
 
-If you are using Vite as your storybook builder, all you need to do is import your Less files into your `preview.js` file.
+If you are using Vite as your Storybook builder, all you need to do is import your Less files into your `preview.js` file.
 
 ## Configure your Storybook builder
 
-If you use Webpack to build your storybook you'll need to install the [`@storybook/addon-styling-webpack`](https://storybook.js.org/addons/@storybook/addon-styling-webpack) addon.
+If you use Webpack to build your Storybook you'll need to install the [`@storybook/addon-styling-webpack`](https://storybook.js.org/addons/@storybook/addon-styling-webpack) addon.
 
 Run the following script to install and register the addon:
 

@@ -174,7 +174,7 @@ Now the `Button` component is made with styled-components. In Storybook, you won
 
 ### Provide a theme for styled-components in Storybook
 
-![Switching over to using a theme for styled-components in storybook](https://user-images.githubusercontent.com/18172605/208312571-431a182d-fe2b-40e7-a21f-aaadf55c899e.gif)
+![Switching over to using a theme for styled-components in Storybook](https://user-images.githubusercontent.com/18172605/208312571-431a182d-fe2b-40e7-a21f-aaadf55c899e.gif)
 
 One of the benefits of styled-components is that you can provide a theme to help you style all of your components in a consistent way. Let's create a new `./src/theme.js` and add the following light theme:
 

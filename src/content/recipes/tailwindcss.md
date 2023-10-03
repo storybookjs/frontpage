@@ -106,11 +106,11 @@ npx storybook@latest add @storybook/addon-themes
 
 This will run a configuration script that will walk you through setting up the addon.
 
-To add the switcher, add the [`withThemeByDataAttribute`](https://github.com/storybookjs/addon-themes/blob/main/code/addons/themes/docs/api.md#withthemebydataattribute) decorator to your storybook from `@storybook/addon-themes`
+To add the switcher, add the [`withThemeByDataAttribute`](https://github.com/storybookjs/addon-themes/blob/main/code/addons/themes/docs/api.md#withthemebydataattribute) decorator to your Storybook from `@storybook/addon-themes`
 
 ```js
 // .storybook/preview.js
-import { withThemeByDataAttribute } from '@storybook/addon-styling';
+import { withThemeByDataAttribute } from '@storybook/addon-themes';
 
 /* snipped for brevity */
 

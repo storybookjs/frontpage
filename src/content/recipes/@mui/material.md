@@ -42,7 +42,7 @@ To get started, install the fonts as dependencies.
 yarn add @fontsource/roboto @fontsource/material-icons
 ```
 
-Then import the CSS files into `.storybook/preview.js`, the entrypoint of your storybook.
+Then import the CSS files into `.storybook/preview.js`, the entrypoint of your Storybook.
 
 ```javascript
 // .storybook/preview.js
@@ -160,7 +160,7 @@ module.exports = {
   typescript: {
     reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
-      // Speeds up storybook build time
+      // Speeds up Storybook build time
       compilerOptions: {
         allowSyntheticDefaultImports: false,
         esModuleInterop: false,
