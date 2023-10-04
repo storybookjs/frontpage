@@ -18,44 +18,14 @@ Storybook is a frontend workbench for building UIs in isolation. By combining St
 - 🎨 Load your custom theme and add a theme switcher
 - ♻️ Reuse Material UI types to auto-generate story controls
 
-## Install `@storybook/addon-styling`
+## Install `@storybook/addon-themes`
 
-Add the `@storybook/addon-styling` package to your DevDependencies
+To get started, you'll need to install [`@storybook/addon-themes`](https://storybook.js.org/addons/@storybook/addon-themes).
 
-```shell
-yarn add -D @storybook/addon-styling
-```
+Run the following script to install and register the addon:
 
-## Auto-config
-
-<div class="aside">
-
-<span aria-hidden="true">📣</span> Before running this codemod, please ensure that you have no other changes in your git branch.
-
-</div>
-
-As of version 1.3, `@storybook/addon-styling` offers a codemod for to automatically configure your storybook with Material UI.
-
-To try it out, run the following script:
-
-```shell
-# Run the postinstall script from the root of your project
-yarn addon-styling-setup
-```
-
-If the codemod didn't work, please let us know in [this GitHub issue](https://github.com/storybookjs/addon-styling/issues/49#issue-1746365130) so we can continue to make the codemod even better. In the meantime, the instructions below will get you up and running in no time.
-
-## Manual
-
-### Register the addon
-
-Register the addon with Storybook in `.storybook/main.js`.
-
-```js
-module.exports = {
-  stories: ['../stories/**/*.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
-  addons: ['@storybook/addon-essentials', '@storybook/addon-styling'],
-};
+```bash
+npx storybook@latest add @storybook/addon-themes
 ```
 
 ### Bundle fonts and icons for better perf
@@ -72,7 +42,7 @@ To get started, install the fonts as dependencies.
 yarn add @fontsource/roboto @fontsource/material-icons
 ```
 
-Then import the CSS files into `.storybook/preview.js`, the entrypoint of your storybook.
+Then import the CSS files into `.storybook/preview.js`, the entrypoint of your Storybook.
 
 ```javascript
 // .storybook/preview.js
@@ -132,7 +102,7 @@ Then apply the custom themes to our stories. We’ll need to wrap them in Materi
 ```js
 // .storybook/preview.js
 import { CssBaseline, ThemeProvider } from '@mui/material';
-import { withThemeFromJSXProvider } from '@storybook/addon-styling';
+import { withThemeFromJSXProvider } from '@storybook/addon-themes';
 import { lightTheme, darkTheme } from '../src/themes.js';
 
 /* snipped for brevity */
@@ -190,7 +160,7 @@ module.exports = {
   typescript: {
     reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
-      // Speeds up storybook build time
+      // Speeds up Storybook build time
       compilerOptions: {
         allowSyntheticDefaultImports: false,
         esModuleInterop: false,

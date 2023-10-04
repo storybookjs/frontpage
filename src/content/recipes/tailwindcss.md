@@ -26,86 +26,21 @@ In this post, we will:
 
 ![Finished example of Tailwind CSS in Storybook with a theme switcher](https://user-images.githubusercontent.com/18172605/208201389-1f448dbb-978c-442e-9d6b-7bf3fea63e64.gif)
 
-## Install `@storybook/addon-styling`
+## Before you begin
 
-Add the `@storybook/addon-styling` package to your DevDependencies
+Tailwind uses PostCSS to compile your CSS. If you are using Vite, `@storybook/nextjs`, `@storybook/angular`, or `@storybook/preset-create-react-app` with `react-scripts@2.0.0`, then you can skip to the [theme switching section](#add-a-theme-switcher-tool).
 
-```shell
-yarn add -D @storybook/addon-styling
-```
+## Configure PostCSS
 
-## Auto-config
+For Webpack users, you'll need to install the [`@storybook/addon-styling-webpack`](https://storybook.js.org/addons/@storybook/addon-styling-webpack) addon.
 
-<div class="aside">
-
-<span aria-hidden="true">📣</span> Before running this codemod, please ensure that you have no other changes in your git branch.
-
-</div>
-
-As of version 1.3, `@storybook/addon-styling` offers a codemod for to automatically configure your storybook with Tailwind.
-
-To try it out, run the following script:
+Run the following script to install and register the addon:
 
 ```shell
-# Run the postinstall script from the root of your project
-yarn addon-styling-setup
+npx storybook@latest add @storybook/addon-styling-webpack
 ```
 
-If the codemod didn't work, please let us know in [this GitHub issue](https://github.com/storybookjs/addon-styling/issues/49#issue-1746365130) so we can continue to make the codemod even better. In the meantime, the instructions below will get you up and running in no time.
-
-## Manual
-
-### Build Tailwind next to Storybook
-
-To develop with Tailwind alongside your stories, storybook will need to know how to handle Tailwind's custom `@tailwind` css directive. We can do this with PostCSS.
-
-First of all, install a few extra dependencies.
-
-```shell
-yarn add -D @storybook/addon-styling postcss autoprefixer
-```
-
-Now create a `postcss.config.js` file in the root of your project.
-
-```js
-// postcss.config.js
-
-module.exports = {
-  plugins: {
-    tailwindcss: {},
-    autoprefixer: {},
-  },
-};
-```
-
-Then add the `@storybook/addon-styling` to your `.storybook/main.js` file and pass it `postcss` in `options.postCss.implementation`.
-
-```js
-module.exports = {
-  addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
-    {
-      name: '@storybook/addon-styling',
-      options: {
-        // Check out https://github.com/storybookjs/addon-styling/blob/main/docs/api.md
-        // For more details on this addon's options.
-        postCss: {
-          implementation: require.resolve('postcss'),
-        },
-      },
-    },
-  ],
-  // snipped for brevity
-};
-```
-
-<div class="aside">
-
-📣 If you are using Vite, `@storybook/nextjs`, `@storybook/angular`, or `@storybook/preset-create-react-app` with `react-scripts@2.0.0`, then leave the options object empty.
-
-</div>
+This will run a configuration script that will walk you through setting up the addon. If prompted, select `PostCSS` from the configuration options.
 
 ### Provide Tailwind to stories
 
@@ -161,11 +96,21 @@ module.exports = {
 };
 ```
 
-To add the switcher, add the [`withThemeByDataAttribute`](https://github.com/storybookjs/addon-styling/blob/main/docs/api.md#withthemebydataattribute) decorator to your storybook from `@storybook/addon-styling`
+Next, install the [`@storybook/addon-themes`](https://storybook.js.org/addons/@storybook/addon-themes/) addon to provide the switcher tool.
+
+Run the following script to install and register the addon:
+
+```shell
+npx storybook@latest add @storybook/addon-themes
+```
+
+This will run a configuration script that will walk you through setting up the addon.
+
+To add the switcher, add the [`withThemeByDataAttribute`](https://github.com/storybookjs/addon-themes/blob/main/code/addons/themes/docs/api.md#withthemebydataattribute) decorator to your Storybook from `@storybook/addon-themes`
 
 ```js
 // .storybook/preview.js
-import { withThemeByDataAttribute } from '@storybook/addon-styling';
+import { withThemeByDataAttribute } from '@storybook/addon-themes';
 
 /* snipped for brevity */
 
@@ -185,6 +130,6 @@ This code will create a new toolbar menu to select your desired theme for your s
 
 ## Get involved
 
-Now you're ready to use Tailwind with Storybook. 🎉 Check out the [example repo](https://github.com/Integrayshaun/storybook-tailwind-recipe-example) for a quick start.
+Now you're ready to use Tailwind with Storybook. 🎉
 
-If you use Tailwind at work, we'd love your help making an addon that automatically applies the configuration above. Join the maintainers in [Discord](https://discord.gg/storybook) to get involved, or jump into [addon docs](/docs/react/addons/introduction).
+If you use Tailwind at work, we'd love your help making this setup even easier. Join the maintainers in [Discord](https://discord.gg/storybook) to get involved, or jump into [addon docs](/docs/react/addons/introduction).

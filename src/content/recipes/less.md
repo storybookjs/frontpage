@@ -16,39 +16,21 @@ How to setup Less and Storybook
 
 Less is a popular CSS preprocessor that allows developers to write more maintainable and reusable stylesheets. Storybook is an industry-standard tool for developing and testing UI components in isolation. With the help of the `@storybook/addon-styling` package, developers can easily incorporate Less stylesheets into their Storybook components.
 
-## Adding `@storybook/addon-styling`
+## Before you begin
 
-<div class="aside aside__no-top">
+If you are using Vite as your Storybook builder, all you need to do is import your Less files into your `preview.js` file.
 
-Using Vite to build your Storybook? Then you don't need to add `options.less` as Vite works with Less out-of-the-box 🎉
+## Configure your Storybook builder
 
-</div>
+If you use Webpack to build your Storybook you'll need to install the [`@storybook/addon-styling-webpack`](https://storybook.js.org/addons/@storybook/addon-styling-webpack) addon.
 
-First of all, install the required dependencies:
+Run the following script to install and register the addon:
 
 ```shell
-yarn add -D @storybook/addon-styling less
+npx storybook@latest add @storybook/addon-styling-webpack
 ```
 
-Then register `@storybook/addon-styling` in your `main.js` like so:
-
-```js
-module.exports = {
-  stories: ['../stories/**/*.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
-  addons: [
-    '@storybook/addon-essentials',
-    {
-      name: '@storybook/addon-styling',
-      options: {
-        less: {
-          // Require your Less preprocessor here
-          implementation: require('less'),
-        },
-      },
-    },
-  ],
-};
-```
+This will run a configuration script that will walk you through setting up the addon. When prompted, select `Less` from the configuration options.
 
 ## Import global styles
 

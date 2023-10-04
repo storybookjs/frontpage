@@ -29,44 +29,14 @@ If you’d like to see the example code of this recipe, check out the [example r
 
 ![Completed Emotion example with theme switcher](https://user-images.githubusercontent.com/18172605/208312563-875ca3b0-e7bc-4401-a445-4553b48068ed.gif)
 
-## Install `@storybook/addon-styling`
+## Install `@storybook/addon-themes`
 
-Add the `@storybook/addon-styling` package to your DevDependencies
+To get started, you'll need to install [`@storybook/addon-themes`](https://storybook.js.org/addons/@storybook/addon-themes).
 
-```shell
-yarn add -D @storybook/addon-styling
-```
+Run the following script to install and register the addon:
 
-## Auto-config
-
-<div class="aside">
-
-<span aria-hidden="true">📣</span> Before running this codemod, please ensure that you have no other changes in your git branch.
-
-</div>
-
-As of version 1.3, `@storybook/addon-styling` offers a codemod for to automatically configure your storybook with Emotion.
-
-To try it out, run the following script:
-
-```shell
-# Run the postinstall script from the root of your project
-yarn addon-styling-setup
-```
-
-If the codemod didn't work, please let us know in [this GitHub issue](https://github.com/storybookjs/addon-styling/issues/49#issue-1746365130) so we can continue to make the codemod even better. In the meantime, the manual instructions below will get you up and running in no time.
-
-## Manual
-
-### Register the addon
-
-Register the addon with Storybook in `.storybook/main.js`.
-
-```js
-module.exports = {
-  stories: ['../stories/**/*.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
-  addons: ['@storybook/addon-essentials', '@storybook/addon-styling'],
-};
+```bash
+npx storybook@latest add @storybook/addon-themes
 ```
 
 ### How to setup `GlobalStyles`
@@ -75,11 +45,11 @@ UIs often have a set of global styles that are applied to every component like C
 
 In Emotion, use the [`Global`](https://emotion.sh/docs/globals) component to scope styles globally instead of locally (which is the library's default behavior).
 
-Open `.storybook/preview.js` and create a `GlobalStyles` component which includes a `font-family`. Then apply it to your stories with the [`withThemeFromJSXProvider`](https://github.com/storybookjs/addon-styling/blob/main/docs/api.md#withthemefromjsxprovider) decorator by adding it to the `decorators` array.
+Open `.storybook/preview.js` and create a `GlobalStyles` component which includes a `font-family`. Then apply it to your stories with the [`withThemeFromJSXProvider`](https://github.com/storybookjs/storybook/blob/next/code/addons/themes/docs/api.md#withthemefromjsxprovider) decorator by adding it to the `decorators` array.
 
 ```js
 // .storybook/preview.js
-import { withThemeFromJSXProvider } from '@storybook/addon-styling';
+import { withThemeFromJSXProvider } from '@storybook/addon-themes';
 import { Global, css } from '@emotion/react';
 
 const GlobalStyles = () => (
@@ -210,7 +180,7 @@ Now the `Button` component is made with Emotion. In Storybook, you won't notice 
 
 ### Provide a theme for Emotion in Storybook
 
-![Switching over to using a theme for emotion in storybook](https://user-images.githubusercontent.com/18172605/208312571-431a182d-fe2b-40e7-a21f-aaadf55c899e.gif)
+![Switching over to using a theme for emotion in Storybook](https://user-images.githubusercontent.com/18172605/208312571-431a182d-fe2b-40e7-a21f-aaadf55c899e.gif)
 
 One of the benefits of Emotion is that you can provide a theme to help you style all of your components in a consistent way. Let's create a new `./src/theme.js` and add the following light theme:
 
@@ -269,7 +239,7 @@ To share this theme with the components in Storybook, you'll need to provide it 
 
 ```js
 // .storybook/preview.js
-import { withThemeFromJSXProvider } from '@storybook/addon-styling';
+import { withThemeFromJSXProvider } from '@storybook/addon-themes';
 import { Global, css, ThemeProvider } from '@emotion/react';
 
 import { lightTheme } from '../src/themes';
@@ -309,7 +279,7 @@ Now, components made with Emotion will get the theme through the `theme` prop al
 
 <!-- prettier-ignore-end -->
 
-### Add a theme switcher tool using `@storybook/addon-styling`
+### Switch between themes in a click
 
 Dark mode has become an increasingly popular offering on the web. This can be achieved quickly using themes.
 
@@ -366,6 +336,6 @@ Adding a second theme will create a new toolbar menu to select your desired them
 
 ## Get involved
 
-Now you're ready to use Emotion with Storybook. 🎉 Check out the [example repo](https://github.com/Integrayshaun/emotion-recipe) for a quick start.
+Now you're ready to use Emotion with Storybook. 🎉
 
-If you use Emotion at work, we'd love your help making an addon that automatically applies the configuration above. Join the maintainers in [Discord](https://discord.gg/storybook) to get involved, or jump into [addon docs](/docs/react/addons/introduction).
+If you use Emotion at work, we'd love your help making this setup even better. Join the maintainers in [Discord](https://discord.gg/storybook) to get involved, or jump into [addon docs](/docs/react/addons/introduction).
