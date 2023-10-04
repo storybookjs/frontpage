@@ -30,7 +30,7 @@ If you’d like to see the example code of this recipe, check out the [example r
 
 ### CSS
 
-import the Bootstrap files in your `.storybook/preview.js` file.
+Import the Bootstrap files in your `.storybook/preview.js` file.
 
 ```js
 // .storybook/preview.js
