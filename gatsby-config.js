@@ -165,9 +165,9 @@ module.exports = {
             'Access-Control-Allow-Origin: *',
             'Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept',
           ],
-          ...(!versionData.isLatest && {
-            [`/docs/${versionData.versionString}/*`]: ['X-Robots-Tag: noindex'],
-          }),
+          // ...(!versionData.isLatest && {
+          [`/docs/${versionData.versionString}/*`]: ['X-Robots-Tag: noindex'],
+          // }),
         },
         // Do not use the default security headers. Use those we have defined above.
         mergeSecurityHeaders: false,
