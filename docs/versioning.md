@@ -6,7 +6,7 @@ This site is configured to build its doc pages from a variable version of the co
 >
 > "monorepo release branch" = `main`, `next`, and `release-x-x` (starting with `release-6-0`).
 >
-> "frontpage release branch" = `master` and `release-x-x` (starting with `release-6-0`).
+> "frontpage release branch" = `main` and `release-x-x` (starting with `release-6-0`).
 
 ## Publishing new versions
 
@@ -33,11 +33,12 @@ _**Second**, in this repo:_
 1. In the [Netlify branch deploy setting](https://app.netlify.com/sites/storybook-frontpage/settings/deploys):
    1. Add the version that _was_ "latest"
       - `release-6-3`, in this document
-   1. Add the version that _will be_ "next" to the [Netlify branch deploy setting](https://app.netlify.com/sites/storybook-frontpage/settings/deploys)
-      - `release-6-5`, in this document
-   1. Remove the version that _was_ "next" from the [Netlify branch deploy setting](https://app.netlify.com/sites/storybook-frontpage/settings/deploys)
+   1. If present, remove the version that _was_ "next" from the [Netlify branch deploy setting](https://app.netlify.com/sites/storybook-frontpage/settings/deploys)
       - `release-6-4`, in this document
-1. Push any updates to `master`
+   1. If you would like to publish pre-release docs
+      1. Add the version that _will be_ "next" to the [Netlify branch deploy setting](https://app.netlify.com/sites/storybook-frontpage/settings/deploys)
+          - `release-6-5`, in this document
+1. Push any updates to `main`
    - i.e. merge the PR containing the changes from Step 1
    - This kicks off a production deploy and a [workflow to deploy all release branches](#keeping-everything-in-sync)
 
@@ -47,7 +48,7 @@ _**Second**, in this repo:_
 >
 > _e.g. updating "next" from `6.4.0-beta.30` -> `6.4.0-rc.0` would change the version label rendered in the VersionSelector, which is available on all deploys_
 >
-> You can kick off the [`push-all-release-branches` workflow](../actions/workflows/push-all-release-branches.yml) manually (against `master`). ([More info](https://docs.github.com/en/actions/managing-workflow-runs/manually-running-a-workflow))
+> You can kick off the [`push-all-release-branches` workflow](../actions/workflows/push-all-release-branches.yml) manually (against `main`). ([More info](https://docs.github.com/en/actions/managing-workflow-runs/manually-running-a-workflow))
 
 ## How it works
 
@@ -69,7 +70,7 @@ _**Second**, in this repo:_
 
 ## Keeping everything in sync
 
-Pushing to `master` in this repo kicks off a [workflow](../.github/workflows/push-all-release-branches.yml) which will create new release branches from `master` and push them, kicking off branch deploys for each.
+Pushing to `main` in this repo kicks off a [workflow](../.github/workflows/push-all-release-branches.yml) which will create new release branches from `main` and push them, kicking off branch deploys for each.
 
 - This ensures all branch deploys stay in-sync with any updates to production
-- If you're pushing a change to `master` that does **not** need to make corresponding changes to the release branch deploys, you can [skip the workflow](https://docs.github.com/en/actions/managing-workflow-runs/skipping-workflow-runs).
+- If you're pushing a change to `main` that does **not** need to make corresponding changes to the release branch deploys, you can [skip the workflow](https://docs.github.com/en/actions/managing-workflow-runs/skipping-workflow-runs).
