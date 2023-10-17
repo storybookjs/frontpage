@@ -99,7 +99,7 @@ const PopularRecipes = styled(RecipesList)`
 `;
 
 export const IntegrationsCatalogHomeScreen = ({
-  pageContext: { popularAddons = [], popularRecipes = [], trendingAddons = [], trendingTags = [] },
+  pageContext: { popularAddons = [], popularRecipes = [], trendingTags = [] },
 }) => {
   const { title, ogImageAddons, urls = {} } = useSiteMetadata();
   const { home } = urls;
@@ -131,8 +131,6 @@ export const IntegrationsCatalogHomeScreen = ({
           </ListHeadingContainer>
           <PopularRecipes recipeItems={popularRecipes} />
         </section>
-
-        <AddonsGrid title="Trending addons" addonItems={trendingAddons} />
       </IntegrationsLayout>
     </>
   );
@@ -142,7 +140,6 @@ IntegrationsCatalogHomeScreen.propTypes = {
   pageContext: PropTypes.shape({
     popularAddons: AddonsGrid.propTypes.addonItems.isRequired,
     popularRecipes: RecipesList.propTypes.recipeItems.isRequired,
-    trendingAddons: AddonsGrid.propTypes.addonItems.isRequired,
   }).isRequired,
 };
 

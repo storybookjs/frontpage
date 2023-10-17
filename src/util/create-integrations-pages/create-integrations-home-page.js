@@ -36,34 +36,12 @@ function fetchIntegrationsHomePage(createPage, graphql) {
                   }
                 }
               }
-              trending: topIntegrations(sort: trending, limit: 9) {
-                addons {
-                  ${ADDON_FRAGMENT}
-                  tags {
-                    name
-                    displayName
-                    description
-                    icon
-                  }
-                  repositoryUrl
-                  npmUrl
-                }
-                recipes {
-                  ${RECIPE_FRAGMENT}
-                  tags {
-                    name
-                    displayName
-                    description
-                    icon
-                  }
-                }
-              }
             }
           }
         `
       )
     )
-    .then(validateResponse((data) => data.integrations.popular && data.integrations.trending))
+    .then(validateResponse((data) => data.integrations.popular))
     .then(({ data }) => data.integrations)
     .then((integrationsData) => {
       generateIntegrationHomePage(createPage, integrationsData);
@@ -93,8 +71,8 @@ function getNRandomTags(tags, numberOfTags) {
     .map(({ occurrence, ...tag }) => tag);
 }
 
-function generateIntegrationHomePage(createPage, { popular, trending }) {
-  const tagOccurrences = createTagOccurrenceHash(...trending.addons, ...popular.addons);
+function generateIntegrationHomePage(createPage, { popular }) {
+  const tagOccurrences = createTagOccurrenceHash(...popular.addons);
 
   createPage({
     path: '/integrations/',
@@ -102,7 +80,6 @@ function generateIntegrationHomePage(createPage, { popular, trending }) {
     context: {
       popularAddons: popular.addons,
       popularRecipes: popular.recipes,
-      trendingAddons: trending.addons,
       trendingTags: getNRandomTags(tagOccurrences, 20),
     },
   });

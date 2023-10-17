@@ -22,7 +22,6 @@ const Template = () => (
     pageContext={{
       popularAddons: addonItemsData.slice(0, 6),
       popularRecipes: recipeItemsData.slice(0, 3),
-      trendingAddons: addonItemsData.slice(-9),
       trendingTags: [
         {
           link: '/notes',
