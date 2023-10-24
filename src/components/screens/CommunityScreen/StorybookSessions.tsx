@@ -50,7 +50,7 @@ const sessionsData: Session[] = [
   },
   {
     id: 3,
-    title: 'Storybook for Developers',
+    title: 'Storybook Workflows for Frontend Teams',
     date: 'Nov 7, 2023 9:00 AM',
     registrationLink:
       'https://docs.google.com/forms/d/e/1FAIpQLSeLAB8aoLNRiW5M5Jpn78qxVnnCETDJYpTAph5732tRFXoFDw/viewform?usp=pp_url&entry.146778204=Nov+7,+2023',
