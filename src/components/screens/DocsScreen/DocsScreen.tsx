@@ -13,7 +13,14 @@ import {
 import { graphql } from 'gatsby';
 import { CodeSnippets } from './CodeSnippets';
 import { frameworkSupportsFeature, FrameworkSupportTable } from './FrameworkSupportTable';
-import { SocialGraph } from '../../basics';
+import {
+  SocialGraph,
+  Callout,
+  CalloutIcon,
+  CalloutContent,
+  CalloutTitle,
+  CalloutBodyText,
+} from '../../basics';
 import { Pre } from '../../basics/Pre';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import useSiteMetadata from '../../lib/useSiteMetadata';
@@ -235,6 +242,11 @@ function DocsScreen({ data, pageContext, location }) {
             IfRenderer: IfRendererWithCurrentFramework,
             YouTubeCallout,
             a: LinksWithPrefix,
+            Callout,
+            CalloutIcon,
+            CalloutContent,
+            CalloutTitle,
+            CalloutBodyText,
           }}
         >
           <StyledHighlight withHTMLChildren={false}>
