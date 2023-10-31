@@ -47,8 +47,8 @@ export const CommunitySupport = forwardRef<HTMLDivElement, CommunitySupportProps
         <SupportFeatureGrid>
           <SupportFeature
             image={<DiscordIcon />}
-            title="Ask a question in #support chat"
-            desc="Resolve issues with community help. A maintainer is usually online."
+            title="Post a question in GitHub Issues"
+            desc="Share your issues with our community and get help from other devs."
           >
             <Link withArrow href={chatUrl}>
               Chat now
