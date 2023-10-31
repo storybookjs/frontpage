@@ -19,7 +19,7 @@ import {
 import { SubNav, SubNavBreadcrumb, SubNavCTA, SubNavRight } from '@storybook/components-marketing';
 
 import useSiteMetadata from '../../../lib/useSiteMetadata';
-import { SocialGraph, Pre } from '../../../basics';
+import { SocialGraph, Pre, Callout } from '../../../basics';
 import {
   IntegrationsAside,
   IntegrationsAsideContainer,
@@ -278,6 +278,7 @@ export const RecipesDetailScreen = ({ path, location, pageContext }) => {
                   pre: Pre,
                   RecipeHeader,
                   CodeSnippets,
+                  Callout,
                 }}
               >
                 <StyledHighlight withHTMLChildren={false}>
