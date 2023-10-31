@@ -4,70 +4,62 @@ import { styles } from '@storybook/design-system';
 
 import { Callout } from './Callout';
 
+const { spacing } = styles;
+
+const StoryWrapper = styled.div`
+  padding: ${spacing.padding.medium}px;
+`;
+
 export default {
   title: 'Basics/Callout',
   component: Callout,
   parameters: {
     chromatic: { viewports: [320, 900] },
   },
+  decorators: [(story) => <StoryWrapper>{story()}</StoryWrapper>],
 };
 
-const { typography, spacing } = styles;
+export const Default = {
+  args: {
+    title: "Hello there, I'm a Callout",
+    children: `I'm here to bring attention to some important information that you might be interested in.`,
+  },
+};
 
-const StoryWrapper = styled.div`
-  padding: ${spacing.padding.medium}px;
-`;
+export const Variants = {
+  args: {
+    ...Default.args,
+  },
+  render: (args) => (
+    <>
+      <Callout {...args} variant="neutral" title="I'm a neutral Callout" />
+      <br />
+      <Callout {...args} variant="positive" title="I'm a positive Callout" />
+      <br />
+      <Callout {...args} variant="info" title="I'm an Info Callout" />
+      <br />
+      <Callout {...args} variant="warning" title="I'm a warning Callout" />
+    </>
+  ),
+};
 
-const Title = styled.h1`
-  font-family: ${typography.type};
-  font-weight: ${typography.weight.bold};
-  font-size: ${typography.size.s3}px;
-  line-height: ${typography.size.m3}px;
-`;
+export const WithEmoji = {
+  args: {
+    ...Default.args,
+    icon: '👋',
+  },
+};
 
-const BodyText = styled.p`
-  font-family: ${typography.type};
-  font-size: ${typography.size.s3}px;
-  line-height: ${typography.size.m3}px;
-  margin: 0;
-`;
+export const WithoutTitle = {
+  args: {
+    ...WithEmoji.args,
+    title: undefined,
+  },
+};
 
-const Template = (args) => (
-  <StoryWrapper>
-    <Callout {...args}>
-      <Title>👋 Hello there, I'm a Callout</Title>
-      <BodyText>
-        I'm here to bring attention to some important information that you might be interested in.
-        <br />
-        You can play with the way I look using the prop controls below 👇
-      </BodyText>
-    </Callout>
-  </StoryWrapper>
-);
-
-export const Default = Template.bind({});
-
-export const Variants = () => (
-  <StoryWrapper>
-    <Callout variant="neutral">
-      <Title>I'm a neutral Callout</Title>
-      <BodyText>
-        I'm here to bring attention to some important information that you might be interested in
-      </BodyText>
-    </Callout>
-    <br />
-    <Callout variant="positive">
-      <Title>I'm a positive Callout</Title>
-      <BodyText>
-        I'm here to bring attention to some important information that you might be interested in
-      </BodyText>
-    </Callout>
-    <br />
-    <Callout variant="selected">
-      <Title>I'm a selected Callout</Title>
-      <BodyText>
-        I'm here to bring attention to some important information that you might be interested in
-      </BodyText>
-    </Callout>
-  </StoryWrapper>
-);
+export const WithMarkdownTitle = {
+  args: {
+    ...WithEmoji.args,
+    title: '`next/font` support',
+  },
+};
