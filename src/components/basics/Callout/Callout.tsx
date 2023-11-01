@@ -85,8 +85,8 @@ export interface CalloutProps extends CalloutContainerProps {
   children: string;
 }
 
-export const Callout = ({ title, icon, children, variant }: CalloutProps) => (
-  <CalloutContainer variant={variant}>
+export const Callout = ({ title, icon, children, variant, ...props }: CalloutProps) => (
+  <CalloutContainer variant={variant} {...props}>
     {icon && <CalloutIcon>{icon}</CalloutIcon>}
     <CalloutContent>
       {title && <CalloutTitle dangerouslySetInnerHTML={{ __html: snarkdown(title) }} />}
