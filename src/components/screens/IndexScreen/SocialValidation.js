@@ -246,7 +246,7 @@ export function SocialValidation({
           icon={<ColoredIcon icon="twitter" aria-label="Twitter" color="#4999E9" />}
           description="Get the latest news and updates from Storybook maintainers."
           link={{
-            label: 'Follow on X',
+            label: 'Follow on Twitter',
             href: 'https://twitter.com/storybookjs',
           }}
           stat={{
