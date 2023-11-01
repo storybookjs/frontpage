@@ -46,11 +46,11 @@ export const CommunitySupport = forwardRef<HTMLDivElement, CommunitySupportProps
         <SearchBlock version={version} apiKey={apiKey} />
         <SupportFeatureGrid>
           <SupportFeature
-            image={<DiscordIcon />}
-            title="Post a question in GitHub Issues"
+            image={<GithubIcon />}
+            title="Post a question in GitHub Discussions"
             desc="Share your issues with our community and get help from other devs."
           >
-            <Link withArrow href={chatUrl}>
+            <Link withArrow href="https://github.com/storybookjs/storybook/discussions">
               Chat now
             </Link>
           </SupportFeature>
