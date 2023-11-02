@@ -65,7 +65,7 @@ const AddonsCallout = styled.div`
   padding: ${spacing.padding.medium}px;
   border-radius: ${spacing.borderRadius.small}px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 
   background: ${background.positive};
   box-shadow: ${rgba(color.positive, 0.1)} 0 0 0 1px inset;
@@ -272,7 +272,7 @@ export const RecipesDetailScreen = ({ path, location, pageContext }) => {
                 </AddonsCallout>
               </section>
             )}
-            <ReadMeContent id="recipe-content-body">
+            <ReadMeContent id="recipe-section">
               <MDXProvider
                 components={{
                   pre: Pre,

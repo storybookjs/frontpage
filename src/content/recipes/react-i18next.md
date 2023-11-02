@@ -1,18 +1,4 @@
-<RecipeHeader>
-
-How to setup React i18next and Storybook
-
-</RecipeHeader>
-
-Most developers use [`i18next`](https://www.i18next.com/), a popular JavaScript library that lets apps define separate files for each supported locale. It detects a user’s language preferences and region, and only loads the detected locale.
-
-Instead of being passed to components as inputs, the locale is shared globally through context. Let’s use i18next to extend Storybook with a locale switcher in the toolbar to choose which locale is shared with your components.
-
-Follow along using the [code examples](https://github.com/i18next/react-i18next/tree/master/example/storybook) in the react-i18next GitHub repository.
-
-![Switching locale between English, German, and Arabic in Storybook](https://storybookblog.ghost.io/content/images/2022/09/finished-switcher.gif)
-
-### Prerequisites
+<Callout variant="neutral" icon="ℹ️" title="Prerequisites">
 
 Before we begin, ensure that you have a working React app using [`react-i18next`](https://github.com/i18next/react-i18next) which is set up with Storybook 6.0 or newer. If you need resources to set these up, I’ve included some recommendations below:
 
@@ -20,9 +6,11 @@ Before we begin, ensure that you have a working React app using [`react-i18next`
 - [Configure i18next language detector](https://react.i18next.com/latest/using-with-hooks)
 - [Getting started with Storybook](https://storybook.js.org/tutorials/intro-to-storybook/)
 
-Or if you'd prefer a video, check out **Chantastic's** awesome video on adding i18next to your React app.
+Or if you'd prefer a video, check out [**Chantastic's** awesome video]() on adding i18next to your React app.
 
-### 1. Expose i18next to Storybook
+</Callout>
+
+## 1. Expose i18next to Storybook
 
 To make your translations available in your stories, you’ll first need to expose your i18next instance to Storybook. Here’s an example of an i18next instance from the `./src/i18n.js` file being used in my React app.
 
@@ -54,7 +42,7 @@ To expose this instance to Storybook, we can import it into the `./.storybook/pr
 import i18n from '../src/i18n';
 ```
 
-### 2. Wrap your stories with the i18next provider
+## 2. Wrap your stories with the i18next provider
 
 Now that Storybook has access to i18next, we need to share that with our stories. To do that we’re going to make a decorator to wrap our stories in.
 
@@ -85,7 +73,7 @@ Sweet! Our stories officially have access to our translations. If we change the 
 
 ![Manually changing the locale from English to French](https://storybookblog.ghost.io/content/images/2022/09/manual-change.gif)
 
-### 3. Add a locale switcher
+## 3. Add a locale switcher
 
 Hardcoding your locale is annoying and won’t be helpful to anyone viewing your deployed Storybook, so let’s add a locale switcher to the Storybook toolbar. If you want to learn more about switchers, check out **Yann Braga’s** article on [adding a theme switcher](https://storybook.js.org/blog/how-to-add-a-theme-switcher-to-storybook/).
 
@@ -148,7 +136,7 @@ Voila— a fully functioning locale switcher for your stories powered by react-i
 
 ![Switching between English and German using the locale switcher](https://storybookblog.ghost.io/content/images/2022/09/en-to-de.gif)
 
-### 4. Set document direction
+## 4. Set document direction
 
 Some languages are not read from left to right like English is. Arabic, for example, is read from right to left. HTML has built-in support for this with the `dir` attribute.
 
