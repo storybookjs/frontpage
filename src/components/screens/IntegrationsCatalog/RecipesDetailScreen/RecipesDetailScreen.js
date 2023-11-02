@@ -60,7 +60,6 @@ const ReadMe = styled.section`
   min-width: 0;
 `;
 
-// TODO: UPDATE THIS TO NEW COMPONENT
 const AddonsCallout = styled.div`
   padding: ${spacing.padding.medium}px;
   border-radius: ${spacing.borderRadius.small}px;
