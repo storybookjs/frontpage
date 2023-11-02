@@ -1,4 +1,4 @@
-<div class="aside aside__no-top">
+<Callout variant="neutral" icon="ℹ️" title="Prerequisites">
 
 This recipe assumes that you are using Storybook >= 7.0. If you haven't set up Storybook yet, run the following command in the root of your project:
 
@@ -6,23 +6,16 @@ This recipe assumes that you are using Storybook >= 7.0. If you haven't set up S
 npx storybook@latest init
 ```
 
-</div>
+</Callout>
 
-<RecipeHeader>
-
-How to setup Vanilla Extract and Storybook
-
-</RecipeHeader>
-
-Vanilla Extract Uses TypeScript as your CSS preprocessor. Allowing you to write type‑safe, locally scoped classes, variables and themes, then generate static CSS files at build time. Storybook is an industry-standard tool for developing and testing UI components in isolation.
 
 ## Configure your Storybook builder
 
-<div class="aside aside__no-top">
+<Callout variant="info" icon="💡" style={{ marginBottom: '10px' }}>
 
 If you're already using Vanilla Extract in your project, you may already have these dependencies installed.
 
-</div>
+</Callout>
 
 First of all, install the required dependencies:
 
@@ -52,9 +45,16 @@ npx storybook@latest add @storybook/addon-styling-webpack
 
 This will run a configuration script that will walk you through setting up the addon. If prompted, select `Vanilla Extract` as your CSS processor.
 
-### Manually configure Webpack
+<details>
+  <summary>Did the configuration script fail?</summary>
+  <p>Under the hood, this runs <code>npx @storybook/auto-config styling</code> which should read your project and try to configure your Storybook Webpack for your desired tools. If running that command directly does not solve your problem, please file a bug on the <a href="https://github.com/storybookjs/auto-config/issues/new?assignees=&labels=bug&projects=&template=bug_report.md&title=%5BBug%5D" target="_blank">@storybook/auto-config</a> repository for that we can make this good as can be.</p>
+</details>
+
+<Callout variant="info" icon="⚙️" title="Manually configure Webpack">
 
 For an example of manual configuration, you can view a full example on [Stackblitz](https://stackblitz.com/edit/sb-vanilla-extract-webpack?file=.storybook/main.ts).
+
+</Callout>
 
 ## Get involved
 
