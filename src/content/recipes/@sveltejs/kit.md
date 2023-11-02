@@ -1,18 +1,12 @@
-<div class="aside aside__no-top">
+<Callout variant="neutral" icon="ℹ️" title="Prerequisites" style={{ marginBottom: '10px' }}>
 
 This recipe assumes that you are using SvelteKit >= 1.0 as well as Storybook >= 7.0
 
-</div>
+</Callout>
 
-<RecipeHeader>
+## Feature support
 
-How to setup SvelteKit and Storybook
-
-</RecipeHeader>
-
-Svelte is quickly becoming a major framework in the front-end ecosystem, offering lots of fantastic features for web developers. With SvelteKit, it also provides a powerful meta-framework for applications. At Storybook, we're investing in the Svelte ecosystem to create a seamless and enjoyable experience for users of Svelte and Storybook.
-
-Fortunately, there is now an easier way to develop isolated components with the new `@storybook/sveltekit` framework package. As an industry-standard for component development, Storybook is proud to offer SvelteKit 1.0 features in a seamless integration. With our package, Storybook automatically mirrors the project settings of both SvelteKit. Here's what you'll get:
+With our package, Storybook automatically mirrors the project settings of both SvelteKit. Here's what you'll get:
 
 - 📚 Supports imports that use the special `$lib` alias
 - 👓 Components can read current environment information from `$app/environment`
