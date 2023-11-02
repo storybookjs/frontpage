@@ -6,7 +6,7 @@ Before we begin, ensure that you have a working React app using [`react-i18next`
 - [Configure i18next language detector](https://react.i18next.com/latest/using-with-hooks)
 - [Getting started with Storybook](https://storybook.js.org/tutorials/intro-to-storybook/)
 
-Or if you'd prefer a video, check out [**Chantastic's** awesome video]() on adding i18next to your React app.
+Or if you'd prefer a video, check out [**Chantastic's** awesome video](https://youtu.be/sr0Pahym3VM?feature=shared) on adding i18next to your React app.
 
 </Callout>
 
