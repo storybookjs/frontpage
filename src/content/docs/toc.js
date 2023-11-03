@@ -70,6 +70,11 @@ module.exports = {
           type: 'sub-page',
         },
         {
+          pathSegment: 'parameters/foo',
+          title: 'Parameters',
+          type: 'sub-page',
+        },
+        {
           pathSegment: 'decorators',
           title: 'Decorators',
           type: 'link',

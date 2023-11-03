@@ -7,4 +7,8 @@ module.exports = [
     id: 'api',
     label: 'API',
   },
+  {
+    id: 'foo',
+    label: 'Foo',
+  },
 ];
