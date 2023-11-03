@@ -65,6 +65,11 @@ module.exports = {
           type: 'link',
         },
         {
+          pathSegment: 'parameters/api',
+          title: 'Parameters',
+          type: 'sub-page',
+        },
+        {
           pathSegment: 'decorators',
           title: 'Decorators',
           type: 'link',
@@ -279,7 +284,6 @@ module.exports = {
           title: 'Viewport',
           type: 'link',
         },
-        
       ],
     },
     {
