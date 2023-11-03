@@ -37,14 +37,6 @@ const MDWrapper = styled.main`
   flex: 1;
 `;
 
-const StyledHighlight = styled(Highlight)`
-  -webkit-text-size-adjust: none;
-
-  > * > *:last-child {
-    margin-bottom: 0;
-  }
-`;
-
 const NextSubheading = styled(Subheading)`
   color: ${color.mediumdark};
   font-size: ${typography.size.s2}px;
@@ -239,9 +231,7 @@ function DocsScreen({ data, pageContext, location }) {
             Callout,
           }}
         >
-          <StyledHighlight withHTMLChildren={false}>
-            <MDXRenderer>{body}</MDXRenderer>
-          </StyledHighlight>
+          <MDXRenderer>{body}</MDXRenderer>
         </MDXProvider>
       </MDWrapper>
 

@@ -16,6 +16,11 @@ const VARIANT_COLORS: Record<Variant, { background: string; border: string }> = 
   warning: { background: background.warning, border: rgba(color.warning, 0.1) },
 };
 
+const VARIANT_DEFAULT_ICON: Partial<Record<Variant, string>> = {
+  info: 'ℹ️',
+  warning: '⚠️',
+};
+
 interface CalloutContainerProps {
   variant: Variant;
 }
@@ -85,12 +90,16 @@ export interface CalloutProps extends CalloutContainerProps {
   children: string;
 }
 
-export const Callout = ({ title, icon, children, variant, ...props }: CalloutProps) => (
-  <CalloutContainer variant={variant} {...props}>
-    {icon && <CalloutIcon>{icon}</CalloutIcon>}
-    <CalloutContent>
-      {title && <CalloutTitle dangerouslySetInnerHTML={{ __html: snarkdown(title) }} />}
-      <CalloutBodyText>{children}</CalloutBodyText>
-    </CalloutContent>
-  </CalloutContainer>
-);
+export const Callout = ({ title, icon, children, variant, ...props }: CalloutProps) => {
+  const appliedIcon = icon ?? VARIANT_DEFAULT_ICON[variant];
+
+  return (
+    <CalloutContainer variant={variant} {...props}>
+      {appliedIcon && <CalloutIcon>{appliedIcon}</CalloutIcon>}
+      <CalloutContent>
+        {title && <CalloutTitle dangerouslySetInnerHTML={{ __html: snarkdown(title) }} />}
+        <CalloutBodyText>{children}</CalloutBodyText>
+      </CalloutContent>
+    </CalloutContainer>
+  );
+};
