@@ -30,18 +30,7 @@ interface VersionSelectorProps {
   versions: Versions;
 }
 
-export function VersionSelector({
-  framework,
-  version,
-  versions: originalVersions,
-  slug,
-}: VersionSelectorProps) {
-  // TODO: Remove this once 8.0 has an actual pre-release
-  const versions = {
-    ...originalVersions,
-    preRelease: originalVersions.preRelease.filter(({ version: v }) => v !== 8),
-  };
-
+export function VersionSelector({ framework, version, versions, slug }: VersionSelectorProps) {
   const getVersionLink = ({ label, string }: { label?: string; string: string }) => ({
     label: stylizeVersion({ label, string }),
     link: { url: buildPathWithFramework(slug, framework, string) },
