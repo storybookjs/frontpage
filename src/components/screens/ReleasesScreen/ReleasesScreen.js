@@ -61,14 +61,11 @@ function ReleasesScreen({ data, ...props }) {
       fields: { slug: currentPageSlug },
     },
   } = data;
-  const tocEntries = edges
-    .map(({ node }) => ({
-      path: node.fields.slug,
-      title: node.fields.version,
-      type: 'bullet-link',
-    }))
-    // TODO: Remove this once 8.0 has an actual pre-release
-    .filter(({ title: t }) => t !== '8.0');
+  const tocEntries = edges.map(({ node }) => ({
+    path: node.fields.slug,
+    title: node.fields.version,
+    type: 'bullet-link',
+  }));
 
   return (
     <>
