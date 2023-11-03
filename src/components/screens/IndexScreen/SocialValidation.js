@@ -231,7 +231,7 @@ export function SocialValidation({
         <SocialCard
           inverse
           icon={<ColoredIcon icon="discord" aria-label="Discord" color="#5A65EA" />}
-          description={`Get support and chat with ${discordMemberCount.toLocaleString()}+ frontend developers.`}
+          description={`Chat with ${discordMemberCount.toLocaleString()}+ frontend developers.`}
           link={{
             label: 'Join Discord server',
             href: 'https://discord.gg/storybook',
