@@ -6,13 +6,7 @@ import { pageContext } from '../../layout/DocsLayout.stories';
 
 const { coreFrameworks } = require('../../../content/docs/frameworks');
 
-const { versions: originalVersions } = pageContext;
-
-// TODO: Remove this once 8.0 has an actual pre-release
-const versions = {
-  ...originalVersions,
-  preRelease: [...originalVersions.preRelease, { version: 8, string: '8.0', label: 'future' }],
-};
+const { versions } = pageContext;
 
 // The Wrapper helps capture the tooltip contents in the snapshot
 const Wrapper = styled.span`
@@ -64,13 +58,3 @@ NoPreReleases.args = {
   },
 };
 NoPreReleases.play = Base.play;
-
-export const OnlyV8PreRelease = Template.bind({});
-OnlyV8PreRelease.args = {
-  ...Base.args,
-  versions: {
-    ...versions,
-    preRelease: [{ version: 8, string: '8.0', label: 'future' }],
-  },
-};
-OnlyV8PreRelease.play = Base.play;

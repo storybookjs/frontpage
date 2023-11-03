@@ -137,27 +137,22 @@ exports.createPages = ({ actions, graphql }) => {
             // Data passed to context is available in page queries as GraphQL variables.
             const context = { pageType, slug, version: releaseVersion };
 
-            // TODO: Remove this condition once 8.0 has an actual pre-release
-            if (releaseVersion !== '8.0') {
-              createPage({
-                path: slug,
-                component: path.resolve(
-                  `./src/components/screens/ReleasesScreen/ReleasesScreen.js`
-                ),
-                context,
-              });
+            createPage({
+              path: slug,
+              component: path.resolve(`./src/components/screens/ReleasesScreen/ReleasesScreen.js`),
+              context,
+            });
 
-              createPage({
-                path: iframeSlug,
-                component: path.resolve(
-                  `./src/components/screens/ReleasesScreen/IframeReleasesScreen.js`
-                ),
-                context: {
-                  ...context,
-                  layout: 'iframe',
-                },
-              });
-            }
+            createPage({
+              path: iframeSlug,
+              component: path.resolve(
+                `./src/components/screens/ReleasesScreen/IframeReleasesScreen.js`
+              ),
+              context: {
+                ...context,
+                layout: 'iframe',
+              },
+            });
           });
 
           frameworks = [...coreFrameworks, ...communityFrameworks];

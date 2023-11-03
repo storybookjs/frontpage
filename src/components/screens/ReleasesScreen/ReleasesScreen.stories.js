@@ -26,10 +26,6 @@ const data = {
       {
         node: buildRelease('1.0'),
       },
-      // TODO: Remove this once 8.0 has an actual pre-release
-      {
-        node: buildRelease('8.0'),
-      },
     ],
   },
   currentPage,
