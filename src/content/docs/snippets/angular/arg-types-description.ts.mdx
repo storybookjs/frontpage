@@ -1,0 +1,18 @@
+```ts
+// Example.stories.ts
+
+import type { Meta } from '@storybook/angular';
+
+import { Example } from './Example';
+
+const meta: Meta<Example> = {
+  component: Example,
+  argTypes: {
+    value: {
+      description: 'The value of the slider',
+    },
+  },
+};
+
+export default meta;
+```

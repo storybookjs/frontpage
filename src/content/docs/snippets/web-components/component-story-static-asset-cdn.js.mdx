@@ -1,0 +1,16 @@
+```js
+// MyComponent.stories.js
+
+import { html } from 'lit';
+
+export default {
+  component: 'my-component',
+};
+
+export const WithAnImage = {
+  render: () => html`<img
+    src="https://storybook.js.org/images/placeholders/350x150.png"
+    alt="My CDN placeholder"
+  />`,
+};
+```

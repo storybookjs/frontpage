@@ -1,0 +1,18 @@
+```js
+// Button.stories.js|jsx
+
+import { Button } from './Button';
+
+export default {
+  component: Button,
+};
+
+export const Sample = {
+  render: () => ({
+    template: '<button :label=label />',
+    data: {
+      label: 'hello button',
+    },
+  }),
+};
+```

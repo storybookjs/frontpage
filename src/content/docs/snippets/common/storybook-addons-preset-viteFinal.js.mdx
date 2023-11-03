@@ -1,0 +1,13 @@
+```js
+// example-addon/src/vite/viteFinal.js
+
+export function ViteFinal(config, options = {}) {
+  config.plugins.push(
+    new MyCustomPlugin({
+      someOption: true,
+    })
+  );
+
+  return config;
+}
+```

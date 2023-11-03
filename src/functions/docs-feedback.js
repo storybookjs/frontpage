@@ -3,8 +3,6 @@ import dedent from 'dedent';
 import fetch from 'node-fetch';
 
 import siteMetadata from '../../site-metadata';
-// This file is generated at build time, so linting before building fails
-// eslint-disable-next-line import/no-unresolved, import/extensions
 import docsMetadata from '../generated/docs-metadata.json';
 import buildPathWithVersion from '../util/build-path-with-version';
 

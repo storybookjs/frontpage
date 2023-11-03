@@ -1,5 +1,3 @@
-/* eslint-disable import/extensions */
-// ☝️ This doesn't seem to be required locally, but will fail in CI without it
 const { version: versionFull } = require('../generated/versions/current/package.json');
 const { version: latestVersionFull } = require('../generated/versions/latest/package.json');
 

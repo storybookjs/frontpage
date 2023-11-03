@@ -1,0 +1,19 @@
+```js
+// .storybook/preview.js
+
+import { ThemeProvider } from 'solid-styled-components';
+
+const theme = {
+  colors: {
+    primary: 'hotpink',
+  },
+};
+
+export const decorators = [
+  (Story) => (
+    <ThemeProvider theme={theme}>
+      <Story />
+    </ThemeProvider>
+  ),
+];
+```

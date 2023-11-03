@@ -1,0 +1,10 @@
+```ts
+// MyComponent.stories.ts
+
+export const StoryWithLocale = ({ globals: { locale } }) => {
+  const caption = getCaptionForLocale(locale);
+  return {
+    template: `<p>${caption}</p>`,
+  };
+};
+```
