@@ -1,31 +1,26 @@
 import React, { useMemo } from 'react';
-import { styled } from '@storybook/theming';
 import { MDXProvider } from '@mdx-js/react';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
-import {
-  Button,
-  Highlight,
-  Link,
-  ShadowBoxCTA,
-  Subheading,
-  styles,
-} from '@storybook/design-system';
 import { graphql } from 'gatsby';
-import { CodeSnippets } from './CodeSnippets';
-import { rendererSupportsFeature, RendererSupportTable } from './RendererSupportTable';
-import { SocialGraph } from '../../basics';
-import { Callout } from '../../basics/Callout';
-import { Pre } from '../../basics/Pre';
-import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
-import useSiteMetadata from '../../lib/useSiteMetadata';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { Button, Link, ShadowBoxCTA, Subheading, styles } from '@storybook/design-system';
+import { styled } from '@storybook/theming';
+
 import { mdFormatting } from '../../../styles/formatting';
 import buildPathWithVersion from '../../../util/build-path-with-version';
 import relativeToRootLinks from '../../../util/relative-to-root-links';
 import stylizeRenderer from '../../../util/stylize-renderer';
+import { SocialGraph } from '../../basics';
+import { Callout } from '../../basics/Callout';
+import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
+import { Pre } from '../../basics/Pre';
+import useSiteMetadata from '../../lib/useSiteMetadata';
+import { CodeSnippets } from './CodeSnippets';
 import { useDocsContext } from './DocsContext';
+import { If } from './If';
 import { FeatureSnippets } from './FeatureSnippets';
 import { Feedback } from './Feedback';
-import { If } from './If';
+import { rendererSupportsFeature, RendererSupportTable } from './RendererSupportTable';
+import { SubPageTabs } from './SubPageTabs';
 import { YouTubeCallout } from './YouTubeCallout';
 
 const { color, spacing, typography } = styles;
@@ -116,7 +111,17 @@ function DocsScreen({ data, pageContext, location }) {
     urls: { homepageUrl },
     versionString,
   } = useSiteMetadata();
-  const { docsToc, fullPath, slug, tocItem, nextTocItem, isInstallPage } = pageContext;
+  const {
+    docsToc,
+    slugAsPath,
+    fullPath,
+    slug,
+    tocItem,
+    nextTocItem,
+    isInstallPage,
+    tabs,
+    activeTab,
+  } = pageContext;
 
   const {
     codeLanguage: [codeLanguage],
@@ -158,7 +163,7 @@ function DocsScreen({ data, pageContext, location }) {
   }, [renderer]);
 
   const features = featureGroups.flatMap((group) => group.features);
-  const feature = features.find((fs) => `/docs${fs.path}/` === slug);
+  const feature = features.find((fs) => `/docs${fs.path}/` === slugAsPath);
   const unsupported = feature && !rendererSupportsFeature(renderer, feature);
 
   let featureSupportItem;
@@ -209,6 +214,7 @@ function DocsScreen({ data, pageContext, location }) {
       <MDWrapper>
         {/* TODO: Renderer pills */}
         <Title>{isInstallPage ? `${title} for ${stylizeRenderer(renderer)}` : title}</Title>
+        {tabs && <SubPageTabs tabs={tabs} activeTab={activeTab} />}
         {unsupported && (
           <UnsupportedBanner>
             This feature is not supported in {stylizeRenderer(renderer)} yet. Help the open source
@@ -264,7 +270,7 @@ function DocsScreen({ data, pageContext, location }) {
         {tocItem && (
           <Feedback
             key={fullPath}
-            slug={slug}
+            slug={slugAsPath}
             version={versionString}
             renderer={renderer}
             codeLanguage={codeLanguage}

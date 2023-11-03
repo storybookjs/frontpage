@@ -4,6 +4,7 @@ const fetch = require('node-fetch');
 
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
+const DOCS_TABS = require('./src/constants/docs-tabs');
 const { toc: docsToc } = require('./src/content/docs/toc');
 const addStateToToc = require('./src/util/add-state-to-toc');
 const buildPathWithVersion = require('./src/util/build-path-with-version');
@@ -21,6 +22,7 @@ const {
 } = siteMetadata;
 
 const docsPagesSlugs = [];
+const [firstDocsTab, ...restDocsTabs] = DOCS_TABS;
 
 const nextVersionString = versions.preRelease[0]?.string || latestVersionString;
 
@@ -153,13 +155,72 @@ exports.createPages = ({ actions, graphql }) => {
               const { path: docsPagePath, children } = tocItem;
 
               if (docsPagePath) {
-                const docEdge = docsPagesEdgesBySlug[docsPagePath];
+                const tabs = [firstDocsTab.id];
+                let activeTab = firstDocsTab.id;
+
+                // Loop over possible tabs to see which tabs are relevant to this docsPagePath
+                restDocsTabs.forEach(({ id }) => {
+                  /**
+                   * Matches when:
+                   * - docsPagePath matches the current possible tab
+                   */
+                  if (docsPagePath.endsWith(`/${id}`)) {
+                    tabs.push(id);
+                    activeTab = id;
+                  } else {
+                    /**
+                     * Loop over all sibling tocItems to see if any of them match the current
+                     * possible tab
+                     *
+                     * Matches when:
+                     * - docsPagePath = `/a/b/`
+                     * - itemPath     = `/a/b/<current-possible-tab-id>`
+                     */
+                    tocItems.forEach(({ path: itemPath }) => {
+                      if (`${docsPagePath}/${id}` === itemPath) {
+                        tabs.push(id);
+                      } else {
+                        /**
+                         * Loop over the possible tabs again (excepting the current tab) to see if
+                         * the docsPagePath matches any of those "alternative" tabs *and* the
+                         * itemPath matches the current possible tab
+                         *
+                         * Matches when:
+                         * - docsPagePath = `/a/b/<current-alternative-tab-id>`
+                         * - itemPath     = `/a/b/<current-possible-tab-id>`
+                         */
+                        restDocsTabs
+                          .filter((tab) => tab.id !== id)
+                          .forEach((tab) => {
+                            if (
+                              docsPagePath.endsWith(`/${tab.id}`) &&
+                              docsPagePath.replace(`/${tab.id}`, `/${id}`) === itemPath
+                            ) {
+                              tabs.push(id);
+                            }
+                          });
+                      }
+                    });
+                  }
+                });
+
+                const docEdge =
+                  docsPagesEdgesBySlug[docsPagePath] ||
+                  // Translate from path (with /) to slug (with .); slug matches filename
+                  docsPagesEdgesBySlug[docsPagePath.replace(`/${activeTab}`, `.${activeTab}`)];
 
                 if (docEdge) {
                   const { pageType, slug } = docEdge.node.fields;
+
+                  let slugAsPath = slug;
+                  if (activeTab !== firstDocsTab.id) {
+                    // Translate from slug (with .) to path (with /)
+                    slugAsPath = slugAsPath.replace(`.${activeTab}`, `/${activeTab}`);
+                  }
+
                   const nextTocItem = tocItems[index + 1];
 
-                  const fullPath = buildPathWithVersion(slug);
+                  const fullPath = buildPathWithVersion(slugAsPath);
                   createPage({
                     path: fullPath,
                     component: path.resolve(`./src/components/screens/DocsScreen/DocsScreen.tsx`),
@@ -167,6 +228,7 @@ exports.createPages = ({ actions, graphql }) => {
                       pageType,
                       layout: 'docs',
                       slug,
+                      slugAsPath,
                       fullPath,
                       versions,
                       docsToc: addStateToToc(
@@ -178,11 +240,13 @@ exports.createPages = ({ actions, graphql }) => {
                         nextTocItem.type === 'bullet-link' && {
                           nextTocItem,
                         }),
-                      isInstallPage: slug === installDocsPageSlug,
+                      isInstallPage: slugAsPath === installDocsPageSlug,
+                      tabs: tabs.length > 1 ? tabs : null,
+                      activeTab,
                     },
                   });
 
-                  docsPagesSlugs.push(slug);
+                  docsPagesSlugs.push(slugAsPath);
                 } else {
                   // eslint-disable-next-line no-console
                   console.log(`Not creating page for '${docsPagePath}'`);
