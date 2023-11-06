@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { format } from 'date-fns';
+import { rgba } from 'polished';
 import { styled } from '@storybook/theming';
 import { Link as GatsbyLink } from 'gatsby';
 import { MDXProvider } from '@mdx-js/react';
@@ -18,7 +19,7 @@ import {
 import { SubNav, SubNavBreadcrumb, SubNavCTA, SubNavRight } from '@storybook/components-marketing';
 
 import useSiteMetadata from '../../../lib/useSiteMetadata';
-import { SocialGraph, Callout, Pre } from '../../../basics';
+import { SocialGraph, Pre, Callout } from '../../../basics';
 import {
   IntegrationsAside,
   IntegrationsAsideContainer,
@@ -32,7 +33,7 @@ import { generateBreadcrumb } from '../../../../util/generate-breadcrumb';
 import { generateRecipeGithubIssueLink } from './helpers';
 import { CodeSnippets } from './CodeSnippets';
 
-const { color, typography, spacing } = styles;
+const { color, background, typography, spacing } = styles;
 
 const SectionLinksContainer = styled.div`
   margin-bottom: 30px;
@@ -59,7 +60,18 @@ const ReadMe = styled.section`
   min-width: 0;
 `;
 
-const AddonsCallout = styled(Callout)`
+const AddonsCallout = styled.div`
+  padding: ${spacing.padding.medium}px;
+  border-radius: ${spacing.borderRadius.small}px;
+  display: flex;
+  flex-direction: column;
+
+  background: ${background.positive};
+  box-shadow: ${rgba(color.positive, 0.1)} 0 0 0 1px inset;
+
+  && *:last-child {
+    margin-bottom: 0px;
+  }
   margin-bottom: 40px;
 `;
 
@@ -247,7 +259,7 @@ export const RecipesDetailScreen = ({ path, location, pageContext }) => {
             </span>
             {hasAddons && (
               <section>
-                <AddonsCallout variant="positive">
+                <AddonsCallout>
                   <WellTitle id="addon-section">Do it for me automatically</WellTitle>
                   <WellBody>
                     The quickest way to integrate Storybook and {displayName} is to use an addon.
@@ -259,12 +271,13 @@ export const RecipesDetailScreen = ({ path, location, pageContext }) => {
                 </AddonsCallout>
               </section>
             )}
-            <ReadMeContent id="recipe-content-body">
+            <ReadMeContent id="recipe-section">
               <MDXProvider
                 components={{
                   pre: Pre,
                   RecipeHeader,
                   CodeSnippets,
+                  Callout,
                 }}
               >
                 <StyledHighlight withHTMLChildren={false}>

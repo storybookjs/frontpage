@@ -1,4 +1,4 @@
-<div class="aside aside__no-top">
+<Callout variant="neutral" icon="ℹ️" title="Prerequisites">
 
 This recipe assumes that you are using Storybook >=7.0 using the [getting started guide](/docs/react/get-started/install). Don’t have this? Then run:
 
@@ -7,28 +7,9 @@ This recipe assumes that you are using Storybook >=7.0 using the [getting starte
 npx storybook@latest init
 ```
 
-</div>
+</Callout>
 
-<RecipeHeader>
-
-How to setup Bootstrap and Storybook
-
-</RecipeHeader>
-
-Bootstrap is a popular library for quickly building UI with ready-made CSS classes, while Storybook is a tool for creating and testing UI components in isolation. This post will show you how to integrate these two tools to create a powerful and flexible development environment for building user interfaces with Bootstrap.
-
-This post will explain how to:
-
-1. 🔌 Setup Bootstrap in Storybook using CSS or Sass
-2. 🎨 Switch betweens themes in a click
-
-If you’d like to see the example code of this recipe, check out the [example repository](https://github.com/Integrayshaun/bootstrap-storybook-example) on GitHub. Let's get started!
-
-![Completed styled-components example with theme switcher](https://raw.githubusercontent.com/Integrayshaun/bootstrap-storybook-example/main/.storybook/demo-recording.gif)
-
-## How to setup `Bootstrap`
-
-### CSS
+## 1. Import `Bootstrap`
 
 Import the Bootstrap files in your `.storybook/preview.js` file.
 
@@ -53,19 +34,13 @@ export const parameters = {
 };
 ```
 
-### Sass
+<Callout variant="info" icon="💡" title="Using Sass?">
 
-If you're using Sass in a Webpack based Storybook (Other than Next or Angular), you'll need to install the [`@storybook/addon-styling-webpack`](https://storybook.js.org/addons/@storybook/addon-styling-webpack) addon.
+Check out our [Sass recipe](/docs/react/recipes/sass) for instructions on how to configure Storybook to work with Sass.
 
-Run the following script to install and register the addon:
+</Callout>
 
-```shell
-npx storybook@latest add @storybook/addon-styling-webpack
-```
-
-This will run a configuration script that will walk you through setting up the addon. If prompted, select `Sass` in the configuration options.
-
-## Add a theme switcher
+## 2. Add a theme switcher
 
 Bootstrap now ships with a dark mode that you can activate by adding a `[data-bs-theme]` data attribute to a parent element.
 
@@ -76,6 +51,11 @@ Run the following script to install and register the addon:
 ```shell
 npx storybook@latest add @storybook/addon-themes
 ```
+
+<details>
+  <summary>Did the configuration script fail?</summary>
+  <p>Under the hood, this runs <code>npx @storybook/auto-config themes</code> which should read your project and try to configure your Storybook with the correct decorator. If running that command directly does not solve your problem, please file a bug on the <a href="https://github.com/storybookjs/auto-config/issues/new?assignees=&labels=bug&projects=&template=bug_report.md&title=%5BBug%5D" target="_blank">@storybook/auto-config</a> repository for that we can make this good as can be. To manually add this addon, install it then add it to the addons array in your <code>.storybook/main.ts</code>.</p>
+</details>
 
 Then, to enable switching between these modes in a click for your stories, use our `withThemeByDataAttribute` decorator by adding the following code to your `.storybook/preview.js` file.
 

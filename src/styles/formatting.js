@@ -274,7 +274,8 @@ export const mdFormatting = css`
 
   code {
     font-size: 87.5%;
-    color: inherit;
+    color: ${color.darkest};
+    white-space: pre;
   }
 
   pre {
@@ -284,6 +285,7 @@ export const mdFormatting = css`
 
     padding: 1em;
     font-size: inherit;
+    color: ${color.darkest};
 
     code {
       padding: 0;

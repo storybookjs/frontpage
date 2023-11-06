@@ -1,24 +1,15 @@
-<div class="aside aside__no-top">
+<Callout variant="neutral" icon="ℹ️" title="Prerequisites">
 
-This recipe assumes that you are using Vue 3 and Storybook >= 7.x. If you haven't upgraded yet, run the following command:
+This recipe assumes that you have a Vue 3 app using Pinia and have just set up **Storybook >=7.0** using the [getting started guide](/docs/vue/get-started/install). Don’t have this? Follow Pinia's [setup instructions](https://pinia.vuejs.org/getting-started.html) then run:
 
 ```shell
-npx storybook@latest upgrade
+# Add Storybook:
+npx storybook@latest init
 ```
 
-</div>
+</Callout>
 
-<RecipeHeader>
-
-How to setup Pinia and Storybook
-
-</RecipeHeader>
-
-Pinia is the recommended standard for state management in Vue. It gives you a lightweight and type-safe way to handle global state for your applications. This recipe will show you how to integrate [Pinia](https://pinia.vuejs.org/) into Storybook so that you can test your state connected components.
-
-If you want to look at a full example, look at this [awesome repo](https://github.com/chakAs3/vue3-pinia-storybook/tree/main) built by [Chakir Qatab (ChakAs3)](https://github.com/chakAs3).
-
-## Initialize Pinia
+## 1. Initialize Pinia
 
 Inside of `.storybook/preview.ts`, import and initialize Pinia.
 
@@ -47,7 +38,7 @@ const preview: Preview = {
 };
 ```
 
-## Register Pinia
+## 2. Register Pinia
 
 Import Storybook's setup function that lets you register tools with Storybook's Vue app instance.
 
@@ -79,6 +70,12 @@ const preview: Preview = {
   },
 };
 ```
+
+<Callout variant="info" icon="💡" title="Need an example?">
+
+If you want to look at a full example, look at this [awesome repo](https://github.com/chakAs3/vue3-pinia-storybook/tree/main) built by [Chakir Qatab (ChakAs3)](https://github.com/chakAs3).
+
+</Callout>
 
 ## Get involved
 

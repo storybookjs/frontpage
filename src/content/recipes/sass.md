@@ -1,23 +1,26 @@
-<div class="aside aside__no-top">
+<Callout variant="neutral" icon="ℹ️" title="Prerequisites">
 
-Some configurations of Storybook already come pre-configured to support Sass. If your project meets the following, you're likely ready to go.
+This recipe assumes that you have an app using Sass and have just set up **Storybook >=7.0** using the [getting started guide](/docs/react/get-started/install). Don’t have this? Then run:
 
-1. Storybook >= 7.x with the `vite` builder.
-2. Storybook >= 7.x with the `@storybook/nextjs` framework.
-3. Storybook >= 6.x with the `@storybook/preset-create-react-app` and `react-scripts@2.x.x` or higher.
-4. Storybook >= 6.x with the `@storybook/angular` framework. Inject your global stylesheets into Storybook through your `angular.json` file.
+```shell
+# Add Storybook:
+npx storybook@latest init
+```
 
-</div>
+</Callout>
 
-<RecipeHeader>
+## 1. Add `@storybook/addon-styling-webpack`
 
-How to setup Sass and Storybook
+<Callout variant="neutral" icon="ℹ️" title="Heads up!" style={{ marginBottom: '10px' }}>
 
-</RecipeHeader>
+Some Storybook configurations are pre-configured to support Sass. If your project meets any of the following criteria, you can skip to the [next step](#2-import-global-styles).
 
-Sass is a popular CSS preprocessor that allows developers to write more maintainable and reusable stylesheets. Storybook is an industry-standard tool for developing and testing UI components in isolation. With the help of the `@storybook/addon-styling-webpack` package, developers can easily incorporate Sass stylesheets into their Storybook components.
+- Storybook >= 7.x with the `vite` builder.
+- Storybook >= 7.x with the `@storybook/nextjs` framework.
+- Storybook >= 7.x with the `@storybook/preset-create-react-app` and `react-scripts@2.x.x` or higher.
+- Storybook >= 7.x with the `@storybook/angular` framework
 
-## Adding `@storybook/addon-styling-webpack`
+</Callout>
 
 Run the following script to install and register the addon:
 
@@ -27,13 +30,35 @@ npx storybook@latest add @storybook/addon-styling-webpack
 
 This will run a configuration script that will walk you through setting up the addon. When prompted, select `Sass` from the configuration options.
 
-## Import global styles
+<details>
+  <summary>Did the configuration script fail?</summary>
+  <p>Under the hood, this command runs <code>npx @storybook/auto-config styling</code>, which is responsible for reading your project and attempting to configure your Storybook Webpack for your desired tools. If running that command directly does not resolve your issue, please consider filing a bug report on the <a href="https://github.com/storybookjs/auto-config/issues/new?assignees=&labels=bug&projects=&template=bug_report.md&title=%5BBug%5D" target="_blank">@storybook/auto-config</a> repository so that we can further improve it. For manual configuration instructions for Sass, you can refer to the documentation <a href="https://github.com/storybookjs/addon-styling-webpack" target="_blank">here</a>.</p>
+</details>
+
+## 2. Import global styles
 
 If you have any global styles you would like to expose for your stories, you can now import them into your `preview.js` file:
 
 ```js
 // .storybook/preview.js
 import '../src/index.scss';
+```
+
+### 2.1. Angular
+
+If you are using Angular, you will need to add your global scss file(s) to your `angular.json` file instead. This will make sure your styles are processed by Angular's Webpack and injected into the preview iframe where your stories are rendered.
+
+```json
+// angular.json
+{
+ "storybook": {
+    "builder": "@storybook/angular:start-storybook",
+    "options": {
+      "browserTarget": "my-default-project:build",
+      "styles": ["src/index.scss"]
+    }
+  } 
+}
 ```
 
 ## Get involved

@@ -1,24 +1,15 @@
-<div class="aside aside__no-top">
+<Callout variant="neutral" icon="ℹ️" title="Prerequisites">
 
-This recipe assumes that you already have a React app using the `@mui/material` package set up with Storybook 7.0 or newer. If you don’t have a project ready, check out this [Stackblitz](https://stackblitz.com/edit/github-ju9knk?file=src/stories/Button.tsx) to follow along.
+This recipe assumes that you already have a React app using `@mui/material` and have just set up **Storybook >= 7.0** using the [getting started guide](/docs/react/get-started/install). Don't have this? Follow MUI's [setup instructions](https://mui.com/material-ui/getting-started/installation/) then run:
 
-</div>
+```shell
+# Add Storybook:
+npx storybook@latest init
+```
 
-<RecipeHeader>
+</Callout>
 
-How to setup Material UI and Storybook
-
-</RecipeHeader>
-
-Material UI offers a set of themeable components that devs can use to start building UIs right away. It’s based on Material Design language from Google.
-
-Storybook is a frontend workbench for building UIs in isolation. By combining Storybook and Material UI, you can build UIs faster without all the grunt work. This recipe shows you how to configure Storybook to load Material UI components and dynamically interact with their API.
-
-- 📦 Bundle your fonts for fast and consistent rendering
-- 🎨 Load your custom theme and add a theme switcher
-- ♻️ Reuse Material UI types to auto-generate story controls
-
-## Install `@storybook/addon-themes`
+## 1. Add `@storybook/addon-themes`
 
 To get started, you'll need to install [`@storybook/addon-themes`](https://storybook.js.org/addons/@storybook/addon-themes).
 
@@ -28,7 +19,12 @@ Run the following script to install and register the addon:
 npx storybook@latest add @storybook/addon-themes
 ```
 
-### Bundle fonts and icons for better perf
+<details>
+  <summary>Did the configuration script fail?</summary>
+  <p>Under the hood, this runs <code>npx @storybook/auto-config themes</code>, which should read your project and try to configure your Storybook with the correct decorator. If running that command directly does not solve your problem, please file a bug on the <a href="https://github.com/storybookjs/auto-config/issues/new?assignees=&labels=bug&projects=&template=bug_report.md&title=%5BBug%5D" target="_blank">@storybook/auto-config</a> repository so that we can further improve it. To manually add this addon, install it, and then add it to the addons array in your <code>.storybook/main.ts</code>.</p>
+</details>
+
+### 2. Bundle fonts and icons for better perf
 
 Material UI depends on two fonts to render as intended, Google’s [`Roboto`](https://fonts.google.com/specimen/Roboto) and [`Material Icons`](https://fonts.google.com/icons?query=Christian+Robertson&icon.style=Outlined&icon.set=Material+Icons). While you can load these fonts directly from the Google Fonts CDN, bundling fonts with Storybook is better for performance.
 
@@ -42,7 +38,7 @@ To get started, install the fonts as dependencies.
 yarn add @fontsource/roboto @fontsource/material-icons
 ```
 
-Then import the CSS files into `.storybook/preview.js`, the entrypoint of your Storybook.
+Then import the CSS files into `.storybook/preview.js`, the entry point of your Storybook.
 
 ```javascript
 // .storybook/preview.js
@@ -54,50 +50,10 @@ import '@fontsource/roboto/700.css';
 import '@fontsource/material-icons';
 ```
 
-### Load custom themes and add a theme switcher
+### 3. Load your theme(s) and global CSS
 
-Material UI comes with a default theme out of the box, but you can also create and provide your own themes. Given the popularity of dark mode, you'll likely end with more than one custom theme. Let's look at how you can load custom themes and switch between them with just a click.
+Inside of `.storybook/preview.js`, import `<CssBaseline />`, `<ThemeProvider />`, and your theme(s), then apply them to your stories with the [`withThemeFromJSXProvider`](https://github.com/storybookjs/storybook/blob/next/code/addons/themes/docs/api.md#withthemefromjsxprovider) decorator by adding it to the `decorators` array.
 
-![Switching between light and dark mode using a theme switcher in the Storybook toolbar](https://lh3.googleusercontent.com/iqsY5lIKADg0xiIxGe7a9qS40R_HP-yNi50PGqO5VuPKVTFoio98LRdM8VvIE40kENxw6nHpu9P5DqkUQNLRJDtGCg9aw-hf4hW8dCtnRdqgxjCLJHOol-04dKjN-cEi-7pBzgy-s8Z8X_ojXMLGXdy04CsttlQevGeAiu6nyGHxzb7VW9FsTnmYQw)
-
-For example, take these custom light and dark mode themes.
-
-```js
-// src/themes.js
-
-import { createTheme } from '@mui/material';
-import { blueGrey, cyan, pink } from '@mui/material/colors';
-
-export const lightTheme = createTheme({
-  palette: {
-    mode: 'light',
-    primary: {
-      main: cyan['A200'],
-    },
-    secondary: {
-      main: pink['A400'],
-    },
-  },
-});
-
-export const darkTheme = createTheme({
-  palette: {
-    mode: 'dark',
-    primary: {
-      main: pink['A200'],
-    },
-    secondary: {
-      main: cyan['A400'],
-    },
-    background: {
-      default: blueGrey['800'],
-      paper: blueGrey['700'],
-    },
-  },
-});
-```
-
-Then apply the custom themes to our stories. We’ll need to wrap them in Material UI’s `ThemeProvider` using the `withThemeFromJSXProvider` decorator.
 
 ```js
 // .storybook/preview.js
@@ -119,13 +75,18 @@ export const decorators = [
 })];
 ```
 
-Awesome! Now when Storybook is reloaded, you'll see that our `withThemeFromJSXProvider` decorator is providing our custom light theme by default.
+<Callout variant="neutral" icon="ℹ️">
 
-## Use Material UI prop types for better controls and docs
+When you provide more than one theme, a toolbar menu will appear in the Storybook UI to select your desired theme for your stories.
+
+</Callout>
+
+
+## 4. Use Material UI prop types for better controls and docs
 
 Storybook controls give you graphical controls to manipulate a component’s props. They’re handy for finding edge cases of a component and prototyping in the browser.
 
-Usually, you have to manually configure controls. But if you’re using Typescript, you can reuse Material UI’s component prop types to auto generate story controls. As a bonus, this will also automatically populate the prop table in your documentation tab.
+Usually, you have to manually configure controls. But if you’re using Typescript, you can reuse Material UI’s component prop types to auto-generate story controls. As a bonus, this will also automatically populate the prop table in your documentation tab.
 
 ![Changing the button components props using Storybook controls](https://storybookblog.ghost.io/content/images/2022/10/2022-10-04-15.48.29.gif)
 

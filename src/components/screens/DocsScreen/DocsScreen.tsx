@@ -14,6 +14,7 @@ import { graphql } from 'gatsby';
 import { CodeSnippets } from './CodeSnippets';
 import { frameworkSupportsFeature, FrameworkSupportTable } from './FrameworkSupportTable';
 import { SocialGraph } from '../../basics';
+import { Callout } from '../../basics/Callout';
 import { Pre } from '../../basics/Pre';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import useSiteMetadata from '../../lib/useSiteMetadata';
@@ -34,14 +35,6 @@ const Title = styled.h1``;
 const MDWrapper = styled.main`
   ${mdFormatting}
   flex: 1;
-`;
-
-const StyledHighlight = styled(Highlight)`
-  -webkit-text-size-adjust: none;
-
-  > * > *:last-child {
-    margin-bottom: 0;
-  }
 `;
 
 const NextSubheading = styled(Subheading)`
@@ -235,11 +228,10 @@ function DocsScreen({ data, pageContext, location }) {
             IfRenderer: IfRendererWithCurrentFramework,
             YouTubeCallout,
             a: LinksWithPrefix,
+            Callout,
           }}
         >
-          <StyledHighlight withHTMLChildren={false}>
-            <MDXRenderer>{body}</MDXRenderer>
-          </StyledHighlight>
+          <MDXRenderer>{body}</MDXRenderer>
         </MDXProvider>
       </MDWrapper>
 
