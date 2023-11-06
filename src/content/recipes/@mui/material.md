@@ -1,6 +1,11 @@
 <Callout variant="neutral" icon="ℹ️" title="Prerequisites">
 
-This recipe assumes that you already have a React app using the `@mui/material` package set up with Storybook 7.0 or newer. If you don’t have a project ready, check out this [Stackblitz](https://stackblitz.com/edit/github-ju9knk?file=src/stories/Button.tsx) to follow along.
+This recipe assumes that you already have a React app using `@mui/material` and have just set up **Storybook >= 7.0** using the [getting started guide](/docs/react/get-started/install). Don't have this? Follow MUI's [setup instructions](https://mui.com/material-ui/getting-started/installation/) then run:
+
+```shell
+# Add Storybook:
+npx storybook@latest init
+```
 
 </Callout>
 

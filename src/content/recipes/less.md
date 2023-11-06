@@ -1,8 +1,9 @@
 <Callout variant="neutral" icon="ℹ️" title="Prerequisites">
 
-This recipe assumes that you are using Storybook >= 7.0. If you haven't set up Storybook yet, run the following command in the root of your project:
+This recipe assumes that you have an app using Less and have just set up **Storybook >=7.0** using the [getting started guide](/docs/react/get-started/install). Don’t have this? Then run:
 
 ```shell
+# Add Storybook:
 npx storybook@latest init
 ```
 

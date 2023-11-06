@@ -1,3 +1,14 @@
+<Callout variant="neutral" icon="ℹ️" title="Prerequisites">
+
+This recipe assumes that you have an app using Sass and have just set up **Storybook >=7.0** using the [getting started guide](/docs/react/get-started/install). Don’t have this? Then run:
+
+```shell
+# Add Storybook:
+npx storybook@latest init
+```
+
+</Callout>
+
 ## 1. Add `@storybook/addon-styling-webpack`
 
 <Callout variant="neutral" icon="ℹ️" title="Heads up!" style={{ marginBottom: '10px' }}>

@@ -1,9 +1,10 @@
 <Callout variant="neutral" icon="ℹ️" title="Prerequisites">
 
-This recipe assumes that you are using Vue 3 and Storybook >= 7.x. If you haven't upgraded yet, run the following command:
+This recipe assumes that you have a Vue 3 app using Pinia and have just set up **Storybook >=7.0** using the [getting started guide](/docs/vue/get-started/install). Don’t have this? Follow Pinia's [setup instructions](https://pinia.vuejs.org/getting-started.html) then run:
 
 ```shell
-npx storybook@latest upgrade
+# Add Storybook:
+npx storybook@latest init
 ```
 
 </Callout>

@@ -1,8 +1,9 @@
 <Callout variant="neutral" icon="ℹ️" title="Prerequisites">
 
-This recipe assumes that you are using Storybook >= 7.0. If you haven't set up Storybook yet, run the following command in the root of your project:
+This recipe assumes that you already have an app using Vanilla-extract and have just set up **Storybook >= 7.0** using the [getting started guide](/docs/react/get-started/install). Don't have this? Follow Vanilla-extract's [setup instructions](https://vanilla-extract.style/documentation/getting-started) then run:
 
 ```shell
+# Add Storybook:
 npx storybook@latest init
 ```
 

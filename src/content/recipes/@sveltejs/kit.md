@@ -1,6 +1,11 @@
-<Callout variant="neutral" icon="ℹ️" title="Prerequisites" style={{ marginBottom: '10px' }}>
+<Callout variant="neutral" icon="ℹ️" title="Prerequisites">
 
-This recipe assumes that you are using SvelteKit >= 1.0 as well as Storybook >= 7.0
+This recipe assumes that you already have a **SvelteKit >= 1.0** app and have just set up **Storybook >= 7.0** using the [getting started guide](/docs/svelte/get-started/install). Don't have this? Follow Sveltekit's [setup instructions](https://kit.svelte.dev/docs/creating-a-project) then run:
+
+```shell
+# Add Storybook:
+npx storybook@latest init
+```
 
 </Callout>
 

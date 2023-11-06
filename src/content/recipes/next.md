@@ -1,6 +1,11 @@
 <Callout variant="neutral" icon="ℹ️" title="Prerequisites">
 
-This recipe assumes that you are using Next.js >= 12.x as well as Storybook >= 7.x
+This recipe assumes that you have a Next >= 12 app. Don’t have this? Follow Next's [setup instructions](https://nextjs.org/docs/getting-started/installation) then run:
+
+```shell
+# Add Storybook:
+npx storybook@latest init
+```
 
 </Callout>
 
