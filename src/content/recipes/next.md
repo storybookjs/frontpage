@@ -4,7 +4,7 @@ This recipe assumes that you are using Next.js >= 12.x as well as Storybook >= 7
 
 </Callout>
 
-## Setup your project
+## Set up your project
 
 
 ### In a project without Storybook

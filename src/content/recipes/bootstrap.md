@@ -54,7 +54,7 @@ npx storybook@latest add @storybook/addon-themes
 
 <details>
   <summary>Did the configuration script fail?</summary>
-  <p>Under the hood, this runs <code>npx @storybook/auto-config themes</code> which should read your project and try to configure your Storybook with the correct decorator. If running that command directly does not solve your problem, please file a bug on the <a href="https://github.com/storybookjs/auto-config/issues/new?assignees=&labels=bug&projects=&template=bug_report.md&title=%5BBug%5D" target="_blank">@storybook/auto-config</a> repository for that we can make this good as can be. To manually add this addon, install it then add it to the addons array in your `.storybook/main.ts`</p>
+  <p>Under the hood, this runs <code>npx @storybook/auto-config themes</code> which should read your project and try to configure your Storybook with the correct decorator. If running that command directly does not solve your problem, please file a bug on the <a href="https://github.com/storybookjs/auto-config/issues/new?assignees=&labels=bug&projects=&template=bug_report.md&title=%5BBug%5D" target="_blank">@storybook/auto-config</a> repository for that we can make this good as can be. To manually add this addon, install it then add it to the addons array in your <code>.storybook/main.ts</code>.</p>
 </details>
 
 Then, to enable switching between these modes in a click for your stories, use our `withThemeByDataAttribute` decorator by adding the following code to your `.storybook/preview.js` file.

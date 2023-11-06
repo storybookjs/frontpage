@@ -33,7 +33,7 @@ To get started, install the fonts as dependencies.
 yarn add @fontsource/roboto @fontsource/material-icons
 ```
 
-Then import the CSS files into `.storybook/preview.js, the entry point of your Storybook.
+Then import the CSS files into `.storybook/preview.js`, the entry point of your Storybook.
 
 ```javascript
 // .storybook/preview.js
