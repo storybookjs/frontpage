@@ -30,11 +30,12 @@ Here `registerPlugins` loads Vuetify’s fonts and registers all of its componen
 
 ## 2. Create a story wrapper component
 
-Next you will need to wrap your stories in Vuetify's `v-app` component in order to use some of it's larger layout components like `v-app-bar`.
+Next, you will need to wrap your stories in Vuetify's `v-app` component in order to use some of its larger layout components like `v-app-bar`.
 
 To do this, create a component in `.storybook/` called `StoryWrapper.vue`
 
 ```vue
+<!-- .storybook/StoryWrapper.vue -->
 <template>
   <v-app>
     <v-main>
