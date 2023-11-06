@@ -14,7 +14,7 @@ npx storybook@latest init
 Import the Bootstrap files in your `.storybook/preview.js` file.
 
 ```js
-// .storybook/preview.jsx
+// .storybook/preview.js
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Only import this if you want to use Bootstrap's

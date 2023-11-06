@@ -37,7 +37,7 @@ This will run a configuration script that will walk you through setting up the a
 If you have any global styles you would like to expose for your stories, you can now import them into your `preview.js` file:
 
 ```js
-// .storybook/preview.jsx
+// .storybook/preview.js
 import '../src/index.less';
 ```
 
