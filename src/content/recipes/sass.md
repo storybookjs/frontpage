@@ -2,12 +2,12 @@
 
 <Callout variant="neutral" icon="ℹ️" title="Heads up!" style={{ marginBottom: '10px' }}>
 
-Some configurations of Storybook already come pre-configured to support Sass. If your project meets the following, then you can skip to the [next step](#2-import-global-styles).
+Some Storybook configurations are pre-configured to support Sass. If your project meets any of the following criteria, you can skip to the [next step](#2-import-global-styles).
 
 - Storybook >= 7.x with the `vite` builder.
 - Storybook >= 7.x with the `@storybook/nextjs` framework.
 - Storybook >= 7.x with the `@storybook/preset-create-react-app` and `react-scripts@2.x.x` or higher.
-- Storybook >= 7.x with the `@storybook/angular` framework.
+- Storybook >= 7.x with the `@storybook/angular` framework
 
 </Callout>
 
@@ -21,7 +21,7 @@ This will run a configuration script that will walk you through setting up the a
 
 <details>
   <summary>Did the configuration script fail?</summary>
-  <p>Under the hood, this runs <code>npx @storybook/auto-config styling</code> which should read your project and try to configure your Storybook Webpack for your desired tools. If running that command directly does not solve your problem, please file a bug on the <a href="https://github.com/storybookjs/auto-config/issues/new?assignees=&labels=bug&projects=&template=bug_report.md&title=%5BBug%5D" target="_blank">@storybook/auto-config</a> repository for that we can make this good as can be. You can find manual configuration instruction for Sass <a href="https://github.com/storybookjs/addon-styling-webpack" target="_blank">here</a>.</p>
+  <p>Under the hood, this command runs <code>npx @storybook/auto-config styling</code>, which is responsible for reading your project and attempting to configure your Storybook Webpack for your desired tools. If running that command directly does not resolve your issue, please consider filing a bug report on the <a href="https://github.com/storybookjs/auto-config/issues/new?assignees=&labels=bug&projects=&template=bug_report.md&title=%5BBug%5D" target="_blank">@storybook/auto-config</a> repository so that we can further improve it. For manual configuration instructions for Sass, you can refer to the documentation <a href="https://github.com/storybookjs/addon-styling-webpack" target="_blank">here</a>.</p>
 </details>
 
 ## 2. Import global styles

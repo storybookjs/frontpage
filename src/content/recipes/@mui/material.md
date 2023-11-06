@@ -16,7 +16,7 @@ npx storybook@latest add @storybook/addon-themes
 
 <details>
   <summary>Did the configuration script fail?</summary>
-  <p>Under the hood, this runs <code>npx @storybook/auto-config themes</code> which should read your project and try to configure your Storybook with the correct decorator. If running that command directly does not solve your problem, please file a bug on the <a href="https://github.com/storybookjs/auto-config/issues/new?assignees=&labels=bug&projects=&template=bug_report.md&title=%5BBug%5D" target="_blank">@storybook/auto-config</a> repository for that we can make this good as can be. To manually add this addon, install it then add it to the addons array in your <code>.storybook/main.ts</code></p>
+  <p>Under the hood, this runs <code>npx @storybook/auto-config themes</code>, which should read your project and try to configure your Storybook with the correct decorator. If running that command directly does not solve your problem, please file a bug on the <a href="https://github.com/storybookjs/auto-config/issues/new?assignees=&labels=bug&projects=&template=bug_report.md&title=%5BBug%5D" target="_blank">@storybook/auto-config</a> repository so that we can make this as good as possible. To manually add this addon, install it, and then add it to the addons array in your <code>.storybook/main.ts</code>.</p>
 </details>
 
 ### 2. Bundle fonts and icons for better perf
@@ -33,7 +33,7 @@ To get started, install the fonts as dependencies.
 yarn add @fontsource/roboto @fontsource/material-icons
 ```
 
-Then import the CSS files into `.storybook/preview.js`, the entrypoint of your Storybook.
+Then import the CSS files into `.storybook/preview.js, the entry point of your Storybook.
 
 ```javascript
 // .storybook/preview.js
@@ -81,7 +81,7 @@ When you provide more than one theme, a toolbar menu will appear in the Storyboo
 
 Storybook controls give you graphical controls to manipulate a component’s props. They’re handy for finding edge cases of a component and prototyping in the browser.
 
-Usually, you have to manually configure controls. But if you’re using Typescript, you can reuse Material UI’s component prop types to auto generate story controls. As a bonus, this will also automatically populate the prop table in your documentation tab.
+Usually, you have to manually configure controls. But if you’re using Typescript, you can reuse Material UI’s component prop types to auto-generate story controls. As a bonus, this will also automatically populate the prop table in your documentation tab.
 
 ![Changing the button components props using Storybook controls](https://storybookblog.ghost.io/content/images/2022/10/2022-10-04-15.48.29.gif)
 

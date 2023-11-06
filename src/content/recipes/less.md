@@ -28,7 +28,7 @@ This will run a configuration script that will walk you through setting up the a
 
 <details>
   <summary>Did the configuration script fail?</summary>
-  <p>Under the hood, this runs <code>npx @storybook/auto-config styling</code> which should read your project and try to configure your Storybook Webpack for your desired tools. If running that command directly does not solve your problem, please file a bug on the <a href="https://github.com/storybookjs/auto-config/issues/new?assignees=&labels=bug&projects=&template=bug_report.md&title=%5BBug%5D" target="_blank">@storybook/auto-config</a> repository for that we can make this good as can be. You can find manual configuration instruction for Less <a href="https://github.com/storybookjs/addon-styling-webpack" target="_blank">here</a>.</p>
+  <p>Under the hood, this command runs <code>npx @storybook/auto-config styling</code>, which is responsible for reading your project and attempting to configure your Storybook Webpack for your desired tools. If running that command directly does not resolve your issue, please consider filing a bug report on the <a href="https://github.com/storybookjs/auto-config/issues/new?assignees=&labels=bug&projects=&template=bug_report.md&title=%5BBug%5D" target="_blank">@storybook/auto-config</a> repository so that we can further improve it. For manual configuration instructions for Less, you can refer to the documentation <a href="https://github.com/storybookjs/addon-styling-webpack" target="_blank">here</a>.</p>
 </details>
 
 ## 2. Import global styles

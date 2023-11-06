@@ -21,12 +21,12 @@ npx storybook@latest add @storybook/addon-themes
 
 <details>
   <summary>Did the configuration script fail?</summary>
-  <p>Under the hood, this runs <code>npx @storybook/auto-config themes</code> which should read your project and try to configure your Storybook with the correct decorator. If running that command directly does not solve your problem, please file a bug on the <a href="https://github.com/storybookjs/auto-config/issues/new?assignees=&labels=bug&projects=&template=bug_report.md&title=%5BBug%5D" target="_blank">@storybook/auto-config</a> repository for that we can make this good as can be. To manually add this addon, install it then add it to the addons array in your <code>.storybook/main.ts</code></p>
+  <p>Under the hood, this runs <code>npx @storybook/auto-config themes</code>, which should read your project and try to configure your Storybook with the correct decorator. If running that command directly does not solve your problem, please file a bug on the <a href="https://github.com/storybookjs/auto-config/issues/new?assignees=&labels=bug&projects=&template=bug_report.md&title=%5BBug%5D" target="_blank">@storybook/auto-config</a> repository so that we can make this as good as possible. To manually add this addon, install it, and then add it to the addons array in your <code>.storybook/main.ts</code>.</p>
 </details>
 
 ## 2. Provide `GlobalStyles`
 
-Inside of `.storybook/preview.js`,create a `GlobalStyles` component which includes a `font-family`. Then apply it to your stories with the [`withThemeFromJSXProvider`](https://github.com/storybookjs/storybook/blob/next/code/addons/themes/docs/api.md#withthemefromjsxprovider) decorator by adding it to the `decorators` array.
+Inside of `.storybook/preview.js`, create a `<GlobalStyles />` component that includes a `font-family`. Then apply it to your stories with the [`withThemeFromJSXProvider` decorator](https://github.com/storybookjs/storybook/blob/next/code/addons/themes/docs/api.md#withthemefromjsxprovider) by adding it to the decorators array.
 
 ```js
 // .storybook/preview.js
