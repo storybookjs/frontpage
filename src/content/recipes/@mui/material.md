@@ -36,7 +36,7 @@ yarn add @fontsource/roboto @fontsource/material-icons
 Then import the CSS files into `.storybook/preview.js`, the entry point of your Storybook.
 
 ```javascript
-// .storybook/preview.js
+// .storybook/preview.jsx
 
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -51,7 +51,7 @@ Inside of `.storybook/preview.js`, import `<CssBaseline />`, `<ThemeProvider />`
 
 
 ```js
-// .storybook/preview.js
+// .storybook/preview.jsx
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { withThemeFromJSXProvider } from '@storybook/addon-themes';
 import { lightTheme, darkTheme } from '../src/themes.js';
@@ -136,7 +136,7 @@ module.exports = {
 We also want to update the parameters in `.storybook/preview.js` to show the description and default columns for the controls table.
 
 ```js
-// .storybook/preview.js
+// .storybook/preview.jsx
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },

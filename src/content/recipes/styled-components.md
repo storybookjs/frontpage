@@ -29,7 +29,7 @@ This will run a configuration script that will walk you through setting up the a
 In `.storybook/preview.js`, create a `<GlobalStyles /`> component that includes a `font-family`. Then apply it to your stories with the [`withThemeFromJSXProvider`](https://github.com/storybookjs/storybook/blob/next/code/addons/themes/docs/api.md#withthemefromjsxprovider) decorator by adding it to the `decorators` array.
 
 ```js
-// .storybook/preview.js
+// .storybook/preview.jsx
 import { withThemeFromJSXProvider } from '@storybook/addon-themes';
 import { createGlobalStyle } from 'styled-components';
 
@@ -57,7 +57,7 @@ If you already have `<GlobalStyles />` in your app, you can import it into `.sto
 To share your theme(s) with the components in Storybook, you'll need to provide them to the `withThemeFromJSXProvider` decorator along with `styled-components` `<ThemeProvider />` component.
 
 ```js
-// .storybook/preview.js
+// .storybook/preview.jsx
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { withThemeFromJSXProvider } from '@storybook/addon-themes';
 

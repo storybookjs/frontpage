@@ -46,7 +46,7 @@ This will run a configuration script that will walk you through setting up the a
 Now you can import the `tailwind.css` file into your `.storybook/preview.js` file. This will make Tailwind’s style classes available to all of your stories.
 
 ```js
-// .storybook/preview.js
+// .storybook/preview.jsx
 
 import '../src/tailwind.css'; // replace with the name of your tailwind css file
 ```
@@ -110,7 +110,7 @@ This will run a configuration script that will walk you through setting up the a
 Add the [`withThemeByClassName`](https://github.com/storybookjs/addon-themes/blob/main/code/addons/themes/docs/api.md#withthemebyclassname) decorator to your Storybook from `@storybook/addon-themes`
 
 ```js
-// .storybook/preview.js
+// .storybook/preview.jsx
 import { withThemeByClassName } from '@storybook/addon-themes';
 
 /* snipped for brevity */
@@ -131,7 +131,7 @@ export const decorators = [
 Add the [`withThemeByDataAttribute`](https://github.com/storybookjs/addon-themes/blob/main/code/addons/themes/docs/api.md#withthemebydataattribute) decorator to your Storybook from `@storybook/addon-themes`
 
 ```js
-// .storybook/preview.js
+// .storybook/preview.jsx
 import { withThemeByDataAttribute } from '@storybook/addon-themes';
 
 /* snipped for brevity */

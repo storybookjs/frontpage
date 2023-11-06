@@ -38,7 +38,7 @@ export default i18n;
 To expose this instance to Storybook, we can import it into the `./.storybook/preview.js` file where Storybook holds its shared story configurations.
 
 ```js
-// .storybook/preview.js
+// .storybook/preview.jsx
 import i18n from '../src/i18n';
 ```
 
@@ -47,7 +47,7 @@ import i18n from '../src/i18n';
 Now that Storybook has access to i18next, we need to share that with our stories. To do that we’re going to make a decorator to wrap our stories in.
 
 ```jsx
-// .storybook/preview.js
+// .storybook/preview.jsx
 import React, { Suspense } from 'react';
 import { I18nextProvider } from 'react-i18next';
 import i18n from '../src/i18n';
@@ -80,7 +80,7 @@ Hardcoding your locale is annoying and won’t be helpful to anyone viewing your
 To do this, we can declare a global variable named `locale` in `.storybook/preview.js` and assign it to a list of supported languages to choose from.
 
 ```js
-// .storybook/preview.js
+// .storybook/preview.jsx
 
 /* Snipped for brevity */
 
@@ -109,7 +109,7 @@ Looking back at Storybook, we can now see that we have a “Locale” switcher a
 Now let’s update our decorator to change our locale when we select a new language.
 
 ```jsx
-// .storybook/preview.js
+// .storybook/preview.jsx
 
 /* Snipped for brevity */
 
@@ -143,7 +143,7 @@ Some languages are not read from left to right like English is. Arabic, for exam
 First of all, let's add Arabic as an option in our locale switcher by adding an object into the items array of our globalTypes.
 
 ```js
-// .storybook/preview.js
+// .storybook/preview.jsx
 
 /* Snipped for brevity */
 
@@ -169,7 +169,7 @@ export const globalTypes = {
 Using i18next’s `dir(lng)` function and `languageChanged` event, we can set the document direction for the selected locale.
 
 ```js
-// .storybook/preview.js
+// .storybook/preview.jsx
 
 /* Snipped for brevity */
 

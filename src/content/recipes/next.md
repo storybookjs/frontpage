@@ -275,7 +275,7 @@ export const Example = {
 Global defaults can be set in [preview.js](https://storybook.js.org/docs/react/configure/overview#configure-story-rendering) and will be shallowly merged with the default router.
 
 ```js
-// .storybook/preview.js
+// .storybook/preview.jsx
 
 export const parameters = {
   nextjs: {
@@ -348,7 +348,7 @@ const defaultRouter = {
 If you override a function, you lose the automatic actions integration and have to build it out yourself.
 
 ```js
-// .storybook/preview.js
+// .storybook/preview.jsx
 
 export const parameters = {
   nextjs: {
@@ -364,7 +364,7 @@ export const parameters = {
 Doing this yourself looks something like this (make sure you install the `@storybook/addon-actions` package):
 
 ```js
-// .storybook/preview.js
+// .storybook/preview.jsx
 import { action } from '@storybook/addon-actions';
 
 export const parameters = {
@@ -414,7 +414,7 @@ export const Example = {
 If your Next.js project uses the `app` directory for every page (in other words, it does not have a `pages` directory), you can set the parameter `nextjs.appDirectory` to `true` in the [preview.js](https://storybook.js.org/docs/react/configure/overview#configure-story-rendering) file to apply it to all stories.
 
 ```js
-// .storybook/preview.js
+// .storybook/preview.jsx
 
 export const parameters = {
   nextjs: {
@@ -459,7 +459,7 @@ export const Example = {
 Global defaults can be set in [preview.js](https://storybook.js.org/docs/react/configure/overview#configure-story-rendering) and will be shallowly merged with the default router.
 
 ```js
-// .storybook/preview.js
+// .storybook/preview.jsx
 
 export const parameters = {
   nextjs: {
@@ -574,7 +574,7 @@ const defaultNavigationContext = {
 If you override a function, you lose the automatic action tab integration and have to build it out yourself.
 
 ```js
-// .storybook/preview.js
+// .storybook/preview.jsx
 
 export const parameters = {
   nextjs: {
@@ -591,7 +591,7 @@ export const parameters = {
 Doing this yourself looks something like this (make sure you install the `@storybook/addon-actions` package):
 
 ```js
-// .storybook/preview.js
+// .storybook/preview.jsx
 import { action } from '@storybook/addon-actions';
 
 export const parameters = {

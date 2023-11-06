@@ -15,7 +15,7 @@ To get started, you'll need to add Vuetify’s fontloader and plugin to your Sto
 To do this, add the following to your `.storybook/preview.js` file:
 
 ```js
-// .storybook/preview.js
+// .storybook/preview.jsx
 
 import { setup } from '@storybook/vue3';
 import { registerPlugins } from '../src/plugins';
@@ -75,7 +75,7 @@ export const withVuetifyTheme = (storyFn, context) => {
 Now, give this decorator to Storybook in your `preview.js` file.
 
 ```js
-// .storybook/preview.js
+// .storybook/preview.jsx
 
 import { setup } from '@storybook/vue3';
 import { registerPlugins } from '../src/plugins';
@@ -98,7 +98,7 @@ Vuetify comes out of the box with a light and dark theme that you can override o
 To add our switcher, declare a [global type](/docs/vue/essentials/toolbars-and-globals) named `theme` in `.storybook/preview.js` and give it a list of supported themes to choose from.
 
 ```js
-// .storybook/preview.js
+// .storybook/preview.jsx
 
 export const globalTypes = {
   theme: {
