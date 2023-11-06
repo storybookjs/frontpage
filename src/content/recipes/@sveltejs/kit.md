@@ -6,7 +6,7 @@ This recipe assumes that you are using SvelteKit >= 1.0 as well as Storybook >= 
 
 ## Feature support
 
-With our package, Storybook automatically mirrors the project settings of both SvelteKit. Here's what you'll get:
+With our package, Storybook automatically mirrors the project settings of SvelteKit. Here's what you'll get:
 
 - 📚 Supports imports that use the special `$lib` alias
 - 👓 Components can read current environment information from `$app/environment`
