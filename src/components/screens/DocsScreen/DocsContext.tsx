@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { useLocalStorage } from 'usehooks-ts';
+
 import { DEFAULT_CODE_LANGUAGE, CODE_LANGUAGES } from '../../../constants/code-languages';
+import { SEARCH_PARAMS_KEYS } from '../../../constants/search-params';
 
 const siteMetadata = require('../../../../site-metadata');
 
@@ -24,6 +26,8 @@ const DocsContext = React.createContext<TDocsContext>({
   codeLanguage: [DEFAULT_CODE_LANGUAGE, () => {}],
   framework: [defaultFramework, () => {}],
 });
+
+const isBrowser = typeof window !== 'undefined';
 
 type DocsContextProviderProps = {
   children: React.ReactNode;
@@ -52,8 +56,17 @@ export function DocsContextProvider({
   );
 
   React.useLayoutEffect(() => {
-    // Coerce framework, e.g. overwrite with value from URL query param
-    if (frameworkProp && frameworkProp !== framework) setFramework(frameworkProp);
+    let forcedFramework = frameworkProp;
+    if (isBrowser) {
+      const url = new URL(window.location.href);
+      forcedFramework = url.searchParams.get(SEARCH_PARAMS_KEYS.RENDERER);
+
+      // Remove search param from URL, to allow selecting a different renderer
+      url.searchParams.delete(SEARCH_PARAMS_KEYS.RENDERER);
+      window.history.replaceState({}, '', url.toString());
+    }
+
+    if (forcedFramework && forcedFramework !== framework) setFramework(forcedFramework);
 
     // Invalid framework in localStorage
     if (!frameworks.includes(framework)) setFramework(defaultFramework);

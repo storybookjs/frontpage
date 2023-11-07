@@ -44,7 +44,7 @@ const frameworkIntegrations = featuredFrameworks.map((framework) => ({
   image: `/frameworks/logo-${
     framework === 'web-components' ? 'web-components-alt' : framework
   }.svg`,
-  href: buildPathWithVersion(installDocsPageSlug),
+  href: `${buildPathWithVersion(installDocsPageSlug)}?renderer=${framework}`,
   ButtonWrapper: GatsbyLinkWrapper,
 }));
 
