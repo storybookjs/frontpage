@@ -3,12 +3,11 @@ import { styled } from '@storybook/theming';
 import { Badge, OutlineCTA, styles } from '@storybook/design-system';
 import { startCase } from 'lodash';
 import GatsbyLink from '../../basics/GatsbyLink';
-import buildPathWithFramework from '../../../util/build-path-with-framework';
+import buildPathWithVersion from '../../../util/build-path-with-version';
 import { Versions } from './VersionSelector';
 
 const { breakpoint } = styles;
 interface VersionCTAProps {
-  framework: string;
   latestVersion: number;
   latestVersionString: string;
   slug: string;
@@ -29,7 +28,6 @@ const StyledOutlineCTA = styled(OutlineCTA)`
   }
 `;
 export function VersionCTA({
-  framework,
   version,
   latestVersion,
   latestVersionString,
@@ -59,7 +57,7 @@ export function VersionCTA({
   return (
     <StyledOutlineCTA
       action={
-        <GatsbyLink to={buildPathWithFramework(slug, framework, latestVersionString)} withArrow>
+        <GatsbyLink to={buildPathWithVersion(slug, latestVersionString)} withArrow>
           View latest docs
         </GatsbyLink>
       }

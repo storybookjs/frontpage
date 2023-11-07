@@ -21,10 +21,11 @@ type LinkWrapperProps = {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
-export function CodeLanguageSelector({ framework }) {
+export function CodeLanguageSelector() {
   // TODO: How to access code language in localStorage
   const {
     codeLanguage: [language, setLanguage],
+    framework: [framework],
   } = useDocsContext();
 
   const [wide] = useMediaQuery(`(min-width: ${breakpoint * 1.5}px)`);

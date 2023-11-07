@@ -5,7 +5,6 @@ const { toc: docsToc } = require('../../content/docs/toc');
 const addStateToToc = require('../../util/add-state-to-toc');
 
 const docsTocWithPaths = addStateToToc(docsToc);
-const docsTocWithPathsAndFramework = addStateToToc(docsToc, '/docs/react');
 
 const versions = {
   stable: [
@@ -21,10 +20,9 @@ const versions = {
 };
 
 export const pageContext = {
-  framework: 'react',
-  docsToc: docsTocWithPathsAndFramework,
+  docsToc: docsTocWithPaths,
   tocItem: { ...docsTocWithPaths[1].children[0], githubUrl: undefined },
-  fullPath: '/docs/react/get-started/install',
+  fullPath: '/docs/get-started/install',
   slug: '/docs/get-started/install',
   versions,
 };
@@ -52,7 +50,6 @@ NonLatestVersion.args = {
 export const Loading = (args) => <PureDocsLayout {...args} />;
 Loading.args = {
   isLoading: true,
-  framework: pageContext.framework,
   slug: pageContext.slug,
   versions,
 };

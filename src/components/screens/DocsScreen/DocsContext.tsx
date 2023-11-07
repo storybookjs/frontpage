@@ -25,7 +25,15 @@ const DocsContext = React.createContext<TDocsContext>({
   framework: [defaultFramework, () => {}],
 });
 
-export function DocsContextProvider({ children, framework }) {
+type DocsContextProviderProps = {
+  children: React.ReactNode;
+  framework?: Framework;
+};
+
+export function DocsContextProvider({
+  children,
+  framework: frameworkProp,
+}: DocsContextProviderProps) {
   const [codeLanguage, setCodeLanguage] = useLocalStorage<CodeLanguage>(
     LS_SELECTED_CODE_LANGUAGE_KEY,
     DEFAULT_CODE_LANGUAGE
@@ -38,22 +46,18 @@ export function DocsContextProvider({ children, framework }) {
     }
   }, [codeLanguage, setCodeLanguage]);
 
-  const [
-    /**
-     * We provide `framework`, which comes from props (which comes from the page
-     * context), and not `lsFramework`, which is from localStorage.
-     * We only use this value to check if it's valid and coerce to the default, if not.
-     */
-    lsFramework,
-    setFramework,
-  ] = useLocalStorage<Framework>(LS_SELECTED_FRAMEWORK_KEY, framework);
+  const [framework, setFramework] = useLocalStorage<Framework>(
+    LS_SELECTED_FRAMEWORK_KEY,
+    defaultFramework
+  );
 
   React.useLayoutEffect(() => {
-    if (!frameworks.includes(lsFramework)) {
-      // Invalid framework in localStorage
-      setFramework(defaultFramework);
-    }
-  }, [lsFramework, setFramework]);
+    // Coerce framework, e.g. overwrite with value from URL query param
+    if (frameworkProp && frameworkProp !== framework) setFramework(frameworkProp);
+
+    // Invalid framework in localStorage
+    if (!frameworks.includes(framework)) setFramework(defaultFramework);
+  }, [framework, frameworkProp, setFramework]);
 
   return (
     <DocsContext.Provider

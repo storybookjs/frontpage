@@ -16,7 +16,7 @@ import { Stat } from '../../basics/Stat';
 import AtomicDesignLogoSVG from '../../../images/logos/user/logo-atomicdesign.svg';
 import { Integrations } from './Integrations';
 import { ScrollDemo } from './StorybookDemo/ScrollDemo';
-import buildPathWithFramework from '../../../util/build-path-with-framework';
+import buildPathWithVersion from '../../../util/build-path-with-version';
 
 const {
   urls: { installDocsPageSlug },
@@ -44,7 +44,7 @@ const frameworkIntegrations = featuredFrameworks.map((framework) => ({
   image: `/frameworks/logo-${
     framework === 'web-components' ? 'web-components-alt' : framework
   }.svg`,
-  href: buildPathWithFramework(installDocsPageSlug, framework),
+  href: buildPathWithVersion(installDocsPageSlug),
   ButtonWrapper: GatsbyLinkWrapper,
 }));
 

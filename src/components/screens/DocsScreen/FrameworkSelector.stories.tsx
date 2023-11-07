@@ -33,7 +33,6 @@ export const Base = Template.bind({});
 Base.args = {
   coreFrameworks,
   communityFrameworks,
-  slug: '/docs/get-started/install',
 };
 Base.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);

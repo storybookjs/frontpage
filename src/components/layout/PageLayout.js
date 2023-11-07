@@ -113,11 +113,6 @@ export function PurePageLayout({ dxData, children, pageContext, ...props }) {
             Set the docsearch index facets defaults
           */}
           <meta
-            key={GLOBAL_SEARCH_META_KEYS.FRAMEWORK}
-            name={GLOBAL_SEARCH_META_KEYS.FRAMEWORK}
-            content={GLOBAL_SEARCH_AGNOSTIC}
-          />
-          <meta
             key={GLOBAL_SEARCH_META_KEYS.VERSION}
             name={GLOBAL_SEARCH_META_KEYS.VERSION}
             content={GLOBAL_SEARCH_AGNOSTIC}

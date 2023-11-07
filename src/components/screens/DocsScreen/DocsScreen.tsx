@@ -19,7 +19,7 @@ import { Pre } from '../../basics/Pre';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import { mdFormatting } from '../../../styles/formatting';
-import buildPathWithFramework from '../../../util/build-path-with-framework';
+import buildPathWithVersion from '../../../util/build-path-with-version';
 import relativeToRootLinks from '../../../util/relative-to-root-links';
 import stylizeFramework from '../../../util/stylize-framework';
 import { useDocsContext } from './DocsContext';
@@ -115,10 +115,11 @@ function DocsScreen({ data, pageContext, location }) {
     urls: { homepageUrl },
     versionString,
   } = useSiteMetadata();
-  const { framework, docsToc, fullPath, slug, tocItem, nextTocItem, isInstallPage } = pageContext;
+  const { docsToc, fullPath, slug, tocItem, nextTocItem, isInstallPage } = pageContext;
 
   const {
     codeLanguage: [codeLanguage],
+    framework: [framework],
   } = useDocsContext();
 
   const CodeSnippetsWithCurrentFrameworkAndCodeLanguage = useMemo(() => {
@@ -141,7 +142,7 @@ function DocsScreen({ data, pageContext, location }) {
   }, [framework]);
   const LinksWithPrefix = useMemo(() => {
     return ({ children, href, ...props }) => {
-      const url = relativeToRootLinks(href, framework, location.pathname);
+      const url = relativeToRootLinks(href, location.pathname);
       return (
         <a href={url} {...props}>
           {children}
@@ -243,7 +244,7 @@ function DocsScreen({ data, pageContext, location }) {
             action={
               <Button
                 appearance="secondary"
-                href={buildPathWithFramework(nextTocItem.path, framework)}
+                href={buildPathWithVersion(nextTocItem.path)}
                 ButtonWrapper={GatsbyLinkWrapper}
               >
                 Continue

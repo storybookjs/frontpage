@@ -6,9 +6,9 @@ import siteMetadata from '../../site-metadata';
 // This file is generated at build time, so linting before building fails
 // eslint-disable-next-line import/no-unresolved, import/extensions
 import docsMetadata from '../generated/docs-metadata.json';
-import buildPathWithFramework from '../util/build-path-with-framework';
+import buildPathWithVersion from '../util/build-path-with-version';
 
-const { frameworks, slugs, versions } = docsMetadata;
+const { slugs, versions } = docsMetadata;
 
 const siteUrl = process.env.URL;
 
@@ -60,7 +60,7 @@ function createDiscussionBody(rating) {
 }
 
 function createCommentBody({ slug, version, framework, codeLanguage, rating, comment }) {
-  const path = buildPathWithFramework(slug, framework, version);
+  const path = buildPathWithVersion(slug, version);
   const link = `**[${path}](https://storybook.js.org${path})**`;
 
   // prettier-ignore
@@ -379,17 +379,15 @@ exports.handler = async (event) => {
       };
     }
 
-    const hasValidFramework = frameworks.includes(framework);
     const hasValidSlug = slugs.includes(slug);
     const hasValidVersion = versions.includes(version);
     const hasValidRating = Object.keys(ratingSymbols).includes(rating);
 
-    if (!hasValidFramework || !hasValidVersion || !hasValidRating) {
+    if (!hasValidVersion || !hasValidRating) {
       console.info('Invalid data, ignoring');
       console.info(
         JSON.stringify(
           {
-            hasValidFramework,
             framework,
             hasValidSlug,
             slug,
