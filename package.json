@@ -10,6 +10,7 @@
     "sharp": "^0.29.0"
   },
   "dependencies": {
+    "@chromaui/tetra": "^1.16.9",
     "@docsearch/css": "^3.2.1",
     "@docsearch/react": "^3.0.0",
     "@emotion/server": "^11.4.0",
