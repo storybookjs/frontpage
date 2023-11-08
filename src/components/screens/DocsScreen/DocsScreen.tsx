@@ -25,7 +25,7 @@ import stylizeFramework from '../../../util/stylize-framework';
 import { useDocsContext } from './DocsContext';
 import { FeatureSnippets } from './FeatureSnippets';
 import { Feedback } from './Feedback';
-import { IfRenderer } from './IfRenderer';
+import { If } from './If';
 import { YouTubeCallout } from './YouTubeCallout';
 
 const { color, spacing, typography } = styles;
@@ -151,8 +151,15 @@ function DocsScreen({ data, pageContext, location }) {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [framework]);
-  const IfRendererWithCurrentFramework = useMemo(() => {
-    return (props) => <IfRenderer currentRenderer={framework} {...props} />;
+  const IfWithCurrentFramework = useMemo(() => {
+    return (props) => (
+      <If
+        allRenderers={[...coreFrameworks, ...communityFrameworks]}
+        currentRenderer={framework}
+        {...props}
+      />
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [framework]);
 
   const features = featureGroups.flatMap((group) => group.features);
@@ -227,7 +234,9 @@ function DocsScreen({ data, pageContext, location }) {
             CodeSnippets: CodeSnippetsWithCurrentFrameworkAndCodeLanguage,
             FeatureSnippets: FeatureSnippetsWithCurrentFramework,
             FrameworkSupportTable: FrameworkSupportTableWithFeaturesAndCurrentFramework,
-            IfRenderer: IfRendererWithCurrentFramework,
+            If: IfWithCurrentFramework,
+            // Maintained for older docs version content
+            IfRenderer: IfWithCurrentFramework,
             YouTubeCallout,
             a: LinksWithPrefix,
             Callout,
