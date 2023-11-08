@@ -35,6 +35,7 @@ export function FrameworkSelector({
 }: FrameworkSelectorProps) {
   const frameworks = [...coreFrameworks, ...communityFrameworks] as const;
 
+  // TODO: How to access framework in localStorage
   const {
     framework: [framework, setFramework],
   } = useDocsContext();

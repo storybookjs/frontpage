@@ -205,6 +205,7 @@ function DocsScreen({ data, pageContext, location }) {
 
       <MDWrapper>
         <Title>{isInstallPage ? `${title} for ${stylizeFramework(framework)}` : title}</Title>
+        {/* TODO: Renderer pills */}
         {unsupported && (
           <UnsupportedBanner>
             This feature is not supported in {stylizeFramework(framework)} yet. Help the open source

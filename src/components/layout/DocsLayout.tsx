@@ -19,6 +19,7 @@ import {
   SubNavLinkList,
   styles,
 } from '@storybook/components-marketing';
+import { Container } from '@chromaui/tetra';
 import GatsbyLinkWrapper from '../basics/GatsbyLinkWrapper';
 import useSiteMetadata from '../lib/useSiteMetadata';
 import buildPathWithFramework from '../../util/build-path-with-framework';
@@ -43,7 +44,7 @@ const SubNavWrapper = styled.div`
   z-index: 2;
 `;
 
-const Sidebar = styled.div`
+const Sidebar = styled.div<{ isLoading: boolean }>`
   display: none;
   position: relative;
 
@@ -56,8 +57,8 @@ const Sidebar = styled.div`
     margin-right: 20px;
   }
 
-  ${(props) =>
-    props.isLoading &&
+  ${({ isLoading }) =>
+    isLoading &&
     css`
       height: 80vh;
       border-radius: ${spacing.borderRadius.small}px;
@@ -91,7 +92,6 @@ const StyledVersionCTA = styled(VersionCTA)`
 `;
 
 const Wrapper = styled.div`
-  ${pageMargins}
   padding-bottom: 3rem;
 
   @media (min-width: ${breakpoint * 1.333}px) {
@@ -191,6 +191,7 @@ export function PureDocsLayout({
                 framework={framework}
                 slug={slug}
               />
+              {/* TODO: Remove */}
               <FrameworkSelector
                 key={framework}
                 framework={framework}
@@ -198,6 +199,7 @@ export function PureDocsLayout({
                 communityFrameworks={communityFrameworks}
                 slug={slug}
               />
+              {/* TODO: Remove */}
               <CodeLanguageSelector framework={framework} />
             </SubNavMenus>
             <SubNavRight>
@@ -205,21 +207,23 @@ export function PureDocsLayout({
             </SubNavRight>
           </SubNav>
         </SubNavWrapper>
-        <Wrapper>
-          <Sidebar className="sidebar" isLoading={isLoading}>
-            {sidebar}
-          </Sidebar>
-          <Content>
-            {isLoading ? (
-              <>
-                <SkeletonTitle />
-                <SkeletonBody />
-              </>
-            ) : (
-              children
-            )}
-          </Content>
-        </Wrapper>
+        <Container>
+          <Wrapper>
+            <Sidebar className="sidebar" isLoading={isLoading}>
+              {sidebar}
+            </Sidebar>
+            <Content>
+              {isLoading ? (
+                <>
+                  <SkeletonTitle />
+                  <SkeletonBody />
+                </>
+              ) : (
+                children
+              )}
+            </Content>
+          </Wrapper>
+        </Container>
       </DocsContextProvider>
     </>
   );
@@ -334,6 +338,7 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
         framework={framework}
         slug={slug}
         sidebar={
+          // TODO: Sidebar
           <StyledTableOfContents
             key={framework}
             currentPath={fullPath}
