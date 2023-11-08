@@ -1,26 +1,26 @@
 # See https://www.netlify.com/docs/redirects/
 
 # Older (prev 5.0 doc URLs)
-/basics/quick-start-guide                   /docs/react/get-started/install/                                                                    301
-/basics/slow-start-guide                    /docs/react/configure/overview/                                                                     301
-/basics/guide-react                         /docs/react/                                                                                        301
+/basics/quick-start-guide                   /docs/get-started/install/                                                                          301
+/basics/slow-start-guide                    /docs/configure/overview/                                                                           301
+/basics/guide-react                         /docs/get-started/install/                                                                          301
 /basics/guide-react-native                  https://github.com/storybookjs/react-native#storybook-for-react-native                              301
-/basics/guide-vue                           /docs/vue/                                                                                          301
-/basics/guide-angular                       /docs/angular/                                                                                      301
-/basics/guide-mithril                       /docs/                                                                                              301
-/basics/guide-ember                         /docs/ember/                                                                                        301
-/basics/guide-riot                          /docs/                                                                                              301
-/basics/guide-html                          /docs/html/                                                                                         301
-/docs/basics/quick-start-guide              /docs/react/get-started/install/                                                                    301
-/docs/basics/slow-start-guide               /docs/react/configure/overview/                                                                     301
-/docs/basics/guide-react                    /docs/react/                                                                                        301
+/basics/guide-vue                           /docs/get-started/install/                                                                          301
+/basics/guide-angular                       /docs/get-started/install/                                                                          301
+/basics/guide-mithril                       /docs/get-started/install/                                                                          301
+/basics/guide-ember                         /docs/get-started/install/                                                                          301
+/basics/guide-riot                          /docs/get-started/install/                                                                          301
+/basics/guide-html                          /docs/get-started/install/                                                                          301
+/docs/basics/quick-start-guide              /docs/get-started/install/                                                                          301
+/docs/basics/slow-start-guide               /docs/configure/overview/                                                                           301
+/docs/basics/guide-react                    /docs/get-started/install/                                                                          301
 /docs/basics/guide-react-native             https://github.com/storybookjs/react-native#storybook-for-react-native                              301
-/docs/basics/guide-vue                      /docs/vue/                                                                                          301
-/docs/basics/guide-angular                  /docs/angular/                                                                                      301
-/docs/basics/guide-mithril                  /docs/                                                                                              301
-/docs/basics/guide-ember                    /docs/ember/                                                                                        301
-/docs/basics/guide-riot                     /docs/                                                                                              301
-/docs/basics/guide-html                     /docs/html/                                                                                         301
+/docs/basics/guide-vue                      /docs/get-started/install/                                                                          301
+/docs/basics/guide-angular                  /docs/get-started/install/                                                                          301
+/docs/basics/guide-mithril                  /docs/get-started/install/                                                                          301
+/docs/basics/guide-ember                    /docs/get-started/install/                                                                          301
+/docs/basics/guide-riot                     /docs/get-started/install/                                                                          301
+/docs/basics/guide-html                     /docs/get-started/install/                                                                          301
 
 /basics/*                                   /docs/basics/:splat                                                                                 301
 /configurations/*                           /docs/configurations/:splat                                                                         301
@@ -29,61 +29,61 @@
 /testing/*                                  /docs/testing/:splat                                                                                301
 
 # Pre 6.0 URLs
-/docs/basics/introduction/                  /docs/react/get-started/install/                                                                    301
-/docs/basics/writing-stories/               /docs/react/get-started/whats-a-story/                                                              301
-/docs/basics/exporting-storybook/           /docs/react/workflows/publish-storybook/                                                            301
-/docs/basics/faq/                           /docs/react/workflows/faq/                                                                          301
+/docs/basics/introduction/                  /docs/get-started/install/                                                                          301
+/docs/basics/writing-stories/               /docs/get-started/whats-a-story/                                                                    301
+/docs/basics/exporting-storybook/           /docs/workflows/publish-storybook/                                                                  301
+/docs/basics/faq/                           /docs/workflows/faq/                                                                                301
 /docs/basics/live-examples/                 https://github.com/storybookjs/storybook/blob/next/examples/README.md                               301
-/docs/examples/                             /docs/react/get-started/examples/                                                                   301
+/docs/examples/                             /docs/get-started/examples/                                                                         301
 
-/docs/guides/quick-start-guide/             /docs/react/get-started/install/                                                                    301
-/docs/guides/slow-start-guide/              /docs/react/configure/overview/                                                                     301
-/docs/guides/guide-html/                    /docs/html/                                                                                         301
-/docs/guides/guide-react/                   /docs/react/                                                                                        301
+/docs/guides/quick-start-guide/             /docs/get-started/install/                                                                          301
+/docs/guides/slow-start-guide/              /docs/configure/overview/                                                                           301
+/docs/guides/guide-html/                    /docs/get-started/install/                                                                          301
+/docs/guides/guide-react/                   /docs/get-started/install/                                                                          301
 /docs/guides/guide-react-native/            https://github.com/storybookjs/react-native#storybook-for-react-native                              301
-/docs/guides/guide-vue/                     /docs/vue/                                                                                          301
-/docs/guides/guide-angular/                 /docs/angular/                                                                                      301
-/docs/guides/guide-mithril/                 /docs/                                                                                              301
-/docs/mithril/                              /docs/                                                                                              301
-/docs/guides/guide-marko/                   /docs/                                                                                              301
-/docs/marko/                                /docs/                                                                                              301
-/docs/guides/guide-ember/                   /docs/ember/                                                                                        301
-/docs/guides/guide-rax/                     /docs/                                                                                              301
-/docs/rax/                                  /docs/                                                                                              301
-/docs/guides/guide-riot/                    /docs/                                                                                              301
-/docs/riot/                                 /docs/                                                                                              301
-/docs/guides/guide-svelte/                  /docs/svelte/                                                                                       301
-/docs/guides/guide-preact/                  /docs/preact/                                                                                       301
+/docs/guides/guide-vue/                     /docs/get-started/install/                                                                          301
+/docs/guides/guide-angular/                 /docs/get-started/install/                                                                          301
+/docs/guides/guide-mithril/                 /docs/get-started/install/                                                                          301
+/docs/mithril/                              /docs/get-started/install/                                                                          301
+/docs/guides/guide-marko/                   /docs/get-started/install/                                                                          301
+/docs/marko/                                /docs/get-started/install/                                                                          301
+/docs/guides/guide-ember/                   /docs/get-started/install/                                                                          301
+/docs/guides/guide-rax/                     /docs/get-started/install/                                                                          301
+/docs/rax/                                  /docs/get-started/install/                                                                          301
+/docs/guides/guide-riot/                    /docs/get-started/install/                                                                          301
+/docs/riot/                                 /docs/get-started/install/                                                                          301
+/docs/guides/guide-svelte/                  /docs/get-started/install/                                                                          301
+/docs/guides/guide-preact/                  /docs/get-started/install/                                                                          301
 
-/docs/configurations/overview/              /docs/react/configure/overview/                                                                     301
-/docs/configurations/options-parameter/     /docs/react/configure/features-and-behavior/                                                        301
-/docs/configurations/default-config/        /docs/react/configure/overview/                                                                     301
-/docs/configurations/custom-webpack-config/ /docs/react/builders/webpack/                                                                       301
-/docs/configurations/custom-babel-config/   /docs/react/configure/babel/                                                                        301
-/docs/configurations/typescript-config/     /docs/react/configure/typescript/                                                                   301
-/docs/configurations/add-custom-head-tags/  /docs/react/configure/story-rendering#adding-to-head                                                301
-/docs/configurations/add-custom-body/       /docs/react/configure/story-rendering#adding-to-body                                                301
-/docs/configurations/serving-static-files/  /docs/react/configure/images-and-assets#serving-static-files-via-storybook/                         301
-/docs/configurations/env-vars/              /docs/react/configure/environment-variables/                                                        301
-/docs/configurations/theming/               /docs/react/configure/theming/                                                                      301
-/docs/configurations/cli-options/           /docs/react/api/cli-options/                                                                        301
+/docs/configurations/overview/              /docs/configure/overview/                                                                           301
+/docs/configurations/options-parameter/     /docs/configure/features-and-behavior/                                                              301
+/docs/configurations/default-config/        /docs/configure/overview/                                                                           301
+/docs/configurations/custom-webpack-config/ /docs/builders/webpack/                                                                             301
+/docs/configurations/custom-babel-config/   /docs/configure/babel/                                                                              301
+/docs/configurations/typescript-config/     /docs/configure/typescript/                                                                         301
+/docs/configurations/add-custom-head-tags/  /docs/configure/story-rendering#adding-to-head                                                      301
+/docs/configurations/add-custom-body/       /docs/configure/story-rendering#adding-to-body                                                      301
+/docs/configurations/serving-static-files/  /docs/configure/images-and-assets#serving-static-files-via-storybook/                               301
+/docs/configurations/env-vars/              /docs/configure/environment-variables/                                                              301
+/docs/configurations/theming/               /docs/configure/theming/                                                                            301
+/docs/configurations/cli-options/           /docs/api/cli-options/                                                                              301
 /docs/configurations/standalone-options/    https://github.com/storybookjs/storybook/blob/next/lib/core/docs/standalone.md                      301
-/docs/formats/component-story-format/       /docs/react/api/csf/                                                                                301
+/docs/formats/component-story-format/       /docs/api/csf/                                                                                      301
 /docs/formats/storiesof-api/                https://github.com/storybookjs/storybook/blob/next/lib/core/docs/storiesOf.md                       301
-/docs/formats/mdx-syntax/                   /docs/react/api/mdx/                                                                                301
-/docs/testing/react-ui-testing/             /docs/react/writing-tests/introduction/                                                             301
-/docs/testing/structural-testing/           /docs/react/writing-tests/snapshot-testing/                                                         301
-/docs/testing/interaction-testing/          /docs/react/writing-tests/interaction-testing/                                                      301
-/docs/testing/automated-visual-testing/     /docs/react/writing-tests/visual-testing/                                                           301
-/docs/testing/manual-testing/               /docs/react/writing-tests/introduction/                                                             301
-/docs/addons/introduction/                  /docs/react/addons/introduction/                                                                    301
-/docs/addons/using-addons/                  /docs/react/addons/install-addons/                                                                  301
-/docs/addons/writing-addons/                /docs/react/addons/writing-addons/                                                                  301
-/addons/writing-addons/                     /docs/react/addons/writing-addons/                                                                  301
-/docs/addons/api/                           /docs/react/addons/addons-api/                                                                      301
-/docs/presets/introduction/                 /docs/react/api/presets/                                                                            301
+/docs/formats/mdx-syntax/                   /docs/api/mdx/                                                                                      301
+/docs/testing/react-ui-testing/             /docs/writing-tests/introduction/                                                                   301
+/docs/testing/structural-testing/           /docs/writing-tests/snapshot-testing/                                                               301
+/docs/testing/interaction-testing/          /docs/writing-tests/interaction-testing/                                                            301
+/docs/testing/automated-visual-testing/     /docs/writing-tests/visual-testing/                                                                 301
+/docs/testing/manual-testing/               /docs/writing-tests/introduction/                                                                   301
+/docs/addons/introduction/                  /docs/addons/introduction/                                                                          301
+/docs/addons/using-addons/                  /docs/addons/install-addons/                                                                        301
+/docs/addons/writing-addons/                /docs/addons/writing-addons/                                                                        301
+/addons/writing-addons/                     /docs/addons/writing-addons/                                                                        301
+/docs/addons/api/                           /docs/addons/addons-api/                                                                            301
+/docs/presets/introduction/                 /docs/api/presets/                                                                                  301
 /docs/presets/preset-gallery/               https://github.com/storybookjs/presets                                                              301
-/docs/presets/writing-presets/              /docs/react/api/writing-presets/                                                                    301
+/docs/presets/writing-presets/              /docs/api/writing-presets/                                                                          301
 
 # Other
 /versions.json                              /.netlify/functions/versions/:splat                                                                 200
@@ -95,9 +95,9 @@
 /day/*                                      https://storybook-day-2023.netlify.app/day/:splat                                                   200
 /status/*                                   https://storybook-status.netlify.app/status/:splat                                                  200
 
-/telemetry                                  /docs/react/configure/telemetry                                                                     301
+/telemetry                                  /docs/configure/telemetry                                                                           301
 
-# We can't use updateRedirectsFile for these because it adds the framework to the destination
+# We can't use updateRedirectsFile for these because it adds the version to the destination
 /docs/react/get-started/examples            /showcase                                                                                           301
 /docs/vue/get-started/examples              /showcase                                                                                           301
 /docs/angular/get-started/examples          /showcase                                                                                           301

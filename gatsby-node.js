@@ -17,11 +17,15 @@ const siteMetadata = require('./site-metadata');
 
 const {
   urls: { installDocsPageSlug },
+  coreFrameworks,
+  communityFrameworks,
 } = siteMetadata;
+
+const frameworks = [...coreFrameworks, ...communityFrameworks];
 
 const docsPagesSlugs = [];
 
-const nextVersionString = versions.preRelease[0]?.string;
+const nextVersionString = versions.preRelease[0]?.string || latestVersionString;
 
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
@@ -114,9 +118,6 @@ exports.createPages = ({ actions, graphql }) => {
           data: {
             docsPages: { edges: docsPagesEdges },
             releasePages: { edges: releasePagesEdges },
-            site: {
-              siteMetadata: { coreFrameworks, communityFrameworks },
-            },
           },
         }) => {
           const sortedReleases = releasePagesEdges.sort(
@@ -254,20 +255,24 @@ function updateRedirectsFile() {
   const versionRedirects = [...versions.stable, ...versions.preRelease, { string: 'next' }]
     .reduce((acc, { string }) => {
       const isLatestLocal = string === latestVersionString;
-      const versionStringLocal =
-        string === 'next' ? nextVersionString || latestVersionString : string;
+      const versionStringLocal = string === 'next' ? nextVersionString : string;
       const versionSlug = isLatestLocal ? '' : `/${string}`;
       const versionBranch = isLatestLocal ? '' : getReleaseBranchUrl(versionStringLocal);
       const redirectCode = isLatestLocal ? 301 : 200;
 
-      // prettier-ignore
-      acc.push(`/docs${versionSlug} ${versionBranch}${buildPathWithVersion(installDocsPageSlug, versionStringLocal)} ${redirectCode}`)
+      acc.push(
+        // prettier-ignore
+        `/docs${versionSlug} ${versionBranch}${buildPathWithVersion(installDocsPageSlug, versionStringLocal)} ${redirectCode}`
+      );
 
-      if (!isLatestLocal) {
+      frameworks.forEach((f) => {
         acc.push(
           // prettier-ignore
-          `/docs${versionSlug} ${versionBranch}${buildPathWithVersion(installDocsPageSlug, versionStringLocal)} 200`
+          `/docs${versionSlug}/${f}/* ${versionBranch}/docs${versionSlug}/:splat ${redirectCode}`
         );
+      });
+
+      if (!isLatestLocal) {
         acc.push(`/docs/${string}/* ${versionBranch}/docs/${versionStringLocal}/:splat 200`);
       } else {
         acc.push(`/docs/${versionStringLocal}/* /docs/:splat 301`);
