@@ -1,11 +1,9 @@
 import React, { useCallback } from 'react';
-import { styled } from '@storybook/theming';
+import { styled, css } from '@storybook/theming';
 import { color, spacing, Text } from '@chromaui/tetra';
-import { useCopyToClipboard } from 'usehooks-ts';
 
-import { useSyntaxHighlighter, SupportedLanguages } from './SyntaxHighlighterContext';
+import { useSyntaxHighlighter, SupportedLanguages } from '../SyntaxHighlighterContext';
 import { SnippetTypeIcon } from './SnippetTypeIcon';
-import { parseSnippetContent } from './utils/parse-snippet-content.utils';
 import { SnippetCopyButton } from './SnippetCopyButton';
 
 const CodeSnippetContainer = styled.div`
@@ -48,20 +46,30 @@ const CodeSnippetHeaderRight = styled.div`
   gap: ${spacing['2']};
 `;
 
-const CodeSnippetContent = styled.div`
+const CodeSnippetContent = styled.div<{ hideHeader?: boolean }>`
   background: ${color.white};
-  margin: 0px;
-  padding: ${spacing['5']};
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 
   & > pre.shiki {
     margin: 0 !important;
-    padding: 0 !important;
+    padding: ${spacing['5']} !important;
   }
+
+  ${({ hideHeader }) =>
+    hideHeader &&
+    css`
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+
+      & > pre.shiki {
+        background: ${color.slate50} !important;
+      }
+    `}
 `;
 
 export interface CodeSnippetProps {
+  hideHeader?: boolean;
   id: string;
   isTerminal?: boolean;
   renderLanguageSelector?: () => React.ReactNode;
@@ -71,6 +79,7 @@ export interface CodeSnippetProps {
 }
 
 export const BaseCodeSnippet = ({
+  hideHeader,
   id,
   isTerminal,
   renderLanguageSelector,
@@ -83,23 +92,27 @@ export const BaseCodeSnippet = ({
 
   return (
     <CodeSnippetContainer {...rest}>
-      <CodeSnippetHeader>
-        <CodeSnippetHeaderLeft>
-          <SnippetTypeIcon syntax={syntax} />
-          <Text as="span" variant="body14" fontWeight="semibold" color="slate800">
-            {title}
-          </Text>
-        </CodeSnippetHeaderLeft>
-        <CodeSnippetHeaderRight>
-          {renderLanguageSelector ? renderLanguageSelector() : null}
-          <SnippetCopyButton code={snippet} />
-        </CodeSnippetHeaderRight>
-      </CodeSnippetHeader>
+      {hideHeader ? null : (
+        <CodeSnippetHeader>
+          <CodeSnippetHeaderLeft>
+            <SnippetTypeIcon syntax={syntax} />
+            <Text as="span" variant="body14" fontWeight="semibold" color="slate800">
+              {title}
+            </Text>
+          </CodeSnippetHeaderLeft>
+          <CodeSnippetHeaderRight>
+            {renderLanguageSelector ? renderLanguageSelector() : null}
+            <SnippetCopyButton code={snippet} />
+          </CodeSnippetHeaderRight>
+        </CodeSnippetHeader>
+      )}
+
       {isLoadingHighlighter ? (
-        <CodeSnippetContent>Loading...</CodeSnippetContent>
+        <CodeSnippetContent hideHeader={hideHeader}>Loading...</CodeSnippetContent>
       ) : (
         <CodeSnippetContent
           dangerouslySetInnerHTML={{ __html: generateSnippetHTML(snippet, syntax) }}
+          hideHeader={hideHeader}
         />
       )}
     </CodeSnippetContainer>
