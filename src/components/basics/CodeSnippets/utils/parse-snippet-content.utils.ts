@@ -1,4 +1,4 @@
-export const TrimSnippet = (snippet: string[]) => {
+export const trimSnippet = (snippet: string[]) => {
   let topTrimmed = false;
   while (!topTrimmed) {
     if (snippet[0] === '') snippet.shift();
@@ -51,7 +51,7 @@ export const parseSnippetContent = (
   isTerminalSnippet?: boolean
 ): ParsedSnippet => {
   if (isTerminalSnippet) {
-    const command = TrimSnippet(content.split('\n'));
+    const command = trimSnippet(content.split('\n'));
 
     return ['Terminal', command];
   }
@@ -59,7 +59,7 @@ export const parseSnippetContent = (
   const [firstLine, ...rest] = content.split('\n');
   const fileName = stringIsComment(firstLine) ? parseNameFromComment(firstLine) : '';
 
-  const code = TrimSnippet([...(stringIsComment(firstLine) ? [] : [firstLine]), ...rest]);
+  const code = trimSnippet([...(stringIsComment(firstLine) ? [] : [firstLine]), ...rest]);
 
   return [fileName, code];
 };
