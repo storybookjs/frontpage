@@ -17,11 +17,8 @@ const siteMetadata = require('./site-metadata');
 
 const {
   urls: { installDocsPageSlug },
-  coreFrameworks,
-  communityFrameworks,
+  allRenderers,
 } = siteMetadata;
-
-const frameworks = [...coreFrameworks, ...communityFrameworks];
 
 const docsPagesSlugs = [];
 
@@ -265,10 +262,10 @@ function updateRedirectsFile() {
         `/docs${versionSlug} ${versionBranch}${buildPathWithVersion(installDocsPageSlug, versionStringLocal)} ${redirectCode}`
       );
 
-      frameworks.forEach((f) => {
+      allRenderers.forEach((r) => {
         acc.push(
           // prettier-ignore
-          `/docs${versionSlug}/${f}/* ${versionBranch}/docs${versionSlug}/:splat ${redirectCode}`
+          `/docs${versionSlug}/${r}/* ${versionBranch}/docs${versionSlug}/:splat ${redirectCode}`
         );
       });
 

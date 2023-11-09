@@ -25,14 +25,14 @@ export function CodeLanguageSelector() {
   // TODO: How to access code language in localStorage
   const {
     codeLanguage: [language, setLanguage],
-    framework: [framework],
+    renderer: [renderer],
   } = useDocsContext();
 
   const [wide] = useMediaQuery(`(min-width: ${breakpoint * 1.5}px)`);
   const label = wide ? CODE_LANGUAGES_FULL[language] : CODE_LANGUAGES[language];
 
   let languages = Object.entries(CODE_LANGUAGES_FULL);
-  if (framework === 'angular') {
+  if (renderer === 'angular') {
     // Angular snippets are not available in JS, so we hide the option
     languages = languages.filter(([key]) => key !== 'js');
   }

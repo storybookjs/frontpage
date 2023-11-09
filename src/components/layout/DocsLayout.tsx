@@ -27,7 +27,7 @@ import GatsbyLinkWrapper from '../basics/GatsbyLinkWrapper';
 import useSiteMetadata from '../lib/useSiteMetadata';
 import { CodeLanguageSelector } from '../screens/DocsScreen/CodeLanguageSelector';
 import { DocsContextProvider } from '../screens/DocsScreen/DocsContext';
-import { FrameworkSelector } from '../screens/DocsScreen/FrameworkSelector';
+import { RendererSelector } from '../screens/DocsScreen/RendererSelector';
 import { VersionSelector } from '../screens/DocsScreen/VersionSelector';
 import { VersionCTA } from '../screens/DocsScreen/VersionCTA';
 
@@ -153,8 +153,7 @@ const SkeletonBody = styled.div`
 `;
 
 export function PureDocsLayout({ children, isLoading, sidebar, slug, versions: versionsProp }) {
-  const { coreFrameworks, communityFrameworks, isLatest, version, versionString } =
-    useSiteMetadata();
+  const { coreRenderers, communityRenderers, isLatest, version, versionString } = useSiteMetadata();
 
   const versions = versionsProp || {
     // prettier-ignore
@@ -177,9 +176,9 @@ export function PureDocsLayout({ children, isLoading, sidebar, slug, versions: v
             <SubNavMenus>
               <VersionSelector version={version} versions={versions} slug={slug} />
               {/* TODO: Remove */}
-              <FrameworkSelector
-                coreFrameworks={coreFrameworks}
-                communityFrameworks={communityFrameworks}
+              <RendererSelector
+                coreRenderers={coreRenderers}
+                communityRenderers={communityRenderers}
               />
               {/* TODO: Remove */}
               <CodeLanguageSelector />

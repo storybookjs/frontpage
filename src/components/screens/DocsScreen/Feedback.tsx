@@ -20,7 +20,7 @@ const heightTransitionTime = 100; // ms
 interface FeedbackProps {
   slug: string;
   version: string;
-  framework: string;
+  renderer: string;
   codeLanguage: string;
 }
 
@@ -142,7 +142,7 @@ const SpuriousTextarea = styled((props) => (
 export const Feedback = ({
   slug,
   version,
-  framework,
+  renderer,
   codeLanguage,
   // @ts-expect-error - For Storybook only
   forceRating = null,
@@ -186,7 +186,7 @@ export const Feedback = ({
         body: JSON.stringify({
           slug,
           version,
-          framework,
+          renderer,
           codeLanguage,
           rating,
           comment,

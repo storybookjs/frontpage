@@ -1,12 +1,12 @@
 import React from 'react';
 import { styled } from '@storybook/theming';
 import { within, userEvent } from '@storybook/testing-library';
-import { FrameworkSelector } from './FrameworkSelector';
+import { RendererSelector } from './RendererSelector';
 import useSiteMetadata from '../../../../.storybook/useSiteMetadata';
 import { DocsContextProvider } from './DocsContext';
 
 // eslint-disable-next-line react-hooks/rules-of-hooks
-const { coreFrameworks, communityFrameworks } = useSiteMetadata();
+const { coreRenderers, communityRenderers } = useSiteMetadata();
 
 // The Wrapper helps capture the tooltip contents in the snapshot
 const Wrapper = styled.span`
@@ -16,24 +16,24 @@ const Wrapper = styled.span`
 `;
 
 export default {
-  title: 'Screens/DocsScreen/FrameworkSelector',
-  component: FrameworkSelector,
+  title: 'Screens/DocsScreen/RendererSelector',
+  component: RendererSelector,
+  args: {
+    coreRenderers,
+    communityRenderers,
+  },
   decorators: [
     (storyFn) => (
-      <DocsContextProvider framework={coreFrameworks[0]}>
+      <DocsContextProvider renderer={coreRenderers[0]}>
         <Wrapper>{storyFn()}</Wrapper>
       </DocsContextProvider>
     ),
   ],
 };
 
-const Template = (args) => <FrameworkSelector {...args} />;
+const Template = (args) => <RendererSelector {...args} />;
 
 export const Base = Template.bind({});
-Base.args = {
-  coreFrameworks,
-  communityFrameworks,
-};
 Base.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
   const menuButton = canvas.getByRole('button', { name: /React/i });

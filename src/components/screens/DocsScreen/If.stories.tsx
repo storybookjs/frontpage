@@ -5,7 +5,7 @@ import useSiteMetadata from '../../../../.storybook/useSiteMetadata';
 import { If } from './If';
 
 // eslint-disable-next-line react-hooks/rules-of-hooks
-const { coreFrameworks, communityFrameworks } = useSiteMetadata();
+const { allRenderers } = useSiteMetadata();
 
 type IfProps = React.ComponentProps<typeof If>;
 
@@ -22,7 +22,7 @@ const meta: Meta<IfProps> = {
   },
   args: {
     children: '👀 Can you see me?',
-    allRenderers: [...coreFrameworks, ...communityFrameworks],
+    allRenderers,
     currentRenderer: 'vue',
   },
   parameters: {

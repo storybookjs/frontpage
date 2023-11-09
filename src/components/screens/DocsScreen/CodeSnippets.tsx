@@ -12,7 +12,7 @@ import {
 
 import { CODE_SNIPPET_CLASSNAME } from '../../../constants/code-snippets';
 import { DEFAULT_CODE_LANGUAGE, CODE_LANGUAGES_FULL } from '../../../constants/code-languages';
-import stylizeFramework from '../../../util/stylize-framework';
+import stylizeFramework from '../../../util/stylize-renderer';
 import { logSnippetInteraction } from '../../../util/custom-events';
 import { useIfContext } from './If';
 

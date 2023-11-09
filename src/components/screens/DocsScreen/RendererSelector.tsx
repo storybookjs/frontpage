@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 import { styled } from '@storybook/theming';
 import { Menu } from '@storybook/components-marketing';
 
-import stylizeFramework from '../../../util/stylize-framework';
+import stylizeRenderer from '../../../util/stylize-renderer';
 import { useDocsContext } from './DocsContext';
 
-interface FrameworkSelectorProps {
-  coreFrameworks: string[];
-  communityFrameworks: string[];
+interface RendererSelectorProps {
+  coreRenderers: string[];
+  communityRenderers: string[];
 }
 
-const FrameworkLogo = styled.img`
+const RendererLogo = styled.img`
   width: 12;
   height: 12;
 `;
@@ -29,27 +29,27 @@ type LinkWrapperProps = {
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
-const getFrameworkLogo = (framework) => {
-  if (framework === 'rax') return '/frameworks/logo-rax.png';
-  return `/frameworks/logo-${framework}.svg`;
+const getRendererLogo = (renderer) => {
+  if (renderer === 'rax') return '/renderers/logo-rax.png';
+  return `/renderers/logo-${renderer}.svg`;
 };
 
-export function FrameworkSelector({ coreFrameworks, communityFrameworks }: FrameworkSelectorProps) {
-  const frameworks = [...coreFrameworks, ...communityFrameworks] as const;
+export function RendererSelector({ coreRenderers, communityRenderers }: RendererSelectorProps) {
+  const renderers = [...coreRenderers, ...communityRenderers] as const;
 
   // TODO: How to access framework in localStorage
   const {
-    framework: [framework, setFramework],
+    renderer: [renderer, setRenderer],
   } = useDocsContext();
 
-  const items = frameworks.map((f) => ({
+  const items = renderers.map((r) => ({
     link: {
       linkWrapper: React.forwardRef<HTMLButtonElement, LinkWrapperProps>(
         ({ onClick, ...props }, ref) => {
           return (
             <MenuButton
               onClick={(event) => {
-                setFramework(f);
+                setRenderer(r);
                 onClick?.(event);
               }}
               ref={ref}
@@ -60,15 +60,15 @@ export function FrameworkSelector({ coreFrameworks, communityFrameworks }: Frame
       ),
       url: 'UNUSED', // We render a `button` instead of an `a`, but the types of Menu require this
     },
-    framework: f,
-    icon: <FrameworkLogo src={getFrameworkLogo(f)} alt="" />,
-    label: stylizeFramework(f),
+    renderer: r,
+    icon: <RendererLogo src={getRendererLogo(r)} alt="" />,
+    label: stylizeRenderer(r),
   }));
 
-  const coreItems = items.filter(({ framework: f }) => coreFrameworks.includes(f));
-  const communityItems = items.filter(({ framework: f }) => !coreFrameworks.includes(f));
+  const coreItems = items.filter(({ renderer: r }) => coreRenderers.includes(r));
+  const communityItems = items.filter(({ renderer: r }) => !coreRenderers.includes(r));
 
-  const frameworkOptions = [
+  const rendererOptions = [
     {
       label: 'Core',
       items: coreItems,
@@ -79,5 +79,5 @@ export function FrameworkSelector({ coreFrameworks, communityFrameworks }: Frame
     },
   ];
 
-  return <Menu label={stylizeFramework(framework)} items={frameworkOptions} primary />;
+  return <Menu label={stylizeRenderer(renderer)} items={rendererOptions} primary />;
 }
