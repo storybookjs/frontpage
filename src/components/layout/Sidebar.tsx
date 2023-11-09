@@ -1,6 +1,23 @@
-import React, { FC } from 'react';
-import { Text, color, typography } from '@chromaui/tetra';
+import React, { FC, Fragment, ReactNode } from 'react';
+import { color, fontWeight, typography } from '@chromaui/tetra';
 import { styled } from '@storybook/theming';
+import * as Accordion from '@radix-ui/react-accordion';
+import { ChevronRightIcon } from '@storybook/icons';
+
+type SidebarElementProps = {
+  type?: 'menu' | 'link';
+  title?: string;
+  pathSegment?: string;
+  path?: string;
+  githubUrl?: string;
+  description?: string;
+  LinkWrapper?: ReactNode;
+  children?: SidebarElementProps[];
+};
+
+interface SidebarProps {
+  docsTocWithLinkWrappers: SidebarElementProps[];
+}
 
 const DocsIcon: FC = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none">
@@ -69,7 +86,51 @@ const Line = styled.li`
   }
 `;
 
-export const Sidebar: FC = () => {
+const AccordionRoot = styled.ul`
+  margin: 24px 0;
+  padding: 0;
+`;
+
+const NavItem = styled.li<{ level: 1 | 2 | 3 }>`
+  display: flex;
+  height: 28px;
+  margin-top: ${({ level }) => (level === 1 ? '24px' : '4px')};
+  margin-bottom: 4px;
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    text-decoration: none;
+    ${typography.body14}
+    font-weight: ${({ level }) => (level === 1 ? fontWeight.bold : fontWeight.medium)};
+    color: ${({ level }) => (level === 1 ? color.black : color.slate500)};
+    transition: color 0.1s ease-in-out;
+
+    &:hover {
+      color: ${color.black};
+    }
+  }
+`;
+
+const NavAccordionTrigger = styled(Accordion.Trigger)`
+  all: unset;
+  display: flex;
+  height: 28px;
+  ${typography.body14}
+  color: ${color.black};
+  transition: color 0.1s ease-in-out;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+
+  &:hover {
+    color: ${color.blue500};
+  }
+`;
+
+export const Sidebar: FC<SidebarProps> = ({ docsTocWithLinkWrappers }) => {
   return (
     <SidebarContainer>
       <nav>
@@ -94,6 +155,47 @@ export const Sidebar: FC = () => {
           </Line>
         </TopNav>
       </nav>
+      {/* Add Version Dropdown */}
+      <Accordion.Root type="multiple" asChild>
+        <AccordionRoot>
+          {docsTocWithLinkWrappers.map((lvl1, lvl1Index) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <Fragment key={lvl1Index}>
+              <NavItem level={1}>
+                <a href="/">{lvl1.title}</a>
+              </NavItem>
+              {lvl1.children &&
+                lvl1.children.length > 0 &&
+                lvl1.children.map((lvl2, lvl2Index) => (
+                  // eslint-disable-next-line react/no-array-index-key
+                  <Fragment key={lvl2Index}>
+                    <NavItem level={2}>
+                      <a href="/">{lvl2.title}</a>
+                    </NavItem>
+                    {lvl2.children && lvl2.children.length > 0 && (
+                      <Accordion.Item value={`${lvl2.title}-${lvl2Index}`}>
+                        <Accordion.Header>
+                          <NavAccordionTrigger>
+                            {lvl2.title}
+                            <ChevronRightIcon />
+                          </NavAccordionTrigger>
+                        </Accordion.Header>
+                        <Accordion.Content>
+                          {lvl2.children.map((lvl3, lvl3Index) => (
+                            // eslint-disable-next-line react/no-array-index-key
+                            <NavItem key={lvl3Index} level={3}>
+                              <a href="/">{lvl3.title}</a>
+                            </NavItem>
+                          ))}
+                        </Accordion.Content>
+                      </Accordion.Item>
+                    )}
+                  </Fragment>
+                ))}
+            </Fragment>
+          ))}
+        </AccordionRoot>
+      </Accordion.Root>
     </SidebarContainer>
   );
 };

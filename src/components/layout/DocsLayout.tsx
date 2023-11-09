@@ -1,14 +1,6 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { styled, css } from '@storybook/theming';
-import {
-  Icon,
-  Button,
-  TableOfContents,
-  TooltipNote,
-  WithTooltip,
-  global,
-  animation,
-} from '@storybook/design-system';
+import { global, animation } from '@storybook/design-system';
 import Helmet from 'react-helmet';
 import {
   SubNav,
@@ -35,7 +27,7 @@ import {
 } from '../../constants/global-search';
 import { Sidebar } from './Sidebar';
 
-const { breakpoint, color, pageMargins, spacing } = styles;
+const { breakpoint, color, spacing } = styles;
 const { GlobalStyle } = global;
 
 const SubNavWrapper = styled.div`
@@ -51,7 +43,7 @@ const SidebarContainer = styled.div<{ isLoading: boolean }>`
 
   @media (min-width: ${breakpoint * 1.333}px) {
     display: block;
-    flex: 0 0 240px;
+    flex: 0 0 260px;
     margin: 0;
     padding-bottom: 0;
     padding-right: 20px;
@@ -65,16 +57,6 @@ const SidebarContainer = styled.div<{ isLoading: boolean }>`
       border-radius: ${spacing.borderRadius.small}px;
       ${animation.inlineGlow}
     `}
-`;
-
-const ExpandButton = styled(Button)`
-  height: 28px;
-  width: 28px;
-`;
-
-const SidebarControls = styled.div`
-  position: absolute;
-  left: -62px;
 `;
 
 const Content = styled.div`
@@ -99,23 +81,6 @@ const Wrapper = styled.div`
     padding-top: 4rem;
     padding-bottom: 4rem;
     display: flex;
-  }
-`;
-
-const StyledTableOfContents = styled(TableOfContents)`
-  // space the ToC emoji and text
-  li > a svg + span::first-letter,
-  li > button svg + span::first-letter {
-    margin-right: 4px;
-  }
-
-  /* Hide ToC on mobile, the primary navigation is search */
-  display: none;
-
-  @media (min-width: ${breakpoint * 1.333}px) {
-    display: block;
-    /* So that the expandable arrows are rendered outside of the sidebar dimensions */
-    margin-left: -20px;
   }
 `;
 
@@ -156,14 +121,22 @@ const SkeletonBody = styled.div`
   ${animation.inlineGlow}
 `;
 
-export function PureDocsLayout({
+interface PureDocsLayoutProps {
+  framework: string;
+  isLoading: boolean;
+  sidebar: React.ReactNode;
+  slug: string;
+  versions: any;
+}
+
+export const PureDocsLayout: FC<PureDocsLayoutProps> = ({
   children,
   framework,
   isLoading,
   sidebar,
   slug,
   versions: versionsProp,
-}) {
+}) => {
   const { coreFrameworks, communityFrameworks, isLatest, version, versionString } =
     useSiteMetadata();
 
@@ -228,7 +201,7 @@ export function PureDocsLayout({
       </DocsContextProvider>
     </>
   );
-}
+};
 
 const getTocSectionTitles = (toc, path) => {
   const pathParts = path.split('/');
@@ -338,46 +311,7 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
       <PureDocsLayout
         framework={framework}
         slug={slug}
-        sidebar={
-          // TODO: Sidebar
-          <Sidebar />
-          // <StyledTableOfContents
-          //   key={framework}
-          //   currentPath={fullPath}
-          //   items={docsTocWithLinkWrappers}
-          // >
-          //   {({ menu, allTopLevelMenusAreOpen, toggleAllOpen, toggleAllClosed }) => (
-          //     <>
-          //       <SidebarControls>
-          //         {allTopLevelMenusAreOpen ? (
-          //           <WithTooltip
-          //             {...withTooltipProps}
-          //             tooltip={<TooltipNote note="Collapse all" />}
-          //             onClick={toggleAllClosed}
-          //             tabIndex="-1"
-          //           >
-          //             <ExpandButton containsIcon appearance="outline" size="small">
-          //               <Icon icon="collapse" aria-label="Collapse sidebar" />
-          //             </ExpandButton>
-          //           </WithTooltip>
-          //         ) : (
-          //           <WithTooltip
-          //             {...withTooltipProps}
-          //             tooltip={<TooltipNote note="Expand all" />}
-          //             onClick={toggleAllOpen}
-          //             tabIndex="-1"
-          //           >
-          //             <ExpandButton containsIcon appearance="outline" size="small">
-          //               <Icon icon="expandalt" aria-label="Expand sidebar" />
-          //             </ExpandButton>
-          //           </WithTooltip>
-          //         )}
-          //       </SidebarControls>
-          //       {menu}
-          //     </>
-          //   )}
-          // </StyledTableOfContents>
-        }
+        sidebar={<Sidebar docsTocWithLinkWrappers={docsTocWithLinkWrappers} />}
         versions={versions}
       >
         {tocSectionTitles && (

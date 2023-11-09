@@ -3744,7 +3744,7 @@
   dependencies:
     "@babel/runtime" "^7.13.10"
 
-"@radix-ui/react-accordion@1.1.2":
+"@radix-ui/react-accordion@1.1.2", "@radix-ui/react-accordion@^1.1.2":
   version "1.1.2"
   resolved "https://registry.npmjs.org/@radix-ui/react-accordion/-/react-accordion-1.1.2.tgz#738441f7343e5142273cdef94d12054c3287966f"
   integrity sha512-fDG7jcoNKVjSK6yfmuAs0EnPDro0WMXIhMtXdTBWqEioVW206ku+4Lw07e+13lUkFkpoEQ2PdeMIAGpdqEAmDg==
@@ -5286,6 +5286,11 @@
   integrity sha512-cP99mhWN/JeCp7VSIiymvj5tmuMY050iFohvp8Zq+kewKsBSZ6/qpTJAGCCZk6pneTcp4S0Fm5BSqyxzbyJ3gw==
   dependencies:
     "@types/jest" ">=26.0.0"
+
+"@storybook/icons@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@storybook/icons/-/icons-1.2.1.tgz#3f21fe16c07bfddb2c0b50d384eed9f01db6b32d"
+  integrity sha512-ffJpWeRjDXik4TrHeNWd4SuRXV1uMmzYYi+DzwPDUHJe/DSkkFGHgbphi5Jc4/A3qGl7NKUyUDkKCWZKdQxB7Q==
 
 "@storybook/instrumenter@^6.4.0":
   version "6.5.16"
