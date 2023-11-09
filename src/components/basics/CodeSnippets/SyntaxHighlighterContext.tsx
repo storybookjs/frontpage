@@ -1,7 +1,18 @@
 import React, { createContext, useContext, useEffect, useState, useMemo } from 'react';
 import { getHighlighter, Lang, Highlighter } from 'shiki';
 
-const SYNTAX_LANGUAGES = ['js', 'jsx', 'ts', 'tsx', 'vue', 'svelte', 'html', 'css', 'sh'] as const;
+const SYNTAX_LANGUAGES = [
+  'js',
+  'jsx',
+  'json',
+  'ts',
+  'tsx',
+  'vue',
+  'svelte',
+  'html',
+  'css',
+  'sh',
+] as const;
 export type SupportedLanguages = typeof SYNTAX_LANGUAGES[number];
 
 export interface SyntaxHighlighterContextValue {
@@ -30,7 +41,7 @@ export const SyntaxHighlighterContextProvider: React.FC = ({ children }) => {
     getHighlighter({
       theme: 'github-light',
       langs: SYNTAX_LANGUAGES as unknown as Lang[],
-      paths: { wasm: '/dist', themes: '/themes', languages: '/languages' },
+      paths: { wasm: '/shiki/dist', themes: '/shiki/themes', languages: '/shiki/languages' },
     }).then((highlighter) => {
       setHighlighterInstance(highlighter);
       setIsLoadingHighlighter(false);
