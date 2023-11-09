@@ -23,6 +23,7 @@ import { Callout } from '../../basics/Callout';
 import { InPageTOC } from '../../basics/InPageTOC';
 import { Pre } from '../../basics/Pre';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
+import { SyntaxHighlighterContextProvider } from '../../basics/CodeSnippets/SyntaxHighlighterContext';
 import { DOCS_BOTTOM_PADDING_WIDE, DOCS_TOP_PADDING_WIDE, GUTTER } from '../../layout/DocsLayout';
 import { CodeSnippets } from './CodeSnippets';
 import { useDocsContext } from './DocsContext';
@@ -356,22 +357,24 @@ function DocsScreen({ data, pageContext, location }) {
           </Header>
 
           <MDWrapper>
-            <MDXProvider
-              components={{
-                pre: Pre,
-                CodeSnippets: CodeSnippetsWithState,
-                FeatureSnippets: FeatureSnippetsWithState,
-                RendererSupportTable: RendererSupportTableWithState,
-                If: IfWithState,
-                // Maintained for older docs version content
-                IfRenderer: IfWithState,
-                YouTubeCallout,
-                a: LinksWithPrefix,
-                Callout,
-              }}
-            >
-              <MDXRenderer>{body}</MDXRenderer>
-            </MDXProvider>
+            <SyntaxHighlighterContextProvider>
+              <MDXProvider
+                components={{
+                  pre: Pre,
+                  CodeSnippets: CodeSnippetsWithState,
+                  FeatureSnippets: FeatureSnippetsWithState,
+                  RendererSupportTable: RendererSupportTableWithState,
+                  If: IfWithState,
+                  // Maintained for older docs version content
+                  IfRenderer: IfWithState,
+                  YouTubeCallout,
+                  a: LinksWithPrefix,
+                  Callout,
+                }}
+              >
+                <MDXRenderer>{body}</MDXRenderer>
+              </MDXProvider>
+            </SyntaxHighlighterContextProvider>
           </MDWrapper>
 
           {nextTocItem && (
