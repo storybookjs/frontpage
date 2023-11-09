@@ -11,7 +11,7 @@ import {
   SubNavLinkList,
   styles,
 } from '@storybook/components-marketing';
-import { Container } from '@chromaui/tetra';
+import { Container, color } from '@chromaui/tetra';
 import * as ScrollArea from '@radix-ui/react-scroll-area';
 
 import { GLOBAL_SEARCH_IMPORTANCE, GLOBAL_SEARCH_META_KEYS } from '../../constants/global-search';
@@ -25,11 +25,11 @@ import { VersionSelector } from '../screens/DocsScreen/VersionSelector';
 import { VersionCTA } from '../screens/DocsScreen/VersionCTA';
 import { Sidebar } from './Sidebar';
 
-const { breakpoint, color, spacing } = styles;
+const { breakpoint } = styles;
 const { GlobalStyle } = global;
 
 const SubNavWrapper = styled.div`
-  background: ${color.lightest};
+  background: ${color.white};
   position: sticky;
   top: 0;
   z-index: 2;
@@ -46,7 +46,7 @@ const SidebarRoot = styled(ScrollArea.Root)`
     padding-bottom: 0;
     padding-right: 20px;
     margin-right: 20px;
-    height: 200px;
+    height: calc(100vh - 104px);
   }
 `;
 
@@ -57,13 +57,24 @@ const SidebarViewport = styled(ScrollArea.Viewport)`
 
 const ScrollAreaScrollbar = styled(ScrollArea.Scrollbar)`
   display: flex;
+  width: 5px;
   /* ensures no selection */
   user-select: none;
   /* disable browser handling of all panning and zooming gestures on touch devices */
   touch-action: none;
-  padding: 2px;
-  background: var(--black-a6);
-  transition: background 160ms ease-out;
+`;
+
+const ScrollAreaThumb = styled(ScrollArea.Thumb)`
+  flex: 1;
+  width: 5px;
+  background: ${color.slate300};
+  border-radius: 20px;
+  position: relative;
+  transition: background 0.2s ease-in-out;
+
+  &:hover {
+    background: ${color.slate500};
+  }
 `;
 
 const Content = styled.div`
@@ -166,7 +177,7 @@ export const PureDocsLayout: FC<PureDocsLayoutProps> = ({
             <SidebarRoot className="sidebar">
               <SidebarViewport>{sidebar}</SidebarViewport>
               <ScrollAreaScrollbar orientation="vertical">
-                <ScrollArea.Thumb />
+                <ScrollAreaThumb />
               </ScrollAreaScrollbar>
             </SidebarRoot>
             <Content>{children}</Content>
