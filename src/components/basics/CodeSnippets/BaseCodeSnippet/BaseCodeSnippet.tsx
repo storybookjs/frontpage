@@ -73,6 +73,7 @@ export interface CodeSnippetProps {
   id: string;
   isTerminal?: boolean;
   renderLanguageSelector?: () => React.ReactNode;
+  renderSnippetEyebrow?: () => React.ReactNode;
   snippet: string;
   syntax: SupportedLanguages;
   title: string;
@@ -83,6 +84,7 @@ export const BaseCodeSnippet = ({
   id,
   isTerminal,
   renderLanguageSelector,
+  renderSnippetEyebrow,
   snippet,
   syntax,
   title,
@@ -106,7 +108,7 @@ export const BaseCodeSnippet = ({
           </CodeSnippetHeaderRight>
         </CodeSnippetHeader>
       )}
-
+      {renderSnippetEyebrow ? renderSnippetEyebrow() : null}
       {isLoadingHighlighter ? (
         <CodeSnippetContent hideHeader={hideHeader}>Loading...</CodeSnippetContent>
       ) : (
