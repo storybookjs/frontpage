@@ -64,7 +64,6 @@ export function PurePageLayout({ dxData, children, pageContext, ...props }) {
   const {
     algoliaDocSearchConfig,
     description,
-    defaultRenderer,
     googleSiteVerification,
     latestVersionString,
     ogImage,
@@ -74,7 +73,6 @@ export function PurePageLayout({ dxData, children, pageContext, ...props }) {
   } = useSiteMetadata();
   const isHomePage = props.location.pathname === '/';
 
-  const { renderer } = pageContext;
   const activeSection = activeRouteSection(props.location.pathname);
 
   return (
@@ -139,7 +137,6 @@ export function PurePageLayout({ dxData, children, pageContext, ...props }) {
             />
             <Nav
               inverse={isHomePage}
-              framework={renderer || defaultRenderer}
               version={versionString || latestVersionString}
               apiKey={ALGOLIA_API_KEY}
               activeSection={activeSection}
