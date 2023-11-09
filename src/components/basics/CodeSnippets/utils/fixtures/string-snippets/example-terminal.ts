@@ -1,1 +1,3 @@
-export default `yarn add @storybook/addon-styling-webpack`;
+const exampleTerminal = `yarn add @storybook/addon-styling-webpack`;
+
+export default exampleTerminal;

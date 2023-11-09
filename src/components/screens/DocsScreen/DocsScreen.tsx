@@ -2,20 +2,12 @@ import React, { useMemo } from 'react';
 import { styled } from '@storybook/theming';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import {
-  Button,
-  Highlight,
-  Link,
-  ShadowBoxCTA,
-  Subheading,
-  styles,
-} from '@storybook/design-system';
+import { Button, Link, ShadowBoxCTA, Subheading, styles } from '@storybook/design-system';
 import { graphql } from 'gatsby';
 import { CodeSnippets } from './CodeSnippets';
 import { rendererSupportsFeature, RendererSupportTable } from './RendererSupportTable';
 import { SocialGraph } from '../../basics';
 import { Callout } from '../../basics/Callout';
-import { Pre } from '../../basics/Pre';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import { mdFormatting } from '../../../styles/formatting';
@@ -27,6 +19,9 @@ import { FeatureSnippets } from './FeatureSnippets';
 import { Feedback } from './Feedback';
 import { If } from './If';
 import { YouTubeCallout } from './YouTubeCallout';
+
+import { MDXPreCodeSnippet } from '../../basics/CodeSnippets/MDXPreCodeSnippet/MDXPreCodeSnippet';
+import { SyntaxHighlighterContextProvider } from '../../basics/CodeSnippets/SyntaxHighlighterContext';
 
 const { color, spacing, typography } = styles;
 
@@ -117,6 +112,8 @@ function DocsScreen({ data, pageContext, location }) {
     versionString,
   } = useSiteMetadata();
   const { docsToc, fullPath, slug, tocItem, nextTocItem, isInstallPage } = pageContext;
+
+  console.log('PAGE', fullPath);
 
   const {
     codeLanguage: [codeLanguage],
@@ -223,22 +220,24 @@ function DocsScreen({ data, pageContext, location }) {
             )}
           </UnsupportedBanner>
         )}
-        <MDXProvider
-          components={{
-            pre: Pre,
-            CodeSnippets: CodeSnippetsWithState,
-            FeatureSnippets: FeatureSnippetsWithState,
-            RendererSupportTable: RendererSupportTableWithState,
-            If: IfWithState,
-            // Maintained for older docs version content
-            IfRenderer: IfWithState,
-            YouTubeCallout,
-            a: LinksWithPrefix,
-            Callout,
-          }}
-        >
-          <MDXRenderer>{body}</MDXRenderer>
-        </MDXProvider>
+        <SyntaxHighlighterContextProvider>
+          <MDXProvider
+            components={{
+              pre: MDXPreCodeSnippet,
+              CodeSnippets: CodeSnippetsWithState,
+              FeatureSnippets: FeatureSnippetsWithState,
+              RendererSupportTable: RendererSupportTableWithState,
+              If: IfWithState,
+              // Maintained for older docs version content
+              IfRenderer: IfWithState,
+              YouTubeCallout,
+              a: LinksWithPrefix,
+              Callout,
+            }}
+          >
+            <MDXRenderer>{body}</MDXRenderer>
+          </MDXProvider>
+        </SyntaxHighlighterContextProvider>
       </MDWrapper>
 
       {nextTocItem && (
