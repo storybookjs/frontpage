@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react';
 import { styled } from '@storybook/theming';
 import { color, spacing, Text } from '@chromaui/tetra';
-import { CopyIcon } from '@storybook/icons';
 import { useCopyToClipboard } from 'usehooks-ts';
 
 import { useSyntaxHighlighter, SupportedLanguages } from './SyntaxHighlighterContext';
@@ -68,6 +67,7 @@ export interface CodeSnippetProps {
   renderLanguageSelector?: () => React.ReactNode;
   snippet: string;
   syntax: SupportedLanguages;
+  title: string;
 }
 
 export const BaseCodeSnippet = ({
@@ -76,39 +76,30 @@ export const BaseCodeSnippet = ({
   renderLanguageSelector,
   snippet,
   syntax,
+  title,
   ...rest
 }: CodeSnippetProps) => {
   const { isLoadingHighlighter, generateSnippetHTML } = useSyntaxHighlighter();
-  const [CopiedValue, copyToClipboard] = useCopyToClipboard();
-  const [isCopied, setIsCopied] = React.useState(false);
-
-  const [fileName, code] = parseSnippetContent(snippet);
-  const title = isTerminal ? 'Terminal' : fileName;
-
-  const onCopy = useCallback(() => {
-    copyToClipboard(code);
-    setIsCopied(true);
-  }, [code, copyToClipboard]);
 
   return (
     <CodeSnippetContainer {...rest}>
       <CodeSnippetHeader>
         <CodeSnippetHeaderLeft>
-          <SnippetTypeIcon fileName={fileName} />
+          <SnippetTypeIcon syntax={syntax} />
           <Text as="span" variant="body14" fontWeight="semibold" color="slate800">
             {title}
           </Text>
         </CodeSnippetHeaderLeft>
         <CodeSnippetHeaderRight>
           {renderLanguageSelector ? renderLanguageSelector() : null}
-          <SnippetCopyButton code={code} />
+          <SnippetCopyButton code={snippet} />
         </CodeSnippetHeaderRight>
       </CodeSnippetHeader>
       {isLoadingHighlighter ? (
         <CodeSnippetContent>Loading...</CodeSnippetContent>
       ) : (
         <CodeSnippetContent
-          dangerouslySetInnerHTML={{ __html: generateSnippetHTML(code, syntax) }}
+          dangerouslySetInnerHTML={{ __html: generateSnippetHTML(snippet, syntax) }}
         />
       )}
     </CodeSnippetContainer>
