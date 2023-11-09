@@ -8,27 +8,27 @@ it('parses snippet type for install command', () => {
   expect(pnpmResult).toBe('init-command');
 });
 
-it('parses framework specific snippets [react]', () => {
+it('parses renderer specific snippets [react]', () => {
   const results = extractSnippetPath('react/button-story.js.mdx');
   expect(results).toBe('button-story');
 });
 
-it('parses framework specific snippets [vue]', () => {
+it('parses renderer specific snippets [vue]', () => {
   const results = extractSnippetPath('vue/button-story-with-addon-example.js.mdx');
   expect(results).toBe('button-story-with-addon-example');
 });
 
-it('parses framework specific snippets [angular]', () => {
+it('parses renderer specific snippets [angular]', () => {
   const results = extractSnippetPath('angular/button-story-with-addon-example.ts.mdx');
   expect(results).toBe('button-story-with-addon-example');
 });
 
-it('parses framework specific snippets [web-components]', () => {
+it('parses renderer specific snippets [web-components]', () => {
   const results = extractSnippetPath('web-components/button-story-with-addon-example.js.mdx');
   expect(results).toBe('button-story-with-addon-example');
 });
 
-it('parses framework specific snippets [ts-4.9]', () => {
+it('parses renderer specific snippets [ts-4.9]', () => {
   const results = extractSnippetPath(
     'common/button-story-baseline-with-satisfies-story-level.ts-4-9.mdx'
   );

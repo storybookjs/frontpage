@@ -1,21 +1,20 @@
 import React from 'react';
 import { Link as GatsbyLink } from 'gatsby';
-import stylizeFramework from '../../../util/stylize-framework';
+import stylizeRenderer from '../../../util/stylize-renderer';
 import { communityAddons } from '../../../util/community-addons';
 
-export function frameworkSupportsFeature(framework, { supported, unsupported }) {
+export function rendererSupportsFeature(renderer, { supported, unsupported }) {
   return (
-    (supported && supported.includes(framework)) ||
-    (unsupported && !unsupported.includes(framework))
+    (supported && supported.includes(renderer)) || (unsupported && !unsupported.includes(renderer))
   );
 }
 
 const monorepoUrlBase = 'https://github.com/storybookjs/storybook/tree/next';
 
-export const FrameworkSupportTable = ({ currentFramework, frameworks, featureGroups }) => {
+export const RendererSupportTable = ({ currentRenderer, renderers, featureGroups }) => {
   function pathForFeature({ name, path, repoPath }) {
     if (path) {
-      return `/docs/${currentFramework}/${path}`;
+      return `/docs/${currentRenderer}/${path}`;
     }
     if (repoPath) {
       return `${monorepoUrlBase}/${repoPath}`;
@@ -28,10 +27,10 @@ export const FrameworkSupportTable = ({ currentFramework, frameworks, featureGro
     <table>
       <thead>
         <tr>
-          <th aria-label="frameworks" />
-          {frameworks.map((framework) => (
-            <th key={`framework_${framework}`}>
-              <GatsbyLink to={`/docs/${framework}`}>{stylizeFramework(framework)}</GatsbyLink>
+          <th aria-label="renderers" />
+          {renderers.map((renderer) => (
+            <th key={`renderer_${renderer}`}>
+              <GatsbyLink to={`/docs/${renderer}`}>{stylizeRenderer(renderer)}</GatsbyLink>
             </th>
           ))}
         </tr>
@@ -40,16 +39,16 @@ export const FrameworkSupportTable = ({ currentFramework, frameworks, featureGro
         {featureGroups.map(({ name: groupName, features }) => (
           <React.Fragment key={`group_${groupName}`}>
             <tr>
-              <th colSpan={frameworks.length + 1}>{groupName}</th>
+              <th colSpan={renderers.length + 1}>{groupName}</th>
             </tr>
             {features.map((feature) => (
               <tr key={`${groupName}_${feature.name}`}>
                 <th>
                   <GatsbyLink to={pathForFeature(feature)}>{feature.name}</GatsbyLink>
                 </th>
-                {frameworks.map((framework) => (
-                  <td key={`${groupName}-${framework}-${feature.name}`}>
-                    {frameworkSupportsFeature(framework, feature) ? '✅' : ''}
+                {renderers.map((renderer) => (
+                  <td key={`${groupName}-${renderer}-${feature.name}`}>
+                    {rendererSupportsFeature(renderer, feature) ? '✅' : ''}
                   </td>
                 ))}
               </tr>

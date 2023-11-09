@@ -16,11 +16,11 @@ export default {
   title: 'Screens/DocsScreen/CodeLanguageSelector',
   component: CodeLanguageSelector,
   args: {
-    framework: 'react',
+    renderer: 'react',
   },
   decorators: [
-    (storyFn, { args: { framework } }) => (
-      <DocsContextProvider framework={framework}>
+    (storyFn, { args: { renderer } }) => (
+      <DocsContextProvider renderer={renderer}>
         <Wrapper>{storyFn()}</Wrapper>
       </DocsContextProvider>
     ),
@@ -41,7 +41,7 @@ Base.play = async ({ canvasElement }) => {
 // Note: Until 7.0 is stable, this snapshot will render nothing (as expected)
 export const Angular = Template.bind({});
 Angular.args = {
-  framework: 'angular',
+  renderer: 'angular',
 };
 Angular.parameters = {
   chromatic: { disableSnapshot: true },

@@ -16,7 +16,7 @@ import { Stat } from '../../basics/Stat';
 import AtomicDesignLogoSVG from '../../../images/logos/user/logo-atomicdesign.svg';
 import { Integrations } from './Integrations';
 import { ScrollDemo } from './StorybookDemo/ScrollDemo';
-import buildPathWithFramework from '../../../util/build-path-with-framework';
+import buildPathWithVersion from '../../../util/build-path-with-version';
 
 const {
   urls: { installDocsPageSlug },
@@ -38,13 +38,11 @@ const Wrapper = styled.section`
   }
 `;
 
-const featuredFrameworks = ['react', 'vue', 'angular', 'web-components', 'html'];
-const frameworkIntegrations = featuredFrameworks.map((framework) => ({
-  name: framework,
-  image: `/frameworks/logo-${
-    framework === 'web-components' ? 'web-components-alt' : framework
-  }.svg`,
-  href: buildPathWithFramework(installDocsPageSlug, framework),
+const featuredRenderers = ['react', 'vue', 'angular', 'web-components', 'html'];
+const rendererIntegrations = featuredRenderers.map((renderer) => ({
+  name: renderer,
+  image: `/renderers/logo-${renderer === 'web-components' ? 'web-components-alt' : renderer}.svg`,
+  href: `${buildPathWithVersion(installDocsPageSlug)}?renderer=${renderer}`,
   ButtonWrapper: GatsbyLinkWrapper,
 }));
 
@@ -229,7 +227,7 @@ export function Develop({ docs, startOpen, ...props }) {
         actions={
           <div>
             <MadeFor>Made for</MadeFor>
-            <IntegrationsList integrations={frameworkIntegrations} overflowLabel="+ 7" inverse />
+            <IntegrationsList integrations={rendererIntegrations} overflowLabel="+ 7" inverse />
           </div>
         }
       />

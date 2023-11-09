@@ -3,8 +3,6 @@ import { styled } from '@storybook/theming';
 import { VersionCTA } from './VersionCTA';
 import { pageContext } from '../../layout/DocsLayout.stories';
 
-const { coreFrameworks } = require('../../../content/docs/frameworks');
-
 const { versions } = pageContext;
 
 const Wrapper = styled.div`
@@ -21,7 +19,6 @@ const Template = (args) => <VersionCTA {...args} />;
 
 export const OldVersion = Template.bind({});
 OldVersion.args = {
-  framework: coreFrameworks[0],
   version: versions.stable[1].version,
   latestVersion: versions.stable[0].version,
   latestVersionString: versions.stable[0].string,

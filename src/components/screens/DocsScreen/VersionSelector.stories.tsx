@@ -4,8 +4,6 @@ import { within, userEvent } from '@storybook/testing-library';
 import { VersionSelector } from './VersionSelector';
 import { pageContext } from '../../layout/DocsLayout.stories';
 
-const { coreFrameworks } = require('../../../content/docs/frameworks');
-
 const { versions } = pageContext;
 
 // The Wrapper helps capture the tooltip contents in the snapshot
@@ -27,7 +25,6 @@ export const Base = Template.bind({});
 Base.args = {
   version: versions.stable[0].version,
   versions,
-  framework: coreFrameworks[0],
   slug: '/docs/get-started/install',
 };
 Base.play = async ({ canvasElement }) => {

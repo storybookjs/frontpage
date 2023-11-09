@@ -73,7 +73,6 @@ export function PurePageLayout({ dxData, children, pageContext, ...props }) {
   } = useSiteMetadata();
   const isHomePage = props.location.pathname === '/';
 
-  const { framework } = pageContext;
   const activeSection = activeRouteSection(props.location.pathname);
 
   return (
@@ -113,11 +112,6 @@ export function PurePageLayout({ dxData, children, pageContext, ...props }) {
             Set the docsearch index facets defaults
           */}
           <meta
-            key={GLOBAL_SEARCH_META_KEYS.FRAMEWORK}
-            name={GLOBAL_SEARCH_META_KEYS.FRAMEWORK}
-            content={GLOBAL_SEARCH_AGNOSTIC}
-          />
-          <meta
             key={GLOBAL_SEARCH_META_KEYS.VERSION}
             name={GLOBAL_SEARCH_META_KEYS.VERSION}
             content={GLOBAL_SEARCH_AGNOSTIC}
@@ -143,7 +137,6 @@ export function PurePageLayout({ dxData, children, pageContext, ...props }) {
             />
             <Nav
               inverse={isHomePage}
-              framework={framework || 'react'}
               version={versionString || latestVersionString}
               apiKey={ALGOLIA_API_KEY}
               activeSection={activeSection}

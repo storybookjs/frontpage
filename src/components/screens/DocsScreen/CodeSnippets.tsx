@@ -12,8 +12,9 @@ import {
 
 import { CODE_SNIPPET_CLASSNAME } from '../../../constants/code-snippets';
 import { DEFAULT_CODE_LANGUAGE, CODE_LANGUAGES_FULL } from '../../../constants/code-languages';
-import stylizeFramework from '../../../util/stylize-framework';
+import stylizeFramework from '../../../util/stylize-renderer';
 import { logSnippetInteraction } from '../../../util/custom-events';
+import { useIfContext } from './If';
 
 const siteMetadata = require('../../../../site-metadata');
 const { version, latestVersion } = require('../../../util/version-data');
@@ -183,7 +184,19 @@ function getPathsForLanguage(paths, forLanguage, { matchMDX = true } = {}) {
   });
 }
 
-export const getResolvedPaths = (paths, currentFramework, currentCodeLanguage) => {
+type GetResolvedPaths = (
+  paths: string[],
+  currentFramework: string,
+  currentCodeLanguage: string,
+  ifContextRenderer?: string[]
+) => [string[], React.ReactNode];
+
+export const getResolvedPaths: GetResolvedPaths = (
+  paths,
+  currentFramework,
+  currentCodeLanguage,
+  ifContextRenderer = []
+) => {
   let message;
 
   const isPackageManagerSnippet = paths.some(
@@ -205,30 +218,50 @@ export const getResolvedPaths = (paths, currentFramework, currentCodeLanguage) =
     return acc;
   }, {} as Record<string, string[]>);
 
-  let pathsForCurrentFramework =
+  let pathsForRelevantFramework =
     pathsByFramework[currentFramework] || pathsByFramework[COMMON] || [];
 
-  if (isPackageManagerSnippet) {
-    return [pathsForCurrentFramework, message];
+  if (pathsForRelevantFramework.length === 0) {
+    /*
+     * CodeSnippets can be rendered inside an If block. When building the page, that If block renders
+     * its contents regardless of the current renderer, which can result in no relevant paths being
+     * found. In that case, we attempt to find paths for the renderers configured for the parent If
+     * block. This would never happen in the browser, because the If block filters its contents. But
+     * it's necessary to prevent throwing an error during the build.
+     */
+    const rendererWithPaths = ifContextRenderer
+      .filter((r) => r !== currentFramework)
+      .find((r) => pathsByFramework[r]);
+    if (rendererWithPaths) {
+      pathsForRelevantFramework = pathsByFramework[rendererWithPaths];
+    }
   }
 
-  if (pathsForCurrentFramework.length === 0) {
-    pathsForCurrentFramework = pathsByFramework[defaultFramework];
+  if (isPackageManagerSnippet) {
+    return [pathsForRelevantFramework, message];
+  }
+
+  if (pathsForRelevantFramework.length === 0) {
+    pathsForRelevantFramework = pathsByFramework[defaultFramework];
     message = <MissingFrameworkMessage currentFramework={currentFramework} />;
   }
 
-  if (!pathsForCurrentFramework) {
+  if (!pathsForRelevantFramework) {
     if (version >= latestVersion) {
-      throw new Error(`No snippets found for ${currentFramework} in ${paths.join(', ')}`);
+      throw new Error(
+        `No snippets found for ${currentFramework}${
+          ifContextRenderer.length > 0 ? `or ${ifContextRenderer.join(' or ')}` : ''
+        } in ${paths.join(', ')}`
+      );
     }
     return [[], message];
   }
 
-  let resolvedPaths = getPathsForLanguage(pathsForCurrentFramework, currentCodeLanguage);
+  let resolvedPaths = getPathsForLanguage(pathsForRelevantFramework, currentCodeLanguage);
 
   // TS selected, but no TS snippet, fallback to JS
   if (resolvedPaths.length === 0) {
-    resolvedPaths = getPathsForLanguage(pathsForCurrentFramework, 'js');
+    resolvedPaths = getPathsForLanguage(pathsForRelevantFramework, 'js');
     // If there are any TS snippets for other frameworks, show a message
     if (getPathsForLanguage(paths, 'ts', { matchMDX: false }).length > 0) {
       message = (
@@ -242,7 +275,7 @@ export const getResolvedPaths = (paths, currentFramework, currentCodeLanguage) =
 
   // JS selected, but no JS snippet, fallback to TS
   if (resolvedPaths.length === 0) {
-    resolvedPaths = getPathsForLanguage(pathsForCurrentFramework, DEFAULT_CODE_LANGUAGE);
+    resolvedPaths = getPathsForLanguage(pathsForRelevantFramework, DEFAULT_CODE_LANGUAGE);
     // If there are any JS snippets for other frameworks, show a message
     if (getPathsForLanguage(paths, 'js', { matchMDX: false }).length > 0) {
       message = (
@@ -257,7 +290,7 @@ export const getResolvedPaths = (paths, currentFramework, currentCodeLanguage) =
 
   // JS or TS selected, but no JS or TS snippet, fallback to anything available
   if (resolvedPaths.length === 0) {
-    resolvedPaths = pathsForCurrentFramework;
+    resolvedPaths = pathsForRelevantFramework;
     message = undefined;
   }
 
@@ -284,7 +317,14 @@ export function CodeSnippets({
 }) {
   const [snippets, setSnippets] = React.useState([]);
 
-  const [resolvedPaths, message] = getResolvedPaths(paths, currentFramework, currentCodeLanguage);
+  const ifContext = useIfContext();
+
+  const [resolvedPaths, message] = getResolvedPaths(
+    paths,
+    currentFramework,
+    currentCodeLanguage,
+    ifContext.renderer
+  );
 
   /**
    * For a path like `web-components/button-story-click-handler-args.js.mdx`,

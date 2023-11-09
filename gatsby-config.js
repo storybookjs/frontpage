@@ -210,15 +210,10 @@ module.exports = {
                   ...page,
                 })),
               serialize: ({ url }) => ({ url }),
-              // Exclude all doc pages not for React
-              // except the first docs page for all frameworks
-              excludes: [
-                '{/docs/!(react)/!(get-started)/**,/docs/!(react)/get-started/!(install)}',
-              ],
             },
           },
           {
-            // Generate a sitemap for all pages, all versions, all frameworks
+            // Generate a sitemap for all pages, all versions
             resolve: `gatsby-plugin-sitemap`,
             options: {
               output: '/sitemap-all',
@@ -227,8 +222,6 @@ module.exports = {
                   site {
                     siteMetadata {
                       siteUrl
-                      coreFrameworks
-                      communityFrameworks
                     }
                   }
                   allSitePage {
@@ -251,34 +244,26 @@ module.exports = {
 
                 const nonLatestDocsPages = [];
                 versionsWithToc.forEach(({ string, toc }) => {
-                  [...siteMetadata.coreFrameworks, ...siteMetadata.communityFrameworks].forEach(
-                    (framework) => {
-                      const createDocsPageEntries = (tocItems, pathPrefix) => {
-                        tocItems.forEach(({ children, pathSegment }) => {
-                          const pagePath = pathSegment
-                            ? `${pathPrefix}/${pathSegment}`
-                            : pathPrefix;
+                  const createDocsPageEntries = (tocItems, pathPrefix) => {
+                    tocItems.forEach(({ children, pathSegment }) => {
+                      const pagePath = pathSegment ? `${pathPrefix}/${pathSegment}` : pathPrefix;
 
-                          if (pathSegment) {
-                            nonLatestDocsPages.push({
-                              url: `${siteUrl}${pagePath}/`,
-                              path: `${pagePath}/`,
-                            });
-                          }
-
-                          if (children) {
-                            createDocsPageEntries(children, pagePath);
-                          }
+                      if (pathSegment) {
+                        nonLatestDocsPages.push({
+                          url: `${siteUrl}${pagePath}/`,
+                          path: `${pagePath}/`,
                         });
-                      };
+                      }
 
-                      createDocsPageEntries(
-                        toc,
-                        string !== versionData.latestVersionString
-                          ? `/docs/${string}/${framework}`
-                          : `/docs/${framework}`
-                      );
-                    }
+                      if (children) {
+                        createDocsPageEntries(children, pagePath);
+                      }
+                    });
+                  };
+
+                  createDocsPageEntries(
+                    toc,
+                    string !== versionData.latestVersionString ? `/docs/${string}` : '/docs'
                   );
                 });
 
