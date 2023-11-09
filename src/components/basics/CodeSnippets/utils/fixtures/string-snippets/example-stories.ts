@@ -1,6 +1,4 @@
-export default `// Example.stories.ts
-
-// Replace your-renderer with the renderer you are using (e.g., react, vue3, angular, etc.)
+export default `// Replace your-renderer with the renderer you are using (e.g., react, vue3, angular, etc.)
 import type { Meta } from '@storybook/your-renderer';
 
 import { Example } from './Example';

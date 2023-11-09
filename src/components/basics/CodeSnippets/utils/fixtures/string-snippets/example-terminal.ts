@@ -1,7 +1,1 @@
-export default `
-
-yarn add @storybook/addon-styling-webpack
-
-
-
-`;
+export default `yarn add @storybook/addon-styling-webpack`;

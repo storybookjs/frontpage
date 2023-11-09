@@ -1,6 +1,4 @@
-export default `<!-- Button.vue -->
-
-<template>
+export default `<template>
   <button type="button" :disabled="isDisabled">{{ label }}</button>
 </template>
 
@@ -25,6 +23,4 @@ export default `<!-- Button.vue -->
       },
     },
   });
-</script>
-
-`;
+</script>`;

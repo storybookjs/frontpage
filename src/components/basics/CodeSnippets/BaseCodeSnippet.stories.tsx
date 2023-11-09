@@ -22,13 +22,13 @@ export const TypescriptSnippet = {
   args: {
     snippet: TS_SNIPPET,
     syntax: 'ts',
+    title: 'Button.stories.ts',
   },
 };
 
 export const WithLanguageSelector = {
   args: {
-    snippet: TS_SNIPPET,
-    syntax: 'ts',
+    ...TypescriptSnippet.args,
     renderLanguageSelector: () => (
       <LanguageSelector
         items={[
@@ -45,13 +45,15 @@ export const VueSnippet = {
   args: {
     snippet: VUE_SNIPPET,
     syntax: 'vue',
+    title: 'Button.vue',
   },
 };
 
 export const TerminalSnippet = {
   args: {
+    isTerminal: true,
     snippet: BASH_SNIPPET,
     syntax: 'sh',
-    isTerminal: true,
+    title: 'Terminal',
   },
 };
