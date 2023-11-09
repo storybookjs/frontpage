@@ -13,9 +13,8 @@ function getSnippetTypeIcon(type: SnippetIcon): JSX.Element {
   return SnippetTypeIcons[type];
 }
 
-function mapFileNameToIcon(fileName: string): JSX.Element {
-  const extension = fileName.split('.').pop();
-  switch (extension) {
+function mapSyntaxToIcon(syntax: string): JSX.Element {
+  switch (syntax) {
     case 'js':
     case 'jsx':
       return getSnippetTypeIcon('JavaScript');
@@ -29,11 +28,11 @@ function mapFileNameToIcon(fileName: string): JSX.Element {
 }
 
 export interface IconProps {
-  fileName: string;
+  syntax: string;
 }
 
-export const SnippetTypeIcon: FC<IconProps> = ({ fileName, ...props }) => {
-  const icon = mapFileNameToIcon(fileName);
+export const SnippetTypeIcon: FC<IconProps> = ({ syntax, ...props }) => {
+  const icon = mapSyntaxToIcon(syntax);
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
