@@ -1,11 +1,11 @@
 import React from 'react';
 import { BaseCodeSnippet } from './BaseCodeSnippet';
-import { SyntaxHighlighterContextProvider } from './SyntaxHighlighterContext';
-import { LanguageSelector } from './LanguageSelector';
+import { SyntaxHighlighterContextProvider } from '../SyntaxHighlighterContext';
+import { LanguageSelector } from '../LanguageSelector';
 
-import TS_SNIPPET from './utils/fixtures/string-snippets/example-stories';
-import BASH_SNIPPET from './utils/fixtures/string-snippets/example-terminal';
-import VUE_SNIPPET from './utils/fixtures/string-snippets/example-vue';
+import TS_SNIPPET from '../utils/fixtures/string-snippets/example-stories';
+import BASH_SNIPPET from '../utils/fixtures/string-snippets/example-terminal';
+import VUE_SNIPPET from '../utils/fixtures/string-snippets/example-vue';
 
 const meta = {
   title: 'Basics/CodeSnippets/Presentational',
@@ -55,5 +55,14 @@ export const TerminalSnippet = {
     snippet: BASH_SNIPPET,
     syntax: 'sh',
     title: 'Terminal',
+  },
+};
+
+export const NoHeader = {
+  args: {
+    hideHeader: true,
+    snippet: `https://tetra.chromatic.com`,
+    syntax: '',
+    title: '',
   },
 };
