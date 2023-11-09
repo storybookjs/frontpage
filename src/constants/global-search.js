@@ -1,5 +1,4 @@
 export const GLOBAL_SEARCH_META_KEYS = {
-  FRAMEWORK: 'docsearch:framework',
   VERSION: 'docsearch:version',
   IMPORTANCE: 'docsearch:importance',
 };

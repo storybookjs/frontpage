@@ -6,9 +6,9 @@ import siteMetadata from '../../site-metadata';
 // This file is generated at build time, so linting before building fails
 // eslint-disable-next-line import/no-unresolved, import/extensions
 import docsMetadata from '../generated/docs-metadata.json';
-import buildPathWithFramework from '../util/build-path-with-framework';
+import buildPathWithVersion from '../util/build-path-with-version';
 
-const { frameworks, slugs, versions } = docsMetadata;
+const { slugs, versions } = docsMetadata;
 
 const siteUrl = process.env.URL;
 
@@ -59,13 +59,13 @@ function createDiscussionBody(rating) {
   ].join('\r\n');
 }
 
-function createCommentBody({ slug, version, framework, codeLanguage, rating, comment }) {
-  const path = buildPathWithFramework(slug, framework, version);
+function createCommentBody({ slug, version, renderer, codeLanguage, rating, comment }) {
+  const path = buildPathWithVersion(slug, version);
   const link = `**[${path}](https://storybook.js.org${path})**`;
 
   // prettier-ignore
   const meta = [
-    `| ${ratingSymbols[rating]} | v${version} | ${framework} | ${codeLanguage} |`,
+    `| ${ratingSymbols[rating]} | v${version} | ${renderer} | ${codeLanguage} |`,
     '| - | - | - | - |',
   ].join('\r\n');
 
@@ -249,7 +249,7 @@ async function addDiscussionComment({
   id,
   slug,
   version,
-  framework,
+  renderer,
   codeLanguage,
   rating,
   comment,
@@ -276,7 +276,7 @@ async function addDiscussionComment({
     {
       variables: {
         discussionId: id,
-        body: createCommentBody({ slug, version, framework, codeLanguage, rating, comment }),
+        body: createCommentBody({ slug, version, renderer, codeLanguage, rating, comment }),
       },
     }
   );
@@ -348,7 +348,7 @@ exports.handler = async (event) => {
 
     const received = JSON.parse(body);
     console.info('Received:', JSON.stringify(received, null, 2));
-    const { slug, version, framework, codeLanguage, rating, comment, spuriousComment } = received;
+    const { slug, version, renderer, codeLanguage, rating, comment, spuriousComment } = received;
 
     const path = slug.replace('/docs', '');
 
@@ -379,18 +379,16 @@ exports.handler = async (event) => {
       };
     }
 
-    const hasValidFramework = frameworks.includes(framework);
     const hasValidSlug = slugs.includes(slug);
     const hasValidVersion = versions.includes(version);
     const hasValidRating = Object.keys(ratingSymbols).includes(rating);
 
-    if (!hasValidFramework || !hasValidVersion || !hasValidRating) {
+    if (!hasValidVersion || !hasValidRating) {
       console.info('Invalid data, ignoring');
       console.info(
         JSON.stringify(
           {
-            hasValidFramework,
-            framework,
+            renderer,
             hasValidSlug,
             slug,
             hasValidVersion,
@@ -429,7 +427,7 @@ exports.handler = async (event) => {
       ...currentDiscussion,
       slug,
       version,
-      framework,
+      renderer,
       codeLanguage,
       rating,
       comment,

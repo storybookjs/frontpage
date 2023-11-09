@@ -4972,10 +4972,10 @@
     core-js "^3.8.2"
     global "^4.4.0"
 
-"@storybook/components-marketing@^2.1.3":
-  version "2.1.3"
-  resolved "https://registry.yarnpkg.com/@storybook/components-marketing/-/components-marketing-2.1.3.tgz#562bfc65fec3530dec20fd80deac522bd73e770d"
-  integrity sha512-Hviv7XwMg71/lKm2xqebLHOM6ObH2VG3zKArh9VzBXLbvV47reroweRgfk6qyvxhzBBdYVhwuZdhE5GTJihfEA==
+"@storybook/components-marketing@2.1.4--canary.71.c173276.0":
+  version "2.1.4--canary.71.c173276.0"
+  resolved "https://registry.npmjs.org/@storybook/components-marketing/-/components-marketing-2.1.4--canary.71.c173276.0.tgz#9217e2818a43b49d35fb9c4336a58a065cbfb2c2"
+  integrity sha512-iQkhXyozB6MOYz0TQ34vjvML+hRZquaheERMWWuRdZdRfWIyFrgydXBOk/Tz0h//egmliyLwFCLxc351dcQNtw==
   dependencies:
     "@docsearch/react" "^3.1.0"
     "@emotion/weak-memoize" "^0.2.5"

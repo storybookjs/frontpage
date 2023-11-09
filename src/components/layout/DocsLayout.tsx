@@ -13,19 +13,16 @@ import {
 } from '@storybook/components-marketing';
 import { Container } from '@chromaui/tetra';
 import * as ScrollArea from '@radix-ui/react-scroll-area';
+
+import { GLOBAL_SEARCH_IMPORTANCE, GLOBAL_SEARCH_META_KEYS } from '../../constants/global-search';
+import buildPathWithVersion from '../../util/build-path-with-version';
 import GatsbyLinkWrapper from '../basics/GatsbyLinkWrapper';
 import useSiteMetadata from '../lib/useSiteMetadata';
-import buildPathWithFramework from '../../util/build-path-with-framework';
 import { CodeLanguageSelector } from '../screens/DocsScreen/CodeLanguageSelector';
 import { DocsContextProvider } from '../screens/DocsScreen/DocsContext';
-import { FrameworkSelector } from '../screens/DocsScreen/FrameworkSelector';
+import { RendererSelector } from '../screens/DocsScreen/RendererSelector';
 import { VersionSelector } from '../screens/DocsScreen/VersionSelector';
 import { VersionCTA } from '../screens/DocsScreen/VersionCTA';
-import {
-  GLOBAL_SEARCH_AGNOSTIC,
-  GLOBAL_SEARCH_IMPORTANCE,
-  GLOBAL_SEARCH_META_KEYS,
-} from '../../constants/global-search';
 import { Sidebar } from './Sidebar';
 
 const { breakpoint, color, spacing } = styles;
@@ -141,7 +138,6 @@ const SkeletonBody = styled.div`
 `;
 
 interface PureDocsLayoutProps {
-  framework: string;
   isLoading: boolean;
   sidebar: React.ReactNode;
   slug: string;
@@ -150,14 +146,12 @@ interface PureDocsLayoutProps {
 
 export const PureDocsLayout: FC<PureDocsLayoutProps> = ({
   children,
-  framework,
   isLoading,
   sidebar,
   slug,
   versions: versionsProp,
 }) => {
-  const { coreFrameworks, communityFrameworks, isLatest, version, versionString } =
-    useSiteMetadata();
+  const { coreRenderers, communityRenderers, isLatest, version, versionString } = useSiteMetadata();
 
   const versions = versionsProp || {
     // prettier-ignore
@@ -172,28 +166,20 @@ export const PureDocsLayout: FC<PureDocsLayoutProps> = ({
   return (
     <>
       <GlobalStyle />
-      <DocsContextProvider framework={framework}>
+      <DocsContextProvider>
         <SubNavWrapper>
           <SubNav>
             <SubNavTabs label="Docs nav" items={docsItems} />
             <SubNavDivider />
             <SubNavMenus>
-              <VersionSelector
-                version={version}
-                versions={versions}
-                framework={framework}
-                slug={slug}
+              <VersionSelector version={version} versions={versions} slug={slug} />
+              {/* TODO: Remove */}
+              <RendererSelector
+                coreRenderers={coreRenderers}
+                communityRenderers={communityRenderers}
               />
               {/* TODO: Remove */}
-              <FrameworkSelector
-                key={framework}
-                framework={framework}
-                coreFrameworks={coreFrameworks}
-                communityFrameworks={communityFrameworks}
-                slug={slug}
-              />
-              {/* TODO: Remove */}
-              <CodeLanguageSelector framework={framework} />
+              <CodeLanguageSelector />
             </SubNavMenus>
             <SubNavRight>
               <SubNavLinkList label="Get support:" items={supportItems} />
@@ -272,7 +258,7 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
     latestVersionString,
     isLatest,
   } = useSiteMetadata();
-  const { docsToc, framework, fullPath, slug, versions, isInstallPage } = pageContext;
+  const { docsToc, fullPath, slug, versions } = pageContext;
 
   const tocSectionTitles = getTocSectionTitles(docsToc, slug.split('/docs/')[1]);
 
@@ -291,34 +277,15 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
     as: 'span',
   };
 
-  // The React specific docs are treated as canonical except for the
-  // first docs page for all other frameworks.
-  const canonicalFramework = isInstallPage ? framework : 'react';
-
   return (
     <>
       <Helmet>
         {isLatest && (
           <link
             rel="canonical"
-            href={`${homepageUrl}${buildPathWithFramework(
-              slug,
-              canonicalFramework,
-              latestVersionString
-            )}/`}
+            href={`${homepageUrl}${buildPathWithVersion(slug, latestVersionString)}/`}
           />
         )}
-        <meta
-          key={GLOBAL_SEARCH_META_KEYS.FRAMEWORK}
-          name={GLOBAL_SEARCH_META_KEYS.FRAMEWORK}
-          /*
-           * Using `GLOBAL_SEARCH_AGNOSTIC` as the framework value for the first page of the docs
-           * to ensure it shows in search results regardless of current framework
-           * https://github.com/storybookjs/components-marketing/blob/e71de9ccc807aee144beff83b947f32996184780/src/components/Search.tsx#L170
-           *
-           */
-          content={isInstallPage ? GLOBAL_SEARCH_AGNOSTIC : framework}
-        />
         <meta
           key={GLOBAL_SEARCH_META_KEYS.VERSION}
           name={GLOBAL_SEARCH_META_KEYS.VERSION}
@@ -331,7 +298,6 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
         />
       </Helmet>
       <PureDocsLayout
-        framework={framework}
         slug={slug}
         sidebar={<Sidebar docsTocWithLinkWrappers={docsTocWithLinkWrappers} />}
         versions={versions}
@@ -343,7 +309,6 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
         )}
         {(isLatestProp === false || !isLatest) && (
           <StyledVersionCTA
-            framework={framework}
             version={version}
             latestVersion={latestVersion}
             latestVersionString={latestVersionString}

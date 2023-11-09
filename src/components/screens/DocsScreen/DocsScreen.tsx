@@ -12,20 +12,20 @@ import {
 } from '@storybook/design-system';
 import { graphql } from 'gatsby';
 import { CodeSnippets } from './CodeSnippets';
-import { frameworkSupportsFeature, FrameworkSupportTable } from './FrameworkSupportTable';
+import { rendererSupportsFeature, RendererSupportTable } from './RendererSupportTable';
 import { SocialGraph } from '../../basics';
 import { Callout } from '../../basics/Callout';
 import { Pre } from '../../basics/Pre';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import { mdFormatting } from '../../../styles/formatting';
-import buildPathWithFramework from '../../../util/build-path-with-framework';
+import buildPathWithVersion from '../../../util/build-path-with-version';
 import relativeToRootLinks from '../../../util/relative-to-root-links';
-import stylizeFramework from '../../../util/stylize-framework';
+import stylizeRenderer from '../../../util/stylize-renderer';
 import { useDocsContext } from './DocsContext';
 import { FeatureSnippets } from './FeatureSnippets';
 import { Feedback } from './Feedback';
-import { IfRenderer } from './IfRenderer';
+import { If } from './If';
 import { YouTubeCallout } from './YouTubeCallout';
 
 const { color, spacing, typography } = styles;
@@ -108,40 +108,42 @@ function DocsScreen({ data, pageContext, location }) {
     },
   } = data;
   const {
-    coreFrameworks,
-    communityFrameworks,
+    allRenderers,
+    coreRenderers,
+    communityRenderers,
     description,
     featureGroups,
     urls: { homepageUrl },
     versionString,
   } = useSiteMetadata();
-  const { framework, docsToc, fullPath, slug, tocItem, nextTocItem, isInstallPage } = pageContext;
+  const { docsToc, fullPath, slug, tocItem, nextTocItem, isInstallPage } = pageContext;
 
   const {
     codeLanguage: [codeLanguage],
+    renderer: [renderer],
   } = useDocsContext();
 
-  const CodeSnippetsWithCurrentFrameworkAndCodeLanguage = useMemo(() => {
+  const CodeSnippetsWithState = useMemo(() => {
     return (props) => (
-      <CodeSnippets currentFramework={framework} currentCodeLanguage={codeLanguage} {...props} />
+      <CodeSnippets currentFramework={renderer} currentCodeLanguage={codeLanguage} {...props} />
     );
-  }, [framework, codeLanguage]);
-  const FeatureSnippetsWithCurrentFramework = useMemo(() => {
-    return (props) => <FeatureSnippets currentFramework={framework} {...props} />;
-  }, [framework]);
-  const FrameworkSupportTableWithFeaturesAndCurrentFramework = useMemo(() => {
+  }, [renderer, codeLanguage]);
+  const FeatureSnippetsWithState = useMemo(() => {
+    return (props) => <FeatureSnippets currentFramework={renderer} {...props} />;
+  }, [renderer]);
+  const RendererSupportTableWithState = useMemo(() => {
     return ({ core }) => (
-      <FrameworkSupportTable
-        frameworks={core ? coreFrameworks : communityFrameworks}
-        currentFramework={framework}
+      <RendererSupportTable
+        renderers={core ? coreRenderers : communityRenderers}
+        currentRenderer={renderer}
         featureGroups={featureGroups}
       />
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [framework]);
+  }, [renderer]);
   const LinksWithPrefix = useMemo(() => {
     return ({ children, href, ...props }) => {
-      const url = relativeToRootLinks(href, framework, location.pathname);
+      const url = relativeToRootLinks(href, location.pathname);
       return (
         <a href={url} {...props}>
           {children}
@@ -149,14 +151,15 @@ function DocsScreen({ data, pageContext, location }) {
       );
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [framework]);
-  const IfRendererWithCurrentFramework = useMemo(() => {
-    return (props) => <IfRenderer currentRenderer={framework} {...props} />;
-  }, [framework]);
+  }, [renderer]);
+  const IfWithState = useMemo(() => {
+    return (props) => <If allRenderers={allRenderers} currentRenderer={renderer} {...props} />;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [renderer]);
 
   const features = featureGroups.flatMap((group) => group.features);
   const feature = features.find((fs) => `/docs${fs.path}/` === slug);
-  const unsupported = feature && !frameworkSupportsFeature(framework, feature);
+  const unsupported = feature && !rendererSupportsFeature(renderer, feature);
 
   let featureSupportItem;
   const findFeatureSupportTocItem = (tocItems) =>
@@ -204,17 +207,17 @@ function DocsScreen({ data, pageContext, location }) {
       <SocialGraph url={`${homepageUrl}${fullPath}/`} title={title} desc={description} />
 
       <MDWrapper>
-        <Title>{isInstallPage ? `${title} for ${stylizeFramework(framework)}` : title}</Title>
         {/* TODO: Renderer pills */}
+        <Title>{isInstallPage ? `${title} for ${stylizeRenderer(renderer)}` : title}</Title>
         {unsupported && (
           <UnsupportedBanner>
-            This feature is not supported in {stylizeFramework(framework)} yet. Help the open source
+            This feature is not supported in {stylizeRenderer(renderer)} yet. Help the open source
             community by contributing a PR.
             {featureSupportItem && (
               <>
                 {' '}
                 <Link LinkWrapper={GatsbyLinkWrapper} href={featureSupportItem.path} withArrow>
-                  View feature coverage by framework
+                  View feature coverage by renderer
                 </Link>
               </>
             )}
@@ -223,10 +226,12 @@ function DocsScreen({ data, pageContext, location }) {
         <MDXProvider
           components={{
             pre: Pre,
-            CodeSnippets: CodeSnippetsWithCurrentFrameworkAndCodeLanguage,
-            FeatureSnippets: FeatureSnippetsWithCurrentFramework,
-            FrameworkSupportTable: FrameworkSupportTableWithFeaturesAndCurrentFramework,
-            IfRenderer: IfRendererWithCurrentFramework,
+            CodeSnippets: CodeSnippetsWithState,
+            FeatureSnippets: FeatureSnippetsWithState,
+            RendererSupportTable: RendererSupportTableWithState,
+            If: IfWithState,
+            // Maintained for older docs version content
+            IfRenderer: IfWithState,
             YouTubeCallout,
             a: LinksWithPrefix,
             Callout,
@@ -243,7 +248,7 @@ function DocsScreen({ data, pageContext, location }) {
             action={
               <Button
                 appearance="secondary"
-                href={buildPathWithFramework(nextTocItem.path, framework)}
+                href={buildPathWithVersion(nextTocItem.path)}
                 ButtonWrapper={GatsbyLinkWrapper}
               >
                 Continue
@@ -261,7 +266,7 @@ function DocsScreen({ data, pageContext, location }) {
             key={fullPath}
             slug={slug}
             version={versionString}
-            framework={framework}
+            renderer={renderer}
             codeLanguage={codeLanguage}
           />
         )}

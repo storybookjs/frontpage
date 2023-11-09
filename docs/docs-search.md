@@ -14,11 +14,11 @@ _Credentials are in 1Password_
 
 ## How it works
 
-- The crawler will only visits pages in sitemap defined in the config. Thus, at build time, we generate `sitemap-all.xml`, which includes all docs pages, for all versions and all frameworks. This is significantly more than `sitemap.xml` includes, which only includes the "latest" version and excludes all non-React pages, for SEO purposes. Because it needs to crawl pages that are no-indexed and non-canonical, it's important that those factors are ignored in the config.
-- The search is "[faceted](https://docsearch.algolia.com/docs/DocSearch-v3#filtering-your-search)" on `version` and `framework`.
+- The crawler will only visits pages in sitemap defined in the config. Thus, at build time, we generate `sitemap-all.xml`, which includes all docs pages for all versions. This is significantly more than `sitemap.xml` includes, which only includes the "latest" version for SEO purposes. Because it needs to crawl pages that are no-indexed and non-canonical, it's important that those factors are ignored in the config.
+- The search is "[faceted](https://docsearch.algolia.com/docs/DocSearch-v3#filtering-your-search)" on `version`.
   - The current value of each is:
     1. Included in meta tags in the markup
     2. Passed to the DocsSearch component, to apply the filtering
-  - The effect is that the search only works across the currently-viewed version and framework combination on the site
+  - The effect is that the search only works across the currently-viewed version on the site
 - The crawler is configured to run at 1am PST nightly.
 - If the page layout markup changes, the crawler config will also need updated.

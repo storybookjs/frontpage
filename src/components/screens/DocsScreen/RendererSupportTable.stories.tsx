@@ -1,7 +1,7 @@
 import React from 'react';
-import { FrameworkSupportTable } from './FrameworkSupportTable';
+import { RendererSupportTable } from './RendererSupportTable';
 
-const frameworks = ['react', 'vue', 'angular'];
+const renderers = ['react', 'vue', 'angular'];
 const featureGroups = [
   {
     name: 'Group',
@@ -27,11 +27,11 @@ const featureGroups = [
 ];
 
 export default {
-  title: 'Screens/DocsScreen/FrameworkSupportTable',
-  component: FrameworkSupportTable,
+  title: 'Screens/DocsScreen/RendererSupportTable',
+  component: RendererSupportTable,
 };
 
-const Template = (args) => <FrameworkSupportTable {...args} />;
+const Template = (args) => <RendererSupportTable {...args} />;
 
 export const Simple = Template.bind({});
-Simple.args = { frameworks, featureGroups, currentFramework: frameworks[0] };
+Simple.args = { renderers, featureGroups, currentRenderer: renderers[0] };

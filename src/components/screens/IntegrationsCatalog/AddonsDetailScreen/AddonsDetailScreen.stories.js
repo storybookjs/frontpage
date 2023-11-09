@@ -83,28 +83,28 @@ const tags = [
 ];
 
 const compatibility = [
-  { name: 'react', displayName: 'React', icon: '/frameworks/logo-react.svg' },
-  { name: 'vue', displayName: 'Vue', icon: '/frameworks/logo-vue.svg' },
-  { name: 'angular', displayName: 'Angular', icon: '/frameworks/logo-angular.svg' },
+  { name: 'react', displayName: 'React', icon: '/renderers/logo-react.svg' },
+  { name: 'vue', displayName: 'Vue', icon: '/renderers/logo-vue.svg' },
+  { name: 'angular', displayName: 'Angular', icon: '/renderers/logo-angular.svg' },
   {
     name: 'web-components',
     displayName: 'Web Components',
-    icon: '/frameworks/logo-web-components.svg',
+    icon: '/renderers/logo-web-components.svg',
   },
-  { name: 'ember', displayName: 'Ember', icon: '/frameworks/logo-ember.svg' },
-  { name: 'html', displayName: 'HTML', icon: '/frameworks/logo-html.svg' },
-  { name: 'mithril', displayName: 'Mithril', icon: '/frameworks/logo-mithril.svg' },
-  { name: 'marko', displayName: 'Marko', icon: '/frameworks/logo-marko.svg' },
-  { name: 'svelte', displayName: 'Svelte', icon: '/frameworks/logo-svelte.svg' },
-  { name: 'riot', displayName: 'Riot', icon: '/frameworks/logo-riot.svg' },
-  { name: 'preact', displayName: 'Preact', icon: '/frameworks/logo-preact.svg' },
-  { name: 'rax', displayName: 'Rax', icon: '/frameworks/logo-rax.png' },
-  { name: 'aurelia', displayName: 'Aurelia', icon: '/frameworks/logo-aurelia.svg' },
-  { name: 'marionette', displayName: 'Marionette', icon: '/frameworks/logo-marionette.svg' },
+  { name: 'ember', displayName: 'Ember', icon: '/renderers/logo-ember.svg' },
+  { name: 'html', displayName: 'HTML', icon: '/renderers/logo-html.svg' },
+  { name: 'mithril', displayName: 'Mithril', icon: '/renderers/logo-mithril.svg' },
+  { name: 'marko', displayName: 'Marko', icon: '/renderers/logo-marko.svg' },
+  { name: 'svelte', displayName: 'Svelte', icon: '/renderers/logo-svelte.svg' },
+  { name: 'riot', displayName: 'Riot', icon: '/renderers/logo-riot.svg' },
+  { name: 'preact', displayName: 'Preact', icon: '/renderers/logo-preact.svg' },
+  { name: 'rax', displayName: 'Rax', icon: '/renderers/logo-rax.png' },
+  { name: 'aurelia', displayName: 'Aurelia', icon: '/renderers/logo-aurelia.svg' },
+  { name: 'marionette', displayName: 'Marionette', icon: '/renderers/logo-marionette.svg' },
   {
     name: 'react-native',
     displayName: 'React native',
-    icon: '/frameworks/logo-react-native.svg',
+    icon: '/renderers/logo-react-native.svg',
   },
 ];
 

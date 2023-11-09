@@ -1,10 +1,10 @@
-const coreFrameworks = {
+const coreRenderer = {
   react: 1,
   vue: 2,
   angular: 3,
 };
 
-const getOrder = (name) => coreFrameworks[name] || 4;
+const getOrder = (name) => coreRenderer[name] || 4;
 
 export function orderCompatibility(compatibility) {
   if (!compatibility) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Menu } from '@storybook/components-marketing';
 
-import buildPathWithFramework from '../../../util/build-path-with-framework';
+import buildPathWithVersion from '../../../util/build-path-with-version';
 
 const stylizeVersion = ({ label, string }: { label?: string; string: string }) =>
   label ? `${string} (${label})` : string;
@@ -24,16 +24,15 @@ export interface Versions {
 }
 
 interface VersionSelectorProps {
-  framework: string;
   version: number;
   slug: string;
   versions: Versions;
 }
 
-export function VersionSelector({ framework, version, versions, slug }: VersionSelectorProps) {
+export function VersionSelector({ version, versions, slug }: VersionSelectorProps) {
   const getVersionLink = ({ label, string }: { label?: string; string: string }) => ({
     label: stylizeVersion({ label, string }),
-    link: { url: buildPathWithFramework(slug, framework, string) },
+    link: { url: buildPathWithVersion(slug, string) },
   });
 
   const stableLinks = versions.stable.map(getVersionLink);

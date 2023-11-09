@@ -67,13 +67,13 @@ describe('v7+', () => {
       'ts-4-9'
     );
     expect(result).toMatchInlineSnapshot(`
-    [
-      [
-        "react/example.ts-4-9.mdx",
-      ],
-      undefined,
-    ]
-  `);
+          [
+            [
+              "react/example.ts-4-9.mdx",
+            ],
+            undefined,
+          ]
+      `);
   });
 
   it('Does not select TS 4.9 paths when TS is selected', () => {
@@ -92,13 +92,13 @@ describe('v7+', () => {
       'ts'
     );
     expect(result).toMatchInlineSnapshot(`
-    [
-      [
-        "react/example.ts.mdx",
-      ],
-      undefined,
-    ]
-  `);
+          [
+            [
+              "react/example.ts.mdx",
+            ],
+            undefined,
+          ]
+      `);
   });
 });
 
@@ -468,6 +468,41 @@ it('Throws if no snippets available', () => {
       ],
       'vue',
       'js'
+    );
+  }).toThrow();
+});
+
+it('Falls back to match parent If context', () => {
+  const result = getResolvedPaths(
+    // prettier-ignore
+    ['svelte/example.ts.mdx'],
+    'vue',
+    'js',
+    ['svelte']
+  );
+  expect(result).toMatchInlineSnapshot(`
+    [
+      [
+        "svelte/example.ts.mdx",
+      ],
+      <MissingCodeLanguageMessage
+        currentCodeLanguage="js"
+        currentFramework="vue"
+      />,
+    ]
+  `);
+});
+
+it('Throws if no snippets available, including parent If context', () => {
+  expect(() => {
+    getResolvedPaths(
+      // prettier-ignore
+      [
+        'svelte/example.ts.mdx',
+      ],
+      'vue',
+      'js',
+      ['react']
     );
   }).toThrow();
 });

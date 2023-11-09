@@ -22,8 +22,9 @@ const useSiteMetadata = () => {
             appId
             indexName
           }
-          coreFrameworks
-          communityFrameworks
+          allRenderers
+          coreRenderers
+          communityRenderers
           featureGroups {
             name
             features {
