@@ -1,4 +1,4 @@
-const TrimSnippet = (snippet: string[]) => {
+export const TrimSnippet = (snippet: string[]) => {
   let topTrimmed = false;
   while (!topTrimmed) {
     if (snippet[0] === '') snippet.shift();
@@ -13,6 +13,9 @@ const TrimSnippet = (snippet: string[]) => {
 
   return snippet.join('\n');
 };
+
+const stringIsComment = (str: string) =>
+  str.includes('//') || str.includes('#') || str.includes('/*') || str.includes('<!--');
 
 const parseNameFromComment = (comment: string) => {
   let name = comment;
@@ -52,10 +55,11 @@ export const parseSnippetContent = (
 
     return ['Terminal', command];
   }
-  const [comment, ...rest] = content.split('\n');
-  const fileName = parseNameFromComment(comment);
 
-  const code = TrimSnippet([...rest]);
+  const [firstLine, ...rest] = content.split('\n');
+  const fileName = stringIsComment(firstLine) ? parseNameFromComment(firstLine) : '';
+
+  const code = TrimSnippet([...(stringIsComment(firstLine) ? [] : [firstLine]), ...rest]);
 
   return [fileName, code];
 };
