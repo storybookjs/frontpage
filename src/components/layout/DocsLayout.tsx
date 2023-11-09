@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import { styled, css } from '@storybook/theming';
-import { global, animation } from '@storybook/design-system';
+import { styled } from '@storybook/theming';
+import { global } from '@storybook/design-system';
 import Helmet from 'react-helmet';
 import {
   SubNav,
@@ -35,7 +35,7 @@ const SubNavWrapper = styled.div`
   z-index: 2;
 `;
 
-const SidebarRoot = styled(ScrollArea.Root)<{ isLoading: boolean }>`
+const SidebarRoot = styled(ScrollArea.Root)`
   display: none;
   position: relative;
 
@@ -48,15 +48,6 @@ const SidebarRoot = styled(ScrollArea.Root)<{ isLoading: boolean }>`
     margin-right: 20px;
     height: 200px;
   }
-
-  // Why do we need a loading?
-  ${({ isLoading }) =>
-    isLoading &&
-    css`
-      height: 80vh;
-      border-radius: ${spacing.borderRadius.small}px;
-      ${animation.inlineGlow}
-    `}
 `;
 
 const SidebarViewport = styled(ScrollArea.Viewport)`
@@ -123,22 +114,7 @@ const supportItems = [
   },
 ];
 
-const SkeletonTitle = styled.div`
-  height: 36px;
-  margin-bottom: 1.5rem;
-  width: 75%;
-  border-radius: ${spacing.borderRadius.small}px;
-  ${animation.inlineGlow}
-`;
-
-const SkeletonBody = styled.div`
-  height: calc(80vh - 36px - 1.5rem);
-  border-radius: ${spacing.borderRadius.small}px;
-  ${animation.inlineGlow}
-`;
-
 interface PureDocsLayoutProps {
-  isLoading: boolean;
   sidebar: React.ReactNode;
   slug: string;
   versions: any;
@@ -146,7 +122,6 @@ interface PureDocsLayoutProps {
 
 export const PureDocsLayout: FC<PureDocsLayoutProps> = ({
   children,
-  isLoading,
   sidebar,
   slug,
   versions: versionsProp,
@@ -188,22 +163,13 @@ export const PureDocsLayout: FC<PureDocsLayoutProps> = ({
         </SubNavWrapper>
         <Container>
           <Wrapper>
-            <SidebarRoot className="sidebar" isLoading={isLoading}>
+            <SidebarRoot className="sidebar">
               <SidebarViewport>{sidebar}</SidebarViewport>
               <ScrollAreaScrollbar orientation="vertical">
                 <ScrollArea.Thumb />
               </ScrollAreaScrollbar>
             </SidebarRoot>
-            <Content>
-              {isLoading ? (
-                <>
-                  <SkeletonTitle />
-                  <SkeletonBody />
-                </>
-              ) : (
-                children
-              )}
-            </Content>
+            <Content>{children}</Content>
           </Wrapper>
         </Container>
       </DocsContextProvider>
