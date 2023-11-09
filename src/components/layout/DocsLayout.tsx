@@ -33,6 +33,7 @@ import {
   GLOBAL_SEARCH_IMPORTANCE,
   GLOBAL_SEARCH_META_KEYS,
 } from '../../constants/global-search';
+import { Sidebar } from './Sidebar';
 
 const { breakpoint, color, pageMargins, spacing } = styles;
 const { GlobalStyle } = global;
@@ -44,7 +45,7 @@ const SubNavWrapper = styled.div`
   z-index: 2;
 `;
 
-const Sidebar = styled.div<{ isLoading: boolean }>`
+const SidebarContainer = styled.div<{ isLoading: boolean }>`
   display: none;
   position: relative;
 
@@ -209,9 +210,9 @@ export function PureDocsLayout({
         </SubNavWrapper>
         <Container>
           <Wrapper>
-            <Sidebar className="sidebar" isLoading={isLoading}>
+            <SidebarContainer className="sidebar" isLoading={isLoading}>
               {sidebar}
-            </Sidebar>
+            </SidebarContainer>
             <Content>
               {isLoading ? (
                 <>
@@ -339,42 +340,43 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
         slug={slug}
         sidebar={
           // TODO: Sidebar
-          <StyledTableOfContents
-            key={framework}
-            currentPath={fullPath}
-            items={docsTocWithLinkWrappers}
-          >
-            {({ menu, allTopLevelMenusAreOpen, toggleAllOpen, toggleAllClosed }) => (
-              <>
-                <SidebarControls>
-                  {allTopLevelMenusAreOpen ? (
-                    <WithTooltip
-                      {...withTooltipProps}
-                      tooltip={<TooltipNote note="Collapse all" />}
-                      onClick={toggleAllClosed}
-                      tabIndex="-1"
-                    >
-                      <ExpandButton containsIcon appearance="outline" size="small">
-                        <Icon icon="collapse" aria-label="Collapse sidebar" />
-                      </ExpandButton>
-                    </WithTooltip>
-                  ) : (
-                    <WithTooltip
-                      {...withTooltipProps}
-                      tooltip={<TooltipNote note="Expand all" />}
-                      onClick={toggleAllOpen}
-                      tabIndex="-1"
-                    >
-                      <ExpandButton containsIcon appearance="outline" size="small">
-                        <Icon icon="expandalt" aria-label="Expand sidebar" />
-                      </ExpandButton>
-                    </WithTooltip>
-                  )}
-                </SidebarControls>
-                {menu}
-              </>
-            )}
-          </StyledTableOfContents>
+          <Sidebar />
+          // <StyledTableOfContents
+          //   key={framework}
+          //   currentPath={fullPath}
+          //   items={docsTocWithLinkWrappers}
+          // >
+          //   {({ menu, allTopLevelMenusAreOpen, toggleAllOpen, toggleAllClosed }) => (
+          //     <>
+          //       <SidebarControls>
+          //         {allTopLevelMenusAreOpen ? (
+          //           <WithTooltip
+          //             {...withTooltipProps}
+          //             tooltip={<TooltipNote note="Collapse all" />}
+          //             onClick={toggleAllClosed}
+          //             tabIndex="-1"
+          //           >
+          //             <ExpandButton containsIcon appearance="outline" size="small">
+          //               <Icon icon="collapse" aria-label="Collapse sidebar" />
+          //             </ExpandButton>
+          //           </WithTooltip>
+          //         ) : (
+          //           <WithTooltip
+          //             {...withTooltipProps}
+          //             tooltip={<TooltipNote note="Expand all" />}
+          //             onClick={toggleAllOpen}
+          //             tabIndex="-1"
+          //           >
+          //             <ExpandButton containsIcon appearance="outline" size="small">
+          //               <Icon icon="expandalt" aria-label="Expand sidebar" />
+          //             </ExpandButton>
+          //           </WithTooltip>
+          //         )}
+          //       </SidebarControls>
+          //       {menu}
+          //     </>
+          //   )}
+          // </StyledTableOfContents>
         }
         versions={versions}
       >
