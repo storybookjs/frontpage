@@ -8,7 +8,7 @@ module.exports = {
   core: {
     builder: 'webpack5',
   },
-  staticDirs: ['../static', '../node_modules/shiki'],
+  staticDirs: ['../static'],
   webpack: async (config) => {
     config.module.rules[0].exclude = [/node_modules\/(?!(gatsby)\/)/];
 
