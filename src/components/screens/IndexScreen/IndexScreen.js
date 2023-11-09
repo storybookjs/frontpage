@@ -37,7 +37,7 @@ export const storybooks = [
   {
     name: 'D2IQ',
     logo: 'https://avatars.githubusercontent.com/u/19392808?v=4',
-    url: 'https://dcos-labs.github.io/ui-kit/',
+    url: 'http://design-system.d2iq.com/',
     image: { src: 'images/home/storybooks/d2iq.webp', width: 1440, height: 1050 },
   },
   {
