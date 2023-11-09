@@ -1,4 +1,4 @@
-export default `<template>
+const exampleVue = `<template>
   <button type="button" :disabled="isDisabled">{{ label }}</button>
 </template>
 
@@ -24,3 +24,8 @@ export default `<template>
     },
   });
 </script>`;
+
+export default exampleVue;
+
+export const exampleVueWithNameComment = `<!-- Button.vue -->
+${exampleVue}`;
