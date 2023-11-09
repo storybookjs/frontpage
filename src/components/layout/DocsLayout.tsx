@@ -12,6 +12,7 @@ import {
   styles,
 } from '@storybook/components-marketing';
 import { Container } from '@chromaui/tetra';
+import * as ScrollArea from '@radix-ui/react-scroll-area';
 import GatsbyLinkWrapper from '../basics/GatsbyLinkWrapper';
 import useSiteMetadata from '../lib/useSiteMetadata';
 import buildPathWithFramework from '../../util/build-path-with-framework';
@@ -37,7 +38,7 @@ const SubNavWrapper = styled.div`
   z-index: 2;
 `;
 
-const SidebarContainer = styled.div<{ isLoading: boolean }>`
+const SidebarRoot = styled(ScrollArea.Root)<{ isLoading: boolean }>`
   display: none;
   position: relative;
 
@@ -48,8 +49,10 @@ const SidebarContainer = styled.div<{ isLoading: boolean }>`
     padding-bottom: 0;
     padding-right: 20px;
     margin-right: 20px;
+    height: 200px;
   }
 
+  // Why do we need a loading?
   ${({ isLoading }) =>
     isLoading &&
     css`
@@ -57,6 +60,22 @@ const SidebarContainer = styled.div<{ isLoading: boolean }>`
       border-radius: ${spacing.borderRadius.small}px;
       ${animation.inlineGlow}
     `}
+`;
+
+const SidebarViewport = styled(ScrollArea.Viewport)`
+  width: 100%;
+  height: 100%;
+`;
+
+const ScrollAreaScrollbar = styled(ScrollArea.Scrollbar)`
+  display: flex;
+  /* ensures no selection */
+  user-select: none;
+  /* disable browser handling of all panning and zooming gestures on touch devices */
+  touch-action: none;
+  padding: 2px;
+  background: var(--black-a6);
+  transition: background 160ms ease-out;
 `;
 
 const Content = styled.div`
@@ -183,9 +202,12 @@ export const PureDocsLayout: FC<PureDocsLayoutProps> = ({
         </SubNavWrapper>
         <Container>
           <Wrapper>
-            <SidebarContainer className="sidebar" isLoading={isLoading}>
-              {sidebar}
-            </SidebarContainer>
+            <SidebarRoot className="sidebar" isLoading={isLoading}>
+              <SidebarViewport>{sidebar}</SidebarViewport>
+              <ScrollAreaScrollbar orientation="vertical">
+                <ScrollArea.Thumb />
+              </ScrollAreaScrollbar>
+            </SidebarRoot>
             <Content>
               {isLoading ? (
                 <>
