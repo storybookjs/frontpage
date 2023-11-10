@@ -1,18 +1,17 @@
 import React from 'react';
 import { styled } from '@storybook/theming';
-import { within, userEvent } from '@storybook/testing-library';
+import { screen, within, userEvent } from '@storybook/testing-library';
 import { RendererSelector } from './RendererSelector';
 import useSiteMetadata from '../../../../.storybook/useSiteMetadata';
 import { DocsContextProvider } from './DocsContext';
 
 // eslint-disable-next-line react-hooks/rules-of-hooks
-const { coreRenderers, communityRenderers } = useSiteMetadata();
+const { coreRenderers, communityRenderers, defaultRenderer } = useSiteMetadata();
 
-// The Wrapper helps capture the tooltip contents in the snapshot
-const Wrapper = styled.span`
-  display: inline-block;
-  width: 225px;
-  height: 510px;
+// Account for box-shadow on pills and height of open menu
+const Wrapper = styled.div`
+  min-height: 300px;
+  padding: 1px;
 `;
 
 export default {
@@ -21,10 +20,11 @@ export default {
   args: {
     coreRenderers,
     communityRenderers,
+    renderer: defaultRenderer,
   },
   decorators: [
-    (storyFn) => (
-      <DocsContextProvider renderer={coreRenderers[0]}>
+    (storyFn, { args: { renderer } }) => (
+      <DocsContextProvider renderer={renderer}>
         <Wrapper>{storyFn()}</Wrapper>
       </DocsContextProvider>
     ),
@@ -36,7 +36,44 @@ const Template = (args) => <RendererSelector {...args} />;
 export const Base = Template.bind({});
 Base.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
-  const menuButton = canvas.getByRole('button', { name: /React/i });
-  await userEvent.click(menuButton);
-  await userEvent.keyboard('{arrowdown}');
+  const moreMenu = canvas.getByRole('button', { name: 'More' });
+
+  await userEvent.click(moreMenu);
+};
+
+export const SelectACoreRenderer = Template.bind({});
+SelectACoreRenderer.args = {
+  // Necesary to override the otherwise forced renderer
+  renderer: undefined,
+};
+SelectACoreRenderer.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const vue = canvas.getByRole('button', { name: 'Vue' });
+
+  await userEvent.click(vue);
+};
+
+export const CommunityRendererSelected = Template.bind({});
+CommunityRendererSelected.args = {
+  renderer: 'svelte',
+};
+CommunityRendererSelected.play = Base.play;
+
+export const SelectACommunityRenderer = Template.bind({});
+SelectACommunityRenderer.parameters = {
+  // TODO: The play function finds the correct element, but clicking it does nothing.
+  //       Clicking the element manually works fine.
+  chromatic: { disableSnapshot: true },
+};
+SelectACommunityRenderer.args = {
+  // Necesary to override the otherwise forced renderer
+  renderer: undefined,
+};
+SelectACommunityRenderer.play = async (context) => {
+  await Base.play(context);
+  await SelectACoreRenderer.play(context);
+
+  const html = await screen.findByRole('menuitem', { name: 'HTML' });
+
+  await userEvent.click(html);
 };

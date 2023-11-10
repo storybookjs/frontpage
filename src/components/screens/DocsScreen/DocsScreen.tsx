@@ -27,6 +27,7 @@ import { FeatureSnippets } from './FeatureSnippets';
 import { Feedback } from './Feedback';
 import { If } from './If';
 import { YouTubeCallout } from './YouTubeCallout';
+import { RendererSelector } from './RendererSelector';
 
 const { color, spacing, typography } = styles;
 
@@ -207,8 +208,8 @@ function DocsScreen({ data, pageContext, location }) {
       <SocialGraph url={`${homepageUrl}${fullPath}/`} title={title} desc={description} />
 
       <MDWrapper>
-        {/* TODO: Renderer pills */}
         <Title>{isInstallPage ? `${title} for ${stylizeRenderer(renderer)}` : title}</Title>
+        <RendererSelector coreRenderers={coreRenderers} communityRenderers={communityRenderers} />
         {unsupported && (
           <UnsupportedBanner>
             This feature is not supported in {stylizeRenderer(renderer)} yet. Help the open source
