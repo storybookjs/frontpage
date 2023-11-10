@@ -4,8 +4,9 @@ import { styled } from '@storybook/theming';
 import * as Accordion from '@radix-ui/react-accordion';
 import { ChevronRightIcon } from '@storybook/icons';
 import { Link } from 'gatsby';
-import { VersionSelector } from '../screens/DocsScreen/VersionSelector';
-import useSiteMetadata from '../lib/useSiteMetadata';
+import { VersionSelector } from './VersionSelector';
+import { VersionSelector as VersionSelector2 } from '../../screens/DocsScreen/VersionSelector';
+import useSiteMetadata from '../../lib/useSiteMetadata';
 
 type SidebarElementProps = {
   type?: 'menu' | 'link';
@@ -178,6 +179,7 @@ export const Sidebar: FC<SidebarProps> = ({
         </TopNav>
       </nav>
       <VersionSelector version={version} versions={versions} slug={slug} />
+      <VersionSelector2 version={version} versions={versions} slug={slug} />
       <Accordion.Root type="multiple" asChild>
         <AccordionRoot>
           {docsTocWithLinkWrappers.map((lvl1, lvl1Index) => (

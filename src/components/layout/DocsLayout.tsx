@@ -11,9 +11,17 @@ import GatsbyLinkWrapper from '../basics/GatsbyLinkWrapper';
 import useSiteMetadata from '../lib/useSiteMetadata';
 import { DocsContextProvider } from '../screens/DocsScreen/DocsContext';
 import { VersionCTA } from '../screens/DocsScreen/VersionCTA';
-import { Sidebar } from './Sidebar';
+import { Sidebar } from './sidebar/Sidebar';
 
 const { GlobalStyle } = global;
+
+const BubblesBackground = styled.img`
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+`;
 
 const Wrapper = styled.div`
   ${minMd} {
@@ -60,7 +68,7 @@ const ScrollAreaScrollbar = styled(ScrollArea.Scrollbar)`
   /* disable browser handling of all panning and zooming gestures on touch devices */
   touch-action: none;
   padding-top: 48px;
-  padding-bottom: 8px;
+  padding-bottom: 24px;
 `;
 
 const ScrollAreaThumb = styled(ScrollArea.Thumb)`
@@ -78,12 +86,12 @@ const ScrollAreaThumb = styled(ScrollArea.Thumb)`
 
 const Content = styled.div`
   flex: 1;
-  min-width: 0; /* do not remove  https://weblog.west-wind.com/posts/2016/feb/15/flexbox-containers-pre-tags-and-managing-overflow */
-  max-width: 800px;
   margin: 1rem auto 0 auto;
 
   ${minMd} {
     margin-top: 0;
+    padding-top: 48px;
+    padding-bottom: 48px;
   }
 `;
 
@@ -113,6 +121,7 @@ export const PureDocsLayout: FC<PureDocsLayoutProps> = ({ children, sidebar }) =
             <Content>{children}</Content>
           </Wrapper>
         </Container>
+        <BubblesBackground src="/images/bubbles.jpg" alt="Storybook" />
       </DocsContextProvider>
     </>
   );
