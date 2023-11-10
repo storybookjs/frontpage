@@ -40,6 +40,16 @@ export const DocsLayout = () => (
   </PurePageLayout>
 );
 
+export const DocsLayoutLong = () => (
+  <PurePageLayout
+    dxData={dxData}
+    pageContext={{ ...docsPageContext, layout: 'docs' }}
+    location={{ pathname: '/docs/' }}
+  >
+    <div style={{ height: 2000, border: '1px solid #ccc' }}>children</div>
+  </PurePageLayout>
+);
+
 export const IframeLayout = () => (
   <PurePageLayout
     dxData={dxData}

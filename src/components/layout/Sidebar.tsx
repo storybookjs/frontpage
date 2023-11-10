@@ -3,6 +3,9 @@ import { color, fontWeight, typography } from '@chromaui/tetra';
 import { styled } from '@storybook/theming';
 import * as Accordion from '@radix-ui/react-accordion';
 import { ChevronRightIcon } from '@storybook/icons';
+import { Link } from 'gatsby';
+import { VersionSelector } from '../screens/DocsScreen/VersionSelector';
+import useSiteMetadata from '../lib/useSiteMetadata';
 
 type SidebarElementProps = {
   type?: 'menu' | 'link';
@@ -17,6 +20,8 @@ type SidebarElementProps = {
 
 interface SidebarProps {
   docsTocWithLinkWrappers: SidebarElementProps[];
+  versions: any;
+  slug: string;
 }
 
 const DocsIcon: FC = () => (
@@ -130,32 +135,49 @@ const NavAccordionTrigger = styled(Accordion.Trigger)`
   }
 `;
 
-export const Sidebar: FC<SidebarProps> = ({ docsTocWithLinkWrappers }) => {
+export const Sidebar: FC<SidebarProps> = ({
+  docsTocWithLinkWrappers,
+  versions: versionsProp,
+  slug,
+}) => {
+  const { isLatest, version, versionString } = useSiteMetadata();
+
+  const versions = versionsProp || {
+    stable: [
+      {
+        version,
+        string: versionString,
+        label: isLatest ? 'Latest' : undefined,
+      },
+    ],
+    preRelease: [],
+  };
+
   return (
     <SidebarContainer>
       <nav>
         <TopNav>
           <Line>
-            <a href="/">
+            <Link to="/docs">
               <DocsIcon />
               Documentation
-            </a>
+            </Link>
           </Line>
           <Line>
-            <a href="/">
+            <Link to="/tutorials">
               <TutorialsIcon />
               Tutorials
-            </a>
+            </Link>
           </Line>
           <Line>
-            <a href="/">
+            <Link to="/docs/api">
               <APIIcon />
               API
-            </a>
+            </Link>
           </Line>
         </TopNav>
       </nav>
-      {/* Add Version Dropdown */}
+      <VersionSelector version={version} versions={versions} slug={slug} />
       <Accordion.Root type="multiple" asChild>
         <AccordionRoot>
           {docsTocWithLinkWrappers.map((lvl1, lvl1Index) => (

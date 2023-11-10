@@ -2,57 +2,54 @@ import React, { FC } from 'react';
 import { styled } from '@storybook/theming';
 import { global } from '@storybook/design-system';
 import Helmet from 'react-helmet';
-import {
-  SubNav,
-  SubNavTabs,
-  SubNavDivider,
-  SubNavMenus,
-  SubNavRight,
-  SubNavLinkList,
-  styles,
-} from '@storybook/components-marketing';
-import { Container, color } from '@chromaui/tetra';
+import { Container, color, minMd } from '@chromaui/tetra';
 import * as ScrollArea from '@radix-ui/react-scroll-area';
 
 import { GLOBAL_SEARCH_IMPORTANCE, GLOBAL_SEARCH_META_KEYS } from '../../constants/global-search';
 import buildPathWithVersion from '../../util/build-path-with-version';
 import GatsbyLinkWrapper from '../basics/GatsbyLinkWrapper';
 import useSiteMetadata from '../lib/useSiteMetadata';
-import { CodeLanguageSelector } from '../screens/DocsScreen/CodeLanguageSelector';
 import { DocsContextProvider } from '../screens/DocsScreen/DocsContext';
-import { RendererSelector } from '../screens/DocsScreen/RendererSelector';
-import { VersionSelector } from '../screens/DocsScreen/VersionSelector';
 import { VersionCTA } from '../screens/DocsScreen/VersionCTA';
 import { Sidebar } from './Sidebar';
 
-const { breakpoint } = styles;
 const { GlobalStyle } = global;
 
-const SubNavWrapper = styled.div`
-  background: ${color.white};
-  position: sticky;
-  top: 0;
-  z-index: 2;
+const Wrapper = styled.div`
+  ${minMd} {
+    padding-top: 112px;
+    display: flex;
+  }
+`;
+
+const SidebarContainer = styled.div`
+  display: none;
+
+  ${minMd} {
+    display: block;
+    position: sticky;
+    top: 112px;
+    align-self: flex-start;
+  }
 `;
 
 const SidebarRoot = styled(ScrollArea.Root)`
-  display: none;
   position: relative;
 
-  @media (min-width: ${breakpoint * 1.333}px) {
-    display: block;
+  ${minMd} {
     flex: 0 0 260px;
     margin: 0;
     padding-bottom: 0;
     padding-right: 20px;
     margin-right: 20px;
-    height: calc(100vh - 104px);
+    height: calc(100vh - 112px);
   }
 `;
 
 const SidebarViewport = styled(ScrollArea.Viewport)`
   width: 100%;
   height: 100%;
+  padding-top: 48px;
 `;
 
 const ScrollAreaScrollbar = styled(ScrollArea.Scrollbar)`
@@ -62,6 +59,8 @@ const ScrollAreaScrollbar = styled(ScrollArea.Scrollbar)`
   user-select: none;
   /* disable browser handling of all panning and zooming gestures on touch devices */
   touch-action: none;
+  padding-top: 48px;
+  padding-bottom: 8px;
 `;
 
 const ScrollAreaThumb = styled(ScrollArea.Thumb)`
@@ -83,7 +82,7 @@ const Content = styled.div`
   max-width: 800px;
   margin: 1rem auto 0 auto;
 
-  @media (min-width: ${breakpoint * 1.333}px) {
+  ${minMd} {
     margin-top: 0;
   }
 `;
@@ -92,94 +91,25 @@ const StyledVersionCTA = styled(VersionCTA)`
   margin-bottom: 24px;
 `;
 
-const Wrapper = styled.div`
-  padding-bottom: 3rem;
-
-  @media (min-width: ${breakpoint * 1.333}px) {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-    display: flex;
-  }
-`;
-
-const docsItems = [
-  { key: '0', label: 'Guides', href: '/docs', isActive: true },
-  { key: '1', label: 'Tutorials', href: 'https://storybook.js.org/tutorials/' },
-];
-
-const supportItems = [
-  {
-    icon: 'github',
-    href: 'https://github.com/storybookjs/storybook/issues',
-    label: 'Github',
-  },
-  {
-    icon: 'discord',
-    href: 'https://discord.gg/storybook',
-    label: 'Discord',
-  },
-  {
-    icon: 'youtube',
-    href: 'https://www.youtube.com/channel/UCr7Quur3eIyA_oe8FNYexfg',
-    label: 'Youtube',
-  },
-];
-
 interface PureDocsLayoutProps {
   sidebar: React.ReactNode;
-  slug: string;
-  versions: any;
 }
 
-export const PureDocsLayout: FC<PureDocsLayoutProps> = ({
-  children,
-  sidebar,
-  slug,
-  versions: versionsProp,
-}) => {
-  const { coreRenderers, communityRenderers, isLatest, version, versionString } = useSiteMetadata();
-
-  const versions = versionsProp || {
-    // prettier-ignore
-    stable: [{
-      version,
-      string: versionString,
-      label: isLatest ? 'Latest' : undefined,
-    }],
-    preRelease: [],
-  };
-
+export const PureDocsLayout: FC<PureDocsLayoutProps> = ({ children, sidebar }) => {
   return (
     <>
       <GlobalStyle />
       <DocsContextProvider>
-        <SubNavWrapper>
-          <SubNav>
-            <SubNavTabs label="Docs nav" items={docsItems} />
-            <SubNavDivider />
-            <SubNavMenus>
-              <VersionSelector version={version} versions={versions} slug={slug} />
-              {/* TODO: Remove */}
-              <RendererSelector
-                coreRenderers={coreRenderers}
-                communityRenderers={communityRenderers}
-              />
-              {/* TODO: Remove */}
-              <CodeLanguageSelector />
-            </SubNavMenus>
-            <SubNavRight>
-              <SubNavLinkList label="Get support:" items={supportItems} />
-            </SubNavRight>
-          </SubNav>
-        </SubNavWrapper>
         <Container>
           <Wrapper>
-            <SidebarRoot className="sidebar">
-              <SidebarViewport>{sidebar}</SidebarViewport>
-              <ScrollAreaScrollbar orientation="vertical">
-                <ScrollAreaThumb />
-              </ScrollAreaScrollbar>
-            </SidebarRoot>
+            <SidebarContainer>
+              <SidebarRoot className="sidebar">
+                <SidebarViewport>{sidebar}</SidebarViewport>
+                <ScrollAreaScrollbar orientation="vertical">
+                  <ScrollAreaThumb />
+                </ScrollAreaScrollbar>
+              </SidebarRoot>
+            </SidebarContainer>
             <Content>{children}</Content>
           </Wrapper>
         </Container>
@@ -226,7 +156,13 @@ const getTocSectionTitles = (toc, path) => {
   return title.join(' » ');
 };
 
-function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
+interface DocsLayoutProps {
+  children: React.ReactNode;
+  isLatest?: boolean;
+  pageContext: any;
+}
+
+const DocsLayout: FC<DocsLayoutProps> = ({ children, isLatest: isLatestProp, pageContext }) => {
   const {
     urls: { homepageUrl },
     version,
@@ -246,13 +182,6 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
       ...(item.children && { children: addLinkWrappers(item.children) }),
     }));
   const docsTocWithLinkWrappers = addLinkWrappers(docsToc);
-
-  const withTooltipProps = {
-    placement: 'top',
-    trigger: 'hover',
-    hasChrome: false,
-    as: 'span',
-  };
 
   return (
     <>
@@ -275,9 +204,13 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
         />
       </Helmet>
       <PureDocsLayout
-        slug={slug}
-        sidebar={<Sidebar docsTocWithLinkWrappers={docsTocWithLinkWrappers} />}
-        versions={versions}
+        sidebar={
+          <Sidebar
+            docsTocWithLinkWrappers={docsTocWithLinkWrappers}
+            versions={versions}
+            slug={slug}
+          />
+        }
       >
         {tocSectionTitles && (
           <span hidden id="toc-section-titles">
@@ -297,6 +230,6 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
       </PureDocsLayout>
     </>
   );
-}
+};
 
 export default DocsLayout;

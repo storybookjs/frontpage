@@ -26,6 +26,15 @@ import {
 
 const Layout = styled.div``;
 
+const NavWrapper = styled.div`
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  background: hsla(0, 0%, 100%, 0.6);
+  backdrop-filter: saturate(180%) blur(5px);
+`;
+
 const ALGOLIA_API_KEY = process.env.GATSBY_ALGOLIA_API_KEY;
 
 const navLinks = {
@@ -129,18 +138,20 @@ export function PurePageLayout({ dxData, children, pageContext, ...props }) {
         </Helmet>
         {pageContext && pageContext.layout !== 'iframe' && (
           <>
-            <Eyebrow
-              label={dxData.latestPost.title}
-              link={dxData.latestPost.url}
-              inverse={isHomePage}
-              githubStarCount={dxData.githubStars}
-            />
-            <Nav
-              inverse={isHomePage}
-              version={versionString || latestVersionString}
-              apiKey={ALGOLIA_API_KEY}
-              activeSection={activeSection}
-            />
+            <NavWrapper>
+              <Eyebrow
+                label={dxData.latestPost.title}
+                link={dxData.latestPost.url}
+                inverse={isHomePage}
+                githubStarCount={dxData.githubStars}
+              />
+              <Nav
+                inverse={isHomePage}
+                version={versionString || latestVersionString}
+                apiKey={ALGOLIA_API_KEY}
+                activeSection={activeSection}
+              />
+            </NavWrapper>
           </>
         )}
         {pageContext && pageContext.layout === 'docs' ? (
