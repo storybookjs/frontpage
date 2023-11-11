@@ -1,4 +1,4 @@
-import React, { ElementType } from 'react';
+import * as React from 'react';
 import { styled } from '@storybook/theming';
 import * as RadixDropdownMenu from '@radix-ui/react-dropdown-menu';
 import { typography, color, spacing, fontWeight } from '@chromaui/tetra';
@@ -39,22 +39,29 @@ const DropdownMenuButton = styled.button`
 interface MenuItem {
   id: string;
   label: string;
-  value: string;
 }
 
 interface LanguageSelectorProps {
+  items?: MenuItem[];
+  onChange: (id: MenuItem['id']) => void;
+  value: MenuItem['id'];
   variant?: 'light' | 'dark';
-  items: MenuItem[];
 }
 
-export const LanguageSelector = ({ variant, items, ...props }: LanguageSelectorProps) => {
+export const LanguageSelector = ({
+  items,
+  onChange,
+  value,
+  variant,
+  ...rest
+}: LanguageSelectorProps) => {
   return (
-    <RadixDropdownMenu.Root>
-      <LanguageSelectorTrigger variant={variant}>TypeScript</LanguageSelectorTrigger>
+    <RadixDropdownMenu.Root {...rest}>
+      <LanguageSelectorTrigger variant={variant}>{value}</LanguageSelectorTrigger>
       <RadixDropdownMenu.Portal>
         <DropdownMenuContent loop align="start" sideOffset={8}>
           {items.map((item) => (
-            <RadixDropdownMenu.Item asChild key={item.id}>
+            <RadixDropdownMenu.Item asChild key={item.id} onSelect={() => onChange(item.id)}>
               <DropdownMenuButton>{item.label}</DropdownMenuButton>
             </RadixDropdownMenu.Item>
           ))}
