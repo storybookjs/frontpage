@@ -1,36 +1,27 @@
-import React from 'react';
-import { Menu } from '@storybook/components-marketing';
-import { styles } from '@storybook/design-system';
-import { styled } from '@storybook/theming';
-import { CODE_LANGUAGES, CODE_LANGUAGES_FULL } from '../../../constants/code-languages';
-import { useMediaQuery } from '../../lib/useMediaQuery';
+import * as React from 'react';
+
+import { CODE_LANGUAGES_FULL } from '../../../constants/code-languages';
+import { LanguageSelector } from '../../basics/LanguageSelector';
 import { useDocsContext } from './DocsContext';
 
-const { breakpoint } = styles;
+type CodeLanguageSelectorProps = React.ComponentProps<typeof LanguageSelector>;
 
-const MenuButton = styled.button`
-  appearance: none;
-  background: none;
-  border: 0;
-  cursor: pointer;
-  text-align: left;
-  width: 100%;
-`;
+type LanguageId = keyof typeof CODE_LANGUAGES_FULL;
 
-type LinkWrapperProps = {
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-};
+// Workaround TypeScript's lack of support for Object.keys() types
+const allLanguages = Object.entries(CODE_LANGUAGES_FULL) as [
+  LanguageId,
+  typeof CODE_LANGUAGES_FULL[LanguageId]
+][];
 
-export function CodeLanguageSelector() {
+export const CodeLanguageSelector = (props: CodeLanguageSelectorProps) => {
   const {
     codeLanguage: [language, setLanguage],
     renderer: [renderer],
   } = useDocsContext();
 
-  const [wide] = useMediaQuery(`(min-width: ${breakpoint * 1.5}px)`);
-  const label = wide ? CODE_LANGUAGES_FULL[language] : CODE_LANGUAGES[language];
+  let languages = allLanguages;
 
-  let languages = Object.entries(CODE_LANGUAGES_FULL);
   if (renderer === 'angular') {
     // Angular snippets are not available in JS, so we hide the option
     languages = languages.filter(([key]) => key !== 'js');
@@ -40,26 +31,19 @@ export function CodeLanguageSelector() {
     return null;
   }
 
-  const items = languages.map(([key, itemLabel]) => ({
-    label: itemLabel,
-    link: {
-      linkWrapper: React.forwardRef<HTMLButtonElement, LinkWrapperProps>(
-        ({ onClick, ...props }, ref) => {
-          return (
-            <MenuButton
-              onClick={(event) => {
-                setLanguage(key as keyof typeof CODE_LANGUAGES); // Workaround for Object.entries() lack of types
-                onClick?.(event);
-              }}
-              ref={ref}
-              {...props}
-            />
-          );
-        }
-      ),
-      url: 'UNUSED', // We render a `button` instead of an `a`, but the types of Menu require this
-    },
+  const languageItems = languages.map(([key, label]) => ({
+    id: key,
+    label,
   }));
 
-  return <Menu label={label} items={items} primary />;
-}
+  return (
+    <LanguageSelector
+      items={languageItems}
+      onChange={(l) => {
+        setLanguage(l as LanguageId);
+      }}
+      value={CODE_LANGUAGES_FULL[language]}
+      {...props}
+    />
+  );
+};
