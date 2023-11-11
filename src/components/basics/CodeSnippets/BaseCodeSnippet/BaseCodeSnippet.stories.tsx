@@ -1,8 +1,10 @@
-import React from 'react';
-import { BaseCodeSnippet } from './BaseCodeSnippet';
-import { SyntaxHighlighterContextProvider } from '../SyntaxHighlighterContext';
-import { LanguageSelector } from '../LanguageSelector';
+import * as React from 'react';
 
+import { SyntaxHighlighterContextProvider } from '../SyntaxHighlighterContext';
+import { BaseCodeSnippet } from './BaseCodeSnippet';
+import { LanguageSelector } from '../../LanguageSelector';
+
+import languageSelectorMeta from '../../LanguageSelector/LanguageSelector.stories';
 import TS_SNIPPET from '../utils/fixtures/string-snippets/example-stories';
 import BASH_SNIPPET from '../utils/fixtures/string-snippets/example-terminal';
 import VUE_SNIPPET from '../utils/fixtures/string-snippets/example-vue';
@@ -31,11 +33,9 @@ export const WithLanguageSelector = {
     ...TypescriptSnippet.args,
     renderLanguageSelector: () => (
       <LanguageSelector
-        items={[
-          { id: 'ts', label: 'TypeScript', value: 'ts' },
-          { id: 'ts-4-9', label: 'TypeScript 4.9', value: 'ts4.9' },
-          { id: 'js', label: 'JavaScript', value: 'js' },
-        ]}
+        items={languageSelectorMeta.args.items}
+        value="TypeScript"
+        onChange={() => {}}
       />
     ),
   },
