@@ -20,7 +20,7 @@ import { Feedback } from './Feedback';
 import { If } from './If';
 import { YouTubeCallout } from './YouTubeCallout';
 
-import { MDXPreCodeSnippet } from '../../basics/CodeSnippets/MDXPreCodeSnippet/MDXPreCodeSnippet';
+import { MDXPreCodeSnippet } from '../../basics/CodeSnippets/MDXPreCodeSnippet';
 import { SyntaxHighlighterContextProvider } from '../../basics/CodeSnippets/SyntaxHighlighterContext';
 
 const { color, spacing, typography } = styles;
