@@ -26,8 +26,11 @@ const BubblesBackground = styled.img`
 const Wrapper = styled.div`
   padding-top: 72px;
 
-  ${minSm} {
+  @media (min-width: 440px) {
     padding-top: 112px;
+  }
+
+  ${minSm} {
     display: flex;
   }
 `;
