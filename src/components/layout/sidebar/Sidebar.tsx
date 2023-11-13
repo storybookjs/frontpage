@@ -1,6 +1,6 @@
 import React, { FC, Fragment, ReactNode } from 'react';
 import { color, fontWeight, typography } from '@chromaui/tetra';
-import { styled } from '@storybook/theming';
+import { keyframes, styled } from '@storybook/theming';
 import * as Accordion from '@radix-ui/react-accordion';
 import { ChevronSmallRightIcon } from '@storybook/icons';
 import { Link } from 'gatsby';
@@ -66,14 +66,14 @@ const ChangelogIcon: FC = () => (
   </svg>
 );
 
-const APIIcon: FC = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none">
-    <rect width="18" height="16" y="1.001" fill="#A8E38C" rx="8" />
-    <g fill="#489524">
-      <path d="M7.348 12.345a.52.52 0 0 0 0-.73l-2.606-2.63 2.606-2.628a.521.521 0 0 0-.37-.856.511.511 0 0 0-.355.125l-2.97 2.991a.519.519 0 0 0 0 .737l2.97 2.991a.514.514 0 0 0 .365.156.512.512 0 0 0 .36-.156ZM11.011 12.5a.512.512 0 0 1-.474-.321.523.523 0 0 1 .114-.565l2.607-2.629-2.607-2.628a.521.521 0 0 1 .37-.856c.13-.005.257.04.355.125l2.971 2.991a.52.52 0 0 1 0 .737l-2.971 2.991a.515.515 0 0 1-.365.156Z" />
-    </g>
-  </svg>
-);
+// const APIIcon: FC = () => (
+//   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none">
+//     <rect width="18" height="16" y="1.001" fill="#A8E38C" rx="8" />
+//     <g fill="#489524">
+//       <path d="M7.348 12.345a.52.52 0 0 0 0-.73l-2.606-2.63 2.606-2.628a.521.521 0 0 0-.37-.856.511.511 0 0 0-.355.125l-2.97 2.991a.519.519 0 0 0 0 .737l2.97 2.991a.514.514 0 0 0 .365.156.512.512 0 0 0 .36-.156ZM11.011 12.5a.512.512 0 0 1-.474-.321.523.523 0 0 1 .114-.565l2.607-2.629-2.607-2.628a.521.521 0 0 1 .37-.856c.13-.005.257.04.355.125l2.971 2.991a.52.52 0 0 1 0 .737l-2.971 2.991a.515.515 0 0 1-.365.156Z" />
+//     </g>
+//   </svg>
+// );
 
 const TopNav = styled.ul`
   display: flex;
@@ -143,8 +143,47 @@ const NavAccordionTrigger = styled(Accordion.Trigger)`
   align-items: center;
   color: ${color.slate500};
 
+  svg {
+    transition: transform 0.2s ease-in-out;
+  }
+
   &:hover {
     color: ${color.slate800};
+  }
+
+  &[data-state='open'] {
+    svg {
+      transform: rotate(90deg);
+    }
+  }
+`;
+
+const slideDown = keyframes`
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+`;
+
+const slideUp = keyframes`
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+`;
+
+const NavAccordionContent = styled(Accordion.Content)`
+  overflow: hidden;
+
+  &[data-state='open'] {
+    animation: ${slideDown} 300ms cubic-bezier(0.87, 0, 0.13, 1);
+  }
+  &[data-state='closed'] {
+    animation: ${slideUp} 300ms cubic-bezier(0.87, 0, 0.13, 1);
   }
 `;
 
@@ -222,13 +261,13 @@ export const Sidebar: FC<SidebarProps> = ({
                             <ChevronSmallRightIcon />
                           </NavAccordionTrigger>
                         </Accordion.Header>
-                        <Accordion.Content>
+                        <NavAccordionContent>
                           {lvl2.children.map((lvl3, lvl3Index) => (
                             <NavItem key={lvl3Index} level={3}>
                               <a href={`${lvl1.pathSegment}/${lvl3.pathSegment}`}>{lvl3.title}</a>
                             </NavItem>
                           ))}
-                        </Accordion.Content>
+                        </NavAccordionContent>
                       </Accordion.Item>
                     )}
                   </Fragment>
