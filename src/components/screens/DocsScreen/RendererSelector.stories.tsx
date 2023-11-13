@@ -77,3 +77,14 @@ SelectACommunityRenderer.play = async (context) => {
 
   await userEvent.click(html);
 };
+
+export const NarrowScreen = Template.bind({});
+NarrowScreen.parameters = {
+  chromatic: { viewports: [320] },
+  viewport: { defaultViewport: 'smallMobile' },
+};
+
+export const NarrowScreenCommunityRendererSelected = Template.bind({});
+NarrowScreenCommunityRendererSelected.parameters = NarrowScreen.parameters;
+NarrowScreenCommunityRendererSelected.args = CommunityRendererSelected.args;
+NarrowScreenCommunityRendererSelected.play = Base.play;

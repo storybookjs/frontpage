@@ -1,9 +1,10 @@
 import * as React from 'react';
 import * as RadixDropdownMenu from '@radix-ui/react-dropdown-menu';
-import { Button, Icon, color, fontWeight, typography, spacing } from '@chromaui/tetra';
+import { Button, Icon, breakpoint, color, fontWeight, typography, spacing } from '@chromaui/tetra';
 import { styled, css } from '@storybook/theming';
 
 import stylizeRenderer from '../../../util/stylize-renderer';
+import { useMediaQuery } from '../../lib/useMediaQuery';
 import { useDocsContext } from './DocsContext';
 
 const Root = styled.div`
@@ -172,6 +173,16 @@ export const RendererSelector = ({ coreRenderers, communityRenderers }: Renderer
 
   const pillItems = coreRenderers.slice();
   const menuItems = communityRenderers.slice();
+
+  const [narrow] = useMediaQuery(`(max-width: ${breakpoint.sm * (2 / 3)}px)`);
+
+  if (narrow) {
+    // Remove the last pill item and store it
+    const lastPillItem = pillItems.pop();
+
+    // Add the last pill item to the start of the menu
+    menuItems.unshift(lastPillItem);
+  }
 
   if (menuItems.includes(renderer)) {
     // Remove the last pill item and store it
