@@ -2,10 +2,9 @@ import React, { FC, Fragment, ReactNode } from 'react';
 import { color, fontWeight, typography } from '@chromaui/tetra';
 import { styled } from '@storybook/theming';
 import * as Accordion from '@radix-ui/react-accordion';
-import { ChevronRightIcon } from '@storybook/icons';
+import { ChevronSmallRightIcon } from '@storybook/icons';
 import { Link } from 'gatsby';
 import { VersionSelector } from './VersionSelector';
-import { VersionSelector as VersionSelector2 } from '../../screens/DocsScreen/VersionSelector';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 
 type SidebarElementProps = {
@@ -63,10 +62,6 @@ const APIIcon: FC = () => (
   </svg>
 );
 
-const SidebarContainer = styled.div`
-  /* background-color: rgba(255, 0, 0, 0.1); */
-`;
-
 const TopNav = styled.ul`
   display: flex;
   flex-direction: column;
@@ -83,7 +78,7 @@ const Line = styled.li`
     gap: 14px;
     text-decoration: none;
     ${typography.body14}
-    color: ${color.black};
+    color: ${color.slate800};
     transition: color 0.1s ease-in-out;
   }
 
@@ -99,9 +94,11 @@ const AccordionRoot = styled.ul`
 
 const NavItem = styled.li<{ level: 1 | 2 | 3 }>`
   display: flex;
-  height: 28px;
-  margin-top: ${({ level }) => (level === 1 ? '24px' : '4px')};
-  margin-bottom: 4px;
+  height: 32px;
+  margin-top: ${({ level }) => (level === 1 ? '24px' : '0px')};
+  border-left: ${({ level }) => (level === 3 ? `1px solid ${color.slate300}` : 'none')};
+  margin-left: ${({ level }) => (level === 3 ? '12px' : '0')};
+  padding-left: ${({ level }) => (level === 3 ? '12px' : '0')};
 
   a {
     display: flex;
@@ -111,11 +108,11 @@ const NavItem = styled.li<{ level: 1 | 2 | 3 }>`
     text-decoration: none;
     ${typography.body14}
     font-weight: ${({ level }) => (level === 1 ? fontWeight.bold : fontWeight.medium)};
-    color: ${({ level }) => (level === 1 ? color.black : color.slate500)};
+    color: ${({ level }) => (level === 1 ? color.slate800 : color.slate500)};
     transition: color 0.1s ease-in-out;
 
     &:hover {
-      color: ${color.black};
+      color: ${color.slate800};
     }
   }
 `;
@@ -125,14 +122,15 @@ const NavAccordionTrigger = styled(Accordion.Trigger)`
   display: flex;
   height: 28px;
   ${typography.body14}
-  color: ${color.black};
+  color: ${color.slate800};
   transition: color 0.1s ease-in-out;
   justify-content: space-between;
   width: 100%;
   align-items: center;
+  color: ${color.slate500};
 
   &:hover {
-    color: ${color.blue500};
+    color: ${color.slate800};
   }
 `;
 
@@ -155,7 +153,7 @@ export const Sidebar: FC<SidebarProps> = ({
   };
 
   return (
-    <SidebarContainer>
+    <div>
       <nav>
         <TopNav>
           <Line>
@@ -192,15 +190,17 @@ export const Sidebar: FC<SidebarProps> = ({
                 lvl1.children.map((lvl2, lvl2Index) => (
                   // eslint-disable-next-line react/no-array-index-key
                   <Fragment key={lvl2Index}>
-                    <NavItem level={2}>
-                      <a href="/">{lvl2.title}</a>
-                    </NavItem>
+                    {!lvl2.children && (
+                      <NavItem level={2}>
+                        <a href="/">{lvl2.title}</a>
+                      </NavItem>
+                    )}
                     {lvl2.children && lvl2.children.length > 0 && (
                       <Accordion.Item value={`${lvl2.title}-${lvl2Index}`}>
                         <Accordion.Header>
                           <NavAccordionTrigger>
                             {lvl2.title}
-                            <ChevronRightIcon />
+                            <ChevronSmallRightIcon />
                           </NavAccordionTrigger>
                         </Accordion.Header>
                         <Accordion.Content>
@@ -219,6 +219,6 @@ export const Sidebar: FC<SidebarProps> = ({
           ))}
         </AccordionRoot>
       </Accordion.Root>
-    </SidebarContainer>
+    </div>
   );
 };

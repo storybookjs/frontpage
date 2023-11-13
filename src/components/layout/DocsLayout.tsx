@@ -45,7 +45,7 @@ const SidebarRoot = styled(ScrollArea.Root)`
   position: relative;
 
   ${minMd} {
-    flex: 0 0 260px;
+    width: 260px;
     margin: 0;
     padding-bottom: 0;
     padding-right: 20px;
