@@ -179,7 +179,6 @@ export const Sidebar: FC<SidebarProps> = ({
         </TopNav>
       </nav>
       <VersionSelector version={version} versions={versions} slug={slug} />
-      <VersionSelector2 version={version} versions={versions} slug={slug} />
       <Accordion.Root type="multiple" asChild>
         <AccordionRoot>
           {docsTocWithLinkWrappers.map((lvl1, lvl1Index) => (
