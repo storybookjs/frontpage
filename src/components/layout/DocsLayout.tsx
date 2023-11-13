@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { styled } from '@storybook/theming';
 import { global } from '@storybook/design-system';
 import Helmet from 'react-helmet';
-import { Container, color, minMd } from '@chromaui/tetra';
+import { Container, color, minMd, minSm } from '@chromaui/tetra';
 import * as ScrollArea from '@radix-ui/react-scroll-area';
 
 import { GLOBAL_SEARCH_IMPORTANCE, GLOBAL_SEARCH_META_KEYS } from '../../constants/global-search';
@@ -24,7 +24,9 @@ const BubblesBackground = styled.img`
 `;
 
 const Wrapper = styled.div`
-  ${minMd} {
+  padding-top: 72px;
+
+  ${minSm} {
     padding-top: 112px;
     display: flex;
   }
@@ -86,10 +88,10 @@ const ScrollAreaThumb = styled(ScrollArea.Thumb)`
 
 const Content = styled.div`
   flex: 1;
-  margin: 1rem auto 0 auto;
+  padding-top: 24px;
+  padding-bottom: 24px;
 
   ${minMd} {
-    margin-top: 0;
     padding-top: 48px;
     padding-bottom: 48px;
   }
