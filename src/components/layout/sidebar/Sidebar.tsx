@@ -179,20 +179,19 @@ export const Sidebar: FC<SidebarProps> = ({
       <VersionSelector version={version} versions={versions} slug={slug} />
       <Accordion.Root type="multiple" asChild>
         <AccordionRoot>
+          {/* eslint-disable react/no-array-index-key */}
           {docsTocWithLinkWrappers.map((lvl1, lvl1Index) => (
-            // eslint-disable-next-line react/no-array-index-key
             <Fragment key={lvl1Index}>
               <NavItem level={1}>
-                <a href="/">{lvl1.title}</a>
+                <a href={lvl1.pathSegment}>{lvl1.title}</a>
               </NavItem>
               {lvl1.children &&
                 lvl1.children.length > 0 &&
                 lvl1.children.map((lvl2, lvl2Index) => (
-                  // eslint-disable-next-line react/no-array-index-key
                   <Fragment key={lvl2Index}>
                     {!lvl2.children && (
                       <NavItem level={2}>
-                        <a href="/">{lvl2.title}</a>
+                        <a href={`${lvl1.pathSegment}/${lvl2.pathSegment}`}>{lvl2.title}</a>
                       </NavItem>
                     )}
                     {lvl2.children && lvl2.children.length > 0 && (
@@ -205,9 +204,8 @@ export const Sidebar: FC<SidebarProps> = ({
                         </Accordion.Header>
                         <Accordion.Content>
                           {lvl2.children.map((lvl3, lvl3Index) => (
-                            // eslint-disable-next-line react/no-array-index-key
                             <NavItem key={lvl3Index} level={3}>
-                              <a href="/">{lvl3.title}</a>
+                              <a href={`${lvl1.pathSegment}/${lvl3.pathSegment}`}>{lvl3.title}</a>
                             </NavItem>
                           ))}
                         </Accordion.Content>
@@ -217,6 +215,7 @@ export const Sidebar: FC<SidebarProps> = ({
                 ))}
             </Fragment>
           ))}
+          {/* eslint-enable react/no-array-index-key */}
         </AccordionRoot>
       </Accordion.Root>
     </div>
