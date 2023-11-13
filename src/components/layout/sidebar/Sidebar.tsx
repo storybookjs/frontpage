@@ -8,7 +8,7 @@ import { VersionSelector } from './VersionSelector';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 
 type SidebarElementProps = {
-  type?: 'menu' | 'link';
+  type?: 'menu' | 'link' | 'heading';
   title?: string;
   pathSegment?: string;
   path?: string;
@@ -49,6 +49,19 @@ const TutorialsIcon: FC = () => (
     <path
       fill="#fff"
       d="M8.73 2.568a.3.3 0 0 1 .54 0l1.1 2.304a.3.3 0 0 0 .232.168l2.53.334a.3.3 0 0 1 .167.515l-1.85 1.757a.3.3 0 0 0-.09.272l.466 2.51a.3.3 0 0 1-.439.318L9.143 9.529a.3.3 0 0 0-.286 0l-2.243 1.217a.3.3 0 0 1-.438-.318l.464-2.51a.3.3 0 0 0-.088-.272L4.7 5.889a.3.3 0 0 1 .167-.515l2.53-.334a.3.3 0 0 0 .232-.168l1.1-2.304Z"
+    />
+  </svg>
+);
+
+const ChangelogIcon: FC = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none">
+    <path
+      fill="#FF4785"
+      d="M6.06 18c-.419 0-.828-.194-1.093-.519a1.39 1.39 0 0 1-.281-1.16l1.143-5.615H2.84a.84.84 0 0 1-.766-1.18L6.089.5a.84.84 0 0 1 .767-.5h6.213a.84.84 0 0 1 .76 1.198L12.097 4.87h3.267a.84.84 0 0 1 .658 1.36L7.11 17.515A1.382 1.382 0 0 1 6.06 18ZM4.133 9.028h2.724a.84.84 0 0 1 .823 1.007l-1.11 5.455 7.062-8.94h-2.857a.84.84 0 0 1-.76-1.197l1.732-3.672H7.403l-3.27 7.347Z"
+    />
+    <path
+      fill="#FFA0C0"
+      d="M6.857 9.027H4.133l3.27-7.347h4.343l-1.731 3.672a.84.84 0 0 0 .76 1.197h2.857l-7.063 8.94 1.11-5.455a.836.836 0 0 0-.822-1.007Z"
     />
   </svg>
 );
@@ -99,6 +112,9 @@ const NavItem = styled.li<{ level: 1 | 2 | 3 }>`
   border-left: ${({ level }) => (level === 3 ? `1px solid ${color.slate300}` : 'none')};
   margin-left: ${({ level }) => (level === 3 ? '12px' : '0')};
   padding-left: ${({ level }) => (level === 3 ? '12px' : '0')};
+  ${typography.body14}
+  font-weight: ${({ level }) => (level === 1 ? fontWeight.bold : fontWeight.medium)};
+  color: ${({ level }) => (level === 1 ? color.slate800 : color.slate500)};
 
   a {
     display: flex;
@@ -106,10 +122,8 @@ const NavItem = styled.li<{ level: 1 | 2 | 3 }>`
     justify-content: space-between;
     gap: 14px;
     text-decoration: none;
-    ${typography.body14}
-    font-weight: ${({ level }) => (level === 1 ? fontWeight.bold : fontWeight.medium)};
-    color: ${({ level }) => (level === 1 ? color.slate800 : color.slate500)};
     transition: color 0.1s ease-in-out;
+    color: inherit;
 
     &:hover {
       color: ${color.slate800};
@@ -169,11 +183,17 @@ export const Sidebar: FC<SidebarProps> = ({
             </Link>
           </Line>
           <Line>
+            <Link to="/releases">
+              <ChangelogIcon />
+              Changelog
+            </Link>
+          </Line>
+          {/* <Line>
             <Link to="/docs/api">
               <APIIcon />
               API
             </Link>
-          </Line>
+          </Line> */}
         </TopNav>
       </nav>
       <VersionSelector version={version} versions={versions} slug={slug} />
@@ -183,7 +203,7 @@ export const Sidebar: FC<SidebarProps> = ({
           {docsTocWithLinkWrappers.map((lvl1, lvl1Index) => (
             <Fragment key={lvl1Index}>
               <NavItem level={1}>
-                <a href={lvl1.pathSegment}>{lvl1.title}</a>
+                {lvl1.type === 'heading' ? <a href={lvl1.pathSegment}>{lvl1.title}</a> : lvl1.title}
               </NavItem>
               {lvl1.children &&
                 lvl1.children.length > 0 &&
