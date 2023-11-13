@@ -136,7 +136,7 @@ export function PurePageLayout({ dxData, children, pageContext, ...props }) {
             crossOrigin
           />
         </Helmet>
-        {pageContext && pageContext.layout !== 'iframe' && (
+        {pageContext && pageContext.layout === 'docs' ? (
           <>
             <NavWrapper>
               <Eyebrow
@@ -152,14 +152,30 @@ export function PurePageLayout({ dxData, children, pageContext, ...props }) {
                 activeSection={activeSection}
               />
             </NavWrapper>
+            <DocsLayout pageContext={pageContext} {...props}>
+              {children}
+            </DocsLayout>
           </>
-        )}
-        {pageContext && pageContext.layout === 'docs' ? (
-          <DocsLayout pageContext={pageContext} {...props}>
-            {children}
-          </DocsLayout>
         ) : (
-          children
+          <>
+            {pageContext.layout !== 'iframe' && (
+              <>
+                <Eyebrow
+                  label={dxData.latestPost.title}
+                  link={dxData.latestPost.url}
+                  inverse={isHomePage}
+                  githubStarCount={dxData.githubStars}
+                />
+                <Nav
+                  inverse={isHomePage}
+                  version={versionString || latestVersionString}
+                  apiKey={ALGOLIA_API_KEY}
+                  activeSection={activeSection}
+                />
+              </>
+            )}
+            {children}
+          </>
         )}
         {pageContext && pageContext.layout !== 'iframe' && (
           <Footer
