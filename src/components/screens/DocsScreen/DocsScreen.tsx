@@ -4,7 +4,7 @@ import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { Button, Link, ShadowBoxCTA, Subheading, styles } from '@storybook/design-system';
 import { graphql } from 'gatsby';
-import { CodeSnippets } from './CodeSnippets';
+import { CodeSnippets } from '../../basics/CodeSnippets/CodeSnippets';
 import { rendererSupportsFeature, RendererSupportTable } from './RendererSupportTable';
 import { SocialGraph } from '../../basics';
 import { Callout } from '../../basics/Callout';
@@ -113,8 +113,6 @@ function DocsScreen({ data, pageContext, location }) {
   } = useSiteMetadata();
   const { docsToc, fullPath, slug, tocItem, nextTocItem, isInstallPage } = pageContext;
 
-  console.log('PAGE', fullPath);
-
   const {
     codeLanguage: [codeLanguage],
     renderer: [renderer],
@@ -122,7 +120,7 @@ function DocsScreen({ data, pageContext, location }) {
 
   const CodeSnippetsWithState = useMemo(() => {
     return (props) => (
-      <CodeSnippets currentFramework={renderer} currentCodeLanguage={codeLanguage} {...props} />
+      <CodeSnippets currentRenderer={renderer} currentCodeLanguage={codeLanguage} {...props} />
     );
   }, [renderer, codeLanguage]);
   const FeatureSnippetsWithState = useMemo(() => {
