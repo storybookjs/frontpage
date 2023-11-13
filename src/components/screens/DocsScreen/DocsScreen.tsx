@@ -238,7 +238,7 @@ function DocsScreen({ data, pageContext, location }) {
 
   const CodeSnippetsWithState = useMemo(() => {
     return (props) => (
-      <CodeSnippets currentFramework={renderer} currentCodeLanguage={codeLanguage} {...props} />
+      <CodeSnippets currentRenderer={renderer} currentCodeLanguage={codeLanguage} {...props} />
     );
   }, [renderer, codeLanguage]);
   const FeatureSnippetsWithState = useMemo(() => {
