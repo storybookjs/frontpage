@@ -25,6 +25,7 @@ const useSiteMetadata = () => {
           allRenderers
           coreRenderers
           communityRenderers
+          defaultRenderer
           featureGroups {
             name
             features {
