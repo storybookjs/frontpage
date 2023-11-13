@@ -95,7 +95,7 @@ export const VersionSelector: FC<VersionSelectorProps> = ({ version, versions, s
         </DropdownMenuTrigger>
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
-        <DropdownMenuContent sideOffset={5}>
+        <DropdownMenuContent align="start">
           <DropdownMenu.Group>
             {versions.stable.length > 0 && <DropdownMenuLabel>Stable</DropdownMenuLabel>}
             {versions.stable.map(({ version: v, string, label }) => (
