@@ -242,7 +242,7 @@ export const Sidebar: FC<SidebarProps> = ({
           {docsTocWithLinkWrappers.map((lvl1, lvl1Index) => (
             <Fragment key={lvl1Index}>
               <NavItem level={1}>
-                {lvl1.type === 'heading' ? <a href={lvl1.pathSegment}>{lvl1.title}</a> : lvl1.title}
+                { ['link', 'heading'].includes(lvl1.type) ? <a href={lvl1.pathSegment}>{lvl1.title}</a> : lvl1.title}
               </NavItem>
               {lvl1.children &&
                 lvl1.children.length > 0 &&
