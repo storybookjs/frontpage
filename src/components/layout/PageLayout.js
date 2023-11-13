@@ -30,7 +30,7 @@ const NavWrapper = styled.div`
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 100;
+  z-index: 10;
   background: hsla(0, 0%, 100%, 0.6);
   backdrop-filter: saturate(180%) blur(5px);
 `;
