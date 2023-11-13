@@ -4,7 +4,10 @@ import { CODE_LANGUAGES_FULL } from '../../../constants/code-languages';
 import { LanguageSelector } from '../../basics/LanguageSelector';
 import { useDocsContext } from './DocsContext';
 
-type CodeLanguageSelectorProps = React.ComponentProps<typeof LanguageSelector>;
+type CodeLanguageSelectorProps = Omit<
+  React.ComponentProps<typeof LanguageSelector>,
+  'items' | 'onChange' | 'value'
+>;
 
 type LanguageId = keyof typeof CODE_LANGUAGES_FULL;
 

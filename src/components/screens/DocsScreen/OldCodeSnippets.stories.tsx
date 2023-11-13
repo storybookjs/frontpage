@@ -2,7 +2,7 @@ import React from 'react';
 import { styled } from '@storybook/theming';
 import { Highlight } from '@storybook/design-system';
 
-import { PureCodeSnippets, CsfMessage, MissingFrameworkMessage, TabLabel } from './CodeSnippets';
+import { PureCodeSnippets, CsfMessage, MissingFrameworkMessage, TabLabel } from './OldCodeSnippets';
 import { mdFormatting } from '../../../styles/formatting';
 
 const jsCode = `

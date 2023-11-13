@@ -1,4 +1,4 @@
-import { getResolvedPaths } from './CodeSnippets';
+import { getResolvedPaths } from './OldCodeSnippets';
 
 it('Selects from available frameworks and languages, JS selected', () => {
   const result = getResolvedPaths(
