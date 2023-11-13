@@ -26,6 +26,15 @@ import {
 
 const Layout = styled.div``;
 
+const NavWrapper = styled.div`
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  background: hsla(0, 0%, 100%, 0.6);
+  backdrop-filter: saturate(180%) blur(5px);
+`;
+
 const ALGOLIA_API_KEY = process.env.GATSBY_ALGOLIA_API_KEY;
 
 const navLinks = {
@@ -127,28 +136,46 @@ export function PurePageLayout({ dxData, children, pageContext, ...props }) {
             crossOrigin
           />
         </Helmet>
-        {pageContext && pageContext.layout !== 'iframe' && (
-          <>
-            <Eyebrow
-              label={dxData.latestPost.title}
-              link={dxData.latestPost.url}
-              inverse={isHomePage}
-              githubStarCount={dxData.githubStars}
-            />
-            <Nav
-              inverse={isHomePage}
-              version={versionString || latestVersionString}
-              apiKey={ALGOLIA_API_KEY}
-              activeSection={activeSection}
-            />
-          </>
-        )}
         {pageContext && pageContext.layout === 'docs' ? (
-          <DocsLayout pageContext={pageContext} {...props}>
-            {children}
-          </DocsLayout>
+          <>
+            <NavWrapper>
+              <Eyebrow
+                label={dxData.latestPost.title}
+                link={dxData.latestPost.url}
+                inverse={isHomePage}
+                githubStarCount={dxData.githubStars}
+              />
+              <Nav
+                inverse={isHomePage}
+                version={versionString || latestVersionString}
+                apiKey={ALGOLIA_API_KEY}
+                activeSection={activeSection}
+              />
+            </NavWrapper>
+            <DocsLayout pageContext={pageContext} {...props}>
+              {children}
+            </DocsLayout>
+          </>
         ) : (
-          children
+          <>
+            {pageContext.layout !== 'iframe' && (
+              <>
+                <Eyebrow
+                  label={dxData.latestPost.title}
+                  link={dxData.latestPost.url}
+                  inverse={isHomePage}
+                  githubStarCount={dxData.githubStars}
+                />
+                <Nav
+                  inverse={isHomePage}
+                  version={versionString || latestVersionString}
+                  apiKey={ALGOLIA_API_KEY}
+                  activeSection={activeSection}
+                />
+              </>
+            )}
+            {children}
+          </>
         )}
         {pageContext && pageContext.layout !== 'iframe' && (
           <Footer

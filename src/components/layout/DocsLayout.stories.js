@@ -1,6 +1,8 @@
 import React from 'react';
 import DocsLayout, { PureDocsLayout } from './DocsLayout';
 
+import { tocV2 } from './fakeTOC';
+
 const { toc: docsToc } = require('../../content/docs/toc');
 const addStateToToc = require('../../util/add-state-to-toc');
 
@@ -39,6 +41,15 @@ export const Base = Template.bind({});
 Base.args = {
   children: 'children',
   pageContext,
+};
+
+export const WithTocV2 = Template.bind({});
+WithTocV2.args = {
+  ...Base.args,
+  pageContext: {
+    ...pageContext,
+    docsToc: tocV2,
+  },
 };
 
 export const NonLatestVersion = Template.bind({});

@@ -1,86 +1,102 @@
-import React from 'react';
-import { styled, css } from '@storybook/theming';
-import {
-  Icon,
-  Button,
-  TableOfContents,
-  TooltipNote,
-  WithTooltip,
-  global,
-  animation,
-} from '@storybook/design-system';
+import React, { FC } from 'react';
+import { styled } from '@storybook/theming';
+import { global } from '@storybook/design-system';
 import Helmet from 'react-helmet';
-import {
-  SubNav,
-  SubNavTabs,
-  SubNavDivider,
-  SubNavMenus,
-  SubNavRight,
-  SubNavLinkList,
-  styles,
-} from '@storybook/components-marketing';
-import { Container } from '@chromaui/tetra';
+import { Container, color, minMd, minSm } from '@chromaui/tetra';
+import * as ScrollArea from '@radix-ui/react-scroll-area';
 
 import { GLOBAL_SEARCH_IMPORTANCE, GLOBAL_SEARCH_META_KEYS } from '../../constants/global-search';
 import buildPathWithVersion from '../../util/build-path-with-version';
 import GatsbyLinkWrapper from '../basics/GatsbyLinkWrapper';
 import useSiteMetadata from '../lib/useSiteMetadata';
-import { CodeLanguageSelector } from '../screens/DocsScreen/CodeLanguageSelector';
 import { DocsContextProvider } from '../screens/DocsScreen/DocsContext';
-import { RendererSelector } from '../screens/DocsScreen/RendererSelector';
-import { VersionSelector } from '../screens/DocsScreen/VersionSelector';
 import { VersionCTA } from '../screens/DocsScreen/VersionCTA';
+import { Sidebar } from './sidebar/Sidebar';
 
-const { breakpoint, color, pageMargins, spacing } = styles;
 const { GlobalStyle } = global;
 
-const SubNavWrapper = styled.div`
-  background: ${color.lightest};
-  position: sticky;
+const BubblesBackground = styled.img`
+  display: block;
+  position: absolute;
   top: 0;
-  z-index: 2;
+  width: 100%;
+  z-index: -1;
 `;
 
-const Sidebar = styled.div<{ isLoading: boolean }>`
+const Wrapper = styled.div`
+  padding-top: 72px;
+
+  @media (min-width: 440px) {
+    padding-top: 112px;
+  }
+
+  ${minSm} {
+    display: flex;
+  }
+`;
+
+const SidebarContainer = styled.div`
   display: none;
+
+  ${minMd} {
+    display: block;
+    position: sticky;
+    top: 112px;
+    align-self: flex-start;
+  }
+`;
+
+const SidebarRoot = styled(ScrollArea.Root)`
   position: relative;
 
-  @media (min-width: ${breakpoint * 1.333}px) {
-    display: block;
-    flex: 0 0 240px;
+  ${minMd} {
+    width: 260px;
     margin: 0;
     padding-bottom: 0;
     padding-right: 20px;
     margin-right: 20px;
+    height: calc(100vh - 112px);
   }
-
-  ${({ isLoading }) =>
-    isLoading &&
-    css`
-      height: 80vh;
-      border-radius: ${spacing.borderRadius.small}px;
-      ${animation.inlineGlow}
-    `}
 `;
 
-const ExpandButton = styled(Button)`
-  height: 28px;
-  width: 28px;
+const SidebarViewport = styled(ScrollArea.Viewport)`
+  width: 100%;
+  height: 100%;
+  padding-top: 48px;
 `;
 
-const SidebarControls = styled.div`
-  position: absolute;
-  left: -62px;
+const ScrollAreaScrollbar = styled(ScrollArea.Scrollbar)`
+  display: flex;
+  width: 5px;
+  /* ensures no selection */
+  user-select: none;
+  /* disable browser handling of all panning and zooming gestures on touch devices */
+  touch-action: none;
+  padding-top: 48px;
+  padding-bottom: 24px;
+`;
+
+const ScrollAreaThumb = styled(ScrollArea.Thumb)`
+  flex: 1;
+  width: 5px;
+  background: ${color.slate300};
+  border-radius: 20px;
+  position: relative;
+  transition: background 0.2s ease-in-out;
+
+  &:hover {
+    background: ${color.slate500};
+  }
 `;
 
 const Content = styled.div`
   flex: 1;
-  min-width: 0; /* do not remove  https://weblog.west-wind.com/posts/2016/feb/15/flexbox-containers-pre-tags-and-managing-overflow */
-  max-width: 800px;
-  margin: 1rem auto 0 auto;
+  padding-top: 24px;
+  padding-bottom: 24px;
 
-  @media (min-width: ${breakpoint * 1.333}px) {
-    margin-top: 0;
+  ${minMd} {
+    padding-top: 48px;
+    padding-bottom: 48px;
   }
 `;
 
@@ -88,127 +104,33 @@ const StyledVersionCTA = styled(VersionCTA)`
   margin-bottom: 24px;
 `;
 
-const Wrapper = styled.div`
-  padding-bottom: 3rem;
+interface PureDocsLayoutProps {
+  sidebar: React.ReactNode;
+}
 
-  @media (min-width: ${breakpoint * 1.333}px) {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-    display: flex;
-  }
-`;
-
-const StyledTableOfContents = styled(TableOfContents)`
-  // space the ToC emoji and text
-  li > a svg + span::first-letter,
-  li > button svg + span::first-letter {
-    margin-right: 4px;
-  }
-
-  /* Hide ToC on mobile, the primary navigation is search */
-  display: none;
-
-  @media (min-width: ${breakpoint * 1.333}px) {
-    display: block;
-    /* So that the expandable arrows are rendered outside of the sidebar dimensions */
-    margin-left: -20px;
-  }
-`;
-
-const docsItems = [
-  { key: '0', label: 'Guides', href: '/docs', isActive: true },
-  { key: '1', label: 'Tutorials', href: 'https://storybook.js.org/tutorials/' },
-];
-
-const supportItems = [
-  {
-    icon: 'github',
-    href: 'https://github.com/storybookjs/storybook/issues',
-    label: 'Github',
-  },
-  {
-    icon: 'discord',
-    href: 'https://discord.gg/storybook',
-    label: 'Discord',
-  },
-  {
-    icon: 'youtube',
-    href: 'https://www.youtube.com/channel/UCr7Quur3eIyA_oe8FNYexfg',
-    label: 'Youtube',
-  },
-];
-
-const SkeletonTitle = styled.div`
-  height: 36px;
-  margin-bottom: 1.5rem;
-  width: 75%;
-  border-radius: ${spacing.borderRadius.small}px;
-  ${animation.inlineGlow}
-`;
-
-const SkeletonBody = styled.div`
-  height: calc(80vh - 36px - 1.5rem);
-  border-radius: ${spacing.borderRadius.small}px;
-  ${animation.inlineGlow}
-`;
-
-export function PureDocsLayout({ children, isLoading, sidebar, slug, versions: versionsProp }) {
-  const { coreRenderers, communityRenderers, isLatest, version, versionString } = useSiteMetadata();
-
-  const versions = versionsProp || {
-    // prettier-ignore
-    stable: [{
-      version,
-      string: versionString,
-      label: isLatest ? 'Latest' : undefined,
-    }],
-    preRelease: [],
-  };
-
+export const PureDocsLayout: FC<PureDocsLayoutProps> = ({ children, sidebar }) => {
   return (
     <>
       <GlobalStyle />
       <DocsContextProvider>
-        <SubNavWrapper>
-          <SubNav>
-            <SubNavTabs label="Docs nav" items={docsItems} />
-            <SubNavDivider />
-            <SubNavMenus>
-              <VersionSelector version={version} versions={versions} slug={slug} />
-              {/* TODO: Remove */}
-              <RendererSelector
-                coreRenderers={coreRenderers}
-                communityRenderers={communityRenderers}
-              />
-              {/* TODO: Remove */}
-              <CodeLanguageSelector />
-            </SubNavMenus>
-            <SubNavRight>
-              <SubNavLinkList label="Get support:" items={supportItems} />
-            </SubNavRight>
-          </SubNav>
-        </SubNavWrapper>
         <Container>
           <Wrapper>
-            <Sidebar className="sidebar" isLoading={isLoading}>
-              {sidebar}
-            </Sidebar>
-            <Content>
-              {isLoading ? (
-                <>
-                  <SkeletonTitle />
-                  <SkeletonBody />
-                </>
-              ) : (
-                children
-              )}
-            </Content>
+            <SidebarContainer>
+              <SidebarRoot className="sidebar">
+                <SidebarViewport>{sidebar}</SidebarViewport>
+                <ScrollAreaScrollbar orientation="vertical">
+                  <ScrollAreaThumb />
+                </ScrollAreaScrollbar>
+              </SidebarRoot>
+            </SidebarContainer>
+            <Content>{children}</Content>
           </Wrapper>
         </Container>
+        <BubblesBackground src="/images/bubbles.jpg" alt="Storybook" />
       </DocsContextProvider>
     </>
   );
-}
+};
 
 const getTocSectionTitles = (toc, path) => {
   const pathParts = path.split('/');
@@ -248,7 +170,13 @@ const getTocSectionTitles = (toc, path) => {
   return title.join(' » ');
 };
 
-function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
+interface DocsLayoutProps {
+  children: React.ReactNode;
+  isLatest?: boolean;
+  pageContext: any;
+}
+
+const DocsLayout: FC<DocsLayoutProps> = ({ children, isLatest: isLatestProp, pageContext }) => {
   const {
     urls: { homepageUrl },
     version,
@@ -268,13 +196,6 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
       ...(item.children && { children: addLinkWrappers(item.children) }),
     }));
   const docsTocWithLinkWrappers = addLinkWrappers(docsToc);
-
-  const withTooltipProps = {
-    placement: 'top',
-    trigger: 'hover',
-    hasChrome: false,
-    as: 'span',
-  };
 
   return (
     <>
@@ -297,43 +218,13 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
         />
       </Helmet>
       <PureDocsLayout
-        slug={slug}
         sidebar={
-          // TODO: Sidebar
-          <StyledTableOfContents currentPath={fullPath} items={docsTocWithLinkWrappers}>
-            {({ menu, allTopLevelMenusAreOpen, toggleAllOpen, toggleAllClosed }) => (
-              <>
-                <SidebarControls>
-                  {allTopLevelMenusAreOpen ? (
-                    <WithTooltip
-                      {...withTooltipProps}
-                      tooltip={<TooltipNote note="Collapse all" />}
-                      onClick={toggleAllClosed}
-                      tabIndex="-1"
-                    >
-                      <ExpandButton containsIcon appearance="outline" size="small">
-                        <Icon icon="collapse" aria-label="Collapse sidebar" />
-                      </ExpandButton>
-                    </WithTooltip>
-                  ) : (
-                    <WithTooltip
-                      {...withTooltipProps}
-                      tooltip={<TooltipNote note="Expand all" />}
-                      onClick={toggleAllOpen}
-                      tabIndex="-1"
-                    >
-                      <ExpandButton containsIcon appearance="outline" size="small">
-                        <Icon icon="expandalt" aria-label="Expand sidebar" />
-                      </ExpandButton>
-                    </WithTooltip>
-                  )}
-                </SidebarControls>
-                {menu}
-              </>
-            )}
-          </StyledTableOfContents>
+          <Sidebar
+            docsTocWithLinkWrappers={docsTocWithLinkWrappers}
+            versions={versions}
+            slug={slug}
+          />
         }
-        versions={versions}
       >
         {tocSectionTitles && (
           <span hidden id="toc-section-titles">
@@ -353,6 +244,6 @@ function DocsLayout({ children, isLatest: isLatestProp, pageContext }) {
       </PureDocsLayout>
     </>
   );
-}
+};
 
 export default DocsLayout;
