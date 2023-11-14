@@ -58,7 +58,8 @@ export function DocsContextProvider({
     let forcedRenderer = rendererProp;
     if (isBrowser) {
       const url = new URL(window.location.href);
-      forcedRenderer = url.searchParams.get(SEARCH_PARAMS_KEYS.RENDERER);
+      const rendererParam = url.searchParams.get(SEARCH_PARAMS_KEYS.RENDERER);
+      if (rendererParam) forcedRenderer = rendererParam;
 
       // Remove search param from URL, to allow selecting a different renderer
       url.searchParams.delete(SEARCH_PARAMS_KEYS.RENDERER);
