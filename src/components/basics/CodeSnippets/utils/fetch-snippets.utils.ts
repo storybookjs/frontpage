@@ -29,6 +29,22 @@ export const getSnippetType = (path: string) => {
   return '???';
 };
 
+const nameMap = {
+  'stories-of': 'StoriesOf()',
+  'ts-4-9': 'TS 4.9',
+};
+
+const prettifyName = (name) => {
+  const mapItem = nameMap[name];
+  if (mapItem) return mapItem;
+  return name.toUpperCase();
+};
+
+export const getSnippetTabName = (path: string) => {
+  const name = path.split('.')[1];
+  return prettifyName(name);
+};
+
 export const isTerminalSnippet = (path: string) =>
   pathIs.npm(path) || pathIs.pnpm(path) || pathIs.yarn(path);
 
@@ -82,6 +98,7 @@ export const fetchDocsSnippets = async (
       const syntax = getSnippetSyntax(snippetPath);
       const type = getSnippetType(snippetPath);
       const isTerminal = isTerminalSnippet(snippetPath);
+      const tabName = getSnippetTabName(snippetPath);
 
       const [title, content] = parseSnippetContent(
         /**
@@ -99,6 +116,7 @@ export const fetchDocsSnippets = async (
         content,
         renderer,
         syntax,
+        tabName,
         title: isTerminal ? 'Terminal' : title,
         type,
       };

@@ -6,6 +6,7 @@ import useSiteMetadata from '../../lib/useSiteMetadata';
 import { CodeLanguageSelector } from '../../screens/DocsScreen/CodeLanguageSelector';
 import { useIfContext } from '../../screens/DocsScreen/If';
 import { BaseCodeSnippet } from './BaseCodeSnippet';
+import { Tabs } from './CodeSnippetsTabs';
 import { fetchDocsSnippets } from './utils/fetch-snippets.utils';
 
 const COMMON = 'common';
@@ -177,6 +178,17 @@ export const getResolvedPaths: GetResolvedPaths = (
   return [resolvedPaths, message];
 };
 
+const Snippet = ({ id, message, snippet: { content, syntax, title } }) => (
+  <BaseCodeSnippet
+    id={id}
+    renderLanguageSelector={() => <CodeLanguageSelector />}
+    renderSnippetEyebrow={() => message}
+    snippet={content}
+    syntax={syntax}
+    title={title}
+  />
+);
+
 export const CodeSnippets = ({
   csf2Path,
   currentCodeLanguage,
@@ -218,17 +230,36 @@ export const CodeSnippets = ({
 
   if (!snippets.length) return null;
 
-  // TODO: What about snippets.length > 1? Tabs?
+  let content = <Snippet id={id} message={message} snippet={snippets[0]} />;
+
+  if (snippets.length > 1) {
+    const keyedSnippets = snippets.map((snippet, index) => ({
+      ...snippet,
+      index: index.toString(),
+      key: `${index}-${snippet.tabName}`,
+    }));
+    content = (
+      <Tabs.Root defaultValue={keyedSnippets[0].index}>
+        <Tabs.List aria-label="Alternative files for snippet">
+          {keyedSnippets.map(({ index, key, tabName }) => (
+            <Tabs.Trigger key={key} value={index}>
+              {tabName}
+            </Tabs.Trigger>
+          ))}
+        </Tabs.List>
+        {keyedSnippets.map(({ index, key }) => (
+          <Tabs.Content key={key} value={index}>
+            <Snippet id={id} message={message} snippet={snippets[index]} />
+          </Tabs.Content>
+        ))}
+      </Tabs.Root>
+    );
+  }
+
   return (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
-    <div onClick={() => logSnippetInteraction(currentRenderer, paths[0])}>
-      <BaseCodeSnippet
-        id={id}
-        renderLanguageSelector={() => <CodeLanguageSelector />}
-        renderSnippetEyebrow={() => message}
-        snippet={snippets[0].content}
-        {...snippets[0]}
-      />
+    <div onClick={() => logSnippetInteraction(currentRenderer, paths[0])} {...rest}>
+      {content}
     </div>
   );
 };
