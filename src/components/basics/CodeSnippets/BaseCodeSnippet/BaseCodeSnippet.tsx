@@ -1,6 +1,6 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { styled, css } from '@storybook/theming';
-import { color, spacing, Text } from '@chromaui/tetra';
+import { minSm, color, spacing, Text } from '@chromaui/tetra';
 
 import { useSyntaxHighlighter, SupportedLanguages } from '../SyntaxHighlighterContext';
 import { SnippetTypeIcon } from './SnippetTypeIcon';
@@ -16,9 +16,7 @@ const CodeSnippetContainer = styled.div`
 const CodeSnippetHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  align-self: stretch;
-  padding: 0 ${spacing['5']};
+  padding: 0 ${spacing['3']};
   height: ${spacing['10']};
   background: ${color.slate50};
   border-bottom: 1px solid ${color.slate300};
@@ -26,30 +24,48 @@ const CodeSnippetHeader = styled.div`
   border-top-right-radius: 5px;
   margin-left: 0px;
   margin-right: 0px;
+
+  ${minSm} {
+    padding: 0 ${spacing['5']};
+  }
 `;
 
 const CodeSnippetHeaderLeft = styled.div`
-  margin-left: 0px;
-  margin-right: 0px;
-  padding: 0;
   display: flex;
+  align-items: center;
+  flex: 1 1 auto;
   flex-direction: row;
   gap: ${spacing['2']};
+  min-width: 0;
+
+  & > svg {
+    flex: 0 0 auto;
+  }
+
+  & > span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 `;
 
 const CodeSnippetHeaderRight = styled.div`
-  margin-left: 0px;
-  margin-right: 0px;
-  padding: 0;
   display: flex;
+  align-items: center;
+  flex: 0 0 auto;
   flex-direction: row;
-  gap: ${spacing['2']};
+  gap: ${spacing['1']};
+
+  ${minSm} {
+    gap: ${spacing['2']};
+  }
 `;
 
 const CodeSnippetContent = styled.div<{ hideHeader?: boolean }>`
   background: ${color.white};
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+  overflow: auto;
 
   & > pre.shiki {
     margin: 0 !important;
