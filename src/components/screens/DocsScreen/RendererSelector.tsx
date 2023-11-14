@@ -1,9 +1,10 @@
 import * as React from 'react';
 import * as RadixDropdownMenu from '@radix-ui/react-dropdown-menu';
-import { Button, Icon, breakpoint, color, fontWeight, typography, spacing } from '@chromaui/tetra';
-import { styled, css } from '@storybook/theming';
+import { Icon, breakpoint, color, typography, spacing } from '@chromaui/tetra';
+import { styled } from '@storybook/theming';
 
 import stylizeRenderer from '../../../util/stylize-renderer';
+import { Pill, pillStyles } from '../../basics/Pill';
 import { useMediaQuery } from '../../lib/useMediaQuery';
 import { useDocsContext } from './DocsContext';
 
@@ -11,34 +12,6 @@ const Root = styled.div`
   display: flex;
   gap: ${spacing[2]};
   margin-bottom: ${spacing[8]};
-`;
-
-const pillStyles = css`
-  ${typography.body14}
-  border-radius: ${spacing[1]};
-  height: ${28 / 16}rem;
-  padding: 0 ${spacing[2]};
-  white-space: nowrap;
-
-  &:hover {
-    background-color: ${color.blueTr10};
-  }
-`;
-
-const Pill = styled(({ isActive, ...props }) => (
-  <Button color={isActive ? 'blue' : 'slate'} size="sm" variant="outline" {...props} />
-))<{
-  isActive?: boolean;
-}>`
-  ${pillStyles}
-  ${({ isActive }) =>
-    isActive
-      ? css`
-          font-weight: ${fontWeight.bold};
-        `
-      : css`
-          color: ${color.slate800};
-        `}
 `;
 
 /**
