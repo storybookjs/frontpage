@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { startCase } from 'lodash';
 
-import { MissingCodeLanguage } from '../BaseCodeSnippet/SnippetEyebrows';
-import { parseSnippetContent } from './parse-snippet-content.utils';
+import { MissingCodeLanguage } from '../../../basics/CodeSnippets/BaseCodeSnippet/SnippetEyebrows';
+import { parseSnippetContent } from '../../../basics/CodeSnippets/utils/parse-snippet-content.utils';
 
 /**
  * For a path like `web-components/button-story-click-handler-args.js.mdx`,
@@ -43,7 +43,7 @@ const prettifyName = (name) => {
   return startCase(name.replace(/-/g, ' '));
 };
 
-export const getSnippetTabName = (path: string) => {
+const getSnippetTabName = (path: string) => {
   const name = path.split('.')[1];
   return prettifyName(name);
 };

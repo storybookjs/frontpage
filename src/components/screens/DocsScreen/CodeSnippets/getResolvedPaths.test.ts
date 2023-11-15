@@ -1,7 +1,24 @@
-import { getResolvedPaths } from './OldCodeSnippets';
+import { getResolvedPaths } from './CodeSnippets';
+
+function statefulGetResolvedPaths(
+  paths,
+  currentRenderer,
+  currentCodeLanguage,
+  ifContextRenderer?: string[]
+) {
+  return getResolvedPaths(
+    paths,
+    'react',
+    currentRenderer,
+    currentCodeLanguage,
+    7.4,
+    7.4,
+    ifContextRenderer
+  );
+}
 
 it('Selects from available frameworks and languages, JS selected', () => {
-  const result = getResolvedPaths(
+  const result = statefulGetResolvedPaths(
     [
       'common/example.js.mdx',
       'common/example.ts.mdx',
@@ -26,7 +43,7 @@ it('Selects from available frameworks and languages, JS selected', () => {
 });
 
 it('Selects from available frameworks and languages, TS selected', () => {
-  const result = getResolvedPaths(
+  const result = statefulGetResolvedPaths(
     [
       'common/example.js.mdx',
       'common/example.ts.mdx',
@@ -52,7 +69,7 @@ it('Selects from available frameworks and languages, TS selected', () => {
 
 describe('v7+', () => {
   it('Selects from available frameworks and languages, TS 4.9 selected', () => {
-    const result = getResolvedPaths(
+    const result = statefulGetResolvedPaths(
       [
         'common/example.js.mdx',
         'common/example.ts.mdx',
@@ -77,7 +94,7 @@ describe('v7+', () => {
   });
 
   it('Does not select TS 4.9 paths when TS is selected', () => {
-    const result = getResolvedPaths(
+    const result = statefulGetResolvedPaths(
       [
         'common/example.js.mdx',
         'common/example.ts.mdx',
@@ -103,7 +120,7 @@ describe('v7+', () => {
 });
 
 it('Falls back to JS, if TS is unavailable', () => {
-  const result = getResolvedPaths(
+  const result = statefulGetResolvedPaths(
     [
       'common/example.js.mdx',
       'common/example.ts.mdx',
@@ -130,7 +147,7 @@ it('Falls back to JS, if TS is unavailable', () => {
 });
 
 it('Falls back to TS, if JS is unavailable', () => {
-  const result = getResolvedPaths(
+  const result = statefulGetResolvedPaths(
     [
       'common/example.js.mdx',
       'common/example.ts.mdx',
@@ -158,7 +175,7 @@ it('Falls back to TS, if JS is unavailable', () => {
 });
 
 it('Falls back to common, if available', () => {
-  const result = getResolvedPaths(
+  const result = statefulGetResolvedPaths(
     [
       'common/example.js.mdx',
       'common/example.ts.mdx',
@@ -183,7 +200,7 @@ it('Falls back to common, if available', () => {
 });
 
 it('Falls back to JS common, if TS common is unavailable', () => {
-  const result = getResolvedPaths(
+  const result = statefulGetResolvedPaths(
     [
       'common/example.js.mdx',
       'react/example.js.mdx',
@@ -210,7 +227,7 @@ it('Falls back to JS common, if TS common is unavailable', () => {
 });
 
 it('Falls back to default language, if common is unavailable', () => {
-  const result = getResolvedPaths(
+  const result = statefulGetResolvedPaths(
     [
       'react/example.js.mdx',
       'react/example.ts.mdx',
@@ -235,7 +252,7 @@ it('Falls back to default language, if common is unavailable', () => {
 });
 
 it('Falls back to JS default language, if TS default language is unavailable', () => {
-  const result = getResolvedPaths(
+  const result = statefulGetResolvedPaths(
     [
       'react/example.js.mdx',
       'vue/example.2.js.mdx',
@@ -260,7 +277,7 @@ it('Falls back to JS default language, if TS default language is unavailable', (
 });
 
 it('Show framework package manager snippets, if available', () => {
-  const result = getResolvedPaths(
+  const result = statefulGetResolvedPaths(
     [
       'angular/example.with-builder.js.mdx',
       'common/example.npm.js.mdx',
@@ -281,7 +298,7 @@ it('Show framework package manager snippets, if available', () => {
 });
 
 it('Fallback to common package manager snippets', () => {
-  const result = getResolvedPaths(
+  const result = statefulGetResolvedPaths(
     [
       'angular/example.with-builder.js.mdx',
       'common/example.npm.js.mdx',
@@ -304,7 +321,7 @@ it('Fallback to common package manager snippets', () => {
 });
 
 it('Handles only common snippets, TS selected', () => {
-  const result = getResolvedPaths(
+  const result = statefulGetResolvedPaths(
     // prettier-ignore
     [
       'common/example.js.mdx',
@@ -324,7 +341,7 @@ it('Handles only common snippets, TS selected', () => {
 });
 
 it('Handles only common JS snippets, TS selected', () => {
-  const result = getResolvedPaths(
+  const result = statefulGetResolvedPaths(
     // prettier-ignore
     [
       'common/example.js.mdx',
@@ -343,7 +360,7 @@ it('Handles only common JS snippets, TS selected', () => {
 });
 
 it('Handles only common TS snippets, JS selected', () => {
-  const result = getResolvedPaths(
+  const result = statefulGetResolvedPaths(
     // prettier-ignore
     [
       'common/example.ts.mdx'
@@ -365,7 +382,7 @@ it('Handles only common TS snippets, JS selected', () => {
 });
 
 it('Handles only MDX snippets, JS selected', () => {
-  const result = getResolvedPaths(
+  const result = statefulGetResolvedPaths(
     [
       'react/example.mdx.mdx',
       'angular/example.mdx.mdx',
@@ -387,7 +404,7 @@ it('Handles only MDX snippets, JS selected', () => {
 });
 
 it('Handles only MDX Vue 2/3 snippets, JS selected', () => {
-  const result = getResolvedPaths(
+  const result = statefulGetResolvedPaths(
     [
       'react/example.mdx.mdx',
       'angular/example.mdx.mdx',
@@ -410,7 +427,7 @@ it('Handles only MDX Vue 2/3 snippets, JS selected', () => {
 });
 
 it('Handles MDX and JS snippets, JS selected', () => {
-  const result = getResolvedPaths(
+  const result = statefulGetResolvedPaths(
     [
       'react/example.js.mdx',
       'react/example.ts.mdx',
@@ -435,7 +452,7 @@ it('Handles MDX and JS snippets, JS selected', () => {
 });
 
 it('Falls back to non-JS/TS, JS selected', () => {
-  const result = getResolvedPaths(
+  const result = statefulGetResolvedPaths(
     [
       'react/example.js.mdx',
       'react/example.ts.mdx',
@@ -461,7 +478,7 @@ it('Falls back to non-JS/TS, JS selected', () => {
 
 it('Throws if no snippets available', () => {
   expect(() => {
-    getResolvedPaths(
+    statefulGetResolvedPaths(
       // prettier-ignore
       [
         'svelte/example.ts.mdx',
@@ -473,7 +490,7 @@ it('Throws if no snippets available', () => {
 });
 
 it('Falls back to match parent If context', () => {
-  const result = getResolvedPaths(
+  const result = statefulGetResolvedPaths(
     // prettier-ignore
     ['svelte/example.ts.mdx'],
     'vue',
@@ -495,7 +512,7 @@ it('Falls back to match parent If context', () => {
 
 it('Throws if no snippets available, including parent If context', () => {
   expect(() => {
-    getResolvedPaths(
+    statefulGetResolvedPaths(
       // prettier-ignore
       [
         'svelte/example.ts.mdx',
