@@ -1,18 +1,18 @@
 import * as React from 'react';
 
-import { DEFAULT_CODE_LANGUAGE } from '../../../constants/code-languages';
-import { logSnippetInteraction } from '../../../util/custom-events';
-import useSiteMetadata from '../../lib/useSiteMetadata';
-import { CodeLanguageSelector } from '../../screens/DocsScreen/CodeLanguageSelector';
-import { useIfContext } from '../../screens/DocsScreen/If';
-import { BaseCodeSnippet } from './BaseCodeSnippet';
-import { Tabs } from './CodeSnippetsTabs';
-import { fetchDocsSnippets, getSnippetType, isTerminalSnippet } from './utils/fetch-snippets.utils';
+import { DEFAULT_CODE_LANGUAGE } from '../../../../constants/code-languages';
+import { logSnippetInteraction } from '../../../../util/custom-events';
+import { BaseCodeSnippet } from '../../../basics/CodeSnippets/BaseCodeSnippet';
 import {
   CSF2Example,
   MissingCodeLanguage,
   MissingRenderer,
-} from './BaseCodeSnippet/SnippetEyebrows';
+} from '../../../basics/CodeSnippets/BaseCodeSnippet/SnippetEyebrows';
+import useSiteMetadata from '../../../lib/useSiteMetadata';
+import { CodeLanguageSelector } from '../CodeLanguageSelector';
+import { useIfContext } from '../If';
+import { Tabs } from './CodeSnippetsTabs';
+import { fetchDocsSnippets, getSnippetType, isTerminalSnippet } from './fetch-snippets.utils';
 
 const COMMON = 'common';
 
@@ -244,7 +244,6 @@ export const CodeSnippets = ({
     }
 
     getSnippets();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [resolvedPaths]);
 
   if (!snippets.length) return null;

@@ -11,7 +11,7 @@ import VUE_SNIPPET from '../utils/fixtures/string-snippets/example-vue';
 import { CSF2Example, MissingCodeLanguage } from './SnippetEyebrows';
 
 const meta = {
-  title: 'Basics/CodeSnippets/Presentational',
+  title: 'Basics/BaseCodeSnippet',
   component: BaseCodeSnippet,
   decorators: [
     (Story) => <div style={{ margin: '2rem' }}>{Story()}</div>,

@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-import { SyntaxHighlighterContextProvider } from './SyntaxHighlighterContext';
-import { BaseCodeSnippet } from './BaseCodeSnippet/BaseCodeSnippet';
+import { SyntaxHighlighterContextProvider } from '../../../basics/CodeSnippets/SyntaxHighlighterContext';
+import { BaseCodeSnippet } from '../../../basics/CodeSnippets/BaseCodeSnippet/BaseCodeSnippet';
+import { LanguageSelector } from '../../../basics/LanguageSelector';
 import { Tabs } from './CodeSnippetsTabs';
-import { LanguageSelector } from '../LanguageSelector';
 
-import languageSelectorMeta from '../LanguageSelector/LanguageSelector.stories';
-import TS_SNIPPET from './utils/fixtures/string-snippets/example-stories';
+import languageSelectorMeta from '../../../basics/LanguageSelector/LanguageSelector.stories';
+import TS_SNIPPET from '../../../basics/CodeSnippets/utils/fixtures/string-snippets/example-stories';
 
 const mockSnippets = [
   {
@@ -53,7 +53,7 @@ const Template = ({ renderLanguageSelector }) => (
           snippet={content}
           syntax="ts"
           title="Example.stories.ts"
-          renderLanguageSelector={renderLanguageSelector}
+          LanguageSelector={LanguageSelector}
         />
       </Tabs.Content>
     ))}
@@ -64,7 +64,7 @@ export const Basic = Template.bind({});
 
 export const WithLanguageSelector = Template.bind({});
 WithLanguageSelector.args = {
-  renderLanguageSelector: () => (
+  LanguageSelector: (
     <LanguageSelector
       items={languageSelectorMeta.args.items}
       value="TypeScript"
