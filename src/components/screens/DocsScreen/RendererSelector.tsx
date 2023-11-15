@@ -30,9 +30,7 @@ const Pill = styled.button<{ isActive?: boolean }>`
 
   &[data-state='open'] {
     border: 1px solid ${color.blue500};
-    box-shadow: 0px 0px 0px 1px ${color.blue500};
     color: ${color.blue500};
-    font-weight: ${fontWeight.semibold};
   }
 
   &[data-state='open'] > .CaretDown {
@@ -46,8 +44,7 @@ const Pill = styled.button<{ isActive?: boolean }>`
 
   &:focus {
     outline: none;
-    border: 1px solid ${color.blue500};
-    box-shadow: 0px 0px 0px 1px ${color.blue500};
+    box-shadow: 0 0 0 1px white, 0 0 0 3px ${color.blue200};
   }
 
   ${({ isActive }) =>
@@ -55,7 +52,7 @@ const Pill = styled.button<{ isActive?: boolean }>`
     css`
       color: ${color.blue500};
       border: 1px solid ${color.blue500};
-      box-shadow: 0px 0px 0px 1px ${color.blue500};
+      /* box-shadow: 0px 0px 0px 1px ${color.blue500}; */
     `};
 `;
 
