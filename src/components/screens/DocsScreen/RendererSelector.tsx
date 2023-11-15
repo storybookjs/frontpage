@@ -25,7 +25,6 @@ const Pill = styled.button<{ isActive?: boolean }>`
   border: 1px solid ${color.slate400};
   padding: 0 ${spacing[2]};
   gap: 4px;
-  font-weight: ${fontWeight.bold};
   color: ${color.slate800};
   transition: all 0.14s ease;
 
@@ -33,6 +32,7 @@ const Pill = styled.button<{ isActive?: boolean }>`
     border: 1px solid ${color.blue500};
     box-shadow: 0px 0px 0px 1px ${color.blue500};
     color: ${color.blue500};
+    font-weight: ${fontWeight.semibold};
   }
 
   &[data-state='open'] > .CaretDown {
@@ -50,6 +50,7 @@ const Pill = styled.button<{ isActive?: boolean }>`
       color: ${color.blue500};
       border: 1px solid ${color.blue500};
       box-shadow: 0px 0px 0px 1px ${color.blue500};
+      font-weight: ${fontWeight.semibold};
     `};
 `;
 
