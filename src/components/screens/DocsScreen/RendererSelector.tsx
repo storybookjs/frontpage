@@ -55,29 +55,31 @@ const CaretDown = styled.div`
 `;
 
 const MenuContent = styled(RadixDropdownMenu.Content)`
-  margin: 0;
-  background: ${color.white};
-  border-radius: 4px;
-  padding: ${spacing[2]};
-
-  box-shadow: 0px 0px 15px ${color.blackTr05}, 0px 1px 2px ${color.blackTr10};
+  min-width: 120px;
+  background-color: white;
+  border-radius: 6px;
+  padding: 5px;
+  box-shadow: 0px 10px 38px -10px rgba(22, 23, 24, 0.35), 0px 10px 20px -15px rgba(22, 23, 24, 0.2);
+  animation-duration: 400ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
 `;
 
 const MenuItem = styled(RadixDropdownMenu.Item)`
-  ${typography.body14};
+  ${typography.body14}
   color: ${color.slate800};
-  cursor: pointer;
-  text-decoration: none;
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: ${spacing[2]};
-  border-radius: 4px;
+  height: 28px;
+  padding: 0 16px;
+  position: relative;
+  user-select: none;
+  text-decoration: none;
 
   &[data-highlighted] {
-    box-shadow: inset 0 0 0 2px rgba(30, 167, 253, 0.3);
-    background-color: ${color.blue100};
     outline: none;
+    background-color: ${color.slate100};
+    border-radius: 3px;
   }
 `;
 
