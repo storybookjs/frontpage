@@ -138,7 +138,7 @@ export const RendererSelector: FC<RendererSelectorProps> = ({
           {stylizeRenderer(r)}
         </Pill>
       ))}
-      <RadixDropdownMenu.Root>
+      <RadixDropdownMenu.Root modal={false}>
         <RadixDropdownMenu.Trigger asChild>
           <Pill>
             More
