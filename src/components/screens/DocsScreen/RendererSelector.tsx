@@ -44,7 +44,7 @@ const Pill = styled.button<{ isActive?: boolean }>`
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 1px white, 0 0 0 3px ${color.blue200};
+    box-shadow: 0 0 0 2px ${color.blue500};
   }
 
   ${({ isActive }) =>
