@@ -1,10 +1,9 @@
-import * as React from 'react';
+import React, { FC } from 'react';
 import * as RadixDropdownMenu from '@radix-ui/react-dropdown-menu';
-import { Icon, breakpoint, color, typography, spacing } from '@chromaui/tetra';
-import { styled } from '@storybook/theming';
-
+import { breakpoint, color, typography, spacing, fontWeight } from '@chromaui/tetra';
+import { css, styled } from '@storybook/theming';
+import { ChevronSmallDownIcon } from '@storybook/icons';
 import stylizeRenderer from '../../../util/stylize-renderer';
-import { Pill, pillStyles } from '../../basics/Pill';
 import { useMediaQuery } from '../../lib/useMediaQuery';
 import { useDocsContext } from './DocsContext';
 
@@ -14,66 +13,46 @@ const Root = styled.div`
   margin-bottom: ${spacing[8]};
 `;
 
-/**
- * This portion is copied from Tetra's NavDropdownMenu.
- * Notably:
- * - Styles for TriggerButton match Pill
- * - Menu items are not links
- */
-
-const TriggerButton = styled(RadixDropdownMenu.Trigger, {
-  shouldForwardProp: (propName) => !['isActive', 'variant'].includes(propName),
-})<{
-  variant?: 'light' | 'dark';
-  isActive?: boolean;
-}>`
+const Pill = styled.button<{ isActive?: boolean }>`
   all: unset;
-  ${pillStyles}
-  display: flex;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  outline: none;
-  user-select: none;
-  border: none;
-  background: transparent;
-  box-shadow: 0 0 0 1px ${color.slate400};
-  gap: 6px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  height: 28px;
+  border: 1px solid ${color.slate400};
+  padding: 0 ${spacing[2]};
+  ${typography.body14}
+  gap: 4px;
 
   &[data-state='open'] {
-    background-color: ${color.blueTr10};
+    border: 1px solid ${color.blue500};
   }
 
   &[data-state='open'] > .CaretDown {
     transform: rotate(-180deg) translateY(0px);
   }
+
+  &:hover {
+    border: 1px solid ${color.blue500};
+  }
+
+  ${({ isActive }) =>
+    isActive &&
+    css`
+      font-weight: ${fontWeight.bold};
+      color: ${color.blue500};
+      border: 1px solid ${color.blue500};
+    `};
 `;
 
 const CaretDown = styled.div`
   position: relative;
-  transform: translateY(2px);
+  width: 14px;
+  height: 14px;
   transition: transform 250ms ease;
 `;
-
-interface MenuTriggerProps {
-  variant?: 'light' | 'dark';
-  children?: React.ReactNode;
-}
-
-export const MenuTrigger: React.FC<MenuTriggerProps> = ({ children, variant = 'light' }) => {
-  return (
-    <>
-      <TriggerButton variant={variant}>
-        {children}
-        <CaretDown className="CaretDown">
-          <Icon name="arrowdown" aria-hidden size={12} />
-        </CaretDown>
-      </TriggerButton>
-    </>
-  );
-};
 
 const MenuContent = styled(RadixDropdownMenu.Content)`
   margin: 0;
@@ -102,44 +81,15 @@ const MenuItem = styled(RadixDropdownMenu.Item)`
   }
 `;
 
-interface IMenuItem {
-  id: string;
-  label: string;
-  onClick: () => void;
-}
-
-interface MenuProps {
-  variant?: 'light' | 'dark';
-  label: string;
-  items: IMenuItem[];
-}
-
-const Menu = ({ label, variant, items, ...props }: MenuProps) => {
-  return (
-    <RadixDropdownMenu.Root>
-      <MenuTrigger variant={variant}>{label}</MenuTrigger>
-
-      <RadixDropdownMenu.Portal>
-        <MenuContent loop align="start" sideOffset={8}>
-          {items.map((item) => (
-            <MenuItem key={item.id} onSelect={item.onClick}>
-              {item.label}
-            </MenuItem>
-          ))}
-        </MenuContent>
-      </RadixDropdownMenu.Portal>
-    </RadixDropdownMenu.Root>
-  );
-};
-
-/** END NavDropdownMenu */
-
 type RendererSelectorProps = {
   coreRenderers: string[];
   communityRenderers: string[];
 };
 
-export const RendererSelector = ({ coreRenderers, communityRenderers }: RendererSelectorProps) => {
+export const RendererSelector: FC<RendererSelectorProps> = ({
+  coreRenderers,
+  communityRenderers,
+}) => {
   const {
     renderer: [renderer, setRenderer],
   } = useDocsContext();
@@ -171,6 +121,14 @@ export const RendererSelector = ({ coreRenderers, communityRenderers }: Renderer
     menuItems.unshift(lastPillItem);
   }
 
+  const listOfItems = menuItems.map((r) => ({
+    id: r,
+    label: stylizeRenderer(r),
+    onClick: () => {
+      setRenderer(r);
+    },
+  }));
+
   return (
     <Root>
       {pillItems.map((r) => (
@@ -178,16 +136,25 @@ export const RendererSelector = ({ coreRenderers, communityRenderers }: Renderer
           {stylizeRenderer(r)}
         </Pill>
       ))}
-      <Menu
-        items={menuItems.map((r) => ({
-          id: r,
-          label: stylizeRenderer(r),
-          onClick: () => {
-            setRenderer(r);
-          },
-        }))}
-        label="More"
-      />
+      <RadixDropdownMenu.Root>
+        <RadixDropdownMenu.Trigger asChild>
+          <Pill>
+            More
+            <CaretDown className="CaretDown">
+              <ChevronSmallDownIcon aria-hidden />
+            </CaretDown>
+          </Pill>
+        </RadixDropdownMenu.Trigger>
+        <RadixDropdownMenu.Portal>
+          <MenuContent loop align="start" sideOffset={8}>
+            {listOfItems.map((item) => (
+              <MenuItem key={item.id} onSelect={item.onClick}>
+                {item.label}
+              </MenuItem>
+            ))}
+          </MenuContent>
+        </RadixDropdownMenu.Portal>
+      </RadixDropdownMenu.Root>
     </Root>
   );
 };
