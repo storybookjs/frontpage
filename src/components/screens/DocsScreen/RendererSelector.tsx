@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import * as RadixDropdownMenu from '@radix-ui/react-dropdown-menu';
 import { breakpoint, color, typography, spacing, fontWeight } from '@chromaui/tetra';
 import { css, styled } from '@storybook/theming';
@@ -13,7 +13,9 @@ const Root = styled.div`
   margin-bottom: ${spacing[8]};
 `;
 
-const Pill = styled.button<{ isActive?: boolean }>`
+const Pill = styled('button', {
+  shouldForwardProp: (propName) => !['isActive'].includes(propName),
+})<{ isActive?: boolean }>`
   all: unset;
   ${typography.body14}
   border-radius: 4px;
@@ -52,7 +54,6 @@ const Pill = styled.button<{ isActive?: boolean }>`
     css`
       color: ${color.blue500};
       border: 1px solid ${color.blue500};
-      /* box-shadow: 0px 0px 0px 1px ${color.blue500}; */
     `};
 `;
 
@@ -97,10 +98,7 @@ type RendererSelectorProps = {
   communityRenderers: string[];
 };
 
-export const RendererSelector: FC<RendererSelectorProps> = ({
-  coreRenderers,
-  communityRenderers,
-}) => {
+export const RendererSelector = ({ coreRenderers, communityRenderers }: RendererSelectorProps) => {
   const {
     renderer: [renderer, setRenderer],
   } = useDocsContext();
