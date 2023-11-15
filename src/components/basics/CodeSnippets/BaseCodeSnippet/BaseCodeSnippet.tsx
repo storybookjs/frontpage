@@ -85,22 +85,20 @@ const CodeSnippetContent = styled.div<{ hideHeader?: boolean }>`
 `;
 
 export interface CodeSnippetProps {
+  Eyebrow?: React.ReactNode;
   hideHeader?: boolean;
   id: string;
-  isTerminal?: boolean;
-  renderLanguageSelector?: () => React.ReactNode;
-  renderSnippetEyebrow?: () => React.ReactNode;
+  LanguageSelector?: React.ReactNode;
   snippet: string;
   syntax: SupportedLanguages;
   title: string;
 }
 
 export const BaseCodeSnippet = ({
+  Eyebrow,
   hideHeader,
   id,
-  isTerminal,
-  renderLanguageSelector,
-  renderSnippetEyebrow,
+  LanguageSelector,
   snippet,
   syntax,
   title,
@@ -119,12 +117,12 @@ export const BaseCodeSnippet = ({
             </Text>
           </CodeSnippetHeaderLeft>
           <CodeSnippetHeaderRight>
-            {renderLanguageSelector ? renderLanguageSelector() : null}
+            {LanguageSelector}
             <SnippetCopyButton code={snippet} />
           </CodeSnippetHeaderRight>
         </CodeSnippetHeader>
       )}
-      {renderSnippetEyebrow ? renderSnippetEyebrow() : null}
+      {Eyebrow}
       {isLoadingHighlighter ? (
         <CodeSnippetContent hideHeader={hideHeader}>Loading...</CodeSnippetContent>
       ) : (

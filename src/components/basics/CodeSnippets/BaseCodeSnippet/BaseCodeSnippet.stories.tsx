@@ -8,6 +8,7 @@ import languageSelectorMeta from '../../LanguageSelector/LanguageSelector.storie
 import TS_SNIPPET from '../utils/fixtures/string-snippets/example-stories';
 import BASH_SNIPPET from '../utils/fixtures/string-snippets/example-terminal';
 import VUE_SNIPPET from '../utils/fixtures/string-snippets/example-vue';
+import { CSF2Example, MissingCodeLanguage } from './SnippetEyebrows';
 
 const meta = {
   title: 'Basics/CodeSnippets/Presentational',
@@ -31,13 +32,27 @@ export const TypescriptSnippet = {
 export const WithLanguageSelector = {
   args: {
     ...TypescriptSnippet.args,
-    renderLanguageSelector: () => (
+    LanguageSelector: (
       <LanguageSelector
         items={languageSelectorMeta.args.items}
         value="TypeScript"
         onChange={() => {}}
       />
     ),
+  },
+};
+
+export const WithInfoEyebrow = {
+  args: {
+    ...TypescriptSnippet.args,
+    Eyebrow: <CSF2Example csf2Path="/writing-stories/decorators#story-decorators" />,
+  },
+};
+
+export const WithWarningEyebrow = {
+  args: {
+    ...TypescriptSnippet.args,
+    Eyebrow: <MissingCodeLanguage currentCodeLanguage="ts-4-9" fallbackLanguage="ts" />,
   },
 };
 
@@ -51,7 +66,6 @@ export const VueSnippet = {
 
 export const TerminalSnippet = {
   args: {
-    isTerminal: true,
     snippet: BASH_SNIPPET,
     syntax: 'sh',
     title: 'Terminal',

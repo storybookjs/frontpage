@@ -13,7 +13,6 @@ export const MDXPreCodeSnippet = ({ children }) => {
     <BaseCodeSnippet
       hideHeader={hideHeader}
       id="snippet-1"
-      isTerminal={isTerminal}
       snippet={snippet}
       syntax={syntax}
       title={title}
