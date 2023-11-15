@@ -7,7 +7,12 @@ import { CodeLanguageSelector } from '../../screens/DocsScreen/CodeLanguageSelec
 import { useIfContext } from '../../screens/DocsScreen/If';
 import { BaseCodeSnippet } from './BaseCodeSnippet';
 import { Tabs } from './CodeSnippetsTabs';
-import { fetchDocsSnippets } from './utils/fetch-snippets.utils';
+import { fetchDocsSnippets, getSnippetType, isTerminalSnippet } from './utils/fetch-snippets.utils';
+import {
+  CSF2Example,
+  MissingCodeLanguage,
+  MissingRenderer,
+} from './BaseCodeSnippet/SnippetEyebrows';
 
 const COMMON = 'common';
 
@@ -21,11 +26,7 @@ export interface CodeSnippetProps {
 
 function getPathsForLanguage(paths, forLanguage, { matchMDX = true } = {}) {
   return paths.filter((path) => {
-    /**
-     * For a path like `web-components/button-story-click-handler-args.js.mdx`,
-     * capture the group `js`
-     */
-    const language = path.match(/\.((?:\w+-*)+)\.mdx$/)[1];
+    const language = getSnippetType(path);
 
     return (
       /**
@@ -66,9 +67,7 @@ export const getResolvedPaths: GetResolvedPaths = (
 ) => {
   let message;
 
-  const isPackageManagerSnippet = paths.some(
-    (path) => path.includes('.npm.') || path.includes('.yarn.')
-  );
+  const isPackageManagerSnippet = paths.some((path) => isTerminalSnippet(getSnippetType(path)));
 
   let completePaths = paths;
   if (version >= 7 && !isPackageManagerSnippet) {
@@ -109,8 +108,9 @@ export const getResolvedPaths: GetResolvedPaths = (
 
   if (pathsForRelevantRenderer.length === 0) {
     pathsForRelevantRenderer = pathsByRenderer[defaultRenderer];
-    message = <></>;
-    // message = <MissingRendererMessage currentRenderer={currentRenderer} />;
+    message = (
+      <MissingRenderer currentRenderer={currentRenderer} defaultRenderer={defaultRenderer} />
+    );
   }
 
   if (!pathsForRelevantRenderer) {
@@ -133,13 +133,7 @@ export const getResolvedPaths: GetResolvedPaths = (
     resolvedPaths = getPathsForLanguage(pathsForRelevantRenderer, 'js');
     // If there are any TS snippets for other renderers, show a message
     if (getPathsForLanguage(paths, 'ts', { matchMDX: false }).length > 0) {
-      message = <></>;
-      // message = (
-      //   <MissingCodeLanguageMessage
-      //     currentCodeLanguage={currentCodeLanguage}
-      //     currentRenderer={currentRenderer}
-      //   />
-      // );
+      message = <MissingCodeLanguage currentCodeLanguage={currentCodeLanguage} />;
     }
   }
 
@@ -148,14 +142,9 @@ export const getResolvedPaths: GetResolvedPaths = (
     resolvedPaths = getPathsForLanguage(pathsForRelevantRenderer, DEFAULT_CODE_LANGUAGE);
     // If there are any JS snippets for other renderers, show a message
     if (getPathsForLanguage(paths, 'js', { matchMDX: false }).length > 0) {
-      message = <></>;
-      // message = (
-      //   <MissingCodeLanguageMessage
-      //     currentCodeLanguage={currentCodeLanguage}
-      //     currentRenderer={currentRenderer}
-      //     fallbackLanguage="ts"
-      //   />
-      // );
+      message = (
+        <MissingCodeLanguage currentCodeLanguage={currentCodeLanguage} fallbackLanguage="ts" />
+      );
     }
   }
 
@@ -178,15 +167,43 @@ export const getResolvedPaths: GetResolvedPaths = (
   return [resolvedPaths, message];
 };
 
-const Snippet = ({ id, message, snippet: { content, syntax, title } }) => (
+const Snippet = ({
+  currentCodeLanguage,
+  currentRenderer,
+  defaultRenderer,
+  id,
+  message,
+  snippet: { content, syntax, title },
+}) => (
   <BaseCodeSnippet
     id={id}
-    renderLanguageSelector={() => <CodeLanguageSelector />}
-    renderSnippetEyebrow={() => message}
+    LanguageSelector={<CodeLanguageSelector />}
+    Eyebrow={
+      typeof message === 'function'
+        ? message({ currentCodeLanguage, currentRenderer, defaultRenderer })
+        : () => message
+    }
     snippet={content}
     syntax={syntax}
     title={title}
   />
+);
+
+const SnippetTabs = ({ snippets, snippetProps }) => (
+  <Tabs.Root defaultValue={snippets[0].id}>
+    <Tabs.List aria-label="Alternative files for snippet">
+      {snippets.map(({ id, tabName }) => (
+        <Tabs.Trigger key={id} value={id}>
+          {tabName}
+        </Tabs.Trigger>
+      ))}
+    </Tabs.List>
+    {snippets.map(({ id }) => (
+      <Tabs.Content key={id} value={id}>
+        <Snippet {...snippetProps} snippet={snippets.find((snippet) => snippet.id === id)} />
+      </Tabs.Content>
+    ))}
+  </Tabs.Root>
 );
 
 export const CodeSnippets = ({
@@ -212,11 +229,13 @@ export const CodeSnippets = ({
     ifContext.renderer
   );
 
+  const appliedMessage = message || (usesCsf3 ? <CSF2Example csf2Path={csf2Path} /> : null);
+
   /**
    * For a path like `web-components/button-story-click-handler-args.js.mdx`,
    * capture the group `button-story-click-handler-args`
    */
-  const id = `snippet-${paths[0].match(/^(?:\w+-*)+\/((?:\w+-*)+)/)[1]}`;
+  const snippetsId = `snippet-${paths[0].match(/^(?:\w+-*)+\/((?:\w+-*)+)/)[1]}`;
 
   React.useEffect(() => {
     async function getSnippets() {
@@ -226,40 +245,26 @@ export const CodeSnippets = ({
 
     getSnippets();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentRenderer]);
+  }, [resolvedPaths]);
 
   if (!snippets.length) return null;
 
-  let content = <Snippet id={id} message={message} snippet={snippets[0]} />;
-
-  if (snippets.length > 1) {
-    const keyedSnippets = snippets.map((snippet, index) => ({
-      ...snippet,
-      index: index.toString(),
-      key: `${index}-${snippet.tabName}`,
-    }));
-    content = (
-      <Tabs.Root defaultValue={keyedSnippets[0].index}>
-        <Tabs.List aria-label="Alternative files for snippet">
-          {keyedSnippets.map(({ index, key, tabName }) => (
-            <Tabs.Trigger key={key} value={index}>
-              {tabName}
-            </Tabs.Trigger>
-          ))}
-        </Tabs.List>
-        {keyedSnippets.map(({ index, key }) => (
-          <Tabs.Content key={key} value={index}>
-            <Snippet id={id} message={message} snippet={snippets[index]} />
-          </Tabs.Content>
-        ))}
-      </Tabs.Root>
-    );
-  }
+  const snippetProps = {
+    currentCodeLanguage,
+    currentRenderer,
+    defaultRenderer,
+    id: snippetsId,
+    message: appliedMessage,
+  };
 
   return (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
     <div onClick={() => logSnippetInteraction(currentRenderer, paths[0])} {...rest}>
-      {content}
+      {snippets.length > 1 ? (
+        <SnippetTabs snippets={snippets} snippetProps={snippetProps} />
+      ) : (
+        <Snippet snippet={snippets[0]} {...snippetProps} />
+      )}
     </div>
   );
 };

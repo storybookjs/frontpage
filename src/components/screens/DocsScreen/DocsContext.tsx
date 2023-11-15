@@ -42,17 +42,19 @@ export function DocsContextProvider({
     DEFAULT_CODE_LANGUAGE
   );
 
-  React.useLayoutEffect(() => {
-    if (!Object.keys(CODE_LANGUAGES).includes(codeLanguage)) {
-      // Invalid code language in localStorage
-      setCodeLanguage(DEFAULT_CODE_LANGUAGE);
-    }
-  }, [codeLanguage, setCodeLanguage]);
-
   const [renderer, setRenderer] = useLocalStorage<Renderer>(
     LS_SELECTED_RENDERER_KEY,
     defaultRenderer
   );
+
+  React.useLayoutEffect(() => {
+    // Angular and Web components snippets are not available in TS-4-9, so we want to coerce to TS
+    // if (['angular', 'web-components'].includes(renderer) && codeLanguage === 'ts-4-9')
+    //   setCodeLanguage('ts');
+
+    // Invalid code language in localStorage
+    if (!Object.keys(CODE_LANGUAGES).includes(codeLanguage)) setCodeLanguage(DEFAULT_CODE_LANGUAGE);
+  }, [codeLanguage, setCodeLanguage, renderer]);
 
   React.useLayoutEffect(() => {
     let forcedRenderer = rendererProp;

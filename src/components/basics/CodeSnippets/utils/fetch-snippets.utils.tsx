@@ -1,32 +1,36 @@
+import * as React from 'react';
+import { startCase } from 'lodash';
+
+import { MissingCodeLanguage } from '../BaseCodeSnippet/SnippetEyebrows';
 import { parseSnippetContent } from './parse-snippet-content.utils';
 
-export const pathIs = {
-  ts_4_9: (path: string) => path.includes('.ts-4-9.'),
-  ts: (path: string) => path.includes('.ts.') && !path.includes('.ts-4-9.'),
-  js: (path: string) => path.includes('.js.'),
-  npm: (path: string) => path.includes('.npm.'),
-  pnpm: (path: string) => path.includes('.pnpm.'),
-  yarn: (path: string) => path.includes('.yarn.'),
+/**
+ * For a path like `web-components/button-story-click-handler-args.js.mdx`,
+ * return `web-components`
+ */
+const getSnippetRenderer = (path: string) => path.split('/')[0];
+
+/**
+ * For a path like `web-components/button-story-click-handler-args.js.mdx`,
+ * capture the group `js`
+ */
+export const getSnippetType = (path: string) => path.match(/\.((?:\w+-*)+)\.mdx$/)[1];
+
+const syntaxMap = {
+  'ts-4-9': 'ts',
+  npm: 'sh',
+  pnpm: 'sh',
+  yarn: 'sh',
 };
 
-export const getSnippetSyntax = (path: string) => {
-  if (pathIs.ts_4_9(path)) return 'ts';
-  if (pathIs.ts(path)) return 'ts';
-  if (pathIs.js(path)) return 'js';
-  if (pathIs.npm(path)) return 'sh';
-  if (pathIs.pnpm(path)) return 'sh';
-  if (pathIs.yarn(path)) return 'sh';
-  return '???';
-};
+export const getSnippetSyntax = (type: string) => {
+  if (syntaxMap[type]) return syntaxMap[type];
 
-export const getSnippetType = (path: string) => {
-  if (pathIs.ts_4_9(path)) return 'ts-4-9';
-  if (pathIs.ts(path)) return 'ts';
-  if (pathIs.js(path)) return 'js';
-  if (pathIs.npm(path)) return 'npm';
-  if (pathIs.pnpm(path)) return 'pnpm';
-  if (pathIs.yarn(path)) return 'yarn';
-  return '???';
+  // Matching `ts-2`, `ts-3`, etc.
+  if (type.startsWith('js')) return 'js';
+  if (type.startsWith('ts')) return 'ts';
+
+  return type;
 };
 
 const nameMap = {
@@ -35,9 +39,8 @@ const nameMap = {
 };
 
 const prettifyName = (name) => {
-  const mapItem = nameMap[name];
-  if (mapItem) return mapItem;
-  return name.toUpperCase();
+  if (nameMap[name]) return nameMap[name];
+  return startCase(name.replace(/-/g, ' '));
 };
 
 export const getSnippetTabName = (path: string) => {
@@ -45,15 +48,15 @@ export const getSnippetTabName = (path: string) => {
   return prettifyName(name);
 };
 
-export const isTerminalSnippet = (path: string) =>
-  pathIs.npm(path) || pathIs.pnpm(path) || pathIs.yarn(path);
+export const isTerminalSnippet = (type: string) => syntaxMap[type] === 'sh';
 
 export interface SnippetObject {
-  id: string;
-  isTerminal?: boolean;
   content: string;
+  id: string;
+  message?: React.ReactNode;
   renderer: string;
   syntax: string;
+  tabName: string;
   title: string;
   type: string;
 }
@@ -63,9 +66,12 @@ export const fetchDocsSnippets = async (
 ): Promise<Array<SnippetObject | undefined>> => {
   return await Promise.all(
     paths.map(async (snippetPath: string) => {
-      const [renderer] = snippetPath.split('/');
+      const renderer = getSnippetRenderer(snippetPath);
+      const type = getSnippetType(snippetPath);
+      const isTerminal = isTerminalSnippet(type);
 
       let ModuleComponent;
+      let message;
       try {
         /**
          * Important: The hard-coded base path MUST be at the beginning of the import
@@ -76,13 +82,21 @@ export const fetchDocsSnippets = async (
         ModuleComponent = (await import(`../../../../content/docs/snippets/${snippetPath}`))
           .default;
       } catch {
-        if (pathIs.ts_4_9(snippetPath)) {
+        // If path is a TS 4.9 snippet and errors, try to load the TS snippet
+        if (type === 'ts-4-9') {
           try {
             ModuleComponent = (
               await import(
                 `../../../../content/docs/snippets/${snippetPath.replace('.ts-4-9.', '.ts.')}`
               )
             ).default;
+
+            message = ({ currentCodeLanguage }) => (
+              <MissingCodeLanguage
+                currentCodeLanguage={currentCodeLanguage}
+                fallbackLanguage="ts"
+              />
+            );
           } catch {
             // No Typescript snippet exists for this path
             // TODO: consider logging this somewhere so the team can fix it
@@ -95,11 +109,6 @@ export const fetchDocsSnippets = async (
         return null;
       }
 
-      const syntax = getSnippetSyntax(snippetPath);
-      const type = getSnippetType(snippetPath);
-      const isTerminal = isTerminalSnippet(snippetPath);
-      const tabName = getSnippetTabName(snippetPath);
-
       const [title, content] = parseSnippetContent(
         /**
          * 1. ModuleComponent is (due to MDX) a React component.
@@ -111,13 +120,13 @@ export const fetchDocsSnippets = async (
       );
 
       return {
-        id: snippetPath,
-        isTerminal,
         content,
+        id: snippetPath,
+        message,
         renderer,
-        syntax,
-        tabName,
-        title: isTerminal ? 'Terminal' : title,
+        syntax: getSnippetSyntax(type),
+        tabName: getSnippetTabName(snippetPath),
+        title,
         type,
       };
     })
