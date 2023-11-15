@@ -15,6 +15,7 @@ const Root = styled.div`
 
 const Pill = styled.button<{ isActive?: boolean }>`
   all: unset;
+  ${typography.body14}
   border-radius: 4px;
   cursor: pointer;
   display: inline-flex;
@@ -23,11 +24,15 @@ const Pill = styled.button<{ isActive?: boolean }>`
   height: 28px;
   border: 1px solid ${color.slate400};
   padding: 0 ${spacing[2]};
-  ${typography.body14}
   gap: 4px;
+  font-weight: ${fontWeight.bold};
+  color: ${color.slate800};
+  transition: all 0.14s ease;
 
   &[data-state='open'] {
     border: 1px solid ${color.blue500};
+    box-shadow: 0px 0px 0px 1px ${color.blue500};
+    color: ${color.blue500};
   }
 
   &[data-state='open'] > .CaretDown {
@@ -36,14 +41,15 @@ const Pill = styled.button<{ isActive?: boolean }>`
 
   &:hover {
     border: 1px solid ${color.blue500};
+    color: ${color.blue500};
   }
 
   ${({ isActive }) =>
     isActive &&
     css`
-      font-weight: ${fontWeight.bold};
       color: ${color.blue500};
       border: 1px solid ${color.blue500};
+      box-shadow: 0px 0px 0px 1px ${color.blue500};
     `};
 `;
 
