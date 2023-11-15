@@ -2,14 +2,7 @@ import React, { useMemo } from 'react';
 import { styled } from '@storybook/theming';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import {
-  Button,
-  Highlight,
-  Link,
-  ShadowBoxCTA,
-  Subheading,
-  styles,
-} from '@storybook/design-system';
+import { Button, Link, ShadowBoxCTA, Subheading, styles } from '@storybook/design-system';
 import { graphql } from 'gatsby';
 import { CodeSnippets } from './CodeSnippets';
 import { rendererSupportsFeature, RendererSupportTable } from './RendererSupportTable';

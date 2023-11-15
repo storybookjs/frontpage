@@ -1,10 +1,9 @@
-import * as React from 'react';
+import React from 'react';
 import * as RadixDropdownMenu from '@radix-ui/react-dropdown-menu';
-import { Icon, breakpoint, color, typography, spacing } from '@chromaui/tetra';
-import { styled } from '@storybook/theming';
-
+import { breakpoint, color, typography, spacing, fontWeight } from '@chromaui/tetra';
+import { css, styled } from '@storybook/theming';
+import { ChevronSmallDownIcon } from '@storybook/icons';
 import stylizeRenderer from '../../../util/stylize-renderer';
-import { Pill, pillStyles } from '../../basics/Pill';
 import { useMediaQuery } from '../../lib/useMediaQuery';
 import { useDocsContext } from './DocsContext';
 
@@ -14,125 +13,85 @@ const Root = styled.div`
   margin-bottom: ${spacing[8]};
 `;
 
-/**
- * This portion is copied from Tetra's NavDropdownMenu.
- * Notably:
- * - Styles for TriggerButton match Pill
- * - Menu items are not links
- */
-
-const TriggerButton = styled(RadixDropdownMenu.Trigger, {
-  shouldForwardProp: (propName) => !['isActive', 'variant'].includes(propName),
-})<{
-  variant?: 'light' | 'dark';
-  isActive?: boolean;
-}>`
+const Pill = styled('button', {
+  shouldForwardProp: (propName) => !['isActive'].includes(propName),
+})<{ isActive?: boolean }>`
   all: unset;
-  ${pillStyles}
-  display: flex;
+  ${typography.body14}
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  outline: none;
-  user-select: none;
-  border: none;
-  background: transparent;
-  box-shadow: 0 0 0 1px ${color.slate400};
-  gap: 6px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  height: 28px;
+  border: 1px solid ${color.slate400};
+  padding: 0 ${spacing[2]};
+  gap: 4px;
+  color: ${color.slate800};
+  transition: all 0.14s ease;
 
   &[data-state='open'] {
-    background-color: ${color.blueTr10};
+    border: 1px solid ${color.blue500};
+    color: ${color.blue500};
   }
 
   &[data-state='open'] > .CaretDown {
     transform: rotate(-180deg) translateY(0px);
   }
+
+  &:hover {
+    border: 1px solid ${color.blue500};
+    color: ${color.blue500};
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px ${color.blue500};
+  }
+
+  ${({ isActive }) =>
+    isActive &&
+    css`
+      color: ${color.blue500};
+      border: 1px solid ${color.blue500};
+    `};
 `;
 
 const CaretDown = styled.div`
   position: relative;
-  transform: translateY(2px);
+  width: 14px;
+  height: 14px;
   transition: transform 250ms ease;
 `;
 
-interface MenuTriggerProps {
-  variant?: 'light' | 'dark';
-  children?: React.ReactNode;
-}
-
-export const MenuTrigger: React.FC<MenuTriggerProps> = ({ children, variant = 'light' }) => {
-  return (
-    <>
-      <TriggerButton variant={variant}>
-        {children}
-        <CaretDown className="CaretDown">
-          <Icon name="arrowdown" aria-hidden size={12} />
-        </CaretDown>
-      </TriggerButton>
-    </>
-  );
-};
-
 const MenuContent = styled(RadixDropdownMenu.Content)`
-  margin: 0;
-  background: ${color.white};
-  border-radius: 4px;
-  padding: ${spacing[2]};
-
-  box-shadow: 0px 0px 15px ${color.blackTr05}, 0px 1px 2px ${color.blackTr10};
+  min-width: 120px;
+  background-color: white;
+  border-radius: 6px;
+  padding: 5px;
+  box-shadow: 0px 10px 38px -10px rgba(22, 23, 24, 0.35), 0px 10px 20px -15px rgba(22, 23, 24, 0.2);
+  animation-duration: 400ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
 `;
 
 const MenuItem = styled(RadixDropdownMenu.Item)`
-  ${typography.body14};
+  ${typography.body14}
   color: ${color.slate800};
-  cursor: pointer;
-  text-decoration: none;
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: ${spacing[2]};
-  border-radius: 4px;
+  height: 28px;
+  padding: 0 16px;
+  position: relative;
+  user-select: none;
+  text-decoration: none;
 
   &[data-highlighted] {
-    box-shadow: inset 0 0 0 2px rgba(30, 167, 253, 0.3);
-    background-color: ${color.blue100};
     outline: none;
+    background-color: ${color.slate100};
+    border-radius: 3px;
   }
 `;
-
-interface IMenuItem {
-  id: string;
-  label: string;
-  onClick: () => void;
-}
-
-interface MenuProps {
-  variant?: 'light' | 'dark';
-  label: string;
-  items: IMenuItem[];
-}
-
-const Menu = ({ label, variant, items, ...props }: MenuProps) => {
-  return (
-    <RadixDropdownMenu.Root>
-      <MenuTrigger variant={variant}>{label}</MenuTrigger>
-
-      <RadixDropdownMenu.Portal>
-        <MenuContent loop align="start" sideOffset={8}>
-          {items.map((item) => (
-            <MenuItem key={item.id} onSelect={item.onClick}>
-              {item.label}
-            </MenuItem>
-          ))}
-        </MenuContent>
-      </RadixDropdownMenu.Portal>
-    </RadixDropdownMenu.Root>
-  );
-};
-
-/** END NavDropdownMenu */
 
 type RendererSelectorProps = {
   coreRenderers: string[];
@@ -171,6 +130,14 @@ export const RendererSelector = ({ coreRenderers, communityRenderers }: Renderer
     menuItems.unshift(lastPillItem);
   }
 
+  const listOfItems = menuItems.map((r) => ({
+    id: r,
+    label: stylizeRenderer(r),
+    onClick: () => {
+      setRenderer(r);
+    },
+  }));
+
   return (
     <Root>
       {pillItems.map((r) => (
@@ -178,16 +145,25 @@ export const RendererSelector = ({ coreRenderers, communityRenderers }: Renderer
           {stylizeRenderer(r)}
         </Pill>
       ))}
-      <Menu
-        items={menuItems.map((r) => ({
-          id: r,
-          label: stylizeRenderer(r),
-          onClick: () => {
-            setRenderer(r);
-          },
-        }))}
-        label="More"
-      />
+      <RadixDropdownMenu.Root modal={false}>
+        <RadixDropdownMenu.Trigger asChild>
+          <Pill>
+            More
+            <CaretDown className="CaretDown">
+              <ChevronSmallDownIcon aria-hidden />
+            </CaretDown>
+          </Pill>
+        </RadixDropdownMenu.Trigger>
+        <RadixDropdownMenu.Portal>
+          <MenuContent loop align="start" sideOffset={8}>
+            {listOfItems.map((item) => (
+              <MenuItem key={item.id} onSelect={item.onClick}>
+                {item.label}
+              </MenuItem>
+            ))}
+          </MenuContent>
+        </RadixDropdownMenu.Portal>
+      </RadixDropdownMenu.Root>
     </Root>
   );
 };
