@@ -91,6 +91,7 @@ const ScrollAreaThumb = styled(ScrollArea.Thumb)`
 
 const Content = styled.div`
   flex: 1;
+  min-width: 0;
   padding-top: 24px;
   padding-bottom: 24px;
 

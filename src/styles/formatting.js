@@ -11,7 +11,7 @@ export const mdFormatting = css`
   font-size: ${typography.size.s3}px;
 
   *:target {
-    scroll-margin-top: 48px; /* height of SubNav + 8px gap */
+    scroll-margin-top: 120px; /* height of NavWrapper + 8px gap */
   }
 
   h1,
@@ -220,6 +220,9 @@ export const mdFormatting = css`
     margin: 2em 0;
     overflow: auto;
   }
+  table tbody {
+    vertical-align: top;
+  }
   table tr {
     border-top: 1px solid ${color.mediumlight};
     background-color: white;
@@ -275,7 +278,6 @@ export const mdFormatting = css`
   code {
     font-size: 87.5%;
     color: ${color.darkest};
-    white-space: pre;
   }
 
   pre {
@@ -290,6 +292,7 @@ export const mdFormatting = css`
     code {
       padding: 0;
       line-height: 1.43; /* 14px/20px */
+      white-space: pre;
     }
   }
 

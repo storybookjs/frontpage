@@ -1,7 +1,7 @@
 import React from 'react';
 import { styled } from '@storybook/theming';
 
-import DocsScreen from './DocsScreen';
+import DocsScreen, { IS_2_COL_BREAKPOINT } from './DocsScreen';
 import compiledMDX from '../../../../.storybook/compiled-mdx';
 import { pageContext } from '../../layout/DocsLayout.stories';
 
@@ -63,3 +63,47 @@ export const WithGithubLinkAndGuideLink = () => (
     location={location}
   />
 );
+
+export const WithoutTableOfContents = () => (
+  <DocsScreen
+    data={{
+      currentPage: {
+        ...data.currentPage,
+        tableOfContents: {
+          items: [
+            { title: 'Here is a level 2 heading', url: '#Here-is-a-level-2-heading' },
+            { title: 'Here is a level 3 heading', url: '#Here-is-a-level-3-heading' },
+            { title: 'Here is a level 4 heading', url: '#Here-is-a-level-4-heading' },
+          ],
+        },
+      },
+    }}
+    pageContext={pageContext}
+    location={location}
+  />
+);
+
+export const WithTableOfContents = () => (
+  <DocsScreen
+    data={{
+      currentPage: {
+        ...data.currentPage,
+        tableOfContents: {
+          items: [
+            { title: 'Here is a level 2 heading', url: '#Here-is-a-level-2-heading' },
+            { title: 'Here is a level 3 heading', url: '#Here-is-a-level-3-heading' },
+            { title: 'Here is a level 4 heading', url: '#Here-is-a-level-4-heading' },
+            { title: 'Here is a level 4 heading', url: '#Here-is-a-level-4-heading' },
+          ],
+        },
+      },
+    }}
+    pageContext={pageContext}
+    location={location}
+  />
+);
+WithTableOfContents.parameters = {
+  chromatic: {
+    viewports: [400, IS_2_COL_BREAKPOINT],
+  },
+};

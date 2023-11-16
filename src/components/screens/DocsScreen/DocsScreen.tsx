@@ -1,15 +1,20 @@
 import React, { useMemo } from 'react';
-import { styled } from '@storybook/theming';
+import { graphql } from 'gatsby';
+import { styled, css } from '@storybook/theming';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { color, spacing } from '@chromaui/tetra';
 import { Button, Link, ShadowBoxCTA, Subheading, styles } from '@storybook/design-system';
-import { graphql } from 'gatsby';
+import * as ScrollArea from '@radix-ui/react-scroll-area';
+
 import { CodeSnippets } from './CodeSnippets';
 import { rendererSupportsFeature, RendererSupportTable } from './RendererSupportTable';
 import { SocialGraph } from '../../basics';
 import { Callout } from '../../basics/Callout';
+import { InPageTOC } from '../../basics/InPageTOC';
 import { Pre } from '../../basics/Pre';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
+import { useMediaQuery } from '../../lib/useMediaQuery';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import { mdFormatting } from '../../../styles/formatting';
 import buildPathWithVersion from '../../../util/build-path-with-version';
@@ -19,20 +24,122 @@ import { useDocsContext } from './DocsContext';
 import { FeatureSnippets } from './FeatureSnippets';
 import { Feedback } from './Feedback';
 import { If } from './If';
-import { YouTubeCallout } from './YouTubeCallout';
 import { RendererSelector } from './RendererSelector';
+import { YouTubeCallout } from './YouTubeCallout';
 
-const { color, spacing, typography } = styles;
+const { color: dsColor, spacing: dsSpacing, typography } = styles;
 
-const Title = styled.h1``;
+const MIN_HEADINGS_COUNT_FOR_TOC = 3;
+
+/**
+ * Note: This breakpoint should be revisited.
+ * - It provides a minimum width of 600px for the content area.
+ * - The rest of the SB properties (and the prior design of docs) use a 2-col width. To maintain a
+ *   legible line length, the left/right margins of the page layout (codified in Nav from
+ *   `components-marketing` and Container from `tetra`) increase at 1200px. But that doesn't leave
+ *   much available width for a 3-column layout, resulting in this rather wide breakpoint.
+ * - To reduce this breakpoint (making the InPageTOC visible for more users), we'd need to either:
+ *   a. Change the page layout for _just_ the docs, resulting in a different layout from the other
+ *      SB properties
+ *   b. Change the page layout for all SB properties, resulting in longer line lengths or necessary
+ *      layout adjustments in some places
+ */
+export const IS_2_COL_BREAKPOINT = 1548;
+
+const RIGHT_RAIL_WIDTH = '220px';
+
+// Magic number to account for PageLayout header height
+const RIGHT_RAIL_TOP_OFFSET = '112px';
+
+const Root = styled('div', {
+  shouldForwardProp: (prop) => prop !== 'hasRightRail',
+})<{ hasRightRail: boolean }>`
+  ${({ hasRightRail }) =>
+    hasRightRail &&
+    css`
+      display: flex;
+      flex-direction: row-reverse;
+      gap: ${spacing[8]};
+    `}
+`;
+
+const Header = styled.div`
+  margin-bottom: ${spacing[8]};
+`;
+
+const RightRail = styled.div`
+  flex: 0 0 ${RIGHT_RAIL_WIDTH};
+  margin-bottom: ${spacing[8]};
+  position: relative;
+  top: -48px;
+`;
+
+const RightRailSticky = styled.div`
+  position: sticky;
+  top: ${RIGHT_RAIL_TOP_OFFSET};
+`;
+
+const RightRailRoot = styled(ScrollArea.Root)`
+  position: relative;
+  width: ${RIGHT_RAIL_WIDTH};
+  margin: 0;
+  padding-bottom: 0;
+  height: calc(100vh - ${RIGHT_RAIL_TOP_OFFSET});
+`;
+
+const RightRailViewport = styled(ScrollArea.Viewport)`
+  width: 100%;
+  height: 100%;
+  padding-top: 48px;
+`;
+
+const RightRailScrollbar = styled(ScrollArea.Scrollbar)`
+  display: flex;
+  width: 5px;
+  /* ensures no selection */
+  user-select: none;
+  /* disable browser handling of all panning and zooming gestures on touch devices */
+  touch-action: none;
+  padding-top: 48px;
+  padding-bottom: 24px;
+`;
+
+const RightRailThumb = styled(ScrollArea.Thumb)`
+  flex: 1;
+  width: 5px;
+  background: ${color.slate300};
+  border-radius: 20px;
+  position: relative;
+  transition: background 0.2s ease-in-out;
+
+  &:hover {
+    background: ${color.slate500};
+  }
+`;
+
+const Content = styled.div`
+  flex: 1 1 auto;
+  min-width: 0;
+`;
 
 const MDWrapper = styled.main`
   ${mdFormatting}
-  flex: 1;
+`;
+
+const Title = styled.h1`
+  font-size: ${typography.size.l1}px;
+  font-weight: ${typography.weight.bold};
+
+  line-height: 36px;
+  margin-bottom: 1.5rem;
+
+  & + * {
+    margin-top: 0 !important;
+  }
 `;
 
 const NextSubheading = styled(Subheading)`
-  color: ${color.mediumdark};
+  color: ${dsColor.mediumdark};
   font-size: ${typography.size.s2}px;
   display: block;
   margin-bottom: 1rem;
@@ -49,7 +156,7 @@ const GithubLinkItem = styled(Link)`
 
 const UnsupportedBanner = styled.div`
   margin: 26px 0;
-  border-radius: ${spacing.borderRadius.small}px;
+  border-radius: ${dsSpacing.borderRadius.small}px;
   background-color: #fff5cf;
   padding: 20px;
 `;
@@ -99,8 +206,17 @@ function DocsScreen({ data, pageContext, location }) {
     currentPage: {
       body,
       frontmatter: { title },
+      tableOfContents,
     },
   } = data;
+  const pageTocItems = tableOfContents?.items || [];
+
+  const hasHeadings =
+    pageTocItems.flatMap((item) => (item.items ? [item, ...item.items] : item)).length >
+    MIN_HEADINGS_COUNT_FOR_TOC;
+  const [is2Col] = useMediaQuery(`(min-width: ${IS_2_COL_BREAKPOINT}px)`);
+  const hasRightRail = is2Col && hasHeadings;
+
   const {
     allRenderers,
     coreRenderers,
@@ -199,80 +315,103 @@ function DocsScreen({ data, pageContext, location }) {
   return (
     <>
       <SocialGraph url={`${homepageUrl}${fullPath}/`} title={title} desc={description} />
-
-      <MDWrapper>
-        <Title>{isInstallPage ? `${title} for ${stylizeRenderer(renderer)}` : title}</Title>
-        <RendererSelector coreRenderers={coreRenderers} communityRenderers={communityRenderers} />
-        {unsupported && (
-          <UnsupportedBanner>
-            This feature is not supported in {stylizeRenderer(renderer)} yet. Help the open source
-            community by contributing a PR.
-            {featureSupportItem && (
-              <>
-                {' '}
-                <Link LinkWrapper={GatsbyLinkWrapper} href={featureSupportItem.path} withArrow>
-                  View feature coverage by renderer
-                </Link>
-              </>
+      <Root hasRightRail={hasRightRail}>
+        {hasRightRail && (
+          <RightRail>
+            <RightRailSticky>
+              <RightRailRoot>
+                <RightRailViewport>
+                  <InPageTOC items={pageTocItems} />
+                </RightRailViewport>
+                <RightRailScrollbar orientation="vertical">
+                  <RightRailThumb />
+                </RightRailScrollbar>
+              </RightRailRoot>
+            </RightRailSticky>
+          </RightRail>
+        )}
+        <Content>
+          <Header>
+            <Title>{isInstallPage ? `${title} for ${stylizeRenderer(renderer)}` : title}</Title>
+            <RendererSelector
+              coreRenderers={coreRenderers}
+              communityRenderers={communityRenderers}
+            />
+            {unsupported && (
+              <UnsupportedBanner>
+                This feature is not supported in {stylizeRenderer(renderer)} yet. Help the open
+                source community by contributing a PR.
+                {featureSupportItem && (
+                  <>
+                    {' '}
+                    <Link LinkWrapper={GatsbyLinkWrapper} href={featureSupportItem.path} withArrow>
+                      View feature coverage by renderer
+                    </Link>
+                  </>
+                )}
+              </UnsupportedBanner>
             )}
-          </UnsupportedBanner>
-        )}
-        <MDXProvider
-          components={{
-            pre: Pre,
-            CodeSnippets: CodeSnippetsWithState,
-            FeatureSnippets: FeatureSnippetsWithState,
-            RendererSupportTable: RendererSupportTableWithState,
-            If: IfWithState,
-            // Maintained for older docs version content
-            IfRenderer: IfWithState,
-            YouTubeCallout,
-            a: LinksWithPrefix,
-            Callout,
-          }}
-        >
-          <MDXRenderer>{body}</MDXRenderer>
-        </MDXProvider>
-      </MDWrapper>
+          </Header>
 
-      {nextTocItem && (
-        <NextNavigation>
-          <NextSubheading>Next</NextSubheading>
-          <ShadowBoxCTA
-            action={
-              <Button
-                appearance="secondary"
-                href={buildPathWithVersion(nextTocItem.path)}
-                ButtonWrapper={GatsbyLinkWrapper}
-              >
-                Continue
-              </Button>
-            }
-            headingText={nextTocItem.title}
-            messageText={nextTocItem.description}
-          />
-        </NextNavigation>
-      )}
+          <MDWrapper>
+            <MDXProvider
+              components={{
+                pre: Pre,
+                CodeSnippets: CodeSnippetsWithState,
+                FeatureSnippets: FeatureSnippetsWithState,
+                RendererSupportTable: RendererSupportTableWithState,
+                If: IfWithState,
+                // Maintained for older docs version content
+                IfRenderer: IfWithState,
+                YouTubeCallout,
+                a: LinksWithPrefix,
+                Callout,
+              }}
+            >
+              <MDXRenderer>{body}</MDXRenderer>
+            </MDXProvider>
+          </MDWrapper>
 
-      <Contribute>
-        {tocItem && (
-          <Feedback
-            key={fullPath}
-            slug={slug}
-            version={versionString}
-            renderer={renderer}
-            codeLanguage={codeLanguage}
-          />
-        )}
-        {tocItem && tocItem.githubUrl && (
-          <GithubLinkItem tertiary href={tocItem.githubUrl} target="_blank" rel="noopener">
-            <span role="img" aria-label="write">
-              ✍️
-            </span>{' '}
-            Edit on GitHub – PRs welcome!
-          </GithubLinkItem>
-        )}
-      </Contribute>
+          {nextTocItem && (
+            <NextNavigation>
+              <NextSubheading>Next</NextSubheading>
+              <ShadowBoxCTA
+                action={
+                  <Button
+                    appearance="secondary"
+                    href={buildPathWithVersion(nextTocItem.path)}
+                    ButtonWrapper={GatsbyLinkWrapper}
+                  >
+                    Continue
+                  </Button>
+                }
+                headingText={nextTocItem.title}
+                messageText={nextTocItem.description}
+              />
+            </NextNavigation>
+          )}
+
+          <Contribute>
+            {tocItem && (
+              <Feedback
+                key={fullPath}
+                slug={slug}
+                version={versionString}
+                renderer={renderer}
+                codeLanguage={codeLanguage}
+              />
+            )}
+            {tocItem && tocItem.githubUrl && (
+              <GithubLinkItem tertiary href={tocItem.githubUrl} target="_blank" rel="noopener">
+                <span role="img" aria-label="write">
+                  ✍️
+                </span>{' '}
+                Edit on GitHub – PRs welcome!
+              </GithubLinkItem>
+            )}
+          </Contribute>
+        </Content>
+      </Root>
     </>
   );
 }
@@ -286,6 +425,7 @@ export const query = graphql`
       frontmatter {
         title
       }
+      tableOfContents
     }
   }
 `;
