@@ -220,6 +220,9 @@ export const mdFormatting = css`
     margin: 2em 0;
     overflow: auto;
   }
+  table tbody {
+    vertical-align: top;
+  }
   table tr {
     border-top: 1px solid ${color.mediumlight};
     background-color: white;
@@ -275,7 +278,6 @@ export const mdFormatting = css`
   code {
     font-size: 87.5%;
     color: ${color.darkest};
-    white-space: pre;
   }
 
   pre {
@@ -290,6 +292,7 @@ export const mdFormatting = css`
     code {
       padding: 0;
       line-height: 1.43; /* 14px/20px */
+      white-space: pre;
     }
   }
 
