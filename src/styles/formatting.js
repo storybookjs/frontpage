@@ -11,7 +11,7 @@ export const mdFormatting = css`
   font-size: ${typography.size.s3}px;
 
   *:target {
-    scroll-margin-top: 48px; /* height of SubNav + 8px gap */
+    scroll-margin-top: 120px; /* height of NavWrapper + 8px gap */
   }
 
   h1,
