@@ -63,3 +63,47 @@ export const WithGithubLinkAndGuideLink = () => (
     location={location}
   />
 );
+
+export const WithoutTableOfContents = () => (
+  <DocsScreen
+    data={{
+      currentPage: {
+        ...data.currentPage,
+        tableOfContents: {
+          items: [
+            { title: 'Here is a level 2 heading', url: '#Here-is-a-level-2-heading' },
+            { title: 'Here is a level 3 heading', url: '#Here-is-a-level-3-heading' },
+            { title: 'Here is a level 4 heading', url: '#Here-is-a-level-4-heading' },
+          ],
+        },
+      },
+    }}
+    pageContext={pageContext}
+    location={location}
+  />
+);
+
+export const WithTableOfContents = () => (
+  <DocsScreen
+    data={{
+      currentPage: {
+        ...data.currentPage,
+        tableOfContents: {
+          items: [
+            { title: 'Here is a level 2 heading', url: '#Here-is-a-level-2-heading' },
+            { title: 'Here is a level 3 heading', url: '#Here-is-a-level-3-heading' },
+            { title: 'Here is a level 4 heading', url: '#Here-is-a-level-4-heading' },
+            { title: 'Here is a level 4 heading', url: '#Here-is-a-level-4-heading' },
+          ],
+        },
+      },
+    }}
+    pageContext={pageContext}
+    location={location}
+  />
+);
+WithTableOfContents.parameters = {
+  chromatic: {
+    viewports: [400, 1400],
+  },
+};

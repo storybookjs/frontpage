@@ -21,6 +21,10 @@ const Details = styled.details`
   overflow: hidden;
   cursor: pointer;
 
+  && {
+    margin-top: 0;
+  }
+
   // hover states
   transition: all 150ms ease-out;
   transform: translate3d(0, 0, 0);
