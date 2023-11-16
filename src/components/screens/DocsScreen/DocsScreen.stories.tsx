@@ -1,7 +1,7 @@
 import React from 'react';
 import { styled } from '@storybook/theming';
 
-import DocsScreen from './DocsScreen';
+import DocsScreen, { IS_2_COL_BREAKPOINT } from './DocsScreen';
 import compiledMDX from '../../../../.storybook/compiled-mdx';
 import { pageContext } from '../../layout/DocsLayout.stories';
 
@@ -104,6 +104,6 @@ export const WithTableOfContents = () => (
 );
 WithTableOfContents.parameters = {
   chromatic: {
-    viewports: [400, 1400],
+    viewports: [400, IS_2_COL_BREAKPOINT],
   },
 };

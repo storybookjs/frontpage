@@ -32,15 +32,24 @@ const { color: dsColor, spacing: dsSpacing, typography } = styles;
 const MIN_HEADINGS_COUNT_FOR_TOC = 3;
 
 /**
- * TODO: This breakpoint is a compromise:
- * - Nav from `components-marketing` and `Container` from `tetra` both apply a bigger margin at
- *   wider viewports, which results in a too narrow overall available width
- * - That worked fine for a 1-col content layout, but does not work for a 2-col layout
+ * Note: This breakpoint should be revisited.
+ * - It provides a minimum width of 600px for the content area.
+ * - The rest of the SB properties (and the prior design of docs) use a 2-col width. To maintain a
+ *   legible line length, the left/right margins of the page layout (codified in Nav from
+ *   `components-marketing` and Container from `tetra`) increase at 1200px. But that doesn't leave
+ *   much available width for a 3-column layout, resulting in this rather wide breakpoint.
+ * - To reduce this breakpoint (making the InPageTOC visible for more users), we'd need to either:
+ *   a. Change the page layout for _just_ the docs, resulting in a different layout from the other
+ *      SB properties
+ *   b. Change the page layout for all SB properties, resulting in longer line lengths or necessary
+ *      layout adjustments in some places
  */
-const IS_2_COL_BREAKPOINT = 1400;
+export const IS_2_COL_BREAKPOINT = 1548;
+
+const RIGHT_RAIL_WIDTH = '220px';
 
 // Magic number to account for PageLayout header height
-const IN_PAGE_TOC_TOP_OFFSET = 112;
+const RIGHT_RAIL_TOP_OFFSET = '112px';
 
 const Root = styled('div', {
   shouldForwardProp: (prop) => prop !== 'hasRightRail',
@@ -48,43 +57,34 @@ const Root = styled('div', {
   ${({ hasRightRail }) =>
     hasRightRail &&
     css`
-      @media (min-width: ${IS_2_COL_BREAKPOINT}px) {
-        display: grid;
-        grid-template-columns: 1fr 240px;
-        grid-template-rows: repeat(2, min-content);
-        grid-column-gap: ${spacing[8]};
-      }
+      display: flex;
+      flex-direction: row-reverse;
+      gap: ${spacing[8]};
     `}
 `;
 
 const Header = styled.div`
-  grid-area: 1 / 1 / 2 / 2;
   margin-bottom: ${spacing[8]};
 `;
 
 const RightRail = styled.div`
+  flex: 0 0 ${RIGHT_RAIL_WIDTH};
   margin-bottom: ${spacing[8]};
-  grid-area: 1 / 2 / 3 / 3;
-
-  @media (min-width: ${IS_2_COL_BREAKPOINT}px) {
-    position: relative;
-    top: -48px;
-  }
+  position: relative;
+  top: -48px;
 `;
 
 const RightRailSticky = styled.div`
   position: sticky;
-  top: ${IN_PAGE_TOC_TOP_OFFSET}px;
+  top: ${RIGHT_RAIL_TOP_OFFSET};
 `;
 
 const RightRailRoot = styled(ScrollArea.Root)`
   position: relative;
-  width: 240px;
+  width: ${RIGHT_RAIL_WIDTH};
   margin: 0;
   padding-bottom: 0;
-  padding-right: 20px;
-  margin-right: 20px;
-  height: calc(100vh - ${IN_PAGE_TOC_TOP_OFFSET}px);
+  height: calc(100vh - ${RIGHT_RAIL_TOP_OFFSET});
 `;
 
 const RightRailViewport = styled(ScrollArea.Viewport)`
@@ -118,13 +118,12 @@ const RightRailThumb = styled(ScrollArea.Thumb)`
 `;
 
 const Content = styled.div`
-  grid-area: 2 / 1 / 3 / 2;
+  flex: 1 1 auto;
   min-width: 0;
 `;
 
 const MDWrapper = styled.main`
   ${mdFormatting}
-  flex: 1;
 `;
 
 const Title = styled.h1`
@@ -215,6 +214,8 @@ function DocsScreen({ data, pageContext, location }) {
   const hasHeadings =
     pageTocItems.flatMap((item) => (item.items ? [item, ...item.items] : item)).length >
     MIN_HEADINGS_COUNT_FOR_TOC;
+  const [is2Col] = useMediaQuery(`(min-width: ${IS_2_COL_BREAKPOINT}px)`);
+  const hasRightRail = is2Col && hasHeadings;
 
   const {
     allRenderers,
@@ -231,8 +232,6 @@ function DocsScreen({ data, pageContext, location }) {
     codeLanguage: [codeLanguage],
     renderer: [renderer],
   } = useDocsContext();
-
-  const [is2Col] = useMediaQuery(`(min-width: ${IS_2_COL_BREAKPOINT}px)`);
 
   const CodeSnippetsWithState = useMemo(() => {
     return (props) => (
@@ -316,44 +315,44 @@ function DocsScreen({ data, pageContext, location }) {
   return (
     <>
       <SocialGraph url={`${homepageUrl}${fullPath}/`} title={title} desc={description} />
-      <Root hasRightRail={hasHeadings}>
-        <Header>
-          <Title>{isInstallPage ? `${title} for ${stylizeRenderer(renderer)}` : title}</Title>
-          <RendererSelector coreRenderers={coreRenderers} communityRenderers={communityRenderers} />
-          {unsupported && (
-            <UnsupportedBanner>
-              This feature is not supported in {stylizeRenderer(renderer)} yet. Help the open source
-              community by contributing a PR.
-              {featureSupportItem && (
-                <>
-                  {' '}
-                  <Link LinkWrapper={GatsbyLinkWrapper} href={featureSupportItem.path} withArrow>
-                    View feature coverage by renderer
-                  </Link>
-                </>
-              )}
-            </UnsupportedBanner>
-          )}
-        </Header>
-        {hasHeadings && (
+      <Root hasRightRail={hasRightRail}>
+        {hasRightRail && (
           <RightRail>
-            {is2Col ? (
-              <RightRailSticky>
-                <RightRailRoot>
-                  <RightRailViewport>
-                    <InPageTOC items={pageTocItems} />
-                  </RightRailViewport>
-                  <RightRailScrollbar orientation="vertical">
-                    <RightRailThumb />
-                  </RightRailScrollbar>
-                </RightRailRoot>
-              </RightRailSticky>
-            ) : (
-              <InPageTOC collapsed items={pageTocItems} />
-            )}
+            <RightRailSticky>
+              <RightRailRoot>
+                <RightRailViewport>
+                  <InPageTOC items={pageTocItems} />
+                </RightRailViewport>
+                <RightRailScrollbar orientation="vertical">
+                  <RightRailThumb />
+                </RightRailScrollbar>
+              </RightRailRoot>
+            </RightRailSticky>
           </RightRail>
         )}
         <Content>
+          <Header>
+            <Title>{isInstallPage ? `${title} for ${stylizeRenderer(renderer)}` : title}</Title>
+            <RendererSelector
+              coreRenderers={coreRenderers}
+              communityRenderers={communityRenderers}
+            />
+            {unsupported && (
+              <UnsupportedBanner>
+                This feature is not supported in {stylizeRenderer(renderer)} yet. Help the open
+                source community by contributing a PR.
+                {featureSupportItem && (
+                  <>
+                    {' '}
+                    <Link LinkWrapper={GatsbyLinkWrapper} href={featureSupportItem.path} withArrow>
+                      View feature coverage by renderer
+                    </Link>
+                  </>
+                )}
+              </UnsupportedBanner>
+            )}
+          </Header>
+
           <MDWrapper>
             <MDXProvider
               components={{

@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import { userEvent, within } from '@storybook/testing-library';
 import { InPageTOC } from './InPageTOC';
 
 const mockTOCItems = [
@@ -67,18 +66,3 @@ export default meta;
 const Template = (args) => <InPageTOC {...args} />;
 
 export const Basic = Template.bind({});
-
-export const Collapsed = Template.bind({});
-Collapsed.args = {
-  collapsed: true,
-};
-
-export const Open = Template.bind({});
-Open.args = Collapsed.args;
-Open.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement);
-
-  const summary = canvas.getByText('On this page');
-
-  await userEvent.click(summary);
-};
