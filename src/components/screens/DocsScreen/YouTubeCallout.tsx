@@ -17,7 +17,6 @@ const { color, typography, spacing } = styles;
 // `.lty-playbtn` styles emulate YouTube's thumbnail play button
 const Details = styled.details`
   border-radius: ${spacing.borderRadius.small}px;
-  box-shadow: 0 2px 5px 0 ${color.border};
   border: 1px solid ${color.border};
   overflow: hidden;
   cursor: pointer;
