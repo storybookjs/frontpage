@@ -4,17 +4,18 @@ function statefulGetResolvedPaths(
   paths,
   currentRenderer,
   currentCodeLanguage,
+  currentPackageManager,
   ifContextRenderer?: string[]
 ) {
-  return getResolvedPaths(
-    paths,
-    'react',
-    currentRenderer,
+  return getResolvedPaths(paths, {
     currentCodeLanguage,
-    7.4,
-    7.4,
-    ifContextRenderer
-  );
+    currentPackageManager,
+    currentRenderer,
+    defaultRenderer: 'react',
+    ifContextRenderer,
+    latestVersion: 7.4,
+    version: 7.4,
+  });
 }
 
 it('Selects from available frameworks and languages, JS selected', () => {
@@ -30,7 +31,8 @@ it('Selects from available frameworks and languages, JS selected', () => {
       'vue/example.3.ts.mdx',
     ],
     'react',
-    'js'
+    'js',
+    'npm'
   );
   expect(result).toMatchInlineSnapshot(`
     [
@@ -55,7 +57,8 @@ it('Selects from available frameworks and languages, TS selected', () => {
       'vue/example.3.ts.mdx',
     ],
     'react',
-    'ts'
+    'ts',
+    'npm'
   );
   expect(result).toMatchInlineSnapshot(`
     [
@@ -81,7 +84,8 @@ describe('v7+', () => {
         'vue/example.3.ts.mdx',
       ],
       'react',
-      'ts-4-9'
+      'ts-4-9',
+      'npm'
     );
     expect(result).toMatchInlineSnapshot(`
           [
@@ -106,7 +110,8 @@ describe('v7+', () => {
         'vue/example.3.ts.mdx',
       ],
       'react',
-      'ts'
+      'ts',
+      'npm'
     );
     expect(result).toMatchInlineSnapshot(`
           [
@@ -131,16 +136,16 @@ it('Falls back to JS, if TS is unavailable', () => {
       'vue/example.3.ts.mdx',
     ],
     'react',
-    'ts'
+    'ts',
+    'npm'
   );
   expect(result).toMatchInlineSnapshot(`
     [
       [
         "react/example.js.mdx",
       ],
-      <MissingCodeLanguageMessage
+      <MissingCodeLanguage
         currentCodeLanguage="ts"
-        currentFramework="react"
       />,
     ]
   `);
@@ -158,16 +163,16 @@ it('Falls back to TS, if JS is unavailable', () => {
       'vue/example.3.ts.mdx',
     ],
     'react',
-    'js'
+    'js',
+    'npm'
   );
   expect(result).toMatchInlineSnapshot(`
     [
       [
         "react/example.ts.mdx",
       ],
-      <MissingCodeLanguageMessage
+      <MissingCodeLanguage
         currentCodeLanguage="js"
-        currentFramework="react"
         fallbackLanguage="ts"
       />,
     ]
@@ -187,7 +192,8 @@ it('Falls back to common, if available', () => {
       'vue/example.3.ts.mdx',
     ],
     'angular',
-    'js'
+    'js',
+    'npm'
   );
   expect(result).toMatchInlineSnapshot(`
     [
@@ -211,16 +217,16 @@ it('Falls back to JS common, if TS common is unavailable', () => {
       'vue/example.3.ts.mdx',
     ],
     'angular',
-    'ts'
+    'ts',
+    'npm'
   );
   expect(result).toMatchInlineSnapshot(`
     [
       [
         "common/example.js.mdx",
       ],
-      <MissingCodeLanguageMessage
+      <MissingCodeLanguage
         currentCodeLanguage="ts"
-        currentFramework="angular"
       />,
     ]
   `);
@@ -237,15 +243,17 @@ it('Falls back to default language, if common is unavailable', () => {
       'vue/example.3.ts.mdx',
     ],
     'angular',
-    'js'
+    'js',
+    'npm'
   );
   expect(result).toMatchInlineSnapshot(`
     [
       [
         "react/example.js.mdx",
       ],
-      <MissingFrameworkMessage
-        currentFramework="angular"
+      <MissingRenderer
+        currentRenderer="angular"
+        defaultRenderer="react"
       />,
     ]
   `);
@@ -261,22 +269,22 @@ it('Falls back to JS default language, if TS default language is unavailable', (
       'vue/example.3.ts.mdx',
     ],
     'angular',
-    'ts'
+    'ts',
+    'npm'
   );
   expect(result).toMatchInlineSnapshot(`
     [
       [
         "react/example.js.mdx",
       ],
-      <MissingCodeLanguageMessage
+      <MissingCodeLanguage
         currentCodeLanguage="ts"
-        currentFramework="angular"
       />,
     ]
   `);
 });
 
-it('Show framework package manager snippets, if available', () => {
+it('Show package manager snippets, if available', () => {
   const result = statefulGetResolvedPaths(
     [
       'angular/example.with-builder.js.mdx',
@@ -285,7 +293,8 @@ it('Show framework package manager snippets, if available', () => {
       'common/example.pnpm.js.mdx',
     ],
     'angular',
-    'ts'
+    'ts',
+    'pnpm'
   );
   expect(result).toMatchInlineSnapshot(`
     [
@@ -306,7 +315,8 @@ it('Fallback to common package manager snippets', () => {
       'common/example.pnpm.js.mdx',
     ],
     'react',
-    'ts'
+    'ts',
+    ''
   );
   expect(result).toMatchInlineSnapshot(`
     [
@@ -328,7 +338,8 @@ it('Handles only common snippets, TS selected', () => {
       'common/example.ts.mdx'
     ],
     'react',
-    'ts'
+    'ts',
+    'npm'
   );
   expect(result).toMatchInlineSnapshot(`
     [
@@ -347,7 +358,8 @@ it('Handles only common JS snippets, TS selected', () => {
       'common/example.js.mdx',
     ],
     'react',
-    'ts'
+    'ts',
+    'npm'
   );
   expect(result).toMatchInlineSnapshot(`
     [
@@ -366,16 +378,16 @@ it('Handles only common TS snippets, JS selected', () => {
       'common/example.ts.mdx'
     ],
     'react',
-    'js'
+    'js',
+    'npm'
   );
   expect(result).toMatchInlineSnapshot(`
     [
       [
         "common/example.ts.mdx",
       ],
-      <MissingCodeLanguageMessage
+      <MissingCodeLanguage
         currentCodeLanguage="js"
-        currentFramework="react"
       />,
     ]
   `);
@@ -391,7 +403,8 @@ it('Handles only MDX snippets, JS selected', () => {
       'svelte/example.mdx.mdx',
     ],
     'react',
-    'js'
+    'js',
+    'npm'
   );
   expect(result).toMatchInlineSnapshot(`
     [
@@ -413,7 +426,8 @@ it('Handles only MDX Vue 2/3 snippets, JS selected', () => {
       'svelte/example.mdx.mdx',
     ],
     'vue',
-    'js'
+    'js',
+    'npm'
   );
   expect(result).toMatchInlineSnapshot(`
     [
@@ -438,7 +452,8 @@ it('Handles MDX and JS snippets, JS selected', () => {
       'vue/example.mdx-3.mdx.mdx',
     ],
     'react',
-    'js'
+    'js',
+    'npm'
   );
   expect(result).toMatchInlineSnapshot(`
     [
@@ -464,7 +479,8 @@ it('Falls back to non-JS/TS, JS selected', () => {
       'svelte/example.native-format.mdx',
     ],
     'svelte',
-    'js'
+    'js',
+    'npm'
   );
   expect(result).toMatchInlineSnapshot(`
     [
@@ -484,7 +500,8 @@ it('Throws if no snippets available', () => {
         'svelte/example.ts.mdx',
       ],
       'vue',
-      'js'
+      'js',
+      'npm'
     );
   }).toThrow();
 });
@@ -495,6 +512,7 @@ it('Falls back to match parent If context', () => {
     ['svelte/example.ts.mdx'],
     'vue',
     'js',
+    'npm',
     ['svelte']
   );
   expect(result).toMatchInlineSnapshot(`
@@ -502,9 +520,8 @@ it('Falls back to match parent If context', () => {
       [
         "svelte/example.ts.mdx",
       ],
-      <MissingCodeLanguageMessage
+      <MissingCodeLanguage
         currentCodeLanguage="js"
-        currentFramework="vue"
       />,
     ]
   `);
@@ -519,6 +536,7 @@ it('Throws if no snippets available, including parent If context', () => {
       ],
       'vue',
       'js',
+      'npm',
       ['react']
     );
   }).toThrow();

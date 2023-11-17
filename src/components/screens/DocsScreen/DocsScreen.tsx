@@ -29,7 +29,7 @@ import {
   DOCS_TOP_PADDING_WIDE,
   GUTTER,
 } from '../../layout/DocsLayout/DocsLayout';
-import { CodeSnippets } from './CodeSnippets';
+import { CodeSnippets } from './CodeSnippets/CodeSnippets';
 import { useDocsContext } from './DocsContext';
 import { FeatureSnippets } from './FeatureSnippets';
 import { Feedback } from './Feedback';
@@ -238,13 +238,19 @@ function DocsScreen({ data, pageContext, location }) {
   const {
     codeLanguage: [codeLanguage],
     renderer: [renderer],
+    packageManager: [packageManager],
   } = useDocsContext();
 
   const CodeSnippetsWithState = useMemo(() => {
     return (props) => (
-      <CodeSnippets currentRenderer={renderer} currentCodeLanguage={codeLanguage} {...props} />
+      <CodeSnippets
+        currentRenderer={renderer}
+        currentCodeLanguage={codeLanguage}
+        currentPackageManager={packageManager}
+        {...props}
+      />
     );
-  }, [renderer, codeLanguage]);
+  }, [renderer, codeLanguage, packageManager]);
   const FeatureSnippetsWithState = useMemo(() => {
     return (props) => <FeatureSnippets currentFramework={renderer} {...props} />;
   }, [renderer]);
