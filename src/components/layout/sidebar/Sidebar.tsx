@@ -1,11 +1,12 @@
-import React, { FC, Fragment, ReactNode } from 'react';
+import React, { FC, Fragment } from 'react';
+import { Link } from 'gatsby';
 import { color, fontWeight, typography } from '@chromaui/tetra';
 import { keyframes, styled } from '@storybook/theming';
 import * as Accordion from '@radix-ui/react-accordion';
 import { ChevronSmallRightIcon } from '@storybook/icons';
-import { Link } from 'gatsby';
-import { VersionSelector } from './VersionSelector';
+
 import useSiteMetadata from '../../lib/useSiteMetadata';
+import { VersionSelector } from './VersionSelector';
 
 type SidebarElementProps = {
   type?: 'menu' | 'link' | 'heading';
@@ -14,12 +15,11 @@ type SidebarElementProps = {
   path?: string;
   githubUrl?: string;
   description?: string;
-  LinkWrapper?: ReactNode;
   children?: SidebarElementProps[];
 };
 
 interface SidebarProps {
-  docsTocWithLinkWrappers: SidebarElementProps[];
+  docsToc: SidebarElementProps[];
   versions: any;
   slug: string;
 }
@@ -101,7 +101,7 @@ const Line = styled.li`
 `;
 
 const AccordionRoot = styled.ul`
-  margin: 24px 0;
+  margin: 24px 0 0;
   padding: 0;
 `;
 
@@ -187,11 +187,7 @@ const NavAccordionContent = styled(Accordion.Content)`
   }
 `;
 
-export const Sidebar: FC<SidebarProps> = ({
-  docsTocWithLinkWrappers,
-  versions: versionsProp,
-  slug,
-}) => {
+export const Sidebar: FC<SidebarProps> = ({ docsToc, versions: versionsProp, slug }) => {
   const { isLatest, version, versionString } = useSiteMetadata();
 
   const versions = versionsProp || {
@@ -239,11 +235,11 @@ export const Sidebar: FC<SidebarProps> = ({
       <Accordion.Root type="multiple" asChild>
         <AccordionRoot>
           {/* eslint-disable react/no-array-index-key */}
-          {docsTocWithLinkWrappers.map((lvl1, lvl1Index) => (
+          {docsToc.map((lvl1, lvl1Index) => (
             <Fragment key={lvl1Index}>
               <NavItem level={1}>
                 {['link', 'heading'].includes(lvl1.type) ? (
-                  <a href={lvl1.pathSegment}>{lvl1.title}</a>
+                  <Link to={lvl1.path}>{lvl1.title}</Link>
                 ) : (
                   lvl1.title
                 )}
@@ -254,7 +250,7 @@ export const Sidebar: FC<SidebarProps> = ({
                   <Fragment key={lvl2Index}>
                     {!lvl2.children && (
                       <NavItem level={2}>
-                        <a href={`${lvl1.pathSegment}/${lvl2.pathSegment}`}>{lvl2.title}</a>
+                        <Link to={lvl2.path}>{lvl2.title}</Link>
                       </NavItem>
                     )}
                     {lvl2.children && lvl2.children.length > 0 && (
@@ -268,7 +264,7 @@ export const Sidebar: FC<SidebarProps> = ({
                         <NavAccordionContent>
                           {lvl2.children.map((lvl3, lvl3Index) => (
                             <NavItem key={lvl3Index} level={3}>
-                              <a href={`${lvl1.pathSegment}/${lvl3.pathSegment}`}>{lvl3.title}</a>
+                              <Link to={lvl3.path}>{lvl3.title}</Link>
                             </NavItem>
                           ))}
                         </NavAccordionContent>

@@ -161,7 +161,7 @@ export const mdFormatting = css`
     display: flex;
     transition: transform 250ms ease-out;
     transform: translate3d(-100%, -50%, 0);
-    padding-right: 10px;
+    padding-right: 5px;
 
     &:hover {
       transform: translate3d(-100%, calc(-50% - 1px), 0);

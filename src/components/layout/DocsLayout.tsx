@@ -2,18 +2,32 @@ import React, { FC } from 'react';
 import { styled } from '@storybook/theming';
 import { global } from '@storybook/design-system';
 import Helmet from 'react-helmet';
-import { Container, color, minMd, minSm } from '@chromaui/tetra';
+import { Container, color, minMd, minSm, spacing } from '@chromaui/tetra';
 import * as ScrollArea from '@radix-ui/react-scroll-area';
 
 import { GLOBAL_SEARCH_IMPORTANCE, GLOBAL_SEARCH_META_KEYS } from '../../constants/global-search';
+import {
+  HEADER_HEIGHT,
+  HEADER_HEIGHT_WITH_EYEBROW,
+  SCROLL_CHANNEL_WIDTH,
+  SCROLL_THUMB_WIDTH,
+} from '../../constants/style';
 import buildPathWithVersion from '../../util/build-path-with-version';
-import GatsbyLinkWrapper from '../basics/GatsbyLinkWrapper';
 import useSiteMetadata from '../lib/useSiteMetadata';
 import { DocsContextProvider } from '../screens/DocsScreen/DocsContext';
 import { VersionCTA } from '../screens/DocsScreen/VersionCTA';
 import { Sidebar } from './sidebar/Sidebar';
 
 const { GlobalStyle } = global;
+
+export const GUTTER = spacing[8];
+const OPTICAL_ALIGNMENT_WITH_LOGO = '7px';
+const FOCUS_OUTLINE_WIDTH = '2px';
+export const DOCS_TOP_PADDING = '24px';
+export const DOCS_TOP_PADDING_WIDE = '48px';
+export const DOCS_BOTTOM_PADDING = '24px';
+export const DOCS_BOTTOM_PADDING_WIDE = '48px';
+export const SIDEBAR_WIDTH = '240px';
 
 const BubblesBackground = styled.img`
   display: block;
@@ -24,14 +38,15 @@ const BubblesBackground = styled.img`
 `;
 
 const Wrapper = styled.div`
-  padding-top: 72px;
+  padding-top: ${HEADER_HEIGHT};
 
   @media (min-width: 440px) {
-    padding-top: 112px;
+    padding-top: ${HEADER_HEIGHT_WITH_EYEBROW};
   }
 
   ${minSm} {
     display: flex;
+    gap: calc(${GUTTER} - ${SCROLL_CHANNEL_WIDTH} + ${OPTICAL_ALIGNMENT_WITH_LOGO});
   }
 `;
 
@@ -41,44 +56,41 @@ const SidebarContainer = styled.div`
   ${minMd} {
     display: block;
     position: sticky;
-    top: 112px;
+    top: ${HEADER_HEIGHT_WITH_EYEBROW};
     align-self: flex-start;
   }
 `;
 
 const SidebarRoot = styled(ScrollArea.Root)`
   position: relative;
-
-  ${minMd} {
-    width: 260px;
-    margin: 0;
-    padding-bottom: 0;
-    padding-right: 20px;
-    margin-right: 20px;
-    height: calc(100vh - 112px);
-  }
+  left: calc(${OPTICAL_ALIGNMENT_WITH_LOGO} - ${FOCUS_OUTLINE_WIDTH});
+  width: ${SIDEBAR_WIDTH};
+  height: calc(100vh - ${HEADER_HEIGHT_WITH_EYEBROW});
 `;
 
 const SidebarViewport = styled(ScrollArea.Viewport)`
   width: 100%;
   height: 100%;
-  padding-top: 48px;
+  padding-top: ${DOCS_TOP_PADDING_WIDE};
+  padding-bottom: ${DOCS_BOTTOM_PADDING_WIDE};
+  padding-right: ${SCROLL_CHANNEL_WIDTH};
+  padding-left: ${FOCUS_OUTLINE_WIDTH};
 `;
 
 const ScrollAreaScrollbar = styled(ScrollArea.Scrollbar)`
   display: flex;
-  width: 5px;
+  width: ${SCROLL_THUMB_WIDTH};
   /* ensures no selection */
   user-select: none;
   /* disable browser handling of all panning and zooming gestures on touch devices */
   touch-action: none;
-  padding-top: 48px;
-  padding-bottom: 24px;
+  padding-top: ${DOCS_TOP_PADDING_WIDE};
+  padding-bottom: ${DOCS_BOTTOM_PADDING_WIDE};
 `;
 
 const ScrollAreaThumb = styled(ScrollArea.Thumb)`
   flex: 1;
-  width: 5px;
+  width: ${SCROLL_THUMB_WIDTH};
   background: ${color.slate300};
   border-radius: 20px;
   position: relative;
@@ -92,12 +104,12 @@ const ScrollAreaThumb = styled(ScrollArea.Thumb)`
 const Content = styled.div`
   flex: 1;
   min-width: 0;
-  padding-top: 24px;
-  padding-bottom: 24px;
+  padding-top: ${DOCS_TOP_PADDING};
+  padding-bottom: ${DOCS_BOTTOM_PADDING};
 
   ${minMd} {
-    padding-top: 48px;
-    padding-bottom: 48px;
+    padding-top: ${DOCS_TOP_PADDING_WIDE};
+    padding-bottom: ${DOCS_BOTTOM_PADDING_WIDE};
   }
 `;
 
@@ -190,14 +202,6 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, isLatest: isLatestProp, pag
 
   const tocSectionTitles = getTocSectionTitles(docsToc, slug.split('/docs/')[1]);
 
-  const addLinkWrappers = (items) =>
-    items.map((item) => ({
-      ...item,
-      ...(item.type.match(/link/) && { LinkWrapper: GatsbyLinkWrapper }),
-      ...(item.children && { children: addLinkWrappers(item.children) }),
-    }));
-  const docsTocWithLinkWrappers = addLinkWrappers(docsToc);
-
   return (
     <>
       <Helmet>
@@ -218,15 +222,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, isLatest: isLatestProp, pag
           content={GLOBAL_SEARCH_IMPORTANCE.DOCS}
         />
       </Helmet>
-      <PureDocsLayout
-        sidebar={
-          <Sidebar
-            docsTocWithLinkWrappers={docsTocWithLinkWrappers}
-            versions={versions}
-            slug={slug}
-          />
-        }
-      >
+      <PureDocsLayout sidebar={<Sidebar docsToc={docsToc} versions={versions} slug={slug} />}>
         {tocSectionTitles && (
           <span hidden id="toc-section-titles">
             {`Docs » ${tocSectionTitles}`}

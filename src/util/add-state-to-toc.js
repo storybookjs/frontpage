@@ -6,7 +6,7 @@ module.exports = function addStateToToc(items, pathPrefix = '/docs') {
 
     return {
       ...item,
-      ...(item.type.match(/link/) && {
+      ...(item.type.match(/link|heading/) && {
         path: itemPath,
         githubUrl: `${githubDocsBaseUrl}${itemPath}.md`,
       }),
