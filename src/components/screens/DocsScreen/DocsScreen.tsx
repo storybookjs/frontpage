@@ -235,6 +235,12 @@ function DocsScreen({ data, pageContext, location }) {
   } = useSiteMetadata();
   const { docsToc, fullPath, slug, tocItem, nextTocItem, isInstallPage } = pageContext;
 
+  React.useEffect(() => {
+    console.log('DOCS_SCREEN Mounted', { title, tableOfContents, docsToc, fullPath, slug });
+  }, []);
+
+  console.log('DOCS_SCREEN - updated', { title, tableOfContents, docsToc, fullPath, slug });
+
   const {
     codeLanguage: [codeLanguage],
     renderer: [renderer],

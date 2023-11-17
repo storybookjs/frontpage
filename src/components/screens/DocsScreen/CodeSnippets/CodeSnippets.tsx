@@ -12,13 +12,14 @@ import useSiteMetadata from '../../../lib/useSiteMetadata';
 import { CodeLanguageSelector } from '../CodeLanguageSelector';
 import { useIfContext } from '../If';
 import { Tabs } from './CodeSnippetsTabs';
-import { fetchDocsSnippets, getSnippetType, isTerminalSnippet } from './fetch-snippets.utils';
+import { fetchDocsSnippets, getSnippetType, isTerminalSnippetByPath } from './fetch-snippets.utils';
 
 const COMMON = 'common';
 
 export interface CodeSnippetProps {
   csf2Path?: string;
   currentCodeLanguage: string;
+  currentPackageManager?: string;
   currentRenderer: string;
   paths: string[];
   usesCsf3?: boolean;
@@ -67,7 +68,7 @@ export const getResolvedPaths: GetResolvedPaths = (
 ) => {
   let message;
 
-  const isPackageManagerSnippet = paths.some((path) => isTerminalSnippet(getSnippetType(path)));
+  const isPackageManagerSnippet = paths.some(isTerminalSnippetByPath);
 
   let completePaths = paths;
   if (version >= 7 && !isPackageManagerSnippet) {
@@ -209,6 +210,7 @@ const SnippetTabs = ({ snippets, snippetProps }) => (
 export const CodeSnippets = ({
   csf2Path,
   currentCodeLanguage,
+  currentPackageManager,
   currentRenderer,
   paths,
   usesCsf3,
@@ -219,15 +221,39 @@ export const CodeSnippets = ({
   const { defaultRenderer, version, latestVersion } = useSiteMetadata();
   const ifContext = useIfContext();
 
-  const [resolvedPaths, message] = getResolvedPaths(
-    paths,
-    defaultRenderer,
-    currentRenderer,
-    currentCodeLanguage,
-    version,
-    latestVersion,
-    ifContext.renderer
+  // Solves most rerenders other than when hovering over sidebar items
+  const [resolvedPaths, message] = React.useMemo(
+    () =>
+      getResolvedPaths(
+        paths,
+        defaultRenderer,
+        currentRenderer,
+        currentCodeLanguage,
+        version,
+        latestVersion,
+        ifContext.renderer
+      ),
+    [
+      currentCodeLanguage,
+      currentRenderer,
+      defaultRenderer,
+      ifContext.renderer,
+      latestVersion,
+      paths,
+      version,
+    ]
   );
+
+  // Causes infinite refetching of snippets
+  // const [resolvedPaths, message] = getResolvedPaths(
+  //   paths,
+  //   defaultRenderer,
+  //   currentRenderer,
+  //   currentCodeLanguage,
+  //   version,
+  //   latestVersion,
+  //   ifContext.renderer
+  // );
 
   const appliedMessage = message || (usesCsf3 ? <CSF2Example csf2Path={csf2Path} /> : null);
 
@@ -238,6 +264,15 @@ export const CodeSnippets = ({
   const snippetsId = `snippet-${paths[0].match(/^(?:\w+-*)+\/((?:\w+-*)+)/)[1]}`;
 
   React.useEffect(() => {
+    // console.log('refetching snippets', {
+    //   currentCodeLanguage,
+    //   currentRenderer,
+    //   defaultRenderer,
+    //   ifContextRenderer: ifContext.renderer,
+    //   latestVersion,
+    //   paths,
+    //   version,
+    // });
     async function getSnippets() {
       const fetched = await fetchDocsSnippets(resolvedPaths);
       setSnippets(fetched.filter((snippet) => snippet != null));

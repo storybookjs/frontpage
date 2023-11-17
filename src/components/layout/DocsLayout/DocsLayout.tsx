@@ -175,6 +175,12 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, isLatest: isLatestProp, pag
   } = useSiteMetadata();
   const { docsToc, fullPath, slug, versions } = pageContext;
 
+  React.useEffect(() => {
+    console.log('DOCSLAYOUT Mounted', { docsToc, slug });
+  }, []);
+
+  console.log('DOCSLAYOUT - updated', { docsToc, slug });
+
   const tocSectionTitles = getTocSectionTitles(docsToc, slug.split('/docs/')[1]);
 
   return (
