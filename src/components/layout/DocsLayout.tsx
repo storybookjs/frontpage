@@ -13,7 +13,6 @@ import {
   SCROLL_THUMB_WIDTH,
 } from '../../constants/style';
 import buildPathWithVersion from '../../util/build-path-with-version';
-import GatsbyLinkWrapper from '../basics/GatsbyLinkWrapper';
 import useSiteMetadata from '../lib/useSiteMetadata';
 import { DocsContextProvider } from '../screens/DocsScreen/DocsContext';
 import { VersionCTA } from '../screens/DocsScreen/VersionCTA';
@@ -203,14 +202,6 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, isLatest: isLatestProp, pag
 
   const tocSectionTitles = getTocSectionTitles(docsToc, slug.split('/docs/')[1]);
 
-  const addLinkWrappers = (items) =>
-    items.map((item) => ({
-      ...item,
-      ...(item.type.match(/link/) && { LinkWrapper: GatsbyLinkWrapper }),
-      ...(item.children && { children: addLinkWrappers(item.children) }),
-    }));
-  const docsTocWithLinkWrappers = addLinkWrappers(docsToc);
-
   return (
     <>
       <Helmet>
@@ -231,15 +222,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, isLatest: isLatestProp, pag
           content={GLOBAL_SEARCH_IMPORTANCE.DOCS}
         />
       </Helmet>
-      <PureDocsLayout
-        sidebar={
-          <Sidebar
-            docsTocWithLinkWrappers={docsTocWithLinkWrappers}
-            versions={versions}
-            slug={slug}
-          />
-        }
-      >
+      <PureDocsLayout sidebar={<Sidebar docsToc={docsToc} versions={versions} slug={slug} />}>
         {tocSectionTitles && (
           <span hidden id="toc-section-titles">
             {`Docs » ${tocSectionTitles}`}
