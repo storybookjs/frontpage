@@ -7,24 +7,30 @@ import { color, spacing } from '@chromaui/tetra';
 import { Button, Link, ShadowBoxCTA, Subheading, styles } from '@storybook/design-system';
 import * as ScrollArea from '@radix-ui/react-scroll-area';
 
-import { CodeSnippets } from './CodeSnippets';
-import { rendererSupportsFeature, RendererSupportTable } from './RendererSupportTable';
+import {
+  HEADER_HEIGHT_WITH_EYEBROW,
+  SCROLL_CHANNEL_WIDTH,
+  SCROLL_THUMB_WIDTH,
+} from '../../../constants/style';
+import { useMediaQuery } from '../../lib/useMediaQuery';
+import useSiteMetadata from '../../lib/useSiteMetadata';
+import { mdFormatting } from '../../../styles/formatting';
+import stylizeRenderer from '../../../util/stylize-renderer';
+import buildPathWithVersion from '../../../util/build-path-with-version';
+import relativeToRootLinks from '../../../util/relative-to-root-links';
 import { SocialGraph } from '../../basics';
 import { Callout } from '../../basics/Callout';
 import { InPageTOC } from '../../basics/InPageTOC';
 import { Pre } from '../../basics/Pre';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
-import { useMediaQuery } from '../../lib/useMediaQuery';
-import useSiteMetadata from '../../lib/useSiteMetadata';
-import { mdFormatting } from '../../../styles/formatting';
-import buildPathWithVersion from '../../../util/build-path-with-version';
-import relativeToRootLinks from '../../../util/relative-to-root-links';
-import stylizeRenderer from '../../../util/stylize-renderer';
+import { DOCS_BOTTOM_PADDING_WIDE, DOCS_TOP_PADDING_WIDE, GUTTER } from '../../layout/DocsLayout';
+import { CodeSnippets } from './CodeSnippets';
 import { useDocsContext } from './DocsContext';
 import { FeatureSnippets } from './FeatureSnippets';
 import { Feedback } from './Feedback';
 import { If } from './If';
 import { RendererSelector } from './RendererSelector';
+import { rendererSupportsFeature, RendererSupportTable } from './RendererSupportTable';
 import { YouTubeCallout } from './YouTubeCallout';
 
 const { color: dsColor, spacing: dsSpacing, typography } = styles;
@@ -44,12 +50,9 @@ const MIN_HEADINGS_COUNT_FOR_TOC = 3;
  *   b. Change the page layout for all SB properties, resulting in longer line lengths or necessary
  *      layout adjustments in some places
  */
-export const IS_2_COL_BREAKPOINT = 1548;
+export const IS_2_COL_BREAKPOINT = 1510;
 
 const RIGHT_RAIL_WIDTH = '220px';
-
-// Magic number to account for PageLayout header height
-const RIGHT_RAIL_TOP_OFFSET = '112px';
 
 const Root = styled('div', {
   shouldForwardProp: (prop) => prop !== 'hasRightRail',
@@ -59,7 +62,7 @@ const Root = styled('div', {
     css`
       display: flex;
       flex-direction: row-reverse;
-      gap: ${spacing[8]};
+      gap: ${GUTTER};
     `}
 `;
 
@@ -69,44 +72,43 @@ const Header = styled.div`
 
 const RightRail = styled.div`
   flex: 0 0 ${RIGHT_RAIL_WIDTH};
-  margin-bottom: ${spacing[8]};
   position: relative;
-  top: -48px;
+  top: -${DOCS_TOP_PADDING_WIDE};
 `;
 
 const RightRailSticky = styled.div`
   position: sticky;
-  top: ${RIGHT_RAIL_TOP_OFFSET};
+  top: ${HEADER_HEIGHT_WITH_EYEBROW};
 `;
 
 const RightRailRoot = styled(ScrollArea.Root)`
   position: relative;
   width: ${RIGHT_RAIL_WIDTH};
-  margin: 0;
-  padding-bottom: 0;
-  height: calc(100vh - ${RIGHT_RAIL_TOP_OFFSET});
+  height: calc(100vh - ${HEADER_HEIGHT_WITH_EYEBROW});
 `;
 
 const RightRailViewport = styled(ScrollArea.Viewport)`
   width: 100%;
   height: 100%;
-  padding-top: 48px;
+  padding-top: ${DOCS_TOP_PADDING_WIDE};
+  padding-bottom: ${DOCS_BOTTOM_PADDING_WIDE};
+  padding-right: ${SCROLL_CHANNEL_WIDTH};
 `;
 
 const RightRailScrollbar = styled(ScrollArea.Scrollbar)`
   display: flex;
-  width: 5px;
+  width: ${SCROLL_THUMB_WIDTH};
   /* ensures no selection */
   user-select: none;
   /* disable browser handling of all panning and zooming gestures on touch devices */
   touch-action: none;
-  padding-top: 48px;
-  padding-bottom: 24px;
+  padding-top: ${DOCS_TOP_PADDING_WIDE};
+  padding-bottom: ${DOCS_BOTTOM_PADDING_WIDE};
 `;
 
 const RightRailThumb = styled(ScrollArea.Thumb)`
   flex: 1;
-  width: 5px;
+  width: ${SCROLL_THUMB_WIDTH};
   background: ${color.slate300};
   border-radius: 20px;
   position: relative;

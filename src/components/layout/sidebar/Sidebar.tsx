@@ -101,7 +101,7 @@ const Line = styled.li`
 `;
 
 const AccordionRoot = styled.ul`
-  margin: 24px 0;
+  margin: 24px 0 0;
   padding: 0;
 `;
 
