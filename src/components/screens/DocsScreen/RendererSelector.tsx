@@ -99,8 +99,14 @@ type RendererSelectorProps = {
 
 export const RendererSelector = ({ coreRenderers, communityRenderers }: RendererSelectorProps) => {
   const {
-    renderer: [renderer, setRenderer],
+    renderer: [rendererFromContext, setRenderer],
   } = useDocsContext();
+
+  const [isClient, setIsClient] = React.useState(false);
+  React.useEffect(() => {
+    setIsClient(true);
+  }, []);
+  const renderer = isClient ? rendererFromContext : 'LOCAL_STORAGE_NOT_AVAILABLE';
 
   const pillItems = coreRenderers.slice();
   const menuItems = communityRenderers.slice();
