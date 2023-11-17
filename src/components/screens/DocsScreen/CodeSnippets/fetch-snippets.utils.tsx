@@ -4,34 +4,47 @@ import { startCase } from 'lodash';
 import { MissingCodeLanguage } from '../../../basics/CodeSnippets/BaseCodeSnippet/SnippetEyebrows';
 import { parseSnippetContent } from '../../../basics/CodeSnippets/utils/parse-snippet-content.utils';
 
+const PATH_TO_PACKAGE_MANAGER_MAP = {
+  npm: (path: string) => path.includes('.npm.') || path.includes('.npx.'),
+  pnpm: (path: string) => path.includes('.pnpm.'),
+  yarn: (path: string) => path.includes('.yarn.'),
+};
+
+export const getPackageManagerKeyFromPath = (path: string) => {
+  const [key] = Object.entries(PATH_TO_PACKAGE_MANAGER_MAP).find(([, fn]) => fn(path)) || [];
+  return key;
+};
+
 /**
  * For a path like `web-components/button-story-click-handler-args.js.mdx`,
  * return `web-components`
  */
 const getSnippetRenderer = (path: string) => path.split('/')[0];
 
-/**
- * For a path like `web-components/button-story-click-handler-args.js.mdx`,
- * capture the group `js`
- */
-export const getSnippetType = (path: string) => path.match(/\.((?:\w+-*)+)\.mdx$/)[1];
+export const getSnippetType = (path: string) => {
+  const packageManagerType = getPackageManagerKeyFromPath(path);
+
+  return packageManagerType || path.match(/\.((?:\w+-*)+)\.mdx$/)[1];
+};
 
 const syntaxMap = {
+  'js-2': 'js',
+  'js-3': 'js',
+  'ts-2': 'ts',
+  'ts-3': 'ts',
   'ts-4-9': 'ts',
   npm: 'sh',
+  npx: 'sh',
   pnpm: 'sh',
   yarn: 'sh',
 };
 
-export const getSnippetSyntax = (type: string) => {
-  if (syntaxMap[type]) return syntaxMap[type];
+export const isTerminalSnippetByType = (type: string): boolean => syntaxMap[type] === 'sh';
 
-  // Matching `ts-2`, `ts-3`, etc.
-  if (type.startsWith('js')) return 'js';
-  if (type.startsWith('ts')) return 'ts';
+export const isTerminalSnippetByPath = (path: string): boolean =>
+  isTerminalSnippetByType(getSnippetType(path));
 
-  return type;
-};
+export const getSnippetSyntax = (type: string) => syntaxMap[type] || type;
 
 const nameMap = {
   'stories-of': 'StoriesOf()',
@@ -47,12 +60,10 @@ const getSnippetTabName = (path: string) => {
   const name = path.split('.')[1];
   return prettifyName(name);
 };
-
-export const isTerminalSnippet = (type: string) => syntaxMap[type] === 'sh';
-
 export interface SnippetObject {
   content: string;
   id: string;
+  isTerminal: boolean;
   message?: React.ReactNode;
   renderer: string;
   syntax: string;
@@ -68,7 +79,7 @@ export const fetchDocsSnippets = async (
     paths.map(async (snippetPath: string) => {
       const renderer = getSnippetRenderer(snippetPath);
       const type = getSnippetType(snippetPath);
-      const isTerminal = isTerminalSnippet(type);
+      const isTerminal = isTerminalSnippetByType(type);
 
       let ModuleComponent;
       let message;
@@ -122,6 +133,7 @@ export const fetchDocsSnippets = async (
       return {
         content,
         id: snippetPath,
+        isTerminal,
         message,
         renderer,
         syntax: getSnippetSyntax(type),
