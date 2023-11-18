@@ -3,7 +3,7 @@ import { styled } from '@storybook/theming';
 
 import DocsScreen, { IS_2_COL_BREAKPOINT } from './DocsScreen';
 import compiledMDX from '../../../../.storybook/compiled-mdx';
-import { pageContext } from '../../layout/DocsLayout.stories';
+import { pageContext } from '../../layout/DocsLayout/DocsLayout.stories';
 
 const { tocItem } = pageContext;
 

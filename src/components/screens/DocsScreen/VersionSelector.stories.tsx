@@ -2,7 +2,7 @@ import React from 'react';
 import { styled } from '@storybook/theming';
 import { within, userEvent } from '@storybook/testing-library';
 import { VersionSelector } from './VersionSelector';
-import { pageContext } from '../../layout/DocsLayout.stories';
+import { pageContext } from '../../layout/DocsLayout/DocsLayout.stories';
 
 const { versions } = pageContext;
 

@@ -1,10 +1,10 @@
 import React from 'react';
-import DocsLayout, { PureDocsLayout } from './DocsLayout';
+import DocsLayout from './DocsLayout';
 
-import { tocV2 } from './fakeTOC';
+import { tocV2 } from './mockDocsToc';
 
-const { toc: docsToc } = require('../../content/docs/toc');
-const addStateToToc = require('../../util/add-state-to-toc');
+const { toc: docsToc } = require('../../../content/docs/toc');
+const addStateToToc = require('../../../util/add-state-to-toc');
 
 const docsTocWithPaths = addStateToToc(docsToc);
 
@@ -43,24 +43,8 @@ Base.args = {
   pageContext,
 };
 
-export const WithTocV2 = Template.bind({});
-WithTocV2.args = {
-  ...Base.args,
-  pageContext: {
-    ...pageContext,
-    docsToc: tocV2,
-  },
-};
-
 export const NonLatestVersion = Template.bind({});
 NonLatestVersion.args = {
   ...Base.args,
   isLatest: false,
-};
-
-export const Loading = (args) => <PureDocsLayout {...args} />;
-Loading.args = {
-  isLoading: true,
-  slug: pageContext.slug,
-  versions,
 };

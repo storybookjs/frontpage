@@ -5,18 +5,21 @@ import Helmet from 'react-helmet';
 import { Container, color, minMd, minSm, spacing } from '@chromaui/tetra';
 import * as ScrollArea from '@radix-ui/react-scroll-area';
 
-import { GLOBAL_SEARCH_IMPORTANCE, GLOBAL_SEARCH_META_KEYS } from '../../constants/global-search';
+import {
+  GLOBAL_SEARCH_IMPORTANCE,
+  GLOBAL_SEARCH_META_KEYS,
+} from '../../../constants/global-search';
 import {
   HEADER_HEIGHT,
   HEADER_HEIGHT_WITH_EYEBROW,
   SCROLL_CHANNEL_WIDTH,
   SCROLL_THUMB_WIDTH,
-} from '../../constants/style';
-import buildPathWithVersion from '../../util/build-path-with-version';
-import useSiteMetadata from '../lib/useSiteMetadata';
-import { DocsContextProvider } from '../screens/DocsScreen/DocsContext';
-import { VersionCTA } from '../screens/DocsScreen/VersionCTA';
-import { Sidebar } from './sidebar/Sidebar';
+} from '../../../constants/style';
+import buildPathWithVersion from '../../../util/build-path-with-version';
+import useSiteMetadata from '../../lib/useSiteMetadata';
+import { DocsContextProvider } from '../../screens/DocsScreen/DocsContext';
+import { VersionCTA } from '../../screens/DocsScreen/VersionCTA';
+import { Sidebar } from './Sidebar';
 
 const { GlobalStyle } = global;
 
@@ -117,34 +120,6 @@ const StyledVersionCTA = styled(VersionCTA)`
   margin-bottom: 24px;
 `;
 
-interface PureDocsLayoutProps {
-  sidebar: React.ReactNode;
-}
-
-export const PureDocsLayout: FC<PureDocsLayoutProps> = ({ children, sidebar }) => {
-  return (
-    <>
-      <GlobalStyle />
-      <DocsContextProvider>
-        <Container>
-          <Wrapper>
-            <SidebarContainer>
-              <SidebarRoot className="sidebar">
-                <SidebarViewport>{sidebar}</SidebarViewport>
-                <ScrollAreaScrollbar orientation="vertical">
-                  <ScrollAreaThumb />
-                </ScrollAreaScrollbar>
-              </SidebarRoot>
-            </SidebarContainer>
-            <Content>{children}</Content>
-          </Wrapper>
-        </Container>
-        <BubblesBackground src="/images/bubbles.jpg" alt="Storybook" />
-      </DocsContextProvider>
-    </>
-  );
-};
-
 const getTocSectionTitles = (toc, path) => {
   const pathParts = path.split('/');
   const title = [];
@@ -222,23 +197,41 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, isLatest: isLatestProp, pag
           content={GLOBAL_SEARCH_IMPORTANCE.DOCS}
         />
       </Helmet>
-      <PureDocsLayout sidebar={<Sidebar docsToc={docsToc} versions={versions} slug={slug} />}>
-        {tocSectionTitles && (
-          <span hidden id="toc-section-titles">
-            {`Docs » ${tocSectionTitles}`}
-          </span>
-        )}
-        {(isLatestProp === false || !isLatest) && (
-          <StyledVersionCTA
-            version={version}
-            latestVersion={latestVersion}
-            latestVersionString={latestVersionString}
-            versions={versions}
-            slug={slug}
-          />
-        )}
-        {children}
-      </PureDocsLayout>
+      <GlobalStyle />
+      <DocsContextProvider>
+        <Container>
+          <Wrapper>
+            <SidebarContainer>
+              <SidebarRoot className="sidebar">
+                <SidebarViewport>
+                  <Sidebar docsToc={docsToc} versions={versions} slug={slug} />
+                </SidebarViewport>
+                <ScrollAreaScrollbar orientation="vertical">
+                  <ScrollAreaThumb />
+                </ScrollAreaScrollbar>
+              </SidebarRoot>
+            </SidebarContainer>
+            <Content>
+              {tocSectionTitles && (
+                <span hidden id="toc-section-titles">
+                  {`Docs » ${tocSectionTitles}`}
+                </span>
+              )}
+              {(isLatestProp === false || !isLatest) && (
+                <StyledVersionCTA
+                  version={version}
+                  latestVersion={latestVersion}
+                  latestVersionString={latestVersionString}
+                  versions={versions}
+                  slug={slug}
+                />
+              )}
+              {children}
+            </Content>
+          </Wrapper>
+        </Container>
+        <BubblesBackground src="/images/bubbles.jpg" alt="Storybook" />
+      </DocsContextProvider>
     </>
   );
 };
