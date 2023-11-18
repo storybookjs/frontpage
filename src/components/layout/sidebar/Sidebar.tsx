@@ -105,7 +105,9 @@ const AccordionRoot = styled.ul`
   padding: 0;
 `;
 
-const NavItem = styled.li<{ level: 1 | 2 | 3 }>`
+const NavItem = styled('li', {
+  shouldForwardProp: (prop) => !['isCurrent', 'level'].includes(prop),
+})<{ isCurrent?: boolean; level: 1 | 2 | 3 }>`
   display: flex;
   height: 32px;
   margin-top: ${({ level }) => (level === 1 ? '24px' : '0px')};
@@ -113,8 +115,11 @@ const NavItem = styled.li<{ level: 1 | 2 | 3 }>`
   margin-left: ${({ level }) => (level === 3 ? '12px' : '0')};
   padding-left: ${({ level }) => (level === 3 ? '12px' : '0')};
   ${typography.body14}
-  font-weight: ${({ level }) => (level === 1 ? fontWeight.bold : fontWeight.medium)};
-  color: ${({ level }) => (level === 1 ? color.slate800 : color.slate500)};
+  font-weight: ${({ isCurrent, level }) =>
+    isCurrent || level === 1 ? fontWeight.bold : fontWeight.medium};
+  color: ${({ isCurrent, level }) =>
+    // eslint-disable-next-line no-nested-ternary
+    isCurrent ? color.blue500 : level === 1 ? color.slate800 : color.slate500};
 
   a {
     display: flex;
@@ -187,6 +192,27 @@ const NavAccordionContent = styled(Accordion.Content)`
   }
 `;
 
+function getAccordionDefaultValue(
+  tocItems: SidebarElementProps[],
+  slug: string,
+  parentTitle?: string,
+  level = 1
+): string {
+  let title = '';
+
+  tocItems.forEach((item) => {
+    if (!title) {
+      if (level === 3 && item.path === slug) {
+        title = parentTitle;
+      } else if (item.children) {
+        title = getAccordionDefaultValue(item.children, slug, item.title, level + 1);
+      }
+    }
+  });
+
+  return title;
+}
+
 export const Sidebar: FC<SidebarProps> = ({ docsToc, versions: versionsProp, slug }) => {
   const { isLatest, version, versionString } = useSiteMetadata();
 
@@ -232,12 +258,16 @@ export const Sidebar: FC<SidebarProps> = ({ docsToc, versions: versionsProp, slu
         </TopNav>
       </nav>
       <VersionSelector version={version} versions={versions} slug={slug} />
-      <Accordion.Root type="multiple" asChild>
+      <Accordion.Root
+        type="multiple"
+        asChild
+        defaultValue={[getAccordionDefaultValue(docsToc, slug)]}
+      >
         <AccordionRoot>
           {/* eslint-disable react/no-array-index-key */}
           {docsToc.map((lvl1, lvl1Index) => (
             <Fragment key={lvl1Index}>
-              <NavItem level={1}>
+              <NavItem level={1} isCurrent={lvl1.path === slug}>
                 {['link', 'heading'].includes(lvl1.type) ? (
                   <Link to={lvl1.path}>{lvl1.title}</Link>
                 ) : (
@@ -249,12 +279,12 @@ export const Sidebar: FC<SidebarProps> = ({ docsToc, versions: versionsProp, slu
                 lvl1.children.map((lvl2, lvl2Index) => (
                   <Fragment key={lvl2Index}>
                     {!lvl2.children && (
-                      <NavItem level={2}>
+                      <NavItem level={2} isCurrent={lvl2.path === slug}>
                         <Link to={lvl2.path}>{lvl2.title}</Link>
                       </NavItem>
                     )}
                     {lvl2.children && lvl2.children.length > 0 && (
-                      <Accordion.Item value={`${lvl2.title}-${lvl2Index}`}>
+                      <Accordion.Item value={lvl2.title}>
                         <Accordion.Header>
                           <NavAccordionTrigger>
                             {lvl2.title}
@@ -263,7 +293,7 @@ export const Sidebar: FC<SidebarProps> = ({ docsToc, versions: versionsProp, slu
                         </Accordion.Header>
                         <NavAccordionContent>
                           {lvl2.children.map((lvl3, lvl3Index) => (
-                            <NavItem key={lvl3Index} level={3}>
+                            <NavItem key={lvl3Index} level={3} isCurrent={lvl3.path === slug}>
                               <Link to={lvl3.path}>{lvl3.title}</Link>
                             </NavItem>
                           ))}

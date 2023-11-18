@@ -43,15 +43,6 @@ Base.args = {
   pageContext,
 };
 
-export const WithTocV2 = Template.bind({});
-WithTocV2.args = {
-  ...Base.args,
-  pageContext: {
-    ...pageContext,
-    docsToc: tocV2,
-  },
-};
-
 export const NonLatestVersion = Template.bind({});
 NonLatestVersion.args = {
   ...Base.args,
