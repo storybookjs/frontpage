@@ -22,7 +22,6 @@ type LinkWrapperProps = {
 };
 
 export function CodeLanguageSelector() {
-  // TODO: How to access code language in localStorage
   const {
     codeLanguage: [language, setLanguage],
     renderer: [renderer],

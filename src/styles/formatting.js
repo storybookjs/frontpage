@@ -3,6 +3,7 @@ import { css } from '@storybook/theming';
 import { darken, rgba } from 'polished';
 
 import { CODE_SNIPPET_CLASSNAME } from '../constants/code-snippets';
+import { HEADER_HEIGHT_WITH_EYEBROW } from '../constants/style';
 
 const { color, typography } = styles;
 
@@ -11,7 +12,7 @@ export const mdFormatting = css`
   font-size: ${typography.size.s3}px;
 
   *:target {
-    scroll-margin-top: 120px; /* height of NavWrapper + 8px gap */
+    scroll-margin-top: calc(${HEADER_HEIGHT_WITH_EYEBROW}px + 8px);
   }
 
   h1,
