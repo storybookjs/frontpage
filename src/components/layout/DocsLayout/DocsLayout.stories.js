@@ -1,10 +1,10 @@
 import React from 'react';
 import DocsLayout from './DocsLayout';
 
-import { tocV2 } from './fakeTOC';
+import { tocV2 } from './mockDocsToc';
 
-const { toc: docsToc } = require('../../content/docs/toc');
-const addStateToToc = require('../../util/add-state-to-toc');
+const { toc: docsToc } = require('../../../content/docs/toc');
+const addStateToToc = require('../../../util/add-state-to-toc');
 
 const docsTocWithPaths = addStateToToc(docsToc);
 

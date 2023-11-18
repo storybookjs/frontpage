@@ -23,7 +23,11 @@ import { Callout } from '../../basics/Callout';
 import { InPageTOC } from '../../basics/InPageTOC';
 import { Pre } from '../../basics/Pre';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
-import { DOCS_BOTTOM_PADDING_WIDE, DOCS_TOP_PADDING_WIDE, GUTTER } from '../../layout/DocsLayout';
+import {
+  DOCS_BOTTOM_PADDING_WIDE,
+  DOCS_TOP_PADDING_WIDE,
+  GUTTER,
+} from '../../layout/DocsLayout/DocsLayout';
 import { CodeSnippets } from './CodeSnippets';
 import { useDocsContext } from './DocsContext';
 import { FeatureSnippets } from './FeatureSnippets';

@@ -5,18 +5,21 @@ import Helmet from 'react-helmet';
 import { Container, color, minMd, minSm, spacing } from '@chromaui/tetra';
 import * as ScrollArea from '@radix-ui/react-scroll-area';
 
-import { GLOBAL_SEARCH_IMPORTANCE, GLOBAL_SEARCH_META_KEYS } from '../../constants/global-search';
+import {
+  GLOBAL_SEARCH_IMPORTANCE,
+  GLOBAL_SEARCH_META_KEYS,
+} from '../../../constants/global-search';
 import {
   HEADER_HEIGHT,
   HEADER_HEIGHT_WITH_EYEBROW,
   SCROLL_CHANNEL_WIDTH,
   SCROLL_THUMB_WIDTH,
-} from '../../constants/style';
-import buildPathWithVersion from '../../util/build-path-with-version';
-import useSiteMetadata from '../lib/useSiteMetadata';
-import { DocsContextProvider } from '../screens/DocsScreen/DocsContext';
-import { VersionCTA } from '../screens/DocsScreen/VersionCTA';
-import { Sidebar } from './sidebar/Sidebar';
+} from '../../../constants/style';
+import buildPathWithVersion from '../../../util/build-path-with-version';
+import useSiteMetadata from '../../lib/useSiteMetadata';
+import { DocsContextProvider } from '../../screens/DocsScreen/DocsContext';
+import { VersionCTA } from '../../screens/DocsScreen/VersionCTA';
+import { Sidebar } from './Sidebar';
 
 const { GlobalStyle } = global;
 

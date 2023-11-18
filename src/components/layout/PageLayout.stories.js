@@ -2,8 +2,8 @@ import React from 'react';
 
 import { PurePageLayout } from './PageLayout';
 
-import { pageContext as docsPageContext } from './DocsLayout.stories';
-import { tocV2 } from './fakeTOC';
+import { pageContext as docsPageContext } from './DocsLayout/DocsLayout.stories';
+import { tocV2 } from './DocsLayout/mockDocsToc';
 
 export default {
   title: 'Layout/PageLayout',
