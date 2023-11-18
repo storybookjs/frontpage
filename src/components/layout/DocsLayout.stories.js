@@ -1,5 +1,5 @@
 import React from 'react';
-import DocsLayout, { PureDocsLayout } from './DocsLayout';
+import DocsLayout from './DocsLayout';
 
 import { tocV2 } from './fakeTOC';
 
@@ -56,11 +56,4 @@ export const NonLatestVersion = Template.bind({});
 NonLatestVersion.args = {
   ...Base.args,
   isLatest: false,
-};
-
-export const Loading = (args) => <PureDocsLayout {...args} />;
-Loading.args = {
-  isLoading: true,
-  slug: pageContext.slug,
-  versions,
 };
