@@ -13,6 +13,7 @@ type SidebarElementProps = {
   title?: string;
   pathSegment?: string;
   path?: string;
+  redirectPath?: string;
   githubUrl?: string;
   description?: string;
   children?: SidebarElementProps[];
@@ -267,7 +268,7 @@ export const Sidebar: FC<SidebarProps> = ({ docsToc, versions: versionsProp, slu
           {/* eslint-disable react/no-array-index-key */}
           {docsToc.map((lvl1, lvl1Index) => (
             <Fragment key={lvl1Index}>
-              <NavItem level={1} isCurrent={lvl1.path === slug}>
+              <NavItem level={1} isCurrent={lvl1.path === slug && !lvl1.redirectPath}>
                 {['link', 'heading'].includes(lvl1.type) ? (
                   <Link to={lvl1.path}>{lvl1.title}</Link>
                 ) : (
