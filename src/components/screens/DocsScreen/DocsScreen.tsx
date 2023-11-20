@@ -211,7 +211,7 @@ function DocsScreen({ data, pageContext, location }) {
   const {
     currentPage: {
       body,
-      frontmatter: { title },
+      frontmatter: { hideRendererSelector, title },
       tableOfContents,
     },
   } = data;
@@ -258,8 +258,9 @@ function DocsScreen({ data, pageContext, location }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [renderer]);
   const LinksWithPrefix = useMemo(() => {
+    const isIndexPage = tocItem.type === 'heading' && !tocItem.redirectPath;
     return ({ children, href, ...props }) => {
-      const url = relativeToRootLinks(href, location.pathname);
+      const url = relativeToRootLinks(href, location.pathname, isIndexPage);
       return (
         <a href={url} {...props}>
           {children}
@@ -339,10 +340,12 @@ function DocsScreen({ data, pageContext, location }) {
         <Content>
           <Header>
             <Title>{isInstallPage ? `${title} for ${stylizeRenderer(renderer)}` : title}</Title>
-            <RendererSelector
-              coreRenderers={coreRenderers}
-              communityRenderers={communityRenderers}
-            />
+            {!hideRendererSelector && (
+              <RendererSelector
+                coreRenderers={coreRenderers}
+                communityRenderers={communityRenderers}
+              />
+            )}
             {unsupported && (
               <UnsupportedBanner>
                 This feature is not supported in {stylizeRenderer(renderer)} yet. Help the open
@@ -430,6 +433,7 @@ export const query = graphql`
       body
       frontmatter {
         title
+        hideRendererSelector
       }
       tableOfContents
     }

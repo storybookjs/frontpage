@@ -14,7 +14,7 @@ function removeMdExtension(path) {
  * ../../app/ember/README.md remains untouched (these are converted to github links elsewhere)
  * /addons remains untouched
  */
-function relativeToRootLinks(href, path = '') {
+function relativeToRootLinks(href, path = '', isIndexPage) {
   const relativeUrlRegex = /^(?!\.\.\/\.\.\/)(\.\/)(.*)$/;
   const multiLevelRelativeUrlRegex = /^(?!\.\.\/\.\.\/)(\.\.\/)(.*)$/;
 
@@ -28,17 +28,25 @@ function relativeToRootLinks(href, path = '') {
     return removeMdExtension(url);
   }
 
-  if (relativeUrlRegex.test(href)) {
+  if (isIndexPage && relativeUrlRegex.test(url)) {
+    const slugParts = path.split('/').filter((p) => !!p);
+    const parentPart = slugParts.pop();
+
+    // ./some-path to `../parent/some-path`
+    url = url.replace(/^\.\//, `../${parentPart}/`);
+  }
+
+  if (relativeUrlRegex.test(url)) {
     // rewrite ./some-path style urls to /docs/version?/parent/some-path
     const slugParts = path.split('/').filter((p) => !!p);
-    slugParts.splice(-1, 1, href.replace(relativeUrlRegex, '$2'));
+    slugParts.splice(-1, 1, url.replace(relativeUrlRegex, '$2'));
     url = `/${slugParts.join('/')}`;
     return removeMdExtension(url);
   }
 
-  if (multiLevelRelativeUrlRegex.test(href)) {
+  if (multiLevelRelativeUrlRegex.test(url)) {
     // rewrite ../parent/some-path style urls to /docs/version?/parent/some-path
-    url = buildPathWithVersion(href.replace(multiLevelRelativeUrlRegex, '/docs/$2'));
+    url = buildPathWithVersion(url.replace(multiLevelRelativeUrlRegex, '/docs/$2'));
     return removeMdExtension(url);
   }
 
