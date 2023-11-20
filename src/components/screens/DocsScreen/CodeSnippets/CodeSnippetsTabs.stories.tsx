@@ -54,6 +54,7 @@ const Template = ({ renderLanguageSelector }) => (
           syntax="ts"
           title="Example.stories.ts"
           LanguageSelector={LanguageSelector}
+          withTabs
         />
       </Tabs.Content>
     ))}
