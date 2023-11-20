@@ -1,6 +1,8 @@
 import React, { createContext, useContext, useEffect, useState, useMemo } from 'react';
 import { getHighlighter, Lang, Highlighter } from 'shiki';
 
+import firefoxTheme from './themes/firefox-theme-vscode';
+
 const SYNTAX_LANGUAGES = [
   'js',
   'jsx',
@@ -39,7 +41,8 @@ export const SyntaxHighlighterContextProvider: React.FC = ({ children }) => {
 
   useEffect(() => {
     getHighlighter({
-      theme: 'github-light',
+      // @ts-expect-error - shiki types seem to be incorrect
+      theme: firefoxTheme,
       langs: SYNTAX_LANGUAGES as unknown as Lang[],
       paths: { wasm: '/shiki/dist', themes: '/shiki/themes', languages: '/shiki/languages' },
     }).then((highlighter) => {
