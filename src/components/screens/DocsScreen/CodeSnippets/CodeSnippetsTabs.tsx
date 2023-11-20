@@ -36,7 +36,7 @@ const Trigger = styled(RadixTabs.Trigger)`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 28px;
+  height: 24px;
   border: 1px solid ${color.slate400};
   padding: 0 ${spacing[2]};
   gap: 4px;

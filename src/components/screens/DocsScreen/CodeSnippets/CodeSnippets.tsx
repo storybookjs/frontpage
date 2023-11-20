@@ -10,15 +10,16 @@ import {
 } from '../../../basics/CodeSnippets/BaseCodeSnippet/SnippetEyebrows';
 import useSiteMetadata from '../../../lib/useSiteMetadata';
 import { CodeLanguageSelector } from '../CodeLanguageSelector';
+import { PackageManagerSelector } from '../PackageManagerSelector';
 import { useIfContext } from '../If';
 import { Tabs } from './CodeSnippetsTabs';
 import {
+  SnippetObject,
   fetchDocsSnippets,
   getPackageManagerKeyFromPath,
   getSnippetType,
   isTerminalSnippetByPath,
 } from './fetch-snippets.utils';
-import { useDocsContext } from '../DocsContext';
 
 const COMMON = 'common';
 
@@ -53,24 +54,34 @@ function getPathsForLanguage(paths, forLanguage, { matchMDX = true } = {}) {
   });
 }
 
+function isOnlyPackageManagerSnippets(paths) {
+  return paths.every(isTerminalSnippetByPath);
+}
+
 type GetResolvedPaths = (
   paths: string[],
-  defaultRenderer: string,
-  currentRenderer: string,
-  currentCodeLanguage: string,
-  version: number,
-  latestVersion: number,
-  ifContextRenderer?: string[]
+  context: {
+    currentCodeLanguage: string;
+    currentPackageManager: string;
+    currentRenderer: string;
+    defaultRenderer: string;
+    ifContextRenderer?: string[];
+    latestVersion: number;
+    version: number;
+  }
 ) => [string[], React.ReactNode];
 
 export const getResolvedPaths: GetResolvedPaths = (
   paths,
-  defaultRenderer,
-  currentRenderer,
-  currentCodeLanguage,
-  version,
-  latestVersion,
-  ifContextRenderer = []
+  {
+    currentCodeLanguage,
+    currentPackageManager,
+    currentRenderer,
+    defaultRenderer,
+    ifContextRenderer = [],
+    latestVersion,
+    version,
+  }
 ) => {
   let message;
 
@@ -110,6 +121,12 @@ export const getResolvedPaths: GetResolvedPaths = (
   }
 
   if (isPackageManagerSnippet) {
+    if (isOnlyPackageManagerSnippets(pathsForRelevantRenderer)) {
+      pathsForRelevantRenderer = pathsForRelevantRenderer.filter(
+        (path) => getPackageManagerKeyFromPath(path) === currentPackageManager
+      );
+    }
+
     return [pathsForRelevantRenderer, message];
   }
 
@@ -174,18 +191,27 @@ export const getResolvedPaths: GetResolvedPaths = (
   return [resolvedPaths, message];
 };
 
+function getSelector(type, isTerminal): React.ReactNode {
+  if (type === 'packageManager') return <PackageManagerSelector />;
+
+  if (type === 'codeLanguage' && !isTerminal) return <CodeLanguageSelector />;
+
+  return undefined;
+}
+
 const Snippet = ({
   currentCodeLanguage,
   currentRenderer,
   defaultRenderer,
   id,
   message,
+  selectorType = 'codeLanguage',
   snippet: { content, isTerminal, syntax, title },
   withTabs = false,
 }) => (
   <BaseCodeSnippet
     id={id}
-    LanguageSelector={!isTerminal ? <CodeLanguageSelector /> : undefined}
+    LanguageSelector={getSelector(selectorType, isTerminal)}
     Eyebrow={
       typeof message === 'function'
         ? message({ currentCodeLanguage, currentRenderer, defaultRenderer })
@@ -198,18 +224,9 @@ const Snippet = ({
   />
 );
 
-const SnippetTabs = ({ defaultValue, snippets, snippetProps }) => {
-  const {
-    packageManager: [, setPackageManager],
-  } = useDocsContext();
-
-  function handleValueChange(value) {
-    const key = getPackageManagerKeyFromPath(value);
-    if (key) setPackageManager(key);
-  }
-
+const SnippetTabs = ({ snippets, snippetProps }) => {
   return (
-    <Tabs.Root defaultValue={defaultValue} onValueChange={handleValueChange}>
+    <Tabs.Root defaultValue={snippets[0].id}>
       <Tabs.List aria-label="Alternative files for snippet">
         {snippets.map(({ id, tabName }) => (
           <Tabs.Trigger key={id} value={id}>
@@ -239,24 +256,25 @@ export const CodeSnippets = ({
   usesCsf3,
   ...rest
 }: CodeSnippetProps) => {
-  const [snippets, setSnippets] = React.useState([]);
+  const [snippets, setSnippets] = React.useState<SnippetObject[]>([]);
 
   const { defaultRenderer, version, latestVersion } = useSiteMetadata();
   const ifContext = useIfContext();
 
   const [resolvedPaths, message] = React.useMemo(
     () =>
-      getResolvedPaths(
-        paths,
-        defaultRenderer,
-        currentRenderer,
+      getResolvedPaths(paths, {
         currentCodeLanguage,
-        version,
+        currentPackageManager,
+        currentRenderer,
+        defaultRenderer,
+        ifContextRenderer: ifContext.renderer,
         latestVersion,
-        ifContext.renderer
-      ),
+        version,
+      }),
     [
       currentCodeLanguage,
+      currentPackageManager,
       currentRenderer,
       defaultRenderer,
       ifContext.renderer,
@@ -277,7 +295,7 @@ export const CodeSnippets = ({
   React.useEffect(() => {
     async function getSnippets() {
       const fetched = await fetchDocsSnippets(resolvedPaths);
-      setSnippets(fetched.filter((snippet) => snippet != null));
+      setSnippets(fetched);
     }
 
     getSnippets();
@@ -293,18 +311,19 @@ export const CodeSnippets = ({
     message: appliedMessage,
   };
 
-  const isOnlyPackageManagerSnippets = resolvedPaths.every(isTerminalSnippetByPath);
-  const defaultTab = isOnlyPackageManagerSnippets
-    ? snippets.find((snippet) => snippet.type === currentPackageManager)?.id
-    : snippets[0].id;
-
   return (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
     <div onClick={() => logSnippetInteraction(currentRenderer, paths[0])} {...rest}>
       {snippets.length > 1 ? (
-        <SnippetTabs defaultValue={defaultTab} snippets={snippets} snippetProps={snippetProps} />
+        <SnippetTabs snippets={snippets} snippetProps={snippetProps} />
       ) : (
-        <Snippet snippet={snippets[0]} {...snippetProps} />
+        <Snippet
+          snippet={snippets[0]}
+          selectorType={
+            isOnlyPackageManagerSnippets(resolvedPaths) ? 'packageManager' : 'codeLanguage'
+          }
+          {...snippetProps}
+        />
       )}
     </div>
   );

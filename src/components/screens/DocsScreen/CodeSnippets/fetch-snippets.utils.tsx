@@ -79,7 +79,7 @@ export interface SnippetObject {
 export const fetchDocsSnippets = async (
   paths: string[]
 ): Promise<Array<SnippetObject | undefined>> => {
-  return await Promise.all(
+  const fetched = await Promise.all(
     paths.map(async (snippetPath: string) => {
       const renderer = getSnippetRenderer(snippetPath);
       const type = getSnippetType(snippetPath);
@@ -147,4 +147,6 @@ export const fetchDocsSnippets = async (
       };
     })
   );
+
+  return fetched.filter(Boolean) as SnippetObject[];
 };

@@ -294,7 +294,7 @@ it('Show package manager snippets, if available', () => {
     ],
     'angular',
     'ts',
-    'pnpm'
+    'npm'
   );
   expect(result).toMatchInlineSnapshot(`
     [
@@ -316,14 +316,12 @@ it('Fallback to common package manager snippets', () => {
     ],
     'react',
     'ts',
-    ''
+    'npm'
   );
   expect(result).toMatchInlineSnapshot(`
     [
       [
         "common/example.npm.js.mdx",
-        "common/example.yarn.js.mdx",
-        "common/example.pnpm.js.mdx",
       ],
       undefined,
     ]
