@@ -12,7 +12,13 @@ import useSiteMetadata from '../../../lib/useSiteMetadata';
 import { CodeLanguageSelector } from '../CodeLanguageSelector';
 import { useIfContext } from '../If';
 import { Tabs } from './CodeSnippetsTabs';
-import { fetchDocsSnippets, getSnippetType, isTerminalSnippetByPath } from './fetch-snippets.utils';
+import {
+  fetchDocsSnippets,
+  getPackageManagerKeyFromPath,
+  getSnippetType,
+  isTerminalSnippetByPath,
+} from './fetch-snippets.utils';
+import { useDocsContext } from '../DocsContext';
 
 const COMMON = 'common';
 
@@ -190,22 +196,33 @@ const Snippet = ({
   />
 );
 
-const SnippetTabs = ({ snippets, snippetProps }) => (
-  <Tabs.Root defaultValue={snippets[0].id}>
-    <Tabs.List aria-label="Alternative files for snippet">
-      {snippets.map(({ id, tabName }) => (
-        <Tabs.Trigger key={id} value={id}>
-          {tabName}
-        </Tabs.Trigger>
+const SnippetTabs = ({ defaultValue, snippets, snippetProps }) => {
+  const {
+    packageManager: [, setPackageManager],
+  } = useDocsContext();
+
+  function handleValueChange(value) {
+    const key = getPackageManagerKeyFromPath(value);
+    if (key) setPackageManager(key);
+  }
+
+  return (
+    <Tabs.Root defaultValue={defaultValue} onValueChange={handleValueChange}>
+      <Tabs.List aria-label="Alternative files for snippet">
+        {snippets.map(({ id, tabName }) => (
+          <Tabs.Trigger key={id} value={id}>
+            {tabName}
+          </Tabs.Trigger>
+        ))}
+      </Tabs.List>
+      {snippets.map(({ id }) => (
+        <Tabs.Content key={id} value={id}>
+          <Snippet {...snippetProps} snippet={snippets.find((snippet) => snippet.id === id)} />
+        </Tabs.Content>
       ))}
-    </Tabs.List>
-    {snippets.map(({ id }) => (
-      <Tabs.Content key={id} value={id}>
-        <Snippet {...snippetProps} snippet={snippets.find((snippet) => snippet.id === id)} />
-      </Tabs.Content>
-    ))}
-  </Tabs.Root>
-);
+    </Tabs.Root>
+  );
+};
 
 export const CodeSnippets = ({
   csf2Path,
@@ -270,11 +287,16 @@ export const CodeSnippets = ({
     message: appliedMessage,
   };
 
+  const isOnlyPackageManagerSnippets = resolvedPaths.every(isTerminalSnippetByPath);
+  const defaultTab = isOnlyPackageManagerSnippets
+    ? snippets.find((snippet) => snippet.type === currentPackageManager)?.id
+    : snippets[0].id;
+
   return (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
     <div onClick={() => logSnippetInteraction(currentRenderer, paths[0])} {...rest}>
       {snippets.length > 1 ? (
-        <SnippetTabs snippets={snippets} snippetProps={snippetProps} />
+        <SnippetTabs defaultValue={defaultTab} snippets={snippets} snippetProps={snippetProps} />
       ) : (
         <Snippet snippet={snippets[0]} {...snippetProps} />
       )}

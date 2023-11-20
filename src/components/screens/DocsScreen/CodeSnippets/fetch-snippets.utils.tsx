@@ -12,7 +12,7 @@ const PATH_TO_PACKAGE_MANAGER_MAP = {
 
 export const getPackageManagerKeyFromPath = (path: string) => {
   const [key] = Object.entries(PATH_TO_PACKAGE_MANAGER_MAP).find(([, fn]) => fn(path)) || [];
-  return key;
+  return key as keyof typeof PATH_TO_PACKAGE_MANAGER_MAP;
 };
 
 /**
@@ -21,7 +21,7 @@ export const getPackageManagerKeyFromPath = (path: string) => {
  */
 const getSnippetRenderer = (path: string) => path.split('/')[0];
 
-export const getSnippetType = (path: string) => {
+export const getSnippetType = (path: string): string => {
   const packageManagerType = getPackageManagerKeyFromPath(path);
 
   return packageManagerType || path.match(/\.((?:\w+-*)+)\.mdx$/)[1];
@@ -52,12 +52,16 @@ const nameMap = {
 };
 
 const prettifyName = (name) => {
-  if (nameMap[name]) return nameMap[name];
-  return startCase(name.replace(/-/g, ' '));
+  return nameMap[name] || name;
 };
 
 const getSnippetTabName = (path: string) => {
   const name = path.split('.')[1];
+  const renderer = path.split('/')[0];
+  // `2` -> `Vue 2`
+  if (renderer === 'vue' && name.match(/\d/)) {
+    return `Vue ${name}`;
+  }
   return prettifyName(name);
 };
 export interface SnippetObject {
