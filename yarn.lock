@@ -5058,10 +5058,10 @@
     core-js "^3.8.2"
     global "^4.4.0"
 
-"@storybook/components-marketing@^2.1.4":
-  version "2.1.4"
-  resolved "https://registry.yarnpkg.com/@storybook/components-marketing/-/components-marketing-2.1.4.tgz#5b79daf0f02400bcccb32bbd971e0f0a62fc779a"
-  integrity sha512-ZIIu4SeFX34a+/IKZN4G6S/JciSzG6IHqweX1F9B+/evdEqmsEyBKZ2KnlL28DDlgb9ffCTeCd24krftlmscSw==
+"@storybook/components-marketing@2.1.5--canary.71.0d954ff.0":
+  version "2.1.5--canary.71.0d954ff.0"
+  resolved "https://registry.npmjs.org/@storybook/components-marketing/-/components-marketing-2.1.5--canary.71.0d954ff.0.tgz#926d91ba7bdb0dcada9e29b301b5f333872708b4"
+  integrity sha512-w/I9gWglpHhP4zg2aAnzkEZ95nz1bahlCzv2lenkx1WAYKI+r1uyygY9VvqLe67b8l9reR42dWo8l6IdWCsZ9w==
   dependencies:
     "@docsearch/react" "^3.1.0"
     "@emotion/weak-memoize" "^0.2.5"
