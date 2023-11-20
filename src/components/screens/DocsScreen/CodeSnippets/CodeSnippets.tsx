@@ -180,16 +180,16 @@ const Snippet = ({
   defaultRenderer,
   id,
   message,
-  snippet: { content, syntax, title },
+  snippet: { content, isTerminal, syntax, title },
   withTabs = false,
 }) => (
   <BaseCodeSnippet
     id={id}
-    LanguageSelector={<CodeLanguageSelector />}
+    LanguageSelector={!isTerminal ? <CodeLanguageSelector /> : undefined}
     Eyebrow={
       typeof message === 'function'
         ? message({ currentCodeLanguage, currentRenderer, defaultRenderer })
-        : () => message
+        : message
     }
     snippet={content}
     syntax={syntax}
