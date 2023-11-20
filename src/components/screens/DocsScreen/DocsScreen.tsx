@@ -23,12 +23,13 @@ import { Callout } from '../../basics/Callout';
 import { InPageTOC } from '../../basics/InPageTOC';
 import { Pre } from '../../basics/Pre';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
+import { SyntaxHighlighterContextProvider } from '../../basics/CodeSnippets/SyntaxHighlighterContext';
 import {
   DOCS_BOTTOM_PADDING_WIDE,
   DOCS_TOP_PADDING_WIDE,
   GUTTER,
 } from '../../layout/DocsLayout/DocsLayout';
-import { CodeSnippets } from './CodeSnippets';
+import { CodeSnippets } from './CodeSnippets/CodeSnippets';
 import { useDocsContext } from './DocsContext';
 import { FeatureSnippets } from './FeatureSnippets';
 import { Feedback } from './Feedback';
@@ -237,13 +238,19 @@ function DocsScreen({ data, pageContext, location }) {
   const {
     codeLanguage: [codeLanguage],
     renderer: [renderer],
+    packageManager: [packageManager],
   } = useDocsContext();
 
   const CodeSnippetsWithState = useMemo(() => {
     return (props) => (
-      <CodeSnippets currentFramework={renderer} currentCodeLanguage={codeLanguage} {...props} />
+      <CodeSnippets
+        currentRenderer={renderer}
+        currentCodeLanguage={codeLanguage}
+        currentPackageManager={packageManager}
+        {...props}
+      />
     );
-  }, [renderer, codeLanguage]);
+  }, [renderer, codeLanguage, packageManager]);
   const FeatureSnippetsWithState = useMemo(() => {
     return (props) => <FeatureSnippets currentFramework={renderer} {...props} />;
   }, [renderer]);
@@ -363,22 +370,24 @@ function DocsScreen({ data, pageContext, location }) {
           </Header>
 
           <MDWrapper>
-            <MDXProvider
-              components={{
-                pre: Pre,
-                CodeSnippets: CodeSnippetsWithState,
-                FeatureSnippets: FeatureSnippetsWithState,
-                RendererSupportTable: RendererSupportTableWithState,
-                If: IfWithState,
-                // Maintained for older docs version content
-                IfRenderer: IfWithState,
-                YouTubeCallout,
-                a: LinksWithPrefix,
-                Callout,
-              }}
-            >
-              <MDXRenderer>{body}</MDXRenderer>
-            </MDXProvider>
+            <SyntaxHighlighterContextProvider>
+              <MDXProvider
+                components={{
+                  pre: Pre,
+                  CodeSnippets: CodeSnippetsWithState,
+                  FeatureSnippets: FeatureSnippetsWithState,
+                  RendererSupportTable: RendererSupportTableWithState,
+                  If: IfWithState,
+                  // Maintained for older docs version content
+                  IfRenderer: IfWithState,
+                  YouTubeCallout,
+                  a: LinksWithPrefix,
+                  Callout,
+                }}
+              >
+                <MDXRenderer>{body}</MDXRenderer>
+              </MDXProvider>
+            </SyntaxHighlighterContextProvider>
           </MDWrapper>
 
           {nextTocItem && (
