@@ -181,6 +181,7 @@ const Snippet = ({
   id,
   message,
   snippet: { content, syntax, title },
+  withTabs = false,
 }) => (
   <BaseCodeSnippet
     id={id}
@@ -193,6 +194,7 @@ const Snippet = ({
     snippet={content}
     syntax={syntax}
     title={title}
+    withTabs={withTabs}
   />
 );
 
@@ -217,7 +219,11 @@ const SnippetTabs = ({ defaultValue, snippets, snippetProps }) => {
       </Tabs.List>
       {snippets.map(({ id }) => (
         <Tabs.Content key={id} value={id}>
-          <Snippet {...snippetProps} snippet={snippets.find((snippet) => snippet.id === id)} />
+          <Snippet
+            {...snippetProps}
+            snippet={snippets.find((snippet) => snippet.id === id)}
+            withTabs
+          />
         </Tabs.Content>
       ))}
     </Tabs.Root>

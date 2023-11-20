@@ -6,11 +6,21 @@ import { useSyntaxHighlighter, SupportedLanguages } from '../SyntaxHighlighterCo
 import { SnippetTypeIcon } from './SnippetTypeIcon';
 import { SnippetCopyButton } from './SnippetCopyButton';
 
-const CodeSnippetContainer = styled.div`
+const CodeSnippetContainer = styled('div', {
+  shouldForwardProp: (prop) => !['withTabs'].includes(prop),
+})<{ withTabs?: boolean }>`
   border-radius: 5px;
   border: 1px solid ${color.slate300};
   padding: 0;
   margin-bottom: ${spacing['6']};
+
+  ${({ withTabs }) =>
+    withTabs &&
+    css`
+      border-top: 0;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    `}
 `;
 
 const CodeSnippetHeader = styled.div`
@@ -92,6 +102,7 @@ export interface CodeSnippetProps {
   snippet: string;
   syntax: SupportedLanguages;
   title: string;
+  withTabs?: boolean;
 }
 
 export const BaseCodeSnippet = ({
@@ -102,12 +113,13 @@ export const BaseCodeSnippet = ({
   snippet,
   syntax,
   title,
+  withTabs,
   ...rest
 }: CodeSnippetProps) => {
   const { isLoadingHighlighter, generateSnippetHTML } = useSyntaxHighlighter();
 
   return (
-    <CodeSnippetContainer {...rest}>
+    <CodeSnippetContainer withTabs={withTabs} {...rest}>
       {hideHeader ? null : (
         <CodeSnippetHeader>
           <CodeSnippetHeaderLeft>

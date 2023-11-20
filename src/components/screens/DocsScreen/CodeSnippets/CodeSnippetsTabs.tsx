@@ -2,7 +2,7 @@
 import * as React from 'react';
 import * as RadixTabs from '@radix-ui/react-tabs';
 import { styled } from '@storybook/theming';
-import { color, spacing, typography } from '@chromaui/tetra';
+import { color, minSm, spacing, typography } from '@chromaui/tetra';
 
 /**
  * Note: The styles here are directly copied from RendererSelector
@@ -14,7 +14,18 @@ const Root = RadixTabs.Root;
 const List = styled(RadixTabs.List)`
   display: flex;
   gap: ${spacing[2]};
-  margin-bottom: ${spacing[2]};
+
+  border: 1px solid ${color.slate300};
+  border-bottom: 0;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background: ${color.slate50};
+  padding: ${spacing[2]} ${spacing['2']};
+
+  ${minSm} {
+    padding-left: ${spacing['3']};
+    padding-right: ${spacing['3']};
+  }
 `;
 
 const Trigger = styled(RadixTabs.Trigger)`
@@ -32,15 +43,6 @@ const Trigger = styled(RadixTabs.Trigger)`
   color: ${color.slate800};
   transition: all 0.14s ease;
 
-  &[data-state='open'] {
-    border: 1px solid ${color.blue500};
-    color: ${color.blue500};
-  }
-
-  &[data-state='open'] > .CaretDown {
-    transform: rotate(-180deg) translateY(0px);
-  }
-
   &:hover {
     border: 1px solid ${color.blue500};
     color: ${color.blue500};
@@ -52,8 +54,12 @@ const Trigger = styled(RadixTabs.Trigger)`
   }
 
   &[data-state='active'] {
-    color: ${color.blue500};
-    border: 1px solid ${color.blue500};
+    &,
+    &:hover {
+      background: ${color.slate600};
+      border: 1px solid ${color.slate600};
+      color: ${color.white};
+    }
   }
 `;
 
