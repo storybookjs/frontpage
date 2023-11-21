@@ -94,6 +94,11 @@ const CodeSnippetContent = styled.div<{ hideHeader?: boolean }>`
     `}
 `;
 
+const Loading = styled.div`
+  color: ${color.slate500};
+  padding: ${spacing['5']} !important;
+`;
+
 export interface CodeSnippetProps {
   Eyebrow?: React.ReactNode;
   hideHeader?: boolean;
@@ -136,7 +141,9 @@ export const BaseCodeSnippet = ({
       )}
       {Eyebrow}
       {isLoadingHighlighter ? (
-        <CodeSnippetContent hideHeader={hideHeader}>Loading...</CodeSnippetContent>
+        <CodeSnippetContent hideHeader={hideHeader}>
+          <Loading>Loading...</Loading>
+        </CodeSnippetContent>
       ) : (
         <CodeSnippetContent
           dangerouslySetInnerHTML={{ __html: generateSnippetHTML(snippet, syntax) }}

@@ -1,11 +1,12 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@storybook/theming';
-import { Highlight, styles } from '@storybook/design-system';
+import { styles } from '@storybook/design-system';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { Pre } from '../../basics/Pre';
 
+import { SyntaxHighlighterContextProvider } from '../../basics/CodeSnippets/SyntaxHighlighterContext';
 import ConfirmedMailingList from '../../layout/ConfirmedMailingList';
 
 import { mdFormatting } from '../../../styles/formatting';
@@ -51,11 +52,11 @@ const StyledConfirmedMailingList = styled(ConfirmedMailingList)`
 const Release = forwardRef(({ title, body, ...props }, ref) => (
   <Wrapper {...props} ref={ref}>
     <Title>{title}</Title>
-    <MDXProvider components={{ pre: Pre }}>
-      <Highlight withHTMLChildren={false}>
+    <SyntaxHighlighterContextProvider>
+      <MDXProvider components={{ pre: Pre }}>
         <MDXRenderer>{body}</MDXRenderer>
-      </Highlight>
-    </MDXProvider>
+      </MDXProvider>
+    </SyntaxHighlighterContextProvider>
     <EmailWrapper className="email">
       <Heading>Join the mailing list</Heading>
       <Message>Get news, free tutorials, and Storybook tips emailed to you.</Message>
