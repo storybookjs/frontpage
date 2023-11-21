@@ -96,7 +96,7 @@
   "scripts": {
     "extract-monorepo-docs": "./scripts/extract-monorepo-docs.sh",
     "append-package-tags-in-snippets": "node ./scripts/append-package-tags-in-snippets.js",
-    "prebuild": "yarn extract-monorepo-docs && yarn append-package-tags-in-snippets",
+    "prebuild": "yarn append-package-tags-in-snippets",
     "build": "gatsby build",
     "serve": "gatsby serve --prefix-paths",
     "develop": "gatsby develop -H 0.0.0.0",

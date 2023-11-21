@@ -1,0 +1,15 @@
+```js
+// Button.stories.js|jsx
+
+import { action } from '@storybook/addon-actions';
+
+import { Button } from './Button';
+
+export default {
+  component: Button,
+};
+
+export const Text = {
+  render: ({ label, onClick }) => <Button label={label} onClick={onClick} />,
+};
+```

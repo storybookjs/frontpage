@@ -1,0 +1,19 @@
+```js
+// Example.stories.js|jsx
+
+import { Example } from './Example';
+
+export default {
+  component: Example,
+  argTypes: {
+    value: {
+      control: {
+        type: 'number',
+        min: 0,
+        max: 100,
+        step: 10,
+      },
+    },
+  },
+};
+```

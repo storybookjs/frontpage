@@ -1,0 +1,14 @@
+```js
+// .storybook/preview.js
+
+export default {
+  parameters: {
+    controls: {
+      matchers: {
+        color: /(background|color)$/i,
+        date: /Date$/,
+      },
+    },
+  },
+};
+```
