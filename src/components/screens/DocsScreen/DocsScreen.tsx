@@ -40,7 +40,7 @@ import { YouTubeCallout } from './YouTubeCallout';
 
 const { color: dsColor, spacing: dsSpacing, typography } = styles;
 
-const MIN_HEADINGS_COUNT_FOR_TOC = 3;
+const MIN_HEADINGS_COUNT_FOR_TOC = 1;
 
 /**
  * Note: This breakpoint should be revisited.
