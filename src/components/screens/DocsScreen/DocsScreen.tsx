@@ -328,7 +328,11 @@ function DocsScreen({ data, pageContext, location }) {
 
   return (
     <>
-      <SocialGraph url={`${homepageUrl}${fullPath}/`} title={title} desc={description} />
+      <SocialGraph
+        url={`${homepageUrl}${fullPath}/`}
+        title={`${title} • Storybook docs`}
+        desc={description}
+      />
       <Root hasRightRail={hasRightRail}>
         {hasRightRail && (
           <RightRail>
