@@ -4,6 +4,10 @@ function removeMdExtension(path) {
   return path.replace(/\.md$/, '');
 }
 
+function removeTrailingIndex(path) {
+  return path.includes('#') ? path.replace(/\/index(?:\.md)?/, '/') : path.replace(/\/index$/, '');
+}
+
 /**
  * Convert relative links in docs to relative but from the /docs root
  *
@@ -25,7 +29,7 @@ function relativeToRootLinks(href, path = '', isIndexPage) {
     // rewrite ../../../release-#-#/docs/parent/some-path style urls to /docs/version/parent/some-path
     const overrideVersion = versionedUrl[1].split('-').join('.');
     url = buildPathWithVersion(href.replace(/.*\/docs\/(.*)/, '/docs/$1'), overrideVersion);
-    return removeMdExtension(url);
+    return removeTrailingIndex(removeMdExtension(url));
   }
 
   if (isIndexPage && relativeUrlRegex.test(url)) {
@@ -41,13 +45,13 @@ function relativeToRootLinks(href, path = '', isIndexPage) {
     const slugParts = path.split('/').filter((p) => !!p);
     slugParts.splice(-1, 1, url.replace(relativeUrlRegex, '$2'));
     url = `/${slugParts.join('/')}`;
-    return removeMdExtension(url);
+    return removeTrailingIndex(removeMdExtension(url));
   }
 
   if (multiLevelRelativeUrlRegex.test(url)) {
     // rewrite ../parent/some-path style urls to /docs/version?/parent/some-path
     url = buildPathWithVersion(url.replace(multiLevelRelativeUrlRegex, '/docs/$2'));
-    return removeMdExtension(url);
+    return removeTrailingIndex(removeMdExtension(url));
   }
 
   return url;

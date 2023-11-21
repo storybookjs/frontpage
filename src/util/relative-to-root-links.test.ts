@@ -23,6 +23,16 @@ it('transforms specific-version links', () => {
   expect(rootUrl).toEqual('/docs/6.5/api/csf');
 });
 
+it('removes trailing index pages', () => {
+  const rootUrl = relativeToRootLinks('../writing-stories/index.md', '/docs/api/csf');
+  expect(rootUrl).toEqual('/docs/writing-stories');
+});
+
+it('retains URL fragment on trailing index pages', () => {
+  const rootUrl = relativeToRootLinks('../writing-stories/index.md#foo', '/docs/api/csf');
+  expect(rootUrl).toEqual('/docs/writing-stories/#foo');
+});
+
 it('does not transform non-versioned upper-level links', () => {
   const rootUrl = relativeToRootLinks('../../foo/bar/README.md', '/docs/writing-stories/args');
   expect(rootUrl).toEqual('../../foo/bar/README.md');
