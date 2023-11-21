@@ -13,7 +13,7 @@ export const mdFormatting = css`
   font-size: ${typography.size.s3}px;
 
   *:target {
-    scroll-margin-top: calc(${HEADER_HEIGHT_WITH_EYEBROW}px + 8px);
+    scroll-margin-top: calc(${HEADER_HEIGHT_WITH_EYEBROW} + 8px);
   }
 
   h1,
