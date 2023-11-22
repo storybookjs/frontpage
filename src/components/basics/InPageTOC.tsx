@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { styled } from '@storybook/theming';
-import { color, spacing, Text } from '@chromaui/tetra';
+import { color, fontWeight, spacing, Text } from '@chromaui/tetra';
 
-const Heading = styled((props) => <Text as="h2" variant="heading16" {...props} />)`
+const Heading = styled((props) => <Text as="h2" variant="body14" {...props} />)`
+  font-weight: ${fontWeight.bold};
   margin-bottom: ${spacing[3]};
 `;
 
@@ -21,12 +22,13 @@ const TOCItem = styled((props) => <Text as="li" variant="body14" {...props} />)`
   margin-bottom: ${spacing[3]};
 
   & > a {
-    color: inherit;
+    color: ${color.slate600};
+    display: block;
     text-decoration: none;
+    transition: color 0.1s ease-in-out;
 
     &:hover {
       color: ${color.blue500};
-      text-decoration: underline;
     }
   }
 `;

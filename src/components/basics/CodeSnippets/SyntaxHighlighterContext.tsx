@@ -4,16 +4,20 @@ import { getHighlighter, Lang, Highlighter } from 'shiki';
 import firefoxTheme from './themes/firefox-theme-vscode';
 
 const SYNTAX_LANGUAGES = [
-  'js',
-  'jsx',
-  'json',
-  'ts',
-  'tsx',
-  'vue',
-  'svelte',
-  'html',
+  'bash',
   'css',
+  'html',
+  'javascript',
+  'js',
+  'json',
+  'jsx',
+  'md',
+  'mdx',
   'sh',
+  'shell',
+  'svelte',
+  'ts',
+  'vue',
 ] as const;
 export type SupportedLanguages = typeof SYNTAX_LANGUAGES[number];
 

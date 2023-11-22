@@ -110,6 +110,7 @@ const NavItem = styled('li', {
   shouldForwardProp: (prop) => !['isCurrent', 'level'].includes(prop),
 })<{ isCurrent?: boolean; level: 1 | 2 | 3 }>`
   display: flex;
+  justify-content: stretch;
   height: 32px;
   margin-top: ${({ level }) => (level === 1 ? '24px' : '0px')};
   border-left: ${({ level }) => (level === 3 ? `1px solid ${color.slate300}` : 'none')};
@@ -120,9 +121,10 @@ const NavItem = styled('li', {
     isCurrent || level === 1 ? fontWeight.bold : fontWeight.medium};
   color: ${({ isCurrent, level }) =>
     // eslint-disable-next-line no-nested-ternary
-    isCurrent ? color.blue500 : level === 1 ? color.slate800 : color.slate500};
+    isCurrent ? color.blue500 : level === 1 ? color.slate800 : color.slate600};
 
   a {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -132,7 +134,7 @@ const NavItem = styled('li', {
     color: inherit;
 
     &:hover {
-      color: ${color.slate800};
+      color: ${color.blue500};
     }
   }
 `;
@@ -154,11 +156,12 @@ const NavAccordionTrigger = styled(Accordion.Trigger)`
   }
 
   &:hover {
-    color: ${color.slate800};
+    color: ${color.blue500};
   }
 
   &[data-state='open'] {
     svg {
+      color: inherit;
       transform: rotate(90deg);
     }
   }
