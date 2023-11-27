@@ -23,6 +23,9 @@ import {
 
 const COMMON = 'common';
 
+// Only show CSF2 -> 3 message for versions prior to this one
+const CSF2_MESSAGE_VERSION_THRESHOLD = 7.6;
+
 export interface CodeSnippetProps {
   csf2Path?: string;
   currentCodeLanguage: string;
@@ -284,7 +287,11 @@ export const CodeSnippets = ({
     ]
   );
 
-  const appliedMessage = message || (usesCsf3 ? <CSF2Example csf2Path={csf2Path} /> : null);
+  const appliedMessage =
+    message ||
+    (usesCsf3 && version < CSF2_MESSAGE_VERSION_THRESHOLD ? (
+      <CSF2Example csf2Path={csf2Path} />
+    ) : null);
 
   /**
    * For a path like `web-components/button-story-click-handler-args.js.mdx`,
