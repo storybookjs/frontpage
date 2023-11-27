@@ -59,7 +59,7 @@
 /docs/configurations/options-parameter/     /docs/configure/features-and-behavior/                                                              301
 /docs/configurations/default-config/        /docs/configure/overview/                                                                           301
 /docs/configurations/custom-webpack-config/ /docs/builders/webpack/                                                                             301
-/docs/configurations/custom-babel-config/   /docs/configure/babel/                                                                              301
+/docs/configurations/custom-babel-config/   /docs/configure/compilers/                                                                              301
 /docs/configurations/typescript-config/     /docs/configure/typescript/                                                                         301
 /docs/configurations/add-custom-head-tags/  /docs/configure/story-rendering#adding-to-head                                                      301
 /docs/configurations/add-custom-body/       /docs/configure/story-rendering#adding-to-body                                                      301
