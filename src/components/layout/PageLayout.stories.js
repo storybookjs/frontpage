@@ -2,7 +2,8 @@ import React from 'react';
 
 import { PurePageLayout } from './PageLayout';
 
-import { pageContext as docsPageContext } from './DocsLayout.stories';
+import { pageContext as docsPageContext } from './DocsLayout/DocsLayout.stories';
+import { tocV2 } from './DocsLayout/mockDocsToc';
 
 export default {
   title: 'Layout/PageLayout',
@@ -33,10 +34,20 @@ Base.parameters = {
 export const DocsLayout = () => (
   <PurePageLayout
     dxData={dxData}
-    pageContext={{ ...docsPageContext, layout: 'docs' }}
+    pageContext={{ ...docsPageContext, layout: 'docs', docsToc: tocV2 }}
     location={{ pathname: '/docs/' }}
   >
     <div style={{ height: 600, border: '1px solid #ccc' }}>children</div>
+  </PurePageLayout>
+);
+
+export const DocsLayoutLong = () => (
+  <PurePageLayout
+    dxData={dxData}
+    pageContext={{ ...docsPageContext, layout: 'docs' }}
+    location={{ pathname: '/docs/' }}
+  >
+    <div style={{ height: 2000, border: '1px solid #ccc' }}>children</div>
   </PurePageLayout>
 );
 

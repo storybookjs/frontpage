@@ -1,39 +1,39 @@
-import React from 'react';
-import { styled } from '@storybook/theming';
+import * as React from 'react';
 
 import { Pre } from './Pre';
-import { CODE_SNIPPET_CLASSNAME } from '../../constants/code-snippets';
+import { SyntaxHighlighterContextProvider } from './CodeSnippets/SyntaxHighlighterContext';
+import { exampleTSWithNameComment } from './CodeSnippets/utils/fixtures/string-snippets/example-stories';
+import exampleTerminalSnippet from './CodeSnippets/utils/fixtures/string-snippets/example-terminal';
 
-const Wrapper = styled.div`
-  padding: 10px;
-`;
-
-export default {
+const meta = {
   title: 'Basics/Pre',
   component: Pre,
-  decorators: [(storyFn) => <Wrapper>{storyFn()}</Wrapper>],
+  decorators: [
+    (Story) => <div style={{ margin: '2rem' }}>{Story()}</div>,
+    (Story) => <SyntaxHighlighterContextProvider>{Story()}</SyntaxHighlighterContextProvider>,
+  ],
 };
 
-const jsCode = `// Highlight JavaScript:
-import React from 'react'
+export default meta;
 
-const MyComponent = () => (
-  &#x3C;div>My component renders all the things&#x3C;/div>
-)
+export const Basic = {
+  args: {
+    children: <code className="language-ts">{exampleTSWithNameComment}</code>,
+  },
+};
 
-export default MyComponent
-`;
+export const TerminalSnippet = {
+  args: {
+    children: <code className="language-shell">{exampleTerminalSnippet}</code>,
+  },
+};
 
-export const Base = () => (
-  <Pre>
-    <code className="language-js">{jsCode}</code>
-  </Pre>
-);
-
-export const Nested = () => (
-  <div className={CODE_SNIPPET_CLASSNAME}>
-    <Pre>
-      <code className="language-js">{jsCode}</code>
-    </Pre>
-  </div>
-);
+export const NoHeader = {
+  args: {
+    children: (
+      <code>
+        {'Shaun Evening was here!\n\nThis should render like a Pre without syntax or header.'}
+      </code>
+    ),
+  },
+};

@@ -1,6 +1,6 @@
 const {
-  coreFrameworks,
-  communityFrameworks,
+  coreFrameworks: coreRenderers,
+  communityFrameworks: communityRenderers,
   featureGroups,
 } = require('./src/content/docs/frameworks');
 
@@ -25,8 +25,13 @@ const siteMetadata = {
     appId: '6L6UWBTLCK',
     indexName: 'storybook-js',
   },
-  coreFrameworks,
-  communityFrameworks,
+  allRenderers: [...coreRenderers, ...communityRenderers],
+  coreRenderers,
+  communityRenderers,
+  defaultRenderer: 'react',
+  // These "framework" properties are used by other SB sites, so we need to keep them here for now
+  coreFrameworks: coreRenderers,
+  communityFrameworks: communityRenderers,
   defaultFramework: 'react',
   featureGroups,
   urls: {

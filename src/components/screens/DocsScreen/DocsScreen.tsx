@@ -1,44 +1,152 @@
 import React, { useMemo } from 'react';
-import { styled } from '@storybook/theming';
+import { graphql } from 'gatsby';
+import { styled, css } from '@storybook/theming';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { color, spacing } from '@chromaui/tetra';
+import { Button, Link, ShadowBoxCTA, Subheading, styles } from '@storybook/design-system';
+import * as ScrollArea from '@radix-ui/react-scroll-area';
+
 import {
-  Button,
-  Highlight,
-  Link,
-  ShadowBoxCTA,
-  Subheading,
-  styles,
-} from '@storybook/design-system';
-import { graphql } from 'gatsby';
-import { CodeSnippets } from './CodeSnippets';
-import { frameworkSupportsFeature, FrameworkSupportTable } from './FrameworkSupportTable';
-import { SocialGraph } from '../../basics';
-import { Callout } from '../../basics/Callout';
-import { Pre } from '../../basics/Pre';
-import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
+  HEADER_HEIGHT_WITH_EYEBROW,
+  SCROLL_CHANNEL_WIDTH,
+  SCROLL_THUMB_WIDTH,
+} from '../../../constants/style';
+import { useMediaQuery } from '../../lib/useMediaQuery';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import { mdFormatting } from '../../../styles/formatting';
-import buildPathWithFramework from '../../../util/build-path-with-framework';
+import stylizeRenderer from '../../../util/stylize-renderer';
+import buildPathWithVersion from '../../../util/build-path-with-version';
 import relativeToRootLinks from '../../../util/relative-to-root-links';
-import stylizeFramework from '../../../util/stylize-framework';
+import { SocialGraph } from '../../basics';
+import { Callout } from '../../basics/Callout';
+import { InPageTOC } from '../../basics/InPageTOC';
+import { Pre } from '../../basics/Pre';
+import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
+import { SyntaxHighlighterContextProvider } from '../../basics/CodeSnippets/SyntaxHighlighterContext';
+import {
+  DOCS_BOTTOM_PADDING_WIDE,
+  DOCS_TOP_PADDING_WIDE,
+  GUTTER,
+} from '../../layout/DocsLayout/DocsLayout';
+import { CodeSnippets } from './CodeSnippets/CodeSnippets';
 import { useDocsContext } from './DocsContext';
 import { FeatureSnippets } from './FeatureSnippets';
 import { Feedback } from './Feedback';
-import { IfRenderer } from './IfRenderer';
+import { If } from './If';
+import { RendererSelector } from './RendererSelector';
+import { rendererSupportsFeature, RendererSupportTable } from './RendererSupportTable';
 import { YouTubeCallout } from './YouTubeCallout';
 
-const { color, spacing, typography } = styles;
+const { color: dsColor, spacing: dsSpacing, typography } = styles;
 
-const Title = styled.h1``;
+const MIN_HEADINGS_COUNT_FOR_TOC = 1;
+
+/**
+ * Note: This breakpoint should be revisited.
+ * - It provides a minimum width of 600px for the content area.
+ * - The rest of the SB properties (and the prior design of docs) use a 2-col width. To maintain a
+ *   legible line length, the left/right margins of the page layout (codified in Nav from
+ *   `components-marketing` and Container from `tetra`) increase at 1200px. But that doesn't leave
+ *   much available width for a 3-column layout, resulting in this rather wide breakpoint.
+ * - To reduce this breakpoint (making the InPageTOC visible for more users), we'd need to either:
+ *   a. Change the page layout for _just_ the docs, resulting in a different layout from the other
+ *      SB properties
+ *   b. Change the page layout for all SB properties, resulting in longer line lengths or necessary
+ *      layout adjustments in some places
+ */
+export const IS_2_COL_BREAKPOINT = 1510;
+
+const RIGHT_RAIL_WIDTH = '220px';
+
+const Root = styled('div', {
+  shouldForwardProp: (prop) => prop !== 'hasRightRail',
+})<{ hasRightRail: boolean }>`
+  ${({ hasRightRail }) =>
+    hasRightRail &&
+    css`
+      display: flex;
+      flex-direction: row-reverse;
+      gap: ${GUTTER};
+    `}
+`;
+
+const Header = styled.div`
+  margin-bottom: ${spacing[8]};
+`;
+
+const RightRail = styled.div`
+  flex: 0 0 ${RIGHT_RAIL_WIDTH};
+  position: relative;
+  top: -${DOCS_TOP_PADDING_WIDE};
+`;
+
+const RightRailSticky = styled.div`
+  position: sticky;
+  top: ${HEADER_HEIGHT_WITH_EYEBROW};
+`;
+
+const RightRailRoot = styled(ScrollArea.Root)`
+  position: relative;
+  width: ${RIGHT_RAIL_WIDTH};
+  height: calc(100vh - ${HEADER_HEIGHT_WITH_EYEBROW});
+`;
+
+const RightRailViewport = styled(ScrollArea.Viewport)`
+  width: 100%;
+  height: 100%;
+  padding-top: ${DOCS_TOP_PADDING_WIDE};
+  padding-bottom: ${DOCS_BOTTOM_PADDING_WIDE};
+  padding-right: ${SCROLL_CHANNEL_WIDTH};
+`;
+
+const RightRailScrollbar = styled(ScrollArea.Scrollbar)`
+  display: flex;
+  width: ${SCROLL_THUMB_WIDTH};
+  /* ensures no selection */
+  user-select: none;
+  /* disable browser handling of all panning and zooming gestures on touch devices */
+  touch-action: none;
+  padding-top: ${DOCS_TOP_PADDING_WIDE};
+  padding-bottom: ${DOCS_BOTTOM_PADDING_WIDE};
+`;
+
+const RightRailThumb = styled(ScrollArea.Thumb)`
+  flex: 1;
+  width: ${SCROLL_THUMB_WIDTH};
+  background: ${color.slate300};
+  border-radius: 20px;
+  position: relative;
+  transition: background 0.2s ease-in-out;
+
+  &:hover {
+    background: ${color.slate500};
+  }
+`;
+
+const Content = styled.div`
+  flex: 1 1 auto;
+  min-width: 0;
+`;
 
 const MDWrapper = styled.main`
   ${mdFormatting}
-  flex: 1;
+`;
+
+const Title = styled.h1`
+  font-size: ${typography.size.l1}px;
+  font-weight: ${typography.weight.bold};
+
+  line-height: 36px;
+  margin-bottom: 1.5rem;
+
+  & + * {
+    margin-top: 0 !important;
+  }
 `;
 
 const NextSubheading = styled(Subheading)`
-  color: ${color.mediumdark};
+  color: ${dsColor.mediumdark};
   font-size: ${typography.size.s2}px;
   display: block;
   margin-bottom: 1rem;
@@ -55,7 +163,7 @@ const GithubLinkItem = styled(Link)`
 
 const UnsupportedBanner = styled.div`
   margin: 26px 0;
-  border-radius: ${spacing.borderRadius.small}px;
+  border-radius: ${dsSpacing.borderRadius.small}px;
   background-color: #fff5cf;
   padding: 20px;
 `;
@@ -104,44 +212,62 @@ function DocsScreen({ data, pageContext, location }) {
   const {
     currentPage: {
       body,
-      frontmatter: { title },
+      frontmatter: { hideRendererSelector, title },
+      tableOfContents,
     },
   } = data;
+  const pageTocItems = tableOfContents?.items || [];
+
+  const hasHeadings =
+    pageTocItems.flatMap((item) => (item.items ? [item, ...item.items] : item)).length >
+    MIN_HEADINGS_COUNT_FOR_TOC;
+  const [is2Col] = useMediaQuery(`(min-width: ${IS_2_COL_BREAKPOINT}px)`);
+  const hasRightRail = is2Col && hasHeadings;
+
   const {
-    coreFrameworks,
-    communityFrameworks,
+    allRenderers,
+    coreRenderers,
+    communityRenderers,
     description,
     featureGroups,
     urls: { homepageUrl },
     versionString,
   } = useSiteMetadata();
-  const { framework, docsToc, fullPath, slug, tocItem, nextTocItem, isInstallPage } = pageContext;
+  const { docsToc, fullPath, slug, tocItem, nextTocItem, isInstallPage } = pageContext;
 
   const {
     codeLanguage: [codeLanguage],
+    renderer: [renderer],
+    packageManager: [packageManager],
   } = useDocsContext();
 
-  const CodeSnippetsWithCurrentFrameworkAndCodeLanguage = useMemo(() => {
+  const CodeSnippetsWithState = useMemo(() => {
     return (props) => (
-      <CodeSnippets currentFramework={framework} currentCodeLanguage={codeLanguage} {...props} />
+      <CodeSnippets
+        currentRenderer={renderer}
+        currentCodeLanguage={codeLanguage}
+        currentPackageManager={packageManager}
+        {...props}
+      />
     );
-  }, [framework, codeLanguage]);
-  const FeatureSnippetsWithCurrentFramework = useMemo(() => {
-    return (props) => <FeatureSnippets currentFramework={framework} {...props} />;
-  }, [framework]);
-  const FrameworkSupportTableWithFeaturesAndCurrentFramework = useMemo(() => {
+  }, [renderer, codeLanguage, packageManager]);
+  const FeatureSnippetsWithState = useMemo(() => {
+    return (props) => <FeatureSnippets currentFramework={renderer} {...props} />;
+  }, [renderer]);
+  const RendererSupportTableWithState = useMemo(() => {
     return ({ core }) => (
-      <FrameworkSupportTable
-        frameworks={core ? coreFrameworks : communityFrameworks}
-        currentFramework={framework}
+      <RendererSupportTable
+        renderers={core ? coreRenderers : communityRenderers}
+        currentRenderer={renderer}
         featureGroups={featureGroups}
       />
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [framework]);
+  }, [renderer]);
   const LinksWithPrefix = useMemo(() => {
+    const isIndexPage = tocItem.type === 'heading' && !tocItem.redirectPath;
     return ({ children, href, ...props }) => {
-      const url = relativeToRootLinks(href, framework, location.pathname);
+      const url = relativeToRootLinks(href, location.pathname, isIndexPage);
       return (
         <a href={url} {...props}>
           {children}
@@ -149,14 +275,15 @@ function DocsScreen({ data, pageContext, location }) {
       );
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [framework]);
-  const IfRendererWithCurrentFramework = useMemo(() => {
-    return (props) => <IfRenderer currentRenderer={framework} {...props} />;
-  }, [framework]);
+  }, [renderer]);
+  const IfWithState = useMemo(() => {
+    return (props) => <If allRenderers={allRenderers} currentRenderer={renderer} {...props} />;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [renderer]);
 
   const features = featureGroups.flatMap((group) => group.features);
   const feature = features.find((fs) => `/docs${fs.path}/` === slug);
-  const unsupported = feature && !frameworkSupportsFeature(framework, feature);
+  const unsupported = feature && !rendererSupportsFeature(renderer, feature);
 
   let featureSupportItem;
   const findFeatureSupportTocItem = (tocItems) =>
@@ -201,78 +328,112 @@ function DocsScreen({ data, pageContext, location }) {
 
   return (
     <>
-      <SocialGraph url={`${homepageUrl}${fullPath}/`} title={title} desc={description} />
-
-      <MDWrapper>
-        <Title>{isInstallPage ? `${title} for ${stylizeFramework(framework)}` : title}</Title>
-        {unsupported && (
-          <UnsupportedBanner>
-            This feature is not supported in {stylizeFramework(framework)} yet. Help the open source
-            community by contributing a PR.
-            {featureSupportItem && (
-              <>
-                {' '}
-                <Link LinkWrapper={GatsbyLinkWrapper} href={featureSupportItem.path} withArrow>
-                  View feature coverage by framework
-                </Link>
-              </>
+      <SocialGraph
+        url={`${homepageUrl}${fullPath}/`}
+        title={`${title} • Storybook docs`}
+        desc={description}
+      />
+      <Root hasRightRail={hasRightRail}>
+        {hasRightRail && (
+          <RightRail>
+            <RightRailSticky>
+              <RightRailRoot>
+                <RightRailViewport>
+                  <InPageTOC items={pageTocItems} />
+                </RightRailViewport>
+                <RightRailScrollbar orientation="vertical">
+                  <RightRailThumb />
+                </RightRailScrollbar>
+              </RightRailRoot>
+            </RightRailSticky>
+          </RightRail>
+        )}
+        <Content>
+          <Header>
+            <Title>{isInstallPage ? `${title} for ${stylizeRenderer(renderer)}` : title}</Title>
+            {!hideRendererSelector && (
+              <RendererSelector
+                coreRenderers={coreRenderers}
+                communityRenderers={communityRenderers}
+              />
             )}
-          </UnsupportedBanner>
-        )}
-        <MDXProvider
-          components={{
-            pre: Pre,
-            CodeSnippets: CodeSnippetsWithCurrentFrameworkAndCodeLanguage,
-            FeatureSnippets: FeatureSnippetsWithCurrentFramework,
-            FrameworkSupportTable: FrameworkSupportTableWithFeaturesAndCurrentFramework,
-            IfRenderer: IfRendererWithCurrentFramework,
-            YouTubeCallout,
-            a: LinksWithPrefix,
-            Callout,
-          }}
-        >
-          <MDXRenderer>{body}</MDXRenderer>
-        </MDXProvider>
-      </MDWrapper>
+            {unsupported && (
+              <UnsupportedBanner>
+                This feature is not supported in {stylizeRenderer(renderer)} yet. Help the open
+                source community by contributing a PR.
+                {featureSupportItem && (
+                  <>
+                    {' '}
+                    <Link LinkWrapper={GatsbyLinkWrapper} href={featureSupportItem.path} withArrow>
+                      View feature coverage by renderer
+                    </Link>
+                  </>
+                )}
+              </UnsupportedBanner>
+            )}
+          </Header>
 
-      {nextTocItem && (
-        <NextNavigation>
-          <NextSubheading>Next</NextSubheading>
-          <ShadowBoxCTA
-            action={
-              <Button
-                appearance="secondary"
-                href={buildPathWithFramework(nextTocItem.path, framework)}
-                ButtonWrapper={GatsbyLinkWrapper}
+          <MDWrapper>
+            <SyntaxHighlighterContextProvider>
+              <MDXProvider
+                components={{
+                  pre: Pre,
+                  CodeSnippets: CodeSnippetsWithState,
+                  FeatureSnippets: FeatureSnippetsWithState,
+                  RendererSupportTable: RendererSupportTableWithState,
+                  If: IfWithState,
+                  // Maintained for older docs version content
+                  IfRenderer: IfWithState,
+                  YouTubeCallout,
+                  a: LinksWithPrefix,
+                  Callout,
+                }}
               >
-                Continue
-              </Button>
-            }
-            headingText={nextTocItem.title}
-            messageText={nextTocItem.description}
-          />
-        </NextNavigation>
-      )}
+                <MDXRenderer>{body}</MDXRenderer>
+              </MDXProvider>
+            </SyntaxHighlighterContextProvider>
+          </MDWrapper>
 
-      <Contribute>
-        {tocItem && (
-          <Feedback
-            key={fullPath}
-            slug={slug}
-            version={versionString}
-            framework={framework}
-            codeLanguage={codeLanguage}
-          />
-        )}
-        {tocItem && tocItem.githubUrl && (
-          <GithubLinkItem tertiary href={tocItem.githubUrl} target="_blank" rel="noopener">
-            <span role="img" aria-label="write">
-              ✍️
-            </span>{' '}
-            Edit on GitHub – PRs welcome!
-          </GithubLinkItem>
-        )}
-      </Contribute>
+          {nextTocItem && (
+            <NextNavigation>
+              <NextSubheading>Next</NextSubheading>
+              <ShadowBoxCTA
+                action={
+                  <Button
+                    appearance="secondary"
+                    href={buildPathWithVersion(nextTocItem.path)}
+                    ButtonWrapper={GatsbyLinkWrapper}
+                  >
+                    Continue
+                  </Button>
+                }
+                headingText={nextTocItem.title}
+                messageText={nextTocItem.description}
+              />
+            </NextNavigation>
+          )}
+
+          <Contribute>
+            {tocItem && (
+              <Feedback
+                key={fullPath}
+                slug={slug}
+                version={versionString}
+                renderer={renderer}
+                codeLanguage={codeLanguage}
+              />
+            )}
+            {tocItem && tocItem.githubUrl && (
+              <GithubLinkItem tertiary href={tocItem.githubUrl} target="_blank" rel="noopener">
+                <span role="img" aria-label="write">
+                  ✍️
+                </span>{' '}
+                Edit on GitHub – PRs welcome!
+              </GithubLinkItem>
+            )}
+          </Contribute>
+        </Content>
+      </Root>
     </>
   );
 }
@@ -285,7 +446,9 @@ export const query = graphql`
       body
       frontmatter {
         title
+        hideRendererSelector
       }
+      tableOfContents
     }
   }
 `;

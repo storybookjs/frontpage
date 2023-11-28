@@ -1,20 +1,24 @@
-const buildPathWithFramework = require('./build-path-with-framework');
+const buildPathWithVersion = require('./build-path-with-version');
 
 function removeMdExtension(path) {
   return path.replace(/\.md$/, '');
 }
 
+function removeTrailingIndex(path) {
+  return path.includes('#') ? path.replace(/\/index(?:\.md)?/, '/') : path.replace(/\/index$/, '');
+}
+
 /**
  * Convert relative links in docs to relative but from the /docs root
  *
- * ./docs-page with path docs/react/writing-docs/introduction becomes /docs/react/writing-docs/docs-page
- * ../addons/writing-addons becomes /docs/react/addons/writing-addons
- * ../../../release-6-5/docs/api/csf.md becomes /docs/6.5/react/api/csf
+ * ./docs-page with path docs/writing-docs/introduction becomes /docs/writing-docs/docs-page
+ * ../addons/writing-addons becomes /docs/addons/writing-addons
+ * ../../../release-6-5/docs/api/csf.md becomes /docs/6.5/api/csf
  *
  * ../../app/ember/README.md remains untouched (these are converted to github links elsewhere)
  * /addons remains untouched
  */
-function relativeToRootLinks(href, framework, path = '') {
+function relativeToRootLinks(href, path = '', isIndexPage) {
   const relativeUrlRegex = /^(?!\.\.\/\.\.\/)(\.\/)(.*)$/;
   const multiLevelRelativeUrlRegex = /^(?!\.\.\/\.\.\/)(\.\.\/)(.*)$/;
 
@@ -22,28 +26,32 @@ function relativeToRootLinks(href, framework, path = '') {
 
   const versionedUrl = url.match(/\/release-(\d+-\d+)\//);
   if (versionedUrl) {
-    // rewrite ../../../release-#-#/docs/parent/some-path style urls to /docs/version/framework/parent/some-path
+    // rewrite ../../../release-#-#/docs/parent/some-path style urls to /docs/version/parent/some-path
     const overrideVersion = versionedUrl[1].split('-').join('.');
-    url = buildPathWithFramework(
-      href.replace(/.*\/docs\/(.*)/, '/docs/$1'),
-      framework,
-      overrideVersion
-    );
-    return removeMdExtension(url);
+    url = buildPathWithVersion(href.replace(/.*\/docs\/(.*)/, '/docs/$1'), overrideVersion);
+    return removeTrailingIndex(removeMdExtension(url));
   }
 
-  if (relativeUrlRegex.test(href)) {
-    // rewrite ./some-path style urls to /docs/version?/framework/parent/some-path
+  if (isIndexPage && relativeUrlRegex.test(url)) {
     const slugParts = path.split('/').filter((p) => !!p);
-    slugParts.splice(-1, 1, href.replace(relativeUrlRegex, '$2'));
-    url = `/${slugParts.join('/')}`;
-    return removeMdExtension(url);
+    const parentPart = slugParts.pop();
+
+    // ./some-path to `../parent/some-path`
+    url = url.replace(/^\.\//, `../${parentPart}/`);
   }
 
-  if (multiLevelRelativeUrlRegex.test(href)) {
-    // rewrite ../parent/some-path style urls to /docs/version?/framework/parent/some-path
-    url = buildPathWithFramework(href.replace(multiLevelRelativeUrlRegex, '/docs/$2'), framework);
-    return removeMdExtension(url);
+  if (relativeUrlRegex.test(url)) {
+    // rewrite ./some-path style urls to /docs/version?/parent/some-path
+    const slugParts = path.split('/').filter((p) => !!p);
+    slugParts.splice(-1, 1, url.replace(relativeUrlRegex, '$2'));
+    url = `/${slugParts.join('/')}`;
+    return removeTrailingIndex(removeMdExtension(url));
+  }
+
+  if (multiLevelRelativeUrlRegex.test(url)) {
+    // rewrite ../parent/some-path style urls to /docs/version?/parent/some-path
+    url = buildPathWithVersion(url.replace(multiLevelRelativeUrlRegex, '/docs/$2'));
+    return removeTrailingIndex(removeMdExtension(url));
   }
 
   return url;

@@ -121,12 +121,12 @@ const AuthorList = ({ authors }) => {
   );
 };
 
-const Framework = styled(TagItem)`
+const Renderer = styled(TagItem)`
   display: inline-flex;
   align-items: center;
 `;
 
-const FrameworkIcon = styled.img`
+const RendererIcon = styled.img`
   margin-right: 8px;
   width: 1em;
   height: 1em;
@@ -229,11 +229,11 @@ export const AddonsDetailScreen = ({ path, location, pageContext }) => {
                 <IntegrationsSubheading>Works with</IntegrationsSubheading>
                 <StyledTagsList
                   limit={6}
-                  tags={orderedCompatibility.map((framework) => (
-                    <Framework key={framework.name}>
-                      {framework.icon && <FrameworkIcon src={framework.icon} />}
-                      {framework.displayName}
-                    </Framework>
+                  tags={orderedCompatibility.map((renderer) => (
+                    <Renderer key={renderer.name}>
+                      {renderer.icon && <RendererIcon src={renderer.icon} />}
+                      {renderer.displayName}
+                    </Renderer>
                   ))}
                 />
               </>

@@ -1,17 +1,19 @@
 import { styles } from '@storybook/design-system';
 import { css } from '@storybook/theming';
+import { color, fontWeight } from '@chromaui/tetra';
 import { darken, rgba } from 'polished';
 
 import { CODE_SNIPPET_CLASSNAME } from '../constants/code-snippets';
+import { HEADER_HEIGHT_WITH_EYEBROW } from '../constants/style';
 
-const { color, typography } = styles;
+const { color: dsColor, typography } = styles;
 
 export const mdFormatting = css`
   line-height: 28px;
   font-size: ${typography.size.s3}px;
 
   *:target {
-    scroll-margin-top: 48px; /* height of SubNav + 8px gap */
+    scroll-margin-top: calc(${HEADER_HEIGHT_WITH_EYEBROW} + 8px);
   }
 
   h1,
@@ -39,8 +41,8 @@ export const mdFormatting = css`
     &:target {
       background: linear-gradient(
         90deg,
-        ${rgba(color.secondary, 0.1)} 0%,
-        ${rgba(color.secondary, 0.0)} 70%
+        ${rgba(dsColor.secondary, 0.1)} 0%,
+        ${rgba(dsColor.secondary, 0.0)} 70%
       );
     }
   }
@@ -137,7 +139,7 @@ export const mdFormatting = css`
     &:hover,
     &:focus,
     &:hover:focus {
-      color: ${darken(0.2, color.secondary)};
+      color: ${darken(0.2, dsColor.secondary)};
     }
 
     &:hover {
@@ -161,18 +163,18 @@ export const mdFormatting = css`
     display: flex;
     transition: transform 250ms ease-out;
     transform: translate3d(-100%, -50%, 0);
-    padding-right: 10px;
+    padding-right: 5px;
 
     &:hover {
       transform: translate3d(-100%, calc(-50% - 1px), 0);
 
       path {
-        fill: ${color.dark};
+        fill: ${dsColor.dark};
       }
     }
 
     path {
-      fill: ${color.mediumdark};
+      fill: ${dsColor.mediumdark};
       transition: fill 250ms ease-out;
     }
 
@@ -200,7 +202,7 @@ export const mdFormatting = css`
   .aside {
     font-size: 87.5%;
     line-height: 1.43;
-    color: ${color.dark};
+    color: ${dsColor.dark};
     background: #f8fafc;
     border-radius: ${styles.spacing.borderRadius.small}px;
     padding: 1em;
@@ -214,44 +216,24 @@ export const mdFormatting = css`
   /* Tables based on GH markdown format */
   table {
     font-size: ${typography.size.s2}px;
-    padding: 0;
     border-collapse: collapse;
     width: 100%;
     margin: 2em 0;
     overflow: auto;
   }
-  table tr {
-    border-top: 1px solid ${color.mediumlight};
-    background-color: white;
-    margin: 0;
-    padding: 0;
+  table tbody {
+    vertical-align: top;
   }
-  table tr:nth-child(2n) {
-    background-color: ${color.lighter};
+  table tr {
+    border-bottom: 1px solid ${color.slate300};
   }
   table tr th {
-    font-weight: bold;
-    border: 1px solid ${color.medium};
-    border-radius: 3px 3px 0 0;
+    font-weight: ${fontWeight.semibold};
     text-align: left;
-    margin: 0;
-    padding: 0.5em 0.75em;
+    padding: 0.5em 0.75em 0.5em 0;
   }
   table tr td {
-    border: 1px solid #ddd;
-    text-align: left;
-    margin: 0;
-    padding: 0.5em 1em;
-  }
-
-  table tr th :first-child,
-  table tr td:first-child {
-    margin-top: 0;
-  }
-
-  table tr th :last-child,
-  table tr td:last-child {
-    margin-bottom: 0;
+    padding: 0.5em 0.75em 0.5em 0;
   }
 
   iframe {
@@ -274,8 +256,7 @@ export const mdFormatting = css`
 
   code {
     font-size: 87.5%;
-    color: ${color.darkest};
-    white-space: pre;
+    color: ${dsColor.darkest};
   }
 
   pre {
@@ -285,17 +266,18 @@ export const mdFormatting = css`
 
     padding: 1em;
     font-size: inherit;
-    color: ${color.darkest};
+    color: ${dsColor.darkest};
 
     code {
       padding: 0;
       line-height: 1.43; /* 14px/20px */
+      white-space: pre;
     }
   }
 
   blockquote {
     font-size: ${typography.size.m1}px;
-    color: ${color.mediumdark};
+    color: ${dsColor.mediumdark};
     line-height: 1.75;
     margin-top: 2rem;
     margin-bottom: 2.5rem;
@@ -318,8 +300,8 @@ export const mdFormatting = css`
     &:target {
       background: linear-gradient(
         90deg,
-        ${rgba(color.secondary, 0.1)} 0%,
-        ${rgba(color.secondary, 0.0)} 70%
+        ${rgba(dsColor.secondary, 0.1)} 0%,
+        ${rgba(dsColor.secondary, 0.0)} 70%
       );
     }
   }
@@ -327,14 +309,14 @@ export const mdFormatting = css`
   details > summary {
     display: list-item;
     cursor: pointer;
-    color: ${darken(0.2, color.secondary)};
+    color: ${darken(0.2, dsColor.secondary)};
   }
 
   details[open] {
     position: relative;
 
     &:before {
-      border-left: 1px solid ${color.border};
+      border-left: 1px solid ${dsColor.border};
       content: '';
       height: 100%;
       left: 4px;

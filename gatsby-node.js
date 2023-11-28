@@ -6,7 +6,7 @@ const { createFilePath } = require(`gatsby-source-filesystem`);
 
 const { toc: docsToc } = require('./src/content/docs/toc');
 const addStateToToc = require('./src/util/add-state-to-toc');
-const buildPathWithFramework = require('./src/util/build-path-with-framework');
+const buildPathWithVersion = require('./src/util/build-path-with-version');
 const getReleaseBranchUrl = require('./src/util/get-release-branch-url');
 const { versionString, latestVersionString, isLatest } = require('./src/util/version-data');
 const sourceDXData = require('./src/util/source-dx-data');
@@ -17,14 +17,12 @@ const siteMetadata = require('./site-metadata');
 
 const {
   urls: { installDocsPageSlug },
+  allRenderers,
 } = siteMetadata;
 
-const docsTocWithPaths = addStateToToc(docsToc);
 const docsPagesSlugs = [];
 
-const nextVersionString = versions.preRelease[0]?.string;
-
-let frameworks;
+const nextVersionString = versions.preRelease[0]?.string || latestVersionString;
 
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
@@ -110,12 +108,6 @@ exports.createPages = ({ actions, graphql }) => {
             }
           }
         }
-        site {
-          siteMetadata {
-            coreFrameworks
-            communityFrameworks
-          }
-        }
       }
     `)
       .then(
@@ -123,9 +115,6 @@ exports.createPages = ({ actions, graphql }) => {
           data: {
             docsPages: { edges: docsPagesEdges },
             releasePages: { edges: releasePagesEdges },
-            site: {
-              siteMetadata: { coreFrameworks, communityFrameworks },
-            },
           },
         }) => {
           const sortedReleases = releasePagesEdges.sort(
@@ -155,20 +144,11 @@ exports.createPages = ({ actions, graphql }) => {
             });
           });
 
-          frameworks = [...coreFrameworks, ...communityFrameworks];
-          const docsPagesEdgesBySlug = Object.fromEntries(
-            docsPagesEdges.map((edge) => [edge.node.fields.slug, edge])
-          );
-          const docsTocByFramework = Object.fromEntries(
-            frameworks.map((framework) => [
-              framework,
-              addStateToToc(
-                docsTocWithPaths,
-                `/docs/${isLatest ? framework : `${versionString}/${framework}`}`
-              ),
-            ])
-          );
           const createDocsPages = (tocItems) => {
+            const docsPagesEdgesBySlug = Object.fromEntries(
+              docsPagesEdges.map((edge) => [edge.node.fields.slug, edge])
+            );
+
             tocItems.forEach((tocItem, index) => {
               const { path: docsPagePath, children } = tocItem;
 
@@ -179,27 +159,27 @@ exports.createPages = ({ actions, graphql }) => {
                   const { pageType, slug } = docEdge.node.fields;
                   const nextTocItem = tocItems[index + 1];
 
-                  frameworks.forEach((framework) => {
-                    const fullPath = buildPathWithFramework(slug, framework);
-                    createPage({
-                      path: fullPath,
-                      component: path.resolve(`./src/components/screens/DocsScreen/DocsScreen.tsx`),
-                      context: {
-                        pageType,
-                        layout: 'docs',
-                        slug,
-                        fullPath,
-                        versions,
-                        framework,
-                        docsToc: docsTocByFramework[framework],
-                        tocItem,
-                        ...(nextTocItem &&
-                          nextTocItem.type === 'bullet-link' && {
-                            nextTocItem,
-                          }),
-                        isInstallPage: slug === installDocsPageSlug,
-                      },
-                    });
+                  const fullPath = buildPathWithVersion(slug);
+                  createPage({
+                    path: fullPath,
+                    component: path.resolve(`./src/components/screens/DocsScreen/DocsScreen.tsx`),
+                    context: {
+                      pageType,
+                      layout: 'docs',
+                      slug,
+                      fullPath,
+                      versions,
+                      docsToc: addStateToToc(
+                        docsToc,
+                        `/docs${isLatest ? '' : `/${versionString}`}`
+                      ),
+                      tocItem,
+                      ...(nextTocItem &&
+                        nextTocItem.type === 'bullet-link' && {
+                          nextTocItem,
+                        }),
+                      isInstallPage: slug === installDocsPageSlug,
+                    },
                   });
 
                   docsPagesSlugs.push(slug);
@@ -215,7 +195,7 @@ exports.createPages = ({ actions, graphql }) => {
             });
           };
 
-          createDocsPages(docsTocWithPaths);
+          createDocsPages(addStateToToc(docsToc));
         }
       )
       .then(() => createHomePage(actions, graphql, process.env.GATSBY_DOCS_ONLY))
@@ -250,7 +230,6 @@ function generateVersionsFile() {
 
 function generateDocsMetadataFile() {
   const metadata = {
-    frameworks,
     slugs: docsPagesSlugs,
     versions: [latestVersionString, ...versionsWithToc.map(({ string }) => string)],
   };
@@ -263,38 +242,34 @@ function updateRedirectsFile() {
   const rawRedirects = fs.readFileSync(path.join(__dirname, './src/util/redirects-raw.txt'), {
     encoding: 'utf-8',
   });
-  const redirectsWithFramework = rawRedirects
+  const redirectsWithVersion = rawRedirects
     .split(/\n/)
     .map((line) => line.split(/\s+/))
     .filter(([from, to, code]) => from && to && code)
-    .reduce((acc, [from, to, code]) => {
-      frameworks.forEach((f) =>
-        // prettier-ignore
-        acc.push(`${buildPathWithFramework(from, f)} ${buildPathWithFramework(to, f)} ${code}`)
-      );
-      return acc;
-    }, [])
+    .map(([from, to, code]) => `${buildPathWithVersion(from)} ${buildPathWithVersion(to)} ${code}`)
     .join('\n');
 
   const versionRedirects = [...versions.stable, ...versions.preRelease, { string: 'next' }]
     .reduce((acc, { string }) => {
       const isLatestLocal = string === latestVersionString;
-      const versionStringLocal =
-        string === 'next' ? nextVersionString || latestVersionString : string;
+      const versionStringLocal = string === 'next' ? nextVersionString : string;
       const versionSlug = isLatestLocal ? '' : `/${string}`;
       const versionBranch = isLatestLocal ? '' : getReleaseBranchUrl(versionStringLocal);
       const redirectCode = isLatestLocal ? 301 : 200;
 
-      frameworks.forEach((f) =>
+      acc.push(
         // prettier-ignore
-        acc.push(`/docs${versionSlug}/${f} ${versionBranch}${buildPathWithFramework(installDocsPageSlug, f, versionStringLocal)} ${redirectCode}`)
+        `/docs${versionSlug} ${versionBranch}${buildPathWithVersion(installDocsPageSlug, versionStringLocal)} ${redirectCode}`
       );
 
-      if (!isLatestLocal) {
+      allRenderers.forEach((r) => {
         acc.push(
           // prettier-ignore
-          `/docs${versionSlug} ${versionBranch}${buildPathWithFramework(installDocsPageSlug, frameworks[0], versionStringLocal)} 200`
+          `/docs${versionSlug}/${r}/* ${versionBranch}/docs${versionSlug}/:splat ${redirectCode}`
         );
+      });
+
+      if (!isLatestLocal) {
         acc.push(`/docs/${string}/* ${versionBranch}/docs/${versionStringLocal}/:splat 200`);
       } else {
         acc.push(`/docs/${versionStringLocal}/* /docs/:splat 301`);
@@ -306,7 +281,7 @@ function updateRedirectsFile() {
     .join('\n');
 
   // prettier-ignore
-  fs.writeFileSync('./public/_redirects', `${originalContents}\n\n${redirectsWithFramework}\n\n${versionRedirects}`);
+  fs.writeFileSync('./public/_redirects', `${originalContents}\n\n${redirectsWithVersion}\n\n${versionRedirects}`);
 }
 
 const otherSitemaps = [

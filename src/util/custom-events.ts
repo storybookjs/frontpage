@@ -18,10 +18,10 @@ export function extractSnippetPath(snippetPath: string) {
  * In: malformed-snippet.mdx
  * Out: null
  */
-export function logSnippetInteraction(framework, snippetPath) {
+export function logSnippetInteraction(renderer, snippetPath) {
   const snippetType = extractSnippetPath(snippetPath);
 
   if (typeof window !== 'undefined' && (window as any).gtag && snippetType) {
-    (window as any).gtag('event', 'click_snippet', { framework, snippet_type: snippetType });
+    (window as any).gtag('event', 'click_snippet', { renderer, snippet_type: snippetType });
   }
 }

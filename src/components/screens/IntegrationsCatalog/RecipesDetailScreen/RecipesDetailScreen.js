@@ -6,20 +6,12 @@ import { styled } from '@storybook/theming';
 import { Link as GatsbyLink } from 'gatsby';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import {
-  styles,
-  Link,
-  TagList,
-  TagLink,
-  Highlight,
-  Avatar,
-  Icon,
-  Button,
-} from '@storybook/design-system';
+import { styles, Link, TagList, TagLink, Avatar, Icon, Button } from '@storybook/design-system';
 import { SubNav, SubNavBreadcrumb, SubNavCTA, SubNavRight } from '@storybook/components-marketing';
 
 import useSiteMetadata from '../../../lib/useSiteMetadata';
 import { SocialGraph, Pre, Callout } from '../../../basics';
+import { SyntaxHighlighterContextProvider } from '../../../basics/CodeSnippets/SyntaxHighlighterContext';
 import {
   IntegrationsAside,
   IntegrationsAsideContainer,
@@ -98,14 +90,6 @@ const SectionTitle = styled.h2`
 `;
 
 const RecipeHeader = (props) => <SectionTitle id="recipe-section" {...props} />;
-
-const StyledHighlight = styled(Highlight)`
-  -webkit-text-size-adjust: none;
-
-  > * > *:last-child {
-    margin-bottom: 0;
-  }
-`;
 
 const ReadMeContent = styled.div`
   && {
@@ -272,18 +256,18 @@ export const RecipesDetailScreen = ({ path, location, pageContext }) => {
               </section>
             )}
             <ReadMeContent id="recipe-section">
-              <MDXProvider
-                components={{
-                  pre: Pre,
-                  RecipeHeader,
-                  CodeSnippets,
-                  Callout,
-                }}
-              >
-                <StyledHighlight withHTMLChildren={false}>
+              <SyntaxHighlighterContextProvider>
+                <MDXProvider
+                  components={{
+                    pre: Pre,
+                    RecipeHeader,
+                    CodeSnippets,
+                    Callout,
+                  }}
+                >
                   <MDXRenderer>{readme}</MDXRenderer>
-                </StyledHighlight>
-              </MDXProvider>
+                </MDXProvider>
+              </SyntaxHighlighterContextProvider>
             </ReadMeContent>
           </ReadMe>
           <IntegrationsAside id="recipe-sidebar" hideLearn>

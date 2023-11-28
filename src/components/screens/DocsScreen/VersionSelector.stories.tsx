@@ -2,9 +2,7 @@ import React from 'react';
 import { styled } from '@storybook/theming';
 import { within, userEvent } from '@storybook/testing-library';
 import { VersionSelector } from './VersionSelector';
-import { pageContext } from '../../layout/DocsLayout.stories';
-
-const { coreFrameworks } = require('../../../content/docs/frameworks');
+import { pageContext } from '../../layout/DocsLayout/DocsLayout.stories';
 
 const { versions } = pageContext;
 
@@ -27,7 +25,6 @@ export const Base = Template.bind({});
 Base.args = {
   version: versions.stable[0].version,
   versions,
-  framework: coreFrameworks[0],
   slug: '/docs/get-started/install',
 };
 Base.play = async ({ canvasElement }) => {
