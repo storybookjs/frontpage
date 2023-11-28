@@ -28,6 +28,7 @@
 /docs/addons/introduction                        /docs/addons                                                                   301
 /docs/addons/addon-catalog                       /docs/addons/integration-catalog                                               301
 /docs/configure/overview                         /docs/configure                                                                301
+/docs/configure/babel                            /docs/configure/compilers                                                      301
 /docs/configure/webpack                          /docs/builders/webpack                                                         301
 /docs/builders/overview                          /docs/builders                                                                 301
 /docs/api/addons                                 /docs/addons/introduction                                                      301
