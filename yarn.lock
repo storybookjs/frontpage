@@ -5073,10 +5073,10 @@
     core-js "^3.8.2"
     global "^4.4.0"
 
-"@storybook/components-marketing@2.1.5--canary.71.0d954ff.0":
-  version "2.1.5--canary.71.0d954ff.0"
-  resolved "https://registry.npmjs.org/@storybook/components-marketing/-/components-marketing-2.1.5--canary.71.0d954ff.0.tgz#926d91ba7bdb0dcada9e29b301b5f333872708b4"
-  integrity sha512-w/I9gWglpHhP4zg2aAnzkEZ95nz1bahlCzv2lenkx1WAYKI+r1uyygY9VvqLe67b8l9reR42dWo8l6IdWCsZ9w==
+"@storybook/components-marketing@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.npmjs.org/@storybook/components-marketing/-/components-marketing-2.2.0.tgz#250435f1a265deb37fa8f2d74a9dd47e08ed8ccc"
+  integrity sha512-yaXH7DI1iAvBhwbpsM9O909FTYBiHmUjTu7qB/4yWtxFtvdD8zxLkggtSm8/xXI09k0sVgK37diRzz9aiaH7Xg==
   dependencies:
     "@docsearch/react" "^3.1.0"
     "@emotion/weak-memoize" "^0.2.5"

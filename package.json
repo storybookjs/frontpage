@@ -22,7 +22,7 @@
     "@radix-ui/react-scroll-area": "^1.0.5",
     "@radix-ui/react-tabs": "^1.0.4",
     "@storybook/api": "^6.5.9",
-    "@storybook/components-marketing": "2.1.5--canary.71.0d954ff.0",
+    "@storybook/components-marketing": "^2.2.0",
     "@storybook/design-system": "7.13.1",
     "@storybook/icons": "^1.2.2",
     "@storybook/theming": "^6.5.9",
