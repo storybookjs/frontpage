@@ -12,7 +12,8 @@ export const mdFormatting = css`
   line-height: 28px;
   font-size: ${typography.size.s3}px;
 
-  *:target {
+  *:target,
+  [data-active-target] {
     scroll-margin-top: calc(${HEADER_HEIGHT_WITH_EYEBROW} + 8px);
   }
 
@@ -38,7 +39,8 @@ export const mdFormatting = css`
       transition: opacity 250ms ease-out;
     }
 
-    &:target {
+    &:target,
+    &[data-active-target] {
       background: linear-gradient(
         90deg,
         ${rgba(dsColor.secondary, 0.1)} 0%,
