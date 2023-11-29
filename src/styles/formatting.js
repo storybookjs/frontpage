@@ -271,6 +271,7 @@ export const mdFormatting = css`
     color: ${dsColor.darkest};
 
     code {
+      font-size: 13px;
       padding: 0;
       line-height: 1.43; /* 14px/20px */
       white-space: pre;
