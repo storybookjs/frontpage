@@ -117,11 +117,11 @@ export const fetchDocsSnippets = async (
             // TODO: consider logging this somewhere so the team can fix it
             return null;
           }
+        } else {
+          // If path doesn't exist, don't show the snippet
+          // TODO: consider logging this somewhere so the team can fix it
+          return null;
         }
-
-        // If path doesn't exist, don't show the snippet
-        // TODO: consider logging this somewhere so the team can fix it
-        return null;
       }
 
       const [title, content] = parseSnippetContent(

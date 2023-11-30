@@ -312,12 +312,15 @@ function DocsScreen({ data, pageContext, location }) {
   );
   React.useEffect(() => {
     if (numCodeSnippets > 0 && hash) {
+      document.querySelector('[data-active-target]')?.removeAttribute('data-active-target');
+
       // Wait for whichever happens first: all snippets on the page to render or 500ms
       waitForElementsToDisplay(
         '[id^=snippet]',
         numCodeSnippets,
         () => {
           const element = document.querySelector(hash);
+          element?.setAttribute('data-active-target', 'true');
           element?.scrollIntoView();
         },
         50,

@@ -124,7 +124,7 @@ export const BaseCodeSnippet = ({
   const { isLoadingHighlighter, generateSnippetHTML } = useSyntaxHighlighter();
 
   return (
-    <CodeSnippetContainer withTabs={withTabs} {...rest}>
+    <CodeSnippetContainer id={id} withTabs={withTabs} {...rest}>
       {hideHeader ? null : (
         <CodeSnippetHeader>
           <CodeSnippetHeaderLeft>
