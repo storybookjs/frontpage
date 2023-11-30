@@ -31,7 +31,7 @@ const SyntaxHighlighterContext = createContext<SyntaxHighlighterContextValue>({
   generateSnippetHTML: (code: string, lang: SupportedLanguages) => '',
 });
 
-export const SyntaxHighlighterContextProvider: React.FC = ({ children }) => {
+export const SyntaxHighlighterContextProvider = ({ children }) => {
   const [isLoadingHighlighter, setIsLoadingHighlighter] = useState(true);
   const [highlighterInstance, setHighlighterInstance] = useState<Highlighter | undefined>();
 

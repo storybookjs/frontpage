@@ -29,7 +29,7 @@ const CSF2_MESSAGE_VERSION_THRESHOLD = 7.6;
 export interface CodeSnippetProps {
   csf2Path?: string;
   currentCodeLanguage: string;
-  currentPackageManager?: string;
+  currentPackageManager: string;
   currentRenderer: string;
   paths: string[];
   usesCsf3?: boolean;
