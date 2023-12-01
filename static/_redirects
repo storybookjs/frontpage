@@ -2,7 +2,7 @@
 
 # Older (prev 5.0 doc URLs)
 /basics/quick-start-guide                   /docs/get-started/install/                                                                          301
-/basics/slow-start-guide                    /docs/configure/overview/                                                                           301
+/basics/slow-start-guide                    /docs/configure/                                                                                    301
 /basics/guide-react                         /docs/get-started/install/                                                                          301
 /basics/guide-react-native                  https://github.com/storybookjs/react-native#storybook-for-react-native                              301
 /basics/guide-vue                           /docs/get-started/install/                                                                          301
@@ -12,7 +12,7 @@
 /basics/guide-riot                          /docs/get-started/install/                                                                          301
 /basics/guide-html                          /docs/get-started/install/                                                                          301
 /docs/basics/quick-start-guide              /docs/get-started/install/                                                                          301
-/docs/basics/slow-start-guide               /docs/configure/overview/                                                                           301
+/docs/basics/slow-start-guide               /docs/configure/                                                                                    301
 /docs/basics/guide-react                    /docs/get-started/install/                                                                          301
 /docs/basics/guide-react-native             https://github.com/storybookjs/react-native#storybook-for-react-native                              301
 /docs/basics/guide-vue                      /docs/get-started/install/                                                                          301
@@ -37,7 +37,7 @@
 /docs/examples/                             /docs/get-started/examples/                                                                         301
 
 /docs/guides/quick-start-guide/             /docs/get-started/install/                                                                          301
-/docs/guides/slow-start-guide/              /docs/configure/overview/                                                                           301
+/docs/guides/slow-start-guide/              /docs/configure/                                                                                    301
 /docs/guides/guide-html/                    /docs/get-started/install/                                                                          301
 /docs/guides/guide-react/                   /docs/get-started/install/                                                                          301
 /docs/guides/guide-react-native/            https://github.com/storybookjs/react-native#storybook-for-react-native                              301
@@ -55,11 +55,11 @@
 /docs/guides/guide-svelte/                  /docs/get-started/install/                                                                          301
 /docs/guides/guide-preact/                  /docs/get-started/install/                                                                          301
 
-/docs/configurations/overview/              /docs/configure/overview/                                                                           301
+/docs/configurations/overview/              /docs/configure/                                                                                    301
 /docs/configurations/options-parameter/     /docs/configure/features-and-behavior/                                                              301
-/docs/configurations/default-config/        /docs/configure/overview/                                                                           301
+/docs/configurations/default-config/        /docs/configure/                                                                                    301
 /docs/configurations/custom-webpack-config/ /docs/builders/webpack/                                                                             301
-/docs/configurations/custom-babel-config/   /docs/configure/compilers/                                                                              301
+/docs/configurations/custom-babel-config/   /docs/configure/compilers/                                                                          301
 /docs/configurations/typescript-config/     /docs/configure/typescript/                                                                         301
 /docs/configurations/add-custom-head-tags/  /docs/configure/story-rendering#adding-to-head                                                      301
 /docs/configurations/add-custom-body/       /docs/configure/story-rendering#adding-to-body                                                      301
@@ -71,12 +71,11 @@
 /docs/formats/component-story-format/       /docs/api/csf/                                                                                      301
 /docs/formats/storiesof-api/                https://github.com/storybookjs/storybook/blob/next/lib/core/docs/storiesOf.md                       301
 /docs/formats/mdx-syntax/                   /docs/api/mdx/                                                                                      301
-/docs/testing/react-ui-testing/             /docs/writing-tests/introduction/                                                                   301
+/docs/testing/react-ui-testing/             /docs/writing-tests/                                                                                301
 /docs/testing/structural-testing/           /docs/writing-tests/snapshot-testing/                                                               301
 /docs/testing/interaction-testing/          /docs/writing-tests/interaction-testing/                                                            301
 /docs/testing/automated-visual-testing/     /docs/writing-tests/visual-testing/                                                                 301
-/docs/testing/manual-testing/               /docs/writing-tests/introduction/                                                                   301
-/docs/addons/introduction/                  /docs/addons/introduction/                                                                          301
+/docs/testing/manual-testing/               /docs/writing-tests/                                                                                301
 /docs/addons/using-addons/                  /docs/addons/install-addons/                                                                        301
 /docs/addons/writing-addons/                /docs/addons/writing-addons/                                                                        301
 /addons/writing-addons/                     /docs/addons/writing-addons/                                                                        301

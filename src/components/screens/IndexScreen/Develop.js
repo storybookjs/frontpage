@@ -287,12 +287,7 @@ export function Develop({ docs, startOpen, ...props }) {
             heading="Supercharge your workflow with addons"
             description="Addons extend and customize your UI development workflow. There are hundreds of addons that help you build UI faster, document component libraries, and integrate with other tools."
             links={
-              <Link
-                containsIcon
-                withArrow
-                href={`${docs}react/addons/introduction`}
-                LinkWrapper={GatsbyLinkWrapper}
-              >
+              <Link containsIcon withArrow href={`${docs}addons`} LinkWrapper={GatsbyLinkWrapper}>
                 Learn about addons
               </Link>
             }

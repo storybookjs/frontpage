@@ -31,7 +31,7 @@
 /docs/configure/babel                            /docs/configure/compilers                                                      301
 /docs/configure/webpack                          /docs/builders/webpack                                                         301
 /docs/builders/overview                          /docs/builders                                                                 301
-/docs/api/addons                                 /docs/addons/introduction                                                      301
+/docs/api/addons                                 /docs/addons                                                                   301
 /docs/api/addons-api                             /docs/addons/addons-api                                                        301
 /docs/api/mdx                                    /docs/writing-docs/mdx                                                         301
 /docs/api/presets                                /docs/addons/writing-presets                                                   301

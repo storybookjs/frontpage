@@ -80,4 +80,4 @@ export const decorators = [
 
 Now you're ready to use Bootstrap with Storybook. 🎉 Check out the [example repo](https://github.com/Integrayshaun/bootstrap-storybook-example) for a quick start.
 
-If you use Bootstrap at work, we'd love your feedback on the Bootstrap + Storybook experience. Join the maintainers in [Discord](https://discord.gg/storybook) to get involved, or jump into [addon docs](/docs/react/addons/introduction).
+If you use Bootstrap at work, we'd love your feedback on the Bootstrap + Storybook experience. Join the maintainers in [Discord](https://discord.gg/storybook) to get involved, or jump into [addon docs](/docs/addons).

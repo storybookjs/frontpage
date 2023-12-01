@@ -177,4 +177,4 @@ export const withVuetifyTheme = (storyFn, context) => {
 
 Now you're ready to use Vuetify with Storybook. 🎉 Check out the [example repo](https://github.com/Integrayshaun/vue3-vuetify-storybook-recipe-example) for a quick start.
 
-If you use Vuetify at work, we'd love your help making an addon that automatically applies the configuration above. Join the maintainers in [Discord](https://discord.gg/storybook) to get involved, or jump into [addon docs](/docs/vue/addons/introduction).
+If you use Vuetify at work, we'd love your help making an addon that automatically applies the configuration above. Join the maintainers in [Discord](https://discord.gg/storybook) to get involved, or jump into [addon docs](/docs/addons).

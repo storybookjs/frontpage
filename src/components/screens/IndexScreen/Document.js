@@ -45,7 +45,7 @@ const features = [
     description: 'Write Markdown and build custom docs.',
     link: {
       label: 'Learn about docs addon',
-      href: '/docs/react/writing-docs/introduction',
+      href: '/docs/writing-docs',
       LinkWrapper: GatsbyLinkWrapper,
     },
     media: 'videos/document/homepage-component-document-lg.mp4',
