@@ -384,6 +384,8 @@ function DocsScreen({ data, pageContext, location }) {
                   CodeSnippets: CodeSnippetsWithState,
                   FeatureSnippets: FeatureSnippetsWithState,
                   RendererSupportTable: RendererSupportTableWithState,
+                  // Maintained for older docs version content
+                  FrameworkSupportTable: RendererSupportTableWithState,
                   If: IfWithState,
                   // Maintained for older docs version content
                   IfRenderer: IfWithState,
