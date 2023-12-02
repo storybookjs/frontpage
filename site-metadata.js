@@ -100,10 +100,10 @@ const siteMetadata = {
 
     // Official addons
     officialAddons: {
-      docs: '/docs/react/addons/introduction/',
-      install: '/docs/react/addons/install-addons/',
-      create: '/docs/react/addons/writing-addons/',
-      publish: '/docs/react/addons/integration-catalog/',
+      docs: '/docs/addons/',
+      install: '/docs/addons/install-addons/',
+      create: '/docs/addons/writing-addons/',
+      publish: '/docs/addons/integration-catalog/',
       controls: `${essentialsBase}/controls`,
       actions: `${essentialsBase}/actions`,
       viewport: `${essentialsBase}/viewport`,

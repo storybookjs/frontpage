@@ -103,4 +103,4 @@ When you provide more than one theme, a toolbar menu will appear in the Storyboo
 
 Now you're ready to use Emotion with Storybook. 🎉
 
-If you use Emotion at work, we'd love your help making this setup even better. Join the maintainers in [Discord](https://discord.gg/storybook) to get involved, or jump into [addon docs](/docs/react/addons/introduction).
+If you use Emotion at work, we'd love your help making this setup even better. Join the maintainers in [Discord](https://discord.gg/storybook) to get involved, or jump into [addon docs](/docs/addons).

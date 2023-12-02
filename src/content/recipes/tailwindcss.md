@@ -154,4 +154,4 @@ This code will create a new toolbar menu to select your desired theme for your s
 
 Now you're ready to use Tailwind with Storybook. 🎉
 
-If you use Tailwind at work, we'd love your help making this setup even easier. Join the maintainers in [Discord](https://discord.gg/storybook) to get involved, or jump into [addon docs](/docs/react/addons/introduction).
+If you use Tailwind at work, we'd love your help making this setup even easier. Join the maintainers in [Discord](https://discord.gg/storybook) to get involved, or jump into [addon docs](/docs/addons).

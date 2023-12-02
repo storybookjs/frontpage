@@ -231,7 +231,9 @@ export const AddonsDetailScreen = ({ path, location, pageContext }) => {
                   limit={6}
                   tags={orderedCompatibility.map((renderer) => (
                     <Renderer key={renderer.name}>
-                      {renderer.icon && <RendererIcon src={renderer.icon} />}
+                      {renderer.icon && (
+                        <RendererIcon src={renderer.icon.replace('/frameworks', '/renderers')} />
+                      )}
                       {renderer.displayName}
                     </Renderer>
                   ))}

@@ -33,7 +33,7 @@ const features = [
     description: 'Stories are tests you can debug in dev and QA.',
     link: {
       label: 'Learn about UI tests',
-      href: '/docs/react/writing-tests/introduction',
+      href: '/docs/writing-tests',
       LinkWrapper: GatsbyLinkWrapper,
     },
     media: 'videos/test/homepage-spot-testing-lg.mp4',
