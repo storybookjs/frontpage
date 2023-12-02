@@ -7,7 +7,7 @@ const { createFilePath } = require(`gatsby-source-filesystem`);
 const { toc: docsToc } = require('./src/content/docs/toc');
 const addStateToToc = require('./src/util/add-state-to-toc');
 const buildPathWithVersion = require('./src/util/build-path-with-version');
-const getReleaseBranchUrl = require('./src/util/get-release-branch-url');
+const { generateRedirects } = require('./src/util/generateRedirects/generateRedirects');
 const { versionString, latestVersionString, isLatest } = require('./src/util/version-data');
 const sourceDXData = require('./src/util/source-dx-data');
 const { versions, versionsWithToc } = require('./src/util/versions');
@@ -17,12 +17,9 @@ const siteMetadata = require('./site-metadata');
 
 const {
   urls: { installDocsPageSlug },
-  allRenderers,
 } = siteMetadata;
 
 const docsPagesSlugs = [];
-
-const nextVersionString = versions.preRelease[0]?.string || latestVersionString;
 
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
@@ -242,46 +239,10 @@ function updateRedirectsFile() {
   const rawRedirects = fs.readFileSync(path.join(__dirname, './src/util/redirects-raw.txt'), {
     encoding: 'utf-8',
   });
-  const redirectsWithVersion = rawRedirects
-    .split(/\n/)
-    .map((line) => line.split(/\s+/))
-    .filter(([from, to, code]) => from && to && code)
-    .map(([from, to, code]) => `${buildPathWithVersion(from)} ${buildPathWithVersion(to)} ${code}`)
-    .join('\n');
 
-  const versionRedirects = [...versions.stable, ...versions.preRelease, { string: 'next' }]
-    .reduce((acc, { string }) => {
-      const isLatestLocal = string === latestVersionString;
-      const versionStringLocal = string === 'next' ? nextVersionString : string;
-      const versionSlug = isLatestLocal ? '' : `/${string}`;
-      const versionBranch = isLatestLocal ? '' : getReleaseBranchUrl(versionStringLocal);
-      const redirectCode = isLatestLocal ? 301 : 200;
+  const newRedirects = generateRedirects({ rawRedirects });
 
-      acc.push(
-        // prettier-ignore
-        `/docs${versionSlug} ${versionBranch}${buildPathWithVersion(installDocsPageSlug, versionStringLocal)} ${redirectCode}`
-      );
-
-      allRenderers.forEach((r) => {
-        acc.push(
-          // prettier-ignore
-          `/docs${versionSlug}/${r}/* ${versionBranch}/docs${versionSlug}/:splat ${redirectCode}`
-        );
-      });
-
-      if (!isLatestLocal) {
-        acc.push(`/docs/${string}/* ${versionBranch}/docs/${versionStringLocal}/:splat 200`);
-      } else {
-        acc.push(`/docs/${versionStringLocal}/* /docs/:splat 301`);
-      }
-
-      return acc;
-    }, [])
-    .concat([`/releases /releases/${latestVersionString} 301`])
-    .join('\n');
-
-  // prettier-ignore
-  fs.writeFileSync('./public/_redirects', `${originalContents}\n\n${redirectsWithVersion}\n\n${versionRedirects}`);
+  fs.writeFileSync('./public/_redirects', `${originalContents}\n\n${newRedirects}`);
 }
 
 const otherSitemaps = [
