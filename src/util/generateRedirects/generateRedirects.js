@@ -58,52 +58,87 @@ function generateRedirects({
 
   return versions
     .reduce((acc, { string, version }) => {
+      const includeRenderers = version < 7.6 || string === 'next';
       const isLatestLocal = string === latestVersionString;
-      const versionStringNormalized = string === 'next' ? nextVersionString : string;
-      const versionStringOverride = isLatestLocal ? '' : string;
       const versionSlug = isLatestLocal ? '' : `/${string}`;
+      const versionStringNormalized = string === 'next' ? nextVersionString : string;
+      const versionStringOverride = isLatestLocal ? '' : versionStringNormalized;
+      const versionSlugOverride = isLatestLocal ? '' : `/${versionStringNormalized}`;
       const versionBranch = isLatestLocal ? '' : getReleaseBranchUrl(versionStringNormalized);
       const redirectCode = isLatestLocal ? 301 : 200;
 
+      /**
+       * TODO: This portion could be optimized to only include redirects when the source exists in
+       *       the current version being iterated over. e.g. Right now, this will include redirects
+       *       like:
+       *
+       *       /docs/8.0/workflows/testing-with-storybook/ https://release-8-0--storybook-frontpage.netlify.app/docs/8.0/writing-tests/ 301
+       *
+       *       But the source path, `/workflows/testing-with-storybook/`, was removed well before
+       *       8.0, so that source URL doesn't exist. There's no harm in including it, but it
+       *       results in a lot of unnecessary redirects being generated.
+       *
+       *       The redirects are currently organized by _destination_ version, which was used to
+       *       prevent generation of erroneous redirects like:
+       *
+       *       /docs/7.0/writing-stories/introduction https://release-7-0--storybook-frontpage.netlify.app/docs/7.0/writing-stories 301
+       *
+       *       That destination path, `/writing-stories`, doesn't exist until 7.6, so that would 404.
+       *
+       *       Such an optimization would require somehow organizing and/or annotating the redirects
+       *       by source version (i.e. when that path was first introduced) _and_ destination
+       *       version (i.e. when that path was first introduced).
+       */
       Object.entries(parsedRedirects).forEach(([redirectVersion, lines]) => {
-        // Only add redirects that apply to this version
-        if (Number(redirectVersion) <= version) {
-          lines.forEach(([from, to, code]) => {
-            // 7.6 removed the renderer from docs URLs
-            if (version < 7.6) {
-              renderers.forEach((r) => {
-                acc.push(
-                  // prettier-ignore
-                  `${buildPathWithVersion(fromWithRenderer(from, r), versionStringOverride)} ${versionBranch}${buildPathWithVersion(to, versionStringOverride)} ${code}`
-                );
-              });
-            } else if (Number(redirectVersion) >= 7.6) {
+        const redirectsApply = redirectVersion <= version;
+        lines.forEach(([from, to, code]) => {
+          if (isLatestLocal) {
+            acc.push(`${from} ${to} ${code}`);
+          }
+          if (redirectsApply) {
+            acc.push(
+              // prettier-ignore
+              `${buildPathWithVersion(from, string)} ${versionBranch}${buildPathWithVersion(to, versionStringOverride)} ${code}`
+            );
+          }
+          renderers.forEach((r) => {
+            if (isLatestLocal) {
+              acc.push(`${fromWithRenderer(from, r)} ${to} ${code}`);
+            }
+            if (redirectsApply && includeRenderers) {
               acc.push(
                 // prettier-ignore
-                `${buildPathWithVersion(from, versionStringOverride)} ${versionBranch}${buildPathWithVersion(to, versionStringOverride)} ${code}`
+                `${buildPathWithVersion(fromWithRenderer(from, r), string)} ${versionBranch}${buildPathWithVersion(to, versionStringOverride)} ${code}`
               );
             }
           });
-        }
+        });
       });
+
+      acc.push('\n');
 
       acc.push(
         // prettier-ignore
         `/docs${versionSlug} ${versionBranch}${buildPathWithVersion(installDocsPageSlug, versionStringOverride)} ${redirectCode}`
       );
 
-      renderers.forEach((r) => {
-        acc.push(
-          // prettier-ignore
-          `/docs${versionSlug}/${r}/* ${versionBranch}/docs${versionSlug}/:splat ${redirectCode}`
-        );
-      });
-
-      if (!isLatestLocal) {
-        acc.push(`/docs/${string}/* ${versionBranch}/docs/${versionStringNormalized}/:splat 200`);
-      } else {
-        acc.push(`/docs/${string}/* /docs/:splat 301`);
+      if (includeRenderers) {
+        renderers.forEach((r) => {
+          if (isLatestLocal) {
+            acc.push(`/docs/${r}/* /docs/:splat ${redirectCode}`);
+          }
+          acc.push(
+            // prettier-ignore
+            `/docs/${string}/${r}/* ${versionBranch}/docs${versionSlugOverride}/:splat ${redirectCode}`
+          );
+        });
       }
+
+      acc.push(
+        `/docs/${string}/* ${versionBranch}/docs${versionSlugOverride}/:splat ${redirectCode}`
+      );
+
+      acc.push('\n');
 
       return acc;
     }, [])
