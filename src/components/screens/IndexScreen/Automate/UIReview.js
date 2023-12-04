@@ -27,9 +27,9 @@ const CalendarComponent = styled.img`
 `;
 
 const reviewComments = [
-  { id: 0, image: 'images/home/automate/comment-1.svg' },
-  { id: 1, image: 'images/home/automate/comment-2.svg' },
-  { id: 2, image: 'images/home/automate/comment-3.svg' },
+  { id: 0, image: '/images/home/automate/comment-1.svg' },
+  { id: 1, image: '/images/home/automate/comment-2.svg' },
+  { id: 2, image: '/images/home/automate/comment-3.svg' },
 ];
 
 const Comments = styled.div`
@@ -57,7 +57,7 @@ export function UIReview({ docs, ...props }) {
   return (
     <Figure>
       <Content {...props}>
-        <CalendarComponent src="images/home/automate/datepicker-compact-week.svg" alt="" />
+        <CalendarComponent src="/images/home/automate/datepicker-compact-week.svg" alt="" />
         <Comments>
           {reviewComments.map(({ id, image }) => (
             <Comment key={id} src={image} />

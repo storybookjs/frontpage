@@ -33,7 +33,7 @@ export const AddonsPanel = ({ scrollProgress, activePanel, ...props }: AddonsPro
       {panels.map((id) => (
         <Instance
           key={id}
-          src={`images/develop/addons-${id}.svg`}
+          src={`/images/develop/addons-${id}.svg`}
           alt=""
           animate={{ opacity: id === activePanel ? 1 : 0 }}
           style={{ y }}

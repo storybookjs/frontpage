@@ -157,7 +157,7 @@ export function Hero({ contributorCount, npmDownloads, startOpen, ...props }) {
         </StorybookDemo>
 
         <SocialProof
-          path="images/logos/user"
+          path="/images/logos/user"
           brands={['vscode', 'monday', 'eu', 'github', 'airbnb', 'mozilla', 'bbc']}
           monochrome
         />

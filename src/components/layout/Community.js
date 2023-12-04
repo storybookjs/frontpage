@@ -92,7 +92,7 @@ const VideoCard = styled(motion.video)`
 `;
 const ImageCard = styled(motion.div)`
   border-radius: 10px;
-  background-image: url('images/home/community-yann.jpg');
+  background-image: url('/images/home/community-yann.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

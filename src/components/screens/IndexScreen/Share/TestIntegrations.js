@@ -89,7 +89,7 @@ const TimeFramePicker = styled(motion.img)`
   pointer-events: none;
 `;
 TimeFramePicker.defaultProps = {
-  src: 'images/embed/time-frame-picker.svg',
+  src: '/images/embed/time-frame-picker.svg',
   alt: '',
 };
 

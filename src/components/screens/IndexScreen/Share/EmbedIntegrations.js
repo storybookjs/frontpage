@@ -36,7 +36,7 @@ const TimeFramePicker = styled.img`
   }
 `;
 TimeFramePicker.defaultProps = {
-  src: 'images/embed/time-frame-picker.svg',
+  src: '/images/embed/time-frame-picker.svg',
   alt: '',
 };
 

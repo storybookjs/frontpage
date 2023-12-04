@@ -96,10 +96,10 @@ const Wave = styled(motion.div)`
 `;
 
 const players = {
-  blue: 'images/home/avatar-1.png',
-  red: 'images/home/avatar-2.png',
-  yellow: 'images/home/avatar-3.png',
-  purple: 'images/home/avatar-4.png',
+  blue: '/images/home/avatar-1.png',
+  red: '/images/home/avatar-2.png',
+  yellow: '/images/home/avatar-3.png',
+  purple: '/images/home/avatar-4.png',
 };
 
 const transition = (delay, count = 4) => ({

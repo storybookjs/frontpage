@@ -10,14 +10,14 @@ export default {
 export const Heading = () => (
   <SocialProof
     heading="Trusted by"
-    path="images/logos/user"
+    path="/images/logos/user"
     brands={['github', 'dropbox', 'airbnb', 'lyft', 'mozilla', 'microsoft', 'jetbrains']}
   />
 );
 
 export const Monochrome = () => (
   <SocialProof
-    path="images/logos/user"
+    path="/images/logos/user"
     brands={['github', 'dropbox', 'airbnb', 'lyft', 'mozilla', 'microsoft', 'jetbrains']}
     monochrome
   />
@@ -25,7 +25,7 @@ export const Monochrome = () => (
 
 export const Grid = () => (
   <SocialProof
-    path="images/logos/user"
+    path="/images/logos/user"
     brands={[
       'github',
       'dropbox',

@@ -114,7 +114,7 @@ export const ScrollDemo = ({
     <Wrapper style={{ scale, x }} transition={{ delay: 0.4 }} {...props}>
       <Scrim style={{ y: scrimY, opacity: scrimOpacity }} />
       <Frame
-        src="images/develop/storybook-frame.svg"
+        src="/images/develop/storybook-frame.svg"
         alt=""
         style={{
           scale: frameScale,
