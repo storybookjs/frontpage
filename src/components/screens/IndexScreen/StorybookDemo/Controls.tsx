@@ -57,7 +57,7 @@ const bgVariants = { initial: { opacity: 0 }, visible: { opacity: 1 } };
 export const Controls = ({ startTimeControls, endTimeControls, ...props }: ControlsProps) => {
   return (
     <ControlsWrapper {...props}>
-      <Instance src="images/develop/time-frame-controls.svg" alt="" />
+      <Instance src="/images/develop/time-frame-controls.svg" alt="" />
       <StartTime viewBox="0 0 140 24" xmlns="http://www.w3.org/2000/svg">
         <motion.rect
           x="2"

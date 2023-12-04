@@ -65,7 +65,7 @@ export const RangeSlider = ({
       {stories.map((id) => (
         <RangeSliderVariant
           key={id}
-          src={`images/develop/range-slider-${id}.svg`}
+          src={`/images/develop/range-slider-${id}.svg`}
           alt=""
           width="370"
           height="303"
@@ -74,7 +74,7 @@ export const RangeSlider = ({
         />
       ))}
       <Check
-        src="images/home/automate/ci-check-green.svg"
+        src="/images/home/automate/ci-check-green.svg"
         alt=""
         style={{ scale: check, opacity: check }}
       />

@@ -24,7 +24,7 @@ const TimeFramePicker = styled(motion.img)`
   }
 `;
 TimeFramePicker.defaultProps = {
-  src: 'images/embed/time-frame-picker.svg',
+  src: '/images/embed/time-frame-picker.svg',
   alt: '',
 };
 
@@ -45,7 +45,7 @@ const Storybook = styled.img`
   height: auto;
 `;
 Storybook.defaultProps = {
-  src: 'images/home/storybook-mock-ui.svg',
+  src: '/images/home/storybook-mock-ui.svg',
   alt: '',
 };
 
@@ -60,7 +60,7 @@ const Arrow = styled(motion.img)`
     left: 10%;
   }
 `;
-Arrow.defaultProps = { src: 'images/home/arrow.svg', alt: '' };
+Arrow.defaultProps = { src: '/images/home/arrow.svg', alt: '' };
 const PointerHand = styled(motion.img)`
   position: absolute;
   top: 10%;
@@ -68,7 +68,7 @@ const PointerHand = styled(motion.img)`
   width: auto;
   height: 5%;
 `;
-PointerHand.defaultProps = { src: 'images/home/pointerhand.svg', alt: '' };
+PointerHand.defaultProps = { src: '/images/home/pointerhand.svg', alt: '' };
 const Caret = styled(motion.img)`
   position: absolute;
   top: 20%;
@@ -76,7 +76,7 @@ const Caret = styled(motion.img)`
   width: auto;
   height: 5%;
 `;
-Caret.defaultProps = { src: 'images/home/caret.svg', alt: '' };
+Caret.defaultProps = { src: '/images/home/caret.svg', alt: '' };
 
 const symbolVariants = {
   initial: { y: 20, opacity: 0 },

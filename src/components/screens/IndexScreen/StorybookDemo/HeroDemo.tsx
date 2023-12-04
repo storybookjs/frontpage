@@ -221,14 +221,14 @@ export const HeroDemo = ({ ...props }: HeroDemoProps) => {
 
   return (
     <Wrapper data-chromatic="ignore" ref={ref} {...props}>
-      <Frame src="images/develop/storybook-frame.svg" width="1201" height="830" alt="" />
+      <Frame src="/images/develop/storybook-frame.svg" width="1201" height="830" alt="" />
       <Sidebar type="timeFrame" activeStory={activeStory} />
       <Controls startTimeControls={startTimeControls} endTimeControls={endTimeControls} />
       <TimeFrame activeStory={activeStory} />
       <Pointer
         data-chromatic="ignore"
         animate={pointerControls}
-        src="images/develop/pointer.svg"
+        src="/images/develop/pointer.svg"
         alt=""
       />
     </Wrapper>

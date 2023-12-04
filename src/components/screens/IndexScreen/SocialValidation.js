@@ -154,12 +154,12 @@ const CommunityCTA = styled.div`
 `;
 
 const contributors = [
-  'images/community/contributor6.jpg',
-  'images/community/contributor5.jpg',
-  'images/community/contributor4.jpg',
-  'images/community/contributor3.jpg',
-  'images/community/contributor2.jpg',
-  'images/community/contributor1.jpg',
+  '/images/community/contributor6.jpg',
+  '/images/community/contributor5.jpg',
+  '/images/community/contributor4.jpg',
+  '/images/community/contributor3.jpg',
+  '/images/community/contributor2.jpg',
+  '/images/community/contributor1.jpg',
 ];
 
 export function SocialValidation({

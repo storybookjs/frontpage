@@ -180,12 +180,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, isLatest: isLatestProp, pag
   return (
     <>
       <Helmet>
-        {isLatest && (
-          <link
-            rel="canonical"
-            href={`${homepageUrl}${buildPathWithVersion(slug, latestVersionString)}/`}
-          />
-        )}
+        {isLatest && <link rel="canonical" href={`${homepageUrl}${slug}/`} />}
         <meta
           key={GLOBAL_SEARCH_META_KEYS.VERSION}
           name={GLOBAL_SEARCH_META_KEYS.VERSION}

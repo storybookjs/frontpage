@@ -46,7 +46,7 @@ export const TimeFrame = ({ activeStory }: TimeFrameProps) => {
         {stories.map((id) => (
           <TimeFrameVariant
             key={id}
-            src={`images/develop/time-frame-${id}.svg`}
+            src={`/images/develop/time-frame-${id}.svg`}
             alt=""
             width="370"
             height="303"
@@ -57,7 +57,7 @@ export const TimeFrame = ({ activeStory }: TimeFrameProps) => {
         ))}
       </TimeFrameWrapper>
       <Overview
-        src="images/develop/time-frame-overview.svg"
+        src="/images/develop/time-frame-overview.svg"
         alt=""
         initial={false}
         animate={{ opacity: activeStory === 'overview' ? 1 : 0 }}

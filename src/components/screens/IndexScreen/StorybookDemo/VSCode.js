@@ -42,7 +42,7 @@ export const VSCode = ({ scrollProgress, appearProgress }) => {
 
   return (
     <>
-      <Img src="images/develop/vscode.svg" width="1280" height="993" style={{ x, opacity }} />
+      <Img src="/images/develop/vscode.svg" width="1280" height="993" style={{ x, opacity }} />
       <Clip style={{ transformOrigin: 'center bottom', x, opacity, scaleY }} />
     </>
   );

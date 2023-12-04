@@ -41,7 +41,7 @@ export const Sidebar = ({
         rangeSliderStories.map((id) => (
           <Instance
             key={id}
-            src={`images/develop/sidebar-rs-${id}.svg`}
+            src={`/images/develop/sidebar-rs-${id}.svg`}
             alt=""
             animate={{ opacity: storyID === id ? 1 : 0 }}
             transition={{ duration: 0.1 }}
@@ -51,7 +51,7 @@ export const Sidebar = ({
         timeFrameStories.map((id) => (
           <Instance
             key={id}
-            src={`images/develop/sidebar-tf-${id}.svg`}
+            src={`/images/develop/sidebar-tf-${id}.svg`}
             alt=""
             animate={{ opacity: storyID === id ? 1 : 0 }}
             transition={{ duration: 0.1 }}

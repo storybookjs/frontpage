@@ -200,8 +200,8 @@ export function MergeAndShip({ docs, ...props }) {
         <Checks layout ref={ref} variants={checksVariants} initial="initial" animate={state}>
           <CheckItemLarge>
             <StatusLarge variants={statusVariants} transition={{ duration: 0.4, delay: 1.4 }}>
-              <Checking src="images/home/automate/ci-check-yellow.svg" alt="" />
-              <Done src="images/home/automate/ci-check-green.svg" alt="" />
+              <Checking src="/images/home/automate/ci-check-yellow.svg" alt="" />
+              <Done src="/images/home/automate/ci-check-green.svg" alt="" />
             </StatusLarge>
             <CheckLabel>
               <b>
@@ -219,8 +219,8 @@ export function MergeAndShip({ docs, ...props }) {
           {checks.map(({ id, label, checking, done }) => (
             <CheckItem key={id}>
               <Status variants={statusVariants} transition={{ duration: 0.4 }}>
-                <Checking src="images/home/automate/progress.svg" alt="" />
-                <Done src="images/home/automate/passed.svg" alt="" />
+                <Checking src="/images/home/automate/progress.svg" alt="" />
+                <Done src="/images/home/automate/passed.svg" alt="" />
               </Status>
               <CheckLabel>
                 <TextWrapper>
@@ -232,7 +232,7 @@ export function MergeAndShip({ docs, ...props }) {
                   </Text>
                 </TextWrapper>
               </CheckLabel>
-              <ChromaticLogo src="images/logos/icon-chromatic.svg" alt="" />
+              <ChromaticLogo src="/images/logos/icon-chromatic.svg" alt="" />
             </CheckItem>
           ))}
         </Checks>

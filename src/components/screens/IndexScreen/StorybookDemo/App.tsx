@@ -20,5 +20,5 @@ export const App = ({ scrollProgress }: AppProps) => {
   const x = useTransform(scrollProgress, [0, 1], ['0%', '-109%']);
   const opacity = useTransform(scrollProgress, [0, 0.5, 1], [0, 1, 1]);
 
-  return <Img src="images/develop/app.svg" width="1280" height="1000" style={{ x, opacity }} />;
+  return <Img src="/images/develop/app.svg" width="1280" height="1000" style={{ x, opacity }} />;
 };

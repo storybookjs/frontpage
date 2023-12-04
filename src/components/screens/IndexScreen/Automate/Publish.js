@@ -100,7 +100,7 @@ export function Publish({ docs, ...props }) {
           whileInView="animate"
           viewport={{ once: true, amount: 'all' }}
           transition={{ duration: 0.3, delay: 1.8 }}
-          src="images/home/arrow.svg"
+          src="/images/home/arrow.svg"
           alt=""
         />
         <PointerHand
@@ -109,11 +109,11 @@ export function Publish({ docs, ...props }) {
           whileInView="animate"
           viewport={{ once: true, amount: 'all' }}
           transition={{ duration: 0.3, delay: 1.8 }}
-          src="images/home/pointerhand.svg"
+          src="/images/home/pointerhand.svg"
           alt=""
         />
         <CalendarComponent
-          src="images/home/automate/datepicker-compact-week.svg"
+          src="/images/home/automate/datepicker-compact-week.svg"
           alt=""
           variants={calendarVariants}
           initial="initial"
@@ -127,8 +127,8 @@ export function Publish({ docs, ...props }) {
           whileInView={['spin', 'animate']}
           viewport={{ once: true, amount: 'all' }}
         >
-          <PublishingImg src="images/home/automate/status-publishing.svg" alt="" />
-          <PublishedImg src="images/home/automate/status-published.svg" alt="" />
+          <PublishingImg src="/images/home/automate/status-publishing.svg" alt="" />
+          <PublishedImg src="/images/home/automate/status-published.svg" alt="" />
         </Status>
       </Content>
     </Figure>
