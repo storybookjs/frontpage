@@ -170,6 +170,16 @@ describe('generateRedirects', () => {
 
 
       /docs /docs/get-started/install/ 301
+      /docs/react/* /docs/:splat 301
+      /docs/vue/* /docs/:splat 301
+      /docs/angular/* /docs/:splat 301
+      /docs/web-components/* /docs/:splat 301
+      /docs/ember/* /docs/:splat 301
+      /docs/html/* /docs/:splat 301
+      /docs/svelte/* /docs/:splat 301
+      /docs/preact/* /docs/:splat 301
+      /docs/qwik/* /docs/:splat 301
+      /docs/solid/* /docs/:splat 301
       /docs/7.6/* /docs/:splat 301
 
 

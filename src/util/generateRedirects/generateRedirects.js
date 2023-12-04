@@ -122,15 +122,16 @@ function generateRedirects({
         `/docs${versionSlug} ${versionBranch}${buildPathWithVersion(installDocsPageSlug, versionStringOverride)} ${redirectCode}`
       );
 
-      if (includeRenderers) {
+      if (includeRenderers || isLatestLocal) {
         renderers.forEach((r) => {
           if (isLatestLocal) {
             acc.push(`/docs/${r}/* /docs/:splat ${redirectCode}`);
+          } else {
+            acc.push(
+              // prettier-ignore
+              `/docs/${string}/${r}/* ${versionBranch}/docs${versionSlugOverride}/:splat ${redirectCode}`
+            );
           }
-          acc.push(
-            // prettier-ignore
-            `/docs/${string}/${r}/* ${versionBranch}/docs${versionSlugOverride}/:splat ${redirectCode}`
-          );
         });
       }
 
