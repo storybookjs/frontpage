@@ -64,6 +64,24 @@ const getSnippetTabName = (path: string) => {
   }
   return prettifyName(name);
 };
+
+/**
+ * 1. ModuleComponent is (due to MDX) a React component.
+ * 2. That component renders one or more <pre> tags with a <code> tag inside.
+ * 3. The <code> tag contains the actual code snippet string.
+ */
+function extractContentFromModule(module) {
+  function extractContentFromCodeBlock(block) {
+    return block.props.children.props.children;
+  }
+
+  const containedCodeBlocks = module({ components: {} }).props.children;
+
+  return Array.isArray(containedCodeBlocks)
+    ? containedCodeBlocks.map(extractContentFromCodeBlock).join('\n')
+    : extractContentFromCodeBlock(containedCodeBlocks);
+}
+
 export interface SnippetObject {
   content: string;
   id: string;
@@ -125,12 +143,7 @@ export const fetchDocsSnippets = async (
       }
 
       const [title, content] = parseSnippetContent(
-        /**
-         * 1. ModuleComponent is (due to MDX) a React component.
-         * 2. That component renders a <pre> tag with a <code> tag inside.
-         * 3. The <code> tag contains the actual code snippet string.
-         */
-        ModuleComponent({ components: {} }).props.children.props.children.props.children,
+        extractContentFromModule(ModuleComponent),
         isTerminal
       );
 
