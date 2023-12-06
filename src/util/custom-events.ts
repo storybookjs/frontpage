@@ -20,8 +20,13 @@ export function extractSnippetPath(snippetPath: string) {
  */
 export function logSnippetInteraction(renderer, snippetPath) {
   const snippetType = extractSnippetPath(snippetPath);
+  const props = { renderer, snippet_type: snippetType };
 
   if (typeof window !== 'undefined' && (window as any).gtag && snippetType) {
-    (window as any).gtag('event', 'click_snippet', { renderer, snippet_type: snippetType });
+    (window as any).gtag('event', 'click_snippet', { ...props });
+  }
+
+  if (typeof window !== 'undefined' && (window as any).plausible && snippetType) {
+    (window as any).plausible('click_snippet', { props });
   }
 }
