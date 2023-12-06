@@ -70,7 +70,7 @@ export default {
 
 #### (Experimental) SWC support
 
-If you're working with a Next.js project that already uses SWC (e.g., version 13 or higher), you can enable it in Storybook by adding the following to your `main.js`:
+If you're working with a Next.js project that already uses SWC (e.g., version 14 or higher), you can enable it in Storybook by adding the following to your `main.js`:
 
 ```js
 // .storybook/main.js
