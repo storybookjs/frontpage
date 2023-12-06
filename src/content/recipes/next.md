@@ -11,7 +11,6 @@ npx storybook@latest init
 
 ## Set up your project
 
-
 ### In a project without Storybook
 
 Follow the prompts after running this command in your Next.js project's root directory:
@@ -68,6 +67,31 @@ export default {
   ],
 };
 ```
+
+#### (Experimental) SWC support
+
+If you're working with a Next.js project that already uses SWC (e.g., version 13 or higher), you can enable it in Storybook by adding the following to your `main.js`:
+
+```js
+// .storybook/main.js
+export default {
+  // ...
+  framework: {
+    name: '@storybook/nextjs',
+    options: {
+      builder: {
+        useSWC: true, // Enables SWC support
+      },
+    },
+  },
+};
+```
+
+<Callout variant="info" icon="💡">
+
+SWC support is currently experimental and may not work for all projects. If you encounter any issues, contact us by [opening a discussion on GitHub](https://github.com/storybookjs/storybook/discussions/new?category=help).
+
+</Callout>
 
 ## Get involved
 
