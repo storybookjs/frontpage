@@ -89,7 +89,7 @@ export default {
 
 <Callout variant="info" icon="💡">
 
-SWC support is currently experimental and may not work for all projects. If you encounter any issues, contact us by [opening a discussion on GitHub](https://github.com/storybookjs/storybook/discussions/new?category=help).
+SWC support was introduced in version 7.6, is currently experimental, and may not work for all projects. If you encounter any issues, contact us by [opening a discussion on GitHub](https://github.com/storybookjs/storybook/discussions/new?category=help).
 
 </Callout>
 
