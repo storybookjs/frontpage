@@ -43,6 +43,7 @@
     "gatsby-plugin-mdx": "^3.16.0",
     "gatsby-plugin-netlify": "^5.0.0",
     "gatsby-plugin-offline": "^5.16.0",
+    "gatsby-plugin-plausible": "^0.0.7",
     "gatsby-plugin-react-helmet": "^5.16.0",
     "gatsby-plugin-remove-trailing-slashes": "^4.16.0",
     "gatsby-plugin-segment-js": "^3.7.1",
