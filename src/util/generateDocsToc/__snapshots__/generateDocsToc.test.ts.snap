@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`generateDocsToc generates a non-routed group, with sorted children items 1`] = `
+[
+  {
+    "children": [
+      {
+        "pathSegment": "before",
+        "title": "Before (should be first)",
+        "type": "link",
+      },
+      {
+        "children": [
+          {
+            "pathSegment": "parameters",
+            "title": "Parameters (should be first in group)",
+            "type": "link",
+          },
+          {
+            "pathSegment": "decorators",
+            "title": "Decorators (should be second in group)",
+            "type": "link",
+          },
+        ],
+        "pathSegment": "",
+        "title": "Group (should be second)",
+        "type": "menu",
+      },
+      {
+        "pathSegment": "after",
+        "title": "After (should be third)",
+        "type": "link",
+      },
+    ],
+    "pathSegment": "parent",
+    "title": "Parent title",
+    "type": "heading",
+  },
+]
+`;
+
+exports[`generateDocsToc sorts top-level and children items 1`] = `
+[
+  {
+    "children": [
+      {
+        "pathSegment": "parameters",
+        "title": "Parameters (should be first)",
+        "type": "link",
+      },
+      {
+        "pathSegment": "decorators",
+        "title": "Decorators (should be second)",
+        "type": "link",
+      },
+    ],
+    "pathSegment": "writing-stories",
+    "title": "How to write stories (should be first)",
+    "type": "heading",
+  },
+  {
+    "children": [
+      {
+        "pathSegment": "autodocs",
+        "title": "Automatic documentation and Storybook (should be first)",
+        "type": "link",
+      },
+      {
+        "pathSegment": "mdx",
+        "title": "MDX (should be second)",
+        "type": "link",
+      },
+    ],
+    "pathSegment": "writing-docs",
+    "title": "How to document components (should be second)",
+    "type": "heading",
+  },
+  {
+    "file": "12-faq.md",
+    "pathSegment": "faq",
+    "title": "Frequently Asked Questions (should be third)",
+    "type": "link",
+  },
+]
+`;

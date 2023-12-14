@@ -4,10 +4,10 @@ const fetch = require('node-fetch');
 
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
-const { toc: docsToc } = require('./src/content/docs/toc');
 const addStateToToc = require('./src/util/add-state-to-toc');
 const buildPathWithVersion = require('./src/util/build-path-with-version');
 const { generateRedirects } = require('./src/util/generateRedirects/generateRedirects');
+const generateDocsToc = require('./src/util/generateDocsToc/generateDocsToc');
 const { versionString, latestVersionString, isLatest } = require('./src/util/version-data');
 const sourceDXData = require('./src/util/source-dx-data');
 const { versions, versionsWithToc } = require('./src/util/versions');
@@ -19,6 +19,7 @@ const {
   urls: { installDocsPageSlug },
 } = siteMetadata;
 
+const docsToc = generateDocsToc();
 const docsPagesSlugs = [];
 
 exports.onCreateWebpackConfig = ({ actions }) => {
@@ -50,7 +51,7 @@ exports.onCreateNode = ({ actions, getNode, node }) => {
     const [pageType] = slugParts;
 
     createNodeField({ node, name: 'pageType', value: pageType });
-    createNodeField({ node, name: 'slug', value: slug });
+    createNodeField({ node, name: 'slug', value: slug.replace(/\/\d+-/, '/') });
 
     if (pageType === 'releases') {
       const [, releaseVersion] = slugParts;
@@ -143,7 +144,9 @@ exports.createPages = ({ actions, graphql }) => {
 
           const createDocsPages = (tocItems) => {
             const docsPagesEdgesBySlug = Object.fromEntries(
-              docsPagesEdges.map((edge) => [edge.node.fields.slug, edge])
+              docsPagesEdges
+                .filter((edge) => !edge.node.fields.slug.startsWith('/docs/snippets/'))
+                .map((edge) => [edge.node.fields.slug, edge])
             );
 
             tocItems.forEach((tocItem, index) => {

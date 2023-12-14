@@ -60,6 +60,7 @@
     "gatsby-transformer-sharp": "^4.16.0",
     "gatsby-transformer-yaml": "^4.16.0",
     "global": "^4.4.0",
+    "gray-matter": "^4.0.3",
     "human-format": "^0.11.0",
     "lodash": "^4.17.15",
     "lru-cache": "^6.0.0",
