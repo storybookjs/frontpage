@@ -12,6 +12,7 @@ import { SubNav, SubNavBreadcrumb, SubNavCTA, SubNavRight } from '@storybook/com
 import useSiteMetadata from '../../../lib/useSiteMetadata';
 import { SocialGraph, Pre, Callout } from '../../../basics';
 import { SyntaxHighlighterContextProvider } from '../../../basics/CodeSnippets/SyntaxHighlighterContext';
+import { EmbeddedExample } from '../../../basics/EmbeddedExample';
 import {
   IntegrationsAside,
   IntegrationsAsideContainer,
@@ -263,6 +264,7 @@ export const RecipesDetailScreen = ({ path, location, pageContext }) => {
                     RecipeHeader,
                     CodeSnippets,
                     Callout,
+                    EmbeddedExample,
                   }}
                 >
                   <MDXRenderer>{readme}</MDXRenderer>

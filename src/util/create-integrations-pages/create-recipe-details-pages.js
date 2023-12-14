@@ -30,6 +30,21 @@ const TEMP_RECIPE_METADATA = {
     // publishedAt: Date.now(),
     // lastUpdatedAt: Date.now(),
   }),
+  '@angular/material': (name) => ({
+    // Mock recipe metadata goes here
+    type: 'Recipe',
+    name,
+    displayName: 'Angular Material',
+    description: "Google's Material Design spec  built into an Angular component library.",
+    views: 1423,
+    icon: 'https://avatars.githubusercontent.com/u/139426?s=200&v=4',
+    accentColor: '#333333',
+    tags: [{ name: 'material', displayName: 'Material Design', description: '', icon: '' }],
+    authors: [{ id: 'shaunEvening', name: 'Shaun Evening' }],
+    createdAt: Date.now(),
+    publishedAt: Date.now(),
+    lastUpdatedAt: Date.now(),
+  }),
 };
 
 function parseRecipeFiles({ data }) {
