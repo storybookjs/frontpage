@@ -33,6 +33,14 @@ export default {
 
 export const Base = () => <DocsScreen data={data} pageContext={pageContext} location={location} />;
 
+export const WithSubPageTabs = () => (
+  <DocsScreen
+    data={data}
+    pageContext={{ ...pageContext, tabs: ['guide', 'api'], activeTab: 'guide' }}
+    location={location}
+  />
+);
+
 export const WithGuideLink = () => (
   <DocsScreen data={data} pageContext={{ ...pageContext, nextTocItem }} location={location} />
 );

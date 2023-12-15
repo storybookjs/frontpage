@@ -10,6 +10,7 @@ import { useDocsContext } from './DocsContext';
 const Root = styled.div`
   display: flex;
   gap: ${spacing[2]};
+  margin-bottom: 1.5rem;
 `;
 
 const Pill = styled('button', {

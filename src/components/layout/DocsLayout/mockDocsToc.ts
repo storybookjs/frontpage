@@ -1,4 +1,4 @@
-const addStateToToc = require('../../../util/add-state-to-toc');
+const addStateToToc = require('../../../util/addStateToToc/addStateToToc');
 
 export const toc = addStateToToc([
   {

@@ -1,0 +1,220 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`addStateToToc adds state to basic TOC 1`] = `
+[
+  {
+    "children": [
+      {
+        "githubUrl": "https://github.com/storybookjs/storybook/tree/next/docs/writing-stories/parameters.md",
+        "path": "/docs/writing-stories/parameters",
+        "pathSegment": "parameters",
+        "title": "Parameters (should be first)",
+        "type": "link",
+      },
+      {
+        "githubUrl": "https://github.com/storybookjs/storybook/tree/next/docs/writing-stories/decorators.md",
+        "path": "/docs/writing-stories/decorators",
+        "pathSegment": "decorators",
+        "title": "Decorators (should be second)",
+        "type": "link",
+      },
+    ],
+    "githubUrl": "https://github.com/storybookjs/storybook/tree/next/docs/writing-stories/index.md",
+    "path": "/docs/writing-stories",
+    "pathSegment": "writing-stories",
+    "title": "How to write stories (should be first)",
+    "type": "heading",
+  },
+  {
+    "children": [
+      {
+        "githubUrl": "https://github.com/storybookjs/storybook/tree/next/docs/writing-docs/autodocs.md",
+        "path": "/docs/writing-docs/autodocs",
+        "pathSegment": "autodocs",
+        "title": "Automatic documentation and Storybook (should be first)",
+        "type": "link",
+      },
+      {
+        "githubUrl": "https://github.com/storybookjs/storybook/tree/next/docs/writing-docs/mdx.md",
+        "path": "/docs/writing-docs/mdx",
+        "pathSegment": "mdx",
+        "title": "MDX (should be second)",
+        "type": "link",
+      },
+    ],
+    "githubUrl": "https://github.com/storybookjs/storybook/tree/next/docs/writing-docs/index.md",
+    "path": "/docs/writing-docs",
+    "pathSegment": "writing-docs",
+    "title": "How to document components (should be second)",
+    "type": "heading",
+  },
+  {
+    "file": "12-faq.md",
+    "githubUrl": "https://github.com/storybookjs/storybook/tree/next/docs/faq.md",
+    "path": "/docs/faq",
+    "pathSegment": "faq",
+    "title": "Frequently Asked Questions (should be third)",
+    "type": "link",
+  },
+]
+`;
+
+exports[`addStateToToc handles nested sub-pages 1`] = `
+[
+  {
+    "children": [
+      {
+        "githubUrl": "https://github.com/storybookjs/storybook/tree/next/docs/parent/before.md",
+        "path": "/docs/parent/before",
+        "pathSegment": "before",
+        "title": "Before (should be first)",
+        "type": "link",
+      },
+      {
+        "activeSubPage": "index",
+        "githubUrl": "https://github.com/storybookjs/storybook/tree/next/docs/parent/test/index.md",
+        "path": "/docs/parent/test",
+        "pathSegment": "test",
+        "subPagePathSegments": [
+          "index",
+          "api",
+          "migration",
+        ],
+        "subPages": [
+          {
+            "activeSubPage": "api",
+            "githubUrl": "https://github.com/storybookjs/storybook/tree/next/docs/parent/test/api/index.md",
+            "path": "/docs/parent/test/api",
+            "pathSegment": "api",
+            "subPagePathSegments": [
+              "index",
+              "api",
+              "migration",
+            ],
+            "subPages": [
+              {
+                "activeSubPage": "api",
+                "githubUrl": "https://github.com/storybookjs/storybook/tree/next/docs/parent/test/api/nested-one.md",
+                "path": "/docs/parent/test/api/nested-one",
+                "pathSegment": "nested-one",
+                "subPagePathSegments": [
+                  "index",
+                  "api",
+                  "migration",
+                ],
+                "type": "sub-page",
+              },
+              {
+                "activeSubPage": "api",
+                "githubUrl": "https://github.com/storybookjs/storybook/tree/next/docs/parent/test/api/nested-two.md",
+                "path": "/docs/parent/test/api/nested-two",
+                "pathSegment": "nested-two",
+                "subPagePathSegments": [
+                  "index",
+                  "api",
+                  "migration",
+                ],
+                "type": "sub-page",
+              },
+            ],
+            "type": "sub-page",
+          },
+          {
+            "activeSubPage": "migration",
+            "githubUrl": "https://github.com/storybookjs/storybook/tree/next/docs/parent/test/migration.md",
+            "path": "/docs/parent/test/migration",
+            "pathSegment": "migration",
+            "subPagePathSegments": [
+              "index",
+              "api",
+              "migration",
+            ],
+            "type": "sub-page",
+          },
+        ],
+        "title": "Test",
+        "type": "link",
+      },
+      {
+        "githubUrl": "https://github.com/storybookjs/storybook/tree/next/docs/parent/after.md",
+        "path": "/docs/parent/after",
+        "pathSegment": "after",
+        "title": "After (should be third)",
+        "type": "link",
+      },
+    ],
+    "githubUrl": "https://github.com/storybookjs/storybook/tree/next/docs/parent/index.md",
+    "path": "/docs/parent",
+    "pathSegment": "parent",
+    "title": "Parent",
+    "type": "heading",
+  },
+]
+`;
+
+exports[`addStateToToc handles sub-pages 1`] = `
+[
+  {
+    "children": [
+      {
+        "githubUrl": "https://github.com/storybookjs/storybook/tree/next/docs/parent/before.md",
+        "path": "/docs/parent/before",
+        "pathSegment": "before",
+        "title": "Before (should be first)",
+        "type": "link",
+      },
+      {
+        "activeSubPage": "index",
+        "githubUrl": "https://github.com/storybookjs/storybook/tree/next/docs/parent/test/index.md",
+        "path": "/docs/parent/test",
+        "pathSegment": "test",
+        "subPagePathSegments": [
+          "index",
+          "api",
+          "migration",
+        ],
+        "subPages": [
+          {
+            "activeSubPage": "api",
+            "githubUrl": "https://github.com/storybookjs/storybook/tree/next/docs/parent/test/api.md",
+            "path": "/docs/parent/test/api",
+            "pathSegment": "api",
+            "subPagePathSegments": [
+              "index",
+              "api",
+              "migration",
+            ],
+            "type": "sub-page",
+          },
+          {
+            "activeSubPage": "migration",
+            "githubUrl": "https://github.com/storybookjs/storybook/tree/next/docs/parent/test/migration.md",
+            "path": "/docs/parent/test/migration",
+            "pathSegment": "migration",
+            "subPagePathSegments": [
+              "index",
+              "api",
+              "migration",
+            ],
+            "type": "sub-page",
+          },
+        ],
+        "title": "Test",
+        "type": "link",
+      },
+      {
+        "githubUrl": "https://github.com/storybookjs/storybook/tree/next/docs/parent/after.md",
+        "path": "/docs/parent/after",
+        "pathSegment": "after",
+        "title": "After (should be third)",
+        "type": "link",
+      },
+    ],
+    "githubUrl": "https://github.com/storybookjs/storybook/tree/next/docs/parent/index.md",
+    "path": "/docs/parent",
+    "pathSegment": "parent",
+    "title": "Parent",
+    "type": "heading",
+  },
+]
+`;

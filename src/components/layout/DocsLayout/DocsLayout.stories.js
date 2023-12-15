@@ -4,7 +4,7 @@ import DocsLayout from './DocsLayout';
 import { tocV2 } from './mockDocsToc';
 
 const { toc: docsToc } = require('../../../content/docs/toc');
-const addStateToToc = require('../../../util/add-state-to-toc');
+const addStateToToc = require('../../../util/addStateToToc/addStateToToc');
 
 const docsTocWithPaths = addStateToToc(docsToc);
 

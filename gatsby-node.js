@@ -4,7 +4,7 @@ const fetch = require('node-fetch');
 
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
-const addStateToToc = require('./src/util/add-state-to-toc');
+const addStateToToc = require('./src/util/addStateToToc/addStateToToc');
 const buildPathWithVersion = require('./src/util/build-path-with-version');
 const { generateRedirects } = require('./src/util/generateRedirects/generateRedirects');
 const generateDocsToc = require('./src/util/generateDocsToc/generateDocsToc');
@@ -150,7 +150,13 @@ exports.createPages = ({ actions, graphql }) => {
             );
 
             tocItems.forEach((tocItem, index) => {
-              const { path: docsPagePath, children } = tocItem;
+              const {
+                path: docsPagePath,
+                children,
+                activeSubPage,
+                subPagePathSegments,
+                subPages,
+              } = tocItem;
 
               if (docsPagePath) {
                 const docEdge = docsPagesEdgesBySlug[docsPagePath];
@@ -169,6 +175,10 @@ exports.createPages = ({ actions, graphql }) => {
                       slug,
                       fullPath,
                       versions,
+                      ...(subPagePathSegments && {
+                        activeSubPage,
+                        subPages: subPagePathSegments,
+                      }),
                       docsToc: addStateToToc(
                         docsToc,
                         `/docs${isLatest ? '' : `/${versionString}`}`
@@ -189,9 +199,8 @@ exports.createPages = ({ actions, graphql }) => {
                 }
               }
 
-              if (children) {
-                createDocsPages(children);
-              }
+              if (children) createDocsPages(children);
+              if (subPages) createDocsPages(subPages);
             });
           };
 

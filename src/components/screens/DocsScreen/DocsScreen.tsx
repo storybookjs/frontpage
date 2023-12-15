@@ -36,6 +36,7 @@ import { Feedback } from './Feedback';
 import { If } from './If';
 import { RendererSelector } from './RendererSelector';
 import { rendererSupportsFeature, RendererSupportTable } from './RendererSupportTable';
+import { SubPageTabs } from './SubPageTabs';
 import { YouTubeCallout } from './YouTubeCallout';
 
 const { color: dsColor, spacing: dsSpacing, typography } = styles;
@@ -233,7 +234,8 @@ function DocsScreen({ data, pageContext, location }) {
     urls: { homepageUrl },
     versionString,
   } = useSiteMetadata();
-  const { docsToc, fullPath, slug, tocItem, nextTocItem, isInstallPage } = pageContext;
+  const { docsToc, fullPath, slug, activeSubPage, subPages, tocItem, nextTocItem, isInstallPage } =
+    pageContext;
 
   const {
     codeLanguage: [codeLanguage],
@@ -360,6 +362,7 @@ function DocsScreen({ data, pageContext, location }) {
                 communityRenderers={communityRenderers}
               />
             )}
+            {subPages && <SubPageTabs tabs={subPages} activeTab={activeSubPage} slug={slug} />}
             {unsupported && (
               <UnsupportedBanner>
                 This feature is not supported in {stylizeRenderer(renderer)} yet. Help the open

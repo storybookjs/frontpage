@@ -40,4 +40,14 @@ describe('generateDocsToc', () => {
     const topLevelItem = toc[0];
     expect(topLevelItem).toHaveProperty('description', 'Description');
   });
+
+  it('generates sub-pages', () => {
+    const toc = generateDocsToc(prefixPath('with-sub-pages'));
+    expect(toc).toMatchSnapshot();
+  });
+
+  it('generates nested sub-pages', () => {
+    const toc = generateDocsToc(prefixPath('with-nested-sub-pages'));
+    expect(toc).toMatchSnapshot();
+  });
 });

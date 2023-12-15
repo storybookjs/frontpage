@@ -283,7 +283,7 @@ export const Sidebar: FC<SidebarProps> = ({ docsToc, versions: versionsProp, slu
                 lvl1.children.map((lvl2, lvl2Index) => (
                   <Fragment key={lvl2Index}>
                     {!lvl2.children && (
-                      <NavItem level={2} isCurrent={lvl2.path === slug}>
+                      <NavItem level={2} isCurrent={slug.startsWith(lvl2.path)}>
                         <Link to={lvl2.path}>{lvl2.title}</Link>
                       </NavItem>
                     )}
@@ -297,7 +297,11 @@ export const Sidebar: FC<SidebarProps> = ({ docsToc, versions: versionsProp, slu
                         </Accordion.Header>
                         <NavAccordionContent>
                           {lvl2.children.map((lvl3, lvl3Index) => (
-                            <NavItem key={lvl3Index} level={3} isCurrent={lvl3.path === slug}>
+                            <NavItem
+                              key={lvl3Index}
+                              level={3}
+                              isCurrent={slug.startsWith(lvl3.path)}
+                            >
                               <Link to={lvl3.path}>{lvl3.title}</Link>
                             </NavItem>
                           ))}

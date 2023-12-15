@@ -39,6 +39,138 @@ exports[`generateDocsToc generates a non-routed group, with sorted children item
 ]
 `;
 
+exports[`generateDocsToc generates nested sub-pages 1`] = `
+[
+  {
+    "children": [
+      {
+        "pathSegment": "before",
+        "title": "Before (should be first)",
+        "type": "link",
+      },
+      {
+        "activeSubPage": "index",
+        "pathSegment": "test",
+        "subPagePathSegments": [
+          "index",
+          "api",
+          "migration",
+        ],
+        "subPages": [
+          {
+            "activeSubPage": "api",
+            "pathSegment": "api",
+            "subPagePathSegments": [
+              "index",
+              "api",
+              "migration",
+            ],
+            "subPages": [
+              {
+                "activeSubPage": "api",
+                "pathSegment": "nested-one",
+                "subPagePathSegments": [
+                  "index",
+                  "api",
+                  "migration",
+                ],
+                "type": "sub-page",
+              },
+              {
+                "activeSubPage": "api",
+                "pathSegment": "nested-two",
+                "subPagePathSegments": [
+                  "index",
+                  "api",
+                  "migration",
+                ],
+                "type": "sub-page",
+              },
+            ],
+            "type": "sub-page",
+          },
+          {
+            "activeSubPage": "migration",
+            "pathSegment": "migration",
+            "subPagePathSegments": [
+              "index",
+              "api",
+              "migration",
+            ],
+            "type": "sub-page",
+          },
+        ],
+        "title": "Test",
+        "type": "link",
+      },
+      {
+        "pathSegment": "after",
+        "title": "After (should be third)",
+        "type": "link",
+      },
+    ],
+    "pathSegment": "parent",
+    "title": "Parent",
+    "type": "heading",
+  },
+]
+`;
+
+exports[`generateDocsToc generates sub-pages 1`] = `
+[
+  {
+    "children": [
+      {
+        "pathSegment": "before",
+        "title": "Before (should be first)",
+        "type": "link",
+      },
+      {
+        "activeSubPage": "index",
+        "pathSegment": "test",
+        "subPagePathSegments": [
+          "index",
+          "api",
+          "migration",
+        ],
+        "subPages": [
+          {
+            "activeSubPage": "api",
+            "pathSegment": "api",
+            "subPagePathSegments": [
+              "index",
+              "api",
+              "migration",
+            ],
+            "type": "sub-page",
+          },
+          {
+            "activeSubPage": "migration",
+            "pathSegment": "migration",
+            "subPagePathSegments": [
+              "index",
+              "api",
+              "migration",
+            ],
+            "type": "sub-page",
+          },
+        ],
+        "title": "Test",
+        "type": "link",
+      },
+      {
+        "pathSegment": "after",
+        "title": "After (should be third)",
+        "type": "link",
+      },
+    ],
+    "pathSegment": "parent",
+    "title": "Parent",
+    "type": "heading",
+  },
+]
+`;
+
 exports[`generateDocsToc sorts top-level and children items 1`] = `
 [
   {
