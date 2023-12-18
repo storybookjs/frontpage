@@ -17,7 +17,7 @@ import useSiteMetadata from '../../lib/useSiteMetadata';
 import { mdFormatting } from '../../../styles/formatting';
 import stylizeRenderer from '../../../util/stylize-renderer';
 import buildPathWithVersion from '../../../util/build-path-with-version';
-import relativeToRootLinks from '../../../util/relative-to-root-links';
+import relativeToRootLinks from '../../../util/relativeToRootLinks/relativeToRootLinks';
 import { SocialGraph } from '../../basics';
 import { Callout } from '../../basics/Callout';
 import { InPageTOC } from '../../basics/InPageTOC';
@@ -267,9 +267,8 @@ function DocsScreen({ data, pageContext, location }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [renderer]);
   const LinksWithPrefix = useMemo(() => {
-    const isIndexPage = tocItem.type === 'heading' && !tocItem.redirectPath;
     return ({ children, href, ...props }) => {
-      const url = relativeToRootLinks(href, location.pathname, isIndexPage);
+      const url = relativeToRootLinks(href, location.pathname);
       return (
         <a href={url} {...props}>
           {children}
