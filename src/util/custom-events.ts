@@ -20,7 +20,10 @@ export function extractSnippetPath(snippetPath: string) {
  */
 export function logSnippetInteraction(renderer, snippetPath) {
   const snippetType = extractSnippetPath(snippetPath);
-  const props = { renderer, snippet_type: snippetType };
+  // Analytics is set up with `framework`, not `renderer`
+  const props = { framework: renderer, snippet_type: snippetType };
+
+  console.log('logSnippetInteraction', { snippetType, ...props });
 
   if (typeof window !== 'undefined' && (window as any).gtag && snippetType) {
     (window as any).gtag('event', 'click_snippet', { ...props });
