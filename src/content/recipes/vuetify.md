@@ -53,7 +53,7 @@ Now create a storybook [decorator](/docs/vue/writing-stories/decorators) to wrap
 Below I created a new file in `.storybook` called `withVuetifyTheme.decorator.js`.
 
 ```js
-// .storybook/withVeutifyTheme.decorator.js
+// .storybook/withVuetifyTheme.decorator.js
 import { h } from 'vue';
 import StoryWrapper from './StoryWrapper.vue';
 
@@ -149,7 +149,7 @@ export default {
 Now pass our global `theme` variable to our `StoryWrapper` component as a prop with our decorator
 
 ```js
-// .storybook/withVeutifyTheme.decorator.js
+// .storybook/withVuetifyTheme.decorator.js
 import { h } from 'vue';
 import StoryWrapper from './StoryWrapper.vue';
 
