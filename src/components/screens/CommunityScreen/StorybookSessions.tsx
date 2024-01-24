@@ -68,7 +68,7 @@ const sessionsData: Session[] = [
     date: 'Mar 7, 2024 8:30 AM',
     registrationLink:
       'https://docs.google.com/forms/d/e/1FAIpQLSeLAB8aoLNRiW5M5Jpn78qxVnnCETDJYpTAph5732tRFXoFDw/viewform?usp=pp_url&entry.146778204=March+7,+2024+at+8:30am+PT+-+Themes,+Modes+and+Intentional+Testing',
-  },  
+  }
 ];
 
 const Title = styled.h3`
