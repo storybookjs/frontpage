@@ -7,12 +7,18 @@ const { isPreRelease } = versionData;
 
 const DOCS_DIR = path.resolve(__dirname, '../src/content/docs');
 
+const PKG_DISALLOW_LIST = [
+  '@storybook/addon-coverage',
+  '@storybook/addon-webpack5-compiler-babel',
+  '@storybook/addon-webpack5-compiler-swc',
+];
+
 const INLINE_CODE_REGEX = /`(?!`)(.*)`/g;
 const CODE_BLOCK_REGEX = /```(?:sh|shell|bash)\n\s*(?:#.*\n)?(.*)\n\s*```/g;
 
 const INLINE_CODE_MATCH_LIST = (preRelease) => [
   {
-    test: /(storybook)(?:@\w+)? (automigrate|babelrc|extract|init|migrate|upgrade)(?! --prerelease)/g,
+    test: /(storybook)(?:@\w+)? (add|automigrate|babelrc|extract|init|migrate|upgrade)(?! --prerelease)/g,
     replacer: `$1${preRelease ? '@next' : '@latest'} $2`,
   },
 ];
@@ -21,7 +27,7 @@ const CODE_BLOCK_MATCH_LIST = (preRelease) => [
   ...INLINE_CODE_MATCH_LIST(preRelease),
   {
     test: /(@storybook\/(?:\w+-?)+)(?:@\w+)?/g,
-    replacer: (_, pkg) => `${pkg}${preRelease ? '@next' : ''}`,
+    replacer: (_, pkg) => `${pkg}${preRelease && !PKG_DISALLOW_LIST.includes(pkg) ? '@next' : ''}`,
   },
 ];
 
