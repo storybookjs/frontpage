@@ -117,6 +117,9 @@ describe('updateSnippet', () => {
     expect(updateSnippet('npx storybook upgrade')).toMatchInlineSnapshot(
       `"npx storybook@latest upgrade"`
     );
+    expect(updateSnippet('npx storybook add @storybook/addon-pkg')).toMatchInlineSnapshot(
+      `"npx storybook@latest add @storybook/addon-pkg"`
+    );
   });
   it('does not update undesired inline snippets', () => {
     // Must use preRelease here to test non-effect (non-preRelease should not append tag)
@@ -143,10 +146,25 @@ describe('updateSnippet', () => {
     expect(updateSnippet('npx storybook upgrade', true)).toMatchInlineSnapshot(
       `"npx storybook@latest upgrade"`
     );
+    expect(updateSnippet('npx storybook add @storybook/addon-pkg', true)).toMatchInlineSnapshot(
+      `"npx storybook@latest add @storybook/addon-pkg"`
+    );
     // Must use preRelease here to test effect (non-preRelease should not append tag)
     expect(
       updateSnippet('yarn add -D @storybook/testing-library', true, true)
     ).toMatchInlineSnapshot(`"yarn add -D @storybook/testing-library@next"`);
+  });
+  it('does not update disallowed packages in block snippets', () => {
+    // Must use preRelease here to test non-effect (preRelease should not append tag)
+    expect(
+      updateSnippet('npx storybook add @storybook/addon-coverage', true, true)
+    ).toMatchInlineSnapshot(`"npx storybook@next add @storybook/addon-coverage"`);
+    expect(
+      updateSnippet('npx storybook add @storybook/addon-webpack5-compiler-babel', true, true)
+    ).toMatchInlineSnapshot(`"npx storybook@next add @storybook/addon-webpack5-compiler-babel"`);
+    expect(
+      updateSnippet('npx storybook add @storybook/addon-webpack5-compiler-swc', true, true)
+    ).toMatchInlineSnapshot(`"npx storybook@next add @storybook/addon-webpack5-compiler-swc"`);
   });
   it('handles multiple matches', () => {
     // Must use preRelease here to test effect (non-preRelease should not append tag)
