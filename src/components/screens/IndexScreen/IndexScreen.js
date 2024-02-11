@@ -17,7 +17,7 @@ import { StickyNav } from './StickyNav';
 
 const globalStyles = css`
   body {
-    background-color: ${styles.color.midnight};
+    background-color: #0e0c2c;
   }
 `;
 

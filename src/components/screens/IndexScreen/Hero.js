@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { styled } from '@storybook/theming';
 import { Button, Icon, WithModal } from '@storybook/design-system';
 import { styles, SectionLede } from '@storybook/components-marketing';
+import { Link as GatsbyLink } from 'gatsby';
 import SocialProof from '../../layout/SocialProof';
 import { NpmDownloadCount } from '../../layout/NpmDownloadCount';
 import { Stat } from '../../basics/Stat';
@@ -12,6 +13,109 @@ import { HeroDemo } from './StorybookDemo/HeroDemo';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 
 const { color, breakpoints, pageMargins } = styles;
+
+const ContentContainer = styled.div`
+  ${pageMargins};
+`;
+
+const Title = styled.h1`
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 70px;
+  letter-spacing: -0.01em;
+  text-align: left;
+  color: white;
+`;
+
+const Description = styled.div`
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
+  color: #ffffff;
+  max-width: 500px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+`;
+
+const Actions = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+const Left = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+`;
+
+const ButtonSolid = styled(GatsbyLink)`
+  height: 48px;
+  background: #fff;
+  border-radius: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  font-size: 14px;
+  font-weight: 800;
+  color: #000;
+  text-decoration: none;
+  padding-top: 1px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: translate3d(0, -2px, 0);
+  }
+`;
+
+const ButtonVideo = styled.button`
+  height: 48px;
+  background: transparent;
+  border: 1px solid #fff;
+  border-radius: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  font-size: 14px;
+  font-weight: 800;
+  color: #fff;
+  text-decoration: none;
+  padding-top: 1px;
+  gap: 12px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: translate3d(0, -2px, 0);
+  }
+`;
+
+const StatHero = styled.a`
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  color: #ffffff;
+  font-size: 18px;
+  cursor: pointer;
+  text-decoration: none;
+
+  span {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    color: #b7aeef;
+    transition: color 0.2s ease;
+  }
+
+  &:hover {
+    span {
+      color: #ffffff;
+    }
+  }
+`;
 
 const ModalVideo = styled.iframe`
   width: 100%;
@@ -104,52 +208,52 @@ const Stats = styled.div`
 
 export function Hero({ contributorCount, npmDownloads, startOpen, ...props }) {
   const { latestVersion, urls = {} } = useSiteMetadata();
-  const { docs = {}, gitHub = {} } = urls;
+  const { docs = {}, gitHub = {}, npm } = urls;
+
+  let npmDownloadsFixed = parseInt((npmDownloads / 1000).toFixed(0), 10);
+  let npmDownloadsDisplay = `${npmDownloadsFixed}k`;
+  if (npmDownloadsFixed >= 1000) {
+    npmDownloadsFixed = (npmDownloadsFixed / 1000).toFixed(2);
+    npmDownloadsDisplay = `${npmDownloadsFixed}m`;
+  }
 
   return (
     <Wrapper {...props}>
       <PageLedeContainer>
-        <SectionLede
-          inverse
-          heading="Build UIs without the grunt work"
-          headingWrapper="h1"
-          copy="Storybook is a frontend workshop for building UI components and pages in isolation. Thousands of teams use it for UI development, testing, and documentation. It’s open source and free."
-          actions={
-            <>
-              <Button appearance="secondary" isLink href={docs} ButtonWrapper={GatsbyLinkWrapper}>
-                Get started
-              </Button>
+        <ContentContainer>
+          <Title>Build UIs without the grunt work</Title>
+          <Description>
+            Storybook is a frontend workshop for building UI components and pages in isolation.
+            Thousands of teams use it for UI development, testing, and documentation. It&apos;s open
+            source and free.
+          </Description>
+          <Actions>
+            <Left>
+              <ButtonSolid to={docs}>Get Started</ButtonSolid>
               <WithModal
                 startOpen={startOpen}
                 modal={Modal}
                 overlayStyles={{ backdropFilter: 'blur(10px)' }}
               >
                 {({ onOpen }) => (
-                  <Button appearance="inverseOutline" onClick={onOpen}>
+                  <ButtonVideo appearance="inverseOutline" onClick={onOpen}>
                     <Icon icon="play" aria-hidden /> Watch video
-                  </Button>
+                  </ButtonVideo>
                 )}
               </WithModal>
-            </>
-          }
-          meta={
-            <Stats>
-              <Stat
-                count={`v${latestVersion}`}
-                text="Latest version"
-                countLink={gitHub.releases}
-                noPlural
-              />
-              <NpmDownloadCount downloads={npmDownloads} />
-              <Stat
-                count={`${contributorCount.toLocaleString()}+`}
-                text="Contributors"
-                countLink={gitHub.contributors}
-                noPlural
-              />
-            </Stats>
-          }
-        />
+              <StatHero href={npm} target="_blank">
+                {npmDownloadsDisplay}
+                <span>Installs per month</span>
+              </StatHero>
+              <StatHero href={gitHub.contributors} target="_blank">
+                {contributorCount.toLocaleString()}+<span>Contributors</span>
+              </StatHero>
+            </Left>
+            <a href={gitHub.releases} target="_blank" rel="noreferrer">
+              v8
+            </a>
+          </Actions>
+        </ContentContainer>
       </PageLedeContainer>
       <Content>
         <StorybookDemo>
