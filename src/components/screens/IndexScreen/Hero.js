@@ -11,35 +11,56 @@ import { HeroDemo } from './StorybookDemo/HeroDemo';
 
 const { color, breakpoints, pageMargins } = styles;
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  position: relative;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+`;
+
+const Texture = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  background: url('/images/home/texture.png'), 100px 100px repeat;
+  background-size: 100px 100px;
+`;
 
 const ContentContainer = styled.div`
+  ${pageMargins};
   position: relative;
   z-index: 10;
-
-  ${pageMargins};
-
-  padding-bottom: 3rem;
   padding-top: 3rem;
 
   @media (min-width: ${breakpoints[1]}px) {
     padding-top: 4rem;
-    padding-bottom: 13rem;
   }
 
   @media (min-width: ${breakpoints[2]}px) {
-    padding-top: 6rem;
-    padding-bottom: 15rem;
+    padding-top: 5rem;
   }
 `;
 
 const Title = styled.h1`
-  font-size: 56px;
+  font-size: 32px;
   font-weight: 700;
-  line-height: 70px;
+  line-height: 40px;
   letter-spacing: -0.01em;
   text-align: left;
   color: white;
+
+  @media (min-width: ${breakpoints[1]}px) {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 48px;
+    letter-spacing: -0.01em;
+  }
+
+  @media (min-width: ${breakpoints[2]}px) {
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 70px;
+    letter-spacing: -0.01em;
+  }
 `;
 
 const Description = styled.div`
@@ -56,13 +77,27 @@ const Actions = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 64px;
+  margin-bottom: 40px;
+
+  @media (min-width: 800px) {
+    margin-bottom: 64px;
+  }
 `;
 
 const Left = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 40px;
+
+  @media (min-width: 800px) {
+    flex-direction: row;
+  }
+`;
+
+const Buttons = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
 `;
 
 const ButtonSolid = styled(GatsbyLink)`
@@ -109,6 +144,24 @@ const ButtonVideo = styled.button`
   }
 `;
 
+const Stats = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+
+  @media (min-width: 800px) {
+    gap: 40px;
+  }
+`;
+
+const HideDesktop = styled.div`
+  display: block;
+
+  @media (min-width: 800px) {
+    display: none;
+  }
+`;
+
 const StatHero = styled.a`
   display: flex;
   flex-direction: column;
@@ -122,7 +175,7 @@ const StatHero = styled.a`
     font-size: 14px;
     font-weight: 400;
     line-height: 16px;
-    color: #b7aeef;
+    color: rgba(255, 255, 255, 0.6);
     transition: color 0.2s ease;
   }
 
@@ -202,6 +255,14 @@ const CircleBlue = styled.div`
   left: 560px;
 `;
 
+const Right = styled.div`
+  display: none;
+
+  @media (min-width: 800px) {
+    display: block;
+  }
+`;
+
 const Modal = () => (
   <AspectRatio ratio={0.5625}>
     <ModalVideoWrapper>
@@ -232,6 +293,7 @@ export function Hero({ contributorCount, npmDownloads, startOpen, ...props }) {
 
   return (
     <Wrapper>
+      <Texture />
       <CirclePurple />
       <CircleOrange />
       <CircleBlue />
@@ -244,36 +306,44 @@ export function Hero({ contributorCount, npmDownloads, startOpen, ...props }) {
         </Description>
         <Actions>
           <Left>
-            <ButtonSolid to={docs}>Get Started</ButtonSolid>
-            <WithModal
-              startOpen={startOpen}
-              modal={Modal}
-              overlayStyles={{ backdropFilter: 'blur(10px)' }}
-            >
-              {({ onOpen }) => (
-                <ButtonVideo appearance="inverseOutline" onClick={onOpen}>
-                  <Icon icon="play" aria-hidden /> Watch video
-                </ButtonVideo>
-              )}
-            </WithModal>
-            <StatHero href={npm} target="_blank">
-              {npmDownloadsDisplay}
-              <span>Installs per month</span>
-            </StatHero>
-            <StatHero href={gitHub.contributors} target="_blank">
-              {contributorCount.toLocaleString()}+<span>Contributors</span>
-            </StatHero>
+            <Buttons>
+              <ButtonSolid to={docs}>Get Started</ButtonSolid>
+              <WithModal
+                startOpen={startOpen}
+                modal={Modal}
+                overlayStyles={{ backdropFilter: 'blur(10px)' }}
+              >
+                {({ onOpen }) => (
+                  <ButtonVideo appearance="inverseOutline" onClick={onOpen}>
+                    <Icon icon="play" aria-hidden /> Watch video
+                  </ButtonVideo>
+                )}
+              </WithModal>
+            </Buttons>
+            <Stats>
+              <HideDesktop>
+                <StatHero href={gitHub.contributors} target="_blank">
+                  v{latestVersion}
+                  <span>Latest version</span>
+                </StatHero>
+              </HideDesktop>
+              <StatHero href={npm} target="_blank">
+                {npmDownloadsDisplay}
+                <span>Installs per month</span>
+              </StatHero>
+              <StatHero href={gitHub.contributors} target="_blank">
+                {contributorCount.toLocaleString()}+<span>Contributors</span>
+              </StatHero>
+            </Stats>
           </Left>
-          <a href={gitHub.releases} target="_blank" rel="noreferrer">
-            v8
-          </a>
+          <Right>
+            <a href={gitHub.releases} target="_blank" rel="noreferrer">
+              v8
+            </a>
+          </Right>
         </Actions>
         <HeroDemo />
-        <SocialProof
-          path="/images/logos/user"
-          brands={['vscode', 'monday', 'eu', 'github', 'airbnb', 'mozilla', 'bbc']}
-          monochrome
-        />
+        <SocialProof />
       </ContentContainer>
     </Wrapper>
   );

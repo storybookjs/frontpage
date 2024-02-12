@@ -2,14 +2,7 @@ import React from 'react';
 import { styled } from '@storybook/theming';
 import { NormalizeArea, styles } from '@storybook/components-marketing';
 
-const { pageMargins, breakpoints } = styles;
-
-const Logo = styled.img`
-  display: block;
-  height: auto;
-  opacity: 0.4;
-  filter: grayscale(100%);
-`;
+const { breakpoints } = styles;
 
 const Logos = styled.div`
   display: flex;
@@ -18,6 +11,8 @@ const Logos = styled.div`
   gap: 10px;
   flex-wrap: wrap;
   --ideal-area: 1000;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 
   @media (min-width: ${breakpoints[1]}px) {
     gap: 20px;
@@ -28,85 +23,75 @@ const Logos = styled.div`
     justify-content: center;
     gap: 40px;
     --ideal-area: 5000;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
   }
 
   @media (min-width: ${breakpoints[3]}px) {
-    gap: 60px;
+    gap: 80px;
     --ideal-area: 7500;
   }
 `;
 
-const Wrapper = styled.div`
-  ${pageMargins};
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-
-  @media (min-width: ${breakpoints[2]}px) {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-  }
+const Logo = styled.img`
+  display: block;
+  height: auto;
+  opacity: 0.5;
 `;
 
 const brands = [
   {
     name: 'VScode',
-    image: '/images/logos/user/logo-vscode.svg',
+    image: '/images/home/logos/logo-vscode.svg',
     width: 33,
     height: 34,
   },
   {
     name: 'EU',
-    image: '/images/logos/user/logo-eu.svg',
+    image: '/images/home/logos/logo-eu.svg',
     width: 48,
     height: 31,
   },
   {
     name: 'Github',
-    image: '/images/logos/user/logo-github.svg',
+    image: '/images/home/logos/logo-github.svg',
     width: 92,
     height: 26,
   },
   {
     name: 'Airbnb',
-    image: '/images/logos/user/logo-airbnb.svg',
+    image: '/images/home/logos/logo-airbnb.svg',
     width: 300,
     height: 94,
   },
   {
     name: 'Mozilla',
-    image: '/images/logos/user/logo-mozilla.svg',
+    image: '/images/home/logos/logo-mozilla.svg',
     width: 360,
     height: 103,
   },
   {
     name: 'monday.com',
-    image: '/images/logos/user/logo-monday.svg',
+    image: '/images/home/logos/logo-monday.svg',
     width: 132,
     height: 24,
   },
   {
     name: 'BBC',
-    image: '/images/logos/user/logo-bbc.svg',
+    image: '/images/home/logos/logo-bbc.svg',
     width: 120,
     height: 32,
   },
 ];
 
-export default function SocialProof(props) {
+export default function SocialProof() {
   return (
-    <Wrapper {...props}>
-      <Logos>
-        {brands.map((brand) => (
-          <NormalizeArea
-            key={brand.name}
-            width={brand.width}
-            height={brand.height}
-            idealArea={5000}
-          >
-            <Logo src={brand.image} alt={brand.name} />
-          </NormalizeArea>
-        ))}
-      </Logos>
-    </Wrapper>
+    <Logos>
+      {brands.map((brand) => (
+        <NormalizeArea key={brand.name} width={brand.width} height={brand.height} idealArea={5000}>
+          <Logo src={brand.image} alt={brand.name} />
+        </NormalizeArea>
+      ))}
+    </Logos>
   );
 }
