@@ -1,21 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@storybook/theming';
-import { Button, Icon, WithModal } from '@storybook/design-system';
-import { styles, SectionLede } from '@storybook/components-marketing';
+import { Icon, WithModal } from '@storybook/design-system';
+import { styles } from '@storybook/components-marketing';
 import { Link as GatsbyLink } from 'gatsby';
 import SocialProof from '../../layout/SocialProof';
-import { NpmDownloadCount } from '../../layout/NpmDownloadCount';
-import { Stat } from '../../basics/Stat';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import PlaceholderAspectRatio from '../../layout/PlaceholderAspectRatio';
 import { HeroDemo } from './StorybookDemo/HeroDemo';
-import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 
 const { color, breakpoints, pageMargins } = styles;
 
+const Wrapper = styled.div``;
+
 const ContentContainer = styled.div`
+  position: relative;
+  z-index: 10;
+
   ${pageMargins};
+
+  padding-bottom: 3rem;
+  padding-top: 3rem;
+
+  @media (min-width: ${breakpoints[1]}px) {
+    padding-top: 4rem;
+    padding-bottom: 13rem;
+  }
+
+  @media (min-width: ${breakpoints[2]}px) {
+    padding-top: 6rem;
+    padding-bottom: 15rem;
+  }
 `;
 
 const Title = styled.h1`
@@ -41,6 +56,7 @@ const Actions = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 64px;
 `;
 
 const Left = styled.div`
@@ -144,44 +160,46 @@ const AspectRatio = styled(PlaceholderAspectRatio)`
   }
 `;
 
-const Wrapper = styled.div``;
-
-const Content = styled.section`
-  background-image: url('/images/home/gradient-backdrop.svg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+const CirclePurple = styled.div`
+  position: absolute;
+  width: 928px;
+  height: 928px;
+  flex-shrink: 0;
+  border-radius: 928px;
+  opacity: 0.6;
+  background: #ff4785;
+  filter: blur(72px);
+  z-index: 2;
+  top: -500px;
+  left: -100px;
 `;
 
-const PageLedeContainer = styled.div`
-  padding-bottom: 3rem;
-  padding-top: 3rem;
-
-  @media (min-width: ${breakpoints[1]}px) {
-    padding-top: 4rem;
-    padding-bottom: 13rem;
-  }
-
-  @media (min-width: ${breakpoints[2]}px) {
-    padding-top: 6rem;
-    padding-bottom: 15rem;
-  }
+const CircleOrange = styled.div`
+  position: absolute;
+  width: 740px;
+  height: 740px;
+  flex-shrink: 0;
+  border-radius: 740px;
+  opacity: 0.6;
+  background: #fc521f;
+  filter: blur(72px);
+  z-index: 1;
+  top: -420px;
+  left: 480px;
 `;
 
-const StorybookDemo = styled.figure`
-  ${pageMargins};
-
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 0; //reset user agent figure
-  margin-bottom: 0; //reset user agent figure
-  padding-top: 3rem;
-
-  @media (min-width: ${breakpoints[1]}px) {
-    width: auto;
-  }
+const CircleBlue = styled.div`
+  position: absolute;
+  width: 1192px;
+  height: 1192px;
+  flex-shrink: 0;
+  border-radius: 1192px;
+  opacity: 0.4;
+  background: #4791ff;
+  filter: blur(72px);
+  z-index: 1;
+  top: 210px;
+  left: 560px;
 `;
 
 const Modal = () => (
@@ -201,11 +219,6 @@ const Modal = () => (
   </AspectRatio>
 );
 
-const Stats = styled.div`
-  display: flex;
-  gap: 40px;
-`;
-
 export function Hero({ contributorCount, npmDownloads, startOpen, ...props }) {
   const { latestVersion, urls = {} } = useSiteMetadata();
   const { docs = {}, gitHub = {}, npm } = urls;
@@ -218,54 +231,50 @@ export function Hero({ contributorCount, npmDownloads, startOpen, ...props }) {
   }
 
   return (
-    <Wrapper {...props}>
-      <PageLedeContainer>
-        <ContentContainer>
-          <Title>Build UIs without the grunt work</Title>
-          <Description>
-            Storybook is a frontend workshop for building UI components and pages in isolation.
-            Thousands of teams use it for UI development, testing, and documentation. It&apos;s open
-            source and free.
-          </Description>
-          <Actions>
-            <Left>
-              <ButtonSolid to={docs}>Get Started</ButtonSolid>
-              <WithModal
-                startOpen={startOpen}
-                modal={Modal}
-                overlayStyles={{ backdropFilter: 'blur(10px)' }}
-              >
-                {({ onOpen }) => (
-                  <ButtonVideo appearance="inverseOutline" onClick={onOpen}>
-                    <Icon icon="play" aria-hidden /> Watch video
-                  </ButtonVideo>
-                )}
-              </WithModal>
-              <StatHero href={npm} target="_blank">
-                {npmDownloadsDisplay}
-                <span>Installs per month</span>
-              </StatHero>
-              <StatHero href={gitHub.contributors} target="_blank">
-                {contributorCount.toLocaleString()}+<span>Contributors</span>
-              </StatHero>
-            </Left>
-            <a href={gitHub.releases} target="_blank" rel="noreferrer">
-              v8
-            </a>
-          </Actions>
-        </ContentContainer>
-      </PageLedeContainer>
-      <Content>
-        <StorybookDemo>
-          <HeroDemo />
-        </StorybookDemo>
-
+    <Wrapper>
+      <CirclePurple />
+      <CircleOrange />
+      <CircleBlue />
+      <ContentContainer>
+        <Title>Build UIs without the grunt work</Title>
+        <Description>
+          Storybook is a frontend workshop for building UI components and pages in isolation.
+          Thousands of teams use it for UI development, testing, and documentation. It&apos;s open
+          source and free.
+        </Description>
+        <Actions>
+          <Left>
+            <ButtonSolid to={docs}>Get Started</ButtonSolid>
+            <WithModal
+              startOpen={startOpen}
+              modal={Modal}
+              overlayStyles={{ backdropFilter: 'blur(10px)' }}
+            >
+              {({ onOpen }) => (
+                <ButtonVideo appearance="inverseOutline" onClick={onOpen}>
+                  <Icon icon="play" aria-hidden /> Watch video
+                </ButtonVideo>
+              )}
+            </WithModal>
+            <StatHero href={npm} target="_blank">
+              {npmDownloadsDisplay}
+              <span>Installs per month</span>
+            </StatHero>
+            <StatHero href={gitHub.contributors} target="_blank">
+              {contributorCount.toLocaleString()}+<span>Contributors</span>
+            </StatHero>
+          </Left>
+          <a href={gitHub.releases} target="_blank" rel="noreferrer">
+            v8
+          </a>
+        </Actions>
+        <HeroDemo />
         <SocialProof
           path="/images/logos/user"
           brands={['vscode', 'monday', 'eu', 'github', 'airbnb', 'mozilla', 'bbc']}
           monochrome
         />
-      </Content>
+      </ContentContainer>
     </Wrapper>
   );
 }

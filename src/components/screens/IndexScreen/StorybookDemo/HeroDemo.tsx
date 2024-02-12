@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { styled } from '@storybook/theming';
-import { styles } from '@storybook/components-marketing';
 import {
   motion,
   MotionValue,
@@ -11,8 +10,6 @@ import {
 import { Sidebar } from './Sidebar';
 import { Controls } from './Controls';
 import { TimeFrame } from './TimeFrame';
-
-const { breakpoints } = styles;
 
 const Frame = styled(motion.img)`
   display: block;
@@ -40,10 +37,6 @@ const Wrapper = styled(motion.div)`
 
     box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1), 0px 10px 20px 0px rgba(0, 0, 0, 0.1),
       0px 20px 40px 0px rgba(0, 0, 0, 0.05), 0px 40px 30px 0px rgba(0, 0, 0, 0.05);
-  }
-
-  @media (min-width: ${breakpoints[1]}px) {
-    margin-top: -12.625rem;
   }
 `;
 
