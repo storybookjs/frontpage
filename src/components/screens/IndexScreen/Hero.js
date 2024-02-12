@@ -4,6 +4,7 @@ import { styled } from '@storybook/theming';
 import { Icon, WithModal } from '@storybook/design-system';
 import { styles } from '@storybook/components-marketing';
 import { Link as GatsbyLink } from 'gatsby';
+import { motion } from 'framer-motion';
 import SocialProof from '../../layout/SocialProof';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import PlaceholderAspectRatio from '../../layout/PlaceholderAspectRatio';
@@ -76,10 +77,11 @@ const Description = styled.div`
 const Actions = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
   margin-bottom: 40px;
 
-  @media (min-width: 800px) {
+  @media (min-width: 860px) {
     margin-bottom: 64px;
   }
 `;
@@ -89,7 +91,7 @@ const Left = styled.div`
   flex-direction: column;
   gap: 40px;
 
-  @media (min-width: 800px) {
+  @media (min-width: 860px) {
     flex-direction: row;
   }
 `;
@@ -149,7 +151,7 @@ const Stats = styled.div`
   flex-direction: row;
   gap: 24px;
 
-  @media (min-width: 800px) {
+  @media (min-width: 860px) {
     gap: 40px;
   }
 `;
@@ -157,7 +159,7 @@ const Stats = styled.div`
 const HideDesktop = styled.div`
   display: block;
 
-  @media (min-width: 800px) {
+  @media (min-width: 860px) {
     display: none;
   }
 `;
@@ -255,12 +257,32 @@ const CircleBlue = styled.div`
   left: 560px;
 `;
 
-const Right = styled.div`
+const Right = styled.a`
   display: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  text-decoration: none;
+  padding-bottom: 4px;
 
-  @media (min-width: 800px) {
-    display: block;
+  @media (min-width: 860px) {
+    display: flex;
+    align-items: end;
   }
+`;
+
+const EightContainer = styled.div`
+  position: relative;
+  margin-left: 12px;
+  margin-right: 12px;
+  margin-bottom: -4px;
+`;
+
+const StarStyled = styled(motion.svg)`
+  position: absolute;
+  left: 0;
+  top: 0;
 `;
 
 const Modal = () => (
@@ -280,7 +302,41 @@ const Modal = () => (
   </AspectRatio>
 );
 
-export function Hero({ contributorCount, npmDownloads, startOpen, ...props }) {
+const Star = ({ x = 0, y = 0, w = 14, delay = 0 }) => {
+  return (
+    <StarStyled
+      initial={{ x, y, opacity: 0, scale: 0.5 }}
+      animate={{ rotate: 360, opacity: 1, scale: 1 }}
+      transition={{ duration: 2, repeat: Infinity, delay }}
+      style={{ originX: `${w / 2}px`, originY: `${w / 2}px` }}
+      width={w}
+      height={w}
+      viewBox="0 0 14 14"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M7 0L8.89064 5.10936L14 7L8.89064 8.89064L7 14L5.10936 8.89064L0 7L5.10936 5.10936L7 0Z"
+        fill="url(#paint0_linear_195_11225)"
+      />
+      <defs>
+        <linearGradient
+          id="paint0_linear_195_11225"
+          x1="7"
+          y1="0"
+          x2="7"
+          y2="14"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="white" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+    </StarStyled>
+  );
+};
+
+export function Hero({ contributorCount, npmDownloads, startOpen }) {
   const { latestVersion, urls = {} } = useSiteMetadata();
   const { docs = {}, gitHub = {}, npm } = urls;
 
@@ -336,10 +392,15 @@ export function Hero({ contributorCount, npmDownloads, startOpen, ...props }) {
               </StatHero>
             </Stats>
           </Left>
-          <Right>
-            <a href={gitHub.releases} target="_blank" rel="noreferrer">
-              v8
-            </a>
+          <Right href={gitHub.releases} target="_blank" rel="noreferrer">
+            Version
+            <EightContainer>
+              <img src="/images/home/eight.svg" alt="Storybook 8" />
+              <Star x={-36} y={-10} delay={1} />
+              <Star x={-16} y={-20} w={7} delay={0.2} />
+              <Star x={24} y={-34} delay={2} />
+              <Star x={52} y={28} w={7} delay={0.4} />
+            </EightContainer>
           </Right>
         </Actions>
         <HeroDemo />
