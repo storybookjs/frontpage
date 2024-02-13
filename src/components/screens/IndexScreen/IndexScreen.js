@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useMemo, useRef } from 'react';
 import { Global, css, styled } from '@storybook/theming';
-import { styles } from '@storybook/components-marketing';
 import { global } from '@storybook/design-system';
 import { useInView } from 'framer-motion';
 import useSiteMetadata from '../../lib/useSiteMetadata';

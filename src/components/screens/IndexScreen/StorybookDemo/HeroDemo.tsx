@@ -83,7 +83,7 @@ export const HeroDemo = ({ ...props }: HeroDemoProps) => {
       await pointerControls.start({
         opacity: [0, 1],
         x: '-730%',
-        y: '-402%',
+        y: '-460%',
         transition: {
           delay: 1,
           duration: 1,
@@ -95,7 +95,7 @@ export const HeroDemo = ({ ...props }: HeroDemoProps) => {
       });
       await pointerControls.start({
         x: '-700%',
-        y: '-368%',
+        y: '-430%',
         transition: {
           delay: 1,
           duration: 0.4,
@@ -158,7 +158,7 @@ export const HeroDemo = ({ ...props }: HeroDemoProps) => {
       await pointerControls.start({
         opacity: 1,
         x: '-720%',
-        y: '-470%',
+        y: '-540%',
         transition: { delay: 1, duration: 1, opacity: { duration: 0.2 } },
       });
       await click(pointerControls, () => {
@@ -168,7 +168,7 @@ export const HeroDemo = ({ ...props }: HeroDemoProps) => {
       // Reset state
       await pointerControls.start({
         x: '-730%',
-        y: '-436%',
+        y: '-500%',
         transition: {
           delay: 2,
           duration: 1,

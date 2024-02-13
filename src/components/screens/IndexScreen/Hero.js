@@ -20,10 +20,12 @@ const Wrapper = styled.div`
 const Texture = styled.div`
   position: absolute;
   width: 100%;
-  height: 100%;
+  top: -200px;
+  bottom: -60px;
   z-index: 3;
   background: url('/images/home/texture.png'), 100px 100px repeat;
   background-size: 100px 100px;
+  opacity: 0.6;
 `;
 
 const ContentContainer = styled.div`

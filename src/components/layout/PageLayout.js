@@ -147,6 +147,7 @@ export function PurePageLayout({ dxData, children, pageContext, ...props }) {
               />
               <Nav
                 inverse={isHomePage}
+                monochrome={isHomePage}
                 version={versionString || latestVersionString}
                 apiKey={ALGOLIA_API_KEY}
                 activeSection={activeSection}
@@ -168,6 +169,7 @@ export function PurePageLayout({ dxData, children, pageContext, ...props }) {
                 />
                 <Nav
                   inverse={isHomePage}
+                  monochrome={isHomePage}
                   version={versionString || latestVersionString}
                   apiKey={ALGOLIA_API_KEY}
                   activeSection={activeSection}
