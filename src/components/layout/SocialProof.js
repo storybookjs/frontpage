@@ -21,15 +21,19 @@ const Logos = styled.div`
 
   @media (min-width: ${breakpoints[2]}px) {
     justify-content: center;
-    gap: 40px;
+    gap: 54px;
     --ideal-area: 5000;
     padding-top: 5rem;
     padding-bottom: 5rem;
   }
 
   @media (min-width: ${breakpoints[3]}px) {
-    gap: 80px;
+    gap: 60px;
     --ideal-area: 7500;
+  }
+
+  @media (min-width: 1400px) {
+    gap: 80px;
   }
 `;
 
