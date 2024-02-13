@@ -217,46 +217,112 @@ const AspectRatio = styled(PlaceholderAspectRatio)`
   }
 `;
 
-const CirclePurple = styled.div`
+const CirclePink = styled.div`
   position: absolute;
-  width: 928px;
-  height: 928px;
   flex-shrink: 0;
   border-radius: 928px;
   opacity: 0.6;
   background: #ff4785;
   filter: blur(72px);
   z-index: 2;
-  top: -500px;
-  left: -100px;
+
+  width: 500px;
+  height: 500px;
+  top: -300px;
+  left: -160px;
+
+  @media (min-width: 600px) {
+    width: 700px;
+    height: 700px;
+    top: -300px;
+    left: -160px;
+  }
+
+  @media (min-width: 960px) {
+    width: 928px;
+    height: 928px;
+    top: -500px;
+    left: -100px;
+  }
+
+  @media (min-width: 1440px) {
+    width: 1100px;
+    height: 1100px;
+    top: -720px;
+    left: 4%;
+  }
+
+  @media (min-width: 2200px) {
+    left: 14%;
+  }
 `;
 
 const CircleOrange = styled.div`
   position: absolute;
-  width: 740px;
-  height: 740px;
   flex-shrink: 0;
   border-radius: 740px;
   opacity: 0.6;
   background: #fc521f;
   filter: blur(72px);
   z-index: 1;
-  top: -420px;
-  left: 480px;
+
+  width: 400px;
+  height: 400px;
+  top: -220px;
+  left: 200px;
+
+  @media (min-width: 600px) {
+    width: 600px;
+    height: 600px;
+    top: -260px;
+    left: 360px;
+  }
+
+  @media (min-width: 960px) {
+    width: 740px;
+    height: 740px;
+    top: -420px;
+    left: 480px;
+  }
+
+  @media (min-width: 1440px) {
+    left: 40%;
+  }
+
+  @media (min-width: 2200px) {
+    left: 44%;
+  }
 `;
 
 const CircleBlue = styled.div`
   position: absolute;
-  width: 1192px;
-  height: 1192px;
   flex-shrink: 0;
   border-radius: 1192px;
   opacity: 0.4;
   background: #4791ff;
   filter: blur(72px);
   z-index: 1;
-  top: 210px;
-  left: 560px;
+
+  width: 600px;
+  height: 600px;
+  top: 160px;
+  left: 200px;
+
+  @media (min-width: 600px) {
+    top: 220px;
+    left: 400px;
+  }
+
+  @media (min-width: 960px) {
+    width: 1192px;
+    height: 1192px;
+    top: 210px;
+    left: 560px;
+  }
+
+  @media (min-width: 1440px) {
+    left: 40%;
+  }
 `;
 
 const Right = styled.a`
@@ -357,7 +423,7 @@ export function Hero({ contributorCount, npmDownloads, startOpen }) {
   return (
     <Wrapper>
       <Texture />
-      <CirclePurple />
+      <CirclePink />
       <CircleOrange />
       <CircleBlue />
       <ContentContainer>
