@@ -267,6 +267,11 @@ const Right = styled.a`
   line-height: 16px;
   text-decoration: none;
   padding-bottom: 4px;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #ffffff;
+  }
 
   @media (min-width: 860px) {
     display: flex;
