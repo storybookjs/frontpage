@@ -20,7 +20,7 @@ const TimeFramePicker = styled(motion.img)`
 
   @media (min-width: ${breakpoints[2]}px) {
     top: 15%;
-    left: 25%;
+    left: 27%;
   }
 `;
 TimeFramePicker.defaultProps = {
