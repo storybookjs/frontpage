@@ -18,7 +18,7 @@ const CODE_BLOCK_REGEX = /```(?:sh|shell|bash)\n\s*(?:#.*\n)?(.*)\n\s*```/g;
 
 const INLINE_CODE_MATCH_LIST = (preRelease) => [
   {
-    test: /(storybook)(?:@\w+)? (add|automigrate|babelrc|extract|init|migrate|upgrade)(?! --prerelease)/g,
+    test: /(storybook)(?:@\w+)? (add|automigrate|babelrc|extract|init|migrate|remove|upgrade)(?! --prerelease)/g,
     replacer: `$1${preRelease ? '@next' : '@latest'} $2`,
   },
 ];
@@ -28,6 +28,10 @@ const CODE_BLOCK_MATCH_LIST = (preRelease) => [
   {
     test: /(@storybook\/(?:\w+-?)+)(?:@\w+)?/g,
     replacer: (_, pkg) => `${pkg}${preRelease && !PKG_DISALLOW_LIST.includes(pkg) ? '@next' : ''}`,
+  },
+  {
+    test: /(storybook(?:@\w+)? remove) (@storybook\/(?:\w+-?)+)(?:@\w+)?/g,
+    replacer: (_, start, pkg) => `${start} ${pkg}`,
   },
 ];
 
