@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@storybook/theming';
-import { Icon, WithModal } from '@storybook/design-system';
+import { Icon } from '@storybook/design-system';
 import { styles } from '@storybook/components-marketing';
 import { Link as GatsbyLink } from 'gatsby';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
+import copy from 'copy-to-clipboard';
+import { CheckIcon, CopyIcon } from '@storybook/icons';
 import SocialProof from '../../layout/SocialProof';
 import useSiteMetadata from '../../lib/useSiteMetadata';
-import PlaceholderAspectRatio from '../../layout/PlaceholderAspectRatio';
 import { HeroDemo } from './StorybookDemo/HeroDemo';
 
-const { color, breakpoints, pageMargins } = styles;
+const { breakpoints, pageMargins } = styles;
 
 const Wrapper = styled.div`
   position: relative;
@@ -125,7 +126,9 @@ const ButtonSolid = styled(GatsbyLink)`
   }
 `;
 
-const ButtonVideo = styled.button`
+const ButtonInit = styled.button`
+  position: relative;
+  overflow: hidden;
   height: 48px;
   background: transparent;
   border: 1px solid #fff;
@@ -146,6 +149,20 @@ const ButtonVideo = styled.button`
   &:hover {
     transform: translate3d(0, -2px, 0);
   }
+`;
+
+const ButtonInitCopy = styled(motion.div)`
+  position: absolute;
+  background: #fff;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 `;
 
 const Stats = styled.div`
@@ -171,7 +188,7 @@ const StatHero = styled.a`
   flex-direction: column;
   gap: 2px;
   color: #ffffff;
-  font-size: 18px;
+  font-size: 16px;
   cursor: pointer;
   text-decoration: none;
 
@@ -187,33 +204,6 @@ const StatHero = styled.a`
     span {
       color: #ffffff;
     }
-  }
-`;
-
-const ModalVideo = styled.iframe`
-  width: 100%;
-  height: 100%;
-`;
-
-const ModalVideoWrapper = styled.div`
-  box-shadow: rgba(0, 0, 0, 0.05) 0 10px 35px;
-  border-radius: 10px;
-  overflow: hidden;
-  background: ${color.lightest};
-  /**
-   * This z-index moves the wrapper to a new stacking context, which Safari
-   * needs in order to render the rounded corners appropriately.
-   */
-  z-index: 1;
-`;
-
-const AspectRatio = styled(PlaceholderAspectRatio)`
-  ${ModalVideoWrapper}, ${ModalVideo} {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
   }
 `;
 
@@ -358,23 +348,6 @@ const StarStyled = styled(motion.svg)`
   top: 0;
 `;
 
-const Modal = () => (
-  <AspectRatio ratio={0.5625}>
-    <ModalVideoWrapper>
-      <ModalVideo
-        title="Storybook intro video"
-        width="560"
-        height="315"
-        src="https://www.youtube.com/embed/p-LFh5Y89eM?autoplay=1&rel=0&amp;showinfo=0"
-        frameBorder="0"
-        allow="autoplay; encrypted-media"
-        allowFullScreen
-        className="chromatic-ignore"
-      />
-    </ModalVideoWrapper>
-  </AspectRatio>
-);
-
 const Star = ({ x = 0, y = 0, w = 14, delay = 0 }) => {
   return (
     <StarStyled
@@ -409,7 +382,8 @@ const Star = ({ x = 0, y = 0, w = 14, delay = 0 }) => {
   );
 };
 
-export function Hero({ contributorCount, npmDownloads, startOpen }) {
+export function Hero({ contributorCount, npmDownloads }) {
+  const [state, setState] = useState(false);
   const { latestVersion, urls = {} } = useSiteMetadata();
   const { docs = {}, gitHub = {}, npm } = urls;
 
@@ -419,6 +393,12 @@ export function Hero({ contributorCount, npmDownloads, startOpen }) {
     npmDownloadsFixed = (npmDownloadsFixed / 1000).toFixed(2);
     npmDownloadsDisplay = `${npmDownloadsFixed}m`;
   }
+
+  const onClick = () => {
+    copy('npx storybook@latest init');
+    setState(true);
+    setTimeout(() => setState(false), 2000);
+  };
 
   return (
     <Wrapper>
@@ -437,17 +417,22 @@ export function Hero({ contributorCount, npmDownloads, startOpen }) {
           <Left>
             <Buttons>
               <ButtonSolid to={docs}>Get Started</ButtonSolid>
-              <WithModal
-                startOpen={startOpen}
-                modal={Modal}
-                overlayStyles={{ backdropFilter: 'blur(10px)' }}
-              >
-                {({ onOpen }) => (
-                  <ButtonVideo appearance="inverseOutline" onClick={onOpen}>
-                    <Icon icon="play" aria-hidden /> Watch video
-                  </ButtonVideo>
-                )}
-              </WithModal>
+              <ButtonInit onClick={onClick}>
+                npx storybook@latest init
+                <CopyIcon aria-hidden />
+                <AnimatePresence>
+                  {state && (
+                    <ButtonInitCopy
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <CheckIcon /> Copied!
+                    </ButtonInitCopy>
+                  )}
+                </AnimatePresence>
+              </ButtonInit>
             </Buttons>
             <Stats>
               <HideDesktop>
@@ -484,10 +469,5 @@ export function Hero({ contributorCount, npmDownloads, startOpen }) {
 }
 
 Hero.propTypes = {
-  startOpen: PropTypes.bool,
   npmDownloads: PropTypes.number.isRequired,
-};
-
-Hero.defaultProps = {
-  startOpen: false,
 };

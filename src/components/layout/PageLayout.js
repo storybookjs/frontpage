@@ -139,12 +139,12 @@ export function PurePageLayout({ dxData, children, pageContext, ...props }) {
         {pageContext && pageContext.layout === 'docs' ? (
           <>
             <NavWrapper>
-              <Eyebrow
+              {/* <Eyebrow
                 label={dxData.latestPost.title}
                 link={dxData.latestPost.url}
                 inverse={isHomePage}
                 githubStarCount={dxData.githubStars}
-              />
+              /> */}
               <Nav
                 inverse={isHomePage}
                 monochrome={isHomePage}
@@ -161,12 +161,12 @@ export function PurePageLayout({ dxData, children, pageContext, ...props }) {
           <>
             {pageContext.layout !== 'iframe' && (
               <>
-                <Eyebrow
+                {/* <Eyebrow
                   label={dxData.latestPost.title}
                   link={dxData.latestPost.url}
                   inverse={isHomePage}
                   githubStarCount={dxData.githubStars}
-                />
+                /> */}
                 <Nav
                   inverse={isHomePage}
                   monochrome={isHomePage}
