@@ -4,8 +4,8 @@ import { styled } from '@storybook/theming';
 import { styles } from '@storybook/components-marketing';
 import { Link as GatsbyLink } from 'gatsby';
 import { AnimatePresence, motion } from 'framer-motion';
-import copy from 'copy-to-clipboard';
 import { CheckIcon, CopyIcon } from '@storybook/icons';
+import { useCopyToClipboard } from 'usehooks-ts';
 import SocialProof from '../../layout/SocialProof';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import { HeroDemo } from './StorybookDemo/HeroDemo';
@@ -275,6 +275,7 @@ const Star = ({ x = 0, y = 0, w = 14, delay = 0 }) => {
 
 export function Hero({ contributorCount, npmDownloads }) {
   const [state, setState] = useState(false);
+  const [copiedValue, copyToClipboard] = useCopyToClipboard();
   const { latestVersion, urls = {} } = useSiteMetadata();
   const { docs = {}, gitHub = {}, npm } = urls;
 
@@ -286,7 +287,7 @@ export function Hero({ contributorCount, npmDownloads }) {
   }
 
   const onClick = () => {
-    copy('npx storybook@latest init');
+    copyToClipboard('npx storybook@latest init');
     setState(true);
     setTimeout(() => setState(false), 2000);
   };
