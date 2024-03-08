@@ -37,6 +37,7 @@ const syntaxMap = {
   npx: 'sh',
   pnpm: 'sh',
   yarn: 'sh',
+  'native-format': 'html',
 };
 
 export const isTerminalSnippetByType = (type: string): boolean => syntaxMap[type] === 'sh';
@@ -47,7 +48,10 @@ export const isTerminalSnippetByPath = (path: string): boolean =>
 export const getSnippetSyntax = (type: string) => syntaxMap[type] || type;
 
 const nameMap = {
+  js: 'JS',
+  'native-format': 'Svelte native',
   'stories-of': 'StoriesOf()',
+  ts: 'TS',
   'ts-4-9': 'TS 4.9',
 };
 

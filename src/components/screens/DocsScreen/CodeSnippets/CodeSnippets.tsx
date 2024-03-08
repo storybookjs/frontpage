@@ -48,9 +48,11 @@ function getPathsForLanguage(paths, forLanguage, { matchMDX = true } = {}) {
        * - `ts-4-9` for TS 4.9
        * - `mdx` for MDX
        * - `mdx-2` or `mdx-3` for Vue 2/3 MDX
+       * - `native-format` for Svelte
        * This check is formulated so that `ts-4-9` does not match `ts`, but, e.g., `ts-2` does
        */
       (language === 'ts-4-9' ? language === forLanguage : language.startsWith(forLanguage)) ||
+      language === 'native-format' ||
       // Also optionally match any mdx language snippet paths
       (matchMDX && language.startsWith('mdx'))
     );
