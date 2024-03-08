@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@storybook/theming';
-import { Icon } from '@storybook/design-system';
 import { styles } from '@storybook/components-marketing';
 import { Link as GatsbyLink } from 'gatsby';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -16,17 +15,6 @@ const { breakpoints, pageMargins } = styles;
 const Wrapper = styled.div`
   position: relative;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-`;
-
-const Texture = styled.div`
-  position: absolute;
-  width: 100%;
-  top: -200px;
-  bottom: -60px;
-  z-index: 3;
-  background: url('/images/home/texture.png'), 100px 100px repeat;
-  background-size: 100px 100px;
-  opacity: 0.6;
 `;
 
 const ContentContainer = styled.div`
@@ -84,7 +72,7 @@ const Actions = styled.div`
   justify-content: space-between;
   margin-bottom: 40px;
 
-  @media (min-width: 860px) {
+  @media (min-width: 940px) {
     margin-bottom: 64px;
   }
 `;
@@ -93,16 +81,27 @@ const Left = styled.div`
   display: flex;
   flex-direction: column;
   gap: 40px;
+  width: 100%;
 
-  @media (min-width: 860px) {
+  @media (min-width: 450px) {
+    width: auto;
+  }
+
+  @media (min-width: 940px) {
     flex-direction: row;
   }
 `;
 
 const Buttons = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 20px;
+  width: 100%;
+
+  @media (min-width: 450px) {
+    flex-direction: row;
+    width: auto;
+  }
 `;
 
 const ButtonSolid = styled(GatsbyLink)`
@@ -170,7 +169,7 @@ const Stats = styled.div`
   flex-direction: row;
   gap: 24px;
 
-  @media (min-width: 860px) {
+  @media (min-width: 940px) {
     gap: 40px;
   }
 `;
@@ -178,7 +177,7 @@ const Stats = styled.div`
 const HideDesktop = styled.div`
   display: block;
 
-  @media (min-width: 860px) {
+  @media (min-width: 940px) {
     display: none;
   }
 `;
@@ -207,114 +206,6 @@ const StatHero = styled.a`
   }
 `;
 
-const CirclePink = styled.div`
-  position: absolute;
-  flex-shrink: 0;
-  border-radius: 928px;
-  opacity: 0.6;
-  background: #ff4785;
-  filter: blur(72px);
-  z-index: 2;
-
-  width: 500px;
-  height: 500px;
-  top: -300px;
-  left: -160px;
-
-  @media (min-width: 600px) {
-    width: 700px;
-    height: 700px;
-    top: -300px;
-    left: -160px;
-  }
-
-  @media (min-width: 960px) {
-    width: 928px;
-    height: 928px;
-    top: -500px;
-    left: -100px;
-  }
-
-  @media (min-width: 1440px) {
-    width: 1100px;
-    height: 1100px;
-    top: -720px;
-    left: 4%;
-  }
-
-  @media (min-width: 2200px) {
-    left: 14%;
-  }
-`;
-
-const CircleOrange = styled.div`
-  position: absolute;
-  flex-shrink: 0;
-  border-radius: 740px;
-  opacity: 0.6;
-  background: #fc521f;
-  filter: blur(72px);
-  z-index: 1;
-
-  width: 400px;
-  height: 400px;
-  top: -220px;
-  left: 200px;
-
-  @media (min-width: 600px) {
-    width: 600px;
-    height: 600px;
-    top: -260px;
-    left: 360px;
-  }
-
-  @media (min-width: 960px) {
-    width: 740px;
-    height: 740px;
-    top: -420px;
-    left: 480px;
-  }
-
-  @media (min-width: 1440px) {
-    left: 40%;
-  }
-
-  @media (min-width: 2200px) {
-    left: 44%;
-  }
-`;
-
-const CircleBlue = styled.div`
-  position: absolute;
-  flex-shrink: 0;
-  border-radius: 1192px;
-  opacity: 0.4;
-  background: #4791ff;
-  filter: blur(72px);
-  z-index: 1;
-
-  width: 600px;
-  height: 600px;
-  top: 160px;
-  left: 200px;
-
-  @media (min-width: 600px) {
-    top: 220px;
-    left: 400px;
-  }
-
-  @media (min-width: 960px) {
-    width: 1192px;
-    height: 1192px;
-    top: 210px;
-    left: 560px;
-  }
-
-  @media (min-width: 1440px) {
-    left: 40%;
-  }
-`;
-
 const Right = styled.a`
   display: none;
   color: rgba(255, 255, 255, 0.6);
@@ -329,7 +220,7 @@ const Right = styled.a`
     color: #ffffff;
   }
 
-  @media (min-width: 860px) {
+  @media (min-width: 940px) {
     display: flex;
     align-items: end;
   }
@@ -402,10 +293,6 @@ export function Hero({ contributorCount, npmDownloads }) {
 
   return (
     <Wrapper>
-      <Texture />
-      <CirclePink />
-      <CircleOrange />
-      <CircleBlue />
       <ContentContainer>
         <Title>Build UIs without the grunt work</Title>
         <Description>

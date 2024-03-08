@@ -2,13 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { color, styled } from '@storybook/theming';
 import Helmet from 'react-helmet';
-import {
-  Nav,
-  LinksContextProvider,
-  Eyebrow,
-  Footer,
-  defaultLinks,
-} from '@storybook/components-marketing';
+import { Nav, LinksContextProvider, Footer, defaultLinks } from '@storybook/components-marketing';
 import { useStaticQuery, graphql } from 'gatsby';
 import GatsbyLinkWrapper from '../basics/GatsbyLinkWrapper';
 import '@docsearch/css';
