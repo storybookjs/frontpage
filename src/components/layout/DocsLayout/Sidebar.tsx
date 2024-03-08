@@ -55,26 +55,32 @@ const TutorialsIcon: FC = () => (
 );
 
 const ChangelogIcon: FC = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none">
+  <svg width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
+      d="M3.099 9.374 6.497.13A.2.2 0 0 1 6.685 0h6.276a.2.2 0 0 1 .184.278l-2.5 5.872a.2.2 0 0 0 .184.279h4.746a.2.2 0 0 1 .154.327l-9.03 10.908c-.067.082-.2.015-.174-.088l1.888-7.685a.2.2 0 0 0-.194-.248H3.287a.2.2 0 0 1-.188-.27Z"
       fill="#FF4785"
-      d="M6.06 18c-.419 0-.828-.194-1.093-.519a1.39 1.39 0 0 1-.281-1.16l1.143-5.615H2.84a.84.84 0 0 1-.766-1.18L6.089.5a.84.84 0 0 1 .767-.5h6.213a.84.84 0 0 1 .76 1.198L12.097 4.87h3.267a.84.84 0 0 1 .658 1.36L7.11 17.515A1.382 1.382 0 0 1 6.06 18ZM4.133 9.028h2.724a.84.84 0 0 1 .823 1.007l-1.11 5.455 7.062-8.94h-2.857a.84.84 0 0 1-.76-1.197l1.732-3.672H7.403l-3.27 7.347Z"
-    />
-    <path
-      fill="#FFA0C0"
-      d="M6.857 9.027H4.133l3.27-7.347h4.343l-1.731 3.672a.84.84 0 0 0 .76 1.197h2.857l-7.063 8.94 1.11-5.455a.836.836 0 0 0-.822-1.007Z"
     />
   </svg>
 );
 
-// const APIIcon: FC = () => (
-//   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none">
-//     <rect width="18" height="16" y="1.001" fill="#A8E38C" rx="8" />
-//     <g fill="#489524">
-//       <path d="M7.348 12.345a.52.52 0 0 0 0-.73l-2.606-2.63 2.606-2.628a.521.521 0 0 0-.37-.856.511.511 0 0 0-.355.125l-2.97 2.991a.519.519 0 0 0 0 .737l2.97 2.991a.514.514 0 0 0 .365.156.512.512 0 0 0 .36-.156ZM11.011 12.5a.512.512 0 0 1-.474-.321.523.523 0 0 1 .114-.565l2.607-2.629-2.607-2.628a.521.521 0 0 1 .37-.856c.13-.005.257.04.355.125l2.971 2.991a.52.52 0 0 1 0 .737l-2.971 2.991a.515.515 0 0 1-.365.156Z" />
-//     </g>
-//   </svg>
-// );
+const APIIcon: FC = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none">
+    <rect width="18" height="16" y="1.001" fill="#A8E38C" rx="8" />
+    <g fill="#489524">
+      <path d="M7.348 12.345a.52.52 0 0 0 0-.73l-2.606-2.63 2.606-2.628a.521.521 0 0 0-.37-.856.511.511 0 0 0-.355.125l-2.97 2.991a.519.519 0 0 0 0 .737l2.97 2.991a.514.514 0 0 0 .365.156.512.512 0 0 0 .36-.156ZM11.011 12.5a.512.512 0 0 1-.474-.321.523.523 0 0 1 .114-.565l2.607-2.629-2.607-2.628a.521.521 0 0 1 .37-.856c.13-.005.257.04.355.125l2.971 2.991a.52.52 0 0 1 0 .737l-2.971 2.991a.515.515 0 0 1-.365.156Z" />
+    </g>
+  </svg>
+);
+
+const AddonsIcon: FC = () => (
+  <svg width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M16 2.4v7.634a.4.4 0 0 1-.683.283L7.683 2.683A.4.4 0 0 1 7.966 2H15.6c.22 0 .4.18.4.4Z"
+      fill="#37D5D3"
+    />
+    <circle cx="7" cy="11" r="5" fill="#87E6E5" />
+  </svg>
+);
 
 const TopNav = styled.ul`
   display: flex;
@@ -242,9 +248,21 @@ export const Sidebar: FC<SidebarProps> = ({ docsToc, versions: versionsProp, slu
             </Link>
           </Line>
           <Line>
+            <Link to="/docs/api">
+              <APIIcon />
+              API
+            </Link>
+          </Line>
+          <Line>
             <Link to="/tutorials">
               <TutorialsIcon />
               Tutorials
+            </Link>
+          </Line>
+          <Line>
+            <Link to="/integrations">
+              <AddonsIcon />
+              Integrations
             </Link>
           </Line>
           <Line>
@@ -253,12 +271,6 @@ export const Sidebar: FC<SidebarProps> = ({ docsToc, versions: versionsProp, slu
               Changelog
             </Link>
           </Line>
-          {/* <Line>
-            <Link to="/docs/api">
-              <APIIcon />
-              API
-            </Link>
-          </Line> */}
         </TopNav>
       </nav>
       <VersionSelector version={version} versions={versions} slug={slug} />
