@@ -195,7 +195,7 @@ const StatHero = styled.a`
     font-size: 14px;
     font-weight: 400;
     line-height: 16px;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.8);
     transition: color 0.2s ease;
   }
 
@@ -208,7 +208,7 @@ const StatHero = styled.a`
 
 const Right = styled.a`
   display: none;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.8);
   font-size: 14px;
   font-weight: 400;
   line-height: 16px;

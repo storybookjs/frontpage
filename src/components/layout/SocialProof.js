@@ -40,7 +40,7 @@ const Logos = styled.div`
 const Logo = styled.img`
   display: block;
   height: auto;
-  opacity: 0.5;
+  opacity: 0.8;
 `;
 
 const brands = [

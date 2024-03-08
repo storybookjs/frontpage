@@ -5325,10 +5325,10 @@
     core-js "^3.8.2"
     global "^4.4.0"
 
-"@storybook/components-marketing@2.3.1--canary.74.069e59a.0":
-  version "2.3.1--canary.74.069e59a.0"
-  resolved "https://registry.yarnpkg.com/@storybook/components-marketing/-/components-marketing-2.3.1--canary.74.069e59a.0.tgz#c874cf577d63f2a83683b64a6407db881c92261a"
-  integrity sha512-sE+CNo4Z/8Fxzr+x2Y79Q2L+vk6MbKLjH6EQgaBEfypxOo91anMd4A4rSh3BZuUSX3JBIs12yBsfmr3KIY9BCw==
+"@storybook/components-marketing@2.3.1--canary.74.9140eb1.0":
+  version "2.3.1--canary.74.9140eb1.0"
+  resolved "https://registry.yarnpkg.com/@storybook/components-marketing/-/components-marketing-2.3.1--canary.74.9140eb1.0.tgz#e8002aaec5baff715d48a9dd749b3826492c54b6"
+  integrity sha512-0r1yKiPmQQTWJuuUxBbVFjxQIvB+AbaKA+12cfpbwWyv1GFv9Pl+D4KE2rQdb9NOK57lPsBQVsLjQeiWu5JLJg==
   dependencies:
     "@docsearch/react" "^3.1.0"
     "@emotion/weak-memoize" "^0.2.5"

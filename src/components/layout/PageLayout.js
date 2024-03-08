@@ -133,18 +133,13 @@ export function PurePageLayout({ dxData, children, pageContext, ...props }) {
         {pageContext && pageContext.layout === 'docs' ? (
           <>
             <NavWrapper>
-              {/* <Eyebrow
-                label={dxData.latestPost.title}
-                link={dxData.latestPost.url}
-                inverse={isHomePage}
-                githubStarCount={dxData.githubStars}
-              /> */}
               <Nav
                 inverse={isHomePage}
                 monochrome={isHomePage}
                 version={versionString || latestVersionString}
                 apiKey={ALGOLIA_API_KEY}
                 activeSection={activeSection}
+                githubStarCount={dxData.githubStars}
               />
             </NavWrapper>
             <DocsLayout pageContext={pageContext} {...props}>
@@ -155,18 +150,13 @@ export function PurePageLayout({ dxData, children, pageContext, ...props }) {
           <>
             {pageContext.layout !== 'iframe' && (
               <>
-                {/* <Eyebrow
-                  label={dxData.latestPost.title}
-                  link={dxData.latestPost.url}
-                  inverse={isHomePage}
-                  githubStarCount={dxData.githubStars}
-                /> */}
                 <Nav
                   inverse={isHomePage}
                   monochrome={isHomePage}
                   version={versionString || latestVersionString}
                   apiKey={ALGOLIA_API_KEY}
                   activeSection={activeSection}
+                  githubStarCount={dxData.githubStars}
                 />
               </>
             )}
