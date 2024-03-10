@@ -7,11 +7,7 @@ import { color, spacing } from '@chromaui/tetra';
 import { Button, Link, ShadowBoxCTA, Subheading, styles } from '@storybook/design-system';
 import * as ScrollArea from '@radix-ui/react-scroll-area';
 
-import {
-  HEADER_HEIGHT_WITH_EYEBROW,
-  SCROLL_CHANNEL_WIDTH,
-  SCROLL_THUMB_WIDTH,
-} from '../../../constants/style';
+import { HEADER_HEIGHT, SCROLL_CHANNEL_WIDTH, SCROLL_THUMB_WIDTH } from '../../../constants/style';
 import { useMediaQuery } from '../../lib/useMediaQuery';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import { mdFormatting } from '../../../styles/formatting';
@@ -83,13 +79,13 @@ const RightRail = styled.div`
 
 const RightRailSticky = styled.div`
   position: sticky;
-  top: ${HEADER_HEIGHT_WITH_EYEBROW};
+  top: ${HEADER_HEIGHT};
 `;
 
 const RightRailRoot = styled(ScrollArea.Root)`
   position: relative;
   width: ${RIGHT_RAIL_WIDTH};
-  height: calc(100vh - ${HEADER_HEIGHT_WITH_EYEBROW});
+  height: calc(100vh - ${HEADER_HEIGHT});
 `;
 
 const RightRailViewport = styled(ScrollArea.Viewport)`
