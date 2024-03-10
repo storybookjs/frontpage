@@ -274,10 +274,10 @@ const Star = ({ x = 0, y = 0, w = 14, delay = 0 }) => {
 };
 
 export function Hero({ contributorCount, npmDownloads }) {
-  const [state, setState] = useState(false);
-  const [copiedValue, copyToClipboard] = useCopyToClipboard();
+  const [isCopied, setIsCopied] = useState(false);
+  const [, copyToClipboard] = useCopyToClipboard();
   const { latestVersion, urls = {} } = useSiteMetadata();
-  const { docs = {}, gitHub = {}, npm } = urls;
+  const { docs = {}, gitHub = {}, npm, releases } = urls;
 
   let npmDownloadsFixed = parseInt((npmDownloads / 1000).toFixed(0), 10);
   let npmDownloadsDisplay = `${npmDownloadsFixed}k`;
@@ -288,8 +288,8 @@ export function Hero({ contributorCount, npmDownloads }) {
 
   const onClick = () => {
     copyToClipboard('npx storybook@latest init');
-    setState(true);
-    setTimeout(() => setState(false), 2000);
+    setIsCopied(true);
+    setTimeout(() => setIsCopied(false), 2000);
   };
 
   return (
@@ -309,7 +309,7 @@ export function Hero({ contributorCount, npmDownloads }) {
                 npx storybook@latest init
                 <CopyIcon aria-hidden />
                 <AnimatePresence>
-                  {state && (
+                  {isCopied && (
                     <ButtonInitCopy
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
@@ -338,7 +338,7 @@ export function Hero({ contributorCount, npmDownloads }) {
               </StatHero>
             </Stats>
           </Left>
-          <Right href={gitHub.releases} target="_blank" rel="noreferrer">
+          <Right href={releases} target="_blank" rel="noreferrer">
             Version
             <EightContainer>
               <img src="/images/home/eight.svg" alt="Storybook 8" />
