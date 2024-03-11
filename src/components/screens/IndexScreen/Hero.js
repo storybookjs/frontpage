@@ -338,7 +338,8 @@ export function Hero({ contributorCount, npmDownloads }) {
               </StatHero>
             </Stats>
           </Left>
-          <Right href={releases} target="_blank" rel="noreferrer">
+          {/* TODO: Make hard-coded `8.0` dynamic for "latest" */}
+          <Right href={`${releases}8.0`} target="_blank" rel="noreferrer">
             Version
             <EightContainer>
               <img src="/images/home/eight.svg" alt="Storybook 8" />
