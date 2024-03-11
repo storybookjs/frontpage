@@ -296,7 +296,6 @@ export function IndexScreen({ pageContext }) {
         </div>
       </Content>
       <Texture />
-      Fart
       <Circles>
         <CirclePink />
         <CircleOrange />
