@@ -9,12 +9,7 @@ import {
   GLOBAL_SEARCH_IMPORTANCE,
   GLOBAL_SEARCH_META_KEYS,
 } from '../../../constants/global-search';
-import {
-  HEADER_HEIGHT,
-  HEADER_HEIGHT_WITH_EYEBROW,
-  SCROLL_CHANNEL_WIDTH,
-  SCROLL_THUMB_WIDTH,
-} from '../../../constants/style';
+import { HEADER_HEIGHT, SCROLL_CHANNEL_WIDTH, SCROLL_THUMB_WIDTH } from '../../../constants/style';
 import buildPathWithVersion from '../../../util/build-path-with-version';
 import useSiteMetadata from '../../lib/useSiteMetadata';
 import { DocsContextProvider } from '../../screens/DocsScreen/DocsContext';
@@ -43,10 +38,6 @@ const BubblesBackground = styled.img`
 const Wrapper = styled.div`
   padding-top: ${HEADER_HEIGHT};
 
-  @media (min-width: 440px) {
-    padding-top: ${HEADER_HEIGHT_WITH_EYEBROW};
-  }
-
   ${minSm} {
     display: flex;
     gap: calc(${GUTTER} - ${SCROLL_CHANNEL_WIDTH} + ${OPTICAL_ALIGNMENT_WITH_LOGO});
@@ -59,7 +50,7 @@ const SidebarContainer = styled.div`
   ${minMd} {
     display: block;
     position: sticky;
-    top: ${HEADER_HEIGHT_WITH_EYEBROW};
+    top: ${HEADER_HEIGHT};
     align-self: flex-start;
   }
 `;
@@ -68,7 +59,7 @@ const SidebarRoot = styled(ScrollArea.Root)`
   position: relative;
   left: calc(${OPTICAL_ALIGNMENT_WITH_LOGO} - ${FOCUS_OUTLINE_WIDTH});
   width: ${SIDEBAR_WIDTH};
-  height: calc(100vh - ${HEADER_HEIGHT_WITH_EYEBROW});
+  height: calc(100vh - ${HEADER_HEIGHT});
 `;
 
 const SidebarViewport = styled(ScrollArea.Viewport)`

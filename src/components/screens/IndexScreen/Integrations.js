@@ -113,7 +113,7 @@ const Scrim = styled.div`
     right: 0;
     pointer-events: none;
 
-    background: linear-gradient(180deg, rgba(23, 28, 35, 0) 0%, #171c23 86.87%);
+    background: linear-gradient(180deg, rgba(14, 12, 42, 0) 0%, #0e0c2a 86.87%);
   }
 `;
 

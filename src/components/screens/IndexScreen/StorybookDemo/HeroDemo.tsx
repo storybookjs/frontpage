@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { styled } from '@storybook/theming';
-import { styles } from '@storybook/components-marketing';
 import {
   motion,
   MotionValue,
@@ -11,8 +10,6 @@ import {
 import { Sidebar } from './Sidebar';
 import { Controls } from './Controls';
 import { TimeFrame } from './TimeFrame';
-
-const { breakpoints } = styles;
 
 const Frame = styled(motion.img)`
   display: block;
@@ -40,10 +37,6 @@ const Wrapper = styled(motion.div)`
 
     box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1), 0px 10px 20px 0px rgba(0, 0, 0, 0.1),
       0px 20px 40px 0px rgba(0, 0, 0, 0.05), 0px 40px 30px 0px rgba(0, 0, 0, 0.05);
-  }
-
-  @media (min-width: ${breakpoints[1]}px) {
-    margin-top: -12.625rem;
   }
 `;
 
@@ -90,7 +83,7 @@ export const HeroDemo = ({ ...props }: HeroDemoProps) => {
       await pointerControls.start({
         opacity: [0, 1],
         x: '-730%',
-        y: '-402%',
+        y: '-460%',
         transition: {
           delay: 1,
           duration: 1,
@@ -102,7 +95,7 @@ export const HeroDemo = ({ ...props }: HeroDemoProps) => {
       });
       await pointerControls.start({
         x: '-700%',
-        y: '-368%',
+        y: '-430%',
         transition: {
           delay: 1,
           duration: 0.4,
@@ -165,7 +158,7 @@ export const HeroDemo = ({ ...props }: HeroDemoProps) => {
       await pointerControls.start({
         opacity: 1,
         x: '-720%',
-        y: '-470%',
+        y: '-540%',
         transition: { delay: 1, duration: 1, opacity: { duration: 0.2 } },
       });
       await click(pointerControls, () => {
@@ -175,7 +168,7 @@ export const HeroDemo = ({ ...props }: HeroDemoProps) => {
       // Reset state
       await pointerControls.start({
         x: '-730%',
-        y: '-436%',
+        y: '-500%',
         transition: {
           delay: 2,
           duration: 1,

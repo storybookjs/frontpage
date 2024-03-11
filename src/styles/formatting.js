@@ -4,7 +4,7 @@ import { color, fontWeight } from '@chromaui/tetra';
 import { darken, rgba } from 'polished';
 
 import { CODE_SNIPPET_CLASSNAME } from '../constants/code-snippets';
-import { HEADER_HEIGHT_WITH_EYEBROW } from '../constants/style';
+import { HEADER_HEIGHT } from '../constants/style';
 
 const { color: dsColor, typography } = styles;
 
@@ -14,7 +14,7 @@ export const mdFormatting = css`
 
   *:target,
   [data-active-target] {
-    scroll-margin-top: calc(${HEADER_HEIGHT_WITH_EYEBROW} + 8px);
+    scroll-margin-top: calc(${HEADER_HEIGHT} + 8px);
   }
 
   h1,
