@@ -93,6 +93,16 @@ const Texture = styled.div`
   mix-blend-mode: color-dodge;
 `;
 
+const Circles = styled.div`
+  position: absolute;
+  width: 100%;
+  min-height: 1600px;
+  overflow-x: hidden;
+  overflow-y: visible;
+  top: 0;
+  left: 0;
+`;
+
 const CirclePink = styled.div`
   position: absolute;
   flex-shrink: 0;
@@ -286,9 +296,12 @@ export function IndexScreen({ pageContext }) {
         </div>
       </Content>
       <Texture />
-      <CirclePink />
-      <CircleOrange />
-      <CircleBlue />
+      Fart
+      <Circles>
+        <CirclePink />
+        <CircleOrange />
+        <CircleBlue />
+      </Circles>
     </>
   );
 }
