@@ -5214,17 +5214,17 @@
     core-js "^3.8.2"
     global "^4.4.0"
 
-"@storybook/components-marketing@^2.3.2":
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/@storybook/components-marketing/-/components-marketing-2.3.2.tgz#66db3e8942a19667642aaad663e453c0e6a1da2c"
-  integrity sha512-KnHqky/WpdjQvzTdZpxOtMU74jhjvGStxEdTzAS1s+9ndAkmcFrFFq+tlBxA8dw9bQATkWbnKp8r0OfeS4PUAA==
+"@storybook/components-marketing@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@storybook/components-marketing/-/components-marketing-3.0.1.tgz#09056c7c7fbcb1ac869202e6b28ef7d229247f83"
+  integrity sha512-KTzzM62bQM8ZEqXVHvnPA7HnCE6m3L+3VEBx4NGvrSvfyr2pG9U+F4wDbA8GbgXGAM4ArCB8Bs0KxKXL4BJDWw==
   dependencies:
     "@docsearch/react" "^3.1.0"
     "@emotion/weak-memoize" "^0.2.5"
     "@floating-ui/react-dom-interactions" "^0.6.5"
     "@storybook/api" "^6.5.9"
     "@storybook/design-system" "^7.9.0"
-    "@storybook/icons" "^1.2.8"
+    "@storybook/icons" "^1.2.9"
     "@storybook/theming" "^6.5.9"
     formik "^2.1.5"
     human-format "^0.11.0"
@@ -5573,15 +5573,10 @@
   resolved "https://registry.yarnpkg.com/@storybook/global/-/global-5.0.0.tgz#b793d34b94f572c1d7d9e0f44fac4e0dbc9572ed"
   integrity sha512-FcOqPAXACP0I3oJ/ws6/rrPT9WGhu915Cg8D02a9YxLo0DE9zI+a9A5gRGvmQ09fiWPukqI8ZAEoQEdWUKMQdQ==
 
-"@storybook/icons@^1.2.2":
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/@storybook/icons/-/icons-1.2.2.tgz#220f5f453a4ff69072fcc0c4e296d15356bb96f9"
-  integrity sha512-KynbDfvBh5Sb/JrSmFgb+FBwqejNsryBhd86yyfQZyKqNrAzG82YyxX9crbXSs5FOesUGZvDXqV6OHtbEOlkAw==
-
-"@storybook/icons@^1.2.8":
-  version "1.2.8"
-  resolved "https://registry.yarnpkg.com/@storybook/icons/-/icons-1.2.8.tgz#f530688ee000b487783f2d9cf7bced92e2c32915"
-  integrity sha512-YMF5DiBvMiAVH6qd6Cf6WCwZq3D1OZNxsKtZVFBlzJXqlZb1CLEuCHy5MwL4WI5mzb6q8MJsLYpVMoH84OzUpQ==
+"@storybook/icons@^1.2.9":
+  version "1.2.9"
+  resolved "https://registry.yarnpkg.com/@storybook/icons/-/icons-1.2.9.tgz#bb4a51a79e186b62e2dd0e04928b8617ac573838"
+  integrity sha512-cOmylsz25SYXaJL/gvTk/dl3pyk7yBFRfeXTsHvTA3dfhoU/LWSq0NKL9nM7WBasJyn6XPSGnLS4RtKXLw5EUg==
 
 "@storybook/instrumenter@^6.4.0":
   version "6.5.16"
