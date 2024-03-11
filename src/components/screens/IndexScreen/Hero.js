@@ -185,6 +185,7 @@ const HideDesktop = styled.div`
 const StatHero = styled.a`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 2px;
   color: #ffffff;
   font-size: 16px;
@@ -213,7 +214,7 @@ const Right = styled.a`
   font-weight: 400;
   line-height: 16px;
   text-decoration: none;
-  padding-bottom: 4px;
+  padding-bottom: 2px;
   transition: color 0.2s ease;
 
   &:hover {
