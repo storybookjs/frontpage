@@ -11,6 +11,7 @@ import {
   SocialCard,
   ColoredIcon,
 } from '@storybook/components-marketing';
+import { XIcon } from '@storybook/icons';
 import GatsbyLinkWrapper from '../../basics/GatsbyLinkWrapper';
 import { Community } from '../../layout/Community';
 
@@ -243,10 +244,10 @@ export function SocialValidation({
         />
         <SocialCard
           inverse
-          icon={<ColoredIcon icon="twitter" aria-label="Twitter" color="#4999E9" />}
+          icon={<XIcon aria-label="Twitter" color="#fff" size={48} />}
           description="Get the latest news and updates from Storybook maintainers."
           link={{
-            label: 'Follow on Twitter',
+            label: 'Follow on X',
             href: 'https://twitter.com/storybookjs',
           }}
           stat={{

@@ -5573,11 +5573,6 @@
   resolved "https://registry.yarnpkg.com/@storybook/global/-/global-5.0.0.tgz#b793d34b94f572c1d7d9e0f44fac4e0dbc9572ed"
   integrity sha512-FcOqPAXACP0I3oJ/ws6/rrPT9WGhu915Cg8D02a9YxLo0DE9zI+a9A5gRGvmQ09fiWPukqI8ZAEoQEdWUKMQdQ==
 
-"@storybook/icons@^1.2.2":
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/@storybook/icons/-/icons-1.2.2.tgz#220f5f453a4ff69072fcc0c4e296d15356bb96f9"
-  integrity sha512-KynbDfvBh5Sb/JrSmFgb+FBwqejNsryBhd86yyfQZyKqNrAzG82YyxX9crbXSs5FOesUGZvDXqV6OHtbEOlkAw==
-
 "@storybook/icons@^1.2.9":
   version "1.2.9"
   resolved "https://registry.yarnpkg.com/@storybook/icons/-/icons-1.2.9.tgz#bb4a51a79e186b62e2dd0e04928b8617ac573838"
