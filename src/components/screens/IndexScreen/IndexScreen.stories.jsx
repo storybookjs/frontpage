@@ -25,5 +25,5 @@ Default.args = {
   },
 };
 Default.parameters = {
-  backgrounds: { default: 'dark' },
+  backgrounds: { default: '#0e0c2c' },
 };

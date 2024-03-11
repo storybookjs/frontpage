@@ -81,6 +81,7 @@ const Content = styled.div`
 `;
 
 const Texture = styled.div`
+  display: none;
   position: fixed;
   width: 100%;
   height: 100%;
@@ -91,6 +92,20 @@ const Texture = styled.div`
   background-size: 180px 100px;
   opacity: 0.6;
   mix-blend-mode: color-dodge;
+
+  @media (min-width: 600px) {
+    display: block;
+  }
+`;
+
+const Circles = styled.div`
+  position: absolute;
+  width: 100%;
+  min-height: 1600px;
+  overflow-x: hidden;
+  overflow-y: visible;
+  top: 0;
+  left: 0;
 `;
 
 const CirclePink = styled.div`
@@ -99,7 +114,7 @@ const CirclePink = styled.div`
   border-radius: 928px;
   opacity: 0.6;
   background: #ff4785;
-  filter: blur(72px);
+  filter: blur(44px);
   z-index: 2;
 
   width: 500px;
@@ -108,6 +123,7 @@ const CirclePink = styled.div`
   left: -160px;
 
   @media (min-width: 600px) {
+    filter: blur(72px);
     width: 700px;
     height: 700px;
     top: -300px;
@@ -139,7 +155,7 @@ const CircleOrange = styled.div`
   border-radius: 740px;
   opacity: 0.6;
   background: #fc521f;
-  filter: blur(72px);
+  filter: blur(44px);
   z-index: 1;
 
   width: 400px;
@@ -148,6 +164,7 @@ const CircleOrange = styled.div`
   left: 200px;
 
   @media (min-width: 600px) {
+    filter: blur(72px);
     width: 600px;
     height: 600px;
     top: -260px;
@@ -176,7 +193,7 @@ const CircleBlue = styled.div`
   border-radius: 1192px;
   opacity: 0.4;
   background: #4791ff;
-  filter: blur(72px);
+  filter: blur(44px);
   z-index: 1;
 
   width: 600px;
@@ -185,6 +202,7 @@ const CircleBlue = styled.div`
   left: 200px;
 
   @media (min-width: 600px) {
+    filter: blur(72px);
     top: 220px;
     left: 400px;
   }
@@ -286,9 +304,11 @@ export function IndexScreen({ pageContext }) {
         </div>
       </Content>
       <Texture />
-      <CirclePink />
-      <CircleOrange />
-      <CircleBlue />
+      <Circles>
+        <CirclePink />
+        <CircleOrange />
+        <CircleBlue />
+      </Circles>
     </>
   );
 }
