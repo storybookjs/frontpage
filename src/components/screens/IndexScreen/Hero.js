@@ -339,11 +339,7 @@ export function Hero({ contributorCount, npmDownloads }) {
               </StatHero>
             </Stats>
           </Left>
-          <Right
-            href="https://storybook.js.org/blog/whats-new/storybook-8/"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <Right href="https://storybook.js.org/blog/storybook-8/" target="_blank" rel="noreferrer">
             Version
             <EightContainer>
               <img src="/images/home/eight.svg" alt="Storybook 8" />
