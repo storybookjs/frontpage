@@ -5214,17 +5214,17 @@
     core-js "^3.8.2"
     global "^4.4.0"
 
-"@storybook/components-marketing@^3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@storybook/components-marketing/-/components-marketing-3.0.1.tgz#09056c7c7fbcb1ac869202e6b28ef7d229247f83"
-  integrity sha512-KTzzM62bQM8ZEqXVHvnPA7HnCE6m3L+3VEBx4NGvrSvfyr2pG9U+F4wDbA8GbgXGAM4ArCB8Bs0KxKXL4BJDWw==
+"@storybook/components-marketing@2.3.1":
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@storybook/components-marketing/-/components-marketing-2.3.1.tgz#3afdcf818b86e0c58b0b2fb22e8211a7f94848e6"
+  integrity sha512-Zgaw4azsKl2xu/NnKuxgDN2FIxing0Z6D+M6aeilwdoeSW2b6OSJh8UTIuyhfhHLCSPhXfKeCAupqxj6yY2Kkw==
   dependencies:
     "@docsearch/react" "^3.1.0"
     "@emotion/weak-memoize" "^0.2.5"
     "@floating-ui/react-dom-interactions" "^0.6.5"
     "@storybook/api" "^6.5.9"
     "@storybook/design-system" "^7.9.0"
-    "@storybook/icons" "^1.2.9"
+    "@storybook/icons" "^1.2.8"
     "@storybook/theming" "^6.5.9"
     formik "^2.1.5"
     human-format "^0.11.0"
@@ -5573,7 +5573,7 @@
   resolved "https://registry.yarnpkg.com/@storybook/global/-/global-5.0.0.tgz#b793d34b94f572c1d7d9e0f44fac4e0dbc9572ed"
   integrity sha512-FcOqPAXACP0I3oJ/ws6/rrPT9WGhu915Cg8D02a9YxLo0DE9zI+a9A5gRGvmQ09fiWPukqI8ZAEoQEdWUKMQdQ==
 
-"@storybook/icons@^1.2.9":
+"@storybook/icons@^1.2.8", "@storybook/icons@^1.2.9":
   version "1.2.9"
   resolved "https://registry.yarnpkg.com/@storybook/icons/-/icons-1.2.9.tgz#bb4a51a79e186b62e2dd0e04928b8617ac573838"
   integrity sha512-cOmylsz25SYXaJL/gvTk/dl3pyk7yBFRfeXTsHvTA3dfhoU/LWSq0NKL9nM7WBasJyn6XPSGnLS4RtKXLw5EUg==
