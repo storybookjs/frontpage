@@ -5214,17 +5214,17 @@
     core-js "^3.8.2"
     global "^4.4.0"
 
-"@storybook/components-marketing@3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@storybook/components-marketing/-/components-marketing-3.0.0.tgz#72df73388999d81df91305a17efac438dfbd86a8"
-  integrity sha512-DvhdK4mA2CCJdAavkDDQSmWhwcUt7L/fV9JJ93fITC1lEDs5UihZCoHSzuJwbSbBKVUHGe3zjk2Yqfm5r25PZA==
+"@storybook/components-marketing@3.0.2--canary.79.c983285.0":
+  version "3.0.2--canary.79.c983285.0"
+  resolved "https://registry.yarnpkg.com/@storybook/components-marketing/-/components-marketing-3.0.2--canary.79.c983285.0.tgz#6dcadcbbe23c49d7905c328bc3930aae6fc46c49"
+  integrity sha512-W2DRqrDbj/RoaTKjUwU7YiFY6VCrm02sMUWlEhaUrOM4e+MIAhCOkL6EcxaWL0mVpZZJUf34pQVUiIr95p1rDQ==
   dependencies:
     "@docsearch/react" "^3.1.0"
     "@emotion/weak-memoize" "^0.2.5"
     "@floating-ui/react-dom-interactions" "^0.6.5"
     "@storybook/api" "^6.5.9"
     "@storybook/design-system" "^7.9.0"
-    "@storybook/icons" "^1.2.9"
+    "@storybook/icons" "1.2.8"
     "@storybook/theming" "^6.5.9"
     formik "^2.1.5"
     human-format "^0.11.0"
@@ -5572,6 +5572,11 @@
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/@storybook/global/-/global-5.0.0.tgz#b793d34b94f572c1d7d9e0f44fac4e0dbc9572ed"
   integrity sha512-FcOqPAXACP0I3oJ/ws6/rrPT9WGhu915Cg8D02a9YxLo0DE9zI+a9A5gRGvmQ09fiWPukqI8ZAEoQEdWUKMQdQ==
+
+"@storybook/icons@1.2.8":
+  version "1.2.8"
+  resolved "https://registry.yarnpkg.com/@storybook/icons/-/icons-1.2.8.tgz#f530688ee000b487783f2d9cf7bced92e2c32915"
+  integrity sha512-YMF5DiBvMiAVH6qd6Cf6WCwZq3D1OZNxsKtZVFBlzJXqlZb1CLEuCHy5MwL4WI5mzb6q8MJsLYpVMoH84OzUpQ==
 
 "@storybook/icons@^1.2.9":
   version "1.2.9"
