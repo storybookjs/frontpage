@@ -123,7 +123,7 @@ const CirclePink = styled.div`
   left: -160px;
 
   @media (min-width: 600px) {
-    filter: blur(72px);
+    filter: blur(66px);
     width: 700px;
     height: 700px;
     top: -300px;
@@ -155,7 +155,7 @@ const CircleOrange = styled.div`
   border-radius: 740px;
   opacity: 0.6;
   background: #fc521f;
-  filter: blur(44px);
+  filter: blur(66px);
   z-index: 1;
 
   width: 400px;
@@ -164,7 +164,7 @@ const CircleOrange = styled.div`
   left: 200px;
 
   @media (min-width: 600px) {
-    filter: blur(72px);
+    filter: blur(66px);
     width: 600px;
     height: 600px;
     top: -260px;
