@@ -3,6 +3,7 @@ const {
   communityFrameworks: communityRenderers,
   featureGroups,
 } = require('./src/content/docs/frameworks');
+const versionData = require('./src/util/version-data');
 
 const isDeployPreview = process.env.CONTEXT === 'deploy-preview';
 const homepageUrl = isDeployPreview ? process.env.DEPLOY_PRIME_URL : 'https://storybook.js.org';
@@ -13,6 +14,7 @@ const essentialsBase = '/docs/react/essentials';
 const contributeUrl = `${docsUrl}/react/contribute/how-to-contribute`;
 
 const siteMetadata = {
+  ...versionData,
   title: 'Storybook: Frontend workshop for UI development',
   description: `Storybook is a frontend workshop for building UI components and pages in isolation. Thousands of teams use it for UI development, testing, and documentation. It’s open source and free.`,
   ogImage: '/images/social/open-graph.jpg',
@@ -82,7 +84,8 @@ const siteMetadata = {
     team: `/team/`,
     addonsApi: '/docs/react/addons/addons-api/',
     // This slug is also used to exclude some pages from the sitemap in gatsby-config.js
-    installDocsPageSlug: '/docs/get-started/install/',
+    installDocsPageSlug:
+      versionData.version >= 8 ? '/docs/get-started/' : '/docs/get-started/install/',
 
     // Social
     blog: `https://storybook.js.org/blog`,

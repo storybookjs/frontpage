@@ -229,7 +229,7 @@ function DocsScreen({ data, pageContext, location }) {
     urls: { homepageUrl },
     versionString,
   } = useSiteMetadata();
-  const { docsToc, fullPath, slug, tocItem, nextTocItem, isInstallPage } = pageContext;
+  const { docsToc, fullPath, slug, tocItem, nextTocItem } = pageContext;
 
   const {
     codeLanguage: [codeLanguage],
@@ -349,7 +349,7 @@ function DocsScreen({ data, pageContext, location }) {
         )}
         <Content>
           <Header>
-            <Title>{isInstallPage ? `${title} for ${stylizeRenderer(renderer)}` : title}</Title>
+            <Title>{title}</Title>
             {!hideRendererSelector && (
               <RendererSelector
                 coreRenderers={coreRenderers}

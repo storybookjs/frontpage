@@ -13,11 +13,6 @@ const sourceDXData = require('./src/util/source-dx-data');
 const { versions, versionsWithToc } = require('./src/util/versions');
 const createIntegrationsPages = require('./src/util/create-integrations-pages');
 const createHomePage = require('./src/util/create-home-page');
-const siteMetadata = require('./site-metadata');
-
-const {
-  urls: { installDocsPageSlug },
-} = siteMetadata;
 
 const docsPagesSlugs = [];
 
@@ -175,7 +170,6 @@ exports.createPages = ({ actions, graphql }) => {
                         nextTocItem.type === 'bullet-link' && {
                           nextTocItem,
                         }),
-                      isInstallPage: slug === installDocsPageSlug,
                     },
                   });
 
