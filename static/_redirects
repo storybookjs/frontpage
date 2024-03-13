@@ -1,26 +1,26 @@
 # See https://www.netlify.com/docs/redirects/
 
 # Older (prev 5.0 doc URLs)
-/basics/quick-start-guide                   /docs/get-started/install/                                                                          301
+/basics/quick-start-guide                   /docs/get-started/                                                                                  301
 /basics/slow-start-guide                    /docs/configure/                                                                                    301
-/basics/guide-react                         /docs/get-started/install/                                                                          301
+/basics/guide-react                         /docs/get-started/                                                                                  301
 /basics/guide-react-native                  https://github.com/storybookjs/react-native#storybook-for-react-native                              301
-/basics/guide-vue                           /docs/get-started/install/                                                                          301
-/basics/guide-angular                       /docs/get-started/install/                                                                          301
-/basics/guide-mithril                       /docs/get-started/install/                                                                          301
-/basics/guide-ember                         /docs/get-started/install/                                                                          301
-/basics/guide-riot                          /docs/get-started/install/                                                                          301
-/basics/guide-html                          /docs/get-started/install/                                                                          301
-/docs/basics/quick-start-guide              /docs/get-started/install/                                                                          301
+/basics/guide-vue                           /docs/get-started/                                                                                  301
+/basics/guide-angular                       /docs/get-started/                                                                                  301
+/basics/guide-mithril                       /docs/get-started/                                                                                  301
+/basics/guide-ember                         /docs/get-started/                                                                                  301
+/basics/guide-riot                          /docs/get-started/                                                                                  301
+/basics/guide-html                          /docs/get-started/                                                                                  301
+/docs/basics/quick-start-guide              /docs/get-started/                                                                                  301
 /docs/basics/slow-start-guide               /docs/configure/                                                                                    301
-/docs/basics/guide-react                    /docs/get-started/install/                                                                          301
+/docs/basics/guide-react                    /docs/get-started/                                                                                  301
 /docs/basics/guide-react-native             https://github.com/storybookjs/react-native#storybook-for-react-native                              301
-/docs/basics/guide-vue                      /docs/get-started/install/                                                                          301
-/docs/basics/guide-angular                  /docs/get-started/install/                                                                          301
-/docs/basics/guide-mithril                  /docs/get-started/install/                                                                          301
-/docs/basics/guide-ember                    /docs/get-started/install/                                                                          301
-/docs/basics/guide-riot                     /docs/get-started/install/                                                                          301
-/docs/basics/guide-html                     /docs/get-started/install/                                                                          301
+/docs/basics/guide-vue                      /docs/get-started/                                                                                  301
+/docs/basics/guide-angular                  /docs/get-started/                                                                                  301
+/docs/basics/guide-mithril                  /docs/get-started/                                                                                  301
+/docs/basics/guide-ember                    /docs/get-started/                                                                                  301
+/docs/basics/guide-riot                     /docs/get-started/                                                                                  301
+/docs/basics/guide-html                     /docs/get-started/                                                                                  301
 
 /basics/*                                   /docs/basics/:splat                                                                                 301
 /configurations/*                           /docs/configurations/:splat                                                                         301
@@ -29,31 +29,31 @@
 /testing/*                                  /docs/testing/:splat                                                                                301
 
 # Pre 6.0 URLs
-/docs/basics/introduction/                  /docs/get-started/install/                                                                          301
+/docs/basics/introduction/                  /docs/get-started/                                                                                  301
 /docs/basics/writing-stories/               /docs/get-started/whats-a-story/                                                                    301
 /docs/basics/exporting-storybook/           /docs/workflows/publish-storybook/                                                                  301
 /docs/basics/faq/                           /docs/workflows/faq/                                                                                301
 /docs/basics/live-examples/                 https://github.com/storybookjs/storybook/blob/next/examples/README.md                               301
 /docs/examples/                             /docs/get-started/examples/                                                                         301
 
-/docs/guides/quick-start-guide/             /docs/get-started/install/                                                                          301
+/docs/guides/quick-start-guide/             /docs/get-started/                                                                                  301
 /docs/guides/slow-start-guide/              /docs/configure/                                                                                    301
-/docs/guides/guide-html/                    /docs/get-started/install/                                                                          301
-/docs/guides/guide-react/                   /docs/get-started/install/                                                                          301
+/docs/guides/guide-html/                    /docs/get-started/                                                                                  301
+/docs/guides/guide-react/                   /docs/get-started/                                                                                  301
 /docs/guides/guide-react-native/            https://github.com/storybookjs/react-native#storybook-for-react-native                              301
-/docs/guides/guide-vue/                     /docs/get-started/install/                                                                          301
-/docs/guides/guide-angular/                 /docs/get-started/install/                                                                          301
-/docs/guides/guide-mithril/                 /docs/get-started/install/                                                                          301
-/docs/mithril/                              /docs/get-started/install/                                                                          301
-/docs/guides/guide-marko/                   /docs/get-started/install/                                                                          301
-/docs/marko/                                /docs/get-started/install/                                                                          301
-/docs/guides/guide-ember/                   /docs/get-started/install/                                                                          301
-/docs/guides/guide-rax/                     /docs/get-started/install/                                                                          301
-/docs/rax/                                  /docs/get-started/install/                                                                          301
-/docs/guides/guide-riot/                    /docs/get-started/install/                                                                          301
-/docs/riot/                                 /docs/get-started/install/                                                                          301
-/docs/guides/guide-svelte/                  /docs/get-started/install/                                                                          301
-/docs/guides/guide-preact/                  /docs/get-started/install/                                                                          301
+/docs/guides/guide-vue/                     /docs/get-started/                                                                                  301
+/docs/guides/guide-angular/                 /docs/get-started/                                                                                  301
+/docs/guides/guide-mithril/                 /docs/get-started/                                                                                  301
+/docs/mithril/                              /docs/get-started/                                                                                  301
+/docs/guides/guide-marko/                   /docs/get-started/                                                                                  301
+/docs/marko/                                /docs/get-started/                                                                                  301
+/docs/guides/guide-ember/                   /docs/get-started/                                                                                  301
+/docs/guides/guide-rax/                     /docs/get-started/                                                                                  301
+/docs/rax/                                  /docs/get-started/                                                                                  301
+/docs/guides/guide-riot/                    /docs/get-started/                                                                                  301
+/docs/riot/                                 /docs/get-started/                                                                                  301
+/docs/guides/guide-svelte/                  /docs/get-started/                                                                                  301
+/docs/guides/guide-preact/                  /docs/get-started/                                                                                  301
 
 /docs/configurations/overview/              /docs/configure/                                                                                    301
 /docs/configurations/options-parameter/     /docs/configure/features-and-behavior/                                                              301

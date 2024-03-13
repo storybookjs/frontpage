@@ -20,6 +20,7 @@ import buildPathWithVersion from '../../../util/build-path-with-version';
 
 const {
   urls: { installDocsPageSlug },
+  version,
 } = siteMetadata;
 
 const { subheading, breakpoints, pageMargins } = styles;
@@ -38,11 +39,13 @@ const Wrapper = styled.section`
   }
 `;
 
-const featuredRenderers = ['react', 'vue', 'angular', 'web-components', 'html'];
+const featuredRenderers = ['react', 'vue', 'angular', 'web-components', 'svelte', 'html'];
 const rendererIntegrations = featuredRenderers.map((renderer) => ({
   name: renderer,
   image: `/renderers/logo-${renderer === 'web-components' ? 'web-components-alt' : renderer}.svg`,
-  href: `${buildPathWithVersion(installDocsPageSlug)}?renderer=${renderer}`,
+  // In 8+ docs, we link to the get-started page, which is renderer-agnostic, instead of the install guide, which is not.
+  // prettier-ignore
+  href: `${buildPathWithVersion(installDocsPageSlug)}${version >= 8 ? '' : `?renderer=${renderer}`}`,
   ButtonWrapper: GatsbyLinkWrapper,
 }));
 
@@ -227,7 +230,7 @@ export function Develop({ docs, startOpen, ...props }) {
         actions={
           <div>
             <MadeFor>Made for</MadeFor>
-            <IntegrationsList integrations={rendererIntegrations} overflowLabel="+ 7" inverse />
+            <IntegrationsList integrations={rendererIntegrations} overflowLabel="+ 6" inverse />
           </div>
         }
       />

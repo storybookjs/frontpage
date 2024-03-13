@@ -169,7 +169,7 @@ describe('generateRedirects', () => {
       /docs/solid/writing-docs/introduction /docs/writing-docs 301
 
 
-      /docs /docs/get-started/install/ 301
+      /docs /docs/get-started/ 301
       /docs/react/* /docs/:splat 301
       /docs/vue/* /docs/:splat 301
       /docs/angular/* /docs/:splat 301
@@ -218,7 +218,7 @@ describe('generateRedirects', () => {
       /docs/7.5/solid/writing-tests/importing-stories-in-tests/ https://release-7-5--storybook-frontpage.netlify.app/docs/7.5/writing-tests/stories-in-unit-tests/ 301
 
 
-      /docs/7.5 https://release-7-5--storybook-frontpage.netlify.app/docs/7.5/get-started/install/ 200
+      /docs/7.5 https://release-7-5--storybook-frontpage.netlify.app/docs/7.5/get-started/ 200
       /docs/7.5/react/* https://release-7-5--storybook-frontpage.netlify.app/docs/7.5/:splat 200
       /docs/7.5/vue/* https://release-7-5--storybook-frontpage.netlify.app/docs/7.5/:splat 200
       /docs/7.5/angular/* https://release-7-5--storybook-frontpage.netlify.app/docs/7.5/:splat 200
@@ -267,7 +267,7 @@ describe('generateRedirects', () => {
       /docs/7.4/solid/writing-tests/importing-stories-in-tests/ https://release-7-4--storybook-frontpage.netlify.app/docs/7.4/writing-tests/stories-in-unit-tests/ 301
 
 
-      /docs/7.4 https://release-7-4--storybook-frontpage.netlify.app/docs/7.4/get-started/install/ 200
+      /docs/7.4 https://release-7-4--storybook-frontpage.netlify.app/docs/7.4/get-started/ 200
       /docs/7.4/react/* https://release-7-4--storybook-frontpage.netlify.app/docs/7.4/:splat 200
       /docs/7.4/vue/* https://release-7-4--storybook-frontpage.netlify.app/docs/7.4/:splat 200
       /docs/7.4/angular/* https://release-7-4--storybook-frontpage.netlify.app/docs/7.4/:splat 200
@@ -316,7 +316,7 @@ describe('generateRedirects', () => {
       /docs/7.3/solid/writing-tests/importing-stories-in-tests/ https://release-7-3--storybook-frontpage.netlify.app/docs/7.3/writing-tests/stories-in-unit-tests/ 301
 
 
-      /docs/7.3 https://release-7-3--storybook-frontpage.netlify.app/docs/7.3/get-started/install/ 200
+      /docs/7.3 https://release-7-3--storybook-frontpage.netlify.app/docs/7.3/get-started/ 200
       /docs/7.3/react/* https://release-7-3--storybook-frontpage.netlify.app/docs/7.3/:splat 200
       /docs/7.3/vue/* https://release-7-3--storybook-frontpage.netlify.app/docs/7.3/:splat 200
       /docs/7.3/angular/* https://release-7-3--storybook-frontpage.netlify.app/docs/7.3/:splat 200
@@ -365,7 +365,7 @@ describe('generateRedirects', () => {
       /docs/7.2/solid/writing-tests/importing-stories-in-tests/ https://release-7-2--storybook-frontpage.netlify.app/docs/7.2/writing-tests/stories-in-unit-tests/ 301
 
 
-      /docs/7.2 https://release-7-2--storybook-frontpage.netlify.app/docs/7.2/get-started/install/ 200
+      /docs/7.2 https://release-7-2--storybook-frontpage.netlify.app/docs/7.2/get-started/ 200
       /docs/7.2/react/* https://release-7-2--storybook-frontpage.netlify.app/docs/7.2/:splat 200
       /docs/7.2/vue/* https://release-7-2--storybook-frontpage.netlify.app/docs/7.2/:splat 200
       /docs/7.2/angular/* https://release-7-2--storybook-frontpage.netlify.app/docs/7.2/:splat 200
@@ -414,7 +414,7 @@ describe('generateRedirects', () => {
       /docs/7.1/solid/writing-tests/importing-stories-in-tests/ https://release-7-1--storybook-frontpage.netlify.app/docs/7.1/writing-tests/stories-in-unit-tests/ 301
 
 
-      /docs/7.1 https://release-7-1--storybook-frontpage.netlify.app/docs/7.1/get-started/install/ 200
+      /docs/7.1 https://release-7-1--storybook-frontpage.netlify.app/docs/7.1/get-started/ 200
       /docs/7.1/react/* https://release-7-1--storybook-frontpage.netlify.app/docs/7.1/:splat 200
       /docs/7.1/vue/* https://release-7-1--storybook-frontpage.netlify.app/docs/7.1/:splat 200
       /docs/7.1/angular/* https://release-7-1--storybook-frontpage.netlify.app/docs/7.1/:splat 200
@@ -452,7 +452,7 @@ describe('generateRedirects', () => {
       /docs/7.0/solid/workflows/unit-testing/ https://release-7-0--storybook-frontpage.netlify.app/docs/7.0/writing-tests/stories-in-unit-tests/ 301
 
 
-      /docs/7.0 https://release-7-0--storybook-frontpage.netlify.app/docs/7.0/get-started/install/ 200
+      /docs/7.0 https://release-7-0--storybook-frontpage.netlify.app/docs/7.0/get-started/ 200
       /docs/7.0/react/* https://release-7-0--storybook-frontpage.netlify.app/docs/7.0/:splat 200
       /docs/7.0/vue/* https://release-7-0--storybook-frontpage.netlify.app/docs/7.0/:splat 200
       /docs/7.0/angular/* https://release-7-0--storybook-frontpage.netlify.app/docs/7.0/:splat 200
@@ -490,7 +490,7 @@ describe('generateRedirects', () => {
       /docs/6.5/solid/workflows/unit-testing/ https://release-6-5--storybook-frontpage.netlify.app/docs/6.5/writing-tests/stories-in-unit-tests/ 301
 
 
-      /docs/6.5 https://release-6-5--storybook-frontpage.netlify.app/docs/6.5/get-started/install/ 200
+      /docs/6.5 https://release-6-5--storybook-frontpage.netlify.app/docs/6.5/get-started/ 200
       /docs/6.5/react/* https://release-6-5--storybook-frontpage.netlify.app/docs/6.5/:splat 200
       /docs/6.5/vue/* https://release-6-5--storybook-frontpage.netlify.app/docs/6.5/:splat 200
       /docs/6.5/angular/* https://release-6-5--storybook-frontpage.netlify.app/docs/6.5/:splat 200
@@ -528,7 +528,7 @@ describe('generateRedirects', () => {
       /docs/6.4/solid/workflows/unit-testing/ https://release-6-4--storybook-frontpage.netlify.app/docs/6.4/writing-tests/stories-in-unit-tests/ 301
 
 
-      /docs/6.4 https://release-6-4--storybook-frontpage.netlify.app/docs/6.4/get-started/install/ 200
+      /docs/6.4 https://release-6-4--storybook-frontpage.netlify.app/docs/6.4/get-started/ 200
       /docs/6.4/react/* https://release-6-4--storybook-frontpage.netlify.app/docs/6.4/:splat 200
       /docs/6.4/vue/* https://release-6-4--storybook-frontpage.netlify.app/docs/6.4/:splat 200
       /docs/6.4/angular/* https://release-6-4--storybook-frontpage.netlify.app/docs/6.4/:splat 200
@@ -566,7 +566,7 @@ describe('generateRedirects', () => {
       /docs/6.3/solid/workflows/unit-testing/ https://release-6-3--storybook-frontpage.netlify.app/docs/6.3/writing-tests/stories-in-unit-tests/ 301
 
 
-      /docs/6.3 https://release-6-3--storybook-frontpage.netlify.app/docs/6.3/get-started/install/ 200
+      /docs/6.3 https://release-6-3--storybook-frontpage.netlify.app/docs/6.3/get-started/ 200
       /docs/6.3/react/* https://release-6-3--storybook-frontpage.netlify.app/docs/6.3/:splat 200
       /docs/6.3/vue/* https://release-6-3--storybook-frontpage.netlify.app/docs/6.3/:splat 200
       /docs/6.3/angular/* https://release-6-3--storybook-frontpage.netlify.app/docs/6.3/:splat 200
@@ -604,7 +604,7 @@ describe('generateRedirects', () => {
       /docs/6.2/solid/workflows/unit-testing/ https://release-6-2--storybook-frontpage.netlify.app/docs/6.2/writing-tests/stories-in-unit-tests/ 301
 
 
-      /docs/6.2 https://release-6-2--storybook-frontpage.netlify.app/docs/6.2/get-started/install/ 200
+      /docs/6.2 https://release-6-2--storybook-frontpage.netlify.app/docs/6.2/get-started/ 200
       /docs/6.2/react/* https://release-6-2--storybook-frontpage.netlify.app/docs/6.2/:splat 200
       /docs/6.2/vue/* https://release-6-2--storybook-frontpage.netlify.app/docs/6.2/:splat 200
       /docs/6.2/angular/* https://release-6-2--storybook-frontpage.netlify.app/docs/6.2/:splat 200
@@ -642,7 +642,7 @@ describe('generateRedirects', () => {
       /docs/6.1/solid/workflows/unit-testing/ https://release-6-1--storybook-frontpage.netlify.app/docs/6.1/writing-tests/stories-in-unit-tests/ 301
 
 
-      /docs/6.1 https://release-6-1--storybook-frontpage.netlify.app/docs/6.1/get-started/install/ 200
+      /docs/6.1 https://release-6-1--storybook-frontpage.netlify.app/docs/6.1/get-started/ 200
       /docs/6.1/react/* https://release-6-1--storybook-frontpage.netlify.app/docs/6.1/:splat 200
       /docs/6.1/vue/* https://release-6-1--storybook-frontpage.netlify.app/docs/6.1/:splat 200
       /docs/6.1/angular/* https://release-6-1--storybook-frontpage.netlify.app/docs/6.1/:splat 200
@@ -680,7 +680,7 @@ describe('generateRedirects', () => {
       /docs/6.0/solid/workflows/unit-testing/ https://release-6-0--storybook-frontpage.netlify.app/docs/6.0/writing-tests/stories-in-unit-tests/ 301
 
 
-      /docs/6.0 https://release-6-0--storybook-frontpage.netlify.app/docs/6.0/get-started/install/ 200
+      /docs/6.0 https://release-6-0--storybook-frontpage.netlify.app/docs/6.0/get-started/ 200
       /docs/6.0/react/* https://release-6-0--storybook-frontpage.netlify.app/docs/6.0/:splat 200
       /docs/6.0/vue/* https://release-6-0--storybook-frontpage.netlify.app/docs/6.0/:splat 200
       /docs/6.0/angular/* https://release-6-0--storybook-frontpage.netlify.app/docs/6.0/:splat 200
@@ -701,13 +701,13 @@ describe('generateRedirects', () => {
       /docs/8.0/writing-docs/introduction https://release-8-0--storybook-frontpage.netlify.app/docs/8.0/writing-docs 301
 
 
-      /docs/8.0 https://release-8-0--storybook-frontpage.netlify.app/docs/8.0/get-started/install/ 200
+      /docs/8.0 https://release-8-0--storybook-frontpage.netlify.app/docs/8.0/get-started/ 200
       /docs/8.0/* https://release-8-0--storybook-frontpage.netlify.app/docs/8.0/:splat 200
 
 
 
 
-      /docs/next https://release-8-0--storybook-frontpage.netlify.app/docs/8.0/get-started/install/ 200
+      /docs/next https://release-8-0--storybook-frontpage.netlify.app/docs/8.0/get-started/ 200
       /docs/next/react/* https://release-8-0--storybook-frontpage.netlify.app/docs/8.0/:splat 200
       /docs/next/vue/* https://release-8-0--storybook-frontpage.netlify.app/docs/8.0/:splat 200
       /docs/next/angular/* https://release-8-0--storybook-frontpage.netlify.app/docs/8.0/:splat 200

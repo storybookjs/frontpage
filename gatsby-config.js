@@ -2,7 +2,6 @@ const path = require('path');
 const { global } = require('@storybook/design-system');
 const siteMetadata = require('./site-metadata');
 const getReleaseBranchUrl = require('./src/util/get-release-branch-url');
-const versionData = require('./src/util/version-data');
 const { versionsWithToc } = require('./src/util/versions');
 
 require('dotenv').config({
@@ -10,16 +9,13 @@ require('dotenv').config({
 });
 
 module.exports = {
-  siteMetadata: {
-    ...siteMetadata,
-    ...versionData,
-  },
+  siteMetadata,
   flags: {
     FAST_DEV: true,
     QUERY_ON_DEMAND: true,
   },
-  ...(!versionData.isLatest
-    ? { assetPrefix: getReleaseBranchUrl(versionData.versionString) }
+  ...(!siteMetadata.isLatest
+    ? { assetPrefix: getReleaseBranchUrl(siteMetadata.versionString) }
     : undefined),
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -165,14 +161,14 @@ module.exports = {
           '/*': [
             'X-XSS-Protection: 1; mode=block',
             'X-Content-Type-Options: nosniff',
-            ...(!versionData.isLatest ? ['Access-Control-Allow-Origin: *'] : []),
+            ...(!siteMetadata.isLatest ? ['Access-Control-Allow-Origin: *'] : []),
           ],
           '/versions.json': [
             'Access-Control-Allow-Origin: *',
             'Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept',
           ],
-          ...(!versionData.isLatest && {
-            [`/docs/${versionData.versionString}/*`]: ['X-Robots-Tag: noindex'],
+          ...(!siteMetadata.isLatest && {
+            [`/docs/${siteMetadata.versionString}/*`]: ['X-Robots-Tag: noindex'],
           }),
         },
         // Do not use the default security headers. Use those we have defined above.
@@ -186,7 +182,7 @@ module.exports = {
         component: require.resolve('./src/components/layout/PageLayout'),
       },
     },
-    ...(versionData.isLatest
+    ...(siteMetadata.isLatest
       ? [
           {
             resolve: `gatsby-plugin-sitemap`,
@@ -269,7 +265,7 @@ module.exports = {
 
                   createDocsPageEntries(
                     toc,
-                    string !== versionData.latestVersionString ? `/docs/${string}` : '/docs'
+                    string !== siteMetadata.latestVersionString ? `/docs/${string}` : '/docs'
                   );
                 });
 
