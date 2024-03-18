@@ -115,6 +115,16 @@
 /docs/preact/get-started/examples           /showcase                                                                                           301
 /docs/rax/get-started/examples              /showcase                                                                                           301
 
+# We can't use updateRedirectsFile for these because the /get-started route is valid for 8.0+ and the logic doesn't allow for that
+/docs/7.6/get-started                       https://release-7-6--storybook-frontpage.netlify.app/docs/7.6/get-started/install                   301
+/docs/7.5/get-started                       https://release-7-5--storybook-frontpage.netlify.app/docs/7.5/get-started/install                   301
+/docs/7.4/get-started                       https://release-7-4--storybook-frontpage.netlify.app/docs/7.4/get-started/install                   301
+/docs/7.3/get-started                       https://release-7-3--storybook-frontpage.netlify.app/docs/7.3/get-started/install                   301
+/docs/7.2/get-started                       https://release-7-2--storybook-frontpage.netlify.app/docs/7.2/get-started/install                   301
+/docs/7.1/get-started                       https://release-7-1--storybook-frontpage.netlify.app/docs/7.1/get-started/install                   301
+/docs/7.0/get-started                       https://release-7-0--storybook-frontpage.netlify.app/docs/7.0/get-started/install                   301
+/docs/6.5/get-started                       https://release-6-5--storybook-frontpage.netlify.app/docs/6.5/get-started/install                   301
+
 # Integration Catalog redirects
 /addons/addon-gallery/                      /integrations/                                                                                      301
 /addons/                                    /integrations/                                                                                      301
