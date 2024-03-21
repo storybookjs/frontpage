@@ -6,7 +6,10 @@ export default {
   component: Integrations,
 };
 
-export const Default = () => <Integrations docs="/" />;
-Default.parameters = {
-  backgrounds: { default: 'dark' },
+export const Default = {
+  render: () => <Integrations docs="/" />,
+
+  parameters: {
+    backgrounds: { default: 'dark' },
+  },
 };

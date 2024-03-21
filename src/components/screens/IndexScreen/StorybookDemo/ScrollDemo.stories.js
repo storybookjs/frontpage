@@ -11,20 +11,24 @@ export default {
   },
 };
 
-export const ScrollDemo = () => {
-  const value = useMotionValue(0);
-  return (
-    <ScrollDemoComponent
-      style={{ width: 800 }}
-      isolationProgress={value}
-      addonsProgress={value}
-      dropInProgress={value}
-      storyIndex={value}
-      panelIndex={value}
-    />
-  );
-};
-ScrollDemo.storyName = 'ScrollDemo';
-ScrollDemo.parameters = {
-  backgrounds: { default: 'dark' },
+export const ScrollDemo = {
+  render: () => {
+    const value = useMotionValue(0);
+    return (
+      <ScrollDemoComponent
+        style={{ width: 800 }}
+        isolationProgress={value}
+        addonsProgress={value}
+        dropInProgress={value}
+        storyIndex={value}
+        panelIndex={value}
+      />
+    );
+  },
+
+  name: 'ScrollDemo',
+
+  parameters: {
+    backgrounds: { default: 'dark' },
+  },
 };

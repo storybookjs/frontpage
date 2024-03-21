@@ -1,10 +1,10 @@
 const siteMetadata = require('../site-metadata');
 
 const versionData = {
-  version: 6.3,
-  versionString: '6.3',
-  latestVersion: 6.3,
-  latestVersionString: '6.3',
+  version: 8.0,
+  versionString: '8.0',
+  latestVersion: 8.0,
+  latestVersionString: '8.0',
   isLatest: true,
 };
 

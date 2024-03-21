@@ -6,12 +6,16 @@ export default {
   component: TestIntegrations,
 };
 
-export const Default = () => (
-  <div style={{ maxWidth: 800, padding: 32 }}>
-    <TestIntegrations />
-  </div>
-);
-Default.storyName = 'TestIntegrations';
-Default.parameters = {
-  backgrounds: { default: 'dark' },
+export const Default = {
+  render: () => (
+    <div style={{ maxWidth: 800, padding: 32 }}>
+      <TestIntegrations />
+    </div>
+  ),
+
+  name: 'TestIntegrations',
+
+  parameters: {
+    backgrounds: { default: 'dark' },
+  },
 };

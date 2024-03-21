@@ -1,5 +1,6 @@
 module.exports = {
   presets: [
+    '@babel/preset-react',
     [
       'babel-preset-gatsby',
       {
@@ -8,8 +9,19 @@ module.exports = {
         },
       },
     ],
+    [
+      '@babel/preset-env',
+      {
+        shippedProposals: true,
+        loose: false,
+      },
+    ],
+    '@babel/preset-typescript',
   ],
   plugins: [
+    '@babel/plugin-proposal-private-property-in-object',
+    '@babel/plugin-proposal-private-methods',
+    '@babel/plugin-proposal-class-properties',
     [
       '@emotion',
       {

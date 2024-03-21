@@ -58,63 +58,84 @@ const Template = (args) => (
   </Wrapper>
 );
 
-export const OfficialStorybookAddon = Template.bind({});
-OfficialStorybookAddon.args = {
-  appearance: 'official',
-  icon: ControlsSVG,
-  displayName: 'Controls',
-  description: 'Interact with component inputs dynamically in the Storybook UI',
-  weeklyDownloads: 17143,
+export const OfficialStorybookAddon = {
+  render: Template,
+
+  args: {
+    appearance: 'official',
+    icon: ControlsSVG,
+    displayName: 'Controls',
+    description: 'Interact with component inputs dynamically in the Storybook UI',
+    weeklyDownloads: 17143,
+  },
 };
 
-export const Deprecated = Template.bind({});
-Deprecated.args = {
-  status: 'deprecated',
-  appearance: 'official',
-  icon: ControlsSVG,
-  displayName: 'Controls',
-  description: 'Interact with component inputs dynamically in the Storybook UI',
-  weeklyDownloads: 17143,
+export const Deprecated = {
+  render: Template,
+
+  args: {
+    status: 'deprecated',
+    appearance: 'official',
+    icon: ControlsSVG,
+    displayName: 'Controls',
+    description: 'Interact with component inputs dynamically in the Storybook UI',
+    weeklyDownloads: 17143,
+  },
 };
 
-export const OfficialIntegratorAddon = Template.bind({});
-OfficialIntegratorAddon.args = {
-  appearance: 'integrators',
-  icon: ContrastPNG,
-  displayName: 'Contrast',
-  description: 'Embed Contrast handoff tool in a storybook panel',
-  weeklyDownloads: 17143,
-  verifiedCreator: 'Contrast',
+export const OfficialIntegratorAddon = {
+  render: Template,
+
+  args: {
+    appearance: 'integrators',
+    icon: ContrastPNG,
+    displayName: 'Contrast',
+    description: 'Embed Contrast handoff tool in a storybook panel',
+    weeklyDownloads: 17143,
+    verifiedCreator: 'Contrast',
+  },
 };
 
-export const CommunityMadeAddon = Template.bind({});
-CommunityMadeAddon.args = {
-  icon: ViewportSVG,
-  appearance: 'community',
-  displayName: 'Mobile UX Hints',
-  description:
-    'Suggestions on how to tweak the HTML and CSS of your components to be more mobile-friendly.',
-  weeklyDownloads: 12253,
+export const CommunityMadeAddon = {
+  render: Template,
+
+  args: {
+    icon: ViewportSVG,
+    appearance: 'community',
+    displayName: 'Mobile UX Hints',
+    description:
+      'Suggestions on how to tweak the HTML and CSS of your components to be more mobile-friendly.',
+    weeklyDownloads: 12253,
+  },
 };
 
-export const WithoutImage = Template.bind({});
-WithoutImage.args = {
-  displayName: 'Controls',
-  description: 'Interact with component inputs dynamically in the Storybook UI',
-  weeklyDownloads: 238,
+export const WithoutImage = {
+  render: Template,
+
+  args: {
+    displayName: 'Controls',
+    description: 'Interact with component inputs dynamically in the Storybook UI',
+    weeklyDownloads: 238,
+  },
 };
 
-export const WithoutDisplayName = Template.bind({});
-WithoutDisplayName.args = {
-  displayName: null,
-  name: '@storybook/addon-controls',
-  description: 'Interact with component inputs dynamically in the Storybook UI',
-  weeklyDownloads: 238,
+export const WithoutDisplayName = {
+  render: Template,
+
+  args: {
+    displayName: null,
+    name: '@storybook/addon-controls',
+    description: 'Interact with component inputs dynamically in the Storybook UI',
+    weeklyDownloads: 238,
+  },
 };
 
-export const LoadingState = Template.bind({});
-LoadingState.args = {
-  isLoading: true,
+export const LoadingState = {
+  render: Template,
+
+  args: {
+    isLoading: true,
+  },
 };
 
 const StatsWrapper = styled.div`
@@ -123,22 +144,25 @@ const StatsWrapper = styled.div`
   }
 `;
 
-export const StatVariations = (args) => (
-  <StatsWrapper>
-    <AddonItem {...args} weeklyDownloads={104} />
-    <AddonItem {...args} weeklyDownloads={726} />
-    <AddonItem {...args} weeklyDownloads={5026} />
-    <AddonItem {...args} weeklyDownloads={17143} />
-    <AddonItem {...args} weeklyDownloads={171043} />
-    <AddonItem {...args} weeklyDownloads={3871043} />
-  </StatsWrapper>
-);
-StatVariations.args = {
-  orientation: 'horizontal',
-  appearance: 'official',
-  icon: ControlsSVG,
-  name: '@storybook/addon-controls',
-  displayName: 'Controls',
-  description: 'Interact with component inputs dynamically in the Storybook UI',
-  authors,
+export const StatVariations = {
+  render: (args) => (
+    <StatsWrapper>
+      <AddonItem {...args} weeklyDownloads={104} />
+      <AddonItem {...args} weeklyDownloads={726} />
+      <AddonItem {...args} weeklyDownloads={5026} />
+      <AddonItem {...args} weeklyDownloads={17143} />
+      <AddonItem {...args} weeklyDownloads={171043} />
+      <AddonItem {...args} weeklyDownloads={3871043} />
+    </StatsWrapper>
+  ),
+
+  args: {
+    orientation: 'horizontal',
+    appearance: 'official',
+    icon: ControlsSVG,
+    name: '@storybook/addon-controls',
+    displayName: 'Controls',
+    description: 'Interact with component inputs dynamically in the Storybook UI',
+    authors,
+  },
 };

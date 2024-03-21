@@ -6,12 +6,16 @@ export default {
   component: EmbedIntegrations,
 };
 
-export const Default = () => (
-  <div style={{ maxWidth: 800, padding: 32 }}>
-    <EmbedIntegrations isInView />
-  </div>
-);
-Default.storyName = 'EmbedIntegrations';
-Default.parameters = {
-  backgrounds: { default: 'dark' },
+export const Default = {
+  render: () => (
+    <div style={{ maxWidth: 800, padding: 32 }}>
+      <EmbedIntegrations isInView />
+    </div>
+  ),
+
+  name: 'EmbedIntegrations',
+
+  parameters: {
+    backgrounds: { default: 'dark' },
+  },
 };

@@ -7,5 +7,7 @@ export default {
   component: ReleaseNotFound,
 };
 
-export const Default = () => <ReleaseNotFound version="1.0" />;
-Default.storyName = 'ReleaseNotFound';
+export const Default = {
+  render: () => <ReleaseNotFound version="1.0" />,
+  name: 'ReleaseNotFound',
+};

@@ -10,8 +10,11 @@ export default {
   },
 };
 
-export const Default = () => <Share docs="/" />;
-Default.storyName = 'Share';
-Default.parameters = {
-  backgrounds: { default: 'dark' },
+export const Default = {
+  render: () => <Share docs="/" />,
+  name: 'Share',
+
+  parameters: {
+    backgrounds: { default: 'dark' },
+  },
 };

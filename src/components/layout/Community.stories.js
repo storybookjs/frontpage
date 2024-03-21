@@ -10,7 +10,10 @@ export default {
   },
 };
 
-export const Community = () => <CommunityComponent />;
-Community.parameters = {
-  backgrounds: { default: 'dark' },
+export const Community = {
+  render: () => <CommunityComponent />,
+
+  parameters: {
+    backgrounds: { default: 'dark' },
+  },
 };

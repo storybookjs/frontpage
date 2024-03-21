@@ -130,65 +130,82 @@ const Template = ({ addon, ...args }) => (
   />
 );
 
-export const Default = Template.bind({});
+export const Default = {
+  render: Template,
+};
 
-export const Official = Template.bind({});
-Official.args = {
-  addon: {
-    icon: ViewportSVG,
-    displayName: 'Viewport',
-    name: '@storybook/addon-viewport',
-    description:
-      'The Viewport toolbar item allows you to adjust the dimensions of the iframe your story is rendered in. This makes it easy to develop responsive UIs.',
-    weeklyDownloads: 428,
-    appearance: 'official',
+export const Official = {
+  render: Template,
+
+  args: {
+    addon: {
+      icon: ViewportSVG,
+      displayName: 'Viewport',
+      name: '@storybook/addon-viewport',
+      description:
+        'The Viewport toolbar item allows you to adjust the dimensions of the iframe your story is rendered in. This makes it easy to develop responsive UIs.',
+      weeklyDownloads: 428,
+      appearance: 'official',
+    },
   },
 };
 
-export const Essential = Template.bind({});
-Essential.args = {
-  addon: {
-    icon: ControlsSVG,
-    name: '@storybook/addon-controls',
-    displayName: 'Controls',
-    description: 'Interact with component inputs dynamically in the Storybook UI',
-    weeklyDownloads: 83474,
-    status: 'essential',
-    appearance: 'official',
+export const Essential = {
+  render: Template,
+
+  args: {
+    addon: {
+      icon: ControlsSVG,
+      name: '@storybook/addon-controls',
+      displayName: 'Controls',
+      description: 'Interact with component inputs dynamically in the Storybook UI',
+      weeklyDownloads: 83474,
+      status: 'essential',
+      appearance: 'official',
+    },
   },
 };
 
-export const MoreThanFiveAuthors = Template.bind({});
-MoreThanFiveAuthors.args = {
-  addon: {
-    authors: [...authors, ...authors.map((a, idx) => ({ ...a, id: a.id + idx }))],
+export const MoreThanFiveAuthors = {
+  render: Template,
+
+  args: {
+    addon: {
+      authors: [...authors, ...authors.map((a, idx) => ({ ...a, id: a.id + idx }))],
+    },
   },
 };
 
-export const WithFromBreadcrumb = Template.bind({});
-WithFromBreadcrumb.args = {
-  location: {
-    state: {
-      from: {
-        link: '/addons/data-state',
-        title: 'data and state',
+export const WithFromBreadcrumb = {
+  render: Template,
+
+  args: {
+    location: {
+      state: {
+        from: {
+          link: '/addons/data-state',
+          title: 'data and state',
+        },
       },
     },
   },
 };
 
-export const MissingInfo = Template.bind({});
-MissingInfo.args = {
-  addon: {
-    icon: ViewportSVG,
-    displayName: 'Viewport',
-    name: '@storybook/addon-viewport',
-    description:
-      'The Viewport toolbar item allows you to adjust the dimensions of the iframe your story is rendered in. This makes it easy to develop responsive UIs.',
-    weeklyDownloads: 428,
-    appearance: 'official',
-    compatibility: [],
-    tags: [],
-    readme: null,
+export const MissingInfo = {
+  render: Template,
+
+  args: {
+    addon: {
+      icon: ViewportSVG,
+      displayName: 'Viewport',
+      name: '@storybook/addon-viewport',
+      description:
+        'The Viewport toolbar item allows you to adjust the dimensions of the iframe your story is rendered in. This makes it easy to develop responsive UIs.',
+      weeklyDownloads: 428,
+      appearance: 'official',
+      compatibility: [],
+      tags: [],
+      readme: null,
+    },
   },
 };

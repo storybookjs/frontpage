@@ -6,7 +6,6 @@ export default {
   component: IntegrationsLearnLinksComponent,
 };
 
-const Template = (args) => <IntegrationsLearnLinksComponent {...args} />;
-
-export const Default = Template.bind({});
-Default.args = {};
+export const Default = {
+  args: {},
+};

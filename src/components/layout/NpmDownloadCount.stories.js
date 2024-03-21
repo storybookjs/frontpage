@@ -10,10 +10,12 @@ export default {
   },
 };
 
-export const NpmDownloadCount = () => (
-  <NpmDownloadCountComponent downloads={16737033} className="chromatic-ignore" />
-);
-NpmDownloadCount.parameters = {
-  backgrounds: { default: 'dark' },
+export const NpmDownloadCount = {
+  render: () => <NpmDownloadCountComponent downloads={16737033} className="chromatic-ignore" />,
+
+  parameters: {
+    backgrounds: { default: 'dark' },
+  },
+
+  name: 'NpmDownloadCount',
 };
-NpmDownloadCount.storyName = 'NpmDownloadCount';

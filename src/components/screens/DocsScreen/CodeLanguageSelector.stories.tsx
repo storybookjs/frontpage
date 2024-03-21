@@ -1,7 +1,6 @@
 import React from 'react';
 import { styled } from '@storybook/theming';
-import { expect } from '@storybook/jest';
-import { within, userEvent } from '@storybook/testing-library';
+import { within, userEvent, expect } from '@storybook/test';
 import { CodeLanguageSelector } from './CodeLanguageSelector';
 import { DocsContextProvider } from './DocsContext';
 
@@ -49,6 +48,6 @@ Angular.parameters = {
 Angular.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
   const menuButton = canvas.getByRole('button', { name: /TypeScript/i });
-  // @ts-expect-error - SB's jest types don't include jest-dom
+  // SB's jest types don't include jest-dom
   await expect(menuButton).not.toBeInTheDocument();
 };

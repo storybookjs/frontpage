@@ -201,26 +201,26 @@ export const addonItemsData = [
   },
 ];
 
-const Template = (args) => <AddonsGrid {...args} />;
-
-export const Default = Template.bind({});
-Default.args = {
-  addonItems: addonItemsData,
-  title: 'Trending',
+export const Default = {
+  args: {
+    addonItems: addonItemsData,
+    title: 'Trending',
+  },
 };
 
-export const WithActions = Template.bind({});
-WithActions.args = {
-  addonItems: addonItemsData,
-  title: 'Popular',
-  actions: (
-    <ButtonToggle
-      selectedIndex={0}
-      onSelectIndex={() => {}}
-      titles={[
-        { title: 'Month', tooltip: 'Month' },
-        { title: 'Year', tooltip: 'Year' },
-      ]}
-    />
-  ),
+export const WithActions = {
+  args: {
+    addonItems: addonItemsData,
+    title: 'Popular',
+    actions: (
+      <ButtonToggle
+        selectedIndex={0}
+        onSelectIndex={() => {}}
+        titles={[
+          { title: 'Month', tooltip: 'Month' },
+          { title: 'Year', tooltip: 'Year' },
+        ]}
+      />
+    ),
+  },
 };

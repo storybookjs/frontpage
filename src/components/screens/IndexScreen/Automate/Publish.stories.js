@@ -10,12 +10,14 @@ export default {
   },
 };
 
-// animation only triggers when the element scrolls into view
-export const Default = () => (
-  <div style={{ marginTop: 1200, marginBottom: 300 }}>
-    <Publish docs="/" />
-  </div>
-);
-Default.parameters = {
-  backgrounds: { default: 'dark' },
+export const Default = {
+  render: () => (
+    <div style={{ marginTop: 1200, marginBottom: 300 }}>
+      <Publish docs="/" />
+    </div>
+  ),
+
+  parameters: {
+    backgrounds: { default: 'dark' },
+  },
 };

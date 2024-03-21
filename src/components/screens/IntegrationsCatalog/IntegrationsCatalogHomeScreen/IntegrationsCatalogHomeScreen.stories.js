@@ -64,23 +64,34 @@ const Template = () => (
   />
 );
 
-export const Default = Template.bind({});
-
-export const SearchLoading = Template.bind({});
-SearchLoading.parameters = {
-  isSearching: true,
-  isSearchLoading: true,
+export const Default = {
+  render: Template,
 };
 
-export const SearchResults = Template.bind({});
-SearchResults.parameters = {
-  isSearching: true,
-  isSearchLoading: false,
+export const SearchLoading = {
+  render: Template,
+
+  parameters: {
+    isSearching: true,
+    isSearchLoading: true,
+  },
 };
 
-export const SearchNoResults = Template.bind({});
-SearchNoResults.parameters = {
-  isSearching: true,
-  isSearchLoading: false,
-  noResults: true,
+export const SearchResults = {
+  render: Template,
+
+  parameters: {
+    isSearching: true,
+    isSearchLoading: false,
+  },
+};
+
+export const SearchNoResults = {
+  render: Template,
+
+  parameters: {
+    isSearching: true,
+    isSearchLoading: false,
+    noResults: true,
+  },
 };
