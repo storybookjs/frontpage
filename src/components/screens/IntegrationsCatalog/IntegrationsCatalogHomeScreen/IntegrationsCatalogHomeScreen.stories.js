@@ -60,6 +60,17 @@ const Template = () => (
           icon: '☁️',
         },
       ],
+      vta: {
+        type: 'Addon',
+        id: 'addon_0',
+        appearance: 'official',
+        icon: 'https://github.com/chromaui/addon-visual-tests/assets/486540/9acf6f3f-eadb-4b9e-b934-c4b0f87d9430',
+        displayName: 'Visual Tests',
+        name: '@chromatic-com/storybook',
+        description: 'Catch unexpected visual changes & UI bugs in your stories',
+        weeklyDownloads: 65132,
+        authors: addonItemsData[0].authors,
+      },
     }}
   />
 );
