@@ -1,16 +1,17 @@
 import React, { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
+import { rgba } from 'polished';
 import { styled } from '@storybook/theming';
 import { ButtonToggle, Icon, Link, styles, TagLink, TagList } from '@storybook/design-system';
 import useSiteMetadata from '../../../lib/useSiteMetadata';
 import { SocialGraph, ListHeadingContainer, ListHeading } from '../../../basics';
-import { AddonsGrid } from '../../../layout/integrations/addons';
+import { AddonItem, AddonsGrid } from '../../../layout/integrations/addons';
 import { RecipesList } from '../../../layout/integrations/recipes';
 import { IntegrationsLayout } from '../../../layout/integrations';
 import buildTagLinks from '../../../../util/build-tag-links';
 import GatsbyLink from '../../../basics/GatsbyLink';
 
-const { breakpoint, spacing, color, pageMargins, typography } = styles;
+const { background, breakpoint, spacing, color, pageMargins, typography } = styles;
 
 const PageHeaderContainer = styled.header`
   ${pageMargins}
@@ -90,6 +91,30 @@ const PopularTagsList = styled(TagList)`
   margin-bottom: calc(70px - 32px - 10px);
 `;
 
+const SectionHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: ${spacing.padding.medium}px;
+`;
+
+const Title = styled.h3`
+  font-weight: ${typography.weight.bold};
+  font-size: ${typography.size.m2}px;
+  line-height: ${typography.size.m3}px;
+  color: ${color.darkest};
+`;
+
+const AddonCallout = styled(AddonItem)`
+  background-color: ${background.positive};
+  border-color: ${rgba(color.positive, 0.1)};
+  margin-bottom: 3rem;
+
+  &:hover {
+    border-color: ${rgba(color.positive, 0.3)};
+  }
+`;
+
 const PopularAddons = styled(AddonsGrid)`
   margin-bottom: 3rem;
 `;
@@ -99,7 +124,7 @@ const PopularRecipes = styled(RecipesList)`
 `;
 
 export const IntegrationsCatalogHomeScreen = ({
-  pageContext: { popularAddons = [], popularRecipes = [], trendingTags = [] },
+  pageContext: { popularAddons = [], popularRecipes = [], trendingTags = [], vta = {} },
 }) => {
   const { title, ogImageAddons, urls = {} } = useSiteMetadata();
   const { home } = urls;
@@ -123,6 +148,12 @@ export const IntegrationsCatalogHomeScreen = ({
             </TagLink>
           ))}
         />
+
+        <SectionHeader>
+          <Title>New to Storybook 8</Title>
+        </SectionHeader>
+        <AddonCallout key={vta.id} orientation="horizontal" {...vta} />
+
         <PopularAddons title="Popular addons" addonItems={popularAddons} />
 
         <section>

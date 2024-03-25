@@ -36,12 +36,23 @@ function fetchIntegrationsHomePage(createPage, graphql) {
                   }
                 }
               }
+              vta: detail(name: "@chromatic-com/storybook") {
+                ${ADDON_FRAGMENT}
+                tags {
+                  name
+                  displayName
+                  description
+                  icon
+                }
+                repositoryUrl
+                npmUrl
+              }
             }
           }
         `
       )
     )
-    .then(validateResponse((data) => data.integrations.popular))
+    .then(validateResponse((data) => data.integrations.popular && data.integrations.vta))
     .then(({ data }) => data.integrations)
     .then((integrationsData) => {
       generateIntegrationHomePage(createPage, integrationsData);
@@ -71,7 +82,7 @@ function getNRandomTags(tags, numberOfTags) {
     .map(({ occurrence, ...tag }) => tag);
 }
 
-function generateIntegrationHomePage(createPage, { popular }) {
+function generateIntegrationHomePage(createPage, { popular, vta }) {
   const tagOccurrences = createTagOccurrenceHash(...popular.addons);
 
   createPage({
@@ -81,6 +92,7 @@ function generateIntegrationHomePage(createPage, { popular }) {
       popularAddons: popular.addons,
       popularRecipes: popular.recipes,
       trendingTags: getNRandomTags(tagOccurrences, 20),
+      vta,
     },
   });
   // eslint-disable-next-line
