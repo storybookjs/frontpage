@@ -11,21 +11,25 @@ export default {
   },
 };
 
-export const HeroDemo = () => {
-  const value = useMotionValue(0);
-  return (
-    <HeroDemoComponent
-      style={{ width: 800 }}
-      type="rangeSlider"
-      isolationProgress={value}
-      addonsProgress={value}
-      dropInProgress={value}
-      storyIndex={value}
-      panelIndex={value}
-    />
-  );
-};
-HeroDemo.storyName = 'HeroDemo';
-HeroDemo.parameters = {
-  backgrounds: { default: 'dark' },
+export const HeroDemo = {
+  render: () => {
+    const value = useMotionValue(0);
+    return (
+      <HeroDemoComponent
+        style={{ width: 800 }}
+        type="rangeSlider"
+        isolationProgress={value}
+        addonsProgress={value}
+        dropInProgress={value}
+        storyIndex={value}
+        panelIndex={value}
+      />
+    );
+  },
+
+  name: 'HeroDemo',
+
+  parameters: {
+    backgrounds: { default: 'dark' },
+  },
 };

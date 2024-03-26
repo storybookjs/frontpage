@@ -6,7 +6,10 @@ export default {
   component: Hero,
 };
 
-export const Default = () => <Hero npmDownloads={16094826} contributorCount={1814} />;
-Default.parameters = {
-  backgrounds: { default: 'dark' },
+export const Default = {
+  render: () => <Hero npmDownloads={16094826} contributorCount={1814} />,
+
+  parameters: {
+    backgrounds: { default: 'dark' },
+  },
 };

@@ -31,48 +31,65 @@ const Template = (args) => (
   <IntegrationsCategoryScreen pageContext={pageContext} location={{}} {...args} />
 );
 
-export const Default = Template.bind({});
-Default.args = {
-  pageContext: {
-    ...pageContext,
+export const Default = {
+  render: Template,
+
+  args: {
+    pageContext: {
+      ...pageContext,
+    },
+  },
+
+  parameters: {
+    isSearching: false,
+    isSearchLoading: false,
   },
 };
-Default.parameters = {
-  isSearching: false,
-  isSearchLoading: false,
-};
 
-export const WithDesc = Template.bind({});
-WithDesc.args = {
-  pageContext: {
-    ...pageContext,
-    category: 'Essentials',
-    description: 'Pre-installed integrations that power the core Storybook experience',
+export const WithDesc = {
+  render: Template,
+
+  args: {
+    pageContext: {
+      ...pageContext,
+      category: 'Essentials',
+      description: 'Pre-installed integrations that power the core Storybook experience',
+    },
+  },
+
+  parameters: {
+    isSearching: false,
+    isSearchLoading: false,
   },
 };
-WithDesc.parameters = {
-  isSearching: false,
-  isSearchLoading: false,
+
+export const SearchLoading = {
+  render: Template,
+  args: { ...WithDesc.args },
+
+  parameters: {
+    isSearching: true,
+    isSearchLoading: true,
+  },
 };
 
-export const SearchLoading = Template.bind({});
-SearchLoading.args = { ...WithDesc.args };
-SearchLoading.parameters = {
-  isSearching: true,
-  isSearchLoading: true,
+export const SearchResults = {
+  render: Template,
+  args: { ...WithDesc.args },
+
+  parameters: {
+    isSearching: true,
+    isSearchLoading: false,
+  },
 };
 
-export const SearchResults = Template.bind({});
-SearchResults.args = { ...WithDesc.args };
-SearchResults.parameters = {
-  isSearching: true,
-  isSearchLoading: false,
-};
+export const SearchNoResults = {
+  render: Template,
+  args: { ...WithDesc.args },
 
-export const SearchNoResults = Template.bind({});
-SearchNoResults.args = { ...WithDesc.args };
-SearchNoResults.parameters = {
-  isSearching: true,
-  isSearchLoading: false,
-  noResults: true,
+  parameters: {
+    isSearching: true,
+    isSearchLoading: false,
+    noResults: true,
+  },
 };

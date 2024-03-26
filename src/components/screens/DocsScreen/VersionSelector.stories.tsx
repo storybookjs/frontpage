@@ -1,6 +1,6 @@
 import React from 'react';
 import { styled } from '@storybook/theming';
-import { within, userEvent } from '@storybook/testing-library';
+import { within, userEvent } from '@storybook/test';
 import { VersionSelector } from './VersionSelector';
 import { pageContext } from '../../layout/DocsLayout/DocsLayout.stories';
 

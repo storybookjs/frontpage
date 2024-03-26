@@ -12,11 +12,14 @@ export default {
 
 export const Basic = () => <MailingListSubscribeForm cta="Sign up" onSubscribe={onSubscribe} />;
 
-export const OptIn = () => (
-  <MailingListSubscribeForm
-    optIn="Subscribe to this list"
-    cta="Sign up"
-    onSubscribe={onSubscribe}
-  />
-);
-OptIn.storyName = 'Opt-in';
+export const OptIn = {
+  render: () => (
+    <MailingListSubscribeForm
+      optIn="Subscribe to this list"
+      cta="Sign up"
+      onSubscribe={onSubscribe}
+    />
+  ),
+
+  name: 'Opt-in',
+};

@@ -100,35 +100,47 @@ const Template = ({ recipe, ...args }) => (
   />
 );
 
-export const Default = Template.bind({});
-Default.args = {
-  recipe: muiRecipe,
-};
+export const Default = {
+  render: Template,
 
-export const MoreThanFiveAuthors = Template.bind({});
-MoreThanFiveAuthors.args = {
-  recipe: {
-    ...muiRecipe,
-    authors: [...muiRecipe.authors, ...extraAuthors],
+  args: {
+    recipe: muiRecipe,
   },
 };
 
-export const NoAddons = Template.bind({});
-NoAddons.args = {
-  recipe: {
-    ...muiRecipe,
-    addons: [],
+export const MoreThanFiveAuthors = {
+  render: Template,
+
+  args: {
+    recipe: {
+      ...muiRecipe,
+      authors: [...muiRecipe.authors, ...extraAuthors],
+    },
   },
 };
 
-export const WithFromBreadcrumb = Template.bind({});
-WithFromBreadcrumb.args = {
-  recipe: muiRecipe,
-  location: {
-    state: {
-      from: {
-        link: '/addons/data-state',
-        title: 'Data & State',
+export const NoAddons = {
+  render: Template,
+
+  args: {
+    recipe: {
+      ...muiRecipe,
+      addons: [],
+    },
+  },
+};
+
+export const WithFromBreadcrumb = {
+  render: Template,
+
+  args: {
+    recipe: muiRecipe,
+    location: {
+      state: {
+        from: {
+          link: '/addons/data-state',
+          title: 'Data & State',
+        },
       },
     },
   },

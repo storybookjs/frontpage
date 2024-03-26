@@ -17,5 +17,7 @@ export default {
   ],
 };
 
-export const PlaceholderAspectRatio = () => <Placeholder ratio={0.75} />;
-PlaceholderAspectRatio.storyName = 'PlaceholderAspectRatio';
+export const PlaceholderAspectRatio = {
+  render: () => <Placeholder ratio={0.75} />,
+  name: 'PlaceholderAspectRatio',
+};

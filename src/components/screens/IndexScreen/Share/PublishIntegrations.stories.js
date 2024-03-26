@@ -6,12 +6,16 @@ export default {
   component: PublishIntegrations,
 };
 
-export const Default = () => (
-  <div style={{ maxWidth: 800, padding: 32 }}>
-    <PublishIntegrations />
-  </div>
-);
-Default.storyName = 'PublishIntegrations';
-Default.parameters = {
-  backgrounds: { default: 'dark' },
+export const Default = {
+  render: () => (
+    <div style={{ maxWidth: 800, padding: 32 }}>
+      <PublishIntegrations />
+    </div>
+  ),
+
+  name: 'PublishIntegrations',
+
+  parameters: {
+    backgrounds: { default: 'dark' },
+  },
 };

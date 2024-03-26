@@ -45,74 +45,92 @@ const offsetDate = (offset) => {
   return Number(d);
 };
 
-export const OfficialStorybook = Template.bind({});
-OfficialStorybook.args = {
-  appearance: 'official',
-  icon: ControlsSVG,
-  name: '@storybook/addon-controls',
-  displayName: 'Controls',
-  description: 'Interact with component inputs dynamically in the Storybook UI',
-  weeklyDownloads: 17143,
-  publishedAt: offsetDate(-35),
-  npmUrl: 'https://npmjs.org/',
+export const OfficialStorybook = {
+  render: Template,
+
+  args: {
+    appearance: 'official',
+    icon: ControlsSVG,
+    name: '@storybook/addon-controls',
+    displayName: 'Controls',
+    description: 'Interact with component inputs dynamically in the Storybook UI',
+    weeklyDownloads: 17143,
+    publishedAt: offsetDate(-35),
+    npmUrl: 'https://npmjs.org/',
+  },
 };
 
-export const OfficialIntegrator = Template.bind({});
-OfficialIntegrator.args = {
-  appearance: 'integrators',
-  icon: ContrastPNG,
-  name: 'storybook-contrast',
-  displayName: 'Contrast',
-  description: 'Embed Contrast handoff tool in a storybook panel',
-  weeklyDownloads: 17143,
-  publishedAt: offsetDate(-5),
-  npmUrl: 'https://npmjs.org/',
+export const OfficialIntegrator = {
+  render: Template,
+
+  args: {
+    appearance: 'integrators',
+    icon: ContrastPNG,
+    name: 'storybook-contrast',
+    displayName: 'Contrast',
+    description: 'Embed Contrast handoff tool in a storybook panel',
+    weeklyDownloads: 17143,
+    publishedAt: offsetDate(-5),
+    npmUrl: 'https://npmjs.org/',
+  },
 };
 
-export const Community = Template.bind({});
-Community.args = {
-  icon: ViewportSVG,
-  appearance: 'community',
-  displayName: 'Mobile UX Hints',
-  name: '@storybook/addon-viewport',
-  description:
-    'Suggestions on how to tweak the HTML and CSS of your components to be more mobile-friendly.',
-  weeklyDownloads: 12253,
-  publishedAt: offsetDate(-365),
-  npmUrl: 'https://npmjs.org/',
+export const Community = {
+  render: Template,
+
+  args: {
+    icon: ViewportSVG,
+    appearance: 'community',
+    displayName: 'Mobile UX Hints',
+    name: '@storybook/addon-viewport',
+    description:
+      'Suggestions on how to tweak the HTML and CSS of your components to be more mobile-friendly.',
+    weeklyDownloads: 12253,
+    publishedAt: offsetDate(-365),
+    npmUrl: 'https://npmjs.org/',
+  },
 };
 
-export const WithoutImage = Template.bind({});
-WithoutImage.args = {
-  name: '@storybook/addon-controls',
-  displayName: 'Controls',
-  description: 'Interact with component inputs dynamically in the Storybook UI',
-  weeklyDownloads: 238,
-  publishedAt: offsetDate(-72),
-  npmUrl: 'https://npmjs.org/',
+export const WithoutImage = {
+  render: Template,
+
+  args: {
+    name: '@storybook/addon-controls',
+    displayName: 'Controls',
+    description: 'Interact with component inputs dynamically in the Storybook UI',
+    weeklyDownloads: 238,
+    publishedAt: offsetDate(-72),
+    npmUrl: 'https://npmjs.org/',
+  },
 };
 
-export const Essential = Template.bind({});
-Essential.args = {
-  displayName: 'Controls',
-  description: 'Interact with component inputs dynamically in the Storybook UI',
-  name: '@storybook/addon-controls',
-  weeklyDownloads: 238,
-  publishedAt: offsetDate(-32),
-  npmUrl: 'https://npmjs.org/',
-  status: 'essential',
-  appearance: 'official',
+export const Essential = {
+  render: Template,
+
+  args: {
+    displayName: 'Controls',
+    description: 'Interact with component inputs dynamically in the Storybook UI',
+    name: '@storybook/addon-controls',
+    weeklyDownloads: 238,
+    publishedAt: offsetDate(-32),
+    npmUrl: 'https://npmjs.org/',
+    status: 'essential',
+    appearance: 'official',
+  },
 };
 
-export const Deprecated = Template.bind({});
-Deprecated.args = {
-  appearance: 'official',
-  icon: ControlsSVG,
-  displayName: 'Controls',
-  name: '@storybook/addon-controls',
-  description: 'Interact with component inputs dynamically in the Storybook UI',
-  weeklyDownloads: 17143,
-  status: 'deprecated',
-  publishedAt: offsetDate(-730),
-  npmUrl: 'https://npmjs.org/',
+export const Deprecated = {
+  render: Template,
+
+  args: {
+    appearance: 'official',
+    icon: ControlsSVG,
+    displayName: 'Controls',
+    name: '@storybook/addon-controls',
+    description: 'Interact with component inputs dynamically in the Storybook UI',
+    weeklyDownloads: 17143,
+    status: 'deprecated',
+    publishedAt: offsetDate(-730),
+    npmUrl: 'https://npmjs.org/',
+  },
 };

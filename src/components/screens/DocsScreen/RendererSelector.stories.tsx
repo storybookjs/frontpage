@@ -1,6 +1,6 @@
 import React from 'react';
 import { styled } from '@storybook/theming';
-import { screen, within, userEvent } from '@storybook/testing-library';
+import { screen, within, userEvent } from '@storybook/test';
 import { RendererSelector } from './RendererSelector';
 import useSiteMetadata from '../../../../.storybook/useSiteMetadata';
 import { DocsContextProvider } from './DocsContext';

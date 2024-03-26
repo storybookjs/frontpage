@@ -10,7 +10,10 @@ export default {
   },
 };
 
-export const Default = () => <Automate docs="/" />;
-Default.parameters = {
-  backgrounds: { default: 'dark' },
+export const Default = {
+  render: () => <Automate docs="/" />,
+
+  parameters: {
+    backgrounds: { default: 'dark' },
+  },
 };

@@ -170,19 +170,20 @@ export default {
   },
 };
 
-const Template = (args) => <RecipesList {...args} />;
-
-export const Default = Template.bind({});
-Default.args = {
-  recipeItems: recipeItemsData.slice(0, 5),
+export const Default = {
+  args: {
+    recipeItems: recipeItemsData.slice(0, 5),
+  },
 };
 
-export const LoadMore = Template.bind({});
-LoadMore.args = {
-  recipeItems: recipeItemsData,
+export const LoadMore = {
+  args: {
+    recipeItems: recipeItemsData,
+  },
 };
 
-export const Loading = Template.bind({});
-Loading.args = {
-  isLoading: true,
+export const Loading = {
+  args: {
+    isLoading: true,
+  },
 };

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { userEvent, within } from '@storybook/testing-library';
 
 import { FilterMenu, Value } from './FilterMenu';
 

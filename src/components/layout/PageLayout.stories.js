@@ -22,13 +22,16 @@ export const dxData = {
   latestVersion: '6.5',
 };
 
-export const Base = () => (
-  <PurePageLayout dxData={dxData} pageContext={{}} location={{ pathname: '/' }}>
-    <div style={{ height: 600, border: '1px solid #ccc', color: '#fff' }}>children</div>
-  </PurePageLayout>
-);
-Base.parameters = {
-  backgrounds: { default: 'dark' },
+export const Base = {
+  render: () => (
+    <PurePageLayout dxData={dxData} pageContext={{}} location={{ pathname: '/' }}>
+      <div style={{ height: 600, border: '1px solid #ccc', color: '#fff' }}>children</div>
+    </PurePageLayout>
+  ),
+
+  parameters: {
+    backgrounds: { default: 'dark' },
+  },
 };
 
 export const DocsLayout = () => (

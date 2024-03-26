@@ -1,7 +1,7 @@
 import React from 'react';
 import { styled } from '@storybook/theming';
-import { expect } from '@storybook/jest';
-import { within, userEvent } from '@storybook/testing-library';
+import type { Meta, StoryObj } from '@storybook/react';
+import { within, userEvent } from '@storybook/test';
 
 import { LanguageSelector } from './LanguageSelector';
 
@@ -12,7 +12,7 @@ const Wrapper = styled.span`
   height: 510px;
 `;
 
-export default {
+const meta = {
   title: 'Basics/LanguageSelector',
   component: LanguageSelector,
   args: {
@@ -26,16 +26,20 @@ export default {
   decorators: [(story) => <Wrapper>{story()}</Wrapper>],
 };
 
+export default meta;
+type Story = StoryObj<typeof LanguageSelector>;
+
 const Template = ({ value: initialValue, ...args }) => {
   const [value, setValue] = React.useState(initialValue);
   return <LanguageSelector value={value} onChange={setValue} {...args} />;
 };
-export const Base = Template.bind({});
+export const Base: Story = Template.bind({});
 
-export const Open = Template.bind({});
-Open.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement);
-  const menuButton = canvas.getByRole('button', { name: /TypeScript/i });
-  await userEvent.click(menuButton);
-  await userEvent.keyboard('{arrowdown}');
+export const Open: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const menuButton = canvas.getByRole('button', { name: /TypeScript/i });
+    await userEvent.click(menuButton);
+    await userEvent.keyboard('{arrowdown}');
+  },
 };

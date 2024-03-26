@@ -40,5 +40,7 @@ export default {
   excludeStories: ['buildRelease'],
 };
 
-export const Base = () => <ReleasesScreen data={data} />;
-Base.storyName = 'ReleasesScreen';
+export const Base = {
+  render: () => <ReleasesScreen data={data} />,
+  name: 'ReleasesScreen',
+};

@@ -11,20 +11,21 @@ export default {
   },
 };
 
-const Template = (args) => <RecipeItemDetail {...args} />;
-
-export const WithLibraryIcon = Template.bind({});
-WithLibraryIcon.args = {
-  icon: MuiSVG,
-  accentColor: '#000',
-  name: '@mui/material',
-  displayName: 'Material UI',
-  description: "Material UI is component library styled based on Google's Material Design spec.",
+export const WithLibraryIcon = {
+  args: {
+    icon: MuiSVG,
+    accentColor: '#000',
+    name: '@mui/material',
+    displayName: 'Material UI',
+    description: "Material UI is component library styled based on Google's Material Design spec.",
+  },
 };
 
-export const WithoutLibraryIcon = Template.bind({});
-WithoutLibraryIcon.args = {
-  name: 'react-native',
-  displayName: 'React Native',
-  description: 'React Native is a React framework for building multi-platform mobile applications.',
+export const WithoutLibraryIcon = {
+  args: {
+    name: 'react-native',
+    displayName: 'React Native',
+    description:
+      'React Native is a React framework for building multi-platform mobile applications.',
+  },
 };

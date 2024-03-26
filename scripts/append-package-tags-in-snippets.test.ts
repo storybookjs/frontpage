@@ -22,7 +22,7 @@ npx storybook init
 
 <!-- Block shell install snippet; should update -->
 \`\`\`sh
-yarn add -D @storybook/testing-library
+yarn add -D @storybook/test
 \`\`\`
 
   <!-- Indented block shell command snippet; should update -->
@@ -45,7 +45,7 @@ npx storybook init
 \`\`\`
 
 <!-- Inline install snippet; should remain -->
-\`@storybook/testing-library\`
+\`@storybook/test\`
     `,
         true
       )
@@ -68,7 +68,7 @@ npx storybook init
 
       <!-- Block shell install snippet; should update -->
       \`\`\`sh
-      yarn add -D @storybook/testing-library@next
+      yarn add -D @storybook/test@next
       \`\`\`
 
         <!-- Indented block shell command snippet; should update -->
@@ -91,7 +91,7 @@ npx storybook init
       \`\`\`
 
       <!-- Inline install snippet; should remain -->
-      \`@storybook/testing-library\`
+      \`@storybook/test\`
           "
     `);
   });
@@ -123,8 +123,8 @@ describe('updateSnippet', () => {
   });
   it('does not update undesired inline snippets', () => {
     // Must use preRelease here to test non-effect (non-preRelease should not append tag)
-    expect(updateSnippet('@storybook/testing-library', false, true)).toMatchInlineSnapshot(
-      `"@storybook/testing-library"`
+    expect(updateSnippet('@storybook/test', false, true)).toMatchInlineSnapshot(
+      `"@storybook/test"`
     );
   });
   it('updates desired block snippets', () => {
@@ -153,9 +153,9 @@ describe('updateSnippet', () => {
       `"npx storybook@latest add @storybook/addon-pkg"`
     );
     // Must use preRelease here to test effect (non-preRelease should not append tag)
-    expect(
-      updateSnippet('yarn add -D @storybook/testing-library', true, true)
-    ).toMatchInlineSnapshot(`"yarn add -D @storybook/testing-library@next"`);
+    expect(updateSnippet('yarn add -D @storybook/test', true, true)).toMatchInlineSnapshot(
+      `"yarn add -D @storybook/test@next"`
+    );
   });
   it('does not update disallowed packages in block snippets', () => {
     // Must use preRelease here to test non-effect (preRelease should not append tag)
@@ -173,22 +173,22 @@ describe('updateSnippet', () => {
     // Must use preRelease here to test effect (non-preRelease should not append tag)
     expect(
       updateSnippet(
-        'yarn add -D @storybook/testing-library @storybook/jest @storybook/addon-interactions',
+        'yarn add -D @storybook/test @storybook/jest @storybook/addon-interactions',
         true,
         true
       )
     ).toMatchInlineSnapshot(
-      `"yarn add -D @storybook/testing-library@next @storybook/jest@next @storybook/addon-interactions@next"`
+      `"yarn add -D @storybook/test@next @storybook/jest@next @storybook/addon-interactions@next"`
     );
     // Must use preRelease here to test effect (non-preRelease should not append tag)
     expect(
       updateSnippet(
-        'yarn remove -D @storybook/testing-library @storybook/jest @storybook/addon-interactions',
+        'yarn remove -D @storybook/test @storybook/jest @storybook/addon-interactions',
         true,
         true
       )
     ).toMatchInlineSnapshot(
-      `"yarn remove -D @storybook/testing-library@next @storybook/jest@next @storybook/addon-interactions@next"`
+      `"yarn remove -D @storybook/test@next @storybook/jest@next @storybook/addon-interactions@next"`
     );
   });
   it('appends the correct tag', () => {
@@ -200,23 +200,23 @@ describe('updateSnippet', () => {
     );
     // Must use block here to test effect (inline should not append tag)
     // When not prerelease, we do NOT append the tag to installed packages
-    expect(updateSnippet('yarn add -D @storybook/testing-library', true)).toMatchInlineSnapshot(
-      `"yarn add -D @storybook/testing-library"`
+    expect(updateSnippet('yarn add -D @storybook/test', true)).toMatchInlineSnapshot(
+      `"yarn add -D @storybook/test"`
     );
     // Must use block here to test effect (inline should not append tag)
-    expect(
-      updateSnippet('yarn add -D @storybook/testing-library', true, true)
-    ).toMatchInlineSnapshot(`"yarn add -D @storybook/testing-library@next"`);
+    expect(updateSnippet('yarn add -D @storybook/test', true, true)).toMatchInlineSnapshot(
+      `"yarn add -D @storybook/test@next"`
+    );
   });
   it('does not append tag to removed packages', () => {
     // Must use block here to test effect (inline should not append tag)
-    expect(
-      updateSnippet('npx storybook remove @storybook/testing-library', true)
-    ).toMatchInlineSnapshot(`"npx storybook@latest remove @storybook/testing-library"`);
+    expect(updateSnippet('npx storybook remove @storybook/test', true)).toMatchInlineSnapshot(
+      `"npx storybook@latest remove @storybook/test"`
+    );
     // Must use block here to test effect (inline should not append tag)
-    expect(
-      updateSnippet('npx storybook remove @storybook/testing-library', true, true)
-    ).toMatchInlineSnapshot(`"npx storybook@next remove @storybook/testing-library"`);
+    expect(updateSnippet('npx storybook remove @storybook/test', true, true)).toMatchInlineSnapshot(
+      `"npx storybook@next remove @storybook/test"`
+    );
   });
   it('removes existing tags', () => {
     expect(updateSnippet('npx storybook@latest init', false, true)).toMatchInlineSnapshot(
@@ -227,21 +227,21 @@ describe('updateSnippet', () => {
     );
     // Must use block here to test effect (inline should do nothing)
     expect(
-      updateSnippet('npx storybook@latest remove @storybook/testing-library', true, true)
-    ).toMatchInlineSnapshot(`"npx storybook@next remove @storybook/testing-library"`);
+      updateSnippet('npx storybook@latest remove @storybook/test', true, true)
+    ).toMatchInlineSnapshot(`"npx storybook@next remove @storybook/test"`);
     // Must use block here to test effect (inline should do nothing)
-    expect(
-      updateSnippet('npx storybook@next remove @storybook/testing-library', true)
-    ).toMatchInlineSnapshot(`"npx storybook@latest remove @storybook/testing-library"`);
+    expect(updateSnippet('npx storybook@next remove @storybook/test', true)).toMatchInlineSnapshot(
+      `"npx storybook@latest remove @storybook/test"`
+    );
     // Must use block here to test effect (inline should not append tag)
-    expect(
-      updateSnippet('yarn add -D @storybook/testing-library@latest', true, true)
-    ).toMatchInlineSnapshot(`"yarn add -D @storybook/testing-library@next"`);
+    expect(updateSnippet('yarn add -D @storybook/test@latest', true, true)).toMatchInlineSnapshot(
+      `"yarn add -D @storybook/test@next"`
+    );
     // Must use block here to test effect (inline should not append tag)
     // When not prerelease, we do NOT append the tag to installed packages
-    expect(
-      updateSnippet('yarn add -D @storybook/testing-library@next', true)
-    ).toMatchInlineSnapshot(`"yarn add -D @storybook/testing-library"`);
+    expect(updateSnippet('yarn add -D @storybook/test@next', true)).toMatchInlineSnapshot(
+      `"yarn add -D @storybook/test"`
+    );
   });
   it('handles CLI command flags and subcommands', () => {
     expect(updateSnippet('npx storybook init --builder <webpack5 | vite>')).toMatchInlineSnapshot(

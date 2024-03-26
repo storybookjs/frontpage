@@ -59,27 +59,36 @@ const Template = (args) => (
   </Wrapper>
 );
 
-export const WithLibraryIcon = Template.bind({});
-WithLibraryIcon.args = {
-  icon: NextJsSVG,
-  accentColor: '#000',
-  displayName: 'Next.js',
-  description: 'A low config way to get your Next.js UI working in Storybook',
-  views: 17143,
-  authors,
+export const WithLibraryIcon = {
+  render: Template,
+
+  args: {
+    icon: NextJsSVG,
+    accentColor: '#000',
+    displayName: 'Next.js',
+    description: 'A low config way to get your Next.js UI working in Storybook',
+    views: 17143,
+    authors,
+  },
 };
 
-export const WithoutLibraryIcon = Template.bind({});
-WithoutLibraryIcon.args = {
-  displayName: 'Material UI',
-  description: 'Get the most out of Material UI in your Storybook',
-  views: 238,
-  authors,
+export const WithoutLibraryIcon = {
+  render: Template,
+
+  args: {
+    displayName: 'Material UI',
+    description: 'Get the most out of Material UI in your Storybook',
+    views: 238,
+    authors,
+  },
 };
 
-export const Loading = Template.bind({});
-Loading.args = {
-  isLoading: true,
+export const Loading = {
+  render: Template,
+
+  args: {
+    isLoading: true,
+  },
 };
 
 const StatsWrapper = styled.div`
@@ -88,21 +97,24 @@ const StatsWrapper = styled.div`
   }
 `;
 
-export const StatVariations = (args) => (
-  <StatsWrapper>
-    <RecipeItem {...args} views={104} authors={authors.slice(0, 2)} />
-    <RecipeItem {...args} views={726} authors={authors.slice(0, 1)} />
-    <RecipeItem {...args} views={5026} authors={authors} />
-    <RecipeItem {...args} views={17143} authors={authors.slice(1, 2)} />
-    <RecipeItem {...args} views={171043} authors={authors} />
-    <RecipeItem {...args} views={3871043} authors={authors.slice(1, 2)} />
-  </StatsWrapper>
-);
-StatVariations.args = {
-  orientation: 'horizontal',
-  icon: NextJsSVG,
-  accentColor: '#000',
-  name: 'next',
-  displayName: 'Next.js',
-  description: 'How to hook up your Next.js app in Storybook',
+export const StatVariations = {
+  render: (args) => (
+    <StatsWrapper>
+      <RecipeItem {...args} views={104} authors={authors.slice(0, 2)} />
+      <RecipeItem {...args} views={726} authors={authors.slice(0, 1)} />
+      <RecipeItem {...args} views={5026} authors={authors} />
+      <RecipeItem {...args} views={17143} authors={authors.slice(1, 2)} />
+      <RecipeItem {...args} views={171043} authors={authors} />
+      <RecipeItem {...args} views={3871043} authors={authors.slice(1, 2)} />
+    </StatsWrapper>
+  ),
+
+  args: {
+    orientation: 'horizontal',
+    icon: NextJsSVG,
+    accentColor: '#000',
+    name: 'next',
+    displayName: 'Next.js',
+    description: 'How to hook up your Next.js app in Storybook',
+  },
 };

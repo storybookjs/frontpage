@@ -10,7 +10,10 @@ export default {
   },
 };
 
-export const Default = () => <Test docs="/" />;
-Default.parameters = {
-  backgrounds: { default: 'dark' },
+export const Default = {
+  render: () => <Test docs="/" />,
+
+  parameters: {
+    backgrounds: { default: 'dark' },
+  },
 };
