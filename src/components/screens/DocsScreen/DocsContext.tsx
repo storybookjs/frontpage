@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useLocalStorage } from 'usehooks-ts';
+import { useLocalStorage, useSessionStorage } from 'usehooks-ts';
 
 import { DEFAULT_CODE_LANGUAGE, CODE_LANGUAGES } from '../../../constants/code-languages';
 import { SEARCH_PARAMS_KEYS } from '../../../constants/search-params';
@@ -56,7 +56,7 @@ export function DocsContextProvider({
     DEFAULT_PACKAGE_MANAGER
   );
 
-  const [renderer, setRenderer] = useLocalStorage<Renderer>(
+  const [renderer, setRenderer] = useSessionStorage<Renderer>(
     LS_SELECTED_RENDERER_KEY,
     defaultRenderer
   );
