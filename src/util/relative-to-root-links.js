@@ -19,6 +19,11 @@ function removeTrailingIndex(path) {
  * /addons remains untouched
  */
 function relativeToRootLinks(href, path = '', isIndexPage) {
+  if (!href) {
+    // Accomodating `<a id="previous-heading-id" />`
+    return href;
+  }
+
   const relativeUrlRegex = /^(?!\.\.\/\.\.\/)(\.\/)(.*)$/;
   const multiLevelRelativeUrlRegex = /^(?!\.\.\/\.\.\/)(\.\.\/)(.*)$/;
 
