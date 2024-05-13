@@ -45,3 +45,8 @@ it('does not transform non-relative links', () => {
   const rootUrl = relativeToRootLinks('/foo', '/docs/writing-stories/args');
   expect(rootUrl).toEqual('/foo');
 });
+
+it('does nothing to named anchors', () => {
+  const rootUrl = relativeToRootLinks();
+  expect(rootUrl).toBeUndefined();
+});
