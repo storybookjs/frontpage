@@ -92,8 +92,8 @@
 /showcase/*                                 https://storybook-component-catalog.netlify.app/showcase/:splat                                     200
 /tutorials/*                                https://storybook-tutorials.netlify.app/tutorials/:splat                                            200
 /day/*                                      https://storybook-day-2023.netlify.app/day/:splat                                                   200
-/status/*                                   https://storybook-status.netlify.app/status/:splat                                                  200
 
+/status                                     https://github.com/storybookjs/storybook/issues/23279                                               302
 /telemetry                                  /docs/configure/telemetry                                                                           301
 
 # Plausible analytics
