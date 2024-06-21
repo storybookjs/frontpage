@@ -10,6 +10,7 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata,
+  trailingSlash: 'never',
   flags: {
     FAST_DEV: true,
     QUERY_ON_DEMAND: true,
